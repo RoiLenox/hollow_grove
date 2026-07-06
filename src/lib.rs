@@ -4,7 +4,7 @@ pub mod point;
 pub mod triway;
 
 pub use aura_seam::AuraSeam;
-pub use hollow_grove::HollowGrove;
+pub use hollow_grove::{Bond, HollowGrove};
 pub use point::Point;
 pub use triway::{Triway, Way};
 
@@ -23,7 +23,7 @@ pub fn kernel_proof() -> [&'static str; 8] {
         "Point becomes Triway.",
         "Triway carries one Point through three ways.",
         "Triway becomes Hollow Grove",
-        "Hollow Grove bonds Way::One as Link and leaves two ways as Atmosphere.",
+        "Hollow Grove forms Bond on one Way and leaves two ways as Atmosphere.",
         "Hollow Grove becomes AuraSeam",
         "AuraSeam creates Point #2",
         "Kernel recursion verified.",
@@ -32,7 +32,7 @@ pub fn kernel_proof() -> [&'static str; 8] {
 
 #[cfg(test)]
 mod tests {
-    use super::{Point, Way, kernel_proof, run_kernel_cycle};
+    use super::{Bond, Point, Way, kernel_proof, run_kernel_cycle};
 
     #[test]
     fn point_becomes_the_next_point() {
@@ -54,6 +54,12 @@ mod tests {
     }
 
     #[test]
+    fn bond_selects_one_way() {
+        let bond = Bond::select([Way::One, Way::Two, Way::Three]);
+        assert_eq!(bond.linked_way(), Way::One);
+    }
+
+    #[test]
     fn kernel_proof_reports_the_full_cycle() {
         assert_eq!(
             kernel_proof(),
@@ -62,7 +68,7 @@ mod tests {
                 "Point becomes Triway.",
                 "Triway carries one Point through three ways.",
                 "Triway becomes Hollow Grove",
-                "Hollow Grove bonds Way::One as Link and leaves two ways as Atmosphere.",
+                "Hollow Grove forms Bond on one Way and leaves two ways as Atmosphere.",
                 "Hollow Grove becomes AuraSeam",
                 "AuraSeam creates Point #2",
                 "Kernel recursion verified.",
