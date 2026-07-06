@@ -1,17 +1,35 @@
 use crate::aura_seam::AuraSeam;
-use crate::triway::Triway;
+use crate::point::Point;
+use crate::triway::{Triway, Way};
 
 #[derive(Debug, Clone)]
 pub struct HollowGrove {
-    triway: Triway,
+    source: Point,
+    link: Way,
+    atmosphere: [Way; 2],
 }
 
 impl HollowGrove {
     pub fn from_triway(triway: Triway) -> Self {
-        Self { triway }
+        let source = triway.source();
+        let [link, atmosphere_one, atmosphere_two] = triway.ways();
+
+        Self {
+            source,
+            link,
+            atmosphere: [atmosphere_one, atmosphere_two],
+        }
+    }
+
+    pub fn link(&self) -> Way {
+        self.link
+    }
+
+    pub fn atmosphere(&self) -> [Way; 2] {
+        self.atmosphere
     }
 
     pub fn become_aura_seam(self) -> AuraSeam {
-        AuraSeam::from_point(self.triway.into_point())
+        AuraSeam::from_point(self.source)
     }
 }

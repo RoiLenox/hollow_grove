@@ -15,7 +15,7 @@ pub fn run_kernel_cycle(point: Point) -> Point {
     aura_seam.create_point()
 }
 
-pub fn kernel_proof() -> [&'static str; 7] {
+pub fn kernel_proof() -> [&'static str; 8] {
     let _point_2 = run_kernel_cycle(Point);
 
     [
@@ -23,6 +23,7 @@ pub fn kernel_proof() -> [&'static str; 7] {
         "Point becomes Triway.",
         "Triway carries one Point through three ways.",
         "Triway becomes Hollow Grove",
+        "Hollow Grove bonds Way::One as Link and leaves two ways as Atmosphere.",
         "Hollow Grove becomes AuraSeam",
         "AuraSeam creates Point #2",
         "Kernel recursion verified.",
@@ -46,6 +47,13 @@ mod tests {
     }
 
     #[test]
+    fn hollow_grove_resolves_link_and_atmosphere() {
+        let hollow_grove = Point.become_triway().become_hollow_grove();
+        assert_eq!(hollow_grove.link(), Way::One);
+        assert_eq!(hollow_grove.atmosphere(), [Way::Two, Way::Three]);
+    }
+
+    #[test]
     fn kernel_proof_reports_the_full_cycle() {
         assert_eq!(
             kernel_proof(),
@@ -54,6 +62,7 @@ mod tests {
                 "Point becomes Triway.",
                 "Triway carries one Point through three ways.",
                 "Triway becomes Hollow Grove",
+                "Hollow Grove bonds Way::One as Link and leaves two ways as Atmosphere.",
                 "Hollow Grove becomes AuraSeam",
                 "AuraSeam creates Point #2",
                 "Kernel recursion verified.",

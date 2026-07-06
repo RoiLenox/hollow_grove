@@ -30,6 +30,10 @@ impl Triway {
         self.ways
     }
 
+    pub fn source(&self) -> Point {
+        self.source.clone()
+    }
+
     pub fn into_point(self) -> Point {
         self.source
     }
