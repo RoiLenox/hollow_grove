@@ -6,7 +6,7 @@ pub mod triway;
 pub use aura_seam::AuraSeam;
 pub use hollow_grove::HollowGrove;
 pub use point::Point;
-pub use triway::Triway;
+pub use triway::{Triway, Way};
 
 pub fn run_kernel_cycle(point: Point) -> Point {
     let triway = point.become_triway();
@@ -15,12 +15,13 @@ pub fn run_kernel_cycle(point: Point) -> Point {
     aura_seam.create_point()
 }
 
-pub fn kernel_proof() -> [&'static str; 6] {
+pub fn kernel_proof() -> [&'static str; 7] {
     let _point_2 = run_kernel_cycle(Point);
 
     [
         "Current Synthesis creates Point #1",
-        "Point becomes Triway",
+        "Point becomes Triway.",
+        "Triway carries one Point through three ways.",
         "Triway becomes Hollow Grove",
         "Hollow Grove becomes AuraSeam",
         "AuraSeam creates Point #2",
@@ -30,7 +31,7 @@ pub fn kernel_proof() -> [&'static str; 6] {
 
 #[cfg(test)]
 mod tests {
-    use super::{Point, kernel_proof, run_kernel_cycle};
+    use super::{Point, Way, kernel_proof, run_kernel_cycle};
 
     #[test]
     fn point_becomes_the_next_point() {
@@ -39,12 +40,19 @@ mod tests {
     }
 
     #[test]
+    fn triway_carries_one_point_through_three_ways() {
+        let triway = Point.become_triway();
+        assert_eq!(triway.ways(), [Way::One, Way::Two, Way::Three]);
+    }
+
+    #[test]
     fn kernel_proof_reports_the_full_cycle() {
         assert_eq!(
             kernel_proof(),
             [
                 "Current Synthesis creates Point #1",
-                "Point becomes Triway",
+                "Point becomes Triway.",
+                "Triway carries one Point through three ways.",
                 "Triway becomes Hollow Grove",
                 "Hollow Grove becomes AuraSeam",
                 "AuraSeam creates Point #2",
