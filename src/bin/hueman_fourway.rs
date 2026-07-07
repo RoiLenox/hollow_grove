@@ -33,12 +33,14 @@ mod tests {
             build_hueman_fourway_from_artifacts("boundary", "motion"),
             "# Hueman Fourway\n\n\
              ## Structural Rule\n\n\
-             Hueman runs through the Fourway before resolving downward into Triway.\n\n\
+             Hueman runs through the Fourway before resolving downward into AuraTriad and then Triway.\n\n\
              ## Stack\n\n\
              ```text\n\
              Hueman\n\
              ↓\n\
              Fourway\n\
+             ↓\n\
+             AuraTriad\n\
              ↓\n\
              Triway\n\
              ↓\n\
@@ -51,9 +53,11 @@ mod tests {
              - West\n\n\
              ## Meaning\n\n\
              - Fourway is the world-facing directional map.\n\
+             - Fourway includes straight lines and rounded corner bends.\n\
+             - Fourway resolves downward into AuraTriad first.\n\
              - Triway remains the lower recursive split.\n\
              - Fourway does not replace Triway.\n\
-             - Fourway resolves downward into Triway.\n\n\
+             - Fourway does not own PLEB or META.\n\n\
              ## Initial World Roster\n\n\
              - North = Flynt = `goblin`\n\
              - East = Stonebend = `gremlin`\n\
@@ -69,7 +73,7 @@ mod tests {
              Hueman boundary bytes: 8.\n\
              Hueman motion map bytes: 6.\n\n\
              ## Boundary Reminder\n\n\
-             Fourway is a Hueman/world structure above the kernel path. It must not redefine Triway.\n"
+             Fourway is a Hueman/world structure above AuraTriad and the kernel path. It must not redefine Triway.\n"
         );
     }
 

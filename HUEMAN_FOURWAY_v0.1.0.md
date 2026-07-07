@@ -4,7 +4,7 @@ Date: 2026-07-07
 
 ## Rule
 
-Hueman runs through `Fourway` before resolving downward into `Triway`.
+Hueman runs through `Fourway` before resolving downward into `AuraTriad` and then `Triway`.
 
 ## Stack
 
@@ -12,6 +12,8 @@ Hueman runs through `Fourway` before resolving downward into `Triway`.
 Hueman
 ↓
 Fourway
+↓
+AuraTriad
 ↓
 Triway
 ↓
@@ -28,9 +30,11 @@ Hollow Grove
 ## Meaning
 
 - `Fourway` is the world-facing directional map.
+- `Fourway` includes the straight lines and the rounded corner bends of the world map.
+- `Fourway` resolves downward into `AuraTriad` first.
 - `Triway` remains the lower recursive split.
 - `Fourway` does not replace `Triway`.
-- `Fourway` resolves downward into `Triway`.
+- `Fourway` does not own `PLEB` or `META`.
 
 ## Initial World Roster
 
@@ -42,6 +46,7 @@ Hollow Grove
 ## Boundary
 
 - `Fourway` belongs to Hueman.
+- `AuraTriad` belongs to Hueman.
 - `Triway` belongs to Hollow Grove.
 - Current Synthesis does not own `Fourway`.
 - no feedback into Current Synthesis

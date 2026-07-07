@@ -2,16 +2,16 @@ use std::io;
 use std::path::Path;
 
 use hollow_grove::hueman_support::{
-    HUEMAN_FOURWAY_ARTIFACT_PATH, HUEMAN_MOTION_MAP_ARTIFACT_PATH,
+    HUEMAN_AURA_TRIAD_ARTIFACT_PATH, HUEMAN_FOURWAY_ARTIFACT_PATH,
     build_hueman_start_choices_from_artifacts, hueman_start_choices_artifact_path,
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
 fn main() -> io::Result<()> {
     let hueman_fourway = read_text_artifact(Path::new(HUEMAN_FOURWAY_ARTIFACT_PATH))?;
-    let hueman_motion_map = read_text_artifact(Path::new(HUEMAN_MOTION_MAP_ARTIFACT_PATH))?;
+    let hueman_aura_triad = read_text_artifact(Path::new(HUEMAN_AURA_TRIAD_ARTIFACT_PATH))?;
     let hueman_start_choices =
-        build_hueman_start_choices_from_artifacts(&hueman_fourway, &hueman_motion_map);
+        build_hueman_start_choices_from_artifacts(&hueman_fourway, &hueman_aura_triad);
     let artifact_path = hueman_start_choices_artifact_path();
 
     write_text_artifact(&artifact_path, &hueman_start_choices)?;
@@ -31,7 +31,7 @@ mod tests {
     #[test]
     fn hueman_start_choices_reads_existing_artifacts() {
         assert_eq!(
-            build_hueman_start_choices_from_artifacts("fourway", "motion"),
+            build_hueman_start_choices_from_artifacts("fourway", "triad"),
             "# Hueman Start Choices\n\n\
              ## End User Archetypes\n\n\
              - `goblin`\n\
@@ -57,13 +57,14 @@ mod tests {
              - the end user may choose one archetype\n\
              - the starting place follows the initial Hueman roster\n\
              - the starting direction follows the Fourway roster\n\
+             - the world resolves downward through AuraTriad after start choice\n\
              - world behavior is not active yet\n\
              - species mechanics are not active yet\n\
              - no feedback into Current Synthesis\n\
              - no feedback into Hollow Grove\n\n\
              ## Artifact Inputs\n\n\
              Hueman Fourway bytes: 7.\n\
-             Hueman motion map bytes: 6.\n\n\
+             Hueman AuraTriad bytes: 5.\n\n\
              ## Boundary Reminder\n\n\
              This is a Hueman-layer start declaration only. It does not change Current Synthesis or Hollow Grove.\n"
         );
@@ -72,7 +73,7 @@ mod tests {
     #[test]
     fn hueman_start_choices_writes_a_deterministic_file() {
         let hueman_start_choices =
-            build_hueman_start_choices_from_artifacts("fourway", "motion");
+            build_hueman_start_choices_from_artifacts("fourway", "triad");
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .expect("system time before unix epoch")

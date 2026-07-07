@@ -2,7 +2,7 @@
 
 ## Structural Rule
 
-Hueman runs through the Fourway before resolving downward into Triway.
+Hueman runs through the Fourway before resolving downward into AuraTriad and then Triway.
 
 ## Stack
 
@@ -10,6 +10,8 @@ Hueman runs through the Fourway before resolving downward into Triway.
 Hueman
 ↓
 Fourway
+↓
+AuraTriad
 ↓
 Triway
 ↓
@@ -26,9 +28,11 @@ Hollow Grove
 ## Meaning
 
 - Fourway is the world-facing directional map.
+- Fourway includes straight lines and rounded corner bends.
+- Fourway resolves downward into AuraTriad first.
 - Triway remains the lower recursive split.
 - Fourway does not replace Triway.
-- Fourway resolves downward into Triway.
+- Fourway does not own PLEB or META.
 
 ## Initial World Roster
 
@@ -52,4 +56,4 @@ Hueman motion map bytes: 853.
 
 ## Boundary Reminder
 
-Fourway is a Hueman/world structure above the kernel path. It must not redefine Triway.
+Fourway is a Hueman/world structure above AuraTriad and the kernel path. It must not redefine Triway.

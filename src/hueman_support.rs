@@ -5,8 +5,10 @@ pub const CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH: &str =
     "artifacts/current_synthesis_activation_gate.md";
 pub const CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH: &str =
     "artifacts/current_synthesis_operational.md";
+pub const CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH: &str = "artifacts/current_synthesis_topology.md";
 pub const HUEMAN_BOUNDARY_ARTIFACT_PATH: &str = "artifacts/hueman_boundary.md";
 pub const HUEMAN_FOURWAY_ARTIFACT_PATH: &str = "artifacts/hueman_fourway.md";
+pub const HUEMAN_AURA_TRIAD_ARTIFACT_PATH: &str = "artifacts/hueman_aura_triad.md";
 pub const HUEMAN_MOTION_MAP_ARTIFACT_PATH: &str = "artifacts/hueman_motion_map.md";
 pub const HUEMAN_START_CHOICES_ARTIFACT_PATH: &str = "artifacts/hueman_start_choices.md";
 
@@ -20,6 +22,10 @@ pub fn hueman_motion_map_artifact_path() -> PathBuf {
 
 pub fn hueman_fourway_artifact_path() -> PathBuf {
     PathBuf::from(HUEMAN_FOURWAY_ARTIFACT_PATH)
+}
+
+pub fn hueman_aura_triad_artifact_path() -> PathBuf {
+    PathBuf::from(HUEMAN_AURA_TRIAD_ARTIFACT_PATH)
 }
 
 pub fn hueman_start_choices_artifact_path() -> PathBuf {
@@ -117,12 +123,14 @@ pub fn build_hueman_fourway_from_artifacts(
     format!(
         "# Hueman Fourway\n\n\
          ## Structural Rule\n\n\
-         Hueman runs through the Fourway before resolving downward into Triway.\n\n\
+         Hueman runs through the Fourway before resolving downward into AuraTriad and then Triway.\n\n\
          ## Stack\n\n\
          ```text\n\
          Hueman\n\
          ↓\n\
          Fourway\n\
+         ↓\n\
+         AuraTriad\n\
          ↓\n\
          Triway\n\
          ↓\n\
@@ -135,9 +143,11 @@ pub fn build_hueman_fourway_from_artifacts(
          - West\n\n\
          ## Meaning\n\n\
          - Fourway is the world-facing directional map.\n\
+         - Fourway includes straight lines and rounded corner bends.\n\
+         - Fourway resolves downward into AuraTriad first.\n\
          - Triway remains the lower recursive split.\n\
          - Fourway does not replace Triway.\n\
-         - Fourway resolves downward into Triway.\n\n\
+         - Fourway does not own PLEB or META.\n\n\
          ## Initial World Roster\n\n\
          - North = Flynt = `goblin`\n\
          - East = Stonebend = `gremlin`\n\
@@ -153,15 +163,67 @@ pub fn build_hueman_fourway_from_artifacts(
          Hueman boundary bytes: {}.\n\
          Hueman motion map bytes: {}.\n\n\
          ## Boundary Reminder\n\n\
-         Fourway is a Hueman/world structure above the kernel path. It must not redefine Triway.\n",
+         Fourway is a Hueman/world structure above AuraTriad and the kernel path. It must not redefine Triway.\n",
         hueman_boundary.len(),
         hueman_motion_map.len()
     )
 }
 
+pub fn build_hueman_aura_triad_from_artifacts(
+    hueman_fourway: &str,
+    current_synthesis_topology: &str,
+) -> String {
+    format!(
+        "# Hueman Aura Triad\n\n\
+         ## Structural Rule\n\n\
+         AuraTriad is the three-region resolution beneath Fourway and above Triway.\n\n\
+         ## Stack\n\n\
+         ```text\n\
+         Hueman\n\
+         ↓\n\
+         Fourway\n\
+         ↓\n\
+         AuraTriad\n\
+         ↓\n\
+         Triway\n\
+         ↓\n\
+         Hollow Grove\n\
+         ```\n\n\
+         ## Triad\n\n\
+         ```text\n\
+         Aura Basin\n\
+         ↓\n\
+         Aura Fields\n\
+         ↓\n\
+         Aura Beach\n\
+         ```\n\n\
+         ## Meaning\n\n\
+         - AuraTriad is the world-facing three-region route body beneath Fourway.\n\
+         - Current Synthesis already records these as inverse-route regions.\n\
+         - Hueman reads them as the triadic resolution of the world map.\n\
+         - Triway remains the lower recursive split after this layer.\n\n\
+         ## PLEB and META\n\n\
+         - `PLEB` and `META` remain Current Synthesis occupancy semantics.\n\
+         - AuraTriad does not move `PLEB` or `META` into the kernel.\n\
+         - AuraTriad does not redefine Triway.\n\n\
+         ## Boundary\n\n\
+         - AuraTriad belongs to Hueman as world reading.\n\
+         - the source geography remains readable from Current Synthesis.\n\
+         - no feedback into Current Synthesis\n\
+         - no feedback into Hollow Grove\n\n\
+         ## Artifact Inputs\n\n\
+         Hueman Fourway bytes: {}.\n\
+         Current Synthesis topology bytes: {}.\n\n\
+         ## Boundary Reminder\n\n\
+         AuraTriad is the bridge between Hueman Fourway and Hollow Grove Triway. It is not itself a kernel structure.\n",
+        hueman_fourway.len(),
+        current_synthesis_topology.len()
+    )
+}
+
 pub fn build_hueman_start_choices_from_artifacts(
     hueman_fourway: &str,
-    hueman_motion_map: &str,
+    hueman_aura_triad: &str,
 ) -> String {
     format!(
         "# Hueman Start Choices\n\n\
@@ -189,23 +251,25 @@ pub fn build_hueman_start_choices_from_artifacts(
          - the end user may choose one archetype\n\
          - the starting place follows the initial Hueman roster\n\
          - the starting direction follows the Fourway roster\n\
+         - the world resolves downward through AuraTriad after start choice\n\
          - world behavior is not active yet\n\
          - species mechanics are not active yet\n\
          - no feedback into Current Synthesis\n\
          - no feedback into Hollow Grove\n\n\
          ## Artifact Inputs\n\n\
          Hueman Fourway bytes: {}.\n\
-         Hueman motion map bytes: {}.\n\n\
+         Hueman AuraTriad bytes: {}.\n\n\
          ## Boundary Reminder\n\n\
          This is a Hueman-layer start declaration only. It does not change Current Synthesis or Hollow Grove.\n",
         hueman_fourway.len(),
-        hueman_motion_map.len()
+        hueman_aura_triad.len()
     )
 }
 
 #[cfg(test)]
 mod tests {
     use super::{
+        build_hueman_aura_triad_from_artifacts,
         build_hueman_boundary_from_artifacts, build_hueman_fourway_from_artifacts,
         build_hueman_motion_map_from_artifacts,
         build_hueman_start_choices_from_artifacts,
@@ -292,7 +356,7 @@ mod tests {
     #[test]
     fn hueman_start_choices_builder_is_deterministic() {
         assert_eq!(
-            build_hueman_start_choices_from_artifacts("fourway", "motion"),
+            build_hueman_start_choices_from_artifacts("fourway", "triad"),
             "# Hueman Start Choices\n\n\
              ## End User Archetypes\n\n\
              - `goblin`\n\
@@ -318,13 +382,14 @@ mod tests {
              - the end user may choose one archetype\n\
              - the starting place follows the initial Hueman roster\n\
              - the starting direction follows the Fourway roster\n\
+             - the world resolves downward through AuraTriad after start choice\n\
              - world behavior is not active yet\n\
              - species mechanics are not active yet\n\
              - no feedback into Current Synthesis\n\
              - no feedback into Hollow Grove\n\n\
              ## Artifact Inputs\n\n\
              Hueman Fourway bytes: 7.\n\
-             Hueman motion map bytes: 6.\n\n\
+             Hueman AuraTriad bytes: 5.\n\n\
              ## Boundary Reminder\n\n\
              This is a Hueman-layer start declaration only. It does not change Current Synthesis or Hollow Grove.\n"
         );
@@ -336,12 +401,14 @@ mod tests {
             build_hueman_fourway_from_artifacts("boundary", "motion"),
             "# Hueman Fourway\n\n\
              ## Structural Rule\n\n\
-             Hueman runs through the Fourway before resolving downward into Triway.\n\n\
+             Hueman runs through the Fourway before resolving downward into AuraTriad and then Triway.\n\n\
              ## Stack\n\n\
              ```text\n\
              Hueman\n\
              ↓\n\
              Fourway\n\
+             ↓\n\
+             AuraTriad\n\
              ↓\n\
              Triway\n\
              ↓\n\
@@ -354,9 +421,11 @@ mod tests {
              - West\n\n\
              ## Meaning\n\n\
              - Fourway is the world-facing directional map.\n\
+             - Fourway includes straight lines and rounded corner bends.\n\
+             - Fourway resolves downward into AuraTriad first.\n\
              - Triway remains the lower recursive split.\n\
              - Fourway does not replace Triway.\n\
-             - Fourway resolves downward into Triway.\n\n\
+             - Fourway does not own PLEB or META.\n\n\
              ## Initial World Roster\n\n\
              - North = Flynt = `goblin`\n\
              - East = Stonebend = `gremlin`\n\
@@ -372,7 +441,56 @@ mod tests {
              Hueman boundary bytes: 8.\n\
              Hueman motion map bytes: 6.\n\n\
              ## Boundary Reminder\n\n\
-             Fourway is a Hueman/world structure above the kernel path. It must not redefine Triway.\n"
+             Fourway is a Hueman/world structure above AuraTriad and the kernel path. It must not redefine Triway.\n"
+        );
+    }
+
+    #[test]
+    fn hueman_aura_triad_builder_is_deterministic() {
+        assert_eq!(
+            build_hueman_aura_triad_from_artifacts("fourway", "topology"),
+            "# Hueman Aura Triad\n\n\
+             ## Structural Rule\n\n\
+             AuraTriad is the three-region resolution beneath Fourway and above Triway.\n\n\
+             ## Stack\n\n\
+             ```text\n\
+             Hueman\n\
+             ↓\n\
+             Fourway\n\
+             ↓\n\
+             AuraTriad\n\
+             ↓\n\
+             Triway\n\
+             ↓\n\
+             Hollow Grove\n\
+             ```\n\n\
+             ## Triad\n\n\
+             ```text\n\
+             Aura Basin\n\
+             ↓\n\
+             Aura Fields\n\
+             ↓\n\
+             Aura Beach\n\
+             ```\n\n\
+             ## Meaning\n\n\
+             - AuraTriad is the world-facing three-region route body beneath Fourway.\n\
+             - Current Synthesis already records these as inverse-route regions.\n\
+             - Hueman reads them as the triadic resolution of the world map.\n\
+             - Triway remains the lower recursive split after this layer.\n\n\
+             ## PLEB and META\n\n\
+             - `PLEB` and `META` remain Current Synthesis occupancy semantics.\n\
+             - AuraTriad does not move `PLEB` or `META` into the kernel.\n\
+             - AuraTriad does not redefine Triway.\n\n\
+             ## Boundary\n\n\
+             - AuraTriad belongs to Hueman as world reading.\n\
+             - the source geography remains readable from Current Synthesis.\n\
+             - no feedback into Current Synthesis\n\
+             - no feedback into Hollow Grove\n\n\
+             ## Artifact Inputs\n\n\
+             Hueman Fourway bytes: 7.\n\
+             Current Synthesis topology bytes: 8.\n\n\
+             ## Boundary Reminder\n\n\
+             AuraTriad is the bridge between Hueman Fourway and Hollow Grove Triway. It is not itself a kernel structure.\n"
         );
     }
 }

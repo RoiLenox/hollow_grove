@@ -37,6 +37,7 @@ The first Hueman starting places are:
 ## Boundary
 
 - This is a Hueman-layer declaration only.
+- It resolves downward through AuraTriad after the Fourway placement.
 - It does not change Current Synthesis.
 - It does not change Hollow Grove.
 - It does not activate world behavior yet.

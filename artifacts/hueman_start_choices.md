@@ -33,6 +33,7 @@
 - the end user may choose one archetype
 - the starting place follows the initial Hueman roster
 - the starting direction follows the Fourway roster
+- the world resolves downward through AuraTriad after start choice
 - world behavior is not active yet
 - species mechanics are not active yet
 - no feedback into Current Synthesis
@@ -40,8 +41,8 @@
 
 ## Artifact Inputs
 
-Hueman Fourway bytes: 933.
-Hueman motion map bytes: 853.
+Hueman Fourway bytes: 1086.
+Hueman AuraTriad bytes: 1142.
 
 ## Boundary Reminder
 
