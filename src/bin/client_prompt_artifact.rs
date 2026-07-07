@@ -2,29 +2,12 @@ use std::fs;
 use std::io;
 use std::path::{Path, PathBuf};
 
-use hollow_grove::{KernelPass, Point, run_kernel_cycle};
-
-const SNAPSHOT_ARTIFACT_PATH: &str = "artifacts/kernel_pass_snapshot.json";
-const PROMPT_ARTIFACT_PATH: &str = "artifacts/consumer_prompt.md";
-const INVERSE_PATH_QUESTION: &str =
-    "What does this completed pass reveal about the inverse path of the end use?";
-const BOUNDARY_REMINDER: &str = "Do not mutate the kernel. Interpret only.";
+use hollow_grove::{
+    KernelPass, PROMPT_ARTIFACT_PATH, Point, build_prompt_artifact_output, run_kernel_cycle,
+};
 
 fn build_prompt_artifact_from_client(kernel_pass: &KernelPass) -> String {
-    format!(
-        "# Consumer Prompt\n\n\
-         ## Canonical Witness\n\n\
-         ```text\n\
-         {}\n\
-         ```\n\n\
-         ## Structured Snapshot Reference\n\n\
-         `{SNAPSHOT_ARTIFACT_PATH}`\n\n\
-         ## Inverse-Path Question\n\n\
-         {INVERSE_PATH_QUESTION}\n\n\
-         ## Boundary Reminder\n\n\
-         {BOUNDARY_REMINDER}\n",
-        kernel_pass
-    )
+    build_prompt_artifact_output(kernel_pass)
 }
 
 fn write_prompt_artifact(artifact_path: &Path, contents: &str) -> io::Result<()> {

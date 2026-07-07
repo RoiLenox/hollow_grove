@@ -2,6 +2,7 @@ pub mod aura_beam;
 pub mod current_seam;
 pub mod hollow_grove;
 pub mod kernel_pass;
+pub mod kernel_pass_output;
 pub mod point;
 pub mod triway;
 
@@ -9,6 +10,12 @@ pub use aura_beam::AuraBeam;
 pub use current_seam::CurrentSeam;
 pub use hollow_grove::{Bond, HollowGrove};
 pub use kernel_pass::KernelPass;
+pub use kernel_pass_output::{
+    BOUNDARY_REMINDER, DESKTOP_STATUS_ARTIFACT_PATH, INVERSE_PATH_QUESTION,
+    PROMPT_ARTIFACT_PATH, SNAPSHOT_ARTIFACT_PATH, build_desktop_status_output,
+    build_inverse_path_prompt, build_prompt_artifact_output, build_snapshot_output,
+    build_tree_output,
+};
 pub use point::Point;
 pub use triway::{Triway, Way};
 

@@ -1,14 +1,13 @@
-use hollow_grove::{KernelPass, Point, run_kernel_cycle};
-
-const INVERSE_PATH_QUESTION: &str =
-    "What does this completed pass reveal about the inverse path of the end use?";
+use hollow_grove::{
+    INVERSE_PATH_QUESTION, KernelPass, Point, build_inverse_path_prompt, run_kernel_cycle,
+};
 
 fn build_prompt_from_consumer(kernel_pass: &KernelPass) -> String {
     build_prompt_from_witness(&kernel_pass.to_string())
 }
 
 fn build_prompt_from_witness(witness: &str) -> String {
-    format!("{witness}\n\n{INVERSE_PATH_QUESTION}")
+    build_inverse_path_prompt(witness)
 }
 
 fn main() {

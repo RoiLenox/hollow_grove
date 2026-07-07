@@ -2,19 +2,13 @@ use std::fs;
 use std::io;
 use std::path::{Path, PathBuf};
 
-use hollow_grove::{KernelPass, Point, run_kernel_cycle};
-
-const DESKTOP_STATUS_ARTIFACT_PATH: &str = "artifacts/desktop_status.txt";
+use hollow_grove::{
+    DESKTOP_STATUS_ARTIFACT_PATH, KernelPass, Point, build_desktop_status_output,
+    run_kernel_cycle,
+};
 
 fn build_desktop_status_from_client(kernel_pass: &KernelPass) -> String {
-    format!(
-        "Hollow Grove status: one completed witnessed recursion\n\n\
-         Canonical witness:\n\
-         {}\n\n\
-         Note: read-only desktop artifact\n\
-         Note: niri/river configs untouched\n",
-        kernel_pass
-    )
+    build_desktop_status_output(kernel_pass)
 }
 
 fn write_desktop_status_artifact(artifact_path: &Path, contents: &str) -> io::Result<()> {

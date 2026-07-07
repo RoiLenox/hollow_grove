@@ -4,9 +4,9 @@ use std::fs;
 use std::io;
 use std::path::Path;
 
-pub const SNAPSHOT_ARTIFACT_PATH: &str = "artifacts/kernel_pass_snapshot.json";
-pub const PROMPT_ARTIFACT_PATH: &str = "artifacts/consumer_prompt.md";
-pub const DESKTOP_STATUS_ARTIFACT_PATH: &str = "artifacts/desktop_status.txt";
+pub const SNAPSHOT_ARTIFACT_PATH: &str = hollow_grove::SNAPSHOT_ARTIFACT_PATH;
+pub const PROMPT_ARTIFACT_PATH: &str = hollow_grove::PROMPT_ARTIFACT_PATH;
+pub const DESKTOP_STATUS_ARTIFACT_PATH: &str = hollow_grove::DESKTOP_STATUS_ARTIFACT_PATH;
 pub const CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH: &str = "artifacts/current_synthesis_base.md";
 pub const ARTIFACT_INDEX_PATH: &str = "artifacts/index.md";
 pub const CURRENT_SYNTHESIS_STATE_ARTIFACT_PATH: &str = "artifacts/current_synthesis_state.md";

@@ -182,6 +182,11 @@ mod tests {
     use std::path::Path;
     use std::time::{SystemTime, UNIX_EPOCH};
 
+    use hollow_grove::{
+        Point, build_desktop_status_output, build_prompt_artifact_output, build_snapshot_output,
+        run_kernel_cycle,
+    };
+
     use super::current_synthesis_support::{
         ARTIFACT_INDEX_PATH, DESKTOP_STATUS_ARTIFACT_PATH, PROMPT_ARTIFACT_PATH,
         SNAPSHOT_ARTIFACT_PATH, build_current_synthesis_activation_gate_from_artifacts,
@@ -214,14 +219,15 @@ mod tests {
             .expect("system time before unix epoch")
             .as_nanos();
         let artifact_root = std::env::temp_dir().join(format!("current-synthesis-runner-{nonce}"));
-        let snapshot = "{\n  \"start\": \"Point\",\n  \"triway\": {\n    \"ways\": [\"One\", \"Two\", \"Three\"]\n  },\n  \"hollow_grove\": {\n    \"bond\": \"One\",\n    \"atmosphere\": [\"Two\", \"Three\"]\n  },\n  \"current_seam\": \"CurrentSeam\",\n  \"aura_beam\": \"AuraBeam\",\n  \"landed\": \"Point\",\n  \"canonical_witness\": \"start Point\\n↓\\nTriway\\n↓\\nHollowGrove\\n↓\\nCurrentSeam\\n↓\\nAuraBeam\\n↓\\nlanded Point\"\n}";
-        let prompt = "# Consumer Prompt\n\n## Canonical Witness\n\n```text\nstart Point\n↓\nTriway\n↓\nHollowGrove\n↓\nCurrentSeam\n↓\nAuraBeam\n↓\nlanded Point\n```\n\n## Structured Snapshot Reference\n\n`artifacts/kernel_pass_snapshot.json`\n\n## Inverse-Path Question\n\nWhat does this completed pass reveal about the inverse path of the end use?\n\n## Boundary Reminder\n\nDo not mutate the kernel. Interpret only.\n";
-        let desktop_status = "Hollow Grove status: one completed witnessed recursion\n\nCanonical witness:\nstart Point\n↓\nTriway\n↓\nHollowGrove\n↓\nCurrentSeam\n↓\nAuraBeam\n↓\nlanded Point\n\nNote: read-only desktop artifact\nNote: niri/river configs untouched\n";
+        let kernel_pass = run_kernel_cycle(Point);
+        let snapshot = build_snapshot_output(&kernel_pass);
+        let prompt = build_prompt_artifact_output(&kernel_pass);
+        let desktop_status = build_desktop_status_output(&kernel_pass);
         let artifact_index = "# Artifact Index\n\nindex";
 
-        write_fixture(&artifact_root, SNAPSHOT_ARTIFACT_PATH, snapshot);
-        write_fixture(&artifact_root, PROMPT_ARTIFACT_PATH, prompt);
-        write_fixture(&artifact_root, DESKTOP_STATUS_ARTIFACT_PATH, desktop_status);
+        write_fixture(&artifact_root, SNAPSHOT_ARTIFACT_PATH, &snapshot);
+        write_fixture(&artifact_root, PROMPT_ARTIFACT_PATH, &prompt);
+        write_fixture(&artifact_root, DESKTOP_STATUS_ARTIFACT_PATH, &desktop_status);
         write_fixture(&artifact_root, ARTIFACT_INDEX_PATH, artifact_index);
 
         let [
@@ -243,7 +249,7 @@ mod tests {
             activation_gate_path,
         ] = run_current_synthesis_at(&artifact_root).expect("current synthesis should run");
         let current_synthesis_base =
-            build_current_synthesis_base_from_artifacts(snapshot, prompt, desktop_status)
+            build_current_synthesis_base_from_artifacts(&snapshot, &prompt, &desktop_status)
                 .expect("base should build");
         let current_synthesis_state =
             build_current_synthesis_state_from_artifacts(&current_synthesis_base, artifact_index);

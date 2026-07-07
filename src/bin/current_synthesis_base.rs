@@ -33,18 +33,24 @@ mod tests {
     use std::fs;
     use std::time::{SystemTime, UNIX_EPOCH};
 
+    use hollow_grove::{
+        Point, build_desktop_status_output, build_prompt_artifact_output, build_snapshot_output,
+        run_kernel_cycle,
+    };
+
     use super::current_synthesis_support::{
         build_current_synthesis_base_from_artifacts, write_artifact,
     };
 
     #[test]
     fn current_synthesis_base_reads_existing_hollow_grove_artifacts() {
-        let snapshot = "{\n  \"start\": \"Point\",\n  \"triway\": {\n    \"ways\": [\"One\", \"Two\", \"Three\"]\n  },\n  \"hollow_grove\": {\n    \"bond\": \"One\",\n    \"atmosphere\": [\"Two\", \"Three\"]\n  },\n  \"current_seam\": \"CurrentSeam\",\n  \"aura_beam\": \"AuraBeam\",\n  \"landed\": \"Point\",\n  \"canonical_witness\": \"start Point\\n↓\\nTriway\\n↓\\nHollowGrove\\n↓\\nCurrentSeam\\n↓\\nAuraBeam\\n↓\\nlanded Point\"\n}";
-        let prompt = "# Consumer Prompt\n\n## Canonical Witness\n\n```text\nstart Point\n↓\nTriway\n↓\nHollowGrove\n↓\nCurrentSeam\n↓\nAuraBeam\n↓\nlanded Point\n```\n\n## Structured Snapshot Reference\n\n`artifacts/kernel_pass_snapshot.json`\n\n## Inverse-Path Question\n\nWhat does this completed pass reveal about the inverse path of the end use?\n\n## Boundary Reminder\n\nDo not mutate the kernel. Interpret only.\n";
-        let desktop_status = "Hollow Grove status: one completed witnessed recursion\n\nCanonical witness:\nstart Point\n↓\nTriway\n↓\nHollowGrove\n↓\nCurrentSeam\n↓\nAuraBeam\n↓\nlanded Point\n\nNote: read-only desktop artifact\nNote: niri/river configs untouched\n";
+        let kernel_pass = run_kernel_cycle(Point);
+        let snapshot = build_snapshot_output(&kernel_pass);
+        let prompt = build_prompt_artifact_output(&kernel_pass);
+        let desktop_status = build_desktop_status_output(&kernel_pass);
 
         assert_eq!(
-            build_current_synthesis_base_from_artifacts(snapshot, prompt, desktop_status)
+            build_current_synthesis_base_from_artifacts(&snapshot, &prompt, &desktop_status)
                 .expect("current synthesis base should build"),
             "# Current Synthesis Base\n\n\
              ## Hollow Grove Status\n\n\

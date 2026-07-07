@@ -2,50 +2,12 @@ use std::fs;
 use std::io;
 use std::path::{Path, PathBuf};
 
-use hollow_grove::{KernelPass, Point, Way, run_kernel_cycle};
-
-const ARTIFACT_PATH: &str = "artifacts/kernel_pass_snapshot.json";
-
-fn way_name(way: Way) -> &'static str {
-    match way {
-        Way::One => "One",
-        Way::Two => "Two",
-        Way::Three => "Three",
-    }
-}
+use hollow_grove::{
+    KernelPass, Point, SNAPSHOT_ARTIFACT_PATH, build_snapshot_output, run_kernel_cycle,
+};
 
 fn build_snapshot_from_client(kernel_pass: &KernelPass) -> String {
-    let triway = kernel_pass.triway();
-    let [way_one, way_two, way_three] = triway.ways();
-
-    let hollow_grove = kernel_pass.hollow_grove();
-    let [atmosphere_one, atmosphere_two] = hollow_grove.atmosphere();
-
-    format!(
-        "{{\n\
-         \x20\x20\"start\": \"{:?}\",\n\
-         \x20\x20\"triway\": {{\n\
-         \x20\x20\x20\x20\"ways\": [\"{}\", \"{}\", \"{}\"]\n\
-         \x20\x20}},\n\
-         \x20\x20\"hollow_grove\": {{\n\
-         \x20\x20\x20\x20\"bond\": \"{}\",\n\
-         \x20\x20\x20\x20\"atmosphere\": [\"{}\", \"{}\"]\n\
-         \x20\x20}},\n\
-         \x20\x20\"current_seam\": \"CurrentSeam\",\n\
-         \x20\x20\"aura_beam\": \"AuraBeam\",\n\
-         \x20\x20\"landed\": \"{:?}\",\n\
-         \x20\x20\"canonical_witness\": \"{}\"\n\
-         }}",
-        kernel_pass.start_point(),
-        way_name(way_one),
-        way_name(way_two),
-        way_name(way_three),
-        way_name(hollow_grove.link()),
-        way_name(atmosphere_one),
-        way_name(atmosphere_two),
-        kernel_pass.landed_point(),
-        kernel_pass.to_string().replace('\n', "\\n")
-    )
+    build_snapshot_output(kernel_pass)
 }
 
 fn write_snapshot_artifact(artifact_path: &Path, contents: &str) -> io::Result<()> {
@@ -57,7 +19,7 @@ fn write_snapshot_artifact(artifact_path: &Path, contents: &str) -> io::Result<(
 }
 
 fn artifact_path() -> PathBuf {
-    PathBuf::from(ARTIFACT_PATH)
+    PathBuf::from(SNAPSHOT_ARTIFACT_PATH)
 }
 
 fn main() -> io::Result<()> {
