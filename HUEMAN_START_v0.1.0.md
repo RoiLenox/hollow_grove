@@ -20,6 +20,13 @@ The first Hueman starting places are:
 - Glaushouse
 - Sandmanor
 
+## Fourway Placement
+
+- North = Flynt = `goblin`
+- East = Stonebend = `gremlin`
+- South = Glaushouse = `pixy`
+- West = Sandmanor = `sprite`
+
 ## Initial Start Roster
 
 - `goblin` starts in Flynt

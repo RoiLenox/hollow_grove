@@ -6,6 +6,7 @@ pub const CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH: &str =
 pub const CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH: &str =
     "artifacts/current_synthesis_operational.md";
 pub const HUEMAN_BOUNDARY_ARTIFACT_PATH: &str = "artifacts/hueman_boundary.md";
+pub const HUEMAN_FOURWAY_ARTIFACT_PATH: &str = "artifacts/hueman_fourway.md";
 pub const HUEMAN_MOTION_MAP_ARTIFACT_PATH: &str = "artifacts/hueman_motion_map.md";
 pub const HUEMAN_START_CHOICES_ARTIFACT_PATH: &str = "artifacts/hueman_start_choices.md";
 
@@ -15,6 +16,10 @@ pub fn hueman_boundary_artifact_path() -> PathBuf {
 
 pub fn hueman_motion_map_artifact_path() -> PathBuf {
     PathBuf::from(HUEMAN_MOTION_MAP_ARTIFACT_PATH)
+}
+
+pub fn hueman_fourway_artifact_path() -> PathBuf {
+    PathBuf::from(HUEMAN_FOURWAY_ARTIFACT_PATH)
 }
 
 pub fn hueman_start_choices_artifact_path() -> PathBuf {
@@ -105,8 +110,57 @@ pub fn build_hueman_motion_map_from_artifacts(
     )
 }
 
-pub fn build_hueman_start_choices_from_artifacts(
+pub fn build_hueman_fourway_from_artifacts(
     hueman_boundary: &str,
+    hueman_motion_map: &str,
+) -> String {
+    format!(
+        "# Hueman Fourway\n\n\
+         ## Structural Rule\n\n\
+         Hueman runs through the Fourway before resolving downward into Triway.\n\n\
+         ## Stack\n\n\
+         ```text\n\
+         Hueman\n\
+         ↓\n\
+         Fourway\n\
+         ↓\n\
+         Triway\n\
+         ↓\n\
+         Hollow Grove\n\
+         ```\n\n\
+         ## Four Directions\n\n\
+         - North\n\
+         - East\n\
+         - South\n\
+         - West\n\n\
+         ## Meaning\n\n\
+         - Fourway is the world-facing directional map.\n\
+         - Triway remains the lower recursive split.\n\
+         - Fourway does not replace Triway.\n\
+         - Fourway resolves downward into Triway.\n\n\
+         ## Initial World Roster\n\n\
+         - North = Flynt = `goblin`\n\
+         - East = Stonebend = `gremlin`\n\
+         - South = Glaushouse = `pixy`\n\
+         - West = Sandmanor = `sprite`\n\n\
+         ## Boundary\n\n\
+         - Fourway belongs to Hueman.\n\
+         - Triway belongs to Hollow Grove.\n\
+         - Current Synthesis does not own Fourway.\n\
+         - no feedback into Current Synthesis\n\
+         - no feedback into Hollow Grove\n\n\
+         ## Artifact Inputs\n\n\
+         Hueman boundary bytes: {}.\n\
+         Hueman motion map bytes: {}.\n\n\
+         ## Boundary Reminder\n\n\
+         Fourway is a Hueman/world structure above the kernel path. It must not redefine Triway.\n",
+        hueman_boundary.len(),
+        hueman_motion_map.len()
+    )
+}
+
+pub fn build_hueman_start_choices_from_artifacts(
+    hueman_fourway: &str,
     hueman_motion_map: &str,
 ) -> String {
     format!(
@@ -121,6 +175,11 @@ pub fn build_hueman_start_choices_from_artifacts(
          - Stonebend\n\
          - Glaushouse\n\
          - Sandmanor\n\n\
+         ## Fourway Placement\n\n\
+         - North = Flynt = `goblin`\n\
+         - East = Stonebend = `gremlin`\n\
+         - South = Glaushouse = `pixy`\n\
+         - West = Sandmanor = `sprite`\n\n\
          ## Initial Start Roster\n\n\
          - `goblin` starts in Flynt\n\
          - `gremlin` starts in Stonebend\n\
@@ -129,16 +188,17 @@ pub fn build_hueman_start_choices_from_artifacts(
          ## Status\n\n\
          - the end user may choose one archetype\n\
          - the starting place follows the initial Hueman roster\n\
+         - the starting direction follows the Fourway roster\n\
          - world behavior is not active yet\n\
          - species mechanics are not active yet\n\
          - no feedback into Current Synthesis\n\
          - no feedback into Hollow Grove\n\n\
          ## Artifact Inputs\n\n\
-         Hueman boundary bytes: {}.\n\
+         Hueman Fourway bytes: {}.\n\
          Hueman motion map bytes: {}.\n\n\
          ## Boundary Reminder\n\n\
          This is a Hueman-layer start declaration only. It does not change Current Synthesis or Hollow Grove.\n",
-        hueman_boundary.len(),
+        hueman_fourway.len(),
         hueman_motion_map.len()
     )
 }
@@ -146,7 +206,8 @@ pub fn build_hueman_start_choices_from_artifacts(
 #[cfg(test)]
 mod tests {
     use super::{
-        build_hueman_boundary_from_artifacts, build_hueman_motion_map_from_artifacts,
+        build_hueman_boundary_from_artifacts, build_hueman_fourway_from_artifacts,
+        build_hueman_motion_map_from_artifacts,
         build_hueman_start_choices_from_artifacts,
     };
 
@@ -231,7 +292,7 @@ mod tests {
     #[test]
     fn hueman_start_choices_builder_is_deterministic() {
         assert_eq!(
-            build_hueman_start_choices_from_artifacts("boundary", "motion"),
+            build_hueman_start_choices_from_artifacts("fourway", "motion"),
             "# Hueman Start Choices\n\n\
              ## End User Archetypes\n\n\
              - `goblin`\n\
@@ -243,6 +304,11 @@ mod tests {
              - Stonebend\n\
              - Glaushouse\n\
              - Sandmanor\n\n\
+             ## Fourway Placement\n\n\
+             - North = Flynt = `goblin`\n\
+             - East = Stonebend = `gremlin`\n\
+             - South = Glaushouse = `pixy`\n\
+             - West = Sandmanor = `sprite`\n\n\
              ## Initial Start Roster\n\n\
              - `goblin` starts in Flynt\n\
              - `gremlin` starts in Stonebend\n\
@@ -251,15 +317,62 @@ mod tests {
              ## Status\n\n\
              - the end user may choose one archetype\n\
              - the starting place follows the initial Hueman roster\n\
+             - the starting direction follows the Fourway roster\n\
              - world behavior is not active yet\n\
              - species mechanics are not active yet\n\
+             - no feedback into Current Synthesis\n\
+             - no feedback into Hollow Grove\n\n\
+             ## Artifact Inputs\n\n\
+             Hueman Fourway bytes: 7.\n\
+             Hueman motion map bytes: 6.\n\n\
+             ## Boundary Reminder\n\n\
+             This is a Hueman-layer start declaration only. It does not change Current Synthesis or Hollow Grove.\n"
+        );
+    }
+
+    #[test]
+    fn hueman_fourway_builder_is_deterministic() {
+        assert_eq!(
+            build_hueman_fourway_from_artifacts("boundary", "motion"),
+            "# Hueman Fourway\n\n\
+             ## Structural Rule\n\n\
+             Hueman runs through the Fourway before resolving downward into Triway.\n\n\
+             ## Stack\n\n\
+             ```text\n\
+             Hueman\n\
+             ↓\n\
+             Fourway\n\
+             ↓\n\
+             Triway\n\
+             ↓\n\
+             Hollow Grove\n\
+             ```\n\n\
+             ## Four Directions\n\n\
+             - North\n\
+             - East\n\
+             - South\n\
+             - West\n\n\
+             ## Meaning\n\n\
+             - Fourway is the world-facing directional map.\n\
+             - Triway remains the lower recursive split.\n\
+             - Fourway does not replace Triway.\n\
+             - Fourway resolves downward into Triway.\n\n\
+             ## Initial World Roster\n\n\
+             - North = Flynt = `goblin`\n\
+             - East = Stonebend = `gremlin`\n\
+             - South = Glaushouse = `pixy`\n\
+             - West = Sandmanor = `sprite`\n\n\
+             ## Boundary\n\n\
+             - Fourway belongs to Hueman.\n\
+             - Triway belongs to Hollow Grove.\n\
+             - Current Synthesis does not own Fourway.\n\
              - no feedback into Current Synthesis\n\
              - no feedback into Hollow Grove\n\n\
              ## Artifact Inputs\n\n\
              Hueman boundary bytes: 8.\n\
              Hueman motion map bytes: 6.\n\n\
              ## Boundary Reminder\n\n\
-             This is a Hueman-layer start declaration only. It does not change Current Synthesis or Hollow Grove.\n"
+             Fourway is a Hueman/world structure above the kernel path. It must not redefine Triway.\n"
         );
     }
 }

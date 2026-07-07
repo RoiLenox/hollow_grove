@@ -14,6 +14,13 @@
 - Glaushouse
 - Sandmanor
 
+## Fourway Placement
+
+- North = Flynt = `goblin`
+- East = Stonebend = `gremlin`
+- South = Glaushouse = `pixy`
+- West = Sandmanor = `sprite`
+
 ## Initial Start Roster
 
 - `goblin` starts in Flynt
@@ -25,6 +32,7 @@
 
 - the end user may choose one archetype
 - the starting place follows the initial Hueman roster
+- the starting direction follows the Fourway roster
 - world behavior is not active yet
 - species mechanics are not active yet
 - no feedback into Current Synthesis
@@ -32,7 +40,7 @@
 
 ## Artifact Inputs
 
-Hueman boundary bytes: 1145.
+Hueman Fourway bytes: 933.
 Hueman motion map bytes: 853.
 
 ## Boundary Reminder
