@@ -1,6 +1,5 @@
 #![allow(dead_code)]
 
-use std::fs;
 use std::io;
 use std::path::Path;
 
@@ -37,15 +36,11 @@ pub const CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH: &str =
     "artifacts/current_synthesis_activation_gate.md";
 
 pub fn read_artifact(path: &Path) -> io::Result<String> {
-    fs::read_to_string(path)
+    hollow_grove::read_text_artifact(path)
 }
 
 pub fn write_artifact(path: &Path, contents: &str) -> io::Result<()> {
-    if let Some(parent) = path.parent() {
-        fs::create_dir_all(parent)?;
-    }
-
-    fs::write(path, contents)
+    hollow_grove::write_text_artifact(path, contents)
 }
 
 pub fn extract_canonical_witness(desktop_status: &str) -> io::Result<&str> {

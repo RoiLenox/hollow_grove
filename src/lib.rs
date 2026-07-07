@@ -1,3 +1,4 @@
+pub mod artifact_io;
 pub mod aura_beam;
 pub mod current_seam;
 pub mod hollow_grove;
@@ -6,6 +7,7 @@ pub mod kernel_pass_output;
 pub mod point;
 pub mod triway;
 
+pub use artifact_io::{read_text_artifact, write_text_artifact};
 pub use aura_beam::AuraBeam;
 pub use current_seam::CurrentSeam;
 pub use hollow_grove::{Bond, HollowGrove};

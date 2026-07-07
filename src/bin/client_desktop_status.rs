@@ -1,10 +1,9 @@
-use std::fs;
 use std::io;
 use std::path::{Path, PathBuf};
 
 use hollow_grove::{
     DESKTOP_STATUS_ARTIFACT_PATH, KernelPass, Point, build_desktop_status_output,
-    run_kernel_cycle,
+    run_kernel_cycle, write_text_artifact,
 };
 
 fn build_desktop_status_from_client(kernel_pass: &KernelPass) -> String {
@@ -12,11 +11,7 @@ fn build_desktop_status_from_client(kernel_pass: &KernelPass) -> String {
 }
 
 fn write_desktop_status_artifact(artifact_path: &Path, contents: &str) -> io::Result<()> {
-    if let Some(parent) = artifact_path.parent() {
-        fs::create_dir_all(parent)?;
-    }
-
-    fs::write(artifact_path, contents)
+    write_text_artifact(artifact_path, contents)
 }
 
 fn artifact_path() -> PathBuf {

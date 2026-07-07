@@ -1,9 +1,9 @@
-use std::fs;
 use std::io;
 use std::path::{Path, PathBuf};
 
 use hollow_grove::{
     KernelPass, Point, SNAPSHOT_ARTIFACT_PATH, build_snapshot_output, run_kernel_cycle,
+    write_text_artifact,
 };
 
 fn build_snapshot_from_client(kernel_pass: &KernelPass) -> String {
@@ -11,11 +11,7 @@ fn build_snapshot_from_client(kernel_pass: &KernelPass) -> String {
 }
 
 fn write_snapshot_artifact(artifact_path: &Path, contents: &str) -> io::Result<()> {
-    if let Some(parent) = artifact_path.parent() {
-        fs::create_dir_all(parent)?;
-    }
-
-    fs::write(artifact_path, contents)
+    write_text_artifact(artifact_path, contents)
 }
 
 fn artifact_path() -> PathBuf {
