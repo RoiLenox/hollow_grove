@@ -17,6 +17,7 @@ pub const HUEMAN_START_PATHS_ARTIFACT_PATH: &str = "artifacts/hueman_start_paths
 pub const HUEMAN_PATH_CROSSOVERS_ARTIFACT_PATH: &str = "artifacts/hueman_path_crossovers.md";
 pub const HUEMAN_LINK_PHYSICS_ARTIFACT_PATH: &str = "artifacts/hueman_link_physics.md";
 pub const HUEMAN_CROSSOVER_SCENES_ARTIFACT_PATH: &str = "artifacts/hueman_crossover_scenes.md";
+pub const HUEMAN_SCENE_PRESENCE_ARTIFACT_PATH: &str = "artifacts/hueman_scene_presence.md";
 pub const HUEMAN_MOTION_MAP_ARTIFACT_PATH: &str = "artifacts/hueman_motion_map.md";
 pub const HUEMAN_START_CHOICES_ARTIFACT_PATH: &str = "artifacts/hueman_start_choices.md";
 
@@ -58,6 +59,10 @@ pub fn hueman_link_physics_artifact_path() -> PathBuf {
 
 pub fn hueman_crossover_scenes_artifact_path() -> PathBuf {
     PathBuf::from(HUEMAN_CROSSOVER_SCENES_ARTIFACT_PATH)
+}
+
+pub fn hueman_scene_presence_artifact_path() -> PathBuf {
+    PathBuf::from(HUEMAN_SCENE_PRESENCE_ARTIFACT_PATH)
 }
 
 pub fn hueman_start_choices_artifact_path() -> PathBuf {
@@ -555,6 +560,57 @@ pub fn build_hueman_crossover_scenes_from_artifacts(
     )
 }
 
+pub fn build_hueman_scene_presence_from_artifacts(
+    hueman_crossover_scenes: &str,
+    hueman_archetype_lens: &str,
+) -> String {
+    format!(
+        "# Hueman Scene Presence\n\n\
+         ## Structural Rule\n\n\
+         Each crossover scene carries a characteristic kind of presence before any encounter mechanics exist.\n\n\
+         ## Presence Sets\n\n\
+         ### Seam Market\n\n\
+         - rumor carriers\n\
+         - salvage brokers\n\
+         - porters and exchangers\n\
+         - temporary stalls, marks, and signal cloths\n\n\
+         ### Threshold Weather\n\n\
+         - drifters and lookouts\n\
+         - spray forms and kite traces\n\
+         - warning markers at unstable edges\n\
+         - bright debris that looks almost inhabited\n\n\
+         ### Pressure Shelter\n\n\
+         - keepers, hoarders, and wardens\n\
+         - bundled stores and shielded caches\n\
+         - muffled listeners and inward-facing fires\n\
+         - stacked signs of prior occupation\n\n\
+         ### Split Trace\n\n\
+         - echoes, doubles, and uncertain witnesses\n\
+         - abandoned signals that still feel recent\n\
+         - partial camps, partial routes, partial stories\n\
+         - clues that suggest more than one version of the scene\n\n\
+         ## Archetype Pull\n\n\
+         - `goblin` reads Pressure Shelter as nearest habitation\n\
+         - `gremlin` reads Seam Market as the busiest adaptive presence\n\
+         - `pixy` reads Threshold Weather as the brightest living atmosphere\n\
+         - `sprite` reads Split Trace as the most permeable presence state\n\n\
+         ## Status\n\n\
+         - scene presence is descriptive-only for now\n\
+         - no NPC system or occupancy resolver is active\n\
+         - crossover scenes remain the upstream scene map\n\
+         - archetype lens remains the upstream interpretive filter\n\
+         - no feedback into Current Synthesis\n\
+         - no feedback into Hollow Grove\n\n\
+         ## Artifact Inputs\n\n\
+         Hueman Crossover Scenes bytes: {}.\n\
+         Hueman Archetype Lens bytes: {}.\n\n\
+         ## Boundary Reminder\n\n\
+         Scene presence says what kind of occupant or trace belongs in a scene. It does not create procedural actors, dialogue, or rewards.\n",
+        hueman_crossover_scenes.len(),
+        hueman_archetype_lens.len()
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::{
@@ -566,6 +622,7 @@ mod tests {
         build_hueman_link_physics_from_artifacts,
         build_hueman_motion_map_from_artifacts,
         build_hueman_path_crossovers_from_artifacts,
+        build_hueman_scene_presence_from_artifacts,
         build_hueman_start_paths_from_artifacts,
         build_hueman_start_choices_from_artifacts,
     };
@@ -1025,6 +1082,54 @@ mod tests {
              Hueman Link Physics bytes: 7.\n\n\
              ## Boundary Reminder\n\n\
              Crossover scenes name what a shared biased overlap feels like. They do not create procedural meetings, rewards, or movement rules.\n"
+        );
+    }
+
+    #[test]
+    fn hueman_scene_presence_builder_is_deterministic() {
+        assert_eq!(
+            build_hueman_scene_presence_from_artifacts("scene", "lens"),
+            "# Hueman Scene Presence\n\n\
+             ## Structural Rule\n\n\
+             Each crossover scene carries a characteristic kind of presence before any encounter mechanics exist.\n\n\
+             ## Presence Sets\n\n\
+             ### Seam Market\n\n\
+             - rumor carriers\n\
+             - salvage brokers\n\
+             - porters and exchangers\n\
+             - temporary stalls, marks, and signal cloths\n\n\
+             ### Threshold Weather\n\n\
+             - drifters and lookouts\n\
+             - spray forms and kite traces\n\
+             - warning markers at unstable edges\n\
+             - bright debris that looks almost inhabited\n\n\
+             ### Pressure Shelter\n\n\
+             - keepers, hoarders, and wardens\n\
+             - bundled stores and shielded caches\n\
+             - muffled listeners and inward-facing fires\n\
+             - stacked signs of prior occupation\n\n\
+             ### Split Trace\n\n\
+             - echoes, doubles, and uncertain witnesses\n\
+             - abandoned signals that still feel recent\n\
+             - partial camps, partial routes, partial stories\n\
+             - clues that suggest more than one version of the scene\n\n\
+             ## Archetype Pull\n\n\
+             - `goblin` reads Pressure Shelter as nearest habitation\n\
+             - `gremlin` reads Seam Market as the busiest adaptive presence\n\
+             - `pixy` reads Threshold Weather as the brightest living atmosphere\n\
+             - `sprite` reads Split Trace as the most permeable presence state\n\n\
+             ## Status\n\n\
+             - scene presence is descriptive-only for now\n\
+             - no NPC system or occupancy resolver is active\n\
+             - crossover scenes remain the upstream scene map\n\
+             - archetype lens remains the upstream interpretive filter\n\
+             - no feedback into Current Synthesis\n\
+             - no feedback into Hollow Grove\n\n\
+             ## Artifact Inputs\n\n\
+             Hueman Crossover Scenes bytes: 5.\n\
+             Hueman Archetype Lens bytes: 4.\n\n\
+             ## Boundary Reminder\n\n\
+             Scene presence says what kind of occupant or trace belongs in a scene. It does not create procedural actors, dialogue, or rewards.\n"
         );
     }
 }
