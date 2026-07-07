@@ -11,6 +11,7 @@ pub const HUEMAN_FOURWAY_ARTIFACT_PATH: &str = "artifacts/hueman_fourway.md";
 pub const HUEMAN_AURA_TRIAD_ARTIFACT_PATH: &str = "artifacts/hueman_aura_triad.md";
 pub const HUEMAN_AURA_BEHAVIOR_ARTIFACT_PATH: &str = "artifacts/hueman_aura_behavior.md";
 pub const HUEMAN_ARCHETYPE_LENS_ARTIFACT_PATH: &str = "artifacts/hueman_archetype_lens.md";
+pub const HUEMAN_START_PATHS_ARTIFACT_PATH: &str = "artifacts/hueman_start_paths.md";
 pub const HUEMAN_MOTION_MAP_ARTIFACT_PATH: &str = "artifacts/hueman_motion_map.md";
 pub const HUEMAN_START_CHOICES_ARTIFACT_PATH: &str = "artifacts/hueman_start_choices.md";
 
@@ -36,6 +37,10 @@ pub fn hueman_aura_behavior_artifact_path() -> PathBuf {
 
 pub fn hueman_archetype_lens_artifact_path() -> PathBuf {
     PathBuf::from(HUEMAN_ARCHETYPE_LENS_ARTIFACT_PATH)
+}
+
+pub fn hueman_start_paths_artifact_path() -> PathBuf {
+    PathBuf::from(HUEMAN_START_PATHS_ARTIFACT_PATH)
 }
 
 pub fn hueman_start_choices_artifact_path() -> PathBuf {
@@ -367,6 +372,41 @@ pub fn build_hueman_archetype_lens_from_artifacts(
     )
 }
 
+pub fn build_hueman_start_paths_from_artifacts(
+    hueman_start_choices: &str,
+    hueman_archetype_lens: &str,
+) -> String {
+    format!(
+        "# Hueman Start Paths\n\n\
+         ## Structural Rule\n\n\
+         Each Fourway start enters AuraTriad through a first descriptive region before any procedural mechanics exist.\n\n\
+         ## Route Order\n\n\
+         - Flynt = `goblin` = Aura Basin -> Aura Fields -> Aura Beach\n\
+         - Stonebend = `gremlin` = Aura Fields -> Aura Basin -> Aura Beach\n\
+         - Glaushouse = `pixy` = Aura Beach -> Aura Fields -> Aura Basin\n\
+         - Sandmanor = `sprite` = Aura Beach -> Aura Basin -> Aura Fields\n\n\
+         ## First Entry\n\n\
+         - Flynt enters Aura Basin first.\n\
+         - Stonebend enters Aura Fields first.\n\
+         - Glaushouse enters Aura Beach first.\n\
+         - Sandmanor enters Aura Beach first.\n\n\
+         ## Status\n\n\
+         - start-path order is descriptive-only for now\n\
+         - the first region is declared but not procedurally enforced\n\
+         - archetype lens remains interpretive above the route order\n\
+         - species mechanics are not active yet\n\
+         - no feedback into Current Synthesis\n\
+         - no feedback into Hollow Grove\n\n\
+         ## Artifact Inputs\n\n\
+         Hueman Start Choices bytes: {}.\n\
+         Hueman Archetype Lens bytes: {}.\n\n\
+         ## Boundary Reminder\n\n\
+         Start paths declare which AuraTriad region a start naturally enters first. They do not add movement rules or alter lower-layer topology.\n",
+        hueman_start_choices.len(),
+        hueman_archetype_lens.len()
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::{
@@ -375,6 +415,7 @@ mod tests {
         build_hueman_aura_triad_from_artifacts,
         build_hueman_boundary_from_artifacts, build_hueman_fourway_from_artifacts,
         build_hueman_motion_map_from_artifacts,
+        build_hueman_start_paths_from_artifacts,
         build_hueman_start_choices_from_artifacts,
     };
 
@@ -679,6 +720,38 @@ mod tests {
              Hueman Aura Behavior bytes: 4.\n\n\
              ## Boundary Reminder\n\n\
              The archetype lens changes interpretation, not rules. It is a Hueman-facing difference in reading the world after placement.\n"
+        );
+    }
+
+    #[test]
+    fn hueman_start_paths_builder_is_deterministic() {
+        assert_eq!(
+            build_hueman_start_paths_from_artifacts("start", "lens"),
+            "# Hueman Start Paths\n\n\
+             ## Structural Rule\n\n\
+             Each Fourway start enters AuraTriad through a first descriptive region before any procedural mechanics exist.\n\n\
+             ## Route Order\n\n\
+             - Flynt = `goblin` = Aura Basin -> Aura Fields -> Aura Beach\n\
+             - Stonebend = `gremlin` = Aura Fields -> Aura Basin -> Aura Beach\n\
+             - Glaushouse = `pixy` = Aura Beach -> Aura Fields -> Aura Basin\n\
+             - Sandmanor = `sprite` = Aura Beach -> Aura Basin -> Aura Fields\n\n\
+             ## First Entry\n\n\
+             - Flynt enters Aura Basin first.\n\
+             - Stonebend enters Aura Fields first.\n\
+             - Glaushouse enters Aura Beach first.\n\
+             - Sandmanor enters Aura Beach first.\n\n\
+             ## Status\n\n\
+             - start-path order is descriptive-only for now\n\
+             - the first region is declared but not procedurally enforced\n\
+             - archetype lens remains interpretive above the route order\n\
+             - species mechanics are not active yet\n\
+             - no feedback into Current Synthesis\n\
+             - no feedback into Hollow Grove\n\n\
+             ## Artifact Inputs\n\n\
+             Hueman Start Choices bytes: 5.\n\
+             Hueman Archetype Lens bytes: 4.\n\n\
+             ## Boundary Reminder\n\n\
+             Start paths declare which AuraTriad region a start naturally enters first. They do not add movement rules or alter lower-layer topology.\n"
         );
     }
 }
