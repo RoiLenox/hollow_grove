@@ -58,7 +58,7 @@ mod tests {
              - the starting place follows the initial Hueman roster\n\
              - the starting direction follows the Fourway roster\n\
              - the world resolves downward through AuraTriad after start choice\n\
-             - world behavior is not active yet\n\
+             - AuraTriad behavior is descriptive-only after start choice\n\
              - species mechanics are not active yet\n\
              - no feedback into Current Synthesis\n\
              - no feedback into Hollow Grove\n\n\

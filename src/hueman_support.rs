@@ -9,6 +9,7 @@ pub const CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH: &str = "artifacts/current_sy
 pub const HUEMAN_BOUNDARY_ARTIFACT_PATH: &str = "artifacts/hueman_boundary.md";
 pub const HUEMAN_FOURWAY_ARTIFACT_PATH: &str = "artifacts/hueman_fourway.md";
 pub const HUEMAN_AURA_TRIAD_ARTIFACT_PATH: &str = "artifacts/hueman_aura_triad.md";
+pub const HUEMAN_AURA_BEHAVIOR_ARTIFACT_PATH: &str = "artifacts/hueman_aura_behavior.md";
 pub const HUEMAN_MOTION_MAP_ARTIFACT_PATH: &str = "artifacts/hueman_motion_map.md";
 pub const HUEMAN_START_CHOICES_ARTIFACT_PATH: &str = "artifacts/hueman_start_choices.md";
 
@@ -26,6 +27,10 @@ pub fn hueman_fourway_artifact_path() -> PathBuf {
 
 pub fn hueman_aura_triad_artifact_path() -> PathBuf {
     PathBuf::from(HUEMAN_AURA_TRIAD_ARTIFACT_PATH)
+}
+
+pub fn hueman_aura_behavior_artifact_path() -> PathBuf {
+    PathBuf::from(HUEMAN_AURA_BEHAVIOR_ARTIFACT_PATH)
 }
 
 pub fn hueman_start_choices_artifact_path() -> PathBuf {
@@ -252,7 +257,7 @@ pub fn build_hueman_start_choices_from_artifacts(
          - the starting place follows the initial Hueman roster\n\
          - the starting direction follows the Fourway roster\n\
          - the world resolves downward through AuraTriad after start choice\n\
-         - world behavior is not active yet\n\
+         - AuraTriad behavior is descriptive-only after start choice\n\
          - species mechanics are not active yet\n\
          - no feedback into Current Synthesis\n\
          - no feedback into Hollow Grove\n\n\
@@ -266,9 +271,59 @@ pub fn build_hueman_start_choices_from_artifacts(
     )
 }
 
+pub fn build_hueman_aura_behavior_from_artifacts(
+    hueman_aura_triad: &str,
+    hueman_start_choices: &str,
+) -> String {
+    format!(
+        "# Hueman Aura Behavior\n\n\
+         ## Structural Rule\n\n\
+         After the start choice is placed on the Fourway, Hueman reads AuraTriad as three descriptive region states.\n\n\
+         ## Entry Order\n\n\
+         ```text\n\
+         Start Choice\n\
+         ↓\n\
+         Aura Basin\n\
+         ↓\n\
+         Aura Fields\n\
+         ↓\n\
+         Aura Beach\n\
+         ```\n\n\
+         ## Region States\n\n\
+         ### Aura Basin\n\n\
+         - movement reads as inward and narrowing\n\
+         - encounter tone reads as close, muffled, and formative\n\
+         - world description favors pressure, shelter, and accumulation\n\n\
+         ### Aura Fields\n\n\
+         - movement reads as lateral and exposed\n\
+         - encounter tone reads as social, visible, and negotiable\n\
+         - world description favors weather, distance, and traversal\n\n\
+         ### Aura Beach\n\n\
+         - movement reads as outward and threshold-facing\n\
+         - encounter tone reads as reflective, sparse, and releasing\n\
+         - world description favors edge, horizon, and departure\n\n\
+         ## Status\n\n\
+         - AuraTriad behavior is descriptive-only for now\n\
+         - movement pressure is declarative, not simulated\n\
+         - encounter tone is declarative, not procedural\n\
+         - the Fourway roster remains unchanged\n\
+         - species mechanics are not active yet\n\
+         - no feedback into Current Synthesis\n\
+         - no feedback into Hollow Grove\n\n\
+         ## Artifact Inputs\n\n\
+         Hueman AuraTriad bytes: {}.\n\
+         Hueman Start Choices bytes: {}.\n\n\
+         ## Boundary Reminder\n\n\
+         Aura behavior is a Hueman-facing reading of the world after start choice. It does not alter Current Synthesis occupancy or Hollow Grove recursion.\n",
+        hueman_aura_triad.len(),
+        hueman_start_choices.len()
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::{
+        build_hueman_aura_behavior_from_artifacts,
         build_hueman_aura_triad_from_artifacts,
         build_hueman_boundary_from_artifacts, build_hueman_fourway_from_artifacts,
         build_hueman_motion_map_from_artifacts,
@@ -383,7 +438,7 @@ mod tests {
              - the starting place follows the initial Hueman roster\n\
              - the starting direction follows the Fourway roster\n\
              - the world resolves downward through AuraTriad after start choice\n\
-             - world behavior is not active yet\n\
+             - AuraTriad behavior is descriptive-only after start choice\n\
              - species mechanics are not active yet\n\
              - no feedback into Current Synthesis\n\
              - no feedback into Hollow Grove\n\n\
@@ -491,6 +546,52 @@ mod tests {
              Current Synthesis topology bytes: 8.\n\n\
              ## Boundary Reminder\n\n\
              AuraTriad is the bridge between Hueman Fourway and Hollow Grove Triway. It is not itself a kernel structure.\n"
+        );
+    }
+
+    #[test]
+    fn hueman_aura_behavior_builder_is_deterministic() {
+        assert_eq!(
+            build_hueman_aura_behavior_from_artifacts("triad", "start"),
+            "# Hueman Aura Behavior\n\n\
+             ## Structural Rule\n\n\
+             After the start choice is placed on the Fourway, Hueman reads AuraTriad as three descriptive region states.\n\n\
+             ## Entry Order\n\n\
+             ```text\n\
+             Start Choice\n\
+             ↓\n\
+             Aura Basin\n\
+             ↓\n\
+             Aura Fields\n\
+             ↓\n\
+             Aura Beach\n\
+             ```\n\n\
+             ## Region States\n\n\
+             ### Aura Basin\n\n\
+             - movement reads as inward and narrowing\n\
+             - encounter tone reads as close, muffled, and formative\n\
+             - world description favors pressure, shelter, and accumulation\n\n\
+             ### Aura Fields\n\n\
+             - movement reads as lateral and exposed\n\
+             - encounter tone reads as social, visible, and negotiable\n\
+             - world description favors weather, distance, and traversal\n\n\
+             ### Aura Beach\n\n\
+             - movement reads as outward and threshold-facing\n\
+             - encounter tone reads as reflective, sparse, and releasing\n\
+             - world description favors edge, horizon, and departure\n\n\
+             ## Status\n\n\
+             - AuraTriad behavior is descriptive-only for now\n\
+             - movement pressure is declarative, not simulated\n\
+             - encounter tone is declarative, not procedural\n\
+             - the Fourway roster remains unchanged\n\
+             - species mechanics are not active yet\n\
+             - no feedback into Current Synthesis\n\
+             - no feedback into Hollow Grove\n\n\
+             ## Artifact Inputs\n\n\
+             Hueman AuraTriad bytes: 5.\n\
+             Hueman Start Choices bytes: 5.\n\n\
+             ## Boundary Reminder\n\n\
+             Aura behavior is a Hueman-facing reading of the world after start choice. It does not alter Current Synthesis occupancy or Hollow Grove recursion.\n"
         );
     }
 }

@@ -40,7 +40,8 @@ The first Hueman starting places are:
 - It resolves downward through AuraTriad after the Fourway placement.
 - It does not change Current Synthesis.
 - It does not change Hollow Grove.
-- It does not activate world behavior yet.
+- It stages descriptive-only AuraTriad world behavior after placement.
+- It does not activate procedural world behavior yet.
 - It does not define species mechanics yet.
 
 ## Lock

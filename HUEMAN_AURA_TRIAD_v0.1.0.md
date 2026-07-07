@@ -35,6 +35,7 @@ Aura Beach
 - `AuraTriad` is the world-facing three-region route body beneath `Fourway`.
 - Current Synthesis already records these as inverse-route regions.
 - Hueman reads them as the triadic resolution of the world map.
+- Hueman can attach descriptive region behavior here without changing lower layers.
 - `Triway` remains the lower recursive split after this layer.
 
 ## PLEB And META

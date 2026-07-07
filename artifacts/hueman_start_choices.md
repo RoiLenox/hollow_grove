@@ -34,7 +34,7 @@
 - the starting place follows the initial Hueman roster
 - the starting direction follows the Fourway roster
 - the world resolves downward through AuraTriad after start choice
-- world behavior is not active yet
+- AuraTriad behavior is descriptive-only after start choice
 - species mechanics are not active yet
 - no feedback into Current Synthesis
 - no feedback into Hollow Grove
