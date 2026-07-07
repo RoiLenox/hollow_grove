@@ -16,6 +16,7 @@ pub const HUEMAN_ARCHETYPE_LENS_ARTIFACT_PATH: &str = "artifacts/hueman_archetyp
 pub const HUEMAN_START_PATHS_ARTIFACT_PATH: &str = "artifacts/hueman_start_paths.md";
 pub const HUEMAN_PATH_CROSSOVERS_ARTIFACT_PATH: &str = "artifacts/hueman_path_crossovers.md";
 pub const HUEMAN_LINK_PHYSICS_ARTIFACT_PATH: &str = "artifacts/hueman_link_physics.md";
+pub const HUEMAN_CROSSOVER_SCENES_ARTIFACT_PATH: &str = "artifacts/hueman_crossover_scenes.md";
 pub const HUEMAN_MOTION_MAP_ARTIFACT_PATH: &str = "artifacts/hueman_motion_map.md";
 pub const HUEMAN_START_CHOICES_ARTIFACT_PATH: &str = "artifacts/hueman_start_choices.md";
 
@@ -53,6 +54,10 @@ pub fn hueman_path_crossovers_artifact_path() -> PathBuf {
 
 pub fn hueman_link_physics_artifact_path() -> PathBuf {
     PathBuf::from(HUEMAN_LINK_PHYSICS_ARTIFACT_PATH)
+}
+
+pub fn hueman_crossover_scenes_artifact_path() -> PathBuf {
+    PathBuf::from(HUEMAN_CROSSOVER_SCENES_ARTIFACT_PATH)
 }
 
 pub fn hueman_start_choices_artifact_path() -> PathBuf {
@@ -503,6 +508,53 @@ pub fn build_hueman_link_physics_from_artifacts(
     )
 }
 
+pub fn build_hueman_crossover_scenes_from_artifacts(
+    hueman_path_crossovers: &str,
+    hueman_link_physics: &str,
+) -> String {
+    format!(
+        "# Hueman Crossover Scenes\n\n\
+         ## Structural Rule\n\n\
+         When `current`-biased and `aura`-biased unresolved links appear at the same crossover, the world produces a named descriptive scene type.\n\n\
+         ## Scene Types\n\n\
+         ### Seam Market\n\n\
+         - appears where `current` continuity and `aura` spill remain in balance\n\
+         - feels like trade, rumor, salvage, and temporary arrangement\n\
+         - fits shared Aura Fields crossings best\n\n\
+         ### Threshold Weather\n\n\
+         - appears where `aura` exposure outruns `current` continuity\n\
+         - feels like spray, drift, shimmer, and unstable edges\n\
+         - fits shared Aura Beach crossings best\n\n\
+         ### Pressure Shelter\n\n\
+         - appears where `current` persistence contains `aura` residue\n\
+         - feels like storage, burrow heat, muffled exchange, and held tension\n\
+         - fits shared Aura Basin crossings best\n\n\
+         ### Split Trace\n\n\
+         - appears where both biases are present but neither settles the scene\n\
+         - feels like afterimage, contradictory clues, and route ambiguity\n\
+         - fits delayed or secondary crossovers after different openings\n\n\
+         ## Placement\n\n\
+         - Aura Beach tends toward Threshold Weather first.\n\
+         - Aura Fields tends toward Seam Market first.\n\
+         - Aura Basin tends toward Pressure Shelter first.\n\
+         - Split Trace can appear in any crossover zone where the bias remains unresolved.\n\n\
+         ## Status\n\n\
+         - crossover scenes are descriptive-only for now\n\
+         - no encounter tables or event resolvers are active\n\
+         - link physics remains the upstream explanation for the scene type\n\
+         - path crossovers remain the upstream overlap map\n\
+         - no feedback into Current Synthesis\n\
+         - no feedback into Hollow Grove\n\n\
+         ## Artifact Inputs\n\n\
+         Hueman Path Crossovers bytes: {}.\n\
+         Hueman Link Physics bytes: {}.\n\n\
+         ## Boundary Reminder\n\n\
+         Crossover scenes name what a shared biased overlap feels like. They do not create procedural meetings, rewards, or movement rules.\n",
+        hueman_path_crossovers.len(),
+        hueman_link_physics.len()
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::{
@@ -510,6 +562,7 @@ mod tests {
         build_hueman_aura_behavior_from_artifacts,
         build_hueman_aura_triad_from_artifacts,
         build_hueman_boundary_from_artifacts, build_hueman_fourway_from_artifacts,
+        build_hueman_crossover_scenes_from_artifacts,
         build_hueman_link_physics_from_artifacts,
         build_hueman_motion_map_from_artifacts,
         build_hueman_path_crossovers_from_artifacts,
@@ -928,6 +981,50 @@ mod tests {
              Hueman Path Crossovers bytes: 5.\n\n\
              ## Boundary Reminder\n\n\
              Link physics explains how unbonded links may later read as `current` or `aura`. It does not rewrite Bond, HollowGrove, or Current Synthesis sequence ownership.\n"
+        );
+    }
+
+    #[test]
+    fn hueman_crossover_scenes_builder_is_deterministic() {
+        assert_eq!(
+            build_hueman_crossover_scenes_from_artifacts("cross", "physics"),
+            "# Hueman Crossover Scenes\n\n\
+             ## Structural Rule\n\n\
+             When `current`-biased and `aura`-biased unresolved links appear at the same crossover, the world produces a named descriptive scene type.\n\n\
+             ## Scene Types\n\n\
+             ### Seam Market\n\n\
+             - appears where `current` continuity and `aura` spill remain in balance\n\
+             - feels like trade, rumor, salvage, and temporary arrangement\n\
+             - fits shared Aura Fields crossings best\n\n\
+             ### Threshold Weather\n\n\
+             - appears where `aura` exposure outruns `current` continuity\n\
+             - feels like spray, drift, shimmer, and unstable edges\n\
+             - fits shared Aura Beach crossings best\n\n\
+             ### Pressure Shelter\n\n\
+             - appears where `current` persistence contains `aura` residue\n\
+             - feels like storage, burrow heat, muffled exchange, and held tension\n\
+             - fits shared Aura Basin crossings best\n\n\
+             ### Split Trace\n\n\
+             - appears where both biases are present but neither settles the scene\n\
+             - feels like afterimage, contradictory clues, and route ambiguity\n\
+             - fits delayed or secondary crossovers after different openings\n\n\
+             ## Placement\n\n\
+             - Aura Beach tends toward Threshold Weather first.\n\
+             - Aura Fields tends toward Seam Market first.\n\
+             - Aura Basin tends toward Pressure Shelter first.\n\
+             - Split Trace can appear in any crossover zone where the bias remains unresolved.\n\n\
+             ## Status\n\n\
+             - crossover scenes are descriptive-only for now\n\
+             - no encounter tables or event resolvers are active\n\
+             - link physics remains the upstream explanation for the scene type\n\
+             - path crossovers remain the upstream overlap map\n\
+             - no feedback into Current Synthesis\n\
+             - no feedback into Hollow Grove\n\n\
+             ## Artifact Inputs\n\n\
+             Hueman Path Crossovers bytes: 5.\n\
+             Hueman Link Physics bytes: 7.\n\n\
+             ## Boundary Reminder\n\n\
+             Crossover scenes name what a shared biased overlap feels like. They do not create procedural meetings, rewards, or movement rules.\n"
         );
     }
 }
