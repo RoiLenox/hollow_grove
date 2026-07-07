@@ -1,16 +1,16 @@
 use crate::point::Point;
 
 #[derive(Debug, Clone)]
-pub struct AuraSeam {
+pub struct AuraBeam {
     point: Point,
 }
 
-impl AuraSeam {
+impl AuraBeam {
     pub fn from_point(point: Point) -> Self {
         Self { point }
     }
 
-    pub fn create_point(self) -> Point {
+    pub fn land_point(self) -> Point {
         self.point
     }
 }

@@ -1,7 +1,6 @@
-use hollow_grove::kernel_proof;
+use hollow_grove::{Point, run_kernel_cycle};
 
 fn main() {
-    for line in kernel_proof() {
-        println!("{line}");
-    }
+    let kernel_pass = run_kernel_cycle(Point);
+    println!("{kernel_pass}");
 }

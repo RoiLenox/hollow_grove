@@ -1,5 +1,5 @@
-use crate::point::Point;
 use crate::hollow_grove::HollowGrove;
+use crate::point::Point;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Way {

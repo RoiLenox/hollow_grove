@@ -1,4 +1,4 @@
-use crate::aura_seam::AuraSeam;
+use crate::current_seam::CurrentSeam;
 use crate::point::Point;
 use crate::triway::{Triway, Way};
 
@@ -48,7 +48,7 @@ impl HollowGrove {
         self.atmosphere
     }
 
-    pub fn become_aura_seam(self) -> AuraSeam {
-        AuraSeam::from_point(self.source)
+    pub fn become_current_seam(self) -> CurrentSeam {
+        CurrentSeam::from_point(self.source)
     }
 }
