@@ -18,6 +18,7 @@ pub const HUEMAN_PATH_CROSSOVERS_ARTIFACT_PATH: &str = "artifacts/hueman_path_cr
 pub const HUEMAN_LINK_PHYSICS_ARTIFACT_PATH: &str = "artifacts/hueman_link_physics.md";
 pub const HUEMAN_CROSSOVER_SCENES_ARTIFACT_PATH: &str = "artifacts/hueman_crossover_scenes.md";
 pub const HUEMAN_SCENE_PRESENCE_ARTIFACT_PATH: &str = "artifacts/hueman_scene_presence.md";
+pub const HUEMAN_SCENE_INTENT_ARTIFACT_PATH: &str = "artifacts/hueman_scene_intent.md";
 pub const HUEMAN_MOTION_MAP_ARTIFACT_PATH: &str = "artifacts/hueman_motion_map.md";
 pub const HUEMAN_START_CHOICES_ARTIFACT_PATH: &str = "artifacts/hueman_start_choices.md";
 
@@ -63,6 +64,10 @@ pub fn hueman_crossover_scenes_artifact_path() -> PathBuf {
 
 pub fn hueman_scene_presence_artifact_path() -> PathBuf {
     PathBuf::from(HUEMAN_SCENE_PRESENCE_ARTIFACT_PATH)
+}
+
+pub fn hueman_scene_intent_artifact_path() -> PathBuf {
+    PathBuf::from(HUEMAN_SCENE_INTENT_ARTIFACT_PATH)
 }
 
 pub fn hueman_start_choices_artifact_path() -> PathBuf {
@@ -611,6 +616,56 @@ pub fn build_hueman_scene_presence_from_artifacts(
     )
 }
 
+pub fn build_hueman_scene_intent_from_artifacts(
+    hueman_scene_presence: &str,
+    hueman_link_physics: &str,
+) -> String {
+    format!(
+        "# Hueman Scene Intent\n\n\
+         ## Structural Rule\n\n\
+         Each scene presence carries a dominant descriptive intent before any encounter or dialogue system exists.\n\n\
+         ## Intent Sets\n\n\
+         ### Seam Market\n\n\
+         - wants exchange\n\
+         - wants rumor flow\n\
+         - wants salvage circulation\n\
+         - wants temporary trust without permanence\n\n\
+         ### Threshold Weather\n\n\
+         - wants warning\n\
+         - wants drift\n\
+         - wants exposure of unstable boundaries\n\
+         - wants movement onward rather than settlement\n\n\
+         ### Pressure Shelter\n\n\
+         - wants concealment\n\
+         - wants storage and continuity\n\
+         - wants guarded warmth\n\
+         - wants selective admission\n\n\
+         ### Split Trace\n\n\
+         - wants witness without resolution\n\
+         - wants ambiguity to remain active\n\
+         - wants multiple readings to coexist\n\
+         - wants the route to stay half-open and half-hidden\n\n\
+         ## Bias Reading\n\n\
+         - `current` bias intensifies exchange, storage, and guarded continuity\n\
+         - `aura` bias intensifies warning, drift, shimmer, and ambiguity\n\
+         - mixed bias keeps intent unstable and scene-readable from multiple angles\n\n\
+         ## Status\n\n\
+         - scene intent is descriptive-only for now\n\
+         - no AI, NPC, or quest logic is active\n\
+         - scene presence remains the upstream occupancy layer\n\
+         - link physics remains the upstream bias layer\n\
+         - no feedback into Current Synthesis\n\
+         - no feedback into Hollow Grove\n\n\
+         ## Artifact Inputs\n\n\
+         Hueman Scene Presence bytes: {}.\n\
+         Hueman Link Physics bytes: {}.\n\n\
+         ## Boundary Reminder\n\n\
+         Scene intent says what a scene is trying to do atmospherically. It does not create tasks, dialogue trees, or procedural outcomes.\n",
+        hueman_scene_presence.len(),
+        hueman_link_physics.len()
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::{
@@ -622,6 +677,7 @@ mod tests {
         build_hueman_link_physics_from_artifacts,
         build_hueman_motion_map_from_artifacts,
         build_hueman_path_crossovers_from_artifacts,
+        build_hueman_scene_intent_from_artifacts,
         build_hueman_scene_presence_from_artifacts,
         build_hueman_start_paths_from_artifacts,
         build_hueman_start_choices_from_artifacts,
@@ -1130,6 +1186,53 @@ mod tests {
              Hueman Archetype Lens bytes: 4.\n\n\
              ## Boundary Reminder\n\n\
              Scene presence says what kind of occupant or trace belongs in a scene. It does not create procedural actors, dialogue, or rewards.\n"
+        );
+    }
+
+    #[test]
+    fn hueman_scene_intent_builder_is_deterministic() {
+        assert_eq!(
+            build_hueman_scene_intent_from_artifacts("presence", "physics"),
+            "# Hueman Scene Intent\n\n\
+             ## Structural Rule\n\n\
+             Each scene presence carries a dominant descriptive intent before any encounter or dialogue system exists.\n\n\
+             ## Intent Sets\n\n\
+             ### Seam Market\n\n\
+             - wants exchange\n\
+             - wants rumor flow\n\
+             - wants salvage circulation\n\
+             - wants temporary trust without permanence\n\n\
+             ### Threshold Weather\n\n\
+             - wants warning\n\
+             - wants drift\n\
+             - wants exposure of unstable boundaries\n\
+             - wants movement onward rather than settlement\n\n\
+             ### Pressure Shelter\n\n\
+             - wants concealment\n\
+             - wants storage and continuity\n\
+             - wants guarded warmth\n\
+             - wants selective admission\n\n\
+             ### Split Trace\n\n\
+             - wants witness without resolution\n\
+             - wants ambiguity to remain active\n\
+             - wants multiple readings to coexist\n\
+             - wants the route to stay half-open and half-hidden\n\n\
+             ## Bias Reading\n\n\
+             - `current` bias intensifies exchange, storage, and guarded continuity\n\
+             - `aura` bias intensifies warning, drift, shimmer, and ambiguity\n\
+             - mixed bias keeps intent unstable and scene-readable from multiple angles\n\n\
+             ## Status\n\n\
+             - scene intent is descriptive-only for now\n\
+             - no AI, NPC, or quest logic is active\n\
+             - scene presence remains the upstream occupancy layer\n\
+             - link physics remains the upstream bias layer\n\
+             - no feedback into Current Synthesis\n\
+             - no feedback into Hollow Grove\n\n\
+             ## Artifact Inputs\n\n\
+             Hueman Scene Presence bytes: 8.\n\
+             Hueman Link Physics bytes: 7.\n\n\
+             ## Boundary Reminder\n\n\
+             Scene intent says what a scene is trying to do atmospherically. It does not create tasks, dialogue trees, or procedural outcomes.\n"
         );
     }
 }

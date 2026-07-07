@@ -11,12 +11,14 @@ use hollow_grove::hueman_support::{
     build_hueman_fourway_from_artifacts, build_hueman_motion_map_from_artifacts,
     build_hueman_link_physics_from_artifacts,
     build_hueman_path_crossovers_from_artifacts,
+    build_hueman_scene_intent_from_artifacts,
     build_hueman_scene_presence_from_artifacts,
     build_hueman_start_choices_from_artifacts, build_hueman_start_paths_from_artifacts,
     hueman_archetype_lens_artifact_path, hueman_aura_behavior_artifact_path,
     hueman_crossover_scenes_artifact_path,
     hueman_link_physics_artifact_path,
     hueman_path_crossovers_artifact_path,
+    hueman_scene_intent_artifact_path,
     hueman_scene_presence_artifact_path,
     hueman_aura_triad_artifact_path, hueman_boundary_artifact_path,
     hueman_fourway_artifact_path, hueman_motion_map_artifact_path,
@@ -24,7 +26,7 @@ use hollow_grove::hueman_support::{
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
-fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 12]> {
+fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 13]> {
     let current_synthesis_base =
         read_text_artifact(&root.join(CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH))?;
     let current_synthesis_activation_gate =
@@ -96,6 +98,11 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 12]> {
     let scene_presence_path = root.join(hueman_scene_presence_artifact_path());
     write_text_artifact(&scene_presence_path, &hueman_scene_presence)?;
 
+    let hueman_scene_intent =
+        build_hueman_scene_intent_from_artifacts(&hueman_scene_presence, &hueman_link_physics);
+    let scene_intent_path = root.join(hueman_scene_intent_artifact_path());
+    write_text_artifact(&scene_intent_path, &hueman_scene_intent)?;
+
     Ok([
         boundary_path,
         motion_map_path,
@@ -109,6 +116,7 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 12]> {
         link_physics_path,
         crossover_scenes_path,
         scene_presence_path,
+        scene_intent_path,
     ])
 }
 
@@ -135,12 +143,14 @@ mod tests {
         build_hueman_fourway_from_artifacts, build_hueman_motion_map_from_artifacts,
         build_hueman_link_physics_from_artifacts,
         build_hueman_path_crossovers_from_artifacts,
+        build_hueman_scene_intent_from_artifacts,
         build_hueman_scene_presence_from_artifacts,
         build_hueman_start_choices_from_artifacts, build_hueman_start_paths_from_artifacts,
         hueman_archetype_lens_artifact_path, hueman_aura_behavior_artifact_path,
         hueman_crossover_scenes_artifact_path,
         hueman_link_physics_artifact_path,
         hueman_path_crossovers_artifact_path,
+        hueman_scene_intent_artifact_path,
         hueman_scene_presence_artifact_path,
         hueman_aura_triad_artifact_path, hueman_boundary_artifact_path,
         hueman_fourway_artifact_path, hueman_motion_map_artifact_path,
@@ -151,7 +161,7 @@ mod tests {
     use super::run_hueman_at;
 
     #[test]
-    fn hueman_runner_regenerates_boundary_motion_map_fourway_aura_triad_start_choices_aura_behavior_archetype_lens_start_paths_path_crossovers_link_physics_crossover_scenes_and_scene_presence_in_order() {
+    fn hueman_runner_regenerates_boundary_motion_map_fourway_aura_triad_start_choices_aura_behavior_archetype_lens_start_paths_path_crossovers_link_physics_crossover_scenes_scene_presence_and_scene_intent_in_order() {
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .expect("system time before unix epoch")
@@ -197,6 +207,7 @@ mod tests {
             link_physics_path,
             crossover_scenes_path,
             scene_presence_path,
+            scene_intent_path,
         ] =
             run_hueman_at(&artifact_root).expect("hueman should run");
         let hueman_boundary = build_hueman_boundary_from_artifacts("base", "gate");
@@ -221,6 +232,8 @@ mod tests {
             build_hueman_crossover_scenes_from_artifacts(&hueman_path_crossovers, &hueman_link_physics);
         let hueman_scene_presence =
             build_hueman_scene_presence_from_artifacts(&hueman_crossover_scenes, &hueman_archetype_lens);
+        let hueman_scene_intent =
+            build_hueman_scene_intent_from_artifacts(&hueman_scene_presence, &hueman_link_physics);
 
         assert_eq!(
             boundary_path,
@@ -269,6 +282,10 @@ mod tests {
         assert_eq!(
             scene_presence_path,
             artifact_root.join(hueman_scene_presence_artifact_path())
+        );
+        assert_eq!(
+            scene_intent_path,
+            artifact_root.join(hueman_scene_intent_artifact_path())
         );
         assert_eq!(
             read_text_artifact(&boundary_path).expect("hueman boundary artifact should read"),
@@ -326,6 +343,11 @@ mod tests {
                 .expect("hueman scene presence artifact should read"),
             hueman_scene_presence
         );
+        assert_eq!(
+            read_text_artifact(&scene_intent_path)
+                .expect("hueman scene intent artifact should read"),
+            hueman_scene_intent
+        );
 
         fs::remove_file(&artifact_root.join(CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH))
             .expect("current synthesis base fixture should be removable");
@@ -357,6 +379,8 @@ mod tests {
             .expect("hueman crossover scenes artifact should be removable");
         fs::remove_file(&scene_presence_path)
             .expect("hueman scene presence artifact should be removable");
+        fs::remove_file(&scene_intent_path)
+            .expect("hueman scene intent artifact should be removable");
         fs::remove_dir_all(artifact_root.join("artifacts"))
             .expect("artifact fixture directory should be removable");
         fs::remove_dir(&artifact_root).expect("artifact root should be removable");
