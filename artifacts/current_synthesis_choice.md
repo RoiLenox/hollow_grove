@@ -20,8 +20,8 @@
 
 ## Artifact Inputs
 
-Current Synthesis clients bytes: 665.
-Current Synthesis topology bytes: 910.
+Current Synthesis clients bytes: 666.
+Current Synthesis topology bytes: 911.
 
 ## Boundary Reminder
 

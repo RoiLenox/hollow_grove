@@ -5,6 +5,8 @@ pub const CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH: &str =
     "artifacts/current_synthesis_activation_gate.md";
 pub const CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH: &str =
     "artifacts/current_synthesis_operational.md";
+pub const CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH: &str =
+    "artifacts/current_synthesis_sequence.md";
 pub const CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH: &str = "artifacts/current_synthesis_topology.md";
 pub const HUEMAN_BOUNDARY_ARTIFACT_PATH: &str = "artifacts/hueman_boundary.md";
 pub const HUEMAN_FOURWAY_ARTIFACT_PATH: &str = "artifacts/hueman_fourway.md";
@@ -13,6 +15,7 @@ pub const HUEMAN_AURA_BEHAVIOR_ARTIFACT_PATH: &str = "artifacts/hueman_aura_beha
 pub const HUEMAN_ARCHETYPE_LENS_ARTIFACT_PATH: &str = "artifacts/hueman_archetype_lens.md";
 pub const HUEMAN_START_PATHS_ARTIFACT_PATH: &str = "artifacts/hueman_start_paths.md";
 pub const HUEMAN_PATH_CROSSOVERS_ARTIFACT_PATH: &str = "artifacts/hueman_path_crossovers.md";
+pub const HUEMAN_LINK_PHYSICS_ARTIFACT_PATH: &str = "artifacts/hueman_link_physics.md";
 pub const HUEMAN_MOTION_MAP_ARTIFACT_PATH: &str = "artifacts/hueman_motion_map.md";
 pub const HUEMAN_START_CHOICES_ARTIFACT_PATH: &str = "artifacts/hueman_start_choices.md";
 
@@ -46,6 +49,10 @@ pub fn hueman_start_paths_artifact_path() -> PathBuf {
 
 pub fn hueman_path_crossovers_artifact_path() -> PathBuf {
     PathBuf::from(HUEMAN_PATH_CROSSOVERS_ARTIFACT_PATH)
+}
+
+pub fn hueman_link_physics_artifact_path() -> PathBuf {
+    PathBuf::from(HUEMAN_LINK_PHYSICS_ARTIFACT_PATH)
 }
 
 pub fn hueman_start_choices_artifact_path() -> PathBuf {
@@ -454,6 +461,48 @@ pub fn build_hueman_path_crossovers_from_artifacts(
     )
 }
 
+pub fn build_hueman_link_physics_from_artifacts(
+    current_synthesis_sequence: &str,
+    hueman_path_crossovers: &str,
+) -> String {
+    format!(
+        "# Hueman Link Physics\n\n\
+         ## Structural Rule\n\n\
+         Links that do not get bonded may later resolve into `current` or `aura` according to downstream physics.\n\n\
+         ## Bond Split\n\n\
+         - bonded link stays the selected route\n\
+         - unbonded links remain available as unresolved world material\n\
+         - unresolved material is not empty; it carries later directional bias\n\n\
+         ## Current Bias Physics\n\n\
+         - continuity pressure favors `current`\n\
+         - occupancy load favors `current`\n\
+         - inland persistence favors `current`\n\
+         - repeat traversal favors `current`\n\n\
+         ## Aura Bias Physics\n\n\
+         - exposure pressure favors `aura`\n\
+         - threshold bleed favors `aura`\n\
+         - atmospheric spill favors `aura`\n\
+         - edge drift favors `aura`\n\n\
+         ## Crossover Reading\n\n\
+         - shared starts can touch the same unresolved material with different bias\n\
+         - the same region may feel more `current` from one route and more `aura` from another\n\
+         - crossover zones are where the physics split becomes most visible in Hueman\n\n\
+         ## Status\n\n\
+         - link physics is descriptive-only for now\n\
+         - no procedural resolver chooses `current` or `aura` yet\n\
+         - bond selection remains kernel-simple underneath this layer\n\
+         - no feedback into Current Synthesis\n\
+         - no feedback into Hollow Grove\n\n\
+         ## Artifact Inputs\n\n\
+         Current Synthesis sequence bytes: {}.\n\
+         Hueman Path Crossovers bytes: {}.\n\n\
+         ## Boundary Reminder\n\n\
+         Link physics explains how unbonded links may later read as `current` or `aura`. It does not rewrite Bond, HollowGrove, or Current Synthesis sequence ownership.\n",
+        current_synthesis_sequence.len(),
+        hueman_path_crossovers.len()
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::{
@@ -461,6 +510,7 @@ mod tests {
         build_hueman_aura_behavior_from_artifacts,
         build_hueman_aura_triad_from_artifacts,
         build_hueman_boundary_from_artifacts, build_hueman_fourway_from_artifacts,
+        build_hueman_link_physics_from_artifacts,
         build_hueman_motion_map_from_artifacts,
         build_hueman_path_crossovers_from_artifacts,
         build_hueman_start_paths_from_artifacts,
@@ -839,6 +889,45 @@ mod tests {
              Hueman Aura Behavior bytes: 4.\n\n\
              ## Boundary Reminder\n\n\
              Path crossovers declare where starts can meaningfully overlap in AuraTriad. They do not create procedural encounters or alter lower-layer routing.\n"
+        );
+    }
+
+    #[test]
+    fn hueman_link_physics_builder_is_deterministic() {
+        assert_eq!(
+            build_hueman_link_physics_from_artifacts("sequence", "cross"),
+            "# Hueman Link Physics\n\n\
+             ## Structural Rule\n\n\
+             Links that do not get bonded may later resolve into `current` or `aura` according to downstream physics.\n\n\
+             ## Bond Split\n\n\
+             - bonded link stays the selected route\n\
+             - unbonded links remain available as unresolved world material\n\
+             - unresolved material is not empty; it carries later directional bias\n\n\
+             ## Current Bias Physics\n\n\
+             - continuity pressure favors `current`\n\
+             - occupancy load favors `current`\n\
+             - inland persistence favors `current`\n\
+             - repeat traversal favors `current`\n\n\
+             ## Aura Bias Physics\n\n\
+             - exposure pressure favors `aura`\n\
+             - threshold bleed favors `aura`\n\
+             - atmospheric spill favors `aura`\n\
+             - edge drift favors `aura`\n\n\
+             ## Crossover Reading\n\n\
+             - shared starts can touch the same unresolved material with different bias\n\
+             - the same region may feel more `current` from one route and more `aura` from another\n\
+             - crossover zones are where the physics split becomes most visible in Hueman\n\n\
+             ## Status\n\n\
+             - link physics is descriptive-only for now\n\
+             - no procedural resolver chooses `current` or `aura` yet\n\
+             - bond selection remains kernel-simple underneath this layer\n\
+             - no feedback into Current Synthesis\n\
+             - no feedback into Hollow Grove\n\n\
+             ## Artifact Inputs\n\n\
+             Current Synthesis sequence bytes: 8.\n\
+             Hueman Path Crossovers bytes: 5.\n\n\
+             ## Boundary Reminder\n\n\
+             Link physics explains how unbonded links may later read as `current` or `aura`. It does not rewrite Bond, HollowGrove, or Current Synthesis sequence ownership.\n"
         );
     }
 }

@@ -35,6 +35,13 @@ Each joint has:
 - one arm bonds
 - unused arms become clue context, environmental residue, or route material
 
+## Unbonded Resolution
+
+- bonded arms remain the selected route through the joint
+- unbonded arms do not disappear after bond selection
+- unbonded arms may later resolve into `current` or `aura`
+- that later resolution depends on downstream physics rather than kernel bond selection alone
+
 ## Client Roles
 
 - HAL belongs to `META`.

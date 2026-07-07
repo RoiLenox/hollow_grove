@@ -16,6 +16,13 @@ B/A
 
 Each paired joint has a `PLEB` side, a `META` side, three possible arms of movement on each side, one bonded arm, and unused arms that remain as clue context, environmental residue, or route material.
 
+## Unbonded Resolution
+
+- bonded arms remain the selected route through the joint
+- unbonded arms do not disappear after bond selection
+- unbonded arms may later resolve into `current` or `aura`
+- that later resolution depends on downstream physics rather than kernel bond selection alone
+
 ## Client Sides
 
 - HAL belongs to `META`.

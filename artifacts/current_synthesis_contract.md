@@ -24,7 +24,7 @@ The chosen side and the complementary side remain distinct without execution.
 ## Artifact Inputs
 
 Current Synthesis choice bytes: 505.
-Current Synthesis clients bytes: 665.
+Current Synthesis clients bytes: 666.
 
 ## Boundary Reminder
 

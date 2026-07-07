@@ -22,8 +22,8 @@
 
 ## Artifact Inputs
 
-Current Synthesis topology bytes: 910.
-Current Synthesis sequence bytes: 775.
+Current Synthesis topology bytes: 911.
+Current Synthesis sequence bytes: 1065.
 
 ## Boundary Reminder
 

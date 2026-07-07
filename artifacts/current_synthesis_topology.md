@@ -47,7 +47,7 @@ These remain route regions and route stations, not Hollow Grove layers.
 
 ## Artifact Inputs
 
-Current Synthesis sequence bytes: 775.
+Current Synthesis sequence bytes: 1065.
 Current Synthesis state bytes: 2108.
 
 ## Boundary Reminder

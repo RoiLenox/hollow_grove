@@ -3,13 +3,16 @@ use std::path::{Path, PathBuf};
 
 use hollow_grove::hueman_support::{
     CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH, CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH, CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH, CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH,
     build_hueman_archetype_lens_from_artifacts, build_hueman_aura_behavior_from_artifacts,
     build_hueman_aura_triad_from_artifacts, build_hueman_boundary_from_artifacts,
     build_hueman_fourway_from_artifacts, build_hueman_motion_map_from_artifacts,
+    build_hueman_link_physics_from_artifacts,
     build_hueman_path_crossovers_from_artifacts,
     build_hueman_start_choices_from_artifacts, build_hueman_start_paths_from_artifacts,
     hueman_archetype_lens_artifact_path, hueman_aura_behavior_artifact_path,
+    hueman_link_physics_artifact_path,
     hueman_path_crossovers_artifact_path,
     hueman_aura_triad_artifact_path, hueman_boundary_artifact_path,
     hueman_fourway_artifact_path, hueman_motion_map_artifact_path,
@@ -17,7 +20,7 @@ use hollow_grove::hueman_support::{
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
-fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 9]> {
+fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 10]> {
     let current_synthesis_base =
         read_text_artifact(&root.join(CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH))?;
     let current_synthesis_activation_gate =
@@ -72,6 +75,13 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 9]> {
     let path_crossovers_path = root.join(hueman_path_crossovers_artifact_path());
     write_text_artifact(&path_crossovers_path, &hueman_path_crossovers)?;
 
+    let current_synthesis_sequence =
+        read_text_artifact(&root.join(CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH))?;
+    let hueman_link_physics =
+        build_hueman_link_physics_from_artifacts(&current_synthesis_sequence, &hueman_path_crossovers);
+    let link_physics_path = root.join(hueman_link_physics_artifact_path());
+    write_text_artifact(&link_physics_path, &hueman_link_physics)?;
+
     Ok([
         boundary_path,
         motion_map_path,
@@ -82,6 +92,7 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 9]> {
         archetype_lens_path,
         start_paths_path,
         path_crossovers_path,
+        link_physics_path,
     ])
 }
 
@@ -100,13 +111,16 @@ mod tests {
 
     use hollow_grove::hueman_support::{
         CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH, CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH,
-        CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH, CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH,
+        CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH, CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH,
+        CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH,
         build_hueman_archetype_lens_from_artifacts, build_hueman_aura_behavior_from_artifacts,
         build_hueman_aura_triad_from_artifacts, build_hueman_boundary_from_artifacts,
         build_hueman_fourway_from_artifacts, build_hueman_motion_map_from_artifacts,
+        build_hueman_link_physics_from_artifacts,
         build_hueman_path_crossovers_from_artifacts,
         build_hueman_start_choices_from_artifacts, build_hueman_start_paths_from_artifacts,
         hueman_archetype_lens_artifact_path, hueman_aura_behavior_artifact_path,
+        hueman_link_physics_artifact_path,
         hueman_path_crossovers_artifact_path,
         hueman_aura_triad_artifact_path, hueman_boundary_artifact_path,
         hueman_fourway_artifact_path, hueman_motion_map_artifact_path,
@@ -117,7 +131,7 @@ mod tests {
     use super::run_hueman_at;
 
     #[test]
-    fn hueman_runner_regenerates_boundary_motion_map_fourway_aura_triad_start_choices_aura_behavior_archetype_lens_start_paths_and_path_crossovers_in_order() {
+    fn hueman_runner_regenerates_boundary_motion_map_fourway_aura_triad_start_choices_aura_behavior_archetype_lens_start_paths_path_crossovers_and_link_physics_in_order() {
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .expect("system time before unix epoch")
@@ -144,6 +158,11 @@ mod tests {
             "topology",
         )
         .expect("current synthesis topology fixture should write");
+        write_text_artifact(
+            &artifact_root.join(CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH),
+            "sequence",
+        )
+        .expect("current synthesis sequence fixture should write");
 
         let [
             boundary_path,
@@ -155,6 +174,7 @@ mod tests {
             archetype_lens_path,
             start_paths_path,
             path_crossovers_path,
+            link_physics_path,
         ] =
             run_hueman_at(&artifact_root).expect("hueman should run");
         let hueman_boundary = build_hueman_boundary_from_artifacts("base", "gate");
@@ -173,6 +193,8 @@ mod tests {
             build_hueman_start_paths_from_artifacts(&hueman_start_choices, &hueman_archetype_lens);
         let hueman_path_crossovers =
             build_hueman_path_crossovers_from_artifacts(&hueman_start_paths, &hueman_aura_behavior);
+        let hueman_link_physics =
+            build_hueman_link_physics_from_artifacts("sequence", &hueman_path_crossovers);
 
         assert_eq!(
             boundary_path,
@@ -209,6 +231,10 @@ mod tests {
         assert_eq!(
             path_crossovers_path,
             artifact_root.join(hueman_path_crossovers_artifact_path())
+        );
+        assert_eq!(
+            link_physics_path,
+            artifact_root.join(hueman_link_physics_artifact_path())
         );
         assert_eq!(
             read_text_artifact(&boundary_path).expect("hueman boundary artifact should read"),
@@ -251,6 +277,11 @@ mod tests {
                 .expect("hueman path crossovers artifact should read"),
             hueman_path_crossovers
         );
+        assert_eq!(
+            read_text_artifact(&link_physics_path)
+                .expect("hueman link physics artifact should read"),
+            hueman_link_physics
+        );
 
         fs::remove_file(&artifact_root.join(CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH))
             .expect("current synthesis base fixture should be removable");
@@ -260,6 +291,8 @@ mod tests {
             .expect("current synthesis operational fixture should be removable");
         fs::remove_file(&artifact_root.join(CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH))
             .expect("current synthesis topology fixture should be removable");
+        fs::remove_file(&artifact_root.join(CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH))
+            .expect("current synthesis sequence fixture should be removable");
         fs::remove_file(&boundary_path).expect("hueman boundary artifact should be removable");
         fs::remove_file(&motion_map_path).expect("hueman motion map artifact should be removable");
         fs::remove_file(&fourway_path).expect("hueman fourway artifact should be removable");
@@ -274,6 +307,8 @@ mod tests {
             .expect("hueman start paths artifact should be removable");
         fs::remove_file(&path_crossovers_path)
             .expect("hueman path crossovers artifact should be removable");
+        fs::remove_file(&link_physics_path)
+            .expect("hueman link physics artifact should be removable");
         fs::remove_dir_all(artifact_root.join("artifacts"))
             .expect("artifact fixture directory should be removable");
         fs::remove_dir(&artifact_root).expect("artifact root should be removable");
