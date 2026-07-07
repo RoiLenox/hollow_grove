@@ -7,6 +7,7 @@ pub const CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH: &str =
     "artifacts/current_synthesis_operational.md";
 pub const HUEMAN_BOUNDARY_ARTIFACT_PATH: &str = "artifacts/hueman_boundary.md";
 pub const HUEMAN_MOTION_MAP_ARTIFACT_PATH: &str = "artifacts/hueman_motion_map.md";
+pub const HUEMAN_START_CHOICES_ARTIFACT_PATH: &str = "artifacts/hueman_start_choices.md";
 
 pub fn hueman_boundary_artifact_path() -> PathBuf {
     PathBuf::from(HUEMAN_BOUNDARY_ARTIFACT_PATH)
@@ -14,6 +15,10 @@ pub fn hueman_boundary_artifact_path() -> PathBuf {
 
 pub fn hueman_motion_map_artifact_path() -> PathBuf {
     PathBuf::from(HUEMAN_MOTION_MAP_ARTIFACT_PATH)
+}
+
+pub fn hueman_start_choices_artifact_path() -> PathBuf {
+    PathBuf::from(HUEMAN_START_CHOICES_ARTIFACT_PATH)
 }
 
 pub fn build_hueman_boundary_from_artifacts(
@@ -100,10 +105,49 @@ pub fn build_hueman_motion_map_from_artifacts(
     )
 }
 
+pub fn build_hueman_start_choices_from_artifacts(
+    hueman_boundary: &str,
+    hueman_motion_map: &str,
+) -> String {
+    format!(
+        "# Hueman Start Choices\n\n\
+         ## End User Archetypes\n\n\
+         - `goblin`\n\
+         - `gremlin`\n\
+         - `pixy`\n\
+         - `sprite`\n\n\
+         ## Starting Places\n\n\
+         - Flynt\n\
+         - Stonebend\n\
+         - Glaushouse\n\
+         - Sandmanor\n\n\
+         ## Initial Start Roster\n\n\
+         - `goblin` starts in Flynt\n\
+         - `gremlin` starts in Stonebend\n\
+         - `pixy` starts in Glaushouse\n\
+         - `sprite` starts in Sandmanor\n\n\
+         ## Status\n\n\
+         - the end user may choose one archetype\n\
+         - the starting place follows the initial Hueman roster\n\
+         - world behavior is not active yet\n\
+         - species mechanics are not active yet\n\
+         - no feedback into Current Synthesis\n\
+         - no feedback into Hollow Grove\n\n\
+         ## Artifact Inputs\n\n\
+         Hueman boundary bytes: {}.\n\
+         Hueman motion map bytes: {}.\n\n\
+         ## Boundary Reminder\n\n\
+         This is a Hueman-layer start declaration only. It does not change Current Synthesis or Hollow Grove.\n",
+        hueman_boundary.len(),
+        hueman_motion_map.len()
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::{
         build_hueman_boundary_from_artifacts, build_hueman_motion_map_from_artifacts,
+        build_hueman_start_choices_from_artifacts,
     };
 
     #[test]
@@ -181,6 +225,41 @@ mod tests {
              Current Synthesis operational bytes: 3.\n\n\
              ## Boundary Reminder\n\n\
              Hueman reads the map as world-facing representation. Hollow Grove and Current Synthesis keep the lower-layer operating semantics.\n"
+        );
+    }
+
+    #[test]
+    fn hueman_start_choices_builder_is_deterministic() {
+        assert_eq!(
+            build_hueman_start_choices_from_artifacts("boundary", "motion"),
+            "# Hueman Start Choices\n\n\
+             ## End User Archetypes\n\n\
+             - `goblin`\n\
+             - `gremlin`\n\
+             - `pixy`\n\
+             - `sprite`\n\n\
+             ## Starting Places\n\n\
+             - Flynt\n\
+             - Stonebend\n\
+             - Glaushouse\n\
+             - Sandmanor\n\n\
+             ## Initial Start Roster\n\n\
+             - `goblin` starts in Flynt\n\
+             - `gremlin` starts in Stonebend\n\
+             - `pixy` starts in Glaushouse\n\
+             - `sprite` starts in Sandmanor\n\n\
+             ## Status\n\n\
+             - the end user may choose one archetype\n\
+             - the starting place follows the initial Hueman roster\n\
+             - world behavior is not active yet\n\
+             - species mechanics are not active yet\n\
+             - no feedback into Current Synthesis\n\
+             - no feedback into Hollow Grove\n\n\
+             ## Artifact Inputs\n\n\
+             Hueman boundary bytes: 8.\n\
+             Hueman motion map bytes: 6.\n\n\
+             ## Boundary Reminder\n\n\
+             This is a Hueman-layer start declaration only. It does not change Current Synthesis or Hollow Grove.\n"
         );
     }
 }
