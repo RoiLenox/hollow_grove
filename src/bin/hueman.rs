@@ -4,16 +4,17 @@ use std::path::{Path, PathBuf};
 use hollow_grove::hueman_support::{
     CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH, CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH,
     CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH, CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH,
-    build_hueman_aura_behavior_from_artifacts, build_hueman_aura_triad_from_artifacts,
-    build_hueman_boundary_from_artifacts, build_hueman_fourway_from_artifacts,
-    build_hueman_motion_map_from_artifacts, build_hueman_start_choices_from_artifacts,
+    build_hueman_archetype_lens_from_artifacts, build_hueman_aura_behavior_from_artifacts,
+    build_hueman_aura_triad_from_artifacts, build_hueman_boundary_from_artifacts,
+    build_hueman_fourway_from_artifacts, build_hueman_motion_map_from_artifacts,
+    build_hueman_start_choices_from_artifacts, hueman_archetype_lens_artifact_path,
     hueman_aura_behavior_artifact_path, hueman_aura_triad_artifact_path,
-    hueman_boundary_artifact_path, hueman_fourway_artifact_path,
-    hueman_motion_map_artifact_path, hueman_start_choices_artifact_path,
+    hueman_boundary_artifact_path, hueman_fourway_artifact_path, hueman_motion_map_artifact_path,
+    hueman_start_choices_artifact_path,
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
-fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 6]> {
+fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 7]> {
     let current_synthesis_base =
         read_text_artifact(&root.join(CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH))?;
     let current_synthesis_activation_gate =
@@ -53,6 +54,11 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 6]> {
     let aura_behavior_path = root.join(hueman_aura_behavior_artifact_path());
     write_text_artifact(&aura_behavior_path, &hueman_aura_behavior)?;
 
+    let hueman_archetype_lens =
+        build_hueman_archetype_lens_from_artifacts(&hueman_start_choices, &hueman_aura_behavior);
+    let archetype_lens_path = root.join(hueman_archetype_lens_artifact_path());
+    write_text_artifact(&archetype_lens_path, &hueman_archetype_lens)?;
+
     Ok([
         boundary_path,
         motion_map_path,
@@ -60,6 +66,7 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 6]> {
         aura_triad_path,
         start_choices_path,
         aura_behavior_path,
+        archetype_lens_path,
     ])
 }
 
@@ -79,9 +86,10 @@ mod tests {
     use hollow_grove::hueman_support::{
         CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH, CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH,
         CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH, CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH,
-        build_hueman_aura_behavior_from_artifacts, build_hueman_aura_triad_from_artifacts,
-        build_hueman_boundary_from_artifacts, build_hueman_fourway_from_artifacts,
-        build_hueman_motion_map_from_artifacts, build_hueman_start_choices_from_artifacts,
+        build_hueman_archetype_lens_from_artifacts, build_hueman_aura_behavior_from_artifacts,
+        build_hueman_aura_triad_from_artifacts, build_hueman_boundary_from_artifacts,
+        build_hueman_fourway_from_artifacts, build_hueman_motion_map_from_artifacts,
+        build_hueman_start_choices_from_artifacts, hueman_archetype_lens_artifact_path,
         hueman_aura_behavior_artifact_path, hueman_aura_triad_artifact_path,
         hueman_boundary_artifact_path, hueman_fourway_artifact_path,
         hueman_motion_map_artifact_path, hueman_start_choices_artifact_path,
@@ -91,7 +99,7 @@ mod tests {
     use super::run_hueman_at;
 
     #[test]
-    fn hueman_runner_regenerates_boundary_motion_map_fourway_aura_triad_start_choices_and_aura_behavior_in_order() {
+    fn hueman_runner_regenerates_boundary_motion_map_fourway_aura_triad_start_choices_aura_behavior_and_archetype_lens_in_order() {
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .expect("system time before unix epoch")
@@ -126,6 +134,7 @@ mod tests {
             aura_triad_path,
             start_choices_path,
             aura_behavior_path,
+            archetype_lens_path,
         ] =
             run_hueman_at(&artifact_root).expect("hueman should run");
         let hueman_boundary = build_hueman_boundary_from_artifacts("base", "gate");
@@ -138,6 +147,8 @@ mod tests {
             build_hueman_start_choices_from_artifacts(&hueman_fourway, &hueman_aura_triad);
         let hueman_aura_behavior =
             build_hueman_aura_behavior_from_artifacts(&hueman_aura_triad, &hueman_start_choices);
+        let hueman_archetype_lens =
+            build_hueman_archetype_lens_from_artifacts(&hueman_start_choices, &hueman_aura_behavior);
 
         assert_eq!(
             boundary_path,
@@ -162,6 +173,10 @@ mod tests {
         assert_eq!(
             aura_behavior_path,
             artifact_root.join(hueman_aura_behavior_artifact_path())
+        );
+        assert_eq!(
+            archetype_lens_path,
+            artifact_root.join(hueman_archetype_lens_artifact_path())
         );
         assert_eq!(
             read_text_artifact(&boundary_path).expect("hueman boundary artifact should read"),
@@ -189,6 +204,11 @@ mod tests {
                 .expect("hueman aura behavior artifact should read"),
             hueman_aura_behavior
         );
+        assert_eq!(
+            read_text_artifact(&archetype_lens_path)
+                .expect("hueman archetype lens artifact should read"),
+            hueman_archetype_lens
+        );
 
         fs::remove_file(&artifact_root.join(CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH))
             .expect("current synthesis base fixture should be removable");
@@ -206,6 +226,8 @@ mod tests {
             .expect("hueman start choices artifact should be removable");
         fs::remove_file(&aura_behavior_path)
             .expect("hueman aura behavior artifact should be removable");
+        fs::remove_file(&archetype_lens_path)
+            .expect("hueman archetype lens artifact should be removable");
         fs::remove_dir_all(artifact_root.join("artifacts"))
             .expect("artifact fixture directory should be removable");
         fs::remove_dir(&artifact_root).expect("artifact root should be removable");

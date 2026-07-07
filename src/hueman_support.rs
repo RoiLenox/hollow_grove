@@ -10,6 +10,7 @@ pub const HUEMAN_BOUNDARY_ARTIFACT_PATH: &str = "artifacts/hueman_boundary.md";
 pub const HUEMAN_FOURWAY_ARTIFACT_PATH: &str = "artifacts/hueman_fourway.md";
 pub const HUEMAN_AURA_TRIAD_ARTIFACT_PATH: &str = "artifacts/hueman_aura_triad.md";
 pub const HUEMAN_AURA_BEHAVIOR_ARTIFACT_PATH: &str = "artifacts/hueman_aura_behavior.md";
+pub const HUEMAN_ARCHETYPE_LENS_ARTIFACT_PATH: &str = "artifacts/hueman_archetype_lens.md";
 pub const HUEMAN_MOTION_MAP_ARTIFACT_PATH: &str = "artifacts/hueman_motion_map.md";
 pub const HUEMAN_START_CHOICES_ARTIFACT_PATH: &str = "artifacts/hueman_start_choices.md";
 
@@ -31,6 +32,10 @@ pub fn hueman_aura_triad_artifact_path() -> PathBuf {
 
 pub fn hueman_aura_behavior_artifact_path() -> PathBuf {
     PathBuf::from(HUEMAN_AURA_BEHAVIOR_ARTIFACT_PATH)
+}
+
+pub fn hueman_archetype_lens_artifact_path() -> PathBuf {
+    PathBuf::from(HUEMAN_ARCHETYPE_LENS_ARTIFACT_PATH)
 }
 
 pub fn hueman_start_choices_artifact_path() -> PathBuf {
@@ -320,9 +325,52 @@ pub fn build_hueman_aura_behavior_from_artifacts(
     )
 }
 
+pub fn build_hueman_archetype_lens_from_artifacts(
+    hueman_start_choices: &str,
+    hueman_aura_behavior: &str,
+) -> String {
+    format!(
+        "# Hueman Archetype Lens\n\n\
+         ## Structural Rule\n\n\
+         After start choice and AuraTriad behavior are declared, each archetype reads the same regions through a different descriptive lens.\n\n\
+         ## Archetype Readings\n\n\
+         ### `goblin`\n\n\
+         - Aura Basin reads as burrow, shelter, and kept stores\n\
+         - Aura Fields reads as forage paths, routes, and workable ground\n\
+         - Aura Beach reads as exposed salvage, tide risk, and thin cover\n\n\
+         ### `gremlin`\n\n\
+         - Aura Basin reads as stress seams, pressure joints, and hidden leverage\n\
+         - Aura Fields reads as barter space, friction lines, and noisy crossings\n\
+         - Aura Beach reads as scrap edge, discard flow, and threshold apparatus\n\n\
+         ### `pixy`\n\n\
+         - Aura Basin reads as hush, glow, and suspended potential\n\
+         - Aura Fields reads as shimmer, weather play, and visible drift\n\
+         - Aura Beach reads as glint, spray, and bright dispersal\n\n\
+         ### `sprite`\n\n\
+         - Aura Basin reads as root echo, sleep, and soft enclosure\n\
+         - Aura Fields reads as current, sway, and open circulation\n\
+         - Aura Beach reads as horizon pull, release, and farward motion\n\n\
+         ## Status\n\n\
+         - archetype lens is descriptive-only for now\n\
+         - no procedural bonuses or penalties are active\n\
+         - the Fourway start roster remains unchanged\n\
+         - AuraTriad region behavior remains shared underneath the lens\n\
+         - no feedback into Current Synthesis\n\
+         - no feedback into Hollow Grove\n\n\
+         ## Artifact Inputs\n\n\
+         Hueman Start Choices bytes: {}.\n\
+         Hueman Aura Behavior bytes: {}.\n\n\
+         ## Boundary Reminder\n\n\
+         The archetype lens changes interpretation, not rules. It is a Hueman-facing difference in reading the world after placement.\n",
+        hueman_start_choices.len(),
+        hueman_aura_behavior.len()
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::{
+        build_hueman_archetype_lens_from_artifacts,
         build_hueman_aura_behavior_from_artifacts,
         build_hueman_aura_triad_from_artifacts,
         build_hueman_boundary_from_artifacts, build_hueman_fourway_from_artifacts,
@@ -592,6 +640,45 @@ mod tests {
              Hueman Start Choices bytes: 5.\n\n\
              ## Boundary Reminder\n\n\
              Aura behavior is a Hueman-facing reading of the world after start choice. It does not alter Current Synthesis occupancy or Hollow Grove recursion.\n"
+        );
+    }
+
+    #[test]
+    fn hueman_archetype_lens_builder_is_deterministic() {
+        assert_eq!(
+            build_hueman_archetype_lens_from_artifacts("start", "aura"),
+            "# Hueman Archetype Lens\n\n\
+             ## Structural Rule\n\n\
+             After start choice and AuraTriad behavior are declared, each archetype reads the same regions through a different descriptive lens.\n\n\
+             ## Archetype Readings\n\n\
+             ### `goblin`\n\n\
+             - Aura Basin reads as burrow, shelter, and kept stores\n\
+             - Aura Fields reads as forage paths, routes, and workable ground\n\
+             - Aura Beach reads as exposed salvage, tide risk, and thin cover\n\n\
+             ### `gremlin`\n\n\
+             - Aura Basin reads as stress seams, pressure joints, and hidden leverage\n\
+             - Aura Fields reads as barter space, friction lines, and noisy crossings\n\
+             - Aura Beach reads as scrap edge, discard flow, and threshold apparatus\n\n\
+             ### `pixy`\n\n\
+             - Aura Basin reads as hush, glow, and suspended potential\n\
+             - Aura Fields reads as shimmer, weather play, and visible drift\n\
+             - Aura Beach reads as glint, spray, and bright dispersal\n\n\
+             ### `sprite`\n\n\
+             - Aura Basin reads as root echo, sleep, and soft enclosure\n\
+             - Aura Fields reads as current, sway, and open circulation\n\
+             - Aura Beach reads as horizon pull, release, and farward motion\n\n\
+             ## Status\n\n\
+             - archetype lens is descriptive-only for now\n\
+             - no procedural bonuses or penalties are active\n\
+             - the Fourway start roster remains unchanged\n\
+             - AuraTriad region behavior remains shared underneath the lens\n\
+             - no feedback into Current Synthesis\n\
+             - no feedback into Hollow Grove\n\n\
+             ## Artifact Inputs\n\n\
+             Hueman Start Choices bytes: 5.\n\
+             Hueman Aura Behavior bytes: 4.\n\n\
+             ## Boundary Reminder\n\n\
+             The archetype lens changes interpretation, not rules. It is a Hueman-facing difference in reading the world after placement.\n"
         );
     }
 }
