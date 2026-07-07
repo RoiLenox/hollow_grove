@@ -7,7 +7,8 @@ pub const CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH: &str =
     "artifacts/current_synthesis_operational.md";
 pub const CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH: &str =
     "artifacts/current_synthesis_sequence.md";
-pub const CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH: &str = "artifacts/current_synthesis_topology.md";
+pub const CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH: &str =
+    "artifacts/current_synthesis_topology.md";
 pub const HUEMAN_BOUNDARY_ARTIFACT_PATH: &str = "artifacts/hueman_boundary.md";
 pub const HUEMAN_FOURWAY_ARTIFACT_PATH: &str = "artifacts/hueman_fourway.md";
 pub const HUEMAN_AURA_TRIAD_ARTIFACT_PATH: &str = "artifacts/hueman_aura_triad.md";
@@ -19,6 +20,7 @@ pub const HUEMAN_LINK_PHYSICS_ARTIFACT_PATH: &str = "artifacts/hueman_link_physi
 pub const HUEMAN_CROSSOVER_SCENES_ARTIFACT_PATH: &str = "artifacts/hueman_crossover_scenes.md";
 pub const HUEMAN_SCENE_PRESENCE_ARTIFACT_PATH: &str = "artifacts/hueman_scene_presence.md";
 pub const HUEMAN_SCENE_INTENT_ARTIFACT_PATH: &str = "artifacts/hueman_scene_intent.md";
+pub const HUEMAN_SCENE_DRIFT_ARTIFACT_PATH: &str = "artifacts/hueman_scene_drift.md";
 pub const HUEMAN_MOTION_MAP_ARTIFACT_PATH: &str = "artifacts/hueman_motion_map.md";
 pub const HUEMAN_START_CHOICES_ARTIFACT_PATH: &str = "artifacts/hueman_start_choices.md";
 
@@ -68,6 +70,10 @@ pub fn hueman_scene_presence_artifact_path() -> PathBuf {
 
 pub fn hueman_scene_intent_artifact_path() -> PathBuf {
     PathBuf::from(HUEMAN_SCENE_INTENT_ARTIFACT_PATH)
+}
+
+pub fn hueman_scene_drift_artifact_path() -> PathBuf {
+    PathBuf::from(HUEMAN_SCENE_DRIFT_ARTIFACT_PATH)
 }
 
 pub fn hueman_start_choices_artifact_path() -> PathBuf {
@@ -666,21 +672,59 @@ pub fn build_hueman_scene_intent_from_artifacts(
     )
 }
 
+pub fn build_hueman_scene_drift_from_artifacts(
+    hueman_scene_intent: &str,
+    hueman_link_physics: &str,
+) -> String {
+    format!(
+        "# Hueman Scene Drift\n\n\
+         ## Structural Rule\n\n\
+         Scene intent can drift into a different scene type when bias pressure persists over time without a full system resolving it.\n\n\
+         ## Drift Vectors\n\n\
+         ### Seam Market\n\n\
+         - drifts toward Pressure Shelter when exchange slows and stored continuity takes over\n\
+         - drifts toward Threshold Weather when structures fail and exposure outruns arrangement\n\n\
+         ### Threshold Weather\n\n\
+         - drifts toward Split Trace when warning persists without settlement\n\
+         - drifts toward Seam Market when repeated crossings stabilize the edge into exchange\n\n\
+         ### Pressure Shelter\n\n\
+         - drifts toward Seam Market when guarded stores reopen into circulation\n\
+         - drifts toward Split Trace when shelter empties and only residue remains\n\n\
+         ### Split Trace\n\n\
+         - drifts toward Threshold Weather when ambiguity spills outward into exposure\n\
+         - drifts toward Pressure Shelter when traces are hoarded, muffled, or enclosed\n\n\
+         ## Drift Drivers\n\n\
+         - sustained `current` accumulation pulls scenes toward storage, continuity, and reopened exchange\n\
+         - sustained `aura` accumulation pulls scenes toward exposure, drift, shimmer, and unstable edges\n\
+         - mixed unresolved pressure preserves Split Trace longer instead of forcing a clean resolution\n\
+         - repeated crossings can stabilize a scene back into exchange even after warning or ambiguity\n\n\
+         ## Status\n\n\
+         - scene drift is descriptive-only for now\n\
+         - no time simulation or procedural resolver is active\n\
+         - scene intent remains the upstream atmospheric layer\n\
+         - link physics remains the upstream bias layer\n\
+         - no feedback into Current Synthesis\n\
+         - no feedback into Hollow Grove\n\n\
+         ## Artifact Inputs\n\n\
+         Hueman Scene Intent bytes: {}.\n\
+         Hueman Link Physics bytes: {}.\n\n\
+         ## Boundary Reminder\n\n\
+         Scene drift says how a scene may change if its pressure persists. It does not activate clocks, AI routines, or procedural world updates.\n",
+        hueman_scene_intent.len(),
+        hueman_link_physics.len()
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::{
-        build_hueman_archetype_lens_from_artifacts,
-        build_hueman_aura_behavior_from_artifacts,
-        build_hueman_aura_triad_from_artifacts,
-        build_hueman_boundary_from_artifacts, build_hueman_fourway_from_artifacts,
-        build_hueman_crossover_scenes_from_artifacts,
-        build_hueman_link_physics_from_artifacts,
-        build_hueman_motion_map_from_artifacts,
-        build_hueman_path_crossovers_from_artifacts,
-        build_hueman_scene_intent_from_artifacts,
-        build_hueman_scene_presence_from_artifacts,
-        build_hueman_start_paths_from_artifacts,
-        build_hueman_start_choices_from_artifacts,
+        build_hueman_archetype_lens_from_artifacts, build_hueman_aura_behavior_from_artifacts,
+        build_hueman_aura_triad_from_artifacts, build_hueman_boundary_from_artifacts,
+        build_hueman_crossover_scenes_from_artifacts, build_hueman_fourway_from_artifacts,
+        build_hueman_link_physics_from_artifacts, build_hueman_motion_map_from_artifacts,
+        build_hueman_path_crossovers_from_artifacts, build_hueman_scene_drift_from_artifacts,
+        build_hueman_scene_intent_from_artifacts, build_hueman_scene_presence_from_artifacts,
+        build_hueman_start_choices_from_artifacts, build_hueman_start_paths_from_artifacts,
     };
 
     #[test]
@@ -1233,6 +1277,46 @@ mod tests {
              Hueman Link Physics bytes: 7.\n\n\
              ## Boundary Reminder\n\n\
              Scene intent says what a scene is trying to do atmospherically. It does not create tasks, dialogue trees, or procedural outcomes.\n"
+        );
+    }
+
+    #[test]
+    fn hueman_scene_drift_builder_is_deterministic() {
+        assert_eq!(
+            build_hueman_scene_drift_from_artifacts("intent", "physics"),
+            "# Hueman Scene Drift\n\n\
+             ## Structural Rule\n\n\
+             Scene intent can drift into a different scene type when bias pressure persists over time without a full system resolving it.\n\n\
+             ## Drift Vectors\n\n\
+             ### Seam Market\n\n\
+             - drifts toward Pressure Shelter when exchange slows and stored continuity takes over\n\
+             - drifts toward Threshold Weather when structures fail and exposure outruns arrangement\n\n\
+             ### Threshold Weather\n\n\
+             - drifts toward Split Trace when warning persists without settlement\n\
+             - drifts toward Seam Market when repeated crossings stabilize the edge into exchange\n\n\
+             ### Pressure Shelter\n\n\
+             - drifts toward Seam Market when guarded stores reopen into circulation\n\
+             - drifts toward Split Trace when shelter empties and only residue remains\n\n\
+             ### Split Trace\n\n\
+             - drifts toward Threshold Weather when ambiguity spills outward into exposure\n\
+             - drifts toward Pressure Shelter when traces are hoarded, muffled, or enclosed\n\n\
+             ## Drift Drivers\n\n\
+             - sustained `current` accumulation pulls scenes toward storage, continuity, and reopened exchange\n\
+             - sustained `aura` accumulation pulls scenes toward exposure, drift, shimmer, and unstable edges\n\
+             - mixed unresolved pressure preserves Split Trace longer instead of forcing a clean resolution\n\
+             - repeated crossings can stabilize a scene back into exchange even after warning or ambiguity\n\n\
+             ## Status\n\n\
+             - scene drift is descriptive-only for now\n\
+             - no time simulation or procedural resolver is active\n\
+             - scene intent remains the upstream atmospheric layer\n\
+             - link physics remains the upstream bias layer\n\
+             - no feedback into Current Synthesis\n\
+             - no feedback into Hollow Grove\n\n\
+             ## Artifact Inputs\n\n\
+             Hueman Scene Intent bytes: 6.\n\
+             Hueman Link Physics bytes: 7.\n\n\
+             ## Boundary Reminder\n\n\
+             Scene drift says how a scene may change if its pressure persists. It does not activate clocks, AI routines, or procedural world updates.\n"
         );
     }
 }

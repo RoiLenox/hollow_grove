@@ -2,16 +2,14 @@ use std::io;
 use std::path::Path;
 
 use hollow_grove::hueman_support::{
-    HUEMAN_LINK_PHYSICS_ARTIFACT_PATH, HUEMAN_SCENE_PRESENCE_ARTIFACT_PATH,
     build_hueman_scene_intent_from_artifacts, hueman_scene_intent_artifact_path,
+    HUEMAN_LINK_PHYSICS_ARTIFACT_PATH, HUEMAN_SCENE_PRESENCE_ARTIFACT_PATH,
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
 fn main() -> io::Result<()> {
-    let hueman_scene_presence =
-        read_text_artifact(Path::new(HUEMAN_SCENE_PRESENCE_ARTIFACT_PATH))?;
-    let hueman_link_physics =
-        read_text_artifact(Path::new(HUEMAN_LINK_PHYSICS_ARTIFACT_PATH))?;
+    let hueman_scene_presence = read_text_artifact(Path::new(HUEMAN_SCENE_PRESENCE_ARTIFACT_PATH))?;
+    let hueman_link_physics = read_text_artifact(Path::new(HUEMAN_LINK_PHYSICS_ARTIFACT_PATH))?;
     let hueman_scene_intent =
         build_hueman_scene_intent_from_artifacts(&hueman_scene_presence, &hueman_link_physics);
     let artifact_path = hueman_scene_intent_artifact_path();
@@ -79,8 +77,7 @@ mod tests {
 
     #[test]
     fn hueman_scene_intent_writes_a_deterministic_file() {
-        let hueman_scene_intent =
-            build_hueman_scene_intent_from_artifacts("presence", "physics");
+        let hueman_scene_intent = build_hueman_scene_intent_from_artifacts("presence", "physics");
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .expect("system time before unix epoch")
@@ -92,14 +89,11 @@ mod tests {
             .expect("hueman scene intent artifact should write");
 
         assert_eq!(
-            fs::read_to_string(&artifact_path)
-                .expect("hueman scene intent artifact should read"),
+            fs::read_to_string(&artifact_path).expect("hueman scene intent artifact should read"),
             hueman_scene_intent
         );
 
-        fs::remove_file(&artifact_path)
-            .expect("hueman scene intent artifact should be removable");
-        fs::remove_dir(&artifact_dir)
-            .expect("hueman scene intent directory should be removable");
+        fs::remove_file(&artifact_path).expect("hueman scene intent artifact should be removable");
+        fs::remove_dir(&artifact_dir).expect("hueman scene intent directory should be removable");
     }
 }

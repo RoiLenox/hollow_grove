@@ -2,16 +2,15 @@ use std::io;
 use std::path::Path;
 
 use hollow_grove::hueman_support::{
-    HUEMAN_ARCHETYPE_LENS_ARTIFACT_PATH, HUEMAN_CROSSOVER_SCENES_ARTIFACT_PATH,
     build_hueman_scene_presence_from_artifacts, hueman_scene_presence_artifact_path,
+    HUEMAN_ARCHETYPE_LENS_ARTIFACT_PATH, HUEMAN_CROSSOVER_SCENES_ARTIFACT_PATH,
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
 fn main() -> io::Result<()> {
     let hueman_crossover_scenes =
         read_text_artifact(Path::new(HUEMAN_CROSSOVER_SCENES_ARTIFACT_PATH))?;
-    let hueman_archetype_lens =
-        read_text_artifact(Path::new(HUEMAN_ARCHETYPE_LENS_ARTIFACT_PATH))?;
+    let hueman_archetype_lens = read_text_artifact(Path::new(HUEMAN_ARCHETYPE_LENS_ARTIFACT_PATH))?;
     let hueman_scene_presence = build_hueman_scene_presence_from_artifacts(
         &hueman_crossover_scenes,
         &hueman_archetype_lens,
@@ -82,8 +81,7 @@ mod tests {
 
     #[test]
     fn hueman_scene_presence_writes_a_deterministic_file() {
-        let hueman_scene_presence =
-            build_hueman_scene_presence_from_artifacts("scene", "lens");
+        let hueman_scene_presence = build_hueman_scene_presence_from_artifacts("scene", "lens");
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .expect("system time before unix epoch")
@@ -95,14 +93,12 @@ mod tests {
             .expect("hueman scene presence artifact should write");
 
         assert_eq!(
-            fs::read_to_string(&artifact_path)
-                .expect("hueman scene presence artifact should read"),
+            fs::read_to_string(&artifact_path).expect("hueman scene presence artifact should read"),
             hueman_scene_presence
         );
 
         fs::remove_file(&artifact_path)
             .expect("hueman scene presence artifact should be removable");
-        fs::remove_dir(&artifact_dir)
-            .expect("hueman scene presence directory should be removable");
+        fs::remove_dir(&artifact_dir).expect("hueman scene presence directory should be removable");
     }
 }
