@@ -2,6 +2,7 @@ pub mod artifact_io;
 pub mod aura_beam;
 pub mod current_seam;
 pub mod hollow_grove;
+pub mod hueman_support;
 pub mod kernel_pass;
 pub mod kernel_pass_output;
 pub mod point;
