@@ -1,0 +1,17 @@
+Hollow Grove status: one completed witnessed recursion
+
+Canonical witness:
+start Point
+↓
+Triway
+↓
+HollowGrove
+↓
+CurrentSeam
+↓
+AuraBeam
+↓
+landed Point
+
+Note: read-only desktop artifact
+Note: niri/river configs untouched

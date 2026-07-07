@@ -1,0 +1,14 @@
+{
+  "start": "Point",
+  "triway": {
+    "ways": ["One", "Two", "Three"]
+  },
+  "hollow_grove": {
+    "bond": "One",
+    "atmosphere": ["Two", "Three"]
+  },
+  "current_seam": "CurrentSeam",
+  "aura_beam": "AuraBeam",
+  "landed": "Point",
+  "canonical_witness": "start Point\n↓\nTriway\n↓\nHollowGrove\n↓\nCurrentSeam\n↓\nAuraBeam\n↓\nlanded Point"
+}
