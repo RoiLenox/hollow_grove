@@ -12,6 +12,7 @@ pub const HUEMAN_AURA_TRIAD_ARTIFACT_PATH: &str = "artifacts/hueman_aura_triad.m
 pub const HUEMAN_AURA_BEHAVIOR_ARTIFACT_PATH: &str = "artifacts/hueman_aura_behavior.md";
 pub const HUEMAN_ARCHETYPE_LENS_ARTIFACT_PATH: &str = "artifacts/hueman_archetype_lens.md";
 pub const HUEMAN_START_PATHS_ARTIFACT_PATH: &str = "artifacts/hueman_start_paths.md";
+pub const HUEMAN_PATH_CROSSOVERS_ARTIFACT_PATH: &str = "artifacts/hueman_path_crossovers.md";
 pub const HUEMAN_MOTION_MAP_ARTIFACT_PATH: &str = "artifacts/hueman_motion_map.md";
 pub const HUEMAN_START_CHOICES_ARTIFACT_PATH: &str = "artifacts/hueman_start_choices.md";
 
@@ -41,6 +42,10 @@ pub fn hueman_archetype_lens_artifact_path() -> PathBuf {
 
 pub fn hueman_start_paths_artifact_path() -> PathBuf {
     PathBuf::from(HUEMAN_START_PATHS_ARTIFACT_PATH)
+}
+
+pub fn hueman_path_crossovers_artifact_path() -> PathBuf {
+    PathBuf::from(HUEMAN_PATH_CROSSOVERS_ARTIFACT_PATH)
 }
 
 pub fn hueman_start_choices_artifact_path() -> PathBuf {
@@ -407,6 +412,48 @@ pub fn build_hueman_start_paths_from_artifacts(
     )
 }
 
+pub fn build_hueman_path_crossovers_from_artifacts(
+    hueman_start_paths: &str,
+    hueman_aura_behavior: &str,
+) -> String {
+    format!(
+        "# Hueman Path Crossovers\n\n\
+         ## Structural Rule\n\n\
+         Different starts may enter AuraTriad differently while still crossing through shared regions and shared world pressure.\n\n\
+         ## Shared Entry Crossovers\n\n\
+         - Glaushouse and Sandmanor cross immediately at Aura Beach.\n\
+         - Flynt and Stonebend do not share first entry, but they both begin inland before reaching the coast.\n\n\
+         ## Interior Crossovers\n\n\
+         - Flynt and Sandmanor cross at Aura Basin.\n\
+         - Stonebend and Glaushouse cross at Aura Fields.\n\
+         - Stonebend and Sandmanor cross at Aura Basin after different openings.\n\n\
+         ## Full-Triad Convergence\n\n\
+         - all four starts eventually touch Aura Basin\n\
+         - all four starts eventually touch Aura Fields\n\
+         - all four starts eventually touch Aura Beach\n\
+         - the difference is order, not exclusion\n\n\
+         ## Meaning\n\n\
+         - crossover means the world can feel shared without erasing start identity\n\
+         - shared regions carry different descriptive pressure depending on entry order\n\
+         - the coast is the earliest common threshold for the western and southern starts\n\
+         - inland turns remain the main crossover pressure for the northern and eastern starts\n\n\
+         ## Status\n\n\
+         - crossovers are descriptive-only for now\n\
+         - no meeting mechanics or shared events are active\n\
+         - start-path order remains unchanged\n\
+         - archetype lens remains interpretive above the crossover map\n\
+         - no feedback into Current Synthesis\n\
+         - no feedback into Hollow Grove\n\n\
+         ## Artifact Inputs\n\n\
+         Hueman Start Paths bytes: {}.\n\
+         Hueman Aura Behavior bytes: {}.\n\n\
+         ## Boundary Reminder\n\n\
+         Path crossovers declare where starts can meaningfully overlap in AuraTriad. They do not create procedural encounters or alter lower-layer routing.\n",
+        hueman_start_paths.len(),
+        hueman_aura_behavior.len()
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::{
@@ -415,6 +462,7 @@ mod tests {
         build_hueman_aura_triad_from_artifacts,
         build_hueman_boundary_from_artifacts, build_hueman_fourway_from_artifacts,
         build_hueman_motion_map_from_artifacts,
+        build_hueman_path_crossovers_from_artifacts,
         build_hueman_start_paths_from_artifacts,
         build_hueman_start_choices_from_artifacts,
     };
@@ -752,6 +800,45 @@ mod tests {
              Hueman Archetype Lens bytes: 4.\n\n\
              ## Boundary Reminder\n\n\
              Start paths declare which AuraTriad region a start naturally enters first. They do not add movement rules or alter lower-layer topology.\n"
+        );
+    }
+
+    #[test]
+    fn hueman_path_crossovers_builder_is_deterministic() {
+        assert_eq!(
+            build_hueman_path_crossovers_from_artifacts("paths", "aura"),
+            "# Hueman Path Crossovers\n\n\
+             ## Structural Rule\n\n\
+             Different starts may enter AuraTriad differently while still crossing through shared regions and shared world pressure.\n\n\
+             ## Shared Entry Crossovers\n\n\
+             - Glaushouse and Sandmanor cross immediately at Aura Beach.\n\
+             - Flynt and Stonebend do not share first entry, but they both begin inland before reaching the coast.\n\n\
+             ## Interior Crossovers\n\n\
+             - Flynt and Sandmanor cross at Aura Basin.\n\
+             - Stonebend and Glaushouse cross at Aura Fields.\n\
+             - Stonebend and Sandmanor cross at Aura Basin after different openings.\n\n\
+             ## Full-Triad Convergence\n\n\
+             - all four starts eventually touch Aura Basin\n\
+             - all four starts eventually touch Aura Fields\n\
+             - all four starts eventually touch Aura Beach\n\
+             - the difference is order, not exclusion\n\n\
+             ## Meaning\n\n\
+             - crossover means the world can feel shared without erasing start identity\n\
+             - shared regions carry different descriptive pressure depending on entry order\n\
+             - the coast is the earliest common threshold for the western and southern starts\n\
+             - inland turns remain the main crossover pressure for the northern and eastern starts\n\n\
+             ## Status\n\n\
+             - crossovers are descriptive-only for now\n\
+             - no meeting mechanics or shared events are active\n\
+             - start-path order remains unchanged\n\
+             - archetype lens remains interpretive above the crossover map\n\
+             - no feedback into Current Synthesis\n\
+             - no feedback into Hollow Grove\n\n\
+             ## Artifact Inputs\n\n\
+             Hueman Start Paths bytes: 5.\n\
+             Hueman Aura Behavior bytes: 4.\n\n\
+             ## Boundary Reminder\n\n\
+             Path crossovers declare where starts can meaningfully overlap in AuraTriad. They do not create procedural encounters or alter lower-layer routing.\n"
         );
     }
 }
