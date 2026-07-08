@@ -48,7 +48,7 @@ Aura Beach
 
 ## Artifact Inputs
 
-Hueman AuraTriad bytes: 1142.
+Hueman AuraTriad bytes: 1143.
 Hueman Start Choices bytes: 1041.
 
 ## Boundary Reminder

@@ -51,7 +51,7 @@ Hollow Grove
 
 ## Artifact Inputs
 
-Hueman boundary bytes: 1145.
+Hueman boundary bytes: 1265.
 Hueman motion map bytes: 853.
 
 ## Boundary Reminder

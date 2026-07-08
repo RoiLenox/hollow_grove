@@ -9,8 +9,7 @@ use hollow_grove::{read_text_artifact, write_text_artifact};
 
 fn main() -> io::Result<()> {
     let hueman_aura_triad = read_text_artifact(Path::new(HUEMAN_AURA_TRIAD_ARTIFACT_PATH))?;
-    let hueman_start_choices =
-        read_text_artifact(Path::new(HUEMAN_START_CHOICES_ARTIFACT_PATH))?;
+    let hueman_start_choices = read_text_artifact(Path::new(HUEMAN_START_CHOICES_ARTIFACT_PATH))?;
     let hueman_aura_behavior =
         build_hueman_aura_behavior_from_artifacts(&hueman_aura_triad, &hueman_start_choices);
     let artifact_path = hueman_aura_behavior_artifact_path();
@@ -89,14 +88,11 @@ mod tests {
             .expect("hueman aura behavior artifact should write");
 
         assert_eq!(
-            fs::read_to_string(&artifact_path)
-                .expect("hueman aura behavior artifact should read"),
+            fs::read_to_string(&artifact_path).expect("hueman aura behavior artifact should read"),
             hueman_aura_behavior
         );
 
-        fs::remove_file(&artifact_path)
-            .expect("hueman aura behavior artifact should be removable");
-        fs::remove_dir(&artifact_dir)
-            .expect("hueman aura behavior directory should be removable");
+        fs::remove_file(&artifact_path).expect("hueman aura behavior artifact should be removable");
+        fs::remove_dir(&artifact_dir).expect("hueman aura behavior directory should be removable");
     }
 }

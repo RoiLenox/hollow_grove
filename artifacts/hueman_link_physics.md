@@ -10,6 +10,15 @@ Links that do not get bonded may later resolve into `current` or `aura` accordin
 - unbonded links remain available as unresolved world material
 - unresolved material is not empty; it carries later directional bias
 
+## Arm Weight Reading
+
+- each `META` letter and its `PLEB` counterpart carry three arms across the same joint
+- one arm per side bonds into the selected link while the remaining arm weight stays unresolved
+- retained heavier continuity pressure tends to read as `current`
+- lighter exposed spill tends to read as `aura`
+- Hueman reads that unresolved weight upward as `current` or `aura` while Hollow Grove keeps the same event as the lower witness simultaneously
+- simultaneous reading does not grant Hueman authority to rewrite the kernel witness
+
 ## Current Bias Physics
 
 - continuity pressure favors `current`
@@ -24,11 +33,19 @@ Links that do not get bonded may later resolve into `current` or `aura` accordin
 - atmospheric spill favors `aura`
 - edge drift favors `aura`
 
+## Element Names
+
+- `current` may also be called Bathos or dark water.
+- `current` appears as dark current or hollow current.
+- `aura` may also be called Aether or air.
+- `aura` appears as reflective aura or holographic aura.
+
 ## Crossover Reading
 
 - shared starts can touch the same unresolved material with different bias
 - the same region may feel more `current` from one route and more `aura` from another
 - crossover zones are where the physics split becomes most visible in Hueman
+- Aura Ridge trade legs keep exchange visible on straight lines while unresolved bias still moves beneath them
 
 ## Status
 
@@ -40,8 +57,8 @@ Links that do not get bonded may later resolve into `current` or `aura` accordin
 
 ## Artifact Inputs
 
-Current Synthesis sequence bytes: 1065.
-Hueman Path Crossovers bytes: 1618.
+Current Synthesis sequence bytes: 1458.
+Hueman Path Crossovers bytes: 1971.
 
 ## Boundary Reminder
 

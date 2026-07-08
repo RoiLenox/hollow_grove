@@ -2,8 +2,8 @@ use std::io;
 use std::path::Path;
 
 use hollow_grove::hueman_support::{
-    build_hueman_scene_drift_from_artifacts, hueman_scene_drift_artifact_path,
     HUEMAN_LINK_PHYSICS_ARTIFACT_PATH, HUEMAN_SCENE_INTENT_ARTIFACT_PATH,
+    build_hueman_scene_drift_from_artifacts, hueman_scene_drift_artifact_path,
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 

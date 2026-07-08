@@ -44,8 +44,8 @@ Scene intent can drift into a different scene type when bias pressure persists o
 
 ## Artifact Inputs
 
-Hueman Scene Intent bytes: 1468.
-Hueman Link Physics bytes: 1442.
+Hueman Scene Intent bytes: 5301.
+Hueman Link Physics bytes: 2330.
 
 ## Boundary Reminder
 

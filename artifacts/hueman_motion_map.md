@@ -31,8 +31,8 @@
 
 ## Artifact Inputs
 
-Hueman boundary bytes: 1145.
-Current Synthesis operational bytes: 801.
+Hueman boundary bytes: 1265.
+Current Synthesis operational bytes: 802.
 
 ## Boundary Reminder
 

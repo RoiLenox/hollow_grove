@@ -18,6 +18,13 @@ After start choice and AuraTriad behavior are declared, each archetype reads the
 - Aura Fields reads as barter space, friction lines, and noisy crossings
 - Aura Beach reads as scrap edge, discard flow, and threshold apparatus
 
+## Stonebend Civic Reading
+
+- Stonebend carries Proliteriate, Hypergiant, and Freemason as an equal-power triad
+- Hypergiant is the public face seen first from outside the structure
+- gremlin reading notices equal leverage behind the public face rather than a single ruler
+- civic order stays vertically integrated with the Fourway start instead of floating above it abstractly
+
 ### `pixy`
 
 - Aura Basin reads as hush, glow, and suspended potential
@@ -29,6 +36,13 @@ After start choice and AuraTriad behavior are declared, each archetype reads the
 - Aura Basin reads as root echo, sleep, and soft enclosure
 - Aura Fields reads as current, sway, and open circulation
 - Aura Beach reads as horizon pull, release, and farward motion
+
+## Sandmanor Competitive Reading
+
+- Minoans make the sprite reading notice tuned interiors, cadence, and room-song pressure.
+- Minorians make the sprite reading notice tallies, balance sheets, and public proof.
+- the Sandman contest makes improvement itself visible as the basis of rule.
+- Sandmanor keeps its canonical western place even when relational viewpoints read it from another side.
 
 ## Status
 
@@ -43,6 +57,8 @@ After start choice and AuraTriad behavior are declared, each archetype reads the
 
 Hueman Start Choices bytes: 1041.
 Hueman Aura Behavior bytes: 1354.
+Hueman Stonebend Roles bytes: 1510.
+Hueman Sandmanor Roles bytes: 2093.
 
 ## Boundary Reminder
 

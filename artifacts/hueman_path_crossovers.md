@@ -15,6 +15,13 @@ Different starts may enter AuraTriad differently while still crossing through sh
 - Stonebend and Glaushouse cross at Aura Fields.
 - Stonebend and Sandmanor cross at Aura Basin after different openings.
 
+## Aura Ridge Trade Legs
+
+- free trade follows the straight Aura Ridge rather than the underground inverse circle.
+- Stonebend and Glaushouse hold a declared straight trade leg along the ridge.
+- Glaushouse and Sandmanor hold a declared straight trade leg along the ridge.
+- Glaushouse acts as the visible hinge where the right-angle trade body turns.
+
 ## Full-Triad Convergence
 
 - all four starts eventually touch Aura Basin

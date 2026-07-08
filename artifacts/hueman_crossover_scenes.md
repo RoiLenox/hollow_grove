@@ -11,6 +11,7 @@ When `current`-biased and `aura`-biased unresolved links appear at the same cros
 - appears where `current` continuity and `aura` spill remain in balance
 - feels like trade, rumor, salvage, and temporary arrangement
 - fits shared Aura Fields crossings best
+- commonly appears along the Stonebend -> Glaushouse Aura Ridge leg
 
 ### Threshold Weather
 
@@ -48,8 +49,8 @@ When `current`-biased and `aura`-biased unresolved links appear at the same cros
 
 ## Artifact Inputs
 
-Hueman Path Crossovers bytes: 1618.
-Hueman Link Physics bytes: 1442.
+Hueman Path Crossovers bytes: 1971.
+Hueman Link Physics bytes: 2330.
 
 ## Boundary Reminder
 

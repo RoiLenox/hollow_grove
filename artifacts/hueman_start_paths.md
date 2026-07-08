@@ -30,7 +30,7 @@ Each Fourway start enters AuraTriad through a first descriptive region before an
 ## Artifact Inputs
 
 Hueman Start Choices bytes: 1041.
-Hueman Archetype Lens bytes: 1542.
+Hueman Archetype Lens bytes: 2387.
 
 ## Boundary Reminder
 

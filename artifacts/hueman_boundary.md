@@ -26,12 +26,10 @@ Hueman
 - Hueman moves the character sprite through the same locked field.
 - Human Core remains the operator anchor.
 
-## Deferred World Logic
+## Declared World Surface
 
-- Stonebend is deferred.
-- Sandmanor is deferred.
-- Glaushouse is deferred.
-- Flynt is deferred.
+- Flynt, Stonebend, Glaushouse, and Sandmanor are declared as Hueman-facing world anchors.
+- civic roles, helper lines, kingdom roles, scene reading, and procedural uplift may be described above Current Synthesis.
 - species logic is deferred.
 - no feedback into Current Synthesis
 - no feedback into Hollow Grove
@@ -45,7 +43,7 @@ Hueman
 
 ## Artifact Inputs
 
-Current Synthesis base bytes: 802.
+Current Synthesis base bytes: 1189.
 Current Synthesis activation gate bytes: 828.
 
 ## Boundary Reminder

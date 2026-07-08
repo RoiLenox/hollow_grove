@@ -2,8 +2,8 @@ use std::io;
 use std::path::Path;
 
 use hollow_grove::hueman_support::{
-    build_hueman_crossover_scenes_from_artifacts, hueman_crossover_scenes_artifact_path,
     HUEMAN_LINK_PHYSICS_ARTIFACT_PATH, HUEMAN_PATH_CROSSOVERS_ARTIFACT_PATH,
+    build_hueman_crossover_scenes_from_artifacts, hueman_crossover_scenes_artifact_path,
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
@@ -40,7 +40,8 @@ mod tests {
              ### Seam Market\n\n\
              - appears where `current` continuity and `aura` spill remain in balance\n\
              - feels like trade, rumor, salvage, and temporary arrangement\n\
-             - fits shared Aura Fields crossings best\n\n\
+             - fits shared Aura Fields crossings best\n\
+             - commonly appears along the Stonebend -> Glaushouse Aura Ridge leg\n\n\
              ### Threshold Weather\n\n\
              - appears where `aura` exposure outruns `current` continuity\n\
              - feels like spray, drift, shimmer, and unstable edges\n\

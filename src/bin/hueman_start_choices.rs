@@ -72,8 +72,7 @@ mod tests {
 
     #[test]
     fn hueman_start_choices_writes_a_deterministic_file() {
-        let hueman_start_choices =
-            build_hueman_start_choices_from_artifacts("fourway", "triad");
+        let hueman_start_choices = build_hueman_start_choices_from_artifacts("fourway", "triad");
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .expect("system time before unix epoch")
@@ -85,14 +84,11 @@ mod tests {
             .expect("hueman start choices artifact should write");
 
         assert_eq!(
-            fs::read_to_string(&artifact_path)
-                .expect("hueman start choices artifact should read"),
+            fs::read_to_string(&artifact_path).expect("hueman start choices artifact should read"),
             hueman_start_choices
         );
 
-        fs::remove_file(&artifact_path)
-            .expect("hueman start choices artifact should be removable");
-        fs::remove_dir(&artifact_dir)
-            .expect("hueman start choices directory should be removable");
+        fs::remove_file(&artifact_path).expect("hueman start choices artifact should be removable");
+        fs::remove_dir(&artifact_dir).expect("hueman start choices directory should be removable");
     }
 }

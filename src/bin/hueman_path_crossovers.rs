@@ -9,8 +9,7 @@ use hollow_grove::{read_text_artifact, write_text_artifact};
 
 fn main() -> io::Result<()> {
     let hueman_start_paths = read_text_artifact(Path::new(HUEMAN_START_PATHS_ARTIFACT_PATH))?;
-    let hueman_aura_behavior =
-        read_text_artifact(Path::new(HUEMAN_AURA_BEHAVIOR_ARTIFACT_PATH))?;
+    let hueman_aura_behavior = read_text_artifact(Path::new(HUEMAN_AURA_BEHAVIOR_ARTIFACT_PATH))?;
     let hueman_path_crossovers =
         build_hueman_path_crossovers_from_artifacts(&hueman_start_paths, &hueman_aura_behavior);
     let artifact_path = hueman_path_crossovers_artifact_path();
@@ -43,6 +42,11 @@ mod tests {
              - Flynt and Sandmanor cross at Aura Basin.\n\
              - Stonebend and Glaushouse cross at Aura Fields.\n\
              - Stonebend and Sandmanor cross at Aura Basin after different openings.\n\n\
+             ## Aura Ridge Trade Legs\n\n\
+             - free trade follows the straight Aura Ridge rather than the underground inverse circle.\n\
+             - Stonebend and Glaushouse hold a declared straight trade leg along the ridge.\n\
+             - Glaushouse and Sandmanor hold a declared straight trade leg along the ridge.\n\
+             - Glaushouse acts as the visible hinge where the right-angle trade body turns.\n\n\
              ## Full-Triad Convergence\n\n\
              - all four starts eventually touch Aura Basin\n\
              - all four starts eventually touch Aura Fields\n\
@@ -70,14 +74,12 @@ mod tests {
 
     #[test]
     fn hueman_path_crossovers_writes_a_deterministic_file() {
-        let hueman_path_crossovers =
-            build_hueman_path_crossovers_from_artifacts("paths", "aura");
+        let hueman_path_crossovers = build_hueman_path_crossovers_from_artifacts("paths", "aura");
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .expect("system time before unix epoch")
             .as_nanos();
-        let artifact_dir =
-            std::env::temp_dir().join(format!("hueman-path-crossovers-{nonce}"));
+        let artifact_dir = std::env::temp_dir().join(format!("hueman-path-crossovers-{nonce}"));
         let artifact_path = artifact_dir.join("hueman_path_crossovers.md");
 
         write_text_artifact(&artifact_path, &hueman_path_crossovers)

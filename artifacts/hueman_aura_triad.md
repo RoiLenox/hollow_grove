@@ -51,7 +51,7 @@ Aura Beach
 ## Artifact Inputs
 
 Hueman Fourway bytes: 1086.
-Current Synthesis topology bytes: 911.
+Current Synthesis topology bytes: 1145.
 
 ## Boundary Reminder
 

@@ -11,10 +11,8 @@ fn main() -> io::Result<()> {
     let hueman_boundary = read_text_artifact(Path::new(HUEMAN_BOUNDARY_ARTIFACT_PATH))?;
     let current_synthesis_operational =
         read_text_artifact(Path::new(CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH))?;
-    let hueman_motion_map = build_hueman_motion_map_from_artifacts(
-        &hueman_boundary,
-        &current_synthesis_operational,
-    );
+    let hueman_motion_map =
+        build_hueman_motion_map_from_artifacts(&hueman_boundary, &current_synthesis_operational);
     let artifact_path = hueman_motion_map_artifact_path();
 
     write_text_artifact(&artifact_path, &hueman_motion_map)?;
