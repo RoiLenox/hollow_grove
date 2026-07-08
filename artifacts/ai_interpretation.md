@@ -3,24 +3,24 @@
 ## Canonical Witness
 
 ```text
-start Point
+start Symptom 1
 ↓
 Triway
 ↓
 HollowGrove
 ↓
-CurrentSeam
+GroveSeam
 ↓
-AuraBeam
+HollowBeam
 ↓
-landed Point
+landed Symptom 2
 ```
 
 ## AI Interpretation
 
-This witnessed pass presents one deterministic completion from `Point` back to `Point` through a fixed sequence of intermediate stages. The pass reads as a bounded transformation rather than an open process: one origin enters, one recursion is witnessed, and one landing is produced.
+This witnessed pass presents one deterministic completion from `Symptom 1` to `Symptom 2` through a fixed sequence of intermediate stages. The pass reads as a bounded transformation rather than an open process: one origin enters, one recursion is witnessed, and one landing is produced.
 
-The visible pattern is narrowing and return. `Triway` opens one point into three ways, `HollowGrove` resolves one bonded way while two remain as atmosphere, and the path then continues through `CurrentSeam` and `AuraBeam` before landing again as `Point`. Interpreted from the artifact layer only, the inverse-path implication is that the end use should be understood by tracing the landed result back through a constrained passage rather than by inventing new stages or assuming ongoing evolution.
+The visible pattern is narrowing and return. `Triway` opens one symptom into three ways, `HollowGrove` resolves one bonded way while two remain as atmosphere, and the path then continues through `GroveSeam` and `HollowBeam` before landing as `Symptom 2`. The deeper anchor remains the point carried within the symptom rather than a separate visible stage. Within Hueman, this same achieved location may be read as `Aura Beam`, but the underlying Hollow Grove layer remains `HollowBeam`. Interpreted from the artifact layer only, the inverse-path implication is that the end use should be understood by tracing the landed result back through a constrained passage rather than by inventing new stages or assuming ongoing evolution.
 
 Because the artifact records one completed pass only, the interpretation should stay local to this witness. It supports explanation, pattern recognition, and external reflection, but it does not justify claims about history, replay, recurrence, or accumulated state.
 

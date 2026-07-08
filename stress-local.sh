@@ -4,7 +4,7 @@ set -euo pipefail
 
 cd /home/warren/hollow-grove
 
-CANONICAL_WITNESS=$'start Point\n↓\nTriway\n↓\nHollowGrove\n↓\nCurrentSeam\n↓\nAuraBeam\n↓\nlanded Point'
+CANONICAL_WITNESS=$'start Symptom 1\n↓\nTriway\n↓\nHollowGrove\n↓\nGroveSeam\n↓\nHollowBeam\n↓\nlanded Symptom 2'
 BINARY="target/release/hollow-grove"
 
 run_level() {

@@ -3,17 +3,17 @@
 ## Canonical Witness
 
 ```text
-start Point
+start Symptom 1
 ↓
 Triway
 ↓
 HollowGrove
 ↓
-CurrentSeam
+GroveSeam
 ↓
-AuraBeam
+HollowBeam
 ↓
-landed Point
+landed Symptom 2
 ```
 
 ## Structured Snapshot Reference
