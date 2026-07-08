@@ -5,8 +5,8 @@ use std::path::{Path, PathBuf};
 mod current_synthesis_support;
 
 use current_synthesis_support::{
-    CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_READINESS_ARTIFACT_PATH, CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH, CURRENT_SYNTHESIS_READINESS_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH,
     build_current_synthesis_activation_gate_from_artifacts, read_artifact, write_artifact,
 };
 
@@ -15,8 +15,9 @@ fn artifact_path() -> PathBuf {
 }
 
 fn main() -> io::Result<()> {
-    let current_synthesis_transition_pm_to_le =
-        read_artifact(Path::new(CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH))?;
+    let current_synthesis_transition_pm_to_le = read_artifact(Path::new(
+        CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH,
+    ))?;
     let current_synthesis_readiness =
         read_artifact(Path::new(CURRENT_SYNTHESIS_READINESS_ARTIFACT_PATH))?;
     let current_synthesis_activation_gate = build_current_synthesis_activation_gate_from_artifacts(

@@ -58,6 +58,11 @@ mod tests {
              HAL remains aligned with `META`.\n\n\
              Clouseau remains aligned with `PLEB`.\n\n\
              The chosen side and the complementary side remain distinct without execution.\n\n\
+             ## Mirror Axis\n\n\
+             - if the user is read through HAL on `META`, Clouseau remains the opposite `PLEB` witness\n\
+             - if the user is read through Clouseau on `PLEB`, HAL remains the opposite `META` witness\n\
+             - the user-facing side and the opposing side stay mirrored across one axis\n\
+             - the axis may not collapse both clients into one side\n\n\
              ## Contract Status\n\n\
              - no traversal\n\
              - no movement\n\

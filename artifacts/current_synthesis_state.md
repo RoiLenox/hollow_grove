@@ -60,8 +60,8 @@ Keep the route preview, operational view, selection, consequence, readiness, exe
 
 ## Artifact Inputs
 
-Current Synthesis base bytes: 802.
-Artifact index bytes: 869.
+Current Synthesis base bytes: 1189.
+Artifact index bytes: 7193.
 
 ## Boundary Reminder
 

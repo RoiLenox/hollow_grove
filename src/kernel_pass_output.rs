@@ -1,4 +1,4 @@
-use crate::{KernelPass, Way};
+use crate::{KernelPass, LANDED_WITNESS_LABEL, START_WITNESS_LABEL, Way};
 
 pub const SNAPSHOT_ARTIFACT_PATH: &str = "artifacts/kernel_pass_snapshot.json";
 pub const PROMPT_ARTIFACT_PATH: &str = "artifacts/consumer_prompt.md";
@@ -28,7 +28,7 @@ pub fn build_snapshot_output(kernel_pass: &KernelPass) -> String {
 
     format!(
         "{{\n\
-         \x20\x20\"start\": \"{:?}\",\n\
+         \x20\x20\"start\": \"{}\",\n\
          \x20\x20\"triway\": {{\n\
          \x20\x20\x20\x20\"ways\": [\"{}\", \"{}\", \"{}\"]\n\
          \x20\x20}},\n\
@@ -36,19 +36,19 @@ pub fn build_snapshot_output(kernel_pass: &KernelPass) -> String {
          \x20\x20\x20\x20\"bond\": \"{}\",\n\
          \x20\x20\x20\x20\"atmosphere\": [\"{}\", \"{}\"]\n\
          \x20\x20}},\n\
-         \x20\x20\"current_seam\": \"CurrentSeam\",\n\
-         \x20\x20\"aura_beam\": \"AuraBeam\",\n\
-         \x20\x20\"landed\": \"{:?}\",\n\
+         \x20\x20\"grove_seam\": \"GroveSeam\",\n\
+         \x20\x20\"hollow_beam\": \"HollowBeam\",\n\
+         \x20\x20\"landed\": \"{}\",\n\
          \x20\x20\"canonical_witness\": \"{}\"\n\
          }}",
-        kernel_pass.start_point(),
+        START_WITNESS_LABEL,
         way_name(way_one),
         way_name(way_two),
         way_name(way_three),
         way_name(hollow_grove.link()),
         way_name(atmosphere_one),
         way_name(atmosphere_two),
-        kernel_pass.landed_point(),
+        LANDED_WITNESS_LABEL,
         escaped_canonical_witness(kernel_pass)
     )
 }
@@ -90,23 +90,23 @@ pub fn build_tree_output(kernel_pass: &KernelPass) -> String {
 
     format!(
         "KernelPass\n\
-         ├─ start: {:?}\n\
+         ├─ start: {}\n\
          ├─ triway\n\
          │  ├─ ways: [{}, {}, {}]\n\
          ├─ hollow_grove\n\
          │  ├─ bond: {}\n\
          │  └─ atmosphere: [{}, {}]\n\
-         ├─ current_seam: CurrentSeam\n\
-         ├─ aura_beam: AuraBeam\n\
-         └─ landed: {:?}",
-        kernel_pass.start_point(),
+         ├─ grove_seam: GroveSeam\n\
+         ├─ hollow_beam: HollowBeam\n\
+         └─ landed: {}",
+        START_WITNESS_LABEL,
         way_name(way_one),
         way_name(way_two),
         way_name(way_three),
         way_name(hollow_grove.link()),
         way_name(atmosphere_one),
         way_name(atmosphere_two),
-        kernel_pass.landed_point()
+        LANDED_WITNESS_LABEL
     )
 }
 
@@ -116,24 +116,21 @@ pub fn build_inverse_path_prompt(witness: &str) -> String {
 
 #[cfg(test)]
 mod tests {
-    use crate::{Point, run_kernel_cycle};
+    use crate::{CANONICAL_WITNESS, Symptom, run_kernel_cycle};
 
     use super::{
         build_desktop_status_output, build_inverse_path_prompt, build_prompt_artifact_output,
         build_snapshot_output, build_tree_output,
     };
 
-    const CANONICAL_WITNESS: &str =
-        "start Point\n↓\nTriway\n↓\nHollowGrove\n↓\nCurrentSeam\n↓\nAuraBeam\n↓\nlanded Point";
-
     #[test]
     fn snapshot_output_remains_canonical() {
-        let kernel_pass = run_kernel_cycle(Point);
+        let kernel_pass = run_kernel_cycle(Symptom::origin());
 
         assert_eq!(
             build_snapshot_output(&kernel_pass),
             "{\n\
-             \x20\x20\"start\": \"Point\",\n\
+             \x20\x20\"start\": \"Symptom 1\",\n\
              \x20\x20\"triway\": {\n\
              \x20\x20\x20\x20\"ways\": [\"One\", \"Two\", \"Three\"]\n\
              \x20\x20},\n\
@@ -141,34 +138,34 @@ mod tests {
              \x20\x20\x20\x20\"bond\": \"One\",\n\
              \x20\x20\x20\x20\"atmosphere\": [\"Two\", \"Three\"]\n\
              \x20\x20},\n\
-             \x20\x20\"current_seam\": \"CurrentSeam\",\n\
-             \x20\x20\"aura_beam\": \"AuraBeam\",\n\
-             \x20\x20\"landed\": \"Point\",\n\
-             \x20\x20\"canonical_witness\": \"start Point\\n↓\\nTriway\\n↓\\nHollowGrove\\n↓\\nCurrentSeam\\n↓\\nAuraBeam\\n↓\\nlanded Point\"\n\
+             \x20\x20\"grove_seam\": \"GroveSeam\",\n\
+             \x20\x20\"hollow_beam\": \"HollowBeam\",\n\
+             \x20\x20\"landed\": \"Symptom 2\",\n\
+             \x20\x20\"canonical_witness\": \"start Symptom 1\\n↓\\nTriway\\n↓\\nHollowGrove\\n↓\\nGroveSeam\\n↓\\nHollowBeam\\n↓\\nlanded Symptom 2\"\n\
              }"
         );
     }
 
     #[test]
     fn prompt_artifact_output_remains_canonical() {
-        let kernel_pass = run_kernel_cycle(Point);
+        let kernel_pass = run_kernel_cycle(Symptom::origin());
 
         assert_eq!(
             build_prompt_artifact_output(&kernel_pass),
             "# Consumer Prompt\n\n\
              ## Canonical Witness\n\n\
              ```text\n\
-             start Point\n\
+             start Symptom 1\n\
              ↓\n\
              Triway\n\
              ↓\n\
              HollowGrove\n\
              ↓\n\
-             CurrentSeam\n\
+             GroveSeam\n\
              ↓\n\
-             AuraBeam\n\
+             HollowBeam\n\
              ↓\n\
-             landed Point\n\
+             landed Symptom 2\n\
              ```\n\n\
              ## Structured Snapshot Reference\n\n\
              `artifacts/kernel_pass_snapshot.json`\n\n\
@@ -181,23 +178,23 @@ mod tests {
 
     #[test]
     fn desktop_status_output_remains_canonical() {
-        let kernel_pass = run_kernel_cycle(Point);
+        let kernel_pass = run_kernel_cycle(Symptom::origin());
 
         assert_eq!(
             build_desktop_status_output(&kernel_pass),
             "Hollow Grove status: one completed witnessed recursion\n\n\
              Canonical witness:\n\
-             start Point\n\
+             start Symptom 1\n\
              ↓\n\
              Triway\n\
              ↓\n\
              HollowGrove\n\
              ↓\n\
-             CurrentSeam\n\
+             GroveSeam\n\
              ↓\n\
-             AuraBeam\n\
+             HollowBeam\n\
              ↓\n\
-             landed Point\n\n\
+             landed Symptom 2\n\n\
              Note: read-only desktop artifact\n\
              Note: niri/river configs untouched\n"
         );
@@ -205,20 +202,20 @@ mod tests {
 
     #[test]
     fn tree_output_remains_canonical() {
-        let kernel_pass = run_kernel_cycle(Point);
+        let kernel_pass = run_kernel_cycle(Symptom::origin());
 
         assert_eq!(
             build_tree_output(&kernel_pass),
             "KernelPass\n\
-             ├─ start: Point\n\
+             ├─ start: Symptom 1\n\
              ├─ triway\n\
              │  ├─ ways: [One, Two, Three]\n\
              ├─ hollow_grove\n\
              │  ├─ bond: One\n\
              │  └─ atmosphere: [Two, Three]\n\
-             ├─ current_seam: CurrentSeam\n\
-             ├─ aura_beam: AuraBeam\n\
-             └─ landed: Point"
+             ├─ grove_seam: GroveSeam\n\
+             ├─ hollow_beam: HollowBeam\n\
+             └─ landed: Symptom 2"
         );
     }
 

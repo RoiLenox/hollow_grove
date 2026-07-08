@@ -7,7 +7,7 @@ mod current_synthesis_support;
 use current_synthesis_support::{
     ARTIFACT_INDEX_PATH, CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH,
     CURRENT_SYNTHESIS_STATE_ARTIFACT_PATH, build_current_synthesis_state_from_artifacts,
-    read_artifact, write_artifact,
+    ensure_artifact_index, read_artifact, write_artifact,
 };
 
 fn artifact_path() -> PathBuf {
@@ -16,6 +16,7 @@ fn artifact_path() -> PathBuf {
 
 fn main() -> io::Result<()> {
     let current_synthesis_base = read_artifact(Path::new(CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH))?;
+    ensure_artifact_index(Path::new(ARTIFACT_INDEX_PATH))?;
     let artifact_index = read_artifact(Path::new(ARTIFACT_INDEX_PATH))?;
     let current_synthesis_state =
         build_current_synthesis_state_from_artifacts(&current_synthesis_base, &artifact_index);

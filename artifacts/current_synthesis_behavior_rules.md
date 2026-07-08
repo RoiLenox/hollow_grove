@@ -32,6 +32,13 @@
 - Clouseau may interpret only within explicit Current Synthesis permissions
 - Clouseau never controls route execution
 
+## Rule 7: Mirror Axis
+
+- HAL and Clouseau remain opposite clients across one axis
+- if the user is read through HAL on `META`, Clouseau remains the opposite `PLEB` witness
+- if the user is read through Clouseau on `PLEB`, HAL remains the opposite `META` witness
+- no rule may collapse both clients into one side
+
 ## Activation Status
 
 - rules defined

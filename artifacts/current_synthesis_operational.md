@@ -24,8 +24,8 @@
 
 ## Artifact Inputs
 
-Current Synthesis preview bytes: 572.
-Current Synthesis contract bytes: 678.
+Current Synthesis preview bytes: 573.
+Current Synthesis contract bytes: 1005.
 
 ## Boundary Reminder
 

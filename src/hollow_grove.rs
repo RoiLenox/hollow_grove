@@ -1,5 +1,5 @@
-use crate::current_seam::CurrentSeam;
-use crate::point::Point;
+use crate::grove_seam::GroveSeam;
+use crate::symptom::Symptom;
 use crate::triway::{Triway, Way};
 
 #[derive(Debug, Clone, Copy)]
@@ -21,7 +21,7 @@ impl Bond {
 
 #[derive(Debug, Clone)]
 pub struct HollowGrove {
-    source: Point,
+    source: Symptom,
     bond: Bond,
     atmosphere: [Way; 2],
 }
@@ -48,7 +48,7 @@ impl HollowGrove {
         self.atmosphere
     }
 
-    pub fn become_current_seam(self) -> CurrentSeam {
-        CurrentSeam::from_point(self.source)
+    pub fn become_grove_seam(self) -> GroveSeam {
+        GroveSeam::from_symptom(self.source)
     }
 }

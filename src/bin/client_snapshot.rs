@@ -2,7 +2,7 @@ use std::io;
 use std::path::{Path, PathBuf};
 
 use hollow_grove::{
-    KernelPass, Point, SNAPSHOT_ARTIFACT_PATH, build_snapshot_output, run_kernel_cycle,
+    KernelPass, SNAPSHOT_ARTIFACT_PATH, Symptom, build_snapshot_output, run_kernel_cycle,
     write_text_artifact,
 };
 
@@ -19,7 +19,7 @@ fn artifact_path() -> PathBuf {
 }
 
 fn main() -> io::Result<()> {
-    let kernel_pass = run_kernel_cycle(Point);
+    let kernel_pass = run_kernel_cycle(Symptom::origin());
     let snapshot = build_snapshot_from_client(&kernel_pass);
     let artifact_path = artifact_path();
 
@@ -35,16 +35,16 @@ mod tests {
     use std::time::{SystemTime, UNIX_EPOCH};
 
     use super::{build_snapshot_from_client, write_snapshot_artifact};
-    use hollow_grove::{Point, run_kernel_cycle};
+    use hollow_grove::{CANONICAL_WITNESS, Symptom, run_kernel_cycle};
 
     #[test]
     fn snapshot_client_reads_the_completed_kernel_pass() {
-        let kernel_pass = run_kernel_cycle(Point);
+        let kernel_pass = run_kernel_cycle(Symptom::origin());
 
         assert_eq!(
             build_snapshot_from_client(&kernel_pass),
             "{\n\
-             \x20\x20\"start\": \"Point\",\n\
+             \x20\x20\"start\": \"Symptom 1\",\n\
              \x20\x20\"triway\": {\n\
              \x20\x20\x20\x20\"ways\": [\"One\", \"Two\", \"Three\"]\n\
              \x20\x20},\n\
@@ -52,21 +52,18 @@ mod tests {
              \x20\x20\x20\x20\"bond\": \"One\",\n\
              \x20\x20\x20\x20\"atmosphere\": [\"Two\", \"Three\"]\n\
              \x20\x20},\n\
-             \x20\x20\"current_seam\": \"CurrentSeam\",\n\
-             \x20\x20\"aura_beam\": \"AuraBeam\",\n\
-             \x20\x20\"landed\": \"Point\",\n\
-             \x20\x20\"canonical_witness\": \"start Point\\n↓\\nTriway\\n↓\\nHollowGrove\\n↓\\nCurrentSeam\\n↓\\nAuraBeam\\n↓\\nlanded Point\"\n\
+             \x20\x20\"grove_seam\": \"GroveSeam\",\n\
+             \x20\x20\"hollow_beam\": \"HollowBeam\",\n\
+             \x20\x20\"landed\": \"Symptom 2\",\n\
+             \x20\x20\"canonical_witness\": \"start Symptom 1\\n↓\\nTriway\\n↓\\nHollowGrove\\n↓\\nGroveSeam\\n↓\\nHollowBeam\\n↓\\nlanded Symptom 2\"\n\
              }"
         );
-        assert_eq!(
-            kernel_pass.to_string(),
-            "start Point\n↓\nTriway\n↓\nHollowGrove\n↓\nCurrentSeam\n↓\nAuraBeam\n↓\nlanded Point"
-        );
+        assert_eq!(kernel_pass.to_string(), CANONICAL_WITNESS);
     }
 
     #[test]
     fn snapshot_client_writes_a_deterministic_artifact() {
-        let kernel_pass = run_kernel_cycle(Point);
+        let kernel_pass = run_kernel_cycle(Symptom::origin());
         let snapshot = build_snapshot_from_client(&kernel_pass);
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)

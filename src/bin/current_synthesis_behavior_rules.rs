@@ -73,6 +73,12 @@ mod tests {
              - Clouseau may interpret only within explicit Current Synthesis permissions\n\
              - Clouseau never controls route execution\n\
 \n\
+             ## Rule 7: Mirror Axis\n\n\
+             - HAL and Clouseau remain opposite clients across one axis\n\
+             - if the user is read through HAL on `META`, Clouseau remains the opposite `PLEB` witness\n\
+             - if the user is read through Clouseau on `PLEB`, HAL remains the opposite `META` witness\n\
+             - no rule may collapse both clients into one side\n\
+\n\
              ## Activation Status\n\n\
              - rules defined\n\
              - not active\n\

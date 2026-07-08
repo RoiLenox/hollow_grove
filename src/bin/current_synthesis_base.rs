@@ -34,7 +34,7 @@ mod tests {
     use std::time::{SystemTime, UNIX_EPOCH};
 
     use hollow_grove::{
-        Point, build_desktop_status_output, build_prompt_artifact_output, build_snapshot_output,
+        Symptom, build_desktop_status_output, build_prompt_artifact_output, build_snapshot_output,
         run_kernel_cycle,
     };
 
@@ -44,7 +44,7 @@ mod tests {
 
     #[test]
     fn current_synthesis_base_reads_existing_hollow_grove_artifacts() {
-        let kernel_pass = run_kernel_cycle(Point);
+        let kernel_pass = run_kernel_cycle(Symptom::origin());
         let snapshot = build_snapshot_output(&kernel_pass);
         let prompt = build_prompt_artifact_output(&kernel_pass);
         let desktop_status = build_desktop_status_output(&kernel_pass);
@@ -59,27 +59,32 @@ mod tests {
              `KernelPass` remains the canonical deterministic witness of one completed recursion.\n\n\
              ## Canonical Witness\n\n\
              ```text\n\
-             start Point\n\
+             start Symptom 1\n\
              ↓\n\
              Triway\n\
              ↓\n\
              HollowGrove\n\
              ↓\n\
-             CurrentSeam\n\
+             GroveSeam\n\
              ↓\n\
-             AuraBeam\n\
+             HollowBeam\n\
              ↓\n\
-             landed Point\n\
+             landed Symptom 2\n\
              ```\n\n\
              ## Artifact Layer Status\n\n\
              - `artifacts/kernel_pass_snapshot.json`: present and read-only.\n\
              - `artifacts/consumer_prompt.md`: present and read-only.\n\
              - `artifacts/desktop_status.txt`: present and read-only.\n\n\
-             Snapshot bytes: 358.\n\
-             Prompt bytes: 379.\n\
-             Desktop status bytes: 229.\n\n\
+             Snapshot bytes: 374.\n\
+             Prompt bytes: 387.\n\
+             Desktop status bytes: 237.\n\n\
              ## Current Synthesis\n\n\
-             Current Synthesis is the OS layer built on Hollow Grove.\n\n\
+             Current Synthesis is the operating layer built on Hollow Grove and consumed later by Hueman.\n\
+             At this layer, unresolved route material may later divide into `dark current` or `hollow current`, and into `reflective aura` or `holographic aura`.\n\n\
+             ## Vertical Position\n\n\
+             - Current Synthesis consumes read-only client artifacts derived from KernelPass.\n\
+             - Hueman remains the world layer above Current Synthesis.\n\
+             - no feedback into Hollow Grove\n\n\
              ## Deferral\n\n\
              - `PLEB` and `META` are deferred.\n\
              - HAL is deferred.\n\
@@ -92,7 +97,7 @@ mod tests {
     fn current_synthesis_base_writes_a_deterministic_file() {
         let snapshot = "{}";
         let prompt = "prompt";
-        let desktop_status = "Hollow Grove status: one completed witnessed recursion\n\nCanonical witness:\nstart Point\n↓\nTriway\n↓\nHollowGrove\n↓\nCurrentSeam\n↓\nAuraBeam\n↓\nlanded Point\n\nNote: read-only desktop artifact\nNote: niri/river configs untouched\n";
+        let desktop_status = "Hollow Grove status: one completed witnessed recursion\n\nCanonical witness:\nstart Symptom 1\n↓\nTriway\n↓\nHollowGrove\n↓\nGroveSeam\n↓\nHollowBeam\n↓\nlanded Symptom 2\n\nNote: read-only desktop artifact\nNote: niri/river configs untouched\n";
         let current_synthesis_base =
             build_current_synthesis_base_from_artifacts(snapshot, prompt, desktop_status)
                 .expect("current synthesis base should build");

@@ -2,7 +2,7 @@ use std::io;
 use std::path::{Path, PathBuf};
 
 use hollow_grove::{
-    KernelPass, PROMPT_ARTIFACT_PATH, Point, build_prompt_artifact_output, run_kernel_cycle,
+    KernelPass, PROMPT_ARTIFACT_PATH, Symptom, build_prompt_artifact_output, run_kernel_cycle,
     write_text_artifact,
 };
 
@@ -19,7 +19,7 @@ fn artifact_path() -> PathBuf {
 }
 
 fn main() -> io::Result<()> {
-    let kernel_pass = run_kernel_cycle(Point);
+    let kernel_pass = run_kernel_cycle(Symptom::origin());
     let prompt_artifact = build_prompt_artifact_from_client(&kernel_pass);
     let artifact_path = artifact_path();
 
@@ -35,28 +35,28 @@ mod tests {
     use std::time::{SystemTime, UNIX_EPOCH};
 
     use super::{build_prompt_artifact_from_client, write_prompt_artifact};
-    use hollow_grove::{Point, run_kernel_cycle};
+    use hollow_grove::{CANONICAL_WITNESS, Symptom, run_kernel_cycle};
 
     #[test]
     fn prompt_artifact_reads_the_completed_kernel_pass() {
-        let kernel_pass = run_kernel_cycle(Point);
+        let kernel_pass = run_kernel_cycle(Symptom::origin());
 
         assert_eq!(
             build_prompt_artifact_from_client(&kernel_pass),
             "# Consumer Prompt\n\n\
              ## Canonical Witness\n\n\
              ```text\n\
-             start Point\n\
+             start Symptom 1\n\
              ↓\n\
              Triway\n\
              ↓\n\
              HollowGrove\n\
              ↓\n\
-             CurrentSeam\n\
+             GroveSeam\n\
              ↓\n\
-             AuraBeam\n\
+             HollowBeam\n\
              ↓\n\
-             landed Point\n\
+             landed Symptom 2\n\
              ```\n\n\
              ## Structured Snapshot Reference\n\n\
              `artifacts/kernel_pass_snapshot.json`\n\n\
@@ -65,15 +65,12 @@ mod tests {
              ## Boundary Reminder\n\n\
              Do not mutate the kernel. Interpret only.\n"
         );
-        assert_eq!(
-            kernel_pass.to_string(),
-            "start Point\n↓\nTriway\n↓\nHollowGrove\n↓\nCurrentSeam\n↓\nAuraBeam\n↓\nlanded Point"
-        );
+        assert_eq!(kernel_pass.to_string(), CANONICAL_WITNESS);
     }
 
     #[test]
     fn prompt_artifact_writes_a_deterministic_file() {
-        let kernel_pass = run_kernel_cycle(Point);
+        let kernel_pass = run_kernel_cycle(Symptom::origin());
         let prompt_artifact = build_prompt_artifact_from_client(&kernel_pass);
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)

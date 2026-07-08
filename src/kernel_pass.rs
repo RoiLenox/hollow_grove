@@ -1,42 +1,52 @@
 use std::fmt;
 
-use crate::aura_beam::AuraBeam;
-use crate::current_seam::CurrentSeam;
+use crate::grove_seam::GroveSeam;
+use crate::hollow_beam::HollowBeam;
 use crate::hollow_grove::HollowGrove;
 use crate::point::Point;
+use crate::symptom::Symptom;
 use crate::triway::Triway;
+
+pub const START_WITNESS_LABEL: &str = "Symptom 1";
+pub const LANDED_WITNESS_LABEL: &str = "Symptom 2";
+pub const CANONICAL_WITNESS: &str =
+    "start Symptom 1\n↓\nTriway\n↓\nHollowGrove\n↓\nGroveSeam\n↓\nHollowBeam\n↓\nlanded Symptom 2";
 
 #[derive(Debug, Clone)]
 pub struct KernelPass {
-    start: Point,
+    start: Symptom,
     triway: Triway,
     hollow_grove: HollowGrove,
-    current_seam: CurrentSeam,
-    aura_beam: AuraBeam,
-    landed: Point,
+    grove_seam: GroveSeam,
+    hollow_beam: HollowBeam,
+    landed: Symptom,
 }
 
 impl KernelPass {
     pub fn new(
-        start: Point,
+        start: Symptom,
         triway: Triway,
         hollow_grove: HollowGrove,
-        current_seam: CurrentSeam,
-        aura_beam: AuraBeam,
-        landed: Point,
+        grove_seam: GroveSeam,
+        hollow_beam: HollowBeam,
+        landed: Symptom,
     ) -> Self {
         Self {
             start,
             triway,
             hollow_grove,
-            current_seam,
-            aura_beam,
+            grove_seam,
+            hollow_beam,
             landed,
         }
     }
 
-    pub fn start_point(&self) -> &Point {
+    pub fn start_symptom(&self) -> &Symptom {
         &self.start
+    }
+
+    pub fn start_point(&self) -> &Point {
+        self.start.point()
     }
 
     pub fn triway(&self) -> &Triway {
@@ -47,24 +57,25 @@ impl KernelPass {
         &self.hollow_grove
     }
 
-    pub fn current_seam(&self) -> &CurrentSeam {
-        &self.current_seam
+    pub fn grove_seam(&self) -> &GroveSeam {
+        &self.grove_seam
     }
 
-    pub fn aura_beam(&self) -> &AuraBeam {
-        &self.aura_beam
+    pub fn hollow_beam(&self) -> &HollowBeam {
+        &self.hollow_beam
     }
 
-    pub fn landed_point(&self) -> &Point {
+    pub fn landed_symptom(&self) -> &Symptom {
         &self.landed
+    }
+
+    pub fn end_point(&self) -> &Point {
+        self.landed.point()
     }
 }
 
 impl fmt::Display for KernelPass {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(
-            f,
-            "start Point\n↓\nTriway\n↓\nHollowGrove\n↓\nCurrentSeam\n↓\nAuraBeam\n↓\nlanded Point"
-        )
+        write!(f, "{CANONICAL_WITNESS}")
     }
 }

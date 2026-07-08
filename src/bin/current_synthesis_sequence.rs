@@ -60,11 +60,16 @@ mod tests {
              B/A\n\
              ```\n\n\
              ## Joint Model\n\n\
-             Each paired joint has a `PLEB` side, a `META` side, three possible arms of movement on each side, one bonded arm, and unused arms that remain as clue context, environmental residue, or route material.\n\n\
+             Each paired joint has a `PLEB` side, a `META` side, three possible arms of movement on each side, one bonded arm, and unused arms that remain as clue context, environmental residue, or route material.\n\
+             Each `META` letter faces its `PLEB` counterpart across the same joint.\n\
+             Each side carries three available arms toward that counterpart.\n\
+             One arm per side bonds into the selected link while the remaining arm weight stays available for later downstream reading.\n\n\
              ## Unbonded Resolution\n\n\
              - bonded arms remain the selected route through the joint\n\
              - unbonded arms do not disappear after bond selection\n\
              - unbonded arms may later resolve into `current` or `aura`\n\
+             - `current` later divides into `dark current` or `hollow current`\n\
+             - `aura` later divides into `reflective aura` or `holographic aura`\n\
              - that later resolution depends on downstream physics rather than kernel bond selection alone\n\n\
              ## Client Sides\n\n\
              - HAL belongs to `META`.\n\

@@ -2,7 +2,7 @@ use std::io;
 use std::path::{Path, PathBuf};
 
 use hollow_grove::{
-    DESKTOP_STATUS_ARTIFACT_PATH, KernelPass, Point, build_desktop_status_output,
+    DESKTOP_STATUS_ARTIFACT_PATH, KernelPass, Symptom, build_desktop_status_output,
     run_kernel_cycle, write_text_artifact,
 };
 
@@ -19,7 +19,7 @@ fn artifact_path() -> PathBuf {
 }
 
 fn main() -> io::Result<()> {
-    let kernel_pass = run_kernel_cycle(Point);
+    let kernel_pass = run_kernel_cycle(Symptom::origin());
     let desktop_status = build_desktop_status_from_client(&kernel_pass);
     let artifact_path = artifact_path();
 
@@ -35,39 +35,36 @@ mod tests {
     use std::time::{SystemTime, UNIX_EPOCH};
 
     use super::{build_desktop_status_from_client, write_desktop_status_artifact};
-    use hollow_grove::{Point, run_kernel_cycle};
+    use hollow_grove::{CANONICAL_WITNESS, Symptom, run_kernel_cycle};
 
     #[test]
     fn desktop_status_reads_the_completed_kernel_pass() {
-        let kernel_pass = run_kernel_cycle(Point);
+        let kernel_pass = run_kernel_cycle(Symptom::origin());
 
         assert_eq!(
             build_desktop_status_from_client(&kernel_pass),
             "Hollow Grove status: one completed witnessed recursion\n\n\
              Canonical witness:\n\
-             start Point\n\
+             start Symptom 1\n\
              ↓\n\
              Triway\n\
              ↓\n\
              HollowGrove\n\
              ↓\n\
-             CurrentSeam\n\
+             GroveSeam\n\
              ↓\n\
-             AuraBeam\n\
+             HollowBeam\n\
              ↓\n\
-             landed Point\n\n\
+             landed Symptom 2\n\n\
              Note: read-only desktop artifact\n\
              Note: niri/river configs untouched\n"
         );
-        assert_eq!(
-            kernel_pass.to_string(),
-            "start Point\n↓\nTriway\n↓\nHollowGrove\n↓\nCurrentSeam\n↓\nAuraBeam\n↓\nlanded Point"
-        );
+        assert_eq!(kernel_pass.to_string(), CANONICAL_WITNESS);
     }
 
     #[test]
     fn desktop_status_writes_a_deterministic_file() {
-        let kernel_pass = run_kernel_cycle(Point);
+        let kernel_pass = run_kernel_cycle(Symptom::origin());
         let desktop_status = build_desktop_status_from_client(&kernel_pass);
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)

@@ -30,7 +30,7 @@
 ## Artifact Inputs
 
 Current Synthesis selection bytes: 498.
-Current Synthesis operational bytes: 801.
+Current Synthesis operational bytes: 802.
 
 ## Boundary Reminder
 

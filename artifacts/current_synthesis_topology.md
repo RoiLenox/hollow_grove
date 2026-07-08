@@ -37,6 +37,12 @@ Aura Beach
 
 These remain route regions and route stations, not Hollow Grove layers.
 
+## Route Material Families
+
+- route material may present as `dark current` or `hollow current`
+- route material may present as `reflective aura` or `holographic aura`
+- subtype presence does not change joint order or side assignment
+
 ## Deferral
 
 - traversal deferred
@@ -47,8 +53,8 @@ These remain route regions and route stations, not Hollow Grove layers.
 
 ## Artifact Inputs
 
-Current Synthesis sequence bytes: 1065.
-Current Synthesis state bytes: 2108.
+Current Synthesis sequence bytes: 1458.
+Current Synthesis state bytes: 2110.
 
 ## Boundary Reminder
 

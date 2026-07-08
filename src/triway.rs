@@ -1,5 +1,5 @@
 use crate::hollow_grove::HollowGrove;
-use crate::point::Point;
+use crate::symptom::Symptom;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Way {
@@ -10,14 +10,14 @@ pub enum Way {
 
 #[derive(Debug, Clone)]
 pub struct Triway {
-    source: Point,
+    source: Symptom,
     ways: [Way; 3],
 }
 
 impl Triway {
-    pub fn from_point(point: Point) -> Self {
+    pub fn from_symptom(symptom: Symptom) -> Self {
         Self {
-            source: point,
+            source: symptom,
             ways: [Way::One, Way::Two, Way::Three],
         }
     }
@@ -30,11 +30,11 @@ impl Triway {
         self.ways
     }
 
-    pub fn source(&self) -> Point {
+    pub fn source(&self) -> Symptom {
         self.source.clone()
     }
 
-    pub fn into_point(self) -> Point {
+    pub fn into_symptom(self) -> Symptom {
         self.source
     }
 }

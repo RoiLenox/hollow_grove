@@ -77,6 +77,10 @@ mod tests {
              Aura Beach\n\
              ```\n\n\
              These remain route regions and route stations, not Hollow Grove layers.\n\n\
+             ## Route Material Families\n\n\
+             - route material may present as `dark current` or `hollow current`\n\
+             - route material may present as `reflective aura` or `holographic aura`\n\
+             - subtype presence does not change joint order or side assignment\n\n\
              ## Deferral\n\n\
              - traversal deferred\n\
              - `PLEB`/`META` execution deferred\n\

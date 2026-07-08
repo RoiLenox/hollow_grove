@@ -13,8 +13,8 @@ use current_synthesis_support::{
     CURRENT_SYNTHESIS_PREVIEW_ARTIFACT_PATH, CURRENT_SYNTHESIS_READINESS_ARTIFACT_PATH,
     CURRENT_SYNTHESIS_SELECTION_ARTIFACT_PATH, CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH,
     CURRENT_SYNTHESIS_STATE_ARTIFACT_PATH, CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH,
-    DESKTOP_STATUS_ARTIFACT_PATH, PROMPT_ARTIFACT_PATH, SNAPSHOT_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH, DESKTOP_STATUS_ARTIFACT_PATH,
+    PROMPT_ARTIFACT_PATH, SNAPSHOT_ARTIFACT_PATH,
     build_current_synthesis_activation_gate_from_artifacts,
     build_current_synthesis_base_from_artifacts,
     build_current_synthesis_behavior_rules_from_artifacts,
@@ -27,8 +27,9 @@ use current_synthesis_support::{
     build_current_synthesis_readiness_from_artifacts,
     build_current_synthesis_selection_from_artifacts,
     build_current_synthesis_sequence_from_artifacts, build_current_synthesis_state_from_artifacts,
-    build_current_synthesis_transition_pm_to_le_from_artifacts,
-    build_current_synthesis_topology_from_artifacts, read_artifact, write_artifact,
+    build_current_synthesis_topology_from_artifacts,
+    build_current_synthesis_transition_pm_to_le_from_artifacts, ensure_artifact_index,
+    read_artifact, write_artifact,
 };
 
 fn run_current_synthesis_at(root: &Path) -> io::Result<[PathBuf; 16]> {
@@ -40,7 +41,9 @@ fn run_current_synthesis_at(root: &Path) -> io::Result<[PathBuf; 16]> {
     let base_path = root.join(CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH);
     write_artifact(&base_path, &current_synthesis_base)?;
 
-    let artifact_index = read_artifact(&root.join(ARTIFACT_INDEX_PATH))?;
+    let artifact_index_path = root.join(ARTIFACT_INDEX_PATH);
+    ensure_artifact_index(&artifact_index_path)?;
+    let artifact_index = read_artifact(&artifact_index_path)?;
     let current_synthesis_state =
         build_current_synthesis_state_from_artifacts(&current_synthesis_base, &artifact_index);
     let state_path = root.join(CURRENT_SYNTHESIS_STATE_ARTIFACT_PATH);
@@ -183,7 +186,7 @@ mod tests {
     use std::time::{SystemTime, UNIX_EPOCH};
 
     use hollow_grove::{
-        Point, build_desktop_status_output, build_prompt_artifact_output, build_snapshot_output,
+        Symptom, build_desktop_status_output, build_prompt_artifact_output, build_snapshot_output,
         run_kernel_cycle,
     };
 
@@ -219,7 +222,7 @@ mod tests {
             .expect("system time before unix epoch")
             .as_nanos();
         let artifact_root = std::env::temp_dir().join(format!("current-synthesis-runner-{nonce}"));
-        let kernel_pass = run_kernel_cycle(Point);
+        let kernel_pass = run_kernel_cycle(Symptom::origin());
         let snapshot = build_snapshot_output(&kernel_pass);
         let prompt = build_prompt_artifact_output(&kernel_pass);
         let desktop_status = build_desktop_status_output(&kernel_pass);
@@ -227,7 +230,11 @@ mod tests {
 
         write_fixture(&artifact_root, SNAPSHOT_ARTIFACT_PATH, &snapshot);
         write_fixture(&artifact_root, PROMPT_ARTIFACT_PATH, &prompt);
-        write_fixture(&artifact_root, DESKTOP_STATUS_ARTIFACT_PATH, &desktop_status);
+        write_fixture(
+            &artifact_root,
+            DESKTOP_STATUS_ARTIFACT_PATH,
+            &desktop_status,
+        );
         write_fixture(&artifact_root, ARTIFACT_INDEX_PATH, artifact_index);
 
         let [
@@ -372,8 +379,7 @@ mod tests {
             current_synthesis_behavior_rules
         );
         assert_eq!(
-            read_artifact(&transition_pm_to_le_path)
-                .expect("transition rule artifact should read"),
+            read_artifact(&transition_pm_to_le_path).expect("transition rule artifact should read"),
             current_synthesis_transition_pm_to_le
         );
         assert_eq!(
@@ -410,5 +416,35 @@ mod tests {
         fs::remove_dir_all(artifact_root.join("artifacts"))
             .expect("artifact fixture directory should be removable");
         fs::remove_dir(&artifact_root).expect("artifact root should be removable");
+    }
+
+    #[test]
+    fn current_synthesis_runner_bootstraps_artifact_index_when_missing() {
+        let nonce = SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .expect("system time before unix epoch")
+            .as_nanos();
+        let artifact_root =
+            std::env::temp_dir().join(format!("current-synthesis-bootstrap-{nonce}"));
+        let kernel_pass = run_kernel_cycle(Symptom::origin());
+        let snapshot = build_snapshot_output(&kernel_pass);
+        let prompt = build_prompt_artifact_output(&kernel_pass);
+        let desktop_status = build_desktop_status_output(&kernel_pass);
+
+        write_fixture(&artifact_root, SNAPSHOT_ARTIFACT_PATH, &snapshot);
+        write_fixture(&artifact_root, PROMPT_ARTIFACT_PATH, &prompt);
+        write_fixture(
+            &artifact_root,
+            DESKTOP_STATUS_ARTIFACT_PATH,
+            &desktop_status,
+        );
+
+        run_current_synthesis_at(&artifact_root).expect("current synthesis should bootstrap");
+
+        let artifact_index = read_artifact(&artifact_root.join(ARTIFACT_INDEX_PATH))
+            .expect("artifact index should be created");
+        assert!(artifact_index.contains("Symptom -> Triway -> HollowGrove"));
+
+        fs::remove_dir_all(&artifact_root).expect("temp dir cleanup should succeed");
     }
 }

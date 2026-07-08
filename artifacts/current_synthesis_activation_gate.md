@@ -29,7 +29,7 @@
 
 ## Artifact Inputs
 
-Current Synthesis transition rule bytes: 996.
+Current Synthesis transition rule bytes: 997.
 Current Synthesis readiness bytes: 821.
 
 ## Boundary Reminder

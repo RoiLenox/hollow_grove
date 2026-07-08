@@ -37,8 +37,8 @@
 
 ## Artifact Inputs
 
-Current Synthesis behavior rules bytes: 1224.
-Current Synthesis topology bytes: 911.
+Current Synthesis behavior rules bytes: 1538.
+Current Synthesis topology bytes: 1145.
 
 ## Boundary Reminder
 

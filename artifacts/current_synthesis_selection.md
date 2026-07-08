@@ -24,8 +24,8 @@
 
 ## Artifact Inputs
 
-Current Synthesis choice bytes: 505.
-Current Synthesis operational bytes: 801.
+Current Synthesis choice bytes: 506.
+Current Synthesis operational bytes: 802.
 
 ## Boundary Reminder
 
