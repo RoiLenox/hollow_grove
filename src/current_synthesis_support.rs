@@ -34,6 +34,7 @@ pub const CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH: &str =
     "artifacts/current_synthesis_transition_pm_to_le.md";
 pub const CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH: &str =
     "artifacts/current_synthesis_activation_gate.md";
+pub const DEFAULT_ARTIFACT_INDEX: &str = "# Artifact Index\n\n## Boundary\n\n`Symptom -> Triway -> HollowGrove -> GroveSeam -> HollowBeam -> landed Symptom 2 -> KernelPass -> Client Artifacts -> Current Synthesis -> Hueman`\n";
 
 pub fn read_artifact(path: &Path) -> io::Result<String> {
     hollow_grove::read_text_artifact(path)
@@ -41,6 +42,14 @@ pub fn read_artifact(path: &Path) -> io::Result<String> {
 
 pub fn write_artifact(path: &Path, contents: &str) -> io::Result<()> {
     hollow_grove::write_text_artifact(path, contents)
+}
+
+pub fn ensure_artifact_index(path: &Path) -> io::Result<()> {
+    if path.exists() {
+        return Ok(());
+    }
+
+    write_artifact(path, DEFAULT_ARTIFACT_INDEX)
 }
 
 pub fn extract_canonical_witness(desktop_status: &str) -> io::Result<&str> {
@@ -92,7 +101,12 @@ pub fn build_current_synthesis_base_from_artifacts(
          Prompt bytes: {}.\n\
          Desktop status bytes: {}.\n\n\
          ## Current Synthesis\n\n\
-         Current Synthesis is the OS layer built on Hollow Grove.\n\n\
+         Current Synthesis is the operating layer built on Hollow Grove and consumed later by Hueman.\n\
+         At this layer, unresolved route material may later divide into `dark current` or `hollow current`, and into `reflective aura` or `holographic aura`.\n\n\
+         ## Vertical Position\n\n\
+         - Current Synthesis consumes read-only client artifacts derived from KernelPass.\n\
+         - Hueman remains the world layer above Current Synthesis.\n\
+         - no feedback into Hollow Grove\n\n\
          ## Deferral\n\n\
          - `PLEB` and `META` are deferred.\n\
          - HAL is deferred.\n\
@@ -185,11 +199,16 @@ pub fn build_current_synthesis_sequence_from_artifacts(
          B/A\n\
          ```\n\n\
          ## Joint Model\n\n\
-         Each paired joint has a `PLEB` side, a `META` side, three possible arms of movement on each side, one bonded arm, and unused arms that remain as clue context, environmental residue, or route material.\n\n\
+         Each paired joint has a `PLEB` side, a `META` side, three possible arms of movement on each side, one bonded arm, and unused arms that remain as clue context, environmental residue, or route material.\n\
+         Each `META` letter faces its `PLEB` counterpart across the same joint.\n\
+         Each side carries three available arms toward that counterpart.\n\
+         One arm per side bonds into the selected link while the remaining arm weight stays available for later downstream reading.\n\n\
          ## Unbonded Resolution\n\n\
          - bonded arms remain the selected route through the joint\n\
          - unbonded arms do not disappear after bond selection\n\
          - unbonded arms may later resolve into `current` or `aura`\n\
+         - `current` later divides into `dark current` or `hollow current`\n\
+         - `aura` later divides into `reflective aura` or `holographic aura`\n\
          - that later resolution depends on downstream physics rather than kernel bond selection alone\n\n\
          ## Client Sides\n\n\
          - HAL belongs to `META`.\n\
@@ -244,6 +263,10 @@ pub fn build_current_synthesis_topology_from_artifacts(
          Aura Beach\n\
          ```\n\n\
          These remain route regions and route stations, not Hollow Grove layers.\n\n\
+         ## Route Material Families\n\n\
+         - route material may present as `dark current` or `hollow current`\n\
+         - route material may present as `reflective aura` or `holographic aura`\n\
+         - subtype presence does not change joint order or side assignment\n\n\
          ## Deferral\n\n\
          - traversal deferred\n\
          - `PLEB`/`META` execution deferred\n\
@@ -331,6 +354,11 @@ pub fn build_current_synthesis_contract_from_artifacts(
          HAL remains aligned with `META`.\n\n\
          Clouseau remains aligned with `PLEB`.\n\n\
          The chosen side and the complementary side remain distinct without execution.\n\n\
+         ## Mirror Axis\n\n\
+         - if the user is read through HAL on `META`, Clouseau remains the opposite `PLEB` witness\n\
+         - if the user is read through Clouseau on `PLEB`, HAL remains the opposite `META` witness\n\
+         - the user-facing side and the opposing side stay mirrored across one axis\n\
+         - the axis may not collapse both clients into one side\n\n\
          ## Contract Status\n\n\
          - no traversal\n\
          - no movement\n\
@@ -584,6 +612,12 @@ pub fn build_current_synthesis_behavior_rules_from_artifacts(
          ## Rule 6: Clouseau Scope\n\n\
          - Clouseau may interpret only within explicit Current Synthesis permissions\n\
          - Clouseau never controls route execution\n\
+\n\
+         ## Rule 7: Mirror Axis\n\n\
+         - HAL and Clouseau remain opposite clients across one axis\n\
+         - if the user is read through HAL on `META`, Clouseau remains the opposite `PLEB` witness\n\
+         - if the user is read through Clouseau on `PLEB`, HAL remains the opposite `META` witness\n\
+         - no rule may collapse both clients into one side\n\
 \n\
          ## Activation Status\n\n\
          - rules defined\n\
