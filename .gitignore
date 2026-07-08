@@ -1,1 +1,13 @@
 /target
+
+# Local benchmark reports.
+/artifacts/current_synthesis_benchmark.md
+/artifacts/current_synthesis_benchmark.json
+/artifacts/current_synthesis_benchmark_release.md
+
+# Local runtime and bridge state.
+/artifacts/runtime_input.txt
+/artifacts/runtime_memory.txt
+/artifacts/runtime_loop_status.md
+/artifacts/niri_bridge_memory.txt
+/artifacts/niri_bridge_status.md

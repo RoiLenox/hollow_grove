@@ -1,6 +1,386 @@
-use hollow_grove::{Point, run_kernel_cycle};
+use std::env;
+use std::fs;
+use std::io;
+use std::path::{Path, PathBuf};
+use std::process::Command;
+use std::time::SystemTime;
 
-fn main() {
-    let kernel_pass = run_kernel_cycle(Point);
-    println!("{kernel_pass}");
+use hollow_grove::{Symptom, run_kernel_cycle};
+
+const RUNTIME_BINARY_NAME: &str = "hollow_grove_runtime";
+const BRIDGE_BINARY_NAME: &str = "hollow_grove_niri_bridge";
+const BENCHMARK_BINARY_NAME: &str = "current_synthesis_benchmark";
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+enum MainCli {
+    Help,
+    Kernel,
+    Runtime(Vec<String>),
+    Bridge(Vec<String>),
+    Desktop(Vec<String>),
+    Benchmark(Vec<String>),
+}
+
+fn parse_main_cli<I>(args: I) -> Result<MainCli, String>
+where
+    I: IntoIterator<Item = String>,
+{
+    let mut args = args.into_iter();
+    let Some(command) = args.next() else {
+        return Ok(MainCli::Kernel);
+    };
+
+    match command.as_str() {
+        "--help" | "-h" | "help" => Ok(MainCli::Help),
+        "kernel" => {
+            if let Some(extra) = args.next() {
+                Err(format!(
+                    "kernel does not accept additional arguments: {extra}"
+                ))
+            } else {
+                Ok(MainCli::Kernel)
+            }
+        }
+        "runtime" => Ok(MainCli::Runtime(args.collect())),
+        "bridge" => Ok(MainCli::Bridge(args.collect())),
+        "desktop" | "launch" => Ok(MainCli::Desktop(args.collect())),
+        "benchmark" => Ok(MainCli::Benchmark(args.collect())),
+        other => Err(format!("unknown command: {other}")),
+    }
+}
+
+fn usage() -> &'static str {
+    "Usage: hollow-grove [command] [args]\n\
+     \n\
+     Commands:\n\
+       kernel            print the canonical witness (default when no command is given)\n\
+       runtime [args]    run the Hollow Grove runtime loop\n\
+       bridge [args]     run the Niri bridge against runtime memory\n\
+       desktop [args]    launch the runtime loop with the Niri bridge attached\n\
+       benchmark [args]  run the Current-Synthesis-style benchmark suite\n\
+       help              print this help\n\
+     \n\
+     Examples:\n\
+       hollow-grove\n\
+       hollow-grove runtime --cycles 5 --interval-ms 1000\n\
+       hollow-grove bridge --apply --watch\n\
+       hollow-grove desktop --cycles 5 --interval-ms 1000\n\
+       hollow-grove benchmark --warmup 5 --samples 25"
+}
+
+fn canonical_kernel_output() -> String {
+    run_kernel_cycle(Symptom::origin()).to_string()
+}
+
+fn candidate_repo_root_from(path: &Path) -> Option<PathBuf> {
+    let start = if path.is_dir() { path } else { path.parent()? };
+
+    for ancestor in start.ancestors() {
+        if ancestor.join("Cargo.toml").exists() {
+            return Some(ancestor.to_path_buf());
+        }
+    }
+
+    None
+}
+
+fn find_repo_root() -> Option<PathBuf> {
+    if let Ok(current_dir) = env::current_dir()
+        && let Some(root) = candidate_repo_root_from(&current_dir)
+    {
+        return Some(root);
+    }
+
+    if let Ok(current_exe) = env::current_exe() {
+        return candidate_repo_root_from(&current_exe);
+    }
+
+    None
+}
+
+fn current_exe_parent() -> io::Result<PathBuf> {
+    env::current_exe()?
+        .parent()
+        .map(Path::to_path_buf)
+        .ok_or_else(|| io::Error::other("current executable has no parent directory"))
+}
+
+fn current_profile_dir_name(path: &Path) -> &'static str {
+    match path.file_name().and_then(|name| name.to_str()) {
+        Some("release") => "release",
+        _ => "debug",
+    }
+}
+
+fn latest_mtime_in_tree(path: &Path) -> io::Result<SystemTime> {
+    let metadata = fs::metadata(path)?;
+    let mut latest = metadata.modified()?;
+
+    if metadata.is_dir() {
+        for entry in fs::read_dir(path)? {
+            let entry = entry?;
+            let entry_latest = latest_mtime_in_tree(&entry.path())?;
+            if entry_latest > latest {
+                latest = entry_latest;
+            }
+        }
+    }
+
+    Ok(latest)
+}
+
+fn latest_repo_source_mtime(repo_root: &Path) -> io::Result<SystemTime> {
+    let mut latest = fs::metadata(repo_root.join("Cargo.toml"))?.modified()?;
+    let src_latest = latest_mtime_in_tree(&repo_root.join("src"))?;
+    if src_latest > latest {
+        latest = src_latest;
+    }
+    Ok(latest)
+}
+
+fn binaries_are_fresh(bin_paths: &[PathBuf], repo_root: &Path) -> io::Result<bool> {
+    let latest_source = latest_repo_source_mtime(repo_root)?;
+
+    for bin_path in bin_paths {
+        let binary_mtime = fs::metadata(bin_path)?.modified()?;
+        if binary_mtime < latest_source {
+            return Ok(false);
+        }
+    }
+
+    Ok(true)
+}
+
+fn ensure_bins_available(bin_names: &[&str]) -> io::Result<Vec<PathBuf>> {
+    let sibling_dir = current_exe_parent()?;
+    let profile = current_profile_dir_name(&sibling_dir);
+    let repo_root = find_repo_root();
+    let sibling_paths = bin_names
+        .iter()
+        .map(|bin_name| sibling_dir.join(bin_name))
+        .collect::<Vec<_>>();
+
+    if sibling_paths.iter().all(|path| path.exists()) {
+        match repo_root.as_deref() {
+            Some(root) if binaries_are_fresh(&sibling_paths, root)? => return Ok(sibling_paths),
+            None => return Ok(sibling_paths),
+            Some(_) => {}
+        }
+    }
+
+    let repo_root = repo_root.ok_or_else(|| {
+        io::Error::other("could not locate the Hollow Grove repo root to build missing binaries")
+    })?;
+    let target_dir = repo_root.join("target").join(profile);
+    let built_paths = bin_names
+        .iter()
+        .map(|bin_name| target_dir.join(bin_name))
+        .collect::<Vec<_>>();
+
+    if built_paths.iter().all(|path| path.exists()) && binaries_are_fresh(&built_paths, &repo_root)?
+    {
+        return Ok(built_paths);
+    }
+
+    let mut build = Command::new("cargo");
+    build.current_dir(&repo_root).arg("build");
+    if profile == "release" {
+        build.arg("--release");
+    }
+    for bin_name in bin_names {
+        build.args(["--bin", bin_name]);
+    }
+
+    let status = build.status()?;
+    if !status.success() {
+        return Err(io::Error::other(format!(
+            "cargo build for integrated binaries exited with status {status}"
+        )));
+    }
+
+    if built_paths.iter().all(|path| path.exists()) {
+        Ok(built_paths)
+    } else {
+        Err(io::Error::other(
+            "cargo build finished but one or more integrated binaries are still missing",
+        ))
+    }
+}
+
+fn run_child_binary(bin_name: &str, args: &[String]) -> io::Result<()> {
+    let binary_path = ensure_bins_available(&[bin_name])?
+        .into_iter()
+        .next()
+        .ok_or_else(|| io::Error::other("missing child binary path after resolution"))?;
+    let status = Command::new(&binary_path).args(args).status()?;
+
+    if status.success() {
+        Ok(())
+    } else {
+        Err(io::Error::other(format!(
+            "{bin_name} exited with status {status}"
+        )))
+    }
+}
+
+fn run_desktop_launcher(runtime_args: &[String]) -> io::Result<()> {
+    let bin_paths = ensure_bins_available(&[BRIDGE_BINARY_NAME, RUNTIME_BINARY_NAME])?;
+    let bridge_path = &bin_paths[0];
+    let runtime_path = &bin_paths[1];
+
+    let mut bridge = Command::new(bridge_path)
+        .args(["--apply", "--watch", "--quiet"])
+        .spawn()?;
+    let runtime_result = Command::new(runtime_path).args(runtime_args).status();
+
+    let _ = bridge.kill();
+    let _ = bridge.wait();
+
+    let runtime_status = runtime_result?;
+    if runtime_status.success() {
+        Ok(())
+    } else {
+        Err(io::Error::other(format!(
+            "{RUNTIME_BINARY_NAME} exited with status {runtime_status}"
+        )))
+    }
+}
+
+fn main() -> io::Result<()> {
+    let cli = parse_main_cli(env::args().skip(1))
+        .map_err(|error| io::Error::new(io::ErrorKind::InvalidInput, error))?;
+
+    match cli {
+        MainCli::Help => {
+            println!("{}", usage());
+            Ok(())
+        }
+        MainCli::Kernel => {
+            println!("{}", canonical_kernel_output());
+            Ok(())
+        }
+        MainCli::Runtime(args) => run_child_binary(RUNTIME_BINARY_NAME, &args),
+        MainCli::Bridge(args) => run_child_binary(BRIDGE_BINARY_NAME, &args),
+        MainCli::Desktop(args) => run_desktop_launcher(&args),
+        MainCli::Benchmark(args) => run_child_binary(BENCHMARK_BINARY_NAME, &args),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::fs;
+    use std::time::{Duration, SystemTime, UNIX_EPOCH};
+
+    use super::{MainCli, binaries_are_fresh, canonical_kernel_output, parse_main_cli, usage};
+    use hollow_grove::CANONICAL_WITNESS;
+
+    fn unique_temp_dir(prefix: &str) -> std::path::PathBuf {
+        let nonce = SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .expect("system time before unix epoch")
+            .as_nanos();
+        std::env::temp_dir().join(format!("{prefix}-{nonce}"))
+    }
+
+    #[test]
+    fn main_cli_defaults_to_kernel_output() {
+        let cli = parse_main_cli(std::iter::empty::<String>()).expect("cli should parse");
+        assert_eq!(cli, MainCli::Kernel);
+        assert_eq!(canonical_kernel_output(), CANONICAL_WITNESS);
+    }
+
+    #[test]
+    fn main_cli_supports_integrated_commands() {
+        assert_eq!(
+            parse_main_cli([String::from("runtime"), String::from("--help")])
+                .expect("runtime cli should parse"),
+            MainCli::Runtime(vec![String::from("--help")])
+        );
+        assert_eq!(
+            parse_main_cli([String::from("bridge"), String::from("--help")])
+                .expect("bridge cli should parse"),
+            MainCli::Bridge(vec![String::from("--help")])
+        );
+        assert_eq!(
+            parse_main_cli([
+                String::from("desktop"),
+                String::from("--cycles"),
+                String::from("2")
+            ])
+            .expect("desktop cli should parse"),
+            MainCli::Desktop(vec![String::from("--cycles"), String::from("2")])
+        );
+        assert_eq!(
+            parse_main_cli([
+                String::from("benchmark"),
+                String::from("--samples"),
+                String::from("3")
+            ])
+            .expect("benchmark cli should parse"),
+            MainCli::Benchmark(vec![String::from("--samples"), String::from("3")])
+        );
+    }
+
+    #[test]
+    fn main_cli_supports_help_and_reports_unknown_commands() {
+        assert_eq!(
+            parse_main_cli([String::from("--help")]).expect("help should parse"),
+            MainCli::Help
+        );
+        let error = parse_main_cli([String::from("unknown")]).expect_err("unknown should fail");
+        assert_eq!(error, "unknown command: unknown");
+    }
+
+    #[test]
+    fn usage_reports_integrated_entrypoints() {
+        let usage = usage();
+        assert!(usage.contains("hollow-grove"));
+        assert!(usage.contains("runtime [args]"));
+        assert!(usage.contains("bridge [args]"));
+        assert!(usage.contains("desktop [args]"));
+        assert!(usage.contains("benchmark [args]"));
+    }
+
+    #[test]
+    fn launcher_rebuild_check_detects_stale_child_binary() {
+        let repo_root = unique_temp_dir("hollow-grove-main-freshness");
+        let src_dir = repo_root.join("src");
+        let bin_path = repo_root
+            .join("target")
+            .join("debug")
+            .join("current_synthesis_benchmark");
+
+        fs::create_dir_all(&src_dir).expect("src dir should create");
+        fs::create_dir_all(bin_path.parent().expect("bin parent should exist"))
+            .expect("target dir should create");
+        fs::write(
+            repo_root.join("Cargo.toml"),
+            "[package]\nname = \"stub\"\nversion = \"0.0.0\"\n",
+        )
+        .expect("cargo manifest should write");
+        fs::write(src_dir.join("main.rs"), "fn main() {}\n").expect("source should write");
+        std::thread::sleep(Duration::from_millis(20));
+        fs::write(&bin_path, "binary").expect("binary should write");
+
+        assert!(
+            binaries_are_fresh(&[bin_path.clone()], &repo_root).expect("freshness should check")
+        );
+
+        std::thread::sleep(Duration::from_millis(20));
+        fs::write(
+            src_dir.join("main.rs"),
+            "fn main() { println!(\"new\"); }\n",
+        )
+        .expect("source should rewrite");
+
+        assert!(
+            !binaries_are_fresh(&[bin_path.clone()], &repo_root)
+                .expect("freshness should detect stale binary")
+        );
+
+        fs::remove_file(&bin_path).expect("binary should remove");
+        fs::remove_file(src_dir.join("main.rs")).expect("source should remove");
+        fs::remove_file(repo_root.join("Cargo.toml")).expect("manifest should remove");
+        fs::remove_dir_all(repo_root).expect("temp repo should remove");
+    }
 }
