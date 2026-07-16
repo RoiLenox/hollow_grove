@@ -61,8 +61,8 @@ where
             }
         }
         "scenario" | "world" | "progression" | "point-squared" | "map" | "rule-of-twelve"
-        | "manager-language" | "player-location" | "engine" | "bond" | "resource" | "player"
-        | "npc" | "cleopatra" => {
+        | "manager-language" | "player-location" | "being-object" | "move" | "engine" | "bond"
+        | "resource" | "player" | "npc" | "cleopatra" => {
             let mut forwarded = vec![command];
             forwarded.extend(args);
             Ok(MainCli::CurrentSynthesisTui(forwarded))
@@ -90,6 +90,8 @@ fn usage() -> &'static str {
        rule-of-twelve ... inspect the four-House twelve-position grammar\n\
        manager-language ... inspect Proxy / Moxy / Foxy manager semantics\n\
        player-location ... inspect derived player spatial interpretation\n\
+       being-object ... inspect the Being / Object root ontology\n\
+       move ...          inspect canonical move resolution over Being and Object\n\
        engine ...        inspect Current Synthesis engine state\n\
        bond ...          inspect bond candidates and traces\n\
        resource ...      inspect Aura, Current, and residue history\n\
@@ -120,6 +122,9 @@ fn usage() -> &'static str {
        hollow-grove manager-language witness\n\
        hollow-grove manager-language validate\n\
        hollow-grove player-location witness\n\
+       hollow-grove being-object witness\n\
+       hollow-grove being-object validate\n\
+       hollow-grove move witness\n\
        hollow-grove scenario use flooded_quarry_night_watch\n\
        hollow-grove engine status\n\
        hollow-grove bond list\n\

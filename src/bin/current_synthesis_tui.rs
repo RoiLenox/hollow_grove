@@ -20,9 +20,11 @@ use hollow_grove::hollow_grove_contract::{
 };
 use hollow_grove::hueman_progression::{VerticalSliceState, write_vertical_slice_artifacts_at};
 use hollow_grove::{
+    build_being_object_validation_report, build_being_object_witness,
     build_manager_language_validation_report, build_manager_language_witness,
-    build_map_validation_report, build_map_witness, build_player_location_witness,
-    build_point_squared_witness, build_progression_validation_report, build_progression_witness,
+    build_map_validation_report, build_map_witness, build_move_witness,
+    build_player_location_witness, build_point_squared_witness,
+    build_progression_validation_report, build_progression_witness,
     build_rule_of_twelve_validation_report, build_rule_of_twelve_witness,
 };
 
@@ -44,6 +46,9 @@ enum CurrentSynthesisTuiCli {
     ManagerLanguageWitness,
     ManagerLanguageValidate,
     PlayerLocationWitness,
+    BeingObjectWitness,
+    BeingObjectValidate,
+    MoveWitness,
     Engine(EngineLens),
     BondList,
     BondInspect(String),
@@ -183,6 +188,27 @@ where
             ),
             Some(other) => Err(format!("unknown player-location command: {other}")),
             None => Err(String::from("player-location requires witness")),
+        },
+        "being-object" => match args.next().as_deref() {
+            Some("witness") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::BeingObjectWitness,
+                "being-object witness",
+            ),
+            Some("validate") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::BeingObjectValidate,
+                "being-object validate",
+            ),
+            Some(other) => Err(format!("unknown being-object command: {other}")),
+            None => Err(String::from("being-object requires witness or validate")),
+        },
+        "move" => match args.next().as_deref() {
+            Some("witness") => {
+                require_no_extra(args, CurrentSynthesisTuiCli::MoveWitness, "move witness")
+            }
+            Some(other) => Err(format!("unknown move command: {other}")),
+            None => Err(String::from("move requires witness")),
         },
         "engine" => {
             let lens = args.next().unwrap_or_else(|| String::from("status"));
@@ -393,7 +419,7 @@ fn parse_player_action(
 }
 
 fn usage() -> &'static str {
-    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|map|rule-of-twelve|manager-language|player-location|engine|bond|resource|player|npc|cleopatra> [args]\n\
+    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|engine|bond|resource|player|npc|cleopatra> [args]\n\
      \n\
      Commands:\n\
        scenario list\n\
@@ -411,6 +437,9 @@ fn usage() -> &'static str {
        manager-language witness\n\
        manager-language validate\n\
        player-location witness\n\
+       being-object witness\n\
+       being-object validate\n\
+       move witness\n\
        engine status|pleb|meta|blep\n\
        bond list\n\
        bond inspect <id>\n\
@@ -538,6 +567,9 @@ fn run_cli(root: &Path, cli: CurrentSynthesisTuiCli) -> io::Result<String> {
             Ok(build_manager_language_validation_report())
         }
         CurrentSynthesisTuiCli::PlayerLocationWitness => build_player_location_witness(),
+        CurrentSynthesisTuiCli::BeingObjectWitness => build_being_object_witness(),
+        CurrentSynthesisTuiCli::BeingObjectValidate => build_being_object_validation_report(),
+        CurrentSynthesisTuiCli::MoveWitness => build_move_witness(),
         CurrentSynthesisTuiCli::Engine(lens) => {
             let (_persisted, state) = load_state(root)?;
             Ok(build_engine_output(&state, lens))
@@ -807,6 +839,21 @@ mod tests {
             CurrentSynthesisTuiCli::PlayerLocationWitness
         );
         assert_eq!(
+            parse_cli([String::from("being-object"), String::from("witness")])
+                .expect("being-object witness should parse"),
+            CurrentSynthesisTuiCli::BeingObjectWitness
+        );
+        assert_eq!(
+            parse_cli([String::from("being-object"), String::from("validate")])
+                .expect("being-object validate should parse"),
+            CurrentSynthesisTuiCli::BeingObjectValidate
+        );
+        assert_eq!(
+            parse_cli([String::from("move"), String::from("witness")])
+                .expect("move witness should parse"),
+            CurrentSynthesisTuiCli::MoveWitness
+        );
+        assert_eq!(
             parse_cli([String::from("engine"), String::from("blep")]).expect("engine should parse"),
             CurrentSynthesisTuiCli::Engine(
                 hollow_grove::current_synthesis_engine::EngineLens::Blep
@@ -900,6 +947,9 @@ mod tests {
         assert!(usage.contains("manager-language witness"));
         assert!(usage.contains("manager-language validate"));
         assert!(usage.contains("player-location witness"));
+        assert!(usage.contains("being-object witness"));
+        assert!(usage.contains("being-object validate"));
+        assert!(usage.contains("move witness"));
         assert!(usage.contains("engine status|pleb|meta|blep"));
         assert!(usage.contains("bond inspect <id>"));
         assert!(usage.contains("resource history"));
@@ -945,6 +995,12 @@ mod tests {
                 .expect("manager-language validate should succeed");
         let player_location_witness = run_cli(&root, CurrentSynthesisTuiCli::PlayerLocationWitness)
             .expect("player-location witness should succeed");
+        let being_object_witness = run_cli(&root, CurrentSynthesisTuiCli::BeingObjectWitness)
+            .expect("being-object witness should succeed");
+        let being_object_validate = run_cli(&root, CurrentSynthesisTuiCli::BeingObjectValidate)
+            .expect("being-object validate should succeed");
+        let move_witness = run_cli(&root, CurrentSynthesisTuiCli::MoveWitness)
+            .expect("move witness should succeed");
         let status = run_cli(
             &root,
             CurrentSynthesisTuiCli::Engine(
@@ -976,6 +1032,9 @@ mod tests {
         assert!(manager_language_witness.contains("HOLLOW GROVE MANAGER LANGUAGE"));
         assert!(manager_language_validate.contains("status: pass"));
         assert!(player_location_witness.contains("PLAYER SPATIAL INTERPRETATION"));
+        assert!(being_object_witness.contains("HOLLOW GROVE BEING / OBJECT ONTOLOGY"));
+        assert!(being_object_validate.contains("status: pass"));
+        assert!(move_witness.contains("HOLLOW GROVE MOVE WITNESS"));
         assert!(status.contains("Current Synthesis Engine"));
         assert!(bond_list.contains("Bond List"));
         assert!(npc.contains("NPC Inspector"));

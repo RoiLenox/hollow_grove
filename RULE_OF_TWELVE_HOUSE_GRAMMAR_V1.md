@@ -8,6 +8,10 @@ The readable House-relative manager-language layer built over this geometry now 
 
 - `PROXY_MOXY_FOXY_MANAGER_LANGUAGE_V1.md`
 
+The Being/Object root ontology that can consume Rule-of-Twelve geometry and Proxy/Moxy/Foxy addressing now lives in:
+
+- `BEING_OBJECT_ROOT_ONTOLOGY_V1.md`
+
 ## Core Law
 
 Ranina is the unique, unnumbered center.

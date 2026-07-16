@@ -1,5 +1,6 @@
 pub mod aim;
 pub mod artifact_io;
+pub mod being_object_ontology;
 pub mod current_synthesis_engine;
 pub mod current_synthesis_scenario;
 pub mod decision_engine;
@@ -31,6 +32,20 @@ pub mod world_map_geometry;
 pub use aim::{Aim, AimBuildError, construct_aim};
 pub use artifact_io::{
     ArtifactFlushRecord, ArtifactSession, read_text_artifact, write_text_artifact,
+};
+pub use being_object_ontology::{
+    ActionAim, AddressingMode, BeingEmbodiment, BeingInheritance, BeingObjectAction,
+    BeingObjectContractInput, BeingObjectMoveResolution, BeingObjectObservation,
+    BeingObjectSynthesisSpec, BeingState, HollowingOperation, HollowingRefinement, HollowingTarget,
+    ObjectCondition, ObjectConnection, ObjectFamily, ObjectFunction, ObjectId, ObjectKind,
+    ObjectMaterial, ObjectState, PracticeContext, PressureExposure, ResolvedMoveId, SkillId,
+    SkillPractice, TraitTransferRule, build_being_object_validation_report,
+    build_being_object_witness, build_being_state, build_move_witness,
+    canonical_being_object_contract_fixture, canonical_cross_boundary_synthesis_fixture,
+    canonical_foxy_repair_fixture, canonical_gremlin_proxy_action_fixture,
+    canonical_hollow_being_fixture, canonical_hollow_object_fixture, canonical_moxy_repair_fixture,
+    canonical_object_state, canonical_troglodyte_proxy_action_fixture, observe_being_object_action,
+    resolve_being_object_action, validate_being_object_contract,
 };
 pub use decision_engine::{
     ChosenDecision, DecisionCandidate, DecisionCandidateId, DecisionChoiceTrace,

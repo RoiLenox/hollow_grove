@@ -79,6 +79,9 @@ fn main_binary_reports_integrated_help() {
     assert!(stdout.contains("manager-language witness"));
     assert!(stdout.contains("manager-language validate"));
     assert!(stdout.contains("player-location witness"));
+    assert!(stdout.contains("being-object witness"));
+    assert!(stdout.contains("being-object validate"));
+    assert!(stdout.contains("move witness"));
     assert!(stdout.contains("engine status"));
     assert!(stdout.contains("player ..."));
     assert!(stdout.contains("player move"));
@@ -282,6 +285,30 @@ fn main_binary_delegates_progression_and_point_squared_surfaces() {
     assert!(player_location_witness.status.success());
     let player_location_witness_stdout = String::from_utf8_lossy(&player_location_witness.stdout);
     assert!(player_location_witness_stdout.contains("PLAYER SPATIAL INTERPRETATION"));
+
+    let being_object_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["being-object", "witness"])
+        .output()
+        .expect("being-object witness should run");
+    assert!(being_object_witness.status.success());
+    let being_object_witness_stdout = String::from_utf8_lossy(&being_object_witness.stdout);
+    assert!(being_object_witness_stdout.contains("HOLLOW GROVE BEING / OBJECT ONTOLOGY"));
+
+    let being_object_validate = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["being-object", "validate"])
+        .output()
+        .expect("being-object validate should run");
+    assert!(being_object_validate.status.success());
+    let being_object_validate_stdout = String::from_utf8_lossy(&being_object_validate.stdout);
+    assert!(being_object_validate_stdout.contains("status: pass"));
+
+    let move_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["move", "witness"])
+        .output()
+        .expect("move witness should run");
+    assert!(move_witness.status.success());
+    let move_witness_stdout = String::from_utf8_lossy(&move_witness.stdout);
+    assert!(move_witness_stdout.contains("HOLLOW GROVE MOVE WITNESS"));
 }
 
 #[test]
@@ -308,6 +335,13 @@ fn main_binary_runs_foundation_verification() {
     assert!(stdout.contains("Proxy structural validation: pass"));
     assert!(stdout.contains("Moxy relation validation: pass"));
     assert!(stdout.contains("Foxy reflection validation: pass"));
+    assert!(stdout.contains("Being / Object ontology: pass"));
+    assert!(stdout.contains("Skill relation validation: pass"));
+    assert!(stdout.contains("Move resolution validation: pass"));
+    assert!(stdout.contains("natural inheritance: pass"));
+    assert!(stdout.contains("Hollowing target rules: pass"));
+    assert!(stdout.contains("Synthesis cross-boundary rules: pass"));
+    assert!(stdout.contains("Proxy / Moxy / Foxy Being/Object addressing: pass"));
     assert!(stdout.contains("Stairway horizon fixture: pass"));
     assert!(stdout.contains("vertical witness: pass"));
     assert!(stdout.contains("V1.1 topology unchanged: pass"));

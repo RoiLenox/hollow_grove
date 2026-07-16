@@ -21,9 +21,11 @@ use crate::world_map_geometry::{
 };
 use crate::{
     CANONICAL_WITNESS, ContactOutcome, DecisionIntent, FrameState, LandingOutcome, Point, Symptom,
-    build_manager_language_witness, canonical_manager_language_contract_fixture,
-    execute_kernel_pass_decision, execute_synthesis_recipe, gremlin_tinker_recipe,
-    pixy_confusion_recipe, run_kernel_cycle, validate_manager_language_contract,
+    build_being_object_validation_report, build_being_object_witness,
+    build_manager_language_witness, build_move_witness, canonical_being_object_contract_fixture,
+    canonical_manager_language_contract_fixture, execute_kernel_pass_decision,
+    execute_synthesis_recipe, gremlin_tinker_recipe, pixy_confusion_recipe, run_kernel_cycle,
+    validate_being_object_contract, validate_manager_language_contract,
 };
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -507,6 +509,49 @@ pub fn validate_player_spatial_foundation() -> io::Result<()> {
     Ok(())
 }
 
+pub fn validate_being_object_foundation() -> io::Result<()> {
+    let diagnostics = validate_being_object_contract(&canonical_being_object_contract_fixture());
+    if !diagnostics.is_empty() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!(
+                "Being/Object ontology contract drifted: {}",
+                diagnostics
+                    .into_iter()
+                    .map(|diagnostic| diagnostic.message)
+                    .collect::<Vec<_>>()
+                    .join("; ")
+            ),
+        ));
+    }
+
+    let validation = build_being_object_validation_report()?;
+    if !validation.contains("status: pass") {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "Being/Object validation report did not pass",
+        ));
+    }
+
+    let witness = build_being_object_witness()?;
+    if !witness.contains("Practiced relation between Being and Object") {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "Being/Object witness drifted from the semantic foundation",
+        ));
+    }
+
+    let move_witness = build_move_witness()?;
+    if !move_witness.contains("Resolved Move:") || !move_witness.contains("TinkerGrip") {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "Move witness drifted from the semantic foundation",
+        ));
+    }
+
+    Ok(())
+}
+
 pub fn validate_medical_injury_cycle() -> io::Result<()> {
     let root_fixture = crate::hollow_grove_contract::canonical_root_alignment_fixture();
     let diagnostics =
@@ -664,6 +709,7 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
     validate_ranina_rotation_foundation()?;
     validate_manager_language_foundation()?;
     validate_player_spatial_foundation()?;
+    validate_being_object_foundation()?;
     validate_medical_injury_cycle()?;
     validate_canonical_content_fixtures()?;
     validate_medical_team_profile(&build_glaushouse_medical_team_profile())?;
@@ -804,6 +850,13 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
          - Moxy relation validation: pass\n\
          - Foxy reflection validation: pass\n\
          - Rule-of-Twelve compatibility: pass\n\
+         - Being / Object ontology: pass\n\
+         - Skill relation validation: pass\n\
+         - Move resolution validation: pass\n\
+         - natural inheritance: pass\n\
+         - Hollowing target rules: pass\n\
+         - Synthesis cross-boundary rules: pass\n\
+         - Proxy / Moxy / Foxy Being/Object addressing: pass\n\
          - CurrentPrism distinction: pass\n\
          - Point² radial expansion: pass\n\
          - Ranina center invariance: pass\n\
@@ -825,6 +878,10 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
          {}\n\
          Player Location Witness:\n\n\
          {}\n\
+         Being / Object Witness:\n\n\
+         {}\n\
+         Move Witness:\n\n\
+         {}\n\
          Vertical Witness:\n\n\
          {}",
         crate::hollow_grove_contract::build_hollow_grove_alignment_witness(),
@@ -833,6 +890,8 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
         build_rule_of_twelve_witness()?,
         build_manager_language_witness(),
         build_player_location_witness()?,
+        build_being_object_witness()?,
+        build_move_witness()?,
         build_hollow_grove_vertical_witness()?
     ))
 }

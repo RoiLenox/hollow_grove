@@ -80,10 +80,15 @@ The locked readable Proxy / Moxy / Foxy spatial-manager layer now lives in:
 
 - `PROXY_MOXY_FOXY_MANAGER_LANGUAGE_V1.md`
 
+The locked Being / Object root ontology now lives in:
+
+- `BEING_OBJECT_ROOT_ONTOLOGY_V1.md`
+
 Primary enforcement for that extension:
 
 - `src/hollow_grove_contract.rs`
 - `src/point_progression.rs`
+- `src/being_object_ontology.rs`
 - `src/hollow_grove_content.rs`
 - `src/bin/current_synthesis_tui.rs`
 - `tests/main_cli.rs`

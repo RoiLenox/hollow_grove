@@ -4,6 +4,10 @@ This document records the locked readable spatial-manager layer added over the e
 
 It extends the existing semantic foundation, Ranina-centered geometry, and Point² progression model. It does not replace the frozen Version 1.1 execution path, world coordinates, or progression state.
 
+The Being/Object action ontology that consumes these addressing modes now lives in:
+
+- `BEING_OBJECT_ROOT_ONTOLOGY_V1.md`
+
 ## Checkpoint
 
 This pass starts from the verified Rule-of-Twelve checkpoint:
@@ -44,6 +48,12 @@ Manager responsibility lock:
 - `Proxy = House-relative spatial interpretation`
 - `Moxy = relation or bond opened from the Proxy`
 - `Foxy = reflected or inverted Proxy or Moxy`
+
+Within the Being/Object root ontology these also remain:
+
+- `Proxy = immediate/local Being-Object relation`
+- `Moxy = what the addressed Object connects toward`
+- `Foxy = the inverse, reflected, hidden, or return Object relation`
 
 These layers coexist. They do not replace one another.
 
