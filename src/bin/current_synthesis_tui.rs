@@ -20,8 +20,9 @@ use hollow_grove::hollow_grove_contract::{
 };
 use hollow_grove::hueman_progression::{VerticalSliceState, write_vertical_slice_artifacts_at};
 use hollow_grove::{
-    build_map_validation_report, build_map_witness, build_point_squared_witness,
-    build_progression_validation_report, build_progression_witness,
+    build_manager_language_validation_report, build_manager_language_witness,
+    build_map_validation_report, build_map_witness, build_player_location_witness,
+    build_point_squared_witness, build_progression_validation_report, build_progression_witness,
     build_rule_of_twelve_validation_report, build_rule_of_twelve_witness,
 };
 
@@ -40,6 +41,9 @@ enum CurrentSynthesisTuiCli {
     MapValidate,
     RuleOfTwelveWitness,
     RuleOfTwelveValidate,
+    ManagerLanguageWitness,
+    ManagerLanguageValidate,
+    PlayerLocationWitness,
     Engine(EngineLens),
     BondList,
     BondInspect(String),
@@ -154,6 +158,31 @@ where
             ),
             Some(other) => Err(format!("unknown rule-of-twelve command: {other}")),
             None => Err(String::from("rule-of-twelve requires witness or validate")),
+        },
+        "manager-language" => match args.next().as_deref() {
+            Some("witness") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::ManagerLanguageWitness,
+                "manager-language witness",
+            ),
+            Some("validate") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::ManagerLanguageValidate,
+                "manager-language validate",
+            ),
+            Some(other) => Err(format!("unknown manager-language command: {other}")),
+            None => Err(String::from(
+                "manager-language requires witness or validate",
+            )),
+        },
+        "player-location" => match args.next().as_deref() {
+            Some("witness") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::PlayerLocationWitness,
+                "player-location witness",
+            ),
+            Some(other) => Err(format!("unknown player-location command: {other}")),
+            None => Err(String::from("player-location requires witness")),
         },
         "engine" => {
             let lens = args.next().unwrap_or_else(|| String::from("status"));
@@ -364,7 +393,7 @@ fn parse_player_action(
 }
 
 fn usage() -> &'static str {
-    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|map|rule-of-twelve|engine|bond|resource|player|npc|cleopatra> [args]\n\
+    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|map|rule-of-twelve|manager-language|player-location|engine|bond|resource|player|npc|cleopatra> [args]\n\
      \n\
      Commands:\n\
        scenario list\n\
@@ -379,6 +408,9 @@ fn usage() -> &'static str {
        map validate\n\
        rule-of-twelve witness\n\
        rule-of-twelve validate\n\
+       manager-language witness\n\
+       manager-language validate\n\
+       player-location witness\n\
        engine status|pleb|meta|blep\n\
        bond list\n\
        bond inspect <id>\n\
@@ -501,6 +533,11 @@ fn run_cli(root: &Path, cli: CurrentSynthesisTuiCli) -> io::Result<String> {
         CurrentSynthesisTuiCli::MapValidate => build_map_validation_report(),
         CurrentSynthesisTuiCli::RuleOfTwelveWitness => build_rule_of_twelve_witness(),
         CurrentSynthesisTuiCli::RuleOfTwelveValidate => build_rule_of_twelve_validation_report(),
+        CurrentSynthesisTuiCli::ManagerLanguageWitness => Ok(build_manager_language_witness()),
+        CurrentSynthesisTuiCli::ManagerLanguageValidate => {
+            Ok(build_manager_language_validation_report())
+        }
+        CurrentSynthesisTuiCli::PlayerLocationWitness => build_player_location_witness(),
         CurrentSynthesisTuiCli::Engine(lens) => {
             let (_persisted, state) = load_state(root)?;
             Ok(build_engine_output(&state, lens))
@@ -755,6 +792,21 @@ mod tests {
             CurrentSynthesisTuiCli::RuleOfTwelveValidate
         );
         assert_eq!(
+            parse_cli([String::from("manager-language"), String::from("witness")])
+                .expect("manager-language witness should parse"),
+            CurrentSynthesisTuiCli::ManagerLanguageWitness
+        );
+        assert_eq!(
+            parse_cli([String::from("manager-language"), String::from("validate")])
+                .expect("manager-language validate should parse"),
+            CurrentSynthesisTuiCli::ManagerLanguageValidate
+        );
+        assert_eq!(
+            parse_cli([String::from("player-location"), String::from("witness")])
+                .expect("player-location witness should parse"),
+            CurrentSynthesisTuiCli::PlayerLocationWitness
+        );
+        assert_eq!(
             parse_cli([String::from("engine"), String::from("blep")]).expect("engine should parse"),
             CurrentSynthesisTuiCli::Engine(
                 hollow_grove::current_synthesis_engine::EngineLens::Blep
@@ -845,6 +897,9 @@ mod tests {
         assert!(usage.contains("map validate"));
         assert!(usage.contains("rule-of-twelve witness"));
         assert!(usage.contains("rule-of-twelve validate"));
+        assert!(usage.contains("manager-language witness"));
+        assert!(usage.contains("manager-language validate"));
+        assert!(usage.contains("player-location witness"));
         assert!(usage.contains("engine status|pleb|meta|blep"));
         assert!(usage.contains("bond inspect <id>"));
         assert!(usage.contains("resource history"));
@@ -882,6 +937,14 @@ mod tests {
             .expect("rule-of-twelve witness should succeed");
         let rule_of_twelve_validate = run_cli(&root, CurrentSynthesisTuiCli::RuleOfTwelveValidate)
             .expect("rule-of-twelve validate should succeed");
+        let manager_language_witness =
+            run_cli(&root, CurrentSynthesisTuiCli::ManagerLanguageWitness)
+                .expect("manager-language witness should succeed");
+        let manager_language_validate =
+            run_cli(&root, CurrentSynthesisTuiCli::ManagerLanguageValidate)
+                .expect("manager-language validate should succeed");
+        let player_location_witness = run_cli(&root, CurrentSynthesisTuiCli::PlayerLocationWitness)
+            .expect("player-location witness should succeed");
         let status = run_cli(
             &root,
             CurrentSynthesisTuiCli::Engine(
@@ -910,6 +973,9 @@ mod tests {
         assert!(map_validate.contains("status: pass"));
         assert!(rule_of_twelve_witness.contains("HOLLOW GROVE RULE OF TWELVE"));
         assert!(rule_of_twelve_validate.contains("status: pass"));
+        assert!(manager_language_witness.contains("HOLLOW GROVE MANAGER LANGUAGE"));
+        assert!(manager_language_validate.contains("status: pass"));
+        assert!(player_location_witness.contains("PLAYER SPATIAL INTERPRETATION"));
         assert!(status.contains("Current Synthesis Engine"));
         assert!(bond_list.contains("Bond List"));
         assert!(npc.contains("NPC Inspector"));

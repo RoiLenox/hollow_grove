@@ -13,14 +13,17 @@ use crate::point_progression::{
     build_canonical_point_squared_fixture, build_point_squared_witness, validate_point_progression,
 };
 use crate::world_map_geometry::{
-    RotationPosition, WorldCenterId, build_map_witness, build_rule_of_twelve_witness,
-    canonical_rotation_contract_fixture, canonical_rule_of_twelve_contract_fixture,
-    validate_hollow_grove_rotation_contract, validate_rule_of_twelve_contract,
+    RotationPosition, WorldCenterId, build_canonical_player_spatial_fixture, build_map_witness,
+    build_player_location_witness, build_rule_of_twelve_witness,
+    canonical_player_spatial_contract_fixture, canonical_rotation_contract_fixture,
+    canonical_rule_of_twelve_contract_fixture, validate_hollow_grove_rotation_contract,
+    validate_player_spatial_contract, validate_rule_of_twelve_contract,
 };
 use crate::{
     CANONICAL_WITNESS, ContactOutcome, DecisionIntent, FrameState, LandingOutcome, Point, Symptom,
+    build_manager_language_witness, canonical_manager_language_contract_fixture,
     execute_kernel_pass_decision, execute_synthesis_recipe, gremlin_tinker_recipe,
-    pixy_confusion_recipe, run_kernel_cycle,
+    pixy_confusion_recipe, run_kernel_cycle, validate_manager_language_contract,
 };
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -417,6 +420,93 @@ pub fn validate_ranina_rotation_foundation() -> io::Result<()> {
     Ok(())
 }
 
+pub fn validate_manager_language_foundation() -> io::Result<()> {
+    let diagnostics =
+        validate_manager_language_contract(&canonical_manager_language_contract_fixture());
+    if !diagnostics.is_empty() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            diagnostics
+                .into_iter()
+                .map(|diagnostic| diagnostic.message)
+                .collect::<Vec<_>>()
+                .join("; "),
+        ));
+    }
+    Ok(())
+}
+
+pub fn validate_player_spatial_foundation() -> io::Result<()> {
+    let diagnostics =
+        validate_player_spatial_contract(&canonical_player_spatial_contract_fixture());
+    if !diagnostics.is_empty() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            diagnostics
+                .into_iter()
+                .map(|diagnostic| diagnostic.message)
+                .collect::<Vec<_>>()
+                .join("; "),
+        ));
+    }
+
+    let fixture = build_canonical_player_spatial_fixture()?;
+    let interpretation = fixture.interpretation();
+    let proxy = interpretation.proxy().ok_or_else(|| {
+        io::Error::new(
+            io::ErrorKind::InvalidData,
+            "canonical player spatial fixture must derive Proxy",
+        )
+    })?;
+    let moxy = interpretation.moxy().ok_or_else(|| {
+        io::Error::new(
+            io::ErrorKind::InvalidData,
+            "canonical player spatial fixture must derive Moxy",
+        )
+    })?;
+
+    if fixture.rotation_context().absolute_position() != RotationPosition::twelve()
+        || fixture.rotation_context().house() != crate::hollow_grove_contract::House::Flynt
+        || !fixture.rotation_context().rotation_complete()
+    {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "canonical player spatial fixture must remain Ring 2 / Position 12 / Flynt-aligned / rotation complete",
+        ));
+    }
+    if proxy.anchor() != crate::hollow_grove_contract::House::Stonebend
+        || proxy.geometry() != crate::world_map_geometry::SpatialGeometry::Round
+        || proxy.proximity() != crate::world_map_geometry::Proximity::Distal
+    {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "canonical player spatial fixture must render a Distal Round Proxy relative to Stonebend",
+        ));
+    }
+    if moxy.destination() != Some(crate::hollow_grove_contract::House::Flynt)
+        || moxy.route() != Some(CanonicalRouteId::StairwayToHeaven)
+    {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "canonical player spatial fixture must keep the Stairway to Heaven Flynt-directed Moxy relation",
+        ));
+    }
+    if interpretation.foxy().is_some() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "canonical player spatial fixture must leave Foxy inactive",
+        ));
+    }
+    if fixture.rotation_context().house() == proxy.anchor() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "canonical player spatial fixture must prove absolute House alignment and Proxy anchor can differ",
+        ));
+    }
+
+    Ok(())
+}
+
 pub fn validate_medical_injury_cycle() -> io::Result<()> {
     let root_fixture = crate::hollow_grove_contract::canonical_root_alignment_fixture();
     let diagnostics =
@@ -572,6 +662,8 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
     validate_hueman_progression_foundation()?;
     validate_point_squared_progression_foundation()?;
     validate_ranina_rotation_foundation()?;
+    validate_manager_language_foundation()?;
+    validate_player_spatial_foundation()?;
     validate_medical_injury_cycle()?;
     validate_canonical_content_fixtures()?;
     validate_medical_team_profile(&build_glaushouse_medical_team_profile())?;
@@ -702,6 +794,17 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
          - Position 12 Flynt completion: pass\n\
          - angular/radial distinction: pass\n\
          - automatic Point² prevention: pass\n\
+         - PLEB / Proxy mapping: pass\n\
+         - META / Moxy mapping: pass\n\
+         - BLEP / Foxy mapping: pass\n\
+         - Clouseau / Proxy mapping: pass\n\
+         - HAL / Moxy mapping: pass\n\
+         - Cleopatra / Foxy mapping: pass\n\
+         - Proxy structural validation: pass\n\
+         - Moxy relation validation: pass\n\
+         - Foxy reflection validation: pass\n\
+         - Rule-of-Twelve compatibility: pass\n\
+         - CurrentPrism distinction: pass\n\
          - Point² radial expansion: pass\n\
          - Ranina center invariance: pass\n\
          - point stabilization: pass\n\
@@ -718,12 +821,18 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
          {}\n\
          Rule of Twelve Witness:\n\n\
          {}\n\
+         Manager Language Witness:\n\n\
+         {}\n\
+         Player Location Witness:\n\n\
+         {}\n\
          Vertical Witness:\n\n\
          {}",
         crate::hollow_grove_contract::build_hollow_grove_alignment_witness(),
         build_point_squared_witness()?,
         build_map_witness()?,
         build_rule_of_twelve_witness()?,
+        build_manager_language_witness(),
+        build_player_location_witness()?,
         build_hollow_grove_vertical_witness()?
     ))
 }

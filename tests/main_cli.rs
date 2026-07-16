@@ -76,6 +76,9 @@ fn main_binary_reports_integrated_help() {
     assert!(stdout.contains("map validate"));
     assert!(stdout.contains("rule-of-twelve witness"));
     assert!(stdout.contains("rule-of-twelve validate"));
+    assert!(stdout.contains("manager-language witness"));
+    assert!(stdout.contains("manager-language validate"));
+    assert!(stdout.contains("player-location witness"));
     assert!(stdout.contains("engine status"));
     assert!(stdout.contains("player ..."));
     assert!(stdout.contains("player move"));
@@ -254,6 +257,31 @@ fn main_binary_delegates_progression_and_point_squared_surfaces() {
     assert!(rule_of_twelve_validate.status.success());
     let rule_of_twelve_validate_stdout = String::from_utf8_lossy(&rule_of_twelve_validate.stdout);
     assert!(rule_of_twelve_validate_stdout.contains("status: pass"));
+
+    let manager_language_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["manager-language", "witness"])
+        .output()
+        .expect("manager-language witness should run");
+    assert!(manager_language_witness.status.success());
+    let manager_language_witness_stdout = String::from_utf8_lossy(&manager_language_witness.stdout);
+    assert!(manager_language_witness_stdout.contains("HOLLOW GROVE MANAGER LANGUAGE"));
+
+    let manager_language_validate = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["manager-language", "validate"])
+        .output()
+        .expect("manager-language validate should run");
+    assert!(manager_language_validate.status.success());
+    let manager_language_validate_stdout =
+        String::from_utf8_lossy(&manager_language_validate.stdout);
+    assert!(manager_language_validate_stdout.contains("status: pass"));
+
+    let player_location_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["player-location", "witness"])
+        .output()
+        .expect("player-location witness should run");
+    assert!(player_location_witness.status.success());
+    let player_location_witness_stdout = String::from_utf8_lossy(&player_location_witness.stdout);
+    assert!(player_location_witness_stdout.contains("PLAYER SPATIAL INTERPRETATION"));
 }
 
 #[test]
@@ -274,6 +302,12 @@ fn main_binary_runs_foundation_verification() {
     assert!(stdout.contains("four-House grammar: pass"));
     assert!(stdout.contains("three-pass repetition: pass"));
     assert!(stdout.contains("Position 12 Flynt completion: pass"));
+    assert!(stdout.contains("PLEB / Proxy mapping: pass"));
+    assert!(stdout.contains("META / Moxy mapping: pass"));
+    assert!(stdout.contains("BLEP / Foxy mapping: pass"));
+    assert!(stdout.contains("Proxy structural validation: pass"));
+    assert!(stdout.contains("Moxy relation validation: pass"));
+    assert!(stdout.contains("Foxy reflection validation: pass"));
     assert!(stdout.contains("Stairway horizon fixture: pass"));
     assert!(stdout.contains("vertical witness: pass"));
     assert!(stdout.contains("V1.1 topology unchanged: pass"));

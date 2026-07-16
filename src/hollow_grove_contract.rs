@@ -504,6 +504,8 @@ pub enum AlignmentDiagnosticCode {
     PointSquaredAscensionMismatch,
     RotationalMapMismatch,
     RuleOfTwelveMismatch,
+    ManagerLanguageMismatch,
+    PlayerSpatialMismatch,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]

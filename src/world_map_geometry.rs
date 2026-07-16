@@ -4,6 +4,7 @@ use std::io;
 use crate::decision_engine::{DecisionExecution, DecisionIntent, execute_decision};
 use crate::frame_state::{BeingId, FrameState};
 use crate::hollow_grove_contract::{AlignmentDiagnostic, AlignmentDiagnosticCode, House};
+use crate::manager_domain::{Manager, ManagerDomain, ManagerGeometry};
 use crate::point::Point;
 use crate::point_progression::{
     CanonicalRouteId, PointProgressionState, PointSquaredApplication,
@@ -377,6 +378,766 @@ impl Default for PointGeometryState {
     fn default() -> Self {
         Self::origin()
     }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum RelativeDirection {
+    North,
+    Northeast,
+    East,
+    Southeast,
+    South,
+    Southwest,
+    West,
+    Northwest,
+}
+
+impl RelativeDirection {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::North => "North",
+            Self::Northeast => "Northeast",
+            Self::East => "East",
+            Self::Southeast => "Southeast",
+            Self::South => "South",
+            Self::Southwest => "Southwest",
+            Self::West => "West",
+            Self::Northwest => "Northwest",
+        }
+    }
+
+    #[must_use]
+    pub const fn phrase(self) -> &'static str {
+        match self {
+            Self::North => "north",
+            Self::Northeast => "northeast",
+            Self::East => "east",
+            Self::Southeast => "southeast",
+            Self::South => "south",
+            Self::Southwest => "southwest",
+            Self::West => "west",
+            Self::Northwest => "northwest",
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum Proximity {
+    Proximal,
+    Distal,
+}
+
+impl Proximity {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Proximal => "Proximal",
+            Self::Distal => "Distal",
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum SpatialGeometry {
+    Flat,
+    Round,
+    Inverted,
+}
+
+impl SpatialGeometry {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Flat => "Flat",
+            Self::Round => "Round",
+            Self::Inverted => "Inverted",
+        }
+    }
+
+    #[must_use]
+    pub const fn manager_geometry(self) -> ManagerGeometry {
+        match self {
+            Self::Flat => ManagerGeometry::Straight,
+            Self::Round => ManagerGeometry::Curved,
+            Self::Inverted => ManagerGeometry::Inverted,
+        }
+    }
+
+    #[must_use]
+    pub const fn manager(self) -> Manager {
+        match self {
+            Self::Flat => Manager::Clouseau,
+            Self::Round => Manager::Hal,
+            Self::Inverted => Manager::Cleopatra,
+        }
+    }
+}
+
+impl From<ManagerGeometry> for SpatialGeometry {
+    fn from(value: ManagerGeometry) -> Self {
+        match value {
+            ManagerGeometry::Straight => Self::Flat,
+            ManagerGeometry::Curved => Self::Round,
+            ManagerGeometry::Inverted => Self::Inverted,
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+pub struct Proxy {
+    anchor: House,
+    direction: RelativeDirection,
+    geometry: SpatialGeometry,
+    proximity: Proximity,
+    route: Option<CanonicalRouteId>,
+    coordinate: Option<RotationalCoordinate>,
+}
+
+impl Proxy {
+    #[must_use]
+    pub const fn new(
+        anchor: House,
+        direction: RelativeDirection,
+        geometry: SpatialGeometry,
+        proximity: Proximity,
+        route: Option<CanonicalRouteId>,
+        coordinate: Option<RotationalCoordinate>,
+    ) -> Self {
+        Self {
+            anchor,
+            direction,
+            geometry,
+            proximity,
+            route,
+            coordinate,
+        }
+    }
+
+    #[must_use]
+    pub const fn anchor(&self) -> House {
+        self.anchor
+    }
+
+    #[must_use]
+    pub const fn direction(&self) -> RelativeDirection {
+        self.direction
+    }
+
+    #[must_use]
+    pub const fn geometry(&self) -> SpatialGeometry {
+        self.geometry
+    }
+
+    #[must_use]
+    pub const fn proximity(&self) -> Proximity {
+        self.proximity
+    }
+
+    #[must_use]
+    pub const fn route(&self) -> Option<CanonicalRouteId> {
+        self.route
+    }
+
+    #[must_use]
+    pub const fn coordinate(&self) -> Option<RotationalCoordinate> {
+        self.coordinate
+    }
+
+    #[must_use]
+    pub const fn domain(&self) -> ManagerDomain {
+        ManagerDomain::Pleb
+    }
+
+    #[must_use]
+    pub const fn manager(&self) -> Manager {
+        Manager::Clouseau
+    }
+
+    #[must_use]
+    pub fn render(&self) -> String {
+        format!(
+            "{} {} {} of {}",
+            self.proximity.as_str(),
+            self.geometry.as_str(),
+            self.direction.phrase(),
+            house_display(self.anchor)
+        )
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum MoxyRelation {
+    Bond,
+}
+
+impl MoxyRelation {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Bond => "Bond",
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+pub struct Moxy {
+    origin: Proxy,
+    destination: Option<House>,
+    relation: MoxyRelation,
+    route: Option<CanonicalRouteId>,
+    manager: Manager,
+}
+
+impl Moxy {
+    #[must_use]
+    pub const fn new(
+        origin: Proxy,
+        destination: Option<House>,
+        relation: MoxyRelation,
+        route: Option<CanonicalRouteId>,
+        manager: Manager,
+    ) -> Self {
+        Self {
+            origin,
+            destination,
+            relation,
+            route,
+            manager,
+        }
+    }
+
+    #[must_use]
+    pub const fn origin(&self) -> &Proxy {
+        &self.origin
+    }
+
+    #[must_use]
+    pub const fn destination(&self) -> Option<House> {
+        self.destination
+    }
+
+    #[must_use]
+    pub const fn relation(&self) -> MoxyRelation {
+        self.relation
+    }
+
+    #[must_use]
+    pub const fn route(&self) -> Option<CanonicalRouteId> {
+        self.route
+    }
+
+    #[must_use]
+    pub const fn manager(&self) -> Manager {
+        self.manager
+    }
+
+    #[must_use]
+    pub const fn domain(&self) -> ManagerDomain {
+        ManagerDomain::Meta
+    }
+
+    #[must_use]
+    pub fn render(&self) -> String {
+        match (self.destination, self.route) {
+            (Some(destination), Some(route)) => format!(
+                "{} toward {} through {}",
+                self.relation.as_str(),
+                house_display(destination),
+                route.as_str()
+            ),
+            (Some(destination), None) => {
+                format!(
+                    "{} toward {}",
+                    self.relation.as_str(),
+                    house_display(destination)
+                )
+            }
+            _ => self.relation.as_str().to_string(),
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum FoxySourceKind {
+    Proxy,
+    Moxy,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+pub enum FoxySource {
+    Proxy(Proxy),
+    Moxy(Moxy),
+}
+
+impl FoxySource {
+    #[must_use]
+    pub const fn kind(&self) -> FoxySourceKind {
+        match self {
+            Self::Proxy(_) => FoxySourceKind::Proxy,
+            Self::Moxy(_) => FoxySourceKind::Moxy,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum ReflectionKind {
+    InvertedReturn,
+}
+
+impl ReflectionKind {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::InvertedReturn => "InvertedReturn",
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+pub struct Foxy {
+    source: FoxySource,
+    reflection_kind: ReflectionKind,
+    manager: Manager,
+}
+
+impl Foxy {
+    #[must_use]
+    pub const fn new(
+        source: FoxySource,
+        reflection_kind: ReflectionKind,
+        manager: Manager,
+    ) -> Self {
+        Self {
+            source,
+            reflection_kind,
+            manager,
+        }
+    }
+
+    #[must_use]
+    pub const fn source(&self) -> &FoxySource {
+        &self.source
+    }
+
+    #[must_use]
+    pub const fn reflection_kind(&self) -> ReflectionKind {
+        self.reflection_kind
+    }
+
+    #[must_use]
+    pub const fn manager(&self) -> Manager {
+        self.manager
+    }
+
+    #[must_use]
+    pub const fn domain(&self) -> ManagerDomain {
+        ManagerDomain::Blep
+    }
+
+    #[must_use]
+    pub fn render(&self) -> String {
+        match &self.source {
+            FoxySource::Proxy(proxy) => format!("Inverted reflection of {}", proxy.render()),
+            FoxySource::Moxy(moxy) => {
+                if let Some(destination) = moxy.destination() {
+                    format!(
+                        "Inverted reflection of the {}-{} bond",
+                        house_display(moxy.origin().anchor()),
+                        house_display(destination)
+                    )
+                } else {
+                    format!("Inverted reflection of {}", moxy.render())
+                }
+            }
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+pub struct PlayerSpatialInterpretation {
+    proxy: Option<Proxy>,
+    moxy: Option<Moxy>,
+    foxy: Option<Foxy>,
+}
+
+impl PlayerSpatialInterpretation {
+    #[must_use]
+    pub const fn new(proxy: Option<Proxy>, moxy: Option<Moxy>, foxy: Option<Foxy>) -> Self {
+        Self { proxy, moxy, foxy }
+    }
+
+    #[must_use]
+    pub const fn proxy(&self) -> Option<&Proxy> {
+        self.proxy.as_ref()
+    }
+
+    #[must_use]
+    pub const fn moxy(&self) -> Option<&Moxy> {
+        self.moxy.as_ref()
+    }
+
+    #[must_use]
+    pub const fn foxy(&self) -> Option<&Foxy> {
+        self.foxy.as_ref()
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct ProxyClaim {
+    pub anchor: Option<House>,
+    pub direction: Option<RelativeDirection>,
+    pub geometry: Option<SpatialGeometry>,
+    pub proximity: Option<Proximity>,
+    pub route: Option<CanonicalRouteId>,
+    pub coordinate: Option<RotationalCoordinate>,
+    pub domain: Option<ManagerDomain>,
+    pub manager: Option<Manager>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct MoxyClaim {
+    pub destination: Option<House>,
+    pub relation: Option<MoxyRelation>,
+    pub route: Option<CanonicalRouteId>,
+    pub manager: Option<Manager>,
+    pub domain: Option<ManagerDomain>,
+    pub velocity_only: bool,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct FoxyClaim {
+    pub source_kind: Option<FoxySourceKind>,
+    pub reflection_kind: Option<ReflectionKind>,
+    pub manager: Option<Manager>,
+    pub domain: Option<ManagerDomain>,
+    pub automatically_evil: bool,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct PlayerSpatialContractInput {
+    pub proxy: ProxyClaim,
+    pub moxy: MoxyClaim,
+    pub foxy: FoxyClaim,
+    pub proxy_replaces_coordinate: bool,
+    pub moxy_as_proximity: bool,
+    pub proxy_as_ring: bool,
+    pub automatic_point_squared_from_proxy: bool,
+    pub automatic_movement_from_moxy: bool,
+    pub automatic_legality_from_foxy: bool,
+    pub round_proxy_forbidden: bool,
+    pub coordinate_alignment_claim: Option<(RotationPosition, House)>,
+}
+
+impl Default for PlayerSpatialContractInput {
+    fn default() -> Self {
+        Self {
+            proxy: ProxyClaim {
+                anchor: Some(House::Stonebend),
+                direction: Some(RelativeDirection::Northwest),
+                geometry: Some(SpatialGeometry::Round),
+                proximity: Some(Proximity::Distal),
+                route: Some(CanonicalRouteId::StairwayToHeaven),
+                coordinate: Some(RotationalCoordinate::new(
+                    WorldRing::new(2),
+                    RotationPosition::twelve(),
+                )),
+                domain: Some(ManagerDomain::Pleb),
+                manager: Some(Manager::Clouseau),
+            },
+            moxy: MoxyClaim {
+                destination: Some(House::Flynt),
+                relation: Some(MoxyRelation::Bond),
+                route: Some(CanonicalRouteId::StairwayToHeaven),
+                manager: Some(Manager::Hal),
+                domain: Some(ManagerDomain::Meta),
+                velocity_only: false,
+            },
+            foxy: FoxyClaim {
+                source_kind: Some(FoxySourceKind::Moxy),
+                reflection_kind: Some(ReflectionKind::InvertedReturn),
+                manager: Some(Manager::Cleopatra),
+                domain: Some(ManagerDomain::Blep),
+                automatically_evil: false,
+            },
+            proxy_replaces_coordinate: false,
+            moxy_as_proximity: false,
+            proxy_as_ring: false,
+            automatic_point_squared_from_proxy: false,
+            automatic_movement_from_moxy: false,
+            automatic_legality_from_foxy: false,
+            round_proxy_forbidden: false,
+            coordinate_alignment_claim: Some((RotationPosition::twelve(), House::Flynt)),
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct PlayerSpatialFixture {
+    point: Point,
+    rotation_context: RotationObservationContext,
+    interpretation: PlayerSpatialInterpretation,
+}
+
+impl PlayerSpatialFixture {
+    #[must_use]
+    pub const fn point(&self) -> &Point {
+        &self.point
+    }
+
+    #[must_use]
+    pub const fn rotation_context(&self) -> RotationObservationContext {
+        self.rotation_context
+    }
+
+    #[must_use]
+    pub const fn interpretation(&self) -> &PlayerSpatialInterpretation {
+        &self.interpretation
+    }
+}
+
+#[must_use]
+pub fn canonical_player_spatial_contract_fixture() -> PlayerSpatialContractInput {
+    PlayerSpatialContractInput::default()
+}
+
+#[must_use]
+pub fn derive_player_spatial_interpretation(point: &Point) -> PlayerSpatialInterpretation {
+    let Some(coordinate) = point
+        .world()
+        .geometry()
+        .coordinate_for_ring(point.progression().stable_point_level())
+    else {
+        return PlayerSpatialInterpretation::new(None, None, None);
+    };
+
+    if coordinate.position() == RotationPosition::twelve()
+        && point
+            .world()
+            .route_visible(CanonicalRouteId::StairwayToHeaven)
+        && point
+            .world()
+            .route_survivable(CanonicalRouteId::StairwayToHeaven)
+    {
+        let proxy = Proxy::new(
+            House::Stonebend,
+            RelativeDirection::Northwest,
+            SpatialGeometry::Round,
+            Proximity::Distal,
+            Some(CanonicalRouteId::StairwayToHeaven),
+            Some(coordinate),
+        );
+        let moxy = Moxy::new(
+            proxy.clone(),
+            Some(House::Flynt),
+            MoxyRelation::Bond,
+            Some(CanonicalRouteId::StairwayToHeaven),
+            Manager::Hal,
+        );
+        return PlayerSpatialInterpretation::new(Some(proxy), Some(moxy), None);
+    }
+
+    PlayerSpatialInterpretation::new(None, None, None)
+}
+
+pub fn build_canonical_player_spatial_fixture() -> io::Result<PlayerSpatialFixture> {
+    let point_squared_fixture = build_canonical_point_squared_fixture()?;
+    let stabilized = point_squared_fixture.first_application().stabilized_point();
+    let world = stabilized
+        .world()
+        .with_geometry_preserving_state(
+            PointGeometryState::at_position(RotationPosition::twelve()),
+        );
+    let point = Point::with_domain_state(
+        stabilized.frame_state().clone(),
+        stabilized.progression().clone(),
+        world,
+    );
+    let rotation_context = observation_context_for_point(&point)
+        .expect("canonical player spatial fixture requires a numbered world position");
+    let interpretation = derive_player_spatial_interpretation(&point);
+
+    Ok(PlayerSpatialFixture {
+        point,
+        rotation_context,
+        interpretation,
+    })
+}
+
+pub fn validate_player_spatial_contract(
+    input: &PlayerSpatialContractInput,
+) -> Vec<AlignmentDiagnostic> {
+    let mut diagnostics = Vec::new();
+
+    if input.proxy.anchor.is_none() {
+        diagnostics.push(player_spatial_error("Proxy must include an anchor."));
+    }
+    if input.proxy.direction.is_none() {
+        diagnostics.push(player_spatial_error("Proxy must include a direction."));
+    }
+    if input.proxy.geometry.is_none() {
+        diagnostics.push(player_spatial_error("Proxy must include geometry."));
+    }
+    if input.proxy.proximity.is_none() {
+        diagnostics.push(player_spatial_error("Proxy must include proximity."));
+    }
+    if input.proxy.domain != Some(ManagerDomain::Pleb) {
+        diagnostics.push(player_spatial_error(
+            "Proxy must remain in the PLEB / Proxy domain.",
+        ));
+    }
+    if input.proxy.manager != Some(Manager::Clouseau) {
+        diagnostics.push(player_spatial_error("Clouseau must handle Proxy."));
+    }
+    if input.round_proxy_forbidden {
+        diagnostics.push(player_spatial_error(
+            "Round locations cannot be excluded from Proxy; Proxy is not Flat-only.",
+        ));
+    }
+
+    if input.moxy_as_proximity {
+        diagnostics.push(player_spatial_error(
+            "Moxy cannot be used as a Proximity value.",
+        ));
+    }
+    if input.proxy_as_ring {
+        diagnostics.push(player_spatial_error("Proxy cannot replace Ring."));
+    }
+    if input.moxy.velocity_only || input.moxy.relation.is_none() {
+        diagnostics.push(player_spatial_error(
+            "Moxy must describe a relation, bond, destination, or beyond-context; it cannot be velocity only.",
+        ));
+    }
+    if input.moxy.domain != Some(ManagerDomain::Meta) {
+        diagnostics.push(player_spatial_error(
+            "Moxy must remain in the META / Moxy domain.",
+        ));
+    }
+    if input.moxy.manager != Some(Manager::Hal) {
+        diagnostics.push(player_spatial_error("HAL must handle Moxy."));
+    }
+
+    if input.foxy.source_kind.is_none() || input.foxy.reflection_kind.is_none() {
+        diagnostics.push(player_spatial_error(
+            "Foxy must identify a source and reflection kind.",
+        ));
+    }
+    if input.foxy.domain != Some(ManagerDomain::Blep) {
+        diagnostics.push(player_spatial_error(
+            "Foxy must remain in the BLEP / Foxy domain.",
+        ));
+    }
+    if input.foxy.manager != Some(Manager::Cleopatra) {
+        diagnostics.push(player_spatial_error("Cleopatra must handle Foxy."));
+    }
+    if input.foxy.automatically_evil {
+        diagnostics.push(player_spatial_error(
+            "Foxy cannot automatically mean evil; its root meaning is reflection and inversion.",
+        ));
+    }
+
+    if input.proxy_replaces_coordinate {
+        diagnostics.push(player_spatial_error(
+            "Proxy cannot replace world coordinates; Ring + Absolute Position remain authoritative.",
+        ));
+    }
+    if input.automatic_point_squared_from_proxy {
+        diagnostics.push(player_spatial_error(
+            "Proxy creation cannot automatically grant Point².",
+        ));
+    }
+    if input.automatic_movement_from_moxy {
+        diagnostics.push(player_spatial_error(
+            "Moxy cannot automatically execute movement.",
+        ));
+    }
+    if input.automatic_legality_from_foxy {
+        diagnostics.push(player_spatial_error(
+            "Foxy reflection cannot automatically mark a Recipe legal.",
+        ));
+    }
+
+    if let Some((position, claimed_house)) = input.coordinate_alignment_claim {
+        if house_for_position(position) != claimed_house {
+            diagnostics.push(player_spatial_error(format!(
+                "Position {} derives {} from the Rule of Twelve and cannot be stored as {}.",
+                position,
+                house_display(house_for_position(position)),
+                house_display(claimed_house)
+            )));
+        }
+    }
+
+    diagnostics
+}
+
+pub fn build_player_location_witness() -> io::Result<String> {
+    let fixture = build_canonical_player_spatial_fixture()?;
+    let point = fixture.point();
+    let rotation = fixture.rotation_context();
+    let interpretation = fixture.interpretation();
+    let proxy = interpretation
+        .proxy()
+        .expect("canonical player spatial fixture requires Proxy");
+    let moxy = interpretation
+        .moxy()
+        .expect("canonical player spatial fixture requires Moxy");
+
+    Ok(format!(
+        "PLAYER SPATIAL INTERPRETATION\n\n\
+         World Coordinate:\n\
+         Ring {}\n\
+         Position {}\n\n\
+         Rule-of-Twelve:\n\
+         Pass {}\n\
+         House Number {}\n\
+         House Alignment: {}\n\
+         Rotation Complete: {}\n\n\
+         Proxy:\n\
+         {}\n\n\
+         Proxy Details:\n\
+         Anchor: {}\n\
+         Direction: {}\n\
+         Geometry: {}\n\
+         Proximity: {}\n\
+         Route: {}\n\n\
+         Moxy:\n\
+         {}\n\n\
+         Foxy:\n\
+         Inactive\n\n\
+         Managers:\n\
+         Clouseau locates.\n\
+         HAL connects.\n\
+         Cleopatra has no active reflection.\n",
+        point.progression().stable_point_level(),
+        rotation.absolute_position(),
+        rotation.pass().value(),
+        rotation.house_number(),
+        house_display(rotation.house()),
+        yes_no(rotation.rotation_complete()),
+        proxy.render(),
+        house_display(proxy.anchor()),
+        proxy.direction().as_str(),
+        proxy.geometry().as_str(),
+        proxy.proximity().as_str(),
+        proxy
+            .route()
+            .map(CanonicalRouteId::as_str)
+            .unwrap_or("unset"),
+        moxy.render(),
+    ))
+}
+
+fn player_spatial_error(message: impl Into<String>) -> AlignmentDiagnostic {
+    AlignmentDiagnostic {
+        code: AlignmentDiagnosticCode::PlayerSpatialMismatch,
+        message: message.into(),
+    }
+}
+
+#[must_use]
+fn yes_no(value: bool) -> &'static str {
+    if value { "Yes" } else { "No" }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -1718,17 +2479,22 @@ pub const fn house_anchor_for_position(position: RotationPosition) -> Option<Hou
 #[cfg(test)]
 mod tests {
     use super::{
-        CANONICAL_HOUSE_GRAMMAR, HouseNumber, PointGeometryState, RotationPass, RotationPosition,
-        RuleOfTwelveContractInput, RuleOfTwelvePositionClaim, WorldCenterId,
-        build_canonical_spiral_fixture, build_map_artifact, build_map_validation_report,
-        build_map_witness, build_rule_of_twelve_validation_report, build_rule_of_twelve_witness,
-        canonical_rotation_contract_fixture, canonical_rule_of_twelve_contract_fixture,
-        canonical_rule_of_twelve_positions, glaushouse_anchor_position,
+        CANONICAL_HOUSE_GRAMMAR, Foxy, FoxySource, FoxySourceKind, HouseNumber, Moxy, MoxyRelation,
+        PlayerSpatialContractInput, PointGeometryState, Proximity, Proxy, ReflectionKind,
+        RelativeDirection, RotationPass, RotationPosition, RuleOfTwelveContractInput,
+        RuleOfTwelvePositionClaim, SpatialGeometry, WorldCenterId,
+        build_canonical_player_spatial_fixture, build_canonical_spiral_fixture, build_map_artifact,
+        build_map_validation_report, build_map_witness, build_player_location_witness,
+        build_rule_of_twelve_validation_report, build_rule_of_twelve_witness,
+        canonical_player_spatial_contract_fixture, canonical_rotation_contract_fixture,
+        canonical_rule_of_twelve_contract_fixture, canonical_rule_of_twelve_positions,
+        derive_player_spatial_interpretation, glaushouse_anchor_position,
         glaushouse_threshold_position, house_anchor_for_position, house_for_position,
         is_rotation_complete, local_step_for_position, next_position, opposite_position,
         pass_for_position, position_identity, previous_position,
         select_canonical_spiral_transition, stonebend_anchor_position,
-        validate_hollow_grove_rotation_contract, validate_rule_of_twelve_contract,
+        validate_hollow_grove_rotation_contract, validate_player_spatial_contract,
+        validate_rule_of_twelve_contract,
     };
     use crate::hollow_grove_contract::House;
     use crate::point::Point;
@@ -2170,6 +2936,285 @@ mod tests {
 
         let artifact = build_map_artifact().expect("map artifact should build");
         assert!(artifact.contains("Four Houses form one grammar."));
+    }
+
+    #[test]
+    fn proxy_only_fixture_renders_the_canonical_local_address() {
+        let proxy = Proxy::new(
+            House::Sandmanor,
+            RelativeDirection::South,
+            SpatialGeometry::Flat,
+            Proximity::Proximal,
+            None,
+            None,
+        );
+
+        assert_eq!(proxy.render(), "Proximal Flat south of Sandmanor");
+        assert_eq!(proxy.manager(), crate::Manager::Clouseau);
+        assert_eq!(proxy.domain(), crate::ManagerDomain::Pleb);
+    }
+
+    #[test]
+    fn round_proxy_with_moxy_renders_bond_without_losing_grounded_location() {
+        let proxy = Proxy::new(
+            House::Stonebend,
+            RelativeDirection::Northwest,
+            SpatialGeometry::Round,
+            Proximity::Distal,
+            Some(crate::point_progression::CanonicalRouteId::StairwayToHeaven),
+            None,
+        );
+        let moxy = Moxy::new(
+            proxy.clone(),
+            Some(House::Flynt),
+            MoxyRelation::Bond,
+            Some(crate::point_progression::CanonicalRouteId::StairwayToHeaven),
+            crate::Manager::Hal,
+        );
+
+        assert_eq!(proxy.render(), "Distal Round northwest of Stonebend");
+        assert_eq!(
+            moxy.render(),
+            "Bond toward Flynt through Stairway to Heaven"
+        );
+        assert_eq!(moxy.manager(), crate::Manager::Hal);
+        assert_eq!(moxy.domain(), crate::ManagerDomain::Meta);
+    }
+
+    #[test]
+    fn inverted_proxy_with_foxy_keeps_proxy_grounded_and_foxy_reflective() {
+        let proxy = Proxy::new(
+            House::Flynt,
+            RelativeDirection::South,
+            SpatialGeometry::Inverted,
+            Proximity::Proximal,
+            None,
+            None,
+        );
+        let foxy = Foxy::new(
+            FoxySource::Proxy(proxy.clone()),
+            ReflectionKind::InvertedReturn,
+            crate::Manager::Cleopatra,
+        );
+
+        assert_eq!(proxy.render(), "Proximal Inverted south of Flynt");
+        assert_eq!(
+            foxy.render(),
+            "Inverted reflection of Proximal Inverted south of Flynt"
+        );
+        assert_eq!(foxy.manager(), crate::Manager::Cleopatra);
+        assert_eq!(foxy.domain(), crate::ManagerDomain::Blep);
+    }
+
+    #[test]
+    fn canonical_player_spatial_fixture_proves_proxy_anchor_and_alignment_can_differ() {
+        let fixture =
+            build_canonical_player_spatial_fixture().expect("player spatial fixture should build");
+        let interpretation = fixture.interpretation();
+        let proxy = interpretation.proxy().expect("Proxy should exist");
+        let moxy = interpretation.moxy().expect("Moxy should exist");
+
+        assert_eq!(fixture.point().progression().stable_point_level(), 2);
+        assert_eq!(
+            fixture.rotation_context().absolute_position(),
+            RotationPosition::twelve()
+        );
+        assert_eq!(fixture.rotation_context().pass(), RotationPass::Three);
+        assert_eq!(fixture.rotation_context().house_number(), HouseNumber::Four);
+        assert_eq!(fixture.rotation_context().house(), House::Flynt);
+        assert!(fixture.rotation_context().rotation_complete());
+        assert_eq!(proxy.anchor(), House::Stonebend);
+        assert_ne!(fixture.rotation_context().house(), proxy.anchor());
+        assert_eq!(proxy.render(), "Distal Round northwest of Stonebend");
+        assert_eq!(
+            moxy.render(),
+            "Bond toward Flynt through Stairway to Heaven"
+        );
+        assert!(interpretation.foxy().is_none());
+    }
+
+    #[test]
+    fn foxy_of_moxy_forms_a_valid_reflected_bond() {
+        let proxy = Proxy::new(
+            House::Stonebend,
+            RelativeDirection::Northwest,
+            SpatialGeometry::Round,
+            Proximity::Distal,
+            Some(crate::point_progression::CanonicalRouteId::StairwayToHeaven),
+            None,
+        );
+        let moxy = Moxy::new(
+            proxy,
+            Some(House::Flynt),
+            MoxyRelation::Bond,
+            Some(crate::point_progression::CanonicalRouteId::StairwayToHeaven),
+            crate::Manager::Hal,
+        );
+        let foxy = Foxy::new(
+            FoxySource::Moxy(moxy),
+            ReflectionKind::InvertedReturn,
+            crate::Manager::Cleopatra,
+        );
+
+        assert_eq!(
+            foxy.render(),
+            "Inverted reflection of the Stonebend-Flynt bond"
+        );
+        assert_eq!(foxy.source().kind(), FoxySourceKind::Moxy);
+    }
+
+    #[test]
+    fn player_spatial_contract_and_rule_of_twelve_authority_hold_together() {
+        assert!(
+            validate_player_spatial_contract(&canonical_player_spatial_contract_fixture())
+                .is_empty()
+        );
+
+        let witness =
+            build_player_location_witness().expect("player location witness should build");
+        assert!(witness.contains("House Alignment: Flynt"));
+        assert!(witness.contains("Distal Round northwest of Stonebend"));
+
+        let fixture =
+            build_canonical_player_spatial_fixture().expect("player spatial fixture should build");
+        let derived = derive_player_spatial_interpretation(fixture.point());
+        assert_eq!(derived.proxy().expect("Proxy").anchor(), House::Stonebend);
+        assert_eq!(fixture.rotation_context().house(), House::Flynt);
+    }
+
+    #[test]
+    fn player_spatial_contradictions_fail_with_explicit_messages() {
+        let contradictions = [
+            (
+                "proxy anchor missing",
+                PlayerSpatialContractInput {
+                    proxy: super::ProxyClaim {
+                        anchor: None,
+                        ..canonical_player_spatial_contract_fixture().proxy
+                    },
+                    ..canonical_player_spatial_contract_fixture()
+                },
+                "Proxy must include an anchor",
+            ),
+            (
+                "moxy as proximity",
+                PlayerSpatialContractInput {
+                    moxy_as_proximity: true,
+                    ..canonical_player_spatial_contract_fixture()
+                },
+                "Moxy cannot be used as a Proximity value",
+            ),
+            (
+                "moxy velocity only",
+                PlayerSpatialContractInput {
+                    moxy: super::MoxyClaim {
+                        relation: None,
+                        velocity_only: true,
+                        ..canonical_player_spatial_contract_fixture().moxy
+                    },
+                    ..canonical_player_spatial_contract_fixture()
+                },
+                "cannot be velocity only",
+            ),
+            (
+                "foxy wrong manager",
+                PlayerSpatialContractInput {
+                    foxy: super::FoxyClaim {
+                        manager: Some(crate::Manager::Hal),
+                        ..canonical_player_spatial_contract_fixture().foxy
+                    },
+                    ..canonical_player_spatial_contract_fixture()
+                },
+                "Cleopatra must handle Foxy",
+            ),
+            (
+                "proxy wrong domain",
+                PlayerSpatialContractInput {
+                    proxy: super::ProxyClaim {
+                        domain: Some(crate::ManagerDomain::Blep),
+                        ..canonical_player_spatial_contract_fixture().proxy
+                    },
+                    ..canonical_player_spatial_contract_fixture()
+                },
+                "Proxy must remain in the PLEB / Proxy domain",
+            ),
+            (
+                "moxy wrong domain",
+                PlayerSpatialContractInput {
+                    moxy: super::MoxyClaim {
+                        domain: Some(crate::ManagerDomain::Pleb),
+                        ..canonical_player_spatial_contract_fixture().moxy
+                    },
+                    ..canonical_player_spatial_contract_fixture()
+                },
+                "Moxy must remain in the META / Moxy domain",
+            ),
+            (
+                "foxy wrong domain",
+                PlayerSpatialContractInput {
+                    foxy: super::FoxyClaim {
+                        domain: Some(crate::ManagerDomain::Meta),
+                        ..canonical_player_spatial_contract_fixture().foxy
+                    },
+                    ..canonical_player_spatial_contract_fixture()
+                },
+                "Foxy must remain in the BLEP / Foxy domain",
+            ),
+            (
+                "position twelve wrong house",
+                PlayerSpatialContractInput {
+                    coordinate_alignment_claim: Some((
+                        RotationPosition::twelve(),
+                        House::Stonebend,
+                    )),
+                    ..canonical_player_spatial_contract_fixture()
+                },
+                "Position 12 derives Flynt",
+            ),
+            (
+                "proxy grants point squared",
+                PlayerSpatialContractInput {
+                    automatic_point_squared_from_proxy: true,
+                    ..canonical_player_spatial_contract_fixture()
+                },
+                "Proxy creation cannot automatically grant Point²",
+            ),
+            (
+                "moxy auto moves",
+                PlayerSpatialContractInput {
+                    automatic_movement_from_moxy: true,
+                    ..canonical_player_spatial_contract_fixture()
+                },
+                "Moxy cannot automatically execute movement",
+            ),
+            (
+                "foxy auto legalizes",
+                PlayerSpatialContractInput {
+                    automatic_legality_from_foxy: true,
+                    ..canonical_player_spatial_contract_fixture()
+                },
+                "cannot automatically mark a Recipe legal",
+            ),
+            (
+                "round proxy forbidden",
+                PlayerSpatialContractInput {
+                    round_proxy_forbidden: true,
+                    ..canonical_player_spatial_contract_fixture()
+                },
+                "Round locations cannot be excluded from Proxy",
+            ),
+        ];
+
+        for (label, input, expected) in contradictions {
+            let diagnostics = validate_player_spatial_contract(&input);
+            assert!(!diagnostics.is_empty(), "{label} should fail");
+            assert!(
+                diagnostics
+                    .iter()
+                    .any(|diagnostic| diagnostic.message.contains(expected)),
+                "{label} should mention `{expected}`"
+            );
+        }
     }
 
     #[test]

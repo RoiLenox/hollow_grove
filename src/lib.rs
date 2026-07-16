@@ -71,7 +71,9 @@ pub use kernel_pass_output::{
 pub use landing::{KissLanding, LandingOutcome, ScriptApplicationError, land_contact};
 pub use manager_domain::{
     Manager, ManagerDomain, ManagerDomainLock, ManagerFunction, ManagerGeometry, ManagerRelation,
-    compact_manager_domain_law, manager_domain_lock, routing_respects_manager_domain_lock,
+    build_manager_language_validation_report, build_manager_language_witness,
+    canonical_manager_language_contract_fixture, compact_manager_domain_law, manager_domain_lock,
+    routing_respects_manager_domain_lock, validate_manager_language_contract,
 };
 pub use pleb_meta::{
     ExteriorShape, ExteriorState, InteriorState, Mode, Operator, PlebMetaBond, PlebMetaGrammar,
@@ -99,18 +101,23 @@ pub use synthesis_recipe::{
 };
 pub use triway::{Triway, Way};
 pub use world_map_geometry::{
-    HollowGroveRotationContractInput, HouseNumber, HousePositionKind, PointGeometryState,
-    PointLocation, PositionThreshold, RotationObservationContext, RotationPass, RotationPosition,
-    RotationalCoordinate, RuleOfTwelveContractInput, RuleOfTwelvePosition, SpiralTransition,
-    ThresholdKind, WorldCenterId, WorldRing, build_map_artifact, build_map_validation_report,
-    build_map_witness, build_rule_of_twelve_validation_report, build_rule_of_twelve_witness,
+    Foxy, FoxySource, FoxySourceKind, HollowGroveRotationContractInput, HouseNumber,
+    HousePositionKind, Moxy, MoxyRelation, PlayerSpatialContractInput, PlayerSpatialFixture,
+    PlayerSpatialInterpretation, PointGeometryState, PointLocation, PositionThreshold, Proximity,
+    Proxy, ReflectionKind, RelativeDirection, RotationObservationContext, RotationPass,
+    RotationPosition, RotationalCoordinate, RuleOfTwelveContractInput, RuleOfTwelvePosition,
+    SpatialGeometry, SpiralTransition, ThresholdKind, WorldCenterId, WorldRing,
+    build_canonical_player_spatial_fixture, build_map_artifact, build_map_validation_report,
+    build_map_witness, build_player_location_witness, build_rule_of_twelve_validation_report,
+    build_rule_of_twelve_witness, canonical_player_spatial_contract_fixture,
     canonical_rotation_contract_fixture, canonical_rule_of_twelve_contract_fixture,
-    glaushouse_anchor_position, glaushouse_threshold_position, house_anchor_for_position,
-    house_for_position, house_number_for_position, is_primary_house_anchor, is_rotation_complete,
-    next_position, observation_context_for_point, opposite_position, pass_for_position,
-    position_identity, previous_position, select_canonical_spiral_transition,
-    stonebend_anchor_position, threshold_at_position, validate_hollow_grove_rotation_contract,
-    validate_rule_of_twelve_contract,
+    derive_player_spatial_interpretation, glaushouse_anchor_position,
+    glaushouse_threshold_position, house_anchor_for_position, house_for_position,
+    house_number_for_position, is_primary_house_anchor, is_rotation_complete, next_position,
+    observation_context_for_point, opposite_position, pass_for_position, position_identity,
+    previous_position, select_canonical_spiral_transition, stonebend_anchor_position,
+    threshold_at_position, validate_hollow_grove_rotation_contract,
+    validate_player_spatial_contract, validate_rule_of_twelve_contract,
 };
 
 pub fn run_kernel_cycle(symptom: Symptom) -> KernelPass {

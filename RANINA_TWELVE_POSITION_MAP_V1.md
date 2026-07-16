@@ -8,6 +8,10 @@ The full repeated House grammar now lives in:
 
 - `RULE_OF_TWELVE_HOUSE_GRAMMAR_V1.md`
 
+The readable Proxy / Moxy / Foxy interpretation layered over this map now lives in:
+
+- `PROXY_MOXY_FOXY_MANAGER_LANGUAGE_V1.md`
+
 ## Core Law
 
 Ranina is the unmoving center.
@@ -96,6 +100,9 @@ Canonical fixture:
   `src/point_progression.rs`
 - V2 observation surface:
   `src/decision_engine.rs`
+- readable local Proxy / Moxy / Foxy interpretation:
+  `src/world_map_geometry.rs`
+  `src/manager_domain.rs`
 - semantic contract integration:
   `src/hollow_grove_contract.rs`
 - foundation verification:

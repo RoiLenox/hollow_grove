@@ -12,6 +12,10 @@ The locked four-House repeated wheel grammar now lives in:
 
 - `RULE_OF_TWELVE_HOUSE_GRAMMAR_V1.md`
 
+The readable Proxy / Moxy / Foxy spatial-manager layer built over that geometry now lives in:
+
+- `PROXY_MOXY_FOXY_MANAGER_LANGUAGE_V1.md`
+
 ## Root Doctrine
 
 Hollow Current holds.

@@ -4,6 +4,10 @@ This document records the locked Hollow Grove Rule of Twelve as enforced code.
 
 It extends the existing semantic foundation, Point² progression model, and Ranina-centered map geometry. It does not replace the frozen Version 1.1 execution path.
 
+The readable House-relative manager-language layer built over this geometry now lives in:
+
+- `PROXY_MOXY_FOXY_MANAGER_LANGUAGE_V1.md`
+
 ## Core Law
 
 Ranina is the unique, unnumbered center.
@@ -170,6 +174,9 @@ Boundary split:
   `src/point_progression.rs`
 - optional V2 observation geometry:
   `src/decision_engine.rs`
+- readable Proxy / Moxy / Foxy interpretation:
+  `src/world_map_geometry.rs`
+  `src/manager_domain.rs`
 - runtime CLI:
   `src/bin/current_synthesis_tui.rs`
   `src/main.rs`

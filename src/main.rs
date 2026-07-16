@@ -61,7 +61,8 @@ where
             }
         }
         "scenario" | "world" | "progression" | "point-squared" | "map" | "rule-of-twelve"
-        | "engine" | "bond" | "resource" | "player" | "npc" | "cleopatra" => {
+        | "manager-language" | "player-location" | "engine" | "bond" | "resource" | "player"
+        | "npc" | "cleopatra" => {
             let mut forwarded = vec![command];
             forwarded.extend(args);
             Ok(MainCli::CurrentSynthesisTui(forwarded))
@@ -85,8 +86,11 @@ fn usage() -> &'static str {
        world ...         inspect authoritative Current Synthesis world context and alignment\n\
        progression ...   inspect Point and Point² progression state\n\
        point-squared ... inspect the canonical Point² ascension witness\n\
-       engine ...        inspect Current Synthesis engine state\n\
+       map ...           inspect Ranina-centered world geometry\n\
        rule-of-twelve ... inspect the four-House twelve-position grammar\n\
+       manager-language ... inspect Proxy / Moxy / Foxy manager semantics\n\
+       player-location ... inspect derived player spatial interpretation\n\
+       engine ...        inspect Current Synthesis engine state\n\
        bond ...          inspect bond candidates and traces\n\
        resource ...      inspect Aura, Current, and residue history\n\
        player ...        inspect or queue planned player actions\n\
@@ -113,6 +117,9 @@ fn usage() -> &'static str {
        hollow-grove map validate\n\
        hollow-grove rule-of-twelve witness\n\
        hollow-grove rule-of-twelve validate\n\
+       hollow-grove manager-language witness\n\
+       hollow-grove manager-language validate\n\
+       hollow-grove player-location witness\n\
        hollow-grove scenario use flooded_quarry_night_watch\n\
        hollow-grove engine status\n\
        hollow-grove bond list\n\
@@ -444,6 +451,22 @@ mod tests {
             ])
         );
         assert_eq!(
+            parse_main_cli([String::from("manager-language"), String::from("witness")])
+                .expect("manager-language cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![
+                String::from("manager-language"),
+                String::from("witness")
+            ])
+        );
+        assert_eq!(
+            parse_main_cli([String::from("player-location"), String::from("witness")])
+                .expect("player-location cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![
+                String::from("player-location"),
+                String::from("witness")
+            ])
+        );
+        assert_eq!(
             parse_main_cli([String::from("player"), String::from("status")])
                 .expect("player cli should parse"),
             MainCli::CurrentSynthesisTui(vec![String::from("player"), String::from("status")])
@@ -484,6 +507,9 @@ mod tests {
         assert!(usage.contains("map validate"));
         assert!(usage.contains("rule-of-twelve witness"));
         assert!(usage.contains("rule-of-twelve validate"));
+        assert!(usage.contains("manager-language witness"));
+        assert!(usage.contains("manager-language validate"));
+        assert!(usage.contains("player-location witness"));
         assert!(usage.contains("engine status"));
         assert!(usage.contains("player plan"));
         assert!(usage.contains("cleopatra tick"));

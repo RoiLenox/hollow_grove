@@ -3,8 +3,9 @@ use crate::synthesis_execution::{
 };
 use crate::{
     ContactOutcome, ExteriorShape, FlowId, FrameId, GlowId, KernelPass, Manager, ManagerGeometry,
-    Point, PrismDelta, RotationObservationContext, SynthesisRecipe, gremlin_tinker_recipe,
-    manager_domain_lock, observation_context_for_point, pixy_confusion_recipe,
+    PlayerSpatialInterpretation, Point, PrismDelta, RotationObservationContext, SynthesisRecipe,
+    derive_player_spatial_interpretation, gremlin_tinker_recipe, manager_domain_lock,
+    observation_context_for_point, pixy_confusion_recipe,
 };
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -63,6 +64,7 @@ pub struct DecisionObservation {
     pub(crate) intent: DecisionIntent,
     pub(crate) route_geometry: Option<ManagerGeometry>,
     pub(crate) rotation_context: Option<RotationObservationContext>,
+    pub(crate) spatial_interpretation: Option<PlayerSpatialInterpretation>,
 }
 
 impl DecisionObservation {
@@ -89,6 +91,11 @@ impl DecisionObservation {
     #[must_use]
     pub const fn rotation_context(&self) -> Option<RotationObservationContext> {
         self.rotation_context
+    }
+
+    #[must_use]
+    pub const fn spatial_interpretation(&self) -> Option<&PlayerSpatialInterpretation> {
+        self.spatial_interpretation.as_ref()
     }
 
     #[must_use]
@@ -281,6 +288,7 @@ pub struct DecisionObservationTrace {
     pub(crate) intent: DecisionIntent,
     pub(crate) route_geometry: Option<ManagerGeometry>,
     pub(crate) rotation_context: Option<RotationObservationContext>,
+    pub(crate) spatial_interpretation: Option<PlayerSpatialInterpretation>,
     pub(crate) state_checks: Vec<DecisionObservationCheck>,
 }
 
@@ -313,6 +321,11 @@ impl DecisionObservationTrace {
     #[must_use]
     pub const fn rotation_context(&self) -> Option<RotationObservationContext> {
         self.rotation_context
+    }
+
+    #[must_use]
+    pub const fn spatial_interpretation(&self) -> Option<&PlayerSpatialInterpretation> {
+        self.spatial_interpretation.as_ref()
     }
 
     #[must_use]
@@ -684,11 +697,22 @@ pub(crate) fn observe_decision_with_geometry(
     intent: DecisionIntent,
     route_geometry: Option<ManagerGeometry>,
 ) -> DecisionObservation {
+    let spatial_interpretation = derive_player_spatial_interpretation(point);
+    let spatial_interpretation = if spatial_interpretation.proxy().is_some()
+        || spatial_interpretation.moxy().is_some()
+        || spatial_interpretation.foxy().is_some()
+    {
+        Some(spatial_interpretation)
+    } else {
+        None
+    };
+
     DecisionObservation {
         point: point.clone(),
         intent,
         route_geometry,
         rotation_context: observation_context_for_point(point),
+        spatial_interpretation,
     }
 }
 
@@ -1090,6 +1114,7 @@ fn build_observation_trace(
         intent: observation.intent(),
         route_geometry: observation.route_geometry(),
         rotation_context: observation.rotation_context(),
+        spatial_interpretation: observation.spatial_interpretation().cloned(),
         state_checks: candidates
             .iter()
             .map(|candidate| observation_check_for_candidate(observation, candidate.candidate_id()))
@@ -1346,7 +1371,8 @@ mod tests {
     use crate::{
         ContactOutcome, ExteriorShape, FlowId, FrameId, GlowId, KernelInput, LandingOutcome,
         ManagerDomain, ManagerFunction, ManagerGeometry, ManagerRelation, Mode, Point,
-        SynthesisRecipe, execute_synthesis_recipe, run_kernel_cycle, run_kernel_cycle_with_input,
+        SynthesisRecipe, build_canonical_player_spatial_fixture, execute_synthesis_recipe,
+        run_kernel_cycle, run_kernel_cycle_with_input,
     };
 
     use super::{
@@ -1377,6 +1403,29 @@ mod tests {
         assert_eq!(rotation.pass().value(), 2);
         assert_eq!(rotation.house_number().value(), 3);
         assert_eq!(point, before);
+    }
+
+    #[test]
+    fn observation_can_surface_optional_player_spatial_interpretation() {
+        let fixture =
+            build_canonical_player_spatial_fixture().expect("player spatial fixture should build");
+        let observation = observe_decision(fixture.point(), DecisionIntent::Neutral);
+        let spatial = observation
+            .spatial_interpretation()
+            .expect("spatial interpretation should be present");
+        let proxy = spatial.proxy().expect("Proxy should be present");
+        let moxy = spatial.moxy().expect("Moxy should be present");
+
+        assert_eq!(
+            observation.rotation_context(),
+            Some(fixture.rotation_context())
+        );
+        assert_eq!(proxy.render(), "Distal Round northwest of Stonebend");
+        assert_eq!(
+            moxy.render(),
+            "Bond toward Flynt through Stairway to Heaven"
+        );
+        assert!(spatial.foxy().is_none());
     }
 
     #[test]
@@ -1762,7 +1811,7 @@ mod tests {
         assert_eq!(manager_lock.domain(), ManagerDomain::Pleb);
         assert_eq!(manager_lock.relation(), ManagerRelation::PlebPleb);
         assert_eq!(manager_lock.geometry(), ManagerGeometry::Straight);
-        assert_eq!(manager_lock.function(), ManagerFunction::Bond);
+        assert_eq!(manager_lock.function(), ManagerFunction::Locate);
         assert_eq!(
             result.chosen().tie_break(),
             Some(DecisionTieBreak::GenerateOrder)

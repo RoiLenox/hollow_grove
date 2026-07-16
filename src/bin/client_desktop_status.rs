@@ -78,8 +78,8 @@ mod tests {
         assert!(output.contains("Relation:\n    PLEB ↔ PLEB"));
         assert!(output.contains("Geometry:\n    curved"));
         assert!(output.contains("Geometry:\n    straight"));
-        assert!(output.contains("Function:\n    Information From Beyond"));
-        assert!(output.contains("Function:\n    Bond"));
+        assert!(output.contains("Function:\n    Connects"));
+        assert!(output.contains("Function:\n    Locates"));
         assert!(output.contains("Bond:\n    One"));
         assert!(output.contains("Named Route:\n    unset"));
         assert!(output.contains("Status:\n    prepared"));

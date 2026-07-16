@@ -149,10 +149,7 @@ mod tests {
         assert_eq!(aim.manager_lock().domain(), ManagerDomain::Meta);
         assert_eq!(aim.manager_lock().relation(), ManagerRelation::PlebMeta);
         assert_eq!(aim.manager_lock().geometry(), ManagerGeometry::Curved);
-        assert_eq!(
-            aim.manager_lock().function(),
-            ManagerFunction::InformationFromBeyond
-        );
+        assert_eq!(aim.manager_lock().function(), ManagerFunction::Connect);
         assert_eq!(aim.bond(), canonical_aim_bond());
         assert_eq!(aim.bond().linked_way(), crate::Way::One);
         assert_eq!(aim.named_route(), None);
@@ -173,7 +170,7 @@ mod tests {
         assert_eq!(aim.manager_lock().domain(), ManagerDomain::Pleb);
         assert_eq!(aim.manager_lock().relation(), ManagerRelation::PlebPleb);
         assert_eq!(aim.manager_lock().geometry(), ManagerGeometry::Straight);
-        assert_eq!(aim.manager_lock().function(), ManagerFunction::Bond);
+        assert_eq!(aim.manager_lock().function(), ManagerFunction::Locate);
         assert_eq!(aim.bond(), canonical_aim_bond());
         assert_eq!(aim.bond().linked_way(), crate::Way::One);
         assert_eq!(aim.named_route(), None);

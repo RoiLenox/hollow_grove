@@ -59,9 +59,9 @@ fn manager_geometry_name(geometry: crate::ManagerGeometry) -> &'static str {
 
 fn manager_function_name(function: crate::ManagerFunction) -> &'static str {
     match function {
-        crate::ManagerFunction::InformationFromBeyond => "Information From Beyond",
-        crate::ManagerFunction::Bond => "Bond",
-        crate::ManagerFunction::UnderworldReflection => "Underworld Reflection",
+        crate::ManagerFunction::Locate => "Locates",
+        crate::ManagerFunction::Connect => "Connects",
+        crate::ManagerFunction::Reflect => "Reflects",
     }
 }
 
@@ -1157,7 +1157,7 @@ mod tests {
         assert!(output.contains("Domain:\n    META"));
         assert!(output.contains("Relation:\n    PLEB ↔ META"));
         assert!(output.contains("Geometry:\n    curved"));
-        assert!(output.contains("Function:\n    Information From Beyond"));
+        assert!(output.contains("Function:\n    Connects"));
         assert!(output.contains("Bond:\n    One"));
         assert!(output.contains("Named Route:\n    unset"));
         assert!(output.contains("1. ApplyPrismDelta"));
@@ -1181,7 +1181,7 @@ mod tests {
         assert!(output.contains("Domain:\n    PLEB"));
         assert!(output.contains("Relation:\n    PLEB ↔ PLEB"));
         assert!(output.contains("Geometry:\n    straight"));
-        assert!(output.contains("Function:\n    Bond"));
+        assert!(output.contains("Function:\n    Locates"));
         assert!(output.contains("2. AddFlow\n    TinkerGrip"));
         assert!(output.contains("3. SetFrame\n    Gremlin"));
         assert!(output.contains("Point² Frame:\n    Gremlin"));

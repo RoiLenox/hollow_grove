@@ -76,6 +76,10 @@ The locked four-House repeated wheel grammar now lives in:
 
 - `RULE_OF_TWELVE_HOUSE_GRAMMAR_V1.md`
 
+The locked readable Proxy / Moxy / Foxy spatial-manager layer now lives in:
+
+- `PROXY_MOXY_FOXY_MANAGER_LANGUAGE_V1.md`
+
 Primary enforcement for that extension:
 
 - `src/hollow_grove_contract.rs`
