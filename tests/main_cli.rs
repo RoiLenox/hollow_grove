@@ -69,6 +69,9 @@ fn main_binary_reports_integrated_help() {
     assert!(stdout.contains("world context"));
     assert!(stdout.contains("world witness"));
     assert!(stdout.contains("world validate"));
+    assert!(stdout.contains("progression witness"));
+    assert!(stdout.contains("progression validate"));
+    assert!(stdout.contains("point-squared witness"));
     assert!(stdout.contains("engine status"));
     assert!(stdout.contains("player ..."));
     assert!(stdout.contains("player move"));
@@ -190,6 +193,34 @@ fn main_binary_delegates_world_validate() {
 }
 
 #[test]
+fn main_binary_delegates_progression_and_point_squared_surfaces() {
+    let progression_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["progression", "witness"])
+        .output()
+        .expect("progression witness should run");
+    assert!(progression_witness.status.success());
+    let progression_witness_stdout = String::from_utf8_lossy(&progression_witness.stdout);
+    assert!(progression_witness_stdout.contains("HOLLOW GROVE PROGRESSION WITNESS"));
+
+    let progression_validate = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["progression", "validate"])
+        .output()
+        .expect("progression validate should run");
+    assert!(progression_validate.status.success());
+    let progression_validate_stdout = String::from_utf8_lossy(&progression_validate.stdout);
+    assert!(progression_validate_stdout.contains("status: pass"));
+
+    let point_squared = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["point-squared", "witness"])
+        .output()
+        .expect("point-squared witness should run");
+    assert!(point_squared.status.success());
+    let point_squared_stdout = String::from_utf8_lossy(&point_squared.stdout);
+    assert!(point_squared_stdout.contains("HOLLOW GROVE POINT² ASCENSION WITNESS"));
+    assert!(point_squared_stdout.contains("Stairway to Heaven"));
+}
+
+#[test]
 fn main_binary_runs_foundation_verification() {
     let output = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
         .args(["verify-foundation"])
@@ -200,6 +231,9 @@ fn main_binary_runs_foundation_verification() {
     let stdout = String::from_utf8_lossy(&output.stdout);
     assert!(stdout.contains("HOLLOW GROVE FOUNDATION VERIFICATION"));
     assert!(stdout.contains("world witness: pass"));
+    assert!(stdout.contains("Point² paired capacity advancement: pass"));
+    assert!(stdout.contains("Point² exactly-once application: pass"));
+    assert!(stdout.contains("Stairway horizon fixture: pass"));
     assert!(stdout.contains("vertical witness: pass"));
     assert!(stdout.contains("V1.1 topology unchanged: pass"));
 }

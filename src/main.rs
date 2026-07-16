@@ -60,7 +60,8 @@ where
                 Ok(MainCli::VerifyFoundation)
             }
         }
-        "scenario" | "world" | "engine" | "bond" | "resource" | "player" | "npc" | "cleopatra" => {
+        "scenario" | "world" | "progression" | "point-squared" | "engine" | "bond" | "resource"
+        | "player" | "npc" | "cleopatra" => {
             let mut forwarded = vec![command];
             forwarded.extend(args);
             Ok(MainCli::CurrentSynthesisTui(forwarded))
@@ -82,6 +83,8 @@ fn usage() -> &'static str {
        verify-foundation print the Hollow Grove semantic foundation regression report\n\
        scenario ...      list or switch Current Synthesis scenarios\n\
        world ...         inspect authoritative Current Synthesis world context and alignment\n\
+       progression ...   inspect Point and Point² progression state\n\
+       point-squared ... inspect the canonical Point² ascension witness\n\
        engine ...        inspect Current Synthesis engine state\n\
        bond ...          inspect bond candidates and traces\n\
        resource ...      inspect Aura, Current, and residue history\n\
@@ -102,6 +105,9 @@ fn usage() -> &'static str {
        hollow-grove world context\n\
        hollow-grove world witness\n\
        hollow-grove world validate\n\
+       hollow-grove progression witness\n\
+       hollow-grove progression validate\n\
+       hollow-grove point-squared witness\n\
        hollow-grove scenario use flooded_quarry_night_watch\n\
        hollow-grove engine status\n\
        hollow-grove bond list\n\
@@ -404,6 +410,22 @@ mod tests {
             MainCli::CurrentSynthesisTui(vec![String::from("world"), String::from("context")])
         );
         assert_eq!(
+            parse_main_cli([String::from("progression"), String::from("witness")])
+                .expect("progression cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![
+                String::from("progression"),
+                String::from("witness")
+            ])
+        );
+        assert_eq!(
+            parse_main_cli([String::from("point-squared"), String::from("witness")])
+                .expect("point-squared cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![
+                String::from("point-squared"),
+                String::from("witness")
+            ])
+        );
+        assert_eq!(
             parse_main_cli([String::from("engine"), String::from("status")])
                 .expect("engine cli should parse"),
             MainCli::CurrentSynthesisTui(vec![String::from("engine"), String::from("status")])
@@ -442,6 +464,9 @@ mod tests {
         assert!(usage.contains("verify-foundation"));
         assert!(usage.contains("scenario list"));
         assert!(usage.contains("world context"));
+        assert!(usage.contains("progression witness"));
+        assert!(usage.contains("progression validate"));
+        assert!(usage.contains("point-squared witness"));
         assert!(usage.contains("engine status"));
         assert!(usage.contains("player plan"));
         assert!(usage.contains("cleopatra tick"));

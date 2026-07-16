@@ -1,4 +1,4 @@
-use crate::FrameId;
+use crate::{BeingId, CurrentDepthId, FrameId};
 
 const WORLD_CONTEXT_DOCUMENT: &str =
     include_str!("../CURRENT_SYNTHESIS_HOLLOW_GROVE_WORLD_CONTEXT_v0.1.0.md");
@@ -397,6 +397,89 @@ impl Default for HollowGroveAlignmentInput {
     }
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum DepthIdentityValue {
+    HeldForm,
+    BloodCirculation,
+    FeltDepth,
+    Pus,
+    Hollow,
+    Death,
+    EmptySpace,
+}
+
+impl DepthIdentityValue {
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::HeldForm => "held bodily form",
+            Self::BloodCirculation => "blood and living circulation",
+            Self::FeltDepth => "felt inward condition",
+            Self::Pus => "pus",
+            Self::Hollow => "Hollow",
+            Self::Death => "death",
+            Self::EmptySpace => "empty space",
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct CurrentDepthOwnershipClaim {
+    pub depth: CurrentDepthId,
+    pub house: House,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct CurrentDepthIdentityClaim {
+    pub depth: CurrentDepthId,
+    pub identity: DepthIdentityValue,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct CurrentRelationClaim {
+    pub derived_from_hollow_current: bool,
+    pub derived_from_abyss: bool,
+    pub exclusive_owner: Option<House>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct CurrentSpeedSemanticClaim {
+    pub running_speed_only: bool,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct AuraIlluminationClaim {
+    pub treated_as_current_depth: bool,
+    pub reveals_hollow_current: bool,
+    pub reveals_current: bool,
+    pub reveals_abyss: bool,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct PointSquaredSemanticClaim {
+    pub current_capacity_delta: i16,
+    pub aura_capacity_delta: i16,
+    pub auto_maximizes_development: bool,
+    pub auto_grants_frame: Option<FrameId>,
+    pub creates_separate_horizon_state: bool,
+    pub includes_self: bool,
+    pub includes_surroundings: bool,
+    pub miss_grants_ascension: bool,
+    pub failed_recipe_grants_ascension: bool,
+    pub replaces_being: Option<BeingId>,
+    pub stabilizes_into_next_point: bool,
+    pub introduces_higher_point_vocabulary: bool,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Default)]
+pub struct HollowGroveProgressionContractInput {
+    pub depth_ownership_claims: Vec<CurrentDepthOwnershipClaim>,
+    pub depth_identity_claims: Vec<CurrentDepthIdentityClaim>,
+    pub current_relation_claims: Vec<CurrentRelationClaim>,
+    pub current_speed_claims: Vec<CurrentSpeedSemanticClaim>,
+    pub aura_illumination_claims: Vec<AuraIlluminationClaim>,
+    pub point_squared_claims: Vec<PointSquaredSemanticClaim>,
+}
+
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum AlignmentDiagnosticCode {
     MissingWorldContextFragment,
@@ -412,6 +495,10 @@ pub enum AlignmentDiagnosticCode {
     ProfessionLockMismatch,
     CivilizationMismatch,
     CareLevelMismatch,
+    CurrentDepthMismatch,
+    CurrentSpeedMismatch,
+    AuraIlluminationMismatch,
+    PointSquaredAscensionMismatch,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -440,10 +527,25 @@ pub fn build_world_context_output() -> String {
 pub fn build_hollow_grove_alignment_witness() -> String {
     String::from(
         "HOLLOW GROVE ALIGNMENT WITNESS\n\n\
+         Root Doctrine:\n\
+         Hollow Current holds.\n\
+         Current flows.\n\
+         Abyss feels.\n\
+         Aura reveals.\n\
+         Point² expands the self and the world together.\n\n\
          Substances:\n\
          Current = blood\n\
          Hollow = pus\n\
          Aura = air / pressure / light\n\n\
+         Current Depths:\n\
+         Hollow Current = Stonebend = held bodily form\n\
+         Current = derivative between Stonebend and Glaüshouse\n\
+         Current Speed = the operating tempo of Current\n\
+         Abyss = Glaüshouse = felt inward condition\n\n\
+         Aura Dimensions:\n\
+         Aura Shine = outward presence\n\
+         Aura View = surrounding world and horizon\n\
+         Inner Aura = inward identity and clarity\n\n\
          Extraction:\n\
          Whole\n\
          → Hollowing\n\
@@ -465,7 +567,11 @@ pub fn build_hollow_grove_alignment_witness() -> String {
          GargoyleSurgeon = Frame\n\
          Operation = Scene\n\
          Hospital = Structure\n\
-         MedicalNetwork = System\n",
+         MedicalNetwork = System\n\n\
+         Point² Consequence:\n\
+         Current Capacity +1\n\
+         Aura Capacity +1\n\
+         Point² stabilizes into the next Point.\n",
     )
 }
 
@@ -483,12 +589,18 @@ pub fn build_hollow_grove_alignment_validation_report() -> String {
     diagnostics.extend(validate_hollow_grove_alignment(
         &canonical_medicine_fixture(),
     ));
+    diagnostics.extend(validate_hollow_grove_progression_contract(
+        &canonical_progression_contract_fixture(),
+    ));
     if diagnostics.is_empty() {
         String::from(
             "# Hollow Grove Alignment Validation\n\n\
              - status: pass\n\
              - world context: aligned with canonical root laws\n\
              - canonical fixtures: aligned\n\
+             - current-depth contract: pass\n\
+             - aura illumination contract: pass\n\
+             - Point² semantic contract: pass\n\
              - semantic contract: enforceable\n",
         )
     } else {
@@ -519,6 +631,203 @@ pub fn validate_world_context_document(text: &str) -> Vec<AlignmentDiagnostic> {
             });
         }
     }
+    diagnostics
+}
+
+pub fn build_hollow_grove_progression_witness() -> String {
+    String::from(
+        "HOLLOW GROVE PROGRESSION CONTRACT WITNESS\n\n\
+         Hollow Current = Stonebend = life held in form.\n\
+         Current = derivative between Stonebend and Glaüshouse.\n\
+         Current Speed = the operating tempo of Current.\n\
+         Abyss = Glaüshouse = life felt in depth.\n\
+         Aura reveals every Current depth.\n\
+         Point² raises Current Capacity and Aura Capacity together.\n\
+         Point² includes the Hueman and the reachable world.\n\
+         Point² stabilizes into the next Point.\n",
+    )
+}
+
+pub fn validate_hollow_grove_progression_contract(
+    input: &HollowGroveProgressionContractInput,
+) -> Vec<AlignmentDiagnostic> {
+    let mut diagnostics = Vec::new();
+
+    for claim in &input.depth_ownership_claims {
+        match claim.depth {
+            CurrentDepthId::HollowCurrent if claim.house != House::Stonebend => {
+                diagnostics.push(AlignmentDiagnostic {
+                    code: AlignmentDiagnosticCode::CurrentDepthMismatch,
+                    message: format!(
+                        "Hollow Current belongs to Stonebend, got {}",
+                        claim.house.as_str()
+                    ),
+                });
+            }
+            CurrentDepthId::Abyss if claim.house != House::Glaushouse => {
+                diagnostics.push(AlignmentDiagnostic {
+                    code: AlignmentDiagnosticCode::CurrentDepthMismatch,
+                    message: format!("Abyss belongs to Glaüshouse, got {}", claim.house.as_str()),
+                });
+            }
+            CurrentDepthId::Current => {
+                diagnostics.push(AlignmentDiagnostic {
+                    code: AlignmentDiagnosticCode::CurrentDepthMismatch,
+                    message: format!(
+                        "Current is a derivative between Stonebend and Glaüshouse and cannot belong exclusively to {}",
+                        claim.house.as_str()
+                    ),
+                });
+            }
+            _ => {}
+        }
+    }
+
+    for claim in &input.depth_identity_claims {
+        let valid = match claim.depth {
+            CurrentDepthId::HollowCurrent => claim.identity == DepthIdentityValue::HeldForm,
+            CurrentDepthId::Current => claim.identity == DepthIdentityValue::BloodCirculation,
+            CurrentDepthId::Abyss => claim.identity == DepthIdentityValue::FeltDepth,
+        };
+        if !valid {
+            diagnostics.push(AlignmentDiagnostic {
+                code: AlignmentDiagnosticCode::CurrentDepthMismatch,
+                message: format!(
+                    "{} must remain {}, got {}",
+                    claim.depth.as_str(),
+                    match claim.depth {
+                        CurrentDepthId::HollowCurrent => DepthIdentityValue::HeldForm.as_str(),
+                        CurrentDepthId::Current => DepthIdentityValue::BloodCirculation.as_str(),
+                        CurrentDepthId::Abyss => DepthIdentityValue::FeltDepth.as_str(),
+                    },
+                    claim.identity.as_str()
+                ),
+            });
+        }
+    }
+
+    for claim in &input.current_relation_claims {
+        if !claim.derived_from_hollow_current || !claim.derived_from_abyss {
+            diagnostics.push(AlignmentDiagnostic {
+                code: AlignmentDiagnosticCode::CurrentDepthMismatch,
+                message: String::from("Current must be derived between Hollow Current and Abyss."),
+            });
+        }
+        if let Some(owner) = claim.exclusive_owner {
+            diagnostics.push(AlignmentDiagnostic {
+                code: AlignmentDiagnosticCode::CurrentDepthMismatch,
+                message: format!(
+                    "Current cannot belong exclusively to {}; it remains the living derivative between Stonebend and Glaüshouse.",
+                    owner.as_str()
+                ),
+            });
+        }
+    }
+
+    for claim in &input.current_speed_claims {
+        if claim.running_speed_only {
+            diagnostics.push(AlignmentDiagnostic {
+                code: AlignmentDiagnosticCode::CurrentSpeedMismatch,
+                message: String::from(
+                    "Current Speed cannot mean only running speed; it is the operating tempo of Current.",
+                ),
+            });
+        }
+    }
+
+    for claim in &input.aura_illumination_claims {
+        if claim.treated_as_current_depth {
+            diagnostics.push(AlignmentDiagnostic {
+                code: AlignmentDiagnosticCode::AuraIlluminationMismatch,
+                message: String::from(
+                    "Aura is revelatory and cannot become another Current depth.",
+                ),
+            });
+        }
+        if !claim.reveals_hollow_current || !claim.reveals_current || !claim.reveals_abyss {
+            diagnostics.push(AlignmentDiagnostic {
+                code: AlignmentDiagnosticCode::AuraIlluminationMismatch,
+                message: String::from(
+                    "Aura must reveal Hollow Current, Current, and Abyss together.",
+                ),
+            });
+        }
+    }
+
+    for claim in &input.point_squared_claims {
+        if claim.current_capacity_delta != 1 || claim.aura_capacity_delta != 1 {
+            diagnostics.push(AlignmentDiagnostic {
+                code: AlignmentDiagnosticCode::PointSquaredAscensionMismatch,
+                message: String::from(
+                    "Point² must raise Current Capacity and Aura Capacity together by one.",
+                ),
+            });
+        }
+        if claim.auto_maximizes_development {
+            diagnostics.push(AlignmentDiagnostic {
+                code: AlignmentDiagnosticCode::PointSquaredAscensionMismatch,
+                message: String::from(
+                    "Point² opens new development circles but does not automatically complete them.",
+                ),
+            });
+        }
+        if let Some(frame) = claim.auto_grants_frame {
+            diagnostics.push(AlignmentDiagnostic {
+                code: AlignmentDiagnosticCode::PointSquaredAscensionMismatch,
+                message: format!(
+                    "Point² cannot automatically grant {:?}; the next Frame must still be discovered or stabilized legally.",
+                    frame
+                ),
+            });
+        }
+        if claim.creates_separate_horizon_state {
+            diagnostics.push(AlignmentDiagnostic {
+                code: AlignmentDiagnosticCode::PointSquaredAscensionMismatch,
+                message: String::from(
+                    "Point² cannot create Horizon² or a separate horizon state; the next horizon is already contained within Point².",
+                ),
+            });
+        }
+        if !claim.includes_self || !claim.includes_surroundings {
+            diagnostics.push(AlignmentDiagnostic {
+                code: AlignmentDiagnosticCode::PointSquaredAscensionMismatch,
+                message: String::from("Point² must expand the self and the world together."),
+            });
+        }
+        if claim.miss_grants_ascension {
+            diagnostics.push(AlignmentDiagnostic {
+                code: AlignmentDiagnosticCode::PointSquaredAscensionMismatch,
+                message: String::from("Miss cannot grant Point² ascension."),
+            });
+        }
+        if claim.failed_recipe_grants_ascension {
+            diagnostics.push(AlignmentDiagnostic {
+                code: AlignmentDiagnosticCode::PointSquaredAscensionMismatch,
+                message: String::from("Failed Recipe execution cannot grant Point² ascension."),
+            });
+        }
+        if claim.replaces_being.is_some() {
+            diagnostics.push(AlignmentDiagnostic {
+                code: AlignmentDiagnosticCode::PointSquaredAscensionMismatch,
+                message: String::from("Point² cannot replace BeingId::Hueman."),
+            });
+        }
+        if !claim.stabilizes_into_next_point {
+            diagnostics.push(AlignmentDiagnostic {
+                code: AlignmentDiagnosticCode::PointSquaredAscensionMismatch,
+                message: String::from("Point² must stabilize into the next Point."),
+            });
+        }
+        if claim.introduces_higher_point_vocabulary {
+            diagnostics.push(AlignmentDiagnostic {
+                code: AlignmentDiagnosticCode::PointSquaredAscensionMismatch,
+                message: String::from(
+                    "Point³ or higher-point vocabulary cannot be introduced here.",
+                ),
+            });
+        }
+    }
+
     diagnostics
 }
 
@@ -941,6 +1250,63 @@ pub fn canonical_root_alignment_fixture() -> HollowGroveAlignmentInput {
     input
 }
 
+pub fn canonical_progression_contract_fixture() -> HollowGroveProgressionContractInput {
+    HollowGroveProgressionContractInput {
+        depth_ownership_claims: vec![
+            CurrentDepthOwnershipClaim {
+                depth: CurrentDepthId::HollowCurrent,
+                house: House::Stonebend,
+            },
+            CurrentDepthOwnershipClaim {
+                depth: CurrentDepthId::Abyss,
+                house: House::Glaushouse,
+            },
+        ],
+        depth_identity_claims: vec![
+            CurrentDepthIdentityClaim {
+                depth: CurrentDepthId::HollowCurrent,
+                identity: DepthIdentityValue::HeldForm,
+            },
+            CurrentDepthIdentityClaim {
+                depth: CurrentDepthId::Current,
+                identity: DepthIdentityValue::BloodCirculation,
+            },
+            CurrentDepthIdentityClaim {
+                depth: CurrentDepthId::Abyss,
+                identity: DepthIdentityValue::FeltDepth,
+            },
+        ],
+        current_relation_claims: vec![CurrentRelationClaim {
+            derived_from_hollow_current: true,
+            derived_from_abyss: true,
+            exclusive_owner: None,
+        }],
+        current_speed_claims: vec![CurrentSpeedSemanticClaim {
+            running_speed_only: false,
+        }],
+        aura_illumination_claims: vec![AuraIlluminationClaim {
+            treated_as_current_depth: false,
+            reveals_hollow_current: true,
+            reveals_current: true,
+            reveals_abyss: true,
+        }],
+        point_squared_claims: vec![PointSquaredSemanticClaim {
+            current_capacity_delta: 1,
+            aura_capacity_delta: 1,
+            auto_maximizes_development: false,
+            auto_grants_frame: None,
+            creates_separate_horizon_state: false,
+            includes_self: true,
+            includes_surroundings: true,
+            miss_grants_ascension: false,
+            failed_recipe_grants_ascension: false,
+            replaces_being: None,
+            stabilizes_into_next_point: true,
+            introduces_higher_point_vocabulary: false,
+        }],
+    }
+}
+
 fn canonical_rock_for_house(house: House) -> HouseRock {
     match house {
         House::Stonebend => HouseRock::Diamond,
@@ -1017,4 +1383,277 @@ fn is_named_living_mech_name(name: &str) -> bool {
                 .strip_prefix(&frame_name)
                 .is_some_and(|suffix| !suffix.is_empty())
     })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{
+        AlignmentDiagnosticCode, AuraIlluminationClaim, CurrentDepthIdentityClaim,
+        CurrentDepthOwnershipClaim, CurrentRelationClaim, CurrentSpeedSemanticClaim,
+        DepthIdentityValue, HollowGroveProgressionContractInput, House, PointSquaredSemanticClaim,
+        canonical_progression_contract_fixture, validate_hollow_grove_progression_contract,
+    };
+    use crate::{BeingId, CurrentDepthId, FrameId};
+
+    #[test]
+    fn canonical_current_depth_ownership_passes() {
+        let diagnostics =
+            validate_hollow_grove_progression_contract(&canonical_progression_contract_fixture());
+        assert!(diagnostics.is_empty());
+    }
+
+    #[test]
+    fn hollow_current_pus_and_hollow_claims_fail() {
+        for identity in [DepthIdentityValue::Pus, DepthIdentityValue::Hollow] {
+            let diagnostics =
+                validate_hollow_grove_progression_contract(&HollowGroveProgressionContractInput {
+                    depth_identity_claims: vec![CurrentDepthIdentityClaim {
+                        depth: CurrentDepthId::HollowCurrent,
+                        identity,
+                    }],
+                    ..HollowGroveProgressionContractInput::default()
+                });
+            assert!(diagnostics.iter().any(|diagnostic| {
+                diagnostic.code == AlignmentDiagnosticCode::CurrentDepthMismatch
+                    && diagnostic.message.contains("Hollow Current")
+            }));
+        }
+    }
+
+    #[test]
+    fn abyss_death_empty_space_and_wrong_house_fail() {
+        let depth_identity_failures = [DepthIdentityValue::Death, DepthIdentityValue::EmptySpace];
+        for identity in depth_identity_failures {
+            let diagnostics =
+                validate_hollow_grove_progression_contract(&HollowGroveProgressionContractInput {
+                    depth_identity_claims: vec![CurrentDepthIdentityClaim {
+                        depth: CurrentDepthId::Abyss,
+                        identity,
+                    }],
+                    ..HollowGroveProgressionContractInput::default()
+                });
+            assert!(diagnostics.iter().any(|diagnostic| {
+                diagnostic.code == AlignmentDiagnosticCode::CurrentDepthMismatch
+                    && diagnostic.message.contains("Abyss")
+            }));
+        }
+
+        let diagnostics =
+            validate_hollow_grove_progression_contract(&HollowGroveProgressionContractInput {
+                depth_ownership_claims: vec![CurrentDepthOwnershipClaim {
+                    depth: CurrentDepthId::Abyss,
+                    house: House::Stonebend,
+                }],
+                ..HollowGroveProgressionContractInput::default()
+            });
+        assert!(diagnostics.iter().any(|diagnostic| {
+            diagnostic.code == AlignmentDiagnosticCode::CurrentDepthMismatch
+                && diagnostic.message.contains("Abyss belongs to Glaüshouse")
+        }));
+    }
+
+    #[test]
+    fn hollow_current_wrong_house_and_current_wrong_owner_fail() {
+        let hollow_current =
+            validate_hollow_grove_progression_contract(&HollowGroveProgressionContractInput {
+                depth_ownership_claims: vec![CurrentDepthOwnershipClaim {
+                    depth: CurrentDepthId::HollowCurrent,
+                    house: House::Glaushouse,
+                }],
+                ..HollowGroveProgressionContractInput::default()
+            });
+        assert!(hollow_current.iter().any(|diagnostic| {
+            diagnostic.code == AlignmentDiagnosticCode::CurrentDepthMismatch
+                && diagnostic
+                    .message
+                    .contains("Hollow Current belongs to Stonebend")
+        }));
+
+        for house in [House::Stonebend, House::Glaushouse, House::Flynt] {
+            let diagnostics =
+                validate_hollow_grove_progression_contract(&HollowGroveProgressionContractInput {
+                    current_relation_claims: vec![CurrentRelationClaim {
+                        derived_from_hollow_current: true,
+                        derived_from_abyss: true,
+                        exclusive_owner: Some(house),
+                    }],
+                    ..HollowGroveProgressionContractInput::default()
+                });
+            assert!(diagnostics.iter().any(|diagnostic| {
+                diagnostic.code == AlignmentDiagnosticCode::CurrentDepthMismatch
+                    && diagnostic.message.contains("cannot belong exclusively")
+            }));
+        }
+    }
+
+    #[test]
+    fn current_speed_and_aura_depth_contradictions_fail() {
+        let speed =
+            validate_hollow_grove_progression_contract(&HollowGroveProgressionContractInput {
+                current_speed_claims: vec![CurrentSpeedSemanticClaim {
+                    running_speed_only: true,
+                }],
+                ..HollowGroveProgressionContractInput::default()
+            });
+        assert!(speed.iter().any(|diagnostic| {
+            diagnostic.code == AlignmentDiagnosticCode::CurrentSpeedMismatch
+        }));
+
+        let aura =
+            validate_hollow_grove_progression_contract(&HollowGroveProgressionContractInput {
+                aura_illumination_claims: vec![AuraIlluminationClaim {
+                    treated_as_current_depth: true,
+                    reveals_hollow_current: true,
+                    reveals_current: true,
+                    reveals_abyss: true,
+                }],
+                ..HollowGroveProgressionContractInput::default()
+            });
+        assert!(aura.iter().any(|diagnostic| {
+            diagnostic.code == AlignmentDiagnosticCode::AuraIlluminationMismatch
+        }));
+    }
+
+    #[test]
+    fn illegal_point_squared_meanings_fail() {
+        let contradictions = vec![
+            PointSquaredSemanticClaim {
+                current_capacity_delta: 1,
+                aura_capacity_delta: 0,
+                auto_maximizes_development: false,
+                auto_grants_frame: None,
+                creates_separate_horizon_state: false,
+                includes_self: true,
+                includes_surroundings: true,
+                miss_grants_ascension: false,
+                failed_recipe_grants_ascension: false,
+                replaces_being: None,
+                stabilizes_into_next_point: true,
+                introduces_higher_point_vocabulary: false,
+            },
+            PointSquaredSemanticClaim {
+                current_capacity_delta: 0,
+                aura_capacity_delta: 1,
+                auto_maximizes_development: false,
+                auto_grants_frame: None,
+                creates_separate_horizon_state: false,
+                includes_self: true,
+                includes_surroundings: true,
+                miss_grants_ascension: false,
+                failed_recipe_grants_ascension: false,
+                replaces_being: None,
+                stabilizes_into_next_point: true,
+                introduces_higher_point_vocabulary: false,
+            },
+            PointSquaredSemanticClaim {
+                current_capacity_delta: 1,
+                aura_capacity_delta: 1,
+                auto_maximizes_development: true,
+                auto_grants_frame: None,
+                creates_separate_horizon_state: false,
+                includes_self: true,
+                includes_surroundings: true,
+                miss_grants_ascension: false,
+                failed_recipe_grants_ascension: false,
+                replaces_being: None,
+                stabilizes_into_next_point: true,
+                introduces_higher_point_vocabulary: false,
+            },
+            PointSquaredSemanticClaim {
+                current_capacity_delta: 1,
+                aura_capacity_delta: 1,
+                auto_maximizes_development: false,
+                auto_grants_frame: Some(FrameId::Troglodyte),
+                creates_separate_horizon_state: false,
+                includes_self: true,
+                includes_surroundings: true,
+                miss_grants_ascension: false,
+                failed_recipe_grants_ascension: false,
+                replaces_being: None,
+                stabilizes_into_next_point: true,
+                introduces_higher_point_vocabulary: false,
+            },
+            PointSquaredSemanticClaim {
+                current_capacity_delta: 1,
+                aura_capacity_delta: 1,
+                auto_maximizes_development: false,
+                auto_grants_frame: None,
+                creates_separate_horizon_state: true,
+                includes_self: true,
+                includes_surroundings: true,
+                miss_grants_ascension: false,
+                failed_recipe_grants_ascension: false,
+                replaces_being: None,
+                stabilizes_into_next_point: true,
+                introduces_higher_point_vocabulary: false,
+            },
+            PointSquaredSemanticClaim {
+                current_capacity_delta: 1,
+                aura_capacity_delta: 1,
+                auto_maximizes_development: false,
+                auto_grants_frame: None,
+                creates_separate_horizon_state: false,
+                includes_self: true,
+                includes_surroundings: true,
+                miss_grants_ascension: true,
+                failed_recipe_grants_ascension: false,
+                replaces_being: None,
+                stabilizes_into_next_point: true,
+                introduces_higher_point_vocabulary: false,
+            },
+            PointSquaredSemanticClaim {
+                current_capacity_delta: 1,
+                aura_capacity_delta: 1,
+                auto_maximizes_development: false,
+                auto_grants_frame: None,
+                creates_separate_horizon_state: false,
+                includes_self: true,
+                includes_surroundings: true,
+                miss_grants_ascension: false,
+                failed_recipe_grants_ascension: true,
+                replaces_being: None,
+                stabilizes_into_next_point: true,
+                introduces_higher_point_vocabulary: false,
+            },
+            PointSquaredSemanticClaim {
+                current_capacity_delta: 1,
+                aura_capacity_delta: 1,
+                auto_maximizes_development: false,
+                auto_grants_frame: None,
+                creates_separate_horizon_state: false,
+                includes_self: true,
+                includes_surroundings: true,
+                miss_grants_ascension: false,
+                failed_recipe_grants_ascension: false,
+                replaces_being: Some(BeingId::Hueman),
+                stabilizes_into_next_point: true,
+                introduces_higher_point_vocabulary: false,
+            },
+            PointSquaredSemanticClaim {
+                current_capacity_delta: 1,
+                aura_capacity_delta: 1,
+                auto_maximizes_development: false,
+                auto_grants_frame: None,
+                creates_separate_horizon_state: false,
+                includes_self: true,
+                includes_surroundings: true,
+                miss_grants_ascension: false,
+                failed_recipe_grants_ascension: false,
+                replaces_being: None,
+                stabilizes_into_next_point: true,
+                introduces_higher_point_vocabulary: true,
+            },
+        ];
+
+        for contradiction in contradictions {
+            let diagnostics =
+                validate_hollow_grove_progression_contract(&HollowGroveProgressionContractInput {
+                    point_squared_claims: vec![contradiction],
+                    ..HollowGroveProgressionContractInput::default()
+                });
+            assert!(diagnostics.iter().any(|diagnostic| {
+                diagnostic.code == AlignmentDiagnosticCode::PointSquaredAscensionMismatch
+            }));
+        }
+    }
 }

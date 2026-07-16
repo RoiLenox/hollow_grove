@@ -5,7 +5,12 @@ use crate::frame_state::{BeingId, FlowId, FrameId, GlowId};
 use crate::hollow_grove_contract::{
     AlignmentDiagnostic, CivilizationModel, EntityCategory, FrameGrammarClaim,
     HollowGroveAlignmentInput, House, HouseRock, Profession, ProfessionAccessRule, SandmanorPeople,
-    SandmanorPeopleClaim, Substance, validate_hollow_grove_alignment,
+    SandmanorPeopleClaim, Substance, canonical_progression_contract_fixture,
+    validate_hollow_grove_alignment, validate_hollow_grove_progression_contract,
+};
+use crate::point_progression::{
+    CanonicalRouteId, PointProgressionDiagnostic, PointSquaredApplicationStatus,
+    build_canonical_point_squared_fixture, build_point_squared_witness, validate_point_progression,
 };
 use crate::{
     CANONICAL_WITNESS, ContactOutcome, DecisionIntent, FrameState, LandingOutcome, Point, Symptom,
@@ -292,6 +297,105 @@ pub fn validate_hueman_progression_foundation() -> io::Result<()> {
     Ok(())
 }
 
+pub fn validate_point_squared_progression_foundation() -> io::Result<()> {
+    let fixture = build_canonical_point_squared_fixture()?;
+    let stabilized = fixture.first_application().stabilized_point();
+    let diagnostics = validate_point_progression(stabilized);
+    let errors = diagnostics
+        .iter()
+        .filter(|diagnostic| diagnostic.is_error)
+        .collect::<Vec<_>>();
+    if !errors.is_empty() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!(
+                "Point² progression fixture drifted: {}",
+                render_progression_diagnostics(&errors)
+            ),
+        ));
+    }
+    if fixture.first_application().status() != PointSquaredApplicationStatus::Applied {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "first Point² ascension application must succeed",
+        ));
+    }
+    if fixture.second_application().status() != PointSquaredApplicationStatus::AlreadyApplied {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "replaying the same Point² ascension must report already applied",
+        ));
+    }
+    if stabilized.progression().capacities().current_capacity() != 2
+        || stabilized.progression().capacities().aura_capacity() != 2
+        || stabilized.progression().stable_point_level() != 2
+    {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "the canonical Point² fixture must stabilize at Point level 2 with paired 2/2 capacities",
+        ));
+    }
+    if !stabilized
+        .world()
+        .route_visible(CanonicalRouteId::StairwayToHeaven)
+        || !stabilized
+            .world()
+            .route_survivable(CanonicalRouteId::StairwayToHeaven)
+    {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "Stairway to Heaven must become visible and survivable after the canonical Point² fixture",
+        ));
+    }
+    if !stabilized.world().next_frame_potential_available() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "Point² must open next Frame potential without granting it automatically",
+        ));
+    }
+    Ok(())
+}
+
+pub fn validate_medical_injury_cycle() -> io::Result<()> {
+    let root_fixture = crate::hollow_grove_contract::canonical_root_alignment_fixture();
+    let diagnostics =
+        validate_hollow_grove_alignment(&crate::hollow_grove_contract::HollowGroveAlignmentInput {
+            nightingale_claims: root_fixture.nightingale_claims,
+            ..crate::hollow_grove_contract::HollowGroveAlignmentInput::default()
+        });
+    if !diagnostics.is_empty() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!(
+                "medical lore Nightingale contract drifted: {}",
+                diagnostics
+                    .into_iter()
+                    .map(|diagnostic| diagnostic.message)
+                    .collect::<Vec<_>>()
+                    .join("; ")
+            ),
+        ));
+    }
+
+    let cycle = [
+        "Hollow Current is breached.",
+        "Current carries the alarm.",
+        "Abyss feels and records the damage.",
+        "Aura reveals the true condition.",
+        "Glaüshouse clears and stabilizes Abyss.",
+        "Current restores circulation.",
+        "Stonebend rebuilds Hollow Current.",
+    ];
+    if cycle.len() != 7 || !cycle[0].contains("Hollow Current") || !cycle[6].contains("Stonebend") {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "medical injury cycle fixture drifted from the canonical order",
+        ));
+    }
+
+    Ok(())
+}
+
 pub fn build_hollow_grove_vertical_witness() -> io::Result<String> {
     validate_hueman_progression_foundation()?;
 
@@ -405,10 +509,27 @@ pub fn build_hollow_grove_vertical_witness() -> io::Result<String> {
 
 pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String> {
     validate_hueman_progression_foundation()?;
+    validate_point_squared_progression_foundation()?;
+    validate_medical_injury_cycle()?;
     validate_canonical_content_fixtures()?;
     validate_medical_team_profile(&build_glaushouse_medical_team_profile())?;
     let scenario = load_scenario(DEFAULT_SCENARIO_ID)?;
     validate_current_synthesis_scenario(&scenario)?;
+    let contract_diagnostics =
+        validate_hollow_grove_progression_contract(&canonical_progression_contract_fixture());
+    if !contract_diagnostics.is_empty() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!(
+                "progression semantic contract drifted: {}",
+                contract_diagnostics
+                    .into_iter()
+                    .map(|diagnostic| diagnostic.message)
+                    .collect::<Vec<_>>()
+                    .join("; ")
+            ),
+        ));
+    }
 
     let contradiction_checks = [
         (
@@ -468,17 +589,28 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
          Status:\n\
          - world witness: pass\n\
          - world validation: pass\n\
+         - current-depth contract: pass\n\
+         - aura illumination contract: pass\n\
+         - Point² paired capacity advancement: pass\n\
+         - Point² exactly-once application: pass\n\
          - Hueman identity fixture: pass\n\
          - progression persistence fixture: pass\n\
+         - development persistence: pass\n\
+         - Stairway horizon fixture: pass\n\
+         - point stabilization: pass\n\
          - canonical content fixtures: pass\n\
+         - medical lore injury cycle: pass\n\
          - contradiction checks: pass\n\
          - vertical witness: pass\n\
          - V1.1 topology unchanged: pass\n\n\
          World Witness:\n\n\
          {}\n\
+         Point² Witness:\n\n\
+         {}\n\
          Vertical Witness:\n\n\
          {}",
         crate::hollow_grove_contract::build_hollow_grove_alignment_witness(),
+        build_point_squared_witness()?,
         build_hollow_grove_vertical_witness()?
     ))
 }
@@ -698,6 +830,14 @@ fn validate_content_line(context: &str, line: &str, bad_lines: &mut Vec<String>)
             "{context} contains a forbidden native-house profession lock: `{line}`"
         ));
     }
+}
+
+fn render_progression_diagnostics(diagnostics: &[&PointProgressionDiagnostic]) -> String {
+    diagnostics
+        .iter()
+        .map(|diagnostic| diagnostic.message.as_str())
+        .collect::<Vec<_>>()
+        .join("; ")
 }
 
 #[cfg(test)]

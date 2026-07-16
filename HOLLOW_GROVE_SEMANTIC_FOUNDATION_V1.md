@@ -62,6 +62,20 @@ Regression coverage:
 - `src/landing.rs` tests
 - `src/hollow_grove_content.rs` tests
 
+## Point² Current Depths Extension
+
+The locked Point² / Current-depth / Aura-capacity extension now lives in:
+
+- `POINT_SQUARED_CURRENT_DEPTHS_V1.md`
+
+Primary enforcement for that extension:
+
+- `src/hollow_grove_contract.rs`
+- `src/point_progression.rs`
+- `src/hollow_grove_content.rs`
+- `src/bin/current_synthesis_tui.rs`
+- `tests/main_cli.rs`
+
 ## Progression Ladders
 
 Current ladder:

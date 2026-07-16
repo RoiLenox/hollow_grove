@@ -19,6 +19,7 @@ pub mod landing;
 pub mod manager_domain;
 pub mod pleb_meta;
 pub mod point;
+pub mod point_progression;
 pub mod snapshot_boundary;
 pub mod symptom;
 pub mod synthesis_execution;
@@ -50,6 +51,13 @@ pub use hollow_grove::{Bond, HollowGrove};
 pub use hollow_grove_content::{
     build_hollow_grove_foundation_verification_report, build_hollow_grove_vertical_witness,
 };
+pub use hollow_grove_contract::{
+    AuraIlluminationClaim, CurrentDepthIdentityClaim, CurrentDepthOwnershipClaim,
+    CurrentRelationClaim, CurrentSpeedSemanticClaim, DepthIdentityValue,
+    HollowGroveProgressionContractInput, PointSquaredSemanticClaim,
+    build_hollow_grove_progression_witness, canonical_progression_contract_fixture,
+    validate_hollow_grove_progression_contract,
+};
 pub use kernel_pass::{
     AURA_BEAM_WITNESS_LABEL, CANONICAL_WITNESS, CURRENT_SEAM_WITNESS_LABEL, FOURWAY_WITNESS_LABEL,
     KernelInput, KernelPass, LANDED_WITNESS_DESCRIPTION, LANDED_WITNESS_LABEL, START_WITNESS_LABEL,
@@ -69,6 +77,16 @@ pub use pleb_meta::{
     PlebMetaInput, PlebMetaRouting, RoutingPass, Sequence, StrandState, normal_response,
 };
 pub use point::Point;
+pub use point_progression::{
+    AuraDevelopment, AuraDimensionId, CanonicalHorizonId, CanonicalRouteId,
+    CurrentDepthDevelopment, CurrentDepthId, HuemanCapacities, PointProgressionDiagnostic,
+    PointProgressionDiagnosticCode, PointProgressionState, PointSquaredApplication,
+    PointSquaredApplicationStatus, PointSquaredAscension, PointSquaredPrepareError,
+    PointWorldConsequence, ReachableWorldState, apply_point_squared_ascension,
+    build_canonical_point_squared_fixture, build_point_progression_state_output,
+    build_point_squared_witness, build_progression_validation_report, build_progression_witness,
+    parse_point_progression_state, prepare_point_squared_ascension, validate_point_progression,
+};
 pub use snapshot_boundary::{SnapshotBoundary, build_snapshot_boundary_output};
 pub use symptom::Symptom;
 pub use synthesis_execution::{
