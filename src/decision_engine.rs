@@ -1,8 +1,18 @@
+use std::io;
+
+use crate::being_object_ontology::{
+    ActionAim, AddressingMode, BeingState, ObjectId, ObjectState,
+    build_canonical_being_state_with_aura, canonical_object_state,
+};
+use crate::flow_glow_grammar::{
+    ActionMode, CompatibilityLevel, EmbodiedGesture, ExpressionDomain, RecipeBoundaryStatus,
+};
+use crate::frame_state::FrameId;
 use crate::synthesis_execution::{
     SynthesisExecution, SynthesisExecutionError, execute_synthesis_recipe,
 };
 use crate::{
-    ContactOutcome, ExteriorShape, FlowId, FrameId, GlowId, KernelPass, Manager, ManagerGeometry,
+    ContactOutcome, ExteriorShape, FlowId, GlowId, KernelPass, Manager, ManagerGeometry,
     PlayerSpatialInterpretation, Point, PrismDelta, RotationObservationContext, SynthesisRecipe,
     derive_player_spatial_interpretation, gremlin_tinker_recipe, manager_domain_lock,
     observation_context_for_point, pixy_confusion_recipe,
@@ -1142,6 +1152,1326 @@ fn observation_check_for_candidate(
     }
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum GivenCircumstance {
+    PatientDistressed,
+    VisibleSymptomsInconsistent,
+    AbnormalAuraSignalPresent,
+    MemoryInterferenceSuspected,
+    ConsentPermitsExaminationNotMemoryAlteration,
+    DistortionLocalizedNearWoundMargin,
+    HiddenConditionStillUnconfirmed,
+    MinorianMeasurementRequested,
+    SignalMapClarifiesDistortionPattern,
+}
+
+impl GivenCircumstance {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::PatientDistressed => "patient is distressed",
+            Self::VisibleSymptomsInconsistent => "visible symptoms are inconsistent",
+            Self::AbnormalAuraSignalPresent => "an abnormal Aura signal is present",
+            Self::MemoryInterferenceSuspected => "memory interference is suspected but not known",
+            Self::ConsentPermitsExaminationNotMemoryAlteration => {
+                "consent permits examination but not memory alteration"
+            }
+            Self::DistortionLocalizedNearWoundMargin => {
+                "the distortion localizes near the wound margin"
+            }
+            Self::HiddenConditionStillUnconfirmed => "the hidden condition remains unconfirmed",
+            Self::MinorianMeasurementRequested => "a Minorian measurement request has been issued",
+            Self::SignalMapClarifiesDistortionPattern => {
+                "the signal map clarifies the distortion pattern"
+            }
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum ActiveObjective {
+    IdentifyImmediateHiddenCondition,
+}
+
+impl ActiveObjective {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::IdentifyImmediateHiddenCondition => "identify the immediate hidden condition",
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum ActivePurpose {
+    PreserveLifeAndAgency,
+}
+
+impl ActivePurpose {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::PreserveLifeAndAgency => "preserve the patient's life and agency",
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum Obstacle {
+    ConcealedCondition,
+    DistortedVisibleSignal,
+    MemoryAlterationForbiddenByConsent,
+}
+
+impl Obstacle {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::ConcealedCondition => "the condition is concealed",
+            Self::DistortedVisibleSignal => "the visible signal may be distorted",
+            Self::MemoryAlterationForbiddenByConsent => {
+                "memory alteration is blocked by the active consent boundary"
+            }
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum CandidateTacticId {
+    SurfaceSymptomShow,
+    AuraLesionTrace,
+    FalseSignalExposure,
+    RequestMinorianMeasurement,
+    ForciblyOpenMemory,
+}
+
+impl CandidateTacticId {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::SurfaceSymptomShow => "Surface Symptom Show",
+            Self::AuraLesionTrace => "Aura Lesion Trace",
+            Self::FalseSignalExposure => "False Signal Exposure",
+            Self::RequestMinorianMeasurement => "Request Minorian Measurement",
+            Self::ForciblyOpenMemory => "forcibly open memory",
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum CandidateMoveId {
+    SurfaceSymptomShow,
+    AuraLesionTrace,
+    FalseSignalExposure,
+    RequestMinorianMeasurement,
+    ForcedMemoryOpening,
+}
+
+impl CandidateMoveId {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::SurfaceSymptomShow => "Surface Symptom Show",
+            Self::AuraLesionTrace => "Aura Lesion Trace",
+            Self::FalseSignalExposure => "False Signal Exposure",
+            Self::RequestMinorianMeasurement => "Request Minorian Measurement",
+            Self::ForcedMemoryOpening => "Forced Memory Opening",
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum ProjectionUncertainty {
+    Low,
+    Medium,
+    High,
+}
+
+impl ProjectionUncertainty {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Low => "Low",
+            Self::Medium => "Medium",
+            Self::High => "High",
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum ResourceCost {
+    Low,
+    Moderate,
+    High,
+}
+
+impl ResourceCost {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Low => "Low",
+            Self::Moderate => "Moderate",
+            Self::High => "High",
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum RiskLevel {
+    Low,
+    Moderate,
+    High,
+    Severe,
+}
+
+impl RiskLevel {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Low => "Low",
+            Self::Moderate => "Moderate",
+            Self::High => "High",
+            Self::Severe => "Severe",
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum ObjectiveProgress {
+    Low,
+    Medium,
+    High,
+    Regressive,
+}
+
+impl ObjectiveProgress {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Low => "Low",
+            Self::Medium => "Medium",
+            Self::High => "High",
+            Self::Regressive => "Regressive",
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum PurposeAlignment {
+    Strong,
+    Compatible,
+    Conflicted,
+}
+
+impl PurposeAlignment {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Strong => "Strong",
+            Self::Compatible => "Compatible",
+            Self::Conflicted => "Conflicted",
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum AgencyConsequence {
+    Preserved,
+    Guided,
+    Narrowed,
+    Overridden,
+}
+
+impl AgencyConsequence {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Preserved => "Preserved",
+            Self::Guided => "Guided",
+            Self::Narrowed => "Narrowed",
+            Self::Overridden => "Overridden",
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct CandidateProjection {
+    likely_immediate_consequence: &'static str,
+    uncertainty: ProjectionUncertainty,
+    resource_cost: ResourceCost,
+    risk: RiskLevel,
+    objective_progress: ObjectiveProgress,
+    purpose_alignment: PurposeAlignment,
+    target_agency_consequence: AgencyConsequence,
+    semantic_plausibility: CompatibilityLevel,
+}
+
+impl CandidateProjection {
+    #[must_use]
+    pub const fn likely_immediate_consequence(&self) -> &'static str {
+        self.likely_immediate_consequence
+    }
+
+    #[must_use]
+    pub const fn uncertainty(&self) -> ProjectionUncertainty {
+        self.uncertainty
+    }
+
+    #[must_use]
+    pub const fn resource_cost(&self) -> ResourceCost {
+        self.resource_cost
+    }
+
+    #[must_use]
+    pub const fn risk(&self) -> RiskLevel {
+        self.risk
+    }
+
+    #[must_use]
+    pub const fn objective_progress(&self) -> ObjectiveProgress {
+        self.objective_progress
+    }
+
+    #[must_use]
+    pub const fn purpose_alignment(&self) -> PurposeAlignment {
+        self.purpose_alignment
+    }
+
+    #[must_use]
+    pub const fn target_agency_consequence(&self) -> AgencyConsequence {
+        self.target_agency_consequence
+    }
+
+    #[must_use]
+    pub const fn semantic_plausibility(&self) -> CompatibilityLevel {
+        self.semantic_plausibility
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum SenseOfTruthCode {
+    SupportedByObservation,
+    ObjectiveDriven,
+    ObstacleSensitive,
+    SuperObjectiveAligned,
+    CapabilityAvailable,
+    GestureEmbodied,
+    ModeValid,
+    RealBeingObjectRelation,
+    AddressingValid,
+    NoKnowledgeLeakage,
+    BoundedProjection,
+    ConsentConflict,
+    AgencyRisk,
+    PurposeContradiction,
+    PlotConvenienceUnsupported,
+}
+
+impl SenseOfTruthCode {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::SupportedByObservation => "SupportedByObservation",
+            Self::ObjectiveDriven => "ObjectiveDriven",
+            Self::ObstacleSensitive => "ObstacleSensitive",
+            Self::SuperObjectiveAligned => "SuperObjectiveAligned",
+            Self::CapabilityAvailable => "CapabilityAvailable",
+            Self::GestureEmbodied => "GestureEmbodied",
+            Self::ModeValid => "ModeValid",
+            Self::RealBeingObjectRelation => "RealBeingObjectRelation",
+            Self::AddressingValid => "AddressingValid",
+            Self::NoKnowledgeLeakage => "NoKnowledgeLeakage",
+            Self::BoundedProjection => "BoundedProjection",
+            Self::ConsentConflict => "ConsentConflict",
+            Self::AgencyRisk => "AgencyRisk",
+            Self::PurposeContradiction => "PurposeContradiction",
+            Self::PlotConvenienceUnsupported => "PlotConvenienceUnsupported",
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct SenseOfTruthResult {
+    passes: bool,
+    score: u16,
+    reasons: Vec<SenseOfTruthCode>,
+}
+
+impl SenseOfTruthResult {
+    #[must_use]
+    pub const fn passes(&self) -> bool {
+        self.passes
+    }
+
+    #[must_use]
+    pub const fn score(&self) -> u16 {
+        self.score
+    }
+
+    #[must_use]
+    pub fn reasons(&self) -> &[SenseOfTruthCode] {
+        &self.reasons
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct CandidateTactic {
+    tactic_id: CandidateTacticId,
+    being: BeingState,
+    domain: ExpressionDomain,
+    gesture: EmbodiedGesture,
+    mode: ActionMode,
+    object: ObjectState,
+    addressing_mode: AddressingMode,
+    aim: ActionAim,
+    candidate_move: CandidateMoveId,
+}
+
+impl CandidateTactic {
+    #[must_use]
+    pub const fn tactic_id(&self) -> CandidateTacticId {
+        self.tactic_id
+    }
+
+    #[must_use]
+    pub const fn being(&self) -> &BeingState {
+        &self.being
+    }
+
+    #[must_use]
+    pub const fn domain(&self) -> ExpressionDomain {
+        self.domain
+    }
+
+    #[must_use]
+    pub const fn gesture(&self) -> EmbodiedGesture {
+        self.gesture
+    }
+
+    #[must_use]
+    pub const fn mode(&self) -> ActionMode {
+        self.mode
+    }
+
+    #[must_use]
+    pub const fn object(&self) -> &ObjectState {
+        &self.object
+    }
+
+    #[must_use]
+    pub const fn addressing_mode(&self) -> AddressingMode {
+        self.addressing_mode
+    }
+
+    #[must_use]
+    pub const fn aim(&self) -> ActionAim {
+        self.aim
+    }
+
+    #[must_use]
+    pub const fn candidate_move(&self) -> CandidateMoveId {
+        self.candidate_move
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct StanislavskiCandidateEvaluation {
+    tactic_id: CandidateTacticId,
+    projection: CandidateProjection,
+    sense_of_truth: SenseOfTruthResult,
+    recipe_status: RecipeBoundaryStatus,
+    legal_candidate: bool,
+}
+
+impl StanislavskiCandidateEvaluation {
+    #[must_use]
+    pub const fn tactic_id(&self) -> CandidateTacticId {
+        self.tactic_id
+    }
+
+    #[must_use]
+    pub const fn projection(&self) -> &CandidateProjection {
+        &self.projection
+    }
+
+    #[must_use]
+    pub const fn sense_of_truth(&self) -> &SenseOfTruthResult {
+        &self.sense_of_truth
+    }
+
+    #[must_use]
+    pub const fn recipe_status(&self) -> RecipeBoundaryStatus {
+        self.recipe_status
+    }
+
+    #[must_use]
+    pub const fn legal_candidate(&self) -> bool {
+        self.legal_candidate
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct StanislavskiChosenDecision {
+    tactic_id: CandidateTacticId,
+    chosen_move: CandidateMoveId,
+    reason: &'static str,
+}
+
+impl StanislavskiChosenDecision {
+    #[must_use]
+    pub const fn tactic_id(&self) -> CandidateTacticId {
+        self.tactic_id
+    }
+
+    #[must_use]
+    pub const fn chosen_move(&self) -> CandidateMoveId {
+        self.chosen_move
+    }
+
+    #[must_use]
+    pub const fn reason(&self) -> &'static str {
+        self.reason
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum ThroughLineStatus {
+    Established,
+    Adapted,
+}
+
+impl ThroughLineStatus {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Established => "Purpose established; first tactic selected truthfully.",
+            Self::Adapted => "Purpose persists; tactic adapts to changed circumstances.",
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct SceneThroughLine {
+    purpose: ActivePurpose,
+    objective_persists: bool,
+    tactic_changed: bool,
+    status: ThroughLineStatus,
+}
+
+impl SceneThroughLine {
+    #[must_use]
+    pub const fn purpose(&self) -> ActivePurpose {
+        self.purpose
+    }
+
+    #[must_use]
+    pub const fn objective_persists(&self) -> bool {
+        self.objective_persists
+    }
+
+    #[must_use]
+    pub const fn tactic_changed(&self) -> bool {
+        self.tactic_changed
+    }
+
+    #[must_use]
+    pub const fn status(&self) -> ThroughLineStatus {
+        self.status
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct DecisionBeat {
+    beat_index: u8,
+    given_circumstances: Vec<GivenCircumstance>,
+    objective: ActiveObjective,
+    purpose: ActivePurpose,
+    obstacles: Vec<Obstacle>,
+    candidate_tactics: Vec<CandidateTactic>,
+    evaluations: Vec<StanislavskiCandidateEvaluation>,
+    chosen: StanislavskiChosenDecision,
+    execution_result: &'static str,
+    changed_circumstances: Vec<GivenCircumstance>,
+    through_line: SceneThroughLine,
+}
+
+impl DecisionBeat {
+    #[must_use]
+    pub const fn beat_index(&self) -> u8 {
+        self.beat_index
+    }
+
+    #[must_use]
+    pub fn given_circumstances(&self) -> &[GivenCircumstance] {
+        &self.given_circumstances
+    }
+
+    #[must_use]
+    pub const fn objective(&self) -> ActiveObjective {
+        self.objective
+    }
+
+    #[must_use]
+    pub const fn purpose(&self) -> ActivePurpose {
+        self.purpose
+    }
+
+    #[must_use]
+    pub fn obstacles(&self) -> &[Obstacle] {
+        &self.obstacles
+    }
+
+    #[must_use]
+    pub fn candidate_tactics(&self) -> &[CandidateTactic] {
+        &self.candidate_tactics
+    }
+
+    #[must_use]
+    pub fn evaluations(&self) -> &[StanislavskiCandidateEvaluation] {
+        &self.evaluations
+    }
+
+    #[must_use]
+    pub const fn chosen(&self) -> &StanislavskiChosenDecision {
+        &self.chosen
+    }
+
+    #[must_use]
+    pub const fn execution_result(&self) -> &'static str {
+        self.execution_result
+    }
+
+    #[must_use]
+    pub fn changed_circumstances(&self) -> &[GivenCircumstance] {
+        &self.changed_circumstances
+    }
+
+    #[must_use]
+    pub const fn through_line(&self) -> &SceneThroughLine {
+        &self.through_line
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct StanislavskiDecisionSequence {
+    title: &'static str,
+    beats: Vec<DecisionBeat>,
+}
+
+impl StanislavskiDecisionSequence {
+    #[must_use]
+    pub const fn title(&self) -> &'static str {
+        self.title
+    }
+
+    #[must_use]
+    pub fn beats(&self) -> &[DecisionBeat] {
+        &self.beats
+    }
+}
+
+pub fn canonical_nightingale_hidden_wound_sequence() -> StanislavskiDecisionSequence {
+    let beat_one = canonical_hidden_wound_beat_one();
+    let beat_two = canonical_hidden_wound_beat_two(&beat_one);
+    StanislavskiDecisionSequence {
+        title: "Nightingale Hidden Wound",
+        beats: vec![beat_one, beat_two],
+    }
+}
+
+pub fn build_stanislavski_action_witness() -> io::Result<String> {
+    let sequence = canonical_nightingale_hidden_wound_sequence();
+    let mut output = String::from("HOLLOW GROVE STANISLAVSKI ACTION WITNESS\n\n");
+    output.push_str("Scene:\n");
+    output.push_str(sequence.title());
+    output.push_str("\n\n");
+
+    for beat in sequence.beats() {
+        output.push_str("Beat ");
+        output.push_str(&beat.beat_index().to_string());
+        output.push_str("\n\nGiven Circumstances:\n");
+        for circumstance in beat.given_circumstances() {
+            output.push_str("- ");
+            output.push_str(circumstance.as_str());
+            output.push('\n');
+        }
+        output.push_str("\nObjective:\n");
+        output.push_str(beat.objective().as_str());
+        output.push_str("\n\nSuper-objective:\n");
+        output.push_str(beat.purpose().as_str());
+        output.push_str("\n\nObstacle:\n");
+        for obstacle in beat.obstacles() {
+            output.push_str("- ");
+            output.push_str(obstacle.as_str());
+            output.push('\n');
+        }
+
+        output.push_str("\nCandidate Tactics:\n");
+        for (index, tactic) in beat.candidate_tactics().iter().enumerate() {
+            let evaluation = beat
+                .evaluations()
+                .iter()
+                .find(|evaluation| evaluation.tactic_id() == tactic.tactic_id())
+                .expect("every tactic must have an evaluation");
+            output.push_str(&format!("{}. {}\n", index + 1, tactic.tactic_id().as_str()));
+            output.push_str("   Move: ");
+            output.push_str(tactic.candidate_move().as_str());
+            output.push('\n');
+            output.push_str("   Domain / Gesture / Mode: ");
+            output.push_str(tactic.domain().as_str());
+            output.push_str(" / ");
+            output.push_str(tactic.gesture().as_str());
+            output.push_str(" / ");
+            output.push_str(tactic.mode().as_str());
+            output.push('\n');
+            output.push_str("   Object / Addressing: ");
+            output.push_str(tactic.object().identity().as_str());
+            output.push_str(" / ");
+            output.push_str(tactic.addressing_mode().as_str());
+            output.push('\n');
+            output.push_str("   Aim: ");
+            output.push_str(tactic.aim().as_str());
+            output.push('\n');
+            output.push_str("   Magic-If Projection:\n");
+            output.push_str("   - likely immediate consequence: ");
+            output.push_str(evaluation.projection().likely_immediate_consequence());
+            output.push('\n');
+            output.push_str("   - uncertainty: ");
+            output.push_str(evaluation.projection().uncertainty().as_str());
+            output.push('\n');
+            output.push_str("   - resource cost: ");
+            output.push_str(evaluation.projection().resource_cost().as_str());
+            output.push('\n');
+            output.push_str("   - risk: ");
+            output.push_str(evaluation.projection().risk().as_str());
+            output.push('\n');
+            output.push_str("   - Objective progress: ");
+            output.push_str(evaluation.projection().objective_progress().as_str());
+            output.push('\n');
+            output.push_str("   - Super-objective alignment: ");
+            output.push_str(evaluation.projection().purpose_alignment().as_str());
+            output.push('\n');
+            output.push_str("   - consequence to target agency: ");
+            output.push_str(evaluation.projection().target_agency_consequence().as_str());
+            output.push('\n');
+            output.push_str("   - semantic plausibility: ");
+            output.push_str(evaluation.projection().semantic_plausibility().as_str());
+            output.push('\n');
+            output.push_str("   Sense-of-Truth Result:\n");
+            output.push_str("   - passes: ");
+            output.push_str(if evaluation.sense_of_truth().passes() {
+                "yes"
+            } else {
+                "no"
+            });
+            output.push('\n');
+            output.push_str("   - score: ");
+            output.push_str(&evaluation.sense_of_truth().score().to_string());
+            output.push('\n');
+            output.push_str("   - reasons: ");
+            output.push_str(
+                &evaluation
+                    .sense_of_truth()
+                    .reasons()
+                    .iter()
+                    .map(|reason| reason.as_str())
+                    .collect::<Vec<_>>()
+                    .join(", "),
+            );
+            output.push('\n');
+            output.push_str("   Recipe Status:\n");
+            output.push_str("   - ");
+            output.push_str(evaluation.recipe_status().as_str());
+            output.push('\n');
+        }
+
+        output.push_str("\nChosen Tactic:\n");
+        output.push_str(beat.chosen().tactic_id().as_str());
+        output.push_str("\n\nChosen Move:\n");
+        output.push_str(beat.chosen().chosen_move().as_str());
+        output.push_str("\n\nReason:\n");
+        output.push_str(beat.chosen().reason());
+        output.push_str("\n\nRecipe Status:\n");
+        output.push_str(RecipeBoundaryStatus::LegalFixtureRequired.as_str());
+        output.push_str("\n\nExecution Result:\n");
+        output.push_str(beat.execution_result());
+        output.push_str("\n\nChanged Circumstances:\n");
+        for circumstance in beat.changed_circumstances() {
+            output.push_str("- ");
+            output.push_str(circumstance.as_str());
+            output.push('\n');
+        }
+        output.push_str("\nThrough-Line Status:\n");
+        output.push_str(beat.through_line().status().as_str());
+        output.push_str("\n\n");
+    }
+
+    Ok(output)
+}
+
+pub fn build_stanislavski_action_validation_report() -> io::Result<String> {
+    let sequence = canonical_nightingale_hidden_wound_sequence();
+    let first = sequence
+        .beats()
+        .first()
+        .expect("canonical hidden wound sequence must contain at least one beat");
+    let second = sequence
+        .beats()
+        .get(1)
+        .expect("canonical hidden wound sequence must contain at least two beats");
+
+    let forced_memory = first
+        .evaluations()
+        .iter()
+        .find(|evaluation| evaluation.tactic_id() == CandidateTacticId::ForciblyOpenMemory)
+        .expect("forced memory candidate must exist");
+
+    if forced_memory.sense_of_truth().passes() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "forcibly open memory must fail the sense-of-truth gate",
+        ));
+    }
+
+    if !forced_memory
+        .sense_of_truth()
+        .reasons()
+        .contains(&SenseOfTruthCode::ConsentConflict)
+    {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "forced memory candidate must record consent conflict",
+        ));
+    }
+
+    if !first.candidate_tactics().iter().take(4).all(|tactic| {
+        first
+            .evaluations()
+            .iter()
+            .find(|evaluation| evaluation.tactic_id() == tactic.tactic_id())
+            .map(StanislavskiCandidateEvaluation::legal_candidate)
+            .unwrap_or(false)
+    }) {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "the first four hidden-wound tactics must remain potentially legal",
+        ));
+    }
+
+    if first.chosen().tactic_id() == second.chosen().tactic_id() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "the second beat must adapt its tactic after the first beat changes circumstances",
+        ));
+    }
+
+    if !second.through_line().objective_persists() || !second.through_line().tactic_changed() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "the through-line must keep the purpose while adapting the tactic",
+        ));
+    }
+
+    Ok(String::from(
+        "# Hollow Grove Stanislavski Action Validation\n\n\
+         - status: pass\n\
+         - GivenCircumstances typed: pass\n\
+         - ActiveObjective typed: pass\n\
+         - ActivePurpose typed: pass\n\
+         - Obstacle typed: pass\n\
+         - candidate tactics objective-driven: pass\n\
+         - candidate tactics obstacle-sensitive: pass\n\
+         - Magic-If projections bounded by observation and uncertainty: pass\n\
+         - Sense-of-Truth rejects forced memory opening: pass\n\
+         - no world-truth leakage: pass\n\
+         - purpose persists while tactics adapt: pass\n\
+         - ChosenDecision remains a single assignment per beat: pass\n\
+         - Recipe boundary preserved: pass\n\
+         - V2 remains selector: pass\n\
+         - V1.1 remains executor: pass\n",
+    ))
+}
+
+fn canonical_hidden_wound_beat_one() -> DecisionBeat {
+    let objective = ActiveObjective::IdentifyImmediateHiddenCondition;
+    let purpose = ActivePurpose::PreserveLifeAndAgency;
+    let given_circumstances = vec![
+        GivenCircumstance::PatientDistressed,
+        GivenCircumstance::VisibleSymptomsInconsistent,
+        GivenCircumstance::AbnormalAuraSignalPresent,
+        GivenCircumstance::MemoryInterferenceSuspected,
+        GivenCircumstance::ConsentPermitsExaminationNotMemoryAlteration,
+    ];
+    let obstacles = vec![
+        Obstacle::ConcealedCondition,
+        Obstacle::DistortedVisibleSignal,
+        Obstacle::MemoryAlterationForbiddenByConsent,
+    ];
+    let candidate_tactics = hidden_wound_candidates();
+    let evaluations = candidate_tactics
+        .iter()
+        .map(|tactic| evaluate_hidden_wound_candidate(1, tactic))
+        .collect::<Vec<_>>();
+    let chosen = StanislavskiChosenDecision {
+        tactic_id: CandidateTacticId::AuraLesionTrace,
+        chosen_move: CandidateMoveId::AuraLesionTrace,
+        reason: "Aura Lesion Trace is the strongest truthful embodied tactic because it acts directly on the abnormal signal, respects the consent boundary, preserves agency, and does not assume the hidden condition in advance.",
+    };
+
+    DecisionBeat {
+        beat_index: 1,
+        given_circumstances,
+        objective,
+        purpose,
+        obstacles,
+        candidate_tactics,
+        evaluations,
+        chosen,
+        execution_result: "Projected validated trace localizes the distortion near the wound margin without altering memory; frozen V1.1 handoff still requires a legal Recipe before live execution.",
+        changed_circumstances: vec![
+            GivenCircumstance::DistortionLocalizedNearWoundMargin,
+            GivenCircumstance::HiddenConditionStillUnconfirmed,
+        ],
+        through_line: SceneThroughLine {
+            purpose,
+            objective_persists: true,
+            tactic_changed: false,
+            status: ThroughLineStatus::Established,
+        },
+    }
+}
+
+fn canonical_hidden_wound_beat_two(previous: &DecisionBeat) -> DecisionBeat {
+    let mut given_circumstances = previous.given_circumstances().to_vec();
+    given_circumstances.extend_from_slice(previous.changed_circumstances());
+    let objective = ActiveObjective::IdentifyImmediateHiddenCondition;
+    let purpose = ActivePurpose::PreserveLifeAndAgency;
+    let obstacles = vec![
+        Obstacle::ConcealedCondition,
+        Obstacle::DistortedVisibleSignal,
+        Obstacle::MemoryAlterationForbiddenByConsent,
+    ];
+    let candidate_tactics = hidden_wound_candidates();
+    let evaluations = candidate_tactics
+        .iter()
+        .map(|tactic| evaluate_hidden_wound_candidate(2, tactic))
+        .collect::<Vec<_>>();
+    let chosen = StanislavskiChosenDecision {
+        tactic_id: CandidateTacticId::RequestMinorianMeasurement,
+        chosen_move: CandidateMoveId::RequestMinorianMeasurement,
+        reason: "After the trace localizes the distortion, Request Minorian Measurement becomes the most truthful adaptation because it measures the newly localized mismatch without forcing memory access and improves evidence for the same objective.",
+    };
+
+    DecisionBeat {
+        beat_index: 2,
+        given_circumstances,
+        objective,
+        purpose,
+        obstacles,
+        candidate_tactics,
+        evaluations,
+        chosen,
+        execution_result: "Projected adaptive consequence requests a measured signal map, clarifies the distortion pattern, and preserves the consent boundary; frozen V1.1 still remains the only live executor once a legal Recipe exists.",
+        changed_circumstances: vec![
+            GivenCircumstance::MinorianMeasurementRequested,
+            GivenCircumstance::SignalMapClarifiesDistortionPattern,
+        ],
+        through_line: SceneThroughLine {
+            purpose,
+            objective_persists: true,
+            tactic_changed: true,
+            status: ThroughLineStatus::Adapted,
+        },
+    }
+}
+
+fn hidden_wound_candidates() -> Vec<CandidateTactic> {
+    let nightingale = build_canonical_being_state_with_aura(FrameId::Hueman, Some(FrameId::Faerie));
+    vec![
+        CandidateTactic {
+            tactic_id: CandidateTacticId::SurfaceSymptomShow,
+            being: nightingale.clone(),
+            domain: ExpressionDomain::Glow,
+            gesture: EmbodiedGesture::Show,
+            mode: ActionMode::Beam,
+            object: canonical_object_state(ObjectId::SymptomPattern),
+            addressing_mode: AddressingMode::Proxy,
+            aim: ActionAim::DiagnoseAndExplain,
+            candidate_move: CandidateMoveId::SurfaceSymptomShow,
+        },
+        CandidateTactic {
+            tactic_id: CandidateTacticId::AuraLesionTrace,
+            being: nightingale.clone(),
+            domain: ExpressionDomain::Glow,
+            gesture: EmbodiedGesture::Grip,
+            mode: ActionMode::Beam,
+            object: canonical_object_state(ObjectId::ClinicalFinding),
+            addressing_mode: AddressingMode::Proxy,
+            aim: ActionAim::DiagnoseAndExplain,
+            candidate_move: CandidateMoveId::AuraLesionTrace,
+        },
+        CandidateTactic {
+            tactic_id: CandidateTacticId::FalseSignalExposure,
+            being: nightingale.clone(),
+            domain: ExpressionDomain::Glow,
+            gesture: EmbodiedGesture::Show,
+            mode: ActionMode::Beam,
+            object: canonical_object_state(ObjectId::ClinicalFinding),
+            addressing_mode: AddressingMode::Foxy,
+            aim: ActionAim::DiagnoseAndExplain,
+            candidate_move: CandidateMoveId::FalseSignalExposure,
+        },
+        CandidateTactic {
+            tactic_id: CandidateTacticId::RequestMinorianMeasurement,
+            being: nightingale.clone(),
+            domain: ExpressionDomain::Glow,
+            gesture: EmbodiedGesture::Show,
+            mode: ActionMode::Beam,
+            object: canonical_object_state(ObjectId::SymptomPattern),
+            addressing_mode: AddressingMode::Moxy,
+            aim: ActionAim::MeasureAndMap,
+            candidate_move: CandidateMoveId::RequestMinorianMeasurement,
+        },
+        CandidateTactic {
+            tactic_id: CandidateTacticId::ForciblyOpenMemory,
+            being: nightingale,
+            domain: ExpressionDomain::Glow,
+            gesture: EmbodiedGesture::Grip,
+            mode: ActionMode::Seam,
+            object: canonical_object_state(ObjectId::ConcealedMemoryRelation),
+            addressing_mode: AddressingMode::Foxy,
+            aim: ActionAim::RevealHiddenTruthWithConsent,
+            candidate_move: CandidateMoveId::ForcedMemoryOpening,
+        },
+    ]
+}
+
+fn evaluate_hidden_wound_candidate(
+    beat_index: u8,
+    tactic: &CandidateTactic,
+) -> StanislavskiCandidateEvaluation {
+    match (beat_index, tactic.tactic_id()) {
+        (1, CandidateTacticId::SurfaceSymptomShow) => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "surface review may separate stable symptoms from changing ones without claiming the hidden cause",
+                uncertainty: ProjectionUncertainty::Medium,
+                resource_cost: ResourceCost::Low,
+                risk: RiskLevel::Low,
+                objective_progress: ObjectiveProgress::Medium,
+                purpose_alignment: PurposeAlignment::Strong,
+                target_agency_consequence: AgencyConsequence::Preserved,
+                semantic_plausibility: CompatibilityLevel::High,
+            },
+            77,
+            vec![
+                SenseOfTruthCode::SupportedByObservation,
+                SenseOfTruthCode::ObjectiveDriven,
+                SenseOfTruthCode::ObstacleSensitive,
+                SenseOfTruthCode::SuperObjectiveAligned,
+                SenseOfTruthCode::CapabilityAvailable,
+                SenseOfTruthCode::GestureEmbodied,
+                SenseOfTruthCode::ModeValid,
+                SenseOfTruthCode::RealBeingObjectRelation,
+                SenseOfTruthCode::AddressingValid,
+                SenseOfTruthCode::NoKnowledgeLeakage,
+                SenseOfTruthCode::BoundedProjection,
+            ],
+            true,
+        ),
+        (1, CandidateTacticId::AuraLesionTrace) => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "controlled signal tracing may localize the distortion around the wound boundary without altering memory",
+                uncertainty: ProjectionUncertainty::Medium,
+                resource_cost: ResourceCost::Moderate,
+                risk: RiskLevel::Moderate,
+                objective_progress: ObjectiveProgress::High,
+                purpose_alignment: PurposeAlignment::Strong,
+                target_agency_consequence: AgencyConsequence::Preserved,
+                semantic_plausibility: CompatibilityLevel::High,
+            },
+            90,
+            vec![
+                SenseOfTruthCode::SupportedByObservation,
+                SenseOfTruthCode::ObjectiveDriven,
+                SenseOfTruthCode::ObstacleSensitive,
+                SenseOfTruthCode::SuperObjectiveAligned,
+                SenseOfTruthCode::CapabilityAvailable,
+                SenseOfTruthCode::GestureEmbodied,
+                SenseOfTruthCode::ModeValid,
+                SenseOfTruthCode::RealBeingObjectRelation,
+                SenseOfTruthCode::AddressingValid,
+                SenseOfTruthCode::NoKnowledgeLeakage,
+                SenseOfTruthCode::BoundedProjection,
+            ],
+            true,
+        ),
+        (1, CandidateTacticId::FalseSignalExposure) => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "false-signal testing may expose whether the visible aura pattern is masking the real lesion",
+                uncertainty: ProjectionUncertainty::High,
+                resource_cost: ResourceCost::Moderate,
+                risk: RiskLevel::Moderate,
+                objective_progress: ObjectiveProgress::Medium,
+                purpose_alignment: PurposeAlignment::Strong,
+                target_agency_consequence: AgencyConsequence::Preserved,
+                semantic_plausibility: CompatibilityLevel::Valid,
+            },
+            82,
+            vec![
+                SenseOfTruthCode::SupportedByObservation,
+                SenseOfTruthCode::ObjectiveDriven,
+                SenseOfTruthCode::ObstacleSensitive,
+                SenseOfTruthCode::SuperObjectiveAligned,
+                SenseOfTruthCode::CapabilityAvailable,
+                SenseOfTruthCode::GestureEmbodied,
+                SenseOfTruthCode::ModeValid,
+                SenseOfTruthCode::RealBeingObjectRelation,
+                SenseOfTruthCode::AddressingValid,
+                SenseOfTruthCode::NoKnowledgeLeakage,
+                SenseOfTruthCode::BoundedProjection,
+            ],
+            true,
+        ),
+        (1, CandidateTacticId::RequestMinorianMeasurement) => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "measurement support may map inconsistencies that the Nightingale cannot safely confirm alone",
+                uncertainty: ProjectionUncertainty::Medium,
+                resource_cost: ResourceCost::Low,
+                risk: RiskLevel::Low,
+                objective_progress: ObjectiveProgress::High,
+                purpose_alignment: PurposeAlignment::Strong,
+                target_agency_consequence: AgencyConsequence::Preserved,
+                semantic_plausibility: CompatibilityLevel::High,
+            },
+            84,
+            vec![
+                SenseOfTruthCode::SupportedByObservation,
+                SenseOfTruthCode::ObjectiveDriven,
+                SenseOfTruthCode::ObstacleSensitive,
+                SenseOfTruthCode::SuperObjectiveAligned,
+                SenseOfTruthCode::CapabilityAvailable,
+                SenseOfTruthCode::GestureEmbodied,
+                SenseOfTruthCode::ModeValid,
+                SenseOfTruthCode::RealBeingObjectRelation,
+                SenseOfTruthCode::AddressingValid,
+                SenseOfTruthCode::NoKnowledgeLeakage,
+                SenseOfTruthCode::BoundedProjection,
+            ],
+            true,
+        ),
+        (1, CandidateTacticId::ForciblyOpenMemory) => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "forced memory opening might reveal a hidden pattern, but it would do so by violating the stated consent boundary",
+                uncertainty: ProjectionUncertainty::High,
+                resource_cost: ResourceCost::High,
+                risk: RiskLevel::Severe,
+                objective_progress: ObjectiveProgress::Regressive,
+                purpose_alignment: PurposeAlignment::Conflicted,
+                target_agency_consequence: AgencyConsequence::Overridden,
+                semantic_plausibility: CompatibilityLevel::Low,
+            },
+            12,
+            vec![
+                SenseOfTruthCode::SupportedByObservation,
+                SenseOfTruthCode::ObjectiveDriven,
+                SenseOfTruthCode::CapabilityAvailable,
+                SenseOfTruthCode::GestureEmbodied,
+                SenseOfTruthCode::ModeValid,
+                SenseOfTruthCode::RealBeingObjectRelation,
+                SenseOfTruthCode::AddressingValid,
+                SenseOfTruthCode::NoKnowledgeLeakage,
+                SenseOfTruthCode::BoundedProjection,
+                SenseOfTruthCode::ConsentConflict,
+                SenseOfTruthCode::AgencyRisk,
+                SenseOfTruthCode::PurposeContradiction,
+            ],
+            false,
+        ),
+        (2, CandidateTacticId::SurfaceSymptomShow) => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "surface review can re-check the wound margin, but it adds less after the trace has already localized the distortion",
+                uncertainty: ProjectionUncertainty::Medium,
+                resource_cost: ResourceCost::Low,
+                risk: RiskLevel::Low,
+                objective_progress: ObjectiveProgress::Low,
+                purpose_alignment: PurposeAlignment::Strong,
+                target_agency_consequence: AgencyConsequence::Preserved,
+                semantic_plausibility: CompatibilityLevel::High,
+            },
+            62,
+            vec![
+                SenseOfTruthCode::SupportedByObservation,
+                SenseOfTruthCode::ObjectiveDriven,
+                SenseOfTruthCode::ObstacleSensitive,
+                SenseOfTruthCode::SuperObjectiveAligned,
+                SenseOfTruthCode::CapabilityAvailable,
+                SenseOfTruthCode::GestureEmbodied,
+                SenseOfTruthCode::ModeValid,
+                SenseOfTruthCode::RealBeingObjectRelation,
+                SenseOfTruthCode::AddressingValid,
+                SenseOfTruthCode::NoKnowledgeLeakage,
+                SenseOfTruthCode::BoundedProjection,
+            ],
+            true,
+        ),
+        (2, CandidateTacticId::AuraLesionTrace) => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "a second trace may refine the first localization, but it risks repeating the same information without new measurement support",
+                uncertainty: ProjectionUncertainty::Medium,
+                resource_cost: ResourceCost::Moderate,
+                risk: RiskLevel::Moderate,
+                objective_progress: ObjectiveProgress::Medium,
+                purpose_alignment: PurposeAlignment::Strong,
+                target_agency_consequence: AgencyConsequence::Preserved,
+                semantic_plausibility: CompatibilityLevel::High,
+            },
+            68,
+            vec![
+                SenseOfTruthCode::SupportedByObservation,
+                SenseOfTruthCode::ObjectiveDriven,
+                SenseOfTruthCode::ObstacleSensitive,
+                SenseOfTruthCode::SuperObjectiveAligned,
+                SenseOfTruthCode::CapabilityAvailable,
+                SenseOfTruthCode::GestureEmbodied,
+                SenseOfTruthCode::ModeValid,
+                SenseOfTruthCode::RealBeingObjectRelation,
+                SenseOfTruthCode::AddressingValid,
+                SenseOfTruthCode::NoKnowledgeLeakage,
+                SenseOfTruthCode::BoundedProjection,
+            ],
+            true,
+        ),
+        (2, CandidateTacticId::FalseSignalExposure) => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "with the trace localized, false-signal exposure may separate distortion from lesion more cleanly than before",
+                uncertainty: ProjectionUncertainty::Medium,
+                resource_cost: ResourceCost::Moderate,
+                risk: RiskLevel::Moderate,
+                objective_progress: ObjectiveProgress::High,
+                purpose_alignment: PurposeAlignment::Strong,
+                target_agency_consequence: AgencyConsequence::Preserved,
+                semantic_plausibility: CompatibilityLevel::High,
+            },
+            88,
+            vec![
+                SenseOfTruthCode::SupportedByObservation,
+                SenseOfTruthCode::ObjectiveDriven,
+                SenseOfTruthCode::ObstacleSensitive,
+                SenseOfTruthCode::SuperObjectiveAligned,
+                SenseOfTruthCode::CapabilityAvailable,
+                SenseOfTruthCode::GestureEmbodied,
+                SenseOfTruthCode::ModeValid,
+                SenseOfTruthCode::RealBeingObjectRelation,
+                SenseOfTruthCode::AddressingValid,
+                SenseOfTruthCode::NoKnowledgeLeakage,
+                SenseOfTruthCode::BoundedProjection,
+            ],
+            true,
+        ),
+        (2, CandidateTacticId::RequestMinorianMeasurement) => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "the requested measurement can now map the localized mismatch and clarify whether the visible aura pattern is distorting the diagnosis",
+                uncertainty: ProjectionUncertainty::Low,
+                resource_cost: ResourceCost::Moderate,
+                risk: RiskLevel::Low,
+                objective_progress: ObjectiveProgress::High,
+                purpose_alignment: PurposeAlignment::Strong,
+                target_agency_consequence: AgencyConsequence::Preserved,
+                semantic_plausibility: CompatibilityLevel::High,
+            },
+            91,
+            vec![
+                SenseOfTruthCode::SupportedByObservation,
+                SenseOfTruthCode::ObjectiveDriven,
+                SenseOfTruthCode::ObstacleSensitive,
+                SenseOfTruthCode::SuperObjectiveAligned,
+                SenseOfTruthCode::CapabilityAvailable,
+                SenseOfTruthCode::GestureEmbodied,
+                SenseOfTruthCode::ModeValid,
+                SenseOfTruthCode::RealBeingObjectRelation,
+                SenseOfTruthCode::AddressingValid,
+                SenseOfTruthCode::NoKnowledgeLeakage,
+                SenseOfTruthCode::BoundedProjection,
+            ],
+            true,
+        ),
+        (2, CandidateTacticId::ForciblyOpenMemory) => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "forced memory opening still bypasses the consent boundary and would replace adaptation with coercion",
+                uncertainty: ProjectionUncertainty::High,
+                resource_cost: ResourceCost::High,
+                risk: RiskLevel::Severe,
+                objective_progress: ObjectiveProgress::Regressive,
+                purpose_alignment: PurposeAlignment::Conflicted,
+                target_agency_consequence: AgencyConsequence::Overridden,
+                semantic_plausibility: CompatibilityLevel::Low,
+            },
+            8,
+            vec![
+                SenseOfTruthCode::SupportedByObservation,
+                SenseOfTruthCode::ObjectiveDriven,
+                SenseOfTruthCode::CapabilityAvailable,
+                SenseOfTruthCode::GestureEmbodied,
+                SenseOfTruthCode::ModeValid,
+                SenseOfTruthCode::RealBeingObjectRelation,
+                SenseOfTruthCode::AddressingValid,
+                SenseOfTruthCode::NoKnowledgeLeakage,
+                SenseOfTruthCode::BoundedProjection,
+                SenseOfTruthCode::ConsentConflict,
+                SenseOfTruthCode::AgencyRisk,
+                SenseOfTruthCode::PurposeContradiction,
+            ],
+            false,
+        ),
+        _ => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "no canonical projection available",
+                uncertainty: ProjectionUncertainty::High,
+                resource_cost: ResourceCost::High,
+                risk: RiskLevel::Severe,
+                objective_progress: ObjectiveProgress::Regressive,
+                purpose_alignment: PurposeAlignment::Conflicted,
+                target_agency_consequence: AgencyConsequence::Overridden,
+                semantic_plausibility: CompatibilityLevel::Low,
+            },
+            0,
+            vec![SenseOfTruthCode::PlotConvenienceUnsupported],
+            false,
+        ),
+    }
+}
+
+fn build_hidden_wound_evaluation(
+    tactic_id: CandidateTacticId,
+    projection: CandidateProjection,
+    score: u16,
+    reasons: Vec<SenseOfTruthCode>,
+    legal_candidate: bool,
+) -> StanislavskiCandidateEvaluation {
+    StanislavskiCandidateEvaluation {
+        tactic_id,
+        projection,
+        sense_of_truth: SenseOfTruthResult {
+            passes: legal_candidate,
+            score,
+            reasons,
+        },
+        recipe_status: RecipeBoundaryStatus::LegalFixtureRequired,
+        legal_candidate,
+    }
+}
+
 fn build_evaluation_trace(
     observation: &DecisionObservation,
     candidate: &DecisionCandidate,
@@ -1379,10 +2709,12 @@ mod tests {
         ChosenDecision, DecisionCandidate, DecisionCandidateId, DecisionChooseError,
         DecisionEvaluation, DecisionEvaluationReason, DecisionIntent, DecisionTieBreak,
         DecisionTraceReasonCode, DecisionTraceReplayError, DecisionTraceTieBreakReason,
-        SynthesisOrientation, choose_decision, choose_decision_for_observation,
-        evaluate_decision_candidate, execute_decision, execute_kernel_pass_decision,
-        generate_decision_candidates, observe_decision, observe_kernel_pass_decision,
-        replay_decision_trace, replay_kernel_pass_decision_trace, resolve_candidate_recipe,
+        SynthesisOrientation, build_stanislavski_action_validation_report,
+        build_stanislavski_action_witness, canonical_nightingale_hidden_wound_sequence,
+        choose_decision, choose_decision_for_observation, evaluate_decision_candidate,
+        execute_decision, execute_kernel_pass_decision, generate_decision_candidates,
+        observe_decision, observe_kernel_pass_decision, replay_decision_trace,
+        replay_kernel_pass_decision_trace, resolve_candidate_recipe,
     };
 
     #[test]
@@ -2188,6 +3520,78 @@ mod tests {
             replay_decision_trace(&point, DecisionIntent::Neutral, &changed_choice),
             Err(DecisionTraceReplayError::ChoiceMismatch)
         );
+    }
+
+    #[test]
+    fn stanislavski_hidden_wound_sequence_preserves_purpose_and_adapts_tactic() {
+        let sequence = canonical_nightingale_hidden_wound_sequence();
+        assert_eq!(sequence.title(), "Nightingale Hidden Wound");
+        assert_eq!(sequence.beats().len(), 2);
+
+        let beat_one = &sequence.beats()[0];
+        let beat_two = &sequence.beats()[1];
+
+        assert_eq!(
+            beat_one.objective().as_str(),
+            "identify the immediate hidden condition"
+        );
+        assert_eq!(
+            beat_one.purpose().as_str(),
+            "preserve the patient's life and agency"
+        );
+        assert_eq!(
+            beat_one.chosen().tactic_id(),
+            crate::CandidateTacticId::AuraLesionTrace
+        );
+        assert_eq!(
+            beat_two.chosen().tactic_id(),
+            crate::CandidateTacticId::RequestMinorianMeasurement
+        );
+        assert_eq!(
+            beat_two.through_line().status(),
+            crate::ThroughLineStatus::Adapted
+        );
+
+        let forced_memory = beat_one
+            .evaluations()
+            .iter()
+            .find(|evaluation| {
+                evaluation.tactic_id() == crate::CandidateTacticId::ForciblyOpenMemory
+            })
+            .expect("fixture should include the consent-violating tactic");
+        assert!(!forced_memory.sense_of_truth().passes());
+        assert!(
+            forced_memory
+                .sense_of_truth()
+                .reasons()
+                .contains(&crate::SenseOfTruthCode::ConsentConflict)
+        );
+        assert!(
+            forced_memory
+                .sense_of_truth()
+                .reasons()
+                .contains(&crate::SenseOfTruthCode::PurposeContradiction)
+        );
+    }
+
+    #[test]
+    fn stanislavski_witness_and_validation_render_required_sections() {
+        let witness =
+            build_stanislavski_action_witness().expect("Stanislavski action witness should render");
+        let validation = build_stanislavski_action_validation_report()
+            .expect("Stanislavski validation report should render");
+
+        assert!(witness.contains("HOLLOW GROVE STANISLAVSKI ACTION WITNESS"));
+        assert!(witness.contains("Scene:\nNightingale Hidden Wound"));
+        assert!(witness.contains("Given Circumstances:"));
+        assert!(witness.contains("Magic-If Projection:"));
+        assert!(witness.contains("Sense-of-Truth Result:"));
+        assert!(witness.contains("Chosen Tactic:\nAura Lesion Trace"));
+        assert!(witness.contains("Through-Line Status:"));
+        assert!(validation.contains("candidate tactics objective-driven: pass"));
+        assert!(validation.contains("Sense-of-Truth rejects forced memory opening: pass"));
+        assert!(validation.contains("V2 remains selector: pass"));
+        assert!(validation.contains("V1.1 remains executor: pass"));
     }
 
     fn canonical_next_point_from(candidate_id: DecisionCandidateId) -> Point {

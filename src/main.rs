@@ -81,6 +81,7 @@ where
         | "dark-aura"
         | "aura-route"
         | "foundation-checkpoint"
+        | "stanislavski"
         | "engine"
         | "bond"
         | "resource"
@@ -127,6 +128,7 @@ fn usage() -> &'static str {
        dark-aura ...     inspect canonical Dark Aura fixtures\n\
        aura-route ...    inspect route-level Aura polarity tendencies\n\
        foundation-checkpoint ... inspect the Embodied World Foundation V1 freeze checkpoint\n\
+       stanislavski ...  inspect typed Stanislavski action-beat generation and evaluation\n\
        engine ...        inspect Current Synthesis engine state\n\
        bond ...          inspect bond candidates and traces\n\
        resource ...      inspect Aura, Current, and residue history\n\
@@ -176,6 +178,8 @@ fn usage() -> &'static str {
        hollow-grove aura-route witness\n\
        hollow-grove foundation-checkpoint witness\n\
        hollow-grove foundation-checkpoint validate\n\
+       hollow-grove stanislavski witness\n\
+       hollow-grove stanislavski validate\n\
        hollow-grove scenario use flooded_quarry_night_watch\n\
        hollow-grove engine status\n\
        hollow-grove bond list\n\
@@ -581,6 +585,14 @@ mod tests {
             ])
         );
         assert_eq!(
+            parse_main_cli([String::from("stanislavski"), String::from("witness")])
+                .expect("stanislavski cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![
+                String::from("stanislavski"),
+                String::from("witness")
+            ])
+        );
+        assert_eq!(
             parse_main_cli([String::from("player"), String::from("status")])
                 .expect("player cli should parse"),
             MainCli::CurrentSynthesisTui(vec![String::from("player"), String::from("status")])
@@ -643,6 +655,8 @@ mod tests {
         assert!(usage.contains("aura-route witness"));
         assert!(usage.contains("foundation-checkpoint witness"));
         assert!(usage.contains("foundation-checkpoint validate"));
+        assert!(usage.contains("stanislavski witness"));
+        assert!(usage.contains("stanislavski validate"));
         assert!(usage.contains("engine status"));
         assert!(usage.contains("player plan"));
         assert!(usage.contains("cleopatra tick"));

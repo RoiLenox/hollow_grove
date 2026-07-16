@@ -32,6 +32,7 @@ use hollow_grove::{
     build_player_location_witness, build_point_squared_witness,
     build_progression_validation_report, build_progression_witness,
     build_rule_of_twelve_validation_report, build_rule_of_twelve_witness,
+    build_stanislavski_action_validation_report, build_stanislavski_action_witness,
 };
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -71,6 +72,8 @@ enum CurrentSynthesisTuiCli {
     AuraRouteWitness,
     FoundationCheckpointWitness,
     FoundationCheckpointValidate,
+    StanislavskiWitness,
+    StanislavskiValidate,
     Engine(EngineLens),
     BondList,
     BondInspect(String),
@@ -358,6 +361,20 @@ where
                 "foundation-checkpoint requires witness or validate",
             )),
         },
+        "stanislavski" => match args.next().as_deref() {
+            Some("witness") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::StanislavskiWitness,
+                "stanislavski witness",
+            ),
+            Some("validate") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::StanislavskiValidate,
+                "stanislavski validate",
+            ),
+            Some(other) => Err(format!("unknown stanislavski command: {other}")),
+            None => Err(String::from("stanislavski requires witness or validate")),
+        },
         "engine" => {
             let lens = args.next().unwrap_or_else(|| String::from("status"));
             if args.next().is_some() {
@@ -567,7 +584,7 @@ fn parse_player_action(
 }
 
 fn usage() -> &'static str {
-    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|civic-body|civic-crisis|flow-glow|embodied-action|current-inheritance|grip|aura-polarity|light-aura|dark-aura|aura-route|foundation-checkpoint|engine|bond|resource|player|npc|cleopatra> [args]\n\
+    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|civic-body|civic-crisis|flow-glow|embodied-action|current-inheritance|grip|aura-polarity|light-aura|dark-aura|aura-route|foundation-checkpoint|stanislavski|engine|bond|resource|player|npc|cleopatra> [args]\n\
      \n\
      Commands:\n\
        scenario list\n\
@@ -604,6 +621,8 @@ fn usage() -> &'static str {
        aura-route witness\n\
        foundation-checkpoint witness\n\
        foundation-checkpoint validate\n\
+       stanislavski witness\n\
+       stanislavski validate\n\
        engine status|pleb|meta|blep\n\
        bond list\n\
        bond inspect <id>\n\
@@ -755,6 +774,10 @@ fn run_cli(root: &Path, cli: CurrentSynthesisTuiCli) -> io::Result<String> {
         }
         CurrentSynthesisTuiCli::FoundationCheckpointValidate => {
             build_foundation_checkpoint_validation_report()
+        }
+        CurrentSynthesisTuiCli::StanislavskiWitness => build_stanislavski_action_witness(),
+        CurrentSynthesisTuiCli::StanislavskiValidate => {
+            build_stanislavski_action_validation_report()
         }
         CurrentSynthesisTuiCli::Engine(lens) => {
             let (_persisted, state) = load_state(root)?;
@@ -1121,6 +1144,11 @@ mod tests {
             CurrentSynthesisTuiCli::FoundationCheckpointValidate
         );
         assert_eq!(
+            parse_cli([String::from("stanislavski"), String::from("witness")])
+                .expect("stanislavski witness should parse"),
+            CurrentSynthesisTuiCli::StanislavskiWitness
+        );
+        assert_eq!(
             parse_cli([String::from("engine"), String::from("blep")]).expect("engine should parse"),
             CurrentSynthesisTuiCli::Engine(
                 hollow_grove::current_synthesis_engine::EngineLens::Blep
@@ -1233,6 +1261,8 @@ mod tests {
         assert!(usage.contains("aura-route witness"));
         assert!(usage.contains("foundation-checkpoint witness"));
         assert!(usage.contains("foundation-checkpoint validate"));
+        assert!(usage.contains("stanislavski witness"));
+        assert!(usage.contains("stanislavski validate"));
         assert!(usage.contains("engine status|pleb|meta|blep"));
         assert!(usage.contains("bond inspect <id>"));
         assert!(usage.contains("resource history"));
@@ -1320,6 +1350,10 @@ mod tests {
         let foundation_checkpoint_validate =
             run_cli(&root, CurrentSynthesisTuiCli::FoundationCheckpointValidate)
                 .expect("foundation-checkpoint validate should succeed");
+        let stanislavski_witness = run_cli(&root, CurrentSynthesisTuiCli::StanislavskiWitness)
+            .expect("stanislavski witness should succeed");
+        let stanislavski_validate = run_cli(&root, CurrentSynthesisTuiCli::StanislavskiValidate)
+            .expect("stanislavski validate should succeed");
         let status = run_cli(
             &root,
             CurrentSynthesisTuiCli::Engine(
@@ -1370,6 +1404,8 @@ mod tests {
         assert!(aura_route_witness.contains("HOLLOW GROVE AURA ROUTE WITNESS"));
         assert!(foundation_checkpoint_witness.contains("EMBODIED WORLD FOUNDATION V1"));
         assert!(foundation_checkpoint_validate.contains("status: pass"));
+        assert!(stanislavski_witness.contains("HOLLOW GROVE STANISLAVSKI ACTION WITNESS"));
+        assert!(stanislavski_validate.contains("status: pass"));
         assert!(status.contains("Current Synthesis Engine"));
         assert!(bond_list.contains("Bond List"));
         assert!(npc.contains("NPC Inspector"));

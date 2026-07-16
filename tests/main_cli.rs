@@ -98,6 +98,8 @@ fn main_binary_reports_integrated_help() {
     assert!(stdout.contains("aura-route witness"));
     assert!(stdout.contains("foundation-checkpoint witness"));
     assert!(stdout.contains("foundation-checkpoint validate"));
+    assert!(stdout.contains("stanislavski witness"));
+    assert!(stdout.contains("stanislavski validate"));
     assert!(stdout.contains("engine status"));
     assert!(stdout.contains("player ..."));
     assert!(stdout.contains("player move"));
@@ -457,6 +459,22 @@ fn main_binary_delegates_progression_and_point_squared_surfaces() {
     let foundation_checkpoint_validate_stdout =
         String::from_utf8_lossy(&foundation_checkpoint_validate.stdout);
     assert!(foundation_checkpoint_validate_stdout.contains("status: pass"));
+
+    let stanislavski_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["stanislavski", "witness"])
+        .output()
+        .expect("stanislavski witness should run");
+    assert!(stanislavski_witness.status.success());
+    let stanislavski_witness_stdout = String::from_utf8_lossy(&stanislavski_witness.stdout);
+    assert!(stanislavski_witness_stdout.contains("HOLLOW GROVE STANISLAVSKI ACTION WITNESS"));
+
+    let stanislavski_validate = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["stanislavski", "validate"])
+        .output()
+        .expect("stanislavski validate should run");
+    assert!(stanislavski_validate.status.success());
+    let stanislavski_validate_stdout = String::from_utf8_lossy(&stanislavski_validate.stdout);
+    assert!(stanislavski_validate_stdout.contains("status: pass"));
 }
 
 #[test]

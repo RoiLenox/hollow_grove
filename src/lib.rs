@@ -90,16 +90,23 @@ pub use current_grip_inheritance::{
     validate_current_grip_inheritance_contract,
 };
 pub use decision_engine::{
-    ChosenDecision, DecisionCandidate, DecisionCandidateId, DecisionChoiceTrace,
-    DecisionChooseError, DecisionEngineError, DecisionEvaluation, DecisionEvaluationReason,
-    DecisionEvaluationTrace, DecisionExecution, DecisionExecutionTrace,
-    DecisionGeneratedCandidateTrace, DecisionIntent, DecisionObservation, DecisionObservationCheck,
-    DecisionObservationTrace, DecisionRecipeBridgeTrace, DecisionTieBreak, DecisionTrace,
-    DecisionTraceReasonCode, DecisionTraceReplayError, DecisionTraceTieBreakReason,
-    SynthesisOrientation, choose_decision, choose_decision_for_observation,
-    evaluate_decision_candidate, execute_decision, execute_kernel_pass_decision,
-    generate_decision_candidates, observe_decision, observe_kernel_pass_decision,
-    replay_decision_trace, replay_kernel_pass_decision_trace, resolve_candidate_recipe,
+    ActiveObjective, ActivePurpose, AgencyConsequence, CandidateMoveId, CandidateProjection,
+    CandidateTactic, CandidateTacticId, ChosenDecision, DecisionBeat, DecisionCandidate,
+    DecisionCandidateId, DecisionChoiceTrace, DecisionChooseError, DecisionEngineError,
+    DecisionEvaluation, DecisionEvaluationReason, DecisionEvaluationTrace, DecisionExecution,
+    DecisionExecutionTrace, DecisionGeneratedCandidateTrace, DecisionIntent, DecisionObservation,
+    DecisionObservationCheck, DecisionObservationTrace, DecisionRecipeBridgeTrace,
+    DecisionTieBreak, DecisionTrace, DecisionTraceReasonCode, DecisionTraceReplayError,
+    DecisionTraceTieBreakReason, GivenCircumstance, ObjectiveProgress, Obstacle,
+    ProjectionUncertainty, PurposeAlignment, ResourceCost, RiskLevel, SceneThroughLine,
+    SenseOfTruthCode, SenseOfTruthResult, StanislavskiCandidateEvaluation,
+    StanislavskiChosenDecision, StanislavskiDecisionSequence, SynthesisOrientation,
+    ThroughLineStatus, build_stanislavski_action_validation_report,
+    build_stanislavski_action_witness, canonical_nightingale_hidden_wound_sequence,
+    choose_decision, choose_decision_for_observation, evaluate_decision_candidate,
+    execute_decision, execute_kernel_pass_decision, generate_decision_candidates, observe_decision,
+    observe_kernel_pass_decision, replay_decision_trace, replay_kernel_pass_decision_trace,
+    resolve_candidate_recipe,
 };
 pub use fire::{ContactOutcome, FireContext, fire, fire_with_context};
 pub use flow_glow_grammar::{
