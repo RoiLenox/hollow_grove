@@ -3,8 +3,8 @@ use crate::synthesis_execution::{
 };
 use crate::{
     ContactOutcome, ExteriorShape, FlowId, FrameId, GlowId, KernelPass, Manager, ManagerGeometry,
-    Point, PrismDelta, SynthesisRecipe, gremlin_tinker_recipe, manager_domain_lock,
-    pixy_confusion_recipe,
+    Point, PrismDelta, RotationObservationContext, SynthesisRecipe, gremlin_tinker_recipe,
+    manager_domain_lock, observation_context_for_point, pixy_confusion_recipe,
 };
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -62,6 +62,7 @@ pub struct DecisionObservation {
     pub(crate) point: Point,
     pub(crate) intent: DecisionIntent,
     pub(crate) route_geometry: Option<ManagerGeometry>,
+    pub(crate) rotation_context: Option<RotationObservationContext>,
 }
 
 impl DecisionObservation {
@@ -83,6 +84,11 @@ impl DecisionObservation {
     #[must_use]
     pub const fn route_geometry(&self) -> Option<ManagerGeometry> {
         self.route_geometry
+    }
+
+    #[must_use]
+    pub const fn rotation_context(&self) -> Option<RotationObservationContext> {
+        self.rotation_context
     }
 
     #[must_use]
@@ -274,6 +280,7 @@ pub struct DecisionObservationTrace {
     pub(crate) glows: Vec<GlowId>,
     pub(crate) intent: DecisionIntent,
     pub(crate) route_geometry: Option<ManagerGeometry>,
+    pub(crate) rotation_context: Option<RotationObservationContext>,
     pub(crate) state_checks: Vec<DecisionObservationCheck>,
 }
 
@@ -301,6 +308,11 @@ impl DecisionObservationTrace {
     #[must_use]
     pub const fn route_geometry(&self) -> Option<ManagerGeometry> {
         self.route_geometry
+    }
+
+    #[must_use]
+    pub const fn rotation_context(&self) -> Option<RotationObservationContext> {
+        self.rotation_context
     }
 
     #[must_use]
@@ -676,6 +688,7 @@ pub(crate) fn observe_decision_with_geometry(
         point: point.clone(),
         intent,
         route_geometry,
+        rotation_context: observation_context_for_point(point),
     }
 }
 
@@ -1076,6 +1089,7 @@ fn build_observation_trace(
         glows: observation.frame_state().glow_learnset().to_vec(),
         intent: observation.intent(),
         route_geometry: observation.route_geometry(),
+        rotation_context: observation.rotation_context(),
         state_checks: candidates
             .iter()
             .map(|candidate| observation_check_for_candidate(observation, candidate.candidate_id()))
@@ -1355,6 +1369,13 @@ mod tests {
         assert_eq!(observation.frame_state(), point.frame_state());
         assert_eq!(observation.intent(), DecisionIntent::FavorCurrent);
         assert_eq!(observation.route_geometry(), None);
+        let rotation = observation
+            .rotation_context()
+            .expect("origin Point should expose Rule-of-Twelve geometry");
+        assert_eq!(rotation.ring().value(), 1);
+        assert_eq!(rotation.absolute_position().value(), 7);
+        assert_eq!(rotation.pass().value(), 2);
+        assert_eq!(rotation.house_number().value(), 3);
         assert_eq!(point, before);
     }
 

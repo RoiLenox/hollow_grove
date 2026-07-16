@@ -326,6 +326,13 @@ impl ReachableWorldState {
     }
 
     #[must_use]
+    pub fn with_geometry_preserving_state(&self, geometry: PointGeometryState) -> Self {
+        let mut next = self.clone();
+        next.geometry = geometry;
+        next
+    }
+
+    #[must_use]
     pub const fn geometry(&self) -> &PointGeometryState {
         &self.geometry
     }
@@ -514,6 +521,19 @@ pub struct PointSquaredApplication {
 }
 
 impl PointSquaredApplication {
+    #[must_use]
+    pub const fn new(
+        status: PointSquaredApplicationStatus,
+        stabilized_point: Point,
+        witness: String,
+    ) -> Self {
+        Self {
+            status,
+            stabilized_point,
+            witness,
+        }
+    }
+
     #[must_use]
     pub const fn status(&self) -> PointSquaredApplicationStatus {
         self.status
@@ -767,11 +787,28 @@ fn note(
 }
 
 pub fn build_point_progression_state_output(point: &Point) -> String {
-    let position = point
-        .world()
-        .geometry()
-        .current_position()
-        .map(|value| value.to_string())
+    let rule_identity = point.world().geometry().rule_of_twelve_position();
+    let position = rule_identity
+        .map(|identity| identity.absolute_position().to_string())
+        .unwrap_or_default();
+    let pass = rule_identity
+        .map(|identity| identity.pass().value().to_string())
+        .unwrap_or_default();
+    let house_number = rule_identity
+        .map(|identity| identity.house_number().value().to_string())
+        .unwrap_or_default();
+    let house_alignment = rule_identity
+        .map(|identity| identity.house().as_str().to_string())
+        .unwrap_or_default();
+    let primary_anchor = rule_identity
+        .map(|identity| identity.is_primary_anchor().to_string())
+        .unwrap_or_default();
+    let threshold_target = rule_identity
+        .and_then(|identity| identity.threshold())
+        .map(|threshold| threshold.toward_house().as_str().to_string())
+        .unwrap_or_default();
+    let rotation_complete = rule_identity
+        .map(|identity| identity.rotation_complete().to_string())
         .unwrap_or_default();
     format!(
         "# Point Progression State\n\
@@ -779,6 +816,12 @@ pub fn build_point_progression_state_output(point: &Point) -> String {
          world_center: {}\n\
          ring: {}\n\
          position: {}\n\
+         pass: {}\n\
+         house_number: {}\n\
+         house_alignment: {}\n\
+         primary_anchor: {}\n\
+         threshold_target: {}\n\
+         rotation_complete: {}\n\
          current_capacity: {}\n\
          aura_capacity: {}\n\
          hollow_current: {}\n\
@@ -796,6 +839,12 @@ pub fn build_point_progression_state_output(point: &Point) -> String {
         point.world().geometry().center().as_str(),
         point.progression().stable_point_level(),
         position,
+        pass,
+        house_number,
+        house_alignment,
+        primary_anchor,
+        threshold_target,
+        rotation_complete,
         point.progression().capacities().current_capacity(),
         point.progression().capacities().aura_capacity(),
         point.progression().current_depths().hollow_current(),
@@ -843,7 +892,8 @@ pub fn parse_point_progression_state(contents: &str) -> io::Result<PointProgress
         let value = value.trim();
         match key {
             "stable_point_level" => stable_point_level = Some(parse_u16_field(key, value)?),
-            "world_center" | "ring" | "position" => {}
+            "world_center" | "ring" | "position" | "pass" | "house_number" | "house_alignment"
+            | "primary_anchor" | "threshold_target" | "rotation_complete" => {}
             "current_capacity" => current_capacity = Some(parse_u16_field(key, value)?),
             "aura_capacity" => aura_capacity = Some(parse_u16_field(key, value)?),
             "hollow_current" => hollow_current = Some(parse_u16_field(key, value)?),
@@ -914,6 +964,15 @@ fn join_horizons(horizons: &[CanonicalHorizonId]) -> String {
         .join(", ")
 }
 
+fn public_house_display(house: crate::hollow_grove_contract::House) -> &'static str {
+    match house {
+        crate::hollow_grove_contract::House::Stonebend => "Stonebend",
+        crate::hollow_grove_contract::House::Sandmanor => "Sandmanor",
+        crate::hollow_grove_contract::House::Glaushouse => "Glaüshouse",
+        crate::hollow_grove_contract::House::Flynt => "Flynt",
+    }
+}
+
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CanonicalPointSquaredFixture {
     point_before: Point,
@@ -971,6 +1030,11 @@ pub fn build_canonical_point_squared_fixture() -> io::Result<CanonicalPointSquar
 pub fn build_progression_witness() -> io::Result<String> {
     let fixture = build_canonical_point_squared_fixture()?;
     let point_after = fixture.first_application().stabilized_point();
+    let rotation = point_after
+        .world()
+        .geometry()
+        .rule_of_twelve_position()
+        .expect("canonical point should have a numbered position");
     Ok(format!(
         "HOLLOW GROVE PROGRESSION WITNESS\n\n\
          Stable Point Level: {}\n\
@@ -978,6 +1042,12 @@ pub fn build_progression_witness() -> io::Result<String> {
          World Center: {}\n\
          Ring: {}\n\
          Position: {}\n\
+         Pass: {}\n\
+         House Number: {}\n\
+         House Alignment: {}\n\
+         Primary Anchor: {}\n\
+         Threshold Target: {}\n\
+         Rotation Complete: {}\n\
          Current Capacity: {}\n\
          Aura Capacity: {}\n\
          Hollow Current: {}\n\
@@ -990,17 +1060,22 @@ pub fn build_progression_witness() -> io::Result<String> {
          Newly reachable horizon: {}\n\
          Newly visible route: {}\n\
          Stairway to Heaven survivable: {}\n\
-         Next Frame potential: {}\n",
+         Next Frame potential: {}\n\
+         Current Event: Point² ascension without automatic angular rotation\n",
         point_after.progression().stable_point_level(),
         point_after.being(),
         point_after.world().geometry().center().as_str(),
         point_after.progression().stable_point_level(),
-        point_after
-            .world()
-            .geometry()
-            .current_position()
-            .map(|position| position.to_string())
+        rotation.absolute_position(),
+        rotation.pass().value(),
+        rotation.house_number().value(),
+        public_house_display(rotation.house()),
+        rotation.is_primary_anchor(),
+        rotation
+            .threshold()
+            .map(|threshold| threshold.toward_house().as_str().to_string())
             .unwrap_or_else(|| String::from("none")),
+        rotation.rotation_complete(),
         point_after.progression().capacities().current_capacity(),
         point_after.progression().capacities().aura_capacity(),
         point_after.progression().current_depths().hollow_current(),
@@ -1044,6 +1119,7 @@ pub fn build_progression_validation_report() -> io::Result<String> {
              - Hueman identity persists: pass\n\
              - Ranina center invariant: pass\n\
              - ring and position remain distinct: pass\n\
+             - Rule of Twelve rotation state legal: pass\n\
              - topology remains unchanged: pass\n",
         );
     } else {

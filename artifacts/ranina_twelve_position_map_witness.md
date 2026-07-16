@@ -11,17 +11,24 @@ Degrees per Position: 30
 
 Position 1:
 Stonebend
+House Number: 1
+Pass: 1
 Capricorn
 Sea-Goat
 Hollow Current
 Life held in form
 
 Position 6:
+Sandmanor
+House Number: 2
+Pass: 2
 Glaüshouse Threshold
 Descent toward Abyss
 
 Position 7:
 Glaüshouse
+House Number: 3
+Pass: 2
 Cancer
 Crab
 Abyss
@@ -33,8 +40,8 @@ Separation: 6 positions
 Angle: 180 degrees
 
 Point Fixture:
-Before Point²: ring 1 / position 7
-After Point²: ring 2 / position 7
+Before Point²: ring 1 / position 7 / pass 2 / house number 3 / Glaüshouse
+After Point²: ring 2 / position 7 / pass 2 / house number 3 / Glaüshouse
 Position preserved without movement: true
 Being remains Hueman: true
 
@@ -43,3 +50,4 @@ Point = Hueman + current reachable ring
 Point² = Current Capacity +1 + Aura Capacity +1
 Point² opens next ring
 Ranina remains centered
+

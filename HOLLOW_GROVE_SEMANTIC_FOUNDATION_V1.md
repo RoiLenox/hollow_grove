@@ -72,6 +72,10 @@ The locked Ranina / twelve-position / ring-expansion geometry extension now live
 
 - `RANINA_TWELVE_POSITION_MAP_V1.md`
 
+The locked four-House repeated wheel grammar now lives in:
+
+- `RULE_OF_TWELVE_HOUSE_GRAMMAR_V1.md`
+
 Primary enforcement for that extension:
 
 - `src/hollow_grove_contract.rs`

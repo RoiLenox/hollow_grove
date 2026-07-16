@@ -13,8 +13,9 @@ use crate::point_progression::{
     build_canonical_point_squared_fixture, build_point_squared_witness, validate_point_progression,
 };
 use crate::world_map_geometry::{
-    RotationPosition, WorldCenterId, build_map_witness, canonical_rotation_contract_fixture,
-    validate_hollow_grove_rotation_contract,
+    RotationPosition, WorldCenterId, build_map_witness, build_rule_of_twelve_witness,
+    canonical_rotation_contract_fixture, canonical_rule_of_twelve_contract_fixture,
+    validate_hollow_grove_rotation_contract, validate_rule_of_twelve_contract,
 };
 use crate::{
     CANONICAL_WITNESS, ContactOutcome, DecisionIntent, FrameState, LandingOutcome, Point, Symptom,
@@ -401,6 +402,18 @@ pub fn validate_ranina_rotation_foundation() -> io::Result<()> {
             "Point² must open Ring 2 from Ring 1 in the canonical geometry fixture",
         ));
     }
+    let rule_diagnostics =
+        validate_rule_of_twelve_contract(&canonical_rule_of_twelve_contract_fixture());
+    if !rule_diagnostics.is_empty() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            rule_diagnostics
+                .into_iter()
+                .map(|diagnostic| diagnostic.message)
+                .collect::<Vec<_>>()
+                .join("; "),
+        ));
+    }
     Ok(())
 }
 
@@ -594,6 +607,21 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
             ),
         ));
     }
+    let rule_diagnostics =
+        validate_rule_of_twelve_contract(&canonical_rule_of_twelve_contract_fixture());
+    if !rule_diagnostics.is_empty() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!(
+                "rule-of-twelve contract drifted: {}",
+                rule_diagnostics
+                    .into_iter()
+                    .map(|diagnostic| diagnostic.message)
+                    .collect::<Vec<_>>()
+                    .join("; ")
+            ),
+        ));
+    }
 
     let contradiction_checks = [
         (
@@ -667,6 +695,13 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
          - Glaüshouse threshold 6: pass\n\
          - Glaüshouse position 7: pass\n\
          - opposition geometry: pass\n\
+         - four-House grammar: pass\n\
+         - three-pass repetition: pass\n\
+         - Position 6 Sandmanor threshold: pass\n\
+         - Position 7 Glaüshouse pole: pass\n\
+         - Position 12 Flynt completion: pass\n\
+         - angular/radial distinction: pass\n\
+         - automatic Point² prevention: pass\n\
          - Point² radial expansion: pass\n\
          - Ranina center invariance: pass\n\
          - point stabilization: pass\n\
@@ -681,11 +716,14 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
          {}\n\
          Map Witness:\n\n\
          {}\n\
+         Rule of Twelve Witness:\n\n\
+         {}\n\
          Vertical Witness:\n\n\
          {}",
         crate::hollow_grove_contract::build_hollow_grove_alignment_witness(),
         build_point_squared_witness()?,
         build_map_witness()?,
+        build_rule_of_twelve_witness()?,
         build_hollow_grove_vertical_witness()?
     ))
 }

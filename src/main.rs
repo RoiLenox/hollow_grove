@@ -60,8 +60,8 @@ where
                 Ok(MainCli::VerifyFoundation)
             }
         }
-        "scenario" | "world" | "progression" | "point-squared" | "map" | "engine" | "bond"
-        | "resource" | "player" | "npc" | "cleopatra" => {
+        "scenario" | "world" | "progression" | "point-squared" | "map" | "rule-of-twelve"
+        | "engine" | "bond" | "resource" | "player" | "npc" | "cleopatra" => {
             let mut forwarded = vec![command];
             forwarded.extend(args);
             Ok(MainCli::CurrentSynthesisTui(forwarded))
@@ -86,6 +86,7 @@ fn usage() -> &'static str {
        progression ...   inspect Point and Point² progression state\n\
        point-squared ... inspect the canonical Point² ascension witness\n\
        engine ...        inspect Current Synthesis engine state\n\
+       rule-of-twelve ... inspect the four-House twelve-position grammar\n\
        bond ...          inspect bond candidates and traces\n\
        resource ...      inspect Aura, Current, and residue history\n\
        player ...        inspect or queue planned player actions\n\
@@ -110,6 +111,8 @@ fn usage() -> &'static str {
        hollow-grove point-squared witness\n\
        hollow-grove map witness\n\
        hollow-grove map validate\n\
+       hollow-grove rule-of-twelve witness\n\
+       hollow-grove rule-of-twelve validate\n\
        hollow-grove scenario use flooded_quarry_night_watch\n\
        hollow-grove engine status\n\
        hollow-grove bond list\n\
@@ -433,6 +436,14 @@ mod tests {
             MainCli::CurrentSynthesisTui(vec![String::from("engine"), String::from("status")])
         );
         assert_eq!(
+            parse_main_cli([String::from("rule-of-twelve"), String::from("witness")])
+                .expect("rule-of-twelve cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![
+                String::from("rule-of-twelve"),
+                String::from("witness")
+            ])
+        );
+        assert_eq!(
             parse_main_cli([String::from("player"), String::from("status")])
                 .expect("player cli should parse"),
             MainCli::CurrentSynthesisTui(vec![String::from("player"), String::from("status")])
@@ -471,6 +482,8 @@ mod tests {
         assert!(usage.contains("point-squared witness"));
         assert!(usage.contains("map witness"));
         assert!(usage.contains("map validate"));
+        assert!(usage.contains("rule-of-twelve witness"));
+        assert!(usage.contains("rule-of-twelve validate"));
         assert!(usage.contains("engine status"));
         assert!(usage.contains("player plan"));
         assert!(usage.contains("cleopatra tick"));

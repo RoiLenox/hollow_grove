@@ -8,6 +8,10 @@ The locked rotational-center extension now lives in:
 
 - `RANINA_TWELVE_POSITION_MAP_V1.md`
 
+The locked four-House repeated wheel grammar now lives in:
+
+- `RULE_OF_TWELVE_HOUSE_GRAMMAR_V1.md`
+
 ## Root Doctrine
 
 Hollow Current holds.
@@ -98,6 +102,7 @@ Point² now opens the next ring around the same center.
 
 - `Ranina = exact center`
 - `position = angular location around Ranina`
+- `pass = which four-House repetition is active`
 - `ring = radial progression outward from Ranina`
 - `Point²` raises the ring without automatically rotating the Point
 

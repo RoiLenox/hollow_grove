@@ -503,6 +503,7 @@ pub enum AlignmentDiagnosticCode {
     AuraIlluminationMismatch,
     PointSquaredAscensionMismatch,
     RotationalMapMismatch,
+    RuleOfTwelveMismatch,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]

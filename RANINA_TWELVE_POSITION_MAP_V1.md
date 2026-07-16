@@ -4,6 +4,10 @@ This document records the locked Hollow Grove geometry extension that makes `Ran
 
 It extends the existing semantic foundation and Point² progression model. It does not replace the frozen Version 1.1 execution path, the House map, or the route contract.
 
+The full repeated House grammar now lives in:
+
+- `RULE_OF_TWELVE_HOUSE_GRAMMAR_V1.md`
+
 ## Core Law
 
 Ranina is the unmoving center.
@@ -33,11 +37,16 @@ Current coordinate overlays may still place `Aura Ridge Junction` and `Human Cor
 
 The twelve-position type is stored as a validated integer `1..=12`. `Ranina` is not Position 0 inside that set.
 
+The wheel is now also interpreted through a repeating local House grammar:
+
+- `Stonebend, Sandmanor, Glaüshouse, Flynt`
+- repeated across `Pass 1`, `Pass 2`, and `Pass 3`
+
 ## Anchors
 
 - `Position 1 = Stonebend = Capricorn = Sea-Goat = Hollow Current = life held in form`
-- `Position 6 = Glaüshouse threshold = descent from visible condition toward Abyss`
-- `Position 7 = Glaüshouse = Cancer = Crab = Abyss = life felt in depth`
+- `Position 6 = Sandmanor = House Number 2 = Glaüshouse threshold = descent from visible condition toward Abyss`
+- `Position 7 = Glaüshouse = House Number 3 = Cancer = Crab = Abyss = life felt in depth`
 
 The primary axis is:
 
@@ -80,9 +89,13 @@ Canonical fixture:
 
 - geometry types and witness builders:
   `src/world_map_geometry.rs`
+- repeated House grammar and spiral helpers:
+  `src/world_map_geometry.rs`
 - Point and ReachableWorld state:
   `src/point.rs`
   `src/point_progression.rs`
+- V2 observation surface:
+  `src/decision_engine.rs`
 - semantic contract integration:
   `src/hollow_grove_contract.rs`
 - foundation verification:
@@ -95,8 +108,12 @@ Canonical fixture:
 
 - rotation law, opposition, threshold, center invariance, and contradiction fixtures:
   `src/world_map_geometry.rs` tests
+- four-House repetition, Position 6 Sandmanor threshold, Position 7 Glaüshouse pole, and Position 12 completion:
+  `src/world_map_geometry.rs` tests
 - Point² ring preservation and progression persistence:
   `src/point_progression.rs` tests
+- observation exposure:
+  `src/decision_engine.rs` tests
 - CLI witnesses:
   `src/bin/current_synthesis_tui.rs` tests
   `tests/main_cli.rs`

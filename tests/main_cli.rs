@@ -74,6 +74,8 @@ fn main_binary_reports_integrated_help() {
     assert!(stdout.contains("point-squared witness"));
     assert!(stdout.contains("map witness"));
     assert!(stdout.contains("map validate"));
+    assert!(stdout.contains("rule-of-twelve witness"));
+    assert!(stdout.contains("rule-of-twelve validate"));
     assert!(stdout.contains("engine status"));
     assert!(stdout.contains("player ..."));
     assert!(stdout.contains("player move"));
@@ -236,6 +238,22 @@ fn main_binary_delegates_progression_and_point_squared_surfaces() {
     assert!(map_validate.status.success());
     let map_validate_stdout = String::from_utf8_lossy(&map_validate.stdout);
     assert!(map_validate_stdout.contains("status: pass"));
+
+    let rule_of_twelve_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["rule-of-twelve", "witness"])
+        .output()
+        .expect("rule-of-twelve witness should run");
+    assert!(rule_of_twelve_witness.status.success());
+    let rule_of_twelve_witness_stdout = String::from_utf8_lossy(&rule_of_twelve_witness.stdout);
+    assert!(rule_of_twelve_witness_stdout.contains("HOLLOW GROVE RULE OF TWELVE"));
+
+    let rule_of_twelve_validate = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["rule-of-twelve", "validate"])
+        .output()
+        .expect("rule-of-twelve validate should run");
+    assert!(rule_of_twelve_validate.status.success());
+    let rule_of_twelve_validate_stdout = String::from_utf8_lossy(&rule_of_twelve_validate.stdout);
+    assert!(rule_of_twelve_validate_stdout.contains("status: pass"));
 }
 
 #[test]
@@ -253,6 +271,9 @@ fn main_binary_runs_foundation_verification() {
     assert!(stdout.contains("Point² exactly-once application: pass"));
     assert!(stdout.contains("Ranina center: pass"));
     assert!(stdout.contains("twelve-position rotation: pass"));
+    assert!(stdout.contains("four-House grammar: pass"));
+    assert!(stdout.contains("three-pass repetition: pass"));
+    assert!(stdout.contains("Position 12 Flynt completion: pass"));
     assert!(stdout.contains("Stairway horizon fixture: pass"));
     assert!(stdout.contains("vertical witness: pass"));
     assert!(stdout.contains("V1.1 topology unchanged: pass"));

@@ -99,11 +99,18 @@ pub use synthesis_recipe::{
 };
 pub use triway::{Triway, Way};
 pub use world_map_geometry::{
-    HollowGroveRotationContractInput, PointGeometryState, PointLocation, RotationPosition,
-    RotationalCoordinate, WorldCenterId, WorldRing, build_map_artifact,
-    build_map_validation_report, build_map_witness, canonical_rotation_contract_fixture,
+    HollowGroveRotationContractInput, HouseNumber, HousePositionKind, PointGeometryState,
+    PointLocation, PositionThreshold, RotationObservationContext, RotationPass, RotationPosition,
+    RotationalCoordinate, RuleOfTwelveContractInput, RuleOfTwelvePosition, SpiralTransition,
+    ThresholdKind, WorldCenterId, WorldRing, build_map_artifact, build_map_validation_report,
+    build_map_witness, build_rule_of_twelve_validation_report, build_rule_of_twelve_witness,
+    canonical_rotation_contract_fixture, canonical_rule_of_twelve_contract_fixture,
     glaushouse_anchor_position, glaushouse_threshold_position, house_anchor_for_position,
-    stonebend_anchor_position, validate_hollow_grove_rotation_contract,
+    house_for_position, house_number_for_position, is_primary_house_anchor, is_rotation_complete,
+    next_position, observation_context_for_point, opposite_position, pass_for_position,
+    position_identity, previous_position, select_canonical_spiral_transition,
+    stonebend_anchor_position, threshold_at_position, validate_hollow_grove_rotation_contract,
+    validate_rule_of_twelve_contract,
 };
 
 pub fn run_kernel_cycle(symptom: Symptom) -> KernelPass {

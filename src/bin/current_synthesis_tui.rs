@@ -22,6 +22,7 @@ use hollow_grove::hueman_progression::{VerticalSliceState, write_vertical_slice_
 use hollow_grove::{
     build_map_validation_report, build_map_witness, build_point_squared_witness,
     build_progression_validation_report, build_progression_witness,
+    build_rule_of_twelve_validation_report, build_rule_of_twelve_witness,
 };
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -37,6 +38,8 @@ enum CurrentSynthesisTuiCli {
     PointSquaredWitness,
     MapWitness,
     MapValidate,
+    RuleOfTwelveWitness,
+    RuleOfTwelveValidate,
     Engine(EngineLens),
     BondList,
     BondInspect(String),
@@ -137,6 +140,20 @@ where
             }
             Some(other) => Err(format!("unknown map command: {other}")),
             None => Err(String::from("map requires witness or validate")),
+        },
+        "rule-of-twelve" => match args.next().as_deref() {
+            Some("witness") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::RuleOfTwelveWitness,
+                "rule-of-twelve witness",
+            ),
+            Some("validate") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::RuleOfTwelveValidate,
+                "rule-of-twelve validate",
+            ),
+            Some(other) => Err(format!("unknown rule-of-twelve command: {other}")),
+            None => Err(String::from("rule-of-twelve requires witness or validate")),
         },
         "engine" => {
             let lens = args.next().unwrap_or_else(|| String::from("status"));
@@ -347,7 +364,7 @@ fn parse_player_action(
 }
 
 fn usage() -> &'static str {
-    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|map|engine|bond|resource|player|npc|cleopatra> [args]\n\
+    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|map|rule-of-twelve|engine|bond|resource|player|npc|cleopatra> [args]\n\
      \n\
      Commands:\n\
        scenario list\n\
@@ -360,6 +377,8 @@ fn usage() -> &'static str {
        point-squared witness\n\
        map witness\n\
        map validate\n\
+       rule-of-twelve witness\n\
+       rule-of-twelve validate\n\
        engine status|pleb|meta|blep\n\
        bond list\n\
        bond inspect <id>\n\
@@ -480,6 +499,8 @@ fn run_cli(root: &Path, cli: CurrentSynthesisTuiCli) -> io::Result<String> {
         CurrentSynthesisTuiCli::PointSquaredWitness => build_point_squared_witness(),
         CurrentSynthesisTuiCli::MapWitness => build_map_witness(),
         CurrentSynthesisTuiCli::MapValidate => build_map_validation_report(),
+        CurrentSynthesisTuiCli::RuleOfTwelveWitness => build_rule_of_twelve_witness(),
+        CurrentSynthesisTuiCli::RuleOfTwelveValidate => build_rule_of_twelve_validation_report(),
         CurrentSynthesisTuiCli::Engine(lens) => {
             let (_persisted, state) = load_state(root)?;
             Ok(build_engine_output(&state, lens))
@@ -724,6 +745,16 @@ mod tests {
             CurrentSynthesisTuiCli::MapValidate
         );
         assert_eq!(
+            parse_cli([String::from("rule-of-twelve"), String::from("witness")])
+                .expect("rule-of-twelve witness should parse"),
+            CurrentSynthesisTuiCli::RuleOfTwelveWitness
+        );
+        assert_eq!(
+            parse_cli([String::from("rule-of-twelve"), String::from("validate")])
+                .expect("rule-of-twelve validate should parse"),
+            CurrentSynthesisTuiCli::RuleOfTwelveValidate
+        );
+        assert_eq!(
             parse_cli([String::from("engine"), String::from("blep")]).expect("engine should parse"),
             CurrentSynthesisTuiCli::Engine(
                 hollow_grove::current_synthesis_engine::EngineLens::Blep
@@ -812,6 +843,8 @@ mod tests {
         assert!(usage.contains("point-squared witness"));
         assert!(usage.contains("map witness"));
         assert!(usage.contains("map validate"));
+        assert!(usage.contains("rule-of-twelve witness"));
+        assert!(usage.contains("rule-of-twelve validate"));
         assert!(usage.contains("engine status|pleb|meta|blep"));
         assert!(usage.contains("bond inspect <id>"));
         assert!(usage.contains("resource history"));
@@ -845,6 +878,10 @@ mod tests {
             run_cli(&root, CurrentSynthesisTuiCli::MapWitness).expect("map witness should succeed");
         let map_validate = run_cli(&root, CurrentSynthesisTuiCli::MapValidate)
             .expect("map validate should succeed");
+        let rule_of_twelve_witness = run_cli(&root, CurrentSynthesisTuiCli::RuleOfTwelveWitness)
+            .expect("rule-of-twelve witness should succeed");
+        let rule_of_twelve_validate = run_cli(&root, CurrentSynthesisTuiCli::RuleOfTwelveValidate)
+            .expect("rule-of-twelve validate should succeed");
         let status = run_cli(
             &root,
             CurrentSynthesisTuiCli::Engine(
@@ -871,6 +908,8 @@ mod tests {
         assert!(point_squared_witness.contains("HOLLOW GROVE POINT² ASCENSION WITNESS"));
         assert!(map_witness.contains("HOLLOW GROVE ROTATIONAL MAP WITNESS"));
         assert!(map_validate.contains("status: pass"));
+        assert!(rule_of_twelve_witness.contains("HOLLOW GROVE RULE OF TWELVE"));
+        assert!(rule_of_twelve_validate.contains("status: pass"));
         assert!(status.contains("Current Synthesis Engine"));
         assert!(bond_list.contains("Bond List"));
         assert!(npc.contains("NPC Inspector"));
