@@ -7,6 +7,7 @@ pub mod current_grip_inheritance;
 pub mod current_synthesis_engine;
 pub mod current_synthesis_scenario;
 pub mod decision_engine;
+pub mod falloutman;
 pub mod fire;
 pub mod flow_glow_grammar;
 pub mod frame_state;
@@ -107,6 +108,15 @@ pub use decision_engine::{
     execute_decision, execute_kernel_pass_decision, generate_decision_candidates, observe_decision,
     observe_kernel_pass_decision, replay_decision_trace, replay_kernel_pass_decision_trace,
     resolve_candidate_recipe,
+};
+pub use falloutman::{
+    AttemptedAction, DramaticRelationshipState, FalloutmanBeatMenu, FalloutmanBeatPresentation,
+    FalloutmanEncounter, FalloutmanResponseOption, NpcDramaticCore, RelationshipLevel,
+    ResponseAvailability, ResponseAvailabilityReason, ResponseOptionId, ResponsePolarityTag,
+    ResponsePresentationKind, ResponseProjectionSummary, ResponseTag,
+    build_falloutman_beat_witness, build_falloutman_hidden_wound_witness,
+    build_falloutman_menu_witness, build_falloutman_validation_report, build_falloutman_witness,
+    canonical_hidden_wound_falloutman_encounter,
 };
 pub use fire::{ContactOutcome, FireContext, fire, fire_with_context};
 pub use flow_glow_grammar::{

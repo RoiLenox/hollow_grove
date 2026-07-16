@@ -1,7 +1,7 @@
 use std::io;
 
 use crate::being_object_ontology::{
-    ActionAim, AddressingMode, BeingState, ObjectId, ObjectState,
+    ActionAim, AddressingMode, BeingState, ObjectId, ObjectState, SkillId,
     build_canonical_being_state_with_aura, canonical_object_state,
 };
 use crate::flow_glow_grammar::{
@@ -1243,6 +1243,9 @@ pub enum CandidateTacticId {
     FalseSignalExposure,
     RequestMinorianMeasurement,
     ForciblyOpenMemory,
+    ReassuringPresence,
+    StabilizeWound,
+    EndExamination,
 }
 
 impl CandidateTacticId {
@@ -1254,6 +1257,9 @@ impl CandidateTacticId {
             Self::FalseSignalExposure => "False Signal Exposure",
             Self::RequestMinorianMeasurement => "Request Minorian Measurement",
             Self::ForciblyOpenMemory => "forcibly open memory",
+            Self::ReassuringPresence => "Reassuring Presence",
+            Self::StabilizeWound => "Stabilize the Wound",
+            Self::EndExamination => "End Examination",
         }
     }
 }
@@ -1265,6 +1271,9 @@ pub enum CandidateMoveId {
     FalseSignalExposure,
     RequestMinorianMeasurement,
     ForcedMemoryOpening,
+    BedsideReassurance,
+    WoundStabilization,
+    EndExamination,
 }
 
 impl CandidateMoveId {
@@ -1276,6 +1285,9 @@ impl CandidateMoveId {
             Self::FalseSignalExposure => "False Signal Exposure",
             Self::RequestMinorianMeasurement => "Request Minorian Measurement",
             Self::ForcedMemoryOpening => "Forced Memory Opening",
+            Self::BedsideReassurance => "Bedside Reassurance",
+            Self::WoundStabilization => "Wound Stabilization",
+            Self::EndExamination => "End Examination",
         }
     }
 }
@@ -1518,6 +1530,7 @@ impl SenseOfTruthResult {
 pub struct CandidateTactic {
     tactic_id: CandidateTacticId,
     being: BeingState,
+    skill: SkillId,
     domain: ExpressionDomain,
     gesture: EmbodiedGesture,
     mode: ActionMode,
@@ -1536,6 +1549,11 @@ impl CandidateTactic {
     #[must_use]
     pub const fn being(&self) -> &BeingState {
         &self.being
+    }
+
+    #[must_use]
+    pub const fn skill(&self) -> SkillId {
+        self.skill
     }
 
     #[must_use]
@@ -1817,6 +1835,9 @@ pub fn build_stanislavski_action_witness() -> io::Result<String> {
             output.push_str("   Move: ");
             output.push_str(tactic.candidate_move().as_str());
             output.push('\n');
+            output.push_str("   Skill: ");
+            output.push_str(tactic.skill().as_str());
+            output.push('\n');
             output.push_str("   Domain / Gesture / Mode: ");
             output.push_str(tactic.domain().as_str());
             output.push_str(" / ");
@@ -2091,6 +2112,7 @@ fn hidden_wound_candidates() -> Vec<CandidateTactic> {
         CandidateTactic {
             tactic_id: CandidateTacticId::SurfaceSymptomShow,
             being: nightingale.clone(),
+            skill: SkillId::Repair,
             domain: ExpressionDomain::Glow,
             gesture: EmbodiedGesture::Show,
             mode: ActionMode::Beam,
@@ -2102,6 +2124,7 @@ fn hidden_wound_candidates() -> Vec<CandidateTactic> {
         CandidateTactic {
             tactic_id: CandidateTacticId::AuraLesionTrace,
             being: nightingale.clone(),
+            skill: SkillId::Repair,
             domain: ExpressionDomain::Glow,
             gesture: EmbodiedGesture::Grip,
             mode: ActionMode::Beam,
@@ -2113,6 +2136,7 @@ fn hidden_wound_candidates() -> Vec<CandidateTactic> {
         CandidateTactic {
             tactic_id: CandidateTacticId::FalseSignalExposure,
             being: nightingale.clone(),
+            skill: SkillId::Repair,
             domain: ExpressionDomain::Glow,
             gesture: EmbodiedGesture::Show,
             mode: ActionMode::Beam,
@@ -2124,6 +2148,7 @@ fn hidden_wound_candidates() -> Vec<CandidateTactic> {
         CandidateTactic {
             tactic_id: CandidateTacticId::RequestMinorianMeasurement,
             being: nightingale.clone(),
+            skill: SkillId::Repair,
             domain: ExpressionDomain::Glow,
             gesture: EmbodiedGesture::Show,
             mode: ActionMode::Beam,
@@ -2134,7 +2159,8 @@ fn hidden_wound_candidates() -> Vec<CandidateTactic> {
         },
         CandidateTactic {
             tactic_id: CandidateTacticId::ForciblyOpenMemory,
-            being: nightingale,
+            being: nightingale.clone(),
+            skill: SkillId::Repair,
             domain: ExpressionDomain::Glow,
             gesture: EmbodiedGesture::Grip,
             mode: ActionMode::Seam,
@@ -2142,6 +2168,42 @@ fn hidden_wound_candidates() -> Vec<CandidateTactic> {
             addressing_mode: AddressingMode::Foxy,
             aim: ActionAim::RevealHiddenTruthWithConsent,
             candidate_move: CandidateMoveId::ForcedMemoryOpening,
+        },
+        CandidateTactic {
+            tactic_id: CandidateTacticId::ReassuringPresence,
+            being: nightingale.clone(),
+            skill: SkillId::Guard,
+            domain: ExpressionDomain::Glow,
+            gesture: EmbodiedGesture::Grit,
+            mode: ActionMode::Gleam,
+            object: canonical_object_state(ObjectId::OpenWound),
+            addressing_mode: AddressingMode::Proxy,
+            aim: ActionAim::ProvideReassurance,
+            candidate_move: CandidateMoveId::BedsideReassurance,
+        },
+        CandidateTactic {
+            tactic_id: CandidateTacticId::StabilizeWound,
+            being: nightingale.clone(),
+            skill: SkillId::Brace,
+            domain: ExpressionDomain::Flow,
+            gesture: EmbodiedGesture::Grip,
+            mode: ActionMode::Seam,
+            object: canonical_object_state(ObjectId::OpenWound),
+            addressing_mode: AddressingMode::Proxy,
+            aim: ActionAim::StabilizeAndClose,
+            candidate_move: CandidateMoveId::WoundStabilization,
+        },
+        CandidateTactic {
+            tactic_id: CandidateTacticId::EndExamination,
+            being: nightingale,
+            skill: SkillId::Guard,
+            domain: ExpressionDomain::Flow,
+            gesture: EmbodiedGesture::Grit,
+            mode: ActionMode::Seam,
+            object: canonical_object_state(ObjectId::ClinicalFinding),
+            addressing_mode: AddressingMode::Proxy,
+            aim: ActionAim::WithdrawFromEncounter,
+            candidate_move: CandidateMoveId::EndExamination,
         },
     ]
 }
@@ -2253,6 +2315,88 @@ fn evaluate_hidden_wound_candidate(
                 SenseOfTruthCode::ObjectiveDriven,
                 SenseOfTruthCode::ObstacleSensitive,
                 SenseOfTruthCode::SuperObjectiveAligned,
+                SenseOfTruthCode::CapabilityAvailable,
+                SenseOfTruthCode::GestureEmbodied,
+                SenseOfTruthCode::ModeValid,
+                SenseOfTruthCode::RealBeingObjectRelation,
+                SenseOfTruthCode::AddressingValid,
+                SenseOfTruthCode::NoKnowledgeLeakage,
+                SenseOfTruthCode::BoundedProjection,
+            ],
+            true,
+        ),
+        (1, CandidateTacticId::ReassuringPresence) => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "reassurance may lower panic and preserve cooperation, but it does not directly test the concealed condition",
+                uncertainty: ProjectionUncertainty::Medium,
+                resource_cost: ResourceCost::Low,
+                risk: RiskLevel::Low,
+                objective_progress: ObjectiveProgress::Low,
+                purpose_alignment: PurposeAlignment::Strong,
+                target_agency_consequence: AgencyConsequence::Preserved,
+                semantic_plausibility: CompatibilityLevel::High,
+            },
+            66,
+            vec![
+                SenseOfTruthCode::SupportedByObservation,
+                SenseOfTruthCode::ObjectiveDriven,
+                SenseOfTruthCode::ObstacleSensitive,
+                SenseOfTruthCode::SuperObjectiveAligned,
+                SenseOfTruthCode::CapabilityAvailable,
+                SenseOfTruthCode::GestureEmbodied,
+                SenseOfTruthCode::ModeValid,
+                SenseOfTruthCode::RealBeingObjectRelation,
+                SenseOfTruthCode::AddressingValid,
+                SenseOfTruthCode::NoKnowledgeLeakage,
+                SenseOfTruthCode::BoundedProjection,
+            ],
+            true,
+        ),
+        (1, CandidateTacticId::StabilizeWound) => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "physical stabilization may reduce immediate danger and buy time, but it leaves the hidden distortion unresolved",
+                uncertainty: ProjectionUncertainty::Low,
+                resource_cost: ResourceCost::Moderate,
+                risk: RiskLevel::Low,
+                objective_progress: ObjectiveProgress::Medium,
+                purpose_alignment: PurposeAlignment::Strong,
+                target_agency_consequence: AgencyConsequence::Preserved,
+                semantic_plausibility: CompatibilityLevel::High,
+            },
+            74,
+            vec![
+                SenseOfTruthCode::SupportedByObservation,
+                SenseOfTruthCode::ObjectiveDriven,
+                SenseOfTruthCode::ObstacleSensitive,
+                SenseOfTruthCode::SuperObjectiveAligned,
+                SenseOfTruthCode::CapabilityAvailable,
+                SenseOfTruthCode::GestureEmbodied,
+                SenseOfTruthCode::ModeValid,
+                SenseOfTruthCode::RealBeingObjectRelation,
+                SenseOfTruthCode::AddressingValid,
+                SenseOfTruthCode::NoKnowledgeLeakage,
+                SenseOfTruthCode::BoundedProjection,
+            ],
+            true,
+        ),
+        (1, CandidateTacticId::EndExamination) => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "withdrawing ends immediate pressure, but it sacrifices diagnosis and leaves the hidden condition active",
+                uncertainty: ProjectionUncertainty::Low,
+                resource_cost: ResourceCost::Low,
+                risk: RiskLevel::High,
+                objective_progress: ObjectiveProgress::Regressive,
+                purpose_alignment: PurposeAlignment::Conflicted,
+                target_agency_consequence: AgencyConsequence::Preserved,
+                semantic_plausibility: CompatibilityLevel::Valid,
+            },
+            24,
+            vec![
+                SenseOfTruthCode::SupportedByObservation,
+                SenseOfTruthCode::ObjectiveDriven,
                 SenseOfTruthCode::CapabilityAvailable,
                 SenseOfTruthCode::GestureEmbodied,
                 SenseOfTruthCode::ModeValid,
@@ -2394,6 +2538,88 @@ fn evaluate_hidden_wound_candidate(
                 SenseOfTruthCode::ObjectiveDriven,
                 SenseOfTruthCode::ObstacleSensitive,
                 SenseOfTruthCode::SuperObjectiveAligned,
+                SenseOfTruthCode::CapabilityAvailable,
+                SenseOfTruthCode::GestureEmbodied,
+                SenseOfTruthCode::ModeValid,
+                SenseOfTruthCode::RealBeingObjectRelation,
+                SenseOfTruthCode::AddressingValid,
+                SenseOfTruthCode::NoKnowledgeLeakage,
+                SenseOfTruthCode::BoundedProjection,
+            ],
+            true,
+        ),
+        (2, CandidateTacticId::ReassuringPresence) => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "reassurance can help hold trust while the new measurement route is opened, but it still needs another tactic to clarify the distortion",
+                uncertainty: ProjectionUncertainty::Low,
+                resource_cost: ResourceCost::Low,
+                risk: RiskLevel::Low,
+                objective_progress: ObjectiveProgress::Medium,
+                purpose_alignment: PurposeAlignment::Strong,
+                target_agency_consequence: AgencyConsequence::Preserved,
+                semantic_plausibility: CompatibilityLevel::High,
+            },
+            71,
+            vec![
+                SenseOfTruthCode::SupportedByObservation,
+                SenseOfTruthCode::ObjectiveDriven,
+                SenseOfTruthCode::ObstacleSensitive,
+                SenseOfTruthCode::SuperObjectiveAligned,
+                SenseOfTruthCode::CapabilityAvailable,
+                SenseOfTruthCode::GestureEmbodied,
+                SenseOfTruthCode::ModeValid,
+                SenseOfTruthCode::RealBeingObjectRelation,
+                SenseOfTruthCode::AddressingValid,
+                SenseOfTruthCode::NoKnowledgeLeakage,
+                SenseOfTruthCode::BoundedProjection,
+            ],
+            true,
+        ),
+        (2, CandidateTacticId::StabilizeWound) => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "continued stabilization keeps the patient alive under pressure, but it still needs measurement support to resolve the concealed mismatch",
+                uncertainty: ProjectionUncertainty::Low,
+                resource_cost: ResourceCost::Moderate,
+                risk: RiskLevel::Low,
+                objective_progress: ObjectiveProgress::Medium,
+                purpose_alignment: PurposeAlignment::Strong,
+                target_agency_consequence: AgencyConsequence::Preserved,
+                semantic_plausibility: CompatibilityLevel::High,
+            },
+            73,
+            vec![
+                SenseOfTruthCode::SupportedByObservation,
+                SenseOfTruthCode::ObjectiveDriven,
+                SenseOfTruthCode::ObstacleSensitive,
+                SenseOfTruthCode::SuperObjectiveAligned,
+                SenseOfTruthCode::CapabilityAvailable,
+                SenseOfTruthCode::GestureEmbodied,
+                SenseOfTruthCode::ModeValid,
+                SenseOfTruthCode::RealBeingObjectRelation,
+                SenseOfTruthCode::AddressingValid,
+                SenseOfTruthCode::NoKnowledgeLeakage,
+                SenseOfTruthCode::BoundedProjection,
+            ],
+            true,
+        ),
+        (2, CandidateTacticId::EndExamination) => build_hidden_wound_evaluation(
+            tactic.tactic_id(),
+            CandidateProjection {
+                likely_immediate_consequence: "leaving after localization abandons the best available measurement follow-up and risks letting the distortion spread",
+                uncertainty: ProjectionUncertainty::Low,
+                resource_cost: ResourceCost::Low,
+                risk: RiskLevel::High,
+                objective_progress: ObjectiveProgress::Regressive,
+                purpose_alignment: PurposeAlignment::Conflicted,
+                target_agency_consequence: AgencyConsequence::Preserved,
+                semantic_plausibility: CompatibilityLevel::Valid,
+            },
+            18,
+            vec![
+                SenseOfTruthCode::SupportedByObservation,
+                SenseOfTruthCode::ObjectiveDriven,
                 SenseOfTruthCode::CapabilityAvailable,
                 SenseOfTruthCode::GestureEmbodied,
                 SenseOfTruthCode::ModeValid,

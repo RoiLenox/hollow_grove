@@ -814,6 +814,7 @@ pub enum ActionAim {
     MeasureAndMap,
     PresentClearlyAndResponsibly,
     RevealHiddenTruthWithConsent,
+    ProvideReassurance,
     ProjectDreadToStopAttack,
     MisdirectPursuerAwayFromCivilians,
     SeverOrTrapHostileConnection,
@@ -823,6 +824,7 @@ pub enum ActionAim {
     RevealEnoughTruthForTreatment,
     RevealOptionsPreservingChoice,
     MakeFabricatedRealityInevitable,
+    WithdrawFromEncounter,
 }
 
 impl ActionAim {
@@ -861,6 +863,7 @@ impl ActionAim {
             Self::MeasureAndMap => "MeasureAndMap",
             Self::PresentClearlyAndResponsibly => "PresentClearlyAndResponsibly",
             Self::RevealHiddenTruthWithConsent => "RevealHiddenTruthWithConsent",
+            Self::ProvideReassurance => "ProvideReassurance",
             Self::ProjectDreadToStopAttack => "ProjectDreadToStopAttack",
             Self::MisdirectPursuerAwayFromCivilians => "MisdirectPursuerAwayFromCivilians",
             Self::SeverOrTrapHostileConnection => "SeverOrTrapHostileConnection",
@@ -872,6 +875,7 @@ impl ActionAim {
             Self::RevealEnoughTruthForTreatment => "RevealEnoughTruthForTreatment",
             Self::RevealOptionsPreservingChoice => "RevealOptionsPreservingChoice",
             Self::MakeFabricatedRealityInevitable => "MakeFabricatedRealityInevitable",
+            Self::WithdrawFromEncounter => "WithdrawFromEncounter",
         }
     }
 }

@@ -82,6 +82,7 @@ where
         | "aura-route"
         | "foundation-checkpoint"
         | "stanislavski"
+        | "falloutman"
         | "engine"
         | "bond"
         | "resource"
@@ -129,6 +130,7 @@ fn usage() -> &'static str {
        aura-route ...    inspect route-level Aura polarity tendencies\n\
        foundation-checkpoint ... inspect the Embodied World Foundation V1 freeze checkpoint\n\
        stanislavski ...  inspect typed Stanislavski action-beat generation and evaluation\n\
+       falloutman ...    inspect Falloutman dramatic response presentation over Stanislavski V2\n\
        engine ...        inspect Current Synthesis engine state\n\
        bond ...          inspect bond candidates and traces\n\
        resource ...      inspect Aura, Current, and residue history\n\
@@ -180,6 +182,11 @@ fn usage() -> &'static str {
        hollow-grove foundation-checkpoint validate\n\
        hollow-grove stanislavski witness\n\
        hollow-grove stanislavski validate\n\
+       hollow-grove falloutman witness\n\
+       hollow-grove falloutman validate\n\
+       hollow-grove falloutman menu witness\n\
+       hollow-grove falloutman beat witness\n\
+       hollow-grove falloutman hidden-wound witness\n\
        hollow-grove scenario use flooded_quarry_night_watch\n\
        hollow-grove engine status\n\
        hollow-grove bond list\n\
@@ -593,6 +600,11 @@ mod tests {
             ])
         );
         assert_eq!(
+            parse_main_cli([String::from("falloutman"), String::from("witness")])
+                .expect("falloutman cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![String::from("falloutman"), String::from("witness")])
+        );
+        assert_eq!(
             parse_main_cli([String::from("player"), String::from("status")])
                 .expect("player cli should parse"),
             MainCli::CurrentSynthesisTui(vec![String::from("player"), String::from("status")])
@@ -657,6 +669,11 @@ mod tests {
         assert!(usage.contains("foundation-checkpoint validate"));
         assert!(usage.contains("stanislavski witness"));
         assert!(usage.contains("stanislavski validate"));
+        assert!(usage.contains("falloutman witness"));
+        assert!(usage.contains("falloutman validate"));
+        assert!(usage.contains("falloutman menu witness"));
+        assert!(usage.contains("falloutman beat witness"));
+        assert!(usage.contains("falloutman hidden-wound witness"));
         assert!(usage.contains("engine status"));
         assert!(usage.contains("player plan"));
         assert!(usage.contains("cleopatra tick"));

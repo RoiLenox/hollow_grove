@@ -24,12 +24,14 @@ use hollow_grove::{
     build_being_object_validation_report, build_being_object_witness,
     build_civic_body_validation_report, build_civic_body_witness, build_civic_crisis_witness,
     build_current_inheritance_validation_report, build_current_inheritance_witness,
-    build_dark_aura_witness, build_embodied_action_witness, build_flow_glow_validation_report,
-    build_flow_glow_witness, build_foundation_checkpoint_validation_report,
-    build_foundation_checkpoint_witness, build_grip_witness, build_light_aura_witness,
-    build_manager_language_validation_report, build_manager_language_witness,
-    build_map_validation_report, build_map_witness, build_move_witness,
-    build_player_location_witness, build_point_squared_witness,
+    build_dark_aura_witness, build_embodied_action_witness, build_falloutman_beat_witness,
+    build_falloutman_hidden_wound_witness, build_falloutman_menu_witness,
+    build_falloutman_validation_report, build_falloutman_witness,
+    build_flow_glow_validation_report, build_flow_glow_witness,
+    build_foundation_checkpoint_validation_report, build_foundation_checkpoint_witness,
+    build_grip_witness, build_light_aura_witness, build_manager_language_validation_report,
+    build_manager_language_witness, build_map_validation_report, build_map_witness,
+    build_move_witness, build_player_location_witness, build_point_squared_witness,
     build_progression_validation_report, build_progression_witness,
     build_rule_of_twelve_validation_report, build_rule_of_twelve_witness,
     build_stanislavski_action_validation_report, build_stanislavski_action_witness,
@@ -74,6 +76,11 @@ enum CurrentSynthesisTuiCli {
     FoundationCheckpointValidate,
     StanislavskiWitness,
     StanislavskiValidate,
+    FalloutmanWitness,
+    FalloutmanValidate,
+    FalloutmanMenuWitness,
+    FalloutmanBeatWitness,
+    FalloutmanHiddenWoundWitness,
     Engine(EngineLens),
     BondList,
     BondInspect(String),
@@ -375,6 +382,49 @@ where
             Some(other) => Err(format!("unknown stanislavski command: {other}")),
             None => Err(String::from("stanislavski requires witness or validate")),
         },
+        "falloutman" => match args.next().as_deref() {
+            Some("witness") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::FalloutmanWitness,
+                "falloutman witness",
+            ),
+            Some("validate") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::FalloutmanValidate,
+                "falloutman validate",
+            ),
+            Some("menu") => match args.next().as_deref() {
+                Some("witness") => require_no_extra(
+                    args,
+                    CurrentSynthesisTuiCli::FalloutmanMenuWitness,
+                    "falloutman menu witness",
+                ),
+                Some(other) => Err(format!("unknown falloutman menu command: {other}")),
+                None => Err(String::from("falloutman menu requires witness")),
+            },
+            Some("beat") => match args.next().as_deref() {
+                Some("witness") => require_no_extra(
+                    args,
+                    CurrentSynthesisTuiCli::FalloutmanBeatWitness,
+                    "falloutman beat witness",
+                ),
+                Some(other) => Err(format!("unknown falloutman beat command: {other}")),
+                None => Err(String::from("falloutman beat requires witness")),
+            },
+            Some("hidden-wound") => match args.next().as_deref() {
+                Some("witness") => require_no_extra(
+                    args,
+                    CurrentSynthesisTuiCli::FalloutmanHiddenWoundWitness,
+                    "falloutman hidden-wound witness",
+                ),
+                Some(other) => Err(format!("unknown falloutman hidden-wound command: {other}")),
+                None => Err(String::from("falloutman hidden-wound requires witness")),
+            },
+            Some(other) => Err(format!("unknown falloutman command: {other}")),
+            None => Err(String::from(
+                "falloutman requires witness, validate, menu witness, beat witness, or hidden-wound witness",
+            )),
+        },
         "engine" => {
             let lens = args.next().unwrap_or_else(|| String::from("status"));
             if args.next().is_some() {
@@ -584,7 +634,7 @@ fn parse_player_action(
 }
 
 fn usage() -> &'static str {
-    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|civic-body|civic-crisis|flow-glow|embodied-action|current-inheritance|grip|aura-polarity|light-aura|dark-aura|aura-route|foundation-checkpoint|stanislavski|engine|bond|resource|player|npc|cleopatra> [args]\n\
+    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|civic-body|civic-crisis|flow-glow|embodied-action|current-inheritance|grip|aura-polarity|light-aura|dark-aura|aura-route|foundation-checkpoint|stanislavski|falloutman|engine|bond|resource|player|npc|cleopatra> [args]\n\
      \n\
      Commands:\n\
        scenario list\n\
@@ -623,6 +673,11 @@ fn usage() -> &'static str {
        foundation-checkpoint validate\n\
        stanislavski witness\n\
        stanislavski validate\n\
+       falloutman witness\n\
+       falloutman validate\n\
+       falloutman menu witness\n\
+       falloutman beat witness\n\
+       falloutman hidden-wound witness\n\
        engine status|pleb|meta|blep\n\
        bond list\n\
        bond inspect <id>\n\
@@ -778,6 +833,13 @@ fn run_cli(root: &Path, cli: CurrentSynthesisTuiCli) -> io::Result<String> {
         CurrentSynthesisTuiCli::StanislavskiWitness => build_stanislavski_action_witness(),
         CurrentSynthesisTuiCli::StanislavskiValidate => {
             build_stanislavski_action_validation_report()
+        }
+        CurrentSynthesisTuiCli::FalloutmanWitness => build_falloutman_witness(),
+        CurrentSynthesisTuiCli::FalloutmanValidate => build_falloutman_validation_report(),
+        CurrentSynthesisTuiCli::FalloutmanMenuWitness => build_falloutman_menu_witness(),
+        CurrentSynthesisTuiCli::FalloutmanBeatWitness => build_falloutman_beat_witness(),
+        CurrentSynthesisTuiCli::FalloutmanHiddenWoundWitness => {
+            build_falloutman_hidden_wound_witness()
         }
         CurrentSynthesisTuiCli::Engine(lens) => {
             let (_persisted, state) = load_state(root)?;
@@ -1149,6 +1211,20 @@ mod tests {
             CurrentSynthesisTuiCli::StanislavskiWitness
         );
         assert_eq!(
+            parse_cli([String::from("falloutman"), String::from("witness")])
+                .expect("falloutman witness should parse"),
+            CurrentSynthesisTuiCli::FalloutmanWitness
+        );
+        assert_eq!(
+            parse_cli([
+                String::from("falloutman"),
+                String::from("menu"),
+                String::from("witness")
+            ])
+            .expect("falloutman menu witness should parse"),
+            CurrentSynthesisTuiCli::FalloutmanMenuWitness
+        );
+        assert_eq!(
             parse_cli([String::from("engine"), String::from("blep")]).expect("engine should parse"),
             CurrentSynthesisTuiCli::Engine(
                 hollow_grove::current_synthesis_engine::EngineLens::Blep
@@ -1263,6 +1339,11 @@ mod tests {
         assert!(usage.contains("foundation-checkpoint validate"));
         assert!(usage.contains("stanislavski witness"));
         assert!(usage.contains("stanislavski validate"));
+        assert!(usage.contains("falloutman witness"));
+        assert!(usage.contains("falloutman validate"));
+        assert!(usage.contains("falloutman menu witness"));
+        assert!(usage.contains("falloutman beat witness"));
+        assert!(usage.contains("falloutman hidden-wound witness"));
         assert!(usage.contains("engine status|pleb|meta|blep"));
         assert!(usage.contains("bond inspect <id>"));
         assert!(usage.contains("resource history"));
@@ -1354,6 +1435,17 @@ mod tests {
             .expect("stanislavski witness should succeed");
         let stanislavski_validate = run_cli(&root, CurrentSynthesisTuiCli::StanislavskiValidate)
             .expect("stanislavski validate should succeed");
+        let falloutman_witness = run_cli(&root, CurrentSynthesisTuiCli::FalloutmanWitness)
+            .expect("falloutman witness should succeed");
+        let falloutman_validate = run_cli(&root, CurrentSynthesisTuiCli::FalloutmanValidate)
+            .expect("falloutman validate should succeed");
+        let falloutman_menu = run_cli(&root, CurrentSynthesisTuiCli::FalloutmanMenuWitness)
+            .expect("falloutman menu witness should succeed");
+        let falloutman_beat = run_cli(&root, CurrentSynthesisTuiCli::FalloutmanBeatWitness)
+            .expect("falloutman beat witness should succeed");
+        let falloutman_hidden_wound =
+            run_cli(&root, CurrentSynthesisTuiCli::FalloutmanHiddenWoundWitness)
+                .expect("falloutman hidden wound witness should succeed");
         let status = run_cli(
             &root,
             CurrentSynthesisTuiCli::Engine(
@@ -1406,6 +1498,11 @@ mod tests {
         assert!(foundation_checkpoint_validate.contains("status: pass"));
         assert!(stanislavski_witness.contains("HOLLOW GROVE STANISLAVSKI ACTION WITNESS"));
         assert!(stanislavski_validate.contains("status: pass"));
+        assert!(falloutman_witness.contains("HOLLOW GROVE FALLOUTMAN RESPONSE SYSTEM"));
+        assert!(falloutman_validate.contains("status: pass"));
+        assert!(falloutman_menu.contains("[SHOW • LIGHT • BEAM]"));
+        assert!(falloutman_beat.contains("Chosen Tactic:\nAura Lesion Trace"));
+        assert!(falloutman_hidden_wound.contains("Riptide / Siren interference"));
         assert!(status.contains("Current Synthesis Engine"));
         assert!(bond_list.contains("Bond List"));
         assert!(npc.contains("NPC Inspector"));

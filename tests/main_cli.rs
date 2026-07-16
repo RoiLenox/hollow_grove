@@ -100,6 +100,11 @@ fn main_binary_reports_integrated_help() {
     assert!(stdout.contains("foundation-checkpoint validate"));
     assert!(stdout.contains("stanislavski witness"));
     assert!(stdout.contains("stanislavski validate"));
+    assert!(stdout.contains("falloutman witness"));
+    assert!(stdout.contains("falloutman validate"));
+    assert!(stdout.contains("falloutman menu witness"));
+    assert!(stdout.contains("falloutman beat witness"));
+    assert!(stdout.contains("falloutman hidden-wound witness"));
     assert!(stdout.contains("engine status"));
     assert!(stdout.contains("player ..."));
     assert!(stdout.contains("player move"));
@@ -475,6 +480,46 @@ fn main_binary_delegates_progression_and_point_squared_surfaces() {
     assert!(stanislavski_validate.status.success());
     let stanislavski_validate_stdout = String::from_utf8_lossy(&stanislavski_validate.stdout);
     assert!(stanislavski_validate_stdout.contains("status: pass"));
+
+    let falloutman_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["falloutman", "witness"])
+        .output()
+        .expect("falloutman witness should run");
+    assert!(falloutman_witness.status.success());
+    let falloutman_witness_stdout = String::from_utf8_lossy(&falloutman_witness.stdout);
+    assert!(falloutman_witness_stdout.contains("HOLLOW GROVE FALLOUTMAN RESPONSE SYSTEM"));
+
+    let falloutman_validate = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["falloutman", "validate"])
+        .output()
+        .expect("falloutman validate should run");
+    assert!(falloutman_validate.status.success());
+    let falloutman_validate_stdout = String::from_utf8_lossy(&falloutman_validate.stdout);
+    assert!(falloutman_validate_stdout.contains("status: pass"));
+
+    let falloutman_menu = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["falloutman", "menu", "witness"])
+        .output()
+        .expect("falloutman menu witness should run");
+    assert!(falloutman_menu.status.success());
+    let falloutman_menu_stdout = String::from_utf8_lossy(&falloutman_menu.stdout);
+    assert!(falloutman_menu_stdout.contains("[SHOW • LIGHT • BEAM]"));
+
+    let falloutman_beat = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["falloutman", "beat", "witness"])
+        .output()
+        .expect("falloutman beat witness should run");
+    assert!(falloutman_beat.status.success());
+    let falloutman_beat_stdout = String::from_utf8_lossy(&falloutman_beat.stdout);
+    assert!(falloutman_beat_stdout.contains("Chosen Tactic:\nAura Lesion Trace"));
+
+    let falloutman_hidden_wound = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["falloutman", "hidden-wound", "witness"])
+        .output()
+        .expect("falloutman hidden-wound witness should run");
+    assert!(falloutman_hidden_wound.status.success());
+    let falloutman_hidden_wound_stdout = String::from_utf8_lossy(&falloutman_hidden_wound.stdout);
+    assert!(falloutman_hidden_wound_stdout.contains("Riptide / Siren interference"));
 }
 
 #[test]

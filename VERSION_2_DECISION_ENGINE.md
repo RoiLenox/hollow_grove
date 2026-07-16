@@ -179,6 +179,11 @@ It projects only from:
 The canonical proof fixture is `Nightingale Hidden Wound`.
 It keeps `preserve the patient's life and agency` as the active super-objective, adapts from `Aura Lesion Trace` to `Request Minorian Measurement`, and rejects `forcibly open memory` on consent, agency, and purpose-contradiction grounds.
 
+Falloutman presentation is documented separately in `FALLOUTMAN_RESPONSE_PRESENTATION_V1.md`.
+
+That layer consumes these typed Stanislavski candidates as player-facing response options.
+It does not alter candidate generation, evaluation, `ChosenDecision`, `Recipe`, or the frozen Version 1.1 execution boundary.
+
 ## Decision Trace
 
 Version 2 records deterministic immutable evidence for:
