@@ -88,6 +88,9 @@ fn main_binary_reports_integrated_help() {
     assert!(stdout.contains("flow-glow witness"));
     assert!(stdout.contains("flow-glow validate"));
     assert!(stdout.contains("embodied-action witness"));
+    assert!(stdout.contains("current-inheritance witness"));
+    assert!(stdout.contains("current-inheritance validate"));
+    assert!(stdout.contains("grip witness"));
     assert!(stdout.contains("engine status"));
     assert!(stdout.contains("player ..."));
     assert!(stdout.contains("player move"));
@@ -363,6 +366,32 @@ fn main_binary_delegates_progression_and_point_squared_surfaces() {
     assert!(embodied_action_witness.status.success());
     let embodied_action_witness_stdout = String::from_utf8_lossy(&embodied_action_witness.stdout);
     assert!(embodied_action_witness_stdout.contains("HOLLOW GROVE EMBODIED ACTION WITNESS"));
+
+    let current_inheritance_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["current-inheritance", "witness"])
+        .output()
+        .expect("current-inheritance witness should run");
+    assert!(current_inheritance_witness.status.success());
+    let current_inheritance_witness_stdout =
+        String::from_utf8_lossy(&current_inheritance_witness.stdout);
+    assert!(current_inheritance_witness_stdout.contains("HOLLOW GROVE CURRENT INHERITANCE"));
+
+    let current_inheritance_validate = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["current-inheritance", "validate"])
+        .output()
+        .expect("current-inheritance validate should run");
+    assert!(current_inheritance_validate.status.success());
+    let current_inheritance_validate_stdout =
+        String::from_utf8_lossy(&current_inheritance_validate.stdout);
+    assert!(current_inheritance_validate_stdout.contains("status: pass"));
+
+    let grip_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["grip", "witness"])
+        .output()
+        .expect("grip witness should run");
+    assert!(grip_witness.status.success());
+    let grip_witness_stdout = String::from_utf8_lossy(&grip_witness.stdout);
+    assert!(grip_witness_stdout.contains("HOLLOW GROVE GRIP WITNESS"));
 }
 
 #[test]
@@ -406,6 +435,11 @@ fn main_binary_runs_foundation_verification() {
     assert!(stdout.contains("canonical pairings: pass"));
     assert!(stdout.contains("Stonebend apex mapping: pass"));
     assert!(stdout.contains("embodied action grammar: pass"));
+    assert!(stdout.contains("shared Grip root: pass"));
+    assert!(stdout.contains("seven Grip expressions: pass"));
+    assert!(stdout.contains("lower-expression retention: pass"));
+    assert!(stdout.contains("current-inheritance command surface: pass"));
+    assert!(stdout.contains("grip witness surface: pass"));
     assert!(stdout.contains("Stairway horizon fixture: pass"));
     assert!(stdout.contains("vertical witness: pass"));
     assert!(stdout.contains("V1.1 topology unchanged: pass"));

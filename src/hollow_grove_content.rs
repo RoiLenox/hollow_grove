@@ -23,12 +23,15 @@ use crate::{
     CANONICAL_WITNESS, ContactOutcome, DecisionIntent, FrameState, LandingOutcome, Point, Symptom,
     build_being_object_validation_report, build_being_object_witness,
     build_civic_body_validation_report, build_civic_body_witness, build_civic_crisis_witness,
+    build_current_inheritance_validation_report, build_current_inheritance_witness,
     build_embodied_action_witness, build_flow_glow_validation_report, build_flow_glow_witness,
-    build_manager_language_witness, build_move_witness, canonical_being_object_contract_fixture,
-    canonical_civic_body_contract_fixture, canonical_flow_glow_contract_fixture,
+    build_grip_witness, build_manager_language_witness, build_move_witness,
+    canonical_being_object_contract_fixture, canonical_civic_body_contract_fixture,
+    canonical_current_grip_inheritance_contract_fixture, canonical_flow_glow_contract_fixture,
     canonical_manager_language_contract_fixture, execute_kernel_pass_decision,
     execute_synthesis_recipe, gremlin_tinker_recipe, pixy_confusion_recipe, run_kernel_cycle,
-    validate_being_object_contract, validate_civic_body_contract, validate_flow_glow_contract,
+    validate_being_object_contract, validate_civic_body_contract,
+    validate_current_grip_inheritance_contract, validate_flow_glow_contract,
     validate_manager_language_contract,
 };
 
@@ -679,6 +682,70 @@ pub fn validate_flow_glow_foundation() -> io::Result<()> {
     Ok(())
 }
 
+pub fn validate_current_grip_inheritance_foundation() -> io::Result<()> {
+    let diagnostics = validate_current_grip_inheritance_contract(
+        &canonical_current_grip_inheritance_contract_fixture(),
+    );
+    if !diagnostics.is_empty() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!(
+                "current Grip inheritance drifted: {}",
+                diagnostics
+                    .into_iter()
+                    .map(|diagnostic| diagnostic.message)
+                    .collect::<Vec<_>>()
+                    .join("; ")
+            ),
+        ));
+    }
+
+    let validation = build_current_inheritance_validation_report()?;
+    if !validation.contains("status: pass") {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "current-inheritance validation report did not pass",
+        ));
+    }
+
+    let witness = build_current_inheritance_witness()?;
+    for fragment in [
+        "HOLLOW GROVE CURRENT INHERITANCE",
+        "Gremlin",
+        "TinkerGrip",
+        "Troglodyte",
+        "WorldGrip",
+        "Lower Expressions Retained:",
+        "Idle-Time Progression:",
+    ] {
+        if !witness.contains(fragment) {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!("current-inheritance witness drifted: missing `{fragment}`"),
+            ));
+        }
+    }
+
+    let grip = build_grip_witness()?;
+    for fragment in [
+        "HOLLOW GROVE GRIP WITNESS",
+        "Selected Move:\nTinkerGrip",
+        "Selected Move:\nWorldGrip",
+        "Object:\nMechanical Latch",
+        "Object:\nFractured Cliff",
+        "Projected Stonebend Tendency:",
+    ] {
+        if !grip.contains(fragment) {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!("grip witness drifted: missing `{fragment}`"),
+            ));
+        }
+    }
+
+    Ok(())
+}
+
 pub fn validate_medical_injury_cycle() -> io::Result<()> {
     let root_fixture = crate::hollow_grove_contract::canonical_root_alignment_fixture();
     let diagnostics =
@@ -839,6 +906,7 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
     validate_being_object_foundation()?;
     validate_civic_body_foundation()?;
     validate_flow_glow_foundation()?;
+    validate_current_grip_inheritance_foundation()?;
     validate_medical_injury_cycle()?;
     validate_canonical_content_fixtures()?;
     validate_medical_team_profile(&build_glaushouse_medical_team_profile())?;
@@ -996,6 +1064,11 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
          - canonical pairings: pass\n\
          - Stonebend apex mapping: pass\n\
          - embodied action grammar: pass\n\
+         - shared Grip root: pass\n\
+         - seven Grip expressions: pass\n\
+         - lower-expression retention: pass\n\
+         - current-inheritance command surface: pass\n\
+         - grip witness surface: pass\n\
          - CurrentPrism distinction: pass\n\
          - Point² radial expansion: pass\n\
          - Ranina center invariance: pass\n\
@@ -1027,6 +1100,10 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
          {}\n\
          Flow / Glow Witness:\n\n\
          {}\n\
+         Current Inheritance Witness:\n\n\
+         {}\n\
+         Grip Witness:\n\n\
+         {}\n\
          Embodied Action Witness:\n\n\
          {}\n\
          Vertical Witness:\n\n\
@@ -1042,6 +1119,8 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
         build_civic_body_witness()?,
         build_civic_crisis_witness()?,
         build_flow_glow_witness()?,
+        build_current_inheritance_witness()?,
+        build_grip_witness()?,
         build_embodied_action_witness()?,
         build_hollow_grove_vertical_witness()?
     ))

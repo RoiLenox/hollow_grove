@@ -16,6 +16,10 @@ The embodied Flow / Glow action grammar that uses Proxy, Moxy, and Foxy as addre
 
 - `FLOW_GLOW_EMBODIED_GESTURE_GRAMMAR_V1.md`
 
+The inherited Current Grip skill family that applies those addressing modes to one concrete Current root now lives in:
+
+- `CURRENT_GRIP_INHERITANCE_V1.md`
+
 ## Checkpoint
 
 This pass starts from the verified Rule-of-Twelve checkpoint:

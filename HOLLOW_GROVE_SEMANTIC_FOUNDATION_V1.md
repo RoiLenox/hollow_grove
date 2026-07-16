@@ -92,12 +92,17 @@ The locked Flow / Glow embodied gesture grammar now lives in:
 
 - `FLOW_GLOW_EMBODIED_GESTURE_GRAMMAR_V1.md`
 
+The locked inherited Current Grip skill family now lives in:
+
+- `CURRENT_GRIP_INHERITANCE_V1.md`
+
 Primary enforcement for that extension:
 
 - `src/hollow_grove_contract.rs`
 - `src/point_progression.rs`
 - `src/being_object_ontology.rs`
 - `src/flow_glow_grammar.rs`
+- `src/current_grip_inheritance.rs`
 - `src/hollow_grove_content.rs`
 - `src/bin/current_synthesis_tui.rs`
 - `tests/main_cli.rs`

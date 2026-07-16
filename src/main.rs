@@ -60,10 +60,28 @@ where
                 Ok(MainCli::VerifyFoundation)
             }
         }
-        "scenario" | "world" | "progression" | "point-squared" | "map" | "rule-of-twelve"
-        | "manager-language" | "player-location" | "being-object" | "move" | "civic-body"
-        | "civic-crisis" | "flow-glow" | "embodied-action" | "engine" | "bond" | "resource"
-        | "player" | "npc" | "cleopatra" => {
+        "scenario"
+        | "world"
+        | "progression"
+        | "point-squared"
+        | "map"
+        | "rule-of-twelve"
+        | "manager-language"
+        | "player-location"
+        | "being-object"
+        | "move"
+        | "civic-body"
+        | "civic-crisis"
+        | "flow-glow"
+        | "embodied-action"
+        | "current-inheritance"
+        | "grip"
+        | "engine"
+        | "bond"
+        | "resource"
+        | "player"
+        | "npc"
+        | "cleopatra" => {
             let mut forwarded = vec![command];
             forwarded.extend(args);
             Ok(MainCli::CurrentSynthesisTui(forwarded))
@@ -97,6 +115,8 @@ fn usage() -> &'static str {
        civic-crisis ...  inspect the canonical civic breach-response witness\n\
        flow-glow ...     inspect embodied Flow / Glow gesture grammar\n\
        embodied-action ... inspect typed embodied action fixtures\n\
+       current-inheritance ... inspect the inherited Current Grip lineage\n\
+       grip ...          inspect full Grip inheritance fixtures\n\
        engine ...        inspect Current Synthesis engine state\n\
        bond ...          inspect bond candidates and traces\n\
        resource ...      inspect Aura, Current, and residue history\n\
@@ -136,6 +156,9 @@ fn usage() -> &'static str {
        hollow-grove flow-glow witness\n\
        hollow-grove flow-glow validate\n\
        hollow-grove embodied-action witness\n\
+       hollow-grove current-inheritance witness\n\
+       hollow-grove current-inheritance validate\n\
+       hollow-grove grip witness\n\
        hollow-grove scenario use flooded_quarry_night_watch\n\
        hollow-grove engine status\n\
        hollow-grove bond list\n\
@@ -509,6 +532,19 @@ mod tests {
             ])
         );
         assert_eq!(
+            parse_main_cli([String::from("current-inheritance"), String::from("witness")])
+                .expect("current-inheritance cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![
+                String::from("current-inheritance"),
+                String::from("witness")
+            ])
+        );
+        assert_eq!(
+            parse_main_cli([String::from("grip"), String::from("witness")])
+                .expect("grip cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![String::from("grip"), String::from("witness")])
+        );
+        assert_eq!(
             parse_main_cli([String::from("player"), String::from("status")])
                 .expect("player cli should parse"),
             MainCli::CurrentSynthesisTui(vec![String::from("player"), String::from("status")])
@@ -561,6 +597,9 @@ mod tests {
         assert!(usage.contains("flow-glow witness"));
         assert!(usage.contains("flow-glow validate"));
         assert!(usage.contains("embodied-action witness"));
+        assert!(usage.contains("current-inheritance witness"));
+        assert!(usage.contains("current-inheritance validate"));
+        assert!(usage.contains("grip witness"));
         assert!(usage.contains("engine status"));
         assert!(usage.contains("player plan"));
         assert!(usage.contains("cleopatra tick"));

@@ -42,6 +42,10 @@ Flow stays physical, structural, pressured, and materially consequential. Glow s
 
 `EmbodiedGesture::Grip` is intentionally distinct from the older `SkillId::Grip`. The former is a universal input gesture. The latter remains a practiced Being/Object skill root inside the earlier ontology layer.
 
+The full inherited Current Grip lineage that uses this distinction now lives in:
+
+- `CURRENT_GRIP_INHERITANCE_V1.md`
+
 ## Canonical Pairings
 
 - `Grip enters Seam.`

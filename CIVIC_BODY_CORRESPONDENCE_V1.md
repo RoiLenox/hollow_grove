@@ -4,6 +4,10 @@ This document records the locked civic-body correspondence enforced by code.
 
 It lives above the frozen Version 1.1 execution path. It does not literalize Hollow Grove into biology. It defines how the civic peoples function as if Hollow Grove were a living body.
 
+The inherited Current Grip skill family that now integrates with civic response roles through the shared Flow/Glow grammar lives in:
+
+- `CURRENT_GRIP_INHERITANCE_V1.md`
+
 ## Purpose
 
 The model answers:

@@ -22,8 +22,9 @@ use hollow_grove::hueman_progression::{VerticalSliceState, write_vertical_slice_
 use hollow_grove::{
     build_being_object_validation_report, build_being_object_witness,
     build_civic_body_validation_report, build_civic_body_witness, build_civic_crisis_witness,
+    build_current_inheritance_validation_report, build_current_inheritance_witness,
     build_embodied_action_witness, build_flow_glow_validation_report, build_flow_glow_witness,
-    build_manager_language_validation_report, build_manager_language_witness,
+    build_grip_witness, build_manager_language_validation_report, build_manager_language_witness,
     build_map_validation_report, build_map_witness, build_move_witness,
     build_player_location_witness, build_point_squared_witness,
     build_progression_validation_report, build_progression_witness,
@@ -57,6 +58,9 @@ enum CurrentSynthesisTuiCli {
     FlowGlowWitness,
     FlowGlowValidate,
     EmbodiedActionWitness,
+    CurrentInheritanceWitness,
+    CurrentInheritanceValidate,
+    GripWitness,
     Engine(EngineLens),
     BondList,
     BondInspect(String),
@@ -263,6 +267,29 @@ where
             ),
             Some(other) => Err(format!("unknown embodied-action command: {other}")),
             None => Err(String::from("embodied-action requires witness")),
+        },
+        "current-inheritance" => match args.next().as_deref() {
+            Some("witness") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::CurrentInheritanceWitness,
+                "current-inheritance witness",
+            ),
+            Some("validate") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::CurrentInheritanceValidate,
+                "current-inheritance validate",
+            ),
+            Some(other) => Err(format!("unknown current-inheritance command: {other}")),
+            None => Err(String::from(
+                "current-inheritance requires witness or validate",
+            )),
+        },
+        "grip" => match args.next().as_deref() {
+            Some("witness") => {
+                require_no_extra(args, CurrentSynthesisTuiCli::GripWitness, "grip witness")
+            }
+            Some(other) => Err(format!("unknown grip command: {other}")),
+            None => Err(String::from("grip requires witness")),
         },
         "engine" => {
             let lens = args.next().unwrap_or_else(|| String::from("status"));
@@ -473,7 +500,7 @@ fn parse_player_action(
 }
 
 fn usage() -> &'static str {
-    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|civic-body|civic-crisis|flow-glow|embodied-action|engine|bond|resource|player|npc|cleopatra> [args]\n\
+    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|civic-body|civic-crisis|flow-glow|embodied-action|current-inheritance|grip|engine|bond|resource|player|npc|cleopatra> [args]\n\
      \n\
      Commands:\n\
        scenario list\n\
@@ -500,6 +527,9 @@ fn usage() -> &'static str {
        flow-glow witness\n\
        flow-glow validate\n\
        embodied-action witness\n\
+       current-inheritance witness\n\
+       current-inheritance validate\n\
+       grip witness\n\
        engine status|pleb|meta|blep\n\
        bond list\n\
        bond inspect <id>\n\
@@ -636,6 +666,11 @@ fn run_cli(root: &Path, cli: CurrentSynthesisTuiCli) -> io::Result<String> {
         CurrentSynthesisTuiCli::FlowGlowWitness => build_flow_glow_witness(),
         CurrentSynthesisTuiCli::FlowGlowValidate => build_flow_glow_validation_report(),
         CurrentSynthesisTuiCli::EmbodiedActionWitness => build_embodied_action_witness(),
+        CurrentSynthesisTuiCli::CurrentInheritanceWitness => build_current_inheritance_witness(),
+        CurrentSynthesisTuiCli::CurrentInheritanceValidate => {
+            build_current_inheritance_validation_report()
+        }
+        CurrentSynthesisTuiCli::GripWitness => build_grip_witness(),
         CurrentSynthesisTuiCli::Engine(lens) => {
             let (_persisted, state) = load_state(root)?;
             Ok(build_engine_output(&state, lens))
@@ -950,6 +985,24 @@ mod tests {
             CurrentSynthesisTuiCli::EmbodiedActionWitness
         );
         assert_eq!(
+            parse_cli([String::from("current-inheritance"), String::from("witness")])
+                .expect("current-inheritance witness should parse"),
+            CurrentSynthesisTuiCli::CurrentInheritanceWitness
+        );
+        assert_eq!(
+            parse_cli([
+                String::from("current-inheritance"),
+                String::from("validate")
+            ])
+            .expect("current-inheritance validate should parse"),
+            CurrentSynthesisTuiCli::CurrentInheritanceValidate
+        );
+        assert_eq!(
+            parse_cli([String::from("grip"), String::from("witness")])
+                .expect("grip witness should parse"),
+            CurrentSynthesisTuiCli::GripWitness
+        );
+        assert_eq!(
             parse_cli([String::from("engine"), String::from("blep")]).expect("engine should parse"),
             CurrentSynthesisTuiCli::Engine(
                 hollow_grove::current_synthesis_engine::EngineLens::Blep
@@ -1052,6 +1105,9 @@ mod tests {
         assert!(usage.contains("flow-glow witness"));
         assert!(usage.contains("flow-glow validate"));
         assert!(usage.contains("embodied-action witness"));
+        assert!(usage.contains("current-inheritance witness"));
+        assert!(usage.contains("current-inheritance validate"));
+        assert!(usage.contains("grip witness"));
         assert!(usage.contains("engine status|pleb|meta|blep"));
         assert!(usage.contains("bond inspect <id>"));
         assert!(usage.contains("resource history"));
@@ -1115,6 +1171,14 @@ mod tests {
             .expect("flow-glow validate should succeed");
         let embodied_action_witness = run_cli(&root, CurrentSynthesisTuiCli::EmbodiedActionWitness)
             .expect("embodied-action witness should succeed");
+        let current_inheritance_witness =
+            run_cli(&root, CurrentSynthesisTuiCli::CurrentInheritanceWitness)
+                .expect("current-inheritance witness should succeed");
+        let current_inheritance_validate =
+            run_cli(&root, CurrentSynthesisTuiCli::CurrentInheritanceValidate)
+                .expect("current-inheritance validate should succeed");
+        let grip_witness = run_cli(&root, CurrentSynthesisTuiCli::GripWitness)
+            .expect("grip witness should succeed");
         let status = run_cli(
             &root,
             CurrentSynthesisTuiCli::Engine(
@@ -1155,6 +1219,9 @@ mod tests {
         assert!(flow_glow_witness.contains("HOLLOW GROVE FLOW / GLOW GRAMMAR"));
         assert!(flow_glow_validate.contains("status: pass"));
         assert!(embodied_action_witness.contains("HOLLOW GROVE EMBODIED ACTION WITNESS"));
+        assert!(current_inheritance_witness.contains("HOLLOW GROVE CURRENT INHERITANCE"));
+        assert!(current_inheritance_validate.contains("status: pass"));
+        assert!(grip_witness.contains("HOLLOW GROVE GRIP WITNESS"));
         assert!(status.contains("Current Synthesis Engine"));
         assert!(bond_list.contains("Bond List"));
         assert!(npc.contains("NPC Inspector"));

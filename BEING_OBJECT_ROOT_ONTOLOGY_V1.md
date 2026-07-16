@@ -12,6 +12,10 @@ The embodied Flow / Glow gesture grammar layered over this ontology now lives in
 
 - `FLOW_GLOW_EMBODIED_GESTURE_GRAMMAR_V1.md`
 
+The inherited Current Grip skill family layered over both of those surfaces now lives in:
+
+- `CURRENT_GRIP_INHERITANCE_V1.md`
+
 ## Root Doctrine
 
 - `Being = living practiced Hueman identity and embodiment`

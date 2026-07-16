@@ -2,6 +2,7 @@ pub mod aim;
 pub mod artifact_io;
 pub mod being_object_ontology;
 pub mod civic_body;
+pub mod current_grip_inheritance;
 pub mod current_synthesis_engine;
 pub mod current_synthesis_scenario;
 pub mod decision_engine;
@@ -55,6 +56,21 @@ pub use civic_body::{
     build_civic_body_validation_report, build_civic_body_witness, build_civic_crisis_witness,
     canonical_civic_body_contract_fixture, canonical_civic_body_definitions, canonical_civic_chant,
     canonical_civic_crisis_steps, civic_body_definition, validate_civic_body_contract,
+};
+pub use current_grip_inheritance::{
+    CurrentGripActionRequest, CurrentGripInheritanceContractInput, CurrentGripResolution,
+    CurrentRequirement, GripExpressionId, GripExpressionScore, GripPracticeEvent,
+    GripPracticeProfile, PressureRequirement, SkillRoot,
+    build_current_inheritance_validation_report, build_current_inheritance_witness,
+    build_grip_witness, canonical_current_grip_inheritance_contract_fixture,
+    canonical_freemason_tendency_fixture, canonical_goblin_weapongrip_fixture,
+    canonical_gremlin_foxy_tinkergrip_fixture, canonical_gremlin_tinkergrip_fixture,
+    canonical_hypergiant_tendency_fixture, canonical_ogre_siegegrip_fixture,
+    canonical_ork_formationgrip_fixture, canonical_proletariat_tendency_fixture,
+    canonical_troglodyte_precision_fixture, canonical_troglodyte_worldgrip_fixture,
+    canonical_troll_bridgegrip_fixture, canonical_troll_moxy_bridgegrip_fixture,
+    project_grip_practice_profile, resolve_current_grip_action,
+    validate_current_grip_inheritance_contract,
 };
 pub use decision_engine::{
     ChosenDecision, DecisionCandidate, DecisionCandidateId, DecisionChoiceTrace,
