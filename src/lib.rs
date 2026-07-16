@@ -1,10 +1,12 @@
 pub mod aim;
 pub mod artifact_io;
 pub mod being_object_ontology;
+pub mod civic_body;
 pub mod current_synthesis_engine;
 pub mod current_synthesis_scenario;
 pub mod decision_engine;
 pub mod fire;
+pub mod flow_glow_grammar;
 pub mod frame_state;
 pub mod grove_seam;
 pub mod hollow_beam;
@@ -47,6 +49,13 @@ pub use being_object_ontology::{
     canonical_object_state, canonical_troglodyte_proxy_action_fixture, observe_being_object_action,
     resolve_being_object_action, validate_being_object_contract,
 };
+pub use civic_body::{
+    CivicAction, CivicBodyContractInput, CivicBodyDefinition, CivicBodyDiagnostic,
+    CivicBodyDiagnosticCode, CivicBodyRole, CivicFailure, CivicPeople, CrisisRole,
+    build_civic_body_validation_report, build_civic_body_witness, build_civic_crisis_witness,
+    canonical_civic_body_contract_fixture, canonical_civic_body_definitions, canonical_civic_chant,
+    canonical_civic_crisis_steps, civic_body_definition, validate_civic_body_contract,
+};
 pub use decision_engine::{
     ChosenDecision, DecisionCandidate, DecisionCandidateId, DecisionChoiceTrace,
     DecisionChooseError, DecisionEngineError, DecisionEvaluation, DecisionEvaluationReason,
@@ -60,6 +69,17 @@ pub use decision_engine::{
     replay_decision_trace, replay_kernel_pass_decision_trace, resolve_candidate_recipe,
 };
 pub use fire::{ContactOutcome, FireContext, fire, fire_with_context};
+pub use flow_glow_grammar::{
+    ActionMode, CompatibilityLevel, EmbodiedActionRequest, EmbodiedGesture, EmbodiedMoveId,
+    EmbodiedMoveResolution, EmbodiedPracticeRecord, EmbodiedRole, ExpressionDomain,
+    FlowGlowContractInput, RecipeBoundaryStatus, build_embodied_action_witness,
+    build_flow_glow_validation_report, build_flow_glow_witness,
+    canonical_cross_pair_show_seam_fixture, canonical_flow_glow_contract_fixture,
+    canonical_freemason_flow_beam_fixture, canonical_hypergiant_flow_gleam_fixture,
+    canonical_muse_show_beam_fixture, canonical_nightingale_grip_seam_fixture,
+    canonical_nightingale_show_beam_fixture, canonical_proletariat_flow_seam_fixture,
+    canonical_siren_grit_gleam_fixture, resolve_embodied_action, validate_flow_glow_contract,
+};
 pub use frame_state::{BeingId, CurrentPrism, FlowId, FrameId, FrameState, GlowId};
 pub use grove_seam::{GroveSeam, SeamRoute};
 pub use hollow_beam::{BeamRoute, HollowBeam, LandedSymptom, LandingRoute};

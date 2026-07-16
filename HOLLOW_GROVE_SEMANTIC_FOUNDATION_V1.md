@@ -84,11 +84,20 @@ The locked Being / Object root ontology now lives in:
 
 - `BEING_OBJECT_ROOT_ONTOLOGY_V1.md`
 
+The locked civic-body correspondence layer now lives in:
+
+- `CIVIC_BODY_CORRESPONDENCE_V1.md`
+
+The locked Flow / Glow embodied gesture grammar now lives in:
+
+- `FLOW_GLOW_EMBODIED_GESTURE_GRAMMAR_V1.md`
+
 Primary enforcement for that extension:
 
 - `src/hollow_grove_contract.rs`
 - `src/point_progression.rs`
 - `src/being_object_ontology.rs`
+- `src/flow_glow_grammar.rs`
 - `src/hollow_grove_content.rs`
 - `src/bin/current_synthesis_tui.rs`
 - `tests/main_cli.rs`
@@ -141,8 +150,9 @@ Enforcement and generated artifacts:
 ## Nightingales
 
 - Nightingales directly represent white blood cells.
-- Origin: Stonebend marrow.
+- House: Glaüshouse.
 - Medium: Current.
+- They are a civic-body correspondence rather than a literal species definition.
 - They are not a generic staff class or generic nurse species.
 
 Enforcement:

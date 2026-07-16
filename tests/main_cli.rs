@@ -82,6 +82,12 @@ fn main_binary_reports_integrated_help() {
     assert!(stdout.contains("being-object witness"));
     assert!(stdout.contains("being-object validate"));
     assert!(stdout.contains("move witness"));
+    assert!(stdout.contains("civic-body witness"));
+    assert!(stdout.contains("civic-body validate"));
+    assert!(stdout.contains("civic-crisis witness"));
+    assert!(stdout.contains("flow-glow witness"));
+    assert!(stdout.contains("flow-glow validate"));
+    assert!(stdout.contains("embodied-action witness"));
     assert!(stdout.contains("engine status"));
     assert!(stdout.contains("player ..."));
     assert!(stdout.contains("player move"));
@@ -309,6 +315,54 @@ fn main_binary_delegates_progression_and_point_squared_surfaces() {
     assert!(move_witness.status.success());
     let move_witness_stdout = String::from_utf8_lossy(&move_witness.stdout);
     assert!(move_witness_stdout.contains("HOLLOW GROVE MOVE WITNESS"));
+
+    let civic_body_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["civic-body", "witness"])
+        .output()
+        .expect("civic-body witness should run");
+    assert!(civic_body_witness.status.success());
+    let civic_body_witness_stdout = String::from_utf8_lossy(&civic_body_witness.stdout);
+    assert!(civic_body_witness_stdout.contains("HOLLOW GROVE CIVIC BODY"));
+
+    let civic_body_validate = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["civic-body", "validate"])
+        .output()
+        .expect("civic-body validate should run");
+    assert!(civic_body_validate.status.success());
+    let civic_body_validate_stdout = String::from_utf8_lossy(&civic_body_validate.stdout);
+    assert!(civic_body_validate_stdout.contains("status: pass"));
+
+    let civic_crisis_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["civic-crisis", "witness"])
+        .output()
+        .expect("civic-crisis witness should run");
+    assert!(civic_crisis_witness.status.success());
+    let civic_crisis_witness_stdout = String::from_utf8_lossy(&civic_crisis_witness.stdout);
+    assert!(civic_crisis_witness_stdout.contains("World Breach"));
+
+    let flow_glow_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["flow-glow", "witness"])
+        .output()
+        .expect("flow-glow witness should run");
+    assert!(flow_glow_witness.status.success());
+    let flow_glow_witness_stdout = String::from_utf8_lossy(&flow_glow_witness.stdout);
+    assert!(flow_glow_witness_stdout.contains("HOLLOW GROVE FLOW / GLOW GRAMMAR"));
+
+    let flow_glow_validate = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["flow-glow", "validate"])
+        .output()
+        .expect("flow-glow validate should run");
+    assert!(flow_glow_validate.status.success());
+    let flow_glow_validate_stdout = String::from_utf8_lossy(&flow_glow_validate.stdout);
+    assert!(flow_glow_validate_stdout.contains("status: pass"));
+
+    let embodied_action_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["embodied-action", "witness"])
+        .output()
+        .expect("embodied-action witness should run");
+    assert!(embodied_action_witness.status.success());
+    let embodied_action_witness_stdout = String::from_utf8_lossy(&embodied_action_witness.stdout);
+    assert!(embodied_action_witness_stdout.contains("HOLLOW GROVE EMBODIED ACTION WITNESS"));
 }
 
 #[test]
@@ -342,6 +396,16 @@ fn main_binary_runs_foundation_verification() {
     assert!(stdout.contains("Hollowing target rules: pass"));
     assert!(stdout.contains("Synthesis cross-boundary rules: pass"));
     assert!(stdout.contains("Proxy / Moxy / Foxy Being/Object addressing: pass"));
+    assert!(stdout.contains("civic-body House mappings: pass"));
+    assert!(stdout.contains("civic-body people mappings: pass"));
+    assert!(stdout.contains("civic-body crisis loop: pass"));
+    assert!(stdout.contains("civic-body Being/Object boundary: pass"));
+    assert!(stdout.contains("Flow/Glow distinction: pass"));
+    assert!(stdout.contains("Seam/Beam/Gleam distinction: pass"));
+    assert!(stdout.contains("Grip/Show/Grit distinction: pass"));
+    assert!(stdout.contains("canonical pairings: pass"));
+    assert!(stdout.contains("Stonebend apex mapping: pass"));
+    assert!(stdout.contains("embodied action grammar: pass"));
     assert!(stdout.contains("Stairway horizon fixture: pass"));
     assert!(stdout.contains("vertical witness: pass"));
     assert!(stdout.contains("V1.1 topology unchanged: pass"));

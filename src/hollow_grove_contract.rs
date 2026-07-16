@@ -984,7 +984,7 @@ pub fn validate_hollow_grove_alignment(
 
     for claim in &input.nightingale_claims {
         if claim.identity != NightingaleIdentity::WhiteBloodCells
-            || claim.origin != House::Stonebend
+            || claim.origin != House::Glaushouse
             || claim.medium != Substance::Current
             || !claim
                 .functions
@@ -1000,7 +1000,7 @@ pub fn validate_hollow_grove_alignment(
             diagnostics.push(AlignmentDiagnostic {
                 code: AlignmentDiagnosticCode::NightingaleMismatch,
                 message: String::from(
-                    "Nightingales must remain Stonebend-born white blood cells carried through Current",
+                    "Nightingales must remain Glaüshouse white-blood-cell civic people carried through Current",
                 ),
             });
         }
@@ -1245,7 +1245,7 @@ pub fn canonical_root_alignment_fixture() -> HollowGroveAlignmentInput {
     ]);
     input.nightingale_claims.push(NightingaleClaim {
         identity: NightingaleIdentity::WhiteBloodCells,
-        origin: House::Stonebend,
+        origin: House::Glaushouse,
         medium: Substance::Current,
         functions: vec![
             NightingaleFunction::RecognizeThreats,

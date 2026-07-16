@@ -22,10 +22,14 @@ use crate::world_map_geometry::{
 use crate::{
     CANONICAL_WITNESS, ContactOutcome, DecisionIntent, FrameState, LandingOutcome, Point, Symptom,
     build_being_object_validation_report, build_being_object_witness,
+    build_civic_body_validation_report, build_civic_body_witness, build_civic_crisis_witness,
+    build_embodied_action_witness, build_flow_glow_validation_report, build_flow_glow_witness,
     build_manager_language_witness, build_move_witness, canonical_being_object_contract_fixture,
+    canonical_civic_body_contract_fixture, canonical_flow_glow_contract_fixture,
     canonical_manager_language_contract_fixture, execute_kernel_pass_decision,
     execute_synthesis_recipe, gremlin_tinker_recipe, pixy_confusion_recipe, run_kernel_cycle,
-    validate_being_object_contract, validate_manager_language_contract,
+    validate_being_object_contract, validate_civic_body_contract, validate_flow_glow_contract,
+    validate_manager_language_contract,
 };
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -552,6 +556,129 @@ pub fn validate_being_object_foundation() -> io::Result<()> {
     Ok(())
 }
 
+pub fn validate_civic_body_foundation() -> io::Result<()> {
+    let diagnostics = validate_civic_body_contract(&canonical_civic_body_contract_fixture());
+    if !diagnostics.is_empty() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!(
+                "civic body contract drifted: {}",
+                diagnostics
+                    .into_iter()
+                    .map(|diagnostic| diagnostic.message)
+                    .collect::<Vec<_>>()
+                    .join("; ")
+            ),
+        ));
+    }
+
+    let validation = build_civic_body_validation_report()?;
+    if !validation.contains("status: pass") {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "civic-body validation report did not pass",
+        ));
+    }
+
+    let witness = build_civic_body_witness()?;
+    for chant in [
+        "Geralds carry.",
+        "Nightingales clear.",
+        "Wardens close.",
+        "Minorians measure.",
+        "Minoans reveal.",
+    ] {
+        if !witness.contains(chant) {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!("civic-body witness drifted: missing `{chant}`"),
+            ));
+        }
+    }
+
+    let crisis = build_civic_crisis_witness()?;
+    for step in [
+        "1. Minoans reveal the breach.",
+        "2. Minorians measure the breach.",
+        "3. Wardens close the breach.",
+        "4. Nightingales clear the threat.",
+        "5. Geralds carry what recovery requires.",
+    ] {
+        if !crisis.contains(step) {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!("civic-crisis witness drifted: missing `{step}`"),
+            ));
+        }
+    }
+
+    Ok(())
+}
+
+pub fn validate_flow_glow_foundation() -> io::Result<()> {
+    let diagnostics = validate_flow_glow_contract(&canonical_flow_glow_contract_fixture());
+    if !diagnostics.is_empty() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!(
+                "flow/glow embodied grammar drifted: {}",
+                diagnostics
+                    .into_iter()
+                    .map(|diagnostic| diagnostic.message)
+                    .collect::<Vec<_>>()
+                    .join("; ")
+            ),
+        ));
+    }
+
+    let validation = build_flow_glow_validation_report()?;
+    if !validation.contains("status: pass") {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "flow/glow validation report did not pass",
+        ));
+    }
+
+    let witness = build_flow_glow_witness()?;
+    for fragment in [
+        "Grip -> Seam",
+        "Show -> Beam",
+        "Grit -> Gleam",
+        "Freemason -> Beam",
+        "Proletariat -> Seam",
+        "Hypergiant -> Gleam",
+    ] {
+        if !witness.contains(fragment) {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!("flow/glow witness drifted: missing `{fragment}`"),
+            ));
+        }
+    }
+
+    let embodied = build_embodied_action_witness()?;
+    for fragment in [
+        "Being:\nNightingale",
+        "Being:\nMuse",
+        "Being:\nFreemason",
+        "Being:\nProletariat",
+        "Being:\nHypergiant",
+        "Candidate Move:\nAura Stitch",
+        "Candidate Move:\nCraft Line",
+        "Candidate Move:\nSovereign Gleam",
+        "Recipe Status:\nRecipe legality required; no canonical Recipe fixture yet",
+    ] {
+        if !embodied.contains(fragment) {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!("embodied-action witness drifted: missing `{fragment}`"),
+            ));
+        }
+    }
+
+    Ok(())
+}
+
 pub fn validate_medical_injury_cycle() -> io::Result<()> {
     let root_fixture = crate::hollow_grove_contract::canonical_root_alignment_fixture();
     let diagnostics =
@@ -710,6 +837,8 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
     validate_manager_language_foundation()?;
     validate_player_spatial_foundation()?;
     validate_being_object_foundation()?;
+    validate_civic_body_foundation()?;
+    validate_flow_glow_foundation()?;
     validate_medical_injury_cycle()?;
     validate_canonical_content_fixtures()?;
     validate_medical_team_profile(&build_glaushouse_medical_team_profile())?;
@@ -857,6 +986,16 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
          - Hollowing target rules: pass\n\
          - Synthesis cross-boundary rules: pass\n\
          - Proxy / Moxy / Foxy Being/Object addressing: pass\n\
+         - civic-body House mappings: pass\n\
+         - civic-body people mappings: pass\n\
+         - civic-body crisis loop: pass\n\
+         - civic-body Being/Object boundary: pass\n\
+         - Flow/Glow distinction: pass\n\
+         - Seam/Beam/Gleam distinction: pass\n\
+         - Grip/Show/Grit distinction: pass\n\
+         - canonical pairings: pass\n\
+         - Stonebend apex mapping: pass\n\
+         - embodied action grammar: pass\n\
          - CurrentPrism distinction: pass\n\
          - Point² radial expansion: pass\n\
          - Ranina center invariance: pass\n\
@@ -882,6 +1021,14 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
          {}\n\
          Move Witness:\n\n\
          {}\n\
+         Civic Body Witness:\n\n\
+         {}\n\
+         Civic Crisis Witness:\n\n\
+         {}\n\
+         Flow / Glow Witness:\n\n\
+         {}\n\
+         Embodied Action Witness:\n\n\
+         {}\n\
          Vertical Witness:\n\n\
          {}",
         crate::hollow_grove_contract::build_hollow_grove_alignment_witness(),
@@ -892,6 +1039,10 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
         build_player_location_witness()?,
         build_being_object_witness()?,
         build_move_witness()?,
+        build_civic_body_witness()?,
+        build_civic_crisis_witness()?,
+        build_flow_glow_witness()?,
+        build_embodied_action_witness()?,
         build_hollow_grove_vertical_witness()?
     ))
 }

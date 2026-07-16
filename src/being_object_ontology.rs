@@ -18,6 +18,15 @@ pub enum ObjectId {
     StoneObject,
     DamagedMechanism,
     StoneArchitecture,
+    OpenWound,
+    Tissue,
+    HiddenInfection,
+    MeaningLink,
+    FrightenedCrowd,
+    CuttingTool,
+    FormationAnchor,
+    Monument,
+    HiddenEmotionalRupture,
 }
 
 impl ObjectId {
@@ -31,6 +40,15 @@ impl ObjectId {
             Self::StoneObject => "Stone Object",
             Self::DamagedMechanism => "Damaged Mechanism",
             Self::StoneArchitecture => "Stone Architecture",
+            Self::OpenWound => "Open Wound",
+            Self::Tissue => "Tissue",
+            Self::HiddenInfection => "Hidden Infection",
+            Self::MeaningLink => "Hidden Meaning",
+            Self::FrightenedCrowd => "Frightened Crowd",
+            Self::CuttingTool => "Cutting Tool",
+            Self::FormationAnchor => "Formation Anchor",
+            Self::Monument => "Monument",
+            Self::HiddenEmotionalRupture => "Hidden Emotional Rupture",
         }
     }
 }
@@ -42,6 +60,10 @@ pub enum ObjectKind {
     Structure,
     MaterialConstruct,
     System,
+    Body,
+    Tool,
+    Collective,
+    SymbolicRelation,
 }
 
 impl ObjectKind {
@@ -53,6 +75,10 @@ impl ObjectKind {
             Self::Structure => "Structure",
             Self::MaterialConstruct => "MaterialConstruct",
             Self::System => "System",
+            Self::Body => "Body",
+            Self::Tool => "Tool",
+            Self::Collective => "Collective",
+            Self::SymbolicRelation => "SymbolicRelation",
         }
     }
 }
@@ -61,6 +87,8 @@ impl ObjectKind {
 pub enum ObjectMaterial {
     Metal,
     Stone,
+    Flesh,
+    Social,
     Mixed,
 }
 
@@ -70,6 +98,8 @@ impl ObjectMaterial {
         match self {
             Self::Metal => "Metal",
             Self::Stone => "Stone",
+            Self::Flesh => "Flesh",
+            Self::Social => "Social",
             Self::Mixed => "Mixed",
         }
     }
@@ -82,6 +112,10 @@ pub enum ObjectCondition {
     Fractured,
     Refined,
     Restored,
+    Open,
+    Hidden,
+    Frightened,
+    Unsettled,
 }
 
 impl ObjectCondition {
@@ -93,6 +127,10 @@ impl ObjectCondition {
             Self::Fractured => "Fractured",
             Self::Refined => "Refined",
             Self::Restored => "Restored",
+            Self::Open => "Open",
+            Self::Hidden => "Hidden",
+            Self::Frightened => "Frightened",
+            Self::Unsettled => "Unsettled",
         }
     }
 }
@@ -104,6 +142,13 @@ pub enum ObjectFunction {
     ClimbSurface,
     GuardSupport,
     Repairable,
+    OpenBoundary,
+    HiddenCondition,
+    DirectionalTool,
+    GroupAnchor,
+    TitleSurface,
+    RelationalFault,
+    CollectivePresence,
 }
 
 impl ObjectFunction {
@@ -115,6 +160,13 @@ impl ObjectFunction {
             Self::ClimbSurface => "ClimbSurface",
             Self::GuardSupport => "GuardSupport",
             Self::Repairable => "Repairable",
+            Self::OpenBoundary => "OpenBoundary",
+            Self::HiddenCondition => "HiddenCondition",
+            Self::DirectionalTool => "DirectionalTool",
+            Self::GroupAnchor => "GroupAnchor",
+            Self::TitleSurface => "TitleSurface",
+            Self::RelationalFault => "RelationalFault",
+            Self::CollectivePresence => "CollectivePresence",
         }
     }
 }
@@ -145,6 +197,7 @@ impl ObjectConnection {
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct ObjectState {
     identity: ObjectId,
+    family: ObjectFamily,
     kind: ObjectKind,
     material: ObjectMaterial,
     condition: ObjectCondition,
@@ -158,6 +211,7 @@ impl ObjectState {
     #[must_use]
     pub fn new(
         identity: ObjectId,
+        family: ObjectFamily,
         kind: ObjectKind,
         material: ObjectMaterial,
         condition: ObjectCondition,
@@ -168,6 +222,7 @@ impl ObjectState {
     ) -> Self {
         Self {
             identity,
+            family,
             kind,
             material,
             condition,
@@ -181,6 +236,11 @@ impl ObjectState {
     #[must_use]
     pub const fn identity(&self) -> ObjectId {
         self.identity
+    }
+
+    #[must_use]
+    pub const fn family(&self) -> ObjectFamily {
+        self.family
     }
 
     #[must_use]
@@ -224,6 +284,15 @@ pub enum ObjectFamily {
     Mechanism,
     Cliff,
     StoneStructure,
+    Wound,
+    Tissue,
+    Infection,
+    Crowd,
+    Tool,
+    Formation,
+    Monument,
+    Meaning,
+    EmotionalRupture,
 }
 
 impl ObjectFamily {
@@ -233,6 +302,15 @@ impl ObjectFamily {
             Self::Mechanism => "Mechanism",
             Self::Cliff => "Cliff",
             Self::StoneStructure => "StoneStructure",
+            Self::Wound => "Wound",
+            Self::Tissue => "Tissue",
+            Self::Infection => "Infection",
+            Self::Crowd => "Crowd",
+            Self::Tool => "Tool",
+            Self::Formation => "Formation",
+            Self::Monument => "Monument",
+            Self::Meaning => "Meaning",
+            Self::EmotionalRupture => "EmotionalRupture",
         }
     }
 }
@@ -559,6 +637,16 @@ pub enum ActionAim {
     RestoreSystem,
     ReturnFunction,
     BraceArchitecture,
+    StabilizeAndClose,
+    InciseOrSuture,
+    DiagnoseAndReveal,
+    RevealCentralTruth,
+    SustainEmotionalCommand,
+    DirectPreciseLineOfForce,
+    JoinMendOrTear,
+    RevealProvenSovereignty,
+    StabilizeAndDirect,
+    RevealBrokenRelation,
 }
 
 impl ActionAim {
@@ -570,6 +658,16 @@ impl ActionAim {
             Self::RestoreSystem => "RestoreSystem",
             Self::ReturnFunction => "ReturnFunction",
             Self::BraceArchitecture => "BraceArchitecture",
+            Self::StabilizeAndClose => "StabilizeAndClose",
+            Self::InciseOrSuture => "InciseOrSuture",
+            Self::DiagnoseAndReveal => "DiagnoseAndReveal",
+            Self::RevealCentralTruth => "RevealCentralTruth",
+            Self::SustainEmotionalCommand => "SustainEmotionalCommand",
+            Self::DirectPreciseLineOfForce => "DirectPreciseLineOfForce",
+            Self::JoinMendOrTear => "JoinMendOrTear",
+            Self::RevealProvenSovereignty => "RevealProvenSovereignty",
+            Self::StabilizeAndDirect => "StabilizeAndDirect",
+            Self::RevealBrokenRelation => "RevealBrokenRelation",
         }
     }
 }
@@ -868,10 +966,34 @@ pub fn build_being_state(point: &Point) -> BeingState {
 }
 
 #[must_use]
+pub fn build_canonical_being_state_for_frame(frame: FrameId) -> BeingState {
+    build_canonical_being_state_with_aura(frame, paired_aura_frame(frame))
+}
+
+#[must_use]
+pub fn build_canonical_being_state_with_aura(
+    frame: FrameId,
+    aura_frame: Option<FrameId>,
+) -> BeingState {
+    BeingState {
+        identity: BeingId::Hueman,
+        current_form: frame,
+        aura_frame,
+        flow_learnset: canonical_flow_learnset(frame),
+        glow_learnset: aura_frame.map_or_else(Vec::new, canonical_glow_learnset),
+        current_prism: CurrentPrism::origin(),
+        stable_point_level: 1,
+        inheritance: BeingInheritance::from_frame(frame),
+        embodiment: BeingEmbodiment::from_frame(frame),
+    }
+}
+
+#[must_use]
 pub fn canonical_object_state(identity: ObjectId) -> ObjectState {
     match identity {
         ObjectId::MechanicalLatch => ObjectState::new(
             identity,
+            ObjectFamily::Mechanism,
             ObjectKind::Mechanism,
             ObjectMaterial::Metal,
             ObjectCondition::Stable,
@@ -882,6 +1004,7 @@ pub fn canonical_object_state(identity: ObjectId) -> ObjectState {
         ),
         ObjectId::FracturedCliff => ObjectState::new(
             identity,
+            ObjectFamily::Cliff,
             ObjectKind::Terrain,
             ObjectMaterial::Stone,
             ObjectCondition::Fractured,
@@ -892,6 +1015,7 @@ pub fn canonical_object_state(identity: ObjectId) -> ObjectState {
         ),
         ObjectId::DoorMechanism => ObjectState::new(
             identity,
+            ObjectFamily::Mechanism,
             ObjectKind::Mechanism,
             ObjectMaterial::Mixed,
             ObjectCondition::Damaged,
@@ -905,6 +1029,7 @@ pub fn canonical_object_state(identity: ObjectId) -> ObjectState {
         ),
         ObjectId::ControlSystem => ObjectState::new(
             identity,
+            ObjectFamily::Mechanism,
             ObjectKind::System,
             ObjectMaterial::Mixed,
             ObjectCondition::Stable,
@@ -915,6 +1040,7 @@ pub fn canonical_object_state(identity: ObjectId) -> ObjectState {
         ),
         ObjectId::StoneObject => ObjectState::new(
             identity,
+            ObjectFamily::StoneStructure,
             ObjectKind::MaterialConstruct,
             ObjectMaterial::Stone,
             ObjectCondition::Stable,
@@ -925,6 +1051,7 @@ pub fn canonical_object_state(identity: ObjectId) -> ObjectState {
         ),
         ObjectId::DamagedMechanism => ObjectState::new(
             identity,
+            ObjectFamily::Mechanism,
             ObjectKind::Mechanism,
             ObjectMaterial::Metal,
             ObjectCondition::Damaged,
@@ -935,6 +1062,7 @@ pub fn canonical_object_state(identity: ObjectId) -> ObjectState {
         ),
         ObjectId::StoneArchitecture => ObjectState::new(
             identity,
+            ObjectFamily::StoneStructure,
             ObjectKind::Structure,
             ObjectMaterial::Stone,
             ObjectCondition::Stable,
@@ -942,6 +1070,110 @@ pub fn canonical_object_state(identity: ObjectId) -> ObjectState {
             Vec::new(),
             vec![String::from("stone architecture holds the seam")],
             vec![String::from("candidate Gargoyle lineage contact")],
+        ),
+        ObjectId::OpenWound => ObjectState::new(
+            identity,
+            ObjectFamily::Wound,
+            ObjectKind::Body,
+            ObjectMaterial::Flesh,
+            ObjectCondition::Open,
+            vec![ObjectFunction::OpenBoundary, ObjectFunction::Repairable],
+            Vec::new(),
+            vec![String::from("wound remains open and unstable")],
+            Vec::new(),
+        ),
+        ObjectId::Tissue => ObjectState::new(
+            identity,
+            ObjectFamily::Tissue,
+            ObjectKind::Body,
+            ObjectMaterial::Flesh,
+            ObjectCondition::Stable,
+            vec![ObjectFunction::Repairable],
+            Vec::new(),
+            vec![String::from("tissue ready for precise intervention")],
+            Vec::new(),
+        ),
+        ObjectId::HiddenInfection => ObjectState::new(
+            identity,
+            ObjectFamily::Infection,
+            ObjectKind::Body,
+            ObjectMaterial::Flesh,
+            ObjectCondition::Hidden,
+            vec![ObjectFunction::HiddenCondition],
+            Vec::new(),
+            vec![String::from("infection hides beneath apparent recovery")],
+            Vec::new(),
+        ),
+        ObjectId::MeaningLink => ObjectState::new(
+            identity,
+            ObjectFamily::Meaning,
+            ObjectKind::SymbolicRelation,
+            ObjectMaterial::Social,
+            ObjectCondition::Hidden,
+            vec![ObjectFunction::RelationalFault],
+            Vec::new(),
+            vec![String::from("crowd meaning remains linked but unread")],
+            Vec::new(),
+        ),
+        ObjectId::FrightenedCrowd => ObjectState::new(
+            identity,
+            ObjectFamily::Crowd,
+            ObjectKind::Collective,
+            ObjectMaterial::Social,
+            ObjectCondition::Frightened,
+            vec![ObjectFunction::CollectivePresence],
+            Vec::new(),
+            vec![String::from("crowd morale fractured by pressure")],
+            Vec::new(),
+        ),
+        ObjectId::CuttingTool => ObjectState::new(
+            identity,
+            ObjectFamily::Tool,
+            ObjectKind::Tool,
+            ObjectMaterial::Metal,
+            ObjectCondition::Stable,
+            vec![ObjectFunction::DirectionalTool, ObjectFunction::Repairable],
+            Vec::new(),
+            vec![String::from("cutting tool aligned for beam work")],
+            Vec::new(),
+        ),
+        ObjectId::FormationAnchor => ObjectState::new(
+            identity,
+            ObjectFamily::Formation,
+            ObjectKind::Collective,
+            ObjectMaterial::Mixed,
+            ObjectCondition::Unsettled,
+            vec![ObjectFunction::GroupAnchor, ObjectFunction::GuardSupport],
+            Vec::new(),
+            vec![String::from("formation anchor destabilized under pressure")],
+            Vec::new(),
+        ),
+        ObjectId::Monument => ObjectState::new(
+            identity,
+            ObjectFamily::Monument,
+            ObjectKind::Structure,
+            ObjectMaterial::Stone,
+            ObjectCondition::Stable,
+            vec![ObjectFunction::TitleSurface, ObjectFunction::GuardSupport],
+            Vec::new(),
+            vec![String::from("monument awaits proven public consequence")],
+            Vec::new(),
+        ),
+        ObjectId::HiddenEmotionalRupture => ObjectState::new(
+            identity,
+            ObjectFamily::EmotionalRupture,
+            ObjectKind::SymbolicRelation,
+            ObjectMaterial::Social,
+            ObjectCondition::Hidden,
+            vec![
+                ObjectFunction::RelationalFault,
+                ObjectFunction::HiddenCondition,
+            ],
+            Vec::new(),
+            vec![String::from(
+                "the broken relation is concealed beneath surface calm",
+            )],
+            Vec::new(),
         ),
     }
 }
@@ -1382,6 +1614,25 @@ fn paired_aura_frame(frame: FrameId) -> Option<FrameId> {
         FrameId::Ogre => Some(FrameId::Siren),
         FrameId::Troglodyte => Some(FrameId::Muse),
         _ => None,
+    }
+}
+
+#[must_use]
+fn canonical_flow_learnset(frame: FrameId) -> Vec<FlowId> {
+    match frame {
+        FrameId::Gremlin => vec![FlowId::TinkerGrip],
+        FrameId::Troglodyte => vec![FlowId::TinkerGrip, FlowId::Stonefold],
+        _ => Vec::new(),
+    }
+}
+
+#[must_use]
+fn canonical_glow_learnset(frame: FrameId) -> Vec<GlowId> {
+    match frame {
+        FrameId::Pixy => vec![GlowId::Confusion],
+        FrameId::Siren => vec![GlowId::Projection],
+        FrameId::Muse => vec![GlowId::MuseChorus],
+        _ => Vec::new(),
     }
 }
 

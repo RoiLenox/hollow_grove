@@ -232,7 +232,7 @@ const GLAUSHOUSE_PRESENCE_LINES: &[&str] = &[
     "style: Glaushouse presents as a mechanical-industrial medical capital with Berlin severity, Milan polish, chrome discipline, and clinic glamour",
     "Prima Donna: visible institutional authority and final grant of Clearance",
     "Persephone: triage lead, recovery guide, and right hand beside the Prima Donna",
-    "Nightingales: Stonebend-born white blood cells studied through diagnosis, inflammation, drainage, and recovery rather than treated as public staff ranks",
+    "Nightingales: Glaushouse white-blood-cell civic people studied through diagnosis, inflammation, drainage, and recovery rather than treated as public staff ranks",
     "Glaus Gel: the signature repair resource supporting sealing, bonding, cooling, and restoration",
     "Glausteel: the hard integrated alloy associated with cleared machine and civic work",
 ];
@@ -567,7 +567,7 @@ const GLAUSHOUSE_ROLE_SECTIONS: [HuemanSectionDefinition; 5] = [
             "whoever holds final public Clearance is Prima Donna: visible command, named release authority, and final judgment answerability.",
             "Persephone runs triage, descent, recovery, and relay continuity beneath the Prima Donna.",
             "Glaushouse physicians, nurses, and rehabilitation staff hold bedside truth, common repair work, and the day-to-day restoration body of Glaushouse.",
-            "Nightingales remain the white-blood-cell defense image Stonebend births in marrow and Current carries through the patient.",
+            "Nightingales remain the white-blood-cell civic defense image Glaushouse carries through recognition, clearing, and recovery.",
             "Glaushouse keeps medicine, machinery, presentation, and discipline visibly braided instead of hiding one behind the others.",
         ],
     },
@@ -1470,7 +1470,7 @@ fn render_vertical_integration_stack_prefix() -> &'static str {
              ## Current Alignment\n\n\
              - Stonebend remains North with Hypergiant, Proletariat, and Freemason as a constitutional balance above Current Synthesis\n\
              - Tross remains anchored in Flynt and runs as a West -> East helper line with Delinquent to the west, Juvenile to the east, and four White Dwarfs as the personal guard\n\
-             - Glaushouse remains East with Prima Donna, Persephone, and a mixed medical floor carrying clearance, repair, and Synthesis while Nightingales remain internal white-blood-cell defenders\n\
+             - Glaushouse remains East with Prima Donna, Persephone, and a mixed medical floor carrying clearance, repair, and Synthesis while Nightingales remain Glaushouse white-blood-cell defenders\n\
              - Sandmanor remains South with Minoans, Minorians, Sandmen, and the crowd-judged Sandman contest\n\
              - functionally, Stonebend reads as Craft, Flynt reads as Engineering, Glaushouse reads as Repair, and Sandmanor reads as Configuration across the shared Hollow Grove/Hueman interpretation\n\
              - the player begins as Hueman near Aura Ridge before major form commitment\n\

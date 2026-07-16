@@ -4,6 +4,14 @@ This document records the locked Hollow Grove Being/Object root ontology as enfo
 
 It extends the existing semantic foundation, Point/Point² progression, Rule-of-Twelve geometry, and Proxy/Moxy/Foxy manager language. It does not replace the frozen Version 1.1 execution path.
 
+The civic-body correspondence layer that assigns House peoples systemic world functions now lives in:
+
+- `CIVIC_BODY_CORRESPONDENCE_V1.md`
+
+The embodied Flow / Glow gesture grammar layered over this ontology now lives in:
+
+- `FLOW_GLOW_EMBODIED_GESTURE_GRAMMAR_V1.md`
+
 ## Root Doctrine
 
 - `Being = living practiced Hueman identity and embodiment`
@@ -216,4 +224,3 @@ Negative fixtures reject:
 - Foxy reduced to automatic evil
 - loss of Hueman identity
 - loss of inherited Skill roots
-

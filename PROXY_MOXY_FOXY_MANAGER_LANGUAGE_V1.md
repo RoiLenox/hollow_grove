@@ -8,6 +8,14 @@ The Being/Object action ontology that consumes these addressing modes now lives 
 
 - `BEING_OBJECT_ROOT_ONTOLOGY_V1.md`
 
+The civic-body layer that applies these addressing modes to Gerald, Nightingale, Warden, Minorian, and Minoan response roles now lives in:
+
+- `CIVIC_BODY_CORRESPONDENCE_V1.md`
+
+The embodied Flow / Glow action grammar that uses Proxy, Moxy, and Foxy as addressing modes now lives in:
+
+- `FLOW_GLOW_EMBODIED_GESTURE_GRAMMAR_V1.md`
+
 ## Checkpoint
 
 This pass starts from the verified Rule-of-Twelve checkpoint:
