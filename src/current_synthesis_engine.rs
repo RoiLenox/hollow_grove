@@ -747,7 +747,7 @@ impl RouteLineName {
             Self::Glausbahn => "glausbahn",
             Self::StairwayToHeaven => "stairway-to-heaven",
             Self::Riptide => "riptide",
-            Self::CurrentSea => "current-sea",
+            Self::CurrentSea => "current-seanad",
             Self::MountAura => "mnt-aura",
             Self::QuarryRim => "quarry-rim",
             Self::WesternRoad => "western-road",
@@ -766,7 +766,7 @@ impl RouteLineName {
             Self::Glausbahn => "The Glausbahn",
             Self::StairwayToHeaven => "The Stairway to Heaven",
             Self::Riptide => "The Riptide",
-            Self::CurrentSea => "The Current Sea",
+            Self::CurrentSea => "The Current Seanad",
             Self::MountAura => "Mnt. Aura",
             Self::QuarryRim => "Quarry Rim",
             Self::WesternRoad => "Western Road",
@@ -2146,10 +2146,10 @@ impl PlayerActionProfile {
             self.dominant_kind().posture_label()
         )];
         inputs.push(String::from(
-            "map topology: upper-left Stairway to Heaven curve and Basin Motorspeedway straight enter Flynt; Flynt connects to Glaushouse through the Riptide curve and the Boardwalk straight; Aura Ridge runs as a north-south spine between Glaushouse and Stonebend with an Aura Ridge East cut toward Sandmanor; Glaushouse also branches to Sandmanor through the Current Sea curve and the Glausbahn straight; Sandmanor closes the loop to Stonebend through Mnt. Aura curve and the Aura Way straight",
+            "map topology: upper-left Stairway to Heaven curve and Basin Motorspeedway straight enter Flynt; Flynt connects to Glaushouse through the Riptide curve and the Boardwalk straight; Aura Ridge runs as a north-south spine between Glaushouse and Stonebend with an Aura Ridge East cut toward Sandmanor; Glaushouse also branches to Sandmanor through the Current Seanad curve and the Glausbahn straight; Sandmanor closes the loop to Stonebend through Mnt. Aura curve and the Aura Way straight",
         ));
         inputs.push(String::from(
-            "route custody: HAL holds Stairway to Heaven, the Riptide, the Current Sea, and Mnt. Aura; Clouseau handles Basin Motorspeedway, the Boardwalk, the Glausbahn, the Aura Way, and Aura Ridge North, South, and East; Cleopatra manages HAL's inverse half-circle for NPC continuity and route understructure",
+            "route custody: HAL holds Stairway to Heaven, the Riptide, the Current Seanad, and Mnt. Aura; Clouseau handles Basin Motorspeedway, the Boardwalk, the Glausbahn, the Aura Way, and Aura Ridge North, South, and East; Cleopatra manages HAL's inverse half-circle for NPC continuity and route understructure",
         ));
         for directive in &self.directives {
             inputs.push(format!(
@@ -6115,7 +6115,7 @@ fn infer_route_line(
         RouteLineName::StairwayToHeaven
     } else if normalized.contains("riptide") {
         RouteLineName::Riptide
-    } else if normalized.contains("current sea") {
+    } else if normalized.contains("current seanad") || normalized.contains("current sea") {
         RouteLineName::CurrentSea
     } else if normalized.contains("boardwalk") {
         RouteLineName::Boardwalk
@@ -6240,7 +6240,7 @@ fn parse_route_line_name(value: &str) -> Option<RouteLineName> {
         Some(RouteLineName::StairwayToHeaven)
     } else if normalized.contains("riptide") {
         Some(RouteLineName::Riptide)
-    } else if normalized.contains("current sea") {
+    } else if normalized.contains("current seanad") || normalized.contains("current sea") {
         Some(RouteLineName::CurrentSea)
     } else if normalized.contains("mnt aura") || normalized.contains("mount aura") {
         Some(RouteLineName::MountAura)

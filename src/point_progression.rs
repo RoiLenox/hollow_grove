@@ -46,6 +46,10 @@ impl AuraDimensionId {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum CanonicalRouteId {
     StairwayToHeaven,
+    Glausbahn,
+    CurrentSeanad,
+    Boardwalk,
+    Riptide,
 }
 
 impl CanonicalRouteId {
@@ -53,6 +57,10 @@ impl CanonicalRouteId {
     pub const fn as_str(self) -> &'static str {
         match self {
             Self::StairwayToHeaven => "Stairway to Heaven",
+            Self::Glausbahn => "Glausbahn",
+            Self::CurrentSeanad => "Current Seanad",
+            Self::Boardwalk => "Boardwalk",
+            Self::Riptide => "Riptide",
         }
     }
 }

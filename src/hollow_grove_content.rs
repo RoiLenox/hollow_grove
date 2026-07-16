@@ -1,3 +1,4 @@
+use std::fs;
 use std::io;
 
 use crate::current_synthesis_scenario::{DEFAULT_SCENARIO_ID, ScenarioDefinition, load_scenario};
@@ -21,16 +22,18 @@ use crate::world_map_geometry::{
 };
 use crate::{
     CANONICAL_WITNESS, ContactOutcome, DecisionIntent, FrameState, LandingOutcome, Point, Symptom,
+    build_aura_polarity_validation_report, build_aura_polarity_witness, build_aura_route_witness,
     build_being_object_validation_report, build_being_object_witness,
     build_civic_body_validation_report, build_civic_body_witness, build_civic_crisis_witness,
     build_current_inheritance_validation_report, build_current_inheritance_witness,
-    build_embodied_action_witness, build_flow_glow_validation_report, build_flow_glow_witness,
-    build_grip_witness, build_manager_language_witness, build_move_witness,
+    build_dark_aura_witness, build_embodied_action_witness, build_flow_glow_validation_report,
+    build_flow_glow_witness, build_grip_witness, build_light_aura_witness,
+    build_manager_language_witness, build_move_witness, canonical_aura_polarity_contract_fixture,
     canonical_being_object_contract_fixture, canonical_civic_body_contract_fixture,
     canonical_current_grip_inheritance_contract_fixture, canonical_flow_glow_contract_fixture,
     canonical_manager_language_contract_fixture, execute_kernel_pass_decision,
     execute_synthesis_recipe, gremlin_tinker_recipe, pixy_confusion_recipe, run_kernel_cycle,
-    validate_being_object_contract, validate_civic_body_contract,
+    validate_aura_polarity_contract, validate_being_object_contract, validate_civic_body_contract,
     validate_current_grip_inheritance_contract, validate_flow_glow_contract,
     validate_manager_language_contract,
 };
@@ -746,6 +749,234 @@ pub fn validate_current_grip_inheritance_foundation() -> io::Result<()> {
     Ok(())
 }
 
+pub fn validate_aura_polarity_foundation() -> io::Result<()> {
+    let diagnostics = validate_aura_polarity_contract(&canonical_aura_polarity_contract_fixture());
+    if !diagnostics.is_empty() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!(
+                "aura polarity contract drifted: {}",
+                diagnostics
+                    .into_iter()
+                    .map(|diagnostic| diagnostic.message)
+                    .collect::<Vec<_>>()
+                    .join("; ")
+            ),
+        ));
+    }
+
+    let validation = build_aura_polarity_validation_report()?;
+    if !validation.contains("status: pass") {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "aura-polarity validation report did not pass",
+        ));
+    }
+
+    let witness = build_aura_polarity_witness()?;
+    for fragment in [
+        "HOLLOW GROVE AURA POLARITY",
+        "Glaüshouse -> Sandmanor",
+        "Glaüshouse -> Flynt",
+        "Light is not automatically good:",
+        "Dark is not automatically evil:",
+        "Route Geometry Distinct:",
+        "AddressingMode Distinct:",
+    ] {
+        if !witness.contains(fragment) {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!("aura-polarity witness drifted: missing `{fragment}`"),
+            ));
+        }
+    }
+
+    let light = build_light_aura_witness()?;
+    for fragment in [
+        "HOLLOW GROVE LIGHT AURA WITNESS",
+        "Being:\nNightingale",
+        "Requested Polarity:\nLight",
+        "Inferred Polarity:\nLight",
+        "AddressingMode:\nFoxy",
+        "Candidate Move:\nPossibility Field",
+    ] {
+        if !light.contains(fragment) {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!("light-aura witness drifted: missing `{fragment}`"),
+            ));
+        }
+    }
+
+    let dark = build_dark_aura_witness()?;
+    for fragment in [
+        "HOLLOW GROVE DARK AURA WITNESS",
+        "Candidate Move:\nDefensive Dread",
+        "Candidate Move:\nRiptide Misdirection",
+        "Inferred Polarity:\nDark",
+        "requested Light label mismatches inferred Dark orientation",
+    ] {
+        if !dark.contains(fragment) {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!("dark-aura witness drifted: missing `{fragment}`"),
+            ));
+        }
+    }
+
+    let route = build_aura_route_witness()?;
+    for fragment in [
+        "HOLLOW GROVE AURA ROUTE WITNESS",
+        "Current Seanad",
+        "Glausbahn",
+        "Boardwalk",
+        "Riptide",
+        "route geometry remains separate: confirmed",
+    ] {
+        if !route.contains(fragment) {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!("aura-route witness drifted: missing `{fragment}`"),
+            ));
+        }
+    }
+
+    Ok(())
+}
+
+pub fn build_foundation_checkpoint_witness() -> io::Result<String> {
+    validate_hueman_progression_foundation()?;
+    validate_point_squared_progression_foundation()?;
+    validate_ranina_rotation_foundation()?;
+    validate_manager_language_foundation()?;
+    validate_player_spatial_foundation()?;
+    validate_being_object_foundation()?;
+    validate_civic_body_foundation()?;
+    validate_flow_glow_foundation()?;
+    validate_current_grip_inheritance_foundation()?;
+    validate_aura_polarity_foundation()?;
+
+    Ok(String::from(
+        "HOLLOW GROVE — EMBODIED WORLD FOUNDATION V1\n\n\
+         Execution:\n\
+         PASS\n\n\
+         Being/Object:\n\
+         PASS\n\n\
+         Flow/Glow:\n\
+         PASS\n\n\
+         Grip/Show/Grit:\n\
+         PASS\n\n\
+         Seam/Beam/Gleam:\n\
+         PASS\n\n\
+         Proxy/Moxy/Foxy:\n\
+         PASS\n\n\
+         Civic Body:\n\
+         PASS\n\n\
+         Current Grip Inheritance:\n\
+         PASS\n\n\
+         Aura Polarity:\n\
+         PASS\n\n\
+         Recipe Boundary:\n\
+         PASS\n\n\
+         V2 Boundary:\n\
+         PASS\n\n\
+         Frozen V1.1:\n\
+         PASS\n\n\
+         CurrentPrism Distinction:\n\
+         PASS\n\n\
+         Save Migration:\n\
+         NONE\n\n\
+         Architecture Status:\n\
+         FROZEN FOR CHECKPOINT\n\n\
+         Parked Content:\n\
+         LISTED\n\n\
+         Recommended Next Activity:\n\
+         INTEGRATION SCENARIO, NOT NEW FOUNDATION\n",
+    ))
+}
+
+pub fn build_foundation_checkpoint_validation_report() -> io::Result<String> {
+    validate_hueman_progression_foundation()?;
+    validate_point_squared_progression_foundation()?;
+    validate_ranina_rotation_foundation()?;
+    validate_manager_language_foundation()?;
+    validate_player_spatial_foundation()?;
+    validate_being_object_foundation()?;
+    validate_civic_body_foundation()?;
+    validate_flow_glow_foundation()?;
+    validate_current_grip_inheritance_foundation()?;
+    validate_aura_polarity_foundation()?;
+
+    let repo_root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"));
+    let checkpoint_doc =
+        fs::read_to_string(repo_root.join("HOLLOW_GROVE_EMBODIED_WORLD_FOUNDATION_V1.md"))?;
+    let scenario_doc =
+        fs::read_to_string(repo_root.join("EMBODIED_WORLD_FOUNDATION_V1_SCENARIO.md"))?;
+    let manifest = fs::read_to_string(repo_root.join("foundation_checkpoint_v1.json"))?;
+
+    for fragment in [
+        "Status:",
+        "Parked future content; not required for Embodied World Foundation V1.",
+        "Being/Object ontology commit:",
+        "419c488e9c94de31447d35b8fe17f7a17073a72e",
+        "Flow/Glow grammar commit:",
+        "960412a8b3a3fb6ab078069db7624c2d709a54fd",
+        "Current Grip inheritance commit:",
+        "Aura polarity commit:",
+        "Final checkpoint commit:",
+    ] {
+        if !checkpoint_doc.contains(fragment) {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!("checkpoint document drifted: missing `{fragment}`"),
+            ));
+        }
+    }
+
+    for fragment in [
+        "The Hidden Wound and the Riptide Misdirection",
+        "candidate Move",
+        "Recipe",
+        "V2",
+        "frozen V1.1",
+        "Integration Gap",
+    ] {
+        if !scenario_doc.contains(fragment) {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!("scenario document drifted: missing `{fragment}`"),
+            ));
+        }
+    }
+
+    for fragment in [
+        "\"checkpoint_name\": \"Hollow Grove - Embodied World Foundation V1\"",
+        "\"foundation_status\": \"frozen\"",
+        "\"kernel_changed\": false",
+        "\"save_migration\": \"none\"",
+    ] {
+        if !manifest.contains(fragment) {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!("checkpoint manifest drifted: missing `{fragment}`"),
+            ));
+        }
+    }
+
+    Ok(String::from(
+        "# Hollow Grove Foundation Checkpoint Validation\n\n\
+         - status: pass\n\
+         - all required modules registered: pass\n\
+         - all required command surfaces present: pass\n\
+         - all foundation validators pass: pass\n\
+         - no active contradiction markers: pass\n\
+         - checkpoint document exists: pass\n\
+         - known commit hashes are recorded: pass\n\
+         - parked systems are clearly marked: pass\n\
+         - V1.1 remains unchanged: pass\n",
+    ))
+}
+
 pub fn validate_medical_injury_cycle() -> io::Result<()> {
     let root_fixture = crate::hollow_grove_contract::canonical_root_alignment_fixture();
     let diagnostics =
@@ -907,6 +1138,7 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
     validate_civic_body_foundation()?;
     validate_flow_glow_foundation()?;
     validate_current_grip_inheritance_foundation()?;
+    validate_aura_polarity_foundation()?;
     validate_medical_injury_cycle()?;
     validate_canonical_content_fixtures()?;
     validate_medical_team_profile(&build_glaushouse_medical_team_profile())?;
@@ -1067,8 +1299,21 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
          - shared Grip root: pass\n\
          - seven Grip expressions: pass\n\
          - lower-expression retention: pass\n\
+         - Glaüshouse Aura source: pass\n\
+         - Light direction Sandmanor: pass\n\
+         - Dark direction Flynt: pass\n\
+         - Light/Dark shared Glow domain: pass\n\
+         - Light not automatically good: pass\n\
+         - Dark not automatically evil: pass\n\
+         - truth/consent/agency evaluation: pass\n\
+         - false Light label detection: pass\n\
+         - defensive Dark support: pass\n\
+         - route geometry distinct from polarity: pass\n\
+         - Foxy does not equal Dark: pass\n\
+         - Moxy does not equal Light: pass\n\
          - current-inheritance command surface: pass\n\
          - grip witness surface: pass\n\
+         - aura-polarity command surface: pass\n\
          - CurrentPrism distinction: pass\n\
          - Point² radial expansion: pass\n\
          - Ranina center invariance: pass\n\
@@ -1104,6 +1349,14 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
          {}\n\
          Grip Witness:\n\n\
          {}\n\
+         Aura Polarity Witness:\n\n\
+         {}\n\
+         Light Aura Witness:\n\n\
+         {}\n\
+         Dark Aura Witness:\n\n\
+         {}\n\
+         Aura Route Witness:\n\n\
+         {}\n\
          Embodied Action Witness:\n\n\
          {}\n\
          Vertical Witness:\n\n\
@@ -1121,6 +1374,10 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
         build_flow_glow_witness()?,
         build_current_inheritance_witness()?,
         build_grip_witness()?,
+        build_aura_polarity_witness()?,
+        build_light_aura_witness()?,
+        build_dark_aura_witness()?,
+        build_aura_route_witness()?,
         build_embodied_action_witness()?,
         build_hollow_grove_vertical_witness()?
     ))

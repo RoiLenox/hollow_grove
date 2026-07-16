@@ -76,6 +76,11 @@ where
         | "embodied-action"
         | "current-inheritance"
         | "grip"
+        | "aura-polarity"
+        | "light-aura"
+        | "dark-aura"
+        | "aura-route"
+        | "foundation-checkpoint"
         | "engine"
         | "bond"
         | "resource"
@@ -117,6 +122,11 @@ fn usage() -> &'static str {
        embodied-action ... inspect typed embodied action fixtures\n\
        current-inheritance ... inspect the inherited Current Grip lineage\n\
        grip ...          inspect full Grip inheritance fixtures\n\
+       aura-polarity ... inspect Aura polarity evaluation and directional witnesses\n\
+       light-aura ...    inspect canonical Light Aura fixtures\n\
+       dark-aura ...     inspect canonical Dark Aura fixtures\n\
+       aura-route ...    inspect route-level Aura polarity tendencies\n\
+       foundation-checkpoint ... inspect the Embodied World Foundation V1 freeze checkpoint\n\
        engine ...        inspect Current Synthesis engine state\n\
        bond ...          inspect bond candidates and traces\n\
        resource ...      inspect Aura, Current, and residue history\n\
@@ -159,6 +169,13 @@ fn usage() -> &'static str {
        hollow-grove current-inheritance witness\n\
        hollow-grove current-inheritance validate\n\
        hollow-grove grip witness\n\
+       hollow-grove aura-polarity witness\n\
+       hollow-grove aura-polarity validate\n\
+       hollow-grove light-aura witness\n\
+       hollow-grove dark-aura witness\n\
+       hollow-grove aura-route witness\n\
+       hollow-grove foundation-checkpoint witness\n\
+       hollow-grove foundation-checkpoint validate\n\
        hollow-grove scenario use flooded_quarry_night_watch\n\
        hollow-grove engine status\n\
        hollow-grove bond list\n\
@@ -545,6 +562,25 @@ mod tests {
             MainCli::CurrentSynthesisTui(vec![String::from("grip"), String::from("witness")])
         );
         assert_eq!(
+            parse_main_cli([String::from("aura-polarity"), String::from("witness")])
+                .expect("aura-polarity cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![
+                String::from("aura-polarity"),
+                String::from("witness")
+            ])
+        );
+        assert_eq!(
+            parse_main_cli([
+                String::from("foundation-checkpoint"),
+                String::from("validate")
+            ])
+            .expect("foundation-checkpoint cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![
+                String::from("foundation-checkpoint"),
+                String::from("validate")
+            ])
+        );
+        assert_eq!(
             parse_main_cli([String::from("player"), String::from("status")])
                 .expect("player cli should parse"),
             MainCli::CurrentSynthesisTui(vec![String::from("player"), String::from("status")])
@@ -600,6 +636,13 @@ mod tests {
         assert!(usage.contains("current-inheritance witness"));
         assert!(usage.contains("current-inheritance validate"));
         assert!(usage.contains("grip witness"));
+        assert!(usage.contains("aura-polarity witness"));
+        assert!(usage.contains("aura-polarity validate"));
+        assert!(usage.contains("light-aura witness"));
+        assert!(usage.contains("dark-aura witness"));
+        assert!(usage.contains("aura-route witness"));
+        assert!(usage.contains("foundation-checkpoint witness"));
+        assert!(usage.contains("foundation-checkpoint validate"));
         assert!(usage.contains("engine status"));
         assert!(usage.contains("player plan"));
         assert!(usage.contains("cleopatra tick"));

@@ -30,7 +30,7 @@ Each crossover scene carries a characteristic kind of presence before any encoun
 - style: Glaushouse presents as a mechanical-industrial medical capital with Berlin severity, Milan polish, chrome discipline, and clinic glamour
 - Prima Donna: visible institutional authority and final grant of Clearance
 - Persephone: triage lead, recovery guide, and right hand beside the Prima Donna
-- Nightingales: Stonebend-born white blood cells studied through diagnosis, inflammation, drainage, and recovery rather than treated as public staff ranks
+- Nightingales: Glaushouse white-blood-cell civic people studied through diagnosis, inflammation, drainage, and recovery rather than treated as public staff ranks
 - Glaus Gel: the signature repair resource supporting sealing, bonding, cooling, and restoration
 - Glausteel: the hard integrated alloy associated with cleared machine and civic work
 
@@ -75,7 +75,7 @@ Each crossover scene carries a characteristic kind of presence before any encoun
 
 - The Stairway to Heaven: high border ascent above an underground inverse curve, with rung marks and lifted edge traffic
 - The Riptide: outer-border pull currents above an underground inverse curve, with drag marks, return pressure, and Merman roaming along the rim
-- The Current Sea: exposed outer water band above an underground inverse curve, with counted channels and measured carry
+- The Current Seanad: exposed outer water band above an underground inverse curve, with counted channels and measured carry
 - Mnt. Aura: outer border curve from Stonebend to Sandmanor above an underground inverse curve, with bright air and felt border pressure before sight
 
 ## Relay Packet Presence

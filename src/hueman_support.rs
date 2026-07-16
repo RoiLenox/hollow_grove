@@ -324,14 +324,14 @@ const SANDMANOR_INTENT_LINES: &[&str] = &[
 const INVERSE_CIRCLE_PRESENCE_LINES: &[&str] = &[
     "The Stairway to Heaven: high border ascent above an underground inverse curve, with rung marks and lifted edge traffic",
     "The Riptide: outer-border pull currents above an underground inverse curve, with drag marks, return pressure, and Merman roaming along the rim",
-    "The Current Sea: exposed outer water band above an underground inverse curve, with counted channels and measured carry",
+    "The Current Seanad: exposed outer water band above an underground inverse curve, with counted channels and measured carry",
     "Mnt. Aura: outer border curve from Stonebend to Sandmanor above an underground inverse curve, with bright air and felt border pressure before sight",
 ];
 
 const INVERSE_CIRCLE_INTENT_LINES: &[&str] = &[
     "The Stairway to Heaven: raise the border upward while its underground inverse curve stores hidden descent pressure",
     "The Riptide: pull travelers backward through edge pressure and memory while its underground inverse curve keeps hidden return pull and Merman range alive on the water rim",
-    "The Current Sea: measure, sustain, and carry motion around the outer water border while its underground inverse curve keeps hidden current structure",
+    "The Current Seanad: measure, sustain, and carry motion around the outer water border while its underground inverse curve keeps hidden current structure",
     "Mnt. Aura: hold the curved outer border from Stonebend to Sandmanor while its underground inverse curve keeps the hidden under-arc",
 ];
 
@@ -1481,7 +1481,7 @@ fn render_vertical_integration_stack_prefix() -> &'static str {
              - the visible free-trade body follows the Aura Ridge straight legs Stonebend -> Glaushouse and Glaushouse -> Sandmanor, with Sandmanor's straight continuation reaching Aura Fields where Stonebend and Glaushouse intersect\n\
              - all four houses share the same ascent loop: gather materials, uncover recipe knowledge, pass through the house process, and embody the resulting form without collapsing form into office\n\
              - Stonebend declares Mercury Mirror from hollow current + reflective craft, Flynt declares Opal Oil from regular current + holographic aura, Glaushouse declares Glaus Gel from jade as repair and synthesis medium, and Sandmanor declares Prism Sand from crystal as the proof-and-record branch\n\
-             - the outer border ring remains legible as Stairway to Heaven, Riptide, Current Sea, and Mnt. Aura\n\
+             - the outer border ring remains legible as Stairway to Heaven, Riptide, Current Seanad, and Mnt. Aura\n\
              - procedural uplift now maps Current Synthesis execution contracts into Hueman-facing kingdom procedures without moving ownership upward\n\
              - the HAL/Cleo collision relay now acts as the procedural confirmation packet passed from Current Synthesis into Hueman crossover, physics, and scene procedure\n\
              - scene presence, scene intent, and scene drift remain the top descriptive Hueman layer\n\
@@ -2330,23 +2330,23 @@ pub fn build_hueman_inverse_circle_from_artifacts(
          ## Visible Border Ring\n\n\
          - the visible border stays on the outer ring of the large circle\n\
          - the visible border remains public-facing geography\n\
-         - the visible border names the same rim completed by Stairway to Heaven, Riptide, Current Sea, and Mnt. Aura\n\n\
+         - the visible border names the same rim completed by Stairway to Heaven, Riptide, Current Seanad, and Mnt. Aura\n\n\
          ## Border Sequence\n\n\
          - The Stairway to Heaven\n\
          - The Riptide\n\
-         - The Current Sea\n\
+         - The Current Seanad\n\
          - Mnt. Aura\n\n\
          ## Underground Inverse Curves\n\n\
          - four inverse curved lines run underground on the `PLEB` side\n\
          - four inverse curved lines run underground on the `META` side\n\
-         - each side mirrors Stairway to Heaven, Riptide, Current Sea, and Mnt. Aura as underground inverse structure\n\
+         - each side mirrors Stairway to Heaven, Riptide, Current Seanad, and Mnt. Aura as underground inverse structure\n\
          - the underground curves remain inverse to the visible rim rather than replacing it\n\n\
          ## Underground Reading\n\n\
          - The Stairway to Heaven reads as the rising outer ascent along the circle's rim.\n\
          - beneath it, an inverse underground curve carries hidden descent pressure on both sides.\n\
          - The Riptide reads as the pull that drags movement back around the border, with the visible water rim kept alive as Flynt's Merman range.\n\
          - beneath it, an inverse underground curve carries hidden return pull on both sides beneath that roaming seam.\n\
-         - The Current Sea reads as the outer flow of counted, sustained motion around the circle.\n\
+         - The Current Seanad reads as the outer flow of counted, sustained motion around the circle.\n\
          - beneath it, an inverse underground curve carries hidden current understructure on both sides.\n\
          - Mnt. Aura reads as the bright outer curve running from Stonebend to Sandmanor along the circle's rim.\n\
          - beneath it, an inverse underground curve carries the hidden curved under-arc on both sides.\n\n\
@@ -2916,11 +2916,9 @@ mod tests {
         let output = build_hueman_inverse_circle_from_artifacts("fourway", "physics");
         assert!(output.starts_with("# Hueman Inverse Circle"));
         assert!(output.contains("Mnt. Aura"));
-        assert!(
-            output.contains(
-                "each side mirrors Stairway to Heaven, Riptide, Current Sea, and Mnt. Aura"
-            )
-        );
+        assert!(output.contains(
+            "each side mirrors Stairway to Heaven, Riptide, Current Seanad, and Mnt. Aura"
+        ));
         assert!(output.contains("Hueman Link Physics bytes: 7."));
     }
 

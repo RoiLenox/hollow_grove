@@ -54,7 +54,7 @@ World Roles and Scenes
 - the visible free-trade body follows the Aura Ridge straight legs Stonebend -> Glaushouse and Glaushouse -> Sandmanor, with Sandmanor's straight continuation reaching Aura Fields where Stonebend and Glaushouse intersect
 - all four houses share the same ascent loop: gather materials, uncover recipe knowledge, pass through the house process, and embody the resulting form without collapsing form into office
 - Stonebend declares Mercury Mirror from hollow current + reflective craft, Flynt declares Opal Oil from regular current + holographic aura, Glaushouse declares Glaus Gel from jade as repair and synthesis medium, and Sandmanor declares Prism Sand from crystal as the proof-and-record branch
-- the outer border ring remains legible as Stairway to Heaven, Riptide, Current Sea, and Mnt. Aura
+- the outer border ring remains legible as Stairway to Heaven, Riptide, Current Seanad, and Mnt. Aura
 - procedural uplift now maps Current Synthesis execution contracts into Hueman-facing kingdom procedures without moving ownership upward
 - the HAL/Cleo collision relay now acts as the procedural confirmation packet passed from Current Synthesis into Hueman crossover, physics, and scene procedure
 - scene presence, scene intent, and scene drift remain the top descriptive Hueman layer

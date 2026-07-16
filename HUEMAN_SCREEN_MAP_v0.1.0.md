@@ -78,7 +78,7 @@ These coordinates intentionally compress the horizontal spread compared with the
 ## Curved Routes
 
 - `Mnt. Aura`: `Stonebend -> Sandmanor`
-- `Current Sea`: `Sandmanor -> Glaushouse`
+- `Current Seanad`: `Sandmanor -> Glaushouse`
 - `Riptide`: `Glaushouse -> Flynt`
 - `Stairway to Heaven`: `Flynt -> Stonebend`
 

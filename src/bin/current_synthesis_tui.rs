@@ -20,11 +20,14 @@ use hollow_grove::hollow_grove_contract::{
 };
 use hollow_grove::hueman_progression::{VerticalSliceState, write_vertical_slice_artifacts_at};
 use hollow_grove::{
+    build_aura_polarity_validation_report, build_aura_polarity_witness, build_aura_route_witness,
     build_being_object_validation_report, build_being_object_witness,
     build_civic_body_validation_report, build_civic_body_witness, build_civic_crisis_witness,
     build_current_inheritance_validation_report, build_current_inheritance_witness,
-    build_embodied_action_witness, build_flow_glow_validation_report, build_flow_glow_witness,
-    build_grip_witness, build_manager_language_validation_report, build_manager_language_witness,
+    build_dark_aura_witness, build_embodied_action_witness, build_flow_glow_validation_report,
+    build_flow_glow_witness, build_foundation_checkpoint_validation_report,
+    build_foundation_checkpoint_witness, build_grip_witness, build_light_aura_witness,
+    build_manager_language_validation_report, build_manager_language_witness,
     build_map_validation_report, build_map_witness, build_move_witness,
     build_player_location_witness, build_point_squared_witness,
     build_progression_validation_report, build_progression_witness,
@@ -61,6 +64,13 @@ enum CurrentSynthesisTuiCli {
     CurrentInheritanceWitness,
     CurrentInheritanceValidate,
     GripWitness,
+    AuraPolarityWitness,
+    AuraPolarityValidate,
+    LightAuraWitness,
+    DarkAuraWitness,
+    AuraRouteWitness,
+    FoundationCheckpointWitness,
+    FoundationCheckpointValidate,
     Engine(EngineLens),
     BondList,
     BondInspect(String),
@@ -291,6 +301,63 @@ where
             Some(other) => Err(format!("unknown grip command: {other}")),
             None => Err(String::from("grip requires witness")),
         },
+        "aura-polarity" => match args.next().as_deref() {
+            Some("witness") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::AuraPolarityWitness,
+                "aura-polarity witness",
+            ),
+            Some("validate") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::AuraPolarityValidate,
+                "aura-polarity validate",
+            ),
+            Some(other) => Err(format!("unknown aura-polarity command: {other}")),
+            None => Err(String::from("aura-polarity requires witness or validate")),
+        },
+        "light-aura" => match args.next().as_deref() {
+            Some("witness") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::LightAuraWitness,
+                "light-aura witness",
+            ),
+            Some(other) => Err(format!("unknown light-aura command: {other}")),
+            None => Err(String::from("light-aura requires witness")),
+        },
+        "dark-aura" => match args.next().as_deref() {
+            Some("witness") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::DarkAuraWitness,
+                "dark-aura witness",
+            ),
+            Some(other) => Err(format!("unknown dark-aura command: {other}")),
+            None => Err(String::from("dark-aura requires witness")),
+        },
+        "aura-route" => match args.next().as_deref() {
+            Some("witness") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::AuraRouteWitness,
+                "aura-route witness",
+            ),
+            Some(other) => Err(format!("unknown aura-route command: {other}")),
+            None => Err(String::from("aura-route requires witness")),
+        },
+        "foundation-checkpoint" => match args.next().as_deref() {
+            Some("witness") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::FoundationCheckpointWitness,
+                "foundation-checkpoint witness",
+            ),
+            Some("validate") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::FoundationCheckpointValidate,
+                "foundation-checkpoint validate",
+            ),
+            Some(other) => Err(format!("unknown foundation-checkpoint command: {other}")),
+            None => Err(String::from(
+                "foundation-checkpoint requires witness or validate",
+            )),
+        },
         "engine" => {
             let lens = args.next().unwrap_or_else(|| String::from("status"));
             if args.next().is_some() {
@@ -500,7 +567,7 @@ fn parse_player_action(
 }
 
 fn usage() -> &'static str {
-    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|civic-body|civic-crisis|flow-glow|embodied-action|current-inheritance|grip|engine|bond|resource|player|npc|cleopatra> [args]\n\
+    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|civic-body|civic-crisis|flow-glow|embodied-action|current-inheritance|grip|aura-polarity|light-aura|dark-aura|aura-route|foundation-checkpoint|engine|bond|resource|player|npc|cleopatra> [args]\n\
      \n\
      Commands:\n\
        scenario list\n\
@@ -530,6 +597,13 @@ fn usage() -> &'static str {
        current-inheritance witness\n\
        current-inheritance validate\n\
        grip witness\n\
+       aura-polarity witness\n\
+       aura-polarity validate\n\
+       light-aura witness\n\
+       dark-aura witness\n\
+       aura-route witness\n\
+       foundation-checkpoint witness\n\
+       foundation-checkpoint validate\n\
        engine status|pleb|meta|blep\n\
        bond list\n\
        bond inspect <id>\n\
@@ -671,6 +745,17 @@ fn run_cli(root: &Path, cli: CurrentSynthesisTuiCli) -> io::Result<String> {
             build_current_inheritance_validation_report()
         }
         CurrentSynthesisTuiCli::GripWitness => build_grip_witness(),
+        CurrentSynthesisTuiCli::AuraPolarityWitness => build_aura_polarity_witness(),
+        CurrentSynthesisTuiCli::AuraPolarityValidate => build_aura_polarity_validation_report(),
+        CurrentSynthesisTuiCli::LightAuraWitness => build_light_aura_witness(),
+        CurrentSynthesisTuiCli::DarkAuraWitness => build_dark_aura_witness(),
+        CurrentSynthesisTuiCli::AuraRouteWitness => build_aura_route_witness(),
+        CurrentSynthesisTuiCli::FoundationCheckpointWitness => {
+            build_foundation_checkpoint_witness()
+        }
+        CurrentSynthesisTuiCli::FoundationCheckpointValidate => {
+            build_foundation_checkpoint_validation_report()
+        }
         CurrentSynthesisTuiCli::Engine(lens) => {
             let (_persisted, state) = load_state(root)?;
             Ok(build_engine_output(&state, lens))
@@ -1003,6 +1088,39 @@ mod tests {
             CurrentSynthesisTuiCli::GripWitness
         );
         assert_eq!(
+            parse_cli([String::from("aura-polarity"), String::from("witness")])
+                .expect("aura-polarity witness should parse"),
+            CurrentSynthesisTuiCli::AuraPolarityWitness
+        );
+        assert_eq!(
+            parse_cli([String::from("aura-polarity"), String::from("validate")])
+                .expect("aura-polarity validate should parse"),
+            CurrentSynthesisTuiCli::AuraPolarityValidate
+        );
+        assert_eq!(
+            parse_cli([String::from("light-aura"), String::from("witness")])
+                .expect("light-aura witness should parse"),
+            CurrentSynthesisTuiCli::LightAuraWitness
+        );
+        assert_eq!(
+            parse_cli([String::from("dark-aura"), String::from("witness")])
+                .expect("dark-aura witness should parse"),
+            CurrentSynthesisTuiCli::DarkAuraWitness
+        );
+        assert_eq!(
+            parse_cli([String::from("aura-route"), String::from("witness")])
+                .expect("aura-route witness should parse"),
+            CurrentSynthesisTuiCli::AuraRouteWitness
+        );
+        assert_eq!(
+            parse_cli([
+                String::from("foundation-checkpoint"),
+                String::from("validate")
+            ])
+            .expect("foundation-checkpoint validate should parse"),
+            CurrentSynthesisTuiCli::FoundationCheckpointValidate
+        );
+        assert_eq!(
             parse_cli([String::from("engine"), String::from("blep")]).expect("engine should parse"),
             CurrentSynthesisTuiCli::Engine(
                 hollow_grove::current_synthesis_engine::EngineLens::Blep
@@ -1108,6 +1226,13 @@ mod tests {
         assert!(usage.contains("current-inheritance witness"));
         assert!(usage.contains("current-inheritance validate"));
         assert!(usage.contains("grip witness"));
+        assert!(usage.contains("aura-polarity witness"));
+        assert!(usage.contains("aura-polarity validate"));
+        assert!(usage.contains("light-aura witness"));
+        assert!(usage.contains("dark-aura witness"));
+        assert!(usage.contains("aura-route witness"));
+        assert!(usage.contains("foundation-checkpoint witness"));
+        assert!(usage.contains("foundation-checkpoint validate"));
         assert!(usage.contains("engine status|pleb|meta|blep"));
         assert!(usage.contains("bond inspect <id>"));
         assert!(usage.contains("resource history"));
@@ -1179,6 +1304,22 @@ mod tests {
                 .expect("current-inheritance validate should succeed");
         let grip_witness = run_cli(&root, CurrentSynthesisTuiCli::GripWitness)
             .expect("grip witness should succeed");
+        let aura_polarity_witness = run_cli(&root, CurrentSynthesisTuiCli::AuraPolarityWitness)
+            .expect("aura-polarity witness should succeed");
+        let aura_polarity_validate = run_cli(&root, CurrentSynthesisTuiCli::AuraPolarityValidate)
+            .expect("aura-polarity validate should succeed");
+        let light_aura_witness = run_cli(&root, CurrentSynthesisTuiCli::LightAuraWitness)
+            .expect("light-aura witness should succeed");
+        let dark_aura_witness = run_cli(&root, CurrentSynthesisTuiCli::DarkAuraWitness)
+            .expect("dark-aura witness should succeed");
+        let aura_route_witness = run_cli(&root, CurrentSynthesisTuiCli::AuraRouteWitness)
+            .expect("aura-route witness should succeed");
+        let foundation_checkpoint_witness =
+            run_cli(&root, CurrentSynthesisTuiCli::FoundationCheckpointWitness)
+                .expect("foundation-checkpoint witness should succeed");
+        let foundation_checkpoint_validate =
+            run_cli(&root, CurrentSynthesisTuiCli::FoundationCheckpointValidate)
+                .expect("foundation-checkpoint validate should succeed");
         let status = run_cli(
             &root,
             CurrentSynthesisTuiCli::Engine(
@@ -1222,6 +1363,13 @@ mod tests {
         assert!(current_inheritance_witness.contains("HOLLOW GROVE CURRENT INHERITANCE"));
         assert!(current_inheritance_validate.contains("status: pass"));
         assert!(grip_witness.contains("HOLLOW GROVE GRIP WITNESS"));
+        assert!(aura_polarity_witness.contains("HOLLOW GROVE AURA POLARITY"));
+        assert!(aura_polarity_validate.contains("status: pass"));
+        assert!(light_aura_witness.contains("HOLLOW GROVE LIGHT AURA WITNESS"));
+        assert!(dark_aura_witness.contains("HOLLOW GROVE DARK AURA WITNESS"));
+        assert!(aura_route_witness.contains("HOLLOW GROVE AURA ROUTE WITNESS"));
+        assert!(foundation_checkpoint_witness.contains("EMBODIED WORLD FOUNDATION V1"));
+        assert!(foundation_checkpoint_validate.contains("status: pass"));
         assert!(status.contains("Current Synthesis Engine"));
         assert!(bond_list.contains("Bond List"));
         assert!(npc.contains("NPC Inspector"));

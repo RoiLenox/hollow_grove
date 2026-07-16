@@ -435,7 +435,7 @@ pub fn build_current_synthesis_topology_from_boundary(
          ## Underground Inverse Structures\n\n\
          - four underground inverse curved lines run on the `PLEB` side\n\
          - four underground inverse curved lines run on the `META` side\n\
-         - each side mirrors the visible Hueman border names: Stairway to Heaven, Riptide, Current Sea, and Mount Aura\n\
+         - each side mirrors the visible Hueman border names: Stairway to Heaven, Riptide, Current Seanad, and Mount Aura\n\
          - Cleo follows Clouseau underground while watching these curved lines without taking `PLEB` or `META` occupancy\n\n\
          ## Route Material Families\n\n\
          - route material may present as `dark current` or `hollow current`\n\

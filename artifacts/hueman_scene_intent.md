@@ -91,7 +91,7 @@ Each scene presence carries a dominant descriptive intent before any encounter o
 
 - The Stairway to Heaven: raise the border upward while its underground inverse curve stores hidden descent pressure
 - The Riptide: pull travelers backward through edge pressure and memory while its underground inverse curve keeps hidden return pull and Merman range alive on the water rim
-- The Current Sea: measure, sustain, and carry motion around the outer water border while its underground inverse curve keeps hidden current structure
+- The Current Seanad: measure, sustain, and carry motion around the outer water border while its underground inverse curve keeps hidden current structure
 - Mnt. Aura: hold the curved outer border from Stonebend to Sandmanor while its underground inverse curve keeps the hidden under-arc
 
 ## Status

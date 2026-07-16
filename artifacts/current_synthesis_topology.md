@@ -1,5 +1,13 @@
 # Current Synthesis Topology
 
+## Frozen Kernel Entry Boundary
+
+- exterior ingress: `PlebExterior`
+- complementary return: `BlepReturn`
+- landed route: `BlepArrival`
+- universal landed point: `Point`
+- Current Synthesis begins downstream from this frozen Hollow Grove boundary rather than recomputing it.
+
 ## Joint Order
 
 ```text
@@ -22,6 +30,7 @@ B/A
 
 - HAL is assigned to the `META` side of each joint.
 - Clouseau is assigned to the `PLEB` side of each joint.
+- Cleo (short for Cleopatra) is assigned beneath Clouseau's side of the joint axis to follow Clouseau through the underground inverse curved structures.
 
 ## Inverse Curved Route
 
@@ -37,6 +46,13 @@ Aura Beach
 
 These remain route regions and route stations, not Hollow Grove layers.
 
+## Underground Inverse Structures
+
+- four underground inverse curved lines run on the `PLEB` side
+- four underground inverse curved lines run on the `META` side
+- each side mirrors the visible Hueman border names: Stairway to Heaven, Riptide, Current Seanad, and Mount Aura
+- Cleo follows Clouseau underground while watching these curved lines without taking `PLEB` or `META` occupancy
+
 ## Route Material Families
 
 - route material may present as `dark current` or `hollow current`
@@ -49,12 +65,14 @@ These remain route regions and route stations, not Hollow Grove layers.
 - `PLEB`/`META` execution deferred
 - HAL behavior deferred
 - Clouseau behavior deferred
+- Cleo behavior deferred
 - `niri`/`river` integration deferred
 
 ## Artifact Inputs
 
+Snapshot bytes: 564.
 Current Synthesis sequence bytes: 1458.
-Current Synthesis state bytes: 2110.
+Current Synthesis state bytes: 2216.
 
 ## Boundary Reminder
 

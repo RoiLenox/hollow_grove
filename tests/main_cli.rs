@@ -91,6 +91,13 @@ fn main_binary_reports_integrated_help() {
     assert!(stdout.contains("current-inheritance witness"));
     assert!(stdout.contains("current-inheritance validate"));
     assert!(stdout.contains("grip witness"));
+    assert!(stdout.contains("aura-polarity witness"));
+    assert!(stdout.contains("aura-polarity validate"));
+    assert!(stdout.contains("light-aura witness"));
+    assert!(stdout.contains("dark-aura witness"));
+    assert!(stdout.contains("aura-route witness"));
+    assert!(stdout.contains("foundation-checkpoint witness"));
+    assert!(stdout.contains("foundation-checkpoint validate"));
     assert!(stdout.contains("engine status"));
     assert!(stdout.contains("player ..."));
     assert!(stdout.contains("player move"));
@@ -392,6 +399,64 @@ fn main_binary_delegates_progression_and_point_squared_surfaces() {
     assert!(grip_witness.status.success());
     let grip_witness_stdout = String::from_utf8_lossy(&grip_witness.stdout);
     assert!(grip_witness_stdout.contains("HOLLOW GROVE GRIP WITNESS"));
+
+    let aura_polarity_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["aura-polarity", "witness"])
+        .output()
+        .expect("aura-polarity witness should run");
+    assert!(aura_polarity_witness.status.success());
+    let aura_polarity_witness_stdout = String::from_utf8_lossy(&aura_polarity_witness.stdout);
+    assert!(aura_polarity_witness_stdout.contains("HOLLOW GROVE AURA POLARITY"));
+
+    let aura_polarity_validate = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["aura-polarity", "validate"])
+        .output()
+        .expect("aura-polarity validate should run");
+    assert!(aura_polarity_validate.status.success());
+    let aura_polarity_validate_stdout = String::from_utf8_lossy(&aura_polarity_validate.stdout);
+    assert!(aura_polarity_validate_stdout.contains("status: pass"));
+
+    let light_aura_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["light-aura", "witness"])
+        .output()
+        .expect("light-aura witness should run");
+    assert!(light_aura_witness.status.success());
+    let light_aura_witness_stdout = String::from_utf8_lossy(&light_aura_witness.stdout);
+    assert!(light_aura_witness_stdout.contains("HOLLOW GROVE LIGHT AURA WITNESS"));
+
+    let dark_aura_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["dark-aura", "witness"])
+        .output()
+        .expect("dark-aura witness should run");
+    assert!(dark_aura_witness.status.success());
+    let dark_aura_witness_stdout = String::from_utf8_lossy(&dark_aura_witness.stdout);
+    assert!(dark_aura_witness_stdout.contains("HOLLOW GROVE DARK AURA WITNESS"));
+
+    let aura_route_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["aura-route", "witness"])
+        .output()
+        .expect("aura-route witness should run");
+    assert!(aura_route_witness.status.success());
+    let aura_route_witness_stdout = String::from_utf8_lossy(&aura_route_witness.stdout);
+    assert!(aura_route_witness_stdout.contains("HOLLOW GROVE AURA ROUTE WITNESS"));
+
+    let foundation_checkpoint_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["foundation-checkpoint", "witness"])
+        .output()
+        .expect("foundation-checkpoint witness should run");
+    assert!(foundation_checkpoint_witness.status.success());
+    let foundation_checkpoint_witness_stdout =
+        String::from_utf8_lossy(&foundation_checkpoint_witness.stdout);
+    assert!(foundation_checkpoint_witness_stdout.contains("EMBODIED WORLD FOUNDATION V1"));
+
+    let foundation_checkpoint_validate = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["foundation-checkpoint", "validate"])
+        .output()
+        .expect("foundation-checkpoint validate should run");
+    assert!(foundation_checkpoint_validate.status.success());
+    let foundation_checkpoint_validate_stdout =
+        String::from_utf8_lossy(&foundation_checkpoint_validate.stdout);
+    assert!(foundation_checkpoint_validate_stdout.contains("status: pass"));
 }
 
 #[test]
@@ -438,8 +503,18 @@ fn main_binary_runs_foundation_verification() {
     assert!(stdout.contains("shared Grip root: pass"));
     assert!(stdout.contains("seven Grip expressions: pass"));
     assert!(stdout.contains("lower-expression retention: pass"));
+    assert!(stdout.contains("Glaüshouse Aura source: pass"));
+    assert!(stdout.contains("Light direction Sandmanor: pass"));
+    assert!(stdout.contains("Dark direction Flynt: pass"));
+    assert!(stdout.contains("Light/Dark shared Glow domain: pass"));
+    assert!(stdout.contains("false Light label detection: pass"));
+    assert!(stdout.contains("defensive Dark support: pass"));
+    assert!(stdout.contains("route geometry distinct from polarity: pass"));
+    assert!(stdout.contains("Foxy does not equal Dark: pass"));
+    assert!(stdout.contains("Moxy does not equal Light: pass"));
     assert!(stdout.contains("current-inheritance command surface: pass"));
     assert!(stdout.contains("grip witness surface: pass"));
+    assert!(stdout.contains("aura-polarity command surface: pass"));
     assert!(stdout.contains("Stairway horizon fixture: pass"));
     assert!(stdout.contains("vertical witness: pass"));
     assert!(stdout.contains("V1.1 topology unchanged: pass"));

@@ -1,5 +1,6 @@
 pub mod aim;
 pub mod artifact_io;
+pub mod aura_polarity;
 pub mod being_object_ontology;
 pub mod civic_body;
 pub mod current_grip_inheritance;
@@ -35,6 +36,22 @@ pub mod world_map_geometry;
 pub use aim::{Aim, AimBuildError, construct_aim};
 pub use artifact_io::{
     ArtifactFlushRecord, ArtifactSession, read_text_artifact, write_text_artifact,
+};
+pub use aura_polarity::{
+    AgencyEffect, AuraMoveId, AuraPolarity, AuraPolarityActionRequest, AuraPolarityContractInput,
+    AuraPolarityEvaluation, AuraPolarityResolution, AuraRouteDefinition, ConsentState,
+    ConsequenceLevel, InferredAuraOrientation, PressureRating, Proportionality, Reversibility,
+    RouteGeometry, TruthOrientation, build_aura_polarity_validation_report,
+    build_aura_polarity_witness, build_aura_route_witness, build_dark_aura_witness,
+    build_light_aura_witness, canonical_aura_polarity_contract_fixture,
+    canonical_aura_route_definition, canonical_coercive_glamour_fixture,
+    canonical_consensual_glamour_fixture, canonical_dark_muse_reality_capture_fixture,
+    canonical_dark_riptide_misdirection_fixture, canonical_dark_seam_counter_bind_fixture,
+    canonical_defensive_dark_siren_warning_fixture, canonical_false_light_label_fixture,
+    canonical_light_foxy_revelation_fixture, canonical_light_minoan_presentation_fixture,
+    canonical_light_minorian_measurement_fixture, canonical_light_muse_possibility_field_fixture,
+    canonical_light_nightingale_diagnosis_fixture, canonical_mixed_clinical_disclosure_fixture,
+    resolve_aura_polarity_action, validate_aura_polarity_contract,
 };
 pub use being_object_ontology::{
     ActionAim, AddressingMode, BeingEmbodiment, BeingInheritance, BeingObjectAction,
@@ -101,6 +118,7 @@ pub use grove_seam::{GroveSeam, SeamRoute};
 pub use hollow_beam::{BeamRoute, HollowBeam, LandedSymptom, LandingRoute};
 pub use hollow_grove::{Bond, HollowGrove};
 pub use hollow_grove_content::{
+    build_foundation_checkpoint_validation_report, build_foundation_checkpoint_witness,
     build_hollow_grove_foundation_verification_report, build_hollow_grove_vertical_witness,
 };
 pub use hollow_grove_contract::{
