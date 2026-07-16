@@ -56,7 +56,9 @@ mod tests {
              - `PLEB` and `META` behavior must be specified explicitly\n\
              - runtime state must be introduced deliberately\n\
              - HAL permissions must be declared before automation\n\
-             - Clouseau live interpretation rules must be declared before observation\n\n\
+             - Clouseau live interpretation rules must be declared before observation\n\
+             - Cleo underground observation rules must be declared before watching\n\n\
+             - HAL/Cleo collision relay rules must be declared before shared packet exchange\n\n\
              ## `PLEB` Execution Would Need\n\n\
              - a defined `PLEB` route step model\n\
              - a defined transition rule between joints\n\
@@ -73,6 +75,14 @@ mod tests {
              - explicit observation scope\n\
              - explicit clue or residue inputs\n\
              - explicit prohibition on control or automation\n\n\
+             ## Cleo Would Need Before Underground Observation\n\n\
+             - explicit observation scope for underground inverse curved lines that follow Clouseau's route from below\n\
+             - explicit mapping between visible border lines and underground inverse lines\n\
+             - explicit prohibition on route control, side occupancy, or Hollow Grove mutation\n\n\
+             ## HAL/Cleo Collision Relay Would Need\n\n\
+             - an explicit collision condition saying where HAL and Cleo are allowed to intersect\n\
+             - a defined shared packet format for surface alignment plus underground continuity\n\
+             - an explicit rule that relay output may confirm route state without granting route control\n\n\
              ## Activation Status\n\n\
              - not active\n\
              - no traversal\n\

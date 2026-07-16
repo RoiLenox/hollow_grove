@@ -10,6 +10,7 @@ use hollow_grove::{read_text_artifact, write_text_artifact};
 const RUNTIME_MEMORY_ARTIFACT_PATH: &str = "artifacts/runtime_memory.txt";
 const NIRI_BRIDGE_MEMORY_ARTIFACT_PATH: &str = "artifacts/niri_bridge_memory.txt";
 const NIRI_BRIDGE_STATUS_ARTIFACT_PATH: &str = "artifacts/niri_bridge_status.md";
+const SCREEN_MAP_STATE_ARTIFACT_PATH: &str = "artifacts/screen_map_state.json";
 const HOLLOW_GROVE_WORKSPACE_NAME: &str = "HollowGrove";
 const DEFAULT_INTERVAL_MS: u64 = 1_000;
 
@@ -47,6 +48,30 @@ struct NiriWorkspace {
     name: Option<String>,
     output: String,
     is_focused: bool,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq)]
+struct Rect {
+    x: f64,
+    y: f64,
+    width: f64,
+    height: f64,
+}
+
+#[derive(Debug, Clone, PartialEq)]
+struct FocusedWindow {
+    id: Option<usize>,
+    title: Option<String>,
+    app_id: Option<String>,
+    output: Option<String>,
+    rect: Rect,
+}
+
+#[derive(Debug, Clone, PartialEq)]
+struct NiriOutput {
+    name: String,
+    is_focused: bool,
+    rect: Rect,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -540,6 +565,130 @@ fn parse_json_usize(value: &str, field: &str) -> io::Result<usize> {
     })
 }
 
+fn parse_json_f64(value: &str, field: &str) -> io::Result<f64> {
+    value.parse::<f64>().map_err(|_| {
+        io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!("expected f64 for {field}, got {value}"),
+        )
+    })
+}
+
+fn optional_json_field<'a>(object: &'a str, key: &str) -> Option<&'a str> {
+    find_json_field(object, key).ok()
+}
+
+fn first_json_string_field(object: &str, keys: &[&str]) -> io::Result<Option<String>> {
+    for key in keys {
+        if let Some(value) = optional_json_field(object, key) {
+            return parse_json_string(value);
+        }
+    }
+    Ok(None)
+}
+
+fn first_json_bool_field(object: &str, keys: &[&str]) -> io::Result<Option<bool>> {
+    for key in keys {
+        if let Some(value) = optional_json_field(object, key) {
+            return parse_json_bool(value).map(Some);
+        }
+    }
+    Ok(None)
+}
+
+fn first_json_usize_field(object: &str, keys: &[&str]) -> io::Result<Option<usize>> {
+    for key in keys {
+        if let Some(value) = optional_json_field(object, key) {
+            return parse_json_usize(value, key).map(Some);
+        }
+    }
+    Ok(None)
+}
+
+fn first_json_f64_field(object: &str, keys: &[&str]) -> io::Result<Option<f64>> {
+    for key in keys {
+        if let Some(value) = optional_json_field(object, key) {
+            return parse_json_f64(value, key).map(Some);
+        }
+    }
+    Ok(None)
+}
+
+fn rect_from_field_sets(
+    object: &str,
+    x_keys: &[&str],
+    y_keys: &[&str],
+    width_keys: &[&str],
+    height_keys: &[&str],
+) -> io::Result<Option<Rect>> {
+    let x = first_json_f64_field(object, x_keys)?;
+    let y = first_json_f64_field(object, y_keys)?;
+    let width = first_json_f64_field(object, width_keys)?;
+    let height = first_json_f64_field(object, height_keys)?;
+
+    match (x, y, width, height) {
+        (Some(x), Some(y), Some(width), Some(height)) => Ok(Some(Rect {
+            x,
+            y,
+            width,
+            height,
+        })),
+        _ => Ok(None),
+    }
+}
+
+fn parse_rect_from_object(object: &str) -> io::Result<Rect> {
+    if let Some(rect) = rect_from_field_sets(
+        object,
+        &["x", "pos_x", "left"],
+        &["y", "pos_y", "top"],
+        &["width", "w"],
+        &["height", "h"],
+    )? {
+        return Ok(rect);
+    }
+
+    for key in ["logical", "geometry", "rect", "window_rect", "layout"] {
+        if let Some(value) = optional_json_field(object, key)
+            && value.trim_start().starts_with('{')
+            && let Some(rect) = rect_from_field_sets(
+                value,
+                &["x", "pos_x", "left"],
+                &["y", "pos_y", "top"],
+                &["width", "w"],
+                &["height", "h"],
+            )?
+        {
+            return Ok(rect);
+        }
+    }
+
+    if let (Some(position), Some(size)) = (
+        optional_json_field(object, "position"),
+        optional_json_field(object, "size"),
+    ) && position.trim_start().starts_with('{')
+        && size.trim_start().starts_with('{')
+    {
+        let x = first_json_f64_field(position, &["x", "pos_x", "left"])?;
+        let y = first_json_f64_field(position, &["y", "pos_y", "top"])?;
+        let width = first_json_f64_field(size, &["width", "w"])?;
+        let height = first_json_f64_field(size, &["height", "h"])?;
+        if let (Some(x), Some(y), Some(width), Some(height)) = (x, y, width, height) {
+            return Ok(Rect {
+                x,
+                y,
+                width,
+                height,
+            });
+        }
+    }
+
+    Err(io::Error::new(
+        io::ErrorKind::InvalidData,
+        "unable to parse rectangle from niri json object",
+    ))
+}
+
 fn parse_workspaces_json(contents: &str) -> io::Result<Vec<NiriWorkspace>> {
     let mut workspaces = Vec::new();
 
@@ -559,6 +708,47 @@ fn parse_workspaces_json(contents: &str) -> io::Result<Vec<NiriWorkspace>> {
     }
 
     Ok(workspaces)
+}
+
+fn parse_outputs_json(contents: &str) -> io::Result<Vec<NiriOutput>> {
+    let mut outputs = Vec::new();
+
+    for object in split_top_level_objects(contents)? {
+        let name = first_json_string_field(object, &["name"])?.ok_or_else(|| {
+            io::Error::new(io::ErrorKind::InvalidData, "output object missing name")
+        })?;
+        let rect = parse_rect_from_object(object)?;
+        let is_focused = first_json_bool_field(object, &["is_focused"])?.unwrap_or(false);
+
+        outputs.push(NiriOutput {
+            name,
+            is_focused,
+            rect,
+        });
+    }
+
+    Ok(outputs)
+}
+
+fn parse_focused_window_json(contents: &str) -> io::Result<Option<FocusedWindow>> {
+    let trimmed = contents.trim();
+    if trimmed == "null" {
+        return Ok(None);
+    }
+    if !trimmed.starts_with('{') || !trimmed.ends_with('}') {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "focused-window json is not an object",
+        ));
+    }
+
+    Ok(Some(FocusedWindow {
+        id: first_json_usize_field(trimmed, &["id"])?,
+        title: first_json_string_field(trimmed, &["title"])?,
+        app_id: first_json_string_field(trimmed, &["app_id", "app-id"])?,
+        output: first_json_string_field(trimmed, &["output", "output_name"])?,
+        rect: parse_rect_from_object(trimmed)?,
+    }))
 }
 
 fn parse_overview_state(contents: &str) -> io::Result<OverviewState> {
@@ -596,6 +786,174 @@ fn read_live_overview_state() -> io::Result<OverviewState> {
         )));
     }
     parse_overview_state(&String::from_utf8_lossy(&output.stdout))
+}
+
+fn read_live_outputs() -> io::Result<Vec<NiriOutput>> {
+    let output = Command::new("niri")
+        .args(["msg", "-j", "outputs"])
+        .output()?;
+    if !output.status.success() {
+        return Err(io::Error::other(format!(
+            "niri msg -j outputs exited with status {}",
+            output.status
+        )));
+    }
+    parse_outputs_json(&String::from_utf8_lossy(&output.stdout))
+}
+
+fn read_live_focused_window() -> io::Result<Option<FocusedWindow>> {
+    let output = Command::new("niri")
+        .args(["msg", "-j", "focused-window"])
+        .output()?;
+    if !output.status.success() {
+        return Err(io::Error::other(format!(
+            "niri msg -j focused-window exited with status {}",
+            output.status
+        )));
+    }
+    parse_focused_window_json(&String::from_utf8_lossy(&output.stdout))
+}
+
+fn escape_json(value: &str) -> String {
+    value
+        .replace('\\', "\\\\")
+        .replace('"', "\\\"")
+        .replace('\n', "\\n")
+}
+
+fn format_json_number(value: f64) -> String {
+    let rendered = format!("{value:.6}");
+    rendered
+        .trim_end_matches('0')
+        .trim_end_matches('.')
+        .to_owned()
+}
+
+fn build_screen_map_state_output(
+    focused_window: Option<&FocusedWindow>,
+    active_output: Option<&NiriOutput>,
+    status: &str,
+    error: Option<&str>,
+) -> String {
+    let map_contract_path = "artifacts/hueman_screen_map.json";
+    let intent_path = "artifacts/screen_map_intent.json";
+
+    let focused_window_json = match focused_window {
+        Some(window) => format!(
+            "{{\"id\":{},\"title\":{},\"app_id\":{},\"output\":{},\"rect\":{{\"x\":{},\"y\":{},\"width\":{},\"height\":{}}}}}",
+            window
+                .id
+                .map(|value| value.to_string())
+                .unwrap_or_else(|| String::from("null")),
+            window
+                .title
+                .as_deref()
+                .map(|value| format!("\"{}\"", escape_json(value)))
+                .unwrap_or_else(|| String::from("null")),
+            window
+                .app_id
+                .as_deref()
+                .map(|value| format!("\"{}\"", escape_json(value)))
+                .unwrap_or_else(|| String::from("null")),
+            window
+                .output
+                .as_deref()
+                .map(|value| format!("\"{}\"", escape_json(value)))
+                .unwrap_or_else(|| String::from("null")),
+            format_json_number(window.rect.x),
+            format_json_number(window.rect.y),
+            format_json_number(window.rect.width),
+            format_json_number(window.rect.height)
+        ),
+        None => String::from("null"),
+    };
+
+    let active_output_json = match active_output {
+        Some(output) => format!(
+            "{{\"name\":\"{}\",\"is_focused\":{},\"rect\":{{\"x\":{},\"y\":{},\"width\":{},\"height\":{}}}}}",
+            escape_json(&output.name),
+            output.is_focused,
+            format_json_number(output.rect.x),
+            format_json_number(output.rect.y),
+            format_json_number(output.rect.width),
+            format_json_number(output.rect.height)
+        ),
+        None => String::from("null"),
+    };
+
+    let normalized_json = match (focused_window, active_output) {
+        (Some(window), Some(output)) => {
+            let center_x =
+                (window.rect.x - output.rect.x + (window.rect.width / 2.0)) / output.rect.width;
+            let center_y =
+                (window.rect.y - output.rect.y + (window.rect.height / 2.0)) / output.rect.height;
+            let rect_x = (window.rect.x - output.rect.x) / output.rect.width;
+            let rect_y = (window.rect.y - output.rect.y) / output.rect.height;
+            let rect_width = window.rect.width / output.rect.width;
+            let rect_height = window.rect.height / output.rect.height;
+
+            format!(
+                "{{\"center\":{{\"x\":{},\"y\":{}}},\"rect\":{{\"x\":{},\"y\":{},\"width\":{},\"height\":{}}}}}",
+                format_json_number(center_x),
+                format_json_number(center_y),
+                format_json_number(rect_x),
+                format_json_number(rect_y),
+                format_json_number(rect_width),
+                format_json_number(rect_height)
+            )
+        }
+        _ => String::from("null"),
+    };
+
+    let error_json = error
+        .map(|value| format!("\"{}\"", escape_json(value)))
+        .unwrap_or_else(|| String::from("null"));
+
+    format!(
+        "{{\n  \"schema_version\": \"0.1.0\",\n  \"status\": \"{status}\",\n  \"window_probe\": \"focused_window_center\",\n  \"map_contract_path\": \"{map_contract_path}\",\n  \"intent_path\": \"{intent_path}\",\n  \"focused_window\": {focused_window_json},\n  \"active_output\": {active_output_json},\n  \"normalized\": {normalized_json},\n  \"error\": {error_json}\n}}\n"
+    )
+}
+
+fn write_screen_map_state_at(root: &Path) -> io::Result<PathBuf> {
+    let path = root.join(SCREEN_MAP_STATE_ARTIFACT_PATH);
+
+    let output = match (read_live_focused_window(), read_live_outputs()) {
+        (Ok(focused_window), Ok(outputs)) => {
+            let active_output = match focused_window
+                .as_ref()
+                .and_then(|window| window.output.as_deref())
+            {
+                Some(output_name) => outputs.iter().find(|output| output.name == output_name),
+                None => outputs
+                    .iter()
+                    .find(|output| output.is_focused)
+                    .or_else(|| outputs.first()),
+            };
+
+            let status = match (&focused_window, active_output) {
+                (Some(_), Some(_)) => "ok",
+                (None, _) => "no-focused-window",
+                (Some(_), None) => "no-matching-output",
+            };
+
+            build_screen_map_state_output(focused_window.as_ref(), active_output, status, None)
+        }
+        (Err(error), _) => build_screen_map_state_output(
+            None,
+            None,
+            "unavailable",
+            Some(&format!("focused-window read failed: {error}")),
+        ),
+        (_, Err(error)) => build_screen_map_state_output(
+            None,
+            None,
+            "unavailable",
+            Some(&format!("outputs read failed: {error}")),
+        ),
+    };
+
+    write_text_artifact(&path, &output)?;
+    Ok(path)
 }
 
 fn build_plan(
@@ -814,7 +1172,8 @@ fn build_bridge_status_output(
          - desired_workspace: {desired_workspace}\n\
          - result_message: {}\n\
          - runtime_memory_contract: `{RUNTIME_MEMORY_ARTIFACT_PATH}`\n\
-         - bridge_memory_contract: `{NIRI_BRIDGE_MEMORY_ARTIFACT_PATH}`\n\n\
+         - bridge_memory_contract: `{NIRI_BRIDGE_MEMORY_ARTIFACT_PATH}`\n\
+         - screen_map_state_contract: `{SCREEN_MAP_STATE_ARTIFACT_PATH}`\n\n\
          ## Planned Commands\n\n\
          {planned_commands}\n\n\
          ## Runtime Memory\n\n\
@@ -831,15 +1190,18 @@ fn build_bridge_status_output(
 }
 
 fn run_bridge_tick(root: &Path, config: BridgeConfig) -> io::Result<BridgeTickResult> {
+    write_screen_map_state_at(root)?;
     let runtime_memory = read_runtime_memory_at(root)?;
     let previous_bridge_memory = read_bridge_memory_at(root)?;
 
     let runtime_memory = match runtime_memory {
         Some(memory) => memory,
         None => {
-            let status = "# Hollow Grove Niri Bridge\n\n## Bridge Status\n\n- apply_enabled: false\n- result_kind: waiting\n- result_message: waiting for runtime memory\n";
+            let status = format!(
+                "# Hollow Grove Niri Bridge\n\n## Bridge Status\n\n- apply_enabled: false\n- result_kind: waiting\n- result_message: waiting for runtime memory\n- screen_map_state_contract: `{SCREEN_MAP_STATE_ARTIFACT_PATH}`\n"
+            );
             let status_path = root.join(NIRI_BRIDGE_STATUS_ARTIFACT_PATH);
-            write_text_artifact(&status_path, status)?;
+            write_text_artifact(&status_path, &status)?;
             return Ok(BridgeTickResult {
                 runtime_cycle: None,
                 runtime_mode: None,
@@ -957,8 +1319,9 @@ mod tests {
     use super::{
         BridgeCli, BridgeConfig, BridgeResultKind, DEFAULT_INTERVAL_MS,
         HOLLOW_GROVE_WORKSPACE_NAME, NiriCommand, NiriWorkspace, OverviewState, RuntimeMode,
-        build_plan, parse_bridge_cli, parse_bridge_memory, parse_overview_state,
-        parse_runtime_memory, parse_workspaces_json, usage, workspace_summary,
+        build_plan, build_screen_map_state_output, parse_bridge_cli, parse_bridge_memory,
+        parse_focused_window_json, parse_outputs_json, parse_overview_state, parse_runtime_memory,
+        parse_workspaces_json, usage, workspace_summary,
     };
 
     fn sample_workspaces() -> &'static str {
@@ -1021,7 +1384,7 @@ mod tests {
              last_origin: symptom-origin\n\
              last_operator_note: fixture\n\
              last_should_stop: false\n\
-             last_witness: start Symptom 1\\n↓\\nTriway\n",
+             last_witness: Point\\n↓\\nTriway\n",
         )
         .expect("runtime memory parse");
         assert_eq!(memory.last_cycle, 4);
@@ -1053,6 +1416,55 @@ mod tests {
         assert_eq!(workspaces[1].idx, 1);
         assert!(workspaces[1].is_focused);
         assert_eq!(workspaces[1].name, None);
+    }
+
+    #[test]
+    fn outputs_json_parser_reads_logical_rectangles() {
+        let outputs = parse_outputs_json(
+            r#"[{"name":"DP-2","is_focused":true,"logical":{"x":0,"y":0,"width":2560,"height":1440}}]"#,
+        )
+        .expect("output parse");
+        assert_eq!(outputs.len(), 1);
+        assert_eq!(outputs[0].name, "DP-2");
+        assert!(outputs[0].is_focused);
+        assert_eq!(outputs[0].rect.width, 2560.0);
+        assert_eq!(outputs[0].rect.height, 1440.0);
+    }
+
+    #[test]
+    fn focused_window_parser_reads_geometry() {
+        let focused_window = parse_focused_window_json(
+            r#"{"id":4,"title":"Terminal","app_id":"kitty","output":"DP-2","geometry":{"x":320,"y":180,"width":1280,"height":720}}"#,
+        )
+        .expect("focused window parse")
+        .expect("focused window should exist");
+        assert_eq!(focused_window.id, Some(4));
+        assert_eq!(focused_window.output.as_deref(), Some("DP-2"));
+        assert_eq!(focused_window.rect.x, 320.0);
+        assert_eq!(focused_window.rect.height, 720.0);
+    }
+
+    #[test]
+    fn screen_map_state_output_renders_normalized_geometry() {
+        let focused_window = parse_focused_window_json(
+            r#"{"id":4,"title":"Terminal","app_id":"kitty","output":"DP-2","geometry":{"x":320,"y":180,"width":1280,"height":720}}"#,
+        )
+        .expect("focused window parse")
+        .expect("focused window should exist");
+        let output = parse_outputs_json(
+            r#"[{"name":"DP-2","is_focused":true,"logical":{"x":0,"y":0,"width":2560,"height":1440}}]"#,
+        )
+        .expect("output parse")
+        .pop()
+        .expect("one output");
+
+        let rendered =
+            build_screen_map_state_output(Some(&focused_window), Some(&output), "ok", None);
+        assert!(rendered.contains("\"status\": \"ok\""));
+        assert!(rendered.contains("\"center\":{\"x\":0.375,\"y\":0.375}"));
+        assert!(
+            rendered.contains("\"rect\":{\"x\":0.125,\"y\":0.125,\"width\":0.5,\"height\":0.5}")
+        );
     }
 
     #[test]

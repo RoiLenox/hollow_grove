@@ -1,35 +1,94 @@
+pub mod aim;
 pub mod artifact_io;
+pub mod current_synthesis_engine;
+pub mod current_synthesis_scenario;
+pub mod decision_engine;
+pub mod fire;
+pub mod frame_state;
 pub mod grove_seam;
 pub mod hollow_beam;
 pub mod hollow_grove;
+pub mod hollow_grove_content;
+pub mod hollow_grove_contract;
+pub mod hueman_progression;
+pub mod hueman_slice;
 pub mod hueman_support;
 pub mod kernel_pass;
 pub mod kernel_pass_output;
+pub mod landing;
+pub mod manager_domain;
+pub mod pleb_meta;
 pub mod point;
+pub mod snapshot_boundary;
 pub mod symptom;
+pub mod synthesis_execution;
+pub mod synthesis_recipe;
 pub mod triway;
+pub mod verification;
 
+pub use aim::{Aim, AimBuildError, construct_aim};
 pub use artifact_io::{
     ArtifactFlushRecord, ArtifactSession, read_text_artifact, write_text_artifact,
 };
-pub use grove_seam::GroveSeam;
-pub use hollow_beam::HollowBeam;
+pub use decision_engine::{
+    ChosenDecision, DecisionCandidate, DecisionCandidateId, DecisionChoiceTrace,
+    DecisionChooseError, DecisionEngineError, DecisionEvaluation, DecisionEvaluationReason,
+    DecisionEvaluationTrace, DecisionExecution, DecisionExecutionTrace,
+    DecisionGeneratedCandidateTrace, DecisionIntent, DecisionObservation, DecisionObservationCheck,
+    DecisionObservationTrace, DecisionRecipeBridgeTrace, DecisionTieBreak, DecisionTrace,
+    DecisionTraceReasonCode, DecisionTraceReplayError, DecisionTraceTieBreakReason,
+    SynthesisOrientation, choose_decision, choose_decision_for_observation,
+    evaluate_decision_candidate, execute_decision, execute_kernel_pass_decision,
+    generate_decision_candidates, observe_decision, observe_kernel_pass_decision,
+    replay_decision_trace, replay_kernel_pass_decision_trace, resolve_candidate_recipe,
+};
+pub use fire::{ContactOutcome, FireContext, fire, fire_with_context};
+pub use frame_state::{BeingId, CurrentPrism, FlowId, FrameId, FrameState, GlowId};
+pub use grove_seam::{GroveSeam, SeamRoute};
+pub use hollow_beam::{BeamRoute, HollowBeam, LandedSymptom, LandingRoute};
 pub use hollow_grove::{Bond, HollowGrove};
-pub use kernel_pass::{CANONICAL_WITNESS, KernelPass, LANDED_WITNESS_LABEL, START_WITNESS_LABEL};
+pub use hollow_grove_content::{
+    build_hollow_grove_foundation_verification_report, build_hollow_grove_vertical_witness,
+};
+pub use kernel_pass::{
+    AURA_BEAM_WITNESS_LABEL, CANONICAL_WITNESS, CURRENT_SEAM_WITNESS_LABEL, FOURWAY_WITNESS_LABEL,
+    KernelInput, KernelPass, LANDED_WITNESS_DESCRIPTION, LANDED_WITNESS_LABEL, START_WITNESS_LABEL,
+};
 pub use kernel_pass_output::{
     BOUNDARY_REMINDER, DESKTOP_STATUS_ARTIFACT_PATH, INVERSE_PATH_QUESTION, PROMPT_ARTIFACT_PATH,
     SNAPSHOT_ARTIFACT_PATH, build_desktop_status_output, build_inverse_path_prompt,
     build_prompt_artifact_output, build_snapshot_output, build_tree_output,
 };
+pub use landing::{KissLanding, LandingOutcome, ScriptApplicationError, land_contact};
+pub use manager_domain::{
+    Manager, ManagerDomain, ManagerDomainLock, ManagerFunction, ManagerGeometry, ManagerRelation,
+    compact_manager_domain_law, manager_domain_lock, routing_respects_manager_domain_lock,
+};
+pub use pleb_meta::{
+    ExteriorShape, ExteriorState, InteriorState, Mode, Operator, PlebMetaBond, PlebMetaGrammar,
+    PlebMetaInput, PlebMetaRouting, RoutingPass, Sequence, StrandState, normal_response,
+};
 pub use point::Point;
+pub use snapshot_boundary::{SnapshotBoundary, build_snapshot_boundary_output};
 pub use symptom::Symptom;
+pub use synthesis_execution::{
+    SynthesisExecution, SynthesisExecutionError, execute_synthesis_recipe,
+};
+pub use synthesis_recipe::{
+    PrismDelta, RecipeIntent, SynthesisRecipe, SynthesisRecipeCompileError, SynthesisScript,
+    compile_recipe, gremlin_tinker_recipe, pixy_confusion_recipe,
+};
 pub use triway::{Triway, Way};
 
 pub fn run_kernel_cycle(symptom: Symptom) -> KernelPass {
+    run_kernel_cycle_with_input(symptom, KernelInput::default())
+}
+
+pub fn run_kernel_cycle_with_input(symptom: Symptom, input: KernelInput) -> KernelPass {
     let start = symptom;
     let triway = start.clone().become_triway();
     let hollow_grove = triway.clone().become_hollow_grove();
-    let grove_seam = hollow_grove.clone().become_grove_seam();
+    let grove_seam = hollow_grove.clone().become_grove_seam(input.routing);
     let hollow_beam = grove_seam.clone().achieve_hollow_beam();
     let landed = hollow_beam.clone().land_symptom();
 
@@ -40,22 +99,26 @@ pub fn kernel_proof() -> [&'static str; 10] {
     let _kernel_pass = run_kernel_cycle(Symptom::origin());
 
     [
-        "Symptom 1 enters the kernel cycle.",
-        "Symptom 1 becomes Triway.",
-        "Triway carries one symptom through three ways.",
-        "Triway becomes Hollow Grove",
-        "Hollow Grove forms Bond on one Way and leaves two ways as Atmosphere.",
-        "Hollow Grove becomes GroveSeam",
-        "GroveSeam achieves HollowBeam",
-        "HollowBeam lands Symptom 2.",
-        "KernelPass witnesses one completed recursion.",
+        "Point enters the kernel cycle.",
+        "Point becomes Triway.",
+        "Triway carries one Point through three ways.",
+        "Triway is publicly witnessed through Fourway.",
+        "Fourway resolves into HollowGrove.",
+        "HollowGrove becomes CurrentSeam.",
+        "CurrentSeam achieves AuraBeam.",
+        "AuraBeam lands Point².",
+        "Point² is the Landed Point and next Point source.",
         "Kernel recursion verified.",
     ]
 }
 
 #[cfg(test)]
 mod tests {
-    use super::{Bond, CANONICAL_WITNESS, Symptom, Way, kernel_proof, run_kernel_cycle};
+    use super::{
+        BeamRoute, Bond, CANONICAL_WITNESS, CurrentPrism, ExteriorShape, FrameId, KernelInput,
+        LandingRoute, Mode, SeamRoute, Sequence, Symptom, Way, kernel_proof, run_kernel_cycle,
+        run_kernel_cycle_with_input,
+    };
 
     #[test]
     fn symptom_lands_with_the_same_inner_point() {
@@ -64,6 +127,7 @@ mod tests {
             format!("{:?}", kernel_pass.landed_symptom()),
             "Symptom { point: Point }"
         );
+        assert_eq!(format!("{:?}", kernel_pass.landed().point()), "Point");
         assert_eq!(format!("{:?}", kernel_pass.end_point()), "Point");
     }
 
@@ -117,6 +181,87 @@ mod tests {
             "Symptom { point: Point }"
         );
         assert_eq!(format!("{:?}", kernel_pass.end_point()), "Point");
+        assert_eq!(
+            kernel_pass
+                .routing()
+                .pleb_meta()
+                .exterior()
+                .foreground_sequence(),
+            Sequence::Pleb
+        );
+        assert_eq!(
+            kernel_pass.grove_seam().routing().pleb_meta().exterior(),
+            kernel_pass.routing().pleb_meta().exterior()
+        );
+        assert_eq!(kernel_pass.grove_seam().route(), SeamRoute::PlebExterior);
+        assert_eq!(
+            kernel_pass.hollow_beam().routing().pleb_meta().exterior(),
+            kernel_pass.routing().pleb_meta().exterior()
+        );
+        assert_eq!(
+            kernel_pass.hollow_beam().seam_route(),
+            SeamRoute::PlebExterior
+        );
+        assert_eq!(kernel_pass.hollow_beam().route(), BeamRoute::BlepReturn);
+        assert_eq!(kernel_pass.landed().route(), LandingRoute::BlepArrival);
+    }
+
+    #[test]
+    fn kernel_pass_contains_exactly_one_routing_pass() {
+        let kernel_pass = run_kernel_cycle_with_input(
+            Symptom::origin(),
+            KernelInput {
+                routing: super::PlebMetaInput {
+                    exterior_shape: ExteriorShape::Curved,
+                    pleb_mode: Mode::Pathos,
+                    meta_mode: Mode::Logos,
+                },
+            },
+        );
+
+        let routing = kernel_pass.routing();
+        assert_eq!(routing.pleb_meta().pleb().sequence(), Sequence::Pleb);
+        assert_eq!(routing.pleb_meta().blep().sequence(), Sequence::Blep);
+        assert_eq!(routing.pleb_meta().meta().sequence(), Sequence::Meta);
+        assert_eq!(routing.pleb_meta().atem().sequence(), Sequence::Atem);
+        assert_eq!(
+            routing.pleb_meta().exterior().foreground_sequence(),
+            Sequence::Meta
+        );
+        assert_eq!(routing.pleb_meta().interior().sequence(), Sequence::Atem);
+        assert_eq!(kernel_pass.grove_seam().route(), SeamRoute::MetaExterior);
+        assert_eq!(
+            kernel_pass.hollow_beam().seam_route(),
+            SeamRoute::MetaExterior
+        );
+        assert_eq!(kernel_pass.hollow_beam().route(), BeamRoute::AtemReturn);
+        assert_eq!(kernel_pass.landed().route(), LandingRoute::AtemArrival);
+    }
+
+    #[test]
+    fn landed_witness_preserves_universal_symptom_for_both_route_paths() {
+        let straight = run_kernel_cycle(Symptom::origin());
+        let curved = run_kernel_cycle_with_input(
+            Symptom::origin(),
+            KernelInput {
+                routing: super::PlebMetaInput {
+                    exterior_shape: ExteriorShape::Curved,
+                    pleb_mode: Mode::Pathos,
+                    meta_mode: Mode::Logos,
+                },
+            },
+        );
+
+        assert_eq!(
+            format!("{:?}", straight.landed().symptom()),
+            "Symptom { point: Point }"
+        );
+        assert_eq!(
+            format!("{:?}", curved.landed().symptom()),
+            "Symptom { point: Point }"
+        );
+        assert_eq!(format!("{:?}", straight.landed().point()), "Point");
+        assert_eq!(format!("{:?}", curved.landed().point()), "Point");
     }
 
     #[test]
@@ -124,6 +269,100 @@ mod tests {
         let kernel_pass = run_kernel_cycle(Symptom::origin());
 
         assert_eq!(format!("{kernel_pass}"), CANONICAL_WITNESS);
+        assert_eq!(format!("{kernel_pass}"), format!("{kernel_pass}"));
+        assert!(format!("{kernel_pass}").contains("Fourway"));
+        assert!(format!("{kernel_pass}").contains("CurrentSeam"));
+        assert!(format!("{kernel_pass}").contains("AuraBeam"));
+        assert!(format!("{kernel_pass}").contains("PlebExterior"));
+        assert!(format!("{kernel_pass}").contains("BlepReturn"));
+        assert!(format!("{kernel_pass}").contains("BlepArrival"));
+        assert!(format!("{kernel_pass}").contains("Point² (Landed Point)"));
+        assert!(!format!("{kernel_pass}").contains("MetaExterior"));
+        assert!(!format!("{kernel_pass}").contains("AtemReturn"));
+        assert!(!format!("{kernel_pass}").contains("AtemArrival"));
+    }
+
+    #[test]
+    fn origin_symptom_begins_with_the_first_frame_fixture() {
+        let frame_state = Symptom::origin().frame_state().clone();
+
+        assert_eq!(frame_state.frame(), FrameId::Hueman);
+        assert_eq!(frame_state.prism(), &CurrentPrism::origin());
+        assert!(frame_state.flow_learnset().is_empty());
+        assert!(frame_state.glow_learnset().is_empty());
+    }
+
+    #[test]
+    fn frame_state_survives_both_kernel_route_variants_unchanged() {
+        let straight = run_kernel_cycle(Symptom::origin());
+        let curved = run_kernel_cycle_with_input(
+            Symptom::origin(),
+            KernelInput {
+                routing: super::PlebMetaInput {
+                    exterior_shape: ExteriorShape::Curved,
+                    pleb_mode: Mode::Pathos,
+                    meta_mode: Mode::Logos,
+                },
+            },
+        );
+        let expected = super::FrameState::origin();
+
+        assert_eq!(straight.start_frame_state(), &expected);
+        assert_eq!(straight.end_frame_state(), &expected);
+        assert_eq!(curved.start_frame_state(), &expected);
+        assert_eq!(curved.end_frame_state(), &expected);
+    }
+
+    #[test]
+    fn curved_kernel_pass_displays_the_route_shaped_canonical_witness() {
+        let kernel_pass = run_kernel_cycle_with_input(
+            Symptom::origin(),
+            KernelInput {
+                routing: super::PlebMetaInput {
+                    exterior_shape: ExteriorShape::Curved,
+                    pleb_mode: Mode::Pathos,
+                    meta_mode: Mode::Logos,
+                },
+            },
+        );
+
+        let witness = format!("{kernel_pass}");
+        assert_eq!(witness, format!("{kernel_pass}"));
+        assert!(witness.contains("Fourway"));
+        assert!(witness.contains("CurrentSeam"));
+        assert!(witness.contains("AuraBeam"));
+        assert!(witness.contains("MetaExterior"));
+        assert!(witness.contains("AtemReturn"));
+        assert!(witness.contains("AtemArrival"));
+        assert!(witness.contains("Point² (Landed Point)"));
+        assert!(!witness.contains("PlebExterior"));
+        assert!(!witness.contains("BlepReturn"));
+        assert!(!witness.contains("BlepArrival"));
+    }
+
+    #[test]
+    fn public_witness_retains_the_complete_canonical_route() {
+        let witness = run_kernel_cycle(Symptom::origin()).to_string();
+
+        assert!(
+            witness.starts_with("Point\n↓\nTriway\n↓\nFourway\n↓\nHollowGrove\n↓\nCurrentSeam")
+        );
+        assert!(witness.contains("AuraBeam"));
+        assert!(witness.ends_with("Point² (Landed Point) [BlepArrival]"));
+        assert!(!witness.contains("Landed Point\n↓\nPoint²"));
+    }
+
+    #[test]
+    fn point_squared_becomes_the_next_point_for_the_next_pass() {
+        let first_pass = run_kernel_cycle(Symptom::origin());
+        let next_point = first_pass.landed().next_point();
+        let second_pass = run_kernel_cycle(Symptom::new(next_point));
+
+        assert_eq!(
+            second_pass.start_frame_state(),
+            first_pass.end_frame_state()
+        );
+        assert_eq!(format!("{:?}", second_pass.start_point()), "Point");
     }
 
     #[test]
@@ -131,15 +370,15 @@ mod tests {
         assert_eq!(
             kernel_proof(),
             [
-                "Symptom 1 enters the kernel cycle.",
-                "Symptom 1 becomes Triway.",
-                "Triway carries one symptom through three ways.",
-                "Triway becomes Hollow Grove",
-                "Hollow Grove forms Bond on one Way and leaves two ways as Atmosphere.",
-                "Hollow Grove becomes GroveSeam",
-                "GroveSeam achieves HollowBeam",
-                "HollowBeam lands Symptom 2.",
-                "KernelPass witnesses one completed recursion.",
+                "Point enters the kernel cycle.",
+                "Point becomes Triway.",
+                "Triway carries one Point through three ways.",
+                "Triway is publicly witnessed through Fourway.",
+                "Fourway resolves into HollowGrove.",
+                "HollowGrove becomes CurrentSeam.",
+                "CurrentSeam achieves AuraBeam.",
+                "AuraBeam lands Point².",
+                "Point² is the Landed Point and next Point source.",
                 "Kernel recursion verified.",
             ]
         );

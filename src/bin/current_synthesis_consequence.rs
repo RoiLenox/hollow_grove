@@ -59,6 +59,10 @@ mod tests {
              - `META` remains the complementary side.\n\
              - HAL remains on `META`.\n\
              - `META` remains descriptive only.\n\n\
+             ## Collision Relay Consequence\n\n\
+             - HAL and Cleo may be declared as a paired relay where they collide.\n\
+             - the relay would share surface alignment and underground continuity as one confirmation body.\n\
+             - the relay remains descriptive only.\n\n\
              ## Still Deferred\n\n\
              - no traversal\n\
              - no movement\n\

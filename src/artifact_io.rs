@@ -17,6 +17,17 @@ thread_local! {
     });
 }
 
+fn cached_text_artifact_matches(path: &Path, contents: &str) -> bool {
+    let target_bytes = contents.as_bytes();
+    ARTIFACT_CACHE.with(|cache| {
+        cache
+            .borrow()
+            .contents
+            .get(path)
+            .is_some_and(|cached_bytes| cached_bytes.as_slice() == target_bytes)
+    })
+}
+
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct ArtifactFlushRecord {
     pub path: PathBuf,
@@ -50,6 +61,10 @@ impl ArtifactSession {
             .find(|(staged_path, _)| staged_path == path)
         {
             *staged_contents = contents;
+            return;
+        }
+
+        if cached_text_artifact_matches(path, &contents) {
             return;
         }
 
@@ -255,6 +270,22 @@ mod tests {
                 .iter()
                 .any(|record| record.path == second_path)
         );
+
+        fs::remove_dir_all(&root).expect("temp cleanup should succeed");
+    }
+
+    #[test]
+    fn artifact_session_skips_staging_cached_identical_contents() {
+        let root = unique_temp_dir("hollow-grove-artifact-session-skip");
+        let path = root.join("artifacts/example.txt");
+
+        write_text_artifact(&path, "alpha").expect("initial artifact should write");
+
+        let mut session = ArtifactSession::new();
+        session.stage_text_artifact(&path, "alpha");
+
+        let flush_records = session.commit_timed().expect("session should flush");
+        assert!(flush_records.is_empty());
 
         fs::remove_dir_all(&root).expect("temp cleanup should succeed");
     }

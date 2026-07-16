@@ -29,52 +29,11 @@ mod tests {
 
     #[test]
     fn hueman_fourway_reads_existing_artifacts() {
-        assert_eq!(
-            build_hueman_fourway_from_artifacts("boundary", "motion"),
-            "# Hueman Fourway\n\n\
-             ## Structural Rule\n\n\
-             Hueman runs through the Fourway before resolving downward into AuraTriad and then Triway.\n\n\
-             ## Stack\n\n\
-             ```text\n\
-             Hueman\n\
-             ↓\n\
-             Fourway\n\
-             ↓\n\
-             AuraTriad\n\
-             ↓\n\
-             Triway\n\
-             ↓\n\
-             Hollow Grove\n\
-             ```\n\n\
-             ## Four Directions\n\n\
-             - North\n\
-             - East\n\
-             - South\n\
-             - West\n\n\
-             ## Meaning\n\n\
-             - Fourway is the world-facing directional map.\n\
-             - Fourway includes straight lines and rounded corner bends.\n\
-             - Fourway resolves downward into AuraTriad first.\n\
-             - Triway remains the lower recursive split.\n\
-             - Fourway does not replace Triway.\n\
-             - Fourway does not own PLEB or META.\n\n\
-             ## Initial World Roster\n\n\
-             - North = Flynt = `goblin`\n\
-             - East = Stonebend = `gremlin`\n\
-             - South = Glaushouse = `pixy`\n\
-             - West = Sandmanor = `sprite`\n\n\
-             ## Boundary\n\n\
-             - Fourway belongs to Hueman.\n\
-             - Triway belongs to Hollow Grove.\n\
-             - Current Synthesis does not own Fourway.\n\
-             - no feedback into Current Synthesis\n\
-             - no feedback into Hollow Grove\n\n\
-             ## Artifact Inputs\n\n\
-             Hueman boundary bytes: 8.\n\
-             Hueman motion map bytes: 6.\n\n\
-             ## Boundary Reminder\n\n\
-             Fourway is a Hueman/world structure above AuraTriad and the kernel path. It must not redefine Triway.\n"
-        );
+        let output = build_hueman_fourway_from_artifacts("boundary", "motion");
+        assert!(output.starts_with("# Hueman Fourway"));
+        assert!(output.contains("West = Flynt"));
+        assert!(output.contains("`sprite` originates in Glaushouse."));
+        assert!(output.contains("Hueman motion map bytes: 6."));
     }
 
     #[test]

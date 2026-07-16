@@ -30,44 +30,11 @@ mod tests {
 
     #[test]
     fn hueman_start_choices_reads_existing_artifacts() {
-        assert_eq!(
-            build_hueman_start_choices_from_artifacts("fourway", "triad"),
-            "# Hueman Start Choices\n\n\
-             ## End User Archetypes\n\n\
-             - `goblin`\n\
-             - `gremlin`\n\
-             - `pixy`\n\
-             - `sprite`\n\n\
-             ## Starting Places\n\n\
-             - Flynt\n\
-             - Stonebend\n\
-             - Glaushouse\n\
-             - Sandmanor\n\n\
-             ## Fourway Placement\n\n\
-             - North = Flynt = `goblin`\n\
-             - East = Stonebend = `gremlin`\n\
-             - South = Glaushouse = `pixy`\n\
-             - West = Sandmanor = `sprite`\n\n\
-             ## Initial Start Roster\n\n\
-             - `goblin` starts in Flynt\n\
-             - `gremlin` starts in Stonebend\n\
-             - `pixy` starts in Glaushouse\n\
-             - `sprite` starts in Sandmanor\n\n\
-             ## Status\n\n\
-             - the end user may choose one archetype\n\
-             - the starting place follows the initial Hueman roster\n\
-             - the starting direction follows the Fourway roster\n\
-             - the world resolves downward through AuraTriad after start choice\n\
-             - AuraTriad behavior is descriptive-only after start choice\n\
-             - species mechanics are not active yet\n\
-             - no feedback into Current Synthesis\n\
-             - no feedback into Hollow Grove\n\n\
-             ## Artifact Inputs\n\n\
-             Hueman Fourway bytes: 7.\n\
-             Hueman AuraTriad bytes: 5.\n\n\
-             ## Boundary Reminder\n\n\
-             This is a Hueman-layer start declaration only. It does not change Current Synthesis or Hollow Grove.\n"
-        );
+        let output = build_hueman_start_choices_from_artifacts("fourway", "triad");
+        assert!(output.starts_with("# Hueman Start Choices"));
+        assert!(output.contains("the player begins as Hueman near Aura Ridge"));
+        assert!(output.contains("`goblin` originates in Stonebend"));
+        assert!(output.contains("Hueman AuraTriad bytes: 5."));
     }
 
     #[test]

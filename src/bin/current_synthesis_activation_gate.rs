@@ -5,7 +5,8 @@ use std::path::{Path, PathBuf};
 mod current_synthesis_support;
 
 use current_synthesis_support::{
-    CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH, CURRENT_SYNTHESIS_READINESS_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH, CURRENT_SYNTHESIS_READINESS_ARTIFACT_PATH,
     CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH,
     build_current_synthesis_activation_gate_from_artifacts, read_artifact, write_artifact,
 };
@@ -18,10 +19,13 @@ fn main() -> io::Result<()> {
     let current_synthesis_transition_pm_to_le = read_artifact(Path::new(
         CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH,
     ))?;
+    let current_synthesis_collision_relay =
+        read_artifact(Path::new(CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH))?;
     let current_synthesis_readiness =
         read_artifact(Path::new(CURRENT_SYNTHESIS_READINESS_ARTIFACT_PATH))?;
     let current_synthesis_activation_gate = build_current_synthesis_activation_gate_from_artifacts(
         &current_synthesis_transition_pm_to_le,
+        &current_synthesis_collision_relay,
         &current_synthesis_readiness,
     );
     let artifact_path = artifact_path();
@@ -45,11 +49,13 @@ mod tests {
     fn current_synthesis_activation_gate_reads_existing_artifacts() {
         let current_synthesis_transition_pm_to_le =
             "# Current Synthesis Transition Rule `P/M -> L/E`\n\nrule";
+        let current_synthesis_collision_relay = "# Current Synthesis Collision Relay\n\nrelay";
         let current_synthesis_readiness = "# Current Synthesis Readiness\n\nreadiness";
 
         assert_eq!(
             build_current_synthesis_activation_gate_from_artifacts(
                 current_synthesis_transition_pm_to_le,
+                current_synthesis_collision_relay,
                 current_synthesis_readiness
             ),
             "# Current Synthesis Activation Gate\n\n\
@@ -58,9 +64,11 @@ mod tests {
              - Current Synthesis remains read-only\n\n\
              ## Reason\n\n\
              - the `P/M -> L/E` transition rule is defined but not active\n\
+             - the HAL/Cleo collision relay is defined but not enabled\n\
              - readiness confirms route behavior is not enabled\n\
              - HAL automation is not enabled\n\
              - Clouseau live interpretation is not enabled\n\
+             - Cleo underground observation is not enabled\n\
              - runtime state has not been introduced\n\n\
              ## Allowed Now\n\n\
              - deterministic artifact generation\n\
@@ -71,9 +79,12 @@ mod tests {
              - route movement\n\
              - HAL automation\n\
              - Clouseau live interpretation\n\
+             - Cleo underground observation\n\
+             - HAL/Cleo collision relay\n\
              - feedback into Hollow Grove\n\n\
              ## Artifact Inputs\n\n\
              Current Synthesis transition rule bytes: 54.\n\
+             Current Synthesis collision relay bytes: 42.\n\
              Current Synthesis readiness bytes: 40.\n\n\
              ## Boundary Reminder\n\n\
              Activation gating belongs to Current Synthesis. Hollow Grove remains unchanged.\n"
@@ -83,7 +94,7 @@ mod tests {
     #[test]
     fn current_synthesis_activation_gate_writes_a_deterministic_file() {
         let current_synthesis_activation_gate =
-            build_current_synthesis_activation_gate_from_artifacts("spec", "readiness");
+            build_current_synthesis_activation_gate_from_artifacts("spec", "relay", "readiness");
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .expect("system time before unix epoch")

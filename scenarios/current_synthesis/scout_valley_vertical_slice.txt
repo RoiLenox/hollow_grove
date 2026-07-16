@@ -1,0 +1,27 @@
+# Current Synthesis Scenario
+scenario_id: scout_valley_vertical_slice
+title: Scout Valley Vertical Slice
+default_focused_npc_id: route_warden_04
+player_need: Scout a hostile valley before nightfall
+faction_condition: Flynt needs the road open before dark
+faction_condition: neighboring carriers are guarding their fuel
+settlement_condition: the ridge settlement cannot move injured workers without a route
+settlement_condition: labor is short and tools are stressed
+war_condition: pressure is rising, but no faction has openly declared war yet
+
+npc: route_warden_04 | Route Warden 04 | Flynt route engineer | Flynt | western road hinge | tired but still field-capable
+npc_need: route_warden_04 | keep the western road passable before nightfall
+npc_memory: route_warden_04 | last convoy stalled when pressure collapsed the ridge bridge
+npc_relationship: route_warden_04 | injured workers depend on a cleared shelter route
+npc_relationship: route_warden_04 | fuel convoys are guarded by a rival road faction
+npc_world: route_warden_04 | road blockade at the western road
+npc_world: route_warden_04 | injured workers need evacuation space
+npc_world: route_warden_04 | fuel remains scarce
+
+npc: shelter_triage_lead_02 | Shelter Triage Lead 02 | Glaushouse field triage lead | Glaushouse | recovery shelter edge | exhausted but holding posture
+npc_need: shelter_triage_lead_02 | keep the shelter lane clear before the next injury wave
+npc_memory: shelter_triage_lead_02 | triage failed last week when the lantern line went dark
+npc_relationship: shelter_triage_lead_02 | pasture wardens send patients here when the fence line breaks
+npc_relationship: shelter_triage_lead_02 | route workers need triage space if the ridge leg buckles
+npc_world: shelter_triage_lead_02 | recovery shelter is over capacity
+npc_world: shelter_triage_lead_02 | lantern glare is too weak for safe intake after dusk

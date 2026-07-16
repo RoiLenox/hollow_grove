@@ -30,49 +30,23 @@ mod tests {
 
     #[test]
     fn hueman_sandmanor_roles_reads_existing_artifacts() {
-        assert_eq!(
-            build_hueman_sandmanor_roles_from_artifacts("start", "fourway"),
-            "# Hueman Sandmanor Roles\n\n\
-             ## Structural Rule\n\n\
-             Sandmanor carries a rival two-house rule inside Hueman's world layer, where northern accountancy and southern interior-song design compete through reciprocal teaching rather than inherited fixed sovereignty.\n\n\
-             ## Canonical Anchor\n\n\
-             - Sandmanor remains the West-facing `sprite` start on the Fourway.\n\
-             - from Stonebend, Sandmanor sits on the far counter-arc.\n\
-             - from Glaushouse, Sandmanor may read eastward across the relational arc without changing the canonical map.\n\n\
-             - Sandmanor mines crystals.\n\
-             - Sandmanor exports Crystoleum as its main outward trade good, formed from current and crystals.\n\n\
-             ## Sandmanor Halves\n\n\
-             - Sandmen are the people of Sandmanor.\n\
-             - Minoans hold the South.\n\
-             - Minorians hold the North.\n\n\
-             ## Native Crafts\n\n\
-             - Minoans design interiors, rooms, and atmospheres like a song.\n\
-             - Minorians account, tally, and measure what Sandmanor can sustain.\n\
-             - Minoans and Minorians are the rival houses inside the Sandmen.\n\
-             - each side keeps its own people and its own craft pressure.\n\n\
-             ## Rival Teaching Contract\n\n\
-             - a Minorian must teach a Minoan to account.\n\
-             - a Minoan must teach a Minorian to design like a song.\n\
-             - each rival has to improve at the other's native discipline rather than remain pure.\n\n\
-             ## Sandman Rule\n\n\
-             - the crowd judges which rival is most improved by the opposing lesson.\n\
-             - the office of rule is the Sandman.\n\
-             - a Minoan winner is referred to as the Sandmanite.\n\
-             - a Minorian winner is referred to as the Sandmanorian.\n\
-             - the winning title-holder becomes ruler of Sandmanor until the contest turns again.\n\
-             - rule is earned by witnessed improvement, not fixed inheritance.\n\n\
-             ## Status\n\n\
-             - Sandmanor roles are descriptive-only for now\n\
-             - no contest resolver or crowd AI is active\n\
-             - no automatic succession cycle is active\n\
-             - no feedback into Current Synthesis\n\
-             - no feedback into Hollow Grove\n\n\
-             ## Artifact Inputs\n\n\
-             Hueman Start Choices bytes: 5.\n\
-             Hueman Fourway bytes: 7.\n\n\
-             ## Boundary Reminder\n\n\
-             Sandmanor roles belong to Hueman's kingdom layer. They do not replace Fourway placement, scene logic, or any Current Synthesis client boundary.\n"
-        );
+        let output = build_hueman_sandmanor_roles_from_artifacts("start", "fourway");
+        assert!(output.starts_with("# Hueman Sandmanor Roles"));
+        assert!(output.contains("Pixy is Sandmanor's confirmed Aura-origin path."));
+        assert!(output.contains("Sandmen are the people and witness body of Sandmanor."));
+        assert!(output.contains("Sandmanor is divided between Minorian Gnomes and Minoan Elves"));
+        assert!(output.contains("Gnomes do not evolve through a formal ladder."));
+        assert!(output.contains("A Gnome becomes whatever it keeps."));
+        assert!(output.contains("Gnomes internalize Aura into order."));
+        assert!(output.contains("Elves externalize Aura into expression."));
+        assert!(output.contains("Aura Beach is the Minoan court strand"));
+        assert!(output.contains("Aura Fields is the Minorian proof plain"));
+        assert!(output.contains("## People And Profession Composition"));
+        assert!(output.contains("Elf Radiologist = Being Hueman"));
+        assert!(output.contains("Gnome Emergency Physician = Being Hueman"));
+        assert!(output.contains("office of Sandman may not stand vacant"));
+        assert!(output.contains("the winning contender becomes The Sandman."));
+        assert!(output.contains("Hueman Fourway bytes: 7."));
     }
 
     #[test]

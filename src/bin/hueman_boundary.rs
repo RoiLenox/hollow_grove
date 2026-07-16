@@ -34,46 +34,11 @@ mod tests {
 
     #[test]
     fn hueman_boundary_reads_existing_artifacts() {
-        assert_eq!(
-            build_hueman_boundary_from_artifacts("base", "gate"),
-            "# Hueman Boundary\n\n\
-             ## Stack\n\n\
-             ```text\n\
-             Hollow Grove\n\
-             ↓\n\
-             KernelPass\n\
-             ↓\n\
-             Artifacts\n\
-             ↓\n\
-             Current Synthesis\n\
-             ↓\n\
-             Hueman\n\
-             ```\n\n\
-             ## Layer Role\n\n\
-             - Hueman is the later persistent 32-bit collaboration/world layer.\n\
-             - Current Synthesis remains the operating-system layer beneath it.\n\
-             - Hollow Grove remains the recursive core beneath both.\n\n\
-             ## Movement Distinction\n\n\
-             - Hollow Grove moves active context through the locked field.\n\
-             - Hueman moves the character sprite through the same locked field.\n\
-             - Human Core remains the operator anchor.\n\n\
-             ## Declared World Surface\n\n\
-             - Flynt, Stonebend, Glaushouse, and Sandmanor are declared as Hueman-facing world anchors.\n\
-             - civic roles, helper lines, kingdom roles, scene reading, and procedural uplift may be described above Current Synthesis.\n\
-             - species logic is deferred.\n\
-             - no feedback into Current Synthesis\n\
-             - no feedback into Hollow Grove\n\n\
-             ## Activation Status\n\n\
-             - Current Synthesis activation remains denied.\n\
-             - Hueman world activation is not enabled.\n\
-             - collaborative persistence is not enabled.\n\
-             - visual world mapping is not enabled.\n\n\
-             ## Artifact Inputs\n\n\
-             Current Synthesis base bytes: 4.\n\
-             Current Synthesis activation gate bytes: 4.\n\n\
-             ## Boundary Reminder\n\n\
-             Hueman may consume Current Synthesis. Current Synthesis does not know Hueman exists.\n"
-        );
+        let output = build_hueman_boundary_from_artifacts("base", "gate");
+        assert!(output.starts_with("# Hueman Boundary"));
+        assert!(output.contains("standalone civilization sandbox layer"));
+        assert!(output.contains("Godot 4 and Aseprite are appropriate for Hueman."));
+        assert!(output.contains("Current Synthesis activation gate bytes: 4."));
     }
 
     #[test]

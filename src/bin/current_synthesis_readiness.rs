@@ -66,12 +66,16 @@ mod tests {
              - `PLEB`/`META` behavior is not active\n\
              - HAL automation is not enabled\n\
              - Clouseau live interpretation is not enabled\n\
+             - Cleo underground observation is not enabled\n\
+             - HAL/Cleo collision relay is not enabled\n\
              - runtime state is not introduced\n\n\
              ## Current Readiness\n\n\
              - `PLEB` cannot act yet\n\
              - `META` cannot act yet\n\
              - HAL cannot automate yet\n\
              - Clouseau cannot interpret live behavior yet\n\
+             - Cleo cannot observe live underground behavior yet\n\
+             - HAL and Cleo cannot exchange live relay packets yet\n\
              - Current Synthesis remains read-only\n\n\
              ## Artifact Inputs\n\n\
              Current Synthesis consequence bytes: 44.\n\

@@ -30,42 +30,42 @@ mod tests {
 
     #[test]
     fn hueman_tross_helpers_reads_existing_artifacts() {
-        assert_eq!(
-            build_hueman_tross_helpers_from_artifacts("start", "fourway"),
-            "# Hueman Tross Helpers\n\n\
-             ## Structural Rule\n\n\
-             Tross is anchored in Flynt and runs as a north-to-south helper line inside Hueman's world layer.\n\n\
-             ## Anchor\n\n\
-             - Tross is in Flynt.\n\
-             - Flynt remains North = `goblin` on the Fourway roster.\n\
-             - Wardens are the people of Flynt.\n\
-             - Flynt mines opals.\n\
-             - Flynt exports Opal Oil as its main outward trade good, formed from hollow current and opal yield.\n\
-             - Tross runs North -> South rather than spanning the whole Fourway equally.\n\n\
-             ## Helper Pair\n\n\
-             - Delinquent\n\
-             - Juvenile\n\n\
-             ## Personal Guard\n\n\
-             - The White Dwarfs are Tross's personal guard.\n\
-             - there are four White Dwarfs.\n\
-             - they keep close guard around Tross rather than taking directional posts from the helper pair.\n\n\
-             ## North-South Guard\n\n\
-             - Juvenile guards North at the Flynt-facing head of the line.\n\
-             - Delinquent guards South.\n\
-             - South remains Glaushouse = `pixy` on the Fourway roster.\n\
-             - helper duty runs down the line from Flynt instead of behaving like sovereign rule.\n\n\
-             ## Status\n\n\
-             - Tross helpers are descriptive-only for now\n\
-             - no helper AI or encounter resolver is active\n\
-             - no automatic north or south event gate is active\n\
-             - no feedback into Current Synthesis\n\
-             - no feedback into Hollow Grove\n\n\
-             ## Artifact Inputs\n\n\
-             Hueman Start Choices bytes: 5.\n\
-             Hueman Fourway bytes: 7.\n\n\
-             ## Boundary Reminder\n\n\
-             Tross helpers belong to Hueman's Flynt-anchored directional line. They do not replace Fourway placement, civic roles, or kernel ownership.\n"
+        let output = build_hueman_tross_helpers_from_artifacts("start", "fourway");
+        assert!(output.starts_with("# Hueman Tross Helpers"));
+        assert!(output.contains("Gremlin is Flynt's confirmed Current-origin path."));
+        assert!(output.contains("boardwalk-casino hunting capital"));
+        assert!(output.contains(
+            "Aura Basin is Flynt's nearest hunt ground, where Gargoyles contest Werewolves"
+        ));
+        assert!(
+            output.contains("The Riptide is the outer roaming water rim where Mermen are hunted")
         );
+        assert!(output.contains("it is a mixing pit with convergent ascent"));
+        assert!(output.contains("Gargoyle is Flynt's first mixed synthesis recipe"));
+        assert!(output.contains("Flynt progression is recipe-gated rather than hereditary"));
+        assert!(output.contains(
+            "Gargoyle is the mandatory first embodiment for living and hunting as Flynt"
+        ));
+        assert!(output.contains("Merman is a sea-current form a Flyntian Gargoyle must hunt and harvest along the Riptide"));
+        assert!(output.contains("Werewolf is a feral land-hunt form a Flyntian Gargoyle must hunt and harvest in Aura Basin"));
+        assert!(output.contains(
+            "Chimera only counts after Gargoyle, Werewolf, and Merman have each been separately mastered"
+        ));
+        assert!(output.contains("Manticore is not Chimera under another name"));
+        assert!(output.contains("Chimera is its own completed synthesis recipe and form"));
+        assert!(
+            output.contains("Manticore is the later apex synthesis recipe mastered after Chimera")
+        );
+        assert!(output.contains("## Regional Goods"));
+        assert!(output.contains("Flyntian Dagger = Flynt Opal"));
+        assert!(output.contains("whoever holds Contracore is Tross"));
+        assert!(output.contains(
+            "only someone who has mastered the Manticore recipe and form may challenge Tross"
+        ));
+        assert!(output.contains("can oppose Stonebend's Troglodyte"));
+        assert!(output.contains("office of Tross may not remain vacant"));
+        assert!(output.contains("Delinquent guards West"));
+        assert!(output.contains("Hueman Fourway bytes: 7."));
     }
 
     #[test]

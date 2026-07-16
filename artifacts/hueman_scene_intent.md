@@ -15,7 +15,7 @@ Each scene presence carries a dominant descriptive intent before any encounter o
 
 - `current` intensifies exchange, storage, and guarded continuity
 - `aura` intensifies warning, drift, shimmer, and ambiguity
-- `current` may surface as dark current or hollow current depending on carried pressure
+- `current` may surface as regular current or hollow current depending on carried pressure
 - `aura` may surface as reflective aura or holographic aura depending on exposure state
 - mixed bias keeps the scene readable from multiple angles
 
@@ -23,64 +23,76 @@ Each scene presence carries a dominant descriptive intent before any encounter o
 
 - HAL and Clouseau remain opposite Current Synthesis clients across one shared axis beneath Hueman scenes
 - HAL represents the `META` side while Clouseau represents the `PLEB` side of the same paired joint
+- Cleo, short for Cleopatra, follows Clouseau underground through the inverse curved structures without taking `PLEB` or `META`
 - if the user is read through HAL on `META`, Clouseau remains the mirrored `PLEB` witness
 - if the user is read through Clouseau on `PLEB`, HAL remains the mirrored `META` witness
 - one bonded arm holds the direct link while unresolved arm weight keeps the opposite side present as scene pressure
 - unresolved arm weight may rise as `current` or `aura` in Hueman while the same lower event remains witnessed in Hollow Grove simultaneously
+- where HAL and Cleo collide, they may braid surface alignment and underground continuity into one shared confirmation pressure packet
+- Hueman reads that packet as one multi-function witness body rather than as two separate scene pressures
+- the packet may confirm hinge, trade, and underground carry simultaneously while still refusing route control
 - scene intent may favor one side's pressure, but it must leave the opposite client legible across the same axis
-- Hueman does not reassign HAL or Clouseau; it only carries their mirrored opposition upward as scene pressure
+- Hueman does not reassign HAL, Clouseau, or Cleo; it only carries their mirrored opposition upward as scene pressure, with Cleo remaining the underground Clouseau-following camera
 
 ## Aura Ridge Intent
 
 - keep free trade moving along the declared straight ridge legs without collapsing kingdom identity
 - let Glaushouse serve as the visible turn where eastern and western trade pressure changes direction
+- keep the straight ridge legible without breaking the larger circular world loop
 
 ## Glaushouse Intent
 
-- Prima Donna: tone-setting, command, final say
-- Persephone: delegated execution, continuity, relay, and step-down succession
-- Nightengales: care, stabilization, bedside recovery, and public body without command
-- jades: turn beauty, care, and sovereignty into a held southern resource
-- Jadomer: turn southern beauty and material care into Glaushouse's outward trade body
+- repair: restore function without erasing real damage or real risk
+- style: run recovery through cold-lit wards, industrial bays, strict presentation, and commanding public poise rather than rustic comfort
+- Prima Donna: grant Clearance without escaping challenge from the floor
+- Persephone: manage descent, triage, recovery, and return
+- Nightingales: remain the internal white-blood-cell witness when charts or appearances claim more recovery than the body can verify
+- Glaus Gel: support machine and Hueman repair as a practical synthesis medium
+- Glausteel: carry the cleared integrated hard branch after restoration and synthesis work
 
 ## Stonebend Civic Intent
 
-- Proliteriate: shared leverage, labor continuity, public weight
-- Hypergiant: legible representation, negotiation, public continuity
-- Freemason: durable structure, enclosed coordination, civic continuity
-- Geralds: keep the city's common pressure visible beneath the triad
-- diamonds: compress public value into durable civic leverage
-- mercury mirror: refine hollow current and diamond value into Stonebend's main outward-facing export
-- equal power keeps Stonebend intent braided instead of sovereign
+- craft: name the thing, declare its burden, and shape material into workable repeatable form
+- Proletariat: challenge false authority from the side of lived work and borne burden
+- Hypergiant: carry the public Title while remaining challengeable
+- Freemason: test whether named structure can bear, transfer, and maintain load
+- reallocate pressure: move burden, title, and structural responsibility into the right vessel or route
+- Hollowing: refine carried pressure out of active current without making the remaining current meaningless
+- Mercury Mirror: refine hollow current toward reflective craft rather than decorative glamour
+- Stonebend intent keeps authority challengeable instead of absolute
 
 ## Tross Helper Intent
 
-- Tross: keep the Flynt-anchored line running North -> South without sovereign rank
-- Juvenile: hold the North head, spot early motion, keep Flynt-facing approach alert
-- Delinquent: hold the South end, deter breach, harden Glaushouse-facing thresholds
-- White Dwarfs: maintain the close personal guard around Tross without replacing the directional helpers
-- Wardens: hold the common line body of Flynt around the Tross duty
-- opals: move guarded brightness along the line without exposing the whole body
-- Opal Oil: turn hollow current and guarded opal yield into Flynt's outward trade pressure
-- helpers keep line duty without becoming sovereign roles
+- engineering: turn practical capability into deployable routes, services, machines, and infrastructure
+- style: run recognition through boardwalk temptation, casino risk, nocturnal glamour, and outer hunting pressure rather than polite institutional order
+- Tross: recognize what is actually there even when institutions have denied or overlooked it
+- Delinquent: pressure false certainty from the west through deviation and challenge
+- Juvenile: protect beginnings and not-yet-recognized worth from the east
+- White Dwarfs: keep the close guard without becoming substitute rulers
+- Wardens: hold the common route body and public engineering substrate
+- opals: support advanced engineering feedstock and field-ready refinement
+- Opal Oil: turn regular current and holographic aura into a practical engineering medium
+- helpers keep recognition challengeable instead of becoming sovereign rank
 
 ## Sandmanor Competitive Intent
 
-- Sandmen: carry the public witness that makes the contest socially binding
-- Minoans: teach design as atmosphere, cadence, and room-song
-- Minorians: teach accounting as measure, proof, and public count
-- Sandmanite: take rule when a Minoan proves the strongest reciprocal improvement
-- Sandmanorian: take rule when a Minorian proves the strongest reciprocal improvement
-- crystals: expose stewardship, count, and designed atmosphere through visible mineral proof
-- Crystoleum: turn stewarded crystal proof into Sandmanor's outward trade body
-- Sandmanor intent keeps rivalry productive instead of purely destructive
+- configuration: prove the claim, test the proof, and improve the arrangement
+- Sandmen: carry the public witness that makes contest and improvement socially binding
+- Minoans: teach modeled arrangement, design, and structure
+- Minorians: teach count, measure, assay, and reproducible proof
+- Aura Beach: run visible judgment through the High Elf court so arrangement, etiquette, and display stay publicly enforceable
+- Aura Fields: run Minorian proof through open comparison so measure, tally, and market-facing verification can be contested
+- The Sandman: emerge through the greatest witnessed improvement rather than inheritance
+- Prism Sand: support counting, refraction, glass, and record logic
+- Prismiron: support precise durable structures after proof survives inspection
+- Sandmanor intent keeps rivalry productive instead of merely punitive
 
 ## Inverse Circle Intent
 
-- The Stairway to Heaven: conceal ascent and reward those who can keep climbing in secret
-- The Riptide: pull travelers backward through pressure and memory
-- The Current Sea: measure, sustain, and carry hidden motion through the interior
-- The Aura Way: saturate the tunnel route with felt atmosphere before visible event
+- The Stairway to Heaven: raise the border upward while its underground inverse curve stores hidden descent pressure
+- The Riptide: pull travelers backward through edge pressure and memory while its underground inverse curve keeps hidden return pull and Merman range alive on the water rim
+- The Current Sea: measure, sustain, and carry motion around the outer water border while its underground inverse curve keeps hidden current structure
+- Mnt. Aura: hold the curved outer border from Stonebend to Sandmanor while its underground inverse curve keeps the hidden under-arc
 
 ## Status
 
@@ -92,14 +104,15 @@ Each scene presence carries a dominant descriptive intent before any encounter o
 
 ## Artifact Inputs
 
-Hueman Scene Presence bytes: 4184.
-Hueman Link Physics bytes: 2330.
-Current Synthesis Contract bytes: 1005.
-Hueman Stonebend Roles bytes: 1510.
-Hueman Tross Helpers bytes: 1422.
-Hueman Glaushouse Roles bytes: 1489.
-Hueman Sandmanor Roles bytes: 2093.
-Hueman Inverse Circle bytes: 1477.
+Hueman Scene Presence bytes: 6154.
+Hueman Link Physics bytes: 3086.
+Current Synthesis collision relay bytes: 3022.
+Current Synthesis Contract bytes: 1442.
+Hueman Stonebend Roles bytes: 4242.
+Hueman Tross Helpers bytes: 5222.
+Hueman Glaushouse Roles bytes: 4655.
+Hueman Sandmanor Roles bytes: 4079.
+Hueman Inverse Circle bytes: 2404.
 
 ## Boundary Reminder
 

@@ -1,8 +1,9 @@
 use crate::grove_seam::GroveSeam;
+use crate::pleb_meta::{PlebMetaInput, RoutingPass};
 use crate::symptom::Symptom;
 use crate::triway::{Triway, Way};
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Bond {
     linked: Way,
 }
@@ -19,7 +20,7 @@ impl Bond {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct HollowGrove {
     source: Symptom,
     bond: Bond,
@@ -48,7 +49,7 @@ impl HollowGrove {
         self.atmosphere
     }
 
-    pub fn become_grove_seam(self) -> GroveSeam {
-        GroveSeam::from_symptom(self.source)
+    pub fn become_grove_seam(self, routing_input: PlebMetaInput) -> GroveSeam {
+        GroveSeam::from_symptom(self.source, RoutingPass::new(routing_input))
     }
 }

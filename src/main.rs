@@ -5,11 +5,13 @@ use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::time::SystemTime;
 
-use hollow_grove::{Symptom, run_kernel_cycle};
+use hollow_grove::{Symptom, build_hollow_grove_foundation_verification_report, run_kernel_cycle};
 
 const RUNTIME_BINARY_NAME: &str = "hollow_grove_runtime";
 const BRIDGE_BINARY_NAME: &str = "hollow_grove_niri_bridge";
 const BENCHMARK_BINARY_NAME: &str = "current_synthesis_benchmark";
+const HUEMAN_SLICE_BINARY_NAME: &str = "hueman_slice_demo";
+const CURRENT_SYNTHESIS_TUI_BINARY_NAME: &str = "current_synthesis_tui";
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 enum MainCli {
@@ -19,6 +21,9 @@ enum MainCli {
     Bridge(Vec<String>),
     Desktop(Vec<String>),
     Benchmark(Vec<String>),
+    HuemanSlice(Vec<String>),
+    VerifyFoundation,
+    CurrentSynthesisTui(Vec<String>),
 }
 
 fn parse_main_cli<I>(args: I) -> Result<MainCli, String>
@@ -45,6 +50,21 @@ where
         "bridge" => Ok(MainCli::Bridge(args.collect())),
         "desktop" | "launch" => Ok(MainCli::Desktop(args.collect())),
         "benchmark" => Ok(MainCli::Benchmark(args.collect())),
+        "hueman-slice" => Ok(MainCli::HuemanSlice(args.collect())),
+        "verify-foundation" => {
+            if let Some(extra) = args.next() {
+                Err(format!(
+                    "verify-foundation does not accept additional arguments: {extra}"
+                ))
+            } else {
+                Ok(MainCli::VerifyFoundation)
+            }
+        }
+        "scenario" | "world" | "engine" | "bond" | "resource" | "player" | "npc" | "cleopatra" => {
+            let mut forwarded = vec![command];
+            forwarded.extend(args);
+            Ok(MainCli::CurrentSynthesisTui(forwarded))
+        }
         other => Err(format!("unknown command: {other}")),
     }
 }
@@ -58,6 +78,16 @@ fn usage() -> &'static str {
        bridge [args]     run the Niri bridge against runtime memory\n\
        desktop [args]    launch the runtime loop with the Niri bridge attached\n\
        benchmark [args]  run the Current-Synthesis-style benchmark suite\n\
+       hueman-slice      run the Hueman vertical-slice demo surface\n\
+       verify-foundation print the Hollow Grove semantic foundation regression report\n\
+       scenario ...      list or switch Current Synthesis scenarios\n\
+       world ...         inspect authoritative Current Synthesis world context and alignment\n\
+       engine ...        inspect Current Synthesis engine state\n\
+       bond ...          inspect bond candidates and traces\n\
+       resource ...      inspect Aura, Current, and residue history\n\
+       player ...        inspect or queue planned player actions\n\
+       npc ...           inspect BLEP NPC state and history\n\
+       cleopatra ...     tick and trace BLEP orchestration\n\
        help              print this help\n\
      \n\
      Examples:\n\
@@ -65,7 +95,23 @@ fn usage() -> &'static str {
        hollow-grove runtime --cycles 5 --interval-ms 1000\n\
        hollow-grove bridge --apply --watch\n\
        hollow-grove desktop --cycles 5 --interval-ms 1000\n\
-       hollow-grove benchmark --warmup 5 --samples 25"
+       hollow-grove benchmark --warmup 5 --samples 25\n\
+       hollow-grove hueman-slice walk\n\
+       hollow-grove verify-foundation\n\
+       hollow-grove scenario list\n\
+       hollow-grove world context\n\
+       hollow-grove world witness\n\
+       hollow-grove world validate\n\
+       hollow-grove scenario use flooded_quarry_night_watch\n\
+       hollow-grove engine status\n\
+       hollow-grove bond list\n\
+       hollow-grove resource history\n\
+       hollow-grove player plan brace the intake ladder before dawn\n\
+       hollow-grove player move cross the flooded rim\n\
+       hollow-grove player decide signal the upper crew\n\
+       hollow-grove npc inspect route_warden_04\n\
+       hollow-grove cleopatra tick\n\
+       hollow-grove cleopatra run 5"
 }
 
 fn canonical_kernel_output() -> String {
@@ -238,7 +284,17 @@ fn run_desktop_launcher(runtime_args: &[String]) -> io::Result<()> {
 
     let runtime_status = runtime_result?;
     if runtime_status.success() {
-        Ok(())
+        let bridge_status = Command::new(bridge_path)
+            .args(["--apply", "--cycles", "1", "--quiet"])
+            .status()?;
+
+        if bridge_status.success() {
+            Ok(())
+        } else {
+            Err(io::Error::other(format!(
+                "{BRIDGE_BINARY_NAME} exited with status {bridge_status}"
+            )))
+        }
     } else {
         Err(io::Error::other(format!(
             "{RUNTIME_BINARY_NAME} exited with status {runtime_status}"
@@ -263,6 +319,14 @@ fn main() -> io::Result<()> {
         MainCli::Bridge(args) => run_child_binary(BRIDGE_BINARY_NAME, &args),
         MainCli::Desktop(args) => run_desktop_launcher(&args),
         MainCli::Benchmark(args) => run_child_binary(BENCHMARK_BINARY_NAME, &args),
+        MainCli::HuemanSlice(args) => run_child_binary(HUEMAN_SLICE_BINARY_NAME, &args),
+        MainCli::VerifyFoundation => {
+            println!("{}", build_hollow_grove_foundation_verification_report()?);
+            Ok(())
+        }
+        MainCli::CurrentSynthesisTui(args) => {
+            run_child_binary(CURRENT_SYNTHESIS_TUI_BINARY_NAME, &args)
+        }
     }
 }
 
@@ -319,6 +383,41 @@ mod tests {
             .expect("benchmark cli should parse"),
             MainCli::Benchmark(vec![String::from("--samples"), String::from("3")])
         );
+        assert_eq!(
+            parse_main_cli([String::from("hueman-slice"), String::from("status")])
+                .expect("hueman-slice cli should parse"),
+            MainCli::HuemanSlice(vec![String::from("status")])
+        );
+        assert_eq!(
+            parse_main_cli([String::from("verify-foundation")])
+                .expect("verify-foundation cli should parse"),
+            MainCli::VerifyFoundation
+        );
+        assert_eq!(
+            parse_main_cli([String::from("scenario"), String::from("list")])
+                .expect("scenario cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![String::from("scenario"), String::from("list")])
+        );
+        assert_eq!(
+            parse_main_cli([String::from("world"), String::from("context")])
+                .expect("world cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![String::from("world"), String::from("context")])
+        );
+        assert_eq!(
+            parse_main_cli([String::from("engine"), String::from("status")])
+                .expect("engine cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![String::from("engine"), String::from("status")])
+        );
+        assert_eq!(
+            parse_main_cli([String::from("player"), String::from("status")])
+                .expect("player cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![String::from("player"), String::from("status")])
+        );
+        assert_eq!(
+            parse_main_cli([String::from("cleopatra"), String::from("tick")])
+                .expect("cleopatra cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![String::from("cleopatra"), String::from("tick")])
+        );
     }
 
     #[test]
@@ -339,6 +438,13 @@ mod tests {
         assert!(usage.contains("bridge [args]"));
         assert!(usage.contains("desktop [args]"));
         assert!(usage.contains("benchmark [args]"));
+        assert!(usage.contains("hueman-slice"));
+        assert!(usage.contains("verify-foundation"));
+        assert!(usage.contains("scenario list"));
+        assert!(usage.contains("world context"));
+        assert!(usage.contains("engine status"));
+        assert!(usage.contains("player plan"));
+        assert!(usage.contains("cleopatra tick"));
     }
 
     #[test]

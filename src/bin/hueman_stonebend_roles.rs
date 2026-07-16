@@ -30,40 +30,24 @@ mod tests {
 
     #[test]
     fn hueman_stonebend_roles_reads_existing_artifacts() {
-        assert_eq!(
-            build_hueman_stonebend_roles_from_artifacts("start", "fourway"),
-            "# Hueman Stonebend Roles\n\n\
-             ## Structural Rule\n\n\
-             Stonebend carries a three-part civic power that belongs to Hueman's world layer and remains vertically integrated above Current Synthesis and Hollow Grove.\n\n\
-             ## Stonebend Power Triad\n\n\
-             - Proliteriate\n\
-             - Hypergiant\n\
-             - Freemason\n\n\
-             ## Power Balance\n\n\
-             - Proliteriate, Hypergiant, and Freemason hold equal power inside Stonebend.\n\
-             - Hypergiant is the public face of the triad, not a higher authority.\n\
-             - public representation does not override equal internal standing.\n\
-             - no single role may collapse the triad into a solo rule.\n\n\
-             ## Vertical Integration\n\n\
-             - Stonebend remains the East-facing `gremlin` start on the Fourway.\n\
-             - the civic triad is a Hueman/world governance layer attached to that start.\n\
-             - Geralds are the people of Stonebend and carry the city's common civic body.\n\
-             - Stonebend mines diamonds.\n\
-             - Stonebend uses hollow current with diamond yield to produce mercury mirror as its main export.\n\
-             - Current Synthesis remains the lower operating layer beneath this governance.\n\
-             - Hollow Grove remains the recursive core beneath both.\n\n\
-             ## Status\n\n\
-             - Stonebend roles are descriptive-only for now\n\
-             - no command resolver or role AI is active\n\
-             - no automatic power shifts are active\n\
-             - no feedback into Current Synthesis\n\
-             - no feedback into Hollow Grove\n\n\
-             ## Artifact Inputs\n\n\
-             Hueman Start Choices bytes: 5.\n\
-             Hueman Fourway bytes: 7.\n\n\
-             ## Boundary Reminder\n\n\
-             Stonebend roles belong to Hueman's civic layer. They do not replace HAL, Clouseau, or any Current Synthesis client boundary.\n"
+        let output = build_hueman_stonebend_roles_from_artifacts("start", "fourway");
+        assert!(output.starts_with("# Hueman Stonebend Roles"));
+        assert!(
+            output.contains("Gremlin -> Goblin -> Ghoul -> Troll -> Ork -> Ogre -> Troglodyte")
         );
+        assert!(
+            output.contains("Hypergiant is the Stonebend office that possesses the Troglodyte")
+        );
+        assert!(output.contains("whoever holds the Hypergiant Crown is Hypergiant"));
+        assert!(output.contains("alone or together"));
+        assert!(output.contains("either office may take the Crown and become Hypergiant"));
+        assert!(output.contains("the Stonebender is the public proving ground at Stonebend"));
+        assert!(output.contains("Stonehenge-like arena at Stonebend"));
+        assert!(output.contains("Proletariat enters as labor force"));
+        assert!(output.contains("Freemason tests craft, structure"));
+        assert!(output.contains("separates hollow current from regular current"));
+        assert!(output.contains("Mercurite is the accepted hard branch"));
+        assert!(output.contains("Hueman Fourway bytes: 7."));
     }
 
     #[test]

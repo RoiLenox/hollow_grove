@@ -63,6 +63,11 @@ mod tests {
              - if the user is read through Clouseau on `PLEB`, HAL remains the opposite `META` witness\n\
              - the user-facing side and the opposing side stay mirrored across one axis\n\
              - the axis may not collapse both clients into one side\n\n\
+             ## HAL/Cleo Collision Relay\n\n\
+             - when HAL and Cleo collide at one joint crossing, HAL may contribute surface-side complementary alignment\n\
+             - when HAL and Cleo collide at one joint crossing, Cleo may contribute underground route continuity from below Clouseau's path\n\
+             - the useful relay function is to confirm that one visible route condition and one underground inverse condition belong to the same event body\n\
+             - no live relay executes yet\n\n\
              ## Contract Status\n\n\
              - no traversal\n\
              - no movement\n\

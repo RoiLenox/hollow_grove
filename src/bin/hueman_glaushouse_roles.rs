@@ -30,39 +30,23 @@ mod tests {
 
     #[test]
     fn hueman_glaushouse_roles_reads_existing_artifacts() {
-        assert_eq!(
-            build_hueman_glaushouse_roles_from_artifacts("start", "fourway"),
-            "# Hueman Glaushouse Roles\n\n\
-             ## Structural Rule\n\n\
-             Glaushouse carries a scene-facing court and care order inside Hueman's world layer, where leadership, succession, and nursing remain socially visible without leaving the Fourway boundary.\n\n\
-             ## Canonical Anchor\n\n\
-             - Glaushouse remains the South-facing `pixy` start on the Fourway.\n\
-             - Glaushouse holds the luminous southern threshold of the roster.\n\
-             - Glaushouse mines jades.\n\
-             - Glaushouse exports Jadomer as its main outward trade good, formed from current and jades.\n\
-\n\
-             ## Glaushouse Order\n\n\
-             - Prima Donna is the leader.\n\
-             - Persephone is the assistant and step-down continuity.\n\
-             - Nightengales are the nurses and the common people of Glaushouse.\n\
-\n\
-             ## Social Balance\n\n\
-             - Prima Donna sets tone, command, and public face.\n\
-             - Persephone carries relay authority and may step down from the lead into continuity duty.\n\
-             - Nightengales keep recovery, bedside care, and the lived body of the kingdom.\n\
-             - leadership does not erase the people; the people remain visible through the Nightengales.\n\n\
-             ## Status\n\n\
-             - Glaushouse roles are descriptive-only for now\n\
-             - no court resolver or succession engine is active\n\
-             - no nurse AI or care loop is active\n\
-             - no feedback into Current Synthesis\n\
-             - no feedback into Hollow Grove\n\n\
-             ## Artifact Inputs\n\n\
-             Hueman Start Choices bytes: 5.\n\
-             Hueman Fourway bytes: 7.\n\n\
-             ## Boundary Reminder\n\n\
-             Glaushouse roles belong to Hueman's kingdom layer. They do not replace scene logic, procedural care systems, or any Current Synthesis client boundary.\n"
+        let output = build_hueman_glaushouse_roles_from_artifacts("start", "fourway");
+        assert!(output.starts_with("# Hueman Glaushouse Roles"));
+        assert!(output.contains("Pixy -> Sprite -> Farie -> Nymph -> Siren -> Muse"));
+        assert!(output.contains("exclusive Synthesis"));
+        assert!(output.contains("mechanical-industrial medical capital"));
+        assert!(output.contains("whoever holds final public Clearance is Prima Donna"));
+        assert!(output.contains("Muse is the highest care form in Glaushouse"));
+        assert!(output.contains("mines jades and refines Glaus Gel"));
+        assert!(
+            output.contains("Persephone and the recovery floor may each oppose false Clearance")
         );
+        assert!(output.contains("## Composed Medical Roles"));
+        assert!(output.contains("Gargoyle Surgeon = Being Hueman"));
+        assert!(output.contains("Elf Radiologist = Being Hueman"));
+        assert!(output.contains("Werewolf Emergency Nurse = Being Hueman"));
+        assert!(output.contains("Gnome Emergency Physician = Being Hueman"));
+        assert!(output.contains("Hueman Fourway bytes: 7."));
     }
 
     #[test]

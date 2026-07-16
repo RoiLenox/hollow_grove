@@ -1,22 +1,27 @@
+use crate::frame_state::FrameState;
 use crate::point::Point;
 use crate::triway::Triway;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Symptom {
     point: Point,
 }
 
 impl Symptom {
-    pub const fn new(point: Point) -> Self {
+    pub fn new(point: Point) -> Self {
         Self { point }
     }
 
-    pub const fn origin() -> Self {
-        Self::new(Point)
+    pub fn origin() -> Self {
+        Self::new(Point::origin())
     }
 
     pub fn point(&self) -> &Point {
         &self.point
+    }
+
+    pub const fn frame_state(&self) -> &FrameState {
+        self.point.frame_state()
     }
 
     pub fn into_point(self) -> Point {

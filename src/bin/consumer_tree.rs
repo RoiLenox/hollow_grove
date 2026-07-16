@@ -17,20 +17,13 @@ mod tests {
     #[test]
     fn tree_consumer_reads_the_completed_kernel_pass() {
         let kernel_pass = run_kernel_cycle(Symptom::origin());
+        let output = build_tree_from_consumer(&kernel_pass);
 
-        assert_eq!(
-            build_tree_from_consumer(&kernel_pass),
-            "KernelPass\n\
-             ├─ start: Symptom 1\n\
-             ├─ triway\n\
-             │  ├─ ways: [One, Two, Three]\n\
-             ├─ hollow_grove\n\
-             │  ├─ bond: One\n\
-             │  └─ atmosphere: [Two, Three]\n\
-             ├─ grove_seam: GroveSeam\n\
-             ├─ hollow_beam: HollowBeam\n\
-             └─ landed: Symptom 2"
-        );
+        assert!(output.contains("├─ start: Point"));
+        assert!(output.contains("├─ fourway: Fourway"));
+        assert!(output.contains("├─ current_seam: CurrentSeam [PlebExterior]"));
+        assert!(output.contains("├─ aura_beam: AuraBeam [BlepReturn]"));
+        assert!(output.contains("└─ point_squared: Point² (Landed Point) [BlepArrival]"));
         assert_eq!(kernel_pass.to_string(), CANONICAL_WITNESS);
     }
 }

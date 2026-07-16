@@ -1,9 +1,11 @@
 use std::io;
 use std::path::{Path, PathBuf};
 
+use hollow_grove::hueman_progression::resolve_active_vertical_slice_at;
 use hollow_grove::hueman_support::{
     CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH, CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_BEHAVIOR_RULES_ARTIFACT_PATH, CURRENT_SYNTHESIS_CONSEQUENCE_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_BEHAVIOR_RULES_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH, CURRENT_SYNTHESIS_CONSEQUENCE_ARTIFACT_PATH,
     CURRENT_SYNTHESIS_CONTRACT_ARTIFACT_PATH, CURRENT_SYNTHESIS_EXECUTION_SPEC_ARTIFACT_PATH,
     CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH, CURRENT_SYNTHESIS_SELECTION_ARTIFACT_PATH,
     CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH, CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH,
@@ -18,6 +20,7 @@ use hollow_grove::hueman_support::{
     build_hueman_scene_intent_from_artifacts, build_hueman_scene_presence_from_artifacts,
     build_hueman_start_choices_from_artifacts, build_hueman_start_paths_from_artifacts,
     build_hueman_stonebend_roles_from_artifacts, build_hueman_tross_helpers_from_artifacts,
+    build_hueman_vertical_slice_for_spec_from_artifacts,
     build_vertical_integration_stack_from_artifacts, hueman_archetype_lens_artifact_path,
     hueman_aura_behavior_artifact_path, hueman_aura_triad_artifact_path,
     hueman_boundary_artifact_path, hueman_crossover_scenes_artifact_path,
@@ -28,11 +31,12 @@ use hollow_grove::hueman_support::{
     hueman_scene_drift_artifact_path, hueman_scene_intent_artifact_path,
     hueman_scene_presence_artifact_path, hueman_start_choices_artifact_path,
     hueman_start_paths_artifact_path, hueman_stonebend_roles_artifact_path,
-    hueman_tross_helpers_artifact_path, vertical_integration_stack_artifact_path,
+    hueman_tross_helpers_artifact_path, hueman_vertical_slice_artifact_path,
+    vertical_integration_stack_artifact_path,
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
-fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 21]> {
+fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 22]> {
     let current_synthesis_base =
         read_text_artifact(&root.join(CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH))?;
     let current_synthesis_activation_gate =
@@ -87,6 +91,8 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 21]> {
     let sandmanor_roles_path = root.join(hueman_sandmanor_roles_artifact_path());
     write_text_artifact(&sandmanor_roles_path, &hueman_sandmanor_roles)?;
 
+    let current_synthesis_collision_relay =
+        read_text_artifact(&root.join(CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH))?;
     let current_synthesis_execution_spec =
         read_text_artifact(&root.join(CURRENT_SYNTHESIS_EXECUTION_SPEC_ARTIFACT_PATH))?;
     let current_synthesis_behavior_rules =
@@ -101,6 +107,7 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 21]> {
         &current_synthesis_execution_spec,
         &current_synthesis_behavior_rules,
         &current_synthesis_transition_pm_to_le,
+        &current_synthesis_collision_relay,
         &current_synthesis_selection,
         &current_synthesis_consequence,
         &current_synthesis_activation_gate,
@@ -117,6 +124,17 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 21]> {
     let aura_behavior_path = root.join(hueman_aura_behavior_artifact_path());
     write_text_artifact(&aura_behavior_path, &hueman_aura_behavior)?;
 
+    let active_slice = resolve_active_vertical_slice_at(root)?;
+    let hueman_vertical_slice = build_hueman_vertical_slice_for_spec_from_artifacts(
+        active_slice,
+        &hueman_boundary,
+        &hueman_start_choices,
+        &hueman_aura_behavior,
+        &hueman_procedural_uplift,
+    );
+    let vertical_slice_path = root.join(hueman_vertical_slice_artifact_path());
+    write_text_artifact(&vertical_slice_path, &hueman_vertical_slice)?;
+
     let hueman_archetype_lens = build_hueman_archetype_lens_from_artifacts(
         &hueman_start_choices,
         &hueman_aura_behavior,
@@ -131,8 +149,11 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 21]> {
     let start_paths_path = root.join(hueman_start_paths_artifact_path());
     write_text_artifact(&start_paths_path, &hueman_start_paths)?;
 
-    let hueman_path_crossovers =
-        build_hueman_path_crossovers_from_artifacts(&hueman_start_paths, &hueman_aura_behavior);
+    let hueman_path_crossovers = build_hueman_path_crossovers_from_artifacts(
+        &hueman_start_paths,
+        &hueman_aura_behavior,
+        &current_synthesis_collision_relay,
+    );
     let path_crossovers_path = root.join(hueman_path_crossovers_artifact_path());
     write_text_artifact(&path_crossovers_path, &hueman_path_crossovers)?;
 
@@ -141,6 +162,7 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 21]> {
     let hueman_link_physics = build_hueman_link_physics_from_artifacts(
         &current_synthesis_sequence,
         &hueman_path_crossovers,
+        &current_synthesis_collision_relay,
     );
     let link_physics_path = root.join(hueman_link_physics_artifact_path());
     write_text_artifact(&link_physics_path, &hueman_link_physics)?;
@@ -150,8 +172,11 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 21]> {
     let inverse_circle_path = root.join(hueman_inverse_circle_artifact_path());
     write_text_artifact(&inverse_circle_path, &hueman_inverse_circle)?;
 
-    let hueman_crossover_scenes =
-        build_hueman_crossover_scenes_from_artifacts(&hueman_path_crossovers, &hueman_link_physics);
+    let hueman_crossover_scenes = build_hueman_crossover_scenes_from_artifacts(
+        &hueman_path_crossovers,
+        &hueman_link_physics,
+        &current_synthesis_collision_relay,
+    );
     let crossover_scenes_path = root.join(hueman_crossover_scenes_artifact_path());
     write_text_artifact(&crossover_scenes_path, &hueman_crossover_scenes)?;
 
@@ -165,6 +190,7 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 21]> {
         &hueman_glaushouse_roles,
         &hueman_sandmanor_roles,
         &hueman_inverse_circle,
+        &current_synthesis_collision_relay,
     );
     let scene_presence_path = root.join(hueman_scene_presence_artifact_path());
     write_text_artifact(&scene_presence_path, &hueman_scene_presence)?;
@@ -172,6 +198,7 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 21]> {
     let hueman_scene_intent = build_hueman_scene_intent_from_artifacts(
         &hueman_scene_presence,
         &hueman_link_physics,
+        &current_synthesis_collision_relay,
         &current_synthesis_contract,
         &hueman_stonebend_roles,
         &hueman_tross_helpers,
@@ -182,13 +209,17 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 21]> {
     let scene_intent_path = root.join(hueman_scene_intent_artifact_path());
     write_text_artifact(&scene_intent_path, &hueman_scene_intent)?;
 
-    let hueman_scene_drift =
-        build_hueman_scene_drift_from_artifacts(&hueman_scene_intent, &hueman_link_physics);
+    let hueman_scene_drift = build_hueman_scene_drift_from_artifacts(
+        &hueman_scene_intent,
+        &hueman_link_physics,
+        &current_synthesis_collision_relay,
+    );
     let scene_drift_path = root.join(hueman_scene_drift_artifact_path());
     write_text_artifact(&scene_drift_path, &hueman_scene_drift)?;
 
     let vertical_integration_stack = build_vertical_integration_stack_from_artifacts(
         &current_synthesis_base,
+        &current_synthesis_collision_relay,
         &hueman_boundary,
         &hueman_glaushouse_roles,
         &hueman_sandmanor_roles,
@@ -216,6 +247,7 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 21]> {
         sandmanor_roles_path,
         procedural_uplift_path,
         aura_behavior_path,
+        vertical_slice_path,
         archetype_lens_path,
         start_paths_path,
         path_crossovers_path,
@@ -245,6 +277,7 @@ mod tests {
     use hollow_grove::hueman_support::{
         CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH, CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH,
         CURRENT_SYNTHESIS_BEHAVIOR_RULES_ARTIFACT_PATH,
+        CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH,
         CURRENT_SYNTHESIS_CONSEQUENCE_ARTIFACT_PATH, CURRENT_SYNTHESIS_CONTRACT_ARTIFACT_PATH,
         CURRENT_SYNTHESIS_EXECUTION_SPEC_ARTIFACT_PATH,
         CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH, CURRENT_SYNTHESIS_SELECTION_ARTIFACT_PATH,
@@ -260,6 +293,7 @@ mod tests {
         build_hueman_scene_intent_from_artifacts, build_hueman_scene_presence_from_artifacts,
         build_hueman_start_choices_from_artifacts, build_hueman_start_paths_from_artifacts,
         build_hueman_stonebend_roles_from_artifacts, build_hueman_tross_helpers_from_artifacts,
+        build_hueman_vertical_slice_from_artifacts,
         build_vertical_integration_stack_from_artifacts, hueman_archetype_lens_artifact_path,
         hueman_aura_behavior_artifact_path, hueman_aura_triad_artifact_path,
         hueman_boundary_artifact_path, hueman_crossover_scenes_artifact_path,
@@ -270,14 +304,15 @@ mod tests {
         hueman_scene_drift_artifact_path, hueman_scene_intent_artifact_path,
         hueman_scene_presence_artifact_path, hueman_start_choices_artifact_path,
         hueman_start_paths_artifact_path, hueman_stonebend_roles_artifact_path,
-        hueman_tross_helpers_artifact_path, vertical_integration_stack_artifact_path,
+        hueman_tross_helpers_artifact_path, hueman_vertical_slice_artifact_path,
+        vertical_integration_stack_artifact_path,
     };
     use hollow_grove::{read_text_artifact, write_text_artifact};
 
     use super::run_hueman_at;
 
     #[test]
-    fn hueman_runner_regenerates_boundary_motion_map_fourway_aura_triad_start_choices_stonebend_roles_tross_helpers_aura_behavior_archetype_lens_start_paths_path_crossovers_link_physics_crossover_scenes_scene_presence_scene_intent_scene_drift_and_vertical_integration_stack_in_order()
+    fn hueman_runner_regenerates_boundary_motion_map_fourway_aura_triad_start_choices_stonebend_roles_tross_helpers_aura_behavior_vertical_slice_archetype_lens_start_paths_path_crossovers_link_physics_crossover_scenes_scene_presence_scene_intent_scene_drift_and_vertical_integration_stack_in_order()
      {
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)
@@ -336,6 +371,11 @@ mod tests {
         )
         .expect("current synthesis contract fixture should write");
         write_text_artifact(
+            &artifact_root.join(CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH),
+            "relay",
+        )
+        .expect("current synthesis collision relay fixture should write");
+        write_text_artifact(
             &artifact_root.join(CURRENT_SYNTHESIS_CONSEQUENCE_ARTIFACT_PATH),
             "consequence",
         )
@@ -353,6 +393,7 @@ mod tests {
             sandmanor_roles_path,
             procedural_uplift_path,
             aura_behavior_path,
+            vertical_slice_path,
             archetype_lens_path,
             start_paths_path,
             path_crossovers_path,
@@ -383,6 +424,7 @@ mod tests {
             "execution",
             "rules",
             "transition",
+            "relay",
             "selection",
             "consequence",
             "gate",
@@ -393,6 +435,12 @@ mod tests {
         );
         let hueman_aura_behavior =
             build_hueman_aura_behavior_from_artifacts(&hueman_aura_triad, &hueman_start_choices);
+        let hueman_vertical_slice = build_hueman_vertical_slice_from_artifacts(
+            &hueman_boundary,
+            &hueman_start_choices,
+            &hueman_aura_behavior,
+            &hueman_procedural_uplift,
+        );
         let hueman_archetype_lens = build_hueman_archetype_lens_from_artifacts(
             &hueman_start_choices,
             &hueman_aura_behavior,
@@ -401,15 +449,19 @@ mod tests {
         );
         let hueman_start_paths =
             build_hueman_start_paths_from_artifacts(&hueman_start_choices, &hueman_archetype_lens);
-        let hueman_path_crossovers =
-            build_hueman_path_crossovers_from_artifacts(&hueman_start_paths, &hueman_aura_behavior);
+        let hueman_path_crossovers = build_hueman_path_crossovers_from_artifacts(
+            &hueman_start_paths,
+            &hueman_aura_behavior,
+            "relay",
+        );
         let hueman_link_physics =
-            build_hueman_link_physics_from_artifacts("sequence", &hueman_path_crossovers);
+            build_hueman_link_physics_from_artifacts("sequence", &hueman_path_crossovers, "relay");
         let hueman_inverse_circle =
             build_hueman_inverse_circle_from_artifacts(&hueman_fourway, &hueman_link_physics);
         let hueman_crossover_scenes = build_hueman_crossover_scenes_from_artifacts(
             &hueman_path_crossovers,
             &hueman_link_physics,
+            "relay",
         );
         let hueman_scene_presence = build_hueman_scene_presence_from_artifacts(
             &hueman_crossover_scenes,
@@ -419,10 +471,12 @@ mod tests {
             &hueman_glaushouse_roles,
             &hueman_sandmanor_roles,
             &hueman_inverse_circle,
+            "relay",
         );
         let hueman_scene_intent = build_hueman_scene_intent_from_artifacts(
             &hueman_scene_presence,
             &hueman_link_physics,
+            "relay",
             "contract",
             &hueman_stonebend_roles,
             &hueman_tross_helpers,
@@ -430,10 +484,14 @@ mod tests {
             &hueman_sandmanor_roles,
             &hueman_inverse_circle,
         );
-        let hueman_scene_drift =
-            build_hueman_scene_drift_from_artifacts(&hueman_scene_intent, &hueman_link_physics);
+        let hueman_scene_drift = build_hueman_scene_drift_from_artifacts(
+            &hueman_scene_intent,
+            &hueman_link_physics,
+            "relay",
+        );
         let vertical_integration_stack = build_vertical_integration_stack_from_artifacts(
             "base",
+            "relay",
             &hueman_boundary,
             &hueman_glaushouse_roles,
             &hueman_sandmanor_roles,
@@ -487,6 +545,10 @@ mod tests {
         assert_eq!(
             aura_behavior_path,
             artifact_root.join(hueman_aura_behavior_artifact_path())
+        );
+        assert_eq!(
+            vertical_slice_path,
+            artifact_root.join(hueman_vertical_slice_artifact_path())
         );
         assert_eq!(
             archetype_lens_path,
@@ -580,6 +642,11 @@ mod tests {
             hueman_aura_behavior
         );
         assert_eq!(
+            read_text_artifact(&vertical_slice_path)
+                .expect("hueman vertical slice artifact should read"),
+            hueman_vertical_slice
+        );
+        assert_eq!(
             read_text_artifact(&archetype_lens_path)
                 .expect("hueman archetype lens artifact should read"),
             hueman_archetype_lens
@@ -664,6 +731,8 @@ mod tests {
             .expect("hueman procedural uplift artifact should be removable");
         fs::remove_file(&aura_behavior_path)
             .expect("hueman aura behavior artifact should be removable");
+        fs::remove_file(&vertical_slice_path)
+            .expect("hueman vertical slice artifact should be removable");
         fs::remove_file(&archetype_lens_path)
             .expect("hueman archetype lens artifact should be removable");
         fs::remove_file(&start_paths_path)

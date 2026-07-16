@@ -2,8 +2,9 @@ use std::io;
 use std::path::Path;
 
 use hollow_grove::hueman_support::{
-    CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH, HUEMAN_PATH_CROSSOVERS_ARTIFACT_PATH,
-    build_hueman_link_physics_from_artifacts, hueman_link_physics_artifact_path,
+    CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH, CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH,
+    HUEMAN_PATH_CROSSOVERS_ARTIFACT_PATH, build_hueman_link_physics_from_artifacts,
+    hueman_link_physics_artifact_path,
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
@@ -12,9 +13,12 @@ fn main() -> io::Result<()> {
         read_text_artifact(Path::new(CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH))?;
     let hueman_path_crossovers =
         read_text_artifact(Path::new(HUEMAN_PATH_CROSSOVERS_ARTIFACT_PATH))?;
+    let current_synthesis_collision_relay =
+        read_text_artifact(Path::new(CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH))?;
     let hueman_link_physics = build_hueman_link_physics_from_artifacts(
         &current_synthesis_sequence,
         &hueman_path_crossovers,
+        &current_synthesis_collision_relay,
     );
     let artifact_path = hueman_link_physics_artifact_path();
 
@@ -34,59 +38,15 @@ mod tests {
 
     #[test]
     fn hueman_link_physics_reads_existing_artifacts() {
-        assert_eq!(
-            build_hueman_link_physics_from_artifacts("sequence", "cross"),
-            "# Hueman Link Physics\n\n\
-             ## Structural Rule\n\n\
-             Links that do not get bonded may later resolve into `current` or `aura` according to downstream physics.\n\n\
-             ## Bond Split\n\n\
-             - bonded link stays the selected route\n\
-             - unbonded links remain available as unresolved world material\n\
-             - unresolved material is not empty; it carries later directional bias\n\n\
-             ## Arm Weight Reading\n\n\
-             - each `META` letter and its `PLEB` counterpart carry three arms across the same joint\n\
-             - one arm per side bonds into the selected link while the remaining arm weight stays unresolved\n\
-             - retained heavier continuity pressure tends to read as `current`\n\
-             - lighter exposed spill tends to read as `aura`\n\
-             - Hueman reads that unresolved weight upward as `current` or `aura` while Hollow Grove keeps the same event as the lower witness simultaneously\n\
-             - simultaneous reading does not grant Hueman authority to rewrite the kernel witness\n\n\
-             ## Current Bias Physics\n\n\
-             - continuity pressure favors `current`\n\
-             - occupancy load favors `current`\n\
-             - inland persistence favors `current`\n\
-             - repeat traversal favors `current`\n\n\
-             ## Aura Bias Physics\n\n\
-             - exposure pressure favors `aura`\n\
-             - threshold bleed favors `aura`\n\
-             - atmospheric spill favors `aura`\n\
-             - edge drift favors `aura`\n\n\
-             ## Element Names\n\n\
-             - `current` may also be called Bathos or dark water.\n\
-             - `current` appears as dark current or hollow current.\n\
-             - `aura` may also be called Aether or air.\n\
-             - `aura` appears as reflective aura or holographic aura.\n\n\
-             ## Crossover Reading\n\n\
-             - shared starts can touch the same unresolved material with different bias\n\
-             - the same region may feel more `current` from one route and more `aura` from another\n\
-             - crossover zones are where the physics split becomes most visible in Hueman\n\
-             - Aura Ridge trade legs keep exchange visible on straight lines while unresolved bias still moves beneath them\n\n\
-             ## Status\n\n\
-             - link physics is descriptive-only for now\n\
-             - no procedural resolver chooses `current` or `aura` yet\n\
-             - bond selection remains kernel-simple underneath this layer\n\
-             - no feedback into Current Synthesis\n\
-             - no feedback into Hollow Grove\n\n\
-             ## Artifact Inputs\n\n\
-             Current Synthesis sequence bytes: 8.\n\
-             Hueman Path Crossovers bytes: 5.\n\n\
-             ## Boundary Reminder\n\n\
-             Link physics explains how unbonded links may later read as `current` or `aura`. It does not rewrite Bond, HollowGrove, or Current Synthesis sequence ownership.\n"
-        );
+        let output = build_hueman_link_physics_from_artifacts("sequence", "cross", "relay");
+        assert!(output.contains("## Relay Packet Reading"));
+        assert!(output.contains("Current Synthesis collision relay bytes: 5."));
     }
 
     #[test]
     fn hueman_link_physics_writes_a_deterministic_file() {
-        let hueman_link_physics = build_hueman_link_physics_from_artifacts("sequence", "cross");
+        let hueman_link_physics =
+            build_hueman_link_physics_from_artifacts("sequence", "cross", "relay");
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .expect("system time before unix epoch")

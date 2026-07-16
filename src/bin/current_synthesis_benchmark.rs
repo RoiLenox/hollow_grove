@@ -12,17 +12,18 @@ use current_synthesis_support::{
     ARTIFACT_INDEX_PATH, CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH,
     CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH, CURRENT_SYNTHESIS_BEHAVIOR_RULES_ARTIFACT_PATH,
     CURRENT_SYNTHESIS_CHOICE_ARTIFACT_PATH, CURRENT_SYNTHESIS_CLIENTS_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_CONSEQUENCE_ARTIFACT_PATH, CURRENT_SYNTHESIS_CONTRACT_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_EXECUTION_SPEC_ARTIFACT_PATH, CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_PREVIEW_ARTIFACT_PATH, CURRENT_SYNTHESIS_READINESS_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_SELECTION_ARTIFACT_PATH, CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_STATE_ARTIFACT_PATH, CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH, DESKTOP_STATUS_ARTIFACT_PATH,
-    PROMPT_ARTIFACT_PATH, SNAPSHOT_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH, CURRENT_SYNTHESIS_CONSEQUENCE_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_CONTRACT_ARTIFACT_PATH, CURRENT_SYNTHESIS_EXECUTION_SPEC_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH, CURRENT_SYNTHESIS_PREVIEW_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_READINESS_ARTIFACT_PATH, CURRENT_SYNTHESIS_SELECTION_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH, CURRENT_SYNTHESIS_STATE_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH, CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH,
+    DESKTOP_STATUS_ARTIFACT_PATH, PROMPT_ARTIFACT_PATH, SNAPSHOT_ARTIFACT_PATH,
     build_current_synthesis_activation_gate_from_artifacts,
-    build_current_synthesis_base_from_artifacts,
+    build_current_synthesis_base_from_boundary,
     build_current_synthesis_behavior_rules_from_artifacts,
-    build_current_synthesis_choice_from_artifacts, build_current_synthesis_clients_from_artifacts,
+    build_current_synthesis_choice_from_artifacts, build_current_synthesis_clients_from_boundary,
+    build_current_synthesis_collision_relay_from_boundary,
     build_current_synthesis_consequence_from_artifacts,
     build_current_synthesis_contract_from_artifacts,
     build_current_synthesis_execution_spec_from_artifacts,
@@ -31,9 +32,11 @@ use current_synthesis_support::{
     build_current_synthesis_readiness_from_artifacts,
     build_current_synthesis_selection_from_artifacts,
     build_current_synthesis_sequence_from_artifacts, build_current_synthesis_state_from_artifacts,
-    build_current_synthesis_topology_from_artifacts,
-    build_current_synthesis_transition_pm_to_le_from_artifacts, ensure_artifact_index,
+    build_current_synthesis_topology_from_boundary,
+    build_current_synthesis_transition_pm_to_le_from_boundary, ensure_artifact_index,
+    load_artifact_index,
 };
+use hollow_grove::SnapshotBoundary;
 use hollow_grove::hueman_support::{
     HUEMAN_ARCHETYPE_LENS_ARTIFACT_PATH, HUEMAN_AURA_BEHAVIOR_ARTIFACT_PATH,
     HUEMAN_AURA_TRIAD_ARTIFACT_PATH, HUEMAN_BOUNDARY_ARTIFACT_PATH,
@@ -59,8 +62,7 @@ use hollow_grove::hueman_support::{
 };
 use hollow_grove::{
     ArtifactSession, CANONICAL_WITNESS, Symptom, build_desktop_status_output,
-    build_prompt_artifact_output, build_snapshot_output, read_text_artifact, run_kernel_cycle,
-    write_text_artifact,
+    build_prompt_artifact_output, build_snapshot_output, run_kernel_cycle, write_text_artifact,
 };
 
 const BENCHMARK_REPORT_ARTIFACT_PATH: &str = "artifacts/current_synthesis_benchmark.md";
@@ -135,6 +137,7 @@ struct BenchmarkPaths {
     current_synthesis_execution_spec: PathBuf,
     current_synthesis_behavior_rules: PathBuf,
     current_synthesis_transition_pm_to_le: PathBuf,
+    current_synthesis_collision_relay: PathBuf,
     current_synthesis_activation_gate: PathBuf,
     hueman_boundary: PathBuf,
     hueman_motion_map: PathBuf,
@@ -184,6 +187,8 @@ impl BenchmarkPaths {
                 .join(CURRENT_SYNTHESIS_BEHAVIOR_RULES_ARTIFACT_PATH),
             current_synthesis_transition_pm_to_le: root
                 .join(CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH),
+            current_synthesis_collision_relay: root
+                .join(CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH),
             current_synthesis_activation_gate: root
                 .join(CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH),
             hueman_boundary: root.join(HUEMAN_BOUNDARY_ARTIFACT_PATH),
@@ -516,7 +521,7 @@ fn run_pipeline_sample_with_paths(
         sample_index,
         "kernel_pass",
         "kernel",
-        |kernel_pass: &hollow_grove::KernelPass| kernel_pass.to_string().len(),
+        |kernel_pass: &hollow_grove::KernelPass| kernel_pass.canonical_witness().len(),
         || Ok(run_kernel_cycle(Symptom::origin())),
     )?;
     stages.push(stage);
@@ -551,7 +556,9 @@ fn run_pipeline_sample_with_paths(
     )?;
     stages.push(stage);
 
-    let artifact_index = read_text_artifact(&paths.artifact_index)?;
+    let snapshot_boundary = SnapshotBoundary::parse(&snapshot)?;
+
+    let artifact_index = load_artifact_index(&paths.artifact_index)?;
 
     let (current_synthesis_base, stage) = measure_artifact_stage(
         &mut session,
@@ -559,7 +566,14 @@ fn run_pipeline_sample_with_paths(
         sample_index,
         "current_synthesis_base",
         "current_synthesis",
-        || build_current_synthesis_base_from_artifacts(&snapshot, &prompt, &desktop_status),
+        || {
+            build_current_synthesis_base_from_boundary(
+                &snapshot_boundary,
+                snapshot.len(),
+                &prompt,
+                &desktop_status,
+            )
+        },
     )?;
     stages.push(stage);
 
@@ -600,7 +614,9 @@ fn run_pipeline_sample_with_paths(
         "current_synthesis_topology",
         "current_synthesis",
         || {
-            Ok(build_current_synthesis_topology_from_artifacts(
+            Ok(build_current_synthesis_topology_from_boundary(
+                &snapshot_boundary,
+                snapshot.len(),
                 &current_synthesis_sequence,
                 &current_synthesis_state,
             ))
@@ -615,7 +631,9 @@ fn run_pipeline_sample_with_paths(
         "current_synthesis_clients",
         "current_synthesis",
         || {
-            Ok(build_current_synthesis_clients_from_artifacts(
+            Ok(build_current_synthesis_clients_from_boundary(
+                &snapshot_boundary,
+                snapshot.len(),
                 &current_synthesis_topology,
                 &current_synthesis_sequence,
             ))
@@ -765,9 +783,29 @@ fn run_pipeline_sample_with_paths(
         "current_synthesis_transition_pm_to_le",
         "current_synthesis",
         || {
-            Ok(build_current_synthesis_transition_pm_to_le_from_artifacts(
+            Ok(build_current_synthesis_transition_pm_to_le_from_boundary(
                 &current_synthesis_behavior_rules,
                 &current_synthesis_topology,
+                &snapshot_boundary,
+                snapshot.len(),
+            ))
+        },
+    )?;
+    stages.push(stage);
+
+    let (current_synthesis_collision_relay, stage) = measure_artifact_stage(
+        &mut session,
+        &paths.current_synthesis_collision_relay,
+        sample_index,
+        "current_synthesis_collision_relay",
+        "current_synthesis",
+        || {
+            Ok(build_current_synthesis_collision_relay_from_boundary(
+                &snapshot_boundary,
+                snapshot.len(),
+                &current_synthesis_contract,
+                &current_synthesis_operational,
+                &current_synthesis_transition_pm_to_le,
             ))
         },
     )?;
@@ -782,6 +820,7 @@ fn run_pipeline_sample_with_paths(
         || {
             Ok(build_current_synthesis_activation_gate_from_artifacts(
                 &current_synthesis_transition_pm_to_le,
+                &current_synthesis_collision_relay,
                 &current_synthesis_readiness,
             ))
         },
@@ -934,6 +973,7 @@ fn run_pipeline_sample_with_paths(
                 &current_synthesis_execution_spec,
                 &current_synthesis_behavior_rules,
                 &current_synthesis_transition_pm_to_le,
+                &current_synthesis_collision_relay,
                 &current_synthesis_selection,
                 &current_synthesis_consequence,
                 &current_synthesis_activation_gate,
@@ -1003,6 +1043,7 @@ fn run_pipeline_sample_with_paths(
             Ok(build_hueman_path_crossovers_from_artifacts(
                 &hueman_start_paths,
                 &hueman_aura_behavior,
+                &current_synthesis_collision_relay,
             ))
         },
     )?;
@@ -1018,6 +1059,7 @@ fn run_pipeline_sample_with_paths(
             Ok(build_hueman_link_physics_from_artifacts(
                 &current_synthesis_sequence,
                 &hueman_path_crossovers,
+                &current_synthesis_collision_relay,
             ))
         },
     )?;
@@ -1048,6 +1090,7 @@ fn run_pipeline_sample_with_paths(
             Ok(build_hueman_crossover_scenes_from_artifacts(
                 &hueman_path_crossovers,
                 &hueman_link_physics,
+                &current_synthesis_collision_relay,
             ))
         },
     )?;
@@ -1068,6 +1111,7 @@ fn run_pipeline_sample_with_paths(
                 &hueman_glaushouse_roles,
                 &hueman_sandmanor_roles,
                 &hueman_inverse_circle,
+                &current_synthesis_collision_relay,
             ))
         },
     )?;
@@ -1083,6 +1127,7 @@ fn run_pipeline_sample_with_paths(
             Ok(build_hueman_scene_intent_from_artifacts(
                 &hueman_scene_presence,
                 &hueman_link_physics,
+                &current_synthesis_collision_relay,
                 &current_synthesis_contract,
                 &hueman_stonebend_roles,
                 &hueman_tross_helpers,
@@ -1104,6 +1149,7 @@ fn run_pipeline_sample_with_paths(
             Ok(build_hueman_scene_drift_from_artifacts(
                 &hueman_scene_intent,
                 &hueman_link_physics,
+                &current_synthesis_collision_relay,
             ))
         },
     )?;
@@ -1118,6 +1164,7 @@ fn run_pipeline_sample_with_paths(
         || {
             Ok(build_vertical_integration_stack_from_artifacts(
                 &current_synthesis_base,
+                &current_synthesis_collision_relay,
                 &hueman_boundary,
                 &hueman_glaushouse_roles,
                 &hueman_sandmanor_roles,
@@ -1152,7 +1199,7 @@ fn run_pipeline_sample_with_paths(
     Ok(PipelineSample {
         total_elapsed: total_started.elapsed(),
         stages,
-        witness: kernel_pass.to_string(),
+        witness: kernel_pass.canonical_witness().to_owned(),
         activation_gate: current_synthesis_activation_gate,
         scene_drift: hueman_scene_drift,
     })
@@ -2217,7 +2264,8 @@ mod tests {
 
         let sample = run_pipeline_sample(&root, 0, ArtifactWriteMode::Disk)
             .expect("pipeline sample should run");
-        assert!(sample.witness.contains("HollowBeam"));
+        assert!(sample.witness.contains("AuraBeam"));
+        assert!(sample.witness.contains("Point² (Landed Point)"));
         assert!(
             sample
                 .activation_gate
@@ -2242,7 +2290,8 @@ mod tests {
         let sample = run_pipeline_sample(&root, 0, ArtifactWriteMode::Memory)
             .expect("pipeline sample should run without flush");
 
-        assert!(sample.witness.contains("HollowBeam"));
+        assert!(sample.witness.contains("AuraBeam"));
+        assert!(sample.witness.contains("Point² (Landed Point)"));
         assert!(
             sample
                 .stages

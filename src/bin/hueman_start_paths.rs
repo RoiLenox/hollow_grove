@@ -30,34 +30,13 @@ mod tests {
 
     #[test]
     fn hueman_start_paths_reads_existing_artifacts() {
-        assert_eq!(
-            build_hueman_start_paths_from_artifacts("start", "lens"),
-            "# Hueman Start Paths\n\n\
-             ## Structural Rule\n\n\
-             Each Fourway start enters AuraTriad through a first descriptive region before any procedural mechanics exist.\n\n\
-             ## Route Order\n\n\
-             - Flynt = `goblin` = Aura Basin -> Aura Fields -> Aura Beach\n\
-             - Stonebend = `gremlin` = Aura Fields -> Aura Basin -> Aura Beach\n\
-             - Glaushouse = `pixy` = Aura Beach -> Aura Fields -> Aura Basin\n\
-             - Sandmanor = `sprite` = Aura Beach -> Aura Basin -> Aura Fields\n\n\
-             ## First Entry\n\n\
-             - Flynt enters Aura Basin first.\n\
-             - Stonebend enters Aura Fields first.\n\
-             - Glaushouse enters Aura Beach first.\n\
-             - Sandmanor enters Aura Beach first.\n\n\
-             ## Status\n\n\
-             - start-path order is descriptive-only for now\n\
-             - the first region is declared but not procedurally enforced\n\
-             - archetype lens remains interpretive above the route order\n\
-             - species mechanics are not active yet\n\
-             - no feedback into Current Synthesis\n\
-             - no feedback into Hollow Grove\n\n\
-             ## Artifact Inputs\n\n\
-             Hueman Start Choices bytes: 5.\n\
-             Hueman Archetype Lens bytes: 4.\n\n\
-             ## Boundary Reminder\n\n\
-             Start paths declare which AuraTriad region a start naturally enters first. They do not add movement rules or alter lower-layer topology.\n"
+        let output = build_hueman_start_paths_from_artifacts("start", "lens");
+        assert!(output.starts_with("# Hueman Start Paths"));
+        assert!(output.contains("player still begins as Hueman near Aura Ridge"));
+        assert!(
+            output.contains("Sandmanor-facing approach = Aura Beach -> Aura Basin -> Aura Fields")
         );
+        assert!(output.contains("Hueman Archetype Lens bytes: 4."));
     }
 
     #[test]

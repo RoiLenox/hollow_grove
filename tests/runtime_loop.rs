@@ -63,8 +63,8 @@ fn runtime_binary_refreshes_the_loop_contract_end_to_end() {
     assert!(runtime_memory.contains("last_runtime_mode: run"));
     assert!(runtime_status.contains("cycle: 1"));
     assert!(runtime_status.contains("refreshed pipeline"));
-    assert!(snapshot.contains("\"start\": \"Symptom 1\""));
-    assert!(prompt.contains("start Symptom 1"));
+    assert!(snapshot.contains("\"start\": \"Point\""));
+    assert!(prompt.contains("Point\n↓\nTriway"));
     assert!(desktop_status.contains(CANONICAL_WITNESS));
 
     fs::remove_dir_all(&temp_root).expect("temp cleanup should succeed");

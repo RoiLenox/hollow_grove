@@ -123,7 +123,7 @@ fn launcher_runs_runtime_and_bridge_in_a_staged_workspace() {
          last_origin: symptom-origin\n\
          last_operator_note: launcher smoke\n\
          last_should_stop: false\n\
-         last_witness: start Symptom 1\\n↓\\nTriway\\n↓\\nHollowGrove\\n↓\\nGroveSeam\\n↓\\nHollowBeam\\n↓\\nlanded Symptom 2\n",
+         last_witness: Point\\n↓\\nTriway\\n↓\\nFourway\\n↓\\nHollowGrove\\n↓\\nCurrentSeam\\n↓\\nAuraBeam\\n↓\\nPoint² (Landed Point)\n",
     )
     .expect("runtime memory should write");
 

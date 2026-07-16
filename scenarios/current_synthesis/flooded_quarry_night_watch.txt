@@ -1,0 +1,27 @@
+# Current Synthesis Scenario
+scenario_id: flooded_quarry_night_watch
+title: Flooded Quarry Night Watch
+default_focused_npc_id: quarry_foreman_01
+player_need: Cross a flooded quarry rim and reopen the crane path before midnight
+faction_condition: Stonebend wants the crane route reopened before the next ore wagon arrives
+faction_condition: scavengers are circling the drowned lower shelf
+settlement_condition: the quarry pumps cannot hold all night without rerouted power
+settlement_condition: workers are split between the rim path and the intake tower
+war_condition: the route is unstable enough to trigger a resource grab if the watch fails
+
+npc: quarry_foreman_01 | Quarry Foreman 01 | Stonebend load marshal | Stonebend | upper crane rim | alert and overextended
+npc_need: quarry_foreman_01 | reopen the crane path before the next ore wagon arrives
+npc_memory: quarry_foreman_01 | the last cable snap drowned a whole shift lane
+npc_relationship: quarry_foreman_01 | intake tower workers depend on the rim crew to keep the pumps fed
+npc_relationship: quarry_foreman_01 | scavengers are waiting for the lower shelf to be abandoned
+npc_world: quarry_foreman_01 | crane path is half-submerged
+npc_world: quarry_foreman_01 | load markers are drifting out of alignment
+npc_world: quarry_foreman_01 | the lower shelf is drawing scavenger attention
+
+npc: intake_keeper_03 | Intake Keeper 03 | Sandmanor pressure keeper | Sandmanor | intake tower | soaked but steady
+npc_need: intake_keeper_03 | keep the pumps alive until the crane route is restored
+npc_memory: intake_keeper_03 | the tower nearly blacked out during the last storm intake
+npc_relationship: intake_keeper_03 | the foreman can move weight, but the tower decides whether the route stays powered
+npc_relationship: intake_keeper_03 | the night watch trusts the keeper to call the retreat threshold
+npc_world: intake_keeper_03 | pump pressure is oscillating
+npc_world: intake_keeper_03 | backup power is barely holding

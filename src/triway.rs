@@ -8,7 +8,7 @@ pub enum Way {
     Three,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Triway {
     source: Symptom,
     ways: [Way; 3],

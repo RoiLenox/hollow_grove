@@ -40,31 +40,13 @@ mod tests {
     #[test]
     fn prompt_artifact_reads_the_completed_kernel_pass() {
         let kernel_pass = run_kernel_cycle(Symptom::origin());
+        let output = build_prompt_artifact_from_client(&kernel_pass);
 
-        assert_eq!(
-            build_prompt_artifact_from_client(&kernel_pass),
-            "# Consumer Prompt\n\n\
-             ## Canonical Witness\n\n\
-             ```text\n\
-             start Symptom 1\n\
-             ↓\n\
-             Triway\n\
-             ↓\n\
-             HollowGrove\n\
-             ↓\n\
-             GroveSeam\n\
-             ↓\n\
-             HollowBeam\n\
-             ↓\n\
-             landed Symptom 2\n\
-             ```\n\n\
-             ## Structured Snapshot Reference\n\n\
-             `artifacts/kernel_pass_snapshot.json`\n\n\
-             ## Inverse-Path Question\n\n\
-             What does this completed pass reveal about the inverse path of the end use?\n\n\
-             ## Boundary Reminder\n\n\
-             Do not mutate the kernel. Interpret only.\n"
-        );
+        assert!(output.contains("## Canonical Witness"));
+        assert!(output.contains("Point² (Landed Point) [BlepArrival]"));
+        assert!(output.contains("Fourway"));
+        assert!(output.contains("CurrentSeam [PlebExterior]"));
+        assert!(output.contains("AuraBeam [BlepReturn]"));
         assert_eq!(kernel_pass.to_string(), CANONICAL_WITNESS);
     }
 

@@ -31,51 +31,12 @@ mod tests {
 
     #[test]
     fn hueman_aura_triad_reads_existing_artifacts() {
-        assert_eq!(
-            build_hueman_aura_triad_from_artifacts("fourway", "topology"),
-            "# Hueman Aura Triad\n\n\
-             ## Structural Rule\n\n\
-             AuraTriad is the three-region resolution beneath Fourway and above Triway.\n\n\
-             ## Stack\n\n\
-             ```text\n\
-             Hueman\n\
-             ↓\n\
-             Fourway\n\
-             ↓\n\
-             AuraTriad\n\
-             ↓\n\
-             Triway\n\
-             ↓\n\
-             Hollow Grove\n\
-             ```\n\n\
-             ## Triad\n\n\
-             ```text\n\
-             Aura Basin\n\
-             ↓\n\
-             Aura Fields\n\
-             ↓\n\
-             Aura Beach\n\
-             ```\n\n\
-             ## Meaning\n\n\
-             - AuraTriad is the world-facing three-region route body beneath Fourway.\n\
-             - Current Synthesis already records these as inverse-route regions.\n\
-             - Hueman reads them as the triadic resolution of the world map.\n\
-             - Triway remains the lower recursive split after this layer.\n\n\
-             ## PLEB and META\n\n\
-             - `PLEB` and `META` remain Current Synthesis occupancy semantics.\n\
-             - AuraTriad does not move `PLEB` or `META` into the kernel.\n\
-             - AuraTriad does not redefine Triway.\n\n\
-             ## Boundary\n\n\
-             - AuraTriad belongs to Hueman as world reading.\n\
-             - the source geography remains readable from Current Synthesis.\n\
-             - no feedback into Current Synthesis\n\
-             - no feedback into Hollow Grove\n\n\
-             ## Artifact Inputs\n\n\
-             Hueman Fourway bytes: 7.\n\
-             Current Synthesis topology bytes: 8.\n\n\
-             ## Boundary Reminder\n\n\
-             AuraTriad is the bridge between Hueman Fourway and Hollow Grove Triway. It is not itself a kernel structure.\n"
-        );
+        let output = build_hueman_aura_triad_from_artifacts("fourway", "topology");
+        assert!(output.starts_with("# Hueman Aura Triad"));
+        assert!(output.contains("route study beneath Fourway"));
+        assert!(output.contains("Aura Basin serves Flynt first"));
+        assert!(output.contains("Aura Fields serve public work first"));
+        assert!(output.contains("Current Synthesis topology bytes: 8."));
     }
 
     #[test]

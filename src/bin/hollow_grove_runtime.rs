@@ -11,17 +11,18 @@ use current_synthesis_support::{
     ARTIFACT_INDEX_PATH, CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH,
     CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH, CURRENT_SYNTHESIS_BEHAVIOR_RULES_ARTIFACT_PATH,
     CURRENT_SYNTHESIS_CHOICE_ARTIFACT_PATH, CURRENT_SYNTHESIS_CLIENTS_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_CONSEQUENCE_ARTIFACT_PATH, CURRENT_SYNTHESIS_CONTRACT_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_EXECUTION_SPEC_ARTIFACT_PATH, CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_PREVIEW_ARTIFACT_PATH, CURRENT_SYNTHESIS_READINESS_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_SELECTION_ARTIFACT_PATH, CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_STATE_ARTIFACT_PATH, CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH, DESKTOP_STATUS_ARTIFACT_PATH,
-    PROMPT_ARTIFACT_PATH, SNAPSHOT_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH, CURRENT_SYNTHESIS_CONSEQUENCE_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_CONTRACT_ARTIFACT_PATH, CURRENT_SYNTHESIS_EXECUTION_SPEC_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH, CURRENT_SYNTHESIS_PREVIEW_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_READINESS_ARTIFACT_PATH, CURRENT_SYNTHESIS_SELECTION_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH, CURRENT_SYNTHESIS_STATE_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH, CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH,
+    DESKTOP_STATUS_ARTIFACT_PATH, PROMPT_ARTIFACT_PATH, SNAPSHOT_ARTIFACT_PATH,
     build_current_synthesis_activation_gate_from_artifacts,
-    build_current_synthesis_base_from_artifacts,
+    build_current_synthesis_base_from_boundary,
     build_current_synthesis_behavior_rules_from_artifacts,
-    build_current_synthesis_choice_from_artifacts, build_current_synthesis_clients_from_artifacts,
+    build_current_synthesis_choice_from_artifacts, build_current_synthesis_clients_from_boundary,
+    build_current_synthesis_collision_relay_from_boundary,
     build_current_synthesis_consequence_from_artifacts,
     build_current_synthesis_contract_from_artifacts,
     build_current_synthesis_execution_spec_from_artifacts,
@@ -30,9 +31,13 @@ use current_synthesis_support::{
     build_current_synthesis_readiness_from_artifacts,
     build_current_synthesis_selection_from_artifacts,
     build_current_synthesis_sequence_from_artifacts, build_current_synthesis_state_from_artifacts,
-    build_current_synthesis_topology_from_artifacts,
-    build_current_synthesis_transition_pm_to_le_from_artifacts, ensure_artifact_index,
-    read_artifact,
+    build_current_synthesis_topology_from_boundary,
+    build_current_synthesis_transition_pm_to_le_from_boundary, load_artifact_index,
+};
+use hollow_grove::SnapshotBoundary;
+use hollow_grove::current_synthesis_engine::{
+    advance_current_synthesis_player_action_at, encode_current_synthesis_player_action,
+    load_current_synthesis_at, read_hueman_feedback_at, stage_view_artifacts,
 };
 use hollow_grove::hueman_support::{
     build_hueman_archetype_lens_from_artifacts, build_hueman_aura_behavior_from_artifacts,
@@ -65,6 +70,7 @@ use hollow_grove::{
 const RUNTIME_INPUT_ARTIFACT_PATH: &str = "artifacts/runtime_input.txt";
 const RUNTIME_MEMORY_ARTIFACT_PATH: &str = "artifacts/runtime_memory.txt";
 const RUNTIME_LOOP_STATUS_ARTIFACT_PATH: &str = "artifacts/runtime_loop_status.md";
+const SCREEN_MAP_INTENT_ARTIFACT_PATH: &str = "artifacts/screen_map_intent.json";
 const DEFAULT_INTERVAL_MS: u64 = 1_000;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -121,9 +127,29 @@ struct RuntimeCycleResult {
     cycle_number: usize,
     elapsed: Duration,
     mode: RuntimeMode,
-    action_taken: &'static str,
+    action_taken: String,
     should_stop: bool,
     status_path: PathBuf,
+}
+
+#[derive(Debug, Clone, PartialEq)]
+struct ScreenMapIntent {
+    intent: String,
+    zone_id: String,
+    zone_name: String,
+    zone_kind: String,
+    source: String,
+    pair: Option<ScreenMapPairIntent>,
+}
+
+#[derive(Debug, Clone, PartialEq)]
+struct ScreenMapPairIntent {
+    paired_window_mode: bool,
+    window_id: Option<usize>,
+    window_title: Option<String>,
+    app_id: Option<String>,
+    diagonal_angle_degrees: Option<f64>,
+    spread_ratio: Option<f64>,
 }
 
 fn parse_runtime_cli<I>(args: I) -> Result<RuntimeCli, String>
@@ -336,6 +362,504 @@ fn unescape_runtime_memory_value(value: &str) -> String {
     }
 
     output
+}
+
+fn find_json_field<'a>(object: &'a str, key: &str) -> io::Result<&'a str> {
+    let pattern = format!("\"{key}\":");
+    let start = object.find(&pattern).ok_or_else(|| {
+        io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!("json object missing field {key}"),
+        )
+    })? + pattern.len();
+
+    let mut in_string = false;
+    let mut escaped = false;
+    let mut depth = 0usize;
+    let rest = &object[start..];
+
+    for (index, ch) in rest.char_indices() {
+        if in_string {
+            if escaped {
+                escaped = false;
+            } else if ch == '\\' {
+                escaped = true;
+            } else if ch == '"' {
+                in_string = false;
+            }
+            continue;
+        }
+
+        match ch {
+            '"' => in_string = true,
+            '[' | '{' => depth += 1,
+            ']' | '}' => {
+                if depth == 0 {
+                    return Ok(rest[..index].trim());
+                }
+                depth -= 1;
+            }
+            ',' if depth == 0 => return Ok(rest[..index].trim()),
+            _ => {}
+        }
+    }
+
+    Ok(rest.trim())
+}
+
+fn parse_json_string(value: &str) -> io::Result<Option<String>> {
+    if value == "null" {
+        return Ok(None);
+    }
+    if !(value.starts_with('"') && value.ends_with('"')) {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!("expected json string or null, got {value}"),
+        ));
+    }
+
+    Ok(Some(
+        value[1..value.len() - 1]
+            .replace("\\\"", "\"")
+            .replace("\\n", "\n")
+            .replace("\\\\", "\\"),
+    ))
+}
+
+fn parse_json_bool(value: &str) -> io::Result<bool> {
+    match value {
+        "true" => Ok(true),
+        "false" => Ok(false),
+        _ => Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!("expected json bool, got {value}"),
+        )),
+    }
+}
+
+fn parse_json_usize(value: &str, field: &str) -> io::Result<usize> {
+    value.parse::<usize>().map_err(|_| {
+        io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!("expected usize for {field}, got {value}"),
+        )
+    })
+}
+
+fn parse_json_f64(value: &str, field: &str) -> io::Result<f64> {
+    value.parse::<f64>().map_err(|_| {
+        io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!("expected f64 for {field}, got {value}"),
+        )
+    })
+}
+
+fn optional_json_field<'a>(object: &'a str, key: &str) -> Option<&'a str> {
+    find_json_field(object, key).ok()
+}
+
+fn escape_json(value: &str) -> String {
+    value
+        .replace('\\', "\\\\")
+        .replace('"', "\\\"")
+        .replace('\n', "\\n")
+}
+
+fn parse_screen_map_pair_intent(contents: &str) -> io::Result<Option<ScreenMapPairIntent>> {
+    let trimmed = contents.trim();
+    if trimmed.is_empty() || trimmed == "null" {
+        return Ok(None);
+    }
+    if !trimmed.starts_with('{') || !trimmed.ends_with('}') {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "screen map pair intent is not a json object",
+        ));
+    }
+
+    let paired_window_mode = optional_json_field(trimmed, "paired_window_mode")
+        .map(parse_json_bool)
+        .transpose()?
+        .unwrap_or(false);
+    let window_id = optional_json_field(trimmed, "window_id")
+        .map(|value| parse_json_usize(value, "window_id"))
+        .transpose()?;
+    let window_title = optional_json_field(trimmed, "window_title")
+        .map(parse_json_string)
+        .transpose()?
+        .flatten();
+    let app_id = optional_json_field(trimmed, "app_id")
+        .map(parse_json_string)
+        .transpose()?
+        .flatten();
+    let diagonal_angle_degrees = optional_json_field(trimmed, "diagonal_angle_degrees")
+        .map(|value| parse_json_f64(value, "diagonal_angle_degrees"))
+        .transpose()?;
+    let spread_ratio = optional_json_field(trimmed, "spread_ratio")
+        .map(|value| parse_json_f64(value, "spread_ratio"))
+        .transpose()?;
+
+    Ok(Some(ScreenMapPairIntent {
+        paired_window_mode,
+        window_id,
+        window_title,
+        app_id,
+        diagonal_angle_degrees,
+        spread_ratio,
+    }))
+}
+
+fn parse_screen_map_intent(contents: &str) -> io::Result<Option<ScreenMapIntent>> {
+    let trimmed = contents.trim();
+    if trimmed.is_empty() || trimmed == "null" {
+        return Ok(None);
+    }
+    if !trimmed.starts_with('{') || !trimmed.ends_with('}') {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "screen map intent is not a json object",
+        ));
+    }
+
+    if let Ok(status_value) = find_json_field(trimmed, "status")
+        && let Some(status) = parse_json_string(status_value)?
+        && status.eq_ignore_ascii_case("consumed")
+    {
+        return Ok(None);
+    }
+
+    let intent = parse_json_string(find_json_field(trimmed, "intent")?)?.ok_or_else(|| {
+        io::Error::new(
+            io::ErrorKind::InvalidData,
+            "screen map intent missing intent",
+        )
+    })?;
+    let zone = find_json_field(trimmed, "zone")?;
+    let zone_id = parse_json_string(find_json_field(zone, "id")?)?.ok_or_else(|| {
+        io::Error::new(
+            io::ErrorKind::InvalidData,
+            "screen map intent missing zone.id",
+        )
+    })?;
+    let zone_name = parse_json_string(find_json_field(zone, "name")?)?.ok_or_else(|| {
+        io::Error::new(
+            io::ErrorKind::InvalidData,
+            "screen map intent missing zone.name",
+        )
+    })?;
+    let zone_kind = parse_json_string(find_json_field(zone, "kind")?)?.ok_or_else(|| {
+        io::Error::new(
+            io::ErrorKind::InvalidData,
+            "screen map intent missing zone.kind",
+        )
+    })?;
+    let source = match find_json_field(trimmed, "source") {
+        Ok(value) => parse_json_string(value)?.unwrap_or_else(|| String::from("unknown")),
+        Err(_) => String::from("unknown"),
+    };
+    let pair = match optional_json_field(trimmed, "pair") {
+        Some(value) => parse_screen_map_pair_intent(value)?,
+        None => None,
+    };
+
+    Ok(Some(ScreenMapIntent {
+        intent,
+        zone_id,
+        zone_name,
+        zone_kind,
+        source,
+        pair,
+    }))
+}
+
+fn route_endpoints(zone_id: &str) -> Option<(&'static str, &'static str)> {
+    match zone_id {
+        "aura_ridge" => Some(("stonebend", "glaushouse")),
+        "aura_ridge_east" => Some(("stonebend", "sandmanor")),
+        "aura_way" => Some(("stonebend", "sandmanor")),
+        "glausbahn" => Some(("sandmanor", "glaushouse")),
+        "boardwalk" => Some(("glaushouse", "flynt")),
+        "basin_motorspeedway" => Some(("stonebend", "flynt")),
+        "mnt_aura" => Some(("sandmanor", "stonebend")),
+        "current_sea" => Some(("sandmanor", "glaushouse")),
+        "riptide" => Some(("glaushouse", "flynt")),
+        "stairway_to_heaven" => Some(("flynt", "stonebend")),
+        _ => None,
+    }
+}
+
+fn zone_id_to_slug(zone_id: &str) -> String {
+    zone_id.replace('_', "-")
+}
+
+fn format_json_decimal(value: f64) -> String {
+    let rendered = format!("{value:.6}");
+    rendered
+        .trim_end_matches('0')
+        .trim_end_matches('.')
+        .to_owned()
+}
+
+fn slug_token(value: &str) -> String {
+    let mut token = String::new();
+    let mut last_dash = false;
+
+    for ch in value.chars() {
+        if ch.is_ascii_alphanumeric() {
+            token.push(ch.to_ascii_lowercase());
+            last_dash = false;
+        } else if !last_dash {
+            token.push('-');
+            last_dash = true;
+        }
+    }
+
+    token.trim_matches('-').to_owned()
+}
+
+fn pair_action_suffix(pair: Option<&ScreenMapPairIntent>) -> String {
+    let Some(pair) = pair else {
+        return String::new();
+    };
+    if !pair.paired_window_mode {
+        return String::new();
+    }
+
+    let actor_token = pair
+        .app_id
+        .as_deref()
+        .map(slug_token)
+        .filter(|value| !value.is_empty())
+        .or_else(|| {
+            pair.window_title
+                .as_deref()
+                .map(slug_token)
+                .filter(|value| !value.is_empty())
+        })
+        .or_else(|| pair.window_id.map(|value| format!("window-{value}")))
+        .unwrap_or_else(|| String::from("paired-window"));
+    let angle_token = pair
+        .diagonal_angle_degrees
+        .map(format_json_decimal)
+        .unwrap_or_else(|| String::from("135"));
+    let spread_token = pair
+        .spread_ratio
+        .map(format_json_decimal)
+        .unwrap_or_else(|| String::from("0.25"));
+
+    format!(
+        " pair-mode=diagonal pair-angle={angle_token} pair-spread={spread_token} actor={actor_token}"
+    )
+}
+
+fn motion_grid_support_label(zone_id: &str, pair_suffix: &str) -> String {
+    match zone_id {
+        "hollow_back" => format!(
+            "asset=shelter beneficiary=hollow-back front=shelter intensity=light duration=hold site=hollow-back zone=hollow-grove-grid bearing=northwest cadence=cover{pair_suffix}"
+        ),
+        "hollow_grove" => format!(
+            "asset=power beneficiary=hollow-grove front=power intensity=balanced duration=hold site=hollow-grove zone=hollow-grove-grid bearing=north cadence=anchor{pair_suffix}"
+        ),
+        "hollow_bend" => format!(
+            "asset=route beneficiary=hollow-bend front=route intensity=balanced duration=burst site=hollow-bend zone=hollow-grove-grid bearing=northeast cadence=redirect{pair_suffix}"
+        ),
+        "the_grove" => format!(
+            "asset=crew beneficiary=the-grove front=labor intensity=balanced duration=hold site=the-grove zone=hollow-grove-grid bearing=west cadence=marshal{pair_suffix}"
+        ),
+        "human_core" => format!(
+            "asset=power beneficiary=human-core front=power intensity=light duration=hold site=human-core zone=hollow-grove-grid bearing=center cadence=settle{pair_suffix}"
+        ),
+        "the_hollows" => format!(
+            "asset=shelter beneficiary=the-hollows front=shelter intensity=heavy duration=extended site=the-hollows zone=hollow-grove-grid bearing=east cadence=brace{pair_suffix}"
+        ),
+        "grove_orchard" => format!(
+            "asset=crew beneficiary=grove-orchard front=labor intensity=light duration=extended site=grove-orchard zone=hollow-grove-grid bearing=southwest cadence=cultivate{pair_suffix}"
+        ),
+        "grove_hollow" => format!(
+            "asset=shelter beneficiary=grove-hollow front=shelter intensity=balanced duration=hold site=grove-hollow zone=hollow-grove-grid bearing=south cadence=descent{pair_suffix}"
+        ),
+        "grove_falls" => format!(
+            "asset=bridge beneficiary=grove-falls front=route intensity=heavy duration=burst site=grove-falls zone=hollow-grove-grid bearing=southeast cadence=release{pair_suffix}"
+        ),
+        other => format!(
+            "asset=route beneficiary={} front=route intensity=balanced duration=hold site={} zone=hollow-grove-grid cadence=align{pair_suffix}",
+            zone_id_to_slug(other),
+            zone_id_to_slug(other)
+        ),
+    }
+}
+
+fn motion_grid_decide_label(zone_id: &str, pair_suffix: &str) -> String {
+    match zone_id {
+        "hollow_back" => format!(
+            "target=hollow-back focus=shelter commitment=hold authority=solo signal=quiet site=hollow-back zone=hollow-grove-grid{pair_suffix}"
+        ),
+        "hollow_grove" => format!(
+            "target=hollow-grove focus=power commitment=commit authority=shared signal=public site=hollow-grove zone=hollow-grove-grid{pair_suffix}"
+        ),
+        "hollow_bend" => format!(
+            "target=hollow-bend focus=route commitment=shift authority=shared signal=public site=hollow-bend zone=hollow-grove-grid{pair_suffix}"
+        ),
+        "the_grove" => format!(
+            "target=the-grove focus=labor commitment=commit authority=solo signal=public site=the-grove zone=hollow-grove-grid{pair_suffix}"
+        ),
+        "human_core" => format!(
+            "target=human-core focus=power commitment=hold authority=shared signal=quiet site=human-core zone=hollow-grove-grid{pair_suffix}"
+        ),
+        "the_hollows" => format!(
+            "target=the-hollows focus=conflict commitment=hold authority=solo signal=emergency site=the-hollows zone=hollow-grove-grid{pair_suffix}"
+        ),
+        "grove_orchard" => format!(
+            "target=grove-orchard focus=labor commitment=commit authority=solo signal=quiet site=grove-orchard zone=hollow-grove-grid{pair_suffix}"
+        ),
+        "grove_hollow" => format!(
+            "target=grove-hollow focus=shelter commitment=hold authority=solo signal=quiet site=grove-hollow zone=hollow-grove-grid{pair_suffix}"
+        ),
+        "grove_falls" => format!(
+            "target=grove-falls focus=route commitment=shift authority=shared signal=emergency site=grove-falls zone=hollow-grove-grid{pair_suffix}"
+        ),
+        other => format!(
+            "target={} focus=general commitment=commit authority=solo signal=quiet site={} zone=hollow-grove-grid{pair_suffix}",
+            zone_id_to_slug(other),
+            zone_id_to_slug(other)
+        ),
+    }
+}
+
+fn translate_screen_map_intent(intent: &ScreenMapIntent) -> io::Result<(String, String)> {
+    let zone_slug = zone_id_to_slug(&intent.zone_id);
+    let pair_suffix = pair_action_suffix(intent.pair.as_ref());
+
+    match intent.intent.as_str() {
+        "move" => {
+            if intent.zone_kind == "motion_grid_cell" {
+                return Ok((
+                    String::from("support"),
+                    motion_grid_support_label(&intent.zone_id, &pair_suffix),
+                ));
+            }
+            if intent.zone_kind == "straight_route" || intent.zone_kind == "curved_route" {
+                let (from, to) = route_endpoints(&intent.zone_id).ok_or_else(|| {
+                    io::Error::new(
+                        io::ErrorKind::InvalidInput,
+                        format!("unsupported route zone id: {}", intent.zone_id),
+                    )
+                })?;
+                Ok((
+                    String::from("move"),
+                    format!(
+                        "from={from} to={to} line={zone_slug} pace=balanced method=traverse stance=steady{pair_suffix}"
+                    ),
+                ))
+            } else {
+                Ok((
+                    String::from("move"),
+                    format!(
+                        "target={zone_slug} pace=balanced method=scout stance=quiet{pair_suffix}"
+                    ),
+                ))
+            }
+        }
+        "inspect" => {
+            if intent.zone_kind == "motion_grid_cell" {
+                Ok((
+                    String::from("decide"),
+                    motion_grid_decide_label(&intent.zone_id, &pair_suffix),
+                ))
+            } else {
+                Ok((
+                    String::from("decide"),
+                    format!(
+                        "target={zone_slug} focus=route commitment=shift authority=shared signal=public{pair_suffix}"
+                    ),
+                ))
+            }
+        }
+        other => Err(io::Error::new(
+            io::ErrorKind::InvalidInput,
+            format!("unsupported screen map intent: {other}"),
+        )),
+    }
+}
+
+fn build_consumed_screen_map_intent_receipt(
+    intent: &ScreenMapIntent,
+    action_kind: &str,
+    action_label: &str,
+) -> String {
+    let pair_json = match intent.pair.as_ref() {
+        Some(pair) => format!(
+            ",\n  \"pair\": {{\n    \"paired_window_mode\": {},\n    \"window_id\": {},\n    \"window_title\": {},\n    \"app_id\": {},\n    \"diagonal_angle_degrees\": {},\n    \"spread_ratio\": {}\n  }}",
+            pair.paired_window_mode,
+            pair.window_id
+                .map(|value| value.to_string())
+                .unwrap_or_else(|| String::from("null")),
+            pair.window_title
+                .as_deref()
+                .map(|value| format!("\"{}\"", escape_json(value)))
+                .unwrap_or_else(|| String::from("null")),
+            pair.app_id
+                .as_deref()
+                .map(|value| format!("\"{}\"", escape_json(value)))
+                .unwrap_or_else(|| String::from("null")),
+            pair.diagonal_angle_degrees
+                .map(format_json_decimal)
+                .unwrap_or_else(|| String::from("null")),
+            pair.spread_ratio
+                .map(format_json_decimal)
+                .unwrap_or_else(|| String::from("null"))
+        ),
+        None => String::new(),
+    };
+
+    format!(
+        "{{\n  \"schema_version\": \"0.1.0\",\n  \"status\": \"consumed\",\n  \"intent\": \"{}\",\n  \"zone\": {{\n    \"id\": \"{}\",\n    \"name\": \"{}\",\n    \"kind\": \"{}\"\n  }},\n  \"source\": \"{}\"{},\n  \"translated_action\": {{\n    \"kind\": \"{}\",\n    \"label\": \"{}\"\n  }}\n}}\n",
+        escape_json(&intent.intent),
+        escape_json(&intent.zone_id),
+        escape_json(&intent.zone_name),
+        escape_json(&intent.zone_kind),
+        escape_json(&intent.source),
+        pair_json,
+        escape_json(action_kind),
+        escape_json(action_label)
+    )
+}
+
+fn read_screen_map_intent_at(root: &Path) -> io::Result<Option<ScreenMapIntent>> {
+    match read_text_artifact(&root.join(SCREEN_MAP_INTENT_ARTIFACT_PATH)) {
+        Ok(contents) => parse_screen_map_intent(&contents),
+        Err(error) if error.kind() == io::ErrorKind::NotFound => Ok(None),
+        Err(error) => Err(error),
+    }
+}
+
+fn write_consumed_screen_map_intent_at(
+    root: &Path,
+    intent: &ScreenMapIntent,
+    action_kind: &str,
+    action_label: &str,
+) -> io::Result<PathBuf> {
+    let path = root.join(SCREEN_MAP_INTENT_ARTIFACT_PATH);
+    write_text_artifact(
+        &path,
+        &build_consumed_screen_map_intent_receipt(intent, action_kind, action_label),
+    )?;
+    Ok(path)
+}
+
+fn consume_screen_map_intent_at(root: &Path) -> io::Result<Option<String>> {
+    let Some(intent) = read_screen_map_intent_at(root)? else {
+        return Ok(None);
+    };
+    let (action_kind, action_label) = translate_screen_map_intent(&intent)?;
+    let encoded = encode_current_synthesis_player_action(&action_kind, &action_label)?;
+    let _ = advance_current_synthesis_player_action_at(root, &encoded, None, None)?;
+    let _ = write_consumed_screen_map_intent_at(root, &intent, &action_kind, &action_label)?;
+    Ok(Some(format!(
+        "consumed {} {} from {}",
+        action_kind, intent.zone_name, intent.source
+    )))
 }
 
 fn parse_runtime_bool(value: &str, field: &str) -> io::Result<bool> {
@@ -588,11 +1112,13 @@ fn build_runtime_status_output(
         RuntimeMode::Run => {
             "- kernel artifacts refreshed\n\
              - Current Synthesis artifacts refreshed\n\
+             - Current Synthesis TUI artifacts refreshed\n\
              - Hueman artifacts refreshed"
         }
         RuntimeMode::Hold | RuntimeMode::Stop => {
             "- kernel artifacts unchanged\n\
              - Current Synthesis artifacts unchanged\n\
+             - Current Synthesis TUI artifacts unchanged\n\
              - Hueman artifacts unchanged"
         }
     };
@@ -630,6 +1156,7 @@ fn build_runtime_status_output(
          - origin: {}\n\
          - input_contract: `{RUNTIME_INPUT_ARTIFACT_PATH}`\n\
          - memory_contract: `{RUNTIME_MEMORY_ARTIFACT_PATH}`\n\
+         - screen_map_intent_contract: `{SCREEN_MAP_INTENT_ARTIFACT_PATH}`\n\
          - root_origin: `Symptom::origin()`\n\n\
          ## Previous Memory\n\n\
          {memory_summary}\n\n\
@@ -663,18 +1190,21 @@ fn read_artifact_in_session(
 fn run_current_synthesis_at(
     root: &Path,
     session: &mut ArtifactSession,
-) -> io::Result<[PathBuf; 16]> {
+) -> io::Result<[PathBuf; 17]> {
     let snapshot = read_artifact_in_session(session, root, SNAPSHOT_ARTIFACT_PATH)?;
+    let snapshot_boundary = SnapshotBoundary::parse(&snapshot)?;
     let prompt = read_artifact_in_session(session, root, PROMPT_ARTIFACT_PATH)?;
     let desktop_status = read_artifact_in_session(session, root, DESKTOP_STATUS_ARTIFACT_PATH)?;
-    let current_synthesis_base =
-        build_current_synthesis_base_from_artifacts(&snapshot, &prompt, &desktop_status)?;
+    let current_synthesis_base = build_current_synthesis_base_from_boundary(
+        &snapshot_boundary,
+        snapshot.len(),
+        &prompt,
+        &desktop_status,
+    )?;
     let base_path = root.join(CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH);
     stage_artifact(session, &base_path, current_synthesis_base.clone());
 
-    let artifact_index_path = root.join(ARTIFACT_INDEX_PATH);
-    ensure_artifact_index(&artifact_index_path)?;
-    let artifact_index = read_artifact(&artifact_index_path)?;
+    let artifact_index = load_artifact_index(&root.join(ARTIFACT_INDEX_PATH))?;
     let current_synthesis_state =
         build_current_synthesis_state_from_artifacts(&current_synthesis_base, &artifact_index);
     let state_path = root.join(CURRENT_SYNTHESIS_STATE_ARTIFACT_PATH);
@@ -687,14 +1217,18 @@ fn run_current_synthesis_at(
     let sequence_path = root.join(CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH);
     stage_artifact(session, &sequence_path, current_synthesis_sequence.clone());
 
-    let current_synthesis_topology = build_current_synthesis_topology_from_artifacts(
+    let current_synthesis_topology = build_current_synthesis_topology_from_boundary(
+        &snapshot_boundary,
+        snapshot.len(),
         &current_synthesis_sequence,
         &current_synthesis_state,
     );
     let topology_path = root.join(CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH);
     stage_artifact(session, &topology_path, current_synthesis_topology.clone());
 
-    let current_synthesis_clients = build_current_synthesis_clients_from_artifacts(
+    let current_synthesis_clients = build_current_synthesis_clients_from_boundary(
+        &snapshot_boundary,
+        snapshot.len(),
         &current_synthesis_topology,
         &current_synthesis_sequence,
     );
@@ -789,9 +1323,11 @@ fn run_current_synthesis_at(
     );
 
     let current_synthesis_transition_pm_to_le =
-        build_current_synthesis_transition_pm_to_le_from_artifacts(
+        build_current_synthesis_transition_pm_to_le_from_boundary(
             &current_synthesis_behavior_rules,
             &current_synthesis_topology,
+            &snapshot_boundary,
+            snapshot.len(),
         );
     let transition_pm_to_le_path = root.join(CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH);
     stage_artifact(
@@ -800,8 +1336,23 @@ fn run_current_synthesis_at(
         current_synthesis_transition_pm_to_le.clone(),
     );
 
+    let current_synthesis_collision_relay = build_current_synthesis_collision_relay_from_boundary(
+        &snapshot_boundary,
+        snapshot.len(),
+        &current_synthesis_contract,
+        &current_synthesis_operational,
+        &current_synthesis_transition_pm_to_le,
+    );
+    let collision_relay_path = root.join(CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH);
+    stage_artifact(
+        session,
+        &collision_relay_path,
+        current_synthesis_collision_relay.clone(),
+    );
+
     let current_synthesis_activation_gate = build_current_synthesis_activation_gate_from_artifacts(
         &current_synthesis_transition_pm_to_le,
+        &current_synthesis_collision_relay,
         &current_synthesis_readiness,
     );
     let activation_gate_path = root.join(CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH);
@@ -827,6 +1378,7 @@ fn run_current_synthesis_at(
         execution_spec_path,
         behavior_rules_path,
         transition_pm_to_le_path,
+        collision_relay_path,
         activation_gate_path,
     ])
 }
@@ -916,6 +1468,11 @@ fn run_hueman_at(root: &Path, session: &mut ArtifactSession) -> io::Result<[Path
         root,
         CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH,
     )?;
+    let current_synthesis_collision_relay = read_artifact_in_session(
+        session,
+        root,
+        CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH,
+    )?;
     let current_synthesis_selection =
         read_artifact_in_session(session, root, CURRENT_SYNTHESIS_SELECTION_ARTIFACT_PATH)?;
     let current_synthesis_consequence =
@@ -924,6 +1481,7 @@ fn run_hueman_at(root: &Path, session: &mut ArtifactSession) -> io::Result<[Path
         &current_synthesis_execution_spec,
         &current_synthesis_behavior_rules,
         &current_synthesis_transition_pm_to_le,
+        &current_synthesis_collision_relay,
         &current_synthesis_selection,
         &current_synthesis_consequence,
         &current_synthesis_activation_gate,
@@ -958,8 +1516,11 @@ fn run_hueman_at(root: &Path, session: &mut ArtifactSession) -> io::Result<[Path
     let start_paths_path = root.join(hueman_start_paths_artifact_path());
     stage_artifact(session, &start_paths_path, hueman_start_paths.clone());
 
-    let hueman_path_crossovers =
-        build_hueman_path_crossovers_from_artifacts(&hueman_start_paths, &hueman_aura_behavior);
+    let hueman_path_crossovers = build_hueman_path_crossovers_from_artifacts(
+        &hueman_start_paths,
+        &hueman_aura_behavior,
+        &current_synthesis_collision_relay,
+    );
     let path_crossovers_path = root.join(hueman_path_crossovers_artifact_path());
     stage_artifact(
         session,
@@ -972,6 +1533,7 @@ fn run_hueman_at(root: &Path, session: &mut ArtifactSession) -> io::Result<[Path
     let hueman_link_physics = build_hueman_link_physics_from_artifacts(
         &current_synthesis_sequence,
         &hueman_path_crossovers,
+        &current_synthesis_collision_relay,
     );
     let link_physics_path = root.join(hueman_link_physics_artifact_path());
     stage_artifact(session, &link_physics_path, hueman_link_physics.clone());
@@ -981,8 +1543,11 @@ fn run_hueman_at(root: &Path, session: &mut ArtifactSession) -> io::Result<[Path
     let inverse_circle_path = root.join(hueman_inverse_circle_artifact_path());
     stage_artifact(session, &inverse_circle_path, hueman_inverse_circle.clone());
 
-    let hueman_crossover_scenes =
-        build_hueman_crossover_scenes_from_artifacts(&hueman_path_crossovers, &hueman_link_physics);
+    let hueman_crossover_scenes = build_hueman_crossover_scenes_from_artifacts(
+        &hueman_path_crossovers,
+        &hueman_link_physics,
+        &current_synthesis_collision_relay,
+    );
     let crossover_scenes_path = root.join(hueman_crossover_scenes_artifact_path());
     stage_artifact(
         session,
@@ -1000,6 +1565,7 @@ fn run_hueman_at(root: &Path, session: &mut ArtifactSession) -> io::Result<[Path
         &hueman_glaushouse_roles,
         &hueman_sandmanor_roles,
         &hueman_inverse_circle,
+        &current_synthesis_collision_relay,
     );
     let scene_presence_path = root.join(hueman_scene_presence_artifact_path());
     stage_artifact(session, &scene_presence_path, hueman_scene_presence.clone());
@@ -1007,6 +1573,7 @@ fn run_hueman_at(root: &Path, session: &mut ArtifactSession) -> io::Result<[Path
     let hueman_scene_intent = build_hueman_scene_intent_from_artifacts(
         &hueman_scene_presence,
         &hueman_link_physics,
+        &current_synthesis_collision_relay,
         &current_synthesis_contract,
         &hueman_stonebend_roles,
         &hueman_tross_helpers,
@@ -1017,13 +1584,17 @@ fn run_hueman_at(root: &Path, session: &mut ArtifactSession) -> io::Result<[Path
     let scene_intent_path = root.join(hueman_scene_intent_artifact_path());
     stage_artifact(session, &scene_intent_path, hueman_scene_intent.clone());
 
-    let hueman_scene_drift =
-        build_hueman_scene_drift_from_artifacts(&hueman_scene_intent, &hueman_link_physics);
+    let hueman_scene_drift = build_hueman_scene_drift_from_artifacts(
+        &hueman_scene_intent,
+        &hueman_link_physics,
+        &current_synthesis_collision_relay,
+    );
     let scene_drift_path = root.join(hueman_scene_drift_artifact_path());
     stage_artifact(session, &scene_drift_path, hueman_scene_drift.clone());
 
     let vertical_integration_stack = build_vertical_integration_stack_from_artifacts(
         &current_synthesis_base,
+        &current_synthesis_collision_relay,
         &hueman_boundary,
         &hueman_glaushouse_roles,
         &hueman_sandmanor_roles,
@@ -1065,6 +1636,13 @@ fn run_hueman_at(root: &Path, session: &mut ArtifactSession) -> io::Result<[Path
     ])
 }
 
+fn run_current_synthesis_tui_at(root: &Path, session: &mut ArtifactSession) -> io::Result<()> {
+    let hueman_feedback = read_hueman_feedback_at(root)?;
+    let (persisted, state) = load_current_synthesis_at(root, hueman_feedback)?;
+    stage_view_artifacts(session, root, &persisted, &state);
+    Ok(())
+}
+
 fn run_runtime_cycle_at(root: &Path, cycle_number: usize) -> io::Result<RuntimeCycleResult> {
     let cycle_started = Instant::now();
     let previous_memory = read_runtime_memory_at(root)?;
@@ -1088,18 +1666,27 @@ fn run_runtime_cycle_at(root: &Path, cycle_number: usize) -> io::Result<RuntimeC
             );
 
             run_current_synthesis_at(root, &mut session)?;
+            let consumed_intent = consume_screen_map_intent_at(root)?;
+            run_current_synthesis_tui_at(root, &mut session)?;
             run_hueman_at(root, &mut session)?;
             session.commit()?;
 
-            ("refreshed pipeline", false, Some(kernel_pass.to_string()))
+            (
+                match consumed_intent {
+                    Some(intent_summary) => format!("refreshed pipeline; {intent_summary}"),
+                    None => String::from("refreshed pipeline"),
+                },
+                false,
+                Some(kernel_pass.to_string()),
+            )
         }
         RuntimeMode::Hold => (
-            "held pipeline",
+            String::from("held pipeline"),
             false,
             resolve_visible_witness(root, previous_memory.as_ref())?,
         ),
         RuntimeMode::Stop => (
-            "stop requested",
+            String::from("stop requested"),
             true,
             resolve_visible_witness(root, previous_memory.as_ref())?,
         ),
@@ -1109,7 +1696,7 @@ fn run_runtime_cycle_at(root: &Path, cycle_number: usize) -> io::Result<RuntimeC
         last_cycle: cycle_number,
         last_unix_time_s: timestamp_unix_seconds,
         last_runtime_mode: runtime_input.mode,
-        last_action_taken: String::from(action_taken),
+        last_action_taken: action_taken.clone(),
         last_origin: runtime_input.origin.clone(),
         last_operator_note: runtime_input.operator_note.clone(),
         last_should_stop: should_stop,
@@ -1123,7 +1710,7 @@ fn run_runtime_cycle_at(root: &Path, cycle_number: usize) -> io::Result<RuntimeC
         cycle_started.elapsed(),
         timestamp_unix_seconds,
         &runtime_input,
-        action_taken,
+        &action_taken,
         witness.as_deref(),
         previous_memory.as_ref(),
     );
@@ -1193,9 +1780,11 @@ mod tests {
     use super::{
         DEFAULT_INTERVAL_MS, RUNTIME_INPUT_ARTIFACT_PATH, RUNTIME_LOOP_STATUS_ARTIFACT_PATH,
         RUNTIME_MEMORY_ARTIFACT_PATH, RuntimeCli, RuntimeConfig, RuntimeInput, RuntimeMemory,
-        RuntimeMode, build_runtime_input_template, build_runtime_memory_output,
-        build_runtime_status_output, parse_runtime_cli, parse_runtime_input, parse_runtime_memory,
-        run_runtime_cycle_at, runtime_resume_cycle_at, usage,
+        RuntimeMode, SCREEN_MAP_INTENT_ARTIFACT_PATH, ScreenMapIntent, ScreenMapPairIntent,
+        build_consumed_screen_map_intent_receipt, build_runtime_input_template,
+        build_runtime_memory_output, build_runtime_status_output, parse_runtime_cli,
+        parse_runtime_input, parse_runtime_memory, parse_screen_map_intent, run_runtime_cycle_at,
+        runtime_resume_cycle_at, translate_screen_map_intent, usage,
     };
     use crate::current_synthesis_support::{
         ARTIFACT_INDEX_PATH, DESKTOP_STATUS_ARTIFACT_PATH, PROMPT_ARTIFACT_PATH,
@@ -1424,6 +2013,105 @@ mod tests {
     }
 
     #[test]
+    fn screen_map_intent_parser_and_receipt_ignore_consumed_payloads() {
+        let parsed = parse_screen_map_intent(
+            "{\n  \"intent\": \"move\",\n  \"zone\": {\"id\": \"aura_ridge_east\", \"name\": \"Aura Ridge East\", \"kind\": \"straight_route\"},\n  \"source\": \"hueman_godot_shell\",\n  \"pair\": {\n    \"paired_window_mode\": true,\n    \"window_id\": 4,\n    \"window_title\": \"Terminal\",\n    \"app_id\": \"kitty\",\n    \"diagonal_angle_degrees\": 135,\n    \"spread_ratio\": 0.25\n  }\n}\n",
+        )
+        .expect("intent should parse")
+        .expect("intent should exist");
+        assert_eq!(parsed.intent, "move");
+        assert_eq!(parsed.zone_id, "aura_ridge_east");
+        assert!(parsed.pair.is_some());
+
+        let receipt = build_consumed_screen_map_intent_receipt(
+            &parsed,
+            "move",
+            "from=stonebend to=sandmanor line=aura-ridge-east pace=balanced method=traverse stance=steady",
+        );
+        assert!(
+            parse_screen_map_intent(&receipt)
+                .expect("receipt should parse")
+                .is_none()
+        );
+    }
+
+    #[test]
+    fn screen_map_intent_translation_emits_native_current_synthesis_actions() {
+        let move_intent = ScreenMapIntent {
+            intent: String::from("move"),
+            zone_id: String::from("aura_ridge_east"),
+            zone_name: String::from("Aura Ridge East"),
+            zone_kind: String::from("straight_route"),
+            source: String::from("hueman_godot_shell"),
+            pair: Some(ScreenMapPairIntent {
+                paired_window_mode: true,
+                window_id: Some(4),
+                window_title: Some(String::from("Terminal")),
+                app_id: Some(String::from("kitty")),
+                diagonal_angle_degrees: Some(135.0),
+                spread_ratio: Some(0.25),
+            }),
+        };
+        let inspect_intent = ScreenMapIntent {
+            intent: String::from("inspect"),
+            zone_id: String::from("stonebend"),
+            zone_name: String::from("Stonebend"),
+            zone_kind: String::from("kingdom"),
+            source: String::from("hueman_godot_shell"),
+            pair: None,
+        };
+
+        let (move_kind, move_label) =
+            translate_screen_map_intent(&move_intent).expect("move intent should translate");
+        let (inspect_kind, inspect_label) =
+            translate_screen_map_intent(&inspect_intent).expect("inspect intent should translate");
+
+        assert_eq!(move_kind, "move");
+        assert!(move_label.contains("line=aura-ridge-east"));
+        assert!(move_label.contains("from=stonebend"));
+        assert!(move_label.contains("pair-mode=diagonal"));
+        assert!(move_label.contains("actor=kitty"));
+        assert_eq!(inspect_kind, "decide");
+        assert!(inspect_label.contains("target=stonebend"));
+        assert!(inspect_label.contains("focus=route"));
+    }
+
+    #[test]
+    fn motion_grid_cells_translate_into_hollow_grove_native_actions() {
+        let move_intent = ScreenMapIntent {
+            intent: String::from("move"),
+            zone_id: String::from("human_core"),
+            zone_name: String::from("Human Core"),
+            zone_kind: String::from("motion_grid_cell"),
+            source: String::from("hueman_godot_shell"),
+            pair: None,
+        };
+        let inspect_intent = ScreenMapIntent {
+            intent: String::from("inspect"),
+            zone_id: String::from("hollow_grove"),
+            zone_name: String::from("Hollow Grove"),
+            zone_kind: String::from("motion_grid_cell"),
+            source: String::from("hueman_godot_shell"),
+            pair: None,
+        };
+
+        let (move_kind, move_label) =
+            translate_screen_map_intent(&move_intent).expect("motion-grid move should translate");
+        let (inspect_kind, inspect_label) = translate_screen_map_intent(&inspect_intent)
+            .expect("motion-grid inspect should translate");
+
+        assert_eq!(move_kind, "support");
+        assert!(move_label.contains("beneficiary=human-core"));
+        assert!(move_label.contains("zone=hollow-grove-grid"));
+        assert!(move_label.contains("cadence=settle"));
+
+        assert_eq!(inspect_kind, "decide");
+        assert!(inspect_label.contains("target=hollow-grove"));
+        assert!(inspect_label.contains("focus=power"));
+        assert!(inspect_label.contains("zone=hollow-grove-grid"));
+    }
+
+    #[test]
     fn runtime_cycle_refreshes_kernel_current_synthesis_and_hueman_artifacts() {
         let artifact_root = unique_artifact_root("hollow-grove-runtime");
         write_fixture(
@@ -1456,9 +2144,9 @@ mod tests {
             read_text_artifact(&artifact_root.join(hueman_scene_drift_artifact_path()))
                 .expect("hueman scene drift");
 
-        assert!(snapshot.contains("\"start\": \"Symptom 1\""));
+        assert!(snapshot.contains("\"start\": \"Point\""));
         assert!(snapshot.contains("\"canonical_witness\":"));
-        assert!(prompt.contains("start Symptom 1"));
+        assert!(prompt.contains("Point\n↓\nTriway"));
         assert!(desktop_status.contains(CANONICAL_WITNESS));
         assert!(runtime_input.contains("runtime_mode: run"));
         assert!(runtime_memory.contains("last_cycle: 1"));
@@ -1472,6 +2160,66 @@ mod tests {
     }
 
     #[test]
+    fn runtime_cycle_consumes_screen_map_intent_into_current_synthesis_state() {
+        let artifact_root = unique_artifact_root("hollow-grove-runtime-screen-map-intent");
+        write_fixture(
+            &artifact_root,
+            ARTIFACT_INDEX_PATH,
+            "# Artifact Index\n\nindex",
+        );
+        write_fixture(
+            &artifact_root,
+            SCREEN_MAP_INTENT_ARTIFACT_PATH,
+            "{\n  \"schema_version\": \"0.1.0\",\n  \"intent\": \"move\",\n  \"zone\": {\n    \"id\": \"aura_ridge_east\",\n    \"name\": \"Aura Ridge East\",\n    \"kind\": \"straight_route\"\n  },\n  \"source\": \"hueman_godot_shell\"\n}\n",
+        );
+
+        let cycle = run_runtime_cycle_at(&artifact_root, 1).expect("runtime cycle should run");
+        let runtime_status = read_text_artifact(&cycle.status_path).expect("runtime status");
+        let intent_receipt =
+            read_text_artifact(&artifact_root.join(SCREEN_MAP_INTENT_ARTIFACT_PATH))
+                .expect("intent receipt should exist");
+        let engine_status =
+            read_text_artifact(&artifact_root.join("artifacts/current_synthesis_engine_status.md"))
+                .expect("engine status should exist");
+
+        assert!(runtime_status.contains("consumed move Aura Ridge East from hueman_godot_shell"));
+        assert!(intent_receipt.contains("\"status\": \"consumed\""));
+        assert!(intent_receipt.contains("\"kind\": \"move\""));
+        assert!(intent_receipt.contains("line=aura-ridge-east"));
+        assert!(engine_status.contains("Aura Ridge East"));
+        assert!(engine_status.contains("movement-first"));
+
+        fs::remove_dir_all(&artifact_root).expect("temp dir cleanup should succeed");
+    }
+
+    #[test]
+    fn runtime_cycle_consumes_motion_grid_cell_into_support_state() {
+        let artifact_root = unique_artifact_root("hollow-grove-runtime-motion-grid-intent");
+        write_fixture(
+            &artifact_root,
+            ARTIFACT_INDEX_PATH,
+            "# Artifact Index\n\nindex",
+        );
+        write_fixture(
+            &artifact_root,
+            SCREEN_MAP_INTENT_ARTIFACT_PATH,
+            "{\n  \"schema_version\": \"0.1.0\",\n  \"intent\": \"move\",\n  \"zone\": {\n    \"id\": \"human_core\",\n    \"name\": \"Human Core\",\n    \"kind\": \"motion_grid_cell\"\n  },\n  \"source\": \"hueman_godot_shell\"\n}\n",
+        );
+
+        let cycle = run_runtime_cycle_at(&artifact_root, 1).expect("runtime cycle should run");
+        let runtime_status = read_text_artifact(&cycle.status_path).expect("runtime status");
+        let intent_receipt =
+            read_text_artifact(&artifact_root.join(SCREEN_MAP_INTENT_ARTIFACT_PATH))
+                .expect("intent receipt should exist");
+
+        assert!(runtime_status.contains("consumed support Human Core from hueman_godot_shell"));
+        assert!(intent_receipt.contains("\"kind\": \"support\""));
+        assert!(intent_receipt.contains("beneficiary=human-core"));
+
+        fs::remove_dir_all(&artifact_root).expect("temp dir cleanup should succeed");
+    }
+
+    #[test]
     fn runtime_cycle_bootstraps_artifact_index_when_missing() {
         let artifact_root = unique_artifact_root("hollow-grove-runtime-bootstrap");
 
@@ -1480,7 +2228,7 @@ mod tests {
             .expect("artifact index should be created");
         let runtime_status = read_text_artifact(&cycle.status_path).expect("runtime status");
 
-        assert!(artifact_index.contains("Symptom -> Triway -> HollowGrove"));
+        assert!(artifact_index.contains("Point -> Triway -> Fourway -> HollowGrove"));
         assert!(runtime_status.contains("refreshed pipeline"));
 
         fs::remove_dir_all(&artifact_root).expect("temp dir cleanup should succeed");

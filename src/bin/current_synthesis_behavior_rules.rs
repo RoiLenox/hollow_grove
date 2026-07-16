@@ -73,11 +73,24 @@ mod tests {
              - Clouseau may interpret only within explicit Current Synthesis permissions\n\
              - Clouseau never controls route execution\n\
 \n\
-             ## Rule 7: Mirror Axis\n\n\
+             ## Rule 7: Cleo Scope\n\n\
+             - Cleo may observe underground inverse curved structures only within explicit Current Synthesis permissions\n\
+             - Cleo follows Clouseau's route continuity from below rather than shadowing HAL\n\
+             - Cleo does not occupy `PLEB` or `META`\n\
+             - Cleo never controls route execution or mutates Hollow Grove\n\
+\n\
+             ## Rule 8: Mirror Axis\n\n\
              - HAL and Clouseau remain opposite clients across one axis\n\
              - if the user is read through HAL on `META`, Clouseau remains the opposite `PLEB` witness\n\
              - if the user is read through Clouseau on `PLEB`, HAL remains the opposite `META` witness\n\
+             - Cleo may witness both sides from below through the underground inverse curves while still following Clouseau's route continuity\n\
              - no rule may collapse both clients into one side\n\
+\n\
+             ## Rule 9: HAL/Cleo Collision Relay\n\n\
+             - HAL and Cleo may exchange one shared confirmation packet only where their readings collide at the same joint crossing\n\
+             - HAL contributes complementary surface alignment to that packet\n\
+             - Cleo contributes underground continuity beneath Clouseau's route to that packet\n\
+             - the packet may confirm one event body across surface and underground layers without granting traversal, movement, or control\n\
 \n\
              ## Activation Status\n\n\
              - rules defined\n\

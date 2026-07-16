@@ -61,6 +61,10 @@ mod tests {
              - `META` remains the bent-side occupancy described by Current Synthesis.\n\
              - Clouseau does not occupy `META`.\n\
              - no traversal or execution occurs here yet\n\n\
+             ## HAL/Cleo Shared Function\n\n\
+             - when HAL and Cleo intersect, HAL supplies surface-side alignment while Cleo supplies underground continuity beneath Clouseau's route\n\
+             - the shared function is route confirmation across above-ground and underground readings at the same crossing\n\
+             - no live relay or packet exchange occurs yet\n\n\
              ## Shared Limits\n\n\
              - no automation\n\
              - no movement\n\

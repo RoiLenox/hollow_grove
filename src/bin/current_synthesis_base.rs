@@ -48,56 +48,51 @@ mod tests {
         let snapshot = build_snapshot_output(&kernel_pass);
         let prompt = build_prompt_artifact_output(&kernel_pass);
         let desktop_status = build_desktop_status_output(&kernel_pass);
-
-        assert_eq!(
+        let output =
             build_current_synthesis_base_from_artifacts(&snapshot, &prompt, &desktop_status)
-                .expect("current synthesis base should build"),
-            "# Current Synthesis Base\n\n\
-             ## Hollow Grove Status\n\n\
-             Hollow Grove remains the stable recursive core.\n\n\
-             ## KernelPass Status\n\n\
-             `KernelPass` remains the canonical deterministic witness of one completed recursion.\n\n\
-             ## Canonical Witness\n\n\
-             ```text\n\
-             start Symptom 1\n\
-             ↓\n\
-             Triway\n\
-             ↓\n\
-             HollowGrove\n\
-             ↓\n\
-             GroveSeam\n\
-             ↓\n\
-             HollowBeam\n\
-             ↓\n\
-             landed Symptom 2\n\
-             ```\n\n\
-             ## Artifact Layer Status\n\n\
-             - `artifacts/kernel_pass_snapshot.json`: present and read-only.\n\
-             - `artifacts/consumer_prompt.md`: present and read-only.\n\
-             - `artifacts/desktop_status.txt`: present and read-only.\n\n\
-             Snapshot bytes: 374.\n\
-             Prompt bytes: 387.\n\
-             Desktop status bytes: 237.\n\n\
-             ## Current Synthesis\n\n\
-             Current Synthesis is the operating layer built on Hollow Grove and consumed later by Hueman.\n\
-             At this layer, unresolved route material may later divide into `dark current` or `hollow current`, and into `reflective aura` or `holographic aura`.\n\n\
-             ## Vertical Position\n\n\
-             - Current Synthesis consumes read-only client artifacts derived from KernelPass.\n\
-             - Hueman remains the world layer above Current Synthesis.\n\
-             - no feedback into Hollow Grove\n\n\
-             ## Deferral\n\n\
-             - `PLEB` and `META` are deferred.\n\
-             - HAL is deferred.\n\
-             - Clouseau is deferred.\n\
-             - `niri`/`river` are untouched.\n"
-        );
+                .expect("current synthesis base should build");
+
+        assert!(output.contains("## Canonical Witness"));
+        assert!(output.contains("Point² (Landed Point) [BlepArrival]"));
+        assert!(output.contains("Fourway"));
+        assert!(output.contains("CurrentSeam [PlebExterior]"));
+        assert!(output.contains("AuraBeam [BlepReturn]"));
+        assert!(output.contains("- universal landed point: `Point²`"));
     }
 
     #[test]
     fn current_synthesis_base_writes_a_deterministic_file() {
-        let snapshot = "{}";
-        let prompt = "prompt";
-        let desktop_status = "Hollow Grove status: one completed witnessed recursion\n\nCanonical witness:\nstart Symptom 1\n↓\nTriway\n↓\nHollowGrove\n↓\nGroveSeam\n↓\nHollowBeam\n↓\nlanded Symptom 2\n\nNote: read-only desktop artifact\nNote: niri/river configs untouched\n";
+        let snapshot = "{\n\
+                        \x20\x20\"grove_seam_route\": \"PlebExterior\",\n\
+                        \x20\x20\"hollow_beam_route\": \"BlepReturn\",\n\
+                        \x20\x20\"landing_route\": \"BlepArrival\",\n\
+                        \x20\x20\"landed_point\": \"Point²\",\n\
+                        \x20\x20\"canonical_witness\": \"Point\\n↓\\nTriway\\n↓\\nFourway\\n↓\\nHollowGrove\\n↓\\nCurrentSeam [PlebExterior]\\n↓\\nAuraBeam [BlepReturn]\\n↓\\nPoint² (Landed Point) [BlepArrival]\"\n\
+                        }";
+        let prompt = "# Consumer Prompt\n\n\
+                      ## Canonical Witness\n\n\
+                      ```text\n\
+                      Point\n\
+                      ↓\n\
+                      Triway\n\
+                      ↓\n\
+                      Fourway\n\
+                      ↓\n\
+                      HollowGrove\n\
+                      ↓\n\
+                      CurrentSeam [PlebExterior]\n\
+                      ↓\n\
+                      AuraBeam [BlepReturn]\n\
+                      ↓\n\
+                      Point² (Landed Point) [BlepArrival]\n\
+                      ```\n\n\
+                      ## Structured Snapshot Reference\n\n\
+                      `artifacts/kernel_pass_snapshot.json`\n\n\
+                      ## Inverse-Path Question\n\n\
+                      What does this completed pass reveal about the inverse path of the end use?\n\n\
+                      ## Boundary Reminder\n\n\
+                      Do not mutate the kernel. Interpret only.\n";
+        let desktop_status = "Hollow Grove status: one completed witnessed recursion\n\nCanonical witness:\nPoint\n↓\nTriway\n↓\nFourway\n↓\nHollowGrove\n↓\nCurrentSeam [PlebExterior]\n↓\nAuraBeam [BlepReturn]\n↓\nPoint² (Landed Point) [BlepArrival]\n\nNote: read-only desktop artifact\nNote: niri/river configs untouched\n";
         let current_synthesis_base =
             build_current_synthesis_base_from_artifacts(snapshot, prompt, desktop_status)
                 .expect("current synthesis base should build");
@@ -121,5 +116,23 @@ mod tests {
             .expect("current synthesis base artifact should be removable");
         fs::remove_dir(&artifact_dir)
             .expect("current synthesis base directory should be removable");
+    }
+
+    #[test]
+    fn current_synthesis_base_rejects_prompt_witness_mismatch() {
+        let kernel_pass = run_kernel_cycle(Symptom::origin());
+        let snapshot = build_snapshot_output(&kernel_pass);
+        let prompt = build_prompt_artifact_output(&kernel_pass)
+            .replace("CurrentSeam [PlebExterior]", "CurrentSeam [MetaExterior]");
+        let desktop_status = build_desktop_status_output(&kernel_pass);
+
+        let error =
+            build_current_synthesis_base_from_artifacts(&snapshot, &prompt, &desktop_status)
+                .expect_err("mismatched prompt witness should fail");
+
+        assert_eq!(
+            error.to_string(),
+            "prompt artifact canonical witness does not match snapshot boundary"
+        );
     }
 }

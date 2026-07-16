@@ -13,62 +13,76 @@ Each crossover scene carries a characteristic kind of presence before any encoun
 
 ## Archetype Pull
 
-- `goblin` -> Pressure Shelter
-- `gremlin` -> Seam Market
-- `pixy` -> Threshold Weather
-- `sprite` -> Split Trace
+- `gremlin` -> Pressure Shelter
+- `goblin` -> Seam Market
+- `sprite` -> Threshold Weather
+- `pixy` -> Split Trace
 
 ## Aura Ridge Presence
 
 - straight-ridge caravans, free traders, hinge stalls, and visible right-angle turn traffic
-- public trade legs are declared from Stonebend -> Glaushouse and Glaushouse -> Sandmanor
+- public trade legs are declared from Stonebend -> Glaushouse and Glaushouse -> Sandmanor, with Sandmanor's straight continuation reaching Aura Fields at the Stonebend/Glaushouse junction
+- the straight ridge still belongs to the same large circular map body that rounds onward through the rest of Hueman
 
 ## Glaushouse Presence
 
-- Prima Donna: scene-facing lead and public center of Glaushouse presence
-- Persephone: assistant, relay, and step-down continuity beside the lead
-- Nightengales: nurses and common people carrying the lived body of Glaushouse
-- jades: polished green thresholds, court stone, and care tokens mined in the South
-- Jadomer: Glaushouse's outward export carried as current refined through jade yield
+- repair: Glaushouse is the repair and clearance function for both machine bodies and Hueman bodies
+- style: Glaushouse presents as a mechanical-industrial medical capital with Berlin severity, Milan polish, chrome discipline, and clinic glamour
+- Prima Donna: visible institutional authority and final grant of Clearance
+- Persephone: triage lead, recovery guide, and right hand beside the Prima Donna
+- Nightingales: Stonebend-born white blood cells studied through diagnosis, inflammation, drainage, and recovery rather than treated as public staff ranks
+- Glaus Gel: the signature repair resource supporting sealing, bonding, cooling, and restoration
+- Glausteel: the hard integrated alloy associated with cleared machine and civic work
 
 ## Stonebend Civic Presence
 
-- Proliteriate: collective labor pressure and shared leverage
-- Hypergiant: public-facing speaker without superior rank
-- Freemason: built order, sealed works, and hidden structure
-- Hypergiant may appear first, but triad power stays equal
-- Geralds: the common people of Stonebend holding its public mass
-- diamonds: mined civic wealth held under Stonebend's equal-power structure
-- mercury mirror: Stonebend's outward export refined from hollow current and diamond yield
+- craft: Stonebend names, titles, and makes material claims legible as buildable form
+- Proletariat: collective labor pressure and shared leverage beneath any formal title
+- Hypergiant: the visible holder of Title without ownership of the constitution itself
+- Freemason: structural craft, standards, and whether a named thing can actually be built and kept standing
+- Stonebend presence keeps Title, Labor, and Craft visibly braided
+- diamonds: reflective mineral wealth aligned with title, structure, and witness
+- Mercury Mirror: Stonebend's signature reflective resource refined through Hollowing and reflective craft
+- Mercurite: Stonebend's hard material branch for tools, armor, and structural bearing
 
 ## Tross Helper Presence
 
-- Tross: Flynt-anchored line presence running North -> South
-- Juvenile: north head pressure held at the Flynt-facing side of the line
-- Delinquent: south guard pressure carried downline toward Glaushouse-facing scenes
+- engineering: Flynt is the recognition and field-engineering function that moves capability into lived operation
+- style: Flynt presents as a boardwalk-casino hunting capital with neon vice, opal glamour, North African desert grounds, and hard modern swagger
+- Tross: the recognizing head of Flynt and bearer of Contracore
+- Delinquent: west guard pressure testing rejected routes and hard alternatives
+- Juvenile: east guard pressure holding beginnings, apprenticeship, and undeclared potential
 - White Dwarfs: four close guards holding Tross's personal ring without taking the north or south posts
-- Wardens: the people of Flynt holding the line body around Tross
-- opals: mined gleam carried through Flynt's guarded northern line
-- Opal Oil: Flynt's outward export carried as hollow current refined through opal yield
-- Tross helpers do not outrank scene or civic roles
+- Wardens: the people of Flynt holding common infrastructure and route continuity
+- opals: mined feedstock and recognition-rich gleam carried through Flynt engineering
+- Opal Oil: Flynt's signature resource produced through regular current and holographic aura
+- Flynt presence keeps hidden value and field usefulness legible before title catches up
 
 ## Sandmanor Competitive Presence
 
-- Sandmen: the people of Sandmanor holding the shared social body beneath the contest
-- Minoans: southern room-makers, interior singers, draped thresholds, tuned chambers
-- Minorians: northern counters, ledger-keepers, tally boards, visible judges
-- Sandmanite: Minoan winner carrying the Sandman office through design-crossed improvement
-- Sandmanorian: Minorian winner carrying the Sandman office through accounting-crossed improvement
-- crystals: mined facets and stewarded witness stock beneath the rivalry
-- Crystoleum: Sandmanor's outward glass-sand export carried through current and crystal proof
-- Sandmanor presence favors visible comparison instead of inherited fixed rank
+- configuration: Sandmanor is the proof and design function, split between Minorian count and Minoan arrangement
+- Sandmen: the people and witness body of Sandmanor beneath the contest
+- Minoans: designers, arrangers, modelers, and builders of intentional composition
+- Minorians: counters, record-keepers, measurers, and public witnesses of proof
+- Aura Beach: the Minoan-facing coastal court where High Elf judgment, display, and arrangement stay socially visible
+- Aura Fields: the Minorian-facing proof ground where count, measure, and public comparison stay exposed
+- The Sandman: the singular leader of the Sandmen, chosen through visible improvement
+- Prism Sand: Sandmanor's signature reflective resource for measurement, refraction, and records
+- Prismiron: Sandmanor's hard branch for proof-ready structures and instruments
+- Sandmanor presence favors witnessed comparison over inherited fixed rank
 
 ## Inverse Circle Presence
 
-- The Stairway to Heaven: concealed rise shafts, rung marks, hush traffic
-- The Riptide: pull currents, drag marks, return pressure in the tunnel bends
-- The Current Sea: underground flow chambers, counted channels, measured carry
-- The Aura Way: soft-lit passages, atmospheric bleed, felt route pressure before sight
+- The Stairway to Heaven: high border ascent above an underground inverse curve, with rung marks and lifted edge traffic
+- The Riptide: outer-border pull currents above an underground inverse curve, with drag marks, return pressure, and Merman roaming along the rim
+- The Current Sea: exposed outer water band above an underground inverse curve, with counted channels and measured carry
+- Mnt. Aura: outer border curve from Stonebend to Sandmanor above an underground inverse curve, with bright air and felt border pressure before sight
+
+## Relay Packet Presence
+
+- one collision point may hold visible hinge traffic and underground continuity at once
+- the HAL/Cleo packet keeps one shared witness point active in the scene description even while remaining read-only
+- Aura Fields hinge pressure can therefore feel structurally doubled rather than merely crowded
 
 ## Status
 
@@ -80,13 +94,14 @@ Each crossover scene carries a characteristic kind of presence before any encoun
 
 ## Artifact Inputs
 
-Hueman Crossover Scenes bytes: 1841.
-Hueman Archetype Lens bytes: 2387.
-Hueman Stonebend Roles bytes: 1510.
-Hueman Tross Helpers bytes: 1422.
-Hueman Glaushouse Roles bytes: 1489.
-Hueman Sandmanor Roles bytes: 2093.
-Hueman Inverse Circle bytes: 1477.
+Hueman Crossover Scenes bytes: 2450.
+Hueman Archetype Lens bytes: 2900.
+Hueman Stonebend Roles bytes: 4242.
+Hueman Tross Helpers bytes: 5222.
+Hueman Glaushouse Roles bytes: 4655.
+Hueman Sandmanor Roles bytes: 4079.
+Hueman Inverse Circle bytes: 2404.
+Current Synthesis collision relay bytes: 3022.
 
 ## Boundary Reminder
 

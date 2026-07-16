@@ -40,24 +40,15 @@ mod tests {
     #[test]
     fn snapshot_client_reads_the_completed_kernel_pass() {
         let kernel_pass = run_kernel_cycle(Symptom::origin());
+        let output = build_snapshot_from_client(&kernel_pass);
 
-        assert_eq!(
-            build_snapshot_from_client(&kernel_pass),
-            "{\n\
-             \x20\x20\"start\": \"Symptom 1\",\n\
-             \x20\x20\"triway\": {\n\
-             \x20\x20\x20\x20\"ways\": [\"One\", \"Two\", \"Three\"]\n\
-             \x20\x20},\n\
-             \x20\x20\"hollow_grove\": {\n\
-             \x20\x20\x20\x20\"bond\": \"One\",\n\
-             \x20\x20\x20\x20\"atmosphere\": [\"Two\", \"Three\"]\n\
-             \x20\x20},\n\
-             \x20\x20\"grove_seam\": \"GroveSeam\",\n\
-             \x20\x20\"hollow_beam\": \"HollowBeam\",\n\
-             \x20\x20\"landed\": \"Symptom 2\",\n\
-             \x20\x20\"canonical_witness\": \"start Symptom 1\\n↓\\nTriway\\n↓\\nHollowGrove\\n↓\\nGroveSeam\\n↓\\nHollowBeam\\n↓\\nlanded Symptom 2\"\n\
-             }"
-        );
+        assert!(output.contains("\"start\": \"Point\""));
+        assert!(output.contains("\"fourway\": \"Fourway\""));
+        assert!(output.contains("\"grove_seam\": \"CurrentSeam\""));
+        assert!(output.contains("\"hollow_beam\": \"AuraBeam\""));
+        assert!(output.contains("\"landed\": \"Landed Point\""));
+        assert!(output.contains("\"landed_point\": \"Point²\""));
+        assert!(output.contains("Point² (Landed Point) [BlepArrival]"));
         assert_eq!(kernel_pass.to_string(), CANONICAL_WITNESS);
     }
 

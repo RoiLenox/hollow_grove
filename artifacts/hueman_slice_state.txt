@@ -1,0 +1,11 @@
+# Hueman Vertical Slice State
+slice_id: flooded_quarry_spillrail_latch
+phase: CurrentFormUnlocked
+follow_up_phase: InProgress
+regular_current_units: 0
+holographic_aura_units: 0
+opal_oil_units: 1
+branch_output_units: 1
+named_tool: Spillrail Latch
+resolution_path: route
+unlock_unlocked: true

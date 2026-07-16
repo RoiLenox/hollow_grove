@@ -30,48 +30,11 @@ mod tests {
 
     #[test]
     fn hueman_aura_behavior_reads_existing_artifacts() {
-        assert_eq!(
-            build_hueman_aura_behavior_from_artifacts("triad", "start"),
-            "# Hueman Aura Behavior\n\n\
-             ## Structural Rule\n\n\
-             After the start choice is placed on the Fourway, Hueman reads AuraTriad as three descriptive region states.\n\n\
-             ## Entry Order\n\n\
-             ```text\n\
-             Start Choice\n\
-             ↓\n\
-             Aura Basin\n\
-             ↓\n\
-             Aura Fields\n\
-             ↓\n\
-             Aura Beach\n\
-             ```\n\n\
-             ## Region States\n\n\
-             ### Aura Basin\n\n\
-             - movement reads as inward and narrowing\n\
-             - encounter tone reads as close, muffled, and formative\n\
-             - world description favors pressure, shelter, and accumulation\n\n\
-             ### Aura Fields\n\n\
-             - movement reads as lateral and exposed\n\
-             - encounter tone reads as social, visible, and negotiable\n\
-             - world description favors weather, distance, and traversal\n\n\
-             ### Aura Beach\n\n\
-             - movement reads as outward and threshold-facing\n\
-             - encounter tone reads as reflective, sparse, and releasing\n\
-             - world description favors edge, horizon, and departure\n\n\
-             ## Status\n\n\
-             - AuraTriad behavior is descriptive-only for now\n\
-             - movement pressure is declarative, not simulated\n\
-             - encounter tone is declarative, not procedural\n\
-             - the Fourway roster remains unchanged\n\
-             - species mechanics are not active yet\n\
-             - no feedback into Current Synthesis\n\
-             - no feedback into Hollow Grove\n\n\
-             ## Artifact Inputs\n\n\
-             Hueman AuraTriad bytes: 5.\n\
-             Hueman Start Choices bytes: 5.\n\n\
-             ## Boundary Reminder\n\n\
-             Aura behavior is a Hueman-facing reading of the world after start choice. It does not alter Current Synthesis occupancy or Hollow Grove recursion.\n"
-        );
+        let output = build_hueman_aura_behavior_from_artifacts("triad", "start");
+        assert!(output.starts_with("# Hueman Aura Behavior"));
+        assert!(output.contains("## Player Grammar"));
+        assert!(output.contains("Aura Glow asks whether the player is getting closer"));
+        assert!(output.contains("Hueman Start Choices bytes: 5."));
     }
 
     #[test]

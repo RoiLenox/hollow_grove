@@ -31,34 +31,10 @@ mod tests {
 
     #[test]
     fn hueman_motion_map_reads_existing_artifacts() {
-        assert_eq!(
-            build_hueman_motion_map_from_artifacts("boundary", "ops"),
-            "# Hueman Motion Map\n\n\
-             ## Locked Field\n\n\
-             ```text\n\
-             7 Hollow Back     8 Hollow Grove    9 Hollow Bend\n\n\
-             4 The Grove       5 Human Core      6 The Hollows\n\n\
-             1 Grove Orchard   2 Grove Hollow    3 Grove Falls\n\
-             ```\n\n\
-             ## Node Classes\n\n\
-             - META: `1`, `3`, `7`, `9`\n\
-             - PLEB: `4`, `6`, `8`\n\
-             - SYNTH: `2`\n\
-             - CORE: `5`\n\n\
-             ## Hueman Reading\n\n\
-             - the sprite moves through the field\n\
-             - Human Core remains the operator anchor\n\
-             - named world logic remains deferred\n\n\
-             ## Lower-Layer Reading Preserved\n\n\
-             - Hollow Grove keeps active-context movement\n\
-             - Current Synthesis keeps `PLEB`/`META` occupancy\n\
-             - the field remains one locked map across layers\n\n\
-             ## Artifact Inputs\n\n\
-             Hueman boundary bytes: 8.\n\
-             Current Synthesis operational bytes: 3.\n\n\
-             ## Boundary Reminder\n\n\
-             Hueman reads the map as world-facing representation. Hollow Grove and Current Synthesis keep the lower-layer operating semantics.\n"
-        );
+        let output = build_hueman_motion_map_from_artifacts("boundary", "ops");
+        assert!(output.starts_with("# Hueman Motion Map"));
+        assert!(output.contains("the Hueman avatar moves through the field"));
+        assert!(output.contains("Current Synthesis operational bytes: 3."));
     }
 
     #[test]

@@ -8,17 +8,18 @@ use current_synthesis_support::{
     ARTIFACT_INDEX_PATH, CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH,
     CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH, CURRENT_SYNTHESIS_BEHAVIOR_RULES_ARTIFACT_PATH,
     CURRENT_SYNTHESIS_CHOICE_ARTIFACT_PATH, CURRENT_SYNTHESIS_CLIENTS_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_CONSEQUENCE_ARTIFACT_PATH, CURRENT_SYNTHESIS_CONTRACT_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_EXECUTION_SPEC_ARTIFACT_PATH, CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_PREVIEW_ARTIFACT_PATH, CURRENT_SYNTHESIS_READINESS_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_SELECTION_ARTIFACT_PATH, CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_STATE_ARTIFACT_PATH, CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH,
-    CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH, DESKTOP_STATUS_ARTIFACT_PATH,
-    PROMPT_ARTIFACT_PATH, SNAPSHOT_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH, CURRENT_SYNTHESIS_CONSEQUENCE_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_CONTRACT_ARTIFACT_PATH, CURRENT_SYNTHESIS_EXECUTION_SPEC_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH, CURRENT_SYNTHESIS_PREVIEW_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_READINESS_ARTIFACT_PATH, CURRENT_SYNTHESIS_SELECTION_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH, CURRENT_SYNTHESIS_STATE_ARTIFACT_PATH,
+    CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH, CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH,
+    DESKTOP_STATUS_ARTIFACT_PATH, PROMPT_ARTIFACT_PATH, SNAPSHOT_ARTIFACT_PATH,
     build_current_synthesis_activation_gate_from_artifacts,
-    build_current_synthesis_base_from_artifacts,
+    build_current_synthesis_base_from_boundary,
     build_current_synthesis_behavior_rules_from_artifacts,
-    build_current_synthesis_choice_from_artifacts, build_current_synthesis_clients_from_artifacts,
+    build_current_synthesis_choice_from_artifacts, build_current_synthesis_clients_from_boundary,
+    build_current_synthesis_collision_relay_from_boundary,
     build_current_synthesis_consequence_from_artifacts,
     build_current_synthesis_contract_from_artifacts,
     build_current_synthesis_execution_spec_from_artifacts,
@@ -27,23 +28,27 @@ use current_synthesis_support::{
     build_current_synthesis_readiness_from_artifacts,
     build_current_synthesis_selection_from_artifacts,
     build_current_synthesis_sequence_from_artifacts, build_current_synthesis_state_from_artifacts,
-    build_current_synthesis_topology_from_artifacts,
-    build_current_synthesis_transition_pm_to_le_from_artifacts, ensure_artifact_index,
-    read_artifact, write_artifact,
+    build_current_synthesis_topology_from_boundary,
+    build_current_synthesis_transition_pm_to_le_from_boundary, load_artifact_index, read_artifact,
+    write_artifact,
 };
+use hollow_grove::SnapshotBoundary;
 
-fn run_current_synthesis_at(root: &Path) -> io::Result<[PathBuf; 16]> {
+fn run_current_synthesis_at(root: &Path) -> io::Result<[PathBuf; 17]> {
     let snapshot = read_artifact(&root.join(SNAPSHOT_ARTIFACT_PATH))?;
+    let snapshot_boundary = SnapshotBoundary::parse(&snapshot)?;
     let prompt = read_artifact(&root.join(PROMPT_ARTIFACT_PATH))?;
     let desktop_status = read_artifact(&root.join(DESKTOP_STATUS_ARTIFACT_PATH))?;
-    let current_synthesis_base =
-        build_current_synthesis_base_from_artifacts(&snapshot, &prompt, &desktop_status)?;
+    let current_synthesis_base = build_current_synthesis_base_from_boundary(
+        &snapshot_boundary,
+        snapshot.len(),
+        &prompt,
+        &desktop_status,
+    )?;
     let base_path = root.join(CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH);
     write_artifact(&base_path, &current_synthesis_base)?;
 
-    let artifact_index_path = root.join(ARTIFACT_INDEX_PATH);
-    ensure_artifact_index(&artifact_index_path)?;
-    let artifact_index = read_artifact(&artifact_index_path)?;
+    let artifact_index = load_artifact_index(&root.join(ARTIFACT_INDEX_PATH))?;
     let current_synthesis_state =
         build_current_synthesis_state_from_artifacts(&current_synthesis_base, &artifact_index);
     let state_path = root.join(CURRENT_SYNTHESIS_STATE_ARTIFACT_PATH);
@@ -56,14 +61,18 @@ fn run_current_synthesis_at(root: &Path) -> io::Result<[PathBuf; 16]> {
     let sequence_path = root.join(CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH);
     write_artifact(&sequence_path, &current_synthesis_sequence)?;
 
-    let current_synthesis_topology = build_current_synthesis_topology_from_artifacts(
+    let current_synthesis_topology = build_current_synthesis_topology_from_boundary(
+        &snapshot_boundary,
+        snapshot.len(),
         &current_synthesis_sequence,
         &current_synthesis_state,
     );
     let topology_path = root.join(CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH);
     write_artifact(&topology_path, &current_synthesis_topology)?;
 
-    let current_synthesis_clients = build_current_synthesis_clients_from_artifacts(
+    let current_synthesis_clients = build_current_synthesis_clients_from_boundary(
+        &snapshot_boundary,
+        snapshot.len(),
         &current_synthesis_topology,
         &current_synthesis_sequence,
     );
@@ -134,9 +143,11 @@ fn run_current_synthesis_at(root: &Path) -> io::Result<[PathBuf; 16]> {
     write_artifact(&behavior_rules_path, &current_synthesis_behavior_rules)?;
 
     let current_synthesis_transition_pm_to_le =
-        build_current_synthesis_transition_pm_to_le_from_artifacts(
+        build_current_synthesis_transition_pm_to_le_from_boundary(
             &current_synthesis_behavior_rules,
             &current_synthesis_topology,
+            &snapshot_boundary,
+            snapshot.len(),
         );
     let transition_pm_to_le_path = root.join(CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH);
     write_artifact(
@@ -144,8 +155,19 @@ fn run_current_synthesis_at(root: &Path) -> io::Result<[PathBuf; 16]> {
         &current_synthesis_transition_pm_to_le,
     )?;
 
+    let current_synthesis_collision_relay = build_current_synthesis_collision_relay_from_boundary(
+        &snapshot_boundary,
+        snapshot.len(),
+        &current_synthesis_contract,
+        &current_synthesis_operational,
+        &current_synthesis_transition_pm_to_le,
+    );
+    let collision_relay_path = root.join(CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH);
+    write_artifact(&collision_relay_path, &current_synthesis_collision_relay)?;
+
     let current_synthesis_activation_gate = build_current_synthesis_activation_gate_from_artifacts(
         &current_synthesis_transition_pm_to_le,
+        &current_synthesis_collision_relay,
         &current_synthesis_readiness,
     );
     let activation_gate_path = root.join(CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH);
@@ -167,6 +189,7 @@ fn run_current_synthesis_at(root: &Path) -> io::Result<[PathBuf; 16]> {
         execution_spec_path,
         behavior_rules_path,
         transition_pm_to_le_path,
+        collision_relay_path,
         activation_gate_path,
     ])
 }
@@ -197,6 +220,7 @@ mod tests {
         build_current_synthesis_behavior_rules_from_artifacts,
         build_current_synthesis_choice_from_artifacts,
         build_current_synthesis_clients_from_artifacts,
+        build_current_synthesis_collision_relay_from_artifacts,
         build_current_synthesis_consequence_from_artifacts,
         build_current_synthesis_contract_from_artifacts,
         build_current_synthesis_execution_spec_from_artifacts,
@@ -215,7 +239,7 @@ mod tests {
     }
 
     #[test]
-    fn current_synthesis_runner_regenerates_base_state_sequence_topology_clients_choice_contract_preview_operational_selection_consequence_readiness_execution_spec_behavior_rules_transition_and_activation_gate_in_order()
+    fn current_synthesis_runner_regenerates_base_state_sequence_topology_clients_choice_contract_preview_operational_selection_consequence_readiness_execution_spec_behavior_rules_transition_collision_relay_and_activation_gate_in_order()
      {
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)
@@ -253,6 +277,7 @@ mod tests {
             execution_spec_path,
             behavior_rules_path,
             transition_pm_to_le_path,
+            collision_relay_path,
             activation_gate_path,
         ] = run_current_synthesis_at(&artifact_root).expect("current synthesis should run");
         let current_synthesis_base =
@@ -266,13 +291,16 @@ mod tests {
         );
         let current_synthesis_topology =
             super::current_synthesis_support::build_current_synthesis_topology_from_artifacts(
+                &snapshot,
                 &current_synthesis_sequence,
                 &current_synthesis_state,
             );
         let current_synthesis_clients = build_current_synthesis_clients_from_artifacts(
+            &snapshot,
             &current_synthesis_topology,
             &current_synthesis_sequence,
-        );
+        )
+        .expect("clients should build");
         let current_synthesis_choice = build_current_synthesis_choice_from_artifacts(
             &current_synthesis_clients,
             &current_synthesis_topology,
@@ -315,10 +343,21 @@ mod tests {
             super::current_synthesis_support::build_current_synthesis_transition_pm_to_le_from_artifacts(
                 &current_synthesis_behavior_rules,
                 &current_synthesis_topology,
-            );
+                &snapshot,
+            )
+            .expect("transition should build");
+        let current_synthesis_collision_relay =
+            build_current_synthesis_collision_relay_from_artifacts(
+                &snapshot,
+                &current_synthesis_contract,
+                &current_synthesis_operational,
+                &current_synthesis_transition_pm_to_le,
+            )
+            .expect("collision relay should build");
         let current_synthesis_activation_gate =
             build_current_synthesis_activation_gate_from_artifacts(
                 &current_synthesis_transition_pm_to_le,
+                &current_synthesis_collision_relay,
                 &current_synthesis_readiness,
             );
 
@@ -383,6 +422,10 @@ mod tests {
             current_synthesis_transition_pm_to_le
         );
         assert_eq!(
+            read_artifact(&collision_relay_path).expect("collision relay artifact should read"),
+            current_synthesis_collision_relay
+        );
+        assert_eq!(
             read_artifact(&activation_gate_path).expect("activation gate artifact should read"),
             current_synthesis_activation_gate
         );
@@ -411,6 +454,8 @@ mod tests {
         fs::remove_file(&behavior_rules_path).expect("behavior rules artifact should be removable");
         fs::remove_file(&transition_pm_to_le_path)
             .expect("transition rule artifact should be removable");
+        fs::remove_file(&collision_relay_path)
+            .expect("collision relay artifact should be removable");
         fs::remove_file(&activation_gate_path)
             .expect("activation gate artifact should be removable");
         fs::remove_dir_all(artifact_root.join("artifacts"))
@@ -443,7 +488,7 @@ mod tests {
 
         let artifact_index = read_artifact(&artifact_root.join(ARTIFACT_INDEX_PATH))
             .expect("artifact index should be created");
-        assert!(artifact_index.contains("Symptom -> Triway -> HollowGrove"));
+        assert!(artifact_index.contains("Point -> Triway -> Fourway -> HollowGrove"));
 
         fs::remove_dir_all(&artifact_root).expect("temp dir cleanup should succeed");
     }
