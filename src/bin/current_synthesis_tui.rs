@@ -20,7 +20,8 @@ use hollow_grove::hollow_grove_contract::{
 };
 use hollow_grove::hueman_progression::{VerticalSliceState, write_vertical_slice_artifacts_at};
 use hollow_grove::{
-    build_point_squared_witness, build_progression_validation_report, build_progression_witness,
+    build_map_validation_report, build_map_witness, build_point_squared_witness,
+    build_progression_validation_report, build_progression_witness,
 };
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -34,6 +35,8 @@ enum CurrentSynthesisTuiCli {
     ProgressionWitness,
     ProgressionValidate,
     PointSquaredWitness,
+    MapWitness,
+    MapValidate,
     Engine(EngineLens),
     BondList,
     BondInspect(String),
@@ -124,6 +127,16 @@ where
             ),
             Some(other) => Err(format!("unknown point-squared command: {other}")),
             None => Err(String::from("point-squared requires witness")),
+        },
+        "map" => match args.next().as_deref() {
+            Some("witness") => {
+                require_no_extra(args, CurrentSynthesisTuiCli::MapWitness, "map witness")
+            }
+            Some("validate") => {
+                require_no_extra(args, CurrentSynthesisTuiCli::MapValidate, "map validate")
+            }
+            Some(other) => Err(format!("unknown map command: {other}")),
+            None => Err(String::from("map requires witness or validate")),
         },
         "engine" => {
             let lens = args.next().unwrap_or_else(|| String::from("status"));
@@ -334,7 +347,7 @@ fn parse_player_action(
 }
 
 fn usage() -> &'static str {
-    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|engine|bond|resource|player|npc|cleopatra> [args]\n\
+    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|map|engine|bond|resource|player|npc|cleopatra> [args]\n\
      \n\
      Commands:\n\
        scenario list\n\
@@ -345,6 +358,8 @@ fn usage() -> &'static str {
        progression witness\n\
        progression validate\n\
        point-squared witness\n\
+       map witness\n\
+       map validate\n\
        engine status|pleb|meta|blep\n\
        bond list\n\
        bond inspect <id>\n\
@@ -463,6 +478,8 @@ fn run_cli(root: &Path, cli: CurrentSynthesisTuiCli) -> io::Result<String> {
         CurrentSynthesisTuiCli::ProgressionWitness => build_progression_witness(),
         CurrentSynthesisTuiCli::ProgressionValidate => build_progression_validation_report(),
         CurrentSynthesisTuiCli::PointSquaredWitness => build_point_squared_witness(),
+        CurrentSynthesisTuiCli::MapWitness => build_map_witness(),
+        CurrentSynthesisTuiCli::MapValidate => build_map_validation_report(),
         CurrentSynthesisTuiCli::Engine(lens) => {
             let (_persisted, state) = load_state(root)?;
             Ok(build_engine_output(&state, lens))
@@ -697,6 +714,16 @@ mod tests {
             CurrentSynthesisTuiCli::PointSquaredWitness
         );
         assert_eq!(
+            parse_cli([String::from("map"), String::from("witness")])
+                .expect("map witness should parse"),
+            CurrentSynthesisTuiCli::MapWitness
+        );
+        assert_eq!(
+            parse_cli([String::from("map"), String::from("validate")])
+                .expect("map validate should parse"),
+            CurrentSynthesisTuiCli::MapValidate
+        );
+        assert_eq!(
             parse_cli([String::from("engine"), String::from("blep")]).expect("engine should parse"),
             CurrentSynthesisTuiCli::Engine(
                 hollow_grove::current_synthesis_engine::EngineLens::Blep
@@ -783,6 +810,8 @@ mod tests {
         assert!(usage.contains("progression witness"));
         assert!(usage.contains("progression validate"));
         assert!(usage.contains("point-squared witness"));
+        assert!(usage.contains("map witness"));
+        assert!(usage.contains("map validate"));
         assert!(usage.contains("engine status|pleb|meta|blep"));
         assert!(usage.contains("bond inspect <id>"));
         assert!(usage.contains("resource history"));
@@ -812,6 +841,10 @@ mod tests {
             .expect("progression validate should succeed");
         let point_squared_witness = run_cli(&root, CurrentSynthesisTuiCli::PointSquaredWitness)
             .expect("point-squared witness should succeed");
+        let map_witness =
+            run_cli(&root, CurrentSynthesisTuiCli::MapWitness).expect("map witness should succeed");
+        let map_validate = run_cli(&root, CurrentSynthesisTuiCli::MapValidate)
+            .expect("map validate should succeed");
         let status = run_cli(
             &root,
             CurrentSynthesisTuiCli::Engine(
@@ -836,6 +869,8 @@ mod tests {
         assert!(progression_witness.contains("HOLLOW GROVE PROGRESSION WITNESS"));
         assert!(progression_validate.contains("status: pass"));
         assert!(point_squared_witness.contains("HOLLOW GROVE POINT² ASCENSION WITNESS"));
+        assert!(map_witness.contains("HOLLOW GROVE ROTATIONAL MAP WITNESS"));
+        assert!(map_validate.contains("status: pass"));
         assert!(status.contains("Current Synthesis Engine"));
         assert!(bond_list.contains("Bond List"));
         assert!(npc.contains("NPC Inspector"));

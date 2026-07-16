@@ -1,3 +1,6 @@
+use crate::world_map_geometry::{
+    canonical_rotation_contract_fixture, validate_hollow_grove_rotation_contract,
+};
 use crate::{BeingId, CurrentDepthId, FrameId};
 
 const WORLD_CONTEXT_DOCUMENT: &str =
@@ -499,6 +502,7 @@ pub enum AlignmentDiagnosticCode {
     CurrentSpeedMismatch,
     AuraIlluminationMismatch,
     PointSquaredAscensionMismatch,
+    RotationalMapMismatch,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -546,6 +550,13 @@ pub fn build_hollow_grove_alignment_witness() -> String {
          Aura Shine = outward presence\n\
          Aura View = surrounding world and horizon\n\
          Inner Aura = inward identity and clarity\n\n\
+         Rotational Map:\n\
+         Ranina = the exact center.\n\
+         Twelve positions complete one full rotation.\n\
+         Stonebend = Position 1.\n\
+         Glaüshouse threshold = Position 6.\n\
+         Glaüshouse = Position 7.\n\
+         Point² opens the next ring around the same center.\n\n\
          Extraction:\n\
          Whole\n\
          → Hollowing\n\
@@ -592,6 +603,9 @@ pub fn build_hollow_grove_alignment_validation_report() -> String {
     diagnostics.extend(validate_hollow_grove_progression_contract(
         &canonical_progression_contract_fixture(),
     ));
+    diagnostics.extend(validate_hollow_grove_rotation_contract(
+        &canonical_rotation_contract_fixture(),
+    ));
     if diagnostics.is_empty() {
         String::from(
             "# Hollow Grove Alignment Validation\n\n\
@@ -601,6 +615,8 @@ pub fn build_hollow_grove_alignment_validation_report() -> String {
              - current-depth contract: pass\n\
              - aura illumination contract: pass\n\
              - Point² semantic contract: pass\n\
+             - Ranina center contract: pass\n\
+             - twelve-position rotation contract: pass\n\
              - semantic contract: enforceable\n",
         )
     } else {
@@ -644,7 +660,8 @@ pub fn build_hollow_grove_progression_witness() -> String {
          Aura reveals every Current depth.\n\
          Point² raises Current Capacity and Aura Capacity together.\n\
          Point² includes the Hueman and the reachable world.\n\
-         Point² stabilizes into the next Point.\n",
+         Point² stabilizes into the next Point.\n\
+         Ranina remains the fixed center across every ring.\n",
     )
 }
 

@@ -72,6 +72,8 @@ fn main_binary_reports_integrated_help() {
     assert!(stdout.contains("progression witness"));
     assert!(stdout.contains("progression validate"));
     assert!(stdout.contains("point-squared witness"));
+    assert!(stdout.contains("map witness"));
+    assert!(stdout.contains("map validate"));
     assert!(stdout.contains("engine status"));
     assert!(stdout.contains("player ..."));
     assert!(stdout.contains("player move"));
@@ -218,6 +220,22 @@ fn main_binary_delegates_progression_and_point_squared_surfaces() {
     let point_squared_stdout = String::from_utf8_lossy(&point_squared.stdout);
     assert!(point_squared_stdout.contains("HOLLOW GROVE POINT² ASCENSION WITNESS"));
     assert!(point_squared_stdout.contains("Stairway to Heaven"));
+
+    let map_witness = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["map", "witness"])
+        .output()
+        .expect("map witness should run");
+    assert!(map_witness.status.success());
+    let map_witness_stdout = String::from_utf8_lossy(&map_witness.stdout);
+    assert!(map_witness_stdout.contains("HOLLOW GROVE ROTATIONAL MAP WITNESS"));
+
+    let map_validate = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["map", "validate"])
+        .output()
+        .expect("map validate should run");
+    assert!(map_validate.status.success());
+    let map_validate_stdout = String::from_utf8_lossy(&map_validate.stdout);
+    assert!(map_validate_stdout.contains("status: pass"));
 }
 
 #[test]
@@ -233,6 +251,8 @@ fn main_binary_runs_foundation_verification() {
     assert!(stdout.contains("world witness: pass"));
     assert!(stdout.contains("Point² paired capacity advancement: pass"));
     assert!(stdout.contains("Point² exactly-once application: pass"));
+    assert!(stdout.contains("Ranina center: pass"));
+    assert!(stdout.contains("twelve-position rotation: pass"));
     assert!(stdout.contains("Stairway horizon fixture: pass"));
     assert!(stdout.contains("vertical witness: pass"));
     assert!(stdout.contains("V1.1 topology unchanged: pass"));

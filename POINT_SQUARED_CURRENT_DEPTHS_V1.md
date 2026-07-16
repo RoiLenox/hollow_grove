@@ -4,6 +4,10 @@ This document records the locked Hollow Grove extension that turns Point², Curr
 
 It extends the existing semantic foundation. It does not replace the frozen Version 1.1 execution path or the existing Hollow Grove contract.
 
+The locked rotational-center extension now lives in:
+
+- `RANINA_TWELVE_POSITION_MAP_V1.md`
+
 ## Root Doctrine
 
 Hollow Current holds.
@@ -88,6 +92,15 @@ After the canonical Point²:
 
 Point² makes the next Frame possible. It does not automatically grant the next Frame.
 
+## Ranina Relationship
+
+Point² now opens the next ring around the same center.
+
+- `Ranina = exact center`
+- `position = angular location around Ranina`
+- `ring = radial progression outward from Ranina`
+- `Point²` raises the ring without automatically rotating the Point
+
 ## Kernel Boundary
 
 Frozen Version 1.1 topology remains:
@@ -115,6 +128,8 @@ Boundary split:
   `src/point_progression.rs`
 - Point domain state:
   `src/point.rs`
+- Rotational center and map geometry:
+  `src/world_map_geometry.rs`
 - Foundation verification and witnesses:
   `src/hollow_grove_content.rs`
 - Runtime-facing CLI:
@@ -138,6 +153,10 @@ Boundary split:
 The canonical generated ascension artifact is:
 
 - `artifacts/point_squared_ascension_witness.md`
+
+The canonical generated rotational artifact is:
+
+- `artifacts/ranina_twelve_position_map_witness.md`
 
 Its runtime source is:
 

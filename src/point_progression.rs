@@ -5,6 +5,7 @@ use crate::decision_engine::{DecisionExecution, DecisionIntent, execute_decision
 use crate::frame_state::{BeingId, FrameId, FrameState};
 use crate::landing::LandingOutcome;
 use crate::point::Point;
+use crate::world_map_geometry::{PointGeometryState, WorldCenterId};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum CurrentDepthId {
@@ -283,6 +284,7 @@ impl Default for PointProgressionState {
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct ReachableWorldState {
+    geometry: PointGeometryState,
     newly_reachable_horizons: Vec<CanonicalHorizonId>,
     newly_visible_routes: Vec<CanonicalRouteId>,
     newly_survivable_routes: Vec<CanonicalRouteId>,
@@ -292,12 +294,14 @@ pub struct ReachableWorldState {
 impl ReachableWorldState {
     #[must_use]
     pub fn new(
+        geometry: PointGeometryState,
         newly_reachable_horizons: Vec<CanonicalHorizonId>,
         newly_visible_routes: Vec<CanonicalRouteId>,
         newly_survivable_routes: Vec<CanonicalRouteId>,
         next_frame_potential_available: bool,
     ) -> Self {
         Self {
+            geometry,
             newly_reachable_horizons,
             newly_visible_routes,
             newly_survivable_routes,
@@ -307,7 +311,23 @@ impl ReachableWorldState {
 
     #[must_use]
     pub fn origin() -> Self {
-        Self::new(Vec::new(), Vec::new(), Vec::new(), false)
+        Self::new(
+            PointGeometryState::origin(),
+            Vec::new(),
+            Vec::new(),
+            Vec::new(),
+            false,
+        )
+    }
+
+    #[must_use]
+    pub fn with_geometry(geometry: PointGeometryState) -> Self {
+        Self::new(geometry, Vec::new(), Vec::new(), Vec::new(), false)
+    }
+
+    #[must_use]
+    pub const fn geometry(&self) -> &PointGeometryState {
+        &self.geometry
     }
 
     #[must_use]
@@ -520,6 +540,7 @@ pub enum PointProgressionDiagnosticCode {
     DuplicateAscension,
     HuemanIdentityLost,
     HorizonStateMismatch,
+    RaninaCenterInvariantBroken,
     CurrentSpeedFrameImbalance,
     AbyssCoverageImbalance,
     AuraViewIdentityImbalance,
@@ -669,6 +690,12 @@ pub fn validate_point_progression(point: &Point) -> Vec<PointProgressionDiagnost
             "Point² must not replace BeingId::Hueman.",
         ));
     }
+    if point.world().geometry().center() != WorldCenterId::Ranina {
+        diagnostics.push(error(
+            PointProgressionDiagnosticCode::RaninaCenterInvariantBroken,
+            "Ranina must remain the unique world center for every Point.",
+        ));
+    }
 
     let stairway_unlocked = point
         .world()
@@ -740,9 +767,18 @@ fn note(
 }
 
 pub fn build_point_progression_state_output(point: &Point) -> String {
+    let position = point
+        .world()
+        .geometry()
+        .current_position()
+        .map(|value| value.to_string())
+        .unwrap_or_default();
     format!(
         "# Point Progression State\n\
          stable_point_level: {}\n\
+         world_center: {}\n\
+         ring: {}\n\
+         position: {}\n\
          current_capacity: {}\n\
          aura_capacity: {}\n\
          hollow_current: {}\n\
@@ -757,6 +793,9 @@ pub fn build_point_progression_state_output(point: &Point) -> String {
          newly_survivable_routes: {}\n\
          next_frame_potential_available: {}\n",
         point.progression().stable_point_level(),
+        point.world().geometry().center().as_str(),
+        point.progression().stable_point_level(),
+        position,
         point.progression().capacities().current_capacity(),
         point.progression().capacities().aura_capacity(),
         point.progression().current_depths().hollow_current(),
@@ -804,6 +843,7 @@ pub fn parse_point_progression_state(contents: &str) -> io::Result<PointProgress
         let value = value.trim();
         match key {
             "stable_point_level" => stable_point_level = Some(parse_u16_field(key, value)?),
+            "world_center" | "ring" | "position" => {}
             "current_capacity" => current_capacity = Some(parse_u16_field(key, value)?),
             "aura_capacity" => aura_capacity = Some(parse_u16_field(key, value)?),
             "hollow_current" => hollow_current = Some(parse_u16_field(key, value)?),
@@ -935,6 +975,9 @@ pub fn build_progression_witness() -> io::Result<String> {
         "HOLLOW GROVE PROGRESSION WITNESS\n\n\
          Stable Point Level: {}\n\
          Being: {:?}\n\
+         World Center: {}\n\
+         Ring: {}\n\
+         Position: {}\n\
          Current Capacity: {}\n\
          Aura Capacity: {}\n\
          Hollow Current: {}\n\
@@ -950,6 +993,14 @@ pub fn build_progression_witness() -> io::Result<String> {
          Next Frame potential: {}\n",
         point_after.progression().stable_point_level(),
         point_after.being(),
+        point_after.world().geometry().center().as_str(),
+        point_after.progression().stable_point_level(),
+        point_after
+            .world()
+            .geometry()
+            .current_position()
+            .map(|position| position.to_string())
+            .unwrap_or_else(|| String::from("none")),
         point_after.progression().capacities().current_capacity(),
         point_after.progression().capacities().aura_capacity(),
         point_after.progression().current_depths().hollow_current(),
@@ -991,6 +1042,8 @@ pub fn build_progression_validation_report() -> io::Result<String> {
              - paired capacity advancement: pass\n\
              - ascension duplication blocked: pass\n\
              - Hueman identity persists: pass\n\
+             - Ranina center invariant: pass\n\
+             - ring and position remain distinct: pass\n\
              - topology remains unchanged: pass\n",
         );
     } else {
@@ -1044,6 +1097,9 @@ pub fn build_point_squared_witness() -> io::Result<String> {
          Before:\n\
          Point Level: {}\n\
          Being: {:?}\n\
+         World Center: {}\n\
+         Ring: {}\n\
+         Position: {}\n\
          Current Capacity: {}\n\
          Aura Capacity: {}\n\n\
          Landing:\n\
@@ -1062,11 +1118,23 @@ pub fn build_point_squared_witness() -> io::Result<String> {
          Next Frame: possible, not automatically granted\n\
          Active Frame after landing: {:?}\n\n\
          After Stabilization:\n\
-        Point Level: {}\n\
-        Being: {:?}\n\
-        V1.1 topology unchanged: yes\n",
+         Point Level: {}\n\
+         Being: {:?}\n\
+         World Center: {}\n\
+         Ring: {}\n\
+         Position: {}\n\
+         V1.1 topology unchanged: yes\n",
         fixture.point_before().progression().stable_point_level(),
         fixture.point_before().being(),
+        fixture.point_before().world().geometry().center().as_str(),
+        fixture.point_before().progression().stable_point_level(),
+        fixture
+            .point_before()
+            .world()
+            .geometry()
+            .current_position()
+            .map(|position| position.to_string())
+            .unwrap_or_else(|| String::from("none")),
         fixture
             .point_before()
             .progression()
@@ -1112,6 +1180,14 @@ pub fn build_point_squared_witness() -> io::Result<String> {
         point_after.frame_state().frame(),
         point_after.progression().stable_point_level(),
         point_after.being(),
+        point_after.world().geometry().center().as_str(),
+        point_after.progression().stable_point_level(),
+        point_after
+            .world()
+            .geometry()
+            .current_position()
+            .map(|position| position.to_string())
+            .unwrap_or_else(|| String::from("none")),
     ))
 }
 

@@ -1,0 +1,339 @@
+{
+  "version": "0.1.0",
+  "date": "2026-07-13",
+  "coordinate_space": {
+    "type": "normalized_screen",
+    "origin": "top_left",
+    "x_range": [0.0, 1.0],
+    "y_range": [0.0, 1.0]
+  },
+  "reference_output": {
+    "monitor_model": "AORUS FO32U2P",
+    "diagonal_inches": 32,
+    "width_px": 3840,
+    "height_px": 2160,
+    "aspect_ratio": "16:9"
+  },
+  "system_identity": {
+    "rule": "one_coordinate_system_two_faces",
+    "hollow_grove_role": "operating_and_authoritative_face",
+    "hueman_role": "rendered_and_spatial_face",
+    "coordinate_contract_path": "artifacts/hollow_grove_hueman_coordinate_contract.json"
+  },
+  "orientation": {
+    "vertical_axis": "stonebend_to_glaushouse",
+    "top_center": "Stonebend",
+    "right": "Sandmanor",
+    "bottom": "Glaushouse",
+    "left": "Flynt"
+  },
+  "center_anchor": {
+    "id": "ranina",
+    "name": "Ranina",
+    "kind": "center_structure",
+    "x": 0.5,
+    "y": 0.5,
+    "shared_render_overlays": ["aura_ridge_junction", "human_core"]
+  },
+  "nodes": [
+    {
+      "id": "stonebend",
+      "name": "Stonebend",
+      "kind": "kingdom",
+      "x": 0.5,
+      "y": 0.14,
+      "radius": 0.09
+    },
+    {
+      "id": "flynt",
+      "name": "Flynt",
+      "kind": "kingdom",
+      "x": 0.265,
+      "y": 0.5,
+      "radius": 0.09
+    },
+    {
+      "id": "glaushouse",
+      "name": "Glaushouse",
+      "kind": "kingdom",
+      "x": 0.5,
+      "y": 0.86,
+      "radius": 0.09
+    },
+    {
+      "id": "sandmanor",
+      "name": "Sandmanor",
+      "kind": "kingdom",
+      "x": 0.735,
+      "y": 0.5,
+      "radius": 0.09
+    },
+    {
+      "id": "aura_ridge_junction",
+      "name": "Aura Ridge Junction",
+      "kind": "junction",
+      "x": 0.5,
+      "y": 0.5,
+      "radius": 0.06
+    }
+  ],
+  "straight_routes": [
+    {
+      "id": "aura_ridge",
+      "name": "Aura Ridge",
+      "from": "stonebend",
+      "to": "glaushouse",
+      "band_width": 0.045
+    },
+    {
+      "id": "aura_ridge_east",
+      "name": "Aura Ridge East",
+      "from": "aura_ridge_junction",
+      "to": "sandmanor",
+      "band_width": 0.045
+    },
+    {
+      "id": "aura_way",
+      "name": "Aura Way",
+      "from": "stonebend",
+      "to": "sandmanor",
+      "band_width": 0.045
+    },
+    {
+      "id": "glausbahn",
+      "name": "Glausbahn",
+      "from": "sandmanor",
+      "to": "glaushouse",
+      "band_width": 0.045
+    },
+    {
+      "id": "boardwalk",
+      "name": "Boardwalk",
+      "from": "glaushouse",
+      "to": "flynt",
+      "band_width": 0.045
+    },
+    {
+      "id": "basin_motorspeedway",
+      "name": "Basin Motorspeedway",
+      "from": "flynt",
+      "to": "stonebend",
+      "band_width": 0.045
+    }
+  ],
+  "curved_routes": [
+    {
+      "id": "mnt_aura",
+      "name": "Mnt. Aura",
+      "from": "stonebend",
+      "to": "sandmanor",
+      "control": {
+        "x": 0.69,
+        "y": 0.2
+      },
+      "band_width": 0.045
+    },
+    {
+      "id": "current_sea",
+      "name": "Current Sea",
+      "from": "sandmanor",
+      "to": "glaushouse",
+      "control": {
+        "x": 0.73,
+        "y": 0.8
+      },
+      "band_width": 0.045
+    },
+    {
+      "id": "riptide",
+      "name": "Riptide",
+      "from": "glaushouse",
+      "to": "flynt",
+      "control": {
+        "x": 0.31,
+        "y": 0.8
+      },
+      "band_width": 0.045
+    },
+    {
+      "id": "stairway_to_heaven",
+      "name": "Stairway to Heaven",
+      "from": "flynt",
+      "to": "stonebend",
+      "control": {
+        "x": 0.31,
+        "y": 0.2
+      },
+      "band_width": 0.045
+    }
+  ],
+  "surfaces": [
+    {
+      "id": "aura_field",
+      "name": "Aura Field",
+      "kind": "surface",
+      "polygon": [
+        {
+          "x": 0.5,
+          "y": 0.14
+        },
+        {
+          "x": 0.735,
+          "y": 0.5
+        },
+        {
+          "x": 0.5,
+          "y": 0.5
+        }
+      ]
+    },
+    {
+      "id": "aura_beach",
+      "name": "Aura Beach",
+      "kind": "surface",
+      "polygon": [
+        {
+          "x": 0.735,
+          "y": 0.5
+        },
+        {
+          "x": 0.5,
+          "y": 0.86
+        },
+        {
+          "x": 0.5,
+          "y": 0.5
+        }
+      ]
+    },
+    {
+      "id": "aura_basin",
+      "name": "Aura Basin",
+      "kind": "surface",
+      "polygon": [
+        {
+          "x": 0.5,
+          "y": 0.14
+        },
+        {
+          "x": 0.265,
+          "y": 0.5
+        },
+        {
+          "x": 0.5,
+          "y": 0.86
+        }
+      ]
+    }
+  ],
+  "motion_grid_overlay": [
+    {
+      "cell": 7,
+      "id": "hollow_back",
+      "name": "Hollow Back",
+      "x": 0.2,
+      "y": 0.2
+    },
+    {
+      "cell": 8,
+      "id": "hollow_grove",
+      "name": "Hollow Grove",
+      "x": 0.5,
+      "y": 0.2
+    },
+    {
+      "cell": 9,
+      "id": "hollow_bend",
+      "name": "Hollow Bend",
+      "x": 0.8,
+      "y": 0.2
+    },
+    {
+      "cell": 4,
+      "id": "the_grove",
+      "name": "The Grove",
+      "x": 0.2,
+      "y": 0.5
+    },
+    {
+      "cell": 5,
+      "id": "human_core",
+      "name": "Human Core",
+      "x": 0.5,
+      "y": 0.5,
+      "shares_anchor_with": "ranina"
+    },
+    {
+      "cell": 6,
+      "id": "the_hollows",
+      "name": "The Hollows",
+      "x": 0.8,
+      "y": 0.5
+    },
+    {
+      "cell": 1,
+      "id": "grove_orchard",
+      "name": "Grove Orchard",
+      "x": 0.2,
+      "y": 0.8
+    },
+    {
+      "cell": 2,
+      "id": "grove_hollow",
+      "name": "Grove Hollow",
+      "x": 0.5,
+      "y": 0.8
+    },
+    {
+      "cell": 3,
+      "id": "grove_falls",
+      "name": "Grove Falls",
+      "x": 0.8,
+      "y": 0.8
+    }
+  ],
+  "constitutional_correspondence": {
+    "stonebend": ["name_it", "craft"],
+    "sandmanor": ["prove_it", "configuration"],
+    "glaushouse": ["clear_it", "repair", "synthesis"],
+    "flynt": ["recognize_it", "engineering"]
+  },
+  "resolver": {
+    "probe": "focused_window_center",
+    "priority": [
+      "kingdom_node",
+      "route_band",
+      "surface_polygon",
+      "motion_grid_cell",
+      "nearest_route_fallback"
+    ]
+  },
+  "bridge_contract": {
+    "static_map_path": "artifacts/hueman_screen_map.json",
+    "live_state_path": "artifacts/screen_map_state.json",
+    "intent_path": "artifacts/screen_map_intent.json",
+    "shared_coordinate_contract_path": "artifacts/hollow_grove_hueman_coordinate_contract.json"
+  },
+  "godot_contract": {
+    "role": "render_and_emit_intents",
+    "reads": [
+      "artifacts/hueman_screen_map.json",
+      "artifacts/screen_map_state.json"
+    ],
+    "writes": [
+      "artifacts/screen_map_intent.json"
+    ],
+    "filesystem_mutation": "forbidden_directly"
+  },
+  "hollow_grove_contract": {
+    "role": "authoritative_runtime_and_mutation_layer",
+    "consumes": [
+      "artifacts/screen_map_intent.json"
+    ],
+    "decides": [
+      "runtime_actions",
+      "allowed_file_mutations",
+      "workspace_or_window_side_effects"
+    ]
+  }
+}

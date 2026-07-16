@@ -60,8 +60,8 @@ where
                 Ok(MainCli::VerifyFoundation)
             }
         }
-        "scenario" | "world" | "progression" | "point-squared" | "engine" | "bond" | "resource"
-        | "player" | "npc" | "cleopatra" => {
+        "scenario" | "world" | "progression" | "point-squared" | "map" | "engine" | "bond"
+        | "resource" | "player" | "npc" | "cleopatra" => {
             let mut forwarded = vec![command];
             forwarded.extend(args);
             Ok(MainCli::CurrentSynthesisTui(forwarded))
@@ -108,6 +108,8 @@ fn usage() -> &'static str {
        hollow-grove progression witness\n\
        hollow-grove progression validate\n\
        hollow-grove point-squared witness\n\
+       hollow-grove map witness\n\
+       hollow-grove map validate\n\
        hollow-grove scenario use flooded_quarry_night_watch\n\
        hollow-grove engine status\n\
        hollow-grove bond list\n\
@@ -467,6 +469,8 @@ mod tests {
         assert!(usage.contains("progression witness"));
         assert!(usage.contains("progression validate"));
         assert!(usage.contains("point-squared witness"));
+        assert!(usage.contains("map witness"));
+        assert!(usage.contains("map validate"));
         assert!(usage.contains("engine status"));
         assert!(usage.contains("player plan"));
         assert!(usage.contains("cleopatra tick"));

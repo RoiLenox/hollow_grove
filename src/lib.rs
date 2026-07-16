@@ -26,6 +26,7 @@ pub mod synthesis_execution;
 pub mod synthesis_recipe;
 pub mod triway;
 pub mod verification;
+pub mod world_map_geometry;
 
 pub use aim::{Aim, AimBuildError, construct_aim};
 pub use artifact_io::{
@@ -97,6 +98,13 @@ pub use synthesis_recipe::{
     compile_recipe, gremlin_tinker_recipe, pixy_confusion_recipe,
 };
 pub use triway::{Triway, Way};
+pub use world_map_geometry::{
+    HollowGroveRotationContractInput, PointGeometryState, PointLocation, RotationPosition,
+    RotationalCoordinate, WorldCenterId, WorldRing, build_map_artifact,
+    build_map_validation_report, build_map_witness, canonical_rotation_contract_fixture,
+    glaushouse_anchor_position, glaushouse_threshold_position, house_anchor_for_position,
+    stonebend_anchor_position, validate_hollow_grove_rotation_contract,
+};
 
 pub fn run_kernel_cycle(symptom: Symptom) -> KernelPass {
     run_kernel_cycle_with_input(symptom, KernelInput::default())

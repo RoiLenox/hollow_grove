@@ -1,0 +1,137 @@
+{
+  "version": "0.1.0",
+  "date": "2026-07-13",
+  "system_identity": {
+    "rule": "one_coordinate_system_two_faces",
+    "hollow_grove_role": "operating_and_authoritative_face",
+    "hueman_role": "rendered_and_spatial_face"
+  },
+  "coordinate_space": {
+    "type": "normalized_screen",
+    "origin": "top_left",
+    "x_range": [0.0, 1.0],
+    "y_range": [0.0, 1.0]
+  },
+  "shared_anchors": {
+    "center_anchor": {
+      "id": "ranina",
+      "name": "Ranina",
+      "kind": "center_structure",
+      "x": 0.5,
+      "y": 0.5,
+      "meaning": ["frog", "frog-crab", "living_transformation_hinge"],
+      "shared_render_overlays": ["aura_ridge_junction", "human_core"]
+    },
+    "kingdoms": [
+      {
+        "id": "stonebend",
+        "name": "Stonebend",
+        "x": 0.5,
+        "y": 0.14,
+        "constitutional_terms": ["name_it", "craft"]
+      },
+      {
+        "id": "flynt",
+        "name": "Flynt",
+        "x": 0.265,
+        "y": 0.5,
+        "constitutional_terms": ["recognize_it", "engineering"]
+      },
+      {
+        "id": "glaushouse",
+        "name": "Glaushouse",
+        "x": 0.5,
+        "y": 0.86,
+        "constitutional_terms": ["clear_it", "repair", "synthesis"]
+      },
+      {
+        "id": "sandmanor",
+        "name": "Sandmanor",
+        "x": 0.735,
+        "y": 0.5,
+        "constitutional_terms": ["prove_it", "configuration"]
+      },
+      {
+        "id": "aura_ridge_junction",
+        "name": "Aura Ridge Junction",
+        "x": 0.5,
+        "y": 0.5,
+        "constitutional_terms": ["junction", "shared_center"]
+      }
+    ],
+    "motion_grid": [
+      {
+        "cell": 7,
+        "id": "hollow_back",
+        "name": "Hollow Back",
+        "x": 0.2,
+        "y": 0.2
+      },
+      {
+        "cell": 8,
+        "id": "hollow_grove",
+        "name": "Hollow Grove",
+        "x": 0.5,
+        "y": 0.2
+      },
+      {
+        "cell": 9,
+        "id": "hollow_bend",
+        "name": "Hollow Bend",
+        "x": 0.8,
+        "y": 0.2
+      },
+      {
+        "cell": 4,
+        "id": "the_grove",
+        "name": "The Grove",
+        "x": 0.2,
+        "y": 0.5
+      },
+      {
+        "cell": 5,
+        "id": "human_core",
+        "name": "Human Core",
+        "x": 0.5,
+        "y": 0.5,
+        "shares_anchor_with": "ranina"
+      },
+      {
+        "cell": 6,
+        "id": "the_hollows",
+        "name": "The Hollows",
+        "x": 0.8,
+        "y": 0.5
+      },
+      {
+        "cell": 1,
+        "id": "grove_orchard",
+        "name": "Grove Orchard",
+        "x": 0.2,
+        "y": 0.8
+      },
+      {
+        "cell": 2,
+        "id": "grove_hollow",
+        "name": "Grove Hollow",
+        "x": 0.5,
+        "y": 0.8
+      },
+      {
+        "cell": 3,
+        "id": "grove_falls",
+        "name": "Grove Falls",
+        "x": 0.8,
+        "y": 0.8
+      }
+    ]
+  },
+  "live_reading": {
+    "window_probe": "focused_or_paired_window_center",
+    "rule": "a live normalized point is a Hollow Grove point and a Hueman point simultaneously"
+  },
+  "contracts": {
+    "human_readable_path": "HOLLOW_GROVE_HUEMAN_COORDINATE_CONTRACT_v0.1.0.md",
+    "screen_map_path": "artifacts/hueman_screen_map.json"
+  }
+}

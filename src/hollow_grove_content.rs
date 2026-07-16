@@ -12,6 +12,10 @@ use crate::point_progression::{
     CanonicalRouteId, PointProgressionDiagnostic, PointSquaredApplicationStatus,
     build_canonical_point_squared_fixture, build_point_squared_witness, validate_point_progression,
 };
+use crate::world_map_geometry::{
+    RotationPosition, WorldCenterId, build_map_witness, canonical_rotation_contract_fixture,
+    validate_hollow_grove_rotation_contract,
+};
 use crate::{
     CANONICAL_WITNESS, ContactOutcome, DecisionIntent, FrameState, LandingOutcome, Point, Symptom,
     execute_kernel_pass_decision, execute_synthesis_recipe, gremlin_tinker_recipe,
@@ -299,6 +303,7 @@ pub fn validate_hueman_progression_foundation() -> io::Result<()> {
 
 pub fn validate_point_squared_progression_foundation() -> io::Result<()> {
     let fixture = build_canonical_point_squared_fixture()?;
+    let before = fixture.point_before();
     let stabilized = fixture.first_application().stabilized_point();
     let diagnostics = validate_point_progression(stabilized);
     let errors = diagnostics
@@ -351,6 +356,49 @@ pub fn validate_point_squared_progression_foundation() -> io::Result<()> {
         return Err(io::Error::new(
             io::ErrorKind::InvalidData,
             "Point² must open next Frame potential without granting it automatically",
+        ));
+    }
+    if before.world().geometry().center() != WorldCenterId::Ranina
+        || stabilized.world().geometry().center() != WorldCenterId::Ranina
+    {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "Ranina must remain the unique center before and after Point²",
+        ));
+    }
+    if before.world().geometry().current_position() != Some(RotationPosition::seven())
+        || stabilized.world().geometry().current_position() != Some(RotationPosition::seven())
+    {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "the canonical Point² fixture must preserve Position 7 while opening Ring 2",
+        ));
+    }
+    Ok(())
+}
+
+pub fn validate_ranina_rotation_foundation() -> io::Result<()> {
+    let diagnostics =
+        validate_hollow_grove_rotation_contract(&canonical_rotation_contract_fixture());
+    if !diagnostics.is_empty() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            diagnostics
+                .into_iter()
+                .map(|diagnostic| diagnostic.message)
+                .collect::<Vec<_>>()
+                .join("; "),
+        ));
+    }
+    let fixture = build_canonical_point_squared_fixture()?;
+    let before = fixture.point_before();
+    let after = fixture.first_application().stabilized_point();
+    if before.progression().stable_point_level() != 1
+        || after.progression().stable_point_level() != 2
+    {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "Point² must open Ring 2 from Ring 1 in the canonical geometry fixture",
         ));
     }
     Ok(())
@@ -510,6 +558,7 @@ pub fn build_hollow_grove_vertical_witness() -> io::Result<String> {
 pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String> {
     validate_hueman_progression_foundation()?;
     validate_point_squared_progression_foundation()?;
+    validate_ranina_rotation_foundation()?;
     validate_medical_injury_cycle()?;
     validate_canonical_content_fixtures()?;
     validate_medical_team_profile(&build_glaushouse_medical_team_profile())?;
@@ -523,6 +572,21 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
             format!(
                 "progression semantic contract drifted: {}",
                 contract_diagnostics
+                    .into_iter()
+                    .map(|diagnostic| diagnostic.message)
+                    .collect::<Vec<_>>()
+                    .join("; ")
+            ),
+        ));
+    }
+    let rotation_diagnostics =
+        validate_hollow_grove_rotation_contract(&canonical_rotation_contract_fixture());
+    if !rotation_diagnostics.is_empty() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!(
+                "rotational geometry contract drifted: {}",
+                rotation_diagnostics
                     .into_iter()
                     .map(|diagnostic| diagnostic.message)
                     .collect::<Vec<_>>()
@@ -597,6 +661,14 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
          - progression persistence fixture: pass\n\
          - development persistence: pass\n\
          - Stairway horizon fixture: pass\n\
+         - Ranina center: pass\n\
+         - twelve-position rotation: pass\n\
+         - Stonebend position 1: pass\n\
+         - Glaüshouse threshold 6: pass\n\
+         - Glaüshouse position 7: pass\n\
+         - opposition geometry: pass\n\
+         - Point² radial expansion: pass\n\
+         - Ranina center invariance: pass\n\
          - point stabilization: pass\n\
          - canonical content fixtures: pass\n\
          - medical lore injury cycle: pass\n\
@@ -607,10 +679,13 @@ pub fn build_hollow_grove_foundation_verification_report() -> io::Result<String>
          {}\n\
          Point² Witness:\n\n\
          {}\n\
+         Map Witness:\n\n\
+         {}\n\
          Vertical Witness:\n\n\
          {}",
         crate::hollow_grove_contract::build_hollow_grove_alignment_witness(),
         build_point_squared_witness()?,
+        build_map_witness()?,
         build_hollow_grove_vertical_witness()?
     ))
 }

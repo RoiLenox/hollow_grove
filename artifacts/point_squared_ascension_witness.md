@@ -20,6 +20,9 @@ Inner Aura = inward identity and clarity
 Before:
 Point Level: 1
 Being: Hueman
+World Center: Ranina
+Ring: 1
+Position: 7
 Current Capacity: 1
 Aura Capacity: 1
 
@@ -44,4 +47,7 @@ Active Frame after landing: Gremlin
 After Stabilization:
 Point Level: 2
 Being: Hueman
+World Center: Ranina
+Ring: 2
+Position: 7
 V1.1 topology unchanged: yes
