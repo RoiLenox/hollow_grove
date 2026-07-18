@@ -11,3 +11,11 @@
 /artifacts/runtime_loop_status.md
 /artifacts/niri_bridge_memory.txt
 /artifacts/niri_bridge_status.md
+/artifacts/screen_map_state.json
+/artifacts/screen_map_intent.json
+/artifacts/hueman_pair_state.json
+/artifacts/hueman_pair_preview.png
+/artifacts/hueman_pair_preview_state.json
+
+# Local Godot editor metadata.
+/hueman_godot/.godot/

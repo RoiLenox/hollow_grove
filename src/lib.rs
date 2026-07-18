@@ -1,4 +1,5 @@
 pub mod aim;
+pub mod application_protocol;
 pub mod artifact_io;
 pub mod aura_polarity;
 pub mod being_object_ontology;
@@ -41,6 +42,16 @@ pub mod world;
 pub mod world_map_geometry;
 
 pub use aim::{Aim, AimBuildError, construct_aim};
+pub use application_protocol::{
+    APPLICATION_REGISTRY_ARTIFACT_PATH, APPLICATION_REGISTRY_SCHEMA_VERSION, ApplicationAttachment,
+    ApplicationAttachmentError, ApplicationAuthority, ApplicationAuthorityBoundary,
+    ApplicationCapability, ApplicationDefinition, ApplicationId, ApplicationKind,
+    ApplicationLifecycle, ApplicationPrivacy, ApplicationProhibition, ApplicationProjection,
+    ApplicationRegistryError, ApplicationScopeEnvelope, ApplicationScreenAnchor,
+    ApplicationWorldAnchor, HollowGroveApplicationRegistry, attach_managed_application_window,
+    authorize_managed_application_view, build_hollow_grove_application_registry_json,
+    build_hollow_grove_application_witness, canonical_hollow_grove_application_registry,
+};
 pub use artifact_io::{
     ArtifactFlushRecord, ArtifactSession, read_text_artifact, write_text_artifact,
 };

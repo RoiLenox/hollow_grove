@@ -1,0 +1,39 @@
+{
+"schema_version": "0.1.0",
+"control_plane": "hollow_grove",
+"applications": [
+{
+"id": "application.glaushouse.chroma-cord",
+"canonical_name": "chroma_cord",
+"kind": "clinical_charting",
+"window_app_id": "hollow-grove.chroma-cord",
+"launch_entrypoint": "launch-chroma-cord.sh",
+"world_anchor": {
+"id": "glaushouse",
+"name": "Glaüshouse",
+"kind": "kingdom",
+"institution_id": "institution.glaushouse.medical-civilization",
+"site_id": "site.glaushouse.central-medical-district",
+"zone_id": "zone.glaushouse.medical-district.recovery-chambers",
+"normalized": {"x": 0.5, "y": 0.86}
+},
+"privacy": {
+"capture_allowed": false,
+"projection": "semantic_only"
+},
+"authority": {
+"lifecycle": "hollow_grove",
+"world_attachment": "hollow_grove",
+"access": "hollow_grove",
+"projection": "hollow_grove",
+"domain_grammar": "chroma_cord",
+"storage": "chroma_cord"
+},
+"scope": {
+"minimum_required": ["lifecycle_control", "native_window_identity", "world_attachment", "institutional_access", "semantic_projection", "privacy_enforcement"],
+"maximum_allowed": ["lifecycle_control", "native_window_identity", "world_attachment", "institutional_access", "semantic_projection", "privacy_enforcement", "health_and_version", "protocol_migration", "backup_coordination"],
+"prohibited": ["rewrite_domain_grammar", "mutate_committed_records", "manufacture_clearance", "bypass_identity_or_consent", "capture_clinical_window", "copy_clinical_store_into_artifacts"]
+}
+}
+]
+}

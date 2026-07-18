@@ -62,14 +62,19 @@ use hollow_grove::hueman_support::{
     hueman_start_paths_artifact_path, hueman_stonebend_roles_artifact_path,
     hueman_tross_helpers_artifact_path, vertical_integration_stack_artifact_path,
 };
+use hollow_grove::world::persistence::INSTITUTIONAL_STATE_ARTIFACT_PATH;
 use hollow_grove::{
-    ArtifactSession, Symptom, build_desktop_status_output, build_prompt_artifact_output,
-    build_snapshot_output, read_text_artifact, run_kernel_cycle, write_text_artifact,
+    ArtifactSession, Symptom, WorldSession, build_desktop_status_output,
+    build_prompt_artifact_output, build_snapshot_output,
+    canonical_hollow_grove_application_registry, read_text_artifact, run_kernel_cycle,
+    write_text_artifact,
 };
 
 const RUNTIME_INPUT_ARTIFACT_PATH: &str = "artifacts/runtime_input.txt";
 const RUNTIME_MEMORY_ARTIFACT_PATH: &str = "artifacts/runtime_memory.txt";
 const RUNTIME_LOOP_STATUS_ARTIFACT_PATH: &str = "artifacts/runtime_loop_status.md";
+const INSTITUTIONAL_RUNTIME_CONTEXT_ARTIFACT_PATH: &str =
+    "artifacts/institutional_runtime_context.md";
 const SCREEN_MAP_INTENT_ARTIFACT_PATH: &str = "artifacts/screen_map_intent.json";
 const DEFAULT_INTERVAL_MS: u64 = 1_000;
 
@@ -140,6 +145,7 @@ struct ScreenMapIntent {
     zone_kind: String,
     source: String,
     pair: Option<ScreenMapPairIntent>,
+    application: Option<ScreenMapApplicationIntent>,
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -150,6 +156,18 @@ struct ScreenMapPairIntent {
     app_id: Option<String>,
     diagonal_angle_degrees: Option<f64>,
     spread_ratio: Option<f64>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+struct ScreenMapApplicationIntent {
+    application_id: String,
+    canonical_name: String,
+    lifecycle: String,
+    world_anchor_id: String,
+    institution_id: String,
+    site_id: String,
+    zone_id: String,
+    projection: String,
 }
 
 fn parse_runtime_cli<I>(args: I) -> Result<RuntimeCli, String>
@@ -510,6 +528,46 @@ fn parse_screen_map_pair_intent(contents: &str) -> io::Result<Option<ScreenMapPa
     }))
 }
 
+fn required_json_string(object: &str, field: &str, context: &str) -> io::Result<String> {
+    parse_json_string(find_json_field(object, field)?)?.ok_or_else(|| {
+        io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!("{context} missing {field}"),
+        )
+    })
+}
+
+fn parse_screen_map_application_intent(
+    contents: &str,
+) -> io::Result<Option<ScreenMapApplicationIntent>> {
+    let trimmed = contents.trim();
+    if trimmed.is_empty() || trimmed == "null" {
+        return Ok(None);
+    }
+    if !trimmed.starts_with('{') || !trimmed.ends_with('}') {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "screen map application intent is not a json object",
+        ));
+    }
+
+    let world_anchor = find_json_field(trimmed, "world_anchor")?;
+    Ok(Some(ScreenMapApplicationIntent {
+        application_id: required_json_string(trimmed, "application_id", "application intent")?,
+        canonical_name: required_json_string(trimmed, "canonical_name", "application intent")?,
+        lifecycle: required_json_string(trimmed, "lifecycle", "application intent")?,
+        world_anchor_id: required_json_string(world_anchor, "id", "application world anchor")?,
+        institution_id: required_json_string(
+            world_anchor,
+            "institution_id",
+            "application world anchor",
+        )?,
+        site_id: required_json_string(world_anchor, "site_id", "application world anchor")?,
+        zone_id: required_json_string(world_anchor, "zone_id", "application world anchor")?,
+        projection: required_json_string(trimmed, "projection", "application intent")?,
+    }))
+}
+
 fn parse_screen_map_intent(contents: &str) -> io::Result<Option<ScreenMapIntent>> {
     let trimmed = contents.trim();
     if trimmed.is_empty() || trimmed == "null" {
@@ -562,6 +620,10 @@ fn parse_screen_map_intent(contents: &str) -> io::Result<Option<ScreenMapIntent>
         Some(value) => parse_screen_map_pair_intent(value)?,
         None => None,
     };
+    let application = match optional_json_field(trimmed, "application") {
+        Some(value) => parse_screen_map_application_intent(value)?,
+        None => None,
+    };
 
     Ok(Some(ScreenMapIntent {
         intent,
@@ -570,7 +632,56 @@ fn parse_screen_map_intent(contents: &str) -> io::Result<Option<ScreenMapIntent>
         zone_kind,
         source,
         pair,
+        application,
     }))
+}
+
+fn validate_screen_map_application_intent(intent: &ScreenMapIntent) -> io::Result<()> {
+    let registry = canonical_hollow_grove_application_registry();
+    let pair_app_id = intent.pair.as_ref().and_then(|pair| pair.app_id.as_deref());
+    let Some(attached) = intent.application.as_ref() else {
+        if registry
+            .applications
+            .iter()
+            .any(|application| pair_app_id == Some(application.window_app_id.as_str()))
+        {
+            return Err(io::Error::new(
+                io::ErrorKind::PermissionDenied,
+                "managed window intent is missing its Hollow Grove application attachment",
+            ));
+        }
+        return Ok(());
+    };
+    let application = registry
+        .application(&attached.canonical_name)
+        .ok_or_else(|| {
+            io::Error::new(
+                io::ErrorKind::PermissionDenied,
+                format!(
+                    "screen map intent names an unmanaged application: {}",
+                    attached.canonical_name
+                ),
+            )
+        })?;
+    let matches_registry = attached.application_id == application.id.as_str()
+        && attached.lifecycle == "attached"
+        && attached.world_anchor_id == application.world_anchor.node_id
+        && attached.institution_id == application.world_anchor.institution.as_str()
+        && attached.site_id == application.world_anchor.site.as_str()
+        && attached.zone_id == application.world_anchor.zone.as_str()
+        && attached.projection == application.privacy.projection.as_str()
+        && intent.zone_id == application.world_anchor.node_id
+        && pair_app_id == Some(application.window_app_id.as_str());
+    if !matches_registry {
+        return Err(io::Error::new(
+            io::ErrorKind::PermissionDenied,
+            format!(
+                "managed application intent does not match Hollow Grove registry: {}",
+                attached.canonical_name
+            ),
+        ));
+    }
+    Ok(())
 }
 
 fn route_endpoints(zone_id: &str) -> Option<(&'static str, &'static str)> {
@@ -728,6 +839,7 @@ fn motion_grid_decide_label(zone_id: &str, pair_suffix: &str) -> String {
 }
 
 fn translate_screen_map_intent(intent: &ScreenMapIntent) -> io::Result<(String, String)> {
+    validate_screen_map_application_intent(intent)?;
     let zone_slug = zone_id_to_slug(&intent.zone_id);
     let pair_suffix = pair_action_suffix(intent.pair.as_ref());
 
@@ -812,15 +924,30 @@ fn build_consumed_screen_map_intent_receipt(
         ),
         None => String::new(),
     };
+    let application_json = match intent.application.as_ref() {
+        Some(application) => format!(
+            ",\n  \"application\": {{\n    \"application_id\": \"{}\",\n    \"canonical_name\": \"{}\",\n    \"lifecycle\": \"{}\",\n    \"world_anchor\": {{\n      \"id\": \"{}\",\n      \"institution_id\": \"{}\",\n      \"site_id\": \"{}\",\n      \"zone_id\": \"{}\"\n    }},\n    \"projection\": \"{}\"\n  }}",
+            escape_json(&application.application_id),
+            escape_json(&application.canonical_name),
+            escape_json(&application.lifecycle),
+            escape_json(&application.world_anchor_id),
+            escape_json(&application.institution_id),
+            escape_json(&application.site_id),
+            escape_json(&application.zone_id),
+            escape_json(&application.projection),
+        ),
+        None => String::new(),
+    };
 
     format!(
-        "{{\n  \"schema_version\": \"0.1.0\",\n  \"status\": \"consumed\",\n  \"intent\": \"{}\",\n  \"zone\": {{\n    \"id\": \"{}\",\n    \"name\": \"{}\",\n    \"kind\": \"{}\"\n  }},\n  \"source\": \"{}\"{},\n  \"translated_action\": {{\n    \"kind\": \"{}\",\n    \"label\": \"{}\"\n  }}\n}}\n",
+        "{{\n  \"schema_version\": \"0.2.0\",\n  \"status\": \"consumed\",\n  \"intent\": \"{}\",\n  \"zone\": {{\n    \"id\": \"{}\",\n    \"name\": \"{}\",\n    \"kind\": \"{}\"\n  }},\n  \"source\": \"{}\"{}{},\n  \"translated_action\": {{\n    \"kind\": \"{}\",\n    \"label\": \"{}\"\n  }}\n}}\n",
         escape_json(&intent.intent),
         escape_json(&intent.zone_id),
         escape_json(&intent.zone_name),
         escape_json(&intent.zone_kind),
         escape_json(&intent.source),
         pair_json,
+        application_json,
         escape_json(action_kind),
         escape_json(action_label)
     )
@@ -1669,6 +1796,17 @@ fn run_runtime_cycle_at(root: &Path, cycle_number: usize) -> io::Result<RuntimeC
             let consumed_intent = consume_screen_map_intent_at(root)?;
             run_current_synthesis_tui_at(root, &mut session)?;
             run_hueman_at(root, &mut session)?;
+            let world_session = WorldSession::load_or_canonical_at(root)?;
+            stage_artifact(
+                &mut session,
+                &root.join(INSTITUTIONAL_RUNTIME_CONTEXT_ARTIFACT_PATH),
+                world_session.runtime_context_output(),
+            );
+            stage_artifact(
+                &mut session,
+                &root.join(INSTITUTIONAL_STATE_ARTIFACT_PATH),
+                world_session.persisted_state_output(),
+            );
             session.commit()?;
 
             (
@@ -1774,17 +1912,19 @@ fn main() -> io::Result<()> {
 #[cfg(test)]
 mod tests {
     use std::fs;
+    use std::io;
     use std::path::Path;
     use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
     use super::{
-        DEFAULT_INTERVAL_MS, RUNTIME_INPUT_ARTIFACT_PATH, RUNTIME_LOOP_STATUS_ARTIFACT_PATH,
+        DEFAULT_INTERVAL_MS, INSTITUTIONAL_RUNTIME_CONTEXT_ARTIFACT_PATH,
+        RUNTIME_INPUT_ARTIFACT_PATH, RUNTIME_LOOP_STATUS_ARTIFACT_PATH,
         RUNTIME_MEMORY_ARTIFACT_PATH, RuntimeCli, RuntimeConfig, RuntimeInput, RuntimeMemory,
-        RuntimeMode, SCREEN_MAP_INTENT_ARTIFACT_PATH, ScreenMapIntent, ScreenMapPairIntent,
-        build_consumed_screen_map_intent_receipt, build_runtime_input_template,
-        build_runtime_memory_output, build_runtime_status_output, parse_runtime_cli,
-        parse_runtime_input, parse_runtime_memory, parse_screen_map_intent, run_runtime_cycle_at,
-        runtime_resume_cycle_at, translate_screen_map_intent, usage,
+        RuntimeMode, SCREEN_MAP_INTENT_ARTIFACT_PATH, ScreenMapApplicationIntent, ScreenMapIntent,
+        ScreenMapPairIntent, build_consumed_screen_map_intent_receipt,
+        build_runtime_input_template, build_runtime_memory_output, build_runtime_status_output,
+        parse_runtime_cli, parse_runtime_input, parse_runtime_memory, parse_screen_map_intent,
+        run_runtime_cycle_at, runtime_resume_cycle_at, translate_screen_map_intent, usage,
     };
     use crate::current_synthesis_support::{
         ARTIFACT_INDEX_PATH, DESKTOP_STATUS_ARTIFACT_PATH, PROMPT_ARTIFACT_PATH,
@@ -1793,6 +1933,7 @@ mod tests {
     use hollow_grove::hueman_support::{
         hueman_boundary_artifact_path, hueman_scene_drift_artifact_path,
     };
+    use hollow_grove::world::persistence::INSTITUTIONAL_STATE_ARTIFACT_PATH;
     use hollow_grove::{CANONICAL_WITNESS, read_text_artifact, write_text_artifact};
 
     fn unique_artifact_root(prefix: &str) -> std::path::PathBuf {
@@ -2051,6 +2192,7 @@ mod tests {
                 diagonal_angle_degrees: Some(135.0),
                 spread_ratio: Some(0.25),
             }),
+            application: None,
         };
         let inspect_intent = ScreenMapIntent {
             intent: String::from("inspect"),
@@ -2059,6 +2201,7 @@ mod tests {
             zone_kind: String::from("kingdom"),
             source: String::from("hueman_godot_shell"),
             pair: None,
+            application: None,
         };
 
         let (move_kind, move_label) =
@@ -2085,6 +2228,7 @@ mod tests {
             zone_kind: String::from("motion_grid_cell"),
             source: String::from("hueman_godot_shell"),
             pair: None,
+            application: None,
         };
         let inspect_intent = ScreenMapIntent {
             intent: String::from("inspect"),
@@ -2093,6 +2237,7 @@ mod tests {
             zone_kind: String::from("motion_grid_cell"),
             source: String::from("hueman_godot_shell"),
             pair: None,
+            application: None,
         };
 
         let (move_kind, move_label) =
@@ -2109,6 +2254,61 @@ mod tests {
         assert!(inspect_label.contains("target=hollow-grove"));
         assert!(inspect_label.contains("focus=power"));
         assert!(inspect_label.contains("zone=hollow-grove-grid"));
+    }
+
+    #[test]
+    fn managed_application_intent_must_match_the_registry_end_to_end() {
+        let intent = ScreenMapIntent {
+            intent: String::from("inspect"),
+            zone_id: String::from("glaushouse"),
+            zone_name: String::from("Glaüshouse"),
+            zone_kind: String::from("kingdom"),
+            source: String::from("hueman_godot_shell"),
+            pair: Some(ScreenMapPairIntent {
+                paired_window_mode: true,
+                window_id: Some(41),
+                window_title: Some(String::from("chroma_cord")),
+                app_id: Some(String::from("hollow-grove.chroma-cord")),
+                diagonal_angle_degrees: Some(135.0),
+                spread_ratio: Some(0.25),
+            }),
+            application: Some(ScreenMapApplicationIntent {
+                application_id: String::from("application.glaushouse.chroma-cord"),
+                canonical_name: String::from("chroma_cord"),
+                lifecycle: String::from("attached"),
+                world_anchor_id: String::from("glaushouse"),
+                institution_id: String::from("institution.glaushouse.medical-civilization"),
+                site_id: String::from("site.glaushouse.central-medical-district"),
+                zone_id: String::from("zone.glaushouse.medical-district.recovery-chambers"),
+                projection: String::from("semantic_only"),
+            }),
+        };
+
+        let (_, label) = translate_screen_map_intent(&intent)
+            .expect("canonical managed application intent should translate");
+        assert!(label.contains("target=glaushouse"));
+        assert!(label.contains("actor=hollow-grove-chroma-cord"));
+        let receipt = build_consumed_screen_map_intent_receipt(&intent, "decide", &label);
+        assert!(receipt.contains("application.glaushouse.chroma-cord"));
+        assert!(receipt.contains("semantic_only"));
+
+        let mut tampered = intent;
+        tampered.application.as_mut().unwrap().zone_id = String::from("zone.somewhere-else");
+        assert_eq!(
+            translate_screen_map_intent(&tampered)
+                .expect_err("tampered world attachment must be rejected")
+                .kind(),
+            io::ErrorKind::PermissionDenied
+        );
+
+        let mut missing_attachment = tampered;
+        missing_attachment.application = None;
+        assert_eq!(
+            translate_screen_map_intent(&missing_attachment)
+                .expect_err("managed window must not fall back to geometry")
+                .kind(),
+            io::ErrorKind::PermissionDenied
+        );
     }
 
     #[test]
@@ -2137,6 +2337,12 @@ mod tests {
         let runtime_memory = read_text_artifact(&artifact_root.join(RUNTIME_MEMORY_ARTIFACT_PATH))
             .expect("runtime memory");
         let runtime_status = read_text_artifact(&cycle.status_path).expect("runtime status");
+        let institutional_context =
+            read_text_artifact(&artifact_root.join(INSTITUTIONAL_RUNTIME_CONTEXT_ARTIFACT_PATH))
+                .expect("institutional runtime context");
+        let institutional_state =
+            read_text_artifact(&artifact_root.join(INSTITUTIONAL_STATE_ARTIFACT_PATH))
+                .expect("institutional state");
         let hueman_boundary =
             read_text_artifact(&artifact_root.join(hueman_boundary_artifact_path()))
                 .expect("hueman boundary");
@@ -2153,6 +2359,9 @@ mod tests {
         assert!(runtime_memory.contains("last_runtime_mode: run"));
         assert!(runtime_status.contains(CANONICAL_WITNESS));
         assert!(runtime_status.contains("refreshed pipeline"));
+        assert!(institutional_context.contains("Institutional Runtime Context"));
+        assert!(institutional_context.contains("Stanislavski still chooses tactics"));
+        assert!(institutional_state.contains("schema_version:1"));
         assert!(hueman_boundary.contains("# Hueman Boundary"));
         assert!(hueman_scene_drift.contains("# Hueman Scene Drift"));
 

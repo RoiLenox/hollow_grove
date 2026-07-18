@@ -5,7 +5,11 @@ use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::time::SystemTime;
 
-use hollow_grove::{Symptom, build_hollow_grove_foundation_verification_report, run_kernel_cycle};
+use hollow_grove::{
+    APPLICATION_REGISTRY_ARTIFACT_PATH, Symptom, build_hollow_grove_application_registry_json,
+    build_hollow_grove_application_witness, build_hollow_grove_foundation_verification_report,
+    canonical_hollow_grove_application_registry, run_kernel_cycle, write_text_artifact,
+};
 
 const RUNTIME_BINARY_NAME: &str = "hollow_grove_runtime";
 const BRIDGE_BINARY_NAME: &str = "hollow_grove_niri_bridge";
@@ -21,6 +25,7 @@ enum MainCli {
     Bridge(Vec<String>),
     Desktop(Vec<String>),
     Benchmark(Vec<String>),
+    App(Vec<String>),
     HuemanSlice(Vec<String>),
     VerifyFoundation,
     CurrentSynthesisTui(Vec<String>),
@@ -50,6 +55,7 @@ where
         "bridge" => Ok(MainCli::Bridge(args.collect())),
         "desktop" | "launch" => Ok(MainCli::Desktop(args.collect())),
         "benchmark" => Ok(MainCli::Benchmark(args.collect())),
+        "app" | "application" => Ok(MainCli::App(args.collect())),
         "hueman-slice" => Ok(MainCli::HuemanSlice(args.collect())),
         "verify-foundation" => {
             if let Some(extra) = args.next() {
@@ -106,6 +112,7 @@ fn usage() -> &'static str {
        bridge [args]     run the Niri bridge against runtime memory\n\
        desktop [args]    launch the runtime loop with the Niri bridge attached\n\
        benchmark [args]  run the Current-Synthesis-style benchmark suite\n\
+       app ...           inspect, launch, or attach a Hollow Grove-managed application\n\
        hueman-slice      run the Hueman vertical-slice demo surface\n\
        verify-foundation print the Hollow Grove semantic foundation regression report\n\
        scenario ...      list or switch Current Synthesis scenarios\n\
@@ -145,6 +152,10 @@ fn usage() -> &'static str {
        hollow-grove bridge --apply --watch\n\
        hollow-grove desktop --cycles 5 --interval-ms 1000\n\
        hollow-grove benchmark --warmup 5 --samples 25\n\
+       hollow-grove app list\n\
+       hollow-grove app describe chroma_cord\n\
+       hollow-grove app launch chroma_cord\n\
+       hollow-grove app attach chroma_cord\n\
        hollow-grove hueman-slice walk\n\
        hollow-grove verify-foundation\n\
        hollow-grove scenario list\n\
@@ -387,6 +398,143 @@ fn run_desktop_launcher(runtime_args: &[String]) -> io::Result<()> {
     }
 }
 
+fn application_usage() -> &'static str {
+    "Usage: hollow-grove app <command> [application] [args]\n\
+     \n\
+     Commands:\n\
+       list                         list Hollow Grove-managed applications\n\
+       describe chroma_cord         print the typed ownership and attachment witness\n\
+       registry                     refresh and print the machine-readable registry\n\
+       launch chroma_cord [args]    open the native managed application window\n\
+       attach chroma_cord           attach the focused managed window through the existing pair control\n"
+}
+
+fn sync_application_registry_artifact(repo_root: &Path) -> io::Result<()> {
+    write_text_artifact(
+        &repo_root.join(APPLICATION_REGISTRY_ARTIFACT_PATH),
+        &build_hollow_grove_application_registry_json(),
+    )?;
+    Ok(())
+}
+
+fn managed_application(name: &str) -> io::Result<hollow_grove::ApplicationDefinition> {
+    canonical_hollow_grove_application_registry()
+        .application(name)
+        .cloned()
+        .ok_or_else(|| {
+            io::Error::new(
+                io::ErrorKind::InvalidInput,
+                format!("unknown managed application: {name}"),
+            )
+        })
+}
+
+fn run_application_cli(args: &[String]) -> io::Result<()> {
+    let Some(command) = args.first().map(String::as_str) else {
+        println!("{}", application_usage());
+        return Ok(());
+    };
+    match command {
+        "--help" | "-h" | "help" => {
+            println!("{}", application_usage());
+            Ok(())
+        }
+        "list" => {
+            for application in canonical_hollow_grove_application_registry().applications {
+                println!(
+                    "{}\t{}\t{}\t{}",
+                    application.canonical_name,
+                    application.kind.as_str(),
+                    application.world_anchor.node_name,
+                    application.window_app_id
+                );
+            }
+            Ok(())
+        }
+        "describe" | "witness" => {
+            let name = args.get(1).map(String::as_str).unwrap_or("chroma_cord");
+            managed_application(name)?;
+            println!("{}", build_hollow_grove_application_witness());
+            Ok(())
+        }
+        "registry" => {
+            let repo_root = find_repo_root().ok_or_else(|| {
+                io::Error::new(
+                    io::ErrorKind::NotFound,
+                    "could not locate Hollow Grove repo root",
+                )
+            })?;
+            sync_application_registry_artifact(&repo_root)?;
+            print!("{}", build_hollow_grove_application_registry_json());
+            Ok(())
+        }
+        "launch" => {
+            let name = args.get(1).map(String::as_str).unwrap_or("chroma_cord");
+            let application = managed_application(name)?;
+            let repo_root = find_repo_root().ok_or_else(|| {
+                io::Error::new(
+                    io::ErrorKind::NotFound,
+                    "could not locate Hollow Grove repo root",
+                )
+            })?;
+            sync_application_registry_artifact(&repo_root)?;
+            let launcher = repo_root.join(&application.launch_entrypoint);
+            if !launcher.is_file() {
+                return Err(io::Error::new(
+                    io::ErrorKind::NotFound,
+                    format!(
+                        "managed application launcher not found: {}",
+                        launcher.display()
+                    ),
+                ));
+            }
+            Command::new(&launcher)
+                .args(args.get(2..).unwrap_or_default())
+                .spawn()?;
+            println!(
+                "launched {} as {}; use the existing pair binding to attach it to {}",
+                application.canonical_name,
+                application.window_app_id,
+                application.world_anchor.node_name
+            );
+            Ok(())
+        }
+        "attach" => {
+            let name = args.get(1).map(String::as_str).unwrap_or("chroma_cord");
+            let application = managed_application(name)?;
+            let repo_root = find_repo_root().ok_or_else(|| {
+                io::Error::new(
+                    io::ErrorKind::NotFound,
+                    "could not locate Hollow Grove repo root",
+                )
+            })?;
+            sync_application_registry_artifact(&repo_root)?;
+            let attach_script = repo_root.join("rebind-hueman-pair.sh");
+            let status = Command::new(&attach_script)
+                .env(
+                    "HOLLOW_GROVE_REQUIRE_APPLICATION",
+                    &application.canonical_name,
+                )
+                .status()?;
+            if !status.success() {
+                return Err(io::Error::other(format!(
+                    "{} attachment rejected; focus its managed window and try again",
+                    application.canonical_name
+                )));
+            }
+            println!(
+                "attached {} to {} under Hollow Grove control",
+                application.canonical_name, application.world_anchor.node_name
+            );
+            Ok(())
+        }
+        other => Err(io::Error::new(
+            io::ErrorKind::InvalidInput,
+            format!("unknown app command: {other}"),
+        )),
+    }
+}
+
 fn main() -> io::Result<()> {
     let cli = parse_main_cli(env::args().skip(1))
         .map_err(|error| io::Error::new(io::ErrorKind::InvalidInput, error))?;
@@ -404,6 +552,7 @@ fn main() -> io::Result<()> {
         MainCli::Bridge(args) => run_child_binary(BRIDGE_BINARY_NAME, &args),
         MainCli::Desktop(args) => run_desktop_launcher(&args),
         MainCli::Benchmark(args) => run_child_binary(BENCHMARK_BINARY_NAME, &args),
+        MainCli::App(args) => run_application_cli(&args),
         MainCli::HuemanSlice(args) => run_child_binary(HUEMAN_SLICE_BINARY_NAME, &args),
         MainCli::VerifyFoundation => {
             println!("{}", build_hollow_grove_foundation_verification_report()?);
@@ -467,6 +616,11 @@ mod tests {
             ])
             .expect("benchmark cli should parse"),
             MainCli::Benchmark(vec![String::from("--samples"), String::from("3")])
+        );
+        assert_eq!(
+            parse_main_cli([String::from("app"), String::from("list")])
+                .expect("application cli should parse"),
+            MainCli::App(vec![String::from("list")])
         );
         assert_eq!(
             parse_main_cli([String::from("hueman-slice"), String::from("status")])
@@ -634,6 +788,8 @@ mod tests {
         assert!(usage.contains("bridge [args]"));
         assert!(usage.contains("desktop [args]"));
         assert!(usage.contains("benchmark [args]"));
+        assert!(usage.contains("app ..."));
+        assert!(usage.contains("app launch chroma_cord"));
         assert!(usage.contains("hueman-slice"));
         assert!(usage.contains("verify-foundation"));
         assert!(usage.contains("scenario list"));
