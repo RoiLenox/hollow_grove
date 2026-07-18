@@ -11,6 +11,41 @@ use crate::decision_engine::{
 use crate::flow_glow_grammar::{
     ActionMode, EmbodiedGesture, ExpressionDomain, RecipeBoundaryStatus,
 };
+use crate::institution_affiliation::ZoneEntryResult;
+
+/// A player-facing explanation of a typed institutional access result.
+///
+/// This is deliberately presentation only: it neither moves a being nor
+/// creates, evaluates, or selects a Stanislavski tactic.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct InstitutionalAccessPresentation {
+    pub heading: String,
+    pub detail: String,
+    pub presentation_kind: ResponsePresentationKind,
+}
+
+/// Renders a neutral traversal decision for a caller such as a menu or HUD.
+/// Stable IDs remain available in the detail so a UI can replace this generic
+/// wording with a House-specific lexicon later.
+#[must_use]
+pub fn present_institutional_access(result: &ZoneEntryResult) -> InstitutionalAccessPresentation {
+    match result {
+        ZoneEntryResult::Allowed(entry) => InstitutionalAccessPresentation {
+            heading: String::from("Access granted"),
+            detail: format!("Access to {} is authorized.", entry.zone.as_str()),
+            presentation_kind: ResponsePresentationKind::PhysicalAction,
+        },
+        ZoneEntryResult::Denied(denial) => InstitutionalAccessPresentation {
+            heading: String::from("Access restricted"),
+            detail: format!(
+                "Access to {} requires {} authorization condition(s).",
+                denial.zone.as_str(),
+                denial.unmet_requirements.len()
+            ),
+            presentation_kind: ResponsePresentationKind::Spoken,
+        },
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ResponsePresentationKind {

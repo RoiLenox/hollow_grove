@@ -1025,11 +1025,11 @@ pub fn validate_hollow_grove_alignment(
     }
 
     for claim in &input.gnome_progression_claims {
-        if claim.has_evolution_ladder || claim.evolves_into_gargoyle {
+        if claim.evolves_into_gargoyle {
             diagnostics.push(AlignmentDiagnostic {
                 code: AlignmentDiagnosticCode::GnomeProgressionMismatch,
                 message: String::from(
-                    "Gnomes must not gain an evolution ladder or transform into Gargoyles",
+                    "Gnomes may follow the Sandmanor Minotaur and Hecaton lineage but must not transform into Gargoyles",
                 ),
             });
         }
@@ -1368,7 +1368,7 @@ fn is_named_living_mech_name(name: &str) -> bool {
         "MedicalNetwork",
         "AuraBasin",
     ];
-    const FRAME_IDS: [FrameId; 19] = [
+    const FRAME_IDS: [FrameId; 25] = [
         FrameId::Hueman,
         FrameId::Gremlin,
         FrameId::Goblin,
@@ -1388,6 +1388,12 @@ fn is_named_living_mech_name(name: &str) -> bool {
         FrameId::Merman,
         FrameId::Chimera,
         FrameId::Manticore,
+        FrameId::Gnome,
+        FrameId::Minotaur,
+        FrameId::Hecaton,
+        FrameId::Elf,
+        FrameId::Centaur,
+        FrameId::Pegasus,
     ];
 
     if ILLEGAL_FRAME_TOKENS

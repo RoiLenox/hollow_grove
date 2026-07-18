@@ -2278,6 +2278,12 @@ fn frame_label(frame: FrameId) -> &'static str {
         FrameId::Merman => "Merman",
         FrameId::Chimera => "Chimera",
         FrameId::Manticore => "Manticore",
+        FrameId::Gnome => "Gnome",
+        FrameId::Minotaur => "Minotaur",
+        FrameId::Hecaton => "Hecaton",
+        FrameId::Elf => "Elf",
+        FrameId::Centaur => "Centaur",
+        FrameId::Pegasus => "Pegasus",
     }
 }
 

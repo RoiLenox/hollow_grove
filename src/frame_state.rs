@@ -24,6 +24,12 @@ pub enum FrameId {
     Merman,
     Chimera,
     Manticore,
+    Gnome,
+    Minotaur,
+    Hecaton,
+    Elf,
+    Centaur,
+    Pegasus,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]

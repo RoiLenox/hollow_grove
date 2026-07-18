@@ -3,6 +3,7 @@ pub mod artifact_io;
 pub mod aura_polarity;
 pub mod being_object_ontology;
 pub mod civic_body;
+pub mod composition;
 pub mod current_grip_inheritance;
 pub mod current_synthesis_engine;
 pub mod current_synthesis_scenario;
@@ -19,9 +20,13 @@ pub mod hollow_grove_contract;
 pub mod hueman_progression;
 pub mod hueman_slice;
 pub mod hueman_support;
+pub mod institution;
+pub mod institution_affiliation;
 pub mod kernel_pass;
 pub mod kernel_pass_output;
 pub mod landing;
+#[path = "sandmanor_lineage.rs"]
+pub mod lineage_contract;
 pub mod manager_domain;
 pub mod pleb_meta;
 pub mod point;
@@ -32,6 +37,7 @@ pub mod synthesis_execution;
 pub mod synthesis_recipe;
 pub mod triway;
 pub mod verification;
+pub mod world;
 pub mod world_map_geometry;
 
 pub use aim::{Aim, AimBuildError, construct_aim};
@@ -75,6 +81,11 @@ pub use civic_body::{
     canonical_civic_body_contract_fixture, canonical_civic_body_definitions, canonical_civic_chant,
     canonical_civic_crisis_steps, civic_body_definition, validate_civic_body_contract,
 };
+pub use composition::{
+    CompositionCatalog, CompositionCatalogError, CompositionNode, CompositionNodeId,
+    CompositionRecord, CompositionRecordId, Containment, ExternalRef, ExternalRefError, ScaleKey,
+    StableKeyError,
+};
 pub use current_grip_inheritance::{
     CurrentGripActionRequest, CurrentGripInheritanceContractInput, CurrentGripResolution,
     CurrentRequirement, GripExpressionId, GripExpressionScore, GripPracticeEvent,
@@ -111,12 +122,12 @@ pub use decision_engine::{
 };
 pub use falloutman::{
     AttemptedAction, DramaticRelationshipState, FalloutmanBeatMenu, FalloutmanBeatPresentation,
-    FalloutmanEncounter, FalloutmanResponseOption, NpcDramaticCore, RelationshipLevel,
-    ResponseAvailability, ResponseAvailabilityReason, ResponseOptionId, ResponsePolarityTag,
-    ResponsePresentationKind, ResponseProjectionSummary, ResponseTag,
-    build_falloutman_beat_witness, build_falloutman_hidden_wound_witness,
+    FalloutmanEncounter, FalloutmanResponseOption, InstitutionalAccessPresentation,
+    NpcDramaticCore, RelationshipLevel, ResponseAvailability, ResponseAvailabilityReason,
+    ResponseOptionId, ResponsePolarityTag, ResponsePresentationKind, ResponseProjectionSummary,
+    ResponseTag, build_falloutman_beat_witness, build_falloutman_hidden_wound_witness,
     build_falloutman_menu_witness, build_falloutman_validation_report, build_falloutman_witness,
-    canonical_hidden_wound_falloutman_encounter,
+    canonical_hidden_wound_falloutman_encounter, present_institutional_access,
 };
 pub use fire::{ContactOutcome, FireContext, fire, fire_with_context};
 pub use flow_glow_grammar::{
@@ -144,6 +155,24 @@ pub use hollow_grove_contract::{
     HollowGroveProgressionContractInput, PointSquaredSemanticClaim,
     build_hollow_grove_progression_witness, canonical_progression_contract_fixture,
     validate_hollow_grove_progression_contract,
+};
+pub use institution::{
+    AccessPolicy, AccessRequirement, AccessRequirementMatch, AuthorityLevel, ClearanceLevel, Group,
+    GroupId, IdentityId, Institution, InstitutionCatalog, InstitutionId, InstitutionKind,
+    InstitutionalBeingId, InstitutionalEntityId, InstitutionalRelationship, MembershipId, Office,
+    OfficeHolder, OfficeId, OfficeScope, RelationshipId, RelationshipKind, Role, RoleId,
+    SecrecyLevel, Site, SiteId, SiteKind, Visibility, ZoneId,
+};
+pub use institution_affiliation::{
+    AccessDecision, AccessDeniedContext, AccessGrant, AccessGrantId, AffiliationClaim,
+    AffiliationState, AuthoritySource, ClaimId, ClaimTruth, EventId, ExpelMemberCommand,
+    ExpulsionReason, InitiateMemberCommand, InstitutionalAction, InstitutionalCapability,
+    InstitutionalEvent, InstitutionalEventKind, InstitutionalMembership, InstitutionalObligation,
+    InstitutionalSceneContext, InstitutionalVerb, InstitutionalWorldState, LineageStatus,
+    MembershipRole, MembershipValidationError, ObligationId, ObligationKind, ObligationStatus,
+    ObligationWeight, RecognitionLevel, Recruitment, RecruitmentStatus, RestoreMemberCommand,
+    Sponsorship, SponsorshipId, SponsorshipLiability, VerificationResult, WorldTimestamp,
+    ZoneEntryAllowed, ZoneEntryResult,
 };
 pub use kernel_pass::{
     AURA_BEAM_WITNESS_LABEL, CANONICAL_WITNESS, CURRENT_SEAM_WITNESS_LABEL, FOURWAY_WITNESS_LABEL,
@@ -186,6 +215,7 @@ pub use synthesis_recipe::{
     compile_recipe, gremlin_tinker_recipe, pixy_confusion_recipe,
 };
 pub use triway::{Triway, Way};
+pub use world::session::WorldSession;
 pub use world_map_geometry::{
     Foxy, FoxySource, FoxySourceKind, HollowGroveRotationContractInput, HouseNumber,
     HousePositionKind, Moxy, MoxyRelation, PlayerSpatialContractInput, PlayerSpatialFixture,

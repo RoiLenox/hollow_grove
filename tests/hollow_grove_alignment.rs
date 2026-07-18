@@ -161,7 +161,7 @@ fn contradiction_minoan_cannot_be_gnome() {
 }
 
 #[test]
-fn contradiction_gnomes_cannot_gain_gargoyle_evolution_ladder() {
+fn contradiction_gnomes_cannot_transform_into_gargoyles() {
     let input = HollowGroveAlignmentInput {
         gnome_progression_claims: vec![GnomeProgressionClaim {
             has_evolution_ladder: true,
@@ -172,6 +172,19 @@ fn contradiction_gnomes_cannot_gain_gargoyle_evolution_ladder() {
 
     let diagnostics = validate_hollow_grove_alignment(&input);
     assert!(!diagnostics.is_empty());
+}
+
+#[test]
+fn sandmanor_gnome_lineage_is_not_rejected_as_a_gargoyle_path() {
+    let input = HollowGroveAlignmentInput {
+        gnome_progression_claims: vec![GnomeProgressionClaim {
+            has_evolution_ladder: true,
+            evolves_into_gargoyle: false,
+        }],
+        ..HollowGroveAlignmentInput::default()
+    };
+
+    assert!(validate_hollow_grove_alignment(&input).is_empty());
 }
 
 #[test]
