@@ -1129,7 +1129,7 @@ Flynt's bodily question is:
 
 Nightingales directly represent white blood cells.
 
-This must remain literal and biologically recognizable.
+This must remain a civic-body correspondence rather than a literal species definition.
 
 Do not turn Nightingales into a generic healer species.
 
@@ -1137,7 +1137,7 @@ Do not describe them merely as nurses.
 
 Nightingales are:
 
-* generated in Stonebend marrow
+* Glaüshouse civic people of recognition, clearing, and coordinated healing
 * carried through Current
 * defenders of the Frame
 * recognizers of foreign threats
@@ -2062,7 +2062,7 @@ Do not return to the rejected idea that Gnomes become Gargoyles.
 
 Use this paragraph as the shortest authoritative summary:
 
-> Hollow Grove is one connected civilization organized through Frames, Scenes, Structures, and Systems. Frame is reserved exclusively for named living-mech forms, which operate through Frame, Flow, and Glow. Current is blood, Hollow is pus, and Aura is air, pressure, and light. Hollow is the useful interior material extracted from a thing. Hollowing is the act of removing its resources and raw nutrients while leaving the outer hide, shell, husk, casing, body, rock, or Structure behind. Hollowed describes that emptied remainder. The four House rocks—Diamond, Crystal, Jade, and Opal—provide Structure, color, architecture, recognizable goods, and cultural design: Diamond claims, Crystal measures, Jade clears, and Opal shimmers. Stonebend governs deep construction, marrow, blood production, extraction, and durable form. Sandmanor governs recognition, measurement, classification, allocation, and expression. Glaüshouse governs medicine, mucus, lymph, drainage, healing, and restoration. Flynt governs movement, adaptation, emergency capability, hybridization, and transformation under pressure. Nightingales directly represent white blood cells generated in Stonebend marrow. Professional medicine belongs to Glaüshouse, but mixed species from across the Grove practice it. Local care centers provide accessible routine recovery, while central Glaüshouse facilities provide surgery, diagnosis, reconstruction, rehabilitation, and advanced Frame care. Players may build a social and professional life around Glaüshouse or enter Aura Basin to fight, hunt, race, rescue, Hollow resources, acquire Hollowed materials, test transformations, and face real bodily consequences. The engine should preserve all these laws while using them as expandable world-domain vocabulary rather than rewriting the existing kernel.
+> Hollow Grove is one connected civilization organized through Frames, Scenes, Structures, and Systems. Frame is reserved exclusively for named living-mech forms, which operate through Frame, Flow, and Glow. Current is blood, Hollow is pus, and Aura is air, pressure, and light. Hollow is the useful interior material extracted from a thing. Hollowing is the act of removing its resources and raw nutrients while leaving the outer hide, shell, husk, casing, body, rock, or Structure behind. Hollowed describes that emptied remainder. The four House rocks—Diamond, Crystal, Jade, and Opal—provide Structure, color, architecture, recognizable goods, and cultural design: Diamond claims, Crystal measures, Jade clears, and Opal shimmers. Stonebend governs deep construction, marrow, blood production, extraction, and durable form. Sandmanor governs recognition, measurement, classification, allocation, and expression. Glaüshouse governs medicine, mucus, lymph, drainage, healing, and restoration. Flynt governs movement, adaptation, emergency capability, hybridization, and transformation under pressure. Nightingales correspond to white blood cells as Glaüshouse's civic people of recognition, clearing, and coordinated healing. Professional medicine belongs to Glaüshouse, but mixed species from across the Grove practice it. Local care centers provide accessible routine recovery, while central Glaüshouse facilities provide surgery, diagnosis, reconstruction, rehabilitation, and advanced Frame care. Players may build a social and professional life around Glaüshouse or enter Aura Basin to fight, hunt, race, rescue, Hollow resources, acquire Hollowed materials, test transformations, and face real bodily consequences. The engine should preserve all these laws while using them as expandable world-domain vocabulary rather than rewriting the existing kernel.
 
 ---
 

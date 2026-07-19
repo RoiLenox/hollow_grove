@@ -59,6 +59,16 @@ if [[ "${2-}" == "-j" && "${3-}" == "workspaces" ]]; then
     exit 0
 fi
 
+if [[ "${2-}" == "-j" && "${3-}" == "focused-window" ]]; then
+    printf '%s\n' '{"id":4,"title":"Terminal","app_id":"kitty","output":"DP-2","geometry":{"x":320,"y":180,"width":1280,"height":720}}'
+    exit 0
+fi
+
+if [[ "${2-}" == "-j" && "${3-}" == "outputs" ]]; then
+    printf '%s\n' '[{"name":"DP-2","is_focused":true,"logical":{"x":0,"y":0,"width":2560,"height":1440}}]'
+    exit 0
+fi
+
 if [[ "${2-}" == "overview-state" ]]; then
     overview_state
     exit 0

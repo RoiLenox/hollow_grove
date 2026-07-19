@@ -88,11 +88,9 @@ mod tests {
         assert!(output.contains(
             "a Flynt contender gathers ingredients in the field but still has to pass through Glaushouse synthesis"
         ));
-        assert!(
-            output.contains(
-                "Chimera is the first true recombination body of those mastered branches"
-            )
-        );
+        assert!(output.contains(
+            "Flynt's causal form recipe combines Gargoyle, Merman, and Werewolf into Chimera"
+        ));
         assert!(output.contains("Current Synthesis collision relay bytes: 5."));
     }
 

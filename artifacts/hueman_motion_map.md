@@ -19,7 +19,7 @@
 
 ## Hueman Reading
 
-- the sprite moves through the field
+- the Hueman avatar moves through the field
 - Human Core remains the operator anchor
 - named world logic remains deferred
 
@@ -31,8 +31,8 @@
 
 ## Artifact Inputs
 
-Hueman boundary bytes: 1265.
-Current Synthesis operational bytes: 802.
+Hueman boundary bytes: 2188.
+Current Synthesis operational bytes: 1123.
 
 ## Boundary Reminder
 

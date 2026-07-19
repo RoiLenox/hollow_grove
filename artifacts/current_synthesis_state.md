@@ -24,6 +24,7 @@ Current Synthesis Base
 - `artifacts/current_synthesis_execution_spec.md`
 - `artifacts/current_synthesis_behavior_rules.md`
 - `artifacts/current_synthesis_transition_pm_to_le.md`
+- `artifacts/current_synthesis_collision_relay.md`
 - `artifacts/current_synthesis_activation_gate.md`
 - `artifacts/index.md`
 
@@ -44,12 +45,13 @@ Current Synthesis Base
 - `current_synthesis_execution_spec`
 - `current_synthesis_behavior_rules`
 - `current_synthesis_transition_pm_to_le`
+- `current_synthesis_collision_relay`
 - `current_synthesis_activation_gate`
 - `current_synthesis`
 
 ## Next Possible Action
 
-Keep the route preview, operational view, selection, consequence, readiness, execution spec, behavior rules, transition rule, and activation gate read-only until Current Synthesis is explicitly activated for behavior.
+Keep the route preview, operational view, selection, consequence, readiness, execution spec, behavior rules, transition rule, collision relay, and activation gate read-only until Current Synthesis is explicitly activated for behavior.
 
 ## Deferred Status
 
@@ -60,8 +62,8 @@ Keep the route preview, operational view, selection, consequence, readiness, exe
 
 ## Artifact Inputs
 
-Current Synthesis base bytes: 1189.
-Artifact index bytes: 7193.
+Current Synthesis base bytes: 1595.
+Artifact index bytes: 2696.
 
 ## Boundary Reminder
 

@@ -1,42 +1,29 @@
 # Hueman Crossover Scenes v0.1.0
 
-Date: 2026-07-07
+Date: 2026-07-09
 
 ## Rule
 
-When `current`-biased and `aura`-biased unresolved links appear at the same crossover, the world produces a named descriptive scene type.
+When different route pressures overlap without full procedural resolution, Hueman may describe the overlap as a scene type.
 
-## Scene Types
+## Current Scene Types
 
-### Seam Market
+- `Seam Market`
+- `Threshold Weather`
+- `Pressure Shelter`
+- `Split Trace`
 
-- appears where `current` continuity and `aura` spill remain in balance
-- feels like trade, rumor, salvage, and temporary arrangement
-- fits shared `Aura Fields` crossings best
+These are descriptive civic and environmental readings, not fully implemented encounter systems.
 
-### Threshold Weather
+## Meaning
 
-- appears where `aura` exposure outruns `current` continuity
-- feels like spray, drift, shimmer, and unstable edges
-- fits shared `Aura Beach` crossings best
-
-### Pressure Shelter
-
-- appears where `current` persistence contains `aura` residue
-- feels like storage, burrow heat, muffled exchange, and held tension
-- fits shared `Aura Basin` crossings best
-
-### Split Trace
-
-- appears where both biases are present but neither settles the scene
-- feels like afterimage, contradictory clues, and route ambiguity
-- fits delayed or secondary crossovers after different openings
+- scene types should communicate how pressure is gathering or dispersing
+- they should help the player read civic problems, opportunities, and route moods
+- they should not replace the larger constitutional loop of naming, proving, clearing, and recognizing
 
 ## Boundary
 
-- This is descriptive Hueman scene language only.
-- It does not activate encounter mechanics.
-- It does not activate meeting or reward systems.
-- It does not change path crossovers or link physics.
-- It does not change Current Synthesis ownership.
-- It does not change Hollow Grove recursion.
+- crossover scenes are descriptive-only for now
+- they do not create full quest logic or AI behavior yet
+- they do not change Current Synthesis ownership
+- they do not change Hollow Grove recursion

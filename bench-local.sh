@@ -5,7 +5,7 @@ set -euo pipefail
 cd /home/warren/hollow-grove
 
 REPEAT_COUNT=10
-CANONICAL_WITNESS=$'start Symptom 1\n↓\nTriway\n↓\nHollowGrove\n↓\nGroveSeam\n↓\nHollowBeam\n↓\nlanded Symptom 2'
+CANONICAL_WITNESS=$'Point\n↓\nTriway\n↓\nFourway\n↓\nHollowGrove\n↓\nCurrentSeam [PlebExterior]\n↓\nAuraBeam [BlepReturn]\n↓\nPoint² (Landed Point) [BlepArrival]'
 
 time_once_ms() {
     local start_ns end_ns
@@ -38,7 +38,7 @@ lscpu | grep "Model name"
 echo "Rust build mode:"
 printf 'debug + release\n'
 
-cargo fmt
+cargo fmt --check
 
 echo "cargo test time (ms):"
 test_time_ms="$(time_once_ms cargo test)"

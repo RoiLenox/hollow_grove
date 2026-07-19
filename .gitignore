@@ -1,4 +1,5 @@
-/target
+# Rust build output at the workspace root and in every nested crate.
+**/target/
 
 # Local benchmark reports.
 /artifacts/current_synthesis_benchmark.md
@@ -16,6 +17,19 @@
 /artifacts/hueman_pair_state.json
 /artifacts/hueman_pair_preview.png
 /artifacts/hueman_pair_preview_state.json
+/artifacts/current_synthesis_tui_state.txt
+/artifacts/current_synthesis_engine_status.md
+/artifacts/current_synthesis_bond_inspector.md
+/artifacts/current_synthesis_resource_inspector.md
+/artifacts/current_synthesis_cleopatra.md
+/artifacts/current_synthesis_events.txt
+
+# Local verification output. Promote a minimized failure into a checked test or
+# fuzz corpus entry instead of committing machine- and run-specific logs.
+/artifacts/adversarial_verification_report.json
+/artifacts/adversarial_verification_report.md
+/artifacts/verification/
+/fuzz-*.log
 
 # Local Godot editor metadata.
 /hueman_godot/.godot/

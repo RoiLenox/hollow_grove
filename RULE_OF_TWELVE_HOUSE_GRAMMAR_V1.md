@@ -12,6 +12,10 @@ The Being/Object root ontology that can consume Rule-of-Twelve geometry and Prox
 
 - `BEING_OBJECT_ROOT_ONTOLOGY_V1.md`
 
+The civic-body correspondence layer that assigns systemic civic functions to the House peoples now lives in:
+
+- `CIVIC_BODY_CORRESPONDENCE_V1.md`
+
 ## Core Law
 
 Ranina is the unique, unnumbered center.

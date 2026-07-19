@@ -1,51 +1,33 @@
 # Hueman Start v0.1.0
 
-Date: 2026-07-07
+Date: 2026-07-09
 
-## End User Choice
+## Opening Rule
 
-The end user begins Hueman by choosing one archetype:
+The player begins as Hueman.
 
-- `goblin`
-- `gremlin`
-- `pixy`
-- `sprite`
+The start is near Aura Ridge and should expose more than one constitutional possibility before major kingdom or form commitment.
 
-## Starting Places
+## Confirmed Start Principles
 
-The first Hueman starting places are:
+- the player is always Hueman
+- the opening is not a kingdom-race picker
+- Flynt remains constitutionally present even if it is not the literal opening city
+- the start should preserve room for profession-first and local-play-first progression
 
-- Flynt
-- Stonebend
-- Glaushouse
-- Sandmanor
+## Confirmed Later Origins
 
-## Fourway Placement
+- Gremlin originates in Flynt
+- Goblin originates in Stonebend
+- Sprite originates in Glaüshouse
+- Pixy originates in Sandmanor
 
-- North = Flynt = `goblin`
-- East = Stonebend = `gremlin`
-- South = Glaushouse = `pixy`
-- West = Sandmanor = `sprite`
-
-## Initial Start Roster
-
-- `goblin` starts in Flynt
-- `gremlin` starts in Stonebend
-- `pixy` starts in Glaushouse
-- `sprite` starts in Sandmanor
+These are later developmental origins, not the initial player body.
 
 ## Boundary
 
-- This is a Hueman-layer declaration only.
-- It resolves downward through AuraTriad after the Fourway placement.
-- It does not change Current Synthesis.
-- It does not change Hollow Grove.
-- It stages descriptive-only AuraTriad world behavior after placement.
-- It does not activate procedural world behavior yet.
-- It does not define species mechanics yet.
-
-## Lock
-
-This is the initial roster only.
-
-The roster can be revised later without changing the lower layers.
+- this is a Hueman-layer declaration only
+- it resolves downward through `AuraTriad` and `Triway` without rewriting lower layers
+- it does not change Current Synthesis
+- it does not change Hollow Grove
+- it does not finalize full species, form, or multiplayer governance rules

@@ -37,7 +37,6 @@ pub fn institutional_access_fixture() -> InstitutionalWorldState {
     let sandmanor_member = being("being.sandmanor.fixture-member");
     let glaushouse_member = being("being.glaushouse.fixture-member");
     let flynt_member = being("being.flynt.fixture-member");
-    let flynt_tross_holder = being("being.flynt.fixture-tross-holder");
     state.memberships = vec![
         member(
             "membership.stonebend.fixture-member",
@@ -86,11 +85,6 @@ pub fn institutional_access_fixture() -> InstitutionalWorldState {
         OfficeHolder {
             office: office("office.glaushouse.prima-donna"),
             being: glaushouse_member.clone(),
-            active: true,
-        },
-        OfficeHolder {
-            office: flynt::tross_office_id(),
-            being: flynt_tross_holder,
             active: true,
         },
     ]);

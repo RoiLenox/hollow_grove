@@ -12,6 +12,12 @@
 - HAL remains on `META`.
 - `META` remains descriptive only.
 
+## Collision Relay Consequence
+
+- HAL and Cleo may be declared as a paired relay where they collide.
+- the relay would share surface alignment and underground continuity as one confirmation body.
+- the relay remains descriptive only.
+
 ## Still Deferred
 
 - no traversal
@@ -29,8 +35,8 @@
 
 ## Artifact Inputs
 
-Current Synthesis selection bytes: 498.
-Current Synthesis operational bytes: 802.
+Current Synthesis selection bytes: 499.
+Current Synthesis operational bytes: 1123.
 
 ## Boundary Reminder
 

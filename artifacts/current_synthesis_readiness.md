@@ -18,6 +18,8 @@
 - `PLEB`/`META` behavior is not active
 - HAL automation is not enabled
 - Clouseau live interpretation is not enabled
+- Cleo underground observation is not enabled
+- HAL/Cleo collision relay is not enabled
 - runtime state is not introduced
 
 ## Current Readiness
@@ -26,12 +28,14 @@
 - `META` cannot act yet
 - HAL cannot automate yet
 - Clouseau cannot interpret live behavior yet
+- Cleo cannot observe live underground behavior yet
+- HAL and Cleo cannot exchange live relay packets yet
 - Current Synthesis remains read-only
 
 ## Artifact Inputs
 
-Current Synthesis consequence bytes: 778.
-Current Synthesis selection bytes: 498.
+Current Synthesis consequence bytes: 1014.
+Current Synthesis selection bytes: 499.
 
 ## Boundary Reminder
 

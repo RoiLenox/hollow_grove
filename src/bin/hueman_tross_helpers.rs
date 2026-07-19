@@ -51,19 +51,18 @@ mod tests {
         assert!(output.contains(
             "Chimera only counts after Gargoyle, Werewolf, and Merman have each been separately mastered"
         ));
-        assert!(output.contains("Manticore is not Chimera under another name"));
+        assert!(output.contains("Manticorp Form is not Chimera under another name"));
         assert!(output.contains("Chimera is its own completed synthesis recipe and form"));
         assert!(
-            output.contains("Manticore is the later apex synthesis recipe mastered after Chimera")
+            output.contains("Manticorp Form is the perfected composite achieved through candidate-specific Chimera refinement")
         );
         assert!(output.contains("## Regional Goods"));
         assert!(output.contains("Flyntian Dagger = Flynt Opal"));
-        assert!(output.contains("whoever holds Contracore is Tross"));
+        assert!(output.contains("Tross is the Flynt executive office"));
         assert!(output.contains(
-            "only someone who has mastered the Manticore recipe and form may challenge Tross"
+            "only matching LawfulAccession after ConstitutionalRecognition may activate a Tross office holder"
         ));
-        assert!(output.contains("can oppose Stonebend's Troglodyte"));
-        assert!(output.contains("office of Tross may not remain vacant"));
+        assert!(output.contains("ExecutiveMastery alone grants no office"));
         assert!(output.contains("Delinquent guards West"));
         assert!(output.contains("Hueman Fourway bytes: 7."));
     }

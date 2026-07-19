@@ -14,6 +14,12 @@
 - Clouseau does not occupy `META`.
 - no traversal or execution occurs here yet
 
+## HAL/Cleo Shared Function
+
+- when HAL and Cleo intersect, HAL supplies surface-side alignment while Cleo supplies underground continuity beneath Clouseau's route
+- the shared function is route confirmation across above-ground and underground readings at the same crossing
+- no live relay or packet exchange occurs yet
+
 ## Shared Limits
 
 - no automation
@@ -25,7 +31,7 @@
 ## Artifact Inputs
 
 Current Synthesis preview bytes: 573.
-Current Synthesis contract bytes: 1005.
+Current Synthesis contract bytes: 1442.
 
 ## Boundary Reminder
 

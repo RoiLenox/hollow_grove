@@ -114,7 +114,10 @@ pub struct FlyntAscensionState {
     pub werewolf_mastered: bool,
     pub merman_mastered: bool,
     pub chimera_synthesized: bool,
-    pub manticore_mastered: bool,
+    pub chimera_refined: bool,
+    pub executive_mastery: bool,
+    pub constitutionally_recognized: bool,
+    pub lawfully_acceded: bool,
 }
 
 impl FlyntAscensionState {
@@ -124,12 +127,15 @@ impl FlyntAscensionState {
             werewolf_mastered: false,
             merman_mastered: false,
             chimera_synthesized: false,
-            manticore_mastered: false,
+            chimera_refined: false,
+            executive_mastery: false,
+            constitutionally_recognized: false,
+            lawfully_acceded: false,
         }
     }
 
-    pub fn can_challenge_tross(self) -> bool {
-        self.manticore_mastered
+    pub fn holds_tross_office(self) -> bool {
+        self.lawfully_acceded
     }
 }
 
@@ -521,14 +527,47 @@ impl VerticalSliceState {
         Ok(())
     }
 
-    pub fn master_manticore_form(&mut self) -> Result<(), SliceProgressError> {
+    pub fn refine_chimera_form(&mut self) -> Result<(), SliceProgressError> {
         self.expect_phase(SlicePhase::CurrentFormUnlocked)?;
         if !self.flynt_ascension.chimera_synthesized {
             return Err(SliceProgressError::FlyntRecipeGate {
                 required: "Chimera synthesis",
             });
         }
-        self.flynt_ascension.manticore_mastered = true;
+        self.flynt_ascension.chimera_refined = true;
+        Ok(())
+    }
+
+    pub fn master_manticorp_form(&mut self) -> Result<(), SliceProgressError> {
+        self.expect_phase(SlicePhase::CurrentFormUnlocked)?;
+        if !self.flynt_ascension.chimera_refined {
+            return Err(SliceProgressError::FlyntRecipeGate {
+                required: "candidate-specific Chimera refinement",
+            });
+        }
+        self.flynt_ascension.executive_mastery = true;
+        Ok(())
+    }
+
+    pub fn receive_constitutional_recognition(&mut self) -> Result<(), SliceProgressError> {
+        self.expect_phase(SlicePhase::CurrentFormUnlocked)?;
+        if !self.flynt_ascension.executive_mastery {
+            return Err(SliceProgressError::FlyntRecipeGate {
+                required: "ExecutiveMastery of Manticorp Form",
+            });
+        }
+        self.flynt_ascension.constitutionally_recognized = true;
+        Ok(())
+    }
+
+    pub fn complete_lawful_accession(&mut self) -> Result<(), SliceProgressError> {
+        self.expect_phase(SlicePhase::CurrentFormUnlocked)?;
+        if !self.flynt_ascension.constitutionally_recognized {
+            return Err(SliceProgressError::FlyntRecipeGate {
+                required: "matching ConstitutionalRecognition",
+            });
+        }
+        self.flynt_ascension.lawfully_acceded = true;
         Ok(())
     }
 
@@ -648,10 +687,16 @@ pub fn build_vertical_slice_progress_report(state: &VerticalSliceState) -> Strin
         "master Merman branch"
     } else if !state.flynt_ascension.chimera_synthesized {
         "synthesize Chimera"
-    } else if !state.flynt_ascension.manticore_mastered {
-        "master Manticore"
+    } else if !state.flynt_ascension.chimera_refined {
+        "refine Chimera"
+    } else if !state.flynt_ascension.executive_mastery {
+        "master Manticorp Form"
+    } else if !state.flynt_ascension.constitutionally_recognized {
+        "receive ConstitutionalRecognition"
+    } else if !state.flynt_ascension.lawfully_acceded {
+        "complete LawfulAccession"
     } else {
-        "challenge Tross for Contracore"
+        "serve in Tross office"
     };
     let active_resolution = selected_option.map_or_else(
         || String::from("- proof gate: unselected\n- clearance gate: unselected\n- field output: unselected\n- credential: pending\n- follow-up focus: unresolved until a branch is selected\n- failure risk: unresolved until a branch is selected\n\n"),
@@ -736,8 +781,11 @@ pub fn build_vertical_slice_progress_report(state: &VerticalSliceState) -> Strin
          - Werewolf branch mastered: {}\n\
          - Merman branch mastered: {}\n\
          - Chimera synthesized: {}\n\
-         - Manticore mastered: {}\n\
-         - Tross challenge right: {}\n\
+         - Chimera refined: {}\n\
+         - ExecutiveMastery / Manticorp Form: {}\n\
+         - ConstitutionalRecognition: {}\n\
+         - LawfulAccession: {}\n\
+         - active Tross holder: {}\n\
          - next gate: {}\n\n\
          ## Deployment Goal\n\n\
          - {}\n",
@@ -764,8 +812,11 @@ pub fn build_vertical_slice_progress_report(state: &VerticalSliceState) -> Strin
         state.flynt_ascension.werewolf_mastered,
         state.flynt_ascension.merman_mastered,
         state.flynt_ascension.chimera_synthesized,
-        state.flynt_ascension.manticore_mastered,
-        state.flynt_ascension.can_challenge_tross(),
+        state.flynt_ascension.chimera_refined,
+        state.flynt_ascension.executive_mastery,
+        state.flynt_ascension.constitutionally_recognized,
+        state.flynt_ascension.lawfully_acceded,
+        state.flynt_ascension.holds_tross_office(),
         flynt_next_gate,
         resolved_result
     )
@@ -797,7 +848,10 @@ pub fn build_vertical_slice_state_output(state: &VerticalSliceState) -> String {
          flynt_werewolf_mastered: {}\n\
          flynt_merman_mastered: {}\n\
          flynt_chimera_synthesized: {}\n\
-         flynt_manticore_mastered: {}\n",
+         flynt_chimera_refined: {}\n\
+         flynt_executive_mastery: {}\n\
+         flynt_constitutionally_recognized: {}\n\
+         flynt_lawfully_acceded: {}\n",
         state.spec.id,
         state.phase.as_str(),
         state.follow_up_phase.as_str(),
@@ -812,7 +866,10 @@ pub fn build_vertical_slice_state_output(state: &VerticalSliceState) -> String {
         state.flynt_ascension.werewolf_mastered,
         state.flynt_ascension.merman_mastered,
         state.flynt_ascension.chimera_synthesized,
-        state.flynt_ascension.manticore_mastered
+        state.flynt_ascension.chimera_refined,
+        state.flynt_ascension.executive_mastery,
+        state.flynt_ascension.constitutionally_recognized,
+        state.flynt_ascension.lawfully_acceded
     )
 }
 
@@ -872,7 +929,10 @@ pub fn parse_vertical_slice_state(contents: &str) -> io::Result<VerticalSliceSta
     let mut flynt_werewolf_mastered = None;
     let mut flynt_merman_mastered = None;
     let mut flynt_chimera_synthesized = None;
-    let mut flynt_manticore_mastered = None;
+    let mut flynt_chimera_refined = None;
+    let mut flynt_executive_mastery = None;
+    let mut flynt_constitutionally_recognized = None;
+    let mut flynt_lawfully_acceded = None;
     let mut seen_unknown = Vec::new();
 
     for raw_line in contents.lines() {
@@ -1040,14 +1100,41 @@ pub fn parse_vertical_slice_state(contents: &str) -> io::Result<VerticalSliceSta
                 }
                 flynt_chimera_synthesized = Some(parse_slice_bool(value, key)?);
             }
-            "flynt_manticore_mastered" => {
-                if flynt_manticore_mastered.is_some() {
+            "flynt_chimera_refined" => {
+                if flynt_chimera_refined.is_some() {
                     return Err(io::Error::new(
                         io::ErrorKind::InvalidData,
-                        "vertical slice state contains duplicate flynt_manticore_mastered",
+                        "vertical slice state contains duplicate flynt_chimera_refined",
                     ));
                 }
-                flynt_manticore_mastered = Some(parse_slice_bool(value, key)?);
+                flynt_chimera_refined = Some(parse_slice_bool(value, key)?);
+            }
+            "flynt_executive_mastery" => {
+                if flynt_executive_mastery.is_some() {
+                    return Err(io::Error::new(
+                        io::ErrorKind::InvalidData,
+                        "vertical slice state contains duplicate flynt_executive_mastery",
+                    ));
+                }
+                flynt_executive_mastery = Some(parse_slice_bool(value, key)?);
+            }
+            "flynt_constitutionally_recognized" => {
+                if flynt_constitutionally_recognized.is_some() {
+                    return Err(io::Error::new(
+                        io::ErrorKind::InvalidData,
+                        "vertical slice state contains duplicate flynt_constitutionally_recognized",
+                    ));
+                }
+                flynt_constitutionally_recognized = Some(parse_slice_bool(value, key)?);
+            }
+            "flynt_lawfully_acceded" => {
+                if flynt_lawfully_acceded.is_some() {
+                    return Err(io::Error::new(
+                        io::ErrorKind::InvalidData,
+                        "vertical slice state contains duplicate flynt_lawfully_acceded",
+                    ));
+                }
+                flynt_lawfully_acceded = Some(parse_slice_bool(value, key)?);
             }
             other => seen_unknown.push(other.to_owned()),
         }
@@ -1122,7 +1209,10 @@ pub fn parse_vertical_slice_state(contents: &str) -> io::Result<VerticalSliceSta
         werewolf_mastered: flynt_werewolf_mastered.unwrap_or(false),
         merman_mastered: flynt_merman_mastered.unwrap_or(false),
         chimera_synthesized: flynt_chimera_synthesized.unwrap_or(false),
-        manticore_mastered: flynt_manticore_mastered.unwrap_or(false),
+        chimera_refined: flynt_chimera_refined.unwrap_or(false),
+        executive_mastery: flynt_executive_mastery.unwrap_or(false),
+        constitutionally_recognized: flynt_constitutionally_recognized.unwrap_or(false),
+        lawfully_acceded: flynt_lawfully_acceded.unwrap_or(false),
     };
 
     if phase.requires_named_tool() && named_tool.is_none() {
@@ -1199,7 +1289,10 @@ pub fn parse_vertical_slice_state(contents: &str) -> io::Result<VerticalSliceSta
             || flynt_ascension.werewolf_mastered
             || flynt_ascension.merman_mastered
             || flynt_ascension.chimera_synthesized
-            || flynt_ascension.manticore_mastered)
+            || flynt_ascension.chimera_refined
+            || flynt_ascension.executive_mastery
+            || flynt_ascension.constitutionally_recognized
+            || flynt_ascension.lawfully_acceded)
     {
         return Err(io::Error::new(
             io::ErrorKind::InvalidData,
@@ -1210,7 +1303,10 @@ pub fn parse_vertical_slice_state(contents: &str) -> io::Result<VerticalSliceSta
         && (flynt_ascension.werewolf_mastered
             || flynt_ascension.merman_mastered
             || flynt_ascension.chimera_synthesized
-            || flynt_ascension.manticore_mastered)
+            || flynt_ascension.chimera_refined
+            || flynt_ascension.executive_mastery
+            || flynt_ascension.constitutionally_recognized
+            || flynt_ascension.lawfully_acceded)
     {
         return Err(io::Error::new(
             io::ErrorKind::InvalidData,
@@ -1227,10 +1323,28 @@ pub fn parse_vertical_slice_state(contents: &str) -> io::Result<VerticalSliceSta
             "Chimera synthesis requires Gargoyle, Werewolf, and Merman mastery",
         ));
     }
-    if flynt_ascension.manticore_mastered && !flynt_ascension.chimera_synthesized {
+    if flynt_ascension.chimera_refined && !flynt_ascension.chimera_synthesized {
         return Err(io::Error::new(
             io::ErrorKind::InvalidData,
-            "Manticore mastery requires Chimera synthesis first",
+            "Chimera refinement requires Chimera synthesis first",
+        ));
+    }
+    if flynt_ascension.executive_mastery && !flynt_ascension.chimera_refined {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "ExecutiveMastery requires candidate-specific Chimera refinement first",
+        ));
+    }
+    if flynt_ascension.constitutionally_recognized && !flynt_ascension.executive_mastery {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "ConstitutionalRecognition requires existing ExecutiveMastery",
+        ));
+    }
+    if flynt_ascension.lawfully_acceded && !flynt_ascension.constitutionally_recognized {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "LawfulAccession requires matching ConstitutionalRecognition",
         ));
     }
 
@@ -1456,7 +1570,7 @@ mod tests {
     }
 
     #[test]
-    fn flynt_ascension_tracks_chimera_and_manticore_gates() {
+    fn flynt_ascension_tracks_the_full_constitutional_sequence() {
         let mut state = VerticalSliceState::primary();
         state.survey_safe_seam().expect("survey should succeed");
         state
@@ -1489,16 +1603,31 @@ mod tests {
             .synthesize_chimera_form()
             .expect("Chimera should require both branch masteries");
         state
-            .master_manticore_form()
-            .expect("Manticore should require Chimera first");
+            .refine_chimera_form()
+            .expect("refinement should require Chimera first");
+        state
+            .master_manticorp_form()
+            .expect("Manticorp Form should require refinement first");
+
+        assert!(!state.flynt_ascension().holds_tross_office());
+        state
+            .receive_constitutional_recognition()
+            .expect("recognition should acknowledge existing mastery");
+        assert!(!state.flynt_ascension().holds_tross_office());
+        state
+            .complete_lawful_accession()
+            .expect("accession should require matching recognition");
 
         let ascension = state.flynt_ascension();
         assert!(ascension.gargoyle_mastered);
         assert!(ascension.werewolf_mastered);
         assert!(ascension.merman_mastered);
         assert!(ascension.chimera_synthesized);
-        assert!(ascension.manticore_mastered);
-        assert!(ascension.can_challenge_tross());
+        assert!(ascension.chimera_refined);
+        assert!(ascension.executive_mastery);
+        assert!(ascension.constitutionally_recognized);
+        assert!(ascension.lawfully_acceded);
+        assert!(ascension.holds_tross_office());
     }
 
     #[test]
@@ -1657,7 +1786,10 @@ mod tests {
              flynt_werewolf_mastered: true\n\
              flynt_merman_mastered: false\n\
              flynt_chimera_synthesized: false\n\
-             flynt_manticore_mastered: false\n",
+             flynt_chimera_refined: false\n\
+             flynt_executive_mastery: false\n\
+             flynt_constitutionally_recognized: false\n\
+             flynt_lawfully_acceded: false\n",
             VerticalSliceState::primary().spec().id
         ))
         .expect_err("later Flynt branch mastery should require Gargoyle first");

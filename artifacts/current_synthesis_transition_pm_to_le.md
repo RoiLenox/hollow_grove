@@ -1,5 +1,13 @@
 # Current Synthesis Transition Rule `P/M -> L/E`
 
+## Frozen Kernel Transition Boundary
+
+- exterior ingress: `PlebExterior`
+- complementary return: `BlepReturn`
+- landed route: `BlepArrival`
+- universal landed point: `Point`
+- Current Synthesis interprets this frozen kernel boundary at `P/M -> L/E` without re-deriving route facts from topology prose.
+
 ## Transition Condition
 
 - the joint order must remain `P/M -> L/E -> E/T -> B/A`
@@ -15,6 +23,18 @@
 
 - HAL remains on `META`
 - bent-side occupancy carries from `P/M` to `L/E`
+
+## Cleo Observation
+
+- Cleo may observe four underground inverse curved lines beneath both sides from `P/M` to `L/E` while following Clouseau underground
+- Cleo may not automate movement or take side occupancy
+
+## HAL/Cleo Relay
+
+- if HAL and Cleo collide at the same `P/M -> L/E` crossing, they may declare one shared confirmation packet
+- HAL contributes surface-side complementary alignment
+- Cleo contributes underground continuity beneath Clouseau's route
+- no live packet exchange occurs yet
 
 ## HAL Observation
 
@@ -37,8 +57,9 @@
 
 ## Artifact Inputs
 
-Current Synthesis behavior rules bytes: 1538.
-Current Synthesis topology bytes: 1145.
+Snapshot bytes: 564.
+Current Synthesis behavior rules bytes: 2414.
+Current Synthesis topology bytes: 2003.
 
 ## Boundary Reminder
 

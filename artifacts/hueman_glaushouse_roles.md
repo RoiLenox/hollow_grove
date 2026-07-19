@@ -18,7 +18,7 @@ Glaushouse carries Clear It, Repair, and exclusive Synthesis through a scene-fac
 - whoever holds final public Clearance is Prima Donna: visible command, named release authority, and final judgment answerability.
 - Persephone runs triage, descent, recovery, and relay continuity beneath the Prima Donna.
 - Glaushouse physicians, nurses, and rehabilitation staff hold bedside truth, common repair work, and the day-to-day restoration body of Glaushouse.
-- Nightingales remain the white-blood-cell defense image Stonebend births in marrow and Current carries through the patient.
+- Nightingales remain the white-blood-cell civic defense image Glaushouse carries through recognition, clearing, and recovery.
 - Glaushouse keeps medicine, machinery, presentation, and discipline visibly braided instead of hiding one behind the others.
 
 ## Creature Rank Ladder

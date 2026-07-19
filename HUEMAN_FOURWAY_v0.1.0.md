@@ -1,10 +1,10 @@
 # Hueman Fourway v0.1.0
 
-Date: 2026-07-07
+Date: 2026-07-09
 
 ## Rule
 
-Hueman runs through `Fourway` before resolving downward into `AuraTriad` and then `Triway`.
+`Fourway` remains the current directional reading of Hueman's world map above `AuraTriad` and `Triway`.
 
 ## Stack
 
@@ -20,28 +20,30 @@ Triway
 Hollow Grove
 ```
 
-## Four Directions
+## Directional Reading
 
-- North
-- East
-- South
-- West
+- West = Flynt
+- North = Stonebend
+- East = Glaüshouse
+- South = Sandmanor
+
+This is map geometry, not a forced player lineage system.
 
 ## Meaning
 
 - `Fourway` is the world-facing directional map.
-- `Fourway` includes the straight lines and the rounded corner bends of the world map.
-- `Fourway` resolves downward into `AuraTriad` first.
-- `Triway` remains the lower recursive split.
+- `Fourway` may preserve existing route studies while larger Hueman world design evolves.
+- `Fourway` does not define the player as a permanent kingdom species.
 - `Fourway` does not replace `Triway`.
 - `Fourway` does not own `PLEB` or `META`.
 
-## Initial World Roster
+## Current Canon
 
-- North = Flynt = `goblin`
-- East = Stonebend = `gremlin`
-- South = Glaushouse = `pixy`
-- West = Sandmanor = `sprite`
+- the player begins as Hueman, not as a locked kingdom archetype
+- Gremlin belongs to Flynt as a Current-origin path
+- Goblin belongs to Stonebend as a Current-origin path
+- Sprite belongs to Glaüshouse as an Aura-origin path
+- Pixy belongs to Sandmanor as an Aura-origin path
 
 ## Boundary
 

@@ -5,6 +5,7 @@ pub mod aura_polarity;
 pub mod being_object_ontology;
 pub mod civic_body;
 pub mod composition;
+pub mod constitutional;
 pub mod current_grip_inheritance;
 pub mod current_synthesis_engine;
 pub mod current_synthesis_scenario;
@@ -155,7 +156,7 @@ pub use flow_glow_grammar::{
 pub use frame_state::{BeingId, CurrentPrism, FlowId, FrameId, FrameState, GlowId};
 pub use grove_seam::{GroveSeam, SeamRoute};
 pub use hollow_beam::{BeamRoute, HollowBeam, LandedSymptom, LandingRoute};
-pub use hollow_grove::{Bond, HollowGrove};
+pub use hollow_grove::{Bond, HollowGrove, KernelBond};
 pub use hollow_grove_content::{
     build_foundation_checkpoint_validation_report, build_foundation_checkpoint_witness,
     build_hollow_grove_foundation_verification_report, build_hollow_grove_vertical_witness,

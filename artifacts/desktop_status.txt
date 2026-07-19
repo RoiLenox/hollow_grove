@@ -1,17 +1,593 @@
 Hollow Grove status: one completed witnessed recursion
 
 Canonical witness:
-start Symptom 1
+Point
 ↓
 Triway
 ↓
+Fourway
+↓
 HollowGrove
 ↓
-GroveSeam
+CurrentSeam [PlebExterior]
 ↓
-HollowBeam
+AuraBeam [BlepReturn]
 ↓
-landed Symptom 2
+Point² (Landed Point) [BlepArrival]
 
 Note: read-only desktop artifact
 Note: niri/river configs untouched
+
+STARTING POINT
+
+Frame:
+  Hueman
+
+CURRENT PRISM
+
+  Stonebend / Body:
+    1
+
+  Flynt / Spirit:
+    1
+
+  Glaüshouse / Mind:
+    1
+
+  Sandmanor / Soul:
+    Minorian / Interior:
+      1
+    Minoan / Exterior:
+      1
+
+FLOW
+
+  none
+
+GLOW
+
+  none
+
+TRIWAY
+
+  ways: [One, Two, Three]
+
+FOURWAY
+
+  label: Fourway
+
+HOLLOW GROVE
+
+  bond: One
+  atmosphere: [Two, Three]
+
+CURRENT SEAM
+
+  route: PlebExterior
+
+AURA BEAM
+
+  route: BlepReturn
+
+
+SYNTHESIS RECIPE
+
+  ID:
+    pixy_confusion
+
+  Name:
+    Pixy Confusion Recipe
+
+  Intended changes:
+    Glaüshouse / Mind +2
+    Learn Glow: Confusion
+    Change Frame: Pixy
+
+RECIPE COMPILER
+
+  status:
+    compiled
+
+SYNTHESIS SCRIPTS
+
+  status:
+    ready
+
+  1. ApplyPrismDelta
+    Stonebend / Body: 0
+    Flynt / Spirit: 0
+    Glaüshouse / Mind: +2
+    Minorian / Interior: 0
+    Minoan / Exterior: 0
+
+  2. AddGlow
+    Confusion
+
+  3. SetFrame
+    Pixy
+
+SYNTHESIS AIM
+
+  ID:
+    pixy_confusion_aim
+
+  Source Recipe:
+    pixy_confusion
+
+  Manager:
+    HAL
+
+  Domain:
+    META
+
+  Relation:
+    PLEB ↔ META
+
+  Geometry:
+    curved
+
+  Function:
+    Information From Beyond
+
+  Bond:
+    One
+
+  Named Route:
+    unset
+
+  Scripts:
+
+  1. ApplyPrismDelta
+    Stonebend / Body: 0
+    Flynt / Spirit: 0
+    Glaüshouse / Mind: +2
+    Minorian / Interior: 0
+    Minoan / Exterior: 0
+
+  2. AddGlow
+    Confusion
+
+  3. SetFrame
+    Pixy
+
+  Status:
+    prepared
+
+FIRE
+
+  status:
+    committed
+
+  Contact:
+    Kiss
+
+KISS LANDING
+
+  Scripts applied:
+    yes
+
+  Applied Scripts:
+    1. ApplyPrismDelta
+    2. AddGlow
+    3. SetFrame
+
+  Starting Frame:
+    Hueman
+
+  Point² Frame:
+    Pixy
+
+  CURRENT PRISM DELTA:
+    Stonebend / Body: 0
+    Flynt / Spirit: 0
+    Glaüshouse / Mind: +2
+    Minorian / Interior: 0
+    Minoan / Exterior: 0
+
+  GLOW LEARNED:
+    Confusion
+
+  FLOW LEARNED:
+    none
+
+  FrameState changed:
+    true
+
+  Point² produced:
+    true
+
+POINT²
+Landed Point
+
+Frame:
+  Pixy
+
+CURRENT PRISM
+
+  Stonebend / Body:
+    1
+
+  Flynt / Spirit:
+    1
+
+  Glaüshouse / Mind:
+    3
+
+  Sandmanor / Soul:
+    Minorian / Interior:
+      1
+    Minoan / Exterior:
+      1
+
+FLOW
+
+  none
+
+GLOW
+
+  Confusion
+
+MISS LANDING
+
+  Contact:
+    Miss
+
+  Scripts applied:
+    no
+
+  FrameState changed:
+    false
+
+  Point² produced:
+    no
+
+GREMLIN TINKER RECIPE
+
+  ID:
+    gremlin_tinker
+
+  Name:
+    Gremlin Tinker Recipe
+
+  Intended changes:
+    Stonebend / Body +2
+    Learn Flow: TinkerGrip
+    Change Frame: Gremlin
+
+RECIPE COMPILER
+
+  status:
+    compiled
+
+SYNTHESIS SCRIPTS
+
+  status:
+    ready
+
+  1. ApplyPrismDelta
+    Stonebend / Body: +2
+    Flynt / Spirit: 0
+    Glaüshouse / Mind: 0
+    Minorian / Interior: 0
+    Minoan / Exterior: 0
+
+  2. AddFlow
+    TinkerGrip
+
+  3. SetFrame
+    Gremlin
+
+SYNTHESIS AIM
+
+  ID:
+    gremlin_tinker_aim
+
+  Source Recipe:
+    gremlin_tinker
+
+  Manager:
+    Clouseau
+
+  Domain:
+    PLEB
+
+  Relation:
+    PLEB ↔ PLEB
+
+  Geometry:
+    straight
+
+  Function:
+    Bond
+
+  Bond:
+    One
+
+  Named Route:
+    unset
+
+  Scripts:
+
+  1. ApplyPrismDelta
+    Stonebend / Body: +2
+    Flynt / Spirit: 0
+    Glaüshouse / Mind: 0
+    Minorian / Interior: 0
+    Minoan / Exterior: 0
+
+  2. AddFlow
+    TinkerGrip
+
+  3. SetFrame
+    Gremlin
+
+  Status:
+    prepared
+
+FIRE
+
+  status:
+    committed
+
+  Contact:
+    Kiss
+
+KISS LANDING
+
+  Scripts applied:
+    yes
+
+  Applied Scripts:
+    1. ApplyPrismDelta
+    2. AddFlow
+    3. SetFrame
+
+  Starting Frame:
+    Hueman
+
+  Point² Frame:
+    Gremlin
+
+  CURRENT PRISM DELTA:
+    Stonebend / Body: +2
+    Flynt / Spirit: 0
+    Glaüshouse / Mind: 0
+    Minorian / Interior: 0
+    Minoan / Exterior: 0
+
+  GLOW LEARNED:
+    none
+
+  FLOW LEARNED:
+    TinkerGrip
+
+  FrameState changed:
+    true
+
+  Point² produced:
+    true
+
+POINT²
+Landed Point
+
+Frame:
+  Gremlin
+
+CURRENT PRISM
+
+  Stonebend / Body:
+    3
+
+  Flynt / Spirit:
+    1
+
+  Glaüshouse / Mind:
+    1
+
+  Sandmanor / Soul:
+    Minorian / Interior:
+      1
+    Minoan / Exterior:
+      1
+
+FLOW
+
+  TinkerGrip
+
+GLOW
+
+  none
+
+MISS LANDING
+
+  Contact:
+    Miss
+
+  Scripts applied:
+    no
+
+  FrameState changed:
+    false
+
+  Point² produced:
+    no
+
+VERSION 2 DECISION TRACE
+
+CURRENT-FAVORED
+
+Decision Trace
+
+Observe:
+  Hueman, Intent FavorCurrent
+  Flow: none
+  Glow: none
+  Route Geometry: straight
+
+State checks:
+  GremlinTinker: frame=false, flow=false, glow=false
+  PixyConfusion: frame=false, flow=false, glow=false
+
+Generate:
+  GremlinTinker
+    Manager: Clouseau
+    Geometry: straight
+    Orientation: Current
+  PixyConfusion
+    Manager: HAL
+    Geometry: curved
+    Orientation: Aura
+
+Evaluate:
+  GremlinTinker = 2, preferred orientation
+    Intent score: 2
+    Realized penalty: 0
+    Final: 2
+    Reasons: PreferredCurrentOrientation
+  PixyConfusion = 1, nonpreferred orientation
+    Intent score: 1
+    Realized penalty: 0
+    Final: 1
+    Reasons: NonPreferredCurrentOrientation
+
+Choose:
+  Highest score: 2
+  Tie: false
+  GremlinTinker
+
+Tie-break:
+  no tie
+  Reason: NoTie
+  Geometry matched: false
+  Generate order resolved: false
+
+Recipe:
+  Gremlin Tinker Recipe
+  ID: gremlin_tinker
+  Handed to Version 1.1: true
+
+Version 1.1 Execution:
+    Hueman → Kiss → Gremlin Point²
+  Contact: Kiss
+  Point² produced: true
+  Body 1 → 3
+  Flow +TinkerGrip
+AURA-FAVORED
+
+Decision Trace
+
+Observe:
+  Hueman, Intent FavorAura
+  Flow: none
+  Glow: none
+  Route Geometry: straight
+
+State checks:
+  GremlinTinker: frame=false, flow=false, glow=false
+  PixyConfusion: frame=false, flow=false, glow=false
+
+Generate:
+  GremlinTinker
+    Manager: Clouseau
+    Geometry: straight
+    Orientation: Current
+  PixyConfusion
+    Manager: HAL
+    Geometry: curved
+    Orientation: Aura
+
+Evaluate:
+  GremlinTinker = 1, nonpreferred orientation
+    Intent score: 1
+    Realized penalty: 0
+    Final: 1
+    Reasons: NonPreferredAuraOrientation
+  PixyConfusion = 2, preferred orientation
+    Intent score: 2
+    Realized penalty: 0
+    Final: 2
+    Reasons: PreferredAuraOrientation
+
+Choose:
+  Highest score: 2
+  Tie: false
+  PixyConfusion
+
+Tie-break:
+  no tie
+  Reason: NoTie
+  Geometry matched: false
+  Generate order resolved: false
+
+Recipe:
+  Pixy Confusion Recipe
+  ID: pixy_confusion
+  Handed to Version 1.1: true
+
+Version 1.1 Execution:
+    Hueman → Kiss → Pixy Point²
+  Contact: Kiss
+  Point² produced: true
+  Mind 1 → 3
+  Glow +Confusion
+
+NEUTRAL
+
+Decision Trace
+
+Observe:
+  Hueman, Intent Neutral
+  Flow: none
+  Glow: none
+  Route Geometry: straight
+
+State checks:
+  GremlinTinker: frame=false, flow=false, glow=false
+  PixyConfusion: frame=false, flow=false, glow=false
+
+Generate:
+  GremlinTinker
+    Manager: Clouseau
+    Geometry: straight
+    Orientation: Current
+  PixyConfusion
+    Manager: HAL
+    Geometry: curved
+    Orientation: Aura
+
+Evaluate:
+  GremlinTinker = 1, neutral baseline
+    Intent score: 1
+    Realized penalty: 0
+    Final: 1
+    Reasons: NeutralBaseScore
+  PixyConfusion = 1, neutral baseline
+    Intent score: 1
+    Realized penalty: 0
+    Final: 1
+    Reasons: NeutralBaseScore
+
+Choose:
+  Highest score: 1
+  Tie: true
+  GremlinTinker
+
+Tie-break:
+  observed straight geometry
+  Reason: ObservedRouteGeometryMatch
+  Geometry matched: true
+  Generate order resolved: false
+  Geometry match candidate: GremlinTinker
+  Tied candidates: GremlinTinker, PixyConfusion
+
+Recipe:
+  Gremlin Tinker Recipe
+  ID: gremlin_tinker
+  Handed to Version 1.1: true
+
+Version 1.1 Execution:
+    Hueman → Kiss → Gremlin Point²
+  Contact: Kiss
+  Point² produced: true
+  Body 1 → 3
+  Flow +TinkerGrip

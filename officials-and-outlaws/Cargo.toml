@@ -1,0 +1,7 @@
+[package]
+name = "officials-and-outlaws"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+hollow-grove-kernel = { path = "../hollow-grove-kernel" }

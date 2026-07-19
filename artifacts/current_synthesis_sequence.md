@@ -46,8 +46,8 @@ Topology is downstream from this sequence.
 
 ## Artifact Inputs
 
-Current Synthesis base bytes: 1189.
-Current Synthesis state bytes: 2110.
+Current Synthesis base bytes: 1595.
+Current Synthesis state bytes: 2216.
 
 ## Boundary Reminder
 

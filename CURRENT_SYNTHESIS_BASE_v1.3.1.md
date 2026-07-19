@@ -25,7 +25,8 @@ Current Synthesis Base
 - HAL is deferred.
 - Clouseau is deferred.
 - `PLEB`/`META` execution is deferred.
-- `niri`/`river` integration is deferred.
+- a narrow `niri` bridge exists for workspace naming/focus and overview state.
+- `niri`/`river` layout and config mutation remain deferred.
 
 ## Current Proof
 

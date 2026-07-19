@@ -1,13 +1,13 @@
 # Hueman Start Choices
 
-## End User Archetypes
+## Confirmed Form Origins
 
-- `goblin`
 - `gremlin`
-- `pixy`
+- `goblin`
 - `sprite`
+- `pixy`
 
-## Starting Places
+## Kingdom Origins
 
 - Flynt
 - Stonebend
@@ -16,34 +16,40 @@
 
 ## Fourway Placement
 
-- North = Flynt = `goblin`
-- East = Stonebend = `gremlin`
-- South = Glaushouse = `pixy`
-- West = Sandmanor = `sprite`
+- West = Flynt
+- North = Stonebend
+- East = Glaushouse
+- South = Sandmanor
 
-## Initial Start Roster
+## Origin Roster
 
-- `goblin` starts in Flynt
-- `gremlin` starts in Stonebend
-- `pixy` starts in Glaushouse
-- `sprite` starts in Sandmanor
+- `gremlin` originates in Flynt
+- `goblin` originates in Stonebend
+- `sprite` originates in Glaushouse
+- `pixy` originates in Sandmanor
+
+## Opening Rule
+
+- the player begins as Hueman near Aura Ridge
+- the player is not forced to begin as a kingdom form
+- later form development remains braided rather than linear by default
+- ordinary Hueman play and profession play must remain meaningful before major transformation
 
 ## Status
 
-- the end user may choose one archetype
-- the starting place follows the initial Hueman roster
-- the starting direction follows the Fourway roster
+- the origin roster does not lock the initial player body
+- the starting direction remains readable from the Fourway roster
 - the world resolves downward through AuraTriad after start choice
-- AuraTriad behavior is descriptive-only after start choice
-- species mechanics are not active yet
+- AuraTriad behavior remains descriptive-only after the opening declaration
+- major transformation mechanics are not active yet
 - no feedback into Current Synthesis
 - no feedback into Hollow Grove
 
 ## Artifact Inputs
 
-Hueman Fourway bytes: 1086.
-Hueman AuraTriad bytes: 1143.
+Hueman Fourway bytes: 1457.
+Hueman AuraTriad bytes: 2089.
 
 ## Boundary Reminder
 
-This is a Hueman-layer start declaration only. It does not change Current Synthesis or Hollow Grove.
+This is a Hueman-layer opening declaration only. It does not change Current Synthesis or Hollow Grove, and it does not redefine Hueman as a set of hereditary species.

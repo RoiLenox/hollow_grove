@@ -1,45 +1,29 @@
 # Hueman Scene Intent v0.1.0
 
-Date: 2026-07-07
+Date: 2026-07-09
 
 ## Rule
 
-Each scene presence carries a dominant descriptive intent before any encounter or dialogue system exists.
+Scene intent describes what a place is trying to do before quest logic, AI, or simulation are fully active.
 
-## Intent Sets
+## Intent Focus
 
-### Seam Market
+- `current` expresses capability, carrying, route pressure, and burden in motion
+- `aura` expresses understanding, judgment, context, and how the same place is being read
+- scenes may lean toward storage, exchange, warning, repair, proof, deployment, or transformation without becoming mechanically final
 
-- wants exchange
-- wants rumor flow
-- wants salvage circulation
-- wants temporary trust without permanence
+## Constitutional Check
 
-### Threshold Weather
+When scene intent is defined, the larger loop should still remain readable:
 
-- wants warning
-- wants drift
-- wants exposure of unstable boundaries
-- wants movement onward rather than settlement
-
-### Pressure Shelter
-
-- wants concealment
-- wants storage and continuity
-- wants guarded warmth
-- wants selective admission
-
-### Split Trace
-
-- wants witness without resolution
-- wants ambiguity to remain active
-- wants multiple readings to coexist
-- wants the route to stay half-open and half-hidden
+- what is being named
+- what is being proven
+- what is being cleared
+- what is being recognized
 
 ## Boundary
 
-- This is descriptive Hueman intention only.
-- It does not activate AI, quest, or dialogue systems.
-- It does not change scene presence or link physics.
-- It does not change Current Synthesis ownership.
-- It does not change Hollow Grove recursion.
+- scene intent is descriptive-only for now
+- it does not create full tasks, dialogue trees, or procedural outcomes yet
+- it does not change Current Synthesis ownership
+- it does not change Hollow Grove recursion

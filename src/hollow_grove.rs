@@ -4,11 +4,11 @@ use crate::symptom::Symptom;
 use crate::triway::{Triway, Way};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub struct Bond {
+pub struct KernelBond {
     linked: Way,
 }
 
-impl Bond {
+impl KernelBond {
     pub fn select(ways: [Way; 3]) -> Self {
         // Bond selection is still ordinal-only at this kernel depth.
         let [linked, _, _] = ways;
@@ -23,7 +23,7 @@ impl Bond {
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct HollowGrove {
     source: Symptom,
-    bond: Bond,
+    bond: KernelBond,
     atmosphere: [Way; 2],
 }
 
@@ -31,7 +31,7 @@ impl HollowGrove {
     pub fn from_triway(triway: Triway) -> Self {
         let source = triway.source();
         let ways = triway.ways();
-        let bond = Bond::select(ways);
+        let bond = KernelBond::select(ways);
         let [_, atmosphere_one, atmosphere_two] = ways;
 
         Self {
@@ -53,3 +53,10 @@ impl HollowGrove {
         GroveSeam::from_symptom(self.source, RoutingPass::new(routing_input))
     }
 }
+
+/// Compatibility name for the kernel's ordinal link selector.
+///
+/// This is not the constitutional Bond aggregate. New boundary code should
+/// name `KernelBond` explicitly and use `constitutional::BondAggregate` for
+/// governed Current/Aura history.
+pub type Bond = KernelBond;

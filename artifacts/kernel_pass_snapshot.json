@@ -8,7 +8,11 @@
     "atmosphere": ["Two", "Three"]
   },
   "grove_seam": "GroveSeam",
+  "grove_seam_route": "PlebExterior",
   "hollow_beam": "HollowBeam",
+  "hollow_beam_route": "BlepReturn",
   "landed": "Symptom 2",
-  "canonical_witness": "start Symptom 1\n↓\nTriway\n↓\nHollowGrove\n↓\nGroveSeam\n↓\nHollowBeam\n↓\nlanded Symptom 2"
+  "landing_route": "BlepArrival",
+  "landed_point": "Point",
+  "canonical_witness": "start Symptom 1\n↓\nTriway\n↓\nHollowGrove\n↓\nGroveSeam [PlebExterior]\n↓\nHollowBeam [BlepReturn]\n↓\nlanded Symptom 2 [BlepArrival]\n↓\nPoint"
 }

@@ -3,10 +3,16 @@
 
 pub mod gallowry;
 
+use std::collections::HashSet;
+
 use crate::hollow_grove_contract::House;
 use crate::institution::*;
 use crate::institution_affiliation::{
     AffiliationState, InstitutionalMembership, InstitutionalWorldState, MembershipRole,
+};
+use officials_and_outlaws::{
+    ConstitutionalOfficeId, OFFICE_TROSS, OfficialsOutlawsRegistry,
+    PERSON_CANONICAL_TROSS_CANDIDATE, PersonId,
 };
 
 fn id<T>(value: &str, make: impl FnOnce(String) -> Result<T, IdError>) -> T {
@@ -133,7 +139,7 @@ pub struct ManticorpsProfile {
     pub deployment_status: DeploymentStatus,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug)]
 pub struct FlyntInstitutions {
     pub catalog: InstitutionCatalog,
     /// Active memberships live in the detailed neutral affiliation model.
@@ -141,9 +147,50 @@ pub struct FlyntInstitutions {
     pub memberships: Vec<InstitutionalMembership>,
     pub mystery_men: Vec<MysteryManProfile>,
     pub manticorps: Vec<ManticorpsProfile>,
+    succession: OfficialsOutlawsRegistry,
+    lawfully_registered_tross_holders: HashSet<InstitutionalBeingId>,
 }
 
 impl FlyntInstitutions {
+    /// Builds the Flynt institutional scaffold around the constitutional
+    /// registry supplied by the Officials & Outlaws domain. It deliberately
+    /// does not activate a Tross holder.
+    #[must_use]
+    pub fn from_succession_registry(succession: OfficialsOutlawsRegistry) -> Self {
+        flynt_institution_scaffold(succession)
+    }
+
+    #[must_use]
+    pub fn succession_registry(&self) -> &OfficialsOutlawsRegistry {
+        &self.succession
+    }
+
+    /// Projects a lawful constitutional accession into the neutral office
+    /// catalog. This is the only Flynt-domain API that activates Tross.
+    pub fn register_lawful_tross_holder(
+        &mut self,
+        being: InstitutionalBeingId,
+    ) -> Result<(), FlyntValidationError> {
+        let candidate = PersonId::new(being.as_str())
+            .map_err(|_| FlyntValidationError::LawfulTrossAccessionRequired(being.clone()))?;
+        let office = ConstitutionalOfficeId::new(OFFICE_TROSS)
+            .expect("the canonical Tross constitutional office ID is valid");
+        if !self.succession.lawfully_holds_office(&candidate, &office) {
+            return Err(FlyntValidationError::LawfulTrossAccessionRequired(being));
+        }
+        if !self.catalog.office_holders.iter().any(|holder| {
+            holder.active && holder.office == tross_office_id() && holder.being == being
+        }) {
+            self.catalog.office_holders.push(OfficeHolder {
+                office: tross_office_id(),
+                being: being.clone(),
+                active: true,
+            });
+        }
+        self.lawfully_registered_tross_holders.insert(being);
+        Ok(())
+    }
+
     pub fn is_gallow(&self, being: &InstitutionalBeingId) -> bool {
         self.memberships.iter().any(|membership| {
             &membership.being == being
@@ -225,6 +272,24 @@ impl FlyntInstitutions {
             .iter()
             .filter(|holder| holder.active && holder.office == tross_office_id())
         {
+            if !self
+                .lawfully_registered_tross_holders
+                .contains(&holder.being)
+            {
+                return Err(FlyntValidationError::DirectTrossAssignmentRejected(
+                    holder.being.clone(),
+                ));
+            }
+            let candidate = PersonId::new(holder.being.as_str()).map_err(|_| {
+                FlyntValidationError::LawfulTrossAccessionRequired(holder.being.clone())
+            })?;
+            let office = ConstitutionalOfficeId::new(OFFICE_TROSS)
+                .expect("the canonical Tross constitutional office ID is valid");
+            if !self.succession.lawfully_holds_office(&candidate, &office) {
+                return Err(FlyntValidationError::LawfulTrossAccessionRequired(
+                    holder.being.clone(),
+                ));
+            }
             if self.memberships.iter().any(|membership| {
                 membership.being == holder.being
                     && membership.role_id.as_ref() == Some(&mystery_man_role_id())
@@ -256,11 +321,26 @@ pub enum FlyntValidationError {
     RopeOutsideGallowry,
     TrossCommandsGallowry,
     TrossIsMysteryMan,
+    DirectTrossAssignmentRejected(InstitutionalBeingId),
+    LawfulTrossAccessionRequired(InstitutionalBeingId),
     InvalidMembership,
     ForbiddenFixtureLore,
 }
 
 pub fn canonical_flynt_institutions() -> FlyntInstitutions {
+    let succession = officials_and_outlaws::canonical_registry()
+        .expect("the canonical Officials & Outlaws registry must validate");
+    let mut flynt = flynt_institution_scaffold(succession);
+    flynt
+        .register_lawful_tross_holder(id(
+            PERSON_CANONICAL_TROSS_CANDIDATE,
+            InstitutionalBeingId::new,
+        ))
+        .expect("the canonical Tross holder must have lawfully acceded");
+    flynt
+}
+
+fn flynt_institution_scaffold(succession: OfficialsOutlawsRegistry) -> FlyntInstitutions {
     let manticorps = manticorps_id();
     let mystery = mystery_men_id();
     let gallowry = gallowry_id();
@@ -517,6 +597,8 @@ pub fn canonical_flynt_institutions() -> FlyntInstitutions {
         memberships: vec![],
         mystery_men: vec![],
         manticorps: vec![],
+        succession,
+        lawfully_registered_tross_holders: HashSet::new(),
     }
 }
 fn rel(
@@ -553,6 +635,11 @@ mod tests {
                 .iter()
                 .any(|office| office.id == tross_office_id())
         );
+        assert!(flynt.catalog.office_holders.iter().any(|holder| {
+            holder.active
+                && holder.office == tross_office_id()
+                && holder.being.as_str() == PERSON_CANONICAL_TROSS_CANDIDATE
+        }));
         assert!(
             flynt
                 .catalog
@@ -586,12 +673,7 @@ mod tests {
     #[test]
     fn contradiction_tross_cannot_be_a_mystery_man() {
         let mut flynt = canonical_flynt_institutions();
-        let being = id("being.flynt.tross-test", InstitutionalBeingId::new);
-        flynt.catalog.office_holders.push(OfficeHolder {
-            office: tross_office_id(),
-            being: being.clone(),
-            active: true,
-        });
+        let being = id(PERSON_CANONICAL_TROSS_CANDIDATE, InstitutionalBeingId::new);
         flynt.memberships.push(InstitutionalMembership {
             id: id("membership.flynt.invalid-tross", MembershipId::new),
             being,

@@ -17,12 +17,22 @@ Triway
 ↓
 HollowGrove
 ↓
-GroveSeam
+GroveSeam [PlebExterior]
 ↓
-HollowBeam
+HollowBeam [BlepReturn]
 ↓
-landed Symptom 2
+landed Symptom 2 [BlepArrival]
+↓
+Point
 ```
+
+## Frozen Snapshot Boundary
+
+- exterior ingress: `PlebExterior`
+- complementary return: `BlepReturn`
+- landed route: `BlepArrival`
+- universal landed point: `Point`
+- Current Synthesis consumes this boundary as its primary Hollow Grove interface.
 
 ## Artifact Layer Status
 
@@ -30,9 +40,9 @@ landed Symptom 2
 - `artifacts/consumer_prompt.md`: present and read-only.
 - `artifacts/desktop_status.txt`: present and read-only.
 
-Snapshot bytes: 374.
-Prompt bytes: 387.
-Desktop status bytes: 237.
+Snapshot bytes: 564.
+Prompt bytes: 439.
+Desktop status bytes: 289.
 
 ## Current Synthesis
 
@@ -41,7 +51,8 @@ At this layer, unresolved route material may later divide into `dark current` or
 
 ## Vertical Position
 
-- Current Synthesis consumes read-only client artifacts derived from KernelPass.
+- Current Synthesis consumes the frozen snapshot boundary as its primary Hollow Grove interface.
+- Prompt and desktop artifacts remain mirrored read-only witnesses of that same boundary.
 - Hueman remains the world layer above Current Synthesis.
 - no feedback into Hollow Grove
 

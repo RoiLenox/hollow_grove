@@ -5,158 +5,126 @@
 `Symptom -> Triway -> HollowGrove -> GroveSeam -> HollowBeam -> landed Symptom 2 -> KernelPass -> Client Artifacts -> Current Synthesis -> Hueman`
 
 Upper layers consume lower layers without rewriting lower ownership.
+Hollow Grove remains the constitutional bedrock across the stack.
 
-## Entry Points
+## Repository Review
 
-- `hollow-grove` prints the canonical witness by default.
-- `hollow-grove runtime ...` drives the runtime loop and refreshes pipeline artifacts.
-- `hollow-grove bridge ...` applies or previews bridge actions against Niri.
-- `hollow-grove desktop ...` runs the runtime loop with the Niri bridge attached.
-- `hollow-grove benchmark ...` benchmarks the full downstream route and writes a Current-Synthesis-style report.
-- `run-runtime.sh` and `run-runtime-niri.sh` wrap the same integrated paths for shell use.
+- `REPOSITORY_AUTHORITY_MAP.md`: read order, authority classes, compatibility
+  boundaries, artifact retention classes, public-façade inventory, and safe
+  consolidation order
 
-## Artifacts
+## Retention Rule
 
-### `artifacts/kernel_pass_snapshot.json`
+Checked contracts, deliberate deterministic witnesses, and named historical
+golden records may be versioned. Active session state, local measurements,
+timestamped verification logs, and raw fuzz crashes are local output and are
+ignored. A failure becomes permanent repository evidence only after it is
+minimized and promoted into a checked regression test or fuzz corpus entry.
 
-- What it is: a structured snapshot of one completed `KernelPass`.
-- Produced by: `client_snapshot`.
-- Consumes: `KernelPass`.
-- Deterministic: yes.
-- Feeds back into the kernel: no.
+See `REPOSITORY_AUTHORITY_MAP.md` for the classification table and the known
+golden-record candidates. This index describes artifact families; it does not
+make generated output constitutional authority.
 
-### `artifacts/consumer_prompt.md`
+## Canonical References
 
-- What it is: a local AI-client-ready prompt artifact with the canonical witness, snapshot reference, inverse-path question, and boundary reminder.
-- Produced by: `client_prompt_artifact`.
-- Consumes: `KernelPass`.
-- Deterministic: yes.
-- Feeds back into the kernel: no.
+- `HOLLOW_GROVE_CORE_v1.0.0.md`: primary constitutional reference
+- `CURRENT_SYNTHESIS_HOLLOW_GROVE_WORLD_CONTEXT_v0.1.0.md`: authoritative TUI world and ontology context
+- `HUEMAN_v0.1.0.md`: standalone Hueman companion
+- `CHROMA_CORD_GLAUSHOUSE_CLINICAL_CHARTING_v0.1.0.md`: bounded Glaüshouse clinical charting integration contract
+- `HOLLOW_GROVE_APPLICATION_SCOPE_AND_MAINTENANCE_v0.1.0.md`: minimum/maximum application scope, health checks, upgrade, and rollback protocol
+- `artifacts/vertical_integration_stack.md`: generated alignment view of the current implementation stack
 
-### `artifacts/desktop_status.txt`
+## Runtime And Clients
 
-- What it is: a read-only desktop-facing status artifact with the canonical witness.
-- Produced by: `client_desktop_status`.
-- Consumes: `KernelPass`.
-- Deterministic: yes.
-- Feeds back into the kernel: no.
+- `hollow-grove`: prints the canonical witness
+- `hollow-grove runtime ...`: refreshes the downstream artifact route
+- `hollow-grove bridge ...`: applies or previews niri bridge actions
+- `hollow-grove desktop ...`: runs the runtime loop with the niri bridge attached
+- `hollow-grove benchmark ...`: benchmarks the downstream route
+- `hollow-grove app list`: lists registered native applications
+- `hollow-grove app launch chroma_cord`: launches the managed native clinical window
+- `hollow-grove app attach chroma_cord`: validates and attaches the focused managed window
+- `./maintain-chroma-cord.sh [--full]`: checks integration health without modifying clinical records
 
-### `artifacts/runtime_input.txt`
+## Key Artifact Families
 
-- What it is: the runtime input contract that tells the loop to `run`, `hold`, or `stop`.
-- Produced by: operator or `hollow_grove_runtime` template generation.
-- Consumes: runtime loop only.
-- Deterministic: no.
-- Feeds back into the kernel: indirectly, through the runtime loop.
+### Kernel And Client Artifacts
 
-### `artifacts/runtime_memory.txt`
+- `artifacts/kernel_pass_snapshot.json`
+- `artifacts/consumer_prompt.md`
+- `artifacts/desktop_status.txt`
+- `artifacts/screen_map_state.json`
+- `artifacts/screen_map_intent.json`
+- `artifacts/hueman_pair_state.json`
+- `artifacts/hueman_pair_preview.png`
+- `artifacts/hueman_pair_preview_state.json`
+- `artifacts/hollow_grove_hueman_coordinate_contract.json`
+- `artifacts/hollow_grove_application_registry.json`
 
-- What it is: the runtime memory contract that persists the last accepted cycle, mode, action, and visible witness across loop ticks and restarts.
-- Produced by: `hollow_grove_runtime`.
-- Consumes: runtime loop only.
-- Deterministic: no.
-- Feeds back into the kernel: indirectly, through the runtime loop.
+These remain read-only mirrors of `KernelPass`.
 
-### `artifacts/runtime_loop_status.md`
+`artifacts/screen_map_state.json` is a live bridge artifact driven by `niri` focused-window and output geometry so Hueman/Godot can project the current screen position without taking mutation authority.
 
-- What it is: the runtime-facing status artifact for the last loop tick, including the selected input mode and last visible witness.
-- Produced by: `hollow_grove_runtime`.
-- Consumes: runtime loop state for one tick.
-- Deterministic: no.
-- Feeds back into the kernel: no.
+`artifacts/screen_map_intent.json` is the narrow Godot-to-runtime handoff. Godot writes raw intent requests there, and the runtime consumes them into native Current Synthesis player actions during `run` mode.
 
-### `artifacts/niri_bridge_memory.txt`
+`artifacts/hueman_pair_state.json` is the paired-window presentation contract for the Godot shell. The launcher captures the focused Niri window there, and the shell reads diagonal angle plus 25% spread steps for the paired overlay.
 
-- What it is: the niri bridge memory contract that records the last runtime mode and safe niri action already aligned by the bridge.
-- Produced by: `hollow_grove_niri_bridge`.
-- Consumes: niri bridge only.
-- Deterministic: no.
-- Feeds back into the kernel: no.
+`artifacts/hueman_pair_preview.png` and `artifacts/hueman_pair_preview_state.json` are the live preview artifacts for ordinary paired windows. A managed clinical surface whose registry disallows capture removes the image and presents only a semantic masked state.
 
-### `artifacts/niri_bridge_status.md`
+`artifacts/hollow_grove_application_registry.json` is the checked application-control contract. It fixes native identity, Glaüshouse attachment, ownership, privacy, minimum scope, maximum scope, and prohibited authority.
 
-- What it is: the current bridge status artifact showing the observed runtime memory, desired niri action, and whether the bridge applied, skipped, or is waiting.
-- Produced by: `hollow_grove_niri_bridge`.
-- Consumes: runtime memory and bridge memory.
-- Deterministic: no.
-- Feeds back into the kernel: no.
+`artifacts/hollow_grove_hueman_coordinate_contract.json` is the canonical one-system coordinate declaration. It states that Hollow Grove and Hueman share one normalized spatial field even when runtime authority remains on the Hollow Grove side.
 
-### `artifacts/current_synthesis_benchmark.md`
+### Current Synthesis Artifacts
 
-- What it is: a Current-Synthesis-style benchmark report covering kernel, clients, Current Synthesis, and Hueman stage timings.
-- Produced by: `current_synthesis_benchmark`.
-- Consumes: local benchmark samples of the full downstream route.
-- Deterministic: no.
-- Feeds back into the kernel: no.
+- `artifacts/current_synthesis_base.md`
+- `artifacts/current_synthesis_state.md`
+- `artifacts/current_synthesis_sequence.md`
+- `artifacts/current_synthesis_topology.md`
+- `artifacts/current_synthesis_contract.md`
+- `artifacts/current_synthesis_operational.md`
+- `artifacts/current_synthesis_execution_spec.md`
+- `artifacts/current_synthesis_behavior_rules.md`
+- `artifacts/current_synthesis_transition_pm_to_le.md`
+- `artifacts/current_synthesis_collision_relay.md`
+- `artifacts/current_synthesis_activation_gate.md`
+- `artifacts/current_synthesis_world_context.md`
+- `artifacts/current_synthesis_alignment_witness.md`
+- `artifacts/current_synthesis_alignment_validation.md`
 
-### `artifacts/current_synthesis_benchmark.json`
+These describe the intermediate route and activation layer.
 
-- What it is: a machine-readable benchmark snapshot with per-stage timing stats, group load, and weak-point summaries.
-- Produced by: `current_synthesis_benchmark`.
-- Consumes: local benchmark samples of the full downstream route.
-- Deterministic: no.
-- Feeds back into the kernel: no.
+`artifacts/current_synthesis_world_context.md` is the generated runtime mirror
+of the authoritative top-level
+`CURRENT_SYNTHESIS_HOLLOW_GROVE_WORLD_CONTEXT_v0.1.0.md`. Their identical
+contents are intentional. Constitutional authority belongs to the top-level
+document; clients that require an artifact path consume the generated mirror.
 
-### `artifacts/current_synthesis_benchmark_release.md`
+### Hueman Artifacts
 
-- What it is: a release-facing one-page benchmark summary with headline claim, gate checks, and the main weak points that still block stronger messaging.
-- Produced by: `current_synthesis_benchmark`.
-- Consumes: the full benchmark report and snapshot.
-- Deterministic: no.
-- Feeds back into the kernel: no.
+- `artifacts/hueman_boundary.md`
+- `artifacts/hueman_fourway.md`
+- `artifacts/hueman_aura_triad.md`
+- `artifacts/hueman_start_choices.md`
+- `artifacts/hueman_vertical_slice.md`
+- `artifacts/hueman_screen_map.json`
+- `artifacts/hueman_stonebend_roles.md`
+- `artifacts/hueman_tross_helpers.md`
+- `artifacts/hueman_glaushouse_roles.md`
+- `artifacts/hueman_sandmanor_roles.md`
+- `artifacts/hueman_procedural_uplift.md`
+- `artifacts/hueman_aura_behavior.md`
+- `artifacts/hueman_archetype_lens.md`
+- `artifacts/hueman_start_paths.md`
+- `artifacts/hueman_path_crossovers.md`
+- `artifacts/hueman_link_physics.md`
+- `artifacts/hueman_inverse_circle.md`
+- `artifacts/hueman_crossover_scenes.md`
+- `artifacts/hueman_scene_presence.md`
+- `artifacts/hueman_scene_intent.md`
+- `artifacts/hueman_scene_drift.md`
 
-### `artifacts/hueman_stonebend_roles.md`
+These are generated Hueman-facing design artifacts.
+They should be read in alignment with the top-level Hollow Grove and Hueman docs, not as competing constitutions.
 
-- What it is: the Hueman civic-role artifact for Stonebend, defining the equal-power triad of Proliteriate, Hypergiant, and Freemason, with Hypergiant as the public face.
-- Produced by: `hueman_stonebend_roles` and the integrated Hueman/runtime routes.
-- Consumes: `hueman_start_choices` and `hueman_fourway`.
-- Deterministic: yes.
-- Feeds back into the kernel: no.
-
-### `artifacts/hueman_tross_helpers.md`
-
-- What it is: the Hueman Flynt-anchored helper-line artifact for Tross, defining Juvenile as the North head, Delinquent as the South end, and the four White Dwarfs as Tross's personal guard.
-- Produced by: `hueman_tross_helpers` and the integrated Hueman/runtime routes.
-- Consumes: `hueman_start_choices` and `hueman_fourway`.
-- Deterministic: yes.
-- Feeds back into the kernel: no.
-
-### `artifacts/hueman_glaushouse_roles.md`
-
-- What it is: the Hueman south-facing kingdom-role artifact for Glaushouse, defining Prima Donna, Persephone, and the Nightengales.
-- Produced by: `hueman_glaushouse_roles` and the integrated Hueman/runtime routes.
-- Consumes: `hueman_start_choices` and `hueman_fourway`.
-- Deterministic: yes.
-- Feeds back into the kernel: no.
-
-### `artifacts/hueman_sandmanor_roles.md`
-
-- What it is: the Hueman Sandmanor kingdom-role artifact defining southern Minoans, northern Minorians, and the crowd-judged Sandman contest for rule.
-- Produced by: `hueman_sandmanor_roles` and the integrated Hueman/runtime routes.
-- Consumes: `hueman_start_choices` and `hueman_fourway`.
-- Deterministic: yes.
-- Feeds back into the kernel: no.
-
-### `artifacts/hueman_procedural_uplift.md`
-
-- What it is: the Hueman procedural-uplift artifact that maps Current Synthesis execution, behavior, transition, selection, and consequence contracts into kingdom-facing procedures for Stonebend, Flynt, Glaushouse, and Sandmanor.
-- Produced by: `hueman_procedural_uplift` and the integrated Hueman/runtime routes.
-- Consumes: Current Synthesis execution contracts plus Hueman kingdom-role artifacts.
-- Deterministic: yes.
-- Feeds back into the kernel: no.
-
-### `artifacts/hueman_inverse_circle.md`
-
-- What it is: the Hueman underground interior mirror-ring artifact for the secret tunnel sequence of Stairway to Heaven, Riptide, Current Sea, and Aura Way.
-- Produced by: `hueman_inverse_circle` and the integrated Hueman/runtime routes.
-- Consumes: `hueman_fourway` and `hueman_link_physics`.
-- Deterministic: yes.
-- Feeds back into the kernel: no.
-
-### `artifacts/vertical_integration_stack.md`
-
-- What it is: the generated full-stack alignment artifact showing how kernel recursion, KernelPass, client artifacts, Current Synthesis, and Hueman sit in one downstream chain.
-- Produced by: the integrated Hueman/runtime routes.
-- Consumes: `current_synthesis_base`, `hueman_boundary`, `hueman_scene_presence`, `hueman_scene_intent`, and `hueman_scene_drift`.
-- Deterministic: yes.
-- Feeds back into the kernel: no.
+`artifacts/hueman_screen_map.json` is the static machine-readable screen-to-world projection contract for the first Hueman/Godot bridge.

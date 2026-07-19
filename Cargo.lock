@@ -5,3 +5,18 @@ version = 4
 [[package]]
 name = "hollow-grove"
 version = "0.1.0"
+dependencies = [
+ "hollow-grove-kernel",
+ "officials-and-outlaws",
+]
+
+[[package]]
+name = "hollow-grove-kernel"
+version = "0.1.0"
+
+[[package]]
+name = "officials-and-outlaws"
+version = "0.1.0"
+dependencies = [
+ "hollow-grove-kernel",
+]

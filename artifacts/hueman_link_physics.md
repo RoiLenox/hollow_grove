@@ -2,7 +2,7 @@
 
 ## Structural Rule
 
-Links that do not get bonded may later resolve into `current` or `aura` according to downstream physics.
+Links that do not get bonded may later resolve into `current` or `aura` according to downstream physics, with Current expressing capability and Aura expressing understanding.
 
 ## Bond Split
 
@@ -35,10 +35,18 @@ Links that do not get bonded may later resolve into `current` or `aura` accordin
 
 ## Element Names
 
-- `current` may also be called Bathos or dark water.
-- `current` appears as dark current or hollow current.
-- `aura` may also be called Aether or air.
+- `current` appears as regular current or hollow current.
+- Hollowing does not kill current; it reallocates carried pressure.
 - `aura` appears as reflective aura or holographic aura.
+- Current asks what the Hueman can do.
+- Aura asks what the Hueman understands and how capability should be used.
+
+## Relay Packet Reading
+
+- the HAL/Cleo relay packet declares one shared confirmation body across visible and underground layers
+- Hueman reads that packet as proof that one bias body may persist above the map and below the map simultaneously
+- surface alignment may confirm `current`/`aura` reading without taking control of the route itself
+- underground continuity may confirm hidden carry without overriding visible crossover placement
 
 ## Crossover Reading
 
@@ -46,6 +54,7 @@ Links that do not get bonded may later resolve into `current` or `aura` accordin
 - the same region may feel more `current` from one route and more `aura` from another
 - crossover zones are where the physics split becomes most visible in Hueman
 - Aura Ridge trade legs keep exchange visible on straight lines while unresolved bias still moves beneath them
+- the same unresolved bias can come back around the big circle through either straight runs or rounded turns
 
 ## Status
 
@@ -58,7 +67,8 @@ Links that do not get bonded may later resolve into `current` or `aura` accordin
 ## Artifact Inputs
 
 Current Synthesis sequence bytes: 1458.
-Hueman Path Crossovers bytes: 1971.
+Hueman Path Crossovers bytes: 3261.
+Current Synthesis collision relay bytes: 3022.
 
 ## Boundary Reminder
 

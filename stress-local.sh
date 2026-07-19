@@ -4,7 +4,7 @@ set -euo pipefail
 
 cd /home/warren/hollow-grove
 
-CANONICAL_WITNESS=$'start Symptom 1\n↓\nTriway\n↓\nHollowGrove\n↓\nGroveSeam\n↓\nHollowBeam\n↓\nlanded Symptom 2'
+CANONICAL_WITNESS=$'Point\n↓\nTriway\n↓\nFourway\n↓\nHollowGrove\n↓\nCurrentSeam [PlebExterior]\n↓\nAuraBeam [BlepReturn]\n↓\nPoint² (Landed Point) [BlepArrival]'
 BINARY="target/release/hollow-grove"
 
 run_level() {
@@ -67,7 +67,7 @@ uname -r
 printf 'CPU model:\n'
 lscpu | grep "Model name"
 
-cargo fmt
+cargo fmt --check
 cargo test
 cargo build --release
 

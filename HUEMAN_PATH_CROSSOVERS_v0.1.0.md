@@ -1,34 +1,36 @@
 # Hueman Path Crossovers v0.1.0
 
-Date: 2026-07-07
+Date: 2026-07-09
 
 ## Rule
 
-Different starts may enter `AuraTriad` differently while still crossing through shared regions and shared world pressure.
+Different kingdom-facing approaches may enter shared regions in different orders while still crossing through the same larger world body.
 
-## Shared Entry Crossovers
+## Shared Regions
 
-- Glaushouse and Sandmanor cross immediately at `Aura Beach`.
-- Flynt and Stonebend do not share first entry, but they both begin inland before reaching the coast.
+- `Aura Basin`
+- `Aura Fields`
+- `Aura Beach`
 
-## Interior Crossovers
+All approaches can eventually pass through all three.
+The important difference is order, mood, and constitutional pressure, not permanent exclusion.
 
-- Flynt and Sandmanor cross at `Aura Basin`.
-- Stonebend and Glaushouse cross at `Aura Fields`.
-- Stonebend and Sandmanor cross at `Aura Basin` after different openings.
+## Route Law
 
-## Full-Triad Convergence
+- straight routes are process
+- curved routes are transformation
+- `Aura Way` / `Mnt. Aura` remain the confirmed Stonebend <-> Sandmanor pair
+- `Basin Motorspeedway` / `Stairway to Heaven` remain the confirmed Stonebend <-> Flynt pair
 
-- all four starts eventually touch `Aura Basin`
-- all four starts eventually touch `Aura Fields`
-- all four starts eventually touch `Aura Beach`
-- the difference is order, not exclusion
+## Aura Ridge
+
+- Aura Ridge is an important straight trade and crossover body
+- it is not the universal holding pen for every unresolved idea
+- Glaushouse remains the visible hinge between major straight legs in the current map study
 
 ## Boundary
 
-- This is descriptive Hueman overlap only.
-- It does not activate shared encounter mechanics.
-- It does not activate meeting rules.
-- It does not change start-path order.
-- It does not change Current Synthesis occupancy.
-- It does not change Hollow Grove recursion.
+- this is descriptive Hueman crossover logic only
+- it does not procedurally enforce encounters or meetings yet
+- it does not change Current Synthesis routing
+- it does not change Hollow Grove recursion

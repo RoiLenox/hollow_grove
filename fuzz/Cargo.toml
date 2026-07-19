@@ -1,0 +1,42 @@
+[package]
+name = "hollow-grove-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2024"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+
+[dependencies.hollow-grove]
+path = ".."
+
+[[bin]]
+name = "decision_input"
+path = "fuzz_targets/decision_input.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "decision_trace_replay"
+path = "fuzz_targets/decision_trace_replay.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "recipe_compiler"
+path = "fuzz_targets/recipe_compiler.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "snapshot_boundaries"
+path = "fuzz_targets/snapshot_boundaries.rs"
+test = false
+doc = false
+bench = false

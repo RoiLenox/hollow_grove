@@ -32,6 +32,7 @@ Scene intent can drift into a different scene type when bias pressure persists o
 - sustained `aura` accumulation pulls scenes toward exposure, drift, shimmer, and unstable edges
 - mixed unresolved pressure preserves Split Trace longer instead of forcing a clean resolution
 - repeated crossings can stabilize a scene back into exchange even after warning or ambiguity
+- a preserved HAL/Cleo relay packet slows drift by holding one shared confirmation point across surface and underground layers
 
 ## Status
 
@@ -44,8 +45,9 @@ Scene intent can drift into a different scene type when bias pressure persists o
 
 ## Artifact Inputs
 
-Hueman Scene Intent bytes: 5301.
-Hueman Link Physics bytes: 2330.
+Hueman Scene Intent bytes: 7171.
+Hueman Link Physics bytes: 3086.
+Current Synthesis collision relay bytes: 3022.
 
 ## Boundary Reminder
 

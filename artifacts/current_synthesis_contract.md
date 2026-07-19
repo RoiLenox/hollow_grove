@@ -20,6 +20,13 @@ The chosen side and the complementary side remain distinct without execution.
 - the user-facing side and the opposing side stay mirrored across one axis
 - the axis may not collapse both clients into one side
 
+## HAL/Cleo Collision Relay
+
+- when HAL and Cleo collide at one joint crossing, HAL may contribute surface-side complementary alignment
+- when HAL and Cleo collide at one joint crossing, Cleo may contribute underground route continuity from below Clouseau's path
+- the useful relay function is to confirm that one visible route condition and one underground inverse condition belong to the same event body
+- no live relay executes yet
+
 ## Contract Status
 
 - no traversal
@@ -30,8 +37,8 @@ The chosen side and the complementary side remain distinct without execution.
 
 ## Artifact Inputs
 
-Current Synthesis choice bytes: 506.
-Current Synthesis clients bytes: 667.
+Current Synthesis choice bytes: 507.
+Current Synthesis clients bytes: 1320.
 
 ## Boundary Reminder
 

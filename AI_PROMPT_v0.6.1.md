@@ -29,6 +29,7 @@ AI Prompt
 - AI prompt consumes artifacts only.
 - Kernel is unchanged.
 - `KernelPass` is unchanged.
-- `niri`/`river` configs are untouched.
+- `niri`/`river` layout configs are untouched.
+- A narrow `niri` bridge may still name/focus the HollowGrove workspace and manage overview state.
 - Flow remains one-way.
 - Do not mutate the kernel. Interpret only.

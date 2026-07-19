@@ -9,11 +9,13 @@ Triway
 ↓
 HollowGrove
 ↓
-GroveSeam
+GroveSeam [PlebExterior]
 ↓
-HollowBeam
+HollowBeam [BlepReturn]
 ↓
-landed Symptom 2
+landed Symptom 2 [BlepArrival]
+↓
+Point
 ```
 
 ## Structured Snapshot Reference

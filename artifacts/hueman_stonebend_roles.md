@@ -2,29 +2,54 @@
 
 ## Structural Rule
 
-Stonebend carries a three-part civic power that belongs to Hueman's world layer and remains vertically integrated above Current Synthesis and Hollow Grove.
+Stonebend carries Name It and Craft through a three-part civic balance that belongs to Hueman's world layer and remains vertically integrated above Current Synthesis and Hollow Grove.
 
-## Stonebend Power Triad
+## Role Definitions
 
-- Proliteriate
-- Hypergiant
-- Freemason
+- Proletariat bears labor witness, shared burden, and the right to challenge false Title from below.
+- whoever holds the Hypergiant Crown is Hypergiant: visible Title, public naming, and outward negotiation without sovereign exemption.
+- Hypergiant is the Stonebend office that possesses the Troglodyte when Title has to descend into the deepest burden form.
+- Freemason tests craft, structure, and whether the named form can actually carry load.
+
+## Creature Rank Ladder
+
+- Stonebend's creature ladder rises through Gremlin -> Goblin -> Ghoul -> Troll -> Ork -> Ogre -> Troglodyte.
+- Gremlin marks the apprentice pressure-reader who learns scrap cunning, hidden seams, and first burden claims.
+- Goblin marks the named craft worker who can hold one public job, one claim, and one visible tool burden.
+- Ghoul marks the rank where the worker can stay with ruin, salvage, and difficult remains without losing structural judgment.
+- Troll marks stubborn endurance, bridge custody, and long-span structural holding.
+- Ork marks the war-labor rank: direct force, organized push, and contested build defense under pressure.
+- Ogre marks the heavy carrier who takes direct load transfer, breach work, and blunt material relocation.
+- Troglodyte marks the deepest Stonebend rank: understructure memory, cavern authority, and last-burden custody.
 
 ## Power Balance
 
-- Proliteriate, Hypergiant, and Freemason hold equal power inside Stonebend.
-- Hypergiant is the public face of the triad, not a higher authority.
-- public representation does not override equal internal standing.
-- no single role may collapse the triad into a solo rule.
+- Proletariat, Hypergiant, and Freemason hold Stonebend's constitutional balance as Title, Labor, and Craft.
+- Hypergiant is the public face of the balance, not a higher authority than the others.
+- the office of Hypergiant may not remain vacant; if the Crown is broken, opposed, or lost, another bearer must be raised.
+- the Proletariat and the Freemason may each oppose the Hypergiant Crown, alone or together, if the Title is no longer legitimate.
+- either office may take the Crown and become Hypergiant, and both may move against it at once.
+- no single role may collapse the balance into solo rule.
 
-## Vertical Integration
+## Stonebender
 
-- Stonebend remains the East-facing `gremlin` start on the Fourway.
-- the civic triad is a Hueman/world governance layer attached to that start.
-- Geralds are the people of Stonebend and carry the city's common civic body.
-- Stonebend mines diamonds.
-- Stonebend uses hollow current with diamond yield to produce mercury mirror as its main export.
-- Current Synthesis remains the lower operating layer beneath this governance.
+- the Stonebender is the public proving ground at Stonebend where Hypergiant, Proletariat, and Freemason may contest supremacy without pretending the constitution is peaceful.
+- the Stonebender takes place in a Stonehenge-like arena at Stonebend: standing-stone rings, ritual lanes, weapon circles, burden relays, and last-standing contests under public witness.
+- Hypergiant enters as visible title and reigning crown pressure.
+- Proletariat enters as labor force, crowd will, and below-title challenge made bodily.
+- Freemason enters as structural discipline, engineered force, and proof that craft can defeat mere mass or spectacle.
+- the Stonebender does not replace the Crown, but it is the grand public pressure test that may justify opposition, succession pressure, or renewed legitimacy.
+
+## Constitutional Role
+
+- Stonebend carries Name It and Craft across both Hueman and Hollow Grove-facing interpretation.
+- Goblin is Stonebend's confirmed Current-origin path, but Stonebend is not reduced to a form ladder.
+- Stonebend mines diamonds and reflective mineral structures.
+- Stonebend separates hollow current from regular current before reflective craft begins.
+- Stonebend uses Hollowing and reflective craft to produce Mercury Mirror rather than treating Hollowing as ordinary synthesis.
+- Mercurite is the accepted hard branch for Stonebend-made structural bearing.
+- Stonebend's signature pressure action is reallocation.
+- Current Synthesis remains a lower operating layer beneath this governance.
 - Hollow Grove remains the recursive core beneath both.
 
 ## Status
@@ -37,8 +62,8 @@ Stonebend carries a three-part civic power that belongs to Hueman's world layer 
 
 ## Artifact Inputs
 
-Hueman Start Choices bytes: 1041.
-Hueman Fourway bytes: 1086.
+Hueman Start Choices bytes: 1365.
+Hueman Fourway bytes: 1457.
 
 ## Boundary Reminder
 

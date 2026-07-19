@@ -492,7 +492,7 @@ const TROSS_ROLE_SECTIONS: [HuemanSectionDefinition; 7] = [
             "Merman is a sea-current form a Flyntian Gargoyle must hunt and harvest along the Riptide when opal flow, reflective depth, and Pixy fluidity turn seaward.",
             "Werewolf is a feral land-hunt form a Flyntian Gargoyle must hunt and harvest in Aura Basin when Gremlin aggression and night-pressure turn predatory and upright.",
             "Chimera is its own completed synthesis recipe and form: the successful synthesis of Gargoyle, Merman, and Werewolf into one composite war-body with multiple instincts held at once.",
-            "Manticore is the later apex synthesis recipe mastered after Chimera: the face-bearing body with ranged deterrence, territorial memory, armored posture, difficult outward reach, and the final Flynt form that can oppose Stonebend's Troglodyte.",
+            "Manticorp Form is the perfected composite achieved through candidate-specific Chimera refinement and ExecutiveMastery; it is not another causal synthesis recipe.",
             "these creature ranks do not replace Tross, Delinquent, Juvenile, Wardens, or the White Dwarfs; they describe growth inside Flynt's mixed engineering lineage.",
         ],
     },
@@ -505,16 +505,16 @@ const TROSS_ROLE_SECTIONS: [HuemanSectionDefinition; 7] = [
             "Werewolf remains the Aura Basin branch: it must be hunted and harvested on land by a Gargoyle and brought back through the guarded Flynt line as verified proof.",
             "Merman remains the Riptide branch: it must be hunted and harvested on the water rim by a Gargoyle and brought back through the same line as verified proof.",
             "Chimera only counts after Gargoyle, Werewolf, and Merman have each been separately mastered and then recombined into one completed synthesis recipe.",
-            "Manticore is not Chimera under another name; it is the later mastered escalation opened after Chimera through a harder Contracore-facing ordeal.",
-            "only a mastered Manticore may challenge Tross for Contracore, because challenge body and ruling office must remain distinct.",
+            "Manticorp Form is not Chimera under another name; it is achieved only after a candidate's completed Chimera undergoes ChimeraRefinement and ExecutiveMastery.",
+            "ExecutiveMastery alone grants no office: ConstitutionalRecognition must acknowledge that existing mastery, and matching LawfulAccession must follow before the candidate holds Tross.",
         ],
     },
     HuemanSectionDefinition {
         title: "Role Definitions",
         lines: &[
-            "whoever holds Contracore is Tross: the line head and first recognizer of what is actually present in Flynt's field.",
-            "the office of Tross may not remain vacant; if Contracore changes hands, the next holder is Tross immediately.",
-            "only someone who has mastered the Manticore recipe and form may challenge Tross for Contracore.",
+            "Tross is the Flynt executive office: the line head and first recognizer of what is actually present in Flynt's field.",
+            "ConstitutionalRecognition acknowledges already-proven ExecutiveMastery and never creates mastery or assigns Tross.",
+            "only matching LawfulAccession after ConstitutionalRecognition may activate a Tross office holder.",
             "Delinquent guards West by challenging false certainty, rejected routes, and brittle plans.",
             "Juvenile guards East by protecting beginnings, apprenticeship, and not-yet-recognized worth.",
             "Wardens keep the common route body, infrastructure continuity, and public engineering substrate of Flynt.",
@@ -748,8 +748,8 @@ const FLYNT_PROCEDURE_LINES: &[&str] = &[
     "Flynt uses Aura Basin as the near land-hunt ground for Gargoyle versus Werewolf conflict, then lifts yield upward into Aura Ridge circulation rather than keeping the kill buried where it fell.",
     "Flynt uses the Riptide as the roaming water rim where Mermen are pursued, harvested, and brought back into the same circulation spine.",
     "Werewolf proof returns from Aura Basin while Merman proof returns from the Riptide, and neither branch can open before Gargoyle mastery is verified.",
-    "Flynt treats forms as explicit recipes: Gargoyle first, then the harder hunts that open Merman and Werewolf toward Chimera and Manticore.",
-    "Chimera is the first true recombination body of those mastered branches, while Manticore is the later challenge body opened only after Chimera rather than a synonym for it.",
+    "Flynt's causal form recipe combines Gargoyle, Merman, and Werewolf into Chimera; Manticorp Form is achieved later through candidate-specific refinement and ExecutiveMastery rather than another composition recipe.",
+    "ConstitutionalRecognition acknowledges existing Manticorp Form mastery, and only matching LawfulAccession activates the Tross office.",
     "opal extraction follows the guarded line body rather than an unbounded field claim.",
     "regular current and holographic aura carry opal yield outward as Opal Oil without breaking the guarded line body.",
     "recipe discovery in Flynt is field work, hunt pressure, and route puzzle rather than quiet inheritance.",
@@ -2780,8 +2780,8 @@ mod tests {
         assert!(output.contains("recognition and engineering run as a west-to-east helper line"));
         assert!(output.contains("Gremlin is Flynt's confirmed Current-origin path."));
         assert!(output.contains("Flynt progression is recipe-gated rather than hereditary"));
-        assert!(output.contains("Manticore is not Chimera under another name"));
-        assert!(output.contains("whoever holds Contracore is Tross"));
+        assert!(output.contains("Manticorp Form is not Chimera under another name"));
+        assert!(output.contains("Tross is the Flynt executive office"));
         assert!(output.contains("Delinquent guards West"));
         assert!(output.contains("Hueman Fourway bytes: 7."));
     }

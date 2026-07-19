@@ -1,29 +1,29 @@
 # Hueman Start Paths v0.1.0
 
-Date: 2026-07-07
+Date: 2026-07-09
 
 ## Rule
 
-Each Fourway start enters `AuraTriad` through a first descriptive region before any procedural mechanics exist.
+Opening path studies remain descriptive and provisional.
+The player begins as Hueman near Aura Ridge, and route studies describe how nearby regions can open toward the kingdoms without forcing an immediate form lock.
 
-## Route Order
+## Current Route Study
 
-- Flynt = `goblin` = `Aura Basin` -> `Aura Fields` -> `Aura Beach`
-- Stonebend = `gremlin` = `Aura Fields` -> `Aura Basin` -> `Aura Beach`
-- Glaushouse = `pixy` = `Aura Beach` -> `Aura Fields` -> `Aura Basin`
-- Sandmanor = `sprite` = `Aura Beach` -> `Aura Basin` -> `Aura Fields`
+- Flynt-facing approach: `Aura Basin` -> `Aura Fields` -> `Aura Beach`
+- Stonebend-facing approach: `Aura Fields` -> `Aura Basin` -> `Aura Beach`
+- Glaüshouse-facing approach: `Aura Beach` -> `Aura Fields` -> `Aura Basin`
+- Sandmanor-facing approach: `Aura Beach` -> `Aura Basin` -> `Aura Fields`
 
-## First Entry
+## Meaning
 
-- Flynt enters `Aura Basin` first.
-- Stonebend enters `Aura Fields` first.
-- Glaushouse enters `Aura Beach` first.
-- Sandmanor enters `Aura Beach` first.
+- these are route tendencies, not mandatory spawn classes
+- the route body remains circular after first entry
+- route order should support different moods of approach without rewriting bedrock placement
 
 ## Boundary
 
-- This is descriptive Hueman route order only.
-- It does not procedurally enforce movement yet.
-- It does not change the Fourway start roster.
-- It does not change Current Synthesis occupancy.
-- It does not change Hollow Grove recursion.
+- this is descriptive Hueman route order only
+- it does not procedurally enforce movement yet
+- it does not change the Fourway map
+- it does not change Current Synthesis occupancy
+- it does not change Hollow Grove recursion

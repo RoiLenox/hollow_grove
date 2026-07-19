@@ -5,3 +5,5 @@ edition = "2024"
 default-run = "hollow-grove"
 
 [dependencies]
+hollow-grove-kernel = { path = "hollow-grove-kernel" }
+officials-and-outlaws = { path = "officials-and-outlaws" }

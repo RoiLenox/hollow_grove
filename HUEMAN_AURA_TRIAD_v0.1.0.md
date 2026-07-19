@@ -1,10 +1,10 @@
 # Hueman Aura Triad v0.1.0
 
-Date: 2026-07-07
+Date: 2026-07-09
 
 ## Rule
 
-`AuraTriad` is the three-region resolution beneath `Fourway` and above `Triway`.
+`AuraTriad` remains the current three-region route study beneath `Fourway` and above `Triway`.
 
 ## Stack
 
@@ -28,25 +28,20 @@ Aura Basin
 Aura Fields
 ↓
 Aura Beach
+↓
+Aura Basin
 ```
 
 ## Meaning
 
-- `AuraTriad` is the world-facing three-region route body beneath `Fourway`.
-- Current Synthesis already records these as inverse-route regions.
-- Hueman reads them as the triadic resolution of the world map.
-- Hueman can attach descriptive region behavior here without changing lower layers.
-- `Triway` remains the lower recursive split after this layer.
-
-## PLEB And META
-
-- `PLEB` and `META` remain Current Synthesis occupancy semantics.
-- `AuraTriad` does not move `PLEB` or `META` into the kernel.
-- `AuraTriad` does not redefine `Triway`.
+- `AuraTriad` is a route and regional reading, not the whole constitution
+- `AuraTriad` helps stage opening movement, atmosphere, and crossover studies
+- it must not become a universal holding pen for every unresolved idea
+- `Triway` remains the lower recursive split after this layer
 
 ## Boundary
 
-- `AuraTriad` belongs to Hueman as world reading.
-- the source geography remains readable from Current Synthesis.
+- `AuraTriad` belongs to Hueman as world reading
+- source geography may still be read from Current Synthesis where useful
 - no feedback into Current Synthesis
 - no feedback into Hollow Grove
