@@ -93,7 +93,7 @@ pub const SCENARIO_CATALOG: &[ScenarioDescriptor] = &[
         name: "gnome-minotaur",
         category: ScenarioCategory::RegionalSynthesis,
         expectation: ScenarioExpectation::Accepted,
-        summary: "Gnome to Minotaur in the Aura Fields with typed stewardship",
+        summary: "Gnome to Minotaur in the Aura Field with typed stewardship",
     },
     ScenarioDescriptor {
         name: "elf-centaur",
@@ -117,7 +117,7 @@ pub const SCENARIO_CATALOG: &[ScenarioDescriptor] = &[
         name: "gnome-minotaur-wrong-region",
         category: ScenarioCategory::Failure,
         expectation: ScenarioExpectation::Rejected,
-        summary: "Gnome without Aura Fields standing attempts Minotaur Synthesis",
+        summary: "Gnome without Aura Field standing attempts Minotaur Synthesis",
     },
     ScenarioDescriptor {
         name: "elf-centaur-wrong-region",
@@ -153,7 +153,7 @@ pub const SCENARIO_CATALOG: &[ScenarioDescriptor] = &[
         name: "centaur-fields-claim",
         category: ScenarioCategory::Failure,
         expectation: ScenarioExpectation::Rejected,
-        summary: "Centaur claims Minotaur-only Aura Fields stewardship",
+        summary: "Centaur claims Minotaur-only Aura Field stewardship",
     },
     ScenarioDescriptor {
         name: "kernel-wave",
@@ -1162,7 +1162,7 @@ pub fn run_rejected_assignment_scenario(
         scenario
             .runtime
             .require_stewardship(&scenario.result)
-            .expect_err("Centaur must not hold Aura Fields stewardship")
+            .expect_err("Centaur must not hold Aura Field stewardship")
     };
     let event_count_after = scenario.runtime.events().len();
     Ok(RejectedRegionalAssignmentScenario {

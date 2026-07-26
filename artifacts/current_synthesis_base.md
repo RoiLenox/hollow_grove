@@ -11,19 +11,19 @@ Hollow Grove remains the stable recursive core.
 ## Canonical Witness
 
 ```text
-start Symptom 1
+Point
 ↓
 Triway
 ↓
+Fourway
+↓
 HollowGrove
 ↓
-GroveSeam [PlebExterior]
+CurrentSeam [PlebExterior]
 ↓
-HollowBeam [BlepReturn]
+AuraBeam [BlepReturn]
 ↓
-landed Symptom 2 [BlepArrival]
-↓
-Point
+Point² (Landed Point) [BlepArrival]
 ```
 
 ## Frozen Snapshot Boundary
@@ -31,7 +31,7 @@ Point
 - exterior ingress: `PlebExterior`
 - complementary return: `BlepReturn`
 - landed route: `BlepArrival`
-- universal landed point: `Point`
+- universal landed point: `Point²`
 - Current Synthesis consumes this boundary as its primary Hollow Grove interface.
 
 ## Artifact Layer Status
@@ -40,9 +40,9 @@ Point
 - `artifacts/consumer_prompt.md`: present and read-only.
 - `artifacts/desktop_status.txt`: present and read-only.
 
-Snapshot bytes: 564.
-Prompt bytes: 439.
-Desktop status bytes: 289.
+Snapshot bytes: 587.
+Prompt bytes: 437.
+Desktop status bytes: 7723.
 
 ## Current Synthesis
 

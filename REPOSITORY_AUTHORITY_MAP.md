@@ -3,31 +3,121 @@
 Status: review and consolidation guide
 Purpose: make repository ownership visible without creating new domain law
 
+## Constitutional Root
+
+`HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md` is the Hollow Grove Constitution. Its
+filename preserves draft provenance; its current internal status is
+authoritative. It connects the four House constitutions and governs shared
+constitutional interoperability without becoming a fifth House or superior
+sovereign.
+
+`HOLLOW_GROVE_CONSTITUTIONAL_ARCHITECTURE_V1.md` is the authoritative map of
+that architecture. It creates no additional law.
+
+`HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md` is the detailed normative
+Bond and Constitutional Runtime specification beneath the Compromise. It is not
+a second shared constitution.
+
+`HOLLOW_GROVE_CORE_v1.0.0.md` is product, system, kernel, and architectural
+context. It is not a source of constitutional precedence.
+
 ## Read Order
 
 Use this order when reviewing Hollow Grove V2:
 
-1. `HOLLOW_GROVE_V2_CAPABILITY_REPORT.md` for the guided tour.
-2. `V2_CAPABILITY_MATRIX.md` for a compact support and failure map.
-3. `V2_CAPABILITY_INVENTORY.md` for exact types, paths, gaps, and stability.
-4. `HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md` for normative law.
-5. House constitutions for the authority assigned to each House.
-6. `src/constitutional/` for production enforcement.
-7. `examples/` and `tests/` for executable proof.
-8. `artifacts/` only for generated or runtime-facing projections.
+1. `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md` for the Hollow Grove Constitution.
+2. `HOLLOW_GROVE_CONSTITUTIONAL_ARCHITECTURE_V1.md` for the authority and
+   dependency map.
+3. `HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md` for normative Bond and
+   Constitutional Runtime law.
+4. House constitutions, including `STONEBEND_CONSTITUTION_V2.md`,
+   `SANDMANOR_CONSTITUTION_V2.md`, `GLAUSHOUSE_CONSTITUTION_V2.md`, and
+   `FLYNT_CONSTITUTION_V2.md`, for each House's domain.
+5. `MINOAN_COUNTY_COURT_SYSTEM_AND_RESTITUTION_CYCLE_V1.md` for the shared
+   judiciary, amendment-process review, and Restitution.
+6. `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md` for world-facing route law.
+7. `CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md` for Aura Ridge's public economy,
+   Central Junction, the four indexes, market authorities, and settlement law.
+8. `HUEMAN_v0.1.0.md` for the Hueman constitutional entry point and
+   `HUEMAN_FACULTIES_V1.md` for specialized Body/Spirit/Mind/Soul faculty law.
+9. `HOLLOW_GROVE_V2_CAPABILITY_REPORT.md`, `V2_CAPABILITY_MATRIX.md`, and
+   `V2_CAPABILITY_INVENTORY.md` for observational capability status.
+10. `HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md` for the executable
+   twelve-field lived-lore contract across all four Houses.
+11. `src/constitutional/` and `src/world/` for production enforcement and
+    additive deterministic world law.
+12. `examples/` and `tests/` for executable proof.
+13. `artifacts/` only for generated or runtime-facing projections.
 
 ## Authority Classes
+
+### Constitutional Compact
+
+- `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md` is the authoritative shared
+  Constitution. Its filename records historical provenance.
+- `HOLLOW_GROVE_CONSTITUTIONAL_ARCHITECTURE_V1.md` maps that authority without
+  creating a second constitution.
+
+### Active Synthesis Drafts
+
+The following documents guide additive lore and gameplay work without
+superseding locked constitutional authority:
+
+- `FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md` defines the proposed
+  Pimp/Hoes and Gimp/Goons Boardwalk polarity above locked Flynt and route law;
+- `BOARDWALK_GOON_BOND_VERTICAL_SLICE_V1_DRAFT.md` specifies the first
+  returning-Goon implementation case and its acceptance boundary;
+- `HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md` records the now-executable
+  integration contract and the twelve additive lived loops without changing
+  locked House law.
+
+Drafts may name conflicts, proposals, presentation language, and implementation
+order. They may not create constitutional authority, claim an unavailable
+runtime capability, or silently resolve a disagreement with normative law.
 
 ### Normative Constitutional Law
 
 These sources define meaning and legality:
 
-- `HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md`;
-- `STONEBEND_CONSTITUTION_V1_DRAFT.md`;
-- `SANDMANOR_CONSTITUTION_V1_DRAFT.md`;
-- `GLAUSHOUSE_CONSTITUTION_V1_DRAFT.md`;
+- `HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md`, within the shared Bond and
+  Constitutional Runtime domain delegated by the Compromise;
+- `HOLLOW_GROVE_VISUAL_COLOR_CONSTITUTION.md` and its sole executable palette,
+  `src/constitutional/hollow_grove_visual_color_palette.json`;
+- `STONEBEND_CONSTITUTION_V2.md`;
+- `STONEBEND_AURA_WAY_AETHER_HOLLOWING_FOUNDATION_V1.md` for the bounded
+  vertical law, standard Aura Way, material Hollowing, batch provenance,
+  proofed Aether, regional stone profiles, and Aura refraction first pass;
+- `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md` for Stonebend's three
+  bidirectional gates, independent Title scopes, Diamond bearer continuity,
+  Claim/Title/Yield offices, distributed Proliteriate mandates,
+  challenge/removal, Tombstones, and Lazerhorn succession;
+- `STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md` for the
+  shared Stonebend Title lifecycle, recognition/activation boundary,
+  maintenance, renewal, targeted intervention, restoration, Diamond vacancy
+  continuity, independent Forge replacement, and Proliteriate continuity;
+- `SANDMANOR_CONSTITUTION_V2.md`;
+- `SANDMANOR_CONSTITUTIONAL_AUDIT_V2.md` (repository conformance evidence for
+  the ratified Sandmanor House law);
+- `GLAUSHOUSE_CONSTITUTION_V2.md`;
+- `GLAUSHOUSE_CONSTITUTIONAL_AUDIT_V2.md` (repository conformance evidence for
+  the ratified Glaüshouse House law);
 - the existing Flynt constitutional law and conformance surfaces;
+- the locked Flynt institutional hierarchy in `FLYNT_CONSTITUTION_V2.md` and the executable `flynt-constitution` crate;
+- `FLYNT_DUAL_LEADERSHIP_AND_MANTICORP_RECIPE_V1.md` for the normative Flynt
+  identity lock, maintained Continuance law, Manticorp Form/Institution split,
+  divided Recipe custody, Basin leadership, and Synthesis Ledger;
+- `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md` for the locked route identities, dominant verbs, purposes, and House-boundary process pairs;
+- `CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md` for the Four-Pole productive
+  matrix, one unnamed ordinary currency, Central Junction district, South
+  Ridge Exchange, Junction Board, Clearing House, Junction Wire, public
+  indexes, and lawful event settlement;
+- `MINOAN_COUNTY_COURT_SYSTEM_AND_RESTITUTION_CYCLE_V1.md` for the one shared
+  judiciary hosted by the Minoans, five-stage case cycle, amendment-process
+  review, ratification boundaries, and Restitution;
+- `HUEMAN_v0.1.0.md` as the Hueman constitutional entry point;
 - `SANDMANOR_LINEAGE_LOCK_v1.md`;
+- `HUEMAN_FACULTIES_V1.md`, the additive canonical ownership and bounds for
+  Presynce, Resynce, Precog, Prefog, and Prefig;
 - `CURRENT_SYNTHESIS_HOLLOW_GROVE_WORLD_CONTEXT_v0.1.0.md` for the existing
   world and ontology context incorporated by the runtime.
 
@@ -47,9 +137,129 @@ kernel:
 - `application.rs`: the presentation-facing owner of a selected runtime and
   archive;
 - `trace.rs` and `tui.rs`: read-only observation and transport projection.
+- `visual_identity.rs`: canonical visual palette loading, validation, semantic
+  access, and renderer-facing palette construction.
+
+`flynt-constitution` is the sole executable authority for Flynt's Tross-rooted
+hierarchy, stable Tross/Mystery Man/Mr. X identity, Chimera and maintained
+Manticorp Form, Manticorp Institution, divided Recipe custodians, founding
+lineages, and Gallowry distinction. `src/world/flynt.rs` is its neutral world
+projection and must validate against that authority before its catalog is
+merged.
+
+`src/world/stonebend.rs` is the executable Stonebend-specific authority above
+the frozen Constitutional Runtime V2. It validates the singular Hypergiant,
+Proliteriate/Freemason power separation, Name and Title records, accession,
+Seals, lawful Hollowing, extracted-Hollow custody, renaming, succession, and
+Tombstones. `src/world/house_institutions.rs` is its neutral institutional
+projection. Neither module may grant Sandmanor proof, Glaüshouse clearance or
+Synthesis, Flynt recognition, or recursion-kernel authority.
+
+`src/world/stonebend/foundation.rs` is the bounded first-pass material and
+advancement projection. It reuses stable identity, evidence, decision, and
+Seal IDs for Aura Way stages, Current and Aether batches, authorization,
+essential fractions, proof, provenance, regional stone formation, and Aura
+manifestation. It neither extends Stonebend government nor replaces the parent
+registry's subject-Hollowing law.
+
+`src/world/stonebend/second_pass.rs` is the bounded second-pass constitutional
+projection. It reuses the parent module's stable Title, Name, evidence,
+decision, Seal, succession, and Tombstone IDs plus the common challenge, office,
+institution, identity, route, and Central Junction corridor identities. It
+owns no parallel generic registry. It validates exactly three principal gates;
+one core Title with independent scopes; Diamond tenure and vacancy; independent
+Freemason examination; distributed Proliteriate nodes, mandates, and temporary
+witnesses; one-challenge/two-remove concurrence; Tombstone-linked removal;
+Lazerhorn succession; and delegated Claim/Title/Yield gate accountability.
+
+`src/world/stonebend/third_pass.rs` is the bounded third-pass lifecycle and
+continuity adapter. It composes `StonebendTitleCore`, gate scopes,
+`GateFailureKind`, `DiamondState`, office Tombstones, the Proliteriate network,
+and existing stable identities with the common Bond event discipline. It
+validates semantic Title stages; separate recognition and activation;
+maintenance and renewal; targeted intervention and restoration; terminal
+Tombstones; bounded Diamond-vacancy action; independent High Freemason
+replacement; network continuity; and temporal Claim/Title/Yield review. It
+does not create a second universal lifecycle, persistence schema, Regent,
+fourth office, court, or criminal process.
+
+`src/world/glaushouse.rs` is the executable Glaüshouse-specific authority above
+the singular Prima Donna office; the universal Nightingale foundation; equal
+Matron and Marshal branches; multiple Persephones; stable-person advancement
+Tokens; open candidacy; Synthesis depth, lifecycle, Continuance, maintenance,
+renewal, two-way rejection, technical and lived viability; distinct Living and
+Recipe Ledgers; diagnosis, capacity, explicit consent, scoped clearance,
+operator privilege, material provenance, recovery, review, custody, and
+institutional succession. `src/world/house_institutions.rs` projects the
+House-wide medical constitution, Glauspitals, Chromacord, the Nightingales,
+Prima Donna office, and clinical ranks into neutral institutional records.
+These modules do not prove a Sandmanor design, create a Stonebend Title, grant
+Flynt recognition, replace common Bond Synthesis Resolution, or enter the
+recursion kernel.
+
+`src/world/central_junction.rs` is the deterministic public-economy model above
+the frozen runtime. It owns Four-Pole classification, work disposition,
+neutral currency amounts, Central Junction geography and institutions, public
+index definitions and calculation authorities, stable enterprise/project
+classification, event-contract recognition, settlement, publication, and
+direct conflict-of-interest rejection. It does not execute runtime trading,
+combat, movement, transformation, party, rendering, or kernel behavior.
+
+`src/world/sandmanor.rs` is the executable Sandmanor-specific authority above
+the frozen Constitutional Runtime V2. It validates equal Minorian and Minoan
+traditions, designs, methods, claims, evidence, demonstrations, failure,
+reproduction, criticism, proof, recipes, reciprocal teaching, the Contest of
+Improvement, singular Sandman accession, assessment, credentials,
+apprenticeship, standards, emergency review, regional proof, and knowledge
+obligation succession. It reuses `src/sandmanor_lineage.rs` and the common
+regional Synthesis authority rather than creating another lineage or
+transformation engine. These modules cannot grant Stonebend Title, Glaüshouse
+clearance or consent, Flynt recognition, execute Synthesis, or enter the
+recursion kernel.
+
+`src/world/hueman_faculties.rs` is the narrow typed faculty layer above the
+frozen runtime. It fixes House/subtradition ownership, uncertainty and evidence
+bounds, the equal Prefog/Prefig Soul cycle, exact regional manifestations, the
+Presynce ladder, and distinct We Fairy Men/Gallows Resynce jurisdictions.
+`SynthesisRecipe.faculty_manifestations` stores optional declarations. Recipe
+compilation validates them but emits no additional scripts; the existing
+deterministic decision and proof lifecycles remain authoritative.
 
 The two recursion kernels remain below this layer and own no constitutional
 geography, authority, evidence, or regional Synthesis decision.
+
+`src/world/geography.rs` is the neutral executable projection of constitutional route law. It validates route purpose and boundary coherence above Constitutional Runtime V2, and may not be imported by the recursion kernel, `src/constitutional/`, or `flynt-constitution`.
+
+`src/world/lived_lore.rs` is the executable Compromise integration layer. It
+requires all twelve functional-lore fields, three loops per House, all ten
+routes, exact live House authority, deterministic persistence, and failure or
+refusal. It may consume constitutional and institutional facts but cannot
+create an office, substitute one House act for another, or import the recursion
+kernel.
+
+### Gameplay Orchestration
+
+`src/gameplay/` is the presentation-neutral party-RPG coordination layer above
+the constitutional and world runtimes. It owns stable gameplay continuity, the
+top-level game revision, atomic cross-runtime command application, and the
+append-only gameplay event sequence. It does not redefine Bond, House,
+regional Synthesis, institution, or recursion-kernel law.
+
+Gameplay House decisions resolve through the runtime-owned `WorldSession`.
+Schema-V2 dynamic institutional state persists current office holders; gameplay
+never falls back to `institutional_access_fixture`. Schema-V2 gameplay saves
+embed the exact institutional snapshot needed for replay.
+
+`GameApplicationService` is the preferred gameplay client boundary. Godot and
+other presentation clients may submit commands and read immutable events or
+views; they receive no mutable child-runtime access. The detailed boundary and
+world-migration decisions are recorded in
+`HOLLOW_GROVE_PARTY_RPG_AUTHORITY_V1.md`.
+
+`GameProtocolService` is the versioned transport-facing boundary above that
+application service. `hollow_grove_game_service` hosts it over stdio or
+loopback-only JSONL. Protocol schemas and Godot fixtures are projections; their
+presence does not make an unavailable intent authoritative or executable.
 
 ### Executable Proof
 
@@ -60,6 +270,63 @@ geography, authority, evidence, or regional Synthesis decision.
 - `examples/constitutional_v2_bench.rs`: dependency-free performance harness;
 - `tests/constitutional_*.rs` and `tests/regional_synthesis.rs`: conformance;
 - `tests/kernel_purity.rs`: kernel-boundary protection.
+- `tests/flynt_constitutional_architecture.rs` and the `flynt-constitution`
+  crate tests: Flynt uniqueness, superior, hierarchy, synthesis, projection,
+  and neutral-kernel proof.
+- `tests/flynt_documentation_conformance.rs` and
+  `src/bin/flynt_constitutional_audit.rs`: repository text conformance and the
+  deterministic Flynt constitutional audit.
+- `tests/constitutional_geography.rs`,
+  `tests/constitutional_geography_documentation.rs`, and
+  `src/bin/constitutional_geography_audit.rs`: route-purpose uniqueness,
+  boundary-flow, terminology, frozen-layer, documentation, and executable
+  geography proof.
+- `tests/stonebend_constitutional_architecture.rs`,
+  `tests/stonebend_documentation_conformance.rs`, and
+  `src/bin/stonebend_constitutional_audit.rs`: Stonebend authority placement,
+  selection order, registry invariants, neutral projection, migration,
+  terminology, and recursion-boundary proof.
+- `tests/stonebend_aether_hollowing_foundation.rs` and
+  `tests/stonebend_foundation_documentation.rs`: first-pass vertical law, Aura
+  Way ordering, material provenance, legal boundary, stone refraction,
+  nonexclusive stone behavior, documentation, and unchanged-domain proof.
+- `tests/stonebend_three_gates_offices.rs`,
+  `tests/stonebend_second_pass_documentation.rs`, and
+  `src/bin/stonebend_three_gates_audit.rs`: second-pass gates, scoped Titles,
+  Diamond, offices, Proliteriate mandates, removal, Tombstones, Lazerhorn, and
+  delegated accountability.
+- `tests/stonebend_title_lifecycle_continuity.rs`,
+  `tests/stonebend_third_pass_documentation.rs`, and
+  `src/bin/stonebend_title_lifecycle_audit.rs`: third-pass recognition,
+  activation, maintenance, renewal, targeted intervention, restoration,
+  vacancy continuity, independent Forge replacement, network continuity, and
+  temporal Claim/Title/Yield proof.
+- `tests/glaushouse_constitutional_architecture.rs`,
+  `tests/glaushouse_documentation_conformance.rs`, and
+  `src/bin/glaushouse_constitutional_audit.rs`: clinical authority placement,
+  consent/clearance/Synthesis invariants, institution projection, migration,
+  terminology, and recursion-boundary proof.
+- `tests/sandmanor_constitutional_architecture.rs`,
+  `tests/sandmanor_documentation_conformance.rs`, and
+  `src/bin/sandmanor_constitutional_audit.rs`: proof and Contest integrity,
+  exact civic equality and regional roles, singular accession, failure and
+  revision preservation, education, migration, terminology, and
+  recursion-boundary proof.
+- `tests/hueman_faculties.rs`: deterministic faculty codec/replay, ownership,
+  Recipe bounds, Soul equality, regional law, migration, and Resynce cultural
+  separation.
+- `tests/functional_lore_integration.rs`: twelve-field completeness, three
+  loops per House, ten-route coverage, non-substitution, live authority,
+  checksummed replay, vacant-office failure, and kernel isolation.
+- `tests/central_junction_constitutional_architecture.rs`,
+  `tests/central_junction_documentation_conformance.rs`, and
+  `src/bin/central_junction_constitutional_audit.rs`: Four-Pole classification,
+  one-currency separation, district and institution boundaries, public indexes,
+  stable listing identity, Blackroot event settlement, conflicts, Summit-term
+  preservation, generated projection, and frozen-runtime regression proof.
+- `tests/gameplay_boardwalk.rs`: all four typed outcomes, three active finite
+  relationship Bonds, protected independent return, authority persistence,
+  replay, and Godot boundary.
 
 Proof surfaces exercise production law. They do not possess independent domain
 authority.
@@ -88,6 +355,15 @@ generated mirror of
 `CURRENT_SYNTHESIS_HOLLOW_GROVE_WORLD_CONTEXT_v0.1.0.md`. The root document is
 authoritative; the artifact exists because runtime clients consume a stable
 artifact path.
+
+Sandmanor's completed guardian and succession authority is split deliberately:
+`SANDMANOR_CONSTITUTION_V2.md` remains the House constitution,
+`SANDMANOR_GUARDIAN_AND_SUCCESSION_V1.md` is its ratified detailed supplement,
+`src/world/sandmanor.rs` retains proof law, and
+`src/world/sandmanor/milestone.rs` owns the additive guardian, coast, Contest,
+crowd, and Sandman convergence validators. Glaüshouse's shared lifecycle types
+remain authoritative for maintained Synthesis; Flynt retains Manticorp
+command; Central Junction retains the single Design Index.
 
 Generated artifacts must either be reproducible, be an explicitly named golden
 fixture, or be ignored as local runtime state. File size alone does not make an
@@ -140,7 +416,7 @@ migration decision. It must not be deleted merely to reduce line count.
 
 `src/constitutional/mod.rs` keeps its implementation modules private and
 re-exports their public items through one flat façade. The façade currently
-contains thirteen module-wide re-exports and at least 187 top-level public
+contains fourteen module-wide re-exports and at least 187 top-level public
 types, constants, errors, and functions, including the stable identifier types
 declared by the ID macro.
 
@@ -159,6 +435,7 @@ declared by the ID macro.
 | `scenarios` | Reusable capability fixtures | Public support surface; candidate for a named support namespace |
 | `trace` | Read-only explanations derived from reducer outcomes | Public observability surface |
 | `tui` | Presentation-neutral commands, events, and stable wire encoding | Preferred terminal-client contract |
+| `visual_identity` | Canonical visual color validation and renderer-facing access | Retain; constitutional core and sole executable color authority |
 
 No dangerous public mutation constructor was found. `BondAggregate::apply` is
 crate-private, aggregate fields are private, runtime indexes are private,

@@ -96,6 +96,12 @@ The locked inherited Current Grip skill family now lives in:
 
 - `CURRENT_GRIP_INHERITANCE_V1.md`
 
+The canonical visual identity and House color domain now lives in:
+
+- `HOLLOW_GROVE_VISUAL_COLOR_CONSTITUTION.md`
+- `src/constitutional/hollow_grove_visual_color_palette.json` as its sole
+  executable palette authority
+
 Primary enforcement for that extension:
 
 - `src/hollow_grove_contract.rs`
@@ -111,7 +117,7 @@ Primary enforcement for that extension:
 
 Current ladder:
 
-- `Gremlin -> Goblin -> Ghoul -> Troll -> Ork -> Ogre -> Troglodyte`
+- `Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre -> Troglodyte`
 
 Aura ladder:
 
@@ -131,8 +137,11 @@ Current runtime references:
 ## Hollow / Hollowing / Hollowed
 
 - `Hollow` is the extracted interior resource materially represented by pus.
-- `Hollowing` extracts the useful interior while leaving the outer form.
-- `Hollowed` is the preserved remainder after extraction.
+- extraction `Hollowing` removes a bounded useful interior while preserving the
+  lawful remainder;
+- refinement `Hollowing` removes authorized burden while preserving essential
+  fractions, provenance, and the identity of the whole;
+- `Hollowed` records the post-operation remainder or continuing refined whole.
 
 Contract and fixtures:
 
@@ -154,11 +163,13 @@ Enforcement and generated artifacts:
 
 ## Nightingales
 
-- Nightingales directly represent white blood cells.
+- The Nightingales are Glaüshouse's constitutional clinical institution,
+  symbolically and functionally aligned with white blood cells.
 - House: Glaüshouse.
 - Medium: Current.
 - They are a civic-body correspondence rather than a literal species definition.
-- They are not a generic staff class or generic nurse species.
+- They are not a generic nurse species. Their lawful members may serve as
+  nurses, patient advocates, witnesses, and emergency clinical responders.
 
 Enforcement:
 
@@ -228,6 +239,57 @@ The Version 1.1 execution topology remains unchanged:
 - `Observe -> Generate -> Evaluate -> Choose -> Recipe -> Execute -> Point²`
 
 The semantic contract validates the handoff into this path. It does not rewrite it.
+
+## Stonebend Second-Pass Semantic Boundary
+
+Stonebend's generic gate category now resolves to exactly three principal
+facings: Flynt, Central Junction, and Sandmanor. Central Junction remains a
+district endpoint rather than a House. Mt. Aura remains Aether and a route
+ideal rather than a gate; Riptide remains Bathos on its established route.
+
+Name, Claim, Title, gate scope, Office, Mantle, Form, and License remain
+distinct. One stable core Title may carry independent Formation Recognition,
+Public Circulation, and Operational Deployment scopes. A scope record never
+creates a second core identity.
+
+Diamond is the stable sovereign Title; Hypergiant is its temporary bearer.
+Freemason carries Claim authority through the existing High Freemason office.
+The Proliteriate is a permanent distributed Yield network whose issue-specific
+witnesses are temporary and recallable. Spartacus is an archetype, not a
+fourth office.
+
+Challenge identity, office identity, node identity, mandate identity, witness
+identity, succession identity, and Tombstone identity are stable caller-supplied
+records. One power opens review; the other two distinct powers authorize
+removal. Hypergiant succession is ordered by semantic stage, requires The
+Lazerhorn, and cannot be replaced by insertion order, recommendation, lineage,
+or self-certification.
+
+Executable ownership is `src/world/stonebend/second_pass.rs`; normative
+ownership is
+`STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md`.
+
+## Stonebend Third-Pass Semantic Boundary
+
+Stonebend Title lifecycle is an adapter over the common Bond event discipline
+and the Second-Pass stable `StonebendTitleCore`. `TitleLifecycleStage` supplies
+explicit semantic order; insertion order never supplies meaning or identity.
+
+Recognition records a bounded Title. Activation separately permits exercise.
+Maintenance sustains an active term; renewal authorizes a further term without
+creating another Title. Limitation, supervision, suspension, remediation,
+restoration, and removal identify the exact constitutional layer affected.
+Restoration retains the interruption and evidence.
+
+Diamond vacancy supports only temporary bounded continuity actions with Claim,
+boundary, and Yield traces. No continuity record is a Regent, Hypergiant, or
+bearer of Diamond. Independent Forge review replaces a High Freemason without
+self-certification or unilateral appointment. Proliteriate network identity
+persists without a permanent speaker or fixed numerical threshold.
+
+Executable ownership is `src/world/stonebend/third_pass.rs`; normative
+ownership is
+`STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md`.
 
 Freeze and witness sources:
 

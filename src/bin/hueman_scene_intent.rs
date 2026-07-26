@@ -3,10 +3,10 @@ use std::path::Path;
 
 use hollow_grove::hueman_support::{
     CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH, CURRENT_SYNTHESIS_CONTRACT_ARTIFACT_PATH,
-    HUEMAN_GLAUSHOUSE_ROLES_ARTIFACT_PATH, HUEMAN_INVERSE_CIRCLE_ARTIFACT_PATH,
-    HUEMAN_LINK_PHYSICS_ARTIFACT_PATH, HUEMAN_SANDMANOR_ROLES_ARTIFACT_PATH,
-    HUEMAN_SCENE_PRESENCE_ARTIFACT_PATH, HUEMAN_STONEBEND_ROLES_ARTIFACT_PATH,
-    HUEMAN_TROSS_HELPERS_ARTIFACT_PATH, build_hueman_scene_intent_from_artifacts,
+    HUEMAN_FLYNT_CONSTITUTION_ARTIFACT_PATH, HUEMAN_GLAUSHOUSE_ROLES_ARTIFACT_PATH,
+    HUEMAN_INVERSE_CIRCLE_ARTIFACT_PATH, HUEMAN_LINK_PHYSICS_ARTIFACT_PATH,
+    HUEMAN_SANDMANOR_ROLES_ARTIFACT_PATH, HUEMAN_SCENE_PRESENCE_ARTIFACT_PATH,
+    HUEMAN_STONEBEND_ROLES_ARTIFACT_PATH, build_hueman_scene_intent_from_artifacts,
     hueman_scene_intent_artifact_path,
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
@@ -20,7 +20,8 @@ fn main() -> io::Result<()> {
         read_text_artifact(Path::new(CURRENT_SYNTHESIS_CONTRACT_ARTIFACT_PATH))?;
     let hueman_stonebend_roles =
         read_text_artifact(Path::new(HUEMAN_STONEBEND_ROLES_ARTIFACT_PATH))?;
-    let hueman_tross_helpers = read_text_artifact(Path::new(HUEMAN_TROSS_HELPERS_ARTIFACT_PATH))?;
+    let hueman_flynt_constitution =
+        read_text_artifact(Path::new(HUEMAN_FLYNT_CONSTITUTION_ARTIFACT_PATH))?;
     let hueman_glaushouse_roles =
         read_text_artifact(Path::new(HUEMAN_GLAUSHOUSE_ROLES_ARTIFACT_PATH))?;
     let hueman_sandmanor_roles =
@@ -32,7 +33,7 @@ fn main() -> io::Result<()> {
         &current_synthesis_collision_relay,
         &current_synthesis_contract,
         &hueman_stonebend_roles,
-        &hueman_tross_helpers,
+        &hueman_flynt_constitution,
         &hueman_glaushouse_roles,
         &hueman_sandmanor_roles,
         &hueman_inverse_circle,

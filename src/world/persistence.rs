@@ -7,12 +7,13 @@ use std::io;
 
 use crate::institution::{
     ClearanceLevel, GroupId, InstitutionId, InstitutionalBeingId, InstitutionalEntityId,
-    MembershipId, OfficeId, RoleId, SiteId, Visibility, ZoneId,
+    MembershipId, OfficeHolder, OfficeId, RoleId, SiteId, Visibility, ZoneId,
 };
 use crate::institution_affiliation::*;
 
 pub const INSTITUTIONAL_STATE_ARTIFACT_PATH: &str = "artifacts/institutional_state.txt";
-pub const INSTITUTIONAL_STATE_SCHEMA_VERSION: &str = "1";
+pub const INSTITUTIONAL_STATE_SCHEMA_VERSION: &str = "2";
+const LEGACY_INSTITUTIONAL_STATE_SCHEMA_VERSION: &str = "1";
 
 #[must_use]
 pub fn build_persisted_state_output(state: &InstitutionalWorldState) -> String {
@@ -113,6 +114,23 @@ pub fn build_persisted_state_output(state: &InstitutionalWorldState) -> String {
             ],
         );
     }
+    let canonical_holders = crate::world::canonical_institutional_world_state()
+        .catalog
+        .office_holders;
+    for entry in &state.catalog.office_holders {
+        if canonical_holders.contains(entry) {
+            continue;
+        }
+        record(
+            &mut output,
+            "office-holder",
+            &[
+                entry.office.as_str().into(),
+                entry.being.as_str().into(),
+                entry.active.to_string(),
+            ],
+        );
+    }
     output
 }
 
@@ -124,7 +142,10 @@ pub fn parse_persisted_state(
     let version = lines
         .next()
         .and_then(|line| line.strip_prefix("schema_version:"));
-    if version != Some(INSTITUTIONAL_STATE_SCHEMA_VERSION) {
+    if !matches!(
+        version,
+        Some(INSTITUTIONAL_STATE_SCHEMA_VERSION | LEGACY_INSTITUTIONAL_STATE_SCHEMA_VERSION)
+    ) {
         return Err(invalid("unsupported institutional state schema"));
     }
     let mut state = InstitutionalWorldState::from_catalog(catalog);
@@ -137,12 +158,30 @@ pub fn parse_persisted_state(
             .first()
             .ok_or_else(|| invalid("empty institutional record"))?;
         match kind {
-            "membership" => state.memberships.push(parse_membership(&fields)?),
+            "membership" => {
+                let membership = migrate_legacy_stonebend_membership(parse_membership(&fields)?);
+                let membership = migrate_legacy_glaushouse_membership(membership);
+                state
+                    .memberships
+                    .push(migrate_legacy_sandmanor_membership(membership))
+            }
             "sponsorship" => state.sponsorships.push(parse_sponsorship(&fields)?),
             "obligation" => state.obligations.push(parse_obligation(&fields)?),
             "claim" => state.claims.push(parse_claim(&fields)?),
-            "access-grant" => state.access_grants.push(parse_access_grant(&fields)?),
+            "access-grant" => {
+                state
+                    .access_grants
+                    .push(migrate_legacy_glaushouse_access(parse_access_grant(
+                        &fields,
+                    )?))
+            }
             "event" => state.events.push(parse_event(&fields)?),
+            "office-holder" if version == Some(INSTITUTIONAL_STATE_SCHEMA_VERSION) => {
+                let holder = parse_office_holder(&fields)?;
+                if !state.catalog.office_holders.contains(&holder) {
+                    state.catalog.office_holders.push(holder);
+                }
+            }
             _ => {
                 return Err(invalid(&format!(
                     "unknown institutional record at line {}",
@@ -155,6 +194,100 @@ pub fn parse_persisted_state(
         .validate()
         .map_err(|error| invalid(&format!("invalid institutional state: {error:?}")))?;
     Ok(state)
+}
+
+/// Legacy Stonebend membership records never manufacture constitutional
+/// authority during migration. The former labor-body role becomes ordinary
+/// Gerald civic standing. The former Freemason role becomes membership in the
+/// ratified Freemason institution. Defunct peer-role subgroups are discarded;
+/// the membership record itself and its historical timestamps remain intact.
+fn migrate_legacy_stonebend_membership(
+    mut membership: InstitutionalMembership,
+) -> InstitutionalMembership {
+    const LEGACY_LABOR_ROLE: &str = concat!("role.stonebend.prole", "tariat");
+    const LEGACY_LABOR_GROUP: &str = concat!("group.stonebend.prole", "tariat");
+    const LEGACY_FREEMASON_ROLE: &str = "role.stonebend.freemason";
+    const LEGACY_FREEMASON_GROUP: &str = "group.stonebend.freemason";
+
+    match membership.role_id.as_ref().map(RoleId::as_str) {
+        Some(LEGACY_LABOR_ROLE) => {
+            membership.role_id = Some(role("role.stonebend.gerald").expect("canonical role ID"));
+            membership.role = MembershipRole::Associate;
+            if membership.subgroup.as_ref().map(GroupId::as_str) == Some(LEGACY_LABOR_GROUP) {
+                membership.subgroup = None;
+            }
+        }
+        Some(LEGACY_FREEMASON_ROLE) => {
+            membership.institution =
+                institution("institution.stonebend.freemason").expect("canonical institution ID");
+            membership.role_id =
+                Some(role("role.stonebend.freemason-member").expect("canonical Freemason role ID"));
+            membership.role = MembershipRole::FullMember;
+            if membership.subgroup.as_ref().map(GroupId::as_str) == Some(LEGACY_FREEMASON_GROUP) {
+                membership.subgroup = None;
+            }
+        }
+        _ => {}
+    }
+    membership
+}
+
+/// Legacy Glaüshouse role records remain ordinary clinical membership and can
+/// never manufacture a constitutional office. Nightingales move into their
+/// canonical clinical institution, recovery staff into Glauspitals, and the
+/// legacy Persephone label becomes recovery-staff membership rather than an
+/// inferred modern Persephone rank: current law requires typed mastery of both
+/// Matron and Marshal domains.
+fn migrate_legacy_glaushouse_membership(
+    mut membership: InstitutionalMembership,
+) -> InstitutionalMembership {
+    match membership.role_id.as_ref().map(RoleId::as_str) {
+        Some("role.glaushouse.nightingale") => {
+            membership.institution = crate::world::glaushouse::nightingales_id();
+        }
+        Some("role.glaushouse.recovery-staff") => {
+            membership.institution = crate::world::glaushouse::glauspitals_id();
+        }
+        Some("role.glaushouse.persephone") => {
+            membership.institution = crate::world::glaushouse::glauspitals_id();
+            membership.role_id =
+                Some(role("role.glaushouse.recovery-staff").expect("canonical recovery role ID"));
+            membership.role = MembershipRole::Associate;
+        }
+        _ => {}
+    }
+    membership
+}
+
+/// Historical Sandman/Sandmen role strings preserve ordinary Sandmanor civic
+/// participation but never manufacture the singular Sandman office. The V2
+/// Constitution requires a completed Contest of Improvement, Stonebend Title,
+/// Flynt recognition, a public learning statement, and a sealed accession.
+fn migrate_legacy_sandmanor_membership(
+    mut membership: InstitutionalMembership,
+) -> InstitutionalMembership {
+    if matches!(
+        membership.role_id.as_ref().map(RoleId::as_str),
+        Some("role.sandmanor.sandman" | "role.sandmanor.sandmen")
+    ) {
+        membership.institution = crate::world::sandmanor::proof_civilization_id();
+        membership.role_id = None;
+        membership.role = MembershipRole::Associate;
+        membership.affiliation_state = AffiliationState::Associate;
+    }
+    membership
+}
+
+fn migrate_legacy_glaushouse_access(mut grant: AccessGrant) -> AccessGrant {
+    if grant.institution.as_str() == "institution.glaushouse.medical-civilization"
+        && grant
+            .site
+            .as_ref()
+            .is_some_and(|site| site.as_str() == "site.glaushouse.central-medical-district")
+    {
+        grant.institution = crate::world::glaushouse::glauspitals_id();
+    }
+    grant
 }
 
 fn record(output: &mut String, kind: &str, fields: &[String]) {
@@ -299,6 +432,15 @@ fn parse_event(values: &[&str]) -> io::Result<InstitutionalEvent> {
         institution: institution(values[3])?,
         subject: being(values[4])?,
         at: number(values[5])?,
+    })
+}
+
+fn parse_office_holder(values: &[&str]) -> io::Result<OfficeHolder> {
+    expect(values, 3, "office-holder")?;
+    Ok(OfficeHolder {
+        office: office(values[1])?,
+        being: being(values[2])?,
+        active: boolean(values[3])?,
     })
 }
 
@@ -503,7 +645,7 @@ mod tests {
         ObligationId, ObligationKind, ObligationStatus, ObligationWeight, RecognitionLevel,
         Sponsorship, SponsorshipId, SponsorshipLiability,
     };
-    use crate::world::institutional_access_fixture;
+    use crate::world::{canonical_institutional_world_state, institutional_access_fixture};
 
     #[test]
     fn dynamic_institutional_records_round_trip_against_canonical_catalog() {
@@ -515,7 +657,7 @@ mod tests {
             id: MembershipId::new("membership.flynt.persistence-candidate").unwrap(),
             being: candidate.clone(),
             institution: sponsor.institution.clone(),
-            role_id: Some(crate::world::flynt::gallowry::noose_role_id()),
+            role_id: Some(crate::world::flynt::gallows_member_role_id()),
             role: MembershipRole::Candidate,
             affiliation_state: AffiliationState::Candidate,
             lineage: LineageStatus::None,
@@ -576,6 +718,159 @@ mod tests {
         assert_eq!(
             restored.memberships[0].internal_recognition,
             RecognitionLevel::Internal
+        );
+    }
+
+    #[test]
+    fn legacy_stonebend_labor_membership_migrates_to_gerald_standing() {
+        let role = concat!("role.stonebend.prole", "tariat");
+        let group = concat!("group.stonebend.prole", "tariat");
+        let input = format!(
+            "schema_version:1\nmembership\tmembership.stonebend.legacy-labor\tbeing.stonebend.legacy-labor\tinstitution.stonebend.constitution\t{role}\tAssociate\tAssociate\tNone\t-\t{group}\t1\t-\t-\tPublic\tInternal\n"
+        );
+        let state = canonical_institutional_world_state();
+        let restored = parse_persisted_state(&input, state.catalog).unwrap();
+        let membership = &restored.memberships[0];
+        assert_eq!(
+            membership.role_id.as_ref().unwrap().as_str(),
+            "role.stonebend.gerald"
+        );
+        assert_eq!(
+            membership.institution.as_str(),
+            "institution.stonebend.constitution"
+        );
+        assert!(membership.subgroup.is_none());
+    }
+
+    #[test]
+    fn legacy_freemason_membership_migrates_without_granting_high_office() {
+        let input = "schema_version:1\n\
+            membership\tmembership.stonebend.legacy-freemason\tbeing.stonebend.legacy-freemason\tinstitution.stonebend.constitution\trole.stonebend.freemason\tAssociate\tAssociate\tNone\t-\tgroup.stonebend.freemason\t1\t-\t-\tPublic\tInternal\n";
+        let state = canonical_institutional_world_state();
+        let restored = parse_persisted_state(input, state.catalog).unwrap();
+        let membership = &restored.memberships[0];
+        assert_eq!(
+            membership.role_id.as_ref().unwrap().as_str(),
+            "role.stonebend.freemason-member"
+        );
+        assert_eq!(
+            membership.institution.as_str(),
+            "institution.stonebend.freemason"
+        );
+        assert!(membership.subgroup.is_none());
+        assert_ne!(membership.role, MembershipRole::Leader);
+    }
+
+    #[test]
+    fn legacy_nightingale_membership_moves_to_the_clinical_institution() {
+        let input = "schema_version:1\n\
+            membership\tmembership.glaushouse.legacy-nightingale\tbeing.glaushouse.legacy-nightingale\tinstitution.glaushouse.medical-civilization\trole.glaushouse.nightingale\tFullMember\tInitiated\tNone\t-\t-\t1\t1\t-\tKnown\tInternal\n";
+        let state = canonical_institutional_world_state();
+        let restored = parse_persisted_state(input, state.catalog).unwrap();
+        let membership = &restored.memberships[0];
+        assert_eq!(
+            membership.institution.as_str(),
+            "institution.glaushouse.nightingales"
+        );
+        assert_eq!(
+            membership.role_id.as_ref().unwrap().as_str(),
+            "role.glaushouse.nightingale"
+        );
+    }
+
+    #[test]
+    fn legacy_persephone_role_preserves_service_but_never_infers_modern_rank() {
+        let input = "schema_version:1\n\
+            membership\tmembership.glaushouse.legacy-persephone\tbeing.glaushouse.legacy-persephone\tinstitution.glaushouse.medical-civilization\trole.glaushouse.persephone\tLeader\tSenior\tNone\t-\t-\t1\t1\t-\tKnown\tInternal\n";
+        let state = canonical_institutional_world_state();
+        let restored = parse_persisted_state(input, state.catalog).unwrap();
+        let membership = &restored.memberships[0];
+        assert_eq!(
+            membership.institution.as_str(),
+            "institution.glaushouse.glauspitals"
+        );
+        assert_eq!(
+            membership.role_id.as_ref().unwrap().as_str(),
+            "role.glaushouse.recovery-staff"
+        );
+        assert_eq!(membership.role, MembershipRole::Associate);
+        assert_ne!(
+            membership.role_id.as_ref().unwrap(),
+            &crate::world::glaushouse::persephone_rank_id()
+        );
+    }
+
+    #[test]
+    fn legacy_medical_district_access_moves_to_glauspitals() {
+        let input = "schema_version:1\n\
+            access-grant\taccess-grant.glaushouse.legacy\tbeing.glaushouse.legacy\tinstitution.glaushouse.medical-civilization\tsite.glaushouse.central-medical-district\tzone.glaushouse.medical-district.recovery-chambers\t-\ttrue\n";
+        let state = canonical_institutional_world_state();
+        let restored = parse_persisted_state(input, state.catalog).unwrap();
+        assert_eq!(
+            restored.access_grants[0].institution.as_str(),
+            "institution.glaushouse.glauspitals"
+        );
+    }
+
+    #[test]
+    fn legacy_sandman_role_preserves_membership_but_never_infers_office() {
+        let input = "schema_version:1\n\
+            membership\tmembership.sandmanor.legacy-sandman\tbeing.sandmanor.legacy-sandman\tinstitution.sandmanor.sandmen\trole.sandmanor.sandman\tLeader\tSenior\tNone\t-\t-\t1\t1\t-\tPublic\tInternal\n";
+        let state = canonical_institutional_world_state();
+        let restored = parse_persisted_state(input, state.catalog).unwrap();
+        let membership = &restored.memberships[0];
+        assert_eq!(
+            membership.institution,
+            crate::world::sandmanor::proof_civilization_id()
+        );
+        assert!(membership.role_id.is_none());
+        assert_eq!(membership.role, MembershipRole::Associate);
+        assert_eq!(membership.affiliation_state, AffiliationState::Associate);
+        assert!(!restored.catalog.office_holders.iter().any(|holder| {
+            holder.office == crate::world::sandmanor::sandman_office_id()
+                && holder.being.as_str() == "being.sandmanor.legacy-sandman"
+        }));
+        assert!(
+            crate::world::hueman_faculties::migrate_legacy_faculty_manifestations(
+                &restored.memberships,
+            )
+            .is_empty(),
+            "legacy membership must not infer faculty, mastery, proof, credential, or office"
+        );
+    }
+
+    #[test]
+    fn schema_two_persists_live_office_holders_without_duplicating_canonical_tross() {
+        let input = "schema_version:2\n\
+            office-holder\toffice.stonebend.hypergiant\tbeing.stonebend.current-hypergiant\ttrue\n\
+            office-holder\toffice.sandmanor.sandman\tbeing.sandmanor.current-sandman\ttrue\n\
+            office-holder\toffice.glaushouse.prima-donna\tbeing.glaushouse.current-prima-donna\ttrue\n";
+        let canonical = canonical_institutional_world_state();
+        let restored = parse_persisted_state(input, canonical.catalog).unwrap();
+        assert_eq!(restored.catalog.office_holders.len(), 4);
+        let output = build_persisted_state_output(&restored);
+        assert!(output.starts_with("schema_version:2\n"));
+        assert_eq!(output.matches("office-holder\t").count(), 3);
+        assert!(!output.contains("being.flynt.tross"));
+
+        let replayed =
+            parse_persisted_state(&output, canonical_institutional_world_state().catalog).unwrap();
+        assert_eq!(
+            replayed.catalog.office_holders,
+            restored.catalog.office_holders
+        );
+    }
+
+    #[test]
+    fn schema_one_migration_never_infers_an_office_holder() {
+        let input = "schema_version:1\n\
+            membership\tmembership.sandmanor.legacy-sandman-two\tbeing.sandmanor.legacy-sandman-two\tinstitution.sandmanor.sandmen\trole.sandmanor.sandman\tLeader\tSenior\tNone\t-\t-\t1\t1\t-\tKnown\tInternal\n";
+        let restored =
+            parse_persisted_state(input, canonical_institutional_world_state().catalog).unwrap();
+        assert_eq!(restored.catalog.office_holders.len(), 1);
+        assert_eq!(
+            restored.catalog.office_holders[0].office,
+            crate::world::flynt::tross_office_id()
         );
     }
 }

@@ -25,7 +25,7 @@ two region-bound transformations:
 
 ```text
 Gnome → Minotaur
-Aura Fields
+Aura Field
 field stewardship, work, maintenance, and defense
 ```
 
@@ -39,6 +39,43 @@ Both require stable identities, established regional standing, subject-bound
 prerequisite evidence, an accepted Sandmanor proof decision, and an accepted
 Glaüshouse resolution decision. Both preserve predecessor lineage through
 persistence and replay. Reversed transformations fail closed.
+
+### 1.1 Boardwalk compromise vertical slice
+
+**Implemented as a bounded gameplay capability.** The compromise backbone now
+has one executable witness in `src/gameplay/`: a typed two-map registry
+preserving Aura Ridge, a Boardwalk return case, six-part testimony evidence,
+five disclosed faculty observations, player support, and a final choice
+attributed to the capable Returning Goon.
+
+All four choices now produce typed outcome records. Pimp Patronage, Goon Bond,
+and Limited Cooperation use the common constitutional reducer and record a
+preceding Wave plus accepted `Formed`, `Validated`, and `Activated` events for
+distinct finite, no-ownership relationships. Independent Return produces no
+Bond and preserves self-direction and refusal. Every outcome snapshots
+Glaüshouse discharge Clearance and Flynt recognition; every formal Bond
+separately snapshots Stonebend Name and Sandmanor proof.
+
+Gameplay history, outcome, child Bond, live institutional authority,
+post-choice placement, and revisit dialogue replay from a checksum-verified
+schema-V2 archive. Schema V1 has an explicit migration. `SaveIntent` and
+`LoadIntent` survive a service restart. Histories containing the separate
+regional-registration event remain explicitly unsupported by this gameplay
+archive rather than being silently truncated.
+
+### 1.2 Four-House functional lore
+
+**Implemented as a validated world contract.**
+`src/world/lived_lore.rs` encodes the Compromise's twelve required
+functional-lore fields. It supplies three lived loops for each House and covers
+all ten constitutional routes. Instantiation requires the exact live
+Stonebend Name, Sandmanor proof, Glaüshouse Clearance, or Flynt recognition
+authority. Missing incumbency and House substitution fail closed.
+
+The catalog has deterministic JSON persistence, checksums, exact replay, and a
+human-readable witness. Its source imports no recursion kernel. Detailed scope
+and scenario identities are recorded in
+`HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md`.
 
 ## 2. Architectural Position Above Recursion
 
@@ -59,6 +96,21 @@ Wave. It appends no Bond event and moves no Current.
 
 This separation is verified in both the original conformance suite and the new
 end-to-end demonstration.
+
+### 3.1 Additive Hueman faculty law
+
+**Implemented as typed descriptive law above the frozen runtime.**
+`src/world/hueman_faculties.rs` fixes Presynce/Body/Stonebend,
+Resynce/Spirit/Flynt, Precog/Mind/Glaüshouse, Prefog/Soul Interior/Minorian,
+and Prefig/Soul Exterior/Minoan. Optional manifestations live on
+`SynthesisRecipe`, are evidence- and uncertainty-bounded, and serialize through
+the versioned deterministic `HGFAC` archive.
+
+Faculties describe observation, generation, evaluation, or provisional
+embodiment. They do not choose, create proof, mutate Current Form through
+Resynce, bypass Recipe legality, or execute Synthesis. The existing decision
+logic, Sandmanor proof lifecycle, common constitutional runtime, and recursion
+kernel retain authority.
 
 ## 4. Ordinal Recursion Becomes Constitutional Meaning
 
@@ -101,6 +153,20 @@ a reserved renewal child.
 `HouseDecision::validate_for` rejects the wrong House, wrong function, missing
 capability, missing evidence, future authority snapshot, or non-accepted outcome.
 The cross-House conformance test exercises all five wrong-office combinations.
+
+### 6.1 Stonebend-specific authority
+
+**Implemented above the frozen common runtime.** `STONEBEND_CONSTITUTION_V2.md`
+ratifies Stonebend's full authority vocabulary. `src/world/stonebend.rs`
+enforces the Geralds/Hypergiant/Proliteriate/Freemason distinction, the exact
+Hypergiant selection order, and typed Name, Title, accession, Seal, Hollowing,
+extraction, custody, renaming, succession, and Tombstone invariants.
+
+This is not a second common House reducer. The generic `HouseDecision` remains
+the historical Bond-facing Name decision, while the Stonebend layer validates
+the deeper Stonebend records that decision may cite. Transformation,
+recognition, clearance, custody, and legacy progression cannot manufacture a
+Stonebend Title or office.
 
 ## 7. Institutional Authority
 
@@ -212,8 +278,11 @@ unsupported.** Bond resolution supports Renew, Merge, Branch, Split, Transfer,
 Complete, and Dissolve dispositions with cardinality/integrity checks. The
 demonstrator fully exercises Renew.
 
-Stonebend title succession, Sandmanor contest succession, Glaüshouse Prima Donna
-succession, and House appellate court remain `ReservedHouseProcedure` failures.
+Stonebend title succession, Sandmanor Contest-of-Improvement accession, and
+Glaüshouse Prima Donna accession are now ratified House-specific procedures
+above this frozen common runtime. The common `ReservedHouseProcedure` entry
+points remain closed so they cannot bypass those House registries. A generic
+House appellate court remains unratified.
 
 ## 19. Successor Bonds
 
@@ -367,7 +436,7 @@ required standing check, not an outcome selector.
 identity, an explicit predecessor, and a two-entry `lineage_history` containing
 the Gnome and Minotaur plus the Synthesis identity.
 
-## 34. Minotaur Stewardship of the Aura Fields
+## 34. Minotaur Stewardship of the Aura Field
 
 **Implemented as constitutional assignments.** A lawful Minotaur atomically
 receives `AuraFieldsStewardship` with duties to tend Aura crops, guard field
@@ -456,12 +525,12 @@ replay, and read-only projections already exist.
 
 - Gnome→Centaur or Elf→Minotaur;
 - Minotaur→Hecaton and Centaur→Pegasus regional execution;
-- regional transfer between Aura Fields and Aura Beach;
+- regional transfer between Aura Field and Aura Beach;
 - Aura Sea primary standing;
 - Minotaur sea authority or Centaur field authority;
 - automatic transformation from occupation;
-- House-office succession;
-- appellate court and appeal outcomes;
+- non-Stonebend House-office succession and any common-runtime succession reducer (Stonebend Hypergiant selection is ratified separately above the frozen runtime);
+- cross-House appellate court and common-runtime appeal outcomes (Stonebend's own high-appeal jurisdiction remains governed by its V2 constitution);
 - synthesis proposer/validator/executor role separation beyond current decisions;
 - cryptographic authority signatures;
 - cross-archive federation/conflict resolution.

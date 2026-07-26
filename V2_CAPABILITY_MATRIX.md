@@ -10,6 +10,40 @@ production reducer. “Observed” means the capability is a read-only projectio
 “Reserved” means an explicit typed failure protects an unratified procedure.
 Paths are relative to the `hollow-grove` crate.
 
+## Additive Hueman Faculty Matrix
+
+| Faculty | Domain and authority | Typed posture | Hard boundary | Persistence / migration | Status |
+|---|---|---|---|---|---|
+| Presynce | Body / Stonebend | observe physical emergence through Frame and Flow | no automatic dodge or counter; entire eight-stage Current Form ladder remains Presynce | deterministic `HGFAC`; legacy infers none | Supported descriptive law |
+| Resynce | Spirit / Flynt | observe relational emergence through Bond, affiliation, routes, encounters, and recognition | no mind reading or Frame mutation; We Fairy Men/Aura Ridge remains distinct from Gallows/Flynt civic recognition | deterministic `HGFAC`; legacy infers none | Supported descriptive law |
+| Precog | Mind / Glaüshouse | evaluate probable continuation from evidence and Glow | no certainty or guaranteed future | deterministic `HGFAC`; legacy infers none | Supported descriptive law |
+| Prefog | Soul Interior / Minorian-Gnome | generate multiple legal possibilities | possibility is not proof; equal to Prefig | deterministic `HGFAC`; legacy infers no mastery | Supported descriptive law |
+| Prefig | Soul Exterior / Minoan-Elf | provisionally embody the selected legal candidate | prototype is not proof and does not execute Synthesis | deterministic `HGFAC`; legacy infers no mastery | Supported descriptive law |
+
+The existing deterministic decision logic performs Choose. The existing
+Sandmanor proof lifecycle alone advances Prefig evidence. Faculties are stored
+optionally on `SynthesisRecipe` and emit no independent execution scripts.
+
+## Stonebend Constitutional Layer Above The Frozen Runtime
+
+`STONEBEND_CONSTITUTION_V2.md` is ratified Stonebend-specific law. Its executable
+projection is `src/world/stonebend.rs`; its neutral institutional projection is
+`src/world/house_institutions.rs`. These surfaces validate Name, Title,
+accession, Seal, Hollowing, extraction, custody, rename, succession, and
+Tombstone records without changing the common reducer below.
+
+| Domain concept | Supported operation | Authority placement | Positive proof | Failure proof | Persistence boundary |
+|---|---|---|---|---|---|
+| Principal authorities | validate exact roster and power separation | Hypergiant / Proliteriate / High Freemason / Freemason | Stonebend architecture tests | invalid highest authority or power separation | stable institutional IDs |
+| Hypergiant selection | record the semantic Diamond path | stable Claim; independent Freemason examination; Proliteriate Yield hearing; relinquishment; consequence descent; Proof of Persistence; The Lazerhorn; eligibility; investiture | ordered and reversed-insertion succession tests | missing Lazerhorn, self-certification, recommendation, lineage, and shortened-return tests | stable Claim, evidence, succession, Diamond tenure, and Tombstone IDs |
+| Name / Title / office | validate active constitutional records | Stonebend registry | lawful registry and audit unit test | unlawful origin, missing accession, duplicate Hypergiant, provisional or Tombstoned Name | typed records above common runtime |
+| Seal / Mirror evidence | bind issuer, subject, scope, decision | Freemason issuance; Mirror remains evidence | lawful registry test | wrong issuer, subject, scope, or decision | typed Seal and evidence IDs |
+| Lawful Hollowing | validate ordinary or emergency procedure | Stonebend authorization and qualified execution | registry validation | missing consent elements, continuity, custody, or post-event review | typed Hollowing/extraction/custody records |
+| Rename / succession / Tombstone | preserve history and prevent ended authority | Stonebend Registry | registry validation | erased former Name, dropped benefits or obligations, active Tombstone target | typed immutable records |
+| Title lifecycle | recognize, activate, maintain, renew, intervene, restore, and end | existing Stonebend Title core plus policy-defined delegated authority | Third Pass deterministic lifecycle suite | missing semantic stage, unmet activation, untargeted intervention, erased break, or missing Tombstone | existing stable Title/evidence/Tombstone IDs; no new archive schema |
+| Diamond vacancy continuity | preserve existing duties without transferring Diamond | delegated Claim, boundary, and Yield traces | bounded continuity and emergency proofs | investiture, appointment, sovereign law, permanent scope growth, missing termination, or missing review | stable mandate/action IDs above existing office history |
+| High Freemason replacement | independently review one replacement seal bearer | independent Forge reviewers, Proliteriate Yield accountability, occupied-Diamond boundary recognition where applicable | reversed-candidate-order replacement proof | self-certification, outgoing appointment, Hypergiant/temporary-witness absorption, or duplicate active bearer | stable Claim/review/tenure/Seal/Tombstone records |
+
 ## Constitutional Runtime Matrix
 
 | Domain concept | Supported operation | House | Institution / office | Required authority | Required evidence | Reducer entry point | Persisted representation | Replay | Migration | Trace | Scenario | Positive test | Failure test | Public API | Stability |
@@ -29,7 +63,7 @@ Paths are relative to the `hollow-grove` crate.
 | Excess | calculate signed remainder | governing rule set | governing jurisdiction | mature state | prior event history | `calculate_excess` | event tag 8 | yes | current schema | yes | ordinary lifecycle | lifecycle test | maturity required | stable | V2 |
 | Clearance | decide condensation | Glaüshouse | medical civilization / Prima Donna | `PublicClearance` | decision and eligibility evidence | `append(CondensationDecided)` | event tag 9 | yes | current schema | yes | ordinary lifecycle | full lifecycle | missing/rejected clearance | stable | V2 |
 | Tombstone | form/validate proof | Glaüshouse clearance; independent validator | governing institution retained | eligible excess; nonparticipant validator | complete proof, validation basis, exact digest | Tombstone events | global Tombstone index and events | yes | current schema | yes | ordinary lifecycle | digest and Tombstone tests | premature/mismatch/resurrection | stable | V2 |
-| Recognition | recognize proof | Flynt | Gallowry / Tross office | `InstitutionalRecognition` | recognition evidence | `append(FlyntRecognized)` | event tag 14 | yes | current schema | yes | ordinary lifecycle | premature Toke test | wrong House/missing recognition | stable | V2 |
+| Recognition | recognize proof | Flynt | Tross office through the canonical Flynt authority boundary | `InstitutionalRecognition` | recognition evidence | `append(FlyntRecognized)` | event tag 14 | yes | current schema | yes | ordinary lifecycle | premature Toke test | wrong House/missing recognition | stable | V2 |
 | Toke | record validated proof | prior Flynt recognition | historical index | validated Tombstone already exists | Toke evidence | `append(TokeRecorded)` | global Toke→Tombstone index | yes | current schema | yes | ordinary lifecycle | full lifecycle | missing/duplicate Tombstone | stable | V2 |
 | Resolution | final disposition | Glaüshouse | medical civilization / Prima Donna | `FinalJudgmentAnswerability` | resolution evidence | `append(Resolved)` | event tag 21 | yes | current schema | yes | ordinary lifecycle | full lifecycle | phase/cardinality/authority | stable | V2 |
 | Renewal | reserve/form successor | Glaüshouse parent; Stonebend child | both institutions | resolution plus new naming | resolution and inheritance evidence | parent `Resolved`; child `Formed` | reciprocal parent/successor graph | yes | current schema | yes | ordinary lifecycle | successor integrity test | unreserved/missing successor | stable | V2 |
@@ -52,19 +86,19 @@ domains into a single score.
 
 | Predecessor | Required region | Lawful result | Canonical function | Sandmanor proof | Glaüshouse resolution | Subject evidence | Stewardship | Guardianship | Persistence | Replay | V0 migration | Trace | Scenario | Failure coverage | Status |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Gnome | Aura Fields | Minotaur | field stewardship, work, maintenance, and defense | required, accepted, exact Sandmen institution | required, accepted, exact medical civilization institution | standing, lineage, readiness, rule, supporting, result | `AuraFieldsStewardship`, seven duties | none | V1 canonical | exact | supported | full regional trace | `gnome-minotaur` | wrong region/function/authority/evidence/identity/terminal/duplicate | Supported |
+| Gnome | Aura Field | Minotaur | field stewardship, work, maintenance, and defense | required, accepted, exact Sandmen institution | required, accepted, exact medical civilization institution | standing, lineage, readiness, rule, supporting, result | `AuraFieldsStewardship`, seven duties | none | V1 canonical | exact | supported | full regional trace | `gnome-minotaur` | wrong region/function/authority/evidence/identity/terminal/duplicate | Supported |
 | Elf | Aura Beach | Centaur | beach patrol and Aura Sea guardianship | required, accepted, exact Sandmen institution | required, accepted, exact medical civilization institution | standing, lineage, readiness, rule, supporting, result | `AuraBeachOccupation`, eight duties | `AuraSeaGuardianship`, four duties | V1 canonical | exact | supported | full regional trace | `elf-centaur` | wrong region/function/authority/evidence/identity/terminal/duplicate | Supported |
 | Gnome | Aura Beach | Centaur | none | irrelevant after lineage rejection | irrelevant | cannot cure illegal lineage | none | none | no rejected event | prior history replayable | n/a | rejected trace | `gnome-centaur` | `REGIONAL_ILLEGAL_LINEAGE_TRANSITION` | Rejected |
-| Elf | Aura Fields | Minotaur | none | irrelevant after lineage rejection | irrelevant | cannot cure illegal lineage | none | none | no rejected event | prior history replayable | n/a | rejected trace | `elf-minotaur` | `REGIONAL_ILLEGAL_LINEAGE_TRANSITION` | Rejected |
-| Gnome | Aura Beach standing, Aura Fields requested | Minotaur | none | may be valid but insufficient | may be valid but insufficient | may be valid but insufficient | none | none | no rejected event | prior history replayable | n/a | rejected trace | `gnome-minotaur-wrong-region` | `REGIONAL_INSUFFICIENT_STANDING` | Rejected |
-| Elf | Aura Fields standing, Aura Beach requested | Centaur | none | may be valid but insufficient | may be valid but insufficient | may be valid but insufficient | none | none | no rejected event | prior history replayable | n/a | rejected trace | `elf-centaur-wrong-region` | `REGIONAL_INSUFFICIENT_STANDING` | Rejected |
+| Elf | Aura Field | Minotaur | none | irrelevant after lineage rejection | irrelevant | cannot cure illegal lineage | none | none | no rejected event | prior history replayable | n/a | rejected trace | `elf-minotaur` | `REGIONAL_ILLEGAL_LINEAGE_TRANSITION` | Rejected |
+| Gnome | Aura Beach standing, Aura Field requested | Minotaur | none | may be valid but insufficient | may be valid but insufficient | may be valid but insufficient | none | none | no rejected event | prior history replayable | n/a | rejected trace | `gnome-minotaur-wrong-region` | `REGIONAL_INSUFFICIENT_STANDING` | Rejected |
+| Elf | Aura Field standing, Aura Beach requested | Centaur | none | may be valid but insufficient | may be valid but insufficient | may be valid but insufficient | none | none | no rejected event | prior history replayable | n/a | rejected trace | `elf-centaur-wrong-region` | `REGIONAL_INSUFFICIENT_STANDING` | Rejected |
 
 ## Typed Regional Assignment Matrix
 
 | Assignment | Holder form | Required region | Typed responsibilities | Inspection API | Cannot grant |
 |---|---|---|---|---|---|
-| `AuraFieldsStewardship` | Minotaur | Aura Fields | tend crops; guard boundary; carry load; maintain route; guard harvest; protect worker; stabilize field Current | `RegionalSynthesisRuntime::stewardship` | Aura Beach patrol or Aura Sea guardianship |
-| `AuraBeachOccupation` | Centaur | Aura Beach | roam; patrol shoreline; guard sea access; watch route; escort; recognize horizon change; defend incursion; maintain land-sea boundary | `beach_occupation` | Aura Fields stewardship |
+| `AuraFieldsStewardship` | Minotaur | Aura Field | tend crops; guard boundary; carry load; maintain route; guard harvest; protect worker; stabilize field Current | `RegionalSynthesisRuntime::stewardship` | Aura Beach patrol or Aura Sea guardianship |
+| `AuraBeachOccupation` | Centaur | Aura Beach | roam; patrol shoreline; guard sea access; watch route; escort; recognize horizon change; defend incursion; maintain land-sea boundary | `beach_occupation` | Aura Field stewardship |
 | `AuraSeaGuardianship` | Centaur | Aura Sea | guard access; watch horizon; defend boundary; maintain lawful passage | `guardianship` | primary Aura Sea Synthesis standing or field authority |
 
 ## Public API and Stability Matrix
@@ -79,6 +113,8 @@ domains into a single score.
 | Trace | `trace_*` and trace records | none | no reducer or assignment method | Stable projection |
 | TUI contract | `TuiCommand`, `TuiEvent`, `tui_events_from_trace` | commands describe intent; events present results | no internal reducer exposure | V2 readiness contract |
 | Application service | `ConstitutionalApplicationService::{execute,execute_streaming}`, `TuiRequest`, `TuiResponse` | selects production-built runtime/archive; executes replay, persistence, migration, inspection, audit; delivers ordered events to a sink | private runtime/archive mutation; idempotent request IDs; safe-boundary cancellation | V2 stable demonstration boundary |
+| Gameplay service | `GameApplicationService`, `GameProtocolService`, `GameplayCommand`, protocol V1 intents | owns Hueman/Aura-Ridge/Boardwalk history, four typed outcomes, and three finite common Bonds | Godot receives immutable views only; capable-subject attribution; live `WorldSession`; revision/idempotency; schema-V2 checksum archive with embedded authority and V1 migration | Boardwalk vertical-slice boundary |
+| Functional-lore catalog | `FunctionalLoreCatalog`, 12 canonical definitions | binds three lived loops per House to exact House authority and all ten routes | twelve-field validation, fail-closed incumbency, checksummed JSON, exact replay, no kernel imports | Four-House world integration boundary |
 | Compatibility alias | `hollow_grove::Bond = KernelBond` | recursion selector only | cannot be confused through constitutional module path | Preserved |
 
 ## Deliberately Unsupported Matrix
@@ -91,8 +127,9 @@ domains into a single score.
 | Centaur→Pegasus regional execution | Reserved | same |
 | automatic Synthesis from location | Rejected | standing is a prerequisite, never the transformation |
 | Minotaur Aura Sea guardianship | `require_guardianship` returns `REGIONAL_ASSIGNMENT_NOT_HELD` | field and coastal authority are distinct |
-| Centaur Aura Fields stewardship | `require_stewardship` returns `REGIONAL_ASSIGNMENT_NOT_HELD` | field and coastal authority are distinct |
+| Centaur Aura Field stewardship | `require_stewardship` returns `REGIONAL_ASSIGNMENT_NOT_HELD` | field and coastal authority are distinct |
 | Aura Sea as primary Synthesis site | Rejected | Aura Sea is the typed guardianship target attached to Aura Beach Centaur Synthesis |
 | regional transfer | Reserved | no transfer command or authority is ratified |
 | appellate procedure | Reserved | `HouseAppealCourt` remains explicit fail-closed law |
 | TUI domain decisions | Forbidden | presentation consumes events; reducer owns law |
+| mixed gameplay archive containing regional-registration events | Rejected | first-slice archive refuses partial cross-runtime persistence until a lossless migration is implemented |

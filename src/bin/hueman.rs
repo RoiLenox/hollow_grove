@@ -12,26 +12,26 @@ use hollow_grove::hueman_support::{
     CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH,
     build_hueman_archetype_lens_from_artifacts, build_hueman_aura_behavior_from_artifacts,
     build_hueman_aura_triad_from_artifacts, build_hueman_boundary_from_artifacts,
-    build_hueman_crossover_scenes_from_artifacts, build_hueman_fourway_from_artifacts,
-    build_hueman_glaushouse_roles_from_artifacts, build_hueman_inverse_circle_from_artifacts,
-    build_hueman_link_physics_from_artifacts, build_hueman_motion_map_from_artifacts,
-    build_hueman_path_crossovers_from_artifacts, build_hueman_procedural_uplift_from_artifacts,
-    build_hueman_sandmanor_roles_from_artifacts, build_hueman_scene_drift_from_artifacts,
-    build_hueman_scene_intent_from_artifacts, build_hueman_scene_presence_from_artifacts,
-    build_hueman_start_choices_from_artifacts, build_hueman_start_paths_from_artifacts,
-    build_hueman_stonebend_roles_from_artifacts, build_hueman_tross_helpers_from_artifacts,
+    build_hueman_crossover_scenes_from_artifacts, build_hueman_flynt_constitution_from_artifacts,
+    build_hueman_fourway_from_artifacts, build_hueman_glaushouse_roles_from_artifacts,
+    build_hueman_inverse_circle_from_artifacts, build_hueman_link_physics_from_artifacts,
+    build_hueman_motion_map_from_artifacts, build_hueman_path_crossovers_from_artifacts,
+    build_hueman_procedural_uplift_from_artifacts, build_hueman_sandmanor_roles_from_artifacts,
+    build_hueman_scene_drift_from_artifacts, build_hueman_scene_intent_from_artifacts,
+    build_hueman_scene_presence_from_artifacts, build_hueman_start_choices_from_artifacts,
+    build_hueman_start_paths_from_artifacts, build_hueman_stonebend_roles_from_artifacts,
     build_hueman_vertical_slice_for_spec_from_artifacts,
     build_vertical_integration_stack_from_artifacts, hueman_archetype_lens_artifact_path,
     hueman_aura_behavior_artifact_path, hueman_aura_triad_artifact_path,
     hueman_boundary_artifact_path, hueman_crossover_scenes_artifact_path,
-    hueman_fourway_artifact_path, hueman_glaushouse_roles_artifact_path,
-    hueman_inverse_circle_artifact_path, hueman_link_physics_artifact_path,
-    hueman_motion_map_artifact_path, hueman_path_crossovers_artifact_path,
-    hueman_procedural_uplift_artifact_path, hueman_sandmanor_roles_artifact_path,
-    hueman_scene_drift_artifact_path, hueman_scene_intent_artifact_path,
-    hueman_scene_presence_artifact_path, hueman_start_choices_artifact_path,
-    hueman_start_paths_artifact_path, hueman_stonebend_roles_artifact_path,
-    hueman_tross_helpers_artifact_path, hueman_vertical_slice_artifact_path,
+    hueman_flynt_constitution_artifact_path, hueman_fourway_artifact_path,
+    hueman_glaushouse_roles_artifact_path, hueman_inverse_circle_artifact_path,
+    hueman_link_physics_artifact_path, hueman_motion_map_artifact_path,
+    hueman_path_crossovers_artifact_path, hueman_procedural_uplift_artifact_path,
+    hueman_sandmanor_roles_artifact_path, hueman_scene_drift_artifact_path,
+    hueman_scene_intent_artifact_path, hueman_scene_presence_artifact_path,
+    hueman_start_choices_artifact_path, hueman_start_paths_artifact_path,
+    hueman_stonebend_roles_artifact_path, hueman_vertical_slice_artifact_path,
     vertical_integration_stack_artifact_path,
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
@@ -76,10 +76,10 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 22]> {
     let stonebend_roles_path = root.join(hueman_stonebend_roles_artifact_path());
     write_text_artifact(&stonebend_roles_path, &hueman_stonebend_roles)?;
 
-    let hueman_tross_helpers =
-        build_hueman_tross_helpers_from_artifacts(&hueman_start_choices, &hueman_fourway);
-    let tross_helpers_path = root.join(hueman_tross_helpers_artifact_path());
-    write_text_artifact(&tross_helpers_path, &hueman_tross_helpers)?;
+    let hueman_flynt_constitution =
+        build_hueman_flynt_constitution_from_artifacts(&hueman_start_choices, &hueman_fourway);
+    let flynt_constitution_path = root.join(hueman_flynt_constitution_artifact_path());
+    write_text_artifact(&flynt_constitution_path, &hueman_flynt_constitution)?;
 
     let hueman_glaushouse_roles =
         build_hueman_glaushouse_roles_from_artifacts(&hueman_start_choices, &hueman_fourway);
@@ -112,7 +112,7 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 22]> {
         &current_synthesis_consequence,
         &current_synthesis_activation_gate,
         &hueman_stonebend_roles,
-        &hueman_tross_helpers,
+        &hueman_flynt_constitution,
         &hueman_glaushouse_roles,
         &hueman_sandmanor_roles,
     );
@@ -186,7 +186,7 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 22]> {
         &hueman_crossover_scenes,
         &hueman_archetype_lens,
         &hueman_stonebend_roles,
-        &hueman_tross_helpers,
+        &hueman_flynt_constitution,
         &hueman_glaushouse_roles,
         &hueman_sandmanor_roles,
         &hueman_inverse_circle,
@@ -201,7 +201,7 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 22]> {
         &current_synthesis_collision_relay,
         &current_synthesis_contract,
         &hueman_stonebend_roles,
-        &hueman_tross_helpers,
+        &hueman_flynt_constitution,
         &hueman_glaushouse_roles,
         &hueman_sandmanor_roles,
         &hueman_inverse_circle,
@@ -242,7 +242,7 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 22]> {
         aura_triad_path,
         start_choices_path,
         stonebend_roles_path,
-        tross_helpers_path,
+        flynt_constitution_path,
         glaushouse_roles_path,
         sandmanor_roles_path,
         procedural_uplift_path,
@@ -285,26 +285,26 @@ mod tests {
         CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH,
         build_hueman_archetype_lens_from_artifacts, build_hueman_aura_behavior_from_artifacts,
         build_hueman_aura_triad_from_artifacts, build_hueman_boundary_from_artifacts,
-        build_hueman_crossover_scenes_from_artifacts, build_hueman_fourway_from_artifacts,
+        build_hueman_crossover_scenes_from_artifacts,
+        build_hueman_flynt_constitution_from_artifacts, build_hueman_fourway_from_artifacts,
         build_hueman_glaushouse_roles_from_artifacts, build_hueman_inverse_circle_from_artifacts,
         build_hueman_link_physics_from_artifacts, build_hueman_motion_map_from_artifacts,
         build_hueman_path_crossovers_from_artifacts, build_hueman_procedural_uplift_from_artifacts,
         build_hueman_sandmanor_roles_from_artifacts, build_hueman_scene_drift_from_artifacts,
         build_hueman_scene_intent_from_artifacts, build_hueman_scene_presence_from_artifacts,
         build_hueman_start_choices_from_artifacts, build_hueman_start_paths_from_artifacts,
-        build_hueman_stonebend_roles_from_artifacts, build_hueman_tross_helpers_from_artifacts,
-        build_hueman_vertical_slice_from_artifacts,
+        build_hueman_stonebend_roles_from_artifacts, build_hueman_vertical_slice_from_artifacts,
         build_vertical_integration_stack_from_artifacts, hueman_archetype_lens_artifact_path,
         hueman_aura_behavior_artifact_path, hueman_aura_triad_artifact_path,
         hueman_boundary_artifact_path, hueman_crossover_scenes_artifact_path,
-        hueman_fourway_artifact_path, hueman_glaushouse_roles_artifact_path,
-        hueman_inverse_circle_artifact_path, hueman_link_physics_artifact_path,
-        hueman_motion_map_artifact_path, hueman_path_crossovers_artifact_path,
-        hueman_procedural_uplift_artifact_path, hueman_sandmanor_roles_artifact_path,
-        hueman_scene_drift_artifact_path, hueman_scene_intent_artifact_path,
-        hueman_scene_presence_artifact_path, hueman_start_choices_artifact_path,
-        hueman_start_paths_artifact_path, hueman_stonebend_roles_artifact_path,
-        hueman_tross_helpers_artifact_path, hueman_vertical_slice_artifact_path,
+        hueman_flynt_constitution_artifact_path, hueman_fourway_artifact_path,
+        hueman_glaushouse_roles_artifact_path, hueman_inverse_circle_artifact_path,
+        hueman_link_physics_artifact_path, hueman_motion_map_artifact_path,
+        hueman_path_crossovers_artifact_path, hueman_procedural_uplift_artifact_path,
+        hueman_sandmanor_roles_artifact_path, hueman_scene_drift_artifact_path,
+        hueman_scene_intent_artifact_path, hueman_scene_presence_artifact_path,
+        hueman_start_choices_artifact_path, hueman_start_paths_artifact_path,
+        hueman_stonebend_roles_artifact_path, hueman_vertical_slice_artifact_path,
         vertical_integration_stack_artifact_path,
     };
     use hollow_grove::{read_text_artifact, write_text_artifact};
@@ -312,7 +312,7 @@ mod tests {
     use super::run_hueman_at;
 
     #[test]
-    fn hueman_runner_regenerates_boundary_motion_map_fourway_aura_triad_start_choices_stonebend_roles_tross_helpers_aura_behavior_vertical_slice_archetype_lens_start_paths_path_crossovers_link_physics_crossover_scenes_scene_presence_scene_intent_scene_drift_and_vertical_integration_stack_in_order()
+    fn hueman_runner_regenerates_boundary_motion_map_fourway_aura_triad_start_choices_house_constitutions_and_scene_artifacts_in_order()
      {
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)
@@ -388,7 +388,7 @@ mod tests {
             aura_triad_path,
             start_choices_path,
             stonebend_roles_path,
-            tross_helpers_path,
+            flynt_constitution_path,
             glaushouse_roles_path,
             sandmanor_roles_path,
             procedural_uplift_path,
@@ -414,8 +414,8 @@ mod tests {
             build_hueman_start_choices_from_artifacts(&hueman_fourway, &hueman_aura_triad);
         let hueman_stonebend_roles =
             build_hueman_stonebend_roles_from_artifacts(&hueman_start_choices, &hueman_fourway);
-        let hueman_tross_helpers =
-            build_hueman_tross_helpers_from_artifacts(&hueman_start_choices, &hueman_fourway);
+        let hueman_flynt_constitution =
+            build_hueman_flynt_constitution_from_artifacts(&hueman_start_choices, &hueman_fourway);
         let hueman_glaushouse_roles =
             build_hueman_glaushouse_roles_from_artifacts(&hueman_start_choices, &hueman_fourway);
         let hueman_sandmanor_roles =
@@ -429,7 +429,7 @@ mod tests {
             "consequence",
             "gate",
             &hueman_stonebend_roles,
-            &hueman_tross_helpers,
+            &hueman_flynt_constitution,
             &hueman_glaushouse_roles,
             &hueman_sandmanor_roles,
         );
@@ -467,7 +467,7 @@ mod tests {
             &hueman_crossover_scenes,
             &hueman_archetype_lens,
             &hueman_stonebend_roles,
-            &hueman_tross_helpers,
+            &hueman_flynt_constitution,
             &hueman_glaushouse_roles,
             &hueman_sandmanor_roles,
             &hueman_inverse_circle,
@@ -479,7 +479,7 @@ mod tests {
             "relay",
             "contract",
             &hueman_stonebend_roles,
-            &hueman_tross_helpers,
+            &hueman_flynt_constitution,
             &hueman_glaushouse_roles,
             &hueman_sandmanor_roles,
             &hueman_inverse_circle,
@@ -527,8 +527,8 @@ mod tests {
             artifact_root.join(hueman_stonebend_roles_artifact_path())
         );
         assert_eq!(
-            tross_helpers_path,
-            artifact_root.join(hueman_tross_helpers_artifact_path())
+            flynt_constitution_path,
+            artifact_root.join(hueman_flynt_constitution_artifact_path())
         );
         assert_eq!(
             glaushouse_roles_path,
@@ -617,9 +617,9 @@ mod tests {
             hueman_stonebend_roles
         );
         assert_eq!(
-            read_text_artifact(&tross_helpers_path)
-                .expect("hueman tross helpers artifact should read"),
-            hueman_tross_helpers
+            read_text_artifact(&flynt_constitution_path)
+                .expect("Hueman Flynt constitution artifact should read"),
+            hueman_flynt_constitution
         );
         assert_eq!(
             read_text_artifact(&glaushouse_roles_path)
@@ -723,8 +723,8 @@ mod tests {
             .expect("hueman start choices artifact should be removable");
         fs::remove_file(&stonebend_roles_path)
             .expect("hueman stonebend roles artifact should be removable");
-        fs::remove_file(&tross_helpers_path)
-            .expect("hueman tross helpers artifact should be removable");
+        fs::remove_file(&flynt_constitution_path)
+            .expect("Hueman Flynt constitution artifact should be removable");
         fs::remove_file(&sandmanor_roles_path)
             .expect("hueman sandmanor roles artifact should be removable");
         fs::remove_file(&procedural_uplift_path)

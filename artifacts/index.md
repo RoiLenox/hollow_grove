@@ -28,6 +28,21 @@ make generated output constitutional authority.
 ## Canonical References
 
 - `HOLLOW_GROVE_CORE_v1.0.0.md`: primary constitutional reference
+- `FLYNT_CONSTITUTION_V2.md`: canonical locked Flynt institutional hierarchy
+- `SANDMANOR_GUARDIAN_AND_SUCCESSION_V1.md`: ratified Sandmanor peoples,
+  guardian Synthesis, coast, Contest, and sovereign-succession supplement
+- `STONEBEND_AURA_WAY_AETHER_HOLLOWING_FOUNDATION_V1.md`: canonical first
+  Stonebend pass for vertical law, Aura Way, material Hollowing, Aether
+  provenance, and geographic stone refraction
+- `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md`: canonical second
+  Stonebend pass for the three gates, bounded Title scopes, Diamond,
+  Claim/Title/Yield offices, Proliteriate mandates, two-power removal,
+  Tombstones, and Lazerhorn succession
+- `STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md`: canonical
+  third Stonebend pass for recognition/activation, maintenance/renewal,
+  targeted interventions, restoration, terminal Tombstones, Diamond vacancy
+  continuity, independent Forge replacement, and Proliteriate continuity
+- `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md`: canonical major-route identities, verbs, and boundary processes
 - `CURRENT_SYNTHESIS_HOLLOW_GROVE_WORLD_CONTEXT_v0.1.0.md`: authoritative TUI world and ontology context
 - `HUEMAN_v0.1.0.md`: standalone Hueman companion
 - `CHROMA_CORD_GLAUSHOUSE_CLINICAL_CHARTING_v0.1.0.md`: bounded Glaüshouse clinical charting integration contract
@@ -109,7 +124,7 @@ document; clients that require an artifact path consume the generated mirror.
 - `artifacts/hueman_vertical_slice.md`
 - `artifacts/hueman_screen_map.json`
 - `artifacts/hueman_stonebend_roles.md`
-- `artifacts/hueman_tross_helpers.md`
+- `artifacts/hueman_flynt_constitution.md`
 - `artifacts/hueman_glaushouse_roles.md`
 - `artifacts/hueman_sandmanor_roles.md`
 - `artifacts/hueman_procedural_uplift.md`

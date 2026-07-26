@@ -61,13 +61,13 @@ Valid cross-pairings remain possible when semantics justify them, for example:
 - `Grit + Seam` for holding a collective continuity under pressure
 - `Show + Gleam` for public recognition and staged consequence
 
-## Stonebend Apex
+## Stonebend Practice Projection
 
-The canonical Stonebend apex mapping is:
+The canonical Stonebend practice projection is:
 
-- `Freemason channels Beam.`
-- `Proletariat channels Seam.`
-- `Hypergiant channels Gleam.`
+- `Structural practice channels Beam.`
+- `Civic witness channels Seam.`
+- `Identity custodian channels Gleam.`
 
 These are specialization alignments inside the larger embodied grammar. They are not separate execution systems.
 
@@ -131,9 +131,9 @@ The enforced fixtures include:
 - `Nightingale + Glow + Show + Beam + Hidden Infection`
 - `Muse + Glow + Show + Beam + Hidden Meaning`
 - `Siren + Glow + Grit + Gleam + Frightened Crowd`
-- `Freemason + Flow + Grip + Beam + Cutting Tool`
-- `Proletariat + Flow + Grit + Seam + Formation`
-- `Hypergiant + Flow + Show + Gleam + Monument`
+- `Structural practice + Flow + Grip + Beam + Cutting Tool`
+- `Civic witness + Flow + Grit + Seam + Formation`
+- `Identity custodian + Flow + Show + Gleam + Monument`
 - `Nightingale + Glow + Show + Seam + Hidden Emotional Rupture`
 
 ## Negative Fixtures
@@ -146,7 +146,7 @@ The validator rejects:
 - `Show` replaced with `Point`
 - `Grip` collapsed into `SkillId::Grip`
 - `Grit` reduced to stamina
-- reversed Stonebend apex mapping
+- reversed Stonebend practice projection
 - reversed canonical pairings
 - `Flow`, `Glow`, `Beam`, `Seam`, or `Gleam` reduced to one narrow meaning
 - `AddressingMode` replacing `ActionMode`

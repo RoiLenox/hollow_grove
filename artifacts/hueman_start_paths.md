@@ -6,15 +6,15 @@ Each kingdom-facing approach may enter AuraTriad through a first descriptive reg
 
 ## Route Order
 
-- Flynt-facing approach = Aura Basin -> Aura Fields -> Aura Beach
-- Stonebend-facing approach = Aura Fields -> Aura Basin -> Aura Beach
-- Glaushouse-facing approach = Aura Beach -> Aura Fields -> Aura Basin
-- Sandmanor-facing approach = Aura Beach -> Aura Basin -> Aura Fields
+- Flynt-facing approach = Aura Basin -> Aura Field -> Aura Beach
+- Stonebend-facing approach = Aura Field -> Aura Basin -> Aura Beach
+- Glaushouse-facing approach = Aura Beach -> Aura Field -> Aura Basin
+- Sandmanor-facing approach = Aura Beach -> Aura Basin -> Aura Field
 
 ## First Entry
 
 - Flynt-facing approach reaches Aura Basin first.
-- Stonebend-facing approach reaches Aura Fields first.
+- Stonebend-facing approach reaches Aura Field first.
 - Glaushouse-facing approach reaches Aura Beach first.
 - Sandmanor-facing approach reaches Aura Beach first.
 
@@ -31,7 +31,7 @@ Each kingdom-facing approach may enter AuraTriad through a first descriptive reg
 ## Artifact Inputs
 
 Hueman Start Choices bytes: 1365.
-Hueman Archetype Lens bytes: 2900.
+Hueman Archetype Lens bytes: 3108.
 
 ## Boundary Reminder
 

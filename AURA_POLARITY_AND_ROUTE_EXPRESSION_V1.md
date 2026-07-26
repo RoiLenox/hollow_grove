@@ -110,6 +110,8 @@ Directional tendencies:
 - `Boardwalk = managed public performance and controlled Dark spectacle`
 - `Riptide = immersive undertow, seduction, disorientation, and Dark pressure`
 
+These Aura tendencies describe how a route may be experienced; they are not the route's dominant civic responsibility. Constitutional geography fixes the dominant route verbs as `Glausbahn / Refine`, `Current Seanad / Deliberate`, `Boardwalk / Return`, and `Riptide / Retrieve`. Aura expression may color those processes but may not rename, replace, or contradict them.
+
 Route geometry remains distinct from polarity:
 
 - straight/curved is not the same question as Light/Dark

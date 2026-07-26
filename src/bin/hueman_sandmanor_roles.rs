@@ -33,19 +33,23 @@ mod tests {
         let output = build_hueman_sandmanor_roles_from_artifacts("start", "fourway");
         assert!(output.starts_with("# Hueman Sandmanor Roles"));
         assert!(output.contains("Pixy is Sandmanor's confirmed Aura-origin path."));
-        assert!(output.contains("Sandmen are the people and witness body of Sandmanor."));
-        assert!(output.contains("Sandmanor is divided between Minorian Gnomes and Minoan Elves"));
-        assert!(output.contains("Gnomes do not evolve through a formal ladder."));
-        assert!(output.contains("A Gnome becomes whatever it keeps."));
-        assert!(output.contains("Gnomes internalize Aura into order."));
-        assert!(output.contains("Elves externalize Aura into expression."));
-        assert!(output.contains("Aura Beach is the Minoan court strand"));
-        assert!(output.contains("Aura Fields is the Minorian proof plain"));
+        assert!(output.contains("Minorians are Sandmanor's interior Gnome tradition"));
+        assert!(output.contains("Minoans are Sandmanor's exterior Elf tradition"));
+        assert!(output.contains("Gnome -> Minotaur is the canonical Aura Field"));
+        assert!(output.contains("Elf -> Centaur is the canonical Aura Beach"));
+        assert!(output.contains("failure is evidence and remains recorded"));
+        assert!(output.contains("Contest of Improvement"));
         assert!(output.contains("## People And Profession Composition"));
         assert!(output.contains("Elf Radiologist = Being Hueman"));
         assert!(output.contains("Gnome Emergency Physician = Being Hueman"));
-        assert!(output.contains("office of Sandman may not stand vacant"));
-        assert!(output.contains("the winning contender becomes The Sandman."));
+        assert!(output.contains("The Sandman is the singular highest constitutional office"));
+        assert!(output.contains("Fraudulent Design is Sandmanor's signature"));
+        assert!(output.contains("Aura Fields and Content Farm"));
+        assert!(output.contains("Free Aura Beach -> Southern Coast -> Current Break"));
+        assert!(output.contains("Gnome -> Minotaur -> Hecaton"));
+        assert!(output.contains("Elf -> Centaur -> Pegasus"));
+        assert!(output.contains("the audited crowd measures improvement"));
+        assert!(output.contains("called Aegon"));
         assert!(output.contains("Hueman Fourway bytes: 7."));
     }
 

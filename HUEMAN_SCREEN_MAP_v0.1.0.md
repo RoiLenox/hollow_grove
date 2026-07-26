@@ -25,6 +25,7 @@ Read that now as one shared coordinate field:
 The broader constitutional reading for this map now lives in:
 
 - `HOLLOW_GROVE_HUEMAN_COORDINATE_CONTRACT_v0.1.0.md`
+- `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md`
 - `artifacts/hollow_grove_hueman_coordinate_contract.json`
 
 This screen map remains the active civic resolver contract, but it no longer stands alone as a Hueman-only surface.
@@ -68,19 +69,31 @@ These coordinates intentionally compress the horizontal spread compared with the
 
 ## Straight Routes
 
-- `Aura Ridge`: `Stonebend -> Glaushouse`
-- `Aura Ridge East`: `Aura Ridge Junction -> Sandmanor`
-- `Aura Way`: `Stonebend -> Sandmanor`
-- `Glausbahn`: `Sandmanor -> Glaushouse`
-- `Boardwalk`: `Glaushouse -> Flynt`
-- `Basin Motorspeedway`: `Flynt -> Stonebend`
+- `Aura Ridge` — Witness: `Glaushouse <-> Stonebend`
+- `Aura Ridge East`: local screen segment from `Aura Ridge Junction -> Sandmanor`, not an additional major constitutional route
+- `Aura Way` — Design: `Stonebend <-> Sandmanor`
+- `Glausbahn` — Refine: `Sandmanor <-> Glaushouse`
+- `Boardwalk` — Return: `Glaushouse -> Flynt`
+- `Basin Motor Speedway` — Produce: `Flynt <-> Stonebend`
 
 ## Curved Routes
 
-- `Mnt. Aura`: `Stonebend -> Sandmanor`
-- `Current Seanad`: `Sandmanor -> Glaushouse`
-- `Riptide`: `Glaushouse -> Flynt`
-- `Stairway to Heaven`: `Flynt -> Stonebend`
+- `Mt. Aura` — Aspire: `Stonebend <-> Sandmanor`
+- `Current Seanad` — Deliberate: `Sandmanor <-> Glaushouse`
+- `Riptide` — Retrieve: `Flynt -> Glaushouse`
+- `Stairway to Heaven` — Ascend: `Flynt -> Stonebend`
+
+## Constitutional Sea Route
+
+- `Current Sea` — Certify: `Glaushouse -> Stonebend`
+
+Current Sea is an ordeal and certification crossing, not another road. It is constitutionally distinct from Current Seanad. The frozen Current Synthesis route token for Current Seanad must not be reused to represent Current Sea.
+
+## Dominant Route Verbs
+
+Route shape supports rendering and traversal. The constitutional verb answers why civilization maintains the route:
+
+`Boardwalk / Return`, `Riptide / Retrieve`, `Current Sea / Certify`, `Aura Ridge / Witness`, `Glausbahn / Refine`, `Current Seanad / Deliberate`, `Aura Way / Design`, `Mt. Aura / Aspire`, `Basin Motor Speedway / Produce`, and `Stairway to Heaven / Ascend`.
 
 ## Surfaces
 

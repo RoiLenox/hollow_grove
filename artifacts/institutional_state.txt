@@ -1,0 +1,8 @@
+schema_version:2
+membership	membership.stonebend.current-hypergiant	being.stonebend.current-hypergiant	institution.stonebend.constitution	role.stonebend.gerald	Associate	Associate	None	-	-	0	-	-	Known	Internal
+membership	membership.sandmanor.current-sandman	being.sandmanor.current-sandman	institution.sandmanor.sandmen	role.sandmanor.minorian	Associate	Associate	None	-	-	0	-	-	Known	Internal
+membership	membership.glaushouse.current-prima-donna	being.glaushouse.current-prima-donna	institution.glaushouse.glauspitals	role.glaushouse.recovery-staff	Associate	Associate	None	-	-	0	-	-	Known	Internal
+office-holder	office.stonebend.hypergiant	being.stonebend.current-hypergiant	true
+office-holder	office.sandmanor.sandman	being.sandmanor.current-sandman	true
+office-holder	office.glaushouse.prima-donna	being.glaushouse.current-prima-donna	true
+office-holder	office.flynt.tross	being.flynt.tross	true

@@ -5,7 +5,7 @@
 - exterior ingress: `PlebExterior`
 - complementary return: `BlepReturn`
 - landed route: `BlepArrival`
-- universal landed point: `Point`
+- universal landed point: `Point²`
 - Client placement begins downstream from this frozen Hollow Grove boundary and does not recompute it.
 
 ## Placement Lock
@@ -37,8 +37,8 @@
 
 ## Artifact Inputs
 
-Snapshot bytes: 564.
-Current Synthesis topology bytes: 2003.
+Snapshot bytes: 587.
+Current Synthesis topology bytes: 2007.
 Current Synthesis sequence bytes: 1458.
 
 ## Boundary Reminder

@@ -42,7 +42,7 @@ cargo run --release --quiet --example constitutional_v2_bench
 | Regional persistence encode/decode | 500 | 7.602 µs | 7.494 µs | 23.705 µs |
 | Regional live replay | 500 | 8.467 µs | 8.346 µs | 15.859 µs |
 | Regional lineage inspection | 10,000 | 0.021 µs | 0.020 µs | 0.121 µs |
-| Aura Fields stewardship lookup | 10,000 | 0.021 µs | 0.020 µs | 1.923 µs |
+| Aura Field stewardship lookup | 10,000 | 0.021 µs | 0.020 µs | 1.923 µs |
 | Aura Sea guardianship lookup | 10,000 | 0.021 µs | 0.020 µs | 0.150 µs |
 | Rejected cross-regional Synthesis | 1,000 | 20.814 µs | 20.649 µs | 40.957 µs |
 | Replay 10 events | 200 | 10.501 µs | 10.360 µs | 15.179 µs |
@@ -55,7 +55,7 @@ cargo run --release --quiet --example constitutional_v2_bench
 ### Single transition reduction
 
 Creates a fresh `RegionalSynthesisRuntime`, constructs an institution-backed
-Gnome registration for the Aura Fields, validates it, applies it, and updates
+Gnome registration for the Aura Field, validates it, applies it, and updates
 the event and Being indexes. The institutional fixture is prepared outside the
 timed closure. This is representative of a small accepted state transition.
 

@@ -3,9 +3,9 @@ use std::path::Path;
 
 use hollow_grove::hueman_support::{
     CURRENT_SYNTHESIS_COLLISION_RELAY_ARTIFACT_PATH, HUEMAN_ARCHETYPE_LENS_ARTIFACT_PATH,
-    HUEMAN_CROSSOVER_SCENES_ARTIFACT_PATH, HUEMAN_GLAUSHOUSE_ROLES_ARTIFACT_PATH,
-    HUEMAN_INVERSE_CIRCLE_ARTIFACT_PATH, HUEMAN_SANDMANOR_ROLES_ARTIFACT_PATH,
-    HUEMAN_STONEBEND_ROLES_ARTIFACT_PATH, HUEMAN_TROSS_HELPERS_ARTIFACT_PATH,
+    HUEMAN_CROSSOVER_SCENES_ARTIFACT_PATH, HUEMAN_FLYNT_CONSTITUTION_ARTIFACT_PATH,
+    HUEMAN_GLAUSHOUSE_ROLES_ARTIFACT_PATH, HUEMAN_INVERSE_CIRCLE_ARTIFACT_PATH,
+    HUEMAN_SANDMANOR_ROLES_ARTIFACT_PATH, HUEMAN_STONEBEND_ROLES_ARTIFACT_PATH,
     build_hueman_scene_presence_from_artifacts, hueman_scene_presence_artifact_path,
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
@@ -16,7 +16,8 @@ fn main() -> io::Result<()> {
     let hueman_archetype_lens = read_text_artifact(Path::new(HUEMAN_ARCHETYPE_LENS_ARTIFACT_PATH))?;
     let hueman_stonebend_roles =
         read_text_artifact(Path::new(HUEMAN_STONEBEND_ROLES_ARTIFACT_PATH))?;
-    let hueman_tross_helpers = read_text_artifact(Path::new(HUEMAN_TROSS_HELPERS_ARTIFACT_PATH))?;
+    let hueman_flynt_constitution =
+        read_text_artifact(Path::new(HUEMAN_FLYNT_CONSTITUTION_ARTIFACT_PATH))?;
     let hueman_glaushouse_roles =
         read_text_artifact(Path::new(HUEMAN_GLAUSHOUSE_ROLES_ARTIFACT_PATH))?;
     let hueman_sandmanor_roles =
@@ -28,7 +29,7 @@ fn main() -> io::Result<()> {
         &hueman_crossover_scenes,
         &hueman_archetype_lens,
         &hueman_stonebend_roles,
-        &hueman_tross_helpers,
+        &hueman_flynt_constitution,
         &hueman_glaushouse_roles,
         &hueman_sandmanor_roles,
         &hueman_inverse_circle,
@@ -64,7 +65,7 @@ mod tests {
         );
         assert!(output.contains("## Relay Packet Presence"));
         assert!(output.contains("boardwalk-casino hunting capital"));
-        assert!(output.contains("Aura Beach: the Minoan-facing coastal court"));
+        assert!(output.contains("Aura Beach and Current Sea: the Minoan regional proving grounds"));
         assert!(output.contains("Current Synthesis collision relay bytes: 5."));
     }
 

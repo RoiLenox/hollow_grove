@@ -231,11 +231,23 @@ pub fn invoke_reserved_procedure(procedure: ReservedHouseProcedure) -> Result<()
     Err(HouseLawError::ReservedProcedure(procedure))
 }
 
-/// Appeals are represented as a constitutional failure path, but no court or
-/// appellate authority has been canonically ratified. The runtime therefore
-/// fails closed instead of selecting one.
-pub fn appeal_challenge(_challenge: &super::ChallengeId) -> Result<(), HouseLawError> {
-    invoke_reserved_procedure(ReservedHouseProcedure::HouseAppealCourt)
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct CourtAppealReferral {
+    pub challenge: super::ChallengeId,
+    pub court_system: InstitutionId,
+}
+
+/// Refers a constitutional challenge to the one ratified Minoan County Court
+/// System. The constitutional layer names the receiving institution without
+/// importing its world-model implementation or granting it House authority.
+pub fn appeal_challenge(
+    challenge: &super::ChallengeId,
+) -> Result<CourtAppealReferral, HouseLawError> {
+    Ok(CourtAppealReferral {
+        challenge: challenge.clone(),
+        court_system: InstitutionId::new("institution.sandmanor.minoan-county-courthouse")
+            .expect("canonical Minoan County Court System institution ID"),
+    })
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]

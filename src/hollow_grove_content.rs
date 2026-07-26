@@ -96,14 +96,6 @@ pub fn validate_current_synthesis_scenario(scenario: &ScenarioDefinition) -> io:
     let mut diagnostics = validate_hollow_grove_alignment(&input);
     let mut bad_lines = Vec::new();
     for npc in &scenario.npcs {
-        if npc.name.to_ascii_lowercase().contains("nightingale")
-            || npc.role.to_ascii_lowercase().contains("nightingale")
-        {
-            bad_lines.push(format!(
-                "{} / {} treats Nightingale as a scenario staff role instead of white blood cells",
-                npc.name, npc.role
-            ));
-        }
         for text in npc
             .needs
             .iter()
@@ -650,9 +642,9 @@ pub fn validate_flow_glow_foundation() -> io::Result<()> {
         "Grip -> Seam",
         "Show -> Beam",
         "Grit -> Gleam",
-        "Freemason -> Beam",
-        "Proletariat -> Seam",
-        "Hypergiant -> Gleam",
+        "Structural practice -> Beam",
+        "Civic witness -> Seam",
+        "Identity custodian -> Gleam",
     ] {
         if !witness.contains(fragment) {
             return Err(io::Error::new(
@@ -666,9 +658,9 @@ pub fn validate_flow_glow_foundation() -> io::Result<()> {
     for fragment in [
         "Being:\nNightingale",
         "Being:\nMuse",
-        "Being:\nFreemason",
-        "Being:\nProletariat",
-        "Being:\nHypergiant",
+        "Being:\nStructural practice",
+        "Being:\nCivic witness",
+        "Being:\nIdentity custodian",
         "Candidate Move:\nAura Stitch",
         "Candidate Move:\nCraft Line",
         "Candidate Move:\nSovereign Gleam",
@@ -1684,10 +1676,10 @@ mod tests {
     }
 
     #[test]
-    fn scenario_validation_rejects_staff_nightingales() {
+    fn scenario_validation_allows_nightingales_as_constitutional_clinical_staff() {
         let scenario = ScenarioDefinition {
-            id: String::from("bad"),
-            title: String::from("Bad Scenario"),
+            id: String::from("nightingale_clinical_stop"),
+            title: String::from("Nightingale Clinical Stop"),
             default_focused_npc_id: String::from("nightingale_01"),
             player_need: String::from("Hold the line"),
             faction_conditions: vec![],
@@ -1707,8 +1699,7 @@ mod tests {
             }],
         };
 
-        let error =
-            validate_current_synthesis_scenario(&scenario).expect_err("staff nightingale fails");
-        assert!(error.to_string().contains("Nightingale"));
+        validate_current_synthesis_scenario(&scenario)
+            .expect("Nightingales are the canonical clinical-care institution");
     }
 }

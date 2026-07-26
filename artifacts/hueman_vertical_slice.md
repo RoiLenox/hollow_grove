@@ -106,8 +106,8 @@ Flooded Quarry Night Watch Loop
 
 Hueman Boundary bytes: 2188.
 Hueman Start Choices bytes: 1365.
-Hueman Aura Behavior bytes: 1843.
-Hueman Procedural Uplift bytes: 8080.
+Hueman Aura Behavior bytes: 1841.
+Hueman Procedural Uplift bytes: 8483.
 
 ## Boundary Reminder
 

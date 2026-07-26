@@ -705,12 +705,12 @@ fn pending_challenge_blocks_maturity_and_resolution_requires_sandmanor_proof() {
         )
         .unwrap();
     assert_eq!(runtime.bond(&bond).unwrap().phase(), BondPhase::Mature);
-    assert!(matches!(
-        appeal_challenge(&challenge),
-        Err(HouseLawError::ReservedProcedure(
-            ReservedHouseProcedure::HouseAppealCourt
-        ))
-    ));
+    let appeal = appeal_challenge(&challenge).unwrap();
+    assert_eq!(appeal.challenge, challenge);
+    assert_eq!(
+        appeal.court_system.as_str(),
+        "institution.sandmanor.minoan-county-courthouse"
+    );
     let archived = encode_constitutional_archive(&runtime).unwrap();
     assert_eq!(
         decode_constitutional_archive(&archived).unwrap().events(),

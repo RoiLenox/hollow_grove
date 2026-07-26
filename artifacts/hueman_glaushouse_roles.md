@@ -2,52 +2,76 @@
 
 ## Structural Rule
 
-Glaushouse carries Clear It, Repair, and exclusive Synthesis through a scene-facing court and care order inside Hueman's world layer, where leadership, triage, machine repair, and Hueman nursing remain socially visible without leaving the Fourway boundary.
+Glaushouse clears lawful medicine and maintained Synthesis through a universal Nightingale foundation, equal Matron and Marshal branches, multiple Persephones, and one singular Prima Donna office while Glauspitals and Chromacord support care and evidence and Current Runtime V2 remains authoritative over common causality.
 
 ## Canonical Anchor
 
 - Glaushouse remains East-facing on the Fourway.
-- Glaushouse carries Clear It, Repair, and exclusive Synthesis authority for both machine and Hueman bodies.
+- Glaushouse clears medicine, recovery, and lawful Synthesis for both machine and Hueman bodies.
+- Glaushouse retains exclusive Synthesis authority among Houses while Current Runtime V2 remains authoritative over common Bond resolution and causality.
 - Glaushouse reads as a mechanical-industrial medical capital: Berlin severity, Milan polish, chrome discipline, and commanding clinic glamour.
 - Sprite is Glaushouse's confirmed Aura-origin path.
 - Glaushouse mines jades and refines Glaus Gel as its jade-colored repair and synthesis medium.
 - Glausteel is the accepted hard branch for cleared integrated work.
 
-## Role Definitions
+## Constitutional Authorities
 
-- whoever holds final public Clearance is Prima Donna: visible command, named release authority, and final judgment answerability.
-- Persephone runs triage, descent, recovery, and relay continuity beneath the Prima Donna.
-- Glaushouse physicians, nurses, and rehabilitation staff hold bedside truth, common repair work, and the day-to-day restoration body of Glaushouse.
-- Nightingales remain the white-blood-cell civic defense image Glaushouse carries through recognition, clearing, and recovery.
-- Glaushouse keeps medicine, machinery, presentation, and discipline visibly braided instead of hiding one behind the others.
+- Prima Donna is the singular highest clinical office; Doctor Ratchet is its frozen current holder identity.
+- Persephone is a multiple balanced clinical rank; Nurse House is one frozen current Persephone identity.
+- The Nightingales are the universal clinical foundation, constitutional nursing and clinical-care institution, patient advocates, and protected bedside check.
+- a Nightingale may choose Matron or Marshal; Matron and Marshal are equal complementary branches, and cross-training remains open.
+- mastery of both branches may earn Persephone; multiple Persephones may serve while only one Prima Donna is active.
+- the generative ladder is Nightingale -> equal Matron or Marshal branches -> multiple Persephones -> one Prima Donna.
+- Glauspitals operates clinical facilities, while Chromacord preserves clinical records and evidence.
+- advancement Toke/Tokens preserve one stable person and prior mastery; neither office, institution, chart, gesture, species, transformation, nor technical ability manufactures another authority.
 
-## Creature Rank Ladder
+## Clinical Law
 
-- Glaushouse's creature ladder rises through Pixy -> Sprite -> Farie -> Nymph -> Siren -> Muse.
-- Pixy marks the first care rank: nimble bedside attention, tiny repairs, and quick perceptive response.
-- Sprite marks active floor care, relay motion, and immediate restoration duty under visible pressure.
-- Farie marks the rank where care becomes consciously enchanted: delicate repair, tonal guidance, and restorative charm used with discipline.
-- Nymph marks the rank where healing presence, ward atmosphere, and sustained recovery guidance become stable.
-- Siren marks the rank where voice, recall, and commanding recovery presence can call people back from drift, refusal, or dangerous surrender.
-- Muse marks the highest Glaushouse rank: restorative inspiration, formal guidance, and the ability to set the tone of recovery without leaving care behind.
-- Muse is the highest care form in Glaushouse, not a separate sovereign office above Prima Donna.
+- Diagnosis identifies condition; consent authorizes participation; Clearance permits procedure.
+- Care preserves the subject; Synthesis transforms; recovery completes the act.
+- consent is explicit, scoped, informed, voluntary, current, capacity-based, and never inferred from silence, custody, dependence, recognition, or Aura influence.
+- consent to Hollowing is not consent to Synthesis, and Synthesis consent is not research consent.
+- every Clearance names subject, procedure, operator, facility, scope, risk, consent, capacity, stopping conditions, recovery, and expiration.
+- proof is not Clearance; recognition is not Clearance; custody is not ownership; transformation is not accession.
 
-## Social Balance
+## Form and Practice Ladder
 
-- Prima Donna grants Clearance and public face.
-- Persephone carries relay authority through triage, descent, and return.
-- the recovery floor keeps repair, bedside care, and the lived body of the kingdom.
-- the office of Prima Donna may not remain vacant; public Clearance must always have a final holder.
-- Clearance may be challenged from the floor when restoration is not yet real.
-- Persephone and the recovery floor may each oppose false Clearance, alone or together, until recovery is materially real.
+- Glaushouse's separate Aura form-and-practice ladder remains Pixy -> Sprite -> Farie -> Nymph -> Siren -> Muse; it does not replace the clinical ladder.
+- Pixy marks nimble bedside attention; Sprite marks active floor care and relay motion; Farie marks delicate restorative practice used with discipline.
+- Nymph marks stable healing presence; Siren marks commanding recall and recovery presence; Muse marks the highest restorative inspiration and formal guidance.
+- the Aura ladder records Frame, practice, capability, and mastery development; only Nightingale evidence, branch proofs, and lawful advancement create Matron, Marshal, Persephone, or Prima Donna candidacy.
+- a technically capable form still requires training, current competence, institutional authorization, scope, recognition, and Title where applicable.
+
+## Synthesis and Recovery
+
+- Synthesis requires a valid subject, explicit Synthesis consent, active Clearance, qualified operator, lawful material provenance, actual-outcome recording, identity continuity, and recovery.
+- Synthesis is Continuance through renewal: a real living Form depends on maintenance, Recipe practice, the Form's Ways, compatible conditions, the Hueman, and institutional care.
+- Adjustment, Graft, Reconstruction, and Transfiguration are intended clinical depths; Overgrowth is an emergency failure state.
+- host rejection and Sympiote rejection are distinct, and major Synthesis requires both technical and lived viability.
+- high-risk Synthesis requires a recovery plan and Nightingale witness; emergency Synthesis requires post-event review; experimental Synthesis is openly marked.
+- Gnome -> Minotaur at Aura Field and Elf -> Centaur at Aura Beach remain regional Synthesis canon.
+- Glaushouse clears safety, Sandmanor proves design, Stonebend preserves identity and Title, and Flynt recognizes function.
+- Synthesis never automatically creates Title, office, recognition, or political standing.
+- failed, partial, unstable, unintended, or injurious Synthesis is recorded as the actual result rather than renamed as success.
+
+## Protected Checks
+
+- a Nightingale may halt immediate clinical danger, absent consent, wrong subject, wrong procedure, excess scope, identity mismatch, failed safeguards, or missing rescue capacity.
+- every Nightingale stop triggers mandatory review and is protected from retaliation.
+- the Matron reads lived and Aura continuity; the Marshal holds bodily and Current continuity; Persephone preserves the whole patient and may deny premature discharge.
+- Persephones collectively govern Living Ledger viability; Prima Donna governs Recipe Ledger transformation.
+- clinical custody never becomes ownership, and recovery duties survive operator or institutional succession.
+- Illegal Synthesis is Glaushouse's signature constitutional offense.
+- Grip must not become domination; Show must not become humiliation; Grit must not glorify avoidable suffering.
 
 ## Status
 
-- Glaushouse roles are descriptive-only for now
-- no court resolver or succession engine is active
-- no nurse AI or care loop is active
-- no feedback into Current Synthesis
-- no feedback into Hollow Grove
+- Glaushouse constitutional law is ratified in GLAUSHOUSE_CONSTITUTION_V2.md
+- the House-specific registry validates clinical law above frozen Current Runtime V2
+- Mind -> Precog is Glaushouse's Hueman faculty: evidence-grounded probable continuation through Glow and disclosed uncertainty, never omniscience or guaranteed future
+- Hueman and Godot may present records but may not create consent, Clearance, privilege, office, or Synthesis outcomes
+- common Bond, Current, Aura, persistence, replay, and final Synthesis Resolution remain authoritative in Current Runtime V2
+- the universal recursion kernel remains isolated from Glaushouse-specific law
 
 ## Artifact Inputs
 

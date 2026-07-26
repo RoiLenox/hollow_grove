@@ -9,14 +9,14 @@
 use crate::being_object_ontology::{ObjectId, ObjectState, canonical_object_state};
 use crate::institution::{
     AccessPolicy, AccessRequirement, AccessRequirementMatch, InstitutionalBeingId, MembershipId,
-    OfficeId, RoleId, SiteId, Visibility, ZoneId,
+    RoleId, SiteId, Visibility, ZoneId,
 };
 use crate::institution_affiliation::{
     AccessDeniedContext, AffiliationState, InstitutionalMembership, InstitutionalWorldState,
     LineageStatus, MembershipRole, RecognitionLevel, ZoneEntryResult,
 };
 
-use super::{canonical_institutional_world_state, house_institutions};
+use super::{canonical_institutional_world_state, glaushouse};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChromaCordHue {
@@ -140,8 +140,8 @@ pub fn chroma_cord_access_policy() -> AccessPolicy {
         requirements: vec![
             AccessRequirement::Role(role_id("role.glaushouse.nightingale")),
             AccessRequirement::Role(role_id("role.glaushouse.recovery-staff")),
-            AccessRequirement::Role(role_id("role.glaushouse.persephone")),
-            AccessRequirement::Office(office_id("office.glaushouse.prima-donna")),
+            AccessRequirement::Role(glaushouse::persephone_rank_id()),
+            AccessRequirement::Office(glaushouse::prima_donna_office_id()),
             AccessRequirement::ExplicitGrant,
         ],
     }
@@ -157,7 +157,7 @@ pub fn view_chroma_cord_entry(
     entry
         .validate()
         .map_err(ChromaCordViewError::InvalidEntry)?;
-    let institution = house_institutions::glaushouse_medical_civilization_id();
+    let institution = glaushouse::chromacord_id();
     let site = chroma_cord_site_id();
     let zone = chroma_cord_zone_id();
     match state.request_zone_entry(
@@ -204,10 +204,6 @@ fn role_id(value: &str) -> RoleId {
     RoleId::new(value).expect("canonical chroma_cord role ID")
 }
 
-fn office_id(value: &str) -> OfficeId {
-    OfficeId::new(value).expect("canonical chroma_cord office ID")
-}
-
 fn being(value: &str) -> InstitutionalBeingId {
     InstitutionalBeingId::new(value).expect("canonical chroma_cord being ID")
 }
@@ -219,7 +215,7 @@ fn nightingale_fixture() -> (InstitutionalWorldState, InstitutionalBeingId) {
         id: MembershipId::new("membership.glaushouse.chroma-cord-nightingale")
             .expect("canonical chroma_cord membership ID"),
         being: nightingale.clone(),
-        institution: house_institutions::glaushouse_medical_civilization_id(),
+        institution: glaushouse::nightingales_id(),
         role_id: Some(role_id("role.glaushouse.nightingale")),
         role: MembershipRole::FullMember,
         affiliation_state: AffiliationState::Initiated,

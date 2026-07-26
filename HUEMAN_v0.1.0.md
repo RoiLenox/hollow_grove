@@ -48,6 +48,23 @@ The player is always Hueman.
 
 ## Player Grammar
 
+### Hueman Faculties
+
+- Stonebend / Body / Presynce feels emerging physical movement.
+- Flynt / Spirit / Resynce joins relational momentum.
+- Glaüshouse / Mind / Precog projects evidence-grounded likely consequences.
+- Sandmanor / Minorian / Soul Interior / Prefog opens legal possibilities.
+- Sandmanor / Minoan / Soul Exterior / Prefig provisionally forms one selected
+  possibility.
+
+The complete `Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre ->
+Troglodyte` Current Form ladder develops Presynce. Resynce is an additional
+relational manifestation and never splits or mutates that ladder.
+
+Sandmanor's reciprocal cycle is `Prefog -> Prefig -> Proof -> Evidence or
+Failure -> Revision -> Prefog`. Prefog and Prefig are equal Soul halves;
+neither is proof or a second decision engine.
+
 ### Current Flow
 
 Movement through the world:
@@ -110,6 +127,37 @@ Core rule:
 
 Equipment remains separate from transformation.
 
+## Synthesis Continuance
+
+Synthesis establishes a real living Form, but no single procedure guarantees
+that Form forever. Continuance depends on the Recipe, the Form's Ways,
+maintenance, renewal, environmental compatibility, the Hueman, and available
+institutional care. A maintained Form may continue throughout a natural life.
+It may also be refined, revised, weakened, safely regressed, discontinued,
+replaced, or catastrophically collapsed.
+
+> **Synthesis is not permanence. Synthesis is Continuance through renewal.**
+
+Adjustment, Graft, Reconstruction, and Transfiguration describe increasing
+clinical depth. Overgrowth is an emergency failure state, not an intended Form.
+Host rejection and Sympiote rejection are separate. Major Reconstruction and
+Transfiguration require both technical and lived viability.
+
+## Glaüshouse Clinical Advancement
+
+Every Glaüshouse clinician begins from or proves the Nightingale foundation. A
+Nightingale may remain in that respected rank for an entire career or choose
+either Matron, the equal Aura-forward branch, or Marshal, the equal
+Current-forward branch. Cross-training remains open. Mastery of both branches
+may earn Persephone rank; multiple Persephones may serve simultaneously. Prima
+Donna is the one singular apex office and candidates arise only from qualified
+Persephones with additional physician, diagnostic, Recipe, surgical, Ledger,
+outcome, teaching, and open-path evidence.
+
+Advancement is a meaningful-work Toke/Token attached to the same stable Hueman
+identity. Existing rank holders do not close candidacy. Glaüshouse succession
+is generative: one Prima Donna must cultivate many people who may rise.
+
 ## Confirmed Form Origins
 
 Current-side confirmed origins:
@@ -118,14 +166,24 @@ Current-side confirmed origins:
 - Goblin originates in Stonebend
 - their paths may intersect at Ghoul
 
+Gremlincoin is the Gremlin Way: salvage, improvisation, risk, mobility,
+low-resource adaptation, frontier labor, discovery of abandoned value, and
+opportunity made from discarded material. Accumulated Gremlin Way can support
+Gargoyle Recipe viability, but no numeric threshold automatically creates
+Gargoyle. Gargoyle Continuance requires its Ways, maintenance, and renewal.
+
 Aura-side confirmed origins:
 
 - Sprite originates in Glaüshouse
 - Pixy originates in Sandmanor
 - their paths may intersect at Faerie
 
-These are braided origins, not a forced linear evolution ladder.
-Later ownership of Troll, Ork, Ogre, Troglodyte, Spirit, Nymph, Siren, and Muse remains open.
+These House origins remain braided and do not divide faculty ownership. The
+Current Form sequence itself is the complete Presynce embodiment ladder:
+Gremlin, Goblin, Ghoul, Spectre, Troll, Ork, Ogre, Troglodyte. Resynce remains
+an additional relational manifestation rather than a separate species ladder.
+House-origin attribution outside the confirmed origins remains distinct from
+this faculty classification.
 
 ## Starting Position
 
@@ -138,6 +196,29 @@ Current confirmed principles:
 - Aura Ridge matters
 - Flynt remains constitutionally present even if its physical city is not the literal opening tile
 - exact opening geometry remains open
+
+## Aura Ridge Public Economy
+
+Aura Ridge is where House work, trade, employment, apprenticeships, public
+contracts, investment, and evidence enter a shared economy. Central Junction is
+the district where the interior House routes meet; the South Ridge Exchange is
+one institution inside that broader civic and social district.
+
+The public productive matrix is Sandmanor Design as Creation of Form, Flynt
+Engineering as Creation of Function, Stonebend Craft as Continuance of Form,
+and Glaüshouse Repair as Continuance of Function. Projects may use several
+poles, but each listed enterprise or project has one stable identity and one
+evidence-supported primary pole.
+
+Hollow Grove uses one unnamed standard currency. The four indexes do not become
+currencies, Toke/Tokens remain evidence of earned work and recognition, and
+Gremlincoin remains nonmonetary evidence of the Gremlin Way.
+
+At Central Junction, House Sector Halls verify domain facts, the Junction Board
+audits shared public standards, the Clearing House settles recognized
+contracts, and the Junction Wire publishes the result. Current Haze remains
+unresolved possibility, Equal Gaze remains reconciled perspective, and Aura
+Beam remains the revelation or transmission of a visible shared future.
 
 ## Kingdom Roles In Hueman
 
@@ -168,13 +249,15 @@ Open composite naming remains intentionally modular.
 
 ## Routes
 
-Confirmed route pairs:
+Canonical route pairs:
 
-- Stonebend <-> Sandmanor: Aura Way / Mnt. Aura
-- Stonebend <-> Flynt: Basin Motorspeedway / Stairway to Heaven
+- Flynt <-> Glaüshouse: Boardwalk / Return and Riptide / Retrieve
+- Glaüshouse <-> Stonebend: Current Sea / Certify and Aura Ridge / Witness
+- Glaüshouse <-> Sandmanor: Glausbahn / Refine and Current Seanad / Deliberate
+- Stonebend <-> Sandmanor: Aura Way / Design and Mt. Aura / Aspire
+- Stonebend <-> Flynt: Basin Motor Speedway / Produce and Stairway to Heaven / Ascend
 
-Straight routes are process.
-Curved routes are transformation.
+Routes are constitutional verbs. Straight routes remain process geometry and curved routes remain transformation geometry, but shape never replaces purpose. The exact law is frozen in `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md`.
 
 Not every unresolved idea belongs on Aura Ridge.
 Bedrock is for stable constitutional placement.

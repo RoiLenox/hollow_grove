@@ -24,22 +24,24 @@ glance.
 
 ## Nightingale Use
 
-Nightingales use `chroma_cord` to support their constitutional work of
-recognition, clearing, and coordinated healing. They may chart clinical pressure,
-review the sequence of observed events and actions, locate unresolved threats,
-and challenge premature Clearance.
+The Nightingales use `chroma_cord` to support their constitutional nursing,
+patient-advocacy, threat-recognition, clearing, and recovery work. They may
+chart clinical pressure, review observed events and actions, locate unresolved
+threats, and preserve evidence for a protected clinical stop or review.
 
-This does not redefine Nightingales as generic nurses or make Glaüshouse medicine
-species-exclusive. Mixed-species clinicians may use the same software under the
-institutional rules of their clinic or hospital.
+This does not make generic nurses a Nightingale species or make Glaüshouse
+medicine species-exclusive. The Nightingales are a constitutional clinical
+institution; mixed-species clinicians may serve within lawful institutional,
+privilege, access, consent, and scope rules.
 
 ## Authority Boundary
 
 - `chroma_cord` is an application managed above the Hollow Grove kernel.
 - A chart entry is evidence and presentation, not constitutional truth by itself.
 - The software does not grant access, authorize treatment, or declare Clearance.
-- Hollow Grove applies the existing clinical institution's identity, consent,
-  access, and projection policy; it does not invent those facts.
+- Hollow Grove applies Chromacord's institutional identity and the existing
+  clinical access and projection policy; it never infers consent, clearance,
+  privilege, or treatment authority from a chart.
 - `chroma_cord` retains authority over chord grammar, hue rules, input behavior,
   and its append-only store.
 - Hollow Grove and Hueman must continue to function without this application.
@@ -69,8 +71,8 @@ The integrated control path now consists of:
   lifecycle, projection, or world anchor drifts from the registry; and
 - `src/world/chroma_cord.rs`, which supplies a complete four-phase chart entry
   with a clinical hue;
-- a Glaüshouse chart-view policy based on existing Nightingale, recovery-staff,
-  Persephone, Prima Donna, and explicit-grant facts;
+- a Glaüshouse chart-view policy based on Nightingale, recovery-staff, and
+  Persephone roles, the singular Prima Donna office, and explicit grants;
 - projection into the existing `ClinicalFinding` presentation object only after
   the existing institutional gate allows access; and
 - a deterministic Nightingale/outsider witness proving that chart evidence does

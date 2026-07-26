@@ -620,7 +620,7 @@ pub fn trace_rejected_assignment_scenario(
             proposed_state: if scenario.name == "minotaur-sea-claim" {
                 "Aura Sea guardian"
             } else {
-                "Aura Fields steward"
+                "Aura Field steward"
             }
             .into(),
             acting_house: None,

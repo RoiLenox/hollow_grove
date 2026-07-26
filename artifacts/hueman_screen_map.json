@@ -115,7 +115,7 @@
     },
     {
       "id": "basin_motorspeedway",
-      "name": "Basin Motorspeedway",
+      "name": "Basin Motor Speedway",
       "from": "flynt",
       "to": "stonebend",
       "band_width": 0.045
@@ -124,7 +124,7 @@
   "curved_routes": [
     {
       "id": "mnt_aura",
-      "name": "Mnt. Aura",
+      "name": "Mt. Aura",
       "from": "stonebend",
       "to": "sandmanor",
       "control": {

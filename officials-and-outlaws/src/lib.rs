@@ -1,19 +1,15 @@
-//! Officials and Outlaws is the Flynt constitutional domain layer.
+//! Canonical Flynt constitutional domain.
 //!
-//! It models three mirrored pairs:
+//! The directory name is retained only as a source-tree migration boundary.
+//! This crate no longer models the former mirrored opposition. Flynt has one
+//! sovereign executive, Tross; one constitutional companion, Chimera; and two
+//! complementary institutional expressions beneath that same authority.
 //!
-//! - Manticorp ↔ Werewolves
-//! - Mystery Men ↔ Gallows
-//! - Mysteryguard ↔ Mermen
-//!
-//! Official and Outlaw describe constitutional orientation, not moral
-//! alignment. The layer also records the foundational Flynt forms and higher
-//! synthesis needed to produce Chimera. Executive succession then proceeds by
-//! domain-level Chimera refinement into the Manticorp Form, constitutional
-//! recognition of a candidate's proven mastery, and lawful accession to the
-//! Tross office. Only the foundational Chimera synthesis is causal composition.
+//! The neutral `hollow-grove-kernel` remains responsible only for composition
+//! provenance. This crate owns the Flynt meaning of the unique Chimera recipe
+//! and the institutional hierarchy surrounding it.
 
-use std::collections::HashSet;
+use std::collections::{BTreeMap, BTreeSet, HashSet};
 use std::fmt;
 
 use hollow_grove_kernel::{
@@ -21,72 +17,56 @@ use hollow_grove_kernel::{
     CompositionRecord, CompositionRecordId, ExternalRef, ScaleKey, StableKeyError,
 };
 
-pub const OFFICIAL_MANTICORP: &str = "officials-outlaws.official.manticorp";
-pub const OFFICIAL_MYSTERY_MEN: &str = "officials-outlaws.official.mystery-men";
-pub const OFFICIAL_MYSTERYGUARD: &str = "officials-outlaws.official.mysteryguard";
+pub const OFFICE_TROSS: &str = "flynt.office.tross";
+pub const PERSON_TROSS: &str = "flynt.person.tross";
+pub const IDENTITY_MYSTERY_MAN: &str = "flynt.identity.mystery-man";
+pub const IDENTITY_MR_X: &str = "flynt.identity.mr-x";
+pub const COMPANION_CHIMERA: &str = "flynt.companion.chimera";
 
-pub const OUTLAW_WEREWOLVES: &str = "officials-outlaws.outlaw.werewolves";
-pub const OUTLAW_GALLOWS: &str = "officials-outlaws.outlaw.gallows";
-pub const OUTLAW_MERMEN: &str = "officials-outlaws.outlaw.mermen";
+pub const INSTITUTION_MANTICORP: &str = "flynt.institution.manticorp";
+pub const INSTITUTION_MYSTERY_MEN: &str = "flynt.institution.mystery-men";
+pub const EXPRESSION_MYSTERY_MAN: &str = "flynt.expression.the-mystery-man";
 
-pub const MIRROR_MANTICORP_WEREWOLVES: &str = "officials-outlaws.mirror.manticorp-werewolves";
-pub const MIRROR_MYSTERY_MEN_GALLOWS: &str = "officials-outlaws.mirror.mystery-men-gallows";
-pub const MIRROR_MYSTERYGUARD_MERMEN: &str = "officials-outlaws.mirror.mysteryguard-mermen";
+pub const INSTITUTION_GALLOWS: &str = "flynt.institution.gallows";
+pub const EXPRESSION_WE_FAIRY_MEN: &str = "flynt.expression.we-fairy-men";
+pub const SITE_GALLOWRY: &str = "flynt.site.gallowry";
 
-pub const LINEAGE_GARGOYLE: &str = "officials-outlaws.lineage.gargoyle";
-pub const LINEAGE_WEREWOLF: &str = "officials-outlaws.lineage.werewolf";
-pub const LINEAGE_MERMAN: &str = "officials-outlaws.lineage.merman";
+pub const OFFICE_BRO_WHITE: &str = "flynt.office.bro-white";
+pub const CREW_BRO_WHITE: &str = "flynt.crew.bro-white-and-the-7-brothas";
+pub const OFFICE_CINDERELLAMAN: &str = "flynt.office.cinderellaman";
+pub const CREW_CINDERELLAMAN: &str = "flynt.crew.cinderellaman-and-his-midnight-crew";
+pub const OFFICE_THE_BEAUTY: &str = "flynt.office.the-beauty";
+pub const CREW_THE_BEAUTY: &str = "flynt.crew.the-beauty-and-his-beasts";
 
-pub const FORM_GARGOYLE: &str = "officials-outlaws.form.gargoyle";
-pub const FORM_WEREWOLF: &str = "officials-outlaws.form.werewolf";
-pub const FORM_MERMAN: &str = "officials-outlaws.form.merman";
-pub const FORM_CHIMERA: &str = "officials-outlaws.form.chimera";
-pub const FORM_MANTICORP: &str = "officials-outlaws.form.manticorp";
+pub const FORM_GARGOYLE: &str = "flynt.form.gargoyle";
+pub const FORM_MERMAN: &str = "flynt.form.merman";
+pub const FORM_WEREWOLF: &str = "flynt.form.werewolf";
+pub const FORM_CHIMERA: &str = "flynt.form.chimera";
+pub const FORM_MANTICORP: &str = "flynt.form.manticorp";
+pub const RECIPE_CHIMERA: &str = "flynt.recipe.constitutional-chimera";
+pub const RECIPE_MANTICORP: &str = "flynt.recipe.divided-manticorp";
+pub const RECIPE_GARGOYLE_CONTINUANCE: &str = "flynt.recipe.gargoyle-continuance";
+pub const WAY_GREMLIN: &str = "flynt.way.gremlin";
+pub const TOKEN_GREMLINCOIN: &str = "flynt.token.gremlincoin";
+pub const GREMLINCOIN_MEANING: &str = WAY_GREMLIN;
 
-pub const OFFICE_TROSS: &str = "officials-outlaws.office.tross";
-pub const OFFICE_CHIMERA: &str = "officials-outlaws.office.chimera";
+const FLYNT_NAMESPACE: &str = "flynt.";
+const FORM_NAMESPACE: &str = "flynt.form.";
+const RECIPE_NAMESPACE: &str = "flynt.recipe.";
 
-pub const RECIPE_CHIMERA: &str = "officials-outlaws.recipe.chimera";
-
-pub const PERSON_CANONICAL_TROSS_CANDIDATE: &str =
-    "officials-outlaws.person.canonical-tross-candidate";
-pub const REFINEMENT_CHIMERA_TO_MANTICORP: &str =
-    "officials-outlaws.refinement.chimera-to-manticorp";
-pub const MASTERY_CHIMERA_TO_MANTICORP: &str = "officials-outlaws.mastery.chimera-to-manticorp";
-pub const RECOGNITION_TROSS_SUCCESSION: &str = "officials-outlaws.recognition.tross-succession";
-pub const ACCESSION_TROSS: &str = "officials-outlaws.accession.tross";
-pub const WITNESS_CHIMERA_REFINEMENT: &str = "officials-outlaws.witness.chimera-refinement";
-pub const WITNESS_TROSS_RECOGNITION: &str = "officials-outlaws.witness.tross-recognition";
-
-const OFFICIAL_NAMESPACE: &str = "officials-outlaws.official.";
-const OUTLAW_NAMESPACE: &str = "officials-outlaws.outlaw.";
-const LINEAGE_NAMESPACE: &str = "officials-outlaws.lineage.";
-const FORM_NAMESPACE: &str = "officials-outlaws.form.";
-const OFFICE_NAMESPACE: &str = "officials-outlaws.office.";
-const PERSON_NAMESPACE: &str = "officials-outlaws.person.";
-const MIRROR_NAMESPACE: &str = "officials-outlaws.mirror.";
-const RECIPE_NAMESPACE: &str = "officials-outlaws.recipe.";
-const REFINEMENT_NAMESPACE: &str = "officials-outlaws.refinement.";
-const MASTERY_NAMESPACE: &str = "officials-outlaws.mastery.";
-const RECOGNITION_NAMESPACE: &str = "officials-outlaws.recognition.";
-const ACCESSION_NAMESPACE: &str = "officials-outlaws.accession.";
-const WITNESS_NAMESPACE: &str = "officials-outlaws.witness.";
-
-/// A domain namespace failure is separate from the kernel's stable-key
-/// validation. Character-level identity rules remain owned by the kernel.
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub enum DomainIdError {
-    KernelComposition(StableKeyError),
+pub enum FlyntIdError {
+    InvalidStableKey(StableKeyError),
     WrongNamespace {
         value: String,
         expected: &'static str,
     },
 }
 
-impl fmt::Display for DomainIdError {
+impl fmt::Display for FlyntIdError {
     fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            Self::KernelComposition(error) => error.fmt(formatter),
+            Self::InvalidStableKey(error) => error.fmt(formatter),
             Self::WrongNamespace { value, expected } => {
                 write!(formatter, "{value} is outside the {expected} namespace")
             }
@@ -94,31 +74,30 @@ impl fmt::Display for DomainIdError {
     }
 }
 
-impl std::error::Error for DomainIdError {}
+impl std::error::Error for FlyntIdError {}
 
-fn has_domain_namespace(value: &str, namespace: &'static str) -> bool {
+fn has_namespace(value: &str, namespace: &'static str) -> bool {
     value
         .strip_prefix(namespace)
         .is_some_and(|remainder| !remainder.is_empty())
 }
 
-macro_rules! institutional_domain_id {
-    ($name:ident, $namespace:expr) => {
+macro_rules! flynt_id {
+    ($name:ident, $inner:ty, $namespace:expr) => {
         #[derive(Debug, Clone, PartialEq, Eq, Hash)]
-        pub struct $name(ScaleKey);
+        pub struct $name($inner);
 
         impl $name {
-            pub fn new(value: impl Into<String>) -> Result<Self, DomainIdError> {
+            pub fn new(value: impl Into<String>) -> Result<Self, FlyntIdError> {
                 let value = value.into();
-                let kernel =
-                    ScaleKey::new(value.clone()).map_err(DomainIdError::KernelComposition)?;
-                if !has_domain_namespace(&value, $namespace) {
-                    return Err(DomainIdError::WrongNamespace {
+                let inner = <$inner>::new(value.clone()).map_err(FlyntIdError::InvalidStableKey)?;
+                if !has_namespace(&value, $namespace) {
+                    return Err(FlyntIdError::WrongNamespace {
                         value,
                         expected: $namespace,
                     });
                 }
-                Ok(Self(kernel))
+                Ok(Self(inner))
             }
 
             #[must_use]
@@ -127,7 +106,7 @@ macro_rules! institutional_domain_id {
             }
 
             #[must_use]
-            pub fn as_kernel(&self) -> &ScaleKey {
+            pub fn as_kernel(&self) -> &$inner {
                 &self.0
             }
         }
@@ -140,168 +119,144 @@ macro_rules! institutional_domain_id {
     };
 }
 
-macro_rules! composition_domain_id {
-    ($name:ident, $kernel:ty, $namespace:expr) => {
-        #[derive(Debug, Clone, PartialEq, Eq, Hash)]
-        pub struct $name($kernel);
+flynt_id!(FlyntNodeId, ScaleKey, FLYNT_NAMESPACE);
+flynt_id!(FormId, CompositionNodeId, FORM_NAMESPACE);
+flynt_id!(SynthesisRecipeId, CompositionRecordId, RECIPE_NAMESPACE);
 
-        impl $name {
-            pub fn new(value: impl Into<String>) -> Result<Self, DomainIdError> {
-                let value = value.into();
-                let kernel =
-                    <$kernel>::new(value.clone()).map_err(DomainIdError::KernelComposition)?;
-                if !has_domain_namespace(&value, $namespace) {
-                    return Err(DomainIdError::WrongNamespace {
-                        value,
-                        expected: $namespace,
-                    });
-                }
-                Ok(Self(kernel))
-            }
-
-            #[must_use]
-            pub fn as_str(&self) -> &str {
-                self.0.as_str()
-            }
-
-            #[must_use]
-            pub fn as_kernel(&self) -> &$kernel {
-                &self.0
-            }
-        }
-
-        impl fmt::Display for $name {
-            fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
-                self.as_str().fmt(formatter)
-            }
-        }
-    };
-}
-
-institutional_domain_id!(OfficialId, OFFICIAL_NAMESPACE);
-institutional_domain_id!(OutlawId, OUTLAW_NAMESPACE);
-institutional_domain_id!(ConstitutionalOfficeId, OFFICE_NAMESPACE);
-institutional_domain_id!(PersonId, PERSON_NAMESPACE);
-institutional_domain_id!(MirrorPairId, MIRROR_NAMESPACE);
-institutional_domain_id!(ChimeraRefinementId, REFINEMENT_NAMESPACE);
-institutional_domain_id!(ExecutiveMasteryId, MASTERY_NAMESPACE);
-institutional_domain_id!(ConstitutionalRecognitionId, RECOGNITION_NAMESPACE);
-institutional_domain_id!(LawfulAccessionId, ACCESSION_NAMESPACE);
-institutional_domain_id!(ConstitutionalWitnessId, WITNESS_NAMESPACE);
-composition_domain_id!(LineageId, CompositionNodeId, LINEAGE_NAMESPACE);
-composition_domain_id!(FormId, CompositionNodeId, FORM_NAMESPACE);
-composition_domain_id!(SynthesisRecipeId, CompositionRecordId, RECIPE_NAMESPACE);
-
-/// Constitutional status. It deliberately carries no moral judgment.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub enum ConstitutionalOrientation {
-    Official,
-    Outlaw,
+pub enum ConstitutionalBranch {
+    Common,
+    Urban,
+    Rural,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub enum SharedFunction {
-    MartialForce,
-    HiddenThreatHuntingInvestigationAndControl,
-    MaritimeMovementPursuitAndSovereignty,
+pub enum ConstitutionalVisibility {
+    Public,
+    PublicWithClassifiedOperations,
+    PrivateAndExistenceDisputed,
+    Hidden,
+    Legendary,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum FlyntNodeKind {
+    SovereignExecutive,
+    ConstitutionalCompanion,
+    MilitaryInstitution,
+    InvestigativeBureau,
+    CriminalSyndicate,
+    LegendaryOperative,
+    FolkExpression,
+    FoundingLeaderOffice,
+    Crew,
+}
+
+impl FlyntNodeKind {
+    #[must_use]
+    pub const fn is_institution(self) -> bool {
+        matches!(
+            self,
+            Self::MilitaryInstitution | Self::InvestigativeBureau | Self::CriminalSyndicate
+        )
+    }
+
+    #[must_use]
+    pub const fn is_office(self) -> bool {
+        matches!(self, Self::SovereignExecutive | Self::FoundingLeaderOffice)
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum InstitutionalResponsibility {
+    TerritorialDefense,
+    MilitaryCommand,
+    ConstitutionalProtection,
+    DisciplinedForce,
+    MilitaryTraining,
+    LawfulDeployment,
+    Investigation,
+    Intelligence,
+    Counterintelligence,
+    CovertOperations,
+    OrganizedCrimeInvestigation,
+    Contraband,
+    Espionage,
+    ConstitutionalSecurity,
+    OrganizedCrime,
+    RegionalCrews,
+    Loyalty,
+    Territory,
+    Favors,
+    Obligation,
+    CulturalIdentity,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct OfficialInstitution {
-    pub id: OfficialId,
+pub struct FlyntAuthorityNode {
+    pub id: FlyntNodeId,
     pub name: String,
-    pub function: SharedFunction,
+    pub kind: FlyntNodeKind,
+    pub branch: ConstitutionalBranch,
+    pub superior: Option<FlyntNodeId>,
+    pub visibility: ConstitutionalVisibility,
+    pub responsibilities: Vec<InstitutionalResponsibility>,
 }
 
-impl OfficialInstitution {
-    #[must_use]
-    pub const fn orientation(&self) -> ConstitutionalOrientation {
-        ConstitutionalOrientation::Official
-    }
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum FoundingPeople {
+    Gargoyle,
+    Merman,
+    Werewolf,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum LineageAssociation {
+    SouthernFlynt,
+    Stone,
+    Architecture,
+    Guardianship,
+    Riptide,
+    AuraSea,
+    Waterways,
+    Smuggling,
+    MidnightTransformation,
+    NorthernFlynt,
+    Wilderness,
+    Packs,
+    RoamingProtection,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct OutlawExpression {
-    pub id: OutlawId,
+pub struct FoundingLineage {
+    pub people: FoundingPeople,
+    pub founding_leader: FlyntNodeId,
+    pub crew: FlyntNodeId,
+    pub associations: Vec<LineageAssociation>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum GallowryFunction {
+    MeetingPlace,
+    Headquarters,
+    CulturalCenter,
+    Gallery,
+    OperationalHub,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct GallowrySite {
+    pub id: FlyntNodeId,
     pub name: String,
-    pub function: SharedFunction,
-    pub constitutional_expression: String,
-}
-
-impl OutlawExpression {
-    #[must_use]
-    pub const fn orientation(&self) -> ConstitutionalOrientation {
-        ConstitutionalOrientation::Outlaw
-    }
-}
-
-/// The endpoint sum used only for symmetric mirror queries and registration.
-/// Institutions, forms, lineages, offices, and people remain separate types.
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
-pub enum ConstitutionalEntityId {
-    Official(OfficialId),
-    Outlaw(OutlawId),
-}
-
-impl ConstitutionalEntityId {
-    #[must_use]
-    pub const fn orientation(&self) -> ConstitutionalOrientation {
-        match self {
-            Self::Official(_) => ConstitutionalOrientation::Official,
-            Self::Outlaw(_) => ConstitutionalOrientation::Outlaw,
-        }
-    }
-
-    #[must_use]
-    pub fn as_str(&self) -> &str {
-        match self {
-            Self::Official(id) => id.as_str(),
-            Self::Outlaw(id) => id.as_str(),
-        }
-    }
-}
-
-impl From<OfficialId> for ConstitutionalEntityId {
-    fn from(value: OfficialId) -> Self {
-        Self::Official(value)
-    }
-}
-
-impl From<OutlawId> for ConstitutionalEntityId {
-    fn from(value: OutlawId) -> Self {
-        Self::Outlaw(value)
-    }
-}
-
-#[derive(Debug, Clone, PartialEq, Eq)]
-pub struct MirrorPair {
-    pub id: MirrorPairId,
-    pub official: OfficialId,
-    pub outlaw: OutlawId,
-    pub shared_function: SharedFunction,
-    pub distinction: String,
-}
-
-impl MirrorPair {
-    #[must_use]
-    pub fn counterpart(&self, entity: &ConstitutionalEntityId) -> Option<ConstitutionalEntityId> {
-        match entity {
-            ConstitutionalEntityId::Official(id) if id == &self.official => {
-                Some(ConstitutionalEntityId::Outlaw(self.outlaw.clone()))
-            }
-            ConstitutionalEntityId::Outlaw(id) if id == &self.outlaw => {
-                Some(ConstitutionalEntityId::Official(self.official.clone()))
-            }
-            _ => None,
-        }
-    }
+    pub controlled_by: FlyntNodeId,
+    pub visibility: ConstitutionalVisibility,
+    pub functions: Vec<GallowryFunction>,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum FormKind {
-    Foundational,
-    HigherSynthesis,
-    PerfectedComposite,
+    FoundingPeople,
+    ConstitutionalSynthesis,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -312,709 +267,330 @@ pub struct TransformationForm {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct TransformationLineage {
-    pub id: LineageId,
-    pub name: String,
-    pub base_form: FormId,
-}
-
-#[derive(Debug, Clone, PartialEq, Eq)]
-pub struct SynthesisBase {
-    pub lineage: LineageId,
-    pub form: FormId,
-    pub name: String,
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub enum LineageRelationKind {
-    DirectExpression,
-    Influence,
-}
-
-/// Records the direct Werewolf/Merman institutional expressions and the
-/// Gargoyle influence on Gallows without equating an institution and lineage.
-#[derive(Debug, Clone, PartialEq, Eq)]
-pub struct OutlawLineageRelation {
-    pub outlaw: OutlawId,
-    pub lineage: LineageId,
-    pub kind: LineageRelationKind,
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub enum ConstitutionalOfficeKind {
-    Executive,
-    SecondInCommand,
-}
-
-#[derive(Debug, Clone, PartialEq, Eq)]
-pub struct ConstitutionalOffice {
-    pub id: ConstitutionalOfficeId,
-    pub title: String,
-    pub kind: ConstitutionalOfficeKind,
-}
-
-#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct SynthesisRecipe {
     pub id: SynthesisRecipeId,
     pub sources: Vec<FormId>,
     pub result: FormId,
 }
 
-/// Perfected dimensions of Manticorp mastery. These are qualities of the
-/// achieved form, never transformation forms or synthesis ingredients.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum ManticorpRecipeComponent {
+    Gargoyle,
+    Werewolf,
+    Merman,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ManticorpRecipeCustody {
+    pub custodian: FlyntNodeId,
+    pub component: ManticorpRecipeComponent,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct DividedManticorpRecipe {
+    pub recipe: SynthesisRecipe,
+    pub custody: Vec<ManticorpRecipeCustody>,
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
-pub enum ManticorpMasteryAspect {
-    Lion,
-    Eagle,
-    Hydra,
+pub enum ManticorpContinuanceRequirement {
+    BodilyDiscipline,
+    RecipeRenewal,
+    DividedBasinKnowledge,
+    InstitutionalRecognition,
+    SpecializedGlaushouseCare,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct ConstitutionalWitness {
-    pub id: ConstitutionalWitnessId,
-    pub statement: String,
+pub struct FlyntSovereignIdentity {
+    pub person: FlyntNodeId,
+    pub public_title: FlyntNodeId,
+    pub underground_identities: Vec<FlyntNodeId>,
+    pub maintained_form: FormId,
+    pub continuance_requirements: Vec<ManticorpContinuanceRequirement>,
+    pub public_institution: FlyntNodeId,
+    pub underground_institution: FlyntNodeId,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
+pub enum GremlinWayPractice {
+    Salvage,
+    Improvisation,
+    Risk,
+    Mobility,
+    LowResourceAdaptation,
+    DiscoverAbandonedValue,
+    FrontierLabor,
+    CreateOpportunityFromDiscardedMaterial,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct ChimeraRefinement {
-    pub id: ChimeraRefinementId,
-    pub source: FormId,
-    pub perfected_aspects: Vec<ManticorpMasteryAspect>,
-    pub result: FormId,
-    pub evidence: Vec<ConstitutionalWitness>,
+pub struct GremlincoinRecord {
+    pub hueman: FlyntNodeId,
+    pub token: &'static str,
+    pub way: &'static str,
+    pub practices: BTreeSet<GremlinWayPractice>,
+    pub objective_value_created: Vec<String>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct ExecutiveMastery {
-    pub id: ExecutiveMasteryId,
-    pub candidate: PersonId,
-    pub completed_chimera: FormId,
-    pub refinement: ChimeraRefinement,
-    pub resulting_manticorp: FormId,
+pub struct GargoyleContinuance {
+    pub hueman: FlyntNodeId,
+    pub gremlincoin: GremlincoinRecord,
+    pub recipe: &'static str,
+    pub recipe_viable: bool,
+    pub synthesis_established: bool,
+    pub maintained_structure: bool,
+    pub territory: bool,
+    pub responsibility: bool,
+    pub maintenance_current: bool,
+    pub renewal_current: bool,
 }
 
-/// Constitutional acknowledgment of an already-proven executive mastery.
-/// Registration never creates or changes the referenced form achievement.
-#[derive(Debug, Clone, PartialEq, Eq)]
-pub struct ConstitutionalRecognition {
-    pub id: ConstitutionalRecognitionId,
-    pub candidate: PersonId,
-    pub mastery: ExecutiveMasteryId,
-    pub achieved_manticorp: FormId,
-    pub office: ConstitutionalOfficeId,
-    pub witnesses: Vec<ConstitutionalWitness>,
-}
-
-/// Lawful office accession is downstream of recognition and is not an office,
-/// form, person, or causal composition record.
-#[derive(Debug, Clone, PartialEq, Eq)]
-pub struct LawfulAccession {
-    pub id: LawfulAccessionId,
-    pub candidate: PersonId,
-    pub recognition: ConstitutionalRecognitionId,
-    pub office: ConstitutionalOfficeId,
-}
-
-#[derive(Debug, PartialEq, Eq)]
-pub enum RegistryError {
-    DuplicateOfficial(OfficialId),
-    DuplicateOutlaw(OutlawId),
-    DuplicateLineage(LineageId),
-    DuplicateForm(FormId),
-    DuplicateOffice(ConstitutionalOfficeId),
-    DuplicateMirrorId(MirrorPairId),
-    DuplicateMirrorPair {
-        official: OfficialId,
-        outlaw: OutlawId,
-    },
-    DuplicateRecipe(SynthesisRecipeId),
-    DuplicateRecipeSource {
-        recipe: SynthesisRecipeId,
-        source: FormId,
-    },
-    DuplicateSynthesisBase(LineageId),
-    DuplicateLineageRelation {
-        outlaw: OutlawId,
-        lineage: LineageId,
-    },
-    DuplicateExecutiveMastery(ExecutiveMasteryId),
-    DuplicateChimeraRefinement(ChimeraRefinementId),
-    DuplicateRecognition(ConstitutionalRecognitionId),
-    DuplicateAccession(LawfulAccessionId),
-    SameMirrorEntity(String),
-    MirrorRequiresOppositeOrientations,
-    UnknownOfficial(OfficialId),
-    UnknownOutlaw(OutlawId),
-    UnknownLineage(LineageId),
-    UnknownForm(FormId),
-    UnknownOffice(ConstitutionalOfficeId),
-    ChimeraSynthesisRequired,
-    ManticorpCannotBeDirectlySynthesized,
-    RecognitionRequiresMastery(ExecutiveMasteryId),
-    AccessionRequiresRecognition(ConstitutionalRecognitionId),
-    OfficialMirrorCount {
-        official: OfficialId,
-        count: usize,
-    },
-    OutlawMirrorCount {
-        outlaw: OutlawId,
-        count: usize,
-    },
-    MirrorFunctionMismatch(MirrorPairId),
-    CanonicalRosterMismatch(&'static str),
-    WrongCanonicalMirror(OfficialId),
-    ManticorpInstitutionFormCollision,
-    ChimeraFormOfficeCollision,
-    InvalidFoundationalBases,
-    InvalidLineageRelations,
-    InvalidChimeraRecipe,
-    InvalidExecutiveMastery,
-    InvalidConstitutionalRecognition,
-    InvalidLawfulAccession,
-    KernelComposition(CompositionCatalogError),
-}
-
-impl fmt::Display for RegistryError {
-    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
-        match self {
-            Self::DuplicateOfficial(id) => write!(formatter, "duplicate Official: {id}"),
-            Self::DuplicateOutlaw(id) => write!(formatter, "duplicate Outlaw: {id}"),
-            Self::DuplicateLineage(id) => write!(formatter, "duplicate lineage: {id}"),
-            Self::DuplicateForm(id) => write!(formatter, "duplicate form: {id}"),
-            Self::DuplicateOffice(id) => write!(formatter, "duplicate office: {id}"),
-            Self::DuplicateMirrorId(id) => write!(formatter, "duplicate mirror ID: {id}"),
-            Self::DuplicateMirrorPair { official, outlaw } => {
-                write!(formatter, "duplicate mirror pair: {official} ↔ {outlaw}")
-            }
-            Self::DuplicateRecipe(id) => write!(formatter, "duplicate recipe: {id}"),
-            Self::DuplicateRecipeSource { recipe, source } => {
-                write!(formatter, "duplicate source {source} in recipe {recipe}")
-            }
-            Self::DuplicateSynthesisBase(id) => {
-                write!(formatter, "duplicate synthesis base lineage: {id}")
-            }
-            Self::DuplicateLineageRelation { outlaw, lineage } => {
-                write!(
-                    formatter,
-                    "duplicate lineage relation: {outlaw} / {lineage}"
-                )
-            }
-            Self::DuplicateExecutiveMastery(id) => {
-                write!(formatter, "duplicate executive mastery: {id}")
-            }
-            Self::DuplicateChimeraRefinement(id) => {
-                write!(formatter, "duplicate Chimera refinement: {id}")
-            }
-            Self::DuplicateRecognition(id) => {
-                write!(formatter, "duplicate constitutional recognition: {id}")
-            }
-            Self::DuplicateAccession(id) => {
-                write!(formatter, "duplicate lawful accession: {id}")
-            }
-            Self::SameMirrorEntity(id) => write!(formatter, "an entity cannot mirror itself: {id}"),
-            Self::MirrorRequiresOppositeOrientations => {
-                formatter.write_str("a mirror requires one Official and one Outlaw")
-            }
-            Self::UnknownOfficial(id) => write!(formatter, "unknown Official: {id}"),
-            Self::UnknownOutlaw(id) => write!(formatter, "unknown Outlaw: {id}"),
-            Self::UnknownLineage(id) => write!(formatter, "unknown lineage: {id}"),
-            Self::UnknownForm(id) => write!(formatter, "unknown form: {id}"),
-            Self::UnknownOffice(id) => write!(formatter, "unknown office: {id}"),
-            Self::ChimeraSynthesisRequired => {
-                formatter.write_str("executive mastery requires the completed Chimera synthesis")
-            }
-            Self::ManticorpCannotBeDirectlySynthesized => formatter.write_str(
-                "Manticorp Form is achieved by Chimera refinement, not a synthesis recipe",
-            ),
-            Self::RecognitionRequiresMastery(id) => {
-                write!(
-                    formatter,
-                    "constitutional recognition requires proven mastery: {id}"
-                )
-            }
-            Self::AccessionRequiresRecognition(id) => {
-                write!(
-                    formatter,
-                    "lawful accession requires constitutional recognition: {id}"
-                )
-            }
-            Self::OfficialMirrorCount { official, count } => {
-                write!(
-                    formatter,
-                    "Official {official} has {count} canonical mirrors"
-                )
-            }
-            Self::OutlawMirrorCount { outlaw, count } => {
-                write!(formatter, "Outlaw {outlaw} has {count} canonical mirrors")
-            }
-            Self::MirrorFunctionMismatch(id) => {
-                write!(
-                    formatter,
-                    "mirror function does not match both endpoints: {id}"
-                )
-            }
-            Self::CanonicalRosterMismatch(kind) => {
-                write!(
-                    formatter,
-                    "the canonical {kind} roster is incomplete or extended"
-                )
-            }
-            Self::WrongCanonicalMirror(id) => {
-                write!(formatter, "wrong canonical mirror for {id}")
-            }
-            Self::ManticorpInstitutionFormCollision => {
-                formatter.write_str("Manticorp institution and Manticorp Form collided")
-            }
-            Self::ChimeraFormOfficeCollision => {
-                formatter.write_str("Chimera form and Chimera office collided")
-            }
-            Self::InvalidFoundationalBases => {
-                formatter.write_str("the foundational synthesis bases are not canonical")
-            }
-            Self::InvalidLineageRelations => {
-                formatter.write_str("the outlaw-lineage relations are not canonical")
-            }
-            Self::InvalidChimeraRecipe => {
-                formatter.write_str("the Chimera recipe is not canonical")
-            }
-            Self::InvalidExecutiveMastery => {
-                formatter.write_str("the Tross executive mastery is not canonical")
-            }
-            Self::InvalidConstitutionalRecognition => {
-                formatter.write_str("the Tross constitutional recognition is not canonical")
-            }
-            Self::InvalidLawfulAccession => {
-                formatter.write_str("the Tross lawful accession is not canonical")
-            }
-            Self::KernelComposition(error) => error.fmt(formatter),
-        }
+impl GargoyleContinuance {
+    #[must_use]
+    pub fn validates(&self) -> bool {
+        self.hueman == self.gremlincoin.hueman
+            && self.gremlincoin.token == TOKEN_GREMLINCOIN
+            && self.gremlincoin.way == WAY_GREMLIN
+            && self.gremlincoin.practices == canonical_gremlin_way_practices()
+            && !self.gremlincoin.objective_value_created.is_empty()
+            && self
+                .gremlincoin
+                .objective_value_created
+                .iter()
+                .all(|entry| !entry.trim().is_empty())
+            && self.recipe == RECIPE_GARGOYLE_CONTINUANCE
+            && self.recipe_viable
+            && self.synthesis_established
+            && self.maintained_structure
+            && self.territory
+            && self.responsibility
+            && self.maintenance_current
+            && self.renewal_current
     }
 }
 
-impl std::error::Error for RegistryError {}
-
-impl From<CompositionCatalogError> for RegistryError {
-    fn from(value: CompositionCatalogError) -> Self {
-        Self::KernelComposition(value)
-    }
+#[must_use]
+pub fn canonical_gremlin_way_practices() -> BTreeSet<GremlinWayPractice> {
+    BTreeSet::from([
+        GremlinWayPractice::Salvage,
+        GremlinWayPractice::Improvisation,
+        GremlinWayPractice::Risk,
+        GremlinWayPractice::Mobility,
+        GremlinWayPractice::LowResourceAdaptation,
+        GremlinWayPractice::DiscoverAbandonedValue,
+        GremlinWayPractice::FrontierLabor,
+        GremlinWayPractice::CreateOpportunityFromDiscardedMaterial,
+    ])
 }
 
-/// Mutable construction boundary for the locked domain. Identity and causal
-/// provenance are projected through Hollow Grove's public API.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ConstitutionalChimera {
+    pub authority_node: FlyntNodeId,
+    pub form: FormId,
+    pub synthesis: SynthesisRecipeId,
+    pub first_companion_to: FlyntNodeId,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct FoundingUnion {
+    pub founding_leaders: Vec<FlyntNodeId>,
+    pub folk_expression: FlyntNodeId,
+    pub institutional_home: FlyntNodeId,
+    pub constitutional_expression_of: FlyntNodeId,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct FlyntConstitutionParts {
+    pub nodes: Vec<FlyntAuthorityNode>,
+    pub lineages: Vec<FoundingLineage>,
+    pub forms: Vec<TransformationForm>,
+    pub chimera_recipe: SynthesisRecipe,
+    pub manticorp_recipe: DividedManticorpRecipe,
+    pub chimera: ConstitutionalChimera,
+    pub sovereign_identity: FlyntSovereignIdentity,
+    pub founding_union: FoundingUnion,
+    pub gallowry: GallowrySite,
+}
+
 #[derive(Debug)]
-pub struct OfficialsOutlawsRegistry {
-    officials: Vec<OfficialInstitution>,
-    outlaws: Vec<OutlawExpression>,
-    mirrors: Vec<MirrorPair>,
-    lineages: Vec<TransformationLineage>,
+pub struct FlyntConstitution {
+    nodes: Vec<FlyntAuthorityNode>,
+    lineages: Vec<FoundingLineage>,
     forms: Vec<TransformationForm>,
-    synthesis_bases: Vec<SynthesisBase>,
-    lineage_relations: Vec<OutlawLineageRelation>,
-    offices: Vec<ConstitutionalOffice>,
-    recipes: Vec<SynthesisRecipe>,
-    executive_masteries: Vec<ExecutiveMastery>,
-    recognitions: Vec<ConstitutionalRecognition>,
-    accessions: Vec<LawfulAccession>,
+    chimera_recipe: SynthesisRecipe,
+    manticorp_recipe: DividedManticorpRecipe,
+    chimera: ConstitutionalChimera,
+    sovereign_identity: FlyntSovereignIdentity,
+    founding_union: FoundingUnion,
+    gallowry: GallowrySite,
     composition: CompositionCatalog,
 }
 
-impl Default for OfficialsOutlawsRegistry {
-    fn default() -> Self {
-        Self::new()
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct AuthorityPlacement {
+    pub id: FlyntNodeId,
+    pub superior: Option<FlyntNodeId>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct FlyntConstitutionalAudit {
+    pub sovereign_executive: FlyntNodeId,
+    pub constitutional_chimera_count: usize,
+    pub institution_placements: Vec<AuthorityPlacement>,
+    pub office_placements: Vec<AuthorityPlacement>,
+    pub all_non_root_nodes_have_one_superior: bool,
+    pub hierarchy_is_acyclic: bool,
+    pub all_authority_reaches_tross: bool,
+    pub duplicate_authority_count: usize,
+    pub gallowry_is_distinct_from_gallows: bool,
+    pub chimera_recipe_count: usize,
+    pub manticorp_recipe_count: usize,
+    pub founding_union_is_complete: bool,
+}
+
+#[derive(Debug, PartialEq, Eq)]
+pub enum ConstitutionError {
+    Composition(CompositionCatalogError),
+    DuplicateNode(FlyntNodeId),
+    MissingCanonicalNode(&'static str),
+    UnexpectedNode(FlyntNodeId),
+    CanonicalNodeMismatch(FlyntNodeId),
+    RootHasSuperior,
+    NonRootMissingSuperior(FlyntNodeId),
+    MissingSuperior {
+        node: FlyntNodeId,
+        superior: FlyntNodeId,
+    },
+    AuthorityCycle(FlyntNodeId),
+    ChimeraMustBeUnique,
+    ChimeraIsNotFirstCompanion,
+    InvalidChimeraRecipe,
+    InvalidManticorpRecipe,
+    InvalidSovereignIdentity,
+    InvalidFoundingLineages,
+    InvalidFoundingUnion,
+    GallowryIsNotDistinct,
+    InvalidGallowry,
+}
+
+impl fmt::Display for ConstitutionError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::Composition(error) => error.fmt(formatter),
+            Self::DuplicateNode(id) => write!(formatter, "duplicate Flynt authority node: {id}"),
+            Self::MissingCanonicalNode(id) => write!(formatter, "missing canonical Flynt node: {id}"),
+            Self::UnexpectedNode(id) => write!(formatter, "unexpected Flynt authority node: {id}"),
+            Self::CanonicalNodeMismatch(id) => {
+                write!(formatter, "Flynt authority node differs from canon: {id}")
+            }
+            Self::RootHasSuperior => formatter.write_str("Tross must not have a superior"),
+            Self::NonRootMissingSuperior(id) => {
+                write!(formatter, "non-root Flynt authority node has no superior: {id}")
+            }
+            Self::MissingSuperior { node, superior } => {
+                write!(formatter, "{node} names missing superior {superior}")
+            }
+            Self::AuthorityCycle(id) => write!(formatter, "Flynt authority cycle reaches {id}"),
+            Self::ChimeraMustBeUnique => {
+                formatter.write_str("Flynt must contain exactly one constitutional Chimera")
+            }
+            Self::ChimeraIsNotFirstCompanion => formatter.write_str(
+                "the unique constitutional Chimera must be First Companion directly beneath Tross",
+            ),
+            Self::InvalidChimeraRecipe => formatter.write_str(
+                "Chimera must be the unique synthesis of Gargoyle, Merman, and Werewolf",
+            ),
+            Self::InvalidManticorpRecipe => formatter.write_str(
+                "Manticorp must be the divided maintained synthesis beyond Chimera",
+            ),
+            Self::InvalidSovereignIdentity => formatter.write_str(
+                "Tross, Mystery Man, Mr. X, and the Manticorp bearer must be one stable identity",
+            ),
+            Self::InvalidFoundingLineages => formatter.write_str(
+                "Flynt must contain exactly the three canonical founding leader lineages",
+            ),
+            Self::InvalidFoundingUnion => formatter.write_str(
+                "Bro White, Cinderellaman, and The Beauty must unite as We Fairy Men, the Gallows folk expression of Chimera",
+            ),
+            Self::GallowryIsNotDistinct => {
+                formatter.write_str("the Gallowry site must not be synonymous with the Gallows")
+            }
+            Self::InvalidGallowry => formatter.write_str(
+                "the hidden Gallowry headquarters must belong to the Gallows and retain its canonical functions",
+            ),
+        }
     }
 }
 
-impl OfficialsOutlawsRegistry {
-    #[must_use]
-    pub fn new() -> Self {
-        Self {
-            officials: Vec::new(),
-            outlaws: Vec::new(),
-            mirrors: Vec::new(),
-            lineages: Vec::new(),
-            forms: Vec::new(),
-            synthesis_bases: Vec::new(),
-            lineage_relations: Vec::new(),
-            offices: Vec::new(),
-            recipes: Vec::new(),
-            executive_masteries: Vec::new(),
-            recognitions: Vec::new(),
-            accessions: Vec::new(),
-            composition: CompositionCatalog::new(),
-        }
+impl std::error::Error for ConstitutionError {}
+
+impl From<CompositionCatalogError> for ConstitutionError {
+    fn from(value: CompositionCatalogError) -> Self {
+        Self::Composition(value)
     }
+}
 
-    pub fn from_entries(entries: CanonicalEntries) -> Result<Self, RegistryError> {
-        let mut registry = Self::new();
-        for official in entries.officials {
-            registry.register_official(official)?;
+impl FlyntConstitution {
+    pub fn from_parts(parts: FlyntConstitutionParts) -> Result<Self, ConstitutionError> {
+        let mut composition = CompositionCatalog::new();
+        for form in &parts.forms {
+            composition.insert_node(CompositionNode {
+                id: form.id.as_kernel().clone(),
+                object: ExternalRef::new("flynt-constitution", form.id.as_str())
+                    .expect("canonical Flynt form reference"),
+                scale: ScaleKey::new("hollow-grove.form").expect("canonical form scale"),
+            })?;
         }
-        for outlaw in entries.outlaws {
-            registry.register_outlaw(outlaw)?;
-        }
-        for form in entries.forms {
-            registry.register_form(form)?;
-        }
-        for lineage in entries.lineages {
-            registry.register_lineage(lineage)?;
-        }
-        for synthesis_base in entries.synthesis_bases {
-            registry.register_synthesis_base(synthesis_base)?;
-        }
-        for relation in entries.lineage_relations {
-            registry.register_lineage_relation(relation)?;
-        }
-        for office in entries.offices {
-            registry.register_office(office)?;
-        }
-        for mirror in entries.mirrors {
-            registry.register_mirror_pair(mirror)?;
-        }
-        for recipe in entries.recipes {
-            registry.register_recipe(recipe)?;
-        }
-        for mastery in entries.executive_masteries {
-            registry.register_executive_mastery(mastery)?;
-        }
-        for recognition in entries.recognitions {
-            registry.register_recognition(recognition)?;
-        }
-        for accession in entries.accessions {
-            registry.register_accession(accession)?;
-        }
-        Ok(registry)
-    }
-
-    pub fn register_official(
-        &mut self,
-        official: OfficialInstitution,
-    ) -> Result<(), RegistryError> {
-        if self.official(&official.id).is_some() {
-            return Err(RegistryError::DuplicateOfficial(official.id));
-        }
-        self.officials.push(official);
-        Ok(())
-    }
-
-    pub fn register_outlaw(&mut self, outlaw: OutlawExpression) -> Result<(), RegistryError> {
-        if self.outlaw(&outlaw.id).is_some() {
-            return Err(RegistryError::DuplicateOutlaw(outlaw.id));
-        }
-        self.outlaws.push(outlaw);
-        Ok(())
-    }
-
-    pub fn register_form(&mut self, form: TransformationForm) -> Result<(), RegistryError> {
-        if self.form(&form.id).is_some() {
-            return Err(RegistryError::DuplicateForm(form.id));
-        }
-        self.composition.insert_node(CompositionNode {
-            id: form.id.as_kernel().clone(),
-            object: ExternalRef::new("officials-outlaws", form.id.as_str())
-                .expect("the domain namespace is a valid kernel external reference"),
-            scale: ScaleKey::new("scale.transformation-form")
-                .expect("the form scale is a valid kernel stable key"),
-        })?;
-        self.forms.push(form);
-        Ok(())
-    }
-
-    pub fn register_lineage(
-        &mut self,
-        lineage: TransformationLineage,
-    ) -> Result<(), RegistryError> {
-        if self.lineage(&lineage.id).is_some() {
-            return Err(RegistryError::DuplicateLineage(lineage.id));
-        }
-        if self.form(&lineage.base_form).is_none() {
-            return Err(RegistryError::UnknownForm(lineage.base_form));
-        }
-        self.lineages.push(lineage);
-        Ok(())
-    }
-
-    pub fn register_synthesis_base(
-        &mut self,
-        synthesis_base: SynthesisBase,
-    ) -> Result<(), RegistryError> {
-        if self
-            .synthesis_bases
-            .iter()
-            .any(|entry| entry.lineage == synthesis_base.lineage)
-        {
-            return Err(RegistryError::DuplicateSynthesisBase(
-                synthesis_base.lineage,
-            ));
-        }
-        if self.lineage(&synthesis_base.lineage).is_none() {
-            return Err(RegistryError::UnknownLineage(synthesis_base.lineage));
-        }
-        if self.form(&synthesis_base.form).is_none() {
-            return Err(RegistryError::UnknownForm(synthesis_base.form));
-        }
-        self.synthesis_bases.push(synthesis_base);
-        Ok(())
-    }
-
-    pub fn register_lineage_relation(
-        &mut self,
-        relation: OutlawLineageRelation,
-    ) -> Result<(), RegistryError> {
-        if self
-            .lineage_relations
-            .iter()
-            .any(|entry| entry.outlaw == relation.outlaw && entry.lineage == relation.lineage)
-        {
-            return Err(RegistryError::DuplicateLineageRelation {
-                outlaw: relation.outlaw,
-                lineage: relation.lineage,
-            });
-        }
-        if self.outlaw(&relation.outlaw).is_none() {
-            return Err(RegistryError::UnknownOutlaw(relation.outlaw));
-        }
-        if self.lineage(&relation.lineage).is_none() {
-            return Err(RegistryError::UnknownLineage(relation.lineage));
-        }
-        self.lineage_relations.push(relation);
-        Ok(())
-    }
-
-    pub fn register_office(&mut self, office: ConstitutionalOffice) -> Result<(), RegistryError> {
-        if self.office(&office.id).is_some() {
-            return Err(RegistryError::DuplicateOffice(office.id));
-        }
-        self.offices.push(office);
-        Ok(())
-    }
-
-    pub fn register_mirror_pair(&mut self, pair: MirrorPair) -> Result<(), RegistryError> {
-        if pair.official.as_str() == pair.outlaw.as_str() {
-            return Err(RegistryError::SameMirrorEntity(
-                pair.official.as_str().to_owned(),
-            ));
-        }
-        if self.official(&pair.official).is_none() {
-            return Err(RegistryError::UnknownOfficial(pair.official));
-        }
-        if self.outlaw(&pair.outlaw).is_none() {
-            return Err(RegistryError::UnknownOutlaw(pair.outlaw));
-        }
-        if self.mirrors.iter().any(|entry| entry.id == pair.id) {
-            return Err(RegistryError::DuplicateMirrorId(pair.id));
-        }
-        if self
-            .mirrors
-            .iter()
-            .any(|entry| entry.official == pair.official && entry.outlaw == pair.outlaw)
-        {
-            return Err(RegistryError::DuplicateMirrorPair {
-                official: pair.official,
-                outlaw: pair.outlaw,
-            });
-        }
-        self.mirrors.push(pair);
-        Ok(())
-    }
-
-    /// Accepts either endpoint order, normalizes it to one semantic pair, and
-    /// therefore rejects reverse duplicates exactly like forward duplicates.
-    pub fn register_mirror_between(
-        &mut self,
-        id: MirrorPairId,
-        left: ConstitutionalEntityId,
-        right: ConstitutionalEntityId,
-        shared_function: SharedFunction,
-        distinction: impl Into<String>,
-    ) -> Result<(), RegistryError> {
-        if left == right {
-            return Err(RegistryError::SameMirrorEntity(left.as_str().to_owned()));
-        }
-        let (official, outlaw) = match (left, right) {
-            (
-                ConstitutionalEntityId::Official(official),
-                ConstitutionalEntityId::Outlaw(outlaw),
-            )
-            | (
-                ConstitutionalEntityId::Outlaw(outlaw),
-                ConstitutionalEntityId::Official(official),
-            ) => (official, outlaw),
-            _ => return Err(RegistryError::MirrorRequiresOppositeOrientations),
-        };
-        self.register_mirror_pair(MirrorPair {
-            id,
-            official,
-            outlaw,
-            shared_function,
-            distinction: distinction.into(),
-        })
-    }
-
-    pub fn register_recipe(&mut self, mut recipe: SynthesisRecipe) -> Result<(), RegistryError> {
-        if self.recipe(&recipe.id).is_some() {
-            return Err(RegistryError::DuplicateRecipe(recipe.id));
-        }
-        if recipe.result.as_str() == FORM_MANTICORP {
-            return Err(RegistryError::ManticorpCannotBeDirectlySynthesized);
-        }
-        recipe
-            .sources
-            .sort_by(|left, right| left.as_str().cmp(right.as_str()));
-        for duplicate in recipe.sources.windows(2) {
-            if duplicate[0] == duplicate[1] {
-                return Err(RegistryError::DuplicateRecipeSource {
-                    recipe: recipe.id,
-                    source: duplicate[0].clone(),
-                });
-            }
-        }
-        for source in &recipe.sources {
-            if self.form(source).is_none() {
-                return Err(RegistryError::UnknownForm(source.clone()));
-            }
-        }
-        if self.form(&recipe.result).is_none() {
-            return Err(RegistryError::UnknownForm(recipe.result));
-        }
-
-        self.composition.insert_record(CompositionRecord {
-            id: recipe.id.as_kernel().clone(),
-            sources: recipe
+        composition.insert_record(CompositionRecord {
+            id: parts.chimera_recipe.id.as_kernel().clone(),
+            sources: parts
+                .chimera_recipe
                 .sources
                 .iter()
                 .map(|source| source.as_kernel().clone())
                 .collect(),
-            result: recipe.result.as_kernel().clone(),
-            operation: ExternalRef::new("officials-outlaws", "constitutional-synthesis")
-                .expect("the synthesis operation is a valid kernel external reference"),
+            result: parts.chimera_recipe.result.as_kernel().clone(),
+            operation: ExternalRef::new("flynt-constitution", "constitutional-synthesis")
+                .expect("canonical Flynt synthesis operation"),
             evidence: None,
         })?;
-        self.recipes.push(recipe);
-        Ok(())
-    }
-
-    pub fn register_executive_mastery(
-        &mut self,
-        mut mastery: ExecutiveMastery,
-    ) -> Result<(), RegistryError> {
-        if self
-            .executive_masteries
-            .iter()
-            .any(|entry| entry.id == mastery.id)
-        {
-            return Err(RegistryError::DuplicateExecutiveMastery(mastery.id));
-        }
-        if self
-            .executive_masteries
-            .iter()
-            .any(|entry| entry.refinement.id == mastery.refinement.id)
-        {
-            return Err(RegistryError::DuplicateChimeraRefinement(
-                mastery.refinement.id,
-            ));
-        }
-        mastery.refinement.perfected_aspects.sort_unstable();
-        if !self.recipe_has_exact_sources(
-            RECIPE_CHIMERA,
-            &[FORM_GARGOYLE, FORM_WEREWOLF, FORM_MERMAN],
-            FORM_CHIMERA,
-        ) {
-            return Err(RegistryError::ChimeraSynthesisRequired);
-        }
-        let chimera = FormId::new(FORM_CHIMERA).expect("canonical Chimera form ID");
-        let manticorp = FormId::new(FORM_MANTICORP).expect("canonical Manticorp form ID");
-        if self.form(&chimera).is_none() {
-            return Err(RegistryError::UnknownForm(chimera));
-        }
-        if self.form(&manticorp).is_none() {
-            return Err(RegistryError::UnknownForm(manticorp));
-        }
-        if mastery.completed_chimera.as_str() != FORM_CHIMERA
-            || mastery.refinement.source != mastery.completed_chimera
-            || mastery.refinement.result.as_str() != FORM_MANTICORP
-            || mastery.resulting_manticorp != mastery.refinement.result
-            || !has_canonical_mastery_aspects(&mastery.refinement.perfected_aspects)
-            || mastery.refinement.evidence.is_empty()
-            || has_invalid_witnesses(&mastery.refinement.evidence)
-        {
-            return Err(RegistryError::InvalidExecutiveMastery);
-        }
-        self.executive_masteries.push(mastery);
-        Ok(())
-    }
-
-    pub fn register_recognition(
-        &mut self,
-        recognition: ConstitutionalRecognition,
-    ) -> Result<(), RegistryError> {
-        if self
-            .recognitions
-            .iter()
-            .any(|entry| entry.id == recognition.id)
-        {
-            return Err(RegistryError::DuplicateRecognition(recognition.id));
-        }
-        if self.office(&recognition.office).is_none() {
-            return Err(RegistryError::UnknownOffice(recognition.office));
-        }
-        if self.form(&recognition.achieved_manticorp).is_none() {
-            return Err(RegistryError::UnknownForm(recognition.achieved_manticorp));
-        }
-        let mastery = self
-            .executive_mastery(&recognition.mastery)
-            .ok_or_else(|| {
-                RegistryError::RecognitionRequiresMastery(recognition.mastery.clone())
-            })?;
-        if recognition.candidate != mastery.candidate
-            || recognition.achieved_manticorp != mastery.resulting_manticorp
-            || recognition.achieved_manticorp.as_str() != FORM_MANTICORP
-            || recognition.office.as_str() != OFFICE_TROSS
-            || recognition.witnesses.is_empty()
-            || has_invalid_witnesses(&recognition.witnesses)
-        {
-            return Err(RegistryError::InvalidConstitutionalRecognition);
-        }
-        self.recognitions.push(recognition);
-        Ok(())
-    }
-
-    pub fn register_accession(&mut self, accession: LawfulAccession) -> Result<(), RegistryError> {
-        if self.accessions.iter().any(|entry| entry.id == accession.id) {
-            return Err(RegistryError::DuplicateAccession(accession.id));
-        }
-        if self.office(&accession.office).is_none() {
-            return Err(RegistryError::UnknownOffice(accession.office));
-        }
-        let recognition = self.recognition(&accession.recognition).ok_or_else(|| {
-            RegistryError::AccessionRequiresRecognition(accession.recognition.clone())
+        composition.insert_record(CompositionRecord {
+            id: parts.manticorp_recipe.recipe.id.as_kernel().clone(),
+            sources: parts
+                .manticorp_recipe
+                .recipe
+                .sources
+                .iter()
+                .map(|source| source.as_kernel().clone())
+                .collect(),
+            result: parts.manticorp_recipe.recipe.result.as_kernel().clone(),
+            operation: ExternalRef::new("flynt-constitution", "sovereign-transfiguration")
+                .expect("canonical Manticorp synthesis operation"),
+            evidence: None,
         })?;
-        if accession.candidate != recognition.candidate
-            || accession.office != recognition.office
-            || accession.office.as_str() != OFFICE_TROSS
-        {
-            return Err(RegistryError::InvalidLawfulAccession);
-        }
-        self.accessions.push(accession);
-        Ok(())
+        Ok(Self {
+            nodes: parts.nodes,
+            lineages: parts.lineages,
+            forms: parts.forms,
+            chimera_recipe: parts.chimera_recipe,
+            manticorp_recipe: parts.manticorp_recipe,
+            chimera: parts.chimera,
+            sovereign_identity: parts.sovereign_identity,
+            founding_union: parts.founding_union,
+            gallowry: parts.gallowry,
+            composition,
+        })
     }
 
     #[must_use]
-    pub fn officials(&self) -> &[OfficialInstitution] {
-        &self.officials
+    pub fn nodes(&self) -> &[FlyntAuthorityNode] {
+        &self.nodes
     }
 
     #[must_use]
-    pub fn outlaws(&self) -> &[OutlawExpression] {
-        &self.outlaws
-    }
-
-    #[must_use]
-    pub fn mirror_pairs(&self) -> &[MirrorPair] {
-        &self.mirrors
-    }
-
-    #[must_use]
-    pub fn lineages(&self) -> &[TransformationLineage] {
+    pub fn lineages(&self) -> &[FoundingLineage] {
         &self.lineages
     }
 
@@ -1024,676 +600,758 @@ impl OfficialsOutlawsRegistry {
     }
 
     #[must_use]
-    pub fn synthesis_bases(&self) -> &[SynthesisBase] {
-        &self.synthesis_bases
+    pub fn chimera_recipe(&self) -> &SynthesisRecipe {
+        &self.chimera_recipe
     }
 
     #[must_use]
-    pub fn lineage_relations(&self) -> &[OutlawLineageRelation] {
-        &self.lineage_relations
+    pub fn manticorp_recipe(&self) -> &DividedManticorpRecipe {
+        &self.manticorp_recipe
     }
 
     #[must_use]
-    pub fn offices(&self) -> &[ConstitutionalOffice] {
-        &self.offices
+    pub fn sovereign_identity(&self) -> &FlyntSovereignIdentity {
+        &self.sovereign_identity
     }
 
     #[must_use]
-    pub fn recipes(&self) -> &[SynthesisRecipe] {
-        &self.recipes
+    pub fn chimera(&self) -> &ConstitutionalChimera {
+        &self.chimera
     }
 
     #[must_use]
-    pub fn executive_masteries(&self) -> &[ExecutiveMastery] {
-        &self.executive_masteries
+    pub fn founding_union(&self) -> &FoundingUnion {
+        &self.founding_union
     }
 
     #[must_use]
-    pub fn recognitions(&self) -> &[ConstitutionalRecognition] {
-        &self.recognitions
+    pub fn gallowry(&self) -> &GallowrySite {
+        &self.gallowry
     }
 
-    #[must_use]
-    pub fn accessions(&self) -> &[LawfulAccession] {
-        &self.accessions
-    }
-
-    /// Read-only access to the kernel-owned causal provenance projection.
     #[must_use]
     pub fn composition_catalog(&self) -> &CompositionCatalog {
         &self.composition
     }
 
     #[must_use]
-    pub fn official(&self, id: &OfficialId) -> Option<&OfficialInstitution> {
-        self.officials.iter().find(|entry| &entry.id == id)
+    pub fn node(&self, id: &FlyntNodeId) -> Option<&FlyntAuthorityNode> {
+        self.nodes.iter().find(|node| &node.id == id)
     }
 
     #[must_use]
-    pub fn outlaw(&self, id: &OutlawId) -> Option<&OutlawExpression> {
-        self.outlaws.iter().find(|entry| &entry.id == id)
+    pub fn node_by_key(&self, id: &str) -> Option<&FlyntAuthorityNode> {
+        self.nodes.iter().find(|node| node.id.as_str() == id)
     }
 
     #[must_use]
-    pub fn lineage(&self, id: &LineageId) -> Option<&TransformationLineage> {
-        self.lineages.iter().find(|entry| &entry.id == id)
+    pub fn superior_of(&self, id: &FlyntNodeId) -> Option<&FlyntAuthorityNode> {
+        self.node(id)
+            .and_then(|node| node.superior.as_ref())
+            .and_then(|superior| self.node(superior))
     }
 
     #[must_use]
-    pub fn form(&self, id: &FormId) -> Option<&TransformationForm> {
-        self.forms.iter().find(|entry| &entry.id == id)
+    pub fn authority_chain(&self, id: &FlyntNodeId) -> Option<Vec<&FlyntAuthorityNode>> {
+        let mut chain = Vec::new();
+        let mut current = self.node(id)?;
+        let mut seen = HashSet::new();
+        loop {
+            if !seen.insert(current.id.clone()) {
+                return None;
+            }
+            chain.push(current);
+            let Some(superior) = &current.superior else {
+                return Some(chain);
+            };
+            current = self.node(superior)?;
+        }
     }
 
-    #[must_use]
-    pub fn office(&self, id: &ConstitutionalOfficeId) -> Option<&ConstitutionalOffice> {
-        self.offices.iter().find(|entry| &entry.id == id)
-    }
-
-    #[must_use]
-    pub fn recipe(&self, id: &SynthesisRecipeId) -> Option<&SynthesisRecipe> {
-        self.recipes.iter().find(|entry| &entry.id == id)
-    }
-
-    #[must_use]
-    pub fn executive_mastery(&self, id: &ExecutiveMasteryId) -> Option<&ExecutiveMastery> {
-        self.executive_masteries
-            .iter()
-            .find(|entry| &entry.id == id)
-    }
-
-    #[must_use]
-    pub fn recognition(
-        &self,
-        id: &ConstitutionalRecognitionId,
-    ) -> Option<&ConstitutionalRecognition> {
-        self.recognitions.iter().find(|entry| &entry.id == id)
-    }
-
-    #[must_use]
-    pub fn lawfully_holds_office(
-        &self,
-        candidate: &PersonId,
-        office: &ConstitutionalOfficeId,
-    ) -> bool {
-        self.accessions
-            .iter()
-            .any(|entry| &entry.candidate == candidate && &entry.office == office)
-    }
-
-    #[must_use]
-    pub fn mirror_of(&self, entity: &ConstitutionalEntityId) -> Option<ConstitutionalEntityId> {
-        self.mirrors
-            .iter()
-            .find_map(|pair| pair.counterpart(entity))
-    }
-
-    pub fn validate(&self) -> Result<(), RegistryError> {
-        self.validate_rosters()?;
-
-        let mut mirror_ids = HashSet::new();
-        let mut mirror_endpoints = HashSet::new();
-        for pair in &self.mirrors {
-            if pair.official.as_str() == pair.outlaw.as_str() {
-                return Err(RegistryError::SameMirrorEntity(
-                    pair.official.as_str().to_owned(),
+    pub fn validate(&self) -> Result<(), ConstitutionError> {
+        let expected = canonical_authority_nodes();
+        let mut seen = HashSet::new();
+        for node in &self.nodes {
+            if !seen.insert(node.id.clone()) {
+                return Err(ConstitutionError::DuplicateNode(node.id.clone()));
+            }
+            let Some(canonical) = expected.iter().find(|entry| entry.id == node.id) else {
+                return Err(ConstitutionError::UnexpectedNode(node.id.clone()));
+            };
+            if node != canonical {
+                return Err(ConstitutionError::CanonicalNodeMismatch(node.id.clone()));
+            }
+        }
+        for canonical in &expected {
+            if !seen.contains(&canonical.id) {
+                return Err(ConstitutionError::MissingCanonicalNode(
+                    canonical_id_literal(canonical.id.as_str()),
                 ));
             }
-            if !mirror_ids.insert(pair.id.clone()) {
-                return Err(RegistryError::DuplicateMirrorId(pair.id.clone()));
+        }
+
+        let tross = node_id(OFFICE_TROSS);
+        for node in &self.nodes {
+            if node.id == tross {
+                if node.superior.is_some() {
+                    return Err(ConstitutionError::RootHasSuperior);
+                }
+                continue;
             }
-            if !mirror_endpoints.insert((pair.official.clone(), pair.outlaw.clone())) {
-                return Err(RegistryError::DuplicateMirrorPair {
-                    official: pair.official.clone(),
-                    outlaw: pair.outlaw.clone(),
+            let superior = node
+                .superior
+                .as_ref()
+                .ok_or_else(|| ConstitutionError::NonRootMissingSuperior(node.id.clone()))?;
+            if self.node(superior).is_none() {
+                return Err(ConstitutionError::MissingSuperior {
+                    node: node.id.clone(),
+                    superior: superior.clone(),
                 });
             }
-            let official = self
-                .official(&pair.official)
-                .ok_or_else(|| RegistryError::UnknownOfficial(pair.official.clone()))?;
-            let outlaw = self
-                .outlaw(&pair.outlaw)
-                .ok_or_else(|| RegistryError::UnknownOutlaw(pair.outlaw.clone()))?;
-            if pair.shared_function != official.function || pair.shared_function != outlaw.function
-            {
-                return Err(RegistryError::MirrorFunctionMismatch(pair.id.clone()));
+            let chain = self
+                .authority_chain(&node.id)
+                .ok_or_else(|| ConstitutionError::AuthorityCycle(node.id.clone()))?;
+            if chain.last().map(|root| &root.id) != Some(&tross) {
+                return Err(ConstitutionError::AuthorityCycle(node.id.clone()));
             }
         }
 
-        for official in &self.officials {
-            let count = self
-                .mirrors
-                .iter()
-                .filter(|pair| pair.official == official.id)
-                .count();
-            if count != 1 {
-                return Err(RegistryError::OfficialMirrorCount {
-                    official: official.id.clone(),
-                    count,
-                });
-            }
+        let chimera_nodes = self
+            .nodes
+            .iter()
+            .filter(|node| node.kind == FlyntNodeKind::ConstitutionalCompanion)
+            .count();
+        if chimera_nodes != 1 || self.chimera.authority_node.as_str() != COMPANION_CHIMERA {
+            return Err(ConstitutionError::ChimeraMustBeUnique);
         }
-        for outlaw in &self.outlaws {
-            let count = self
-                .mirrors
-                .iter()
-                .filter(|pair| pair.outlaw == outlaw.id)
-                .count();
-            if count != 1 {
-                return Err(RegistryError::OutlawMirrorCount {
-                    outlaw: outlaw.id.clone(),
-                    count,
-                });
-            }
-        }
-
-        self.validate_canonical_mirror(OFFICIAL_MANTICORP, OUTLAW_WEREWOLVES)?;
-        self.validate_canonical_mirror(OFFICIAL_MYSTERY_MEN, OUTLAW_GALLOWS)?;
-        self.validate_canonical_mirror(OFFICIAL_MYSTERYGUARD, OUTLAW_MERMEN)?;
-
-        if OFFICIAL_MANTICORP == FORM_MANTICORP {
-            return Err(RegistryError::ManticorpInstitutionFormCollision);
-        }
-        if FORM_CHIMERA == OFFICE_CHIMERA {
-            return Err(RegistryError::ChimeraFormOfficeCollision);
-        }
-        if !self.has_canonical_foundational_bases() {
-            return Err(RegistryError::InvalidFoundationalBases);
-        }
-        if !self.has_canonical_lineage_relations() {
-            return Err(RegistryError::InvalidLineageRelations);
-        }
-        if !self.recipe_has_exact_sources(
-            RECIPE_CHIMERA,
-            &[FORM_GARGOYLE, FORM_WEREWOLF, FORM_MERMAN],
-            FORM_CHIMERA,
-        ) {
-            return Err(RegistryError::InvalidChimeraRecipe);
-        }
-        let manticorp = FormId::new(FORM_MANTICORP).expect("canonical Manticorp form ID");
-        if !self
-            .composition
-            .records_producing_result(manticorp.as_kernel())
-            .is_empty()
+        if self.chimera.first_companion_to != tross
+            || self
+                .node(&self.chimera.authority_node)
+                .and_then(|node| node.superior.as_ref())
+                != Some(&tross)
         {
-            return Err(RegistryError::ManticorpCannotBeDirectlySynthesized);
+            return Err(ConstitutionError::ChimeraIsNotFirstCompanion);
         }
-        if !self.has_canonical_executive_mastery() {
-            return Err(RegistryError::InvalidExecutiveMastery);
+        self.validate_chimera_recipe()?;
+        self.validate_manticorp_recipe()?;
+        self.validate_sovereign_identity()?;
+        if !same_lineages(&self.lineages, &canonical_lineages()) {
+            return Err(ConstitutionError::InvalidFoundingLineages);
         }
-        if !self.has_canonical_recognition() {
-            return Err(RegistryError::InvalidConstitutionalRecognition);
+        if !same_founding_union(&self.founding_union, &canonical_founding_union()) {
+            return Err(ConstitutionError::InvalidFoundingUnion);
         }
-        if !self.has_canonical_accession() {
-            return Err(RegistryError::InvalidLawfulAccession);
+        self.validate_gallowry()?;
+        Ok(())
+    }
+
+    fn validate_chimera_recipe(&self) -> Result<(), ConstitutionError> {
+        if !same_forms(&self.forms, &canonical_forms())
+            || self.chimera.form.as_str() != FORM_CHIMERA
+            || self.chimera.synthesis.as_str() != RECIPE_CHIMERA
+            || self.chimera_recipe.id != self.chimera.synthesis
+            || self.chimera_recipe.result != self.chimera.form
+            || !same_form_set(
+                &self.chimera_recipe.sources,
+                &[FORM_GARGOYLE, FORM_MERMAN, FORM_WEREWOLF],
+            )
+            || self
+                .composition
+                .records_producing_result(self.chimera.form.as_kernel())
+                .len()
+                != 1
+        {
+            return Err(ConstitutionError::InvalidChimeraRecipe);
         }
         Ok(())
     }
 
-    fn validate_rosters(&self) -> Result<(), RegistryError> {
-        if !same_keys(
-            self.officials.iter().map(|entry| entry.id.as_str()),
-            &[
-                OFFICIAL_MANTICORP,
-                OFFICIAL_MYSTERY_MEN,
-                OFFICIAL_MYSTERYGUARD,
-            ],
-        ) {
-            return Err(RegistryError::CanonicalRosterMismatch("Official"));
+    fn validate_manticorp_recipe(&self) -> Result<(), ConstitutionError> {
+        let recipe = &self.manticorp_recipe;
+        let custodians = recipe
+            .custody
+            .iter()
+            .map(|entry| (entry.custodian.clone(), entry.component))
+            .collect::<HashSet<_>>();
+        let expected = HashSet::from([
+            (
+                node_id(OFFICE_BRO_WHITE),
+                ManticorpRecipeComponent::Gargoyle,
+            ),
+            (
+                node_id(OFFICE_THE_BEAUTY),
+                ManticorpRecipeComponent::Werewolf,
+            ),
+            (
+                node_id(OFFICE_CINDERELLAMAN),
+                ManticorpRecipeComponent::Merman,
+            ),
+        ]);
+        if !same_forms(&self.forms, &canonical_forms())
+            || recipe.recipe.id.as_str() != RECIPE_MANTICORP
+            || recipe.recipe.result.as_str() != FORM_MANTICORP
+            || !same_form_set(&recipe.recipe.sources, &[FORM_CHIMERA])
+            || custodians != expected
+            || self
+                .composition
+                .records_producing_result(recipe.recipe.result.as_kernel())
+                .len()
+                != 1
+        {
+            return Err(ConstitutionError::InvalidManticorpRecipe);
         }
-        if !same_keys(
-            self.outlaws.iter().map(|entry| entry.id.as_str()),
-            &[OUTLAW_WEREWOLVES, OUTLAW_GALLOWS, OUTLAW_MERMEN],
-        ) {
-            return Err(RegistryError::CanonicalRosterMismatch("Outlaw"));
-        }
-        if !same_keys(
-            self.mirrors.iter().map(|entry| entry.id.as_str()),
-            &[
-                MIRROR_MANTICORP_WEREWOLVES,
-                MIRROR_MYSTERY_MEN_GALLOWS,
-                MIRROR_MYSTERYGUARD_MERMEN,
-            ],
-        ) {
-            return Err(RegistryError::CanonicalRosterMismatch("mirror"));
-        }
-        if !same_keys(
-            self.lineages.iter().map(|entry| entry.id.as_str()),
-            &[LINEAGE_GARGOYLE, LINEAGE_WEREWOLF, LINEAGE_MERMAN],
-        ) {
-            return Err(RegistryError::CanonicalRosterMismatch("lineage"));
-        }
-        if !same_keys(
-            self.forms.iter().map(|entry| entry.id.as_str()),
-            &[
-                FORM_GARGOYLE,
-                FORM_WEREWOLF,
-                FORM_MERMAN,
-                FORM_CHIMERA,
-                FORM_MANTICORP,
-            ],
-        ) {
-            return Err(RegistryError::CanonicalRosterMismatch("form"));
-        }
-        if !same_keys(
-            self.offices.iter().map(|entry| entry.id.as_str()),
-            &[OFFICE_TROSS, OFFICE_CHIMERA],
-        ) {
-            return Err(RegistryError::CanonicalRosterMismatch("office"));
-        }
-        if !same_keys(
-            self.recipes.iter().map(|entry| entry.id.as_str()),
-            &[RECIPE_CHIMERA],
-        ) {
-            return Err(RegistryError::CanonicalRosterMismatch("recipe"));
-        }
-        if !same_keys(
-            self.executive_masteries
+        Ok(())
+    }
+
+    fn validate_sovereign_identity(&self) -> Result<(), ConstitutionError> {
+        let identity = &self.sovereign_identity;
+        if identity.person.as_str() != PERSON_TROSS
+            || identity.public_title.as_str() != OFFICE_TROSS
+            || identity.underground_identities
+                != vec![node_id(IDENTITY_MYSTERY_MAN), node_id(IDENTITY_MR_X)]
+            || identity.maintained_form.as_str() != FORM_MANTICORP
+            || identity
+                .continuance_requirements
                 .iter()
-                .map(|entry| entry.id.as_str()),
-            &[MASTERY_CHIMERA_TO_MANTICORP],
-        ) {
-            return Err(RegistryError::CanonicalRosterMismatch("mastery"));
-        }
-        if !same_keys(
-            self.recognitions.iter().map(|entry| entry.id.as_str()),
-            &[RECOGNITION_TROSS_SUCCESSION],
-        ) {
-            return Err(RegistryError::CanonicalRosterMismatch("recognition"));
-        }
-        if !same_keys(
-            self.accessions.iter().map(|entry| entry.id.as_str()),
-            &[ACCESSION_TROSS],
-        ) {
-            return Err(RegistryError::CanonicalRosterMismatch("accession"));
+                .copied()
+                .collect::<BTreeSet<_>>()
+                != BTreeSet::from([
+                    ManticorpContinuanceRequirement::BodilyDiscipline,
+                    ManticorpContinuanceRequirement::RecipeRenewal,
+                    ManticorpContinuanceRequirement::DividedBasinKnowledge,
+                    ManticorpContinuanceRequirement::InstitutionalRecognition,
+                    ManticorpContinuanceRequirement::SpecializedGlaushouseCare,
+                ])
+            || identity.continuance_requirements.len() != 5
+            || identity.public_institution.as_str() != INSTITUTION_MANTICORP
+            || identity.underground_institution.as_str() != INSTITUTION_GALLOWS
+        {
+            return Err(ConstitutionError::InvalidSovereignIdentity);
         }
         Ok(())
     }
 
-    fn validate_canonical_mirror(
-        &self,
-        official_key: &str,
-        outlaw_key: &str,
-    ) -> Result<(), RegistryError> {
-        let official = OfficialId::new(official_key).expect("canonical Official ID");
-        let expected = OutlawId::new(outlaw_key).expect("canonical Outlaw ID");
-        if self.mirror_of(&official.clone().into()) != Some(expected.into()) {
-            return Err(RegistryError::WrongCanonicalMirror(official));
+    fn validate_gallowry(&self) -> Result<(), ConstitutionError> {
+        if self.gallowry.id.as_str() == INSTITUTION_GALLOWS {
+            return Err(ConstitutionError::GallowryIsNotDistinct);
+        }
+        if self.gallowry != canonical_gallowry() {
+            return Err(ConstitutionError::InvalidGallowry);
         }
         Ok(())
     }
 
-    fn has_canonical_foundational_bases(&self) -> bool {
-        let expected = [
-            (LINEAGE_GARGOYLE, FORM_GARGOYLE),
-            (LINEAGE_WEREWOLF, FORM_WEREWOLF),
-            (LINEAGE_MERMAN, FORM_MERMAN),
-        ];
-        self.synthesis_bases.len() == expected.len()
-            && expected.iter().all(|(lineage, form)| {
-                self.synthesis_bases
-                    .iter()
-                    .any(|entry| entry.lineage.as_str() == *lineage && entry.form.as_str() == *form)
-            })
-    }
-
-    fn has_canonical_lineage_relations(&self) -> bool {
-        let expected = [
-            (
-                OUTLAW_WEREWOLVES,
-                LINEAGE_WEREWOLF,
-                LineageRelationKind::DirectExpression,
+    pub fn audit(&self) -> Result<FlyntConstitutionalAudit, ConstitutionError> {
+        self.validate()?;
+        let duplicate_authority_count = self.nodes.len()
+            - self
+                .nodes
+                .iter()
+                .map(|node| &node.id)
+                .collect::<HashSet<_>>()
+                .len();
+        let institution_placements = self
+            .nodes
+            .iter()
+            .filter(|node| node.kind.is_institution())
+            .map(placement)
+            .collect();
+        let office_placements = self
+            .nodes
+            .iter()
+            .filter(|node| node.kind.is_office())
+            .map(placement)
+            .collect();
+        Ok(FlyntConstitutionalAudit {
+            sovereign_executive: node_id(OFFICE_TROSS),
+            constitutional_chimera_count: self
+                .nodes
+                .iter()
+                .filter(|node| node.kind == FlyntNodeKind::ConstitutionalCompanion)
+                .count(),
+            institution_placements,
+            office_placements,
+            all_non_root_nodes_have_one_superior: self
+                .nodes
+                .iter()
+                .all(|node| node.id.as_str() == OFFICE_TROSS || node.superior.is_some()),
+            hierarchy_is_acyclic: self
+                .nodes
+                .iter()
+                .all(|node| self.authority_chain(&node.id).is_some()),
+            all_authority_reaches_tross: self.nodes.iter().all(|node| {
+                self.authority_chain(&node.id)
+                    .and_then(|chain| chain.last().copied())
+                    .is_some_and(|root| root.id.as_str() == OFFICE_TROSS)
+            }),
+            duplicate_authority_count,
+            gallowry_is_distinct_from_gallows: self.gallowry.id.as_str() != INSTITUTION_GALLOWS,
+            chimera_recipe_count: self
+                .composition
+                .records_producing_result(self.chimera.form.as_kernel())
+                .len(),
+            manticorp_recipe_count: self
+                .composition
+                .records_producing_result(self.manticorp_recipe.recipe.result.as_kernel())
+                .len(),
+            founding_union_is_complete: same_founding_union(
+                &self.founding_union,
+                &canonical_founding_union(),
             ),
-            (
-                OUTLAW_GALLOWS,
-                LINEAGE_GARGOYLE,
-                LineageRelationKind::Influence,
-            ),
-            (
-                OUTLAW_MERMEN,
-                LINEAGE_MERMAN,
-                LineageRelationKind::DirectExpression,
-            ),
-        ];
-        self.lineage_relations.len() == expected.len()
-            && expected.iter().all(|(outlaw, lineage, kind)| {
-                self.lineage_relations.iter().any(|entry| {
-                    entry.outlaw.as_str() == *outlaw
-                        && entry.lineage.as_str() == *lineage
-                        && entry.kind == *kind
-                })
-            })
-    }
-
-    fn recipe_has_exact_sources(&self, recipe: &str, sources: &[&str], result: &str) -> bool {
-        let id = SynthesisRecipeId::new(recipe).expect("canonical recipe ID");
-        let Some(recipe) = self.recipe(&id) else {
-            return false;
-        };
-        same_keys(recipe.sources.iter().map(FormId::as_str), sources)
-            && recipe.result.as_str() == result
-    }
-
-    fn has_canonical_executive_mastery(&self) -> bool {
-        self.executive_masteries.len() == 1
-            && self.executive_masteries.iter().any(|mastery| {
-                mastery.id.as_str() == MASTERY_CHIMERA_TO_MANTICORP
-                    && mastery.candidate.as_str() == PERSON_CANONICAL_TROSS_CANDIDATE
-                    && mastery.completed_chimera.as_str() == FORM_CHIMERA
-                    && mastery.refinement.id.as_str() == REFINEMENT_CHIMERA_TO_MANTICORP
-                    && mastery.refinement.source.as_str() == FORM_CHIMERA
-                    && mastery.refinement.result.as_str() == FORM_MANTICORP
-                    && mastery.resulting_manticorp.as_str() == FORM_MANTICORP
-                    && has_canonical_mastery_aspects(&mastery.refinement.perfected_aspects)
-                    && same_keys(
-                        mastery
-                            .refinement
-                            .evidence
-                            .iter()
-                            .map(|entry| entry.id.as_str()),
-                        &[WITNESS_CHIMERA_REFINEMENT],
-                    )
-            })
-    }
-
-    fn has_canonical_recognition(&self) -> bool {
-        self.recognitions.len() == 1
-            && self.recognitions.iter().any(|recognition| {
-                recognition.id.as_str() == RECOGNITION_TROSS_SUCCESSION
-                    && recognition.candidate.as_str() == PERSON_CANONICAL_TROSS_CANDIDATE
-                    && recognition.mastery.as_str() == MASTERY_CHIMERA_TO_MANTICORP
-                    && recognition.achieved_manticorp.as_str() == FORM_MANTICORP
-                    && recognition.office.as_str() == OFFICE_TROSS
-                    && same_keys(
-                        recognition.witnesses.iter().map(|entry| entry.id.as_str()),
-                        &[WITNESS_TROSS_RECOGNITION],
-                    )
-            })
-    }
-
-    fn has_canonical_accession(&self) -> bool {
-        self.accessions.len() == 1
-            && self.accessions.iter().any(|accession| {
-                accession.id.as_str() == ACCESSION_TROSS
-                    && accession.candidate.as_str() == PERSON_CANONICAL_TROSS_CANDIDATE
-                    && accession.recognition.as_str() == RECOGNITION_TROSS_SUCCESSION
-                    && accession.office.as_str() == OFFICE_TROSS
-            })
+        })
     }
 }
 
-fn has_canonical_mastery_aspects(aspects: &[ManticorpMasteryAspect]) -> bool {
-    let actual: HashSet<_> = aspects.iter().copied().collect();
-    let expected = HashSet::from([
-        ManticorpMasteryAspect::Lion,
-        ManticorpMasteryAspect::Eagle,
-        ManticorpMasteryAspect::Hydra,
-    ]);
-    aspects.len() == expected.len() && actual == expected
+fn placement(node: &FlyntAuthorityNode) -> AuthorityPlacement {
+    AuthorityPlacement {
+        id: node.id.clone(),
+        superior: node.superior.clone(),
+    }
 }
 
-fn has_invalid_witnesses(witnesses: &[ConstitutionalWitness]) -> bool {
-    let mut ids = HashSet::new();
-    witnesses
-        .iter()
-        .any(|entry| entry.statement.trim().is_empty() || !ids.insert(&entry.id))
+fn same_form_set(actual: &[FormId], expected: &[&str]) -> bool {
+    actual.len() == expected.len()
+        && actual.iter().map(FormId::as_str).collect::<HashSet<_>>()
+            == expected.iter().copied().collect::<HashSet<_>>()
 }
 
-fn same_keys<'a>(actual: impl Iterator<Item = &'a str>, expected: &[&str]) -> bool {
-    let actual: HashSet<_> = actual.collect();
-    let expected: HashSet<_> = expected.iter().copied().collect();
-    actual.len() == expected.len() && actual == expected
+fn same_forms(actual: &[TransformationForm], expected: &[TransformationForm]) -> bool {
+    actual.len() == expected.len()
+        && actual
+            .iter()
+            .all(|form| expected.iter().any(|candidate| candidate == form))
 }
 
-/// Canonical records are exposed as data so callers can choose registration
-/// order without changing identity or meaning.
-#[derive(Debug, Clone, PartialEq, Eq)]
-pub struct CanonicalEntries {
-    pub officials: Vec<OfficialInstitution>,
-    pub outlaws: Vec<OutlawExpression>,
-    pub mirrors: Vec<MirrorPair>,
-    pub lineages: Vec<TransformationLineage>,
-    pub forms: Vec<TransformationForm>,
-    pub synthesis_bases: Vec<SynthesisBase>,
-    pub lineage_relations: Vec<OutlawLineageRelation>,
-    pub offices: Vec<ConstitutionalOffice>,
-    pub recipes: Vec<SynthesisRecipe>,
-    pub executive_masteries: Vec<ExecutiveMastery>,
-    pub recognitions: Vec<ConstitutionalRecognition>,
-    pub accessions: Vec<LawfulAccession>,
+fn same_lineages(actual: &[FoundingLineage], expected: &[FoundingLineage]) -> bool {
+    actual.len() == expected.len()
+        && actual
+            .iter()
+            .all(|lineage| expected.iter().any(|candidate| candidate == lineage))
+}
+
+fn same_founding_union(actual: &FoundingUnion, expected: &FoundingUnion) -> bool {
+    actual.folk_expression == expected.folk_expression
+        && actual.institutional_home == expected.institutional_home
+        && actual.constitutional_expression_of == expected.constitutional_expression_of
+        && actual.founding_leaders.len() == expected.founding_leaders.len()
+        && actual
+            .founding_leaders
+            .iter()
+            .all(|leader| expected.founding_leaders.contains(leader))
+}
+
+fn canonical_id_literal(value: &str) -> &'static str {
+    match value {
+        OFFICE_TROSS => OFFICE_TROSS,
+        COMPANION_CHIMERA => COMPANION_CHIMERA,
+        INSTITUTION_MANTICORP => INSTITUTION_MANTICORP,
+        INSTITUTION_MYSTERY_MEN => INSTITUTION_MYSTERY_MEN,
+        EXPRESSION_MYSTERY_MAN => EXPRESSION_MYSTERY_MAN,
+        INSTITUTION_GALLOWS => INSTITUTION_GALLOWS,
+        EXPRESSION_WE_FAIRY_MEN => EXPRESSION_WE_FAIRY_MEN,
+        OFFICE_BRO_WHITE => OFFICE_BRO_WHITE,
+        CREW_BRO_WHITE => CREW_BRO_WHITE,
+        OFFICE_CINDERELLAMAN => OFFICE_CINDERELLAMAN,
+        CREW_CINDERELLAMAN => CREW_CINDERELLAMAN,
+        OFFICE_THE_BEAUTY => OFFICE_THE_BEAUTY,
+        CREW_THE_BEAUTY => CREW_THE_BEAUTY,
+        _ => "unknown-canonical-id",
+    }
+}
+
+fn node_id(value: &str) -> FlyntNodeId {
+    FlyntNodeId::new(value).expect("canonical Flynt node ID")
+}
+
+fn form_id(value: &str) -> FormId {
+    FormId::new(value).expect("canonical Flynt form ID")
+}
+
+fn recipe_id(value: &str) -> SynthesisRecipeId {
+    SynthesisRecipeId::new(value).expect("canonical Flynt recipe ID")
+}
+
+fn authority_node(
+    id: &str,
+    name: &str,
+    kind: FlyntNodeKind,
+    branch: ConstitutionalBranch,
+    superior: Option<&str>,
+    visibility: ConstitutionalVisibility,
+    responsibilities: &[InstitutionalResponsibility],
+) -> FlyntAuthorityNode {
+    FlyntAuthorityNode {
+        id: node_id(id),
+        name: name.into(),
+        kind,
+        branch,
+        superior: superior.map(node_id),
+        visibility,
+        responsibilities: responsibilities.to_vec(),
+    }
 }
 
 #[must_use]
-pub fn canonical_entries() -> CanonicalEntries {
-    let official_manticorp = OfficialId::new(OFFICIAL_MANTICORP).expect("canonical ID");
-    let official_mystery_men = OfficialId::new(OFFICIAL_MYSTERY_MEN).expect("canonical ID");
-    let official_mysteryguard = OfficialId::new(OFFICIAL_MYSTERYGUARD).expect("canonical ID");
-    let outlaw_werewolves = OutlawId::new(OUTLAW_WEREWOLVES).expect("canonical ID");
-    let outlaw_gallows = OutlawId::new(OUTLAW_GALLOWS).expect("canonical ID");
-    let outlaw_mermen = OutlawId::new(OUTLAW_MERMEN).expect("canonical ID");
+pub fn canonical_authority_nodes() -> Vec<FlyntAuthorityNode> {
+    use ConstitutionalBranch::{Common, Rural, Urban};
+    use ConstitutionalVisibility::{
+        Legendary, PrivateAndExistenceDisputed, Public, PublicWithClassifiedOperations,
+    };
+    use FlyntNodeKind::{
+        ConstitutionalCompanion, Crew, CriminalSyndicate, FolkExpression, FoundingLeaderOffice,
+        InvestigativeBureau, LegendaryOperative, MilitaryInstitution, SovereignExecutive,
+    };
+    use InstitutionalResponsibility as R;
 
-    let lineage_gargoyle = LineageId::new(LINEAGE_GARGOYLE).expect("canonical ID");
-    let lineage_werewolf = LineageId::new(LINEAGE_WEREWOLF).expect("canonical ID");
-    let lineage_merman = LineageId::new(LINEAGE_MERMAN).expect("canonical ID");
-
-    let form_gargoyle = FormId::new(FORM_GARGOYLE).expect("canonical ID");
-    let form_werewolf = FormId::new(FORM_WEREWOLF).expect("canonical ID");
-    let form_merman = FormId::new(FORM_MERMAN).expect("canonical ID");
-    let form_chimera = FormId::new(FORM_CHIMERA).expect("canonical ID");
-    let form_manticorp = FormId::new(FORM_MANTICORP).expect("canonical ID");
-
-    let office_tross = ConstitutionalOfficeId::new(OFFICE_TROSS).expect("canonical ID");
-    let candidate =
-        PersonId::new(PERSON_CANONICAL_TROSS_CANDIDATE).expect("canonical candidate ID");
-    let mastery_id =
-        ExecutiveMasteryId::new(MASTERY_CHIMERA_TO_MANTICORP).expect("canonical mastery ID");
-    let recognition_id = ConstitutionalRecognitionId::new(RECOGNITION_TROSS_SUCCESSION)
-        .expect("canonical recognition ID");
-
-    CanonicalEntries {
-        officials: vec![
-            OfficialInstitution {
-                id: official_manticorp.clone(),
-                name: "Manticorp".into(),
-                function: SharedFunction::MartialForce,
-            },
-            OfficialInstitution {
-                id: official_mystery_men.clone(),
-                name: "Mystery Men".into(),
-                function: SharedFunction::HiddenThreatHuntingInvestigationAndControl,
-            },
-            OfficialInstitution {
-                id: official_mysteryguard.clone(),
-                name: "Mysteryguard".into(),
-                function: SharedFunction::MaritimeMovementPursuitAndSovereignty,
-            },
-        ],
-        outlaws: vec![
-            OutlawExpression {
-                id: outlaw_werewolves.clone(),
-                name: "Werewolves".into(),
-                function: SharedFunction::MartialForce,
-                constitutional_expression: "pack-based, instinctive, non-state".into(),
-            },
-            OutlawExpression {
-                id: outlaw_gallows.clone(),
-                name: "Gallows".into(),
-                function: SharedFunction::HiddenThreatHuntingInvestigationAndControl,
-                constitutional_expression: "covert, clan-based, underworld".into(),
-            },
-            OutlawExpression {
-                id: outlaw_mermen.clone(),
-                name: "Mermen".into(),
-                function: SharedFunction::MaritimeMovementPursuitAndSovereignty,
-                constitutional_expression: "sovereign, crew-based, pirate or free-ocean".into(),
-            },
-        ],
-        mirrors: vec![
-            MirrorPair {
-                id: MirrorPairId::new(MIRROR_MANTICORP_WEREWOLVES).expect("canonical ID"),
-                official: official_manticorp,
-                outlaw: outlaw_werewolves.clone(),
-                shared_function: SharedFunction::MartialForce,
-                distinction: "lawful military institution ↔ pack-based, instinctive, non-state expression".into(),
-            },
-            MirrorPair {
-                id: MirrorPairId::new(MIRROR_MYSTERY_MEN_GALLOWS).expect("canonical ID"),
-                official: official_mystery_men,
-                outlaw: outlaw_gallows.clone(),
-                shared_function: SharedFunction::HiddenThreatHuntingInvestigationAndControl,
-                distinction: "lawful public hunters and investigators ↔ covert, clan-based, underworld expression".into(),
-            },
-            MirrorPair {
-                id: MirrorPairId::new(MIRROR_MYSTERYGUARD_MERMEN).expect("canonical ID"),
-                official: official_mysteryguard,
-                outlaw: outlaw_mermen.clone(),
-                shared_function: SharedFunction::MaritimeMovementPursuitAndSovereignty,
-                distinction: "lawful maritime enforcement ↔ sovereign, crew-based, pirate or free-ocean expression".into(),
-            },
-        ],
-        lineages: vec![
-            TransformationLineage {
-                id: lineage_gargoyle.clone(),
-                name: "Gargoyle".into(),
-                base_form: form_gargoyle.clone(),
-            },
-            TransformationLineage {
-                id: lineage_werewolf.clone(),
-                name: "Werewolf".into(),
-                base_form: form_werewolf.clone(),
-            },
-            TransformationLineage {
-                id: lineage_merman.clone(),
-                name: "Merman".into(),
-                base_form: form_merman.clone(),
-            },
-        ],
-        forms: vec![
-            TransformationForm {
-                id: form_gargoyle.clone(),
-                name: "Gargoyle".into(),
-                kind: FormKind::Foundational,
-            },
-            TransformationForm {
-                id: form_werewolf.clone(),
-                name: "Werewolf".into(),
-                kind: FormKind::Foundational,
-            },
-            TransformationForm {
-                id: form_merman.clone(),
-                name: "Merman".into(),
-                kind: FormKind::Foundational,
-            },
-            TransformationForm {
-                id: form_chimera.clone(),
-                name: "Chimera".into(),
-                kind: FormKind::HigherSynthesis,
-            },
-            TransformationForm {
-                id: form_manticorp.clone(),
-                name: "Manticorp Form".into(),
-                kind: FormKind::PerfectedComposite,
-            },
-        ],
-        synthesis_bases: vec![
-            SynthesisBase {
-                lineage: lineage_gargoyle.clone(),
-                form: form_gargoyle,
-                name: "Gargoyle".into(),
-            },
-            SynthesisBase {
-                lineage: lineage_werewolf.clone(),
-                form: form_werewolf,
-                name: "Werewolf".into(),
-            },
-            SynthesisBase {
-                lineage: lineage_merman.clone(),
-                form: form_merman,
-                name: "Merman".into(),
-            },
-        ],
-        lineage_relations: vec![
-            OutlawLineageRelation {
-                outlaw: outlaw_werewolves,
-                lineage: lineage_werewolf,
-                kind: LineageRelationKind::DirectExpression,
-            },
-            OutlawLineageRelation {
-                outlaw: outlaw_gallows,
-                lineage: lineage_gargoyle,
-                kind: LineageRelationKind::Influence,
-            },
-            OutlawLineageRelation {
-                outlaw: outlaw_mermen,
-                lineage: lineage_merman,
-                kind: LineageRelationKind::DirectExpression,
-            },
-        ],
-        offices: vec![
-            ConstitutionalOffice {
-                id: office_tross.clone(),
-                title: "Tross".into(),
-                kind: ConstitutionalOfficeKind::Executive,
-            },
-            ConstitutionalOffice {
-                id: ConstitutionalOfficeId::new(OFFICE_CHIMERA).expect("canonical ID"),
-                title: "Chimera".into(),
-                kind: ConstitutionalOfficeKind::SecondInCommand,
-            },
-        ],
-        recipes: vec![SynthesisRecipe {
-            id: SynthesisRecipeId::new(RECIPE_CHIMERA).expect("canonical ID"),
-            sources: vec![
-                FormId::new(FORM_GARGOYLE).expect("canonical ID"),
-                FormId::new(FORM_WEREWOLF).expect("canonical ID"),
-                FormId::new(FORM_MERMAN).expect("canonical ID"),
+    vec![
+        authority_node(
+            OFFICE_TROSS,
+            "Tross",
+            SovereignExecutive,
+            Common,
+            None,
+            Public,
+            &[],
+        ),
+        authority_node(
+            COMPANION_CHIMERA,
+            "Chimera",
+            ConstitutionalCompanion,
+            Common,
+            Some(OFFICE_TROSS),
+            Public,
+            &[],
+        ),
+        authority_node(
+            INSTITUTION_MANTICORP,
+            "Manticorp",
+            MilitaryInstitution,
+            Urban,
+            Some(OFFICE_TROSS),
+            Public,
+            &[
+                R::TerritorialDefense,
+                R::MilitaryCommand,
+                R::ConstitutionalProtection,
+                R::DisciplinedForce,
+                R::MilitaryTraining,
+                R::LawfulDeployment,
             ],
-            result: form_chimera.clone(),
-        }],
-        executive_masteries: vec![ExecutiveMastery {
-            id: mastery_id.clone(),
-            candidate: candidate.clone(),
-            completed_chimera: form_chimera.clone(),
-            refinement: ChimeraRefinement {
-                id: ChimeraRefinementId::new(REFINEMENT_CHIMERA_TO_MANTICORP)
-                    .expect("canonical refinement ID"),
-                source: form_chimera,
-                perfected_aspects: vec![
-                    ManticorpMasteryAspect::Lion,
-                    ManticorpMasteryAspect::Eagle,
-                    ManticorpMasteryAspect::Hydra,
-                ],
-                result: form_manticorp.clone(),
-                evidence: vec![ConstitutionalWitness {
-                    id: ConstitutionalWitnessId::new(WITNESS_CHIMERA_REFINEMENT)
-                        .expect("canonical mastery witness ID"),
-                    statement: "completed Chimera refinement into the Manticorp Form".into(),
-                }],
+        ),
+        authority_node(
+            INSTITUTION_MYSTERY_MEN,
+            "Mystery Men",
+            InvestigativeBureau,
+            Urban,
+            Some(INSTITUTION_MANTICORP),
+            PublicWithClassifiedOperations,
+            &[
+                R::Investigation,
+                R::Intelligence,
+                R::Counterintelligence,
+                R::CovertOperations,
+                R::OrganizedCrimeInvestigation,
+                R::Contraband,
+                R::Espionage,
+                R::ConstitutionalSecurity,
+            ],
+        ),
+        authority_node(
+            EXPRESSION_MYSTERY_MAN,
+            "The Mystery Man",
+            LegendaryOperative,
+            Rural,
+            Some(INSTITUTION_GALLOWS),
+            Legendary,
+            &[],
+        ),
+        authority_node(
+            INSTITUTION_GALLOWS,
+            "The Gallows",
+            CriminalSyndicate,
+            Rural,
+            Some(OFFICE_TROSS),
+            PrivateAndExistenceDisputed,
+            &[
+                R::OrganizedCrime,
+                R::RegionalCrews,
+                R::Loyalty,
+                R::Territory,
+                R::Favors,
+                R::Obligation,
+                R::CulturalIdentity,
+            ],
+        ),
+        authority_node(
+            EXPRESSION_WE_FAIRY_MEN,
+            "We Fairy Men",
+            FolkExpression,
+            Rural,
+            Some(INSTITUTION_GALLOWS),
+            Legendary,
+            &[],
+        ),
+        authority_node(
+            OFFICE_BRO_WHITE,
+            "Bro White",
+            FoundingLeaderOffice,
+            Rural,
+            Some(EXPRESSION_WE_FAIRY_MEN),
+            Legendary,
+            &[],
+        ),
+        authority_node(
+            CREW_BRO_WHITE,
+            "Bro White and the 7 Brothas",
+            Crew,
+            Rural,
+            Some(OFFICE_BRO_WHITE),
+            Legendary,
+            &[],
+        ),
+        authority_node(
+            OFFICE_CINDERELLAMAN,
+            "Cinderellaman",
+            FoundingLeaderOffice,
+            Rural,
+            Some(EXPRESSION_WE_FAIRY_MEN),
+            Legendary,
+            &[],
+        ),
+        authority_node(
+            CREW_CINDERELLAMAN,
+            "Cinderellaman and His Midnight Crew",
+            Crew,
+            Rural,
+            Some(OFFICE_CINDERELLAMAN),
+            Legendary,
+            &[],
+        ),
+        authority_node(
+            OFFICE_THE_BEAUTY,
+            "The Beauty",
+            FoundingLeaderOffice,
+            Rural,
+            Some(EXPRESSION_WE_FAIRY_MEN),
+            Legendary,
+            &[],
+        ),
+        authority_node(
+            CREW_THE_BEAUTY,
+            "The Beauty and His Beasts",
+            Crew,
+            Rural,
+            Some(OFFICE_THE_BEAUTY),
+            Legendary,
+            &[],
+        ),
+    ]
+}
+
+#[must_use]
+pub fn canonical_lineages() -> Vec<FoundingLineage> {
+    use LineageAssociation as A;
+    vec![
+        FoundingLineage {
+            people: FoundingPeople::Gargoyle,
+            founding_leader: node_id(OFFICE_BRO_WHITE),
+            crew: node_id(CREW_BRO_WHITE),
+            associations: vec![A::SouthernFlynt, A::Stone, A::Architecture, A::Guardianship],
+        },
+        FoundingLineage {
+            people: FoundingPeople::Merman,
+            founding_leader: node_id(OFFICE_CINDERELLAMAN),
+            crew: node_id(CREW_CINDERELLAMAN),
+            associations: vec![
+                A::Riptide,
+                A::AuraSea,
+                A::Waterways,
+                A::Smuggling,
+                A::MidnightTransformation,
+            ],
+        },
+        FoundingLineage {
+            people: FoundingPeople::Werewolf,
+            founding_leader: node_id(OFFICE_THE_BEAUTY),
+            crew: node_id(CREW_THE_BEAUTY),
+            associations: vec![
+                A::NorthernFlynt,
+                A::Wilderness,
+                A::Packs,
+                A::RoamingProtection,
+            ],
+        },
+    ]
+}
+
+#[must_use]
+pub fn canonical_forms() -> Vec<TransformationForm> {
+    vec![
+        TransformationForm {
+            id: form_id(FORM_GARGOYLE),
+            name: "Gargoyle".into(),
+            kind: FormKind::FoundingPeople,
+        },
+        TransformationForm {
+            id: form_id(FORM_MERMAN),
+            name: "Merman".into(),
+            kind: FormKind::FoundingPeople,
+        },
+        TransformationForm {
+            id: form_id(FORM_WEREWOLF),
+            name: "Werewolf".into(),
+            kind: FormKind::FoundingPeople,
+        },
+        TransformationForm {
+            id: form_id(FORM_CHIMERA),
+            name: "Chimera".into(),
+            kind: FormKind::ConstitutionalSynthesis,
+        },
+        TransformationForm {
+            id: form_id(FORM_MANTICORP),
+            name: "Manticorp".into(),
+            kind: FormKind::ConstitutionalSynthesis,
+        },
+    ]
+}
+
+#[must_use]
+pub fn canonical_manticorp_recipe() -> DividedManticorpRecipe {
+    DividedManticorpRecipe {
+        recipe: SynthesisRecipe {
+            id: recipe_id(RECIPE_MANTICORP),
+            sources: vec![form_id(FORM_CHIMERA)],
+            result: form_id(FORM_MANTICORP),
+        },
+        custody: vec![
+            ManticorpRecipeCustody {
+                custodian: node_id(OFFICE_BRO_WHITE),
+                component: ManticorpRecipeComponent::Gargoyle,
             },
-            resulting_manticorp: form_manticorp.clone(),
-        }],
-        recognitions: vec![ConstitutionalRecognition {
-            id: recognition_id.clone(),
-            candidate: candidate.clone(),
-            mastery: mastery_id,
-            achieved_manticorp: form_manticorp,
-            office: office_tross.clone(),
-            witnesses: vec![ConstitutionalWitness {
-                id: ConstitutionalWitnessId::new(WITNESS_TROSS_RECOGNITION)
-                    .expect("canonical recognition witness ID"),
-                statement: "recognized previously proven Manticorp mastery".into(),
-            }],
-        }],
-        accessions: vec![LawfulAccession {
-            id: LawfulAccessionId::new(ACCESSION_TROSS).expect("canonical accession ID"),
-            candidate,
-            recognition: recognition_id,
-            office: office_tross,
-        }],
+            ManticorpRecipeCustody {
+                custodian: node_id(OFFICE_THE_BEAUTY),
+                component: ManticorpRecipeComponent::Werewolf,
+            },
+            ManticorpRecipeCustody {
+                custodian: node_id(OFFICE_CINDERELLAMAN),
+                component: ManticorpRecipeComponent::Merman,
+            },
+        ],
     }
 }
 
-pub fn canonical_registry() -> Result<OfficialsOutlawsRegistry, RegistryError> {
-    let registry = OfficialsOutlawsRegistry::from_entries(canonical_entries())?;
-    registry.validate()?;
-    Ok(registry)
+#[must_use]
+pub fn canonical_sovereign_identity() -> FlyntSovereignIdentity {
+    FlyntSovereignIdentity {
+        person: node_id(PERSON_TROSS),
+        public_title: node_id(OFFICE_TROSS),
+        underground_identities: vec![node_id(IDENTITY_MYSTERY_MAN), node_id(IDENTITY_MR_X)],
+        maintained_form: form_id(FORM_MANTICORP),
+        continuance_requirements: vec![
+            ManticorpContinuanceRequirement::BodilyDiscipline,
+            ManticorpContinuanceRequirement::RecipeRenewal,
+            ManticorpContinuanceRequirement::DividedBasinKnowledge,
+            ManticorpContinuanceRequirement::InstitutionalRecognition,
+            ManticorpContinuanceRequirement::SpecializedGlaushouseCare,
+        ],
+        public_institution: node_id(INSTITUTION_MANTICORP),
+        underground_institution: node_id(INSTITUTION_GALLOWS),
+    }
+}
+
+#[must_use]
+pub fn canonical_gallowry() -> GallowrySite {
+    GallowrySite {
+        id: node_id(SITE_GALLOWRY),
+        name: "The Gallowry".into(),
+        controlled_by: node_id(INSTITUTION_GALLOWS),
+        visibility: ConstitutionalVisibility::Hidden,
+        functions: vec![
+            GallowryFunction::MeetingPlace,
+            GallowryFunction::Headquarters,
+            GallowryFunction::CulturalCenter,
+            GallowryFunction::Gallery,
+            GallowryFunction::OperationalHub,
+        ],
+    }
+}
+
+#[must_use]
+pub fn canonical_founding_union() -> FoundingUnion {
+    FoundingUnion {
+        founding_leaders: vec![
+            node_id(OFFICE_BRO_WHITE),
+            node_id(OFFICE_CINDERELLAMAN),
+            node_id(OFFICE_THE_BEAUTY),
+        ],
+        folk_expression: node_id(EXPRESSION_WE_FAIRY_MEN),
+        institutional_home: node_id(INSTITUTION_GALLOWS),
+        constitutional_expression_of: node_id(COMPANION_CHIMERA),
+    }
+}
+
+#[must_use]
+pub fn canonical_parts() -> FlyntConstitutionParts {
+    FlyntConstitutionParts {
+        nodes: canonical_authority_nodes(),
+        lineages: canonical_lineages(),
+        forms: canonical_forms(),
+        chimera_recipe: SynthesisRecipe {
+            id: recipe_id(RECIPE_CHIMERA),
+            sources: vec![
+                form_id(FORM_GARGOYLE),
+                form_id(FORM_MERMAN),
+                form_id(FORM_WEREWOLF),
+            ],
+            result: form_id(FORM_CHIMERA),
+        },
+        manticorp_recipe: canonical_manticorp_recipe(),
+        chimera: ConstitutionalChimera {
+            authority_node: node_id(COMPANION_CHIMERA),
+            form: form_id(FORM_CHIMERA),
+            synthesis: recipe_id(RECIPE_CHIMERA),
+            first_companion_to: node_id(OFFICE_TROSS),
+        },
+        sovereign_identity: canonical_sovereign_identity(),
+        founding_union: canonical_founding_union(),
+        gallowry: canonical_gallowry(),
+    }
+}
+
+pub fn canonical_constitution() -> Result<FlyntConstitution, ConstitutionError> {
+    let constitution = FlyntConstitution::from_parts(canonical_parts())?;
+    constitution.validate()?;
+    Ok(constitution)
+}
+
+/// Stable, implementation-owned hierarchy rows used by documentation and
+/// adapters. Callers may render these rows but must not reinterpret them.
+#[must_use]
+pub fn canonical_hierarchy_rows() -> Vec<(&'static str, &'static str)> {
+    vec![
+        (COMPANION_CHIMERA, OFFICE_TROSS),
+        (INSTITUTION_MANTICORP, OFFICE_TROSS),
+        (INSTITUTION_MYSTERY_MEN, INSTITUTION_MANTICORP),
+        (EXPRESSION_MYSTERY_MAN, INSTITUTION_GALLOWS),
+        (INSTITUTION_GALLOWS, OFFICE_TROSS),
+        (EXPRESSION_WE_FAIRY_MEN, INSTITUTION_GALLOWS),
+        (OFFICE_BRO_WHITE, EXPRESSION_WE_FAIRY_MEN),
+        (CREW_BRO_WHITE, OFFICE_BRO_WHITE),
+        (OFFICE_CINDERELLAMAN, EXPRESSION_WE_FAIRY_MEN),
+        (CREW_CINDERELLAMAN, OFFICE_CINDERELLAMAN),
+        (OFFICE_THE_BEAUTY, EXPRESSION_WE_FAIRY_MEN),
+        (CREW_THE_BEAUTY, OFFICE_THE_BEAUTY),
+    ]
+}
+
+/// Deterministic map of each canonical authority node to its one superior.
+#[must_use]
+pub fn canonical_superior_map() -> BTreeMap<&'static str, Option<&'static str>> {
+    let mut map = BTreeMap::from([(OFFICE_TROSS, None)]);
+    map.extend(
+        canonical_hierarchy_rows()
+            .into_iter()
+            .map(|(node, superior)| (node, Some(superior))),
+    );
+    map
 }

@@ -1,14 +1,21 @@
 # Hollow Grove V2 Constitutional Specification
 
-Status: Canonical
-Authority: Normative
+Status: canonical shared Bond and Constitutional Runtime specification
+Authority: normative within its delegated runtime domain beneath the Hollow Grove Compromise
 Date: 2026-07-18
 
 ## 1. Status, Scope, and Conformance
 
 ### 1.1 Constitutional status
 
-This document is the primary architectural authority for the Hollow Grove concepts that it defines.
+The Hollow Grove Constitution is
+`HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md`. This document is its detailed normative
+specification for the shared Bond grammar and Constitutional Runtime. It is not
+a second Hollow Grove Constitution, a House constitution, or a superior
+sovereign source.
+
+Within its delegated runtime domain, this document is the primary technical
+authority for the Hollow Grove concepts that it defines.
 
 An implementation conforms only when its externally observable behavior, persisted history, state transitions, validation outcomes, and replay results satisfy every applicable MUST, MUST NOT, SHALL, and SHALL NOT requirement in this document.
 
@@ -37,6 +44,8 @@ This document specifies:
 - architectural mapping into the existing repository.
 
 This document does not redesign unrelated Hollow Grove world, presentation, route, species, profession, desktop, or Hueman mechanics.
+
+Major route purpose is governed separately by `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md`. That upper world-facing law may project Constitutional Runtime state but MUST NOT alter the lifecycle, authority, persistence, replay, or causality specified here.
 
 ### 1.3 Normative language
 
@@ -3040,11 +3049,26 @@ The House enum and canonical Fourway mapping are stable candidates. Existing Hou
 
 The following companion House instruments consolidate the audited non-Flynt law:
 
-- `STONEBEND_CONSTITUTION_V1_DRAFT.md`;
-- `SANDMANOR_CONSTITUTION_V1_DRAFT.md`;
-- `GLAUSHOUSE_CONSTITUTION_V1_DRAFT.md`.
+- `STONEBEND_CONSTITUTION_V2.md` (canonical and executable above this frozen common runtime);
+- `STONEBEND_AURA_WAY_AETHER_HOLLOWING_FOUNDATION_V1.md` (bounded vertical
+  law, standard Aura Way, material Hollowing, proofed Aether provenance, and
+  geographic stone-refraction supplement);
+- `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md` (bounded three-gate,
+  scoped-Title, Diamond bearer, Claim/Title/Yield, Proliteriate mandate,
+  two-power removal, Tombstone, and Lazerhorn succession supplement);
+- `STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md` (bounded
+  Stonebend recognition/activation, maintenance/renewal, targeted
+  intervention, restoration, Diamond vacancy continuity, independent Forge
+  replacement, and temporal Claim/Title/Yield supplement);
+- `SANDMANOR_CONSTITUTION_V2.md` (canonical and executable above this frozen common runtime);
+- `GLAUSHOUSE_CONSTITUTION_V2.md` (canonical and executable above this frozen common runtime).
 
-They remain drafts pending ratification. Implementations MAY use them to identify existing invariants and repository gaps, but MUST NOT activate a procedure that the applicable draft marks Reserved.
+The Stonebend, Sandmanor, and Glaüshouse V2 instruments supersede their V1
+drafts and own only their House-specific law above this frozen common runtime.
+They do not modify the common Bond lifecycle, accounting, persistence, replay,
+or final Synthesis Resolution semantics defined here. The frozen common
+`SandmanorContestSuccession` entry point remains closed because it cannot bypass
+the ratified House-specific Contest and accession registry.
 
 ### 5.30 Recipe Participation
 
@@ -4017,7 +4041,7 @@ These SHOULD NOT be deleted merely because their names overlap. They SHOULD be r
 
 #### Duplicate or overlapping abstractions
 
-- Stable identifier lexical validation is repeated in the composition, institution, affiliation, and officials/outlaws layers. The lexical validator SHOULD be consolidated while retaining distinct typed identities.
+- Stable identifier lexical validation is repeated in the composition, institution, affiliation, and Flynt constitutional layers. The lexical validator SHOULD be consolidated while retaining distinct typed identities.
 - SynthesisRecipe names two domain-specific concepts. Their execution and composition semantics differ, so a blind type merge is forbidden; clearer namespaces or shared reference contracts are preferable.
 - Replay and persistence patterns exist in DecisionTrace and Current Synthesis. Canonical Bond persistence SHOULD consolidate infrastructure without merging domain meaning.
 - Evidence currently appears as ExternalRef, ConstitutionalWitness, DecisionTrace, KernelPass witness text, SynthesisExecution, and artifact references. The Bond SHOULD reference these through one evidence-reference boundary rather than duplicate their payloads.
@@ -4585,8 +4609,8 @@ Candidate supporting structures are:
 - CompositionNode as an addressable durable result projection;
 - CompositionRecord as causal provenance;
 - ExternalRef as evidence;
-- ConstitutionalRecognition as a domain example of acknowledgment after proof;
-- ExecutiveMastery and ChimeraRefinement as domain examples of evidence-backed achieved state;
+- the Flynt constitutional audit as a domain example of evidence-backed hierarchy validation;
+- the unique Chimera CompositionRecord as a domain example of evidence-backed achieved synthesis;
 - DecisionTrace, SynthesisExecution, KernelPass, and Current Synthesis history as replay evidence.
 
 None is equivalent to Tombstone.
@@ -6064,7 +6088,7 @@ The audit inspected:
 - institution and affiliation models;
 - House fixtures;
 - composition and provenance kernel;
-- Officials and Outlaws registry, evidence, recognition, and accession;
+- the canonical Flynt constitution, unique Chimera synthesis, institutional projection, and hierarchy audit;
 - existing constitutional and integration tests.
 
 ### 12.2 Existing constitutional strengths
@@ -6113,7 +6137,7 @@ These structures SHOULD be refined and composed. They SHOULD NOT be replaced wit
 | FrameState | Being-associated Frame, prism, Flow, Glow | Transformation state evidence | Reference from Recipe and transformation participation |
 | SynthesisRecipe in root crate | Ordered transformation intents | Bounded Recipe participation | Retain and reference |
 | SynthesisExecution | Transactional execution result | Strong immutable evidence candidate | Reference, do not copy |
-| SynthesisRecipe in Officials/Outlaws | Form sources and result | Domain composition rule | Retain domain ownership and clarify namespace |
+| SynthesisRecipe in `flynt-constitution` | Gargoyle, Merman, and Werewolf sources with the unique Chimera result | Domain composition rule | Retain domain ownership and the locked Flynt namespace |
 | DecisionTrace | Deterministic observe-to-execute evidence | Evidence and replay pattern | Reuse trace/reference approach |
 | KernelPass | Deterministic completed recursion witness | Wave or evidence source candidate | Not Bond lifecycle |
 | CurrentSynthesisEvent | Scenario, focus, action, feedback, and tick events | Event-sourcing pattern | Generalize infrastructure only; do not copy domain event vocabulary |
@@ -6127,9 +6151,7 @@ These structures SHOULD be refined and composed. They SHOULD NOT be replaced wit
 | CompositionNode | Addressable domain projection | Tombstone projection candidate | Neutral index only |
 | CompositionRecord | Sources, result, operation, evidence | Toke or lineage projection candidate | Not Toke without canonical constraints |
 | CompositionCatalog | Neutral validated in-memory indexes | Cross-domain lookup and lineage support | Reuse; add persistence only under separate versioned adoption |
-| ConstitutionalWitness | Stable witness and statement | Witness evidence candidate | Add explicit scope through Bond association |
-| ConstitutionalRecognition | Recognition of already-proven mastery | Toke-like domain evidence | Keep distinct |
-| LawfulAccession | Downstream office consequence | Successor or obligation evidence | Keep domain-specific |
+| FlyntConstitutionalAudit | Deterministic institution, office, superior, and uniqueness proof | Authority evidence candidate | Keep domain-specific and reference immutably |
 
 ### 12.4 Existing naming collisions
 
@@ -6181,7 +6203,7 @@ Stable key validation is implemented repeatedly:
 - composition stable keys;
 - institutional stable IDs;
 - affiliation IDs;
-- officials/outlaws IDs.
+- Flynt constitutional IDs.
 
 A shared lexical validator is a valid consolidation.
 
@@ -6264,7 +6286,7 @@ Specifically:
 - BondCandidate and BondResult are used by Current Synthesis;
 - ResourceComposition and Residue are used by simulation and inspectors;
 - both SynthesisRecipe types have distinct active domain uses;
-- CompositionCatalog is frozen and used by Officials and Outlaws;
+- CompositionCatalog is frozen and used by `flynt-constitution` for the unique Chimera provenance record;
 - PersistedCurrentSynthesisState remains a compatibility and bootstrap surface.
 
 Premature deletion would violate the repository rule.
@@ -6335,7 +6357,7 @@ Existing tests that provide reusable verification patterns include:
 - Current Synthesis event, snapshot, and restart tests;
 - composition identity, lookup, missing reference, and cycle tests;
 - institutional singular-office and membership validation tests;
-- Officials and Outlaws registration, evidence, recognition, and accession tests;
+- Flynt hierarchy, unique Chimera, institutional placement, and kernel-boundary tests;
 - Aura polarity mismatch, consent, agency, and route tests.
 
 New constitutional tests SHOULD live at a boundary that can exercise domain types without forcing the neutral kernel to import world meaning.
@@ -6552,7 +6574,7 @@ The complete current rule set is:
 
 ```text
 Gnome → Minotaur
-Required standing: Aura Fields
+Required standing: Aura Field
 Function: field stewardship, work, maintenance, and defense
 ```
 
@@ -6565,8 +6587,12 @@ Function: beach patrol and Aura Sea guardianship
 Gnome→Centaur and Elf→Minotaur are not alternate readings. They are illegal
 cross-lineage transitions.
 
-Minotaur→Hecaton and Centaur→Pegasus remain known adjacent lineage forms but do
-not possess ratified regional execution rules in this version.
+The common regional reducer remains frozen to those two first-stage rules.
+`SANDMANOR_GUARDIAN_AND_SUCCESSION_V1.md` subsequently ratifies
+Minotaur→Hecaton and Centaur→Pegasus through the Sandmanor guardian event model
+in `src/world/sandmanor/milestone.rs`, reusing the lineage validator and
+Glaüshouse maintained-Synthesis lifecycle without changing this reducer. Their
+presence in the lineage table alone still grants nothing.
 
 ### 15.3 Responsibilities
 
@@ -6703,14 +6729,14 @@ The legal lifecycle is:
 
 ```text
 absent Gnome identity
-    ↓ register with established Aura Fields standing
+    ↓ register with established Aura Field standing
 active Gnome
     ↓ prove lineage, readiness, standing, and rule
     ↓ authorize with Glaüshouse Resolution
     ↓ apply Gnome→Minotaur rule
 Gnome status = SynthesizedInto(Minotaur identity)
 active Minotaur with predecessor and lineage
-    ↓ atomically derive Aura Fields stewardship
+    ↓ atomically derive Aura Field stewardship
 ```
 
 The Minotaur is the bull-associated field-working, burden-bearing, territorial,
@@ -6721,7 +6747,7 @@ and agricultural regional form. It is not a generic maze or combat form.
 Every valid Minotaur result MUST possess `AuraFieldsStewardship` naming:
 
 - the Minotaur as steward;
-- Aura Fields as region;
+- Aura Field as region;
 - the Glaüshouse resolution decision as assignment authority;
 - the Synthesis evidence;
 - all seven typed duties:
@@ -6780,7 +6806,7 @@ same Centaur, Aura Sea, assignment authority, evidence, and all four duties:
 - maintain lawful land-sea passage.
 
 Missing the guardianship makes the Centaur result internally invalid. The
-assignments grant no Aura Fields stewardship.
+assignments grant no Aura Field stewardship.
 
 ### 15.13 State Machine
 
@@ -6791,7 +6817,7 @@ Legal transitions are:
 | Prior | Command | Required result |
 |---|---|---|
 | absent | register Gnome or Elf | Active origin |
-| Active Gnome | ratified Aura Fields Synthesis | SynthesizedInto(Minotaur) plus Active Minotaur |
+| Active Gnome | ratified Aura Field Synthesis | SynthesizedInto(Minotaur) plus Active Minotaur |
 | Active Elf | ratified Aura Beach Synthesis | SynthesizedInto(Centaur) plus Active Centaur |
 | Active origin/result | regional Tombstone | Tombstoned |
 | any accepted event | exact retry | unchanged state and unchanged event count |
@@ -6827,7 +6853,7 @@ Every accepted Synthesis answers:
 - Every Centaur has an Elf predecessor.
 - Every result lineage begins with the predecessor lineage history.
 - Every result appends exactly one lineage entry for its Synthesis.
-- Every Gnome→Minotaur event is grounded in established Aura Fields standing.
+- Every Gnome→Minotaur event is grounded in established Aura Field standing.
 - Every Elf→Centaur event is grounded in established Aura Beach standing.
 - Every accepted command has both required House decisions.
 - Every required item of evidence names the predecessor.
@@ -6855,11 +6881,11 @@ Illegal configurations include:
 - lineage history whose Synthesis identity differs from the committed command;
 - Gnome→Centaur;
 - Elf→Minotaur;
-- Gnome→Minotaur without established Aura Fields standing;
+- Gnome→Minotaur without established Aura Field standing;
 - Elf→Centaur without established Aura Beach standing;
 - any Synthesis using Aura Sea as primary standing;
 - Minotaur with Aura Beach occupation or Aura Sea guardianship;
-- Centaur with Aura Fields stewardship;
+- Centaur with Aura Field stewardship;
 - Minotaur missing a field duty;
 - Centaur missing a beach or sea duty;
 - Synthesis without Sandmanor proof;
@@ -6937,7 +6963,7 @@ Conformance MUST test:
 The canonical implementation is:
 
 - `src/sandmanor_lineage.rs`: existing forms and adjacency law;
-- `src/world/house_institutions.rs`: Aura Fields/Aura Beach sites and Sandmen /
+- `src/world/house_institutions.rs`: Aura Field/Aura Beach sites and Sandmen /
   Glaüshouse institution identities;
 - `src/constitutional/regional.rs`: regional model, rules, reducer, assignments,
   lineage, failures, and lookups;
@@ -6958,9 +6984,9 @@ Bond governs lawful Current and Aura history.
 
 Regional Synthesis governs the two ratified region-bound form transformations.
 
-A Gnome may become a Minotaur only through lawful Aura Fields Synthesis.
+A Gnome may become a Minotaur only through lawful Aura Field Synthesis.
 
-That Minotaur tends, works, maintains, and defends the Aura Fields.
+That Minotaur tends, works, maintains, and defends the Aura Field.
 
 An Elf may become a Centaur only through lawful Aura Beach Synthesis.
 

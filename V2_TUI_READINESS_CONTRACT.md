@@ -275,11 +275,11 @@ The canonical Gnome projection is:
 Gnome
   ↓ lawful regional Synthesis
 Minotaur
-  Region: Aura Fields
+  Region: Aura Field
   Role: Steward, worker, maintainer, defender
 ```
 
-The renderer obtains `Gnome`, `Minotaur`, `Aura Fields`, and duties from the
+The renderer obtains `Gnome`, `Minotaur`, `Aura Field`, and duties from the
 accepted `RegionalSynthesisRecord` and `AuraFieldsStewardship`. It does not
 choose the result from the source form.
 
@@ -362,7 +362,7 @@ A conforming TUI integration must test:
 - accepted event emitted only after reducer success;
 - rejection has no state-change event;
 - trace/event projection leaves runtime event count unchanged;
-- Gnome→Minotaur renders Aura Fields and every stewardship duty;
+- Gnome→Minotaur renders Aura Field and every stewardship duty;
 - Elf→Centaur renders Aura Beach and Aura Sea guardianship;
 - both lineage chains show source and result identities;
 - reversed Syntheses render stable rejection codes;

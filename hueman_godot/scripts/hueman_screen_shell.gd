@@ -2,6 +2,7 @@ extends Node2D
 
 const MAP_CONTRACT_RELATIVE_PATH := "artifacts/hueman_screen_map.json"
 const COORDINATE_CONTRACT_RELATIVE_PATH := "artifacts/hollow_grove_hueman_coordinate_contract.json"
+const VISUAL_COLOR_CONSTITUTION_RELATIVE_PATH := "src/constitutional/hollow_grove_visual_color_palette.json"
 const LIVE_STATE_RELATIVE_PATH := "artifacts/screen_map_state.json"
 const INTENT_RELATIVE_PATH := "artifacts/screen_map_intent.json"
 const PAIR_STATE_RELATIVE_PATH := "artifacts/hueman_pair_state.json"
@@ -13,6 +14,8 @@ const POLL_INTERVAL_SECONDS := 0.25
 var repo_root_path := ""
 var map_contract := {}
 var coordinate_contract := {}
+var visual_color_constitution := {}
+var colors_by_semantic_identity := {}
 var live_state := {}
 var pair_state := {}
 var pair_preview_state := {}
@@ -41,6 +44,11 @@ var hint_label: Label
 
 func _ready() -> void:
 	repo_root_path = _resolve_repo_root()
+	if not _load_visual_color_constitution():
+		push_error("The canonical Hollow Grove visual color constitution could not be loaded.")
+		set_process(false)
+		set_process_input(false)
+		return
 	_ensure_hud()
 	_load_all_state()
 	set_process(true)
@@ -67,17 +75,19 @@ func _input(event: InputEvent) -> void:
 
 
 func _draw() -> void:
+	if colors_by_semantic_identity.is_empty():
+		return
 	var viewport_size: Vector2 = get_viewport_rect().size
-	draw_rect(Rect2(Vector2.ZERO, viewport_size), Color("12202b"))
+	draw_rect(Rect2(Vector2.ZERO, viewport_size), _constitutional_color("hollow_grove.universal.outline"))
 
 	if map_contract.is_empty():
 		return
 
-	var aura_field_color: Color = Color("caa85c")
+	var aura_field_color: Color = _constitutional_color("hollow_grove.house.sandmanor.highlight")
 	aura_field_color.a = 0.18
-	var aura_beach_color: Color = Color("2b8a76")
+	var aura_beach_color: Color = _constitutional_color("hollow_grove.house.glaushouse.highlight")
 	aura_beach_color.a = 0.18
-	var aura_basin_color: Color = Color("7da2d6")
+	var aura_basin_color: Color = _constitutional_color("hollow_grove.house.stonebend.highlight")
 	aura_basin_color.a = 0.18
 
 	_draw_surface("aura_field", aura_field_color, viewport_size)
@@ -104,7 +114,7 @@ func _ensure_hud() -> void:
 	status_label.size = Vector2(520.0, 160.0)
 	status_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	status_label.add_theme_font_size_override("font_size", 18)
-	status_label.modulate = Color("f4ead5")
+	status_label.modulate = _constitutional_color("hollow_grove.house.flynt.highlight")
 	hud_layer.add_child(status_label)
 
 	hint_label = Label.new()
@@ -112,7 +122,7 @@ func _ensure_hud() -> void:
 	hint_label.size = Vector2(560.0, 80.0)
 	hint_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	hint_label.add_theme_font_size_override("font_size", 15)
-	hint_label.modulate = Color("d3c2a4")
+	hint_label.modulate = _constitutional_color("hollow_grove.house.flynt.authority")
 	hud_layer.add_child(hint_label)
 
 
@@ -209,6 +219,34 @@ func _read_json_file(path: String) -> Dictionary:
 	if typeof(parsed) == TYPE_DICTIONARY:
 		return parsed
 	return {}
+
+
+func _load_visual_color_constitution() -> bool:
+	visual_color_constitution = _read_json_file(_repo_file(VISUAL_COLOR_CONSTITUTION_RELATIVE_PATH))
+	colors_by_semantic_identity.clear()
+	if visual_color_constitution.is_empty():
+		return false
+
+	var colors: Array = visual_color_constitution.get("colors", [])
+	for value in colors:
+		if typeof(value) != TYPE_DICTIONARY:
+			return false
+		var color_record: Dictionary = value
+		var semantic_identity := str(color_record.get("semantic_identity", ""))
+		var hexadecimal := str(color_record.get("hex", ""))
+		if semantic_identity == "" or hexadecimal == "" or colors_by_semantic_identity.has(semantic_identity):
+			return false
+		colors_by_semantic_identity[semantic_identity] = color_record
+
+	return not colors_by_semantic_identity.is_empty()
+
+
+func _constitutional_color(semantic_identity: String, alpha := 1.0) -> Color:
+	assert(colors_by_semantic_identity.has(semantic_identity), "Unknown constitutional color identity: %s" % semantic_identity)
+	var color_record: Dictionary = colors_by_semantic_identity[semantic_identity]
+	var color := Color.from_string(str(color_record["hex"]), Color.TRANSPARENT)
+	color.a = alpha
+	return color
 
 
 func _resolve_current_zone() -> Dictionary:
@@ -355,13 +393,13 @@ func _draw_nodes(viewport_size: Vector2) -> void:
 	for node in map_contract.get("nodes", []):
 		var point: Vector2 = _to_screen(_node_point(node), viewport_size)
 		var radius: float = float(node.get("radius", 0.09)) * min(viewport_size.x, viewport_size.y)
-		var color: Color = Color("f4ead5")
+		var color: Color = _constitutional_color("hollow_grove.house.flynt.highlight")
 		draw_circle(point, radius, color)
-		draw_circle(point, radius * 0.55, Color("12202b"))
+		draw_circle(point, radius * 0.55, _constitutional_color("hollow_grove.universal.outline"))
 		var label_offset := Vector2(-radius * 0.8, -radius * 1.25)
 		if str(node.get("id", "")) == "glaushouse":
 			label_offset = Vector2(-radius * 0.9, radius * 1.5)
-		_draw_label(str(node.get("name", "")), point + label_offset, 28, Color("f4ead5"))
+		_draw_label(str(node.get("name", "")), point + label_offset, 28, _constitutional_color("hollow_grove.house.flynt.highlight"))
 
 
 func _draw_straight_routes(viewport_size: Vector2) -> void:
@@ -370,7 +408,7 @@ func _draw_straight_routes(viewport_size: Vector2) -> void:
 			_to_screen(_route_from_point(route), viewport_size),
 			_to_screen(_route_to_point(route), viewport_size)
 		])
-		draw_polyline(points, Color("e8d7b0"), 5.0, true)
+		draw_polyline(points, _constitutional_color("hollow_grove.house.stonebend.primary"), 5.0, true)
 
 
 func _draw_curved_routes(viewport_size: Vector2) -> void:
@@ -378,7 +416,7 @@ func _draw_curved_routes(viewport_size: Vector2) -> void:
 		var points := PackedVector2Array()
 		for point in _curve_points(route, 32):
 			points.append(_to_screen(point, viewport_size))
-		draw_polyline(points, Color("89b4d8"), 4.0, true)
+		draw_polyline(points, _constitutional_color("hollow_grove.house.glaushouse.primary"), 4.0, true)
 
 
 func _draw_surface(surface_id: String, color: Color, viewport_size: Vector2) -> void:
@@ -407,7 +445,7 @@ func _draw_surface_labels(viewport_size: Vector2) -> void:
 			str(surface.get("name", "")),
 			_to_screen(center, viewport_size) + Vector2(-70.0, 8.0),
 			24,
-			Color("fff0cf")
+			_constitutional_color("hollow_grove.house.flynt.highlight")
 		)
 
 
@@ -417,13 +455,13 @@ func _draw_motion_grid_overlay(viewport_size: Vector2) -> void:
 		return
 	var active_cell_id := str(current_resolution.get("id", ""))
 
-	var grid_line_color := Color("d9c8a3")
+	var grid_line_color := _constitutional_color("hollow_grove.house.flynt.highlight")
 	grid_line_color.a = 0.12
-	var cell_fill_color := Color("0f1820")
+	var cell_fill_color := _constitutional_color("hollow_grove.universal.shadow.deep")
 	cell_fill_color.a = 0.42
-	var cell_outline_color := Color("c9b58a")
+	var cell_outline_color := _constitutional_color("hollow_grove.house.flynt.authority")
 	cell_outline_color.a = 0.45
-	var text_color := Color("d9c8a3")
+	var text_color := _constitutional_color("hollow_grove.house.flynt.highlight")
 	text_color.a = 0.82
 
 	for x_ratio in [0.2, 0.5, 0.8]:
@@ -449,19 +487,19 @@ func _draw_motion_grid_overlay(viewport_size: Vector2) -> void:
 		var cell_id := str(cell.get("id", ""))
 		var is_center := cell_id == "human_core"
 		var is_active := cell_id == active_cell_id
-		var marker_color := Color("f4ead5")
+		var marker_color := _constitutional_color("hollow_grove.house.flynt.highlight")
 		marker_color.a = 0.92 if is_active else (0.75 if is_center else 0.58)
 		var active_fill_color := cell_fill_color
 		if is_active:
-			active_fill_color = Color("1d3140")
+			active_fill_color = _constitutional_color("hollow_grove.universal.shadow.raised")
 			active_fill_color.a = 0.78
 		var active_outline_color := cell_outline_color
 		if is_active:
-			active_outline_color = Color("f4ead5")
+			active_outline_color = _constitutional_color("hollow_grove.house.flynt.highlight")
 			active_outline_color.a = 0.94
 		var active_text_color := text_color
 		if is_active:
-			active_text_color = Color("fff0cf")
+			active_text_color = _constitutional_color("hollow_grove.house.flynt.highlight")
 			active_text_color.a = 0.98
 
 		draw_rect(cell_rect, active_fill_color, true)
@@ -481,8 +519,8 @@ func _draw_player_probe(viewport_size: Vector2) -> void:
 		return
 
 	var point: Vector2 = _to_screen(Vector2(float(center.get("x", 0.0)), float(center.get("y", 0.0))), viewport_size)
-	draw_circle(point, 12.0, Color("f26d5b"))
-	draw_circle(point, 5.0, Color("fff6e8"))
+	draw_circle(point, 12.0, _constitutional_color("hollow_grove.house.sandmanor.primary"))
+	draw_circle(point, 5.0, _constitutional_color("hollow_grove.house.sandmanor.highlight"))
 
 
 func _draw_pair_overlay(viewport_size: Vector2) -> void:
@@ -502,8 +540,8 @@ func _draw_pair_overlay(viewport_size: Vector2) -> void:
 	var line_start_b: Vector2 = center - direction * diagonal_length - normal * (gap_size * 0.5)
 	var line_end_b: Vector2 = center + direction * diagonal_length - normal * (gap_size * 0.5)
 
-	draw_line(line_start_a, line_end_a, Color("f4ead5", 0.85), 4.0, true)
-	draw_line(line_start_b, line_end_b, Color("f4ead5", 0.85), 4.0, true)
+	draw_line(line_start_a, line_end_a, _constitutional_color("hollow_grove.house.flynt.highlight", 0.85), 4.0, true)
+	draw_line(line_start_b, line_end_b, _constitutional_color("hollow_grove.house.flynt.highlight", 0.85), 4.0, true)
 
 	var paired_window: Dictionary = _dict_or_empty(pair_state.get("focused_window"))
 	var window_title := str(paired_window.get("title", "Paired Window"))
@@ -520,13 +558,13 @@ func _draw_pair_overlay(viewport_size: Vector2) -> void:
 		mode_label = "managed application"
 
 	_draw_pair_preview(preview_rect)
-	_draw_label(desktop_label, preview_rect.position + Vector2(0.0, -18.0), 28, Color("f4ead5"))
-	_draw_label(window_title, preview_rect.position + Vector2(0.0, preview_rect.size.y + 28.0), 24, Color("fff0cf"))
-	_draw_label(app_id, preview_rect.position + Vector2(0.0, preview_rect.size.y + 58.0), 20, Color("d9c8a3"))
+	_draw_label(desktop_label, preview_rect.position + Vector2(0.0, -18.0), 28, _constitutional_color("hollow_grove.house.flynt.highlight"))
+	_draw_label(window_title, preview_rect.position + Vector2(0.0, preview_rect.size.y + 28.0), 24, _constitutional_color("hollow_grove.house.flynt.highlight"))
+	_draw_label(app_id, preview_rect.position + Vector2(0.0, preview_rect.size.y + 58.0), 20, _constitutional_color("hollow_grove.house.flynt.authority"))
 
-	_draw_label(layer_label, hueman_label_position + Vector2(-90.0, -10.0), 28, Color("f4ead5"))
-	_draw_label(str(current_resolution.get("name", "(zone)")), hueman_label_position + Vector2(-90.0, 22.0), 24, Color("fff0cf"))
-	_draw_label(mode_label, hueman_label_position + Vector2(-90.0, 52.0), 20, Color("d9c8a3"))
+	_draw_label(layer_label, hueman_label_position + Vector2(-90.0, -10.0), 28, _constitutional_color("hollow_grove.house.flynt.highlight"))
+	_draw_label(str(current_resolution.get("name", "(zone)")), hueman_label_position + Vector2(-90.0, 22.0), 24, _constitutional_color("hollow_grove.house.flynt.highlight"))
+	_draw_label(mode_label, hueman_label_position + Vector2(-90.0, 52.0), 20, _constitutional_color("hollow_grove.house.flynt.authority"))
 
 
 func _pair_preview_rect(viewport_size: Vector2, center: Vector2, normal: Vector2, gap_size: float) -> Rect2:
@@ -549,28 +587,28 @@ func _pair_preview_rect(viewport_size: Vector2, center: Vector2, normal: Vector2
 
 func _draw_pair_preview(preview_rect: Rect2) -> void:
 	var frame_rect := preview_rect.grow(10.0)
-	draw_rect(frame_rect, Color(0.05, 0.08, 0.11, 0.84), true)
-	draw_rect(frame_rect, Color("f4ead5", 0.92), false, 2.0)
+	draw_rect(frame_rect, _constitutional_color("hollow_grove.universal.outline", 0.84), true)
+	draw_rect(frame_rect, _constitutional_color("hollow_grove.house.flynt.highlight", 0.92), false, 2.0)
 	var application_attachment := _application_attachment()
 	var privacy := _dict_or_empty(application_attachment.get("privacy"))
 	var managed_identity_missing_attachment := _managed_identity_missing_attachment()
 	if managed_identity_missing_attachment or (not application_attachment.is_empty() and not bool(privacy.get("capture_allowed", false))):
-		draw_rect(preview_rect, Color(0.05, 0.18, 0.17, 0.96), true)
-		draw_rect(preview_rect, Color("8cd9c2", 0.92), false, 2.0)
+		draw_rect(preview_rect, _constitutional_color("hollow_grove.house.glaushouse.dark", 0.96), true)
+		draw_rect(preview_rect, _constitutional_color("hollow_grove.house.glaushouse.highlight", 0.92), false, 2.0)
 		var managed_name := "Managed application" if application_attachment.is_empty() else str(application_attachment.get("canonical_name", "Managed application"))
 		var projection_label := "Registry attachment required" if managed_identity_missing_attachment else "Semantic-only clinical projection"
-		_draw_label(managed_name, preview_rect.position + Vector2(18.0, preview_rect.size.y * 0.45), 28, Color("fff0cf"))
-		_draw_label(projection_label, preview_rect.position + Vector2(18.0, preview_rect.size.y * 0.58), 18, Color("8cd9c2"))
-		_draw_label("Window capture disabled", preview_rect.position + Vector2(18.0, preview_rect.size.y * 0.68), 16, Color("d9c8a3"))
+		_draw_label(managed_name, preview_rect.position + Vector2(18.0, preview_rect.size.y * 0.45), 28, _constitutional_color("hollow_grove.house.glaushouse.highlight"))
+		_draw_label(projection_label, preview_rect.position + Vector2(18.0, preview_rect.size.y * 0.58), 18, _constitutional_color("hollow_grove.house.glaushouse.highlight"))
+		_draw_label("Window capture disabled", preview_rect.position + Vector2(18.0, preview_rect.size.y * 0.68), 16, _constitutional_color("hollow_grove.house.flynt.highlight"))
 		return
 
 	if pair_preview_texture != null:
 		draw_texture_rect(pair_preview_texture, preview_rect, false)
 		return
 
-	draw_rect(preview_rect, Color(0.10, 0.16, 0.21, 0.88), true)
-	draw_rect(preview_rect, Color("d9c8a3", 0.80), false, 1.0)
-	_draw_label("Preview waiting", preview_rect.position + Vector2(18.0, preview_rect.size.y * 0.5), 22, Color("fff0cf"))
+	draw_rect(preview_rect, _constitutional_color("hollow_grove.universal.shadow.deep", 0.88), true)
+	draw_rect(preview_rect, _constitutional_color("hollow_grove.house.flynt.authority", 0.80), false, 1.0)
+	_draw_label("Preview waiting", preview_rect.position + Vector2(18.0, preview_rect.size.y * 0.5), 22, _constitutional_color("hollow_grove.house.flynt.highlight"))
 
 
 func _draw_pair_transition(viewport_size: Vector2) -> void:
@@ -587,13 +625,13 @@ func _draw_pair_transition(viewport_size: Vector2) -> void:
 		Vector2((viewport_size.x - card_size.x) * 0.5, viewport_size.y * 0.08),
 		card_size
 	)
-	var fill_color := Color("10202b")
+	var fill_color := _constitutional_color("hollow_grove.universal.shadow.deep")
 	fill_color.a = 0.82 * alpha
-	var outline_color := Color("f4ead5")
+	var outline_color := _constitutional_color("hollow_grove.house.flynt.highlight")
 	outline_color.a = 0.96 * alpha
-	var title_color := Color("fff0cf")
+	var title_color := _constitutional_color("hollow_grove.house.flynt.highlight")
 	title_color.a = 0.98 * alpha
-	var detail_color := Color("d9c8a3")
+	var detail_color := _constitutional_color("hollow_grove.house.flynt.authority")
 	detail_color.a = 0.88 * alpha
 
 	draw_rect(card_rect, fill_color, true)
@@ -610,9 +648,9 @@ func _draw_asset_preview(viewport_size: Vector2) -> void:
 	)
 	var frame_rect := panel_rect.grow(10.0)
 
-	draw_rect(frame_rect, Color(0.05, 0.08, 0.11, 0.88), true)
-	draw_rect(frame_rect, Color("f4ead5", 0.90), false, 2.0)
-	_draw_label("Aseprite Live Preview", panel_rect.position + Vector2(0.0, -16.0), 24, Color("f4ead5"))
+	draw_rect(frame_rect, _constitutional_color("hollow_grove.universal.outline", 0.88), true)
+	draw_rect(frame_rect, _constitutional_color("hollow_grove.house.flynt.highlight", 0.90), false, 2.0)
+	_draw_label("Aseprite Live Preview", panel_rect.position + Vector2(0.0, -16.0), 24, _constitutional_color("hollow_grove.house.flynt.highlight"))
 
 	if asset_preview_texture != null:
 		var texture_size: Vector2 = asset_preview_texture.get_size()
@@ -621,13 +659,13 @@ func _draw_asset_preview(viewport_size: Vector2) -> void:
 			var draw_size: Vector2 = texture_size * scale
 			var draw_position: Vector2 = panel_rect.position + ((panel_rect.size - draw_size) * 0.5)
 			draw_texture_rect(asset_preview_texture, Rect2(draw_position, draw_size), false)
-		_draw_label(asset_preview_name, panel_rect.position + Vector2(10.0, panel_rect.size.y + 28.0), 18, Color("d9c8a3"))
+		_draw_label(asset_preview_name, panel_rect.position + Vector2(10.0, panel_rect.size.y + 28.0), 18, _constitutional_color("hollow_grove.house.flynt.authority"))
 		return
 
-	draw_rect(panel_rect, Color(0.10, 0.16, 0.21, 0.88), true)
-	draw_rect(panel_rect, Color("d9c8a3", 0.80), false, 1.0)
-	_draw_label("No sprite exports yet", panel_rect.position + Vector2(18.0, panel_rect.size.y * 0.5), 22, Color("fff0cf"))
-	_draw_label("Save an .aseprite file to preview it here", panel_rect.position + Vector2(18.0, panel_rect.size.y * 0.5 + 30.0), 16, Color("d9c8a3"))
+	draw_rect(panel_rect, _constitutional_color("hollow_grove.universal.shadow.deep", 0.88), true)
+	draw_rect(panel_rect, _constitutional_color("hollow_grove.house.flynt.authority", 0.80), false, 1.0)
+	_draw_label("No sprite exports yet", panel_rect.position + Vector2(18.0, panel_rect.size.y * 0.5), 22, _constitutional_color("hollow_grove.house.flynt.highlight"))
+	_draw_label("Save an .aseprite file to preview it here", panel_rect.position + Vector2(18.0, panel_rect.size.y * 0.5 + 30.0), 16, _constitutional_color("hollow_grove.house.flynt.authority"))
 
 
 func _node_point(node: Dictionary) -> Vector2:

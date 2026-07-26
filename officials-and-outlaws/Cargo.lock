@@ -3,12 +3,12 @@
 version = 4
 
 [[package]]
-name = "hollow-grove-kernel"
-version = "0.1.0"
-
-[[package]]
-name = "officials-and-outlaws"
+name = "flynt-constitution"
 version = "0.1.0"
 dependencies = [
  "hollow-grove-kernel",
 ]
+
+[[package]]
+name = "hollow-grove-kernel"
+version = "0.1.0"

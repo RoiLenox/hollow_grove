@@ -33,8 +33,8 @@
 
 ## Artifact Inputs
 
-Current Synthesis transition rule bytes: 1820.
-Current Synthesis collision relay bytes: 3022.
+Current Synthesis transition rule bytes: 1822.
+Current Synthesis collision relay bytes: 3024.
 Current Synthesis readiness bytes: 1016.
 
 ## Boundary Reminder

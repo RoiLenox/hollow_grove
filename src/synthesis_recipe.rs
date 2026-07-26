@@ -1,3 +1,6 @@
+use crate::world::hueman_faculties::{
+    FacultyLawError, FacultyManifestation, validate_faculty_manifestations,
+};
 use crate::{FlowId, FrameId, GlowId};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -59,11 +62,12 @@ pub enum RecipeIntent {
     ChangeFrame(FrameId),
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct SynthesisRecipe {
     recipe_id: String,
     display_name: String,
     intents: Vec<RecipeIntent>,
+    faculty_manifestations: Vec<FacultyManifestation>,
 }
 
 impl SynthesisRecipe {
@@ -72,11 +76,30 @@ impl SynthesisRecipe {
         display_name: impl Into<String>,
         intents: Vec<RecipeIntent>,
     ) -> Self {
+        Self::new_with_faculty_manifestations(recipe_id, display_name, intents, Vec::new())
+    }
+
+    pub fn new_with_faculty_manifestations(
+        recipe_id: impl Into<String>,
+        display_name: impl Into<String>,
+        intents: Vec<RecipeIntent>,
+        faculty_manifestations: Vec<FacultyManifestation>,
+    ) -> Self {
         Self {
             recipe_id: recipe_id.into(),
             display_name: display_name.into(),
             intents,
+            faculty_manifestations,
         }
+    }
+
+    #[must_use]
+    pub fn with_faculty_manifestations(
+        mut self,
+        faculty_manifestations: Vec<FacultyManifestation>,
+    ) -> Self {
+        self.faculty_manifestations = faculty_manifestations;
+        self
     }
 
     pub fn recipe_id(&self) -> &str {
@@ -89,6 +112,11 @@ impl SynthesisRecipe {
 
     pub fn intents(&self) -> &[RecipeIntent] {
         &self.intents
+    }
+
+    #[must_use]
+    pub fn faculty_manifestations(&self) -> &[FacultyManifestation] {
+        &self.faculty_manifestations
     }
 }
 
@@ -105,6 +133,7 @@ pub enum SynthesisRecipeCompileError {
     EmptyRecipeId,
     EmptyDisplayName,
     NoIntents,
+    InvalidFacultyManifestation(FacultyLawError),
 }
 
 pub fn compile_recipe(
@@ -121,6 +150,9 @@ pub fn compile_recipe(
     if recipe.intents().is_empty() {
         return Err(SynthesisRecipeCompileError::NoIntents);
     }
+
+    validate_faculty_manifestations(recipe.faculty_manifestations())
+        .map_err(SynthesisRecipeCompileError::InvalidFacultyManifestation)?;
 
     Ok(recipe
         .intents()

@@ -9,10 +9,10 @@ The player begins as Hueman near Aura Ridge, and route studies describe how near
 
 ## Current Route Study
 
-- Flynt-facing approach: `Aura Basin` -> `Aura Fields` -> `Aura Beach`
-- Stonebend-facing approach: `Aura Fields` -> `Aura Basin` -> `Aura Beach`
-- Glaüshouse-facing approach: `Aura Beach` -> `Aura Fields` -> `Aura Basin`
-- Sandmanor-facing approach: `Aura Beach` -> `Aura Basin` -> `Aura Fields`
+- Flynt-facing approach: `Aura Basin` -> `Aura Field` -> `Aura Beach`
+- Stonebend-facing approach: `Aura Field` -> `Aura Basin` -> `Aura Beach`
+- Glaüshouse-facing approach: `Aura Beach` -> `Aura Field` -> `Aura Basin`
+- Sandmanor-facing approach: `Aura Beach` -> `Aura Basin` -> `Aura Field`
 
 ## Meaning
 

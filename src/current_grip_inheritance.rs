@@ -8,7 +8,7 @@ use crate::being_object_ontology::{
 };
 use crate::decision_engine::{DecisionCandidateId, resolve_candidate_recipe};
 use crate::flow_glow_grammar::{
-    ActionMode, EmbodiedGesture, ExpressionDomain, RecipeBoundaryStatus, StonebendApex,
+    ActionMode, EmbodiedGesture, ExpressionDomain, RecipeBoundaryStatus, StonebendPractice,
 };
 use crate::frame_state::FrameId;
 use crate::hollow_grove_contract::{AlignmentDiagnostic, AlignmentDiagnosticCode};
@@ -356,7 +356,7 @@ pub struct CurrentGripResolution {
     available_inherited_expressions: Vec<GripExpressionId>,
     candidate_scores: Vec<GripExpressionScore>,
     selected_expression: GripExpressionId,
-    projected_tendency: Option<StonebendApex>,
+    projected_tendency: Option<StonebendPractice>,
     recipe: Option<SynthesisRecipe>,
     recipe_status: RecipeBoundaryStatus,
     v2_status: String,
@@ -384,7 +384,7 @@ impl CurrentGripResolution {
     }
 
     #[must_use]
-    pub const fn projected_tendency(&self) -> Option<StonebendApex> {
+    pub const fn projected_tendency(&self) -> Option<StonebendPractice> {
         self.projected_tendency
     }
 
@@ -434,9 +434,9 @@ pub struct CurrentGripInheritanceContractInput {
     pub position_thirteen: bool,
     pub being_object_collapsed: bool,
     pub living_formation_flattened: bool,
-    pub permanent_freemason_selection: bool,
-    pub permanent_proletariat_selection: bool,
-    pub permanent_hypergiant_selection: bool,
+    pub permanent_structural_practice_selection: bool,
+    pub permanent_civic_witness_selection: bool,
+    pub permanent_identity_custodian_selection: bool,
     pub v1_1_changed: bool,
 }
 
@@ -720,7 +720,7 @@ pub fn canonical_gremlin_foxy_tinkergrip_fixture() -> CurrentGripActionRequest {
 }
 
 #[must_use]
-pub fn canonical_freemason_tendency_fixture() -> CurrentGripActionRequest {
+pub fn canonical_structural_practice_tendency_fixture() -> CurrentGripActionRequest {
     CurrentGripActionRequest::new(
         build_canonical_being_state_for_frame(FrameId::Troglodyte),
         ExpressionDomain::Flow,
@@ -730,12 +730,12 @@ pub fn canonical_freemason_tendency_fixture() -> CurrentGripActionRequest {
         canonical_object_state(ObjectId::FocusedIndustrialTool),
         AddressingMode::Proxy,
         ActionAim::DirectFocusedTool,
-        canonical_freemason_tendency_profile(),
+        canonical_structural_practice_tendency_profile(),
     )
 }
 
 #[must_use]
-pub fn canonical_proletariat_tendency_fixture() -> CurrentGripActionRequest {
+pub fn canonical_civic_witness_tendency_fixture() -> CurrentGripActionRequest {
     CurrentGripActionRequest::new(
         build_canonical_being_state_for_frame(FrameId::Troglodyte),
         ExpressionDomain::Flow,
@@ -745,12 +745,12 @@ pub fn canonical_proletariat_tendency_fixture() -> CurrentGripActionRequest {
         canonical_object_state(ObjectId::CivicRupture),
         AddressingMode::Moxy,
         ActionAim::MendCivicRupture,
-        canonical_proletariat_tendency_profile(),
+        canonical_civic_witness_tendency_profile(),
     )
 }
 
 #[must_use]
-pub fn canonical_hypergiant_tendency_fixture() -> CurrentGripActionRequest {
+pub fn canonical_identity_custodian_tendency_fixture() -> CurrentGripActionRequest {
     CurrentGripActionRequest::new(
         build_canonical_being_state_for_frame(FrameId::Troglodyte),
         ExpressionDomain::Flow,
@@ -760,7 +760,7 @@ pub fn canonical_hypergiant_tendency_fixture() -> CurrentGripActionRequest {
         canonical_object_state(ObjectId::MonumentalFoundation),
         AddressingMode::Proxy,
         ActionAim::RevealMonumentalProof,
-        canonical_hypergiant_tendency_profile(),
+        canonical_identity_custodian_tendency_profile(),
     )
 }
 
@@ -898,19 +898,19 @@ pub fn validate_current_grip_inheritance_contract(
             "Formation members must not be flattened into generic Objects.",
         ));
     }
-    if input.permanent_freemason_selection {
+    if input.permanent_structural_practice_selection {
         diagnostics.push(current_grip_error(
-            "Freemason tendency must remain projected and cannot become permanently selected from one Beam action.",
+            "Structural practice tendency must remain projected and cannot become permanently selected from one Beam action.",
         ));
     }
-    if input.permanent_proletariat_selection {
+    if input.permanent_civic_witness_selection {
         diagnostics.push(current_grip_error(
-            "Proletariat tendency must remain projected and cannot become permanently selected from one Seam action.",
+            "Civic witness tendency must remain projected and cannot become permanently selected from one Seam action.",
         ));
     }
-    if input.permanent_hypergiant_selection {
+    if input.permanent_identity_custodian_selection {
         diagnostics.push(current_grip_error(
-            "Hypergiant tendency must remain projected and cannot become permanently selected from one Gleam action.",
+            "Identity custodian tendency must remain projected and cannot become permanently selected from one Gleam action.",
         ));
     }
     if input.v1_1_changed {
@@ -1043,9 +1043,9 @@ pub fn build_grip_witness() -> io::Result<String> {
         canonical_troglodyte_precision_fixture(),
         canonical_troll_moxy_bridgegrip_fixture(),
         canonical_gremlin_foxy_tinkergrip_fixture(),
-        canonical_freemason_tendency_fixture(),
-        canonical_proletariat_tendency_fixture(),
-        canonical_hypergiant_tendency_fixture(),
+        canonical_structural_practice_tendency_fixture(),
+        canonical_civic_witness_tendency_fixture(),
+        canonical_identity_custodian_tendency_fixture(),
     ];
 
     let mut output = String::from("HOLLOW GROVE GRIP WITNESS\n");
@@ -1081,7 +1081,7 @@ fn render_grip_resolution(resolution: &CurrentGripResolution) -> String {
     let connections = render_connections(request.object().connections());
     let projected_tendency = resolution
         .projected_tendency()
-        .map_or("none", StonebendApex::as_str);
+        .map_or("none", StonebendPractice::as_str);
     let predecessor = resolution
         .selected_expression()
         .predecessor()
@@ -1218,7 +1218,7 @@ fn canonical_general_grip_practice_profile() -> GripPracticeProfile {
 }
 
 #[must_use]
-fn canonical_freemason_tendency_profile() -> GripPracticeProfile {
+fn canonical_structural_practice_tendency_profile() -> GripPracticeProfile {
     project_grip_practice_profile(&[
         GripPracticeEvent {
             move_expression: GripExpressionId::TinkerGrip,
@@ -1269,7 +1269,7 @@ fn canonical_freemason_tendency_profile() -> GripPracticeProfile {
 }
 
 #[must_use]
-fn canonical_proletariat_tendency_profile() -> GripPracticeProfile {
+fn canonical_civic_witness_tendency_profile() -> GripPracticeProfile {
     project_grip_practice_profile(&[
         GripPracticeEvent {
             move_expression: GripExpressionId::BridgeGrip,
@@ -1305,7 +1305,7 @@ fn canonical_proletariat_tendency_profile() -> GripPracticeProfile {
 }
 
 #[must_use]
-fn canonical_hypergiant_tendency_profile() -> GripPracticeProfile {
+fn canonical_identity_custodian_tendency_profile() -> GripPracticeProfile {
     project_grip_practice_profile(&[
         GripPracticeEvent {
             move_expression: GripExpressionId::WorldGrip,
@@ -1706,7 +1706,7 @@ fn expression_rank(expression: GripExpressionId) -> u8 {
 }
 
 #[must_use]
-fn projected_tendency(profile: &GripPracticeProfile) -> Option<StonebendApex> {
+fn projected_tendency(profile: &GripPracticeProfile) -> Option<StonebendPractice> {
     let beam = profile.familiarity_for_mode(ActionMode::Beam);
     let seam = profile.familiarity_for_mode(ActionMode::Seam);
     let gleam = profile.familiarity_for_mode(ActionMode::Gleam);
@@ -1719,20 +1719,20 @@ fn projected_tendency(profile: &GripPracticeProfile) -> Option<StonebendApex> {
         + profile.familiarity_for_family(ObjectFamily::Foundation)
         + profile.familiarity_for_family(ObjectFamily::Monument);
 
-    let freemason = beam + tool_bias;
-    let proletariat = seam + seam_bias;
-    let hypergiant = gleam + gleam_bias;
+    let structural_practice = beam + tool_bias;
+    let civic_witness = seam + seam_bias;
+    let identity_custodian = gleam + gleam_bias;
 
-    if freemason == 0 && proletariat == 0 && hypergiant == 0 {
+    if structural_practice == 0 && civic_witness == 0 && identity_custodian == 0 {
         return None;
     }
 
-    if freemason >= proletariat && freemason >= hypergiant {
-        Some(StonebendApex::Freemason)
-    } else if proletariat >= hypergiant {
-        Some(StonebendApex::Proletariat)
+    if structural_practice >= civic_witness && structural_practice >= identity_custodian {
+        Some(StonebendPractice::StructuralPractice)
+    } else if civic_witness >= identity_custodian {
+        Some(StonebendPractice::CivicWitness)
     } else {
-        Some(StonebendApex::Hypergiant)
+        Some(StonebendPractice::IdentityCustodian)
     }
 }
 
@@ -1771,6 +1771,7 @@ fn current_form_label(frame: FrameId) -> &'static str {
         FrameId::Gremlin => "Gremlin",
         FrameId::Goblin => "Goblin",
         FrameId::Ghoul => "Ghoul",
+        FrameId::Spectre => "Spectre",
         FrameId::Troll => "Troll",
         FrameId::Ork => "Ork",
         FrameId::Ogre => "Ogre",
@@ -1785,7 +1786,6 @@ fn current_form_label(frame: FrameId) -> &'static str {
         FrameId::Gargoyle => "Gargoyle",
         FrameId::Merman => "Merman",
         FrameId::Chimera => "Chimera",
-        FrameId::Manticore => "Manticore",
         FrameId::Gnome => "Gnome",
         FrameId::Minotaur => "Minotaur",
         FrameId::Hecaton => "Hecaton",
@@ -1808,19 +1808,20 @@ mod tests {
         ActionMode, CurrentGripInheritanceContractInput, EmbodiedGesture, GripExpressionId,
         PressureRequirement, build_current_inheritance_validation_report,
         build_current_inheritance_witness, build_grip_witness,
-        canonical_current_grip_inheritance_contract_fixture, canonical_freemason_tendency_fixture,
-        canonical_goblin_weapongrip_fixture, canonical_gremlin_foxy_tinkergrip_fixture,
-        canonical_gremlin_tinkergrip_fixture, canonical_hypergiant_tendency_fixture,
-        canonical_ogre_siegegrip_fixture, canonical_ork_formationgrip_fixture,
-        canonical_proletariat_tendency_fixture, canonical_troglodyte_precision_fixture,
-        canonical_troglodyte_worldgrip_fixture, canonical_troll_bridgegrip_fixture,
-        canonical_troll_moxy_bridgegrip_fixture, project_grip_practice_profile,
-        resolve_current_grip_action, validate_current_grip_inheritance_contract,
+        canonical_civic_witness_tendency_fixture,
+        canonical_current_grip_inheritance_contract_fixture, canonical_goblin_weapongrip_fixture,
+        canonical_gremlin_foxy_tinkergrip_fixture, canonical_gremlin_tinkergrip_fixture,
+        canonical_identity_custodian_tendency_fixture, canonical_ogre_siegegrip_fixture,
+        canonical_ork_formationgrip_fixture, canonical_structural_practice_tendency_fixture,
+        canonical_troglodyte_precision_fixture, canonical_troglodyte_worldgrip_fixture,
+        canonical_troll_bridgegrip_fixture, canonical_troll_moxy_bridgegrip_fixture,
+        project_grip_practice_profile, resolve_current_grip_action,
+        validate_current_grip_inheritance_contract,
     };
     use crate::being_object_ontology::{
         ActionAim, AddressingMode, ObjectFamily, ObjectMaterial, ObjectScale, SkillId,
     };
-    use crate::flow_glow_grammar::{ExpressionDomain, StonebendApex};
+    use crate::flow_glow_grammar::{ExpressionDomain, StonebendPractice};
     use crate::frame_state::FrameId;
 
     #[test]
@@ -1929,25 +1930,28 @@ mod tests {
 
     #[test]
     fn tendency_hooks_remain_projected_not_permanent() {
-        let freemason = resolve_current_grip_action(&canonical_freemason_tendency_fixture())
-            .expect("freemason tendency should resolve");
+        let structural_practice =
+            resolve_current_grip_action(&canonical_structural_practice_tendency_fixture())
+                .expect("structural_practice tendency should resolve");
         assert_eq!(
-            freemason.projected_tendency(),
-            Some(StonebendApex::Freemason)
+            structural_practice.projected_tendency(),
+            Some(StonebendPractice::StructuralPractice)
         );
 
-        let proletariat = resolve_current_grip_action(&canonical_proletariat_tendency_fixture())
-            .expect("proletariat tendency should resolve");
+        let civic_witness =
+            resolve_current_grip_action(&canonical_civic_witness_tendency_fixture())
+                .expect("civic_witness tendency should resolve");
         assert_eq!(
-            proletariat.projected_tendency(),
-            Some(StonebendApex::Proletariat)
+            civic_witness.projected_tendency(),
+            Some(StonebendPractice::CivicWitness)
         );
 
-        let hypergiant = resolve_current_grip_action(&canonical_hypergiant_tendency_fixture())
-            .expect("hypergiant tendency should resolve");
+        let identity_custodian =
+            resolve_current_grip_action(&canonical_identity_custodian_tendency_fixture())
+                .expect("identity_custodian tendency should resolve");
         assert_eq!(
-            hypergiant.projected_tendency(),
-            Some(StonebendApex::Hypergiant)
+            identity_custodian.projected_tendency(),
+            Some(StonebendPractice::IdentityCustodian)
         );
     }
 

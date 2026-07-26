@@ -12,7 +12,7 @@
 "id": "glaushouse",
 "name": "Glaüshouse",
 "kind": "kingdom",
-"institution_id": "institution.glaushouse.medical-civilization",
+"institution_id": "institution.glaushouse.chromacord",
 "site_id": "site.glaushouse.central-medical-district",
 "zone_id": "zone.glaushouse.medical-district.recovery-chambers",
 "normalized": {"x": 0.5, "y": 0.86}

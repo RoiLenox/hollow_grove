@@ -36,25 +36,29 @@ World Roles and Scenes
 
 - kernel owns recursion, bond selection, and the canonical witness
 - client artifacts mirror the witness without mutating kernel state
-- Current Synthesis owns route semantics, activation gating, and client boundaries like HAL and Clouseau
-- Hueman owns Fourway, AuraTriad reading, Hueman-first opening placement, civic roles, helper lines, and scene reading
+- Current Synthesis owns its frozen route execution semantics, activation gating, and client boundaries like HAL and Clouseau
+- constitutional geography owns the world-facing route-purpose roster above Current Synthesis without feeding meaning downward
+- Hueman owns Fourway, AuraTriad reading, Hueman-first opening placement, civic projections, and scene reading
 
 ## Current Alignment
 
-- Stonebend remains North with Hypergiant, Proletariat, and Freemason as a constitutional balance above Current Synthesis
-- Tross remains anchored in Flynt and runs as a West -> East helper line with Delinquent to the west, Juvenile to the east, and four White Dwarfs as the personal guard
-- Glaushouse remains East with Prima Donna, Persephone, and a mixed medical floor carrying clearance, repair, and Synthesis while Nightingales remain internal white-blood-cell defenders
-- Sandmanor remains South with Minoans, Minorians, Sandmen, and the crowd-judged Sandman contest
+- Stonebend remains North: Geralds are its people, Hypergiant temporarily bears Diamond, Proliteriate is its distributed Yield network, and High Freemason bears Claim authority above Current Synthesis
+- Tross = Mystery Man = Mr. X is one stable sovereign person; Tross publicly leads Manticorp Institution, while the same man leads the Gallows underground; Manticorp Form is his presently maintained body
+- Glaushouse remains East: Nightingale is the universal clinical foundation, Matron and Marshal are equal branches, multiple Persephones preserve whole-course care, Doctor Ratchet holds the one singular Prima Donna office, Glauspitals operates care, and Chromacord preserves evidence without becoming authority
+- Sandmanor remains South with equal Minorian Gnome and Minoan Elf traditions, regional Gnome-to-Minotaur and Elf-to-Centaur designs, and the evidence-judged Contest of Improvement
+- Hueman faculties remain an additive typed layer: Stonebend/Body/Presynce, Flynt/Spirit/Resynce, Glaushouse/Mind/Precog, and equal Sandmanor Soul halves Minorian/Prefog and Minoan/Prefig
+- faculties describe Observe, Generate, Evaluate, and Execute-or-demonstrate; the existing deterministic runtime alone Chooses, and the existing Sandmanor proof lifecycle alone proves
 - functionally, Stonebend reads as Craft, Flynt reads as Engineering, Glaushouse reads as Repair, and Sandmanor reads as Configuration across the shared Hollow Grove/Hueman interpretation
 - the player begins as Hueman near Aura Ridge before major form commitment
 - confirmed form origins remain braided: Flynt -> `gremlin`, Stonebend -> `goblin`, Glaushouse -> `sprite`, Sandmanor -> `pixy`
 - resource seams are designated across Hueman: Stonebend diamonds, Flynt opals, Glaushouse jades, Sandmanor crystals and proof materials
 - the bedrock split remains active upstream: regular current and hollow current, reflective aura and holographic aura
 - the visible Hueman map remains one large circle whose route legs may read as straight ridge runs or rounded bends
-- the visible free-trade body follows the Aura Ridge straight legs Stonebend -> Glaushouse and Glaushouse -> Sandmanor, with Sandmanor's straight continuation reaching Aura Fields where Stonebend and Glaushouse intersect
+- Aura Ridge / Witness is the visible civic-reintegration body between Glaushouse and Stonebend, while Aura Ridge East remains only a local screen-map segment toward Sandmanor
+- Current Sea / Certify remains the separate Glaushouse-to-Stonebend depth ordeal and has no frozen Current Synthesis route projection
 - all four houses share the same ascent loop: gather materials, uncover recipe knowledge, pass through the house process, and embody the resulting form without collapsing form into office
 - Stonebend declares Mercury Mirror from hollow current + reflective craft, Flynt declares Opal Oil from regular current + holographic aura, Glaushouse declares Glaus Gel from jade as repair and synthesis medium, and Sandmanor declares Prism Sand from crystal as the proof-and-record branch
-- the outer border ring remains legible as Stairway to Heaven, Riptide, Current Seanad, and Mnt. Aura
+- the outer border ring remains legible as Stairway to Heaven, Riptide, Current Seanad, and Mt. Aura
 - procedural uplift now maps Current Synthesis execution contracts into Hueman-facing kingdom procedures without moving ownership upward
 - the HAL/Cleo collision relay now acts as the procedural confirmation packet passed from Current Synthesis into Hueman crossover, physics, and scene procedure
 - scene presence, scene intent, and scene drift remain the top descriptive Hueman layer
@@ -77,15 +81,15 @@ World Roles and Scenes
 
 ## Artifact Inputs
 
-Current Synthesis Base bytes: 1595.
-Current Synthesis collision relay bytes: 3022.
+Current Synthesis Base bytes: 1596.
+Current Synthesis collision relay bytes: 3024.
 Hueman Boundary bytes: 2188.
-Hueman Glaushouse Roles bytes: 4655.
-Hueman Sandmanor Roles bytes: 4079.
-Hueman Inverse Circle bytes: 2404.
-Hueman Procedural Uplift bytes: 8080.
-Hueman Scene Presence bytes: 6154.
-Hueman Scene Intent bytes: 7171.
+Hueman Glaushouse Roles bytes: 7910.
+Hueman Sandmanor Roles bytes: 9864.
+Hueman Inverse Circle bytes: 2513.
+Hueman Procedural Uplift bytes: 8483.
+Hueman Scene Presence bytes: 7034.
+Hueman Scene Intent bytes: 8233.
 Hueman Scene Drift bytes: 2001.
 
 ## Boundary Reminder

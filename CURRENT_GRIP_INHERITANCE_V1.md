@@ -133,9 +133,9 @@ Invalid or rejected actions do not grant full practice.
 
 This pass exposes projected tendencies only.
 
-- `Freemason` tendency tracks Beam-heavy tool, weapon, machine, and directed-craft history
-- `Proletariat` tendency tracks Seam-heavy bridge, formation, labor, and collective continuity history
-- `Hypergiant` tendency tracks Gleam-heavy terrain, monument, burden, and visible-proof history
+- `Structural practice` tendency tracks Beam-heavy tool, weapon, machine, and directed-craft history
+- `Civic witness` tendency tracks Seam-heavy bridge, formation, labor, and collective continuity history
+- `Identity custodian` tendency tracks Gleam-heavy terrain, monument, burden, and visible-proof history
 
 No permanent class selection is created here.
 
@@ -153,7 +153,7 @@ The enforced fixtures include:
 - `Troglodyte + Mechanical Latch -> retained TinkerGrip`
 - `Troll + Moxy + Near Bridge Support -> BridgeGrip toward connected far anchor`
 - `Gremlin + Foxy + Reverse-facing Hidden Latch -> TinkerGrip candidate`
-- projected `Freemason`, `Proletariat`, and `Hypergiant` tendencies
+- projected `Structural practice`, `Civic witness`, and `Identity custodian` tendencies
 
 ## Negative Fixtures
 
@@ -217,8 +217,8 @@ exactly once.
 - Being and Object remain separate
 - Skill and Move remain separate
 - Flow and Glow remain separate
-- `Freemason = Beam`
-- `Proletariat = Seam`
-- `Hypergiant = Gleam`
+- `Structural practice = Beam`
+- `Civic witness = Seam`
+- `Identity custodian = Gleam`
 - `CurrentPrism` remains distinct
 - no save migration was required

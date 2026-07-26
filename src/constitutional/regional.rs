@@ -18,6 +18,8 @@ use super::*;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub enum ConstitutionalRegion {
+    /// Legacy schema spelling for the one geographic region displayed as
+    /// `Aura Field`. Renaming this variant would break archived events.
     AuraFields,
     AuraBeach,
     AuraSea,
@@ -27,7 +29,7 @@ impl ConstitutionalRegion {
     #[must_use]
     pub const fn as_str(self) -> &'static str {
         match self {
-            Self::AuraFields => "Aura Fields",
+            Self::AuraFields => "Aura Field",
             Self::AuraBeach => "Aura Beach",
             Self::AuraSea => "Aura Sea",
         }
@@ -35,6 +37,8 @@ impl ConstitutionalRegion {
 
     #[must_use]
     pub fn site_id(self) -> Option<SiteId> {
+        // The plural Aura Field site ID predates the singular geographic lock.
+        // It remains stable for persistence and never denotes multiple sites.
         let value = match self {
             Self::AuraFields => "site.sandmanor.aura-fields",
             Self::AuraBeach => "site.sandmanor.aura-beach",
@@ -204,7 +208,7 @@ impl RegionalFunction {
     pub const fn as_str(self) -> &'static str {
         match self {
             Self::AuraFieldsStewardshipAndDefense => {
-                "Aura Fields stewardship, work, maintenance, and defense"
+                "Aura Field stewardship, work, maintenance, and defense"
             }
             Self::AuraBeachPatrolAndAuraSeaGuardianship => {
                 "Aura Beach patrol and Aura Sea guardianship"
@@ -656,7 +660,7 @@ impl RegionalSynthesisRuntime {
         Some(&self.beings.get(id)?.lineage_history)
     }
 
-    /// Verifies a read-only Aura Fields authority claim against reducer state.
+    /// Verifies a read-only Aura Field authority claim against reducer state.
     pub fn require_stewardship(
         &self,
         id: &RegionalBeingId,
@@ -667,7 +671,7 @@ impl RegionalSynthesisRuntime {
         self.stewardship(id)
             .ok_or_else(|| RegionalSynthesisError::AssignmentNotHeld {
                 being: id.clone(),
-                assignment: "Aura Fields stewardship",
+                assignment: "Aura Field stewardship",
             })
     }
 

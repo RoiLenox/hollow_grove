@@ -3,19 +3,19 @@
 ## Canonical Witness
 
 ```text
-start Symptom 1
+Point
 ↓
 Triway
 ↓
+Fourway
+↓
 HollowGrove
 ↓
-GroveSeam [PlebExterior]
+CurrentSeam [PlebExterior]
 ↓
-HollowBeam [BlepReturn]
+AuraBeam [BlepReturn]
 ↓
-landed Symptom 2 [BlepArrival]
-↓
-Point
+Point² (Landed Point) [BlepArrival]
 ```
 
 ## Structured Snapshot Reference

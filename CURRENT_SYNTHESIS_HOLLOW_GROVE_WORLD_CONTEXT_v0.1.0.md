@@ -21,6 +21,21 @@ The fundamental laws remain:
 
 These are not merely poetic themes. They describe the basic operations of the world.
 
+The canonical additive Hueman faculty mapping is:
+
+* Stonebend → Body → Presynce
+* Flynt → Spirit → Resynce
+* Glaüshouse → Mind → Precog
+* Sandmanor → Soul Interior → Minorian/Gnome → Prefog
+* Sandmanor → Soul Exterior → Minoan/Elf → Prefig
+
+Presynce feels emergence. Resynce joins relation. Precog foresees consequence.
+Prefog opens possibility. Prefig forms becoming. Faculties describe how a
+Recipe perceives, relates, anticipates, generates, or provisionally embodies
+action; they do not choose, create proof, bypass legality, or execute
+Synthesis. The equal Sandmanor Soul cycle is `Prefog → Prefig → Proof →
+Evidence or Failure → Revision → Prefog`.
+
 * Current is the material of bodily continuity, circulation, repetition, force, and physical life.
 * Aura is the atmospheric and perceptual medium of air, pressure, light, recognition, communication, and revelation.
 * Relativity is the bending relationship between Current and Aura.
@@ -244,11 +259,14 @@ The universal category remains Hollow.
 
 ## 3.2 Hollowing
 
-Hollowing is the act of removing the useful interior while preserving or leaving behind the outer form.
+Hollowing is controlled action upon the interior of an existing subject or
+material through opening, exposure, extraction, draining, separation,
+inspection, preservation, or removal.
 
-The simplest physical image is:
+The simplest image of **extraction Hollowing**, the form represented by the
+legacy Hollow fixture, is:
 
-> **Extract all the resources and raw nutrients while leaving the hide.**
+> **Extract bounded usable resources while preserving the lawful remainder.**
 
 Hollowing can resemble:
 
@@ -270,17 +288,23 @@ Hollowing can resemble:
 * extracting useful material from compost
 * harvesting the interior of a monster while preserving its hide
 
-Hollowing is fundamentally extraction.
+Extraction remains a major form of Hollowing, but not its whole constitutional
+meaning. Material Hollowing may instead refine Current by separating and
+removing authorized inert, unstable, contaminating, or obstructive burden while
+preserving essential fractions and the continuing identity of the whole.
 
-It is not merely creating an empty chamber.
+Hollowing is not merely creating an empty chamber. It is not simply placing
+Current inside a container. It is not an arbitrary magical conversion:
+lawful refinement retains the physical logic of opening, separation,
+measurement, preservation, provenance, and removal.
 
-It is not simply placing Current inside a container.
+Canonical definitions:
 
-It is not generic magical refinement.
+> **Extraction Hollowing removes a bounded interior resource while preserving
+> the lawful remainder.**
 
-Canonical definition:
-
-> **Hollowing extracts the usable interior resources of a thing while leaving its outer form behind.**
+> **Refinement Hollowing removes authorized burden while preserving essential
+> support, provenance, and the identity of the whole.**
 
 Stonebend is especially associated with deliberate Hollowing because Stonebend understands:
 
@@ -297,15 +321,18 @@ Stonebend is especially associated with deliberate Hollowing because Stonebend u
 
 Stonebend may develop professional, industrial, anatomical, or laboratory Hollowing techniques.
 
-However, the word Hollowing always retains the physical logic of extraction.
+The parent Stonebend Constitution governs the shared authority, consent,
+evidence, custody, continuity, restoration, and Seal requirements. The first
+Stonebend foundation governs the narrow Current-to-Aether batch proof.
 
 ---
 
 ## 3.3 Hollowed
 
-Hollowed describes what remains after Hollowing.
-
-A Hollowed object has had its useful interior removed.
+Hollowed describes a subject or material after a Hollowing operation. In
+extraction Hollowing, the bounded interior resource has been removed. In
+refinement Hollowing, the continuing whole remains with essential fractions
+intact and authorized burden removed.
 
 What remains may be:
 
@@ -523,7 +550,7 @@ Examples:
 * trade system
 * political system
 * hospital administration
-* Aura Fields production system
+* Aura Field production system
 * emergency-response system
 * Hollowing industry
 * crafting economy
@@ -942,7 +969,7 @@ A mineral Structure may contain:
 * interior nutrients
 * pressure-formed compounds
 
-Hollowing extracts these interior resources.
+Extraction Hollowing may remove these bounded interior resources.
 
 The remaining rock becomes Hollowed.
 
@@ -1127,17 +1154,21 @@ Flynt's bodily question is:
 
 # 11. Nightingales
 
-Nightingales directly represent white blood cells.
+The Nightingales are Glaüshouse's constitutional nursing and clinical-care
+institution, universal entry Form, professional rank, and clinical foundation,
+symbolically and functionally aligned with white blood cells.
 
 This must remain a civic-body correspondence rather than a literal species definition.
 
 Do not turn Nightingales into a generic healer species.
 
-Do not describe them merely as nurses.
+Do not reduce them to ordinary attendants or a generic nurse species. Their
+nursing role includes patient advocacy, clinical stops, threat detection,
+containment, and recovery protection.
 
 Nightingales are:
 
-* Glaüshouse civic people of recognition, clearing, and coordinated healing
+* Glaüshouse constitutional clinical institution and civic-medical body
 * carried through Current
 * defenders of the Frame
 * recognizers of foreign threats
@@ -1156,6 +1187,19 @@ Their full four-House operational route can be understood as:
 
 Their symbolic origin remains Stonebend because marrow is Stonebend.
 
+Every higher Glaüshouse authority begins by learning to remain beside the
+patient. A Nightingale may remain in that respected rank for an entire career
+or choose one of two equal specializations: Matron, the Aura-forward branch,
+or Marshal, the Current-forward branch. Cross-training remains open. Lawful
+mastery of both domains may earn Persephone rank, and multiple Persephones may
+serve simultaneously. Prima Donna is the only singular apex office and must be
+chosen from qualified Persephones with additional physician, diagnostic,
+Recipe, surgical, Ledger, outcome, teaching, and open-path mastery.
+
+The Matron reads the patient. The Marshal holds the patient. Persephone
+preserves the whole patient. Prima Donna transforms what those clinicians
+protect.
+
 Pus remains Hollow.
 
 Do not redefine pus as merely Nightingale waste or clear blood.
@@ -1163,93 +1207,107 @@ Do not redefine pus as merely Nightingale waste or clear blood.
 The simple material lock overrides complicated biological explanation:
 
 > **Current is blood.**
-> **Nightingales are white blood cells.**
+> **Nightingales are the clinical institution aligned with white blood cells.**
 > **Hollow is pus.**
 
 ---
 
-# 12. Stonebend Political and Industrial Body
+# 12. Stonebend Constitutional Body
 
-Stonebend contains three major powers:
+Stonebend names. It protects identity, Title, structure, boundary, continuity, record, lineage, custody, inheritance, lawful Hollowing, and durable historical existence.
 
-* Hypergiant
-* Proliteriate
-* Freemason
+Its constitutional people are the Geralds. Membership among the Geralds provides civic standing; it never implies office.
+
+Stonebend has three distinct constitutional powers:
+
+* Hypergiant — the singular highest office and custodian of constitutional integrity;
+* Proliteriate — the permanent distributed public network that witnesses public Yield through bounded temporary mandates;
+* Freemason — the structural, defensive, sealing, surveying, custody, and execution institution led by the singular High Freemason.
+
+They do not form three equal sovereigns. The Freemason forges the Claim, the
+Hypergiant bears the Title, and the Proliteriate shields the Yield.
 
 ---
 
 ## 12.1 Hypergiant
 
-Hypergiant represents:
-
-* Title
-* Claim
-* sovereignty
-* purpose
-* public direction
-* constitutional identity
-* what whole is being built or preserved
-
-Question:
-
-> **What are we building or preserving?**
+The Hypergiant preserves the coherence of Names, Titles, succession, boundaries, sealed records, amendments, identity disputes, and continuity disputes. The office remains evidence-bound, publicly challengeable, and constitutionally limited.
 
 ---
 
 ## 12.2 Proliteriate
 
-Proliteriate represents:
-
-* people
-* labor
-* living substance
-* actual bodily and social pressure
-* production
-* survival
-* consequence
-* whether a Structure is truly livable
-
-Question:
-
-> **Can life actually exist inside this Claim?**
-
-The Proliteriate aligns strongly with marrow as Stonebend's living productive interior.
+The Proliteriate is a permanent network of district, guild or workshop, labor
+crew or worksite, and inherited or commonwealth nodes. It receives petitions,
+preserves dissent, reviews burdens and Yield, and raises temporary recallable
+witnesses through bounded mandates. The network is permanent; its voice is
+temporary. It cannot physically execute seizure, issue Seals, perform
+Hollowing, exercise Diamond, or replace Freemason Claim examination.
 
 ---
 
 ## 12.3 Freemason
 
-Freemason represents:
-
-* technology
-* construction
-* extraction tools
-* Hollowing tools
-* architecture
-* vessels
-* roads
-* machines
-* joints
-* channels
-* pressure systems
-* repair systems
-* artificial Structures
-
-Question:
-
-> **How must it be built?**
-
-Strong principle:
-
-> **Nothing is truly built until its waste path and recovery path are known.**
+The Freemason institution governs architecture, construction, structural verification, surveys, boundary marking, Seals, custody chains, defense, controlled weapons, demolition, lawful breach, lawful Hollowing equipment, evidence preservation, restoration, and structural safety. The High Freemason leads the institution.
 
 ---
 
-## 12.4 Stonebend creation triad
+## 12.4 Stonebend constitutional maxims
 
-> **Hypergiant creates purpose.**
-> **Proliteriate creates life.**
-> **Freemason creates form.**
+> **A Name identifies.**
+> **A Title authorizes.**
+> **A Mirror verifies.**
+> **A Seal endures.**
+
+Illegal Hollowing is Stonebend's signature constitutional offense. Transformation is not accession. Flynt recognition is not a Stonebend Title. Custody is not ownership.
+
+---
+
+## 12.5 First Stonebend foundation
+
+Mt. Aura is Aether. Riptide is Bathos. Aura is Aether revealed through Form,
+and Current is Bathos embodied through weight. Aether and Current are opposite
+burden states of one underlying medium: Aether is weightless Current; Current
+is the heaviest Aether. Neither pole is automatically good or evil.
+
+Mt. Aura remains the shared ideal on the Stonebend–Sandmanor `Aspire` route.
+No House owns the summit, and Mt. Aura grants no ordinary credential. Riptide
+remains the Flynt–Glaüshouse `Retrieve` route and emergency recovery geography;
+Stonebend owns neither Riptide nor Bathos.
+
+Aura Way is the standard legible institutional path:
+
+```text
+prerequisite
+→ education
+→ supervised practice
+→ examination
+→ demonstrated responsibility
+→ recognition eligibility
+```
+
+Aura Way does not promise success. It promises that the steps are known. The
+Houses teach the work. Aura Way organizes the path. Stonebend names the
+completion without declaring metaphysical perfection.
+
+Raw Current batches carry stable source, common-medium lineage, fraction,
+custody, and evidence identities. Lawful material Hollowing removes only
+authorized removable burden, preserves essential fractions, and records the
+distinct resulting Aether batch, proof, provenance, and Seal. Honest authorized
+failure is not fraud. Unauthorized extraction, false provenance, scope excess,
+essential-fraction removal, and over-Hollowing are Illegal Hollowing.
+
+Aether is not automatically Aura. Geography forms a stone's internal lattice;
+that preserved Form refracts universal Aether into particular Aura. Opal
+varies, Diamond concentrates, and Quartz resonates. These behaviors are
+nonexclusive natural examples, not final House-to-stone assignments. Ordinary
+Aura manifestation does not require melting.
+
+> **Aether gives life something worth becoming. Bathos ensures becoming remains
+> answerable to reality.**
+
+> **Current flows. Hollowing refines. Aether rises. Stone refracts. Aura
+> reveals.**
 
 ---
 
@@ -1291,7 +1349,40 @@ The Sandmanor people split remains:
 * Minorians are Gnomes.
 * Minoans are Elves.
 
-Do not reverse these.
+They are equal civic traditions. Do not reverse, collapse, or rank them.
+
+Minorians cultivate life from the inside outward; Minoans design and guard
+where life meets the open world. Aura Farm contains both Aura Fields and
+Content Farm. The Content Farm may nourish attention, memory, learning, and
+culture or become exploitative; content production is not inherently corrupt.
+
+The coast proceeds from Free Aura Beach through the increasingly regulated
+Southern Coast, Current Break, and Minoan County Courthouse before the
+Glaüshouse border. Southern Law remains Minoan coastal jurisdiction. Current
+Break may host Manticorp maritime training, but Manticorp remains a Flynt
+institution under Flynt command.
+
+Guardian Syntheses are maintained, Recipe-backed, and distinct from their
+mantles:
+
+```text
+Gnome → Minotaur / Guardian of the Fields
+→ Hecaton / Guardian of the Whole Farm
+
+Elf → Centaur / Guardian of the Beach
+→ Pegasus / Guardian of the Horizon
+```
+
+The Contest of Improvement pairs one qualified Hecaton and one qualified
+Pegasus. They sincerely teach each other, preserve pre-teaching baselines, and
+complete Aura Field, Content Farm, Liberty and Hospitality, Rescue and
+Horizon, and Reciprocal Integration trials. The audited crowd measures
+baseline-relative change, not rank. A tie leaves the Sandman office unresolved.
+The winner is one stable person and never a physical fusion of two candidates.
+
+Long ago, the Sandman sovereign was called Aegon. Aegon is a historical alias
+for the same Form-and-mantle tradition, not another creature, office, or
+evolution stage.
 
 ---
 
@@ -1312,7 +1403,10 @@ They govern:
 * maintenance
 * internal organization
 
-Gnomes do not evolve through a formal ladder.
+Gnomes retain horizontal occupational Names and specializations without those
+Names manufacturing mastery or office. They also possess the distinct,
+constitutionally governed regional Synthesis **Gnome → Minotaur** in the Aura
+Fields. Synthesis is not automatic evolution.
 
 Canonical law:
 
@@ -1334,6 +1428,8 @@ Examples:
 Use the word Gnome repeatedly and plainly.
 
 The simplicity is intentional.
+
+Minotaurs perform advanced tending and field labor in the Aura Field.
 
 ---
 
@@ -1359,6 +1455,24 @@ Canonical contrast:
 
 > **Gnomes internalize Aura into order.**
 > **Elves externalize Aura into expression.**
+
+Elves possess the constitutionally governed regional Synthesis **Elf →
+Centaur** through Aura Beach and Current Sea design. Centaurs roam Aura Beach
+and guard the Current Sea. Sandmanor proves the regional design; Glaüshouse
+clears the actual Synthesis.
+
+## 14.3 Sandmanor constitutional proof
+
+Sandmanor proves through design, method, demonstration, evidence, criticism,
+reproduction, failure, revision, teaching, and reciprocity. The Sandman is its
+singular highest office and accedes only through a completed Contest of
+Improvement between one Minorian and one Minoan, with reciprocal teaching,
+baseline and final evidence, independent review, resolved challenges,
+Stonebend Title, Flynt recognition, public learning statement, and Seal.
+
+Proof never substitutes for Title, Glaüshouse clearance, consent, Flynt
+recognition, ownership, or office. Failed work and prior versions remain in the
+constitutional record. Fraudulent Design is Sandmanor's signature offense.
 
 ---
 
@@ -1764,6 +1878,8 @@ Neither side is secondary.
 
 The Tross staff is a recognizable Flyntian transforming weapon.
 
+It is an object profile only. Possession does not create, transfer, or prove the Tross office or any Flynt constitutional authority.
+
 Its symbolic shape is:
 
 ```text
@@ -2039,16 +2155,23 @@ Troglodyte and Muse are equal apex counterparts.
 
 ---
 
-# 24. Flynt Hybrid Peoples
+# 24. Flynt Regional Peoples
 
 Flynt creates or hosts stable regional hybrid peoples rather than adding more vertical rungs.
 
-Major existing peoples:
+The three constitutional founding peoples are:
 
 * Werewolves
 * Gargoyles
 * Mermen
+
+Their unique constitutional synthesis is Chimera.
+
+Other existing regional people may include:
+
 * Orcamen
+
+Orcamen are not a founding Chimera people and hold no place in the locked Flynt institutional hierarchy by virtue of this list.
 
 These are not merely transformations of Gnomes or other Sandmanor peoples.
 
@@ -2058,11 +2181,66 @@ Do not return to the rejected idea that Gnomes become Gargoyles.
 
 ---
 
+# 24.1 Aura Ridge, Central Junction, and the Four-Pole Economy
+
+Aura Ridge is the shared civic and economic territory where the four Houses
+meet through work, trade, investment, employment, apprenticeships, public
+contracts, business formation, project financing, evidence, index publication,
+lawful speculation, and cross-House cooperation.
+
+The four productive poles are exact:
+
+* Sandmanor Design = Creation of Form.
+* Flynt Engineering = Creation of Function.
+* Stonebend Craft = Continuance of Form.
+* Glaüshouse Repair = Continuance of Function.
+
+> Sandmanor designs the Form. Flynt engineers the Function. Stonebend makes the Form endure. Glaüshouse keeps the Function alive.
+
+Hollow Grove uses one unnamed standard ordinary currency. Glaus, Flynt, Mark,
+and Mino are not House currencies. Public indexes are not currencies.
+Toke/Tokens remain earned work, experience, recognition, eligibility, access,
+or objective result. Shares and event positions remain distinct instruments.
+Gremlincoin remains the nonmonetary Gremlin Way.
+
+Work disposition is Act when important and urgent, Cultivate when important and
+not urgent, Reroute when urgent and not important, and Release when neither.
+
+Central Junction is the district where the interior Stonebend, Glaüshouse, and
+Sandmanor routes meet. It is not a single building or merely a stock exchange.
+The South Ridge Exchange is the primary market institution inside it. The
+Junction Board governs listings, index methodology, disclosure, audits,
+classification, conflicts, and shared public rules. The Clearing House settles
+recognized trades and contracts. The Junction Wire publishes prices, indexes,
+disclosures, employment demand, warnings, outcomes, and notices.
+
+The Craft Corridor leads toward Stonebend, the Repair Corridor toward
+Glaüshouse, and the Design Corridor toward Sandmanor. Flynt reaches and powers
+the Junction through the Engineering Ring and its transport, power,
+communication, computation, security, clocks, terminals, and settlement
+infrastructure. Each House has one canonical public Sector Hall that verifies
+domain evidence without setting market prices.
+
+The four official indexes are the Sandmanor Design Index, Flynt Engineering
+Index, Stonebend Craft Index, and Glaüshouse Repair Index. Houses may fill or
+dominate an index through productive success, but no House owns an official
+index or sets its value. The Junction Board governs public methodology, the
+South Ridge Exchange calculates, and the Junction Wire publishes.
+
+Current Haze is unresolved possibility. Equal Gaze is reconciled perspective.
+Aura Beam reveals or transmits the visible shared future. They remain Summit
+and future-vision concepts, not market institutions. A contract may
+colloquially remain in the Current Haze, and a recognized decision may be
+described as reaching Equal Gaze. The market offices that act are still the
+Junction Board, Clearing House, and Junction Wire.
+
+---
+
 # 25. Current Compressed Lock
 
 Use this paragraph as the shortest authoritative summary:
 
-> Hollow Grove is one connected civilization organized through Frames, Scenes, Structures, and Systems. Frame is reserved exclusively for named living-mech forms, which operate through Frame, Flow, and Glow. Current is blood, Hollow is pus, and Aura is air, pressure, and light. Hollow is the useful interior material extracted from a thing. Hollowing is the act of removing its resources and raw nutrients while leaving the outer hide, shell, husk, casing, body, rock, or Structure behind. Hollowed describes that emptied remainder. The four House rocks—Diamond, Crystal, Jade, and Opal—provide Structure, color, architecture, recognizable goods, and cultural design: Diamond claims, Crystal measures, Jade clears, and Opal shimmers. Stonebend governs deep construction, marrow, blood production, extraction, and durable form. Sandmanor governs recognition, measurement, classification, allocation, and expression. Glaüshouse governs medicine, mucus, lymph, drainage, healing, and restoration. Flynt governs movement, adaptation, emergency capability, hybridization, and transformation under pressure. Nightingales correspond to white blood cells as Glaüshouse's civic people of recognition, clearing, and coordinated healing. Professional medicine belongs to Glaüshouse, but mixed species from across the Grove practice it. Local care centers provide accessible routine recovery, while central Glaüshouse facilities provide surgery, diagnosis, reconstruction, rehabilitation, and advanced Frame care. Players may build a social and professional life around Glaüshouse or enter Aura Basin to fight, hunt, race, rescue, Hollow resources, acquire Hollowed materials, test transformations, and face real bodily consequences. The engine should preserve all these laws while using them as expandable world-domain vocabulary rather than rewriting the existing kernel.
+> Hollow Grove is one connected civilization organized through Frames, Scenes, Structures, and Systems. Frame is reserved exclusively for named living-mech forms, which operate through Frame, Flow, and Glow. Current is blood, Hollow is pus, and Aura is air, pressure, and light. Hollow is useful interior material obtained through bounded extraction. Hollowing is controlled opening, separation, preservation, or removal: extraction Hollowing preserves the lawful remainder, while material-refinement Hollowing removes authorized burden without removing what makes the whole. The four House rocks—Diamond, Crystal, Jade, and Opal—provide Structure, color, architecture, recognizable goods, and cultural design: Diamond claims, Crystal measures, Jade clears, and Opal shimmers. These cultural associations do not make every natural stone behavior exclusive House property. Stonebend names and preserves identity, Title, continuity, boundary, lawful Hollowing, provenance, and history. Mt. Aura is Aether; Riptide is Bathos. Aether and Current are opposite burden states of one underlying medium, and geographic Form refracts universal Aether into particular Aura. Sandmanor proves design and demonstrated function through equal Minorian Gnome and Minoan Elf traditions, preserves failure and criticism, governs Gnome-to-Minotaur and Elf-to-Centaur regional design, and selects the singular Sandman through reciprocal improvement rather than force or inheritance. Glaüshouse clears medicine and Synthesis through diagnosis, explicit consent, capacity, scoped Clearance, qualified care, and recovery. Flynt recognizes competence and lawful operational function. Nightingale is Glaüshouse's universal clinical foundation; equal Matron and Marshal branches lead through mastery of both domains to multiple Persephones; Prima Donna is the one singular apex office. Synthesis creates a real maintained Form whose Continuance depends on renewal, Recipe practice, the Form's Ways, the Hueman, compatible conditions, and institutional care. Glauspitals operates care facilities and Chromacord preserves clinical evidence without becoming authority. Professional medicine belongs to Glaüshouse, but mixed species from across the Grove practice it. No proof, recognition, transformation, legacy state, technical ability, custody, chart, or gesture may silently create consent, Clearance, Title, privilege, office, or Synthesis authority. The engine preserves these laws above the universal recursion kernel.
 
 ---
 
@@ -2077,19 +2255,123 @@ Do not make any of the following mistakes:
 * Do not say pus merely contains Hollow.
 * Pus is Hollow.
 * Do not make Hollowing merely "holding Current in a chamber."
-* Hollowing is extraction of the useful interior while leaving the exterior.
+* Extraction Hollowing removes a bounded interior resource while preserving
+  the lawful remainder.
+* Refinement Hollowing removes authorized burden while preserving essential
+  support, provenance, and the identity of the whole.
 * Do not require every natural object to have Hollow in its public name.
 * Do not relocate red marrow out of Stonebend.
-* Do not turn Nightingales into vague healers.
-* Nightingales represent white blood cells.
+* Do not reduce Nightingales to vague healers or a generic nurse species.
+* The Nightingales are the universal clinical foundation and constitutional clinical institution aligned with white blood cells.
+* Do not model Persephone as a singular office.
+* Do not rank Matron above Marshal or Marshal above Matron.
 * Do not make all medical workers native Glaüshouse species.
 * Do not lock professions to species.
 * Do not isolate the four Houses into disconnected civilizations.
-* Do not make Gnomes evolve.
+* Do not reduce Gnome-to-Minotaur regional Synthesis to automatic evolution.
 * Do not confuse Minorian Gnomes with Minoan Elves.
 * Do not make Gnomes become Gargoyles.
 * Do not draw the Tross staff unless explicitly requested.
+* Do not create separate House currencies.
+* Do not treat Gremlincoin or a public index as ordinary money.
+* Do not call Central Junction merely an exchange or a single building.
+* Do not model Current Haze, Equal Gaze, or Aura Beam as market institutions.
+* Do not use Aura Beam as a financial ticker; use the Junction Wire.
 * Do not lock the exact final magical powers of Hollow yet.
+
+---
+
+## Stonebend Second Pass — Three Gates, Offices, and Title Scope
+
+Stonebend has three bidirectional constitutional gates: one facing Flynt
+through Stairway to Heaven and Basin Motor Speedway, one facing Central
+Junction through the Craft Corridor, and one facing Sandmanor through Aura Way
+and Mt. Aura. Central Junction remains a district rather than a House. Mt. Aura
+remains Aether and an ideal, not a gate. Riptide remains Bathos on its existing
+route and is not relocated.
+
+One stable core Title carries zero or more independent gate scopes:
+Formation Recognition, Public Circulation, and Operational Deployment. A name
+may be lawful without being universally authorized. Failure, limitation, or
+rejection at one gate returns evidence without silently erasing unrelated
+scopes or the core Title.
+
+Diamond is Stonebend's continuing sovereign Title. The Hypergiant is its
+temporary active bearer. Diamond persists through vacancy, removal, surrender,
+death, and succession and is never private inheritable property.
+
+> The Freemason forges the Claim.
+>
+> The Hypergiant bears the Title.
+>
+> The Proliteriate shields the Yield.
+
+The Proliteriate network raises bounded temporary witnesses rather than a
+fourth ruler. Spartacus is the public archetype of that witness, not a permanent
+office. One constitutional power may challenge another; the other two distinct
+powers must concur to remove. Duplicate endorsements never count twice. A
+corrupted representation may be invalidated, but the network and the people
+cannot be abolished.
+
+Every ended office tenure or representation links to durable Tombstone
+history. No Hypergiant claims Diamond without the stable Claim, independent
+Freemason examination, Proliteriate Yield hearing, relinquishment of protected
+elevation, consequence descent, Proof of Persistence, and climb of The
+Lazerhorn. Recommendation and lineage are evidence only. A former bearer has no
+shortened return.
+
+Routine gate work may be delegated, but every crossing remains traceable to
+Claim evidence, Title or boundary authority, and Yield accountability.
+
+---
+
+## Stonebend Third Pass — Title Lifecycle and Constitutional Continuity
+
+A Claim is not automatically a Title. Stonebend recognition establishes that a
+bounded Title may stand in the public record. Activation separately permits
+exercise after the applicable policy requirements are satisfied.
+
+> A Title is not praise. It is a bounded public Claim backed by evidence.
+>
+> Recognition begins a Title. Continuance sustains it.
+>
+> Recognition establishes the Title. Activation permits its exercise.
+
+Maintenance is the continuing support of an active term. Renewal is a later
+constitutional decision to continue the same stable Title into another term.
+Limitation, supervision, suspension, remediation, restoration, and removal
+must identify the exact gate scope, activation, license, tenure, mandate, or
+core Title affected. Honest failure, negligence, fraud, illegality, and
+constitutional hollowness remain distinct.
+
+> Restoration repairs the Title. It does not erase the break.
+
+Every ended active term links to a Tombstone. Honorable completion remains
+different from failure, fraud, illegality, death, surrender, expiration,
+succession, dissolution, or supersession.
+
+During Diamond vacancy, Stonebend continues without a hidden Regent or Acting
+Hypergiant. Narrow continuity mandates may preserve existing records,
+obligations, infrastructure, routine gate work, immediate defense, material
+stability, and succession evidence. They cannot invest Diamond, appoint a
+Hypergiant, make sovereign law, permanently enlarge scope, or become permanent
+through use.
+
+> During vacancy, Stonebend continues. Diamond does not secretly change hands.
+>
+> Necessity may preserve the boundary. It may not inherit the crown.
+
+The High Freemason seal remains singular. Replacement requires stable candidate
+evidence, independent Forge review, Proliteriate Yield accountability, and
+Diamond-boundary recognition when a Hypergiant is active. No candidate may
+self-certify and no outgoing bearer may unilaterally appoint a successor.
+
+> The Forge may fall silent. Its records must not disappear.
+
+The Proliteriate has no total office vacancy. Node change, witness recall,
+mandate completion, and invalidated representation do not abolish the network
+or erase member identities. No permanent speaker or numerical selection
+threshold is created.
 
 ---
 

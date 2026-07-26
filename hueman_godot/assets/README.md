@@ -4,6 +4,9 @@ This asset tree is intentionally strict.
 
 Source of truth:
 
+- `../../src/constitutional/hollow_grove_visual_color_palette.json` is the sole
+  executable color authority for source art, exported sprites, UI, effects,
+  shaders, and icons.
 - `source/` contains hand-edited `.aseprite` or `.ase` files only.
 - `export/` contains generated `.png` sprite sheets and `.json` metadata only.
 - `reference/` contains internet reference images, moodboards, palettes, and screenshots that are not shipped.
@@ -50,7 +53,8 @@ Practical workflow:
 6. Redraw, adapt, or interpret from the reference rather than mixing reference files into `source/`.
 7. Run `./run-hueman-live.sh`.
 8. Save in Aseprite.
-9. Let the watcher export into the mirrored path under `export/`.
+9. Let the watcher derive an ephemeral Aseprite palette from the constitutional
+   JSON and export into the mirrored path under `export/`.
 10. Use the exported `.png` and `.json` in Godot.
 
 Internet rule:
@@ -62,6 +66,8 @@ Internet rule:
 
 What not to do:
 
+- do not define or copy a local Hollow Grove palette; configure art tooling
+  from the canonical JSON or an ephemeral adapter generated from it
 - do not drop random downloaded PNGs into `source/`
 - do not drop reference images into `export/`
 - do not use ripped commercial game art unless you have the rights
@@ -88,3 +94,13 @@ Rule of thumb:
 
 - If you are unsure where something goes, put it in `prototypes/` first.
 - Move it into a permanent category only when its role is clear.
+
+Current original concept references:
+
+- `reference/characters/hueman_multiscale_character_concept.png` defines the
+  tiny-overworld / medium-character / large-encounter scale relationship.
+- `reference/moodboards/hollow_grove_handheld_overworld_mood.png` defines the
+  target tile density and compact grove readability.
+
+These generated concept files are reference-only. They are not runtime sprite
+sheets and must not be imported as gameplay art.

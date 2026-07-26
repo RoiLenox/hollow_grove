@@ -14,13 +14,20 @@ case "$direction" in
     *) usage ;;
 esac
 
-if ! command -v jq >/dev/null 2>&1; then
-    printf 'jq is required for %s\n' "${0##*/}" >&2
-    exit 1
-fi
+for required_command in jq niri; do
+    if ! command -v "$required_command" >/dev/null 2>&1; then
+        printf '%s is required for %s\n' "$required_command" "${0##*/}" >&2
+        exit 1
+    fi
+done
 
 if ! windows_json="$(niri msg -j windows 2>/dev/null)"; then
     printf 'niri is not reachable\n' >&2
+    exit 1
+fi
+
+if ! jq -e 'type == "array"' >/dev/null 2>&1 <<<"$windows_json"; then
+    printf 'niri returned an invalid windows response\n' >&2
     exit 1
 fi
 

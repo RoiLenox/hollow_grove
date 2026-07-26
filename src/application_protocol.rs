@@ -15,7 +15,7 @@ use crate::institution_affiliation::{AccessDecision, InstitutionalWorldState};
 use crate::world::chroma_cord::{
     chroma_cord_access_policy, chroma_cord_site_id, chroma_cord_zone_id,
 };
-use crate::world::house_institutions::glaushouse_medical_civilization_id;
+use crate::world::glaushouse::chromacord_id;
 
 pub const APPLICATION_REGISTRY_SCHEMA_VERSION: &str = "0.1.0";
 pub const APPLICATION_REGISTRY_ARTIFACT_PATH: &str =
@@ -269,9 +269,23 @@ impl HollowGroveApplicationRegistry {
                     application.world_anchor.site.clone(),
                 ));
             };
-            if site.controlled_by.as_ref() != Some(&application.world_anchor.institution)
-                || !site.zones.contains(&application.world_anchor.zone)
-            {
+            let site_authorized = site.controlled_by.as_ref()
+                == Some(&application.world_anchor.institution)
+                || site.controlled_by.as_ref().is_some_and(|controller| {
+                    catalog.relationships.iter().any(|relationship| {
+                        relationship.source
+                            == crate::institution::InstitutionalEntityId::Institution(
+                                controller.clone(),
+                            )
+                            && relationship.kind
+                                == crate::institution::RelationshipKind::GrantsAccessTo
+                            && relationship.target
+                                == crate::institution::InstitutionalEntityId::Institution(
+                                    application.world_anchor.institution.clone(),
+                                )
+                    })
+                });
+            if !site_authorized || !site.zones.contains(&application.world_anchor.zone) {
                 return Err(ApplicationRegistryError::MissingZone(
                     application.world_anchor.zone.clone(),
                 ));
@@ -279,19 +293,16 @@ impl HollowGroveApplicationRegistry {
             for requirement in &application.access_policy.requirements {
                 match requirement {
                     AccessRequirement::Role(role) => {
-                        if !catalog.roles.iter().any(|candidate| {
-                            candidate.id == *role
-                                && candidate.institution == application.world_anchor.institution
-                        }) {
+                        if !catalog.roles.iter().any(|candidate| candidate.id == *role) {
                             return Err(ApplicationRegistryError::InvalidRoleRequirement);
                         }
                     }
                     AccessRequirement::Office(office) => {
-                        if !catalog.offices.iter().any(|candidate| {
-                            candidate.id == *office
-                                && candidate.institution.as_ref()
-                                    == Some(&application.world_anchor.institution)
-                        }) {
+                        if !catalog
+                            .offices
+                            .iter()
+                            .any(|candidate| candidate.id == *office)
+                        {
                             return Err(ApplicationRegistryError::InvalidOfficeRequirement);
                         }
                     }
@@ -369,7 +380,7 @@ pub fn canonical_hollow_grove_application_registry() -> HollowGroveApplicationRe
                 node_id: "glaushouse".into(),
                 node_name: "Glaüshouse".into(),
                 node_kind: "kingdom".into(),
-                institution: glaushouse_medical_civilization_id(),
+                institution: chromacord_id(),
                 site: chroma_cord_site_id(),
                 zone: chroma_cord_zone_id(),
                 screen: ApplicationScreenAnchor {

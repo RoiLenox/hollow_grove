@@ -120,7 +120,7 @@ Canonical witness fixtures:
 
 Current lineage remains:
 
-- `Gremlin -> Goblin -> Ghoul -> Troll -> Ork -> Ogre -> Troglodyte`
+- `Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre -> Troglodyte`
 
 Aura pairing remains conceptually:
 

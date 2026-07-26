@@ -91,28 +91,28 @@ impl ActionMode {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub enum StonebendApex {
-    Freemason,
-    Proletariat,
-    Hypergiant,
+pub enum StonebendPractice {
+    StructuralPractice,
+    CivicWitness,
+    IdentityCustodian,
 }
 
-impl StonebendApex {
+impl StonebendPractice {
     #[must_use]
     pub const fn as_str(self) -> &'static str {
         match self {
-            Self::Freemason => "Freemason",
-            Self::Proletariat => "Proletariat",
-            Self::Hypergiant => "Hypergiant",
+            Self::StructuralPractice => "Structural practice",
+            Self::CivicWitness => "Civic witness",
+            Self::IdentityCustodian => "Identity custodian",
         }
     }
 
     #[must_use]
     pub const fn canonical_mode(self) -> ActionMode {
         match self {
-            Self::Freemason => ActionMode::Beam,
-            Self::Proletariat => ActionMode::Seam,
-            Self::Hypergiant => ActionMode::Gleam,
+            Self::StructuralPractice => ActionMode::Beam,
+            Self::CivicWitness => ActionMode::Seam,
+            Self::IdentityCustodian => ActionMode::Gleam,
         }
     }
 }
@@ -123,9 +123,9 @@ pub enum EmbodiedRole {
     Surgeon,
     Muse,
     Siren,
-    Freemason,
-    Proletariat,
-    Hypergiant,
+    StructuralPractice,
+    CivicWitness,
+    IdentityCustodian,
 }
 
 impl EmbodiedRole {
@@ -136,9 +136,9 @@ impl EmbodiedRole {
             Self::Surgeon => "Surgeon",
             Self::Muse => "Muse",
             Self::Siren => "Siren",
-            Self::Freemason => "Freemason",
-            Self::Proletariat => "Proletariat",
-            Self::Hypergiant => "Hypergiant",
+            Self::StructuralPractice => "Structural practice",
+            Self::CivicWitness => "Civic witness",
+            Self::IdentityCustodian => "Identity custodian",
         }
     }
 }
@@ -339,9 +339,9 @@ pub struct FlowGlowContractInput {
     pub show_reduced_to_pointing: bool,
     pub grip_reduced_to_skill_root_grip: bool,
     pub grit_reduced_to_stamina: bool,
-    pub freemason_mapped_to_seam: bool,
-    pub proletariat_mapped_to_gleam: bool,
-    pub hypergiant_mapped_to_beam: bool,
+    pub structural_practice_mapped_to_seam: bool,
+    pub civic_witness_mapped_to_gleam: bool,
+    pub identity_custodian_mapped_to_beam: bool,
     pub canonical_pairings_reversed: bool,
     pub beam_only_literal_light: bool,
     pub seam_only_sewing: bool,
@@ -406,19 +406,19 @@ pub fn validate_flow_glow_contract(input: &FlowGlowContractInput) -> Vec<Alignme
             "Grit cannot be reduced to generic stamina; it is endurance made expressive.",
         ));
     }
-    if input.freemason_mapped_to_seam {
+    if input.structural_practice_mapped_to_seam {
         diagnostics.push(grammar_error(
-            "Freemason must remain Stonebend's Beam specialization.",
+            "Structural practice must remain Stonebend's Beam specialization.",
         ));
     }
-    if input.proletariat_mapped_to_gleam {
+    if input.civic_witness_mapped_to_gleam {
         diagnostics.push(grammar_error(
-            "Proletariat must remain Stonebend's Seam specialization.",
+            "Civic witness must remain Stonebend's Seam specialization.",
         ));
     }
-    if input.hypergiant_mapped_to_beam {
+    if input.identity_custodian_mapped_to_beam {
         diagnostics.push(grammar_error(
-            "Hypergiant must remain Stonebend's Gleam specialization.",
+            "Identity custodian must remain Stonebend's Gleam specialization.",
         ));
     }
     if input.canonical_pairings_reversed {
@@ -589,7 +589,7 @@ pub fn resolve_embodied_action(request: EmbodiedActionRequest) -> EmbodiedMoveRe
             EmbodiedMoveId::CommandPresence,
         ),
         (
-            EmbodiedRole::Freemason,
+            EmbodiedRole::StructuralPractice,
             ExpressionDomain::Flow,
             EmbodiedGesture::Grip,
             ActionMode::Beam,
@@ -604,7 +604,7 @@ pub fn resolve_embodied_action(request: EmbodiedActionRequest) -> EmbodiedMoveRe
             EmbodiedMoveId::CraftLine,
         ),
         (
-            EmbodiedRole::Proletariat,
+            EmbodiedRole::CivicWitness,
             ExpressionDomain::Flow,
             EmbodiedGesture::Grit,
             ActionMode::Seam,
@@ -619,7 +619,7 @@ pub fn resolve_embodied_action(request: EmbodiedActionRequest) -> EmbodiedMoveRe
             EmbodiedMoveId::CivicSeam,
         ),
         (
-            EmbodiedRole::Hypergiant,
+            EmbodiedRole::IdentityCustodian,
             ExpressionDomain::Flow,
             EmbodiedGesture::Show,
             ActionMode::Gleam,
@@ -770,9 +770,9 @@ pub fn canonical_siren_grit_gleam_fixture() -> EmbodiedActionRequest {
 }
 
 #[must_use]
-pub fn canonical_freemason_flow_beam_fixture() -> EmbodiedActionRequest {
+pub fn canonical_structural_practice_flow_beam_fixture() -> EmbodiedActionRequest {
     build_request(
-        EmbodiedRole::Freemason,
+        EmbodiedRole::StructuralPractice,
         build_canonical_being_state_for_frame(FrameId::Troglodyte),
         ExpressionDomain::Flow,
         EmbodiedGesture::Grip,
@@ -785,9 +785,9 @@ pub fn canonical_freemason_flow_beam_fixture() -> EmbodiedActionRequest {
 }
 
 #[must_use]
-pub fn canonical_proletariat_flow_seam_fixture() -> EmbodiedActionRequest {
+pub fn canonical_civic_witness_flow_seam_fixture() -> EmbodiedActionRequest {
     build_request(
-        EmbodiedRole::Proletariat,
+        EmbodiedRole::CivicWitness,
         build_canonical_being_state_for_frame(FrameId::Troglodyte),
         ExpressionDomain::Flow,
         EmbodiedGesture::Grit,
@@ -800,9 +800,9 @@ pub fn canonical_proletariat_flow_seam_fixture() -> EmbodiedActionRequest {
 }
 
 #[must_use]
-pub fn canonical_hypergiant_flow_gleam_fixture() -> EmbodiedActionRequest {
+pub fn canonical_identity_custodian_flow_gleam_fixture() -> EmbodiedActionRequest {
     build_request(
-        EmbodiedRole::Hypergiant,
+        EmbodiedRole::IdentityCustodian,
         build_canonical_being_state_for_frame(FrameId::Troglodyte),
         ExpressionDomain::Flow,
         EmbodiedGesture::Show,
@@ -856,10 +856,10 @@ pub fn build_flow_glow_witness() -> io::Result<String> {
          Grip -> Seam\n\
          Show -> Beam\n\
          Grit -> Gleam\n\n\
-         Stonebend Apex:\n\n\
-         Freemason -> Beam\n\
-         Proletariat -> Seam\n\
-         Hypergiant -> Gleam\n\n\
+         Stonebend Practice Projection:\n\n\
+         Structural practice -> Beam\n\
+         Civic witness -> Seam\n\
+         Identity custodian -> Gleam\n\n\
          Execution Boundary:\n\n\
          Move\n\
          -> Recipe\n\
@@ -870,24 +870,29 @@ pub fn build_flow_glow_witness() -> io::Result<String> {
 
 pub fn build_flow_glow_validation_report() -> io::Result<String> {
     let diagnostics = validate_flow_glow_contract(&canonical_flow_glow_contract_fixture());
-    let freemason = resolve_embodied_action(canonical_freemason_flow_beam_fixture());
-    let proletariat = resolve_embodied_action(canonical_proletariat_flow_seam_fixture());
-    let hypergiant = resolve_embodied_action(canonical_hypergiant_flow_gleam_fixture());
+    let structural_practice =
+        resolve_embodied_action(canonical_structural_practice_flow_beam_fixture());
+    let civic_witness = resolve_embodied_action(canonical_civic_witness_flow_seam_fixture());
+    let identity_custodian =
+        resolve_embodied_action(canonical_identity_custodian_flow_gleam_fixture());
 
     let mut errors = diagnostics;
-    if freemason.request().mode() != StonebendApex::Freemason.canonical_mode() {
+    if structural_practice.request().mode()
+        != StonebendPractice::StructuralPractice.canonical_mode()
+    {
         errors.push(grammar_error(
-            "Freemason canonical mode drifted away from Beam.",
+            "Structural practice canonical mode drifted away from Beam.",
         ));
     }
-    if proletariat.request().mode() != StonebendApex::Proletariat.canonical_mode() {
+    if civic_witness.request().mode() != StonebendPractice::CivicWitness.canonical_mode() {
         errors.push(grammar_error(
-            "Proletariat canonical mode drifted away from Seam.",
+            "Civic witness canonical mode drifted away from Seam.",
         ));
     }
-    if hypergiant.request().mode() != StonebendApex::Hypergiant.canonical_mode() {
+    if identity_custodian.request().mode() != StonebendPractice::IdentityCustodian.canonical_mode()
+    {
         errors.push(grammar_error(
-            "Hypergiant canonical mode drifted away from Gleam.",
+            "Identity custodian canonical mode drifted away from Gleam.",
         ));
     }
 
@@ -899,7 +904,7 @@ pub fn build_flow_glow_validation_report() -> io::Result<String> {
              - Seam/Beam/Gleam distinction: pass\n\
              - Grip/Show/Grit distinction: pass\n\
              - canonical pairings: pass\n\
-             - Stonebend apex mapping: pass\n\
+             - Stonebend practice projection: pass\n\
              - Being/Object preservation: pass\n\
              - Aim preservation: pass\n\
              - AddressingMode preservation: pass\n\
@@ -923,9 +928,9 @@ pub fn build_embodied_action_witness() -> io::Result<String> {
         resolve_embodied_action(canonical_nightingale_grip_seam_fixture()),
         resolve_embodied_action(canonical_nightingale_show_beam_fixture()),
         resolve_embodied_action(canonical_siren_grit_gleam_fixture()),
-        resolve_embodied_action(canonical_freemason_flow_beam_fixture()),
-        resolve_embodied_action(canonical_proletariat_flow_seam_fixture()),
-        resolve_embodied_action(canonical_hypergiant_flow_gleam_fixture()),
+        resolve_embodied_action(canonical_structural_practice_flow_beam_fixture()),
+        resolve_embodied_action(canonical_civic_witness_flow_seam_fixture()),
+        resolve_embodied_action(canonical_identity_custodian_flow_gleam_fixture()),
         resolve_embodied_action(canonical_muse_show_beam_fixture()),
         resolve_embodied_action(canonical_cross_pair_show_seam_fixture()),
     ];
@@ -1010,6 +1015,7 @@ fn frame_label(frame: FrameId) -> &'static str {
         FrameId::Gremlin => "Gremlin",
         FrameId::Goblin => "Goblin",
         FrameId::Ghoul => "Ghoul",
+        FrameId::Spectre => "Spectre",
         FrameId::Troll => "Troll",
         FrameId::Ork => "Ork",
         FrameId::Ogre => "Ogre",
@@ -1024,7 +1030,6 @@ fn frame_label(frame: FrameId) -> &'static str {
         FrameId::Gargoyle => "Gargoyle",
         FrameId::Merman => "Merman",
         FrameId::Chimera => "Chimera",
-        FrameId::Manticore => "Manticore",
         FrameId::Gnome => "Gnome",
         FrameId::Minotaur => "Minotaur",
         FrameId::Hecaton => "Hecaton",
@@ -1038,12 +1043,12 @@ fn frame_label(frame: FrameId) -> &'static str {
 mod tests {
     use super::{
         ActionMode, CompatibilityLevel, EmbodiedGesture, ExpressionDomain, FlowGlowContractInput,
-        StonebendApex, build_embodied_action_witness, build_flow_glow_validation_report,
-        build_flow_glow_witness, canonical_cross_pair_show_seam_fixture,
-        canonical_flow_glow_contract_fixture, canonical_freemason_flow_beam_fixture,
-        canonical_hypergiant_flow_gleam_fixture, canonical_muse_show_beam_fixture,
+        StonebendPractice, build_embodied_action_witness, build_flow_glow_validation_report,
+        build_flow_glow_witness, canonical_civic_witness_flow_seam_fixture,
+        canonical_cross_pair_show_seam_fixture, canonical_flow_glow_contract_fixture,
+        canonical_identity_custodian_flow_gleam_fixture, canonical_muse_show_beam_fixture,
         canonical_nightingale_grip_seam_fixture, canonical_nightingale_show_beam_fixture,
-        canonical_proletariat_flow_seam_fixture, canonical_siren_grit_gleam_fixture,
+        canonical_siren_grit_gleam_fixture, canonical_structural_practice_flow_beam_fixture,
         resolve_embodied_action, validate_flow_glow_contract,
     };
     use crate::FrameId;
@@ -1074,33 +1079,44 @@ mod tests {
 
     #[test]
     fn cross_pairings_remain_valid_when_semantically_grounded() {
-        let freemason = resolve_embodied_action(canonical_freemason_flow_beam_fixture());
-        let proletariat = resolve_embodied_action(canonical_proletariat_flow_seam_fixture());
-        let hypergiant = resolve_embodied_action(canonical_hypergiant_flow_gleam_fixture());
+        let structural_practice =
+            resolve_embodied_action(canonical_structural_practice_flow_beam_fixture());
+        let civic_witness = resolve_embodied_action(canonical_civic_witness_flow_seam_fixture());
+        let identity_custodian =
+            resolve_embodied_action(canonical_identity_custodian_flow_gleam_fixture());
         let seam_show = resolve_embodied_action(canonical_cross_pair_show_seam_fixture());
 
-        assert_eq!(freemason.compatibility(), CompatibilityLevel::Valid);
-        assert!(!freemason.canonical_pairing());
+        assert_eq!(
+            structural_practice.compatibility(),
+            CompatibilityLevel::Valid
+        );
+        assert!(!structural_practice.canonical_pairing());
         assert!(
-            freemason
+            structural_practice
                 .compatibility_reason()
                 .contains("instrument control")
         );
 
-        assert_eq!(proletariat.compatibility(), CompatibilityLevel::Valid);
-        assert_eq!(hypergiant.compatibility(), CompatibilityLevel::Valid);
+        assert_eq!(civic_witness.compatibility(), CompatibilityLevel::Valid);
+        assert_eq!(
+            identity_custodian.compatibility(),
+            CompatibilityLevel::Valid
+        );
         assert_eq!(seam_show.compatibility(), CompatibilityLevel::Valid);
     }
 
     #[test]
-    fn stonebend_apex_mapping_remains_locked() {
-        assert_eq!(StonebendApex::Freemason.canonical_mode(), ActionMode::Beam);
+    fn stonebend_practice_projection_remains_locked() {
         assert_eq!(
-            StonebendApex::Proletariat.canonical_mode(),
+            StonebendPractice::StructuralPractice.canonical_mode(),
+            ActionMode::Beam
+        );
+        assert_eq!(
+            StonebendPractice::CivicWitness.canonical_mode(),
             ActionMode::Seam
         );
         assert_eq!(
-            StonebendApex::Hypergiant.canonical_mode(),
+            StonebendPractice::IdentityCustodian.canonical_mode(),
             ActionMode::Gleam
         );
     }
@@ -1120,7 +1136,7 @@ mod tests {
             domains_collapsed: true,
             show_replaced_with_point: true,
             grip_reduced_to_skill_root_grip: true,
-            freemason_mapped_to_seam: true,
+            structural_practice_mapped_to_seam: true,
             canonical_pairings_reversed: true,
             direct_execution_outside_boundary: true,
             current_prism_conflated: true,
@@ -1149,7 +1165,7 @@ mod tests {
         assert!(
             messages
                 .iter()
-                .any(|message| message.contains("Freemason must remain"))
+                .any(|message| message.contains("Structural practice must remain"))
         );
         assert!(
             messages
@@ -1175,7 +1191,7 @@ mod tests {
         let embodied = build_embodied_action_witness().expect("embodied witness should build");
 
         assert!(witness.contains("Grip -> Seam"));
-        assert!(witness.contains("Freemason -> Beam"));
+        assert!(witness.contains("Structural practice -> Beam"));
         assert!(validation.contains("- status: pass"));
         assert!(embodied.contains("Nightingale"));
         assert!(embodied.contains("Candidate Move:"));

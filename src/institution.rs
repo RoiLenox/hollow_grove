@@ -111,6 +111,7 @@ pub enum RelationshipKind {
     SubgroupOf,
     HeadquarteredAt,
     Represents,
+    HostedBy,
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Visibility {
@@ -262,7 +263,7 @@ pub enum InstitutionValidationError {
     SingularOfficeHasMultipleActiveHolders(OfficeId),
 }
 
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
 pub struct InstitutionCatalog {
     pub institutions: Vec<Institution>,
     pub offices: Vec<Office>,
@@ -394,7 +395,7 @@ mod tests {
     use super::*;
     #[test]
     fn stable_ids_reject_display_names() {
-        assert!(InstitutionId::new("institution.flynt.gallowry").is_ok());
+        assert!(InstitutionId::new("institution.flynt.gallows").is_ok());
         assert!(InstitutionId::new("The Gallowry").is_err());
     }
     #[test]

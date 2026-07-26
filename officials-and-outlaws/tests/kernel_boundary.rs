@@ -2,7 +2,7 @@ use std::fs;
 use std::path::PathBuf;
 
 #[test]
-fn hollow_grove_kernel_has_no_officials_and_outlaws_dependency_or_terms() {
+fn hollow_grove_kernel_has_no_flynt_constitution_dependency_or_terms() {
     let layer_root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let kernel_root = layer_root.parent().unwrap();
     let kernel_files = [
@@ -23,15 +23,11 @@ fn hollow_grove_kernel_has_no_officials_and_outlaws_dependency_or_terms() {
         "src/pleb_meta/routing_pass.rs",
     ];
     let banned_lowercase = [
-        "official",
-        "outlaw",
-        "officials and outlaws",
-        "officials_and_outlaws",
-        "officials-and-outlaws",
+        "flynt constitution",
+        "flynt-constitution",
         "flynt",
         "manticorp",
         "mystery men",
-        "mysteryguard",
         "gallows",
         "werewolf",
         "gargoyle",
@@ -53,9 +49,9 @@ fn hollow_grove_kernel_has_no_officials_and_outlaws_dependency_or_terms() {
 
     let neutral_kernel_manifest =
         fs::read_to_string(kernel_root.join("hollow-grove-kernel/Cargo.toml")).unwrap();
-    assert!(!neutral_kernel_manifest.contains("officials-and-outlaws"));
+    assert!(!neutral_kernel_manifest.contains("flynt-constitution"));
     let application_manifest = fs::read_to_string(kernel_root.join("Cargo.toml")).unwrap();
-    assert!(application_manifest.contains("officials-and-outlaws"));
+    assert!(application_manifest.contains("flynt-constitution"));
     let layer_manifest = fs::read_to_string(layer_root.join("Cargo.toml")).unwrap();
     assert!(!layer_manifest.contains("hollow-grove = { path = \"..\" }"));
     assert!(layer_manifest.contains("hollow-grove-kernel"));

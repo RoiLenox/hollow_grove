@@ -35,12 +35,13 @@ mod tests {
         assert!(output.contains("Pixy -> Sprite -> Farie -> Nymph -> Siren -> Muse"));
         assert!(output.contains("exclusive Synthesis"));
         assert!(output.contains("mechanical-industrial medical capital"));
-        assert!(output.contains("whoever holds final public Clearance is Prima Donna"));
-        assert!(output.contains("Muse is the highest care form in Glaushouse"));
+        assert!(output.contains("Doctor Ratchet is its frozen current holder identity"));
+        assert!(output.contains("Muse marks the highest restorative inspiration"));
         assert!(output.contains("mines jades and refines Glaus Gel"));
-        assert!(
-            output.contains("Persephone and the recovery floor may each oppose false Clearance")
-        );
+        assert!(output.contains("every Nightingale stop triggers mandatory review"));
+        assert!(output.contains("Nurse House is one frozen current Persephone identity"));
+        assert!(output.contains("Matron and Marshal are equal complementary branches"));
+        assert!(output.contains("Synthesis is Continuance through renewal"));
         assert!(output.contains("## Composed Medical Roles"));
         assert!(output.contains("Gargoyle Surgeon = Being Hueman"));
         assert!(output.contains("Elf Radiologist = Being Hueman"));

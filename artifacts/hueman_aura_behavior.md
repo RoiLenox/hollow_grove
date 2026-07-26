@@ -11,7 +11,7 @@ Start Choice
 ↓
 Aura Basin
 ↓
-Aura Fields
+Aura Field
 ↓
 Aura Beach
 ```
@@ -24,7 +24,7 @@ Aura Beach
 - encounter tone reads as close, muffled, and formative
 - world description favors pressure, shelter, dens, and accumulation
 
-### Aura Fields
+### Aura Field
 
 - movement reads as lateral and exposed
 - encounter tone reads as social, visible, publicly witnessed, and negotiable
@@ -56,7 +56,7 @@ Aura Beach
 
 ## Artifact Inputs
 
-Hueman AuraTriad bytes: 2089.
+Hueman AuraTriad bytes: 2106.
 Hueman Start Choices bytes: 1365.
 
 ## Boundary Reminder

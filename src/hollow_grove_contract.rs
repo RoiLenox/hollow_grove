@@ -19,7 +19,7 @@ const REQUIRED_WORLD_CONTEXT_FRAGMENTS: &[&str] = &[
     "Crystal measures",
     "Jade clears",
     "Opal shimmers",
-    "Nightingales directly represent white blood cells.",
+    "The Nightingales are Glaüshouse's constitutional nursing and clinical-care",
     "Minorians are Gnomes.",
     "Minoans are Elves.",
     "Pus is Hollow.",
@@ -78,7 +78,7 @@ impl EntityCategory {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub enum House {
     Stonebend,
     Sandmanor,
@@ -1000,7 +1000,7 @@ pub fn validate_hollow_grove_alignment(
             diagnostics.push(AlignmentDiagnostic {
                 code: AlignmentDiagnosticCode::NightingaleMismatch,
                 message: String::from(
-                    "Nightingales must remain Glaüshouse white-blood-cell civic people carried through Current",
+                    "The Nightingales must remain Glaüshouse's constitutional clinical institution, symbolically aligned with white blood cells carried through Current; this does not make generic nurses a species",
                 ),
             });
         }
@@ -1368,7 +1368,7 @@ fn is_named_living_mech_name(name: &str) -> bool {
         "MedicalNetwork",
         "AuraBasin",
     ];
-    const FRAME_IDS: [FrameId; 25] = [
+    const FRAME_IDS: [FrameId; 24] = [
         FrameId::Hueman,
         FrameId::Gremlin,
         FrameId::Goblin,
@@ -1387,7 +1387,6 @@ fn is_named_living_mech_name(name: &str) -> bool {
         FrameId::Gargoyle,
         FrameId::Merman,
         FrameId::Chimera,
-        FrameId::Manticore,
         FrameId::Gnome,
         FrameId::Minotaur,
         FrameId::Hecaton,

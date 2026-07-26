@@ -42,25 +42,25 @@ use hollow_grove::current_synthesis_engine::{
 use hollow_grove::hueman_support::{
     build_hueman_archetype_lens_from_artifacts, build_hueman_aura_behavior_from_artifacts,
     build_hueman_aura_triad_from_artifacts, build_hueman_boundary_from_artifacts,
-    build_hueman_crossover_scenes_from_artifacts, build_hueman_fourway_from_artifacts,
-    build_hueman_glaushouse_roles_from_artifacts, build_hueman_inverse_circle_from_artifacts,
-    build_hueman_link_physics_from_artifacts, build_hueman_motion_map_from_artifacts,
-    build_hueman_path_crossovers_from_artifacts, build_hueman_procedural_uplift_from_artifacts,
-    build_hueman_sandmanor_roles_from_artifacts, build_hueman_scene_drift_from_artifacts,
-    build_hueman_scene_intent_from_artifacts, build_hueman_scene_presence_from_artifacts,
-    build_hueman_start_choices_from_artifacts, build_hueman_start_paths_from_artifacts,
-    build_hueman_stonebend_roles_from_artifacts, build_hueman_tross_helpers_from_artifacts,
+    build_hueman_crossover_scenes_from_artifacts, build_hueman_flynt_constitution_from_artifacts,
+    build_hueman_fourway_from_artifacts, build_hueman_glaushouse_roles_from_artifacts,
+    build_hueman_inverse_circle_from_artifacts, build_hueman_link_physics_from_artifacts,
+    build_hueman_motion_map_from_artifacts, build_hueman_path_crossovers_from_artifacts,
+    build_hueman_procedural_uplift_from_artifacts, build_hueman_sandmanor_roles_from_artifacts,
+    build_hueman_scene_drift_from_artifacts, build_hueman_scene_intent_from_artifacts,
+    build_hueman_scene_presence_from_artifacts, build_hueman_start_choices_from_artifacts,
+    build_hueman_start_paths_from_artifacts, build_hueman_stonebend_roles_from_artifacts,
     build_vertical_integration_stack_from_artifacts, hueman_archetype_lens_artifact_path,
     hueman_aura_behavior_artifact_path, hueman_aura_triad_artifact_path,
     hueman_boundary_artifact_path, hueman_crossover_scenes_artifact_path,
-    hueman_fourway_artifact_path, hueman_glaushouse_roles_artifact_path,
-    hueman_inverse_circle_artifact_path, hueman_link_physics_artifact_path,
-    hueman_motion_map_artifact_path, hueman_path_crossovers_artifact_path,
-    hueman_procedural_uplift_artifact_path, hueman_sandmanor_roles_artifact_path,
-    hueman_scene_drift_artifact_path, hueman_scene_intent_artifact_path,
-    hueman_scene_presence_artifact_path, hueman_start_choices_artifact_path,
-    hueman_start_paths_artifact_path, hueman_stonebend_roles_artifact_path,
-    hueman_tross_helpers_artifact_path, vertical_integration_stack_artifact_path,
+    hueman_flynt_constitution_artifact_path, hueman_fourway_artifact_path,
+    hueman_glaushouse_roles_artifact_path, hueman_inverse_circle_artifact_path,
+    hueman_link_physics_artifact_path, hueman_motion_map_artifact_path,
+    hueman_path_crossovers_artifact_path, hueman_procedural_uplift_artifact_path,
+    hueman_sandmanor_roles_artifact_path, hueman_scene_drift_artifact_path,
+    hueman_scene_intent_artifact_path, hueman_scene_presence_artifact_path,
+    hueman_start_choices_artifact_path, hueman_start_paths_artifact_path,
+    hueman_stonebend_roles_artifact_path, vertical_integration_stack_artifact_path,
 };
 use hollow_grove::world::persistence::INSTITUTIONAL_STATE_ARTIFACT_PATH;
 use hollow_grove::{
@@ -1557,10 +1557,14 @@ fn run_hueman_at(root: &Path, session: &mut ArtifactSession) -> io::Result<[Path
         hueman_stonebend_roles.clone(),
     );
 
-    let hueman_tross_helpers =
-        build_hueman_tross_helpers_from_artifacts(&hueman_start_choices, &hueman_fourway);
-    let tross_helpers_path = root.join(hueman_tross_helpers_artifact_path());
-    stage_artifact(session, &tross_helpers_path, hueman_tross_helpers.clone());
+    let hueman_flynt_constitution =
+        build_hueman_flynt_constitution_from_artifacts(&hueman_start_choices, &hueman_fourway);
+    let flynt_constitution_path = root.join(hueman_flynt_constitution_artifact_path());
+    stage_artifact(
+        session,
+        &flynt_constitution_path,
+        hueman_flynt_constitution.clone(),
+    );
 
     let hueman_glaushouse_roles =
         build_hueman_glaushouse_roles_from_artifacts(&hueman_start_choices, &hueman_fourway);
@@ -1613,7 +1617,7 @@ fn run_hueman_at(root: &Path, session: &mut ArtifactSession) -> io::Result<[Path
         &current_synthesis_consequence,
         &current_synthesis_activation_gate,
         &hueman_stonebend_roles,
-        &hueman_tross_helpers,
+        &hueman_flynt_constitution,
         &hueman_glaushouse_roles,
         &hueman_sandmanor_roles,
     );
@@ -1688,7 +1692,7 @@ fn run_hueman_at(root: &Path, session: &mut ArtifactSession) -> io::Result<[Path
         &hueman_crossover_scenes,
         &hueman_archetype_lens,
         &hueman_stonebend_roles,
-        &hueman_tross_helpers,
+        &hueman_flynt_constitution,
         &hueman_glaushouse_roles,
         &hueman_sandmanor_roles,
         &hueman_inverse_circle,
@@ -1703,7 +1707,7 @@ fn run_hueman_at(root: &Path, session: &mut ArtifactSession) -> io::Result<[Path
         &current_synthesis_collision_relay,
         &current_synthesis_contract,
         &hueman_stonebend_roles,
-        &hueman_tross_helpers,
+        &hueman_flynt_constitution,
         &hueman_glaushouse_roles,
         &hueman_sandmanor_roles,
         &hueman_inverse_circle,
@@ -1745,7 +1749,7 @@ fn run_hueman_at(root: &Path, session: &mut ArtifactSession) -> io::Result<[Path
         aura_triad_path,
         start_choices_path,
         stonebend_roles_path,
-        tross_helpers_path,
+        flynt_constitution_path,
         glaushouse_roles_path,
         sandmanor_roles_path,
         procedural_uplift_path,
@@ -2277,7 +2281,7 @@ mod tests {
                 canonical_name: String::from("chroma_cord"),
                 lifecycle: String::from("attached"),
                 world_anchor_id: String::from("glaushouse"),
-                institution_id: String::from("institution.glaushouse.medical-civilization"),
+                institution_id: String::from("institution.glaushouse.chromacord"),
                 site_id: String::from("site.glaushouse.central-medical-district"),
                 zone_id: String::from("zone.glaushouse.medical-district.recovery-chambers"),
                 projection: String::from("semantic_only"),
@@ -2361,7 +2365,7 @@ mod tests {
         assert!(runtime_status.contains("refreshed pipeline"));
         assert!(institutional_context.contains("Institutional Runtime Context"));
         assert!(institutional_context.contains("Stanislavski still chooses tactics"));
-        assert!(institutional_state.contains("schema_version:1"));
+        assert!(institutional_state.contains("schema_version:2"));
         assert!(hueman_boundary.contains("# Hueman Boundary"));
         assert!(hueman_scene_drift.contains("# Hueman Scene Drift"));
 

@@ -5,7 +5,7 @@
 - exterior ingress: `PlebExterior`
 - complementary return: `BlepReturn`
 - landed route: `BlepArrival`
-- universal landed point: `Point`
+- universal landed point: `Point²`
 - Collision relay binds one shared confirmation body downstream from this frozen kernel boundary without re-deriving route facts from Current Synthesis prose.
 
 ## Relay Identity
@@ -68,10 +68,10 @@
 
 ## Artifact Inputs
 
-Snapshot bytes: 564.
+Snapshot bytes: 587.
 Current Synthesis contract bytes: 1442.
 Current Synthesis operational bytes: 1123.
-Current Synthesis transition rule bytes: 1820.
+Current Synthesis transition rule bytes: 1822.
 
 ## Boundary Reminder
 

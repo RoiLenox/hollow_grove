@@ -67,8 +67,8 @@ Links that do not get bonded may later resolve into `current` or `aura` accordin
 ## Artifact Inputs
 
 Current Synthesis sequence bytes: 1458.
-Hueman Path Crossovers bytes: 3261.
-Current Synthesis collision relay bytes: 3022.
+Hueman Path Crossovers bytes: 4601.
+Current Synthesis collision relay bytes: 3024.
 
 ## Boundary Reminder
 

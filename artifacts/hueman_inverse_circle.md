@@ -8,31 +8,31 @@ The inverse circle names the underground curved mirror system beneath Hueman's l
 
 - the visible border stays on the outer ring of the large circle
 - the visible border remains public-facing geography
-- the visible border names the same rim completed by Stairway to Heaven, Riptide, Current Seanad, and Mnt. Aura
+- the visible border names the same rim completed by Stairway to Heaven, Riptide, Current Seanad, and Mt. Aura
 
 ## Border Sequence
 
 - The Stairway to Heaven
 - The Riptide
 - The Current Seanad
-- Mnt. Aura
+- Mt. Aura
 
 ## Underground Inverse Curves
 
 - four inverse curved lines run underground on the `PLEB` side
 - four inverse curved lines run underground on the `META` side
-- each side mirrors Stairway to Heaven, Riptide, Current Seanad, and Mnt. Aura as underground inverse structure
+- each side mirrors Stairway to Heaven, Riptide, Current Seanad, and Mt. Aura as underground inverse structure
 - the underground curves remain inverse to the visible rim rather than replacing it
 
 ## Underground Reading
 
-- The Stairway to Heaven reads as the rising outer ascent along the circle's rim.
+- The Stairway to Heaven reads as Ascend: the rising outer acceptance of higher burden along the circle's rim.
 - beneath it, an inverse underground curve carries hidden descent pressure on both sides.
-- The Riptide reads as the pull that drags movement back around the border, with the visible water rim kept alive as Flynt's Merman range.
+- The Riptide reads as Retrieve: emergency undertow carries crises toward Glaushouse intake, with the visible water rim kept alive as Flynt's Merman range.
 - beneath it, an inverse underground curve carries hidden return pull on both sides beneath that roaming seam.
-- The Current Seanad reads as the outer flow of counted, sustained motion around the circle.
+- The Current Seanad reads as Deliberate: the outer court holds evidence and difficult design or repair questions for judgment.
 - beneath it, an inverse underground curve carries hidden current understructure on both sides.
-- Mnt. Aura reads as the bright outer curve running from Stonebend to Sandmanor along the circle's rim.
+- Mt. Aura reads as Aspire: the bright outer curve carries higher aims from Stonebend to Sandmanor along the circle's rim.
 - beneath it, an inverse underground curve carries the hidden curved under-arc on both sides.
 
 ## Boundary

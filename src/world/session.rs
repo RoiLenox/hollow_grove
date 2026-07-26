@@ -44,21 +44,23 @@ impl WorldSession {
     /// missing artifact starts a fresh canonical session; malformed persisted
     /// state fails closed instead of being silently discarded.
     pub fn load_or_canonical_at(root: &std::path::Path) -> std::io::Result<Self> {
-        let canonical = canonical_institutional_world_state();
         match crate::artifact_io::read_text_artifact(&root.join(INSTITUTIONAL_STATE_ARTIFACT_PATH))
         {
-            Ok(contents) => {
-                let state = parse_persisted_state(&contents, canonical.catalog)?;
-                Self::from_institutional_state(state).map_err(|error| {
-                    std::io::Error::new(
-                        std::io::ErrorKind::InvalidData,
-                        format!("invalid institutional session: {error:?}"),
-                    )
-                })
-            }
+            Ok(contents) => Self::from_persisted_output(&contents),
             Err(error) if error.kind() == std::io::ErrorKind::NotFound => Ok(Self::canonical()),
             Err(error) => Err(error),
         }
+    }
+
+    pub fn from_persisted_output(contents: &str) -> std::io::Result<Self> {
+        let canonical = canonical_institutional_world_state();
+        let state = parse_persisted_state(contents, canonical.catalog)?;
+        Self::from_institutional_state(state).map_err(|error| {
+            std::io::Error::new(
+                std::io::ErrorKind::InvalidData,
+                format!("invalid institutional session: {error:?}"),
+            )
+        })
     }
 
     #[must_use]

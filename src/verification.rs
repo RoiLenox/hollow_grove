@@ -26,7 +26,7 @@ use crate::{
     observe_kernel_pass_decision, resolve_candidate_recipe, run_kernel_cycle_with_input,
 };
 
-const FRAMES: [FrameId; 19] = [
+const FRAMES: [FrameId; 18] = [
     FrameId::Hueman,
     FrameId::Gremlin,
     FrameId::Goblin,
@@ -45,7 +45,6 @@ const FRAMES: [FrameId; 19] = [
     FrameId::Gargoyle,
     FrameId::Merman,
     FrameId::Chimera,
-    FrameId::Manticore,
 ];
 const FLOWS: [FlowId; 7] = [
     FlowId::TinkerGrip,

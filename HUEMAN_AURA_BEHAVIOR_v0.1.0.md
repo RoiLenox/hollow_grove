@@ -13,7 +13,7 @@ Start Choice
 ↓
 Aura Basin
 ↓
-Aura Fields
+Aura Field
 ↓
 Aura Beach
 ```
@@ -26,7 +26,7 @@ Aura Beach
 - encounter tone reads as close, muffled, and formative
 - world description favors pressure, shelter, and accumulation
 
-### Aura Fields
+### Aura Field
 
 - movement reads as lateral and exposed
 - encounter tone reads as social, visible, and negotiable

@@ -427,7 +427,7 @@ pub fn build_current_synthesis_topology_from_boundary(
          ```text\n\
          Aura Basin\n\
          ↓\n\
-         Aura Fields\n\
+         Aura Field\n\
          ↓\n\
          Aura Beach\n\
          ```\n\n\

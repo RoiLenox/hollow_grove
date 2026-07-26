@@ -52,7 +52,7 @@ Hueman
 
 ## Artifact Inputs
 
-Current Synthesis base bytes: 1595.
+Current Synthesis base bytes: 1596.
 Current Synthesis activation gate bytes: 1039.
 
 ## Boundary Reminder

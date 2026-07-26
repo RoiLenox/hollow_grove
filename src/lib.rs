@@ -14,6 +14,7 @@ pub mod falloutman;
 pub mod fire;
 pub mod flow_glow_grammar;
 pub mod frame_state;
+pub mod gameplay;
 pub mod grove_seam;
 pub mod hollow_beam;
 pub mod hollow_grove;
@@ -103,11 +104,11 @@ pub use current_grip_inheritance::{
     CurrentRequirement, GripExpressionId, GripExpressionScore, GripPracticeEvent,
     GripPracticeProfile, PressureRequirement, SkillRoot,
     build_current_inheritance_validation_report, build_current_inheritance_witness,
-    build_grip_witness, canonical_current_grip_inheritance_contract_fixture,
-    canonical_freemason_tendency_fixture, canonical_goblin_weapongrip_fixture,
+    build_grip_witness, canonical_civic_witness_tendency_fixture,
+    canonical_current_grip_inheritance_contract_fixture, canonical_goblin_weapongrip_fixture,
     canonical_gremlin_foxy_tinkergrip_fixture, canonical_gremlin_tinkergrip_fixture,
-    canonical_hypergiant_tendency_fixture, canonical_ogre_siegegrip_fixture,
-    canonical_ork_formationgrip_fixture, canonical_proletariat_tendency_fixture,
+    canonical_identity_custodian_tendency_fixture, canonical_ogre_siegegrip_fixture,
+    canonical_ork_formationgrip_fixture, canonical_structural_practice_tendency_fixture,
     canonical_troglodyte_precision_fixture, canonical_troglodyte_worldgrip_fixture,
     canonical_troll_bridgegrip_fixture, canonical_troll_moxy_bridgegrip_fixture,
     project_grip_practice_profile, resolve_current_grip_action,
@@ -147,11 +148,12 @@ pub use flow_glow_grammar::{
     EmbodiedMoveResolution, EmbodiedPracticeRecord, EmbodiedRole, ExpressionDomain,
     FlowGlowContractInput, RecipeBoundaryStatus, build_embodied_action_witness,
     build_flow_glow_validation_report, build_flow_glow_witness,
-    canonical_cross_pair_show_seam_fixture, canonical_flow_glow_contract_fixture,
-    canonical_freemason_flow_beam_fixture, canonical_hypergiant_flow_gleam_fixture,
+    canonical_civic_witness_flow_seam_fixture, canonical_cross_pair_show_seam_fixture,
+    canonical_flow_glow_contract_fixture, canonical_identity_custodian_flow_gleam_fixture,
     canonical_muse_show_beam_fixture, canonical_nightingale_grip_seam_fixture,
-    canonical_nightingale_show_beam_fixture, canonical_proletariat_flow_seam_fixture,
-    canonical_siren_grit_gleam_fixture, resolve_embodied_action, validate_flow_glow_contract,
+    canonical_nightingale_show_beam_fixture, canonical_siren_grit_gleam_fixture,
+    canonical_structural_practice_flow_beam_fixture, resolve_embodied_action,
+    validate_flow_glow_contract,
 };
 pub use frame_state::{BeingId, CurrentPrism, FlowId, FrameId, FrameState, GlowId};
 pub use grove_seam::{GroveSeam, SeamRoute};

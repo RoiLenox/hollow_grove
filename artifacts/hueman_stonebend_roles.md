@@ -4,61 +4,98 @@
 
 Stonebend carries Name It and Craft through a three-part civic balance that belongs to Hueman's world layer and remains vertically integrated above Current Synthesis and Hollow Grove.
 
-## Role Definitions
+## People and Principal Authorities
 
-- Proletariat bears labor witness, shared burden, and the right to challenge false Title from below.
-- whoever holds the Hypergiant Crown is Hypergiant: visible Title, public naming, and outward negotiation without sovereign exemption.
-- Hypergiant is the Stonebend office that possesses the Troglodyte when Title has to descend into the deepest burden form.
-- Freemason tests craft, structure, and whether the named form can actually carry load.
+- the Geralds are Stonebend's constitutional people; citizenship provides standing but never implies office.
+- the Hypergiant is the singular highest Stonebend office and preserves the integrity of Names, Titles, succession, boundaries, and sealed constitutional records.
+- the Proliteriate is Stonebend's permanent distributed public network; its active voices are temporary, bounded, recallable witnesses rather than permanent chamber seats or creature roles.
+- the High Freemason is the singular office leading the wider Freemason institution for structure, defense, survey, Seals, custody, lawful execution, and Hollowing equipment.
 
-## Creature Rank Ladder
+## Form Continuity
 
-- Stonebend's creature ladder rises through Gremlin -> Goblin -> Ghoul -> Troll -> Ork -> Ogre -> Troglodyte.
-- Gremlin marks the apprentice pressure-reader who learns scrap cunning, hidden seams, and first burden claims.
-- Goblin marks the named craft worker who can hold one public job, one claim, and one visible tool burden.
-- Ghoul marks the rank where the worker can stay with ruin, salvage, and difficult remains without losing structural judgment.
-- Troll marks stubborn endurance, bridge custody, and long-span structural holding.
-- Ork marks the war-labor rank: direct force, organized push, and contested build defense under pressure.
-- Ogre marks the heavy carrier who takes direct load transfer, breach work, and blunt material relocation.
-- Troglodyte marks the deepest Stonebend rank: understructure memory, cavern authority, and last-burden custody.
+- the existing Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre -> Troglodyte form sequence remains the complete Presynce embodiment ladder and a creature-form projection, not a political rank ladder.
+- a changed Frame may receive a transformed-form Name while its former Names, lineage, liabilities, and continuity remain recorded.
+- no Current Form, Aura Frame, Synthesis, species, combat rank, wealth level, or lineage automatically grants eligibility for Hypergiant or High Freemason.
+- transformation may never create office or Title automatically.
 
-## Power Balance
+## Constitutional Powers
 
-- Proletariat, Hypergiant, and Freemason hold Stonebend's constitutional balance as Title, Labor, and Craft.
-- Hypergiant is the public face of the balance, not a higher authority than the others.
-- the office of Hypergiant may not remain vacant; if the Crown is broken, opposed, or lost, another bearer must be raised.
-- the Proletariat and the Freemason may each oppose the Hypergiant Crown, alone or together, if the Title is no longer legitimate.
-- either office may take the Crown and become Hypergiant, and both may move against it at once.
-- no single role may collapse the balance into solo rule.
+- Stonebend separates Claim, Title, and Yield without creating three equal sovereigns: the Freemason forges the Claim, the Hypergiant bears the Title, and the Proliteriate shields the Yield.
+- the Hypergiant is the highest constitutional office, remains evidence-bound and challengeable, and may not occupy Proliteriate or Freemason office simultaneously.
+- the Proliteriate preserves public witness and dissent through district, guild or workshop, labor crew or worksite, and inherited or commonwealth nodes; it raises temporary witnesses and cannot execute armed seizure or Hollowing.
+- the Freemason forges and tests Claims, preserves records and boundaries, may refuse unlawful orders, and cannot create sovereignty or self-certify a sovereign Claim.
+- one power may challenge; the other two distinct powers must concur to remove; the same power cannot count twice, and representation removal cannot abolish the network.
+- Hypergiant accession requires a stable Claim, independent Freemason examination, Proliteriate Yield hearing, relinquishment of protected elevation, consequence descent, Flynt or Basin Proof of Persistence, The Lazerhorn, lawful vacancy, Seal, and public oath.
 
-## Stonebender
+## Name, Title, Mirror, and Seal
 
-- the Stonebender is the public proving ground at Stonebend where Hypergiant, Proletariat, and Freemason may contest supremacy without pretending the constitution is peaceful.
-- the Stonebender takes place in a Stonehenge-like arena at Stonebend: standing-stone rings, ritual lanes, weapon circles, burden relays, and last-standing contests under public witness.
-- Hypergiant enters as visible title and reigning crown pressure.
-- Proletariat enters as labor force, crowd will, and below-title challenge made bodily.
-- Freemason enters as structural discipline, engineered force, and proof that craft can defeat mere mass or spectacle.
-- the Stonebender does not replace the Crown, but it is the grand public pressure test that may justify opposition, succession pressure, or renewed legitimacy.
+- a Name identifies one subject in a defined scope and preserves continuity; it does not grant ownership, office, competence, clearance, recognition, or moral worth.
+- a Title authorizes only the recorded standing, authority, ownership, custody, stewardship, jurisdiction, obligation, or office attached to a named subject.
+- a Mercury Mirror verifies correspondence among subject, record, present, past, structure, plan, provenance, survey, boundary, and accession; it does not create truth or grant Title.
+- a Seal binds the correct subject, authority, scope, decision, and sequence and makes later alteration detectable.
+- ownership, custody, and stewardship remain distinct.
+- renaming preserves former Names, dates, reasons, continuity, associated Titles, and Tombstoned claims.
 
-## Constitutional Role
+## Hollowing and Continuity
 
-- Stonebend carries Name It and Craft across both Hueman and Hollow Grove-facing interpretation.
-- Goblin is Stonebend's confirmed Current-origin path, but Stonebend is not reduced to a form ladder.
-- Stonebend mines diamonds and reflective mineral structures.
-- Stonebend separates hollow current from regular current before reflective craft begins.
-- Stonebend uses Hollowing and reflective craft to produce Mercury Mirror rather than treating Hollowing as ordinary synthesis.
-- Mercurite is the accepted hard branch for Stonebend-made structural bearing.
-- Stonebend's signature pressure action is reallocation.
-- Current Synthesis remains a lower operating layer beneath this governance.
-- Hollow Grove remains the recursive core beneath both.
+- lawful Hollowing requires a named subject, authority, purpose, defined scope, consent when applicable, pre- and post-procedure evidence, qualified operator, safety and custody plans, continuity determination, restoration or disposition, and Seal.
+- emergency Hollowing is narrow, necessary, recorded, and followed immediately by mandatory review.
+- every extracted Hollow record preserves source provenance and custody.
+- Illegal Hollowing is Stonebend's signature constitutional offense.
+- Tombstone is durable constitutional history, never deletion, and a Tombstoned Name or Title cannot exercise active authority.
+- Current Synthesis remains authoritative for Current, Aura, Bond, Synthesis, persistence, replay, and common House decisions beneath this Stonebend-specific law.
+
+## Aura Way, Aether, and Stone
+
+- Mt. Aura is Aether, the shared ideal and pinnacle; Riptide is Bathos, the downward pole of weight and consequence; neither is owned by Stonebend.
+- Aether is weightless Current and Current is the heaviest Aether: distinct burden states of one medium whose stable lineage survives lawful refinement.
+- Aura is Aether revealed through Form, while Current is Bathos embodied through weight.
+- Aura Way is the standard known path through prerequisites, education, supervised practice, examination, demonstrated responsibility, and recognition eligibility.
+- the Houses teach the work, Aura Way organizes the path, and Stonebend names completion without declaring metaphysical perfection.
+- lawful material Hollowing removes only authorized removable burden, preserves essential fractions, and carries source Current, result Aether, proof, provenance, custody, and Seal.
+- geographic stone Form refracts universal Aether into particular Aura: Opal varies, Diamond concentrates, and Quartz resonates without creating exclusive House ownership.
+- ordinary Aura manifestation preserves the stone lattice and does not require melting.
+
+## Three Gates, Diamond, and Bounded Title Scope
+
+- Stonebend has exactly three bidirectional constitutional gates: Flynt-facing through Stairway to Heaven and Basin Motor Speedway, Central Junction-facing through the Craft Corridor, and Sandmanor-facing through Aura Way and Mt. Aura.
+- Central Junction remains a district, Mt. Aura remains an ideal and route landmark, and Riptide remains outside Stonebend on its established route.
+- one stable core Title may hold independent Formation Recognition, Public Circulation, and Operational Deployment scopes; rejection or limitation at one gate does not erase another scope.
+- gate failures return typed evidence and distinguish honest failure, negligence, fraud, illegality, and constitutional hollowness.
+- Diamond is Stonebend's continuing sovereign Title; the Hypergiant is its temporary active bearer; Diamond remains when vacant.
+- temporary Proliteriate witnesses carry only a stable bounded mandate, may be recalled, and return authority to the permanent network when the matter ends.
+- Spartacus is an archetype for a raised witness, not a permanent fourth office.
+- removal and succession preserve durable Tombstones rather than deleting ended authority.
+- no Hypergiant claims Diamond without The Lazerhorn; recommendation, lineage, former office, and self-certification cannot shorten the path.
+- every gate crossing remains traceable to Claim evidence, Title or boundary disposition, and Yield accountability even when routine work is delegated.
+
+## Title Lifecycle and Constitutional Continuity
+
+- a Claim is not automatically a Title; Stonebend recognition establishes the bounded Title, while activation separately permits its exercise under explicit policy conditions.
+- maintenance sustains an active term, while renewal is a formal decision to continue the same stable Title into another term.
+- limitation, supervision, suspension, remediation, restoration, and removal target one identified scope or constitutional layer rather than silently destroying the core Title.
+- honest failure, negligence, fraud, illegality, and constitutional hollowness remain distinct and receive proportionate recorded consequences.
+- restoration repairs the Title without erasing the interruption, remediation evidence, or continuing limitations.
+- every ended active term links to a Tombstone, and honorable completion remains distinct from punitive removal.
+- during Diamond vacancy, bounded continuity mandates may preserve existing duties but cannot become Diamond, appoint a Hypergiant, create sovereign law, or grow permanent through use.
+- High Freemason replacement requires independent Forge review; no candidate self-certifies and no outgoing bearer appoints the replacement unilaterally.
+- the Proliteriate network survives node change, witness recall, and mandate completion without a permanent speaker or locked numerical threshold.
+- Claim, Title, and Yield evidence remain traceable through every temporal review.
 
 ## Status
 
-- Stonebend roles are descriptive-only for now
-- no command resolver or role AI is active
-- no automatic power shifts are active
-- no feedback into Current Synthesis
-- no feedback into Hollow Grove
+- STONEBEND_CONSTITUTION_V2.md is the canonical Stonebend law
+- STONEBEND_AURA_WAY_AETHER_HOLLOWING_FOUNDATION_V1.md is the canonical bounded first-pass foundation
+- STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md is the canonical bounded second-pass constitutional supplement
+- STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md is the canonical bounded third-pass lifecycle supplement
+- src/world/stonebend.rs enforces Stonebend-specific authority and registry invariants above the frozen runtime
+- src/world/stonebend/foundation.rs enforces Aura Way, material provenance, lawful refinement, and stone-refraction invariants without extending Stonebend government
+- src/world/stonebend/second_pass.rs enforces the three gates, bounded Title scopes, Diamond tenure, distributed Proliteriate, removal, Tombstones, succession, and delegated accountability without changing gameplay
+- src/world/stonebend/third_pass.rs enforces recognition, activation, maintenance, renewal, targeted intervention, restoration, vacancy continuity, independent Forge replacement, and temporal Claim/Title/Yield review without replacing the common Bond engine
+- Body -> Presynce is Stonebend's Hueman faculty: embodied anticipation bounded by Frame, Flow, polarity, evidence, and uncertainty, never an automatic dodge or counter
+- src/world/house_institutions.rs provides the neutral institution projection
+- Godot and Hueman artifacts are presentation only
+- the recursion kernel and Constitutional Runtime V2 remain untouched and authoritative in their frozen domains
 
 ## Artifact Inputs
 

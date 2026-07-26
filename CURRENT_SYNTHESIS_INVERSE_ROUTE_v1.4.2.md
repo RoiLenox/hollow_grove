@@ -31,7 +31,7 @@ It passes through:
 ```text
 Aura Basin
 ↓
-Aura Fields
+Aura Field
 ↓
 Aura Beach
 ```

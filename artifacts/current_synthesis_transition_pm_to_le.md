@@ -5,7 +5,7 @@
 - exterior ingress: `PlebExterior`
 - complementary return: `BlepReturn`
 - landed route: `BlepArrival`
-- universal landed point: `Point`
+- universal landed point: `Point²`
 - Current Synthesis interprets this frozen kernel boundary at `P/M -> L/E` without re-deriving route facts from topology prose.
 
 ## Transition Condition
@@ -57,9 +57,9 @@
 
 ## Artifact Inputs
 
-Snapshot bytes: 564.
+Snapshot bytes: 587.
 Current Synthesis behavior rules bytes: 2414.
-Current Synthesis topology bytes: 2003.
+Current Synthesis topology bytes: 2007.
 
 ## Boundary Reminder
 

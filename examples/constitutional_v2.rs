@@ -104,7 +104,7 @@ fn end_to_end() -> Result<(), ScenarioError> {
     let gnome = run_gnome_minotaur_scenario()?;
     print_compact("gnome-minotaur", &trace_regional_scenario(&gnome)?);
     println!(
-        "[REGIONAL] Gnome -> Minotaur; region=Aura Fields; stewardship={}; lineage={}",
+        "[REGIONAL] Gnome -> Minotaur; region=Aura Field; stewardship={}; lineage={}",
         gnome
             .runtime
             .stewardship(&gnome.result)

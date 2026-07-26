@@ -6,6 +6,17 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 SOURCE_DIR="$SCRIPT_DIR/hueman_godot/assets/source"
 EXPORT_DIR="$SCRIPT_DIR/hueman_godot/assets/export"
 ASEPRITE_BIN="${ASEPRITE_BIN:-/usr/bin/aseprite}"
+PALETTE_FILE="$(mktemp --tmpdir hollow-grove-visual-palette.XXXXXX.gpl)"
+
+cleanup() {
+    rm -f -- "$PALETTE_FILE"
+}
+trap cleanup EXIT
+
+cargo run --quiet \
+    --manifest-path "$SCRIPT_DIR/Cargo.toml" \
+    --bin visual_color_constitution \
+    -- aseprite-gpl >"$PALETTE_FILE"
 
 if [[ ! -x "$ASEPRITE_BIN" ]]; then
     if command -v aseprite >/dev/null 2>&1; then
@@ -31,6 +42,7 @@ export_one() {
     mkdir -p "$target_dir"
 
     "$ASEPRITE_BIN" -b "$source_file" \
+        --palette "$PALETTE_FILE" \
         --sheet "$EXPORT_DIR/$target_base.png" \
         --data "$EXPORT_DIR/$target_base.json" \
         --format json-array \

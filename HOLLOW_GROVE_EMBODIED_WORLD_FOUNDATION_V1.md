@@ -147,16 +147,17 @@ Parked future content; not required for Embodied World Foundation V1.
 - Grit-root Skill families
 - full Seam/Beam/Gleam Move catalog
 - deep practice persistence
-- permanent Freemason / Proletariat / Hypergiant specialization
-- Sandmanor profession runtime
+- automatic office or Title assignment from Structural practice, Civic witness, or Identity custodian action history
+- additional Sandmanor profession gameplay beyond the ratified proof,
+  education, Contest, and regional-role law
 - Gnome horizontal specialization
 - Elf horizontal specialization
 - Gargoyle runtime
 - Werewolf runtime
 - Merman runtime
-- Chimera runtime
-- Manticore runtime
-- Tross succession
+- constitutional Chimera presentation beyond the locked Flynt domain model
+- Flynt institutional encounter runtime
+- Tross succession, which remains constitutionally unspecified and must not be inferred
 - full playable UI
 - save-state progression beyond existing truth
 - multiplayer and companion systems

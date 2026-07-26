@@ -385,7 +385,7 @@ pub fn tui_events_from_trace(trace: &ConstitutionalTrace) -> Vec<TuiEvent> {
                 sequence: u64::try_from(events.len()).unwrap_or(u64::MAX),
                 scenario: trace.scenario.clone(),
                 kind: TuiEventKind::AuraFieldsAssigned,
-                fields: BTreeMap::from([("region".into(), "Aura Fields".into())]),
+                fields: BTreeMap::from([("region".into(), "Aura Field".into())]),
             });
             events.push(TuiEvent {
                 sequence: u64::try_from(events.len()).unwrap_or(u64::MAX),

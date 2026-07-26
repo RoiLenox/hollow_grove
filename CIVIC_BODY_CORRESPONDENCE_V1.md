@@ -54,7 +54,13 @@ Canonical note:
 
 ## Nightingales
 
-Nightingales are Glaüshouse’s civic recognition and clearing people.
+The Nightingales are Glaüshouse’s constitutional nursing and clinical-care
+institution as well as its civic recognition and clearing body.
+
+Their white-blood-cell correspondence describes what the institution protects
+and how it responds; it does not prevent Nightingales from serving as nurses,
+advocates, witnesses, emergency responders, or operators within lawful scope,
+and it does not make generic nurses a species.
 
 They correspond to white blood cells by function:
 
@@ -102,7 +108,9 @@ They correspond to interior signaling and regulatory cells by function:
 Canonical note:
 
 - Minorians measure.
-- Gnomes remain horizontal specialists rather than an evolution ladder.
+- Gnomes retain horizontal occupational specializations. That horizontal civic
+  structure does not erase the separately governed regional
+  `Gnome → Minotaur` Synthesis of the Aura Field.
 
 ## Minoans
 
@@ -188,9 +196,9 @@ The Stonebend apex mapping now uses the embodied action grammar documented in:
 
 Canonical specialization alignment:
 
-- `Freemason = Beam`
-- `Proletariat = Seam`
-- `Hypergiant = Gleam`
+- `Structural practice = Beam`
+- `Civic witness = Seam`
+- `Identity custodian = Gleam`
 
 Gerald circulation supplies all three powers rather than replacing them.
 

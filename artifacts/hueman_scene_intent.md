@@ -36,63 +36,67 @@ Each scene presence carries a dominant descriptive intent before any encounter o
 
 ## Aura Ridge Intent
 
-- keep free trade moving along the declared straight ridge legs without collapsing kingdom identity
-- let Glaushouse serve as the visible turn where eastern and western trade pressure changes direction
-- keep the straight ridge legible without breaking the larger circular world loop
+- Witness: return restored beings to public sight, presentation, exchange, and civic reintegration
+- hold Equal Gaze as reciprocal public witness without turning it into legal certification
+- keep the elevated open ridge legible without breaking the larger circular world loop
 
 ## Glaushouse Intent
 
-- repair: restore function without erasing real damage or real risk
+- Clear: permit only a named, scoped, consented, competent, time-bounded intervention with a recovery path
 - style: run recovery through cold-lit wards, industrial bays, strict presentation, and commanding public poise rather than rustic comfort
-- Prima Donna: grant Clearance without escaping challenge from the floor
-- Persephone: manage descent, triage, recovery, and return
-- Nightingales: remain the internal white-blood-cell witness when charts or appearances claim more recovery than the body can verify
+- Prima Donna: preserve clinical law and high-risk Clearance without manufacturing consent, evidence, Title, or recognition
+- Persephone: reconcile Matron and Marshal evidence across passage, stabilization, recovery, discharge, regression, and return
+- Nightingales: protect bedside truth, patient advocacy, and immediate clinical stops with mandatory review
+- consent and capacity: never infer participation from silence, custody, dependence, recognition, refusal, or Aura influence
+- Synthesis: record actual outcomes, preserve prior identity, and carry recovery through completion
+- Illegal Synthesis: stop coercive, unsafe, fraudulent, concealed, identity-erasing, or unrecorded transformation
 - Glaus Gel: support machine and Hueman repair as a practical synthesis medium
 - Glausteel: carry the cleared integrated hard branch after restoration and synthesis work
 
 ## Stonebend Civic Intent
 
-- craft: name the thing, declare its burden, and shape material into workable repeatable form
-- Proletariat: challenge false authority from the side of lived work and borne burden
-- Hypergiant: carry the public Title while remaining challengeable
-- Freemason: test whether named structure can bear, transfer, and maintain load
-- reallocate pressure: move burden, title, and structural responsibility into the right vessel or route
-- Hollowing: refine carried pressure out of active current without making the remaining current meaningless
-- Mercury Mirror: refine hollow current toward reflective craft rather than decorative glamour
-- Stonebend intent keeps authority challengeable instead of absolute
+- Name: attach a stable identifier to one subject in one scope without manufacturing truth
+- Title: grant only recorded standing, authority, ownership, custody, stewardship, jurisdiction, obligation, or office
+- Mirror: verify correspondence among subject, record, continuity, provenance, survey, and accession without becoming authority
+- Seal: bind the correct authority, subject, scope, decision, and sequence
+- Hollowing: require authority, purpose, consent where applicable, evidence, qualified operation, custody, continuity, restoration, and Seal
+- Illegal Hollowing: stop unauthorized, coercive, fraudulent, concealed, excessive, destructive, or unrecorded interior alteration
+- Tombstone: preserve ended Names, Titles, structures, and obligations without treating deletion as history
+- Stonebend intent never treats recognition as Title, transformation as accession, clearance as consent, or custody as ownership
 
-## Tross Helper Intent
+## Flynt Constitutional Intent
 
 - engineering: turn practical capability into deployable routes, services, machines, and infrastructure
 - style: run recognition through boardwalk temptation, casino risk, nocturnal glamour, and outer hunting pressure rather than polite institutional order
-- Tross: recognize what is actually there even when institutions have denied or overlooked it
-- Delinquent: pressure false certainty from the west through deviation and challenge
-- Juvenile: protect beginnings and not-yet-recognized worth from the east
-- White Dwarfs: keep the close guard without becoming substitute rulers
-- Wardens: hold the common route body and public engineering substrate
+- Tross: remain the single constitutional executive above both institutional expressions
+- Chimera: refine the lower apex integration without becoming Manticorp
+- Manticorp: remain both a distinct maintained Form and the institution named for that sovereign ideal
+- Tross = Mystery Man = Mr. X: preserve one stable person across public and underground command
+- The Gallows and We Fairy Men: preserve underground leverage, Basin distinction, and divided Recipe custodianship
+- The Gallowry: remain the hidden headquarters of the Gallows rather than becoming a separate institution
 - opals: support advanced engineering feedstock and field-ready refinement
 - Opal Oil: turn regular current and holographic aura into a practical engineering medium
-- helpers keep recognition challengeable instead of becoming sovereign rank
+- presentation must preserve direct Tross command of both Manticorp and the Gallows
 
 ## Sandmanor Competitive Intent
 
 - configuration: prove the claim, test the proof, and improve the arrangement
-- Sandmen: carry the public witness that makes contest and improvement socially binding
-- Minoans: teach modeled arrangement, design, and structure
-- Minorians: teach count, measure, assay, and reproducible proof
-- Aura Beach: run visible judgment through the High Elf court so arrangement, etiquette, and display stay publicly enforceable
-- Aura Fields: run Minorian proof through open comparison so measure, tally, and market-facing verification can be contested
-- The Sandman: emerge through the greatest witnessed improvement rather than inheritance
+- Sandmen: preserve the stable institution projection used by common House proof decisions without becoming a people or sovereign
+- Minoans: teach exterior relationship, navigation, access, and horizon-facing design
+- Minorians: teach interior function, maintenance, cultivation, and repeated-system design
+- Aura Beach and Current Sea: prove outward mobility, coastal relationship, and navigation within disclosed scope
+- Aura Field: prove cultivation, maintenance, yield, sustainability, and repeated work within disclosed scope
+- The Sandman: emerge through the greatest documented reciprocal improvement, then complete Title, recognition, learning statement, and Seal
 - Prism Sand: support counting, refraction, glass, and record logic
 - Prismiron: support precise durable structures after proof survives inspection
 - Sandmanor intent keeps rivalry productive instead of merely punitive
 
 ## Inverse Circle Intent
 
-- The Stairway to Heaven: raise the border upward while its underground inverse curve stores hidden descent pressure
-- The Riptide: pull travelers backward through edge pressure and memory while its underground inverse curve keeps hidden return pull and Merman range alive on the water rim
-- The Current Seanad: measure, sustain, and carry motion around the outer water border while its underground inverse curve keeps hidden current structure
-- Mnt. Aura: hold the curved outer border from Stonebend to Sandmanor while its underground inverse curve keeps the hidden under-arc
+- The Stairway to Heaven / Ascend: accept higher burden through ascent while its underground inverse curve stores hidden descent pressure
+- The Riptide / Retrieve: carry crises toward Glaushouse intake while its underground inverse curve keeps emergency undertow and Merman range alive on the water rim
+- The Current Seanad / Deliberate: hold difficult design and repair questions for institutional judgment while its underground inverse curve keeps hidden current structure
+- Mt. Aura / Aspire: hold the established aspirational curve from Stonebend to Sandmanor while its underground inverse curve keeps the hidden under-arc
 
 ## Status
 
@@ -104,15 +108,15 @@ Each scene presence carries a dominant descriptive intent before any encounter o
 
 ## Artifact Inputs
 
-Hueman Scene Presence bytes: 6154.
+Hueman Scene Presence bytes: 7034.
 Hueman Link Physics bytes: 3086.
-Current Synthesis collision relay bytes: 3022.
+Current Synthesis collision relay bytes: 3024.
 Current Synthesis Contract bytes: 1442.
-Hueman Stonebend Roles bytes: 4242.
-Hueman Tross Helpers bytes: 5222.
-Hueman Glaushouse Roles bytes: 4655.
-Hueman Sandmanor Roles bytes: 4079.
-Hueman Inverse Circle bytes: 2404.
+Hueman Stonebend Roles bytes: 10286.
+Hueman Flynt Constitution bytes: 5513.
+Hueman Glaushouse Roles bytes: 7910.
+Hueman Sandmanor Roles bytes: 9864.
+Hueman Inverse Circle bytes: 2513.
 
 ## Boundary Reminder
 

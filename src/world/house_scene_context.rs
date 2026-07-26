@@ -6,13 +6,12 @@
 
 use crate::institution::{
     AccessPolicy, AccessRequirement, AccessRequirementMatch, InstitutionId, InstitutionalBeingId,
-    OfficeId, RoleId, SiteId, ZoneId,
+    RoleId, SiteId, ZoneId,
 };
 use crate::institution_affiliation::{InstitutionalSceneContext, InstitutionalWorldState};
 
-use super::house_institutions::{
-    glaushouse_medical_civilization_id, sandmen_id, stonebend_constitution_id,
-};
+use super::glaushouse;
+use super::house_institutions::{sandmen_id, stonebend_constitution_id};
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct HouseZoneContext {
@@ -81,8 +80,9 @@ pub fn stonebend_scene_context(
     }
 }
 
-/// Sandmanor's court and proof spaces are public. Rival teaching and the
-/// Sandman succession remain descriptive world rules, not a resolver.
+/// Sandmanor's proof spaces are public. This read-only projection does not
+/// resolve reciprocal teaching, the Contest of Improvement, or Sandman
+/// accession; `world::sandmanor` owns that executable House-specific law.
 #[must_use]
 pub fn sandmanor_scene_context(
     state: &InstitutionalWorldState,
@@ -108,7 +108,7 @@ pub fn glaushouse_scene_context(
     observer: &InstitutionalBeingId,
     subject: &InstitutionalBeingId,
 ) -> GlaushouseSceneContext {
-    let institution = glaushouse_medical_civilization_id();
+    let institution = glaushouse::glauspitals_id();
     let mut zones = zones_for(state, &institution, glaushouse_member_policy());
     for context in &mut zones {
         context.policy = glaushouse_clinical_access_policy(&context.zone);
@@ -160,7 +160,7 @@ fn glaushouse_member_policy() -> AccessPolicy {
     AccessPolicy {
         matching: AccessRequirementMatch::Any,
         requirements: vec![
-            AccessRequirement::InstitutionMembership(glaushouse_medical_civilization_id()),
+            AccessRequirement::InstitutionMembership(glaushouse::glauspitals_id()),
             AccessRequirement::ExplicitGrant,
         ],
     }
@@ -178,8 +178,8 @@ pub fn glaushouse_clinical_access_policy(zone: &ZoneId) -> AccessPolicy {
             matching: AccessRequirementMatch::Any,
             requirements: vec![
                 AccessRequirement::Role(role_id("role.glaushouse.recovery-staff")),
-                AccessRequirement::Role(role_id("role.glaushouse.persephone")),
-                AccessRequirement::Office(office_id("office.glaushouse.prima-donna")),
+                AccessRequirement::Role(glaushouse::persephone_rank_id()),
+                AccessRequirement::Office(glaushouse::prima_donna_office_id()),
                 AccessRequirement::ExplicitGrant,
             ],
         },
@@ -189,10 +189,6 @@ pub fn glaushouse_clinical_access_policy(zone: &ZoneId) -> AccessPolicy {
 
 fn role_id(value: &str) -> RoleId {
     RoleId::new(value).expect("canonical stable role ID")
-}
-
-fn office_id(value: &str) -> OfficeId {
-    OfficeId::new(value).expect("canonical stable office ID")
 }
 
 #[cfg(test)]
@@ -249,9 +245,9 @@ mod tests {
             recovery
                 .policy
                 .requirements
-                .contains(&AccessRequirement::Office(office_id(
-                    "office.glaushouse.prima-donna"
-                )))
+                .contains(&AccessRequirement::Office(
+                    glaushouse::prima_donna_office_id()
+                ))
         );
     }
     #[test]

@@ -34,7 +34,7 @@ mod tests {
         assert!(output.starts_with("# Hueman Start Paths"));
         assert!(output.contains("player still begins as Hueman near Aura Ridge"));
         assert!(
-            output.contains("Sandmanor-facing approach = Aura Beach -> Aura Basin -> Aura Fields")
+            output.contains("Sandmanor-facing approach = Aura Beach -> Aura Basin -> Aura Field")
         );
         assert!(output.contains("Hueman Archetype Lens bytes: 4."));
     }

@@ -127,7 +127,7 @@ SYNTHESIS AIM
     curved
 
   Function:
-    Information From Beyond
+    Connects
 
   Bond:
     One
@@ -298,7 +298,7 @@ SYNTHESIS AIM
     straight
 
   Function:
-    Bond
+    Locates
 
   Bond:
     One
@@ -472,6 +472,7 @@ Version 1.1 Execution:
   Point² produced: true
   Body 1 → 3
   Flow +TinkerGrip
+
 AURA-FAVORED
 
 Decision Trace

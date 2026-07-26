@@ -11,25 +11,25 @@ After start choice and `AuraTriad` behavior are declared, each archetype reads t
 ### `goblin`
 
 - `Aura Basin` reads as burrow, shelter, and kept stores
-- `Aura Fields` reads as forage paths, routes, and workable ground
+- `Aura Field` reads as forage paths, routes, and workable ground
 - `Aura Beach` reads as exposed salvage, tide risk, and thin cover
 
 ### `gremlin`
 
 - `Aura Basin` reads as stress seams, pressure joints, and hidden leverage
-- `Aura Fields` reads as barter space, friction lines, and noisy crossings
+- `Aura Field` reads as barter space, friction lines, and noisy crossings
 - `Aura Beach` reads as scrap edge, discard flow, and threshold apparatus
 
 ### `pixy`
 
 - `Aura Basin` reads as hush, glow, and suspended potential
-- `Aura Fields` reads as shimmer, weather play, and visible drift
+- `Aura Field` reads as shimmer, weather play, and visible drift
 - `Aura Beach` reads as glint, spray, and bright dispersal
 
 ### `sprite`
 
 - `Aura Basin` reads as root echo, sleep, and soft enclosure
-- `Aura Fields` reads as current, sway, and open circulation
+- `Aura Field` reads as current, sway, and open circulation
 - `Aura Beach` reads as horizon pull, release, and farward motion
 
 ## Boundary

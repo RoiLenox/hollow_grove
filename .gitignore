@@ -23,6 +23,7 @@
 /artifacts/current_synthesis_resource_inspector.md
 /artifacts/current_synthesis_cleopatra.md
 /artifacts/current_synthesis_events.txt
+/artifacts/gameplay-saves/
 
 # Local verification output. Promote a minimized failure into a checked test or
 # fuzz corpus entry instead of committing machine- and run-specific logs.
@@ -33,3 +34,11 @@
 
 # Local Godot editor metadata.
 /hueman_godot/.godot/
+
+# External development reference material.
+.reference-assets/
+reference-assets/
+pokewilds-reference/
+pokewilds-linux64.zip
+*.sav
+*.sav.backup

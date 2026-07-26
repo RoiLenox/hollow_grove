@@ -106,7 +106,7 @@ fn gnome_minotaur_runs_through_service_and_assigns_typed_stewardship() {
         .iter()
         .find(|event| event.kind == TuiEventKind::StewardshipGranted)
         .unwrap();
-    assert_eq!(event.fields["region"], "Aura Fields");
+    assert_eq!(event.fields["region"], "Aura Field");
     assert!(event.fields["duties"].contains("tend Aura crops"));
 }
 

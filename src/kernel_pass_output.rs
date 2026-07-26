@@ -881,6 +881,9 @@ pub fn build_desktop_status_output(kernel_pass: &KernelPass) -> String {
         ),
         build_version_two_witness_section(kernel_pass),
     );
+    while output.ends_with("\n\n") {
+        output.pop();
+    }
     output
 }
 

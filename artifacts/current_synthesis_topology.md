@@ -5,7 +5,7 @@
 - exterior ingress: `PlebExterior`
 - complementary return: `BlepReturn`
 - landed route: `BlepArrival`
-- universal landed point: `Point`
+- universal landed point: `Point²`
 - Current Synthesis begins downstream from this frozen Hollow Grove boundary rather than recomputing it.
 
 ## Joint Order
@@ -39,7 +39,7 @@ The inverse curved route runs beneath the plains as downstream Current Synthesis
 ```text
 Aura Basin
 ↓
-Aura Fields
+Aura Field
 ↓
 Aura Beach
 ```
@@ -70,7 +70,7 @@ These remain route regions and route stations, not Hollow Grove layers.
 
 ## Artifact Inputs
 
-Snapshot bytes: 564.
+Snapshot bytes: 587.
 Current Synthesis sequence bytes: 1458.
 Current Synthesis state bytes: 2216.
 

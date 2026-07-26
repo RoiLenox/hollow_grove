@@ -1,6 +1,9 @@
 use std::io;
 use std::path::Path;
 
+use hollow_grove::constitutional::{
+    build_visual_color_palette_output, build_visual_color_validation_report,
+};
 use hollow_grove::current_synthesis_engine::{
     CurrentSynthesisState, EngineLens, PersistedCurrentSynthesisState,
     advance_current_synthesis_player_action_at, append_current_synthesis_tick_at,
@@ -45,6 +48,8 @@ enum CurrentSynthesisTuiCli {
     WorldContext,
     WorldWitness,
     WorldValidate,
+    VisualColorsShow,
+    VisualColorsValidate,
     ProgressionWitness,
     ProgressionValidate,
     PointSquaredWitness,
@@ -148,6 +153,20 @@ where
             ),
             Some(other) => Err(format!("unknown world command: {other}")),
             None => Err(String::from("world requires context, witness, or validate")),
+        },
+        "visual-colors" => match args.next().as_deref() {
+            Some("show") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::VisualColorsShow,
+                "visual-colors show",
+            ),
+            Some("validate") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::VisualColorsValidate,
+                "visual-colors validate",
+            ),
+            Some(other) => Err(format!("unknown visual-colors command: {other}")),
+            None => Err(String::from("visual-colors requires show or validate")),
         },
         "progression" => match args.next().as_deref() {
             Some("witness") => require_no_extra(
@@ -634,7 +653,7 @@ fn parse_player_action(
 }
 
 fn usage() -> &'static str {
-    "Usage: current_synthesis_tui <scenario|world|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|civic-body|civic-crisis|flow-glow|embodied-action|current-inheritance|grip|aura-polarity|light-aura|dark-aura|aura-route|foundation-checkpoint|stanislavski|falloutman|engine|bond|resource|player|npc|cleopatra> [args]\n\
+    "Usage: current_synthesis_tui <scenario|world|visual-colors|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|civic-body|civic-crisis|flow-glow|embodied-action|current-inheritance|grip|aura-polarity|light-aura|dark-aura|aura-route|foundation-checkpoint|stanislavski|falloutman|engine|bond|resource|player|npc|cleopatra> [args]\n\
      \n\
      Commands:\n\
        scenario list\n\
@@ -642,6 +661,8 @@ fn usage() -> &'static str {
        world context\n\
        world witness\n\
        world validate\n\
+       visual-colors show\n\
+       visual-colors validate\n\
        progression witness\n\
        progression validate\n\
        point-squared witness\n\
@@ -793,6 +814,8 @@ fn run_cli(root: &Path, cli: CurrentSynthesisTuiCli) -> io::Result<String> {
         CurrentSynthesisTuiCli::WorldValidate => {
             Ok(build_hollow_grove_alignment_validation_report())
         }
+        CurrentSynthesisTuiCli::VisualColorsShow => Ok(build_visual_color_palette_output()),
+        CurrentSynthesisTuiCli::VisualColorsValidate => Ok(build_visual_color_validation_report()),
         CurrentSynthesisTuiCli::ProgressionWitness => build_progression_witness(),
         CurrentSynthesisTuiCli::ProgressionValidate => build_progression_validation_report(),
         CurrentSynthesisTuiCli::PointSquaredWitness => build_point_squared_witness(),
@@ -1060,6 +1083,16 @@ mod tests {
             CurrentSynthesisTuiCli::WorldValidate
         );
         assert_eq!(
+            parse_cli([String::from("visual-colors"), String::from("show")])
+                .expect("visual color palette should parse"),
+            CurrentSynthesisTuiCli::VisualColorsShow
+        );
+        assert_eq!(
+            parse_cli([String::from("visual-colors"), String::from("validate")])
+                .expect("visual color validation should parse"),
+            CurrentSynthesisTuiCli::VisualColorsValidate
+        );
+        assert_eq!(
             parse_cli([String::from("progression"), String::from("witness")])
                 .expect("progression witness should parse"),
             CurrentSynthesisTuiCli::ProgressionWitness
@@ -1308,6 +1341,8 @@ mod tests {
         assert!(usage.contains("world context"));
         assert!(usage.contains("world witness"));
         assert!(usage.contains("world validate"));
+        assert!(usage.contains("visual-colors show"));
+        assert!(usage.contains("visual-colors validate"));
         assert!(usage.contains("progression witness"));
         assert!(usage.contains("progression validate"));
         assert!(usage.contains("point-squared witness"));
@@ -1354,6 +1389,21 @@ mod tests {
         assert!(usage.contains("npc focus <npc-id>"));
         assert!(usage.contains("cleopatra tick [npc-id]"));
         assert!(usage.contains("cleopatra run <count> [npc-id]"));
+    }
+
+    #[test]
+    fn visual_color_commands_consume_the_constitutional_palette() {
+        let root = unique_temp_dir("current-synthesis-tui-visual-colors");
+        let palette = run_cli(&root, CurrentSynthesisTuiCli::VisualColorsShow)
+            .expect("visual color palette should render");
+        let validation = run_cli(&root, CurrentSynthesisTuiCli::VisualColorsValidate)
+            .expect("visual color constitution should validate");
+
+        assert!(palette.contains("Hollow Grove Visual Color Constitution"));
+        assert!(palette.contains("Oxford Blue: #0A1024"));
+        assert!(palette.contains("Glaüshouse"));
+        assert!(validation.contains("Visual Color Constitution: pass"));
+        assert!(validation.contains("ordinary pure-black defaults: 0"));
     }
 
     #[test]

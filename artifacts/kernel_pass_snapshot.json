@@ -1,18 +1,19 @@
 {
-  "start": "Symptom 1",
+  "start": "Point",
   "triway": {
     "ways": ["One", "Two", "Three"]
   },
+  "fourway": "Fourway",
   "hollow_grove": {
     "bond": "One",
     "atmosphere": ["Two", "Three"]
   },
-  "grove_seam": "GroveSeam",
+  "grove_seam": "CurrentSeam",
   "grove_seam_route": "PlebExterior",
-  "hollow_beam": "HollowBeam",
+  "hollow_beam": "AuraBeam",
   "hollow_beam_route": "BlepReturn",
-  "landed": "Symptom 2",
+  "landed": "Landed Point",
   "landing_route": "BlepArrival",
-  "landed_point": "Point",
-  "canonical_witness": "start Symptom 1\n↓\nTriway\n↓\nHollowGrove\n↓\nGroveSeam [PlebExterior]\n↓\nHollowBeam [BlepReturn]\n↓\nlanded Symptom 2 [BlepArrival]\n↓\nPoint"
+  "landed_point": "Point²",
+  "canonical_witness": "Point\n↓\nTriway\n↓\nFourway\n↓\nHollowGrove\n↓\nCurrentSeam [PlebExterior]\n↓\nAuraBeam [BlepReturn]\n↓\nPoint² (Landed Point) [BlepArrival]"
 }

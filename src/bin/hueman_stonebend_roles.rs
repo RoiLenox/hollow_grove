@@ -32,21 +32,28 @@ mod tests {
     fn hueman_stonebend_roles_reads_existing_artifacts() {
         let output = build_hueman_stonebend_roles_from_artifacts("start", "fourway");
         assert!(output.starts_with("# Hueman Stonebend Roles"));
+        assert!(output.contains(
+            "Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre -> Troglodyte"
+        ));
+        assert!(output.contains("the Geralds are Stonebend's constitutional people"));
+        assert!(output.contains("the Hypergiant is the singular highest Stonebend office"));
         assert!(
-            output.contains("Gremlin -> Goblin -> Ghoul -> Troll -> Ork -> Ogre -> Troglodyte")
+            output.contains("the Proliteriate is Stonebend's permanent distributed public network")
         );
+        assert!(output.contains("the High Freemason is the singular office"));
+        assert!(output.contains("transformation may never create office or Title automatically"));
         assert!(
-            output.contains("Hypergiant is the Stonebend office that possesses the Troglodyte")
+            output.contains("Illegal Hollowing is Stonebend's signature constitutional offense")
         );
-        assert!(output.contains("whoever holds the Hypergiant Crown is Hypergiant"));
-        assert!(output.contains("alone or together"));
-        assert!(output.contains("either office may take the Crown and become Hypergiant"));
-        assert!(output.contains("the Stonebender is the public proving ground at Stonebend"));
-        assert!(output.contains("Stonehenge-like arena at Stonebend"));
-        assert!(output.contains("Proletariat enters as labor force"));
-        assert!(output.contains("Freemason tests craft, structure"));
-        assert!(output.contains("separates hollow current from regular current"));
-        assert!(output.contains("Mercurite is the accepted hard branch"));
+        assert!(output.contains("Mt. Aura is Aether"));
+        assert!(output.contains("Riptide is Bathos"));
+        assert!(output.contains("Aura Way is the standard known path"));
+        assert!(output.contains("Opal varies, Diamond concentrates, and Quartz resonates"));
+        assert!(output.contains("Stonebend has exactly three bidirectional constitutional gates"));
+        assert!(output.contains("Diamond is Stonebend's continuing sovereign Title"));
+        assert!(output.contains("no Hypergiant claims Diamond without The Lazerhorn"));
+        assert!(output.contains("a Claim is not automatically a Title"));
+        assert!(output.contains("High Freemason replacement requires independent Forge review"));
         assert!(output.contains("Hueman Fourway bytes: 7."));
     }
 

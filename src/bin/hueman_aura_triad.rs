@@ -35,7 +35,7 @@ mod tests {
         assert!(output.starts_with("# Hueman Aura Triad"));
         assert!(output.contains("route study beneath Fourway"));
         assert!(output.contains("Aura Basin serves Flynt first"));
-        assert!(output.contains("Aura Fields serve public work first"));
+        assert!(output.contains("Aura Field serves public work first"));
         assert!(output.contains("Current Synthesis topology bytes: 8."));
     }
 

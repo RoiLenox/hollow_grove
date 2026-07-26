@@ -20,40 +20,44 @@ Each crossover scene carries a characteristic kind of presence before any encoun
 
 ## Aura Ridge Presence
 
-- straight-ridge caravans, free traders, hinge stalls, and visible right-angle turn traffic
-- public trade legs are declared from Stonebend -> Glaushouse and Glaushouse -> Sandmanor, with Sandmanor's straight continuation reaching Aura Fields at the Stonebend/Glaushouse junction
-- the straight ridge still belongs to the same large circular map body that rounds onward through the rest of Hueman
+- restored travelers, tourists, ceremonies, public gatherings, free traders, and open exchange terraces
+- the elevated Glaushouse <-> Stonebend ridge presents restored beings through Equal Gaze and civic witness
+- Current Sea certification remains a separate northern ordeal rather than another name for the visible ridge
 
 ## Glaushouse Presence
 
-- repair: Glaushouse is the repair and clearance function for both machine bodies and Hueman bodies
+- constitutional domain: Glaushouse clears medicine, recovery, and lawful Synthesis for machine bodies and Hueman bodies
 - style: Glaushouse presents as a mechanical-industrial medical capital with Berlin severity, Milan polish, chrome discipline, and clinic glamour
-- Prima Donna: visible institutional authority and final grant of Clearance
-- Persephone: triage lead, recovery guide, and right hand beside the Prima Donna
-- Nightingales: Glaushouse white-blood-cell civic people studied through diagnosis, inflammation, drainage, and recovery rather than treated as public staff ranks
+- Prima Donna: the singular highest clinical office, currently presented through Doctor Ratchet
+- Persephone: the multiple balanced whole-course rank, with Nurse House as one current holder
+- Matron and Marshal: equal Aura-forward and Current-forward branches
+- The Nightingales: the universal clinical foundation, constitutional nursing and clinical-care institution, bedside check, and civic body aligned with white blood cells
+- Glauspitals: clinical facilities for diagnosis, medicine, care, recovery, and lawful procedure
+- Chromacord: clinical record and evidence infrastructure that cannot create consent or Clearance
 - Glaus Gel: the signature repair resource supporting sealing, bonding, cooling, and restoration
 - Glausteel: the hard integrated alloy associated with cleared machine and civic work
 
 ## Stonebend Civic Presence
 
-- craft: Stonebend names, titles, and makes material claims legible as buildable form
-- Proletariat: collective labor pressure and shared leverage beneath any formal title
-- Hypergiant: the visible holder of Title without ownership of the constitution itself
-- Freemason: structural craft, standards, and whether a named thing can actually be built and kept standing
-- Stonebend presence keeps Title, Labor, and Craft visibly braided
+- constitutional domain: Stonebend establishes Name, Title, structure, boundary, continuity, and lawful Hollowing
+- Geralds: Stonebend's civic people, whose standing supports petition, witness, stewardship, inheritance, and challenge
+- Hypergiant: the singular highest Stonebend office and final custodian of constitutional integrity
+- Proliteriate: the permanent distributed Yield network whose active witnesses carry bounded temporary mandates
+- High Freemason: the singular office leading the Freemason institution's structural execution, survey, Seal, custody, and defense
+- Stonebend presence keeps Claim, Title, and Yield distinct
 - diamonds: reflective mineral wealth aligned with title, structure, and witness
 - Mercury Mirror: Stonebend's signature reflective resource refined through Hollowing and reflective craft
 - Mercurite: Stonebend's hard material branch for tools, armor, and structural bearing
 
-## Tross Helper Presence
+## Flynt Constitutional Presence
 
 - engineering: Flynt is the recognition and field-engineering function that moves capability into lived operation
 - style: Flynt presents as a boardwalk-casino hunting capital with neon vice, opal glamour, North African desert grounds, and hard modern swagger
-- Tross: the recognizing head of Flynt and bearer of Contracore
-- Delinquent: west guard pressure testing rejected routes and hard alternatives
-- Juvenile: east guard pressure holding beginnings, apprenticeship, and undeclared potential
-- White Dwarfs: four close guards holding Tross's personal ring without taking the north or south posts
-- Wardens: the people of Flynt holding common infrastructure and route continuity
+- Tross: the sovereign executive from whom all Flynt constitutional authority derives
+- Chimera: the lower apex integration of Wolf, Bat, and Snake/Fish
+- Manticorp: the maintained sovereign Synthesis Form held by Tross, and the lawful military institution formally led by Tross
+- urban: Tross publicly commands Manticorp while the same man is Mystery Man/Mr. X, leader of the Gallows underground
+- rural: The Gallows is Flynt's underground organized-crime body, with We Fairy Men and the Basin bands remaining distinct
 - opals: mined feedstock and recognition-rich gleam carried through Flynt engineering
 - Opal Oil: Flynt's signature resource produced through regular current and holographic aura
 - Flynt presence keeps hidden value and field usefulness legible before title catches up
@@ -61,28 +65,28 @@ Each crossover scene carries a characteristic kind of presence before any encoun
 ## Sandmanor Competitive Presence
 
 - configuration: Sandmanor is the proof and design function, split between Minorian count and Minoan arrangement
-- Sandmen: the people and witness body of Sandmanor beneath the contest
-- Minoans: designers, arrangers, modelers, and builders of intentional composition
-- Minorians: counters, record-keepers, measurers, and public witnesses of proof
-- Aura Beach: the Minoan-facing coastal court where High Elf judgment, display, and arrangement stay socially visible
-- Aura Fields: the Minorian-facing proof ground where count, measure, and public comparison stay exposed
-- The Sandman: the singular leader of the Sandmen, chosen through visible improvement
+- Sandmen: the stable compatibility name for Sandmanor's House-wide proof-body adapter, not a third people or second authority
+- Minoans: the equal exterior Elf tradition of arrangement, navigation, access, and relationship to the world
+- Minorians: the equal interior Gnome tradition of maintenance, cultivation, repeated function, and repairability
+- Aura Beach and Current Sea: the Minoan regional proving grounds where outward design, mobility, and navigation remain visible
+- Aura Field: the Minorian regional proving ground where cultivation, maintenance, repeated labor, and yield remain testable
+- The Sandman: the singular highest office, selected only through the completed reciprocal Contest of Improvement and full accession
 - Prism Sand: Sandmanor's signature reflective resource for measurement, refraction, and records
 - Prismiron: Sandmanor's hard branch for proof-ready structures and instruments
 - Sandmanor presence favors witnessed comparison over inherited fixed rank
 
 ## Inverse Circle Presence
 
-- The Stairway to Heaven: high border ascent above an underground inverse curve, with rung marks and lifted edge traffic
-- The Riptide: outer-border pull currents above an underground inverse curve, with drag marks, return pressure, and Merman roaming along the rim
-- The Current Seanad: exposed outer water band above an underground inverse curve, with counted channels and measured carry
-- Mnt. Aura: outer border curve from Stonebend to Sandmanor above an underground inverse curve, with bright air and felt border pressure before sight
+- The Stairway to Heaven / Ascend: high border ascent above an underground inverse curve, with burden stations, rung marks, and lifted edge traffic
+- The Riptide / Retrieve: emergency water corridor above an underground inverse curve, with rescue beacons, drag marks, intake traffic, and Merman roaming along the rim
+- The Current Seanad / Deliberate: institutional water court above an underground inverse curve, with hearing chambers, evidence crossings, and measured assembly
+- Mt. Aura / Aspire: outer border curve from Stonebend to Sandmanor above an underground inverse curve, with bright air, higher goals, and felt border pressure before sight
 
 ## Relay Packet Presence
 
 - one collision point may hold visible hinge traffic and underground continuity at once
 - the HAL/Cleo packet keeps one shared witness point active in the scene description even while remaining read-only
-- Aura Fields hinge pressure can therefore feel structurally doubled rather than merely crowded
+- Aura Field hinge pressure can therefore feel structurally doubled rather than merely crowded
 
 ## Status
 
@@ -94,14 +98,14 @@ Each crossover scene carries a characteristic kind of presence before any encoun
 
 ## Artifact Inputs
 
-Hueman Crossover Scenes bytes: 2450.
-Hueman Archetype Lens bytes: 2900.
-Hueman Stonebend Roles bytes: 4242.
-Hueman Tross Helpers bytes: 5222.
-Hueman Glaushouse Roles bytes: 4655.
-Hueman Sandmanor Roles bytes: 4079.
-Hueman Inverse Circle bytes: 2404.
-Current Synthesis collision relay bytes: 3022.
+Hueman Crossover Scenes bytes: 2446.
+Hueman Archetype Lens bytes: 3108.
+Hueman Stonebend Roles bytes: 10286.
+Hueman Flynt Constitution bytes: 5513.
+Hueman Glaushouse Roles bytes: 7910.
+Hueman Sandmanor Roles bytes: 9864.
+Hueman Inverse Circle bytes: 2513.
+Current Synthesis collision relay bytes: 3024.
 
 ## Boundary Reminder
 

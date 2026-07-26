@@ -33,7 +33,7 @@ mod tests {
         let output = build_hueman_inverse_circle_from_artifacts("fourway", "physics");
         assert!(output.starts_with("# Hueman Inverse Circle"));
         assert!(output.contains("Merman"));
-        assert!(output.contains("Mnt. Aura"));
+        assert!(output.contains("Mt. Aura"));
         assert!(output.contains("Hueman Link Physics bytes: 7."));
     }
 

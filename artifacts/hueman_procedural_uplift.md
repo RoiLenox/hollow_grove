@@ -25,32 +25,29 @@ Hueman may lift procedural contracts from Current Synthesis into world-facing be
 
 ## Stonebend Procedure
 
-- Name It and Craft remain the Stonebend procedure functions, turning civic pressure into named made form.
-- Proletariat, Hypergiant, and Freemason enter any civic decision as a constitutional balance.
-- Hypergiant may present first as the public face, but may not finalize alone.
-- Stonebend still gathers materials and recipe knowledge for form ascent, but routes embodiment through Hollowing first.
-- Stonebend also externalizes rivalry through the Stonebender: a Stonehenge-like public arena at Stonebend where crown pressure, labor force, and structural craft are tested before the crowd.
-- diamonds and reflective mineral structures stay inside Stonebend's civic balance instead of becoming a private sovereign right.
-- Hollowing separates hollow current from regular current, reallocates carried pressure, and supports Mercury Mirror under the same civic balance.
-- Stonebend does not treat Hollowing as ordinary synthesis; Hollowing is its trademark civic gate before accepted form can be named and borne.
-- Stonebend procedure asks what the thing is called, what burden it claims, and where that burden belongs.
-- until activation changes, Stonebend procedure remains declared rather than executed.
+- Stonebend names: every constitutional act begins with a stable subject and scope.
+- the Geralds provide civic standing; the Hypergiant preserves integrity; the Proliteriate supplies legitimacy; the Freemason institution executes lawful structural acts.
+- Name identifies, Title authorizes, Mercury Mirror verifies, and Seal endures.
+- naming does not prove a design, clear medicine or Synthesis, recognize competence, or grant public popularity.
+- Title may never arise from transformation, recognition, clearance, legacy progression, or custody alone.
+- Hollowing and Synthesis remain distinct constitutional acts.
+- Illegal Hollowing is stopped, recorded, repaired where possible, and referred across House boundaries only for the acts those Houses own.
+- renaming, succession, inheritance, and transformation preserve history, liabilities, and continuity.
+- Tombstone preserves ended authority and prevents it from acting in replay.
+- the Stonebend registry validates these rules above the frozen Current Synthesis and recursion layers.
 
 ## Flynt Procedure
 
 - Recognize It and Engineering remain the Flynt procedure functions, turning capability into operation and field trust.
-- Tross holds the Flynt line from West -> East as the procedural spine.
-- Delinquent checks the West head before Juvenile checks the East end.
-- the four White Dwarfs keep close guard around Tross while Wardens hold the broader line body.
+- Tross is the sovereign executive and the root of all Flynt constitutional authority.
+- the same stable person is Tross = Mystery Man = Mr. X = presently maintained holder of Manticorp.
+- the public chain is Tross -> Manticorp Institution, while the underground chain is Mystery Man/Mr. X -> The Gallows; both resolve to Tross.
+- the Gallowry is the hidden headquarters of the Gallows, not an institution or alternate government.
 - Flynt routes ascent through boardwalk risk, casino pressure, outer hunting expeditions, and public recognition instead of quiet technical certification.
 - Flynt knowledge gates open through puzzle trails, treasure-hunt clues, and route memory rather than library inheritance or bloodline permission.
-- a Flynt contender gathers ingredients in the field but still has to pass through Glaushouse synthesis before a claimed form counts as stable public embodiment.
-- Gargoyle is the mandatory first embodiment and the legal first hunt body for Flynt progression.
-- Flynt uses Aura Basin as the near land-hunt ground for Gargoyle versus Werewolf conflict, then lifts yield upward into Aura Ridge circulation rather than keeping the kill buried where it fell.
-- Flynt uses the Riptide as the roaming water rim where Mermen are pursued, harvested, and brought back into the same circulation spine.
-- Werewolf proof returns from Aura Basin while Merman proof returns from the Riptide, and neither branch can open before Gargoyle mastery is verified.
-- Flynt treats forms as explicit recipes: Gargoyle first, then the harder hunts that open Merman and Werewolf toward Chimera and Manticore.
-- Chimera is the first true recombination body of those mastered branches, while Manticore is the later challenge body opened only after Chimera rather than a synonym for it.
+- Flynt's unique constitutional synthesis combines Gargoyle, Merman, and Werewolf into the one Chimera.
+- Manticorp is both the formal military institution and a distinct maintained Synthesis Form beyond Chimera; ordinary personnel do not hold the Form.
+- Bro White, The Beauty, and Cinderellaman remain distinct Basin leaders and divided Recipe custodians whose union is cooperation, not fusion.
 - opal extraction follows the guarded line body rather than an unbounded field claim.
 - regular current and holographic aura carry opal yield outward as Opal Oil without breaking the guarded line body.
 - recipe discovery in Flynt is field work, hunt pressure, and route puzzle rather than quiet inheritance.
@@ -58,22 +55,27 @@ Hueman may lift procedural contracts from Current Synthesis into world-facing be
 
 ## Glaushouse Procedure
 
-- Clear It and Repair remain the Glaushouse procedure functions for both machine continuity and Hueman recovery.
-- Prima Donna sets command tone and first issuance of Clearance.
-- Persephone relays continuity through triage, crisis, recovery, and return.
-- physicians, nurses, and rehabilitation staff run the care loop and stabilize the common body without taking sovereign lead.
+- Glaushouse clears: every intervention names subject, diagnosis, consent, capacity, procedure, operator, scope, time, risk, and recovery.
+- Doctor Ratchet holds the singular Prima Donna office; Nurse House is one Persephone among a multiple balanced rank; Nightingale is the universal clinical foundation.
+- Matron reads lived and Aura continuity; Marshal holds bodily and Current continuity; Persephone preserves the whole patient.
+- the sitting Prima Donna must keep Nightingale education, equal branches, cross-training, Ledger access, Recipe education, research, and candidacy open.
+- Nightingales protect patient wishes and may issue an immediate stop that triggers mandatory review.
+- Glauspitals operates clinical facilities and Chromacord preserves evidence; neither application nor chart declares Clearance.
 - Glaushouse runs recovery through cold-lit clinic bays, industrial tooling, strict presentation, and visibly enforced standards.
 - jade extraction feeds Glaus Gel, the jade-colored binder that supports bonding, sealing, cooling, repair, and controlled synthesis without displacing the human medical floor.
-- Glaushouse is the authorized embodiment house where gathered ingredients become stable forms and symbiote-like integrations can be made public.
-- Synthesis and Clearance remain procedurally specified but still gated.
+- lawful Synthesis requires explicit Synthesis consent, active Clearance, privilege, lawful provenance, accurate outcome, preserved identity, and completed recovery.
+- Synthesis is Continuance through renewal; major Synthesis also requires technical and lived viability.
+- Illegal Synthesis is stopped, reviewed, repaired where possible, and referred across House boundaries only for the acts each House owns.
+- no clinical record, gesture, transformation, recognition, Title, proof, legacy state, or technical ability may silently substitute for another constitutional act.
+- the Glaushouse registry enforces House-specific law without rewriting Current Runtime V2 or the recursion kernel.
 
 ## Sandmanor Procedure
 
 - Prove It and Configuration remain the Sandmanor procedure functions, split between Minorian count and Minoan arrangement.
 - selection identifies the rival public frame and consequence names the witnessed improvement result.
 - the most improved rival becomes The Sandman.
-- Sandmen bind the crowd witness that legitimizes the Sandman office.
-- crystal harvest feeds Prism Sand and Prismiron, which carry the stewarded proof branch both rival houses must respect.
+- the Sandman accedes only through the completed evidence-judged Contest of Improvement, resolved challenges, Stonebend Title, Flynt recognition, public learning statement, and Seal.
+- crystal harvest feeds Prism Sand and Prismiron, which carry the stewarded proof branch both equal civic traditions must respect.
 - both houses gather materials and guarded recipe knowledge, but a claimed Sandmanor form only counts when it survives comparison, demonstration, and public witness.
 - reciprocal teaching remains the basis of rule instead of inheritance.
 
@@ -98,15 +100,15 @@ Hueman may lift procedural contracts from Current Synthesis into world-facing be
 
 Current Synthesis execution spec bytes: 2063.
 Current Synthesis behavior rules bytes: 2414.
-Current Synthesis transition bytes: 1820.
-Current Synthesis collision relay bytes: 3022.
+Current Synthesis transition bytes: 1822.
+Current Synthesis collision relay bytes: 3024.
 Current Synthesis selection bytes: 499.
 Current Synthesis consequence bytes: 1014.
 Current Synthesis activation gate bytes: 1039.
-Hueman Stonebend Roles bytes: 4242.
-Hueman Tross Helpers bytes: 5222.
-Hueman Glaushouse Roles bytes: 4655.
-Hueman Sandmanor Roles bytes: 4079.
+Hueman Stonebend Roles bytes: 10286.
+Hueman Flynt Constitution bytes: 5513.
+Hueman Glaushouse Roles bytes: 7910.
+Hueman Sandmanor Roles bytes: 9864.
 
 ## Boundary Reminder
 

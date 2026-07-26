@@ -1,11 +1,28 @@
+pub mod aura_basin;
+pub mod aura_beach;
+pub mod aura_field;
+pub mod central_junction;
 pub mod chroma_cord;
 pub mod composition_witnesses;
+pub mod constitutional_interfaces;
+pub mod extraction;
 pub mod flynt;
 pub mod fourway;
+pub mod geography;
+pub mod glaushouse;
 pub mod house_institutions;
 pub mod house_scene_context;
+pub mod hueman_faculties;
+pub mod interior_surface;
+pub mod lived_lore;
+pub mod minoan_court;
 pub mod persistence;
+pub mod power_recipes;
+pub mod route_network;
+pub mod sandmanor;
 pub mod session;
+pub mod stonebend;
+pub mod sympiote;
 
 use crate::institution::{
     InstitutionCatalog, InstitutionalBeingId, MembershipId, OfficeHolder, OfficeId, RoleId, SiteId,
@@ -21,6 +38,9 @@ use crate::institution_affiliation::{
 pub fn canonical_institutional_world_state() -> InstitutionalWorldState {
     let mut catalog = house_institutions::canonical_house_institutions();
     let flynt = flynt::canonical_flynt_institutions();
+    flynt
+        .validate()
+        .expect("the Flynt constitutional projection must validate before merge");
     merge_catalog(&mut catalog, flynt.catalog);
     catalog
         .validate()
@@ -42,7 +62,7 @@ pub fn institutional_access_fixture() -> InstitutionalWorldState {
             "membership.stonebend.fixture-member",
             stonebend_member.clone(),
             house_institutions::stonebend_constitution_id(),
-            "role.stonebend.proletariat",
+            "role.stonebend.gerald",
             MembershipRole::Associate,
             AffiliationState::Associate,
         ),
@@ -57,7 +77,7 @@ pub fn institutional_access_fixture() -> InstitutionalWorldState {
         member(
             "membership.glaushouse.fixture-member",
             glaushouse_member.clone(),
-            house_institutions::glaushouse_medical_civilization_id(),
+            glaushouse::glauspitals_id(),
             "role.glaushouse.recovery-staff",
             MembershipRole::Associate,
             AffiliationState::Associate,
@@ -65,8 +85,8 @@ pub fn institutional_access_fixture() -> InstitutionalWorldState {
         member(
             "membership.flynt.fixture-member",
             flynt_member.clone(),
-            flynt::gallowry_id(),
-            "role.flynt.gallowry.gallow",
+            flynt::gallows_id(),
+            "role.flynt.gallows-member",
             MembershipRole::FullMember,
             AffiliationState::Initiated,
         ),
@@ -106,16 +126,16 @@ pub fn institutional_access_fixture() -> InstitutionalWorldState {
         grant(
             "access-grant.glaushouse.fixture-guest",
             glaushouse_member,
-            house_institutions::glaushouse_medical_civilization_id(),
+            glaushouse::glauspitals_id(),
             "site.glaushouse.central-medical-district",
             "zone.glaushouse.medical-district.recovery-chambers",
         ),
         grant(
             "access-grant.flynt.fixture-guest",
             flynt_member,
-            flynt::gallowry_id(),
+            flynt::gallows_id(),
             "site.flynt.gallowry",
-            "zone.flynt.gallowry.hanging-rooms",
+            "zone.flynt.gallowry.meeting-place",
         ),
     ];
     state
@@ -187,13 +207,13 @@ fn merge_catalog(destination: &mut InstitutionCatalog, source: InstitutionCatalo
 mod tests {
     use super::*;
     use crate::institution::{AccessPolicy, AccessRequirement, AccessRequirementMatch, RoleId};
-    use crate::world::flynt::{gallowry_id, manticorps_id};
+    use crate::world::flynt::{gallows_id, manticorp_id};
     #[test]
     fn aggregate_state_contains_all_four_house_fixture_sets() {
         let state = canonical_institutional_world_state();
         state.validate().unwrap();
-        assert!(state.catalog.institution(&manticorps_id()).is_some());
-        assert!(state.catalog.institution(&gallowry_id()).is_some());
+        assert!(state.catalog.institution(&manticorp_id()).is_some());
+        assert!(state.catalog.institution(&gallows_id()).is_some());
         assert!(
             state
                 .catalog
@@ -244,15 +264,15 @@ mod tests {
         let policy = AccessPolicy {
             matching: AccessRequirementMatch::Any,
             requirements: vec![AccessRequirement::Role(
-                RoleId::new("role.flynt.gallowry.gallow").unwrap(),
+                RoleId::new("role.flynt.gallows-member").unwrap(),
             )],
         };
         assert_eq!(
             state.evaluate_access(
                 &member,
-                &flynt::gallowry_id(),
+                &flynt::gallows_id(),
                 &flynt::gallowry_site_id(),
-                &ZoneId::new("zone.flynt.gallowry.hanging-rooms").unwrap(),
+                &ZoneId::new("zone.flynt.gallowry.meeting-place").unwrap(),
                 &policy,
             ),
             crate::institution_affiliation::AccessDecision::Allowed

@@ -25,7 +25,7 @@ Hollow Grove
 ```text
 Aura Basin
 ↓
-Aura Fields
+Aura Field
 ↓
 Aura Beach
 ↓

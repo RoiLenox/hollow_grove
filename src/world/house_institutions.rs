@@ -3,15 +3,10 @@
 
 use crate::hollow_grove_contract::House;
 use crate::institution::*;
+use crate::world::{glaushouse, sandmanor, stonebend};
 
 fn id<T>(value: &str, build: impl FnOnce(String) -> Result<T, IdError>) -> T {
     build(value.into()).expect("canonical stable ID")
-}
-fn institution(value: &str) -> InstitutionId {
-    id(value, InstitutionId::new)
-}
-fn office(value: &str) -> OfficeId {
-    id(value, OfficeId::new)
 }
 fn role(value: &str) -> RoleId {
     id(value, RoleId::new)
@@ -45,44 +40,93 @@ fn rel(
 }
 
 pub fn stonebend_constitution_id() -> InstitutionId {
-    institution("institution.stonebend.constitution")
+    stonebend::stonebend_constitution_id()
 }
 pub fn sandmen_id() -> InstitutionId {
-    institution("institution.sandmanor.sandmen")
+    sandmanor::proof_civilization_id()
 }
 pub fn glaushouse_medical_civilization_id() -> InstitutionId {
-    institution("institution.glaushouse.medical-civilization")
+    glaushouse::medical_civilization_id()
 }
 
 pub fn canonical_house_institutions() -> InstitutionCatalog {
     let stonebend = stonebend_constitution_id();
+    let proliteriate = stonebend::proliteriate_id();
+    let freemason = stonebend::freemason_institution_id();
     let sandmen = sandmen_id();
+    let minoan_courthouse = sandmanor::milestone::minoan_county_courthouse_id();
     let glaushouse = glaushouse_medical_civilization_id();
+    let glauspitals = glaushouse::glauspitals_id();
+    let chromacord = glaushouse::chromacord_id();
+    let nightingales = glaushouse::nightingales_id();
     let stonebender = site("site.stonebend.stonebender");
     let aura_beach = site("site.sandmanor.aura-beach");
+    let minoan_courthouse_site = sandmanor::milestone::minoan_county_courthouse_site_id();
+    // Save-compatible legacy ID for the one site displayed as Aura Field.
     let aura_fields = site("site.sandmanor.aura-fields");
     let medical_district = site("site.glaushouse.central-medical-district");
     InstitutionCatalog {
         institutions: vec![
             Institution {
                 id: stonebend.clone(),
-                name: "Stonebend constitutional body".into(),
-                kinds: vec![
-                    InstitutionKind::Government,
-                    InstitutionKind::Commercial,
-                    InstitutionKind::Hybrid,
-                ],
+                name: "Stonebend Constitution".into(),
+                kinds: vec![InstitutionKind::Government],
                 house: Some(House::Stonebend),
                 domains: vec![
-                    "title".into(),
-                    "labor".into(),
-                    "craft".into(),
-                    "construction".into(),
-                    "hollowing".into(),
+                    "identity".into(),
+                    "Name".into(),
+                    "Title".into(),
+                    "structure".into(),
+                    "boundary".into(),
+                    "continuity".into(),
+                    "record".into(),
+                    "lineage".into(),
+                    "custody".into(),
+                    "inheritance".into(),
+                    "lawful Hollowing".into(),
                 ],
                 headquarters: Some(stonebender.clone()),
                 public_visibility: Visibility::Public,
                 internal_secrecy: SecrecyLevel::Internal,
+            },
+            Institution {
+                id: proliteriate.clone(),
+                name: "Proliteriate".into(),
+                kinds: vec![InstitutionKind::Government],
+                house: Some(House::Stonebend),
+                domains: vec![
+                    "public witness".into(),
+                    "petition".into(),
+                    "challenge".into(),
+                    "Yield accountability".into(),
+                    "distributed network mandates".into(),
+                    "temporary witnesses".into(),
+                    "succession hearing".into(),
+                    "restitution".into(),
+                ],
+                headquarters: Some(stonebender.clone()),
+                public_visibility: Visibility::Public,
+                internal_secrecy: SecrecyLevel::Open,
+            },
+            Institution {
+                id: freemason.clone(),
+                name: "Freemason".into(),
+                kinds: vec![InstitutionKind::Government],
+                house: Some(House::Stonebend),
+                domains: vec![
+                    "architecture".into(),
+                    "construction".into(),
+                    "structural verification".into(),
+                    "survey".into(),
+                    "Seal".into(),
+                    "custody".into(),
+                    "defense".into(),
+                    "lawful Hollowing execution".into(),
+                    "restoration".into(),
+                ],
+                headquarters: Some(stonebender.clone()),
+                public_visibility: Visibility::Public,
+                internal_secrecy: SecrecyLevel::Compartmentalized,
             },
             Institution {
                 id: sandmen.clone(),
@@ -94,15 +138,44 @@ pub fn canonical_house_institutions() -> InstitutionCatalog {
                 ],
                 house: Some(House::Sandmanor),
                 domains: vec![
+                    "honest design".into(),
+                    "proof".into(),
+                    "method".into(),
+                    "evidence".into(),
+                    "reproduction".into(),
+                    "criticism".into(),
+                    "failure preservation".into(),
+                    "revision".into(),
+                    "reciprocal teaching".into(),
                     "witnessed improvement".into(),
                     "measurement".into(),
-                    "design".into(),
-                    "allocation".into(),
-                    "public expression".into(),
+                    "standards".into(),
                 ],
                 headquarters: None,
                 public_visibility: Visibility::Public,
                 internal_secrecy: SecrecyLevel::Open,
+            },
+            Institution {
+                id: minoan_courthouse.clone(),
+                name: "Minoan County Courthouse".into(),
+                kinds: vec![InstitutionKind::Government],
+                house: Some(House::Sandmanor),
+                domains: vec![
+                    "Southern Law".into(),
+                    "marine law".into(),
+                    "restricted-water violations".into(),
+                    "Current Break permits and violations".into(),
+                    "coastal public order".into(),
+                    "booking and arraignment".into(),
+                    "temporary lawful detention".into(),
+                    "lawful transfer into Glaüshouse".into(),
+                    "shared Hollow Grove judiciary".into(),
+                    "five-stage judicial and Restitution cycle".into(),
+                    "cross-House evidence without House-authority transfer".into(),
+                ],
+                headquarters: Some(minoan_courthouse_site.clone()),
+                public_visibility: Visibility::Public,
+                internal_secrecy: SecrecyLevel::Internal,
             },
             Institution {
                 id: glaushouse.clone(),
@@ -114,33 +187,97 @@ pub fn canonical_house_institutions() -> InstitutionCatalog {
                 ],
                 house: Some(House::Glaushouse),
                 domains: vec![
+                    "constitutional medicine".into(),
+                    "clearance law".into(),
+                    "clinical ethics".into(),
+                    "institutional coordination".into(),
+                ],
+                headquarters: Some(medical_district.clone()),
+                public_visibility: Visibility::Public,
+                internal_secrecy: SecrecyLevel::Internal,
+            },
+            Institution {
+                id: glauspitals.clone(),
+                name: "Glauspitals".into(),
+                kinds: vec![InstitutionKind::Medical],
+                house: Some(House::Glaushouse),
+                domains: vec![
                     "diagnosis".into(),
-                    "surgery".into(),
+                    "medicine".into(),
+                    "care".into(),
                     "rehabilitation".into(),
-                    "synthesis".into(),
-                    "medical education".into(),
+                    "recovery".into(),
+                    "Synthesis facilities".into(),
                 ],
                 headquarters: Some(medical_district.clone()),
                 public_visibility: Visibility::Public,
                 internal_secrecy: SecrecyLevel::Compartmentalized,
             },
+            Institution {
+                id: chromacord.clone(),
+                name: "Chromacord".into(),
+                kinds: vec![InstitutionKind::Medical],
+                house: Some(House::Glaushouse),
+                domains: vec![
+                    "clinical records".into(),
+                    "diagnostic evidence".into(),
+                    "adverse-event records".into(),
+                    "privacy".into(),
+                ],
+                headquarters: Some(medical_district.clone()),
+                public_visibility: Visibility::Public,
+                internal_secrecy: SecrecyLevel::Compartmentalized,
+            },
+            Institution {
+                id: nightingales.clone(),
+                name: "The Nightingales".into(),
+                kinds: vec![InstitutionKind::Medical, InstitutionKind::Cultural],
+                house: Some(House::Glaushouse),
+                domains: vec![
+                    "nursing".into(),
+                    "clinical care".into(),
+                    "patient advocacy".into(),
+                    "bedside protection".into(),
+                    "immediate clinical stop".into(),
+                ],
+                headquarters: Some(medical_district.clone()),
+                public_visibility: Visibility::Public,
+                internal_secrecy: SecrecyLevel::Internal,
+            },
         ],
         offices: vec![
             Office {
-                id: office("office.stonebend.hypergiant"),
+                id: stonebend::hypergiant_office_id(),
                 name: "Hypergiant".into(),
                 scope: OfficeScope::House,
                 institution: Some(stonebend.clone()),
                 house: Some(House::Stonebend),
                 singular: true,
                 authority: vec![
-                    "PublicTitle".into(),
                     "ConstitutionalIdentity".into(),
-                    "OutwardNegotiation".into(),
+                    "HighNameConfirmation".into(),
+                    "HighTitleConfirmation".into(),
+                    "ConstitutionalIntegrity".into(),
+                    "HighContinuityDispute".into(),
                 ],
             },
             Office {
-                id: office("office.sandmanor.sandman"),
+                id: stonebend::high_freemason_office_id(),
+                name: "High Freemason".into(),
+                scope: OfficeScope::Institution,
+                institution: Some(freemason.clone()),
+                house: Some(House::Stonebend),
+                singular: true,
+                authority: vec![
+                    "StructuralCertification".into(),
+                    "SurveyCertification".into(),
+                    "SealIssuance".into(),
+                    "CustodyCertification".into(),
+                    "LawfulExecution".into(),
+                ],
+            },
+            Office {
+                id: sandmanor::sandman_office_id(),
                 name: "The Sandman".into(),
                 scope: OfficeScope::House,
                 institution: Some(sandmen.clone()),
@@ -148,34 +285,46 @@ pub fn canonical_house_institutions() -> InstitutionCatalog {
                 singular: true,
                 authority: vec![
                     "WitnessedImprovement".into(),
-                    "CrowdRecognition".into(),
+                    "ProofDetermination".into(),
+                    "ReciprocalTeaching".into(),
+                    "ReproductionOrder".into(),
+                    "DesignIntegrity".into(),
+                    "ContestIntegrity".into(),
+                    "StandardsOfEvidence".into(),
                     "ConfigurationRule".into(),
                 ],
             },
             Office {
-                id: office("office.glaushouse.prima-donna"),
+                id: glaushouse::prima_donna_office_id(),
                 name: "Prima Donna".into(),
                 scope: OfficeScope::House,
                 institution: Some(glaushouse.clone()),
                 house: Some(House::Glaushouse),
                 singular: true,
                 authority: vec![
+                    // Frozen Constitutional Runtime V2 adapter capabilities.
+                    // These do not replace the typed Glaushouse clearance law;
+                    // they let common HouseDecision projections address it.
                     "PublicClearance".into(),
-                    "ReleaseAuthority".into(),
                     "FinalJudgmentAnswerability".into(),
+                    "ClinicalSovereignty".into(),
+                    "HighRiskClearance".into(),
+                    "SynthesisLaw".into(),
+                    "ClinicalEthics".into(),
+                    "ConstitutionalInterpretation".into(),
                 ],
             },
         ],
         roles: vec![
             Role {
-                id: role("role.stonebend.proletariat"),
-                name: "Proletariat".into(),
-                institution: stonebend.clone(),
+                id: role("role.stonebend.proliteriate-representative"),
+                name: "Proliteriate representative".into(),
+                institution: proliteriate.clone(),
             },
             Role {
-                id: role("role.stonebend.freemason"),
-                name: "Freemason".into(),
-                institution: stonebend.clone(),
+                id: role("role.stonebend.freemason-member"),
+                name: "Freemason member".into(),
+                institution: freemason.clone(),
             },
             Role {
                 id: role("role.stonebend.gerald"),
@@ -193,34 +342,32 @@ pub fn canonical_house_institutions() -> InstitutionCatalog {
                 institution: sandmen.clone(),
             },
             Role {
-                id: role("role.glaushouse.persephone"),
-                name: "Persephone".into(),
-                institution: glaushouse.clone(),
+                id: glaushouse::nightingale_rank_id(),
+                name: "Nightingale".into(),
+                institution: nightingales.clone(),
             },
             Role {
-                id: role("role.glaushouse.nightingale"),
-                name: "Nightingale".into(),
-                institution: glaushouse.clone(),
+                id: glaushouse::matron_rank_id(),
+                name: "Matron".into(),
+                institution: nightingales.clone(),
+            },
+            Role {
+                id: glaushouse::marshal_rank_id(),
+                name: "Marshal".into(),
+                institution: nightingales.clone(),
+            },
+            Role {
+                id: glaushouse::persephone_rank_id(),
+                name: "Persephone".into(),
+                institution: nightingales.clone(),
             },
             Role {
                 id: role("role.glaushouse.recovery-staff"),
                 name: "Recovery staff".into(),
-                institution: glaushouse.clone(),
+                institution: glauspitals.clone(),
             },
         ],
         groups: vec![
-            Group {
-                id: group("group.stonebend.proletariat"),
-                name: "Proletariat".into(),
-                institution: stonebend.clone(),
-                parent: None,
-            },
-            Group {
-                id: group("group.stonebend.freemason"),
-                name: "Freemason".into(),
-                institution: stonebend.clone(),
-                parent: None,
-            },
             Group {
                 id: group("group.sandmanor.minorians"),
                 name: "Minorians".into(),
@@ -236,7 +383,7 @@ pub fn canonical_house_institutions() -> InstitutionCatalog {
             Group {
                 id: group("group.glaushouse.recovery-floor"),
                 name: "Recovery floor".into(),
-                institution: glaushouse.clone(),
+                institution: glauspitals.clone(),
                 parent: None,
             },
         ],
@@ -259,11 +406,29 @@ pub fn canonical_house_institutions() -> InstitutionCatalog {
                 house: House::Sandmanor,
                 site_kinds: vec![SiteKind::SocialClub, SiteKind::PerformanceVenue],
                 controlled_by: Some(sandmen.clone()),
-                zones: vec![zone("zone.sandmanor.aura-beach.court-strand")],
+                zones: vec![
+                    zone("zone.sandmanor.aura-beach.free-aura-beach"),
+                    zone("zone.sandmanor.aura-beach.southern-coast"),
+                    zone("zone.sandmanor.aura-beach.current-break"),
+                    zone("zone.sandmanor.aura-beach.courthouse-approach"),
+                    zone("zone.sandmanor.aura-beach.court-strand"),
+                ],
+            },
+            Site {
+                id: minoan_courthouse_site.clone(),
+                name: "Minoan County Courthouse".into(),
+                house: House::Sandmanor,
+                site_kinds: vec![SiteKind::PrivateCourt, SiteKind::Headquarters],
+                controlled_by: Some(minoan_courthouse.clone()),
+                zones: vec![
+                    zone("zone.sandmanor.minoan-county-courthouse.public-desk"),
+                    zone("zone.sandmanor.minoan-county-courthouse.holding"),
+                    zone("zone.sandmanor.minoan-county-courthouse.glaushouse-transfer"),
+                ],
             },
             Site {
                 id: aura_fields.clone(),
-                name: "Aura Fields".into(),
+                name: "Aura Field".into(),
                 house: House::Sandmanor,
                 site_kinds: vec![SiteKind::Workshop, SiteKind::Archive],
                 controlled_by: Some(sandmen.clone()),
@@ -280,7 +445,7 @@ pub fn canonical_house_institutions() -> InstitutionCatalog {
                     SiteKind::Workshop,
                     SiteKind::SocialClub,
                 ],
-                controlled_by: Some(glaushouse.clone()),
+                controlled_by: Some(glauspitals.clone()),
                 zones: vec![
                     zone("zone.glaushouse.medical-district.diagnostic-halls"),
                     zone("zone.glaushouse.medical-district.surgical-theaters"),
@@ -292,16 +457,46 @@ pub fn canonical_house_institutions() -> InstitutionCatalog {
         office_holders: vec![],
         relationships: vec![
             rel(
-                "relationship.stonebend.proletariat-subgroup",
-                InstitutionalEntityId::Group(group("group.stonebend.proletariat")),
-                RelationshipKind::SubgroupOf,
+                "relationship.stonebend.proliteriate-represents-geralds",
+                InstitutionalEntityId::Institution(proliteriate.clone()),
+                RelationshipKind::Represents,
                 InstitutionalEntityId::Institution(stonebend.clone()),
             ),
             rel(
-                "relationship.stonebend.freemason-subgroup",
-                InstitutionalEntityId::Group(group("group.stonebend.freemason")),
-                RelationshipKind::SubgroupOf,
-                InstitutionalEntityId::Institution(stonebend.clone()),
+                "relationship.stonebend.hypergiant-coordinates-proliteriate",
+                InstitutionalEntityId::Office(stonebend::hypergiant_office_id()),
+                RelationshipKind::Coordinates,
+                InstitutionalEntityId::Institution(proliteriate.clone()),
+            ),
+            rel(
+                "relationship.stonebend.high-freemason-coordinates-hypergiant",
+                InstitutionalEntityId::Office(stonebend::high_freemason_office_id()),
+                RelationshipKind::Coordinates,
+                InstitutionalEntityId::Office(stonebend::hypergiant_office_id()),
+            ),
+            rel(
+                "relationship.stonebend.high-freemason-leads-freemason",
+                InstitutionalEntityId::Office(stonebend::high_freemason_office_id()),
+                RelationshipKind::Commands,
+                InstitutionalEntityId::Institution(freemason.clone()),
+            ),
+            rel(
+                "relationship.stonebend.freemason-cooperates-with-proliteriate",
+                InstitutionalEntityId::Institution(freemason.clone()),
+                RelationshipKind::CooperatesWith,
+                InstitutionalEntityId::Institution(proliteriate.clone()),
+            ),
+            rel(
+                "relationship.sandmanor.sandman-coordinates-proof-body",
+                InstitutionalEntityId::Office(sandmanor::sandman_office_id()),
+                RelationshipKind::Coordinates,
+                InstitutionalEntityId::Institution(sandmen.clone()),
+            ),
+            rel(
+                "relationship.sandmanor.minoan-courthouse-hosted-by-minoans",
+                InstitutionalEntityId::Institution(minoan_courthouse),
+                RelationshipKind::HostedBy,
+                InstitutionalEntityId::Group(group("group.sandmanor.minoans")),
             ),
             rel(
                 "relationship.sandmanor.minorians-subgroup",
@@ -319,13 +514,43 @@ pub fn canonical_house_institutions() -> InstitutionCatalog {
                 "relationship.glaushouse.recovery-floor-subgroup",
                 InstitutionalEntityId::Group(group("group.glaushouse.recovery-floor")),
                 RelationshipKind::SubgroupOf,
-                InstitutionalEntityId::Institution(glaushouse.clone()),
+                InstitutionalEntityId::Institution(glauspitals.clone()),
+            ),
+            rel(
+                "relationship.glaushouse.prima-donna-coordinates-glauspitals",
+                InstitutionalEntityId::Office(glaushouse::prima_donna_office_id()),
+                RelationshipKind::Coordinates,
+                InstitutionalEntityId::Institution(glauspitals.clone()),
+            ),
+            rel(
+                "relationship.glaushouse.chromacord-cooperates-glauspitals",
+                InstitutionalEntityId::Institution(chromacord.clone()),
+                RelationshipKind::CooperatesWith,
+                InstitutionalEntityId::Institution(glauspitals.clone()),
+            ),
+            rel(
+                "relationship.glaushouse.glauspitals-grants-chromacord-site-access",
+                InstitutionalEntityId::Institution(glauspitals.clone()),
+                RelationshipKind::GrantsAccessTo,
+                InstitutionalEntityId::Institution(chromacord.clone()),
             ),
             rel(
                 "relationship.stonebend.headquartered-at-stonebender",
                 InstitutionalEntityId::Institution(stonebend.clone()),
                 RelationshipKind::HeadquarteredAt,
                 InstitutionalEntityId::Site(stonebender),
+            ),
+            rel(
+                "relationship.stonebend.proliteriate-headquartered-at-stonebender",
+                InstitutionalEntityId::Institution(proliteriate),
+                RelationshipKind::HeadquarteredAt,
+                InstitutionalEntityId::Site(site("site.stonebend.stonebender")),
+            ),
+            rel(
+                "relationship.stonebend.freemason-headquartered-at-stonebender",
+                InstitutionalEntityId::Institution(freemason),
+                RelationshipKind::HeadquarteredAt,
+                InstitutionalEntityId::Site(site("site.stonebend.stonebender")),
             ),
             rel(
                 "relationship.sandmen-operate-aura-beach",
@@ -342,6 +567,24 @@ pub fn canonical_house_institutions() -> InstitutionCatalog {
             rel(
                 "relationship.glaushouse.headquartered-at-medical-district",
                 InstitutionalEntityId::Institution(glaushouse.clone()),
+                RelationshipKind::HeadquarteredAt,
+                InstitutionalEntityId::Site(medical_district.clone()),
+            ),
+            rel(
+                "relationship.glaushouse.glauspitals-headquartered-at-medical-district",
+                InstitutionalEntityId::Institution(glauspitals.clone()),
+                RelationshipKind::HeadquarteredAt,
+                InstitutionalEntityId::Site(medical_district.clone()),
+            ),
+            rel(
+                "relationship.glaushouse.chromacord-headquartered-at-medical-district",
+                InstitutionalEntityId::Institution(chromacord),
+                RelationshipKind::HeadquarteredAt,
+                InstitutionalEntityId::Site(medical_district.clone()),
+            ),
+            rel(
+                "relationship.glaushouse.nightingales-headquartered-at-medical-district",
+                InstitutionalEntityId::Institution(nightingales),
                 RelationshipKind::HeadquarteredAt,
                 InstitutionalEntityId::Site(medical_district),
             ),
@@ -379,19 +622,31 @@ mod tests {
             houses
                 .offices
                 .iter()
-                .any(|entry| entry.id == office("office.stonebend.hypergiant"))
+                .any(|entry| entry.id == stonebend::hypergiant_office_id())
+        );
+        assert!(houses.institution(&stonebend::proliteriate_id()).is_some());
+        assert!(
+            houses
+                .institution(&stonebend::freemason_institution_id())
+                .is_some()
         );
         assert!(
             houses
                 .offices
                 .iter()
-                .any(|entry| entry.id == office("office.sandmanor.sandman"))
+                .any(|entry| entry.id == stonebend::high_freemason_office_id())
         );
         assert!(
             houses
                 .offices
                 .iter()
-                .any(|entry| entry.id == office("office.glaushouse.prima-donna"))
+                .any(|entry| entry.id == sandmanor::sandman_office_id())
+        );
+        assert!(
+            houses
+                .offices
+                .iter()
+                .any(|entry| entry.id == glaushouse::prima_donna_office_id())
         );
         assert!(
             houses
