@@ -94,6 +94,13 @@ Tournament, routes, Permanence, gameplay linkage, accepted and rejected
 history, replay result, insertion-order result, presentation boundary, and
 sovereignty boundary.
 
+## Federal sovereignty
+
+Runtime sovereignty belongs solely to **Roi**. The executable federation
+preserves and replays lawful state but does not itself possess sovereignty.
+The complete federal sovereignty and Seer Ceremony lock is recorded in
+[Federal Sovereignty and Seer Ceremony V1](FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md).
+
 ## Authority boundary
 
 The implementation completes continuity, not centralization.

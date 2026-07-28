@@ -14,6 +14,12 @@ sovereign.
 `HOLLOW_GROVE_CONSTITUTIONAL_ARCHITECTURE_V1.md` is the authoritative map of
 that architecture. It creates no additional law.
 
+`FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md` is the canonical lock for Roi and
+Roselina as the only federal sovereigns, their two complementary federations,
+their unified constitutional view as The Federation, Worldright, and the Seer
+Ceremony. It remains beneath the Hollow Grove Compromise and creates no
+additional House, sovereign, federation, or implementation layer.
+
 `HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md` is the detailed normative
 Bond and Constitutional Runtime specification beneath the Compromise. It is not
 a second shared constitution.
@@ -27,7 +33,9 @@ Use this order when reviewing Hollow Grove V2:
 
 1. `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md` for the Hollow Grove Constitution.
 2. `HOLLOW_GROVE_CONSTITUTIONAL_ARCHITECTURE_V1.md` for the authority and
-   dependency map.
+   dependency map, followed by
+   `FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md` for federal sovereignty,
+   Worldright, the Seer Ceremony, and the outside-participation freeze.
 3. `HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md` for normative Bond and
    Constitutional Runtime law.
 4. House constitutions, including `STONEBEND_CONSTITUTION_V2.md`,
@@ -63,6 +71,9 @@ Use this order when reviewing Hollow Grove V2:
   Constitution. Its filename records historical provenance.
 - `HOLLOW_GROVE_CONSTITUTIONAL_ARCHITECTURE_V1.md` maps that authority without
   creating a second constitution.
+- `FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md` locks the two universal
+  federations, Roi and Roselina as their sole respective sovereigns,
+  Worldright, and the Seer Ceremony beneath the Compromise.
 
 ### Active Synthesis Drafts
 
