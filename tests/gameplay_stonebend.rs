@@ -278,7 +278,8 @@ fn stonebend_map_case_and_authority_replay_from_checksummed_archive() {
     assert!(!case_view.outcome.unwrap().title_granted);
 
     let archive = service.encode_archive().unwrap();
-    assert!(archive.contains("\"schema_version\": 2"));
+    assert!(archive.contains("\"schema_version\": 3"));
+    assert!(archive.contains("\"federation_binding\""));
     assert!(archive.contains("StonebendContinuityDeterminationCommitted"));
     assert!(archive.contains("being.stonebend.current-hypergiant"));
     let replayed = GameApplicationService::from_archive(&archive).unwrap();

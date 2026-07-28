@@ -22,8 +22,9 @@ The implemented Boardwalk wire intents are
 decision-maker and returns a typed outcome view with exact House-authority
 actors, optional relationship kind/Bond/term, uncertainty, and refusal
 protections. `SaveIntent` and `LoadIntent` use stable slot IDs and the service's
-configured save root. Gameplay save schema V2 embeds the validated
-institutional state loaded from the separate world root.
+configured save root. Gameplay save schema V3 embeds the validated
+institutional state loaded from the separate world root and the explicit
+Runtime Federation binding.
 
 The Current Sea Stonebend case uses the same faculty intent plus
 `SupportStonebendContinuityOptionIntent` and

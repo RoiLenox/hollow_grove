@@ -173,7 +173,7 @@ and Limited Cooperation each form, validate, and activate a distinct finite
 Bond in the common constitutional runtime. Independent Return records
 recognized refusal without a Bond. Godot only asks and presents. World
 authority is loaded from schema-V2 institutional state and embedded in
-schema-V2 gameplay saves for exact replay. Encounter, combat, general
+federation-aware schema-V3 gameplay saves for exact replay. Encounter, combat, general
 progression, equipment, and Synthesis decisions remain unavailable until their
 Rust reducers exist. Shared request/response fixtures live under
 `protocol/fixtures/`.

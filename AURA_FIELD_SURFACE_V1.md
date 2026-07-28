@@ -259,8 +259,8 @@ The runtime exposes an interior-surface view with:
 - every facility identity, kind, and working function.
 
 Entering from an unrelated route fails without revising state or emitting an
-event. Accepted entry persists in gameplay archive schema V2 and replays
-through the same surface-access rule. Godot renders this immutable projection
+event. Accepted entry persists in gameplay archive schema V3 and replays
+through the same surface-access rule and Runtime Federation binding. Godot renders this immutable projection
 and does not own the region, facility catalog, or constitutional decisions.
 
 Inspect all three surface contracts with:

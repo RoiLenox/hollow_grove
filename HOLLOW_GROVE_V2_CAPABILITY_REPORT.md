@@ -57,8 +57,9 @@ Glaüshouse discharge Clearance and Flynt recognition; every formal Bond
 separately snapshots Stonebend Name and Sandmanor proof.
 
 Gameplay history, outcome, child Bond, live institutional authority,
-post-choice placement, and revisit dialogue replay from a checksum-verified
-schema-V2 archive. Schema V1 has an explicit migration. `SaveIntent` and
+post-choice placement, and revisit dialogue replay from a checksum-verified,
+federation-aware schema-V3 archive. Schemas V1 and V2 have explicit
+migrations. `SaveIntent` and
 `LoadIntent` survive a service restart. Histories containing the separate
 regional-registration event remain explicitly unsupported by this gameplay
 archive rather than being silently truncated.

@@ -194,7 +194,8 @@ The immutable surface view exposes:
 - every facility's stable identity, kind, and function.
 
 Wrong-route entry fails without revision or event. Accepted entry persists and
-replays through gameplay archive schema V2. Godot renders ground, trails,
+replays through gameplay archive schema V3 with an explicit Runtime Federation
+binding. Godot renders ground, trails,
 rocks, dens, thickets, salvage, and witnesses without owning combat, Hollowing,
 care, proof, recognition, or Flynt authority.
 

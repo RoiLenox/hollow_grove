@@ -2,7 +2,7 @@
 
 Date: 2026-07-28
 
-Status: canonical Hollow Grove architecture and implementation milestone
+Status: canonical Hollow Grove architecture; executable V1 milestone complete
 
 Stable identity: `runtime-federation.hollow-grove.v1`
 
@@ -309,8 +309,8 @@ but it must remain contained, nonlethal, and subordinate to The Gathering.
 
 ## Persistence migration target
 
-The authoritative gameplay archive should advance from schema V2 to a
-federation-aware schema V3 only when the federation manifest and replay
+The authoritative gameplay archive has advanced from schema V2 to
+federation-aware schema V3 now that the federation manifest and replay
 boundary are executable.
 
 Migration must preserve V1 and V2 gameplay histories, institutional snapshots,
@@ -349,14 +349,17 @@ The audit must return a failing status when any invariant is violated.
 
 ## Implementation boundary
 
-This canon establishes the name, purpose, architecture, invariants, archive
-target, and first playable proof of The Runtime Federation.
+This canon established the name, purpose, architecture, invariants, archive
+target, and first playable proof of The Runtime Federation. The separate
+executable milestone is recorded in
+`THE_RUNTIME_FEDERATION_IMPLEMENTATION_V1.md`.
 
-It does not by itself claim that the HGRF archive, gameplay schema V3, unified
-inspection tools, or Central Junction operation have already been implemented.
-Those capabilities become canonical runtime facts only when production code,
-migrations, fixtures, audits, and tests pass and are committed at a separate
-provenance boundary.
+The HGRF archive, gameplay schema V3, component replay boundary, read-only
+inspection indexes, dedicated failing-status audit, and contained Central
+Junction operation are implemented in production code and covered by
+executable tests. They remain coordination mechanisms: no capability in this
+milestone grants the Federation domain custody, House authority, kernel
+authority, presentation authority, or sovereignty.
 
 Presentation work remains downstream. Godot may render accepted Federation
 state but may never define it.

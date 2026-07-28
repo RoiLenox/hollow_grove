@@ -126,12 +126,15 @@ fn universal_kernel_contains_no_runtime_federation_dependency() {
 }
 
 #[test]
-fn implementation_claim_is_explicitly_deferred_until_executable() {
+fn implementation_claim_points_to_the_separate_executable_milestone() {
     let canon = repository_file("THE_RUNTIME_FEDERATION_V1.md");
+    let implementation = repository_file("THE_RUNTIME_FEDERATION_IMPLEMENTATION_V1.md");
     assert!(canon.contains(
-        "It does not by itself claim that the HGRF archive, gameplay schema V3, unified\ninspection tools, or Central Junction operation have already been implemented."
+        "The separate\nexecutable milestone is recorded in\n`THE_RUNTIME_FEDERATION_IMPLEMENTATION_V1.md`."
     ));
-    assert!(canon.contains(
-        "Those capabilities become canonical runtime facts only when production code,\nmigrations, fixtures, audits, and tests pass"
-    ));
+    assert!(implementation.contains("Status: executable milestone complete"));
+    assert!(implementation.contains("# **The Runtime Federation**"));
+    assert!(implementation.contains("`runtime-federation.hollow-grove.v1`"));
+    assert!(implementation.contains("`HGRF` archive version 1"));
+    assert!(implementation.contains("gameplay archive schema V3"));
 }

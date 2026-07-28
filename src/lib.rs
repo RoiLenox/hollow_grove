@@ -34,6 +34,8 @@ pub mod manager_domain;
 pub mod pleb_meta;
 pub mod point;
 pub mod point_progression;
+pub mod runtime_federation;
+pub mod runtime_federation_fixture;
 pub mod snapshot_boundary;
 pub mod symptom;
 pub mod synthesis_execution;

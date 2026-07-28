@@ -381,8 +381,8 @@ The implemented slice has deterministic coverage proving:
 3. `src/gameplay/runtime.rs` owns region entry, movement, interaction, support,
    subject commitment, replay, and the constitutional child runtime.
 4. `src/gameplay/archive.rs` persists the supported gameplay event history and
-   exact institutional authority state in a schema-V2, checksum-verified
-   archive with explicit V1 migration.
+   exact institutional authority state in a schema-V3, checksum-verified
+   archive with an explicit Runtime Federation binding and V1/V2 migrations.
 5. `src/gameplay/protocol.rs` exposes the implemented intents, idempotency,
    revision checks, and save/load slots.
 6. `hueman_godot/scripts/retro_overworld.gd` renders Boardwalk actors, case

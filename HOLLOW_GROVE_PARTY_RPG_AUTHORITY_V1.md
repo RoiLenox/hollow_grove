@@ -60,9 +60,10 @@ increment establishes:
 - Independent Return as a persistent protected refusal with no Bond;
 - live `WorldSession` authority for Glaüshouse discharge Clearance, Stonebend
   Name, Sandmanor proof, and Flynt recognition;
-- schema-V2 gameplay event archives with deterministic checksums, embedded
-  institutional authority state, explicit V1 migration, and exact replay for
-  route, Aura Field, Aura Beach, Aura Basin, Current Sea, and Boardwalk entry.
+- schema-V3 gameplay event archives with deterministic checksums, embedded
+  institutional authority state, explicit Runtime Federation binding, V1/V2
+  migrations, and exact replay for route, Aura Field, Aura Beach, Aura Basin,
+  Current Sea, and Boardwalk entry.
 - an event-sourced six-person party consisting of Hueman plus at most five
   companions;
 - capable-subject recruitment derived from Deep Pressure memory, condition,

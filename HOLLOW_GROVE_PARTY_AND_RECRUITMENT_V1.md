@@ -128,9 +128,10 @@ Recruitment decisions store the exact relationship scores, condition, campaign
 outcome, path, reason, agency statement, nonbinding-player flag, and
 debt-free-refusal flags used at the time.
 
-Gameplay archive schema V2 serializes every party event under the existing
-checksum. Replay recomputes recruitment, selection, lead, action, and shift
-recovery against prior Deep Pressure and map state. Divergence fails closed.
+Gameplay archive schema V3 serializes every party event under the existing
+checksum and binds the history to The Runtime Federation. Replay recomputes
+recruitment, selection, lead, action, and shift recovery against prior Deep
+Pressure and map state. Divergence fails closed.
 Recruited people leave the scheduled-map projection and no longer block a tile
 as if they were still at work.
 

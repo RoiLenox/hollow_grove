@@ -15,7 +15,9 @@ use super::{
 };
 
 pub const GAMEPLAY_ARCHIVE_FORMAT: &str = "hollow-grove-gameplay";
-pub const GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 2;
+pub const GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 3;
+pub const GAMEPLAY_FEDERATION_COMPONENT_ID: &str = "component.gameplay.authoritative";
+const PRE_FEDERATION_GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 2;
 const LEGACY_GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 1;
 // Schema V1 formed Boardwalk Bonds against these test-era authority actors.
 // Migration preserves that historical dependency explicitly so replay is
@@ -24,6 +26,82 @@ const LEGACY_GAMEPLAY_AUTHORITY_MIGRATION: &str = "schema_version:2\n\
 office-holder\toffice.stonebend.hypergiant\tbeing.stonebend.fixture-member\ttrue\n\
 office-holder\toffice.sandmanor.sandman\tbeing.sandmanor.fixture-member\ttrue\n\
 office-holder\toffice.glaushouse.prima-donna\tbeing.glaushouse.fixture-member\ttrue\n";
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct GameplayFederationBinding {
+    pub federation_identity: String,
+    pub federation_archive_format: String,
+    pub federation_archive_version: u16,
+    pub component_id: String,
+}
+
+impl GameplayFederationBinding {
+    #[must_use]
+    pub fn canonical(component_id: impl Into<String>) -> Self {
+        Self {
+            federation_identity: crate::runtime_federation::RUNTIME_FEDERATION_IDENTITY.into(),
+            federation_archive_format: crate::runtime_federation::RUNTIME_FEDERATION_ARCHIVE_FORMAT
+                .into(),
+            federation_archive_version:
+                crate::runtime_federation::RUNTIME_FEDERATION_ARCHIVE_VERSION,
+            component_id: component_id.into(),
+        }
+    }
+
+    fn validate(&self) -> Result<(), GameplayArchiveError> {
+        if self.federation_identity != crate::runtime_federation::RUNTIME_FEDERATION_IDENTITY
+            || self.federation_archive_format
+                != crate::runtime_federation::RUNTIME_FEDERATION_ARCHIVE_FORMAT
+            || self.federation_archive_version
+                != crate::runtime_federation::RUNTIME_FEDERATION_ARCHIVE_VERSION
+            || self.component_id.is_empty()
+            || self.component_id.chars().any(char::is_whitespace)
+        {
+            return Err(GameplayArchiveError::InvalidFederationBinding);
+        }
+        Ok(())
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct GameplayArchiveMigrationRecord {
+    pub migration_id: String,
+    pub from_schema_version: u16,
+    pub to_schema_version: u16,
+    pub decision: String,
+    pub provenance_id: String,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct DecodedGameplayArchive {
+    pub source_schema_version: u16,
+    pub rule_set: RuleSetId,
+    pub events: Vec<GameplayEventEnvelope>,
+    pub institutional_state: Option<String>,
+    pub federation_binding: GameplayFederationBinding,
+    pub migration_history: Vec<GameplayArchiveMigrationRecord>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct GameplayArchiveEnvelopeV3 {
+    format: String,
+    schema_version: u16,
+    checksum: String,
+    payload: GameplayArchivePayloadV3,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct GameplayArchivePayloadV3 {
+    rule_set: String,
+    events: Vec<WireGameplayEventEnvelope>,
+    institutional_state: String,
+    federation_binding: GameplayFederationBinding,
+    migration_history: Vec<GameplayArchiveMigrationRecord>,
+}
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -186,6 +264,58 @@ pub fn encode_gameplay_archive(
     events: &[GameplayEventEnvelope],
     world: &WorldSession,
 ) -> Result<String, GameplayArchiveError> {
+    encode_gameplay_archive_for_component(rule_set, events, world, GAMEPLAY_FEDERATION_COMPONENT_ID)
+}
+
+pub fn encode_gameplay_archive_for_component(
+    rule_set: &RuleSetId,
+    events: &[GameplayEventEnvelope],
+    world: &WorldSession,
+    component_id: &str,
+) -> Result<String, GameplayArchiveError> {
+    encode_gameplay_archive_with_history(
+        rule_set,
+        events,
+        world,
+        GameplayFederationBinding::canonical(component_id),
+        Vec::new(),
+    )
+}
+
+fn encode_gameplay_archive_with_history(
+    rule_set: &RuleSetId,
+    events: &[GameplayEventEnvelope],
+    world: &WorldSession,
+    federation_binding: GameplayFederationBinding,
+    mut migration_history: Vec<GameplayArchiveMigrationRecord>,
+) -> Result<String, GameplayArchiveError> {
+    federation_binding.validate()?;
+    migration_history.sort_by(|left, right| left.migration_id.cmp(&right.migration_id));
+    let payload = GameplayArchivePayloadV3 {
+        rule_set: rule_set.as_str().into(),
+        events: events
+            .iter()
+            .map(WireGameplayEventEnvelope::try_from)
+            .collect::<Result<_, _>>()?,
+        institutional_state: world.persisted_state_output(),
+        federation_binding,
+        migration_history,
+    };
+    let checksum = checksum_for(&payload)?;
+    serde_json::to_string_pretty(&GameplayArchiveEnvelopeV3 {
+        format: GAMEPLAY_ARCHIVE_FORMAT.into(),
+        schema_version: GAMEPLAY_ARCHIVE_SCHEMA_VERSION,
+        checksum,
+        payload,
+    })
+    .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))
+}
+
+pub fn encode_legacy_gameplay_archive_v2(
+    rule_set: &RuleSetId,
+    events: &[GameplayEventEnvelope],
+    world: &WorldSession,
+) -> Result<String, GameplayArchiveError> {
     let payload = GameplayArchivePayloadV2 {
         rule_set: rule_set.as_str().into(),
         events: events
@@ -197,7 +327,7 @@ pub fn encode_gameplay_archive(
     let checksum = checksum_for(&payload)?;
     serde_json::to_string_pretty(&GameplayArchiveEnvelopeV2 {
         format: GAMEPLAY_ARCHIVE_FORMAT.into(),
-        schema_version: GAMEPLAY_ARCHIVE_SCHEMA_VERSION,
+        schema_version: PRE_FEDERATION_GAMEPLAY_ARCHIVE_SCHEMA_VERSION,
         checksum,
         payload,
     })
@@ -207,6 +337,17 @@ pub fn encode_gameplay_archive(
 pub fn decode_gameplay_archive(
     encoded: &str,
 ) -> Result<(RuleSetId, Vec<GameplayEventEnvelope>, Option<String>), GameplayArchiveError> {
+    let decoded = decode_gameplay_archive_with_metadata(encoded)?;
+    Ok((
+        decoded.rule_set,
+        decoded.events,
+        decoded.institutional_state,
+    ))
+}
+
+pub fn decode_gameplay_archive_with_metadata(
+    encoded: &str,
+) -> Result<DecodedGameplayArchive, GameplayArchiveError> {
     let value: serde_json::Value = serde_json::from_str(encoded)
         .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
     let schema_version = value
@@ -216,51 +357,135 @@ pub fn decode_gameplay_archive(
         .ok_or_else(|| {
             GameplayArchiveError::Serialization("missing gameplay archive schema version".into())
         })?;
-    let (rule_set, wire_events, institutional_state) = match schema_version {
-        GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
-            let envelope: GameplayArchiveEnvelopeV2 = serde_json::from_value(value)
-                .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
-            validate_envelope(
-                &envelope.format,
-                envelope.schema_version,
-                &envelope.checksum,
-                &envelope.payload,
-            )?;
-            (
-                envelope.payload.rule_set,
-                envelope.payload.events,
-                Some(envelope.payload.institutional_state),
-            )
-        }
-        LEGACY_GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
-            let envelope: GameplayArchiveEnvelopeV1 = serde_json::from_value(value)
-                .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
-            validate_envelope(
-                &envelope.format,
-                envelope.schema_version,
-                &envelope.checksum,
-                &envelope.payload,
-            )?;
-            (
-                envelope.payload.rule_set,
-                envelope
-                    .payload
-                    .events
-                    .into_iter()
-                    .map(LegacyWireGameplayEventEnvelope::into_current)
-                    .collect(),
-                Some(LEGACY_GAMEPLAY_AUTHORITY_MIGRATION.into()),
-            )
-        }
-        unsupported => return Err(GameplayArchiveError::UnsupportedSchema(unsupported)),
-    };
+    let (rule_set, wire_events, institutional_state, federation_binding, migration_history) =
+        match schema_version {
+            GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
+                let envelope: GameplayArchiveEnvelopeV3 = serde_json::from_value(value)
+                    .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
+                validate_envelope(
+                    &envelope.format,
+                    envelope.schema_version,
+                    &envelope.checksum,
+                    &envelope.payload,
+                )?;
+                envelope.payload.federation_binding.validate()?;
+                (
+                    envelope.payload.rule_set,
+                    envelope.payload.events,
+                    Some(envelope.payload.institutional_state),
+                    envelope.payload.federation_binding,
+                    envelope.payload.migration_history,
+                )
+            }
+            PRE_FEDERATION_GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
+                let envelope: GameplayArchiveEnvelopeV2 = serde_json::from_value(value)
+                    .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
+                validate_envelope(
+                    &envelope.format,
+                    envelope.schema_version,
+                    &envelope.checksum,
+                    &envelope.payload,
+                )?;
+                (
+                    envelope.payload.rule_set,
+                    envelope.payload.events,
+                    Some(envelope.payload.institutional_state),
+                    GameplayFederationBinding::canonical(GAMEPLAY_FEDERATION_COMPONENT_ID),
+                    vec![federation_migration_record()],
+                )
+            }
+            LEGACY_GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
+                let envelope: GameplayArchiveEnvelopeV1 = serde_json::from_value(value)
+                    .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
+                validate_envelope(
+                    &envelope.format,
+                    envelope.schema_version,
+                    &envelope.checksum,
+                    &envelope.payload,
+                )?;
+                (
+                    envelope.payload.rule_set,
+                    envelope
+                        .payload
+                        .events
+                        .into_iter()
+                        .map(LegacyWireGameplayEventEnvelope::into_current)
+                        .collect(),
+                    Some(LEGACY_GAMEPLAY_AUTHORITY_MIGRATION.into()),
+                    GameplayFederationBinding::canonical(GAMEPLAY_FEDERATION_COMPONENT_ID),
+                    vec![
+                        legacy_authority_migration_record(),
+                        federation_migration_record(),
+                    ],
+                )
+            }
+            unsupported => return Err(GameplayArchiveError::UnsupportedSchema(unsupported)),
+        };
     let rule_set = RuleSetId::new(rule_set)
         .map_err(|error| GameplayArchiveError::InvalidDomainValue(error.to_string()))?;
     let events = wire_events
         .into_iter()
         .map(|event| event.into_domain(&rule_set))
         .collect::<Result<_, _>>()?;
-    Ok((rule_set, events, institutional_state))
+    Ok(DecodedGameplayArchive {
+        source_schema_version: schema_version,
+        rule_set,
+        events,
+        institutional_state,
+        federation_binding,
+        migration_history,
+    })
+}
+
+pub fn migrate_gameplay_archive(encoded: &str) -> Result<String, GameplayArchiveError> {
+    let decoded = decode_gameplay_archive_with_metadata(encoded)?;
+    if decoded.source_schema_version == GAMEPLAY_ARCHIVE_SCHEMA_VERSION {
+        return encode_replayed_gameplay_archive(decoded);
+    }
+    encode_replayed_gameplay_archive(decoded)
+}
+
+fn encode_replayed_gameplay_archive(
+    decoded: DecodedGameplayArchive,
+) -> Result<String, GameplayArchiveError> {
+    let world = decoded
+        .institutional_state
+        .as_deref()
+        .map(WorldSession::from_persisted_output)
+        .transpose()
+        .map_err(|error| GameplayArchiveError::InvalidDomainValue(error.to_string()))?
+        .unwrap_or_else(WorldSession::canonical);
+    encode_gameplay_archive_with_history(
+        &decoded.rule_set,
+        &decoded.events,
+        &world,
+        decoded.federation_binding,
+        decoded.migration_history,
+    )
+}
+
+fn legacy_authority_migration_record() -> GameplayArchiveMigrationRecord {
+    GameplayArchiveMigrationRecord {
+        migration_id: "migration.gameplay.v1-to-v2.authority-dependency".into(),
+        from_schema_version: 1,
+        to_schema_version: 2,
+        decision:
+            "preserve historical Boardwalk authority dependency without inventing live authority"
+                .into(),
+        provenance_id: "provenance.gameplay.migration.v1-to-v2".into(),
+    }
+}
+
+fn federation_migration_record() -> GameplayArchiveMigrationRecord {
+    GameplayArchiveMigrationRecord {
+        migration_id: "migration.gameplay.v2-to-v3.runtime-federation".into(),
+        from_schema_version: 2,
+        to_schema_version: 3,
+        decision:
+            "bind existing gameplay history to The Runtime Federation without inventing domain events"
+                .into(),
+        provenance_id: "provenance.gameplay.migration.v2-to-v3".into(),
+    }
 }
 
 fn validate_envelope(
@@ -274,7 +499,9 @@ fn validate_envelope(
     }
     if !matches!(
         schema_version,
-        GAMEPLAY_ARCHIVE_SCHEMA_VERSION | LEGACY_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+        GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+            | PRE_FEDERATION_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+            | LEGACY_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
     ) {
         return Err(GameplayArchiveError::UnsupportedSchema(schema_version));
     }
@@ -585,6 +812,7 @@ pub enum GameplayArchiveError {
     UnsupportedGameplayEvent(String),
     InvalidDomainValue(String),
     IdentityPayloadMismatch,
+    InvalidFederationBinding,
 }
 
 impl std::fmt::Display for GameplayArchiveError {
@@ -642,5 +870,24 @@ mod tests {
         let institutional_state = institutional_state.unwrap();
         assert!(institutional_state.starts_with("schema_version:2\n"));
         assert!(institutional_state.contains("being.stonebend.fixture-member"));
+
+        let migrated = migrate_gameplay_archive(&encoded).unwrap();
+        let migrated = decode_gameplay_archive_with_metadata(&migrated).unwrap();
+        assert_eq!(
+            migrated.source_schema_version,
+            GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+        );
+        assert_eq!(migrated.events.len(), 1);
+        assert_eq!(migrated.migration_history.len(), 2);
+        assert!(migrated.migration_history.iter().any(
+            |record| record.migration_id == "migration.gameplay.v1-to-v2.authority-dependency"
+        ));
+        assert!(
+            migrated
+                .migration_history
+                .iter()
+                .any(|record| record.migration_id
+                    == "migration.gameplay.v2-to-v3.runtime-federation")
+        );
     }
 }
