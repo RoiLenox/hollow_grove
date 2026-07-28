@@ -38,16 +38,22 @@ Use this order when reviewing Hollow Grove V2:
 6. `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md` for world-facing route law.
 7. `CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md` for Aura Ridge's public economy,
    Central Junction, the four indexes, market authorities, and settlement law.
-8. `HUEMAN_v0.1.0.md` for the Hueman constitutional entry point and
+8. `SERVICE_TOURNAMENT_CENTRAL_JUNCTION_CANON_V1.md` for Central Junction's
+   largest public Function, the four fixed paired-service House identities,
+   the War of a Thousand Hues, nonlethal scenarios, Service Marks, and
+   constitutional scoring, followed by
+   `SERVICE_TOURNAMENT_ARCHIVE_AND_CANONICAL_YEAR_FIXTURE_V1.md` for archive,
+   prize, Synthesis-semantic, replay, fixture, and audit law.
+9. `HUEMAN_v0.1.0.md` for the Hueman constitutional entry point and
    `HUEMAN_FACULTIES_V1.md` for specialized Body/Spirit/Mind/Soul faculty law.
-9. `HOLLOW_GROVE_V2_CAPABILITY_REPORT.md`, `V2_CAPABILITY_MATRIX.md`, and
+10. `HOLLOW_GROVE_V2_CAPABILITY_REPORT.md`, `V2_CAPABILITY_MATRIX.md`, and
    `V2_CAPABILITY_INVENTORY.md` for observational capability status.
-10. `HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md` for the executable
+11. `HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md` for the executable
    twelve-field lived-lore contract across all four Houses.
-11. `src/constitutional/` and `src/world/` for production enforcement and
-    additive deterministic world law.
-12. `examples/` and `tests/` for executable proof.
-13. `artifacts/` only for generated or runtime-facing projections.
+12. `src/constitutional/` and `src/world/` for production enforcement and
+   additive deterministic world law.
+13. `examples/` and `tests/` for executable proof.
+14. `artifacts/` only for generated or runtime-facing projections.
 
 ## Authority Classes
 
@@ -111,6 +117,14 @@ These sources define meaning and legality:
   matrix, one unnamed ordinary currency, Central Junction district, South
   Ridge Exchange, Junction Board, Clearing House, Junction Wire, public
   indexes, and lawful event settlement;
+- `SERVICE_TOURNAMENT_CENTRAL_JUNCTION_CANON_V1.md` for the additive
+  Compromise-bound Service Tournament Function, the four fixed paired-service
+  House identities, the War of a Thousand Hues, nonlethal scenario law,
+  operational paint records, Service Marks, constitutional scoring, and the
+  prohibition against permanent sovereignty transfer;
+- `SERVICE_TOURNAMENT_ARCHIVE_AND_CANONICAL_YEAR_FIXTURE_V1.md` for `HGSTA`
+  V1, the canonical year fixture, coequal Edge and Glass lineages, prize
+  degrees, House Synthesis semantics, migration, checksum, and replay law;
 - `MINOAN_COUNTY_COURT_SYSTEM_AND_RESTITUTION_CYCLE_V1.md` for the one shared
   judiciary hosted by the Minoans, five-stage case cycle, amendment-process
   review, ratification boundaries, and Restitution;
@@ -204,6 +218,23 @@ index definitions and calculation authorities, stable enterprise/project
 classification, event-contract recognition, settlement, publication, and
 direct conflict-of-interest rejection. It does not execute runtime trading,
 combat, movement, transformation, party, rendering, or kernel behavior.
+
+`src/world/service_tournament.rs` is the deterministic shared-Function and
+scenario model for the Service Tournament. It references the four existing
+House governments and the sole visual color constitution; it does not create
+agency or armed-service institutions. It validates exactly one paired-service
+identity and one representative per House, nonlethal scenarios, stable
+caller-supplied identities, mark and Service Mark provenance, complete
+constitutional scorecards, bounded awards, and no transfer of permanent
+sovereignty. It does not alter House succession, execute lethal combat,
+replace Central Junction's market institutions, or enter the recursion kernel.
+
+`src/world/service_tournament_archive.rs` and
+`src/world/service_tournament_fixture.rs` own deterministic Tournament-year
+persistence, migration, replay, the golden annual record, prize custody, and
+artifact refinement. `src/constitutional/house_synthesis_semantics.rs` owns
+typed House meaning above the neutral recursion kernel. None of these modules
+may infer identity from collection order or client presentation.
 
 `src/world/sandmanor.rs` is the executable Sandmanor-specific authority above
 the frozen Constitutional Runtime V2. It validates equal Minorian and Minoan

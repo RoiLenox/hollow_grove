@@ -435,6 +435,34 @@ impl JunctionApproach {
     }
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
+pub enum CentralJunctionFunction {
+    ServiceTournament,
+}
+
+impl CentralJunctionFunction {
+    pub const ALL: [Self; 1] = [Self::ServiceTournament];
+
+    #[must_use]
+    pub const fn stable_id(self) -> &'static str {
+        match self {
+            Self::ServiceTournament => "function.central-junction.service-tournament",
+        }
+    }
+
+    #[must_use]
+    pub const fn display_name(self) -> &'static str {
+        match self {
+            Self::ServiceTournament => "The Service Tournament",
+        }
+    }
+
+    #[must_use]
+    pub const fn is_largest_public_function(self) -> bool {
+        matches!(self, Self::ServiceTournament)
+    }
+}
+
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CentralJunctionDistrict {
     pub stable_id: &'static str,
@@ -443,6 +471,7 @@ pub struct CentralJunctionDistrict {
     pub institutions: BTreeSet<CentralJunctionInstitution>,
     pub approaches: BTreeSet<JunctionApproach>,
     pub sector_halls: BTreeSet<HouseSectorHall>,
+    pub public_functions: BTreeSet<CentralJunctionFunction>,
     pub district_not_single_building: bool,
 }
 
@@ -455,6 +484,7 @@ pub fn canonical_central_junction() -> CentralJunctionDistrict {
         institutions: CentralJunctionInstitution::ALL.into_iter().collect(),
         approaches: JunctionApproach::ALL.into_iter().collect(),
         sector_halls: HouseSectorHall::ALL.into_iter().collect(),
+        public_functions: CentralJunctionFunction::ALL.into_iter().collect(),
         district_not_single_building: true,
     }
 }

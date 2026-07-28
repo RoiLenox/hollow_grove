@@ -386,3 +386,24 @@ work, and acquisition.
 
 The player need not become a professional trader for the public economy to
 shape the world.
+
+## XVI. The Service Tournament
+
+**The Service Tournament** is Central Junction's largest public Function. It
+temporarily turns the district into the shared operational arena of all four
+Houses for a constitutionally bounded civic festival, war convention, and
+nonlethal simulation tournament. Its central conflict is **The War of a
+Thousand Hues**.
+
+The Tournament remains distinct from the market-authority chain. The South
+Ridge Exchange, Junction Board, Clearing House, and Junction Wire retain their
+existing economic functions; none becomes a military command, scenario
+sovereign, House government, or owner of the Tournament's constitutional
+result. Any associated event contract remains subordinate to recognized
+Tournament evidence and cannot decide the champion.
+
+The complete shared Function law, four paired-service House identities,
+nonlethal scenario grammar, paint-record system, Service Marks, scoring, and
+nontransfer rule are canonical in
+`SERVICE_TOURNAMENT_CENTRAL_JUNCTION_CANON_V1.md` and executable in
+`src/world/service_tournament.rs`.

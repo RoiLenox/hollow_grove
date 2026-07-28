@@ -1,8 +1,8 @@
 use std::collections::BTreeSet;
 
 use hollow_grove::world::central_junction::{
-    self, CentralJunctionInstitution, EconomicPole, EventOutcome, HouseSectorHall,
-    JunctionApproach, MarketLifecycleState, SummitConcept, ValueInstrument,
+    self, CentralJunctionFunction, CentralJunctionInstitution, EconomicPole, EventOutcome,
+    HouseSectorHall, JunctionApproach, MarketLifecycleState, SummitConcept, ValueInstrument,
 };
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -12,6 +12,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         || district.institutions != CentralJunctionInstitution::ALL.into_iter().collect()
         || district.approaches != JunctionApproach::ALL.into_iter().collect()
         || district.sector_halls != HouseSectorHall::ALL.into_iter().collect()
+        || district.public_functions != CentralJunctionFunction::ALL.into_iter().collect()
+        || !CentralJunctionFunction::ServiceTournament.is_largest_public_function()
     {
         return Err("Central Junction district roster drifted".into());
     }
@@ -78,6 +80,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!(
         "market institutions: South Ridge Exchange, Junction Board, Clearing House, Junction Wire"
     );
+    println!("largest public Function: The Service Tournament");
     println!("House-owned official indexes: none");
     println!("public Sector Hall index boards: 4 / Junction Wire connected");
     println!("Current Haze market authority: false");

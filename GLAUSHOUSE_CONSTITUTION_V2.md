@@ -795,3 +795,29 @@ preconditions; it does not duplicate the universal recursion kernel.
 
 Godot and Hueman may present diagnosis, consent, clearance, recovery, clinical
 stops, and Synthesis outcomes. They may never create or reinterpret them.
+
+## Service Tournament Interface
+
+At the Service Tournament, Glaüshouse expresses the fixed **FBI & Marines**
+reference as one Glaüshouse cultural-government identity. Investigation,
+evidence, forensics, diagnosis, internal defense, rapid deployment, rescue,
+casualty extraction, close intervention, and dangerous-scene security remain
+subject to capacity, consent, clearance, clinical stop, recovery, Chromacord,
+and this Constitution. No separate agency team, marine government, or
+parallel command is created.
+
+Glaüshouse owns the Green family in the War of a Thousand Hues. A green circle
+or cross may establish protected medical ground or record rescue, treatment,
+and extraction, but it does not manufacture consent or clearance. Illegal
+Synthesis remains prohibited. Tournament victory grants no permanent
+sovereignty and does not alter Glaüshouse or another House's succession.
+
+Tournament Synthesis records distinguish inward Glaüshouse **Precog** during
+Aim from the existing outward **Sympiote** manifestation after an accepted
+Kiss. Sympiote is the sole canonical spelling. Glaüshouse Precog concerns
+diagnosis, trajectory, treatment, viability, and what a living system is
+becoming; it is type-distinct from Stonebend's outward Precog. Glaüshouse's
+glass, fusion, perception, treatment, and revelation tradition may inform
+prizes and lawful refinements of the Glass of a Thousand Hues without making
+custody ownership or bypassing consent, clearance, recovery, or the
+prohibition against Illegal Synthesis.

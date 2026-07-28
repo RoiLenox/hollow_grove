@@ -283,7 +283,7 @@ is Fraudulent Design.
 
 - action: Clear it
 - logic: double negative
-- expression: Synbiote
+- expression: Sympiote
 - OS domain: Repair
 
 Glaüshouse clears so that change may occur without becoming violation. It

@@ -771,3 +771,45 @@ Proliteriate Yield accountability, and Diamond-boundary recognition when a
 Hypergiant is active. No candidate may self-certify and the outgoing bearer
 cannot appoint a replacement. Proliteriate witnesses remain temporary while
 the distributed network persists.
+
+### Service Tournament shared-Function status
+
+The Service Tournament is the largest public Function held at Central
+Junction. Under
+`SERVICE_TOURNAMENT_CENTRAL_JUNCTION_CANON_V1.md`, Central Junction may become
+the temporary shared operational arena of Flynt, Stonebend, Sandmanor, and
+Glaüshouse for nonlethal simulations, including the War of a Thousand Hues.
+
+Each House enters as one complete paired-service cultural-government identity:
+Flynt, MI as ATF & Army; Stonebend as DEA & Air Force; Sandmanor as CIA &
+Navy; and Glaüshouse as FBI & Marines. These are external reference models,
+not new Hollow Grove institutions or eight independent factions. Every House
+act remains subject to that House's constitution and to shared Function law.
+
+Tournament honor, ceremonial titles, bounded stewardship, temporary
+operational responsibility, custody of a standard or cup, first-mark rights,
+and public recognition may be awarded. Victory never transfers permanent
+sovereignty, changes House succession, makes Central Junction a House, or
+allows one House to govern another. The Tournament tests which House can
+remain fully itself while serving the whole of Hollow Grove.
+
+### Service Tournament archive and prize custody
+
+`SERVICE_TOURNAMENT_ARCHIVE_AND_CANONICAL_YEAR_FIXTURE_V1.md` freezes the
+`HGSTA` archive, migration, replay, golden annual fixture, and dedicated audit
+under this existing shared-Function authority. Tournament history may preserve
+years, scenarios, paint layers, Service Marks, emergencies, scores,
+violations, results, prizes, and House Synthesis semantic events, but an
+archive is evidence and continuity—not a new constitutional source.
+
+The Edge of Tomorrow and Glass of a Thousand Hues are coequal existing
+completed Syntheses at the apex of Current and Aura prize lineages. Their
+stable identities survive lawful refinement. Temporary custody is not
+ownership, office, accession, or sovereignty. The Edge and Glass may have
+different custodians, and neither custodian gains permanent control of Central
+Junction or another House.
+
+House Synthesis meaning remains above the universal recursion kernel. Aim may
+record an inward House operation; only an accepted Kiss may apply an outward
+manifestation; Point² records the completed evidence-bearing relationship.
+Miss and client presentation never create a manifestation.

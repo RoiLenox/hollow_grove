@@ -211,3 +211,25 @@ catalog, intelligence archive, vulnerability record, and political leverage.
 Its use remains a constitutional tension: care and accommodation can become
 withheld treatment, artificial dependency, price manipulation, disclosure,
 anti-Form weapons, or Illegal Synthesis.
+
+## Service Tournament Interface
+
+At the Service Tournament, Flynt, MI expresses the fixed **ATF & Army**
+reference as one Flynt cultural-government identity. Combat engineering,
+controlled mechanisms, breaching, explosives knowledge, fortification, route
+creation, territorial control, field improvisation, and lawful recognition of
+force remain subject to Tross, the existing Manticorp hierarchy, and Flynt
+law. No separate agency team, army government, or parallel command is created.
+The Gallows remains the unlawful or unrecognized mirror.
+
+Flynt owns the Black family in the War of a Thousand Hues, expressed through
+the established onyx, obsidian, gunmetal, Rich Black Blue, and related dark
+mixtures rather than featureless pure black. Tournament victory grants no
+permanent sovereignty and does not alter Flynt or another House's succession.
+
+Tournament Synthesis records distinguish inward **Resynce** during Aim from
+outward **Recog** after an accepted Kiss. Resynce does not itself create Recog,
+and display animation creates neither. Flynt's flint, edge, spark, activation,
+and mechanism tradition may inform prize materials and lawful refinements,
+including recorded contributions to the Edge of Tomorrow, without replacing
+the Edge's singular identity or turning custody into ownership.

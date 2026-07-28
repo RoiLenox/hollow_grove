@@ -79,6 +79,7 @@ Compromise.
 | constitutional geography and routes | relevant Houses plus Compromise route law | typed route/boundary transfer | receiving House or route institution | shared interface archive and world replay |
 | Stonebend gates | House evidence, Stonebend boundary records, Central Junction records | bounded gate disposition | Stonebend and receiving domain | gate event plus related Title history |
 | Central Junction | House Sector Halls and market institutions | Board recognition, Exchange calculation, Clearing settlement, Wire publication | named Junction institution | shared interface record and public evidence |
+| Service Tournament | four House constitutions under Compromise shared-Function law | nonlethal scenarios, War of a Thousand Hues, constitutional scoring, coequal Current/Aura prizes | each House within its own authority; bounded Tournament administration | versioned year archive, stable event/scenario/mark/Service Mark/prize/Synthesis provenance, checksum, and replay |
 | Minoan County Court | House evidence and affected-party testimony | Conciliation, First Hearing, Appeal, Constitutional Review, Restitution | constitutionally responsible House/institution | Court archive, Restitution and recurrence |
 | constitutional amendments | proposer, affected Houses, Court process review | scope-appropriate ratification | Houses implement; Stonebend seals | amendment archive and Restitution review |
 | emergency transfer | Minoan/coastal legal authority and Glaüshouse clinical authority | lawful custody transfer and clinical acknowledgment | originating and receiving institutions | shared transfer history |
@@ -98,6 +99,7 @@ Compromise.
 | Hueman | `HUEMAN_v0.1.0.md` as entry point and its specialized authorities | Frame, progression, faculty, Recipe, Sympiote and Synthesis modules | Hueman/faculty/Recipe/Synthesis tests | Hueman artifacts | no House office |
 | geography | `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md` | geography and route network | geography/route audits | maps and scenes | frozen token aliases |
 | Central Junction | `CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md` | `src/world/central_junction.rs` | Central Junction tests/audit | public boards/world context | no House exchange |
+| Service Tournament | `SERVICE_TOURNAMENT_CENTRAL_JUNCTION_CANON_V1.md` and `SERVICE_TOURNAMENT_ARCHIVE_AND_CANONICAL_YEAR_FIXTURE_V1.md` under Compromise and House constitutions | `src/world/service_tournament.rs`, archive, fixture, and House Synthesis semantics | canon, archive, migration, replay, and audit tests | Central Junction Function record | no new constitution, service faction, sovereignty transfer, or kernel lore |
 | Minoan Court | `MINOAN_COUNTY_COURT_SYSTEM_AND_RESTITUTION_CYCLE_V1.md` under Compromise | Court model plus shared interface archive | Court tests/audit | courthouse and scene projections | reserved appeal text |
 | amendments and Restitution | Minoan Court document under Compromise | Court/shared interface adapters | amendment/Restitution tests | world context | no judicial ratification |
 

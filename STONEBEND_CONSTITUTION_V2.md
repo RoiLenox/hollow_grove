@@ -470,3 +470,26 @@ Claim/Title/Yield review without replacing the common Bond aggregate.
 The universal recursion kernel remains isolated. Constitutional Runtime V2 remains authoritative for common Bond, Current, Aura, House-decision, persistence, replay, and Synthesis law. The Stonebend layer may consume stable identity and institutional records but may not rewrite those frozen domains.
 
 Legacy institutional-state migration is deliberately non-authoritative. A former labor-body membership becomes ordinary Gerald civic standing, never a Proliteriate office or representation grant. A former Freemason membership becomes ordinary membership in the Freemason institution, never High Freemason. Defunct peer-role subgroups are removed while membership identity and timestamps remain. No legacy form, progression, role label, or subgroup can infer constitutional authority.
+
+## Service Tournament Interface
+
+At the Service Tournament, Stonebend expresses the fixed **DEA & Air Force**
+reference as one Stonebend cultural-government identity. Classification, chain
+of custody, tracking, aerial observation, precision, structural overview,
+boundary control, lawful containment, and interdiction remain subject to this
+Constitution. No separate agency team, air-service government, or parallel
+command is created.
+
+Stonebend owns the Blue family in the War of a Thousand Hues. A Tournament
+mark may evidence presence, custody, sequence, or control, but it does not
+create a Name, Claim, Title, ownership, or Hollowing authority. Illegal
+Hollowing remains prohibited. Tournament victory grants no permanent
+sovereignty and does not alter Stonebend or another House's succession.
+
+Tournament Synthesis records distinguish inward **Presynce** during Aim from
+the Stonebend outward manifestation **Precog** after an accepted Kiss.
+`StonebendManifestation::Precog` concerns anticipated lawful form, naming,
+structure, boundary, Title, and constitutional becoming; it is type-distinct
+from Glaüshouse's inward Precog operation. Stonebend's stone, structure,
+naming, foundation, and lawful-form tradition may inform prize descent without
+allowing a Recipe, Core, mark, or custody record to manufacture Title.

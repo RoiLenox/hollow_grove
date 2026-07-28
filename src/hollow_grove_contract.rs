@@ -1,3 +1,5 @@
+use serde::{Deserialize, Serialize};
+
 use crate::world_map_geometry::{
     canonical_rotation_contract_fixture, validate_hollow_grove_rotation_contract,
 };
@@ -78,7 +80,7 @@ impl EntityCategory {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum House {
     Stonebend,
     Sandmanor,

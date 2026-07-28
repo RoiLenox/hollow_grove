@@ -689,3 +689,32 @@ universal recursion kernel remains isolated.
 
 Godot and Hueman may present designs, evidence, failures, Contest progress,
 proof, teaching, and regional roles. They may never create or reinterpret them.
+
+## Service Tournament Interface
+
+At the Service Tournament, Sandmanor expresses the fixed **CIA & Navy**
+reference as one Sandmanor cultural-government identity. Intelligence,
+secrecy, navigation, maritime movement, foreign contact, source cultivation,
+indirect influence, contested Currents, coastal operations, and interpretation
+of incomplete information remain subject to Sandmanor proof, reciprocity, and
+the Contest of Improvement. No separate agency team, naval government, or
+parallel command is created.
+
+Literal maritime exercises occur at Aura Beach, along the coast, or on
+designated canals. The paired-service reference does not reclassify Current
+Sea, which remains a civic sea-of-people concourse.
+
+Sandmanor owns the Red family in the War of a Thousand Hues. Tournament
+intelligence, staged evidence, and successful infiltration do not become
+constitutional proof without the ordinary proof process. Tournament victory
+grants no permanent sovereignty and does not alter Sandmanor or another
+House's succession.
+
+Tournament Synthesis records preserve the existing regional paths rather than
+inventing prize forms: the Minorian path is inward **Prefog**, Gnome source,
+Minotaur manifestation, and Aura Fields jurisdiction; the Minoan path is
+inward **Prefig**, Elf source, Centaur manifestation, and Aura Beach and
+Current Sea jurisdiction. Only an accepted Kiss may apply the existing
+physical manifestation. Sandmanor's sand, separation, preparation, pattern,
+and arrangement tradition may inform prizes, while a Recipe remains a Recipe
+until lawfully realized.

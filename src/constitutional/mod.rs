@@ -7,6 +7,7 @@
 mod adapters;
 mod application;
 mod bond;
+mod house_synthesis_semantics;
 mod houses;
 mod ids;
 mod interfaces;
@@ -23,6 +24,7 @@ mod visual_identity;
 pub use adapters::*;
 pub use application::*;
 pub use bond::*;
+pub use house_synthesis_semantics::*;
 pub use houses::*;
 pub use ids::*;
 pub use interfaces::*;
