@@ -4,6 +4,25 @@ This checkpoint records the semantic foundation that is now enforced in code.
 
 It is a boundary document, not a second lore source. Canonical meaning lives in the contract, validators, fixtures, and freeze tests named below.
 
+## The Runtime Federation
+
+The canonical continuity layer above completed universal-kernel passes is:
+
+- `THE_RUNTIME_FEDERATION_V1.md`
+
+The Runtime Federation carries accepted, provenance-preserving consequence
+between constitutional domains and into authoritative gameplay. It is not a
+fifth House, a second Constitution, a domain reducer, or part of the universal
+recursion kernel.
+
+Its kernel-facing Hollow Grove grammar is:
+
+`The Way Back -> The Initiation -> The Gathering -> The Festival -> The Way Back`
+
+The universal kernel remains bounded to neutral computation. The Federation
+begins only after a completed result becomes eligible for constitutional
+interpretation and evidence.
+
 ## Root Material Laws
 
 - `Current = blood`

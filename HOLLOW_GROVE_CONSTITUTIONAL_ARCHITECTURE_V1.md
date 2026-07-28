@@ -31,6 +31,9 @@ flowchart TB
     RT["Constitutional Runtime<br/>identity · evidence · authority · lifecycle<br/>replay · serialization · migration · history"]
     BC["Bond Constitution<br/>Claim · obligation · challenge · succession<br/>restoration · Tombstone"]
     HG["Hollow Grove Compromise<br/><b>Hollow Grove Constitution</b>"]
+    RF["The Runtime Federation<br/>stable cross-domain references · canonical replay<br/>continuing world consequence"]
+    GP["Authoritative Gameplay Runtime"]
+    PX["Presentation Clients"]
 
     SB["Stonebend Constitution"]
     SA["Sandmanor Constitution"]
@@ -49,6 +52,10 @@ flowchart TB
     FL --> HG
     HG --> HU
     HG --> IF
+    HG --> RF
+    IF --> RF
+    RF --> GP
+    GP --> PX
     SB --> IF
     SA --> IF
     GL --> IF
@@ -59,6 +66,25 @@ flowchart TB
 
 Arrows into the Compromise mean participation in shared law, not subordination
 to a central ruler.
+
+## The Runtime Federation
+
+**The Runtime Federation** is the canonical Hollow Grove continuity boundary
+between accepted constitutional/world records and authoritative gameplay.
+
+It preserves the identity, authority, evidence, reducer ownership, archive,
+and provenance of each participating domain while binding their accepted
+results into one continuing canonical world. It is neither a fifth House nor
+a second Constitution, and it owns no power to reinterpret a House decision
+or rewrite a completed kernel pass.
+
+The universal kernel computes one bounded pass. Constitutional and House
+runtimes determine lawful meaning. The Runtime Federation carries accepted
+consequence forward. Gameplay submits intents against that federated state.
+Presentation witnesses the accepted result.
+
+The full canonical boundary, federation laws, archive target, and first
+playable proof are established in `THE_RUNTIME_FEDERATION_V1.md`.
 
 ## House-domain responsibility matrix
 
@@ -100,6 +126,7 @@ Compromise.
 | geography | `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md` | geography and route network | geography/route audits | maps and scenes | frozen token aliases |
 | Central Junction | `CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md` | `src/world/central_junction.rs` | Central Junction tests/audit | public boards/world context | no House exchange |
 | Service Tournament | `SERVICE_TOURNAMENT_CENTRAL_JUNCTION_CANON_V1.md` and `SERVICE_TOURNAMENT_ARCHIVE_AND_CANONICAL_YEAR_FIXTURE_V1.md` under Compromise and House constitutions | `src/world/service_tournament.rs`, archive, fixture, and House Synthesis semantics | canon, archive, migration, replay, and audit tests | Central Junction Function record | no new constitution, service faction, sovereignty transfer, or kernel lore |
+| Runtime Federation | `THE_RUNTIME_FEDERATION_V1.md` under the Compromise and existing domain authorities | planned federation manifest above existing production reducers | documentation lock; executable archive, replay, migration, audit, and operation remain the next milestone | authoritative gameplay and presentation projections | no fifth House, second Constitution, parallel reducer, domain-history rewrite, or kernel lore |
 | Minoan Court | `MINOAN_COUNTY_COURT_SYSTEM_AND_RESTITUTION_CYCLE_V1.md` under Compromise | Court model plus shared interface archive | Court tests/audit | courthouse and scene projections | reserved appeal text |
 | amendments and Restitution | Minoan Court document under Compromise | Court/shared interface adapters | amendment/Restitution tests | world context | no judicial ratification |
 
@@ -169,6 +196,7 @@ four Houses. Central Junction is not a fifth House.
 | Flynt | constitutionally integrated | detailed administration and prosecution |
 | Hueman | authoritative entry point established | unresolved ladder details explicitly retained |
 | shared interfaces | implemented and persisted | staffing/formulas deferred |
+| Runtime Federation | canonically established; implementation milestone frozen | HGRF manifest, gameplay schema V3, unified replay/audit, contained Central Junction operation |
 | regional projections | synchronized | gameplay and art remain Phase 3 |
 
 “Complete” here means constitutionally operable and integrated, not that every
