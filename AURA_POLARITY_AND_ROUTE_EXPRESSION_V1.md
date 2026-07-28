@@ -108,9 +108,15 @@ Directional tendencies:
 - `Glausbahn = direct legibility and structured Light transmission`
 - `Current Seanad = contextual clarification, negotiation, and deliberative Light interpretation`
 - `Boardwalk = managed public performance and controlled Dark spectacle`
-- `Riptide = immersive undertow, seduction, disorientation, and Dark pressure`
+- `geography.route.riptide` is an emergency-intake projection where Undertow
+  hazard, seduction, disorientation, and Dark pressure may become visible.
 
-These Aura tendencies describe how a route may be experienced; they are not the route's dominant civic responsibility. Constitutional geography fixes the dominant route verbs as `Glausbahn / Refine`, `Current Seanad / Deliberate`, `Boardwalk / Return`, and `Riptide / Retrieve`. Aura expression may color those processes but may not rename, replace, or contradict them.
+These Aura tendencies describe how a route projection may be experienced; they
+are not the route's dominant civic responsibility. The compatibility roster
+retains `Riptide / Retrieve`, but that map/interface record is not
+`force.riptide`. Riptide is renewed rising Current; Undertow is its dangerous
+inverse. Aura expression may color the old projection without collapsing the
+two forces or replacing `route.boardwalk`.
 
 Route geometry remains distinct from polarity:
 

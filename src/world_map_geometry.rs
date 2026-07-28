@@ -948,10 +948,11 @@ pub fn build_canonical_player_spatial_fixture() -> io::Result<PlayerSpatialFixtu
         .with_geometry_preserving_state(
             PointGeometryState::at_position(RotationPosition::twelve()),
         );
-    let point = Point::with_domain_state(
+    let point = Point::with_physical_domain_state(
         stabilized.frame_state().clone(),
         stabilized.progression().clone(),
         world,
+        stabilized.physical().clone(),
     );
     let rotation_context = observation_context_for_point(&point)
         .expect("canonical player spatial fixture requires a numbered world position");
@@ -1700,10 +1701,11 @@ pub fn advance_angular_position(point: &Point) -> Result<Point, SpiralTransition
     let next_world = point
         .world()
         .with_geometry_preserving_state(PointGeometryState::at_position(next_position(position)));
-    Ok(Point::with_domain_state(
+    Ok(Point::with_physical_domain_state(
         point.frame_state().clone(),
         point.progression().clone(),
         next_world,
+        point.physical().clone(),
     ))
 }
 
@@ -1740,10 +1742,11 @@ pub fn apply_point_squared_spiral_transition(
     let next_world = stabilized
         .world()
         .with_geometry_preserving_state(PointGeometryState::at_position(transition.to_position()));
-    let stabilized_point = Point::with_domain_state(
+    let stabilized_point = Point::with_physical_domain_state(
         stabilized.frame_state().clone(),
         stabilized.progression().clone(),
         next_world,
+        stabilized.physical().clone(),
     );
     PointSquaredApplication::new(
         PointSquaredApplicationStatus::Applied,

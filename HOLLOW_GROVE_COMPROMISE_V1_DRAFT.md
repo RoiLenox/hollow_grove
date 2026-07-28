@@ -322,8 +322,11 @@ task, recruitment, a Bond, ownership, or debt for refusing or leaving.
 
 Aura Beach is one singular Sandmanor Minoan exterior surface for coastal
 approach, navigation, public meeting, weather, rescue, Elf design, and Centaur
-mobility. Its linked Current Sea jurisdiction remains distinct. The implemented
-contract lives in `AURA_BEACH_SURFACE_V1.md`.
+mobility. `region.current-sea` is the distinct Current body that sets in
+Glaüshouse. The older civic-circulation jurisdiction and map key are retained
+only as a public-interface compatibility projection; they do not redefine the
+Current Sea as a road or a sea of people. The implemented surface contract
+lives in `AURA_BEACH_SURFACE_V1.md`.
 
 Aura Basin is one singular surface serving Flynt first through hunting,
 competition, rescue, racing, collision, material recovery, and lawful return.

@@ -7,6 +7,7 @@
 mod adapters;
 mod application;
 mod bond;
+mod canonical_calendar;
 mod house_synthesis_semantics;
 mod houses;
 mod ids;
@@ -24,6 +25,7 @@ mod visual_identity;
 pub use adapters::*;
 pub use application::*;
 pub use bond::*;
+pub use canonical_calendar::*;
 pub use house_synthesis_semantics::*;
 pub use houses::*;
 pub use ids::*;

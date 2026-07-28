@@ -3,6 +3,12 @@
 //! This module does not decide movement, mutate Constitutional Runtime V2, or
 //! reinterpret House authority. It gives the world-facing layer one exact,
 //! validated answer for why civilization uses each major route.
+//!
+//! `AuraWay`, `CurrentSea`, and `Riptide` retain `geography.route.*` identities
+//! as frozen map/interface projections. They are deliberately distinct from
+//! permanent `route.aura-way`, body `region.current-sea`, and forces
+//! `force.riptide` / `force.undertow`, whose controlling constitutional law is
+//! implemented in `world::way_back` and `world::current_sea_passage`.
 
 use std::collections::{BTreeMap, BTreeSet};
 use std::fmt;

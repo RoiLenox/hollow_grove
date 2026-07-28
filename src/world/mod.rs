@@ -2,9 +2,11 @@ pub mod aura_basin;
 pub mod aura_beach;
 pub mod aura_field;
 pub mod central_junction;
+pub mod central_junction_seasonal_functions;
 pub mod chroma_cord;
 pub mod composition_witnesses;
 pub mod constitutional_interfaces;
+pub mod current_sea_passage;
 pub mod extraction;
 pub mod flynt;
 pub mod fourway;
@@ -20,12 +22,18 @@ pub mod persistence;
 pub mod power_recipes;
 pub mod route_network;
 pub mod sandmanor;
+pub mod seasonal_functions_archive;
+pub mod seasonal_functions_fixture;
 pub mod service_tournament;
 pub mod service_tournament_archive;
 pub mod service_tournament_fixture;
 pub mod session;
 pub mod stonebend;
 pub mod sympiote;
+pub mod way_back;
+pub mod world_point;
+pub mod world_point_archive;
+pub mod world_point_fixture;
 
 use crate::institution::{
     InstitutionCatalog, InstitutionalBeingId, MembershipId, OfficeHolder, OfficeId, RoleId, SiteId,

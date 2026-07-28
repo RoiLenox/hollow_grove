@@ -139,12 +139,16 @@ Stage identity is semantic. It is never inferred from vector position,
 catalog order, insertion order, or random values. A missing required stage
 prevents recognition eligibility.
 
-Aura Way remains the Stonebend–Sandmanor `Design` route. Its geographic route
-and institutional meaning coexist.
+The stable Stonebend–Sandmanor `Design` entry is now an archive-compatible
+institutional projection. The controlling permanent `route.aura-way` joins
+Stonebend and Flynt: The Way Back descends from Stonebend and ascends from
+Flynt, with Stairway to Heaven ascent-only. The Design projection preserves
+its institutional sequence without controlling the permanent route's
+endpoints or direction.
 
-## 6. The route from Sandmanor to Stonebend
+## 6. The legacy Design projection from Sandmanor to Stonebend
 
-The canonical route is:
+The archive-compatible Design projection is:
 
 ```text
 Sandmanor

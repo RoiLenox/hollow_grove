@@ -224,6 +224,11 @@ one facing Central Junction through the **Craft Corridor**; and one facing
 Sandmanor through **Aura Way** and **Mt. Aura**. Central Junction is not a
 House, and Mt. Aura is an ideal and route landmark rather than a gate.
 
+The Sandmanor-facing use of Aura Way in this older gate roster is the stable
+Design-screen compatibility projection. Permanent `route.aura-way` joins
+Stonebend and Flynt under the later directional rule: descent begins in
+Stonebend, ascent begins in Flynt, and Stairway to Heaven is ascent-only.
+
 All three gates support inward and outward constitutional transfer. Routine
 crossings may be delegated, but each must remain traceable to Freemason Claim
 authority, Hypergiant Title or boundary authority, and Proliteriate Yield

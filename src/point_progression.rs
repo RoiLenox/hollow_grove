@@ -627,10 +627,11 @@ pub fn apply_point_squared_ascension(
     let next_world = point
         .world()
         .merge_consequence(ascension.world_consequence());
-    let stabilized_point = Point::with_domain_state(
+    let stabilized_point = Point::with_physical_domain_state(
         ascension.point_squared_state().clone(),
         next_progression,
         next_world,
+        point.physical().clone(),
     );
     PointSquaredApplication {
         status: PointSquaredApplicationStatus::Applied,

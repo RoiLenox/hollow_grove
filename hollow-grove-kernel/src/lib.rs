@@ -6,6 +6,17 @@
 use std::collections::HashMap;
 use std::fmt;
 
+use serde::{Deserialize, Serialize};
+
+mod oriented_point;
+
+pub use oriented_point::{
+    AxisHandedness, ExpandedPointField, FieldId, OrientedPoint, OrientedPointError, PhysicalExtent,
+    PhysicalPosition, PointCenterId, PointId, PointInversion, PointScaling, PolarityAxis,
+    PolarityTendency, PoleId, PositiveScaleFactor, RelativePolarity, SpatialAuthorityId,
+    SpatialEvidenceId, SpatialRegionId, invert_point, lawfully_scale_point,
+};
+
 fn is_stable_key(value: &str) -> bool {
     !value.is_empty()
         && value.bytes().all(|byte| {
@@ -30,7 +41,8 @@ impl std::error::Error for StableKeyError {}
 
 macro_rules! stable_key {
     ($name:ident) => {
-        #[derive(Debug, Clone, PartialEq, Eq, Hash)]
+        #[derive(Debug, Clone, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
+        #[serde(try_from = "String", into = "String")]
         pub struct $name(String);
 
         impl $name {
@@ -52,6 +64,20 @@ macro_rules! stable_key {
         impl fmt::Display for $name {
             fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
                 self.0.fmt(formatter)
+            }
+        }
+
+        impl TryFrom<String> for $name {
+            type Error = StableKeyError;
+
+            fn try_from(value: String) -> Result<Self, Self::Error> {
+                Self::new(value)
+            }
+        }
+
+        impl From<$name> for String {
+            fn from(value: $name) -> Self {
+                value.0
             }
         }
     };

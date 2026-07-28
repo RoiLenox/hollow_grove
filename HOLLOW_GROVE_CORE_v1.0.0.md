@@ -192,6 +192,11 @@ supervised practice, examination, demonstrated responsibility, and recognition
 eligibility. Houses teach the work, Aura Way organizes the path, and Stonebend
 names completion without declaring metaphysical perfection.
 
+That institutional sequence survives as the archive-compatible
+`geography.route.aura-way` Design projection. The controlling permanent
+`route.aura-way` instead joins Stonebend and Flynt: The Way Back descends from
+Stonebend and ascends from Flynt, and Stairway to Heaven is ascent-only.
+
 The second Stonebend pass is canonically defined in
 `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md`. Stonebend has three
 bidirectional constitutional gates: Flynt-facing through Stairway to Heaven and
@@ -366,10 +371,12 @@ Major routes are constitutional verbs rather than mere connections. Their locked
 `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md` owns the complete route law and `src/world/geography.rs` is its executable neutral projection. This layer remains above Current Runtime V2 and does not change House authority, Flynt authority, or recursion.
 
 The first Stonebend foundation adds symbolic vertical roles without replacing
-those verbs: Mt. Aura / Aspire represents Aether and the ideal; Riptide /
-Retrieve represents Bathos, weight, and consequence. Riptide remains on the
-Flynt–Glaüshouse boundary. Aura Way remains both the Stonebend–Sandmanor Design
-route and the institutional metaphor for ordinary recognized advancement.
+the archived projection verbs. `geography.route.riptide` and
+`geography.route.aura-way` retain their old map/interface roles for replay, but
+they are not `force.riptide` or permanent `route.aura-way`. Riptide is the
+rising force within `region.current-sea`; Undertow is its inverse hazard; a
+traveler uses `route.boardwalk`. The Design projection remains an
+institutional metaphor for ordinary recognized advancement.
 
 The canonical geographic and philosophical route is Sandmanor → Aura Way →
 Mt. Aura → Sandmanor-facing Stonebend gate → Stonebend: possibility →

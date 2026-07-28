@@ -95,9 +95,12 @@ pub use civic_body::{
     canonical_civic_crisis_steps, civic_body_definition, validate_civic_body_contract,
 };
 pub use composition::{
-    CompositionCatalog, CompositionCatalogError, CompositionNode, CompositionNodeId,
-    CompositionRecord, CompositionRecordId, Containment, ExternalRef, ExternalRefError, ScaleKey,
-    StableKeyError,
+    AxisHandedness, CompositionCatalog, CompositionCatalogError, CompositionNode,
+    CompositionNodeId, CompositionRecord, CompositionRecordId, Containment, ExpandedPointField,
+    ExternalRef, ExternalRefError, FieldId, OrientedPoint, OrientedPointError, PhysicalExtent,
+    PhysicalPosition, PointCenterId, PointId, PointInversion, PointScaling, PolarityAxis,
+    PolarityTendency, PoleId, PositiveScaleFactor, RelativePolarity, ScaleKey, SpatialAuthorityId,
+    SpatialEvidenceId, SpatialRegionId, StableKeyError, invert_point, lawfully_scale_point,
 };
 pub use current_grip_inheritance::{
     CurrentGripActionRequest, CurrentGripInheritanceContractInput, CurrentGripResolution,

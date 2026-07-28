@@ -774,9 +774,9 @@ pub fn canonical_aura_route_definition(route_id: CanonicalRouteId) -> Option<Aur
             destination_house: House::Flynt,
             polarity_tendency: AuraPolarity::Dark,
             manager_relation: "curved / HAL / Moxy-META relation",
-            public_tendency: "immersive undertow",
-            pressure_tendency: "coercive pressure",
-            semantic_tendency: "immersive, dangerous, seductive, involuntary, undertow-like Dark Aura pressure",
+            public_tendency: "undertow-hazard exposure at the intake projection",
+            pressure_tendency: "coercive or downward pressure",
+            semantic_tendency: "the archive-compatible intake projection may reveal Undertow danger without becoming force.riptide or force.undertow",
         }),
         _ => None,
     }

@@ -55,6 +55,25 @@ Every canonical route has:
 
 Straight and curved geometry remains useful presentation and traversal information. It is subordinate to route purpose: geometry describes how the route is shaped; the constitutional verb explains why civilization maintains it.
 
+### Directional and body/force/route correction
+
+`CENTRAL_JUNCTION_SEASONAL_FUNCTIONS_V1.md` now owns the controlling typed
+distinctions for three older catalog-name collisions:
+
+- permanent `route.aura-way` joins Stonebend and Flynt and carries the
+  bidirectional Way Back rule; `geography.route.aura-way` is retained only as
+  the archive-compatible Sandmanor Design-screen projection;
+- `region.current-sea` is the Current body that sets in Glaüshouse;
+  `geography.route.current-sea` is retained only as its archive-compatible
+  civic-interface projection;
+- `force.riptide` and `force.undertow` are forces within the Current Sea;
+  `geography.route.riptide` is retained only as the emergency-intake map
+  projection. The lawful traveler route is `route.boardwalk`.
+
+These compatibility projections do not own the permanent route, body, or
+force; do not infer direction; and do not replace the new constitutional
+records. Old archives continue to replay under their old keys.
+
 ## Canonical route roster
 
 | Stable ID | Route | House boundary | Dominant verb | Constitutional purpose |
@@ -122,9 +141,16 @@ Glaüshouse Intake
 Repair
 ```
 
-The Riptide is the constitutional emergency corridor. Its dominant movement is involuntary: it carries trauma, machine failure, Aura collapse, Current overload, failed Synthesis, rescues, shipwrecks, lost people, and unidentified patients toward Glaüshouse intake. Nobody elects the Riptide as ordinary travel.
+Riptide is the natural rising force within the Current Sea. It is not a road
+or a Boardwalk alias. The older `geography.route.riptide` record projects the
+emergency-intake interface where trauma, machine failure, Aura collapse,
+Current overload, failed Synthesis, rescues, shipwrecks, lost people, and
+unidentified patients become legible to Glaüshouse. That screen projection is
+not `force.riptide`.
 
-The Boardwalk and Riptide are reciprocal civic functions, not duplicate transportation: Riptide retrieves crises into repair; Boardwalk returns recovered beings into public life.
+The Boardwalk and Riptide are type-distinct: Current rises by Riptide; a person
+travels by the Boardwalk. Undertow is Riptide's dangerous inverse and never
+counts as successful emergence.
 
 Riptide is also the geographic and metaphysical symbol of Bathos: material
 weight, consequence, exposure, and unsupported elevation meeting reality.
@@ -154,7 +180,16 @@ Naming
 Title
 ```
 
-The Current Sea is a constitutional ordeal, not another road. The crossing certifies that restoration survives depth, endurance, and structural truth. Bridges, ferries, repair barges, undersea tunnels, medical vessels, and inspection platforms are possible presentation forms; the constitutional test is the crossing itself.
+The Current Sea is the body or medium in which Current sets, settles, and may
+rise again. It sets in Glaüshouse for diagnosis, treatment, clearing, rest,
+reflection, viability review, and possible renewed movement.
+
+The older Straight civic concourse is
+`geography.route.current-sea`, an archive-compatible public-interface
+projection through crowds, witnesses, competing claims, officials, and
+ordinary strangers. It may certify continuity under public contact but is not
+the body itself. `region.current-sea` remains geographically and
+constitutionally distinct from that projection and from the Boardwalk.
 
 ### Aura Ridge — Witness
 
@@ -384,10 +419,14 @@ transfer across the border does not transfer legal authority over it.
 - Architecture and landmark: plan tables, measuring arches, and a visible design exchange.
 - Transition and gameplay: Stonebend named need becomes Sandmanor arrangement through design tasks and proof-ready prototypes.
 
-Aura Way is also the standard institutional metaphor for recognized
+The permanent `route.aura-way` is the complete Stonebend–Flynt route on which
+The Way Back descends from Stonebend and ascends from Flynt. Stairway to Heaven
+is its ascent-only expression.
+
+The older `geography.route.aura-way` Design projection is also the standard institutional metaphor for recognized
 advancement: prerequisite, education, supervised practice, examination,
 demonstrated responsibility, and recognition eligibility. This meaning remains
-subordinate to the route's fixed `Design` verb and creates no shortcut or new
+subordinate to the compatibility projection's fixed `Design` verb and creates no shortcut or new
 authority. The Houses teach the work; Aura Way organizes the path; Stonebend
 names a proven completion.
 
