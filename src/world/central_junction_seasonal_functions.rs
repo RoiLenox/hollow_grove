@@ -4,6 +4,8 @@
 //! layer attaches the four fixed civic Functions, House presidencies, motions,
 //! dimensions, activities, and lifecycle records without changing House
 //! sovereignty or entering the recursion kernel.
+//! `SacredMotion` is ceremonial metadata, not the top-level phase grammar;
+//! `constitutional::GrovePhase` owns the four kernel-facing Hollow Grove names.
 
 use std::collections::{BTreeMap, BTreeSet};
 use std::fmt;

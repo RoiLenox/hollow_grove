@@ -816,3 +816,41 @@ House Synthesis meaning remains above the universal recursion kernel. Aim may
 record an inward House operation; only an accepted Kiss may apply an outward
 manifestation; Point² records the completed evidence-bearing relationship.
 Miss and client presentation never create a manifestation.
+
+### Function Junction, seasonal synchronization, and Permanence status
+
+`FUNCTION_JUNCTION_SEASONAL_WORLD_CYCLE_AND_PERMANENCE_V1.md` establishes
+the exact kernel-facing Hollow Grove phase grammar as **The Way Back → The
+Initiation → The Gathering → The Festival → The Way Back**. These four phases
+sit above the House-neutral universal recursion kernel, repeat at every lawful
+scale, and retain the prior confirmed result as the next Way Back input.
+Failure is witnessed at The Festival without falsely changing canonical state.
+Detailed Aim, Fire, Miss, Kiss, witness, record, transform, and Point²
+operations remain subordinate evidence-bearing steps.
+
+The same specification establishes
+Function Junction as the constitutional handoff performed by each Great
+Function at Central Junction. Function Junction is not a fifth Function or a
+geographic place. Winter closes Flynt and opens Glaüshouse; spring closes
+Glaüshouse and opens Stonebend; summer closes Stonebend and opens Sandmanor;
+autumn closes Sandmanor and opens Flynt. The physical and digital checkpoints
+of each handoff remain separate evidence-bearing records.
+
+The Great Functions and their Seasons preserve this Compromise and all four
+House constitutions. Derrick remains an alias of The Gathering. The Service
+Tournament remains nested inside the broader Summer Function. Neither a
+Function Junction, House Season, Great Function, Tournament result, artifact
+custody, nor archive record transfers sovereignty.
+
+Stonebend always enforces the Laws of Permanence. A final Permanence Seal
+requires Stonebend Identity, Sandmanor Pattern, Glaüshouse Integrity, and Flynt
+Recognition proofs for the same stable subject. The Freemason forges Claim;
+Diamond and its Hypergiant bearer authorize final Title and Seal; the
+Proliteriate protects Yield. No other House may independently declare a
+temporary state permanent.
+
+Permanence is not immutability. Lawful amendment, succession, and dissolution
+are explicit, witnessed, versioned, and provenance-preserving. Dissolution
+creates a Tombstone rather than silent deletion. Unauthorized alteration of a
+permanent identity, boundary, Title, record, interior, provenance, or state
+remains Illegal Hollowing.

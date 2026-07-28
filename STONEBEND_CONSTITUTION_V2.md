@@ -498,3 +498,32 @@ structure, boundary, Title, and constitutional becoming; it is type-distinct
 from Glaüshouse's inward Precog operation. Stonebend's stone, structure,
 naming, foundation, and lawful-form tradition may inform prize descent without
 allowing a Recipe, Core, mark, or custody record to manufacture Title.
+
+## Function Junction and the Laws of Permanence
+
+`FUNCTION_JUNCTION_SEASONAL_WORLD_CYCLE_AND_PERMANENCE_V1.md` is the bounded
+constitutional-runtime supplement for the four seasonal handoffs and final
+Permanence authority. The Initiation opens the Season of Stonebend through
+digital-to-physical incarnation at the Aura Field, but incarnation alone does
+not make a state permanent.
+
+Stonebend always enforces the Laws of Permanence. Each House supplies one
+necessary proof: Stonebend proves Identity, Sandmanor proves Pattern,
+Glaüshouse proves Integrity, and Flynt proves Recognition. All four accepted
+proofs must identify the same stable subject. A missing, rejected, or
+conflicting proof blocks final sealing without erasing the petition or the
+underlying event.
+
+The permanence cycle is **Claim → Pattern → Integrity → Recognition → Title →
+Yield**. The Freemason forges Claim and boundary; Diamond and its temporary
+Hypergiant bearer alone authorize the final Permanence Seal; the Proliteriate
+protects public Yield and inheritance. No other House may independently make a
+temporary state permanent.
+
+Permanence means that the world cannot pretend the thing never happened. It is
+not immutability. Amendment, repair, succession, inheritance, release,
+dissolution, reformation, and lawful transformation remain possible only when
+explicit, witnessed, versioned, provenance-preserving, and authorized.
+Dissolution produces a Tombstone. Unauthorized alteration of permanent
+identity, boundary, Title, record, structure, lawful interior, provenance, or
+state is Illegal Hollowing.

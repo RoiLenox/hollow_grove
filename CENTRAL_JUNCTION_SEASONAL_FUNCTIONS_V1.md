@@ -32,6 +32,16 @@ Each Great Function is held at Central Junction and attended by the whole
 Grove. Its presiding House defines constitutional emphasis without owning the
 district, governing the other Houses, or receiving permanent sovereignty.
 
+The shared kernel-facing Hollow Grove phase grammar is now:
+
+> **The Way Back → The Initiation → The Gathering → The Festival → The Way
+> Back**
+
+`TheWayBack`, `TheInitiation`, `TheGathering`, and `TheFestival` are the only
+top-level Grove phases. At seasonal scale, `TheFestival` maps to the complete
+ceremonial event name **The Festival of Mirrors**. The Motion values below are
+ritual meanings attached to Great Function records, not competing phase names.
+
 ## 2. The canonical year
 
 The canonical year opens at the exact **Winter Solstice** and continues until
@@ -88,13 +98,13 @@ The current canonical names supersede the archival working names:
 Working names survive only as version-zero migration input. They are not
 current display aliases.
 
-## 4. Ceremonial sequence
+## 4. Ceremonial meanings
 
 The universal human pattern beneath the calendar is:
 
 > **Heal → Belong → Participate → Serve**
 
-Hollow Grove's canonical ceremonial language is:
+The earlier ceremonial verbs remain explanatory glosses:
 
 > **Return → Incarnate → Commune → Confirm**
 
