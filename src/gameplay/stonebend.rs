@@ -54,6 +54,7 @@ pub enum StonebendEvidence {
     SubjectContinuityTestimony,
     PreTreatmentName,
     GlaushouseRestorationRecord,
+    /// Stable archive variant for the Current Sea public-continuity witness.
     DepthEnduranceWitness,
     MercuryMirrorCorrespondence,
 }
@@ -468,8 +469,8 @@ fn determination(
         ),
         (
             "evidence.current-sea.mercy-deep.depth-witness",
-            "a depth witness observed continuous endurance through retrieval",
-            "witnessed Current Sea retrieval chain",
+            "a crowd witness observed continuous identity through dense public circulation",
+            "witnessed Current Sea concourse passage",
         ),
         (
             "evidence.current-sea.mercy-deep.mirror",

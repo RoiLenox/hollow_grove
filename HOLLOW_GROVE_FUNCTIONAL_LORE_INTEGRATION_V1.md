@@ -138,10 +138,11 @@ canonical definition set, and the live authority snapshot. Altered prose,
 choices, transitions, jurisdiction, authority, or ordering causes replay
 divergence rather than silent acceptance.
 
-Gameplay archives independently moved to schema V2. They embed the exact
-schema-V2 institutional state needed to replay their House decisions. Schema
-V1 gameplay archives migrate their historical test-era authority dependency
-explicitly; new gameplay never loads those fixture actors.
+Gameplay archives use federation-aware schema V3. They embed the exact
+schema-V2 institutional state needed to replay their House decisions and an
+explicit binding to The Runtime Federation. Schema V1 and V2 gameplay archives
+migrate through recorded decisions without inventing events; new gameplay
+never loads the historical fixture actors.
 
 ## Boardwalk as First Playable Witness
 
@@ -170,8 +171,10 @@ formal Hoe affiliation therefore remains open.
 
 The Stonebend Current Sea continuity case is the second functional-lore record
 projected through the client. Mercy Deep supplies capable subject testimony
-alongside a prior Name, Glaüshouse restoration record, depth witness, Mercury
-Mirror comparison, and all five Hueman faculties.
+alongside a prior Name, Glaüshouse restoration record, crowd witness, Mercury
+Mirror comparison, and all five Hueman faculties. The Current Sea setting is
+the Many-Witness Concourse: a sea of people testing continuity through dense
+public contact rather than through a literal water crossing.
 
 The three outcomes affirm the existing Name, link a provisional
 transformed-form Name without erasure, or refer the conflict while allowing no

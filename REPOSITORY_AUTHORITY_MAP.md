@@ -3,6 +3,10 @@
 Status: review and consolidation guide
 Purpose: make repository ownership visible without creating new domain law
 
+Repository navigation begins at `README.md`. That root canon index groups the
+four House shelves and shared canon for ease of access; this document remains
+the detailed authority-class guide.
+
 ## Constitutional Root
 
 `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md` is the Hollow Grove Constitution. Its

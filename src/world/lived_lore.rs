@@ -392,18 +392,18 @@ pub fn canonical_functional_lore_definitions() -> Vec<FunctionalLoreDefinition> 
             Stonebend,
             HouseFunction::Name,
             CurrentSea,
-            "Current Sea deep-certification landing",
+            "Current Sea Many-Witness Concourse",
             "Glaüshouse restoration entering Stonebend identity jurisdiction",
             &[
                 "restored being",
                 "Gerald registrar",
                 "Mercury Mirror record",
             ],
-            "a restored subject survives depth but bears materially changed form",
+            "a restored subject enters dense public life while bearing materially changed form",
             &[
                 "pre-treatment Name",
                 "restoration record",
-                "depth endurance witness",
+                "public-circulation continuity witness",
             ],
             &[
                 "continuity may be partial",

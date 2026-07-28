@@ -105,7 +105,7 @@ Canonical routes remain unchanged:
 
 Directional tendencies:
 
-- `Glausbahn = direct legibility and structured Light transmission`
+- `Glausbahn = iterative legibility and repeatedly refined Light transmission`
 - `Current Seanad = contextual clarification, negotiation, and deliberative Light interpretation`
 - `Boardwalk = managed public performance and controlled Dark spectacle`
 - `geography.route.riptide` is an emergency-intake projection where Undertow

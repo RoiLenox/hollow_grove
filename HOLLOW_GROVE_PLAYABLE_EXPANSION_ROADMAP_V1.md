@@ -27,12 +27,13 @@ may be extracted only after at least two real slices prove their common shape.
 All ten constitutional routes are now canonical, traversable gameplay maps
 over one validated network:
 
-- five Straight routes;
-- four Round routes, presented as curved geography;
-- Current Sea as the distinct Sea Ordeal.
+- five Straight routes, including Current Sea as a civic sea-of-people
+  concourse;
+- five Round routes, presented as curved geography, including Glausbahn as the
+  round-road refinement sector.
 
-Transfers require a shared House endpoint and replay through gameplay archive
-schema V2. Each route projects its stable identity, endpoints, geometry,
+Transfers require a shared House endpoint and replay through federation-aware
+gameplay archive schema V3. Each route projects its stable identity, endpoints, geometry,
 dominant verb, purpose, and process. The network is specified in
 `HOLLOW_GROVE_ROUTE_NETWORK_V1.md`.
 

@@ -7,9 +7,12 @@ Runtime owner: `src/gameplay/deep_pressure.rs`
 
 ## Purpose
 
-Deep Pressure turns the living Field, Beach, Basin, mines, and offshore wells
-into one character-driven campaign without creating a generic quest engine or
-moving authority into narrative presentation.
+Deep Pressure turns the living Field, Beach, Basin, mines, and specialized
+offshore wells into one character-driven campaign without creating a generic
+quest engine or moving authority into narrative presentation. Its Current Sea
+phase occurs at the legacy-named depth rig attached to the route; it does not
+redefine the primary Current Sea as water rather than the Many-Witness
+Concourse.
 
 The initiating event is the Riptide well blowout. Its pressure passes through:
 
@@ -323,10 +326,10 @@ Living-world resolution events may contain the linked campaign-resolution
 event. Standalone settlement support and commitment use
 `DeepPressureChanged`.
 
-Archive schema V2 stores these nested events under the existing checksum.
-Replay reconstructs the living world, campaign journal, relationships, House
-acts, constitutional Bond, ending, and aftermath. A mismatch fails as
-`DeepPressureReplayDivergence`.
+Gameplay archive schema V3 stores these nested events under the existing
+checksum and explicit Runtime Federation binding. Replay reconstructs the
+living world, campaign journal, relationships, House acts, constitutional Bond,
+ending, and aftermath. A mismatch fails as `DeepPressureReplayDivergence`.
 
 The active schema-V2 institutional artifact now includes the current Flynt
 Tross office holder along with Stonebend, Sandmanor, and Glaüshouse holders so

@@ -80,9 +80,9 @@ records. Old archives continue to replay under their old keys.
 |---|---|---|---|---|
 | `geography.route.boardwalk` | Boardwalk | Glaüshouse / Flynt | Return | constitutional discharge, reintegration, and recognition after recovery |
 | `geography.route.riptide` | Riptide | Flynt / Glaüshouse | Retrieve | involuntary emergency retrieval of damaged beings toward repair |
-| `geography.route.current-sea` | Current Sea | Glaüshouse / Stonebend | Certify | certification that restoration survives depth and endurance |
+| `geography.route.current-sea` | Current Sea | Glaüshouse / Stonebend | Certify | certification that restoration remains continuous under dense public contact and civic pressure |
 | `geography.route.aura-ridge` | Aura Ridge | Glaüshouse / Stonebend | Witness | public witness, presentation, exchange, and civic reintegration |
-| `geography.route.glausbahn` | Glausbahn | Glaüshouse / Sandmanor | Refine | high-speed iteration where design and repair improve one another |
+| `geography.route.glausbahn` | Glausbahn | Glaüshouse / Sandmanor | Refine | round-road iteration where design and repair repeatedly improve one another |
 | `geography.route.current-seanad` | Current Seanad | Glaüshouse / Sandmanor | Deliberate | constitutional review of difficult design, repair, and Synthesis questions |
 | `geography.route.aura-way` | Aura Way | Stonebend / Sandmanor | Design | the established constitutional design process |
 | `geography.route.mnt-aura` | Mt. Aura | Stonebend / Sandmanor | Aspire | the established constitutional path of aspiration |
@@ -96,11 +96,10 @@ records. Old archives continue to replay under their old keys.
 `src/world/route_network.rs` now projects the locked screen geometry without
 changing route purpose:
 
-- Straight: Aura Ridge, Aura Way, Glausbahn, Boardwalk, and Basin Motor
+- Straight: Aura Ridge, Aura Way, Current Sea, Boardwalk, and Basin Motor
   Speedway;
-- Round, presented as curved: Mt. Aura, Current Seanad, Riptide, and Stairway
-  to Heaven;
-- Sea Ordeal: Current Sea only.
+- Round, presented as curved: Mt. Aura, Current Seanad, Riptide, Stairway
+  to Heaven, and Glausbahn.
 
 `Round` is the executable world-geometry term corresponding to the screen
 map's Curved Routes heading. It remains separate from Light/Dark Aura, moral
@@ -211,7 +210,10 @@ Central Junction
 
 Aura Ridge is civic reintegration, not legal certification. A traveler on the ridge has already been restored and is ready to be seen. The route is elevated, open, visible, beautiful, and publicly shared. Equal Gaze means reciprocal civic witness; it does not create a new House office or override existing recognition law. Central Junction is the district where that public route meets the shared economy; the South Ridge Exchange is one institution inside it.
 
-Current Sea asks whether repair survives depth. Aura Ridge asks whether the restored being can re-enter common sight. Certification and witness may support one another, but they are not the same responsibility.
+Current Sea asks whether repair and identity remain continuous amid dense
+public contact. Aura Ridge asks whether the restored being can re-enter open
+common sight and reciprocal civic witness. Certification and witness may
+support one another, but they are not the same responsibility.
 
 ## Glaüshouse / Sandmanor boundary
 
@@ -230,7 +232,11 @@ Repair
 Improved Design
 ```
 
-The Glausbahn is the high-speed iteration corridor. Designs move toward Glaüshouse repair knowledge; diagnostic and repair knowledge returns toward Sandmanor design. The reciprocal cycle is its constitutional function.
+The Glausbahn is the Round road sector and high-speed iteration loop. Designs
+move toward Glaüshouse repair knowledge; diagnostic and repair knowledge
+curves back toward Sandmanor design. Repeated circuits let prototypes be
+tested, diverted, repaired, and re-entered without pretending that one pass
+completes refinement. The reciprocal cycle is its constitutional function.
 
 Its presentation combines the sustained speed and engineering clarity of a German Autobahn with the cliff, bridge, coast, and horizon drama of the California Pacific Coast Highway. This is a visual reference only, not copied infrastructure or signage.
 
@@ -326,14 +332,23 @@ Skyboxes should reinforce each route's emotional weather and horizon without bec
 
 ### Current Sea
 
-- Terrain and shoreline: dark deep water, exposed structural spans, pressure shafts, and undersea works.
-- Vegetation: minimal surface growth; pressure-adapted underwater life visible near inspection glass.
-- Lighting and sky: severe horizon light above, disciplined work light below, with depth increasingly obscuring the sky.
-- Traffic: ferries, repair barges, inspection platforms, medical vessels, and certification crews.
-- Architecture and bridges: load-bearing bridges, pressure locks, undersea tunnels, test pylons, and named structural stations.
-- Landmark: the Depth Certification Platform before the Stonebend approach.
-- District transition: Glaüshouse repair finishes become exposed structural truth and finally Stonebend naming.
-- Gameplay: inspection, certification trials, endurance management, deep infrastructure, repair verification, and escorted crossings.
+- Terrain and streetscape: a long, direct civic concourse with plazas,
+  registry lanes, transit platforms, market spillover, and controlled
+  breathing spaces.
+- Planting: durable street trees, public gardens, shaded waiting courts, and
+  small quiet refuges inside the crowd.
+- Lighting and sky: broad public light, dense signage, visible civic signals,
+  and no theatrical darkness concealing who is present.
+- Traffic: residents, restored travelers, witnesses, clerks, vendors,
+  families, advocates, commuters, and competing public processions.
+- Architecture: Glaüshouse discharge halls give way to testimony stations,
+  Name registries, public galleries, and the Stonebend certification gate.
+- Landmark: the Many-Witness Concourse before the Stonebend approach.
+- District transition: clinical privacy opens into dense ordinary contact and
+  finally Stonebend naming jurisdiction.
+- Gameplay: crowd navigation, testimony comparison, public-pressure choices,
+  identity continuity, competing claims, consent boundaries, and
+  certification without spectacle.
 
 ### Aura Ridge
 
@@ -392,14 +407,18 @@ transfer across the border does not transfer legal authority over it.
 
 ### Glausbahn
 
-- Terrain and coastline: fast coastal grades across cliffs, tunnels, coves, bridges, and glass overlooks.
+- Terrain and road form: a Round road sector of banked curves, return loops,
+  tunnels, bridges, and glass diagnostic overlooks.
 - Vegetation: wind-shaped coastal trees, scrub, cliff flowers, and carefully protected diagnostic verges.
 - Lighting and sky: bright coastal clarity by day; precise Chromacord wayfinding and lane light at night.
 - Traffic: prototype carriers, logistics vehicles, ambulances, repair crews, and controlled high-speed civilian travel.
 - Architecture and bridges: long engineered spans, cliff tunnels, repair stations, medical pull-offs, diagnostic checkpoints, and Nightingale emergency lanes.
 - Landmark: a glass diagnostic overlook where moving prototypes can be diverted safely.
-- District transition: Sandmanor design geometry becomes Glaüshouse diagnostic legibility through increasingly clinical road systems.
-- Gameplay: high-speed logistics, ambulance routing, timed prototype transport, breakdown response, lane choice, and mobile diagnostics.
+- District transition: Sandmanor design geometry repeatedly curves through
+  Glaüshouse diagnostic legibility and back into revised design.
+- Gameplay: repeated refinement laps, high-speed logistics, ambulance routing,
+  timed prototype transport, breakdown response, lane choice, and mobile
+  diagnostics.
 
 ### Current Seanad
 
@@ -493,11 +512,14 @@ Riptide branches to the **Riptide Current Recovery Rig**. Its extraction posture
 is emergency retrieval: shut in a failed well, retrieve crews and equipment,
 contain spills, and quarantine recovered Current-bearing fluid.
 
-Current Sea branches to the **Current Sea Depth Production Rig**. Its posture is
-depth certification: pressure-test a sustained well, separate and assay its
-fluid, verify custody, certify a bounded rate, or suspend it.
+Current Sea branches to the historically named **Current Sea Depth Production
+Rig**. This specialized offshore worksite retains its stable archive identity,
+but it is subordinate to the civic route and does not make Current Sea itself
+a body of water. Its posture is depth certification: pressure-test a sustained
+well, separate and assay its fluid, verify custody, certify a bounded rate, or
+suspend it.
 
-These offshore operations share drilling equipment but do different
+The Riptide and legacy Current Sea rig operations share drilling equipment but do different
 constitutional work. Riptide retrieval cannot certify ordinary production;
 Current Sea certification cannot waive Riptide rescue. Their
 petroleum-side fluid-well analogy remains distinct from the mines' coal-side

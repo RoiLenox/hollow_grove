@@ -18,7 +18,7 @@ The Minoan County Courthouse remains the last major Sandmanor institution
 before Glaüshouse. Its original jurisdiction continues:
 
 - Aura Beach and Southern Law;
-- marine and Current Sea incidents;
+- marine incidents and Current Sea civic-circulation incidents;
 - Current Break permits and violations;
 - rescue obligations and public safety;
 - booking and arraignment;
@@ -66,8 +66,9 @@ The one Court System contains the following typed jurisdictions:
 
 ### Minoan Coastal
 
-Aura Beach, Southern Law, Current Sea incidents, Current Break, rescue,
-permits, public safety, booking, arraignment, detention, and clinical transfer.
+Aura Beach, Southern Law, marine incidents, Current Sea civic-circulation
+incidents, Current Break, rescue, permits, public safety, booking, arraignment,
+detention, and clinical transfer.
 
 ### Stonebend
 

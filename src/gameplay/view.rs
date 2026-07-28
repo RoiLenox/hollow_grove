@@ -416,7 +416,7 @@ impl InteractionView {
                     ],
                     None => vec![
                         "I REMEMBER MY NAME: MERCY DEEP.".into(),
-                        "THE DEPTH CHANGED ME. IT DID NOT CHOOSE.".into(),
+                        "THE CROWD SAW CHANGE. IT DID NOT CHOOSE.".into(),
                         "YOU MAY SUPPORT. STONEBEND MUST NAME.".into(),
                     ],
                 };
@@ -427,10 +427,10 @@ impl InteractionView {
                 }
             }
             InteractionId::CurrentSeaDepthWitness => Self {
-                target_id: "interaction.current-sea.depth-witness".into(),
-                speaker: "DEPTH WITNESS".into(),
+                target_id: "interaction.current-sea.crowd-witness".into(),
+                speaker: "CROWD WITNESS".into(),
                 pages: vec![
-                    "I SAW ONE CURRENT ENDURE THE RETRIEVAL.".into(),
+                    "I SAW ONE CURRENT HOLD THROUGH THE CROWD.".into(),
                     "I CANNOT NAME WHAT THAT CONTINUITY MEANS.".into(),
                 ],
             },

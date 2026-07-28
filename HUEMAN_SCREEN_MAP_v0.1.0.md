@@ -72,7 +72,7 @@ These coordinates intentionally compress the horizontal spread compared with the
 - `Aura Ridge` — Witness: `Glaushouse <-> Stonebend`
 - `Aura Ridge East`: local screen segment from `Aura Ridge Junction -> Sandmanor`, not an additional major constitutional route
 - `Aura Way` — Design: `Stonebend <-> Sandmanor`
-- `Glausbahn` — Refine: `Sandmanor <-> Glaushouse`
+- `Current Sea` — Certify: `Glaushouse -> Stonebend`
 - `Boardwalk` — Return: `Glaushouse -> Flynt`
 - `Basin Motor Speedway` — Produce: `Flynt <-> Stonebend`
 
@@ -82,12 +82,19 @@ These coordinates intentionally compress the horizontal spread compared with the
 - `Current Seanad` — Deliberate: `Sandmanor <-> Glaushouse`
 - `Riptide` — Retrieve: `Flynt -> Glaushouse`
 - `Stairway to Heaven` — Ascend: `Flynt -> Stonebend`
+- `Glausbahn` — Refine: `Sandmanor <-> Glaushouse`
 
-## Constitutional Sea Route
+Glausbahn is the Round road sector. Its repeated curves express the reciprocal
+design, prototype, repair, and improved-design loop.
 
-- `Current Sea` — Certify: `Glaushouse -> Stonebend`
+## Current Sea Context
 
-Current Sea is an ordeal and certification crossing, not another road. It is constitutionally distinct from Current Seanad. The frozen Current Synthesis route token for Current Seanad must not be reused to represent Current Sea.
+Current Sea is a Straight civic certification concourse whose “sea” is a sea
+of people: dense public movement, many witnesses, competing claims, and the
+pressure of ordinary contact. It tests whether restored identity can remain
+continuous in public life. It is not primarily water and is constitutionally
+distinct from Current Seanad. The frozen Current Synthesis route token for
+Current Seanad must not be reused to represent Current Sea.
 
 ## Dominant Route Verbs
 

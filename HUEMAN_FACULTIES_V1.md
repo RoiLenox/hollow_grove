@@ -155,7 +155,8 @@ Prefog never deletes, relabels, or launders the failure.
 - `Elf → Centaur` remains exclusive to Aura Beach and its Current Sea
   jurisdiction. Centaur is the mature Minoan embodiment of Prefig through
   movement, demonstration, exterior construction, navigation, patrol, and
-  public embodiment. Centaurs roam Aura Beach and guard Current Sea.
+  public embodiment. Centaurs roam Aura Beach and safeguard Current Sea
+  approaches, crowd movement, and public access.
 
 Minotaur and Centaur are regional Synthesis manifestations. They are not new
 constitutional peoples, offices, proof authorities, or replacements for the

@@ -1,8 +1,8 @@
 use hollow_grove::constitutional::{CausalPosition, ParticipantId, RuleSetId, V2_RULE_SET};
 use hollow_grove::gameplay::{
     BeingContinuityId, CardinalDirection, GameApplicationService, GameView, GameplayCommand,
-    GameplayEventId, GameplayEventMetadata, InteractionId, MAP_HEIGHT, MAP_WIDTH, TilePosition,
-    WorldMapId, map_definition,
+    GameplayEventId, GameplayEventMetadata, InteractionId, MAP_HEIGHT, MAP_WIDTH,
+    ROUND_ROUTE_MAP_ROWS, TilePosition, WorldMapId, map_definition,
 };
 use hollow_grove::institution::InstitutionalBeingId;
 use hollow_grove::world::geography::ConstitutionalRouteId;
@@ -20,7 +20,7 @@ fn metadata(sequence: u64) -> GameplayEventMetadata {
 }
 
 #[test]
-fn canonical_network_has_five_straight_four_round_and_one_sea_route() {
+fn canonical_network_has_five_straight_and_five_round_routes() {
     let network = RouteNetwork::canonical().unwrap();
     assert_eq!(network.segments().len(), 10);
     assert_eq!(
@@ -31,17 +31,27 @@ fn canonical_network_has_five_straight_four_round_and_one_sea_route() {
     );
     assert_eq!(
         network.routes_by_geometry(RouteGeometryClass::Round).len(),
-        4
+        5
     );
     assert_eq!(
-        network
-            .routes_by_geometry(RouteGeometryClass::SeaOrdeal)
-            .len(),
-        1
+        network.routes_by_geometry(RouteGeometryClass::Straight),
+        vec![
+            ConstitutionalRouteId::Boardwalk,
+            ConstitutionalRouteId::CurrentSea,
+            ConstitutionalRouteId::AuraRidge,
+            ConstitutionalRouteId::AuraWay,
+            ConstitutionalRouteId::BasinMotorspeedway,
+        ]
     );
     assert_eq!(
-        network.routes_by_geometry(RouteGeometryClass::SeaOrdeal),
-        vec![ConstitutionalRouteId::CurrentSea]
+        network.routes_by_geometry(RouteGeometryClass::Round),
+        vec![
+            ConstitutionalRouteId::Riptide,
+            ConstitutionalRouteId::Glausbahn,
+            ConstitutionalRouteId::CurrentSeanad,
+            ConstitutionalRouteId::MntAura,
+            ConstitutionalRouteId::StairwayToHeaven,
+        ]
     );
     for segment in network.segments() {
         assert_ne!(segment.endpoints[0], segment.endpoints[1]);
@@ -70,6 +80,16 @@ fn every_constitutional_route_has_one_canonical_playable_map() {
             id.as_str()
         );
     }
+}
+
+#[test]
+fn glausbahn_uses_round_road_geometry_and_current_sea_uses_a_civic_crowd_map() {
+    let glausbahn = map_definition(WorldMapId::for_route(ConstitutionalRouteId::Glausbahn));
+    assert_eq!(glausbahn.rows, &ROUND_ROUTE_MAP_ROWS);
+
+    let current_sea = map_definition(WorldMapId::for_route(ConstitutionalRouteId::CurrentSea));
+    assert!(current_sea.rows.iter().all(|row| !row.contains('~')));
+    assert!(current_sea.rows.iter().any(|row| row.contains('c')));
 }
 
 #[test]

@@ -922,6 +922,12 @@ func _draw_tile(tile: String, x: int, y: int, viewport_size: Vector2) -> void:
 			_draw_logical_rect(Rect2(origin + Vector2(2, 3), Vector2(5, 4)), _color("hollow_grove.house.stonebend.dark"), viewport_size)
 			_draw_logical_rect(Rect2(origin + Vector2(3, 7), Vector2(1, 1)), outline, viewport_size)
 			_draw_logical_rect(Rect2(origin + Vector2(5, 7), Vector2(1, 1)), outline, viewport_size)
+		"c":
+			var crowd_color := sand_light if (x + y) % 2 == 0 else grove_light
+			_draw_logical_rect(Rect2(origin + Vector2(3, 1), Vector2(2, 2)), outline, viewport_size)
+			_draw_logical_rect(Rect2(origin + Vector2(2, 3), Vector2(4, 4)), crowd_color, viewport_size)
+			_draw_logical_rect(Rect2(origin + Vector2(1, 7), Vector2(2, 1)), outline, viewport_size)
+			_draw_logical_rect(Rect2(origin + Vector2(5, 7), Vector2(2, 1)), outline, viewport_size)
 		"P", "G", "O", "R", "A", "M", "m", "V", "L", "Y", "K", "?":
 			var body_color := flynt_light
 			if tile in ["G", "N", "M", "m", "V", "L", "Y", "K", "?"]:

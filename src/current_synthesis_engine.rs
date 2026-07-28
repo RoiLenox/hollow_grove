@@ -1085,12 +1085,12 @@ fn route_line_definition(line: RouteLineName) -> Option<RouteLineDefinition> {
         }),
         RouteLineName::Glausbahn => Some(RouteLineDefinition {
             line,
-            shape: RouteShape::Straight,
-            lane: RouteLane::SandmanorBranch,
+            shape: RouteShape::Curved,
+            lane: RouteLane::Ring,
             from: RouteSettlement::Glaushouse,
             to: RouteSettlement::Sandmanor,
-            surface_custodian: RouteCustodian::Clouseau,
-            inverse_custodian: None,
+            surface_custodian: RouteCustodian::Hal,
+            inverse_custodian: Some(RouteCustodian::Cleopatra),
         }),
         RouteLineName::MountAura => Some(RouteLineDefinition {
             line,
@@ -2146,10 +2146,10 @@ impl PlayerActionProfile {
             self.dominant_kind().posture_label()
         )];
         inputs.push(String::from(
-            "map topology: upper-left Stairway to Heaven curve and Basin Motorspeedway straight enter Flynt; Flynt connects to Glaushouse through the Riptide curve and the Boardwalk straight; Aura Ridge runs as a north-south spine between Glaushouse and Stonebend with an Aura Ridge East cut toward Sandmanor; Glaushouse also branches to Sandmanor through the Current Seanad curve and the Glausbahn straight; Sandmanor closes the loop to Stonebend through Mnt. Aura curve and the Aura Way straight",
+            "map topology: upper-left Stairway to Heaven curve and Basin Motorspeedway straight enter Flynt; Flynt connects to Glaushouse through the Riptide curve and the Boardwalk straight; Aura Ridge runs as a north-south spine between Glaushouse and Stonebend with an Aura Ridge East cut toward Sandmanor; Glaushouse also branches to Sandmanor through the Current Seanad curve and the Glausbahn round-road refinement loop; Sandmanor closes the loop to Stonebend through Mnt. Aura curve and the Aura Way straight",
         ));
         inputs.push(String::from(
-            "route custody: HAL holds Stairway to Heaven, the Riptide, the Current Seanad, and Mnt. Aura; Clouseau handles Basin Motorspeedway, the Boardwalk, the Glausbahn, the Aura Way, and Aura Ridge North, South, and East; Cleopatra manages HAL's inverse half-circle for NPC continuity and route understructure",
+            "route custody: HAL holds Stairway to Heaven, the Riptide, the Current Seanad, the Glausbahn round-road sector, and Mnt. Aura; Clouseau handles Basin Motorspeedway, the Boardwalk, the Aura Way, and Aura Ridge North, South, and East; Cleopatra manages HAL's inverse curves for NPC continuity and route understructure",
         ));
         for directive in &self.directives {
             inputs.push(format!(
@@ -6198,8 +6198,9 @@ fn infer_route_lane(
         RouteLineName::StairwayToHeaven
         | RouteLineName::Riptide
         | RouteLineName::CurrentSea
+        | RouteLineName::Glausbahn
         | RouteLineName::MountAura => RouteLane::Ring,
-        RouteLineName::AuraWay | RouteLineName::Glausbahn => RouteLane::SandmanorBranch,
+        RouteLineName::AuraWay => RouteLane::SandmanorBranch,
         RouteLineName::AuraRidge => RouteLane::StonebendGlaushouseLeg,
         RouteLineName::Boardwalk => RouteLane::Diamond,
         RouteLineName::BasinMotorspeedway => RouteLane::Diamond,

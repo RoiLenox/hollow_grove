@@ -432,9 +432,10 @@ The gameplay runtime no longer reaches into
 `world::institutional_access_fixture`. Dynamic schema-V2 institutional state
 persists current role-addressed office holders. These current-incumbent IDs are
 authority-bearing session identities, not personal names, biographies, visual
-designs, or silently ratified succession law. Gameplay archive schema V2 embeds
-the institutional snapshot needed for deterministic House-decision replay;
-schema V1 migration preserves its historical dependency explicitly.
+designs, or silently ratified succession law. Gameplay archive schema V3 embeds
+the institutional snapshot and Runtime Federation binding needed for
+deterministic House-decision replay; schema V1 and V2 migrations preserve their
+historical dependencies explicitly.
 
 The Boardwalk witness now gives all four choices a stable, typed outcome.
 Pimp Patronage, Goon Bond, and Limited Cooperation form distinct finite common
@@ -458,8 +459,9 @@ no final Name acts. The runtime creates typed Stonebend evidence, decision,
 Name, and Seal records against the live Hypergiant. The Mercury Mirror remains
 evidence, the Freemason Seal remains execution, and no outcome grants Title.
 
-Checksummed gameplay archive schema V2 replays the exact event, outcome,
-institutional actor, and constitutional records. The detailed witness is
+Checksummed gameplay archive schema V3 replays the exact event, outcome,
+institutional actor, constitutional records, and Runtime Federation binding.
+The detailed witness is
 `STONEBEND_CURRENT_SEA_VERTICAL_SLICE_V1.md`. The all-region order and common
 completion standard are locked in
 `HOLLOW_GROVE_PLAYABLE_EXPANSION_ROADMAP_V1.md`.
@@ -469,10 +471,11 @@ completion standard are locked in
 Implemented on 2026-07-23.
 
 The shared map now has one executable skeleton containing all ten
-constitutional routes: five Straight, four Round/curved, and Current Sea as a
-separate ordeal crossing. Every route has one canonical gameplay map, exact
+constitutional route projections: five Straight and five Round/curved. The
+older Current Sea row is a Straight civic-interface compatibility projection;
+Glausbahn is the Round road refinement sector. Every projection has one gameplay map, exact
 House endpoints, immutable geometry, its locked verb and process, a route
-witness, endpoint-sharing traversal, and schema-V2 replay.
+witness, endpoint-sharing traversal, and schema-V3 replay.
 
 Round and Straight describe shape only. They do not imply Light or Dark Aura,
 morality, authority, Moxy, or constitutional function. Aura Field, Aura Beach,
@@ -487,9 +490,11 @@ Implemented on 2026-07-23.
 Aura Field, Aura Beach, and Aura Basin now hold deterministic persistent
 conditions, scheduled people, and one evidence-gated regional case each. Mt.
 Aura, Stairway to Heaven, and the Stairway complex's nested Highway to Hell
-Deepworks support solid-seam mining. Riptide and Current Sea support distinct
-offshore Current-well operations: Riptide retrieves emergencies and Current
-Sea certifies sustained depth production.
+Deepworks support solid-seam mining. Specialized extraction branches attached
+to Riptide and Current Sea support distinct offshore Current-well operations:
+Riptide retrieves emergencies and the historically named Current Sea Depth
+Production Rig certifies sustained depth production. That branch does not make
+the Current Sea civic route itself maritime.
 
 The shared event-sourced aggregate records shifts, Aura weather, evidence,
 nonbinding player support, duty-officer outcomes, extraction integrity,
@@ -554,7 +559,7 @@ debt, and prevents repeated requests from becoming harassment. Exhausted
 companions rest before leading. Each recruit has one location-bound field
 action, including Brindle's Engagement Farm work reading inside the one Aura
 Field. Party events, lead, recovery, decisions, actions, Godot presentation,
-and schema-V2 save replay are implemented in
+and schema-V3 save replay are implemented in
 `HOLLOW_GROVE_PARTY_AND_RECRUITMENT_V1.md`.
 
 ### Power Recipe constitution milestone status

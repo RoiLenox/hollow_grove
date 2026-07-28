@@ -60,7 +60,7 @@ rejected authority origins.
 | Proven design | Required regional scope | Resulting constitutional function |
 |---|---|---|
 | Gnome → Minotaur | Aura Field | advanced tending and field labor |
-| Elf → Centaur | Aura Beach and Current Sea | roam Aura Beach and guard Current Sea |
+| Elf → Centaur | Aura Beach and Current Sea | roam Aura Beach and safeguard Current Sea approaches, crowd movement, and public access |
 
 Sandmanor proves these regional roles. Glaüshouse clears actual Synthesis,
 Stonebend preserves identity and Title, and Flynt recognizes any lawful role or

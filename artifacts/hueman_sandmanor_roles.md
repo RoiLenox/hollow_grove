@@ -25,9 +25,9 @@ Sandmanor proves through equal Minorian interior and Minoan exterior traditions,
 ## Regional Design
 
 - Aura Field is the Minorian proving ground for cultivation, repeated labor, maintenance, yield, sustainability, Gnome practice, and Minotaur advancement.
-- Aura Beach and the Current Sea are the Minoan proving grounds for coastal access, navigation, exploration, Elf practice, and Centaur mobility.
+- Aura Beach and the Current Sea are the Minoan proving grounds for coastal access and dense civic circulation, navigation, exploration, Elf practice, and Centaur mobility.
 - Gnome -> Minotaur is the canonical Aura Field regional Synthesis design; Minotaurs perform advanced tending and field labor.
-- Elf -> Centaur is the canonical Aura Beach and Current Sea regional Synthesis design; Centaurs roam Aura Beach and guard the Current Sea.
+- Elf -> Centaur is the canonical Aura Beach and Current Sea regional Synthesis design; Centaurs roam Aura Beach and safeguard Current Sea approaches, crowd movement, and public access.
 - Sandmanor proves regional role and recipe logic; Glaushouse clears Synthesis; Stonebend preserves identity; Flynt recognizes lawful role or institution.
 
 ## Hueman Soul Faculties

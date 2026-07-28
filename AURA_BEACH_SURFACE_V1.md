@@ -17,8 +17,9 @@ Its constitutional purpose is to prove how a design meets the world beyond
 itself: approach, orientation, transport, public meaning, visibility, climate,
 navigation, connection, and shared space.
 
-The Current Sea is Aura Beach's linked Minoan maritime jurisdiction. It is not
-a second beach and Aura Beach is not another Current Sea route.
+The Current Sea is Aura Beach's linked Minoan civic-circulation jurisdiction.
+It is a sea of people, not a second beach or a maritime body, and Aura Beach is
+not another Current Sea route.
 
 ## North-to-South Constitutional Gradient
 
@@ -61,7 +62,7 @@ Aura Beach is the lower-right interior triangle:
 Its lawful gameplay approaches are:
 
 - Aura Ridge, carrying public witness to the central shore approach;
-- Current Sea, carrying maritime certification and return;
+- Current Sea, carrying civic certification through dense public circulation;
 - Glausbahn, carrying refinement between Sandmanor and Glaüshouse;
 - Current Seanad, carrying difficult coastal design into deliberation.
 
@@ -205,7 +206,8 @@ The immutable surface view exposes:
 - every facility's stable identity, kind, and function.
 
 Wrong-route entry fails without revision or event. Accepted entry persists and
-replays through gameplay archive schema V2. Godot renders water, sand, coastal
+replays through gameplay archive schema V3 with an explicit Runtime Federation
+binding. Godot renders water, sand, coastal
 works, dialogue, and attribution without owning proof, rescue, Synthesis, or
 House authority.
 

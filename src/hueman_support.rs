@@ -721,9 +721,9 @@ const SANDMANOR_ROLE_SECTIONS: [HuemanSectionDefinition; 9] = [
         title: "Regional Design",
         lines: &[
             "Aura Field is the Minorian proving ground for cultivation, repeated labor, maintenance, yield, sustainability, Gnome practice, and Minotaur advancement.",
-            "Aura Beach and the Current Sea are the Minoan proving grounds for coastal access, navigation, exploration, Elf practice, and Centaur mobility.",
+            "Aura Beach and the Current Sea are the Minoan proving grounds for coastal access and dense civic circulation, navigation, exploration, Elf practice, and Centaur mobility.",
             "Gnome -> Minotaur is the canonical Aura Field regional Synthesis design; Minotaurs perform advanced tending and field labor.",
-            "Elf -> Centaur is the canonical Aura Beach and Current Sea regional Synthesis design; Centaurs roam Aura Beach and guard the Current Sea.",
+            "Elf -> Centaur is the canonical Aura Beach and Current Sea regional Synthesis design; Centaurs roam Aura Beach and safeguard Current Sea approaches, crowd movement, and public access.",
             "Sandmanor proves regional role and recipe logic; Glaushouse clears Synthesis; Stonebend preserves identity; Flynt recognizes lawful role or institution.",
         ],
     },
@@ -1609,7 +1609,7 @@ fn render_vertical_integration_stack_prefix() -> &'static str {
              - the bedrock split remains active upstream: regular current and hollow current, reflective aura and holographic aura\n\
              - the visible Hueman map remains one large circle whose route legs may read as straight ridge runs or rounded bends\n\
              - Aura Ridge / Witness is the visible civic-reintegration body between Glaushouse and Stonebend, while Aura Ridge East remains only a local screen-map segment toward Sandmanor\n\
-             - Current Sea / Certify remains the separate Glaushouse-to-Stonebend depth ordeal and has no frozen Current Synthesis route projection\n\
+             - Current Sea / Certify is the Straight Glaushouse-to-Stonebend civic sea-of-people concourse and has no frozen Current Synthesis route projection; Glausbahn / Refine is the Round road sector\n\
              - all four houses share the same ascent loop: gather materials, uncover recipe knowledge, pass through the house process, and embody the resulting form without collapsing form into office\n\
              - Stonebend declares Mercury Mirror from hollow current + reflective craft, Flynt declares Opal Oil from regular current + holographic aura, Glaushouse declares Glaus Gel from jade as repair and synthesis medium, and Sandmanor declares Prism Sand from crystal as the proof-and-record branch\n\
              - the outer border ring remains legible as Stairway to Heaven, Riptide, Current Seanad, and Mt. Aura\n\

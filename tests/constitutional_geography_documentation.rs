@@ -73,7 +73,8 @@ fn current_sea_and_current_seanad_are_documented_as_distinct() {
     assert!(SPECIFICATION.contains("geography.route.current-sea"));
     assert!(SPECIFICATION.contains("geography.route.current-seanad"));
     assert!(SPECIFICATION.contains("Current Sea and Current Seanad remain distinct"));
-    assert!(SCREEN_MAP.contains("Current Sea is an ordeal and certification crossing"));
+    assert!(SCREEN_MAP.contains("Current Sea is a Straight civic certification concourse"));
+    assert!(SCREEN_MAP.contains("Glausbahn is the Round road sector"));
 }
 
 #[test]

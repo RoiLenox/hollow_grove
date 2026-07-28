@@ -22,7 +22,8 @@ It adds:
 - seven evidence-gated cases;
 - solid-seam mining at Mt. Aura and in the Stairway mountain complex;
 - the Highway to Hell descending mine road;
-- offshore Current-well work on Riptide and Current Sea;
+- offshore Current-well work on Riptide and on a specialized legacy-named
+  branch attached to Current Sea;
 - material provenance and custody;
 - cross-region consequences;
 - physical map exits;
@@ -349,9 +350,11 @@ Map: `current-sea.depth-production-rig`
 Resource: certified Current-bearing brine
 Route: Current Sea / `Certify`
 
-Current Sea tests sustained depth integrity. It does not replace Riptide
-rescue, Stonebend naming, Sandmanor proof, Glaüshouse Clearance, or Flynt
-recognition.
+This is a specialized offshore branch attached to Current Sea, not the route's
+primary terrain. The route itself is the Straight Many-Witness Concourse and
+its sea is a sea of people. The rig retains its historical stable name and
+tests sustained depth integrity. It does not replace Riptide rescue, Stonebend
+naming, Sandmanor proof, Glaüshouse Clearance, or Flynt recognition.
 
 Its first case is a production-well certification:
 

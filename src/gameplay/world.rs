@@ -14,6 +14,8 @@ use super::CardinalDirection;
 
 pub const STARTER_MAP_ID: &str = "aura-ridge.grove-approach";
 pub const BOARDWALK_MAP_ID: &str = "boardwalk.return-vestibule";
+/// Stable archive identifier. The current presentation is the civic
+/// Many-Witness Concourse; the historical wire name must remain replayable.
 pub const CURRENT_SEA_MAP_ID: &str = "current-sea.deep-certification-landing";
 pub const MAP_WIDTH: u16 = 20;
 pub const MAP_HEIGHT: u16 = 18;
@@ -65,24 +67,24 @@ pub const BOARDWALK_MAP_ROWS: [&str; MAP_HEIGHT as usize] = [
 ];
 
 pub const CURRENT_SEA_MAP_ROWS: [&str; MAP_HEIGHT as usize] = [
-    "~~~~~~~~~~~~~~~~~~~~",
-    "~~~==============~~~",
-    "~~~=............=~~~",
-    "~~~=............=~~~",
-    "~~~=G...M....V..=~~~",
-    "~~~=............=~~~",
-    "~~~=............=~~~",
-    "~~~=...xxx......=~~~",
-    "~~~=............=~~~",
-    "~~~=L.........Y.=~~~",
-    "~~~=............=~~~",
-    "~~~=.....I......=~~~",
-    "~~~=............=~~~",
-    "~~~=R...........=~~~",
-    "~~~=............=~~~",
-    "~~~=............=~~~",
-    "~~~==============~~~",
-    "~~~~~~~~~~~~~~~~~~~~",
+    "TTTTTTTTTTTTTTTTTTTT",
+    "Tcc==cc==cc==cc==ccT",
+    "T..c....==....c....T",
+    "T......c==c........T",
+    "T..cG...M....V.c...T",
+    "T.cc....==....cc...T",
+    "T....c..==..c......T",
+    "T..c...xxx.........T",
+    "T==================T",
+    "T..cL....=....Y.c..T",
+    "T.c......=......c..T",
+    "T...c....I....c....T",
+    "T........=.........T",
+    "T..cR....=....c....T",
+    "T.c......=......c..T",
+    "T........=.........T",
+    "T==================T",
+    "TTTTTTTTTTTTTTTTTTTT",
 ];
 
 /// One farm-country map inside the one canonical Aura Field surface.
@@ -410,6 +412,7 @@ pub enum InteractionId {
     BoardwalkReturningGoon,
     CurrentSeaGeraldRegistrar,
     CurrentSeaMercyDeep,
+    /// Legacy archive name for the Current Sea crowd witness.
     CurrentSeaDepthWitness,
     CurrentSeaNameLedger,
     CurrentSeaMercuryMirror,
@@ -921,9 +924,9 @@ const fn route_passage_rows(
     match route {
         ConstitutionalRouteId::Riptide => &RIPTIDE_ROUTE_MAP_ROWS,
         ConstitutionalRouteId::CurrentSeanad => &CURRENT_SEANAD_MAP_ROWS,
-        ConstitutionalRouteId::MntAura | ConstitutionalRouteId::StairwayToHeaven => {
-            &ROUND_ROUTE_MAP_ROWS
-        }
+        ConstitutionalRouteId::MntAura
+        | ConstitutionalRouteId::StairwayToHeaven
+        | ConstitutionalRouteId::Glausbahn => &ROUND_ROUTE_MAP_ROWS,
         _ => &STRAIGHT_ROUTE_MAP_ROWS,
     }
 }

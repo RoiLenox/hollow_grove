@@ -83,9 +83,11 @@ navigation, exploration, public approach, trade corridors, environmental
 relationship, transportation, borders as experienced space, and outward
 communication.
 
-Aura Beach is their coastal proving ground. The Current Sea is their maritime
-design jurisdiction. Elves design, explore, and navigate. Centaurs roam Aura
-Beach and guard the Current Sea.
+Aura Beach is their coastal proving ground. The Current Sea is their
+civic-circulation design jurisdiction: a sea of people where exterior design
+must remain usable amid dense public movement and competing needs. Elves
+design, explore, and navigate. Centaurs roam Aura Beach and safeguard Current
+Sea approaches, crowd movement, and public access.
 
 > **Discover what may become reachable.**
 
@@ -596,7 +598,8 @@ fertility, stored possibility, and improvement of the field.
 `Elf -> Centaur` remains exclusive to Aura Beach and its Current Sea
 jurisdiction. Centaur is the mature Minoan manifestation of embodied Prefig
 through movement, demonstration, exterior construction, navigation, patrol,
-and public embodiment. Centaurs roam Aura Beach and guard Current Sea.
+and public embodiment. Centaurs roam Aura Beach and safeguard Current Sea
+approaches, crowd movement, and public access.
 
 These forms are regional Synthesis manifestations, not new peoples, offices,
 or constitutional authorities, and do not replace Gnome/Minorian or

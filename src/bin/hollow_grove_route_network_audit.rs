@@ -18,12 +18,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "Round: {}",
         network.routes_by_geometry(RouteGeometryClass::Round).len()
     );
-    println!(
-        "Sea ordeal: {}",
-        network
-            .routes_by_geometry(RouteGeometryClass::SeaOrdeal)
-            .len()
-    );
     for segment in network.segments() {
         let definition = geography
             .route(segment.route)

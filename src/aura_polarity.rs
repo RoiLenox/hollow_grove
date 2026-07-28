@@ -736,14 +736,14 @@ pub fn canonical_aura_route_definition(route_id: CanonicalRouteId) -> Option<Aur
     match route_id {
         CanonicalRouteId::Glausbahn => Some(AuraRouteDefinition {
             route_id,
-            geometry: RouteGeometry::Straight,
+            geometry: RouteGeometry::Curved,
             source_house: House::Glaushouse,
             destination_house: House::Sandmanor,
             polarity_tendency: AuraPolarity::Light,
-            manager_relation: "straight / Clouseau / Proxy-PLEB relation",
-            public_tendency: "direct legibility",
-            pressure_tendency: "low-to-moderate clinical pressure",
-            semantic_tendency: "direct, legible, publicly structured Light Aura transmission",
+            manager_relation: "curved / HAL / Moxy-META relation",
+            public_tendency: "iterative legibility",
+            pressure_tendency: "repeated diagnostic and design pressure",
+            semantic_tendency: "cyclical, legible, repeatedly refined Light Aura transmission",
         }),
         CanonicalRouteId::CurrentSeanad => Some(AuraRouteDefinition {
             route_id,

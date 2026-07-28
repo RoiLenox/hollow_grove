@@ -440,7 +440,7 @@ fn surface_documents_lock_attribution_and_the_compromise_tracks_completion() {
         "Sandmanor's Minoan exterior tradition",
         "Minoan Navigation School",
         "Centaur Mobility Run",
-        "Current Sea is Aura Beach's linked Minoan maritime jurisdiction",
+        "Current Sea is Aura Beach's linked Minoan civic-circulation jurisdiction",
     ] {
         assert!(beach.contains(term), "Aura Beach contract missing {term}");
     }

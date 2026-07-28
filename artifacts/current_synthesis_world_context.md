@@ -1458,8 +1458,8 @@ Canonical contrast:
 
 Elves possess the constitutionally governed regional Synthesis **Elf →
 Centaur** through Aura Beach and Current Sea design. Centaurs roam Aura Beach
-and guard the Current Sea. Sandmanor proves the regional design; Glaüshouse
-clears the actual Synthesis.
+and safeguard Current Sea approaches, crowd movement, and public access.
+Sandmanor proves the regional design; Glaüshouse clears the actual Synthesis.
 
 ## 14.3 Sandmanor constitutional proof
 

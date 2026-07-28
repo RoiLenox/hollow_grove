@@ -7,11 +7,13 @@ Runtime: `src/gameplay/stonebend.rs`
 
 ## Case
 
-At the Current Sea deep-certification landing, **Mercy Deep** returns from a
+At the Current Sea Many-Witness Concourse, **Mercy Deep** returns from a
 Glaüshouse restoration with one persistent Being continuity and a materially
-changed form. Clinical success establishes neither identity nor failure.
-Stonebend must decide what Name may lawfully act while preserving every
-uncertainty the evidence cannot settle.
+changed form. The route is a sea of people rather than a body of water:
+ordinary contact, old acquaintances, officials, strangers, and competing
+claims put continuity under public pressure. Clinical success establishes
+neither identity nor failure. Stonebend must decide what Name may lawfully act
+while preserving every uncertainty the evidence cannot settle.
 
 The case is `case.stonebend.current-sea-continuity.v1`. Mercy Deep is
 `being.current-sea.mercy-deep`; this is additive case canon, not an office,
@@ -24,21 +26,22 @@ Title, transformation class, or inferred regional role.
 2. Authority: Stonebend `Name` /
    `ConstitutionalIdentity`; the active Hypergiant is resolved from the live
    `WorldSession`.
-3. Place: Current Sea deep-certification landing at the
+3. Place: Current Sea Many-Witness Concourse at the
    Glaüshouse–Stonebend boundary.
 4. Entities: Mercy Deep, Gerald registrar, Glaüshouse restoration archive,
-   depth witness, Name ledger, Mercury Mirror, and Freemason Seal.
+   crowd witness, Name ledger, Mercury Mirror, and Freemason Seal.
 5. Dominant verbs: `Stonebend names`; Current Sea `Certify`.
 6. Trigger: restoration preserves life and memory while materially changing
    form.
-7. Evidence: capable subject testimony, prior Name, restoration record, depth
-   endurance witness, and Mercury Mirror correspondence. Partial continuity
+7. Evidence: capable subject testimony, prior Name, restoration record, public
+   circulation witness, and Mercury Mirror correspondence. Partial continuity
    and the legal meaning of clinical success remain uncertain.
 8. Player choice: advisory support for an existing Name, a provisional
    transformed-form Name, or high identity review.
 9. State change: one typed outcome and exact Stonebend records.
-10. Persistence: gameplay archive schema V2 stores the event and institutional
-    snapshot; replay reconstructs and compares the exact outcome and authority.
+10. Persistence: gameplay archive schema V3 stores the event, institutional
+    snapshot, and explicit Runtime Federation binding; replay reconstructs and
+    compares the exact outcome and authority.
 11. Presentation: map gate, silhouette, dialogue, registry view, and refusal
     language change after commitment.
 12. Failure/refusal: missing authority fails closed; uncertainty does not erase
@@ -52,6 +55,11 @@ cannot decide for Mercy Deep or manufacture Stonebend authority.
 
 The Mercury Mirror tests correspondence only. It cannot name, grant Title,
 prove clinical safety, recognize function, or choose an outcome.
+
+The serialized map, interaction, and evidence identifiers retain historical
+`deep` and `depth-witness` wording for schema-V2/V3 replay compatibility. Those
+wire names do not override the Many-Witness Concourse presentation or the
+current civic meaning of Current Sea.
 
 ## Outcomes
 

@@ -1,7 +1,8 @@
 //! The one canonical Aura Beach and its coastal working places.
 //!
 //! Aura Beach is attributed first to Sandmanor's Minoan exterior tradition.
-//! Current Sea is its linked maritime jurisdiction, not a second beach.
+//! Current Sea is its linked civic-circulation jurisdiction, not a second
+//! beach or a maritime body.
 
 use std::collections::BTreeSet;
 use std::fmt;

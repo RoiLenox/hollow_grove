@@ -11,7 +11,7 @@ Gameplay maps: `src/gameplay/world.rs`
 The route network answers:
 
 - which Houses a route joins;
-- whether its world geometry is Straight, Round, or the Current Sea ordeal;
+- whether its world geometry is Straight or Round;
 - where its endpoints sit on the shared normalized map;
 - whether a traveler may transfer from one route to another at a shared House;
 - which immutable route record presentation receives.
@@ -25,6 +25,15 @@ Interior regions are a separate overlay. The three singular surfaces are
 established by `AURA_FIELD_SURFACE_V1.md`, `AURA_BEACH_SURFACE_V1.md`, and
 `AURA_BASIN_SURFACE_V1.md`. This network supplies their lawful approaches but
 does not turn any surface into a route.
+
+This skeleton retains three old map keys for replay compatibility. The
+`aura-way.design-corridor` map is not permanent `route.aura-way`; the
+`current-sea.deep-certification-landing` map is not `region.current-sea`; and
+the `riptide.emergency-intake` map is not `force.riptide`. Controlling
+directional and body/force/route law lives in
+`CENTRAL_JUNCTION_SEASONAL_FUNCTIONS_V1.md`. Presentation and endpoint-sharing
+for these legacy projections cannot redefine the permanent Aura Way route, the
+Current Sea body, Riptide, Undertow, or Boardwalk.
 
 ## Shared House Anchors
 
@@ -47,9 +56,16 @@ floating-point identity.
 |---|---|---|---|
 | Aura Ridge | Glaüshouse / Stonebend | Witness | `aura-ridge.grove-approach` |
 | Aura Way | Stonebend / Sandmanor | Design | `aura-way.design-corridor` |
-| Glausbahn | Sandmanor / Glaüshouse | Refine | `glausbahn.refinement-span` |
+| Current Sea | Glaüshouse / Stonebend | Certify | `current-sea.deep-certification-landing` |
 | Boardwalk | Glaüshouse / Flynt | Return | `boardwalk.return-vestibule` |
 | Basin Motor Speedway | Flynt / Stonebend | Produce | `basin-motor-speedway.production-circuit` |
+
+The row named Current Sea is a Straight civic-interface projection through
+dense public circulation, competing claims, witnesses, and ordinary civic
+pressure. Its stable gameplay map ID retains
+`deep-certification-landing` so existing archives continue to replay. The
+projection is not `region.current-sea`, the Current body that sets in
+Glaüshouse.
 
 ## Round Routes
 
@@ -62,23 +78,19 @@ polarity, moral alignment, Moxy, or Dark Aura.
 | Current Seanad | Sandmanor / Glaüshouse | Deliberate | `current-seanad.deliberation-chamber` |
 | Riptide | Flynt / Glaüshouse | Retrieve | `riptide.emergency-intake` |
 | Stairway to Heaven | Flynt / Stonebend | Ascend | `stairway-to-heaven.ascent-path` |
+| Glausbahn | Sandmanor / Glaüshouse | Refine | `glausbahn.refinement-span` |
 
-Current Seanad remains a deliberative place rather than ordinary transit even
-though its screen geometry belongs to the Round class. Riptide remains an
-emergency corridor rather than elective travel in world fiction; map entry is
-the current development witness for that route, not a claim that ordinary
-civilians choose emergency retrieval.
+Glausbahn is the Round road sector. Its curvature creates a repeated
+design–prototype–repair–redesign circuit rather than a one-way span. Current
+Seanad remains a deliberative place rather than ordinary transit even though
+its screen geometry also belongs to the Round class. The Riptide row remains
+an emergency-intake projection rather than elective travel; map entry is a
+development witness for that interface, not the natural `force.riptide` and
+not a claim that ordinary civilians choose emergency retrieval.
 
-## Current Sea
-
-Current Sea is the sole `Sea Ordeal` geometry:
-
-| Route | Endpoints | Verb | Gameplay map |
-|---|---|---|---|
-| Current Sea | Glaüshouse / Stonebend | Certify | `current-sea.deep-certification-landing` |
-
-It is not counted as a Straight road or a Round route and remains distinct from
-Current Seanad.
+Current Sea remains constitutionally distinct from Current Seanad: Current Sea
+certifies continuity in public circulation at the Glaüshouse–Stonebend
+boundary; Current Seanad deliberates at the Glaüshouse–Sandmanor boundary.
 
 ## Traversal Law
 
@@ -102,8 +114,8 @@ A route transfer is valid when:
    constitutional route.
 
 Disconnected jumps fail without changing revision, position, event history, or
-case state. Accepted map-entry events persist in gameplay archive schema V2 and
-replay through the same network check.
+case state. Accepted map-entry events persist in federation-aware gameplay
+archive schema V3 and replay through the same network check.
 
 The playable client now uses a physical exit projected at each map spawn.
 `Tab` selects among connected destinations and `B` traverses. Traversal away
@@ -139,7 +151,7 @@ than extending the constitutional circuit.
 Every route view exposes:
 
 - stable route ID and display Name;
-- Straight, Round, or Sea Ordeal geometry;
+- Straight or Round geometry;
 - presentation geometry term;
 - two House endpoints;
 - dominant verb;
@@ -148,7 +160,7 @@ Every route view exposes:
 
 Generic route maps contain an interactive constitutional witness. It explains
 the route's actual verb and explicitly states that geometry is not authority.
-Boardwalk and Current Sea retain their deeper case-specific maps.
+Boardwalk and Current Sea retain their case-specific maps.
 
 Interior surface views separately expose singular identity, dominant regional
 attribution, exact polygon, declared route approaches, and complete facility
@@ -158,13 +170,13 @@ catalog. Route geometry never supplies those facts.
 
 `tests/route_network_gameplay.rs` proves:
 
-- exactly five Straight, four Round, and one Sea Ordeal route;
+- exactly five Straight and five Round routes;
 - all ten constitutional routes have exactly one canonical gameplay map;
 - fixed map dimensions and stable wire IDs;
 - exact route-witness attribution;
 - endpoint-sharing traversal;
 - fail-closed disconnected jumps;
-- schema-V2 save and deterministic replay;
+- schema-V3 save, explicit Runtime Federation binding, and deterministic replay;
 - all three singular surfaces enter only from their declared approaches;
 - surface maps remain distinct from the ten-route count.
 

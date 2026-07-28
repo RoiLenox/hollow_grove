@@ -619,7 +619,7 @@ fn canonical_route_definition(id: ConstitutionalRouteId) -> ConstitutionalRouteD
             id,
             boundary: HouseBoundary::GlaushouseStonebend,
             verb: Certify,
-            purpose: "certification that restoration survives depth and endurance",
+            purpose: "certification that restoration remains continuous under dense public contact and civic pressure",
             direction: Directed {
                 from: Glaushouse,
                 to: Stonebend,
@@ -649,7 +649,7 @@ fn canonical_route_definition(id: ConstitutionalRouteId) -> ConstitutionalRouteD
             id,
             boundary: HouseBoundary::GlaushouseSandmanor,
             verb: Refine,
-            purpose: "high-speed iteration where design and repair improve one another",
+            purpose: "round-road iteration where design and repair repeatedly improve one another",
             direction: Reciprocal,
             process: &["Design", "Prototype", "Repair", "Improved Design"],
             frozen_runtime_projection: Some(Runtime::Glausbahn),

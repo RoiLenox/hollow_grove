@@ -55,6 +55,8 @@ impl ExtractionSiteId {
             Self::StairwayBurdenMine => "Stairway Burden Mine",
             Self::HighwayToHellDeepworks => "Highway to Hell Deepworks",
             Self::RiptideRecoveryRig => "Riptide Current Recovery Rig",
+            // Historical display name for the specialized offshore branch;
+            // this worksite does not define the civic Current Sea route.
             Self::CurrentSeaDepthRig => "Current Sea Depth Production Rig",
         }
     }

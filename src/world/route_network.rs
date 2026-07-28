@@ -25,7 +25,6 @@ pub enum RouteGeometryClass {
     Straight,
     /// The world-facing Round class rendered as a curved route.
     Round,
-    SeaOrdeal,
 }
 
 impl RouteGeometryClass {
@@ -34,7 +33,6 @@ impl RouteGeometryClass {
         match self {
             Self::Straight => "Straight",
             Self::Round => "Round",
-            Self::SeaOrdeal => "Sea Ordeal",
         }
     }
 
@@ -43,7 +41,6 @@ impl RouteGeometryClass {
         match self {
             Self::Straight => "straight",
             Self::Round => "curved",
-            Self::SeaOrdeal => "crossing",
         }
     }
 }
@@ -182,8 +179,7 @@ impl RouteNetwork {
         }
         for (geometry, expected) in [
             (RouteGeometryClass::Straight, 5),
-            (RouteGeometryClass::Round, 4),
-            (RouteGeometryClass::SeaOrdeal, 1),
+            (RouteGeometryClass::Round, 5),
         ] {
             let actual = geometry_counts.get(&geometry).copied().unwrap_or_default();
             if actual != expected {
@@ -205,11 +201,12 @@ pub const fn canonical_route_geometry(route: ConstitutionalRouteId) -> RouteGeom
         MntAura, Riptide, StairwayToHeaven,
     };
     match route {
-        AuraRidge | AuraWay | Glausbahn | Boardwalk | BasinMotorspeedway => {
+        AuraRidge | AuraWay | CurrentSea | Boardwalk | BasinMotorspeedway => {
             RouteGeometryClass::Straight
         }
-        MntAura | CurrentSeanad | Riptide | StairwayToHeaven => RouteGeometryClass::Round,
-        CurrentSea => RouteGeometryClass::SeaOrdeal,
+        MntAura | CurrentSeanad | Riptide | StairwayToHeaven | Glausbahn => {
+            RouteGeometryClass::Round
+        }
     }
 }
 

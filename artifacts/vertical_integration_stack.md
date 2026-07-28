@@ -55,7 +55,7 @@ World Roles and Scenes
 - the bedrock split remains active upstream: regular current and hollow current, reflective aura and holographic aura
 - the visible Hueman map remains one large circle whose route legs may read as straight ridge runs or rounded bends
 - Aura Ridge / Witness is the visible civic-reintegration body between Glaushouse and Stonebend, while Aura Ridge East remains only a local screen-map segment toward Sandmanor
-- Current Sea / Certify remains the separate Glaushouse-to-Stonebend depth ordeal and has no frozen Current Synthesis route projection
+- Current Sea / Certify is the Straight Glaushouse-to-Stonebend civic sea-of-people concourse and has no frozen Current Synthesis route projection; Glausbahn / Refine is the Round road sector
 - all four houses share the same ascent loop: gather materials, uncover recipe knowledge, pass through the house process, and embody the resulting form without collapsing form into office
 - Stonebend declares Mercury Mirror from hollow current + reflective craft, Flynt declares Opal Oil from regular current + holographic aura, Glaushouse declares Glaus Gel from jade as repair and synthesis medium, and Sandmanor declares Prism Sand from crystal as the proof-and-record branch
 - the outer border ring remains legible as Stairway to Heaven, Riptide, Current Seanad, and Mt. Aura
