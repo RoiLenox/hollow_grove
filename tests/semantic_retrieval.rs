@@ -62,6 +62,7 @@ fn insert_position(
             proposed_position: position,
             translation: None,
             confirmed_position: Some(position),
+            operation: reference("semantic-intent", "locate"),
             decision: SemanticWitnessDecision::Confirmed,
             evidence_refs: vec![reference("evidence", id)],
             constitutional_refs: vec![reference("constitution", "semantic-kernel-v1")],

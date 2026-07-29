@@ -166,6 +166,8 @@ pub struct SemanticWitnessRecord {
     pub proposed_position: Position3,
     pub translation: Option<Translation3>,
     pub confirmed_position: Option<Position3>,
+    #[serde(default = "legacy_semantic_witness_operation")]
+    pub operation: ExternalRef,
     pub decision: SemanticWitnessDecision,
     pub evidence_refs: Vec<ExternalRef>,
     pub constitutional_refs: Vec<ExternalRef>,
@@ -175,6 +177,11 @@ pub struct SemanticWitnessRecord {
     pub summary: String,
     pub prompt_version: String,
     pub interpreter_version: String,
+}
+
+fn legacy_semantic_witness_operation() -> ExternalRef {
+    ExternalRef::new("semantic-intent", "unspecified-v1")
+        .expect("static legacy semantic operation is valid")
 }
 
 impl SemanticWitnessRecord {
@@ -197,6 +204,7 @@ impl SemanticWitnessRecord {
             &self.cycle_ref,
             &self.actor_ref,
             &self.point_ref,
+            &self.operation,
         ]
         .into_iter()
         .chain(self.scope.context_ref.iter())

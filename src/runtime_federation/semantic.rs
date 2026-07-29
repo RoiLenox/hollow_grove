@@ -41,6 +41,20 @@ pub enum ProposedSemanticOperation {
     Transform,
 }
 
+impl ProposedSemanticOperation {
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Locate => "locate",
+            Self::Inspect => "inspect",
+            Self::Translate => "translate",
+            Self::Repair => "repair",
+            Self::Compose => "compose",
+            Self::Transform => "transform",
+        }
+    }
+}
+
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct ModelSemanticProposal {
@@ -977,6 +991,8 @@ fn build_confirmed_witness(
         proposed_position: gathering.proposal.proposed_position,
         translation: gathering.proposal.translation,
         confirmed_position: Some(gathering.proposal.proposed_position),
+        operation: ExternalRef::new("semantic-intent", gathering.proposal.operation.as_str())
+            .expect("static semantic operation is valid"),
         decision: SemanticWitnessDecision::Confirmed,
         evidence_refs: gathering.resolved_evidence_refs.clone(),
         constitutional_refs: gathering.resolved_constitutional_refs.clone(),
@@ -1009,6 +1025,8 @@ fn build_rejected_witness(
         proposed_position: gathering.proposal.proposed_position,
         translation: gathering.proposal.translation,
         confirmed_position: None,
+        operation: ExternalRef::new("semantic-intent", gathering.proposal.operation.as_str())
+            .expect("static semantic operation is valid"),
         decision: SemanticWitnessDecision::Rejected,
         evidence_refs: gathering.proposal.evidence_refs.clone(),
         constitutional_refs: gathering.resolved_constitutional_refs.clone(),
