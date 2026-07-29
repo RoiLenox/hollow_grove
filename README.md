@@ -15,8 +15,11 @@ Read the setting in this order:
 2. [Constitutional Architecture](HOLLOW_GROVE_CONSTITUTIONAL_ARCHITECTURE_V1.md)
    — how shared law, the four Houses, Hueman, and regional projections relate.
 3. [Federal Sovereignty and Seer Ceremony](FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md)
-   — Roi and Roselina, the two complementary federations, Worldright, and the
-   outside-participation freeze.
+   — the one Federation, Roi/Roï and Roselina/Rosaliña as two continuous
+   beings across layers, Worldright, and the outside-participation freeze.
+   Continue with [Guide and Seer Identity](docs/GUIDE_AND_SEER_IDENTITY_V1.md),
+   [Central Junction Transition](docs/CENTRAL_JUNCTION_TRANSITION_V1.md), and
+   [Surface–Hueman Guide Protocol](docs/SURFACE_HUEMAN_GUIDE_PROTOCOL_V1.md).
 4. [Repository Authority Map](REPOSITORY_AUTHORITY_MAP.md) — what is
    constitutional law, executable enforcement, a draft, a witness, or a
    generated projection.
@@ -142,7 +145,7 @@ infrastructure, Manticorp, recognition, and its institutional hierarchy.
 | Geography and travel | [Constitutional Geography](HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md), [Route Network](HOLLOW_GROVE_ROUTE_NETWORK_V1.md), [Screen Map](HUEMAN_SCREEN_MAP_v0.1.0.md), [Spatial Inheritance](SPATIAL_INHERITANCE_V1.md) | House boundaries, route verbs, route shape, recursively inherited map projection |
 | Shared judiciary | [Minoan County Court](MINOAN_COUNTY_COURT_SYSTEM_AND_RESTITUTION_CYCLE_V1.md) | disputes, amendment review, Restitution |
 | Shared economy | [Central Junction Four-Pole Economy](CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md) | public exchange, indexes, settlement |
-| Federal sovereignty and runtime continuity | [Federal Sovereignty and Seer Ceremony](FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md), [The Runtime Federation](THE_RUNTIME_FEDERATION_V1.md), [Executable Implementation V1](THE_RUNTIME_FEDERATION_IMPLEMENTATION_V1.md) | Roi and Roselina, Worldright, deterministic cross-domain manifest, replay, inspection, migration, and accepted consequence |
+| Guide identity, the Federation, and continuity archives | [Federal Sovereignty and Seer Ceremony](FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md), [Guide and Seer Identity](docs/GUIDE_AND_SEER_IDENTITY_V1.md), [Central Junction Transition](docs/CENTRAL_JUNCTION_TRANSITION_V1.md), [Surface–Hueman Guide Protocol](docs/SURFACE_HUEMAN_GUIDE_PROTOCOL_V1.md), [HGRF compatibility architecture](THE_RUNTIME_FEDERATION_V1.md), [Executable Implementation V1](THE_RUNTIME_FEDERATION_IMPLEMENTATION_V1.md) | two stable Guide identities, layer-derived form-names, one Federation, atomic seam crossing, deterministic cross-domain manifest, replay, inspection, migration, and accepted consequence |
 | Shared civic Function | [Service Tournament — Central Junction Canon](SERVICE_TOURNAMENT_CENTRAL_JUNCTION_CANON_V1.md) | four paired-service House identities, War of a Thousand Hues, nonlethal scenarios, paint records, Service Marks, constitutional scoring |
 | Hueman | [Hueman](HUEMAN_v0.1.0.md), [Faculties](HUEMAN_FACULTIES_V1.md) | constitutional entry point, Body/Spirit/Mind/Soul faculties |
 | Regional surfaces | [Aura Field](AURA_FIELD_SURFACE_V1.md), [Aura Beach](AURA_BEACH_SURFACE_V1.md), [Aura Basin](AURA_BASIN_SURFACE_V1.md) | the three interior world surfaces |

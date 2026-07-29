@@ -4,16 +4,17 @@ This checkpoint records the semantic foundation that is now enforced in code.
 
 It is a boundary document, not a second lore source. Canonical meaning lives in the contract, validators, fixtures, and freeze tests named below.
 
-## The Runtime Federation
+## The Federation and HGRF compatibility
 
 The canonical continuity layer above completed universal-kernel passes is:
 
 - `THE_RUNTIME_FEDERATION_V1.md`
 
-The Runtime Federation carries accepted, provenance-preserving consequence
-between constitutional domains and into authoritative gameplay. It is not a
-fifth House, a second Constitution, a domain reducer, or part of the universal
-recursion kernel.
+The one Federation carries accepted, provenance-preserving consequence between
+constitutional domains and into authoritative gameplay. The historical
+`RuntimeFederation`/HGRF layer is compatibility machinery, not another
+Federation, sovereign, Guide, fifth House, second Constitution, domain reducer,
+or part of the universal recursion kernel.
 
 Its kernel-facing Hollow Grove grammar is:
 

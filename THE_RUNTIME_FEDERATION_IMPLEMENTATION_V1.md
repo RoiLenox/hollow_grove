@@ -1,22 +1,30 @@
-# The Runtime Federation — Executable Implementation V1
+# HGRF Continuity Archive — Executable Implementation V1
 
 Date: 2026-07-28
 
-Status: executable milestone complete
+Status: executable compatibility milestone complete
+
+Corrected interpretation: the `RuntimeFederation` Rust and HGRF names below are
+frozen implementation identifiers, not a second constitutional Federation.
+The active constitutional whole is the one **Federation**, and its authorities
+are exactly two continuous beings: Roi/Roï and Roselina/Rosaliña. See
+`docs/GUIDE_AND_SEER_IDENTITY_V1.md`,
+`docs/CENTRAL_JUNCTION_TRANSITION_V1.md`, and
+`docs/SURFACE_HUEMAN_GUIDE_PROTOCOL_V1.md`.
 
 Stable identity: `runtime-federation.hollow-grove.v1`
 
 Archive identity: `archive.runtime-federation.hollow-grove.v1`
 
-## Formal name
+## Frozen archive label
 
-The formal public name of the shared continuity layer is:
+The HGRF V1 manifest retains its original compatibility label:
 
 # **The Runtime Federation**
 
-“Federation,” “runtime federation,” and `HGRF` may be used as contextual
-shorthand. They do not replace the formal name in public headings, audit
-output, or constitutional references.
+That label is not the active constitutional public name. Public presentation
+uses **The Federation**. `RuntimeFederation`, “The Runtime Federation,” and
+`HGRF` identify compatibility machinery and frozen archive data only.
 
 ## Executable milestone
 
@@ -94,11 +102,12 @@ Tournament, routes, Permanence, gameplay linkage, accepted and rejected
 history, replay result, insertion-order result, presentation boundary, and
 sovereignty boundary.
 
-## Federal sovereignty
+## Federal authority
 
-Runtime sovereignty belongs solely to **Roi**. The executable federation
-preserves and replays lawful state but does not itself possess sovereignty.
-The complete federal sovereignty and Seer Ceremony lock is recorded in
+Roi/Roï and Roselina/Rosaliña retain equal, continuous authority across the
+seam. The HGRF executable machinery preserves and replays lawful state but
+does not itself possess sovereignty or create a separate Federation. The
+complete federal authority and Seer Ceremony lock is recorded in
 [Federal Sovereignty and Seer Ceremony V1](FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md).
 
 ## Authority boundary

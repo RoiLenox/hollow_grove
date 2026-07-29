@@ -1,14 +1,35 @@
-# The Runtime Federation V1
+# HGRF Continuity Archive V1
 
 Date: 2026-07-28
 
-Status: canonical Hollow Grove architecture; executable V1 milestone complete
+Status: frozen compatibility architecture; executable V1 milestone complete
 
 Stable identity: `runtime-federation.hollow-grove.v1`
 
-## Canonical name
+## Corrected constitutional interpretation
 
-The shared operational continuity of Hollow Grove is called:
+The public constitutional whole is **The Federation**. There is one Federation,
+expressed across inside and outside layers by the same two continuous beings:
+Roi/Roï and Roselina/Rosaliña.
+
+The phrase “The Runtime Federation,” the Rust type `RuntimeFederation`, and the
+stable identities below are retained for HGRF V1 archive compatibility. They
+name deterministic continuity machinery and a frozen wire format. They do not
+name a separate Federation, sovereign, Guide, Seer, or world layer.
+
+The active identity and seam law lives in:
+
+- `FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md`;
+- `docs/GUIDE_AND_SEER_IDENTITY_V1.md`;
+- `docs/CENTRAL_JUNCTION_TRANSITION_V1.md`;
+- `docs/SURFACE_HUEMAN_GUIDE_PROTOCOL_V1.md`.
+
+Historical references below to “The Runtime Federation” must be read as the
+legacy HGRF continuity-archive boundary.
+
+## Frozen wire name
+
+The V1 archive originally called its shared operational continuity:
 
 # **The Runtime Federation**
 

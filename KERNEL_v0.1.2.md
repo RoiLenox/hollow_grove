@@ -19,12 +19,14 @@ Root recursion:
 
 Continuing recursion is deferred until the kernel naturally demands recurrence beyond one pass.
 
-## The Runtime Federation boundary
+## Federation continuity boundary
 
 The canonical Hollow Grove name for continuity above completed kernel passes
-is **The Runtime Federation**.
+is **The Federation**. The historical `RuntimeFederation` and HGRF names refer
+only to the frozen continuity archive described in
+`THE_RUNTIME_FEDERATION_V1.md`.
 
-The Runtime Federation does not remove this kernel's boundary lock. The
+The Federation does not remove this kernel's boundary lock. The
 universal kernel still computes one bounded pass and contains no House,
 Central Junction, Function, route, gameplay, archive-federation, or
 presentation law. A completed pass may be cited as immutable evidence by the

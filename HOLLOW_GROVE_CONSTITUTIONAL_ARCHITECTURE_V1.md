@@ -31,7 +31,7 @@ flowchart TB
     RT["Constitutional Runtime<br/>identity · evidence · authority · lifecycle<br/>replay · serialization · migration · history"]
     BC["Bond Constitution<br/>Claim · obligation · challenge · succession<br/>restoration · Tombstone"]
     HG["Hollow Grove Compromise<br/><b>Hollow Grove Constitution</b>"]
-    RF["The Runtime Federation<br/>stable cross-domain references · canonical replay<br/>continuing world consequence"]
+    RF["The Federation<br/>HGRF compatibility · stable cross-domain references<br/>canonical replay · continuing world consequence"]
     GP["Authoritative Gameplay Runtime"]
     PX["Presentation Clients"]
 
@@ -67,10 +67,12 @@ flowchart TB
 Arrows into the Compromise mean participation in shared law, not subordination
 to a central ruler.
 
-## The Runtime Federation
+## The Federation
 
-**The Runtime Federation** is the canonical Hollow Grove continuity boundary
-between accepted constitutional/world records and authoritative gameplay.
+**The Federation** is the canonical Hollow Grove continuity boundary between
+accepted constitutional/world records and authoritative gameplay. The
+`RuntimeFederation` Rust type and HGRF archive are compatibility machinery
+within that one Federation, not a second constitutional identity.
 
 It preserves the identity, authority, evidence, reducer ownership, archive,
 and provenance of each participating domain while binding their accepted
@@ -79,7 +81,7 @@ a second Constitution, and it owns no power to reinterpret a House decision
 or rewrite a completed kernel pass.
 
 The universal kernel computes one bounded pass. Constitutional and House
-runtimes determine lawful meaning. The Runtime Federation carries accepted
+runtimes determine lawful meaning. The Federation carries accepted
 consequence forward. Gameplay submits intents against that federated state.
 Presentation witnesses the accepted result.
 
@@ -127,7 +129,7 @@ Compromise.
 | spatial inheritance | `SPATIAL_INHERITANCE_V1.md` beneath geography and Route Network | neutral spatial kernel, Hollow Grove binding/archive, bridge, Godot, runtime verifier | kernel/world/integration/live tamper and replay tests | live viewpoints and scoped intent receipts | no inherited authority, ownership, route meaning, or private topology copies |
 | Central Junction | `CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md` | `src/world/central_junction.rs` | Central Junction tests/audit | public boards/world context | no House exchange |
 | Service Tournament | `SERVICE_TOURNAMENT_CENTRAL_JUNCTION_CANON_V1.md` and `SERVICE_TOURNAMENT_ARCHIVE_AND_CANONICAL_YEAR_FIXTURE_V1.md` under Compromise and House constitutions | `src/world/service_tournament.rs`, archive, fixture, and House Synthesis semantics | canon, archive, migration, replay, and audit tests | Central Junction Function record | no new constitution, service faction, sovereignty transfer, or kernel lore |
-| Runtime Federation | `THE_RUNTIME_FEDERATION_V1.md` under the Compromise and existing domain authorities | planned federation manifest above existing production reducers | documentation lock; executable archive, replay, migration, audit, and operation remain the next milestone | authoritative gameplay and presentation projections | no fifth House, second Constitution, parallel reducer, domain-history rewrite, or kernel lore |
+| Federation continuity / HGRF compatibility | `THE_RUNTIME_FEDERATION_V1.md` under the Compromise and existing domain authorities | federation manifest above existing production reducers | executable archive, replay, migration, audit, and operation complete | authoritative gameplay and presentation projections | no fifth House, second Constitution, parallel reducer, domain-history rewrite, kernel lore, or second Federation |
 | Minoan Court | `MINOAN_COUNTY_COURT_SYSTEM_AND_RESTITUTION_CYCLE_V1.md` under Compromise | Court model plus shared interface archive | Court tests/audit | courthouse and scene projections | reserved appeal text |
 | amendments and Restitution | Minoan Court document under Compromise | Court/shared interface adapters | amendment/Restitution tests | world context | no judicial ratification |
 
@@ -198,7 +200,7 @@ four Houses. Central Junction is not a fifth House.
 | Flynt | constitutionally integrated | detailed administration and prosecution |
 | Hueman | authoritative entry point established | unresolved ladder details explicitly retained |
 | shared interfaces | implemented and persisted | staffing/formulas deferred |
-| Runtime Federation | canonically established; implementation milestone frozen | HGRF manifest, gameplay schema V3, unified replay/audit, contained Central Junction operation |
+| Federation continuity / HGRF compatibility | canonically established; implementation milestone frozen | HGRF manifest, gameplay schema V3, unified replay/audit, contained Central Junction operation |
 | regional projections | synchronized | gameplay and art remain Phase 3 |
 
 “Complete” here means constitutionally operable and integrated, not that every

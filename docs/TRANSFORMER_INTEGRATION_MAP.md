@@ -324,7 +324,7 @@ Root constitutional/runtime types:
 - semantic witness and archive records
 - Way Back, Initiation, Gathering, and Festival results
 - `RoiContinuity`
-- `RosalinaWorldState`
+- `RoselinaWorldState`
 - semantic extension of the existing Federation orchestrator
 - retrieval request/bundle/fragment/example types
 - `SemanticInterpreter`
@@ -381,14 +381,14 @@ Enforced negative dependencies:
 
 ### Federation terminology
 
-Existing canon describes separate runtime/world sovereignty while also naming
-their unified constitutional view as The Federation. The directive requires
-one jointly governed semantic cycle.
+Corrected canon defines one Federation and two continuous beings expressed
+through inside Guide forms and outside Seer forms.
 
 Resolution: keep the one existing executable `RuntimeFederation` and add
-paired Roï/Rosaliña interfaces to its semantic orchestration boundary. Do not
-create a second executable Federation, change House constitutions, or rewrite
-the Hollow Grove Compromise.
+paired identity-derived Guide contexts to its semantic orchestration boundary.
+Treat `RuntimeFederation` as HGRF compatibility machinery. Do not create a
+second executable Federation, change House constitutions, or rewrite the
+Hollow Grove Compromise.
 
 ### Serialization compatibility
 
