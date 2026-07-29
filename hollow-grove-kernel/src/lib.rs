@@ -10,6 +10,7 @@ use serde::{Deserialize, Serialize};
 
 mod oriented_point;
 mod semantic_geometry;
+mod semantic_records;
 mod spatial_inheritance;
 
 pub use oriented_point::{
@@ -22,6 +23,10 @@ pub use semantic_geometry::{
     AXIS_MAX, AXIS_MIN, AxisDelta, AxisValue, CoordinateError, DELTA_MAX, DELTA_MIN,
     OriginRelation, Position3, Translation3, crosses_vertical_origin, squared_distance,
     verify_translation, vertical_origin_relation,
+};
+pub use semantic_records::{
+    SEMANTIC_KERNEL_SCHEMA_VERSION, SemanticOperation, SemanticPositionRecord,
+    SemanticPositionSnapshot, SemanticRecordError, SemanticScope,
 };
 pub use spatial_inheritance::{
     NORMALIZED_UNIT, NormalizedCoordinate, NormalizedPoint, NormalizedRect, ResolvedSpatialAnchor,
@@ -108,10 +113,26 @@ stable_key!(SpatialTemplateId);
 
 /// Opaque reference to a domain-owned object, operation, or evidence trace.
 /// The composition layer does not parse either field.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
+#[serde(try_from = "ExternalRefWire")]
 pub struct ExternalRef {
     pub namespace: String,
     pub key: String,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct ExternalRefWire {
+    namespace: String,
+    key: String,
+}
+
+impl TryFrom<ExternalRefWire> for ExternalRef {
+    type Error = ExternalRefError;
+
+    fn try_from(value: ExternalRefWire) -> Result<Self, Self::Error> {
+        Self::new(value.namespace, value.key)
+    }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -157,7 +178,8 @@ impl ExternalRef {
 
 /// An addressable domain projection. Every composition node is eligible to be
 /// a source in a later composition record.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct CompositionNode {
     pub id: CompositionNodeId,
     pub object: ExternalRef,
@@ -166,7 +188,8 @@ pub struct CompositionNode {
 
 /// Causal provenance. Source order is retained for operations that need it,
 /// but carries no interpretation in this neutral layer.
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct CompositionRecord {
     pub id: CompositionRecordId,
     pub sources: Vec<CompositionNodeId>,
@@ -176,7 +199,8 @@ pub struct CompositionRecord {
 }
 
 /// Direct structural membership, deliberately distinct from causal provenance.
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct Containment {
     pub container: CompositionNodeId,
     pub member: CompositionNodeId,
@@ -245,15 +269,19 @@ impl std::error::Error for CompositionCatalogError {}
 
 /// In-memory access boundary for neutral nodes, causal records, and direct
 /// containment. It is intentionally not a general graph database.
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct CompositionCatalog {
-    nodes: Vec<CompositionNode>,
+    pub(crate) nodes: Vec<CompositionNode>,
     records: Vec<CompositionRecord>,
     containments: Vec<Containment>,
     node_positions: HashMap<CompositionNodeId, usize>,
     record_positions: HashMap<CompositionRecordId, usize>,
     records_by_source: HashMap<CompositionNodeId, Vec<usize>>,
     records_by_result: HashMap<CompositionNodeId, Vec<usize>>,
+    pub(crate) semantic_positions: Vec<SemanticPositionRecord>,
+    pub(crate) semantic_record_positions: HashMap<CompositionRecordId, usize>,
+    pub(crate) current_semantic_positions: HashMap<(ExternalRef, SemanticScope), usize>,
+    pub(crate) semantic_history: HashMap<(ExternalRef, SemanticScope), Vec<usize>>,
 }
 
 impl Default for CompositionCatalog {
@@ -273,6 +301,10 @@ impl CompositionCatalog {
             record_positions: HashMap::new(),
             records_by_source: HashMap::new(),
             records_by_result: HashMap::new(),
+            semantic_positions: Vec::new(),
+            semantic_record_positions: HashMap::new(),
+            current_semantic_positions: HashMap::new(),
+            semantic_history: HashMap::new(),
         }
     }
 
