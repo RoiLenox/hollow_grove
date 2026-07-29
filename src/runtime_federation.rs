@@ -38,6 +38,10 @@ use crate::world::world_point_archive::{
     encode_world_point_archive,
 };
 
+mod semantic;
+
+pub use semantic::*;
+
 pub const RUNTIME_FEDERATION_CANONICAL_NAME: &str = "The Runtime Federation";
 pub const RUNTIME_FEDERATION_IDENTITY: &str = "runtime-federation.hollow-grove.v1";
 pub const RUNTIME_FEDERATION_ARCHIVE_IDENTITY: &str = "archive.runtime-federation.hollow-grove.v1";

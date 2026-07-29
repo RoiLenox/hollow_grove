@@ -112,10 +112,10 @@ fn confirm_prepared_semantic_transition(
     let witness = witness.canonicalized();
     position_record
         .validate_shape()
-        .map_err(SemanticProvenanceError::SemanticRecord)?;
+        .map_err(|error| SemanticProvenanceError::SemanticRecord(Box::new(error)))?;
     witness
         .validate_shape()
-        .map_err(SemanticProvenanceError::SemanticRecord)?;
+        .map_err(|error| SemanticProvenanceError::SemanticRecord(Box::new(error)))?;
     validate_confirmed_witness(&position_record, &composition_record, &witness)?;
 
     let point_node = unique_point_node(catalog, &position_record.point_ref)?;
@@ -138,13 +138,13 @@ fn confirm_prepared_semantic_transition(
     let mut staged = catalog.clone();
     staged
         .insert_record(composition_record)
-        .map_err(SemanticProvenanceError::Composition)?;
+        .map_err(|error| SemanticProvenanceError::Composition(Box::new(error)))?;
     staged
         .record_semantic_position(position_record)
-        .map_err(SemanticProvenanceError::SemanticRecord)?;
+        .map_err(|error| SemanticProvenanceError::SemanticRecord(Box::new(error)))?;
     staged
         .record_semantic_witness(witness)
-        .map_err(SemanticProvenanceError::SemanticRecord)?;
+        .map_err(|error| SemanticProvenanceError::SemanticRecord(Box::new(error)))?;
     *catalog = staged;
     Ok(())
 }
@@ -161,7 +161,7 @@ pub fn record_rejected_semantic_witness(
     let mut staged = catalog.clone();
     staged
         .record_semantic_witness(witness)
-        .map_err(SemanticProvenanceError::SemanticRecord)?;
+        .map_err(|error| SemanticProvenanceError::SemanticRecord(Box::new(error)))?;
     *catalog = staged;
     Ok(())
 }
@@ -365,8 +365,8 @@ pub enum SemanticProvenanceError {
     ProvenanceMismatch(CompositionRecordId),
     MissingComposition(CompositionRecordId),
     MissingWitness(ExternalRef),
-    Composition(CompositionCatalogError),
-    SemanticRecord(SemanticRecordError),
+    Composition(Box<CompositionCatalogError>),
+    SemanticRecord(Box<SemanticRecordError>),
     UnsupportedSchema(String),
     ReplayMismatch(Vec<CompositionRecordId>),
     WitnessReplayMismatch(ExternalRef),

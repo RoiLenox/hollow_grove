@@ -57,7 +57,7 @@ pub fn replay_semantic_position_snapshot(
         let record = pending.remove(ready);
         staged
             .record_semantic_position(record)
-            .map_err(SemanticArchiveError::Record)?;
+            .map_err(|error| SemanticArchiveError::Record(Box::new(error)))?;
     }
     *catalog = staged;
     Ok(())
@@ -87,7 +87,7 @@ pub enum SemanticArchiveError {
     Json(String),
     UnsupportedSchema(String),
     ReplayBlocked(Vec<CompositionRecordId>),
-    Record(SemanticRecordError),
+    Record(Box<SemanticRecordError>),
 }
 
 impl fmt::Display for SemanticArchiveError {
