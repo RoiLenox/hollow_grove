@@ -1,0 +1,9 @@
+# Future local Ollama packaging template. This does not train an adapter.
+FROM <compatible-local-base-or-merged-adapter-model>
+
+SYSTEM """
+Use the versioned Hollow Grove semantic interpreter prompt supplied by the
+runtime. Return proposal JSON only. Rust owns confirmation and canonical state.
+"""
+
+PARAMETER temperature 0

@@ -1,0 +1,17 @@
+{
+  "schema_version": "hollow-grove-adapter-config-v1",
+  "adapter_name": "hollow-grove-shared-semantic-v1",
+  "architecture": "one_shared_adapter",
+  "base_instruct_model": "<select-compatible-base-instruct-model>",
+  "prompt_version": "hollow-grove-semantic-interpreter-v1",
+  "dataset_schema": "hollow-grove-semantic-witness-v1",
+  "train_dataset": "ai/datasets/generated/semantic-witnesses-v1.train.jsonl",
+  "validation_dataset": "ai/datasets/generated/semantic-witnesses-v1.validation.jsonl",
+  "split_seed": 410041,
+  "validation_millis": 100,
+  "canonical_coordinate_type": "fixed_point_integer",
+  "reserved_y_value": 0,
+  "constitutional_canon_source": "runtime_retrieval",
+  "model_authority": "proposal_only",
+  "training_enabled": false
+}

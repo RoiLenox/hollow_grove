@@ -6,7 +6,7 @@ use hollow_grove::runtime_federation::parse_model_semantic_proposal;
 use hollow_grove::{
     Position3, decode_semantic_witness_jsonl, format_semantic_dataset_record,
     inspect_semantic_dataset, semantic_dataset_history, semantic_dataset_nearby,
-    validate_semantic_witness_jsonl,
+    validate_semantic_witness_jsonl, write_semantic_dataset_split,
 };
 
 fn usage() -> &'static str {
@@ -18,6 +18,7 @@ fn usage() -> &'static str {
        semantic nearby <jsonl> <scale> <x> <y> <z> [limit] [--json]\n\
        model validate-response <json> [--json]\n\
        dataset validate-semantic <jsonl>\n\
+       dataset split-semantic <jsonl> <train-jsonl> <validation-jsonl> <seed> [validation-millis]\n\
      \n\
      All semantic dataset commands are read-only. Canonical mutation remains\n\
      exclusively inside Federation and Festival."
@@ -171,6 +172,32 @@ fn run_dataset(args: &[String]) -> io::Result<()> {
             println!("Valid hollow-grove-semantic-witness-v1 JSONL: {count} records");
             Ok(())
         }
+        [command, input, train, validation, seed]
+        | [command, input, train, validation, seed, _]
+            if command == "split-semantic" =>
+        {
+            let seed = seed
+                .parse::<u64>()
+                .map_err(|_| invalid("seed must be an unsigned integer"))?;
+            let validation_millis = args.get(5).map_or(Ok(100), |value| {
+                value
+                    .parse::<u16>()
+                    .map_err(|_| invalid("validation-millis must be an integer from 0 to 1000"))
+            })?;
+            let split = write_semantic_dataset_split(
+                Path::new(input),
+                Path::new(train),
+                Path::new(validation),
+                seed,
+                validation_millis,
+            )
+            .map_err(|error| invalid(error.to_string()))?;
+            println!(
+                "Prepared deterministic split: {} train, {} validation, seed {}, validation-millis {}",
+                split.train_records, split.validation_records, split.seed, split.validation_millis
+            );
+            Ok(())
+        }
         _ => Err(invalid(usage())),
     }
 }
@@ -201,6 +228,7 @@ mod tests {
         assert!(usage.contains("semantic nearby"));
         assert!(usage.contains("model validate-response"));
         assert!(usage.contains("dataset validate-semantic"));
+        assert!(usage.contains("dataset split-semantic"));
         assert!(usage.contains("read-only"));
     }
 }

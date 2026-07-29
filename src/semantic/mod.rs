@@ -7,6 +7,7 @@ mod presentation;
 mod provenance;
 mod retrieval;
 mod state;
+mod training;
 
 pub use dataset::*;
 pub use geometry::*;
@@ -15,3 +16,4 @@ pub use presentation::*;
 pub use provenance::*;
 pub use retrieval::*;
 pub use state::*;
+pub use training::*;
