@@ -5,6 +5,10 @@ const VISUAL_COLOR_CONSTITUTION_RELATIVE_PATH := "src/constitutional/hollow_grov
 const SESSION_ID := "session.hollow-grove.local"
 const RETRY_INTERVAL_SECONDS := 1.0
 const STEP_DURATION_SECONDS := 0.12
+const PIXEL_LINE_WIDTH := 36
+const SCREEN_SEMANTICS_SCHEMA_VERSION := "1.0.0"
+const SCREEN_SEMANTICS_CONTRACT_ID := "hollow-grove.retro-screen-semantics"
+const SCREEN_SEMANTICS_META_KEY := "hollow_grove_screen_semantics"
 # EnterRegionIntent remains a protocol/archive compatibility command. This
 # client traverses only the runtime-projected physical exits below.
 const ROUTE_MAP_CYCLE := [
@@ -69,6 +73,23 @@ const FONT_3X5 := {
 	"-": ["000", "000", "111", "000", "000"],
 	".": ["000", "000", "000", "000", "010"],
 	":": ["000", "010", "000", "010", "000"],
+	"/": ["001", "001", "010", "100", "100"],
+	"'": ["010", "010", "000", "000", "000"],
+	",": ["000", "000", "000", "010", "100"],
+	";": ["000", "010", "000", "010", "100"],
+	"!": ["010", "010", "010", "000", "010"],
+	"*": ["000", "101", "010", "101", "000"],
+	"+": ["000", "010", "111", "010", "000"],
+	"=": ["000", "111", "000", "111", "000"],
+	"_": ["000", "000", "000", "000", "111"],
+	"(": ["001", "010", "010", "010", "001"],
+	")": ["100", "010", "010", "010", "100"],
+	"[": ["110", "100", "100", "100", "110"],
+	"]": ["011", "001", "001", "001", "011"],
+	"<": ["001", "010", "100", "010", "001"],
+	">": ["100", "010", "001", "010", "100"],
+	"%": ["101", "001", "010", "100", "101"],
+	"&": ["010", "101", "010", "101", "011"],
 	"?": ["110", "001", "010", "000", "010"],
 }
 
@@ -108,6 +129,14 @@ var selected_exit_index := 0
 var party_menu_open := false
 var recruitment_menu_open := false
 var party_roster_index := 0
+var semantic_context_label: Label
+var semantic_status_label: Label
+var semantic_dialogue_label: Label
+var semantic_menu_label: Label
+var last_screen_semantics := {}
+var logical_scale := 1.0
+var logical_origin := Vector2.ZERO
+var logical_viewport_size := Vector2.ZERO
 
 
 func _ready() -> void:
@@ -117,6 +146,10 @@ func _ready() -> void:
 		set_process(false)
 		set_process_input(false)
 		return
+	get_window().title = "Hollow Grove"
+	get_window().min_size = Vector2i(int(LOGICAL_SIZE.x), int(LOGICAL_SIZE.y))
+	_ensure_screen_semantics()
+	_update_logical_transform(get_viewport_rect().size)
 	runtime_client = HollowGroveRuntimeClient.new(SESSION_ID)
 	runtime_client.response_received.connect(_on_runtime_response)
 	runtime_client.protocol_error.connect(_on_protocol_error)
@@ -159,6 +192,7 @@ func _process(delta: float) -> void:
 		var progress := animation_elapsed / STEP_DURATION_SECONDS
 		display_position = animation_from.lerp(target_position, progress)
 		queue_redraw()
+	_refresh_screen_semantics()
 
 
 func _input(event: InputEvent) -> void:
@@ -288,6 +322,7 @@ func _draw() -> void:
 	if colors_by_semantic_identity.is_empty():
 		return
 	var viewport_size := get_viewport_rect().size
+	_update_logical_transform(viewport_size)
 	draw_rect(Rect2(Vector2.ZERO, viewport_size), _color("hollow_grove.universal.outline"))
 
 	if overworld.is_empty():
@@ -785,9 +820,15 @@ func _apply_view(view: Dictionary) -> void:
 		animation_elapsed = STEP_DURATION_SECONDS
 		has_player_position = true
 	elif next_position != target_position:
-		animation_from = display_position
-		target_position = next_position
-		animation_elapsed = 0.0
+		if _should_reduce_animation():
+			display_position = next_position
+			target_position = next_position
+			animation_from = next_position
+			animation_elapsed = STEP_DURATION_SECONDS
+		else:
+			animation_from = display_position
+			target_position = next_position
+			animation_elapsed = 0.0
 	else:
 		display_position = next_position
 		target_position = next_position
@@ -804,7 +845,7 @@ func _apply_interaction(interaction: Dictionary) -> void:
 	var next_pages: Array = []
 	for page in interaction.get("pages", []):
 		if typeof(page) == TYPE_STRING and str(page) != "":
-			next_pages.append(str(page))
+			next_pages.append_array(_wrap_pixel_text(str(page), PIXEL_LINE_WIDTH))
 	if next_pages.is_empty():
 		_clear_dialogue()
 		return
@@ -1015,7 +1056,7 @@ func _draw_aura_beach_tile(tile: String, x: int, y: int, viewport_size: Vector2)
 	var foam := _color("hollow_grove.house.stonebend.highlight")
 	var sand := _color("hollow_grove.house.sandmanor.highlight")
 	var wet_sand := _color("hollow_grove.house.sandmanor.primary")
-	var signal := _color("hollow_grove.house.flynt.highlight")
+	var signal_color := _color("hollow_grove.house.flynt.highlight")
 
 	_draw_logical_rect(Rect2(origin, Vector2(8, 8)), wet_sand, viewport_size)
 	match tile:
@@ -1030,7 +1071,7 @@ func _draw_aura_beach_tile(tile: String, x: int, y: int, viewport_size: Vector2)
 			_draw_logical_rect(Rect2(origin + Vector2(2, 3), Vector2(2, 1)), sand, viewport_size)
 			_draw_logical_rect(Rect2(origin + Vector2(6, 6), Vector2(1, 1)), foam, viewport_size)
 		_:
-			var marker_color := signal
+			var marker_color := signal_color
 			if tile in ["V", "A", "E", "C"]:
 				marker_color = _color("hollow_grove.house.sandmanor.primary")
 			elif tile in ["R", "H"]:
@@ -1401,8 +1442,8 @@ func _case_status() -> String:
 		return "C: ASK RETURNING GOON"
 	if bool(boardwalk_case.get("ready_for_support", false)):
 		return "1 PIMP 2 BOND 3 LIMITED 4 FREE"
-	var evidence_count := boardwalk_case.get("evidence", []).size()
-	var faculty_count := boardwalk_case.get("faculties", []).size()
+	var evidence_count := int(boardwalk_case.get("evidence", []).size())
+	var faculty_count := int(boardwalk_case.get("faculties", []).size())
 	return "E%d/6 F%d/5  F: FACULTY" % [evidence_count, faculty_count]
 
 
@@ -1453,8 +1494,14 @@ func _living_case_choices(case_name: String) -> Array:
 func _draw_dialogue_box(viewport_size: Vector2) -> void:
 	_draw_logical_rect(Rect2(2, 116, 156, 26), _color("hollow_grove.universal.outline"), viewport_size)
 	_draw_logical_rect(Rect2(4, 118, 152, 22), _color("hollow_grove.house.flynt.highlight"), viewport_size)
-	_draw_pixel_text(dialogue_speaker.left(36), Vector2(7, 121), _color("hollow_grove.house.flynt.authority"), viewport_size)
-	var page := str(dialogue_pages[dialogue_page_index]).left(36)
+	_draw_pixel_text(
+		dialogue_speaker.left(PIXEL_LINE_WIDTH),
+		Vector2(7, 121),
+		_color("hollow_grove.house.flynt.authority"),
+		viewport_size
+	)
+	var safe_page_index := clampi(dialogue_page_index, 0, dialogue_pages.size() - 1)
+	var page := str(dialogue_pages[safe_page_index]).left(PIXEL_LINE_WIDTH)
 	_draw_pixel_text(page, Vector2(7, 132), _color("hollow_grove.universal.outline"), viewport_size)
 	_draw_logical_rect(Rect2(149, 135, 5, 1), _color("hollow_grove.universal.outline"), viewport_size)
 	_draw_logical_rect(Rect2(150, 136, 3, 1), _color("hollow_grove.universal.outline"), viewport_size)
@@ -1462,16 +1509,35 @@ func _draw_dialogue_box(viewport_size: Vector2) -> void:
 
 
 func _draw_message_box(message: String, viewport_size: Vector2) -> void:
-	_draw_logical_rect(Rect2(2, 126, 156, 16), _color("hollow_grove.universal.outline"), viewport_size)
-	_draw_logical_rect(Rect2(4, 128, 152, 12), _color("hollow_grove.house.flynt.highlight"), viewport_size)
-	var compact := message.left(36)
-	_draw_pixel_text(compact, Vector2(7, 132), _color("hollow_grove.universal.outline"), viewport_size)
+	var lines := _wrap_pixel_text(message, PIXEL_LINE_WIDTH)
+	if lines.is_empty():
+		lines.append("")
+	var line_count := mini(lines.size(), 2)
+	var box_height := 16 if line_count == 1 else 26
+	var box_y := 142 - box_height
+	_draw_logical_rect(
+		Rect2(2, box_y, 156, box_height),
+		_color("hollow_grove.universal.outline"),
+		viewport_size
+	)
+	_draw_logical_rect(
+		Rect2(4, box_y + 2, 152, box_height - 4),
+		_color("hollow_grove.house.flynt.highlight"),
+		viewport_size
+	)
+	for line_index in range(line_count):
+		_draw_pixel_text(
+			str(lines[line_index]).left(PIXEL_LINE_WIDTH),
+			Vector2(7, box_y + 6 + line_index * 9),
+			_color("hollow_grove.universal.outline"),
+			viewport_size
+		)
 
 
 func _draw_pixel_text(text: String, position: Vector2, color: Color, viewport_size: Vector2) -> void:
 	var cursor_x := int(position.x)
 	for character_index in range(text.length()):
-		var character := text.substr(character_index, 1).to_upper()
+		var character := _pixel_character(text.substr(character_index, 1).to_upper())
 		var pattern: Array = FONT_3X5.get(character, FONT_3X5["?"])
 		for row_index in range(pattern.size()):
 			var row := str(pattern[row_index])
@@ -1486,10 +1552,330 @@ func _draw_pixel_text(text: String, position: Vector2, color: Color, viewport_si
 
 
 func _draw_logical_rect(rect: Rect2, color: Color, viewport_size: Vector2) -> void:
-	var scale := maxf(1.0, floorf(minf(viewport_size.x / LOGICAL_SIZE.x, viewport_size.y / LOGICAL_SIZE.y)))
-	var screen_size := LOGICAL_SIZE * scale
-	var screen_origin := ((viewport_size - screen_size) * 0.5).floor()
-	draw_rect(Rect2(screen_origin + rect.position * scale, rect.size * scale), color)
+	if viewport_size != logical_viewport_size:
+		_update_logical_transform(viewport_size)
+	draw_rect(
+		Rect2(logical_origin + rect.position * logical_scale, rect.size * logical_scale),
+		color
+	)
+
+
+func _update_logical_transform(viewport_size: Vector2) -> void:
+	logical_viewport_size = viewport_size
+	logical_scale = maxf(
+		1.0,
+		floorf(minf(viewport_size.x / LOGICAL_SIZE.x, viewport_size.y / LOGICAL_SIZE.y))
+	)
+	var screen_size := LOGICAL_SIZE * logical_scale
+	logical_origin = ((viewport_size - screen_size) * 0.5).floor()
+
+
+func _pixel_character(character: String) -> String:
+	match character:
+		"Ä", "Á", "À", "Â", "Ã":
+			return "A"
+		"Ë", "É", "È", "Ê":
+			return "E"
+		"Ï", "Í", "Ì", "Î":
+			return "I"
+		"Ö", "Ó", "Ò", "Ô", "Õ":
+			return "O"
+		"Ü", "Ú", "Ù", "Û":
+			return "U"
+		"’", "‘":
+			return "'"
+		"–", "—":
+			return "-"
+		_:
+			return character
+
+
+func _wrap_pixel_text(value: String, max_characters: int) -> Array[String]:
+	var lines: Array[String] = []
+	if max_characters <= 0:
+		return lines
+	var current_line := ""
+	for word_value in value.strip_edges().split(" ", false):
+		var word := str(word_value)
+		while word.length() > max_characters:
+			if current_line != "":
+				lines.append(current_line)
+				current_line = ""
+			lines.append(word.left(max_characters))
+			word = word.substr(max_characters)
+		if word == "":
+			continue
+		if current_line == "":
+			current_line = word
+		elif current_line.length() + 1 + word.length() <= max_characters:
+			current_line += " " + word
+		else:
+			lines.append(current_line)
+			current_line = word
+	if current_line != "":
+		lines.append(current_line)
+	return lines
+
+
+func _should_reduce_animation() -> bool:
+	if not DisplayServer.has_method("accessibility_should_reduce_animation"):
+		return false
+	return int(DisplayServer.accessibility_should_reduce_animation()) == 1
+
+
+func _ensure_screen_semantics() -> void:
+	if semantic_context_label != null:
+		return
+	accessibility_name = "Hollow Grove"
+	accessibility_description = (
+		"Playable Hollow Grove world. Custom pixel graphics have equivalent "
+		+ "world, status, dialogue, and menu regions."
+	)
+	semantic_context_label = _create_semantic_region(
+		"ScreenContext",
+		AccessibilityServer.LIVE_OFF
+	)
+	semantic_status_label = _create_semantic_region(
+		"ScreenStatus",
+		AccessibilityServer.LIVE_POLITE
+	)
+	semantic_dialogue_label = _create_semantic_region(
+		"ScreenDialogue",
+		AccessibilityServer.LIVE_POLITE
+	)
+	semantic_menu_label = _create_semantic_region(
+		"ScreenMenu",
+		AccessibilityServer.LIVE_POLITE
+	)
+	_refresh_screen_semantics()
+
+
+func _create_semantic_region(node_name: String, live_mode: int) -> Label:
+	var label := Label.new()
+	label.name = node_name
+	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	label.focus_mode = Control.FOCUS_NONE
+	label.clip_text = true
+	label.accessibility_live = live_mode
+	var transparent_text := _color("hollow_grove.universal.outline")
+	transparent_text.a = 0.0
+	label.add_theme_color_override("font_color", transparent_text)
+	add_child(label)
+	label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	return label
+
+
+func _refresh_screen_semantics() -> void:
+	if semantic_context_label == null:
+		return
+	var semantics := _screen_semantics()
+	if semantics == last_screen_semantics:
+		return
+	last_screen_semantics = semantics.duplicate(true)
+	set_meta(SCREEN_SEMANTICS_META_KEY, semantics.duplicate(true))
+	_set_semantic_region(
+		semantic_context_label,
+		"World context",
+		str(semantics.get("context", ""))
+	)
+	_set_semantic_region(
+		semantic_status_label,
+		"Status",
+		str(semantics.get("status", ""))
+	)
+	_set_semantic_region(
+		semantic_dialogue_label,
+		"Dialogue",
+		str(semantics.get("dialogue", ""))
+	)
+	_set_semantic_region(
+		semantic_menu_label,
+		"Menu",
+		str(semantics.get("menu", ""))
+	)
+	accessibility_description = "%s %s" % [
+		str(semantics.get("context", "")),
+		str(semantics.get("controls", "")),
+	]
+
+
+func _set_semantic_region(label: Label, region_name: String, content: String) -> void:
+	var next_name := region_name
+	if content != "":
+		next_name += ". " + content
+	if label.text == content and label.accessibility_name == next_name:
+		return
+	label.text = content
+	label.accessibility_name = next_name
+
+
+func _screen_semantics() -> Dictionary:
+	return {
+		"schema_version": SCREEN_SEMANTICS_SCHEMA_VERSION,
+		"contract_id": SCREEN_SEMANTICS_CONTRACT_ID,
+		"mode": _screen_mode(),
+		"context": _world_context_semantics(),
+		"status": _semantic_status(),
+		"dialogue": _dialogue_semantics(),
+		"menu": _menu_semantics(),
+		"controls": _control_semantics(),
+	}
+
+
+func _screen_mode() -> String:
+	if overworld.is_empty():
+		return "waiting"
+	if party_menu_open:
+		return "party_menu"
+	if recruitment_menu_open:
+		return "recruitment_menu"
+	if not dialogue_pages.is_empty():
+		return "dialogue"
+	return "world"
+
+
+func _world_context_semantics() -> String:
+	if overworld.is_empty():
+		return "Hollow Grove is waiting for the local authoritative runtime."
+	var player := _dict_or_empty(overworld.get("player"))
+	var parts: Array[String] = [
+		"%s. Map %s." % [
+			_map_display_name(),
+			str(overworld.get("map_id", "unknown")),
+		],
+		"Hueman is at tile x %d, y %d, facing %s." % [
+			int(player.get("x", 0)),
+			int(player.get("y", 0)),
+			str(player.get("facing", player_facing)),
+		],
+	]
+	var weather := str(living_world.get("weather", ""))
+	if weather != "":
+		parts.append("Weather: %s." % weather)
+	var present_people: Array = deep_pressure.get("present_people", [])
+	if not present_people.is_empty():
+		var people: Array[String] = []
+		for person_value in present_people:
+			var person := _dict_or_empty(person_value)
+			var position := _dict_or_empty(person.get("position"))
+			people.append(
+				"%s, %s, at tile x %d, y %d" % [
+					str(person.get("display_name", person.get("initials", "person"))),
+					str(person.get("role", "unknown role")),
+					int(position.get("x", 0)),
+					int(position.get("y", 0)),
+				]
+			)
+		parts.append("Scheduled people present: %s." % "; ".join(people))
+	if not party.is_empty():
+		parts.append(
+			"Party: %d of %d members." % [
+				int(party.get("member_count", 0)),
+				int(party.get("max_members", 6)),
+			]
+		)
+	if not physical_exits.is_empty():
+		var exit_record := _dict_or_empty(
+			physical_exits[selected_exit_index % physical_exits.size()]
+		)
+		parts.append(
+			"Selected exit: %s at tile x %d, y %d." % [
+				str(exit_record.get("destination_label", "unknown destination")),
+				int(exit_record.get("exit_x", 0)),
+				int(exit_record.get("exit_y", 0)),
+			]
+		)
+	return " ".join(parts)
+
+
+func _semantic_status() -> String:
+	if overworld.is_empty():
+		return status_message
+	if movement_pending or status_message == _map_label():
+		return _case_status()
+	return status_message
+
+
+func _dialogue_semantics() -> String:
+	if dialogue_pages.is_empty():
+		return "No dialogue is open."
+	var safe_page_index := clampi(dialogue_page_index, 0, dialogue_pages.size() - 1)
+	return "%s. Page %d of %d. %s" % [
+		dialogue_speaker,
+		safe_page_index + 1,
+		dialogue_pages.size(),
+		str(dialogue_pages[safe_page_index]),
+	]
+
+
+func _menu_semantics() -> String:
+	if party_menu_open:
+		var roster := _party_roster()
+		if roster.is_empty():
+			return "Party menu. No roster entries."
+		var safe_index := posmod(party_roster_index, roster.size())
+		var selected := _dict_or_empty(roster[safe_index])
+		var roster_names: Array[String] = []
+		for member_value in roster:
+			roster_names.append(str(_dict_or_empty(member_value).get("display_name", "member")))
+		return (
+			"Party menu. Selected %s, role %s, availability %s%s. Roster: %s."
+			% [
+				str(selected.get("display_name", "member")),
+				str(selected.get("role", "unknown")),
+				str(selected.get("availability", "unknown")),
+				", current lead" if bool(selected.get("is_lead", false)) else "",
+				", ".join(roster_names),
+			]
+		)
+	if recruitment_menu_open:
+		var candidate := _current_recruitment_candidate()
+		return (
+			"Recruitment menu for %s. Option 1, Shared Work. "
+			+ "Option 2, Recovery First. Option 3, Independent Company."
+		) % str(candidate.get("display_name", "candidate"))
+	return "No menu is open."
+
+
+func _control_semantics() -> String:
+	match _screen_mode():
+		"waiting":
+			return "Gameplay controls are unavailable while the runtime connects."
+		"dialogue":
+			return (
+				"Enter, Space, Z, or X advances dialogue. "
+				+ "R opens recruitment when the speaker is a candidate."
+			)
+		"party_menu":
+			return (
+				"Up, W, or K selects the previous member. Down, S, or J selects "
+				+ "the next member. Enter, Space, Z, or X asks the selected member "
+				+ "to lead. U uses their field action. P or Escape closes the menu."
+			)
+		"recruitment_menu":
+			return (
+				"1 asks through Shared Work. 2 asks through Recovery First. "
+				+ "3 asks through Independent Company. R or Escape closes the menu."
+			)
+		_:
+			return (
+				"Arrow keys, W A S D, or H J K L move. Enter, Space, Z, or X "
+				+ "interacts. Tab selects an exit and B traverses it. P opens the "
+				+ "party. R opens recruitment when available. T advances the world "
+				+ "shift. F discloses a faculty observation. Number keys support "
+				+ "available choices. C asks the responsible authority to decide. "
+				+ "F5 saves and F9 loads."
+			)
+
+
+func _map_display_name() -> String:
+	if not extraction_view.is_empty():
+		return str(extraction_view.get("display_name", "Mine"))
+	if not surface_view.is_empty():
+		return str(surface_view.get("display_name", "Aura Field"))
+	if not route_view.is_empty():
+		return str(route_view.get("display_name", "Route"))
+	return "Aura Ridge"
 
 
 func _load_visual_color_constitution() -> bool:

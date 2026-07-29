@@ -12,8 +12,8 @@ run/main_scene="res://scenes/hueman_screen_shell.tscn"
 
 window/size/viewport_width=3840
 window/size/viewport_height=2160
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/mode="disabled"
+window/stretch/aspect="keep"
 
 [rendering]
 
