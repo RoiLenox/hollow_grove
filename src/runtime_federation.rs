@@ -40,9 +40,11 @@ use crate::world::world_point_archive::{
 
 mod ollama;
 mod semantic;
+mod semantic_command;
 
 pub use ollama::*;
 pub use semantic::*;
+pub use semantic_command::*;
 
 /// Frozen HGRF V1 archive label. The active constitutional public name is
 /// [`crate::guide_identity::FEDERATION_CANONICAL_NAME`], "The Federation".

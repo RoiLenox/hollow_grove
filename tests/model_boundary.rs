@@ -201,7 +201,32 @@ fn ollama_adapter_sends_versioned_prompt_and_parses_only_nested_json() {
     let sent: serde_json::Value = serde_json::from_slice(&body.lock().unwrap()).unwrap();
     assert_eq!(sent["model"], "test-model");
     assert_eq!(sent["stream"], false);
-    assert_eq!(sent["format"], "json");
+    assert_eq!(sent["format"]["type"], "object");
+    assert_eq!(sent["format"]["additionalProperties"], false);
+    assert_eq!(
+        sent["format"]["required"],
+        serde_json::json!([
+            "scale_key",
+            "proposed_position",
+            "operation",
+            "evidence_refs",
+            "semantic_tags",
+            "summary",
+            "confidence_millis"
+        ])
+    );
+    assert_eq!(
+        sent["format"]["properties"]["scale_key"]["const"],
+        "structural-repair"
+    );
+    assert_eq!(
+        sent["format"]["properties"]["proposed_position"]["properties"]["y"]["const"],
+        0
+    );
+    assert_eq!(
+        sent["format"]["properties"]["evidence_refs"]["items"]["enum"],
+        serde_json::json!(["evidence.inspection.041"])
+    );
     let system = sent["system"].as_str().unwrap();
     assert!(system.starts_with(HOLLOW_GROVE_SEMANTIC_PROMPT_V1.trim_end()));
     assert!(system.contains(GUIDE_MODEL_PROMPT_LAW));

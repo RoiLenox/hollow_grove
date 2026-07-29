@@ -59,7 +59,7 @@ where
         "benchmark" => Ok(MainCli::Benchmark(args.collect())),
         "app" | "application" => Ok(MainCli::App(args.collect())),
         "hueman-slice" => Ok(MainCli::HuemanSlice(args.collect())),
-        "semantic" | "model" | "dataset" => {
+        "semantic" | "federation" | "model" | "dataset" => {
             let mut forwarded = vec![command];
             forwarded.extend(args);
             Ok(MainCli::SemanticTools(forwarded))
@@ -123,6 +123,7 @@ fn usage() -> &'static str {
        app ...           inspect, launch, or attach a Hollow Grove-managed application\n\
        hueman-slice      run the Hueman vertical-slice demo surface\n\
        semantic ...      inspect witnessed semantic positions and history\n\
+       federation ...    run the authoritative transformer-assisted semantic cycle\n\
        model ...         validate an untrusted model response\n\
        dataset ...       validate witnessed semantic JSONL\n\
        verify-foundation print the Hollow Grove semantic foundation regression report\n\
@@ -172,6 +173,7 @@ fn usage() -> &'static str {
        hollow-grove app attach chroma_cord\n\
        hollow-grove hueman-slice walk\n\
        hollow-grove semantic inspect semantic-witnesses-v1.jsonl object.support-column.041 structural-repair\n\
+       hollow-grove federation run point.hueman.origin structural-repair \"Restore the supporting frame.\"\n\
        hollow-grove model validate-response response.json\n\
        hollow-grove dataset validate-semantic semantic-witnesses-v1.jsonl\n\
        hollow-grove verify-foundation\n\
@@ -659,6 +661,23 @@ mod tests {
                 String::from("semantic"),
                 String::from("inspect"),
                 String::from("witnesses.jsonl"),
+            ])
+        );
+        assert_eq!(
+            parse_main_cli([
+                String::from("federation"),
+                String::from("run"),
+                String::from("point.hueman.origin"),
+                String::from("structural-repair"),
+                String::from("Restore the supporting frame."),
+            ])
+            .expect("federation cli should parse"),
+            MainCli::SemanticTools(vec![
+                String::from("federation"),
+                String::from("run"),
+                String::from("point.hueman.origin"),
+                String::from("structural-repair"),
+                String::from("Restore the supporting frame."),
             ])
         );
         assert_eq!(

@@ -114,6 +114,42 @@ proposal through the existing Rust semantic parser, Federation phases, and
 Festival validation. A syntactically valid Ollama response means only
 `Proposed`; it does not mean `Confirmed`.
 
+Run the complete authoritative cycle with a Point already present in the
+composition catalog:
+
+```sh
+hollow-grove federation run \
+  point.hueman.origin \
+  structural-repair \
+  "Restore the supporting frame."
+```
+
+The command performs:
+
+```text
+The Way Back
+→ The Initiation through Ollama
+→ The Gathering with retrieved Semantic Kernel V1 canon
+→ The Festival
+→ an atomically persisted confirmed or rejected witness
+```
+
+By default it uses the `hollow-grove` Ollama model and stores replayable
+semantic provenance at:
+
+```text
+artifacts/semantic_federation_state_v1.json
+```
+
+Set `HOLLOW_GROVE_MODEL` to select another installed Ollama interpreter. Use
+`--state <path>` to select another state snapshot and `--json` for structured
+output. Unknown Points are rejected; the command never creates an identity
+from model output or merely because a name was supplied.
+
+For deterministic offline validation, `--proposal-json <path>` replaces only
+the Initiation interpreter response. The supplied proposal still passes through
+the same Gathering, Festival, provenance, witness, and persistence path.
+
 The local alias is a prompt-packaged model, not a newly trained foundation
 model from the class of models published by Meta or Google. A future shared
 Hollow Grove adapter can be attached beneath the same local model name after

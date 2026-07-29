@@ -286,7 +286,7 @@ struct OllamaGenerateRequest<'a> {
     system: String,
     prompt: String,
     stream: bool,
-    format: &'static str,
+    format: serde_json::Value,
     options: OllamaOptions,
 }
 
@@ -337,10 +337,75 @@ fn build_ollama_request(
         ),
         prompt,
         stream: false,
-        format: "json",
+        format: semantic_proposal_json_schema(request, &evidence_refs),
         options: OllamaOptions { temperature: 0 },
     })
     .map_err(|error| InterpreterError::MalformedModelResponse(error.to_string()))
+}
+
+fn semantic_proposal_json_schema(
+    request: &SemanticInterpretationRequest,
+    evidence_refs: &[String],
+) -> serde_json::Value {
+    let evidence_items = if evidence_refs.is_empty() {
+        serde_json::json!({"type": "string"})
+    } else {
+        serde_json::json!({
+            "type": "string",
+            "enum": evidence_refs,
+        })
+    };
+    serde_json::json!({
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+            "scale_key",
+            "proposed_position",
+            "operation",
+            "evidence_refs",
+            "semantic_tags",
+            "summary",
+            "confidence_millis"
+        ],
+        "properties": {
+            "scale_key": {
+                "type": "string",
+                "const": request.scope.scale.as_str()
+            },
+            "proposed_position": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["x", "y", "z"],
+                "properties": {
+                    "x": {"type": "integer", "minimum": -1000, "maximum": 1000},
+                    "y": {"type": "integer", "const": 0},
+                    "z": {"type": "integer", "minimum": -1000, "maximum": 1000}
+                }
+            },
+            "operation": {
+                "type": "string",
+                "enum": ["locate", "inspect", "translate", "repair", "compose", "transform"]
+            },
+            "evidence_refs": {
+                "type": "array",
+                "items": evidence_items
+            },
+            "semantic_tags": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "summary": {
+                "type": "string"
+            },
+            "confidence_millis": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000
+            }
+        }
+    })
 }
 
 fn parse_ollama_generate_response(
@@ -484,9 +549,6 @@ fn decode_http_response(
         .ok_or_else(|| {
             InterpreterError::MalformedModelResponse("invalid Ollama HTTP status".into())
         })?;
-    if !(200..300).contains(&status) {
-        return Err(InterpreterError::InterpreterUnavailable);
-    }
     let body = &wire[header_end + 4..];
     let is_chunked = headers.lines().any(|line| {
         line.split_once(':').is_some_and(|(name, value)| {
@@ -504,6 +566,19 @@ fn decode_http_response(
             actual: body.len(),
             maximum: maximum_response_bytes,
         });
+    }
+    if !(200..300).contains(&status) {
+        if status == 408 || status == 504 {
+            return Err(InterpreterError::InterpreterTimeout);
+        }
+        if status == 400 || status == 422 {
+            let explanation = String::from_utf8_lossy(&body);
+            let explanation = explanation.trim().chars().take(1_024).collect::<String>();
+            return Err(InterpreterError::MalformedModelResponse(format!(
+                "Ollama HTTP {status}: {explanation}"
+            )));
+        }
+        return Err(InterpreterError::InterpreterUnavailable);
     }
     Ok(body)
 }
