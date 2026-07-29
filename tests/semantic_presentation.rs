@@ -33,9 +33,11 @@ fn record(
         confirmed_position: (decision == SemanticDatasetDecision::Confirmed).then_some(position),
         operation: "repair".into(),
         decision,
-        rejection_reasons: (decision == SemanticDatasetDecision::Rejected)
-            .then(|| vec!["Validation(InsufficientEvidence)".into()])
-            .unwrap_or_default(),
+        rejection_reasons: if decision == SemanticDatasetDecision::Rejected {
+            vec!["Validation(InsufficientEvidence)".into()]
+        } else {
+            Vec::new()
+        },
         evidence_refs: vec!["evidence.inspection.041".into()],
         constitutional_refs: vec!["constitution.semantic-kernel-v1".into()],
         semantic_tags: vec!["repair".into()],
