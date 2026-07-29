@@ -10,6 +10,7 @@ use super::{
 };
 
 pub const SEMANTIC_KERNEL_SCHEMA_VERSION: &str = "hollow-grove-semantic-kernel-v1";
+pub const SEMANTIC_WITNESS_SCHEMA_VERSION: &str = "hollow-grove-semantic-witness-v1";
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -142,6 +143,134 @@ fn validate_external_ref(reference: &ExternalRef) -> Result<(), SemanticRecordEr
 pub struct SemanticPositionSnapshot {
     pub schema_version: String,
     pub records: Vec<SemanticPositionRecord>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum SemanticWitnessDecision {
+    Confirmed,
+    Rejected,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct SemanticWitnessRecord {
+    pub witness_ref: ExternalRef,
+    pub proposal_ref: ExternalRef,
+    pub cycle_ref: ExternalRef,
+    pub actor_ref: ExternalRef,
+    pub point_ref: ExternalRef,
+    pub scope: SemanticScope,
+    pub input: String,
+    pub prior_position: Option<Position3>,
+    pub proposed_position: Position3,
+    pub translation: Option<Translation3>,
+    pub confirmed_position: Option<Position3>,
+    pub decision: SemanticWitnessDecision,
+    pub evidence_refs: Vec<ExternalRef>,
+    pub constitutional_refs: Vec<ExternalRef>,
+    pub composition_ref: Option<ExternalRef>,
+    pub rejection_reasons: Vec<String>,
+    pub semantic_tags: Vec<String>,
+    pub summary: String,
+    pub prompt_version: String,
+    pub interpreter_version: String,
+}
+
+impl SemanticWitnessRecord {
+    #[must_use]
+    pub fn canonicalized(&self) -> Self {
+        let mut value = self.clone();
+        value.evidence_refs.sort();
+        value.evidence_refs.dedup();
+        value.constitutional_refs.sort();
+        value.constitutional_refs.dedup();
+        value.semantic_tags.sort();
+        value.semantic_tags.dedup();
+        value
+    }
+
+    pub fn validate_shape(&self) -> Result<(), SemanticRecordError> {
+        for reference in [
+            &self.witness_ref,
+            &self.proposal_ref,
+            &self.cycle_ref,
+            &self.actor_ref,
+            &self.point_ref,
+        ]
+        .into_iter()
+        .chain(self.scope.context_ref.iter())
+        .chain(self.evidence_refs.iter())
+        .chain(self.constitutional_refs.iter())
+        .chain(self.composition_ref.iter())
+        {
+            validate_external_ref(reference)?;
+        }
+        if self.input.trim().is_empty()
+            || self.summary.trim().is_empty()
+            || self.prompt_version.trim().is_empty()
+            || self.interpreter_version.trim().is_empty()
+        {
+            return Err(SemanticRecordError::InvalidWitness(
+                self.witness_ref.clone(),
+            ));
+        }
+        if let Some(translation) = self.translation {
+            let Some(prior) = self.prior_position else {
+                return Err(SemanticRecordError::InvalidWitness(
+                    self.witness_ref.clone(),
+                ));
+            };
+            verify_translation(prior, translation, self.proposed_position)
+                .map_err(SemanticRecordError::Coordinate)?;
+        }
+        match self.decision {
+            SemanticWitnessDecision::Confirmed => {
+                if self.confirmed_position != Some(self.proposed_position)
+                    || self.composition_ref.is_none()
+                    || !self.rejection_reasons.is_empty()
+                {
+                    return Err(SemanticRecordError::InvalidWitness(
+                        self.witness_ref.clone(),
+                    ));
+                }
+            }
+            SemanticWitnessDecision::Rejected => {
+                if self.confirmed_position.is_some()
+                    || self.composition_ref.is_some()
+                    || self.rejection_reasons.is_empty()
+                {
+                    return Err(SemanticRecordError::InvalidWitness(
+                        self.witness_ref.clone(),
+                    ));
+                }
+            }
+        }
+        Ok(())
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct SemanticWitnessSnapshot {
+    pub schema_version: String,
+    pub witnesses: Vec<SemanticWitnessRecord>,
+}
+
+impl SemanticWitnessSnapshot {
+    #[must_use]
+    pub fn canonicalized(&self) -> Self {
+        let mut value = self.clone();
+        value.witnesses = value
+            .witnesses
+            .iter()
+            .map(SemanticWitnessRecord::canonicalized)
+            .collect();
+        value
+            .witnesses
+            .sort_by(|left, right| left.witness_ref.cmp(&right.witness_ref));
+        value
+    }
 }
 
 impl SemanticPositionSnapshot {
@@ -291,16 +420,60 @@ impl CompositionCatalog {
         }
         .canonicalized()
     }
+
+    pub fn record_semantic_witness(
+        &mut self,
+        witness: SemanticWitnessRecord,
+    ) -> Result<(), SemanticRecordError> {
+        let witness = witness.canonicalized();
+        witness.validate_shape()?;
+        if self
+            .semantic_witness_positions
+            .contains_key(&witness.witness_ref)
+        {
+            return Err(SemanticRecordError::DuplicateWitnessRef(
+                witness.witness_ref,
+            ));
+        }
+        let position = self.semantic_witnesses.len();
+        self.semantic_witness_positions
+            .insert(witness.witness_ref.clone(), position);
+        self.semantic_witnesses.push(witness);
+        Ok(())
+    }
+
+    #[must_use]
+    pub fn semantic_witness(&self, witness_ref: &ExternalRef) -> Option<&SemanticWitnessRecord> {
+        self.semantic_witness_positions
+            .get(witness_ref)
+            .and_then(|position| self.semantic_witnesses.get(*position))
+    }
+
+    #[must_use]
+    pub fn semantic_witnesses(&self) -> &[SemanticWitnessRecord] {
+        &self.semantic_witnesses
+    }
+
+    #[must_use]
+    pub fn semantic_witness_snapshot(&self) -> SemanticWitnessSnapshot {
+        SemanticWitnessSnapshot {
+            schema_version: SEMANTIC_WITNESS_SCHEMA_VERSION.into(),
+            witnesses: self.semantic_witnesses.clone(),
+        }
+        .canonicalized()
+    }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum SemanticRecordError {
     InvalidRecord(CompositionRecordId),
+    InvalidWitness(ExternalRef),
     InvalidExternalReference(ExternalRef),
     AssertionHasPredecessor(CompositionRecordId),
     TranslationMissingPredecessor(CompositionRecordId),
     ExpectedPositionAssertion(CompositionRecordId),
     DuplicateStableId(CompositionRecordId),
+    DuplicateWitnessRef(ExternalRef),
     UnknownPoint(ExternalRef),
     PositionAlreadyExists {
         point_ref: ExternalRef,

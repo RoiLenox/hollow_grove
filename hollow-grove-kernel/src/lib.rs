@@ -25,8 +25,9 @@ pub use semantic_geometry::{
     verify_translation, vertical_origin_relation,
 };
 pub use semantic_records::{
-    SEMANTIC_KERNEL_SCHEMA_VERSION, SemanticOperation, SemanticPositionRecord,
-    SemanticPositionSnapshot, SemanticRecordError, SemanticScope,
+    SEMANTIC_KERNEL_SCHEMA_VERSION, SEMANTIC_WITNESS_SCHEMA_VERSION, SemanticOperation,
+    SemanticPositionRecord, SemanticPositionSnapshot, SemanticRecordError, SemanticScope,
+    SemanticWitnessDecision, SemanticWitnessRecord, SemanticWitnessSnapshot,
 };
 pub use spatial_inheritance::{
     NORMALIZED_UNIT, NormalizedCoordinate, NormalizedPoint, NormalizedRect, ResolvedSpatialAnchor,
@@ -206,7 +207,7 @@ pub struct Containment {
     pub member: CompositionNodeId,
 }
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub enum CompositionCatalogError {
     DuplicateNodeId(CompositionNodeId),
     DuplicateRecordId(CompositionRecordId),
@@ -282,6 +283,8 @@ pub struct CompositionCatalog {
     pub(crate) semantic_record_positions: HashMap<CompositionRecordId, usize>,
     pub(crate) current_semantic_positions: HashMap<(ExternalRef, SemanticScope), usize>,
     pub(crate) semantic_history: HashMap<(ExternalRef, SemanticScope), Vec<usize>>,
+    pub(crate) semantic_witnesses: Vec<SemanticWitnessRecord>,
+    pub(crate) semantic_witness_positions: HashMap<ExternalRef, usize>,
 }
 
 impl Default for CompositionCatalog {
@@ -305,6 +308,8 @@ impl CompositionCatalog {
             semantic_record_positions: HashMap::new(),
             current_semantic_positions: HashMap::new(),
             semantic_history: HashMap::new(),
+            semantic_witnesses: Vec::new(),
+            semantic_witness_positions: HashMap::new(),
         }
     }
 
@@ -323,6 +328,17 @@ impl CompositionCatalog {
         self.node_positions
             .get(id)
             .and_then(|position| self.nodes.get(*position))
+    }
+
+    #[must_use]
+    pub fn nodes_for_object(&self, object: &ExternalRef) -> Vec<&CompositionNode> {
+        let mut nodes: Vec<_> = self
+            .nodes
+            .iter()
+            .filter(|node| &node.object == object)
+            .collect();
+        nodes.sort_by(|left, right| left.id.cmp(&right.id));
+        nodes
     }
 
     pub fn insert_record(
@@ -369,6 +385,11 @@ impl CompositionCatalog {
         self.record_positions
             .get(id)
             .and_then(|position| self.records.get(*position))
+    }
+
+    #[must_use]
+    pub fn composition_records(&self) -> &[CompositionRecord] {
+        &self.records
     }
 
     #[must_use]
