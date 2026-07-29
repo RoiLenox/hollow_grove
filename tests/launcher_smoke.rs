@@ -59,6 +59,7 @@ fn local_scripts_derive_the_checkout_root_instead_of_naming_one() {
         "run-runtime.sh",
         "run-runtime-niri.sh",
         "verify-fast.sh",
+        "verify-playable-lifecycle.sh",
     ] {
         let contents =
             fs::read_to_string(repo_root.join(script)).expect("local script should read");

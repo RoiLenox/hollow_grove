@@ -5,8 +5,8 @@ config_version=5
 
 [application]
 
-config/name="Hueman Screen Shell"
-run/main_scene="res://scenes/hueman_screen_shell.tscn"
+config/name="Hollow Grove"
+run/main_scene="res://scenes/retro_overworld.tscn"
 
 [display]
 

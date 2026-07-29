@@ -148,4 +148,5 @@ if [[ -x "$SCRIPT_DIR/capture-hueman-pair-preview.sh" ]]; then
     PREVIEW_PID="$!"
 fi
 
-"$GODOT_BIN" --path "$SCRIPT_DIR/hueman_godot" "$@"
+"$GODOT_BIN" --path "$SCRIPT_DIR/hueman_godot" \
+    res://scenes/hueman_screen_shell.tscn "$@"

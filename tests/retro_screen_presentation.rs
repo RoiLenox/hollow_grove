@@ -33,6 +33,10 @@ fn retro_screen_keeps_pixel_graphics_and_semantics_in_one_projection() {
         GODOT_PROJECT.contains("window/stretch/aspect=\"keep\""),
         "the project must preserve the logical playfield aspect ratio"
     );
+    assert!(
+        GODOT_PROJECT.contains("run/main_scene=\"res://scenes/retro_overworld.tscn\""),
+        "the playable retro overworld must be the distributable default scene"
+    );
 }
 
 #[test]

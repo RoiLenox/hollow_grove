@@ -21,6 +21,7 @@ cargo clippy --all-targets --all-features
 cargo test
 cargo build
 cargo build --release
+SKIP_BUILD=1 ./verify-playable-lifecycle.sh | tee "$ARTIFACT_DIR/playable-lifecycle.log"
 ./bench-local.sh | tee "$ARTIFACT_DIR/bench-fast.log"
 SKIP_BUILD=1 ./stress-local.sh | tee "$ARTIFACT_DIR/stress-fast.log"
 cargo run --quiet --bin client_desktop_status >/dev/null

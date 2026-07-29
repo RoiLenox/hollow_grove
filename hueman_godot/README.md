@@ -50,9 +50,10 @@ Controls:
   and 3 through Independent Company
 - F5 / F9: save / load `slot-a`
 
-The launcher starts the loopback-only authoritative gameplay service and then
-opens `scenes/retro_overworld.tscn`. The original Hueman screen shell remains
-available through `./run-hueman-godot.sh`.
+The Godot project defaults to `scenes/retro_overworld.tscn`. The game launcher
+starts the loopback-only authoritative gameplay service before opening that
+scene. The original Hueman screen shell remains available through
+`./run-hueman-godot.sh`, which selects its scene explicitly.
 
 Visual development references live in the non-shipping reference tree:
 
@@ -82,6 +83,12 @@ Run the focused graphics/semantics smoke check with:
 ```bash
 godot --headless --path hueman_godot \
   --script res://tests/retro_overworld_semantics_smoke.gd
+```
+
+Run the complete Godot-to-Rust save/restart/load check with:
+
+```bash
+./verify-playable-lifecycle.sh
 ```
 
 This is the thinnest practical Godot 4 shell for the shared Hollow Grove / Hueman screen map.
