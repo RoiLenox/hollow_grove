@@ -16,7 +16,8 @@ use crate::composition::{
 };
 use crate::constitutional::{GroveCycleId, GrovePhase};
 use crate::semantic::{
-    SemanticProvenanceError, confirm_semantic_transition, record_rejected_semantic_witness,
+    NearbySemanticExample, RetrievedCanonFragment, SemanticProvenanceError,
+    confirm_semantic_transition, record_rejected_semantic_witness,
 };
 
 pub const SEMANTIC_PROPOSAL_SCHEMA_VERSION: &str = "hollow-grove-semantic-proposal-v1";
@@ -60,36 +61,6 @@ impl ModelSemanticProposal {
         }
         Ok(())
     }
-}
-
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
-pub struct RetrievedCanonFragment {
-    pub reference: ExternalRef,
-    pub source_document: String,
-    pub section: String,
-    pub status: CanonStatus,
-    pub version: Option<String>,
-    pub content: String,
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(rename_all = "snake_case")]
-pub enum CanonStatus {
-    Constitutional,
-    Ratified,
-    Historical,
-    Interpretive,
-}
-
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
-pub struct NearbySemanticExample {
-    pub record_ref: ExternalRef,
-    pub scope: SemanticScope,
-    pub position: Position3,
-    pub squared_distance: i64,
-    pub semantic_tags: Vec<String>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
