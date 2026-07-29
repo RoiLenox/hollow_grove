@@ -81,6 +81,7 @@
     {
       "id": "aura_ridge",
       "name": "Aura Ridge",
+      "constitutional_route_id": "geography.route.aura-ridge",
       "from": "stonebend",
       "to": "glaushouse",
       "band_width": 0.045
@@ -88,6 +89,8 @@
     {
       "id": "aura_ridge_east",
       "name": "Aura Ridge East",
+      "projection_of": "geography.route.aura-ridge",
+      "local_only": true,
       "from": "aura_ridge_junction",
       "to": "sandmanor",
       "band_width": 0.045
@@ -95,20 +98,23 @@
     {
       "id": "aura_way",
       "name": "Aura Way",
+      "constitutional_route_id": "geography.route.aura-way",
       "from": "stonebend",
       "to": "sandmanor",
       "band_width": 0.045
     },
     {
-      "id": "glausbahn",
-      "name": "Glausbahn",
-      "from": "sandmanor",
-      "to": "glaushouse",
+      "id": "current_sea",
+      "name": "Current Sea",
+      "constitutional_route_id": "geography.route.current-sea",
+      "from": "glaushouse",
+      "to": "stonebend",
       "band_width": 0.045
     },
     {
       "id": "boardwalk",
       "name": "Boardwalk",
+      "constitutional_route_id": "geography.route.boardwalk",
       "from": "glaushouse",
       "to": "flynt",
       "band_width": 0.045
@@ -116,6 +122,7 @@
     {
       "id": "basin_motorspeedway",
       "name": "Basin Motor Speedway",
+      "constitutional_route_id": "geography.route.basin-motorspeedway",
       "from": "flynt",
       "to": "stonebend",
       "band_width": 0.045
@@ -125,6 +132,7 @@
     {
       "id": "mnt_aura",
       "name": "Mt. Aura",
+      "constitutional_route_id": "geography.route.mnt-aura",
       "from": "stonebend",
       "to": "sandmanor",
       "control": {
@@ -134,8 +142,9 @@
       "band_width": 0.045
     },
     {
-      "id": "current_sea",
+      "id": "current_seanad",
       "name": "Current Seanad",
+      "constitutional_route_id": "geography.route.current-seanad",
       "from": "sandmanor",
       "to": "glaushouse",
       "control": {
@@ -147,6 +156,7 @@
     {
       "id": "riptide",
       "name": "Riptide",
+      "constitutional_route_id": "geography.route.riptide",
       "from": "glaushouse",
       "to": "flynt",
       "control": {
@@ -158,11 +168,24 @@
     {
       "id": "stairway_to_heaven",
       "name": "Stairway to Heaven",
+      "constitutional_route_id": "geography.route.stairway-to-heaven",
       "from": "flynt",
       "to": "stonebend",
       "control": {
         "x": 0.31,
         "y": 0.2
+      },
+      "band_width": 0.045
+    },
+    {
+      "id": "glausbahn",
+      "name": "Glausbahn",
+      "constitutional_route_id": "geography.route.glausbahn",
+      "from": "sandmanor",
+      "to": "glaushouse",
+      "control": {
+        "x": 0.61,
+        "y": 0.68
       },
       "band_width": 0.045
     }

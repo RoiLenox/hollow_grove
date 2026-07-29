@@ -2,9 +2,14 @@ use std::env;
 use std::io;
 use std::path::{Path, PathBuf};
 use std::process::Command;
+use std::sync::OnceLock;
 use std::thread;
 use std::time::Duration;
 
+use hollow_grove::composition::{NORMALIZED_UNIT, NormalizedCoordinate, NormalizedPoint};
+use hollow_grove::world::spatial_inheritance::{
+    HollowGroveSpatialMap, canonical_hollow_grove_spatial_map, hollow_grove_spatial_replay_digest,
+};
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
 const RUNTIME_MEMORY_ARTIFACT_PATH: &str = "artifacts/runtime_memory.txt";
@@ -13,6 +18,15 @@ const NIRI_BRIDGE_STATUS_ARTIFACT_PATH: &str = "artifacts/niri_bridge_status.md"
 const SCREEN_MAP_STATE_ARTIFACT_PATH: &str = "artifacts/screen_map_state.json";
 const HOLLOW_GROVE_WORKSPACE_NAME: &str = "HollowGrove";
 const DEFAULT_INTERVAL_MS: u64 = 1_000;
+
+struct LiveSpatialContract {
+    map: HollowGroveSpatialMap,
+    catalog_digest: String,
+    template_digest: String,
+    replay_digest: String,
+}
+
+static CANONICAL_SPATIAL_MAP: OnceLock<Result<LiveSpatialContract, String>> = OnceLock::new();
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum RuntimeMode {
@@ -829,6 +843,71 @@ fn format_json_number(value: f64) -> String {
         .to_owned()
 }
 
+fn normalized_point(x: f64, y: f64) -> Option<NormalizedPoint> {
+    fn coordinate(value: f64) -> Option<NormalizedCoordinate> {
+        if !value.is_finite() || !(0.0..=1.0).contains(&value) {
+            return None;
+        }
+        let parts = (value * NORMALIZED_UNIT as f64).round() as u64;
+        NormalizedCoordinate::new(parts).ok()
+    }
+
+    Some(NormalizedPoint::new(coordinate(x)?, coordinate(y)?))
+}
+
+fn normalized_coordinate_json(coordinate: NormalizedCoordinate) -> String {
+    format_json_number(coordinate.parts() as f64 / NORMALIZED_UNIT as f64)
+}
+
+fn build_spatial_viewpoint_json(center_x: f64, center_y: f64) -> String {
+    let Some(root_position) = normalized_point(center_x, center_y) else {
+        return String::from("null");
+    };
+    let spatial_contract = match CANONICAL_SPATIAL_MAP.get_or_init(|| {
+        let map = canonical_hollow_grove_spatial_map().map_err(|error| error.to_string())?;
+        let report = map
+            .validate_conformance()
+            .map_err(|error| error.to_string())?;
+        let replay_digest =
+            hollow_grove_spatial_replay_digest(&map).map_err(|error| error.to_string())?;
+        Ok(LiveSpatialContract {
+            map,
+            catalog_digest: report.catalog_digest,
+            template_digest: report.template_digest,
+            replay_digest,
+        })
+    }) {
+        Ok(spatial_contract) => spatial_contract,
+        Err(_) => return String::from("null"),
+    };
+    let Some(selection) = spatial_contract
+        .map
+        .catalog()
+        .select_viewpoint(root_position)
+    else {
+        return String::from("null");
+    };
+    let viewpoint = selection.selected;
+
+    format!(
+        "{{\"frame_id\":\"{}\",\"template_id\":\"{}\",\"scale\":\"{}\",\"depth\":{},\"rule_set\":\"{}\",\"selection_policy\":\"{}\",\"candidate_count\":{},\"catalog_digest\":\"{}\",\"template_digest\":\"{}\",\"replay_digest\":\"{}\",\"root\":{{\"x\":{},\"y\":{}}},\"local\":{{\"x\":{},\"y\":{}}}}}",
+        escape_json(viewpoint.frame_id.as_str()),
+        escape_json(viewpoint.template_id.as_str()),
+        escape_json(viewpoint.scale.as_str()),
+        viewpoint.depth,
+        escape_json(spatial_contract.map.catalog().rule_set().as_str()),
+        escape_json(selection.policy_id),
+        selection.candidates.len(),
+        escape_json(&spatial_contract.catalog_digest),
+        escape_json(&spatial_contract.template_digest),
+        escape_json(&spatial_contract.replay_digest),
+        normalized_coordinate_json(viewpoint.root_position.x),
+        normalized_coordinate_json(viewpoint.root_position.y),
+        normalized_coordinate_json(viewpoint.local_position.x),
+        normalized_coordinate_json(viewpoint.local_position.y),
+    )
+}
+
 fn build_screen_map_state_output(
     focused_window: Option<&FocusedWindow>,
     active_output: Option<&NiriOutput>,
@@ -881,7 +960,7 @@ fn build_screen_map_state_output(
         None => String::from("null"),
     };
 
-    let normalized_json = match (focused_window, active_output) {
+    let (normalized_json, spatial_viewpoint_json) = match (focused_window, active_output) {
         (Some(window), Some(output)) => {
             let center_x =
                 (window.rect.x - output.rect.x + (window.rect.width / 2.0)) / output.rect.width;
@@ -892,17 +971,20 @@ fn build_screen_map_state_output(
             let rect_width = window.rect.width / output.rect.width;
             let rect_height = window.rect.height / output.rect.height;
 
-            format!(
-                "{{\"center\":{{\"x\":{},\"y\":{}}},\"rect\":{{\"x\":{},\"y\":{},\"width\":{},\"height\":{}}}}}",
-                format_json_number(center_x),
-                format_json_number(center_y),
-                format_json_number(rect_x),
-                format_json_number(rect_y),
-                format_json_number(rect_width),
-                format_json_number(rect_height)
+            (
+                format!(
+                    "{{\"center\":{{\"x\":{},\"y\":{}}},\"rect\":{{\"x\":{},\"y\":{},\"width\":{},\"height\":{}}}}}",
+                    format_json_number(center_x),
+                    format_json_number(center_y),
+                    format_json_number(rect_x),
+                    format_json_number(rect_y),
+                    format_json_number(rect_width),
+                    format_json_number(rect_height)
+                ),
+                build_spatial_viewpoint_json(center_x, center_y),
             )
         }
-        _ => String::from("null"),
+        _ => (String::from("null"), String::from("null")),
     };
 
     let error_json = error
@@ -910,7 +992,7 @@ fn build_screen_map_state_output(
         .unwrap_or_else(|| String::from("null"));
 
     format!(
-        "{{\n  \"schema_version\": \"0.1.0\",\n  \"status\": \"{status}\",\n  \"window_probe\": \"focused_window_center\",\n  \"map_contract_path\": \"{map_contract_path}\",\n  \"intent_path\": \"{intent_path}\",\n  \"focused_window\": {focused_window_json},\n  \"active_output\": {active_output_json},\n  \"normalized\": {normalized_json},\n  \"error\": {error_json}\n}}\n"
+        "{{\n  \"schema_version\": \"0.3.0\",\n  \"status\": \"{status}\",\n  \"window_probe\": \"focused_window_center\",\n  \"map_contract_path\": \"{map_contract_path}\",\n  \"intent_path\": \"{intent_path}\",\n  \"focused_window\": {focused_window_json},\n  \"active_output\": {active_output_json},\n  \"normalized\": {normalized_json},\n  \"spatial_viewpoint\": {spatial_viewpoint_json},\n  \"error\": {error_json}\n}}\n"
     )
 }
 
@@ -1319,10 +1401,13 @@ mod tests {
     use super::{
         BridgeCli, BridgeConfig, BridgeResultKind, DEFAULT_INTERVAL_MS,
         HOLLOW_GROVE_WORKSPACE_NAME, NiriCommand, NiriWorkspace, OverviewState, RuntimeMode,
-        build_plan, build_screen_map_state_output, parse_bridge_cli, parse_bridge_memory,
-        parse_focused_window_json, parse_outputs_json, parse_overview_state, parse_runtime_memory,
-        parse_workspaces_json, usage, workspace_summary,
+        build_plan, build_screen_map_state_output, build_spatial_viewpoint_json, parse_bridge_cli,
+        parse_bridge_memory, parse_focused_window_json, parse_outputs_json, parse_overview_state,
+        parse_runtime_memory, parse_workspaces_json, usage, workspace_summary,
     };
+
+    const SCREEN_LIVE_STATE_V0_3_FIXTURE: &str =
+        include_str!("../../tests/fixtures/compatibility/screen_live_state_v0_3.json");
 
     fn sample_workspaces() -> &'static str {
         r#"[{"id":4,"idx":2,"name":null,"output":"DP-2","is_urgent":false,"is_active":false,"is_focused":false,"active_window_id":null},{"id":1,"idx":1,"name":null,"output":"DP-2","is_urgent":false,"is_active":true,"is_focused":true,"active_window_id":4}]"#
@@ -1460,11 +1545,40 @@ mod tests {
 
         let rendered =
             build_screen_map_state_output(Some(&focused_window), Some(&output), "ok", None);
+        assert_eq!(
+            serde_json::from_str::<serde_json::Value>(&rendered).expect("live state should parse"),
+            serde_json::from_str::<serde_json::Value>(SCREEN_LIVE_STATE_V0_3_FIXTURE)
+                .expect("live-state fixture should parse")
+        );
+        assert!(rendered.contains("\"schema_version\": \"0.3.0\""));
         assert!(rendered.contains("\"status\": \"ok\""));
         assert!(rendered.contains("\"center\":{\"x\":0.375,\"y\":0.375}"));
         assert!(
             rendered.contains("\"rect\":{\"x\":0.125,\"y\":0.125,\"width\":0.5,\"height\":0.5}")
         );
+        assert!(rendered.contains("\"frame_id\":\"frame.world.hollow-grove\""));
+        assert!(rendered.contains("\"template_id\":\"template.hollow-grove.main-map\""));
+        assert!(rendered.contains("\"scale\":\"scale.world\""));
+        assert!(rendered.contains("\"rule_set\":\"ruleset.hollow-grove.spatial-inheritance-v1\""));
+        assert!(rendered.contains("\"selection_policy\":\"deepest-then-stable-frame-id-v1\""));
+        assert!(rendered.contains("\"catalog_digest\":\"fnv1a64-spatial-v1:"));
+        assert!(rendered.contains("\"replay_digest\":\"fnv1a64-hollow-grove-spatial-v1:"));
+    }
+
+    #[test]
+    fn screen_map_state_resolves_house_center_as_inherited_city_viewpoint() {
+        let rendered = build_spatial_viewpoint_json(0.5, 0.14);
+        assert!(rendered.contains("\"frame_id\":\"frame.city.stonebend\""));
+        assert!(rendered.contains("\"scale\":\"scale.city\""));
+        assert!(rendered.contains("\"depth\":1"));
+        assert!(rendered.contains("\"candidate_count\":2"));
+        assert!(rendered.contains("\"local\":{\"x\":0.5,\"y\":0.5}"));
+    }
+
+    #[test]
+    fn screen_map_state_rejects_offscreen_points_from_spatial_inheritance() {
+        assert_eq!(build_spatial_viewpoint_json(-0.01, 0.5), "null");
+        assert_eq!(build_spatial_viewpoint_json(0.5, 1.01), "null");
     }
 
     #[test]

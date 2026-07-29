@@ -78,6 +78,34 @@ human-readable witness. Its source imports no recursion kernel. Detailed scope
 and scenario identities are recorded in
 `HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md`.
 
+### 1.3 Spatial inheritance
+
+**Implemented as a canonical recursive world contract.**
+`hollow-grove-kernel/src/spatial_inheritance.rs` owns neutral fixed-point
+coordinates, templates, frames, cached transforms, deterministic candidate
+selection, versioned snapshots, replay, cycle rejection, and digests.
+`src/world/spatial_inheritance.rs` binds those primitives to exactly one
+Route-Network-derived map template, the world, the four House cities, typed
+World/City/District/Site/Room/Object/recursive-Detail progression, immutable
+placement authority and evidence, conformance, deterministic JSON archives,
+migration, replay digest, and a human-readable witness.
+
+The template is complete at presentation geometry: six anchors (preserving
+co-located Ranina and Aura Ridge Junction identities), ten constitutional
+routes, the local Aura Ridge East projection, exact route bands, all Round
+controls, and the three surface polygons. Executable
+cross-layer conformance proves the static screen artifact has distinct Current
+Sea and Current Seanad identities and a Round Glausbahn before any inheriting
+frame can rely on it.
+
+The Niri bridge carries rule set, selection policy, candidate count,
+root/local coordinates, and template/catalog/replay digests. Godot preserves
+that scope, and the runtime independently reconstructs the canonical map before
+accepting the projection. Topology and Mt. Aura identity are inherited at every
+scale; geometry grants no House, route, ownership, access, Bond, or mutation
+authority. Detailed law and the failure matrix are recorded in
+`SPATIAL_INHERITANCE_V1.md`.
+
 ## 2. Architectural Position Above Recursion
 
 **Implemented.** `src/hollow_grove.rs` retains the ordinal recursion selector as

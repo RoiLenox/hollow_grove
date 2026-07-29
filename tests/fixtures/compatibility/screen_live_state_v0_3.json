@@ -1,0 +1,62 @@
+{
+  "active_output": {
+    "is_focused": true,
+    "name": "DP-2",
+    "rect": {
+      "height": 1440,
+      "width": 2560,
+      "x": 0,
+      "y": 0
+    }
+  },
+  "error": null,
+  "focused_window": {
+    "app_id": "kitty",
+    "id": 4,
+    "output": "DP-2",
+    "rect": {
+      "height": 720,
+      "width": 1280,
+      "x": 320,
+      "y": 180
+    },
+    "title": "Terminal"
+  },
+  "intent_path": "artifacts/screen_map_intent.json",
+  "map_contract_path": "artifacts/hueman_screen_map.json",
+  "normalized": {
+    "center": {
+      "x": 0.375,
+      "y": 0.375
+    },
+    "rect": {
+      "height": 0.5,
+      "width": 0.5,
+      "x": 0.125,
+      "y": 0.125
+    }
+  },
+  "schema_version": "0.3.0",
+  "spatial_viewpoint": {
+    "candidate_count": 1,
+    "catalog_digest": "fnv1a64-spatial-v1:30991cb6f68b430f",
+    "depth": 0,
+    "frame_id": "frame.world.hollow-grove",
+    "local": {
+      "x": 0.375,
+      "y": 0.375
+    },
+    "replay_digest": "fnv1a64-hollow-grove-spatial-v1:a025ce6f3292b3b6",
+    "root": {
+      "x": 0.375,
+      "y": 0.375
+    },
+    "rule_set": "ruleset.hollow-grove.spatial-inheritance-v1",
+    "scale": "scale.world",
+    "selection_policy": "deepest-then-stable-frame-id-v1",
+    "template_digest": "fnv1a64-spatial-template-v1:480d6223afa47518",
+    "template_id": "template.hollow-grove.main-map"
+  },
+  "status": "ok",
+  "window_probe": "focused_window_center"
+}

@@ -124,6 +124,7 @@ Compromise.
 | Flynt | `FLYNT_CONSTITUTION_V2.md` and dual-leadership document | `officials-and-outlaws`, projected by `src/world/flynt.rs` | Flynt crate tests/audit | Flynt roles and stable aliases | Boardwalk draft where unratified |
 | Hueman | `HUEMAN_v0.1.0.md` as entry point and its specialized authorities | Frame, progression, faculty, Recipe, Sympiote and Synthesis modules | Hueman/faculty/Recipe/Synthesis tests | Hueman artifacts | no House office |
 | geography | `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md` | geography and route network | geography/route audits | maps and scenes | frozen token aliases |
+| spatial inheritance | `SPATIAL_INHERITANCE_V1.md` beneath geography and Route Network | neutral spatial kernel, Hollow Grove binding/archive, bridge, Godot, runtime verifier | kernel/world/integration/live tamper and replay tests | live viewpoints and scoped intent receipts | no inherited authority, ownership, route meaning, or private topology copies |
 | Central Junction | `CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md` | `src/world/central_junction.rs` | Central Junction tests/audit | public boards/world context | no House exchange |
 | Service Tournament | `SERVICE_TOURNAMENT_CENTRAL_JUNCTION_CANON_V1.md` and `SERVICE_TOURNAMENT_ARCHIVE_AND_CANONICAL_YEAR_FIXTURE_V1.md` under Compromise and House constitutions | `src/world/service_tournament.rs`, archive, fixture, and House Synthesis semantics | canon, archive, migration, replay, and audit tests | Central Junction Function record | no new constitution, service faction, sovereignty transfer, or kernel lore |
 | Runtime Federation | `THE_RUNTIME_FEDERATION_V1.md` under the Compromise and existing domain authorities | planned federation manifest above existing production reducers | documentation lock; executable archive, replay, migration, audit, and operation remain the next milestone | authoritative gameplay and presentation projections | no fifth House, second Constitution, parallel reducer, domain-history rewrite, or kernel lore |
@@ -190,6 +191,7 @@ four Houses. Central Junction is not a fifth House.
 | Universal Laws | complete in current scope | future product details |
 | Constitutional Runtime | complete; one runtime | new domain payloads use adapters |
 | Bond Constitution | complete; one grammar | no duplicate reducer |
+| Spatial Inheritance | complete; one template grammar, archive, and verified live projection | authored local district/site/room/object/detail names remain additive |
 | Stonebend | constitutionally integrated | courts/property/criminal detail |
 | Sandmanor | constitutionally integrated | lived civic catalogs |
 | Glaüshouse | constitutionally integrated | full Illegal Synthesis procedure |

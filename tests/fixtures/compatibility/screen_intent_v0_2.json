@@ -1,0 +1,30 @@
+{
+  "intent": "inspect",
+  "schema_version": "0.2.0",
+  "source": "hueman_godot_shell",
+  "spatial_scope": {
+    "candidate_count": 2,
+    "catalog_digest": "fnv1a64-spatial-v1:30991cb6f68b430f",
+    "depth": 1,
+    "frame_id": "frame.city.stonebend",
+    "local": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "replay_digest": "fnv1a64-hollow-grove-spatial-v1:a025ce6f3292b3b6",
+    "root": {
+      "x": 0.5,
+      "y": 0.14
+    },
+    "rule_set": "ruleset.hollow-grove.spatial-inheritance-v1",
+    "scale": "scale.city",
+    "selection_policy": "deepest-then-stable-frame-id-v1",
+    "template_digest": "fnv1a64-spatial-template-v1:480d6223afa47518",
+    "template_id": "template.hollow-grove.main-map"
+  },
+  "zone": {
+    "id": "ranina",
+    "kind": "kingdom",
+    "name": "Ranina"
+  }
+}

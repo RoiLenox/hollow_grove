@@ -127,8 +127,10 @@ func _ensure_hud() -> void:
 
 
 func _load_all_state() -> void:
-	map_contract = _read_json_file(_repo_file(MAP_CONTRACT_RELATIVE_PATH))
-	coordinate_contract = _read_json_file(_repo_file(COORDINATE_CONTRACT_RELATIVE_PATH))
+	if map_contract.is_empty():
+		map_contract = _read_json_file(_repo_file(MAP_CONTRACT_RELATIVE_PATH))
+	if coordinate_contract.is_empty():
+		coordinate_contract = _read_json_file(_repo_file(COORDINATE_CONTRACT_RELATIVE_PATH))
 	live_state = _read_json_file(_repo_file(LIVE_STATE_RELATIVE_PATH))
 	pair_state = _read_json_file(_repo_file(PAIR_STATE_RELATIVE_PATH))
 	pair_preview_state = _read_json_file(_repo_file(PAIR_PREVIEW_STATE_RELATIVE_PATH))
@@ -265,6 +267,10 @@ func _resolve_current_zone() -> Dictionary:
 	if center.is_empty():
 		return {}
 
+	var spatial_viewpoint := _active_spatial_viewpoint()
+	var inherited_local := _dict_or_empty(spatial_viewpoint.get("local"))
+	if not inherited_local.is_empty():
+		center = inherited_local
 	var probe := Vector2(float(center.get("x", 0.0)), float(center.get("y", 0.0)))
 	var nodes: Array = map_contract.get("nodes", [])
 	var straight_routes: Array = map_contract.get("straight_routes", [])
@@ -275,49 +281,68 @@ func _resolve_current_zone() -> Dictionary:
 		var node_point := _node_point(node)
 		var radius := float(node.get("radius", 0.09))
 		if probe.distance_to(node_point) <= radius:
-			return {
+			return _with_spatial_scope({
 				"id": str(node.get("id", "")),
 				"name": str(node.get("name", "")),
 				"kind": str(node.get("kind", "kingdom"))
-			}
+			}, spatial_viewpoint)
 
 	for route in straight_routes:
 		if _distance_to_segment(probe, _route_from_point(route), _route_to_point(route)) <= float(route.get("band_width", 0.045)):
-			return {
+			return _with_spatial_scope({
 				"id": str(route.get("id", "")),
 				"name": str(route.get("name", "")),
 				"kind": "straight_route"
-			}
+			}, spatial_viewpoint)
 
 	for route in curved_routes:
 		if _distance_to_polyline(probe, _curve_points(route, 32)) <= float(route.get("band_width", 0.045)):
-			return {
+			return _with_spatial_scope({
 				"id": str(route.get("id", "")),
 				"name": str(route.get("name", "")),
 				"kind": "curved_route"
-			}
+			}, spatial_viewpoint)
 
 	for surface in surfaces:
 		var polygon := PackedVector2Array()
 		for point in surface.get("polygon", []):
 			polygon.append(Vector2(float(point.get("x", 0.0)), float(point.get("y", 0.0))))
 		if Geometry2D.is_point_in_polygon(probe, polygon):
-			return {
+			return _with_spatial_scope({
 				"id": str(surface.get("id", "")),
 				"name": str(surface.get("name", "")),
 				"kind": "surface"
-			}
+			}, spatial_viewpoint)
 
 	var motion_grid_resolution := _resolve_motion_grid_cell(probe)
 	if not motion_grid_resolution.is_empty():
-		return motion_grid_resolution
+		return _with_spatial_scope(motion_grid_resolution, spatial_viewpoint)
 
 	var nearest_route := _nearest_route_name(probe)
-	return {
+	return _with_spatial_scope({
 		"id": nearest_route.to_snake_case(),
 		"name": nearest_route,
 		"kind": "nearest_route"
-	}
+	}, spatial_viewpoint)
+
+
+func _with_spatial_scope(resolution: Dictionary, viewpoint: Dictionary) -> Dictionary:
+	if viewpoint.is_empty():
+		return resolution
+	var scoped_resolution := resolution.duplicate()
+	scoped_resolution["spatial_frame_id"] = viewpoint.get("frame_id", "")
+	scoped_resolution["spatial_template_id"] = viewpoint.get("template_id", "")
+	scoped_resolution["spatial_scale"] = viewpoint.get("scale", "")
+	scoped_resolution["spatial_depth"] = viewpoint.get("depth", 0)
+	scoped_resolution["spatial_rule_set"] = viewpoint.get("rule_set", "")
+	scoped_resolution["spatial_selection_policy"] = viewpoint.get("selection_policy", "")
+	scoped_resolution["spatial_candidate_count"] = viewpoint.get("candidate_count", 0)
+	scoped_resolution["spatial_catalog_digest"] = viewpoint.get("catalog_digest", "")
+	scoped_resolution["spatial_template_digest"] = viewpoint.get("template_digest", "")
+	scoped_resolution["spatial_replay_digest"] = viewpoint.get("replay_digest", "")
+	scoped_resolution["spatial_root"] = _dict_or_empty(viewpoint.get("root"))
+	scoped_resolution["spatial_local"] = _dict_or_empty(viewpoint.get("local"))
+	return scoped_resolution
 
 
 func _nearest_route_name(probe: Vector2) -> String:
@@ -344,7 +369,7 @@ func _write_intent(intent_kind: String) -> void:
 		return
 
 	var payload := {
-		"schema_version": "0.1.0",
+		"schema_version": "0.2.0",
 		"intent": intent_kind,
 		"zone": {
 			"id": current_resolution.get("id", ""),
@@ -364,6 +389,22 @@ func _write_intent(intent_kind: String) -> void:
 			"app_id": paired_window.get("app_id", null),
 			"diagonal_angle_degrees": pair_state.get("diagonal_angle_degrees", 135),
 			"spread_ratio": pair_state.get("spread_ratio", 0.25)
+		}
+
+	if current_resolution.has("spatial_frame_id"):
+		payload["spatial_scope"] = {
+			"frame_id": current_resolution.get("spatial_frame_id", ""),
+			"template_id": current_resolution.get("spatial_template_id", ""),
+			"scale": current_resolution.get("spatial_scale", ""),
+			"depth": current_resolution.get("spatial_depth", 0),
+			"rule_set": current_resolution.get("spatial_rule_set", ""),
+			"selection_policy": current_resolution.get("spatial_selection_policy", ""),
+			"candidate_count": current_resolution.get("spatial_candidate_count", 0),
+			"catalog_digest": current_resolution.get("spatial_catalog_digest", ""),
+			"template_digest": current_resolution.get("spatial_template_digest", ""),
+			"replay_digest": current_resolution.get("spatial_replay_digest", ""),
+			"root": current_resolution.get("spatial_root", {}),
+			"local": current_resolution.get("spatial_local", {})
 		}
 
 	var application_attachment := _application_attachment()
@@ -842,6 +883,12 @@ func _active_normalized_probe() -> Dictionary:
 	if _paired_probe_is_active():
 		return _dict_or_empty(pair_state.get("normalized"))
 	return _dict_or_empty(live_state.get("normalized"))
+
+
+func _active_spatial_viewpoint() -> Dictionary:
+	if _paired_probe_is_active():
+		return _dict_or_empty(pair_state.get("spatial_viewpoint"))
+	return _dict_or_empty(live_state.get("spatial_viewpoint"))
 
 
 func _active_probe_window() -> Dictionary:

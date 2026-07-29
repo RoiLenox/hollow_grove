@@ -35,6 +35,9 @@ use current_synthesis_support::{
     build_current_synthesis_transition_pm_to_le_from_boundary, load_artifact_index,
 };
 use hollow_grove::SnapshotBoundary;
+use hollow_grove::composition::{
+    NORMALIZED_UNIT, NormalizedCoordinate, NormalizedPoint, SPATIAL_SELECTION_POLICY_ID,
+};
 use hollow_grove::current_synthesis_engine::{
     advance_current_synthesis_player_action_at, encode_current_synthesis_player_action,
     load_current_synthesis_at, read_hueman_feedback_at, stage_view_artifacts,
@@ -63,6 +66,10 @@ use hollow_grove::hueman_support::{
     hueman_stonebend_roles_artifact_path, vertical_integration_stack_artifact_path,
 };
 use hollow_grove::world::persistence::INSTITUTIONAL_STATE_ARTIFACT_PATH;
+use hollow_grove::world::spatial_inheritance::{
+    HOLLOW_GROVE_SPATIAL_RULE_SET_ID, canonical_hollow_grove_spatial_map,
+    hollow_grove_spatial_replay_digest,
+};
 use hollow_grove::{
     ArtifactSession, Symptom, WorldSession, build_desktop_status_output,
     build_prompt_artifact_output, build_snapshot_output,
@@ -145,6 +152,7 @@ struct ScreenMapIntent {
     zone_kind: String,
     source: String,
     pair: Option<ScreenMapPairIntent>,
+    spatial_scope: Option<ScreenMapSpatialScopeIntent>,
     application: Option<ScreenMapApplicationIntent>,
 }
 
@@ -156,6 +164,24 @@ struct ScreenMapPairIntent {
     app_id: Option<String>,
     diagonal_angle_degrees: Option<f64>,
     spread_ratio: Option<f64>,
+}
+
+#[derive(Debug, Clone, PartialEq)]
+struct ScreenMapSpatialScopeIntent {
+    frame_id: String,
+    template_id: String,
+    scale: String,
+    depth: usize,
+    rule_set: String,
+    selection_policy: String,
+    candidate_count: usize,
+    catalog_digest: String,
+    template_digest: String,
+    replay_digest: String,
+    root_x: f64,
+    root_y: f64,
+    local_x: f64,
+    local_y: f64,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -568,6 +594,60 @@ fn parse_screen_map_application_intent(
     }))
 }
 
+fn parse_screen_map_spatial_scope_intent(
+    contents: &str,
+) -> io::Result<Option<ScreenMapSpatialScopeIntent>> {
+    let trimmed = contents.trim();
+    if trimmed.is_empty() || trimmed == "null" {
+        return Ok(None);
+    }
+    if !trimmed.starts_with('{') || !trimmed.ends_with('}') {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "screen map spatial scope is not a json object",
+        ));
+    }
+
+    let root = find_json_field(trimmed, "root")?;
+    let local = find_json_field(trimmed, "local")?;
+    let scope = ScreenMapSpatialScopeIntent {
+        frame_id: required_json_string(trimmed, "frame_id", "spatial scope")?,
+        template_id: required_json_string(trimmed, "template_id", "spatial scope")?,
+        scale: required_json_string(trimmed, "scale", "spatial scope")?,
+        depth: parse_json_usize(find_json_field(trimmed, "depth")?, "depth")?,
+        rule_set: required_json_string(trimmed, "rule_set", "spatial scope")?,
+        selection_policy: required_json_string(trimmed, "selection_policy", "spatial scope")?,
+        candidate_count: parse_json_usize(
+            find_json_field(trimmed, "candidate_count")?,
+            "candidate_count",
+        )?,
+        catalog_digest: required_json_string(trimmed, "catalog_digest", "spatial scope")?,
+        template_digest: required_json_string(trimmed, "template_digest", "spatial scope")?,
+        replay_digest: required_json_string(trimmed, "replay_digest", "spatial scope")?,
+        root_x: parse_json_f64(find_json_field(root, "x")?, "root.x")?,
+        root_y: parse_json_f64(find_json_field(root, "y")?, "root.y")?,
+        local_x: parse_json_f64(find_json_field(local, "x")?, "local.x")?,
+        local_y: parse_json_f64(find_json_field(local, "y")?, "local.y")?,
+    };
+    if [scope.root_x, scope.root_y, scope.local_x, scope.local_y]
+        .into_iter()
+        .any(|coordinate| !coordinate.is_finite() || !(0.0..=1.0).contains(&coordinate))
+    {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "screen map spatial coordinates must be finite normalized values",
+        ));
+    }
+    if scope.candidate_count == 0 {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "screen map spatial scope must contain at least one selection candidate",
+        ));
+    }
+
+    Ok(Some(scope))
+}
+
 fn parse_screen_map_intent(contents: &str) -> io::Result<Option<ScreenMapIntent>> {
     let trimmed = contents.trim();
     if trimmed.is_empty() || trimmed == "null" {
@@ -585,6 +665,18 @@ fn parse_screen_map_intent(contents: &str) -> io::Result<Option<ScreenMapIntent>
         && status.eq_ignore_ascii_case("consumed")
     {
         return Ok(None);
+    }
+
+    let schema_version = optional_json_field(trimmed, "schema_version")
+        .map(parse_json_string)
+        .transpose()?
+        .flatten()
+        .unwrap_or_else(|| String::from("0.1.0"));
+    if !matches!(schema_version.as_str(), "0.1.0" | "0.2.0") {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            format!("unsupported screen map intent schema: {schema_version}"),
+        ));
     }
 
     let intent = parse_json_string(find_json_field(trimmed, "intent")?)?.ok_or_else(|| {
@@ -620,6 +712,16 @@ fn parse_screen_map_intent(contents: &str) -> io::Result<Option<ScreenMapIntent>
         Some(value) => parse_screen_map_pair_intent(value)?,
         None => None,
     };
+    let spatial_scope = match optional_json_field(trimmed, "spatial_scope") {
+        Some(value) => parse_screen_map_spatial_scope_intent(value)?,
+        None => None,
+    };
+    if spatial_scope.is_some() && schema_version != "0.2.0" {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "screen map spatial scope requires intent schema 0.2.0",
+        ));
+    }
     let application = match optional_json_field(trimmed, "application") {
         Some(value) => parse_screen_map_application_intent(value)?,
         None => None,
@@ -632,6 +734,7 @@ fn parse_screen_map_intent(contents: &str) -> io::Result<Option<ScreenMapIntent>
         zone_kind,
         source,
         pair,
+        spatial_scope,
         application,
     }))
 }
@@ -684,6 +787,62 @@ fn validate_screen_map_application_intent(intent: &ScreenMapIntent) -> io::Resul
     Ok(())
 }
 
+fn validate_screen_map_spatial_scope_intent(intent: &ScreenMapIntent) -> io::Result<()> {
+    let Some(scope) = intent.spatial_scope.as_ref() else {
+        return Ok(());
+    };
+    let map = canonical_hollow_grove_spatial_map()
+        .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))?;
+    let report = map
+        .validate_conformance()
+        .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))?;
+    let replay_digest = hollow_grove_spatial_replay_digest(&map)
+        .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))?;
+
+    if scope.rule_set != HOLLOW_GROVE_SPATIAL_RULE_SET_ID
+        || scope.rule_set != report.rule_set.as_str()
+        || scope.selection_policy != SPATIAL_SELECTION_POLICY_ID
+        || scope.catalog_digest != report.catalog_digest
+        || scope.template_digest != report.template_digest
+        || scope.replay_digest != replay_digest
+    {
+        return Err(io::Error::new(
+            io::ErrorKind::PermissionDenied,
+            "screen map spatial scope does not match the canonical rule set and replay digests",
+        ));
+    }
+
+    let coordinate = |value: f64| {
+        NormalizedCoordinate::new((value * NORMALIZED_UNIT as f64).round() as u64)
+            .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))
+    };
+    let root = NormalizedPoint::new(coordinate(scope.root_x)?, coordinate(scope.root_y)?);
+    let selection = map.catalog().select_viewpoint(root).ok_or_else(|| {
+        io::Error::new(
+            io::ErrorKind::PermissionDenied,
+            "screen map spatial root position has no canonical frame",
+        )
+    })?;
+    let selected = selection.selected;
+    let local_x = selected.local_position.x.parts() as f64 / NORMALIZED_UNIT as f64;
+    let local_y = selected.local_position.y.parts() as f64 / NORMALIZED_UNIT as f64;
+    let tolerance = 0.000_001_5;
+    if selected.frame_id.as_str() != scope.frame_id
+        || selected.template_id.as_str() != scope.template_id
+        || selected.scale.as_str() != scope.scale
+        || selected.depth != scope.depth
+        || selection.candidates.len() != scope.candidate_count
+        || (local_x - scope.local_x).abs() > tolerance
+        || (local_y - scope.local_y).abs() > tolerance
+    {
+        return Err(io::Error::new(
+            io::ErrorKind::PermissionDenied,
+            "screen map spatial scope is not the canonical projection of its root position",
+        ));
+    }
+    Ok(())
+}
+
 fn route_endpoints(zone_id: &str) -> Option<(&'static str, &'static str)> {
     match zone_id {
         "aura_ridge" => Some(("stonebend", "glaushouse")),
@@ -693,7 +852,8 @@ fn route_endpoints(zone_id: &str) -> Option<(&'static str, &'static str)> {
         "boardwalk" => Some(("glaushouse", "flynt")),
         "basin_motorspeedway" => Some(("stonebend", "flynt")),
         "mnt_aura" => Some(("sandmanor", "stonebend")),
-        "current_sea" => Some(("sandmanor", "glaushouse")),
+        "current_sea" => Some(("glaushouse", "stonebend")),
+        "current_seanad" => Some(("sandmanor", "glaushouse")),
         "riptide" => Some(("glaushouse", "flynt")),
         "stairway_to_heaven" => Some(("flynt", "stonebend")),
         _ => None,
@@ -840,6 +1000,7 @@ fn motion_grid_decide_label(zone_id: &str, pair_suffix: &str) -> String {
 
 fn translate_screen_map_intent(intent: &ScreenMapIntent) -> io::Result<(String, String)> {
     validate_screen_map_application_intent(intent)?;
+    validate_screen_map_spatial_scope_intent(intent)?;
     let zone_slug = zone_id_to_slug(&intent.zone_id);
     let pair_suffix = pair_action_suffix(intent.pair.as_ref());
 
@@ -938,15 +1099,36 @@ fn build_consumed_screen_map_intent_receipt(
         ),
         None => String::new(),
     };
+    let spatial_scope_json = match intent.spatial_scope.as_ref() {
+        Some(scope) => format!(
+            ",\n  \"spatial_scope\": {{\n    \"frame_id\": \"{}\",\n    \"template_id\": \"{}\",\n    \"scale\": \"{}\",\n    \"depth\": {},\n    \"rule_set\": \"{}\",\n    \"selection_policy\": \"{}\",\n    \"candidate_count\": {},\n    \"catalog_digest\": \"{}\",\n    \"template_digest\": \"{}\",\n    \"replay_digest\": \"{}\",\n    \"root\": {{\"x\": {}, \"y\": {}}},\n    \"local\": {{\"x\": {}, \"y\": {}}}\n  }}",
+            escape_json(&scope.frame_id),
+            escape_json(&scope.template_id),
+            escape_json(&scope.scale),
+            scope.depth,
+            escape_json(&scope.rule_set),
+            escape_json(&scope.selection_policy),
+            scope.candidate_count,
+            escape_json(&scope.catalog_digest),
+            escape_json(&scope.template_digest),
+            escape_json(&scope.replay_digest),
+            format_json_decimal(scope.root_x),
+            format_json_decimal(scope.root_y),
+            format_json_decimal(scope.local_x),
+            format_json_decimal(scope.local_y),
+        ),
+        None => String::new(),
+    };
 
     format!(
-        "{{\n  \"schema_version\": \"0.2.0\",\n  \"status\": \"consumed\",\n  \"intent\": \"{}\",\n  \"zone\": {{\n    \"id\": \"{}\",\n    \"name\": \"{}\",\n    \"kind\": \"{}\"\n  }},\n  \"source\": \"{}\"{}{},\n  \"translated_action\": {{\n    \"kind\": \"{}\",\n    \"label\": \"{}\"\n  }}\n}}\n",
+        "{{\n  \"schema_version\": \"0.3.0\",\n  \"status\": \"consumed\",\n  \"intent\": \"{}\",\n  \"zone\": {{\n    \"id\": \"{}\",\n    \"name\": \"{}\",\n    \"kind\": \"{}\"\n  }},\n  \"source\": \"{}\"{}{}{},\n  \"translated_action\": {{\n    \"kind\": \"{}\",\n    \"label\": \"{}\"\n  }}\n}}\n",
         escape_json(&intent.intent),
         escape_json(&intent.zone_id),
         escape_json(&intent.zone_name),
         escape_json(&intent.zone_kind),
         escape_json(&intent.source),
         pair_json,
+        spatial_scope_json,
         application_json,
         escape_json(action_kind),
         escape_json(action_label)
@@ -1925,10 +2107,11 @@ mod tests {
         RUNTIME_INPUT_ARTIFACT_PATH, RUNTIME_LOOP_STATUS_ARTIFACT_PATH,
         RUNTIME_MEMORY_ARTIFACT_PATH, RuntimeCli, RuntimeConfig, RuntimeInput, RuntimeMemory,
         RuntimeMode, SCREEN_MAP_INTENT_ARTIFACT_PATH, ScreenMapApplicationIntent, ScreenMapIntent,
-        ScreenMapPairIntent, build_consumed_screen_map_intent_receipt,
+        ScreenMapPairIntent, ScreenMapSpatialScopeIntent, build_consumed_screen_map_intent_receipt,
         build_runtime_input_template, build_runtime_memory_output, build_runtime_status_output,
         parse_runtime_cli, parse_runtime_input, parse_runtime_memory, parse_screen_map_intent,
-        run_runtime_cycle_at, runtime_resume_cycle_at, translate_screen_map_intent, usage,
+        route_endpoints, run_runtime_cycle_at, runtime_resume_cycle_at,
+        translate_screen_map_intent, usage,
     };
     use crate::current_synthesis_support::{
         ARTIFACT_INDEX_PATH, DESKTOP_STATUS_ARTIFACT_PATH, PROMPT_ARTIFACT_PATH,
@@ -1940,6 +2123,13 @@ mod tests {
     use hollow_grove::world::persistence::INSTITUTIONAL_STATE_ARTIFACT_PATH;
     use hollow_grove::{CANONICAL_WITNESS, read_text_artifact, write_text_artifact};
 
+    const SCREEN_INTENT_V0_1_FIXTURE: &str =
+        include_str!("../../tests/fixtures/compatibility/screen_intent_v0_1.json");
+    const SCREEN_INTENT_V0_2_FIXTURE: &str =
+        include_str!("../../tests/fixtures/compatibility/screen_intent_v0_2.json");
+    const SCREEN_RECEIPT_V0_3_FIXTURE: &str =
+        include_str!("../../tests/fixtures/compatibility/screen_intent_receipt_v0_3.json");
+
     fn unique_artifact_root(prefix: &str) -> std::path::PathBuf {
         let nonce = SystemTime::now()
             .duration_since(UNIX_EPOCH)
@@ -1950,6 +2140,22 @@ mod tests {
 
     fn write_fixture(root: &Path, relative_path: &str, contents: &str) {
         write_text_artifact(&root.join(relative_path), contents).expect("fixture should write");
+    }
+
+    #[test]
+    fn current_sea_seanad_and_glausbahn_keep_distinct_runtime_routes() {
+        assert_eq!(
+            route_endpoints("current_sea"),
+            Some(("glaushouse", "stonebend"))
+        );
+        assert_eq!(
+            route_endpoints("current_seanad"),
+            Some(("sandmanor", "glaushouse"))
+        );
+        assert_eq!(
+            route_endpoints("glausbahn"),
+            Some(("sandmanor", "glaushouse"))
+        );
     }
 
     #[test]
@@ -2159,14 +2365,13 @@ mod tests {
 
     #[test]
     fn screen_map_intent_parser_and_receipt_ignore_consumed_payloads() {
-        let parsed = parse_screen_map_intent(
-            "{\n  \"intent\": \"move\",\n  \"zone\": {\"id\": \"aura_ridge_east\", \"name\": \"Aura Ridge East\", \"kind\": \"straight_route\"},\n  \"source\": \"hueman_godot_shell\",\n  \"pair\": {\n    \"paired_window_mode\": true,\n    \"window_id\": 4,\n    \"window_title\": \"Terminal\",\n    \"app_id\": \"kitty\",\n    \"diagonal_angle_degrees\": 135,\n    \"spread_ratio\": 0.25\n  }\n}\n",
-        )
-        .expect("intent should parse")
-        .expect("intent should exist");
+        let parsed = parse_screen_map_intent(SCREEN_INTENT_V0_1_FIXTURE)
+            .expect("intent should parse")
+            .expect("intent should exist");
         assert_eq!(parsed.intent, "move");
         assert_eq!(parsed.zone_id, "aura_ridge_east");
         assert!(parsed.pair.is_some());
+        assert!(parsed.spatial_scope.is_none());
 
         let receipt = build_consumed_screen_map_intent_receipt(
             &parsed,
@@ -2177,6 +2382,111 @@ mod tests {
             parse_screen_map_intent(&receipt)
                 .expect("receipt should parse")
                 .is_none()
+        );
+    }
+
+    #[test]
+    fn screen_map_intent_preserves_inherited_spatial_scope_in_receipt() {
+        let parsed = parse_screen_map_intent(SCREEN_INTENT_V0_2_FIXTURE)
+            .expect("spatial intent should parse")
+            .expect("spatial intent should exist");
+        let scope = parsed
+            .spatial_scope
+            .as_ref()
+            .expect("spatial scope should be retained");
+        assert_eq!(scope.frame_id, "frame.city.stonebend");
+        assert_eq!(scope.template_id, "template.hollow-grove.main-map");
+        assert_eq!(scope.scale, "scale.city");
+        assert_eq!(scope.depth, 1);
+        assert_eq!(
+            scope.rule_set,
+            "ruleset.hollow-grove.spatial-inheritance-v1"
+        );
+        assert_eq!(scope.candidate_count, 2);
+        assert_eq!(scope.local_x, 0.5);
+        assert_eq!(scope.local_y, 0.5);
+
+        let receipt = build_consumed_screen_map_intent_receipt(&parsed, "decide", "target=ranina");
+        assert_eq!(
+            serde_json::from_str::<serde_json::Value>(&receipt).expect("receipt should parse"),
+            serde_json::from_str::<serde_json::Value>(SCREEN_RECEIPT_V0_3_FIXTURE)
+                .expect("receipt fixture should parse")
+        );
+    }
+
+    #[test]
+    fn screen_map_intent_rejects_non_normalized_spatial_scope() {
+        let error = parse_screen_map_intent(
+            "{\n  \"schema_version\": \"0.2.0\",\n  \"intent\": \"inspect\",\n  \"zone\": {\"id\": \"ranina\", \"name\": \"Ranina\", \"kind\": \"kingdom\"},\n  \"source\": \"hueman_godot_shell\",\n  \"spatial_scope\": {\n    \"frame_id\": \"frame.city.stonebend\",\n    \"template_id\": \"template.hollow-grove.main-map\",\n    \"scale\": \"scale.city\",\n    \"depth\": 1,\n    \"rule_set\": \"ruleset.hollow-grove.spatial-inheritance-v1\",\n    \"selection_policy\": \"deepest-then-stable-frame-id-v1\",\n    \"candidate_count\": 2,\n    \"catalog_digest\": \"fnv1a64-spatial-v1:fixture\",\n    \"template_digest\": \"fnv1a64-spatial-template-v1:fixture\",\n    \"replay_digest\": \"fnv1a64-hollow-grove-spatial-v1:fixture\",\n    \"root\": {\"x\": 0.5, \"y\": 0.14},\n    \"local\": {\"x\": 1.1, \"y\": 0.5}\n  }\n}\n",
+        )
+        .expect_err("out-of-range local coordinate should fail");
+        assert_eq!(error.kind(), io::ErrorKind::InvalidData);
+    }
+
+    #[test]
+    fn screen_map_intent_rejects_unsupported_schema_before_projection() {
+        let error = parse_screen_map_intent(
+            "{\"schema_version\":\"9.0.0\",\"intent\":\"inspect\",\"zone\":{\"id\":\"ranina\",\"name\":\"Ranina\",\"kind\":\"kingdom\"}}",
+        )
+        .expect_err("unsupported screen-map schema should fail closed");
+        assert_eq!(error.kind(), io::ErrorKind::InvalidData);
+    }
+
+    #[test]
+    fn screen_map_intent_independently_validates_spatial_rule_set_and_projection() {
+        use hollow_grove::composition::{NormalizedCoordinate, NormalizedPoint};
+        use hollow_grove::world::spatial_inheritance::{
+            canonical_hollow_grove_spatial_map, hollow_grove_spatial_replay_digest,
+        };
+
+        let map = canonical_hollow_grove_spatial_map().unwrap();
+        let report = map.validate_conformance().unwrap();
+        let root = NormalizedPoint::new(
+            NormalizedCoordinate::from_ratio(1, 2).unwrap(),
+            NormalizedCoordinate::from_ratio(14, 100).unwrap(),
+        );
+        let selection = map.catalog().select_viewpoint(root).unwrap();
+        let selected = selection.selected;
+        let mut intent = ScreenMapIntent {
+            intent: String::from("inspect"),
+            zone_id: String::from("ranina"),
+            zone_name: String::from("Ranina"),
+            zone_kind: String::from("kingdom"),
+            source: String::from("hueman_godot_shell"),
+            pair: None,
+            spatial_scope: Some(ScreenMapSpatialScopeIntent {
+                frame_id: selected.frame_id.as_str().to_owned(),
+                template_id: selected.template_id.as_str().to_owned(),
+                scale: selected.scale.as_str().to_owned(),
+                depth: selected.depth,
+                rule_set: report.rule_set.as_str().to_owned(),
+                selection_policy: String::from(
+                    hollow_grove::composition::SPATIAL_SELECTION_POLICY_ID,
+                ),
+                candidate_count: selection.candidates.len(),
+                catalog_digest: report.catalog_digest,
+                template_digest: report.template_digest,
+                replay_digest: hollow_grove_spatial_replay_digest(&map).unwrap(),
+                root_x: 0.5,
+                root_y: 0.14,
+                local_x: 0.5,
+                local_y: 0.5,
+            }),
+            application: None,
+        };
+        translate_screen_map_intent(&intent).expect("canonical spatial scope should validate");
+
+        intent
+            .spatial_scope
+            .as_mut()
+            .unwrap()
+            .catalog_digest
+            .push_str("-tampered");
+        assert_eq!(
+            translate_screen_map_intent(&intent)
+                .expect_err("tampered catalog digest must be rejected")
+                .kind(),
+            io::ErrorKind::PermissionDenied
         );
     }
 
@@ -2196,6 +2506,7 @@ mod tests {
                 diagonal_angle_degrees: Some(135.0),
                 spread_ratio: Some(0.25),
             }),
+            spatial_scope: None,
             application: None,
         };
         let inspect_intent = ScreenMapIntent {
@@ -2205,6 +2516,7 @@ mod tests {
             zone_kind: String::from("kingdom"),
             source: String::from("hueman_godot_shell"),
             pair: None,
+            spatial_scope: None,
             application: None,
         };
 
@@ -2232,6 +2544,7 @@ mod tests {
             zone_kind: String::from("motion_grid_cell"),
             source: String::from("hueman_godot_shell"),
             pair: None,
+            spatial_scope: None,
             application: None,
         };
         let inspect_intent = ScreenMapIntent {
@@ -2241,6 +2554,7 @@ mod tests {
             zone_kind: String::from("motion_grid_cell"),
             source: String::from("hueman_godot_shell"),
             pair: None,
+            spatial_scope: None,
             application: None,
         };
 
@@ -2276,6 +2590,7 @@ mod tests {
                 diagonal_angle_degrees: Some(135.0),
                 spread_ratio: Some(0.25),
             }),
+            spatial_scope: None,
             application: Some(ScreenMapApplicationIntent {
                 application_id: String::from("application.glaushouse.chroma-cord"),
                 canonical_name: String::from("chroma_cord"),

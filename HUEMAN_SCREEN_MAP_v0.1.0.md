@@ -87,6 +87,18 @@ These coordinates intentionally compress the horizontal spread compared with the
 Glausbahn is the Round road sector. Its repeated curves express the reciprocal
 design, prototype, repair, and improved-design loop.
 
+The quadratic controls are fixed:
+
+- Mt. Aura: `(0.690, 0.200)`
+- Current Seanad: `(0.730, 0.800)`
+- Riptide: `(0.310, 0.800)`
+- Stairway to Heaven: `(0.310, 0.200)`
+- Glausbahn: `(0.610, 0.680)`
+
+Glausbahn is the inner reciprocal curve; Current Seanad is the outer
+deliberative curve. Sharing the Sandmanor–Glaushouse endpoints does not merge
+their identities.
+
 ## Current Sea Context
 
 Current Sea is a Straight civic certification concourse whose “sea” is a sea
@@ -125,6 +137,13 @@ Default geometry thresholds:
 
 This keeps kingdoms and named roads crisp while still allowing large interior surface regions to exist.
 
+The machine-readable artifact carries `constitutional_route_id` for each of
+the ten constitutional routes. `Aura Ridge East` alone is `local_only` and
+records `projection_of = geography.route.aura-ridge`. Current Sea and Current
+Seanad MUST be separate artifact entries, and Glausbahn MUST appear in
+`curved_routes`. `tests/spatial_inheritance.rs` compares the artifact to the
+canonical kernel template field by field.
+
 ## Practical Contract
 
 The first practical implementation should stay narrow:
@@ -155,6 +174,15 @@ That yields a simple loop:
 5. Godot renders the avatar inside the resolved node, route, or surface
 6. Godot emits a narrow intent such as `inspect`, `move`, `name`, `prove`, `clear`, or `recognize`
 7. Hollow Grove consumes that intent and decides whether a real file mutation or runtime action occurs
+
+The additive spatial-inheritance extension is defined in
+`SPATIAL_INHERITANCE_V1.md`. The bridge's live-state projection now includes
+the selected frame plus root and inherited-local coordinates. Godot resolves
+the same static map plan in that local frame and returns the scope with its
+intent. The scope also carries the rule set, selection policy, candidate count,
+and template/catalog/replay digests. The runtime reconstructs the canonical map
+and verifies those values plus the claimed projection before preserving the
+scope in its receipt.
 
 ## Boundary Reminder
 

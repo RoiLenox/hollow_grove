@@ -24,7 +24,9 @@ Read the setting in this order:
    — the shared Bond and Constitutional Runtime contract.
 6. The relevant House shelf below.
 7. [Constitutional Geography](HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md) and
-   [Route Network](HOLLOW_GROVE_ROUTE_NETWORK_V1.md) for place and travel.
+   [Route Network](HOLLOW_GROVE_ROUTE_NETWORK_V1.md) for place and travel,
+   followed by [Spatial Inheritance](SPATIAL_INHERITANCE_V1.md) for recursive
+   placement, viewpoint, archive, and replay law.
 8. [Functional Lore Integration](HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md)
    for lived, playable lore.
 
@@ -137,7 +139,7 @@ infrastructure, Manticorp, recognition, and its institutional hierarchy.
 | Pure recursion kernel | [Kernel v0.1.2](KERNEL_v0.1.2.md), [hollow-grove-kernel](hollow-grove-kernel/) | deterministic recursion only; no House, route, character, evidence, or lore authority |
 | Composition provenance | [Constitutional Review](COMPOSITION_PROVENANCE_CONSTITUTIONAL_REVIEW_v0.1.0.md), [Contract Proposal v0.2.0](COMPOSITION_PROVENANCE_CONTRACT_PROPOSAL_v0.2.0.md) | how composed inputs retain identity and provenance without putting world law into the kernel |
 | Shared constitutional runtime | [V2 Constitutional Specification](HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md) | identity, evidence, authority, Bonds, lifecycle, replay |
-| Geography and travel | [Constitutional Geography](HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md), [Route Network](HOLLOW_GROVE_ROUTE_NETWORK_V1.md), [Screen Map](HUEMAN_SCREEN_MAP_v0.1.0.md) | House boundaries, route verbs, route shape, map projection |
+| Geography and travel | [Constitutional Geography](HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md), [Route Network](HOLLOW_GROVE_ROUTE_NETWORK_V1.md), [Screen Map](HUEMAN_SCREEN_MAP_v0.1.0.md), [Spatial Inheritance](SPATIAL_INHERITANCE_V1.md) | House boundaries, route verbs, route shape, recursively inherited map projection |
 | Shared judiciary | [Minoan County Court](MINOAN_COUNTY_COURT_SYSTEM_AND_RESTITUTION_CYCLE_V1.md) | disputes, amendment review, Restitution |
 | Shared economy | [Central Junction Four-Pole Economy](CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md) | public exchange, indexes, settlement |
 | Federal sovereignty and runtime continuity | [Federal Sovereignty and Seer Ceremony](FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md), [The Runtime Federation](THE_RUNTIME_FEDERATION_V1.md), [Executable Implementation V1](THE_RUNTIME_FEDERATION_IMPLEMENTATION_V1.md) | Roi and Roselina, Worldright, deterministic cross-domain manifest, replay, inspection, migration, and accepted consequence |

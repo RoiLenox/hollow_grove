@@ -9,12 +9,20 @@ use std::fmt;
 use serde::{Deserialize, Serialize};
 
 mod oriented_point;
+mod spatial_inheritance;
 
 pub use oriented_point::{
     AxisHandedness, ExpandedPointField, FieldId, OrientedPoint, OrientedPointError, PhysicalExtent,
     PhysicalPosition, PointCenterId, PointId, PointInversion, PointScaling, PolarityAxis,
     PolarityTendency, PoleId, PositiveScaleFactor, RelativePolarity, SpatialAuthorityId,
     SpatialEvidenceId, SpatialRegionId, invert_point, lawfully_scale_point,
+};
+pub use spatial_inheritance::{
+    NORMALIZED_UNIT, NormalizedCoordinate, NormalizedPoint, NormalizedRect, ResolvedSpatialAnchor,
+    ResolvedSpatialPath, ResolvedSpatialRegion, SPATIAL_CATALOG_SCHEMA_VERSION,
+    SPATIAL_SELECTION_POLICY_ID, SpatialAnchor, SpatialCatalogSnapshot, SpatialFrame,
+    SpatialInheritanceCatalog, SpatialInheritanceError, SpatialPath, SpatialPathGeometry,
+    SpatialRegion, SpatialTemplate, SpatialTransform, SpatialViewpoint, SpatialViewpointSelection,
 };
 
 fn is_stable_key(value: &str) -> bool {
@@ -86,6 +94,11 @@ macro_rules! stable_key {
 stable_key!(CompositionNodeId);
 stable_key!(CompositionRecordId);
 stable_key!(ScaleKey);
+stable_key!(SpatialAnchorId);
+stable_key!(SpatialFrameId);
+stable_key!(SpatialPathId);
+stable_key!(SpatialRuleSetId);
+stable_key!(SpatialTemplateId);
 
 /// Opaque reference to a domain-owned object, operation, or evidence trace.
 /// The composition layer does not parse either field.

@@ -62,6 +62,28 @@ Visual development references live in the non-shipping reference tree:
 They establish character scale and environment density only. Runtime art is
 original, deterministic, pixel-aligned, and resolved from the canonical palette.
 
+The retro screen keeps a fixed 160×144 logical field, centers it at the largest
+whole-number scale that fits, enforces the logical field as the minimum window
+size, disables engine-level canvas restretching, and inherits nearest-neighbor
+filtering for future texture assets. Long runtime dialogue is wrapped before it
+reaches the 36-character pixel line, and the compact font includes the
+punctuation used by gameplay copy instead of silently replacing it with a
+question mark.
+
+The custom-drawn pixels also have a parallel, nonvisual Godot accessibility
+projection with a stable `1.0.0` screen-semantics schema. It exposes the current
+world context, status, dialogue page, active menu, and context-sensitive
+controls from the same immutable runtime view. Live-region updates are
+deduplicated, the projection cannot issue intents, and movement animation is
+skipped when the platform requests reduced motion.
+
+Run the focused graphics/semantics smoke check with:
+
+```bash
+godot --headless --path hueman_godot \
+  --script res://tests/retro_overworld_semantics_smoke.gd
+```
+
 This is the thinnest practical Godot 4 shell for the shared Hollow Grove / Hueman screen map.
 
 It reads:
@@ -80,6 +102,16 @@ It writes:
 Boundary:
 
 - Godot renders the shared coordinate field, routes, surfaces, overlay terms, and the live player probe.
+- Focused-window probes consume the bridge's inherited local viewpoint, so
+  each House city reuses the main map plan while retaining its frame identity.
+- Emitted spatial scope retains the versioned rule set, deterministic
+  selection policy, candidate count, and template/catalog/replay digests for
+  independent runtime verification.
+- Immutable map and coordinate contracts are retained in memory between
+  live-state polls.
+- The retained map contract is field-for-field conformed with the inherited
+  kernel template, including constitutional route identities, band widths,
+  Round controls, and all three surface polygons.
 - Godot may emit narrow intents such as `inspect` and `move`.
 - Hollow Grove remains the only layer allowed to decide real runtime or filesystem side effects.
 - Hueman is the rendered face of the same map rather than a separate spatial product.

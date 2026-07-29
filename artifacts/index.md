@@ -78,9 +78,19 @@ make generated output constitutional authority.
 
 These remain read-only mirrors of `KernelPass`.
 
-`artifacts/screen_map_state.json` is a live bridge artifact driven by `niri` focused-window and output geometry so Hueman/Godot can project the current screen position without taking mutation authority.
+`artifacts/screen_map_state.json` is a live bridge artifact driven by `niri`
+focused-window and output geometry so Hueman/Godot can project the current
+screen position without taking mutation authority. Its additive spatial
+viewpoint carries the inherited frame, scale, depth, root coordinate, and local
+coordinate defined by `SPATIAL_INHERITANCE_V1.md`. It also carries the
+rule-set identity, deterministic selection policy, candidate count, canonical
+template and catalog digests, and world replay digest used for independent
+runtime verification.
 
-`artifacts/screen_map_intent.json` is the narrow Godot-to-runtime handoff. Godot writes raw intent requests there, and the runtime consumes them into native Current Synthesis player actions during `run` mode.
+`artifacts/screen_map_intent.json` is the narrow Godot-to-runtime handoff. Godot
+writes raw intent requests and their optional inherited spatial scope there,
+and the runtime consumes them into native Current Synthesis player actions
+during `run` mode while preserving that scope in the receipt.
 
 `artifacts/hueman_pair_state.json` is the paired-window presentation contract for the Godot shell. The launcher captures the focused Niri window there, and the shell reads diagonal angle plus 25% spread steps for the paired overlay.
 
@@ -142,4 +152,10 @@ document; clients that require an artifact path consume the generated mirror.
 These are generated Hueman-facing design artifacts.
 They should be read in alignment with the top-level Hollow Grove and Hueman docs, not as competing constitutions.
 
-`artifacts/hueman_screen_map.json` is the static machine-readable screen-to-world projection contract for the first Hueman/Godot bridge.
+`artifacts/hueman_screen_map.json` is the static machine-readable
+screen-to-world projection contract for the Hueman/Godot bridge. Every
+constitutional route carries its `geography.route.*` identity; Current Sea
+and Current Seanad are distinct, Glausbahn is curved, and the local-only Aura
+Ridge East segment declares its Aura Ridge projection. Spatial-inheritance
+conformance compares its endpoints, geometry, bands, controls, and surface
+polygons with the kernel template.

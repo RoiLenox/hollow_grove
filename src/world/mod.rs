@@ -32,6 +32,7 @@ pub mod service_tournament;
 pub mod service_tournament_archive;
 pub mod service_tournament_fixture;
 pub mod session;
+pub mod spatial_inheritance;
 pub mod stonebend;
 pub mod sympiote;
 pub mod way_back;

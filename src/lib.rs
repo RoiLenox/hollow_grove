@@ -57,7 +57,8 @@ pub use application_protocol::{
     build_hollow_grove_application_witness, canonical_hollow_grove_application_registry,
 };
 pub use artifact_io::{
-    ArtifactFlushRecord, ArtifactSession, read_text_artifact, write_text_artifact,
+    ArtifactFlushRecord, ArtifactSession, read_text_artifact, write_bytes_atomically,
+    write_text_artifact,
 };
 pub use aura_polarity::{
     AgencyEffect, AuraMoveId, AuraPolarity, AuraPolarityActionRequest, AuraPolarityContractInput,
@@ -99,10 +100,15 @@ pub use civic_body::{
 pub use composition::{
     AxisHandedness, CompositionCatalog, CompositionCatalogError, CompositionNode,
     CompositionNodeId, CompositionRecord, CompositionRecordId, Containment, ExpandedPointField,
-    ExternalRef, ExternalRefError, FieldId, OrientedPoint, OrientedPointError, PhysicalExtent,
-    PhysicalPosition, PointCenterId, PointId, PointInversion, PointScaling, PolarityAxis,
-    PolarityTendency, PoleId, PositiveScaleFactor, RelativePolarity, ScaleKey, SpatialAuthorityId,
-    SpatialEvidenceId, SpatialRegionId, StableKeyError, invert_point, lawfully_scale_point,
+    ExternalRef, ExternalRefError, FieldId, NormalizedCoordinate, NormalizedPoint, NormalizedRect,
+    OrientedPoint, OrientedPointError, PhysicalExtent, PhysicalPosition, PointCenterId, PointId,
+    PointInversion, PointScaling, PolarityAxis, PolarityTendency, PoleId, PositiveScaleFactor,
+    RelativePolarity, ResolvedSpatialAnchor, ResolvedSpatialPath, ResolvedSpatialRegion, ScaleKey,
+    SpatialAnchor, SpatialAnchorId, SpatialAuthorityId, SpatialCatalogSnapshot, SpatialEvidenceId,
+    SpatialFrame, SpatialFrameId, SpatialInheritanceCatalog, SpatialInheritanceError, SpatialPath,
+    SpatialPathGeometry, SpatialPathId, SpatialRegion, SpatialRegionId, SpatialRuleSetId,
+    SpatialTemplate, SpatialTemplateId, SpatialTransform, SpatialViewpoint,
+    SpatialViewpointSelection, StableKeyError, invert_point, lawfully_scale_point,
 };
 pub use current_grip_inheritance::{
     CurrentGripActionRequest, CurrentGripInheritanceContractInput, CurrentGripResolution,

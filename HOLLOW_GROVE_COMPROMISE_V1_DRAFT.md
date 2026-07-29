@@ -48,6 +48,12 @@ The detailed Bond and Constitutional Runtime law is specified by
 specification is normative for its runtime domain but is not another Hollow
 Grove Constitution.
 
+The detailed spatial-composition, inheritance, viewpoint, and replay law is
+specified by `SPATIAL_INHERITANCE_V1.md` beneath this Compromise and beneath
+Constitutional Geography and Route Network authority. It is normative for
+spatial identity and projection, but it creates no House, route meaning,
+ownership, access right, or second constitutional runtime.
+
 ## Backbone
 
 ```text
@@ -73,6 +79,7 @@ earlier laws in living, social, and playable form; they do not rewrite them.
 | Universal Laws | Locked | `CURRENT_SYNTHESIS_HOLLOW_GROVE_WORLD_CONTEXT_v0.1.0.md`; semantic and embodied foundations | make Current, Aura, Relativity, Hollow, Hollowing, and Synthesis perceptible through play |
 | Constitutional Runtime | Locked | `src/constitutional/`; V2 specification | preserve determinism, evidence, replay, serialization, migration, and fail-closed decisions |
 | Bond Constitution | Locked / Expand | `src/constitutional/bond.rs`; runtime, persistence, trace, and application layers | give lawful Bond events social and narrative consequences |
+| Spatial Inheritance | Locked / Expand | `SPATIAL_INHERITANCE_V1.md`; neutral kernel, world binding, archive, bridge, Godot, and runtime verifier | author lawful district/site/room/object/detail instances without copying or redefining the canonical plan |
 | Four Houses | Locked / Expand | the four House constitutions and world projections | express Name, Proof, Clearance, and Recognition through ordinary people and conflicts |
 | Hueman Constitution | Locked / Expand | Frame, Flow, Glow, faculty, progression, and Recipe law | turn faculties into player-facing perception and action grammar |
 | Sympian Lineage | Reconcile | partial Natural and Matural expression language; no unified typed lineage authority | define Natural Sympian, Matural Sympian, and Synthetic without replacing Being continuity |
@@ -142,6 +149,52 @@ complete, renew, merge, branch, split, transfer, or dissolve a Bond.
 Regional names such as **Goon Bond** describe a lawful social use of this
 lifecycle. They do not create a second reducer or a shortcut around House
 decisions.
+
+## Spatial Inheritance
+
+Spatial inheritance is the principal bridge between one canonical map plan and
+its recursively situated world instances.
+
+The locked publication and resolution chain is:
+
+```text
+Complete Declaration
+→ Structural Validation
+→ Hollow Grove Conformance
+→ Atomic Publication
+→ Cached Root Transform
+→ Deterministic Viewpoint Selection
+→ Versioned Archive
+→ Independent Live Verification
+```
+
+The main world and every lawful child frame share one immutable local topology.
+Each instance retains its own frame identity, parent, scale, bounds, placement
+authority, evidence, lineage, root coordinate, and local coordinate.
+
+“One topology” means the complete plan: six anchors (including distinct
+co-located Ranina and Aura Ridge Junction identities), ten constitutional
+routes, the local Aura Ridge East projection, route-band widths, Round control
+points, and the Aura Field, Aura Beach, and Aura Basin polygons. In
+particular, Current Sea and Current Seanad remain distinct and Glausbahn
+remains Round at every inherited scale.
+
+The legal scale grammar is:
+
+```text
+World
+→ City
+→ District
+→ Site
+→ Room
+→ Object
+→ Detail
+→ Detail ...
+```
+
+Spatial inheritance is not constitutional inheritance of power. Containment is
+not ownership; a coordinate is not evidence; a viewpoint is not a Bond; and a
+child map cannot rename, reshape, or reinterpret a constitutional route.
 
 ## Four Houses
 

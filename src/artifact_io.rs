@@ -1,9 +1,13 @@
 use std::cell::RefCell;
 use std::collections::{HashMap, HashSet};
-use std::fs;
-use std::io;
+use std::ffi::OsString;
+use std::fs::{self, File, OpenOptions};
+use std::io::{self, Write};
 use std::path::{Path, PathBuf};
+use std::sync::atomic::{AtomicU64, Ordering};
 use std::time::{Duration, Instant};
+
+static ATOMIC_WRITE_NONCE: AtomicU64 = AtomicU64::new(0);
 
 struct ArtifactCache {
     contents: HashMap<PathBuf, Vec<u8>>,
@@ -116,6 +120,102 @@ pub fn read_text_artifact(path: &Path) -> io::Result<String> {
     fs::read_to_string(path)
 }
 
+struct PendingAtomicWrite {
+    path: PathBuf,
+    committed: bool,
+}
+
+impl Drop for PendingAtomicWrite {
+    fn drop(&mut self) {
+        if !self.committed {
+            let _ = fs::remove_file(&self.path);
+        }
+    }
+}
+
+fn atomic_parent(path: &Path) -> &Path {
+    path.parent()
+        .filter(|parent| !parent.as_os_str().is_empty())
+        .unwrap_or_else(|| Path::new("."))
+}
+
+fn create_atomic_temp(path: &Path) -> io::Result<(File, PendingAtomicWrite)> {
+    let parent = atomic_parent(path);
+    fs::create_dir_all(parent)?;
+    let file_name = path.file_name().ok_or_else(|| {
+        io::Error::new(
+            io::ErrorKind::InvalidInput,
+            "atomic write target must have a file name",
+        )
+    })?;
+
+    for _ in 0..100 {
+        let nonce = ATOMIC_WRITE_NONCE.fetch_add(1, Ordering::Relaxed);
+        let mut temp_name = OsString::from(".");
+        temp_name.push(file_name);
+        temp_name.push(format!(
+            ".hollow-grove-atomic-{}-{nonce}",
+            std::process::id()
+        ));
+        let temp_path = parent.join(temp_name);
+        match OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .open(&temp_path)
+        {
+            Ok(file) => {
+                return Ok((
+                    file,
+                    PendingAtomicWrite {
+                        path: temp_path,
+                        committed: false,
+                    },
+                ));
+            }
+            Err(error) if error.kind() == io::ErrorKind::AlreadyExists => {}
+            Err(error) => return Err(error),
+        }
+    }
+
+    Err(io::Error::new(
+        io::ErrorKind::AlreadyExists,
+        "could not allocate a unique atomic-write staging file",
+    ))
+}
+
+fn write_bytes_atomically_with(
+    path: &Path,
+    contents: &[u8],
+    before_rename: impl FnOnce(&Path) -> io::Result<()>,
+) -> io::Result<()> {
+    let existing_permissions = match fs::metadata(path) {
+        Ok(metadata) => Some(metadata.permissions()),
+        Err(error) if error.kind() == io::ErrorKind::NotFound => None,
+        Err(error) => return Err(error),
+    };
+    let (mut file, mut pending) = create_atomic_temp(path)?;
+    if let Some(permissions) = existing_permissions {
+        file.set_permissions(permissions)?;
+    }
+    file.write_all(contents)?;
+    file.sync_all()?;
+    drop(file);
+
+    before_rename(&pending.path)?;
+    fs::rename(&pending.path, path)?;
+    pending.committed = true;
+    File::open(atomic_parent(path))?.sync_all()
+}
+
+/// Durably replaces one file without exposing partially written contents.
+///
+/// Bytes are flushed to a unique sibling file, renamed over the destination,
+/// and followed by a parent-directory sync. If staging fails, the old file is
+/// left in place and the sibling is removed.
+pub fn write_bytes_atomically(path: &Path, contents: &[u8]) -> io::Result<()> {
+    write_bytes_atomically_with(path, contents, |_| Ok(()))
+}
+
 pub fn write_text_artifact(path: &Path, contents: &str) -> io::Result<()> {
     let target_bytes = contents.as_bytes();
 
@@ -150,7 +250,7 @@ pub fn write_text_artifact(path: &Path, contents: &str) -> io::Result<()> {
         Err(error) => return Err(error),
     }
 
-    fs::write(path, contents)?;
+    write_bytes_atomically(path, target_bytes)?;
     ARTIFACT_CACHE.with(|cache| {
         cache
             .borrow_mut()
@@ -162,8 +262,12 @@ pub fn write_text_artifact(path: &Path, contents: &str) -> io::Result<()> {
 
 #[cfg(test)]
 mod tests {
-    use super::{ArtifactSession, read_text_artifact, write_text_artifact};
+    use super::{
+        ArtifactSession, read_text_artifact, write_bytes_atomically, write_bytes_atomically_with,
+        write_text_artifact,
+    };
     use std::fs;
+    use std::io;
     use std::path::PathBuf;
     use std::thread;
     use std::time::{Duration, SystemTime, UNIX_EPOCH};
@@ -186,6 +290,54 @@ mod tests {
         assert_eq!(
             read_text_artifact(&path).expect("artifact should read"),
             "alpha"
+        );
+
+        fs::remove_dir_all(&root).expect("temp cleanup should succeed");
+    }
+
+    #[test]
+    fn atomic_byte_write_replaces_complete_contents_and_leaves_no_staging_file() {
+        let root = unique_temp_dir("hollow-grove-atomic-byte-write");
+        let path = root.join("archives/state.bin");
+
+        write_bytes_atomically(&path, b"first").expect("initial archive should write");
+        write_bytes_atomically(&path, b"second").expect("replacement archive should write");
+
+        assert_eq!(fs::read(&path).expect("archive should read"), b"second");
+        assert_eq!(
+            fs::read_dir(path.parent().unwrap())
+                .expect("archive directory should read")
+                .count(),
+            1
+        );
+
+        fs::remove_dir_all(&root).expect("temp cleanup should succeed");
+    }
+
+    #[test]
+    fn failed_atomic_write_preserves_last_good_file_and_cleans_staging_file() {
+        let root = unique_temp_dir("hollow-grove-atomic-byte-failure");
+        let path = root.join("archives/state.bin");
+        write_bytes_atomically(&path, b"last-good").expect("initial archive should write");
+
+        let error = write_bytes_atomically_with(&path, b"incomplete", |_| {
+            Err(io::Error::new(
+                io::ErrorKind::Interrupted,
+                "simulated interruption before rename",
+            ))
+        })
+        .expect_err("simulated interruption should fail");
+
+        assert_eq!(error.kind(), io::ErrorKind::Interrupted);
+        assert_eq!(
+            fs::read(&path).expect("last-good archive should read"),
+            b"last-good"
+        );
+        assert_eq!(
+            fs::read_dir(path.parent().unwrap())
+                .expect("archive directory should read")
+                .count(),
+            1
         );
 
         fs::remove_dir_all(&root).expect("temp cleanup should succeed");

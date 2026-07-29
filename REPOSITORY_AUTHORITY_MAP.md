@@ -276,6 +276,33 @@ geography, authority, evidence, or regional Synthesis decision.
 
 `src/world/geography.rs` is the neutral executable projection of constitutional route law. It validates route purpose and boundary coherence above Constitutional Runtime V2, and may not be imported by the recursion kernel, `src/constitutional/`, or `flynt-constitution`.
 
+`hollow-grove-kernel/src/spatial_inheritance.rs` owns only generic fixed-point
+coordinates, reusable spatial templates, parent/child frames, and cached
+coordinate transforms. It also owns the neutral versioned snapshot, canonical
+digest, deterministic overlap-selection policy, replay validation, and cycle
+rejection. It owns no named scale grammar, placement authority, or evidence
+meaning.
+
+`src/world/spatial_inheritance.rs` binds the main map and each House city to one
+inherited Hollow Grove template above that neutral primitive. It owns typed
+World/City/District/Site/Room/Object/recursive-Detail progression, immutable
+placement declarations, authority and evidence references, conformance,
+deterministic archives, migration, and replay digests under
+`SPATIAL_INHERITANCE_V1.md`. Spatial inheritance duplicates neither route
+authority nor constitutional meaning.
+
+The inherited template includes neutral fixed-point anchors, endpoint
+topology, route bands, Round controls, the local Aura Ridge East projection,
+and surface polygons. Constitutional route identity/endpoints/class remain
+owned by Route Network; screen-local controls and polygons remain governed by
+the Screen Map contract.
+
+The Niri bridge projects the independently digestible cached frame viewpoint,
+Godot resolves the shared plan in that local frame, and the runtime recomputes
+and verifies the rule set, digests, candidate set, frame, and coordinate before
+preserving scope in its consumed intent receipt. None of those projections can
+redefine the template or its route authority.
+
 `src/world/lived_lore.rs` is the executable Compromise integration layer. It
 requires all twelve functional-lore fields, three loops per House, all ten
 routes, exact live House authority, deterministic persistence, and failure or
@@ -327,6 +354,10 @@ presence does not make an unavailable intent authoritative or executable.
   `src/bin/constitutional_geography_audit.rs`: route-purpose uniqueness,
   boundary-flow, terminology, frozen-layer, documentation, and executable
   geography proof.
+- `tests/spatial_inheritance.rs`: shared world/House map topology, complete
+  path-and-region geometry, static artifact parity, recursive viewpoint
+  projection, replay/tamper rejection, Mt. Aura inheritance, and
+  spatial-kernel purity.
 - `tests/stonebend_constitutional_architecture.rs`,
   `tests/stonebend_documentation_conformance.rs`, and
   `src/bin/stonebend_constitutional_audit.rs`: Stonebend authority placement,

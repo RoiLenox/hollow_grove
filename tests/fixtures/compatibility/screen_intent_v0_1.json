@@ -1,0 +1,18 @@
+{
+  "intent": "move",
+  "pair": {
+    "app_id": "kitty",
+    "diagonal_angle_degrees": 135,
+    "paired_window_mode": true,
+    "spread_ratio": 0.25,
+    "window_id": 4,
+    "window_title": "Terminal"
+  },
+  "schema_version": "0.1.0",
+  "source": "hueman_godot_shell",
+  "zone": {
+    "id": "aura_ridge_east",
+    "kind": "straight_route",
+    "name": "Aura Ridge East"
+  }
+}
