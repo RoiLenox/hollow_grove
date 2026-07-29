@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+set -u
+
+ardour_binary=
+for candidate in ardour9 ardour; do
+    if command -v "$candidate" >/dev/null 2>&1; then
+        ardour_binary=$candidate
+        break
+    fi
+done
+
+if [[ -z "$ardour_binary" ]]; then
+    /usr/lib/hollow-grove/bin/notify \
+        "Ardour unavailable" \
+        "Install Ardour to use this optional studio binding." \
+        normal
+    exit 127
+fi
+
+export RESOURCE_NAME=ardour
+exec -a ardour "$ardour_binary" "$@"

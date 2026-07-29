@@ -1,0 +1,72 @@
+#!/usr/bin/bash
+set -u
+
+usage() {
+    printf 'usage: %s --label LABEL [--require COMMAND]... -- COMMAND [ARG...]\n' "${0##*/}" >&2
+    exit 2
+}
+
+label=
+libexec=${HOLLOW_GROVE_LIBEXEC:-/usr/lib/hollow-grove/bin}
+declare -a requirements=()
+
+while (( $# > 0 )); do
+    case "$1" in
+        --label)
+            (( $# >= 2 )) || usage
+            label=$2
+            shift 2
+            ;;
+        --require)
+            (( $# >= 2 )) || usage
+            requirements+=("$2")
+            shift 2
+            ;;
+        --)
+            shift
+            break
+            ;;
+        --help|-h)
+            usage
+            ;;
+        *)
+            usage
+            ;;
+    esac
+done
+
+[[ -n "$label" && $# -gt 0 ]] || usage
+
+command_available() {
+    local candidate=$1
+    if [[ "$candidate" == */* ]]; then
+        [[ -x "$candidate" ]]
+    else
+        command -v "$candidate" >/dev/null 2>&1
+    fi
+}
+
+if ! command_available "$1"; then
+    requirements=("$1" "${requirements[@]}")
+fi
+
+declare -a missing=()
+declare -A seen_missing=()
+for requirement in "${requirements[@]}"; do
+    if ! command_available "$requirement" && [[ -z "${seen_missing[$requirement]+present}" ]]; then
+        missing+=("$requirement")
+        seen_missing["$requirement"]=1
+    fi
+done
+
+if (( ${#missing[@]} > 0 )); then
+    detail="Missing command"
+    if (( ${#missing[@]} > 1 )); then
+        detail="Missing commands"
+    fi
+    detail+=": ${missing[*]}. See OPTIONAL_APPLICATIONS.md or /etc/hollow-grove/applications.toml."
+    "$libexec/notify" "Unavailable: $label" "$detail" normal
+    exit 127
+fi
+
+exec "$@"

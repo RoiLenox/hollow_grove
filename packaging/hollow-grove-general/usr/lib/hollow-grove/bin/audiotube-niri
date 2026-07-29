@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+set -u
+
+if ! command -v audiotube >/dev/null 2>&1; then
+    /usr/lib/hollow-grove/bin/notify \
+        "AudioTube unavailable" \
+        "Install AudioTube to use this optional streaming binding." \
+        normal
+    exit 127
+fi
+
+export QT_QUICK_CONTROLS_STYLE="${QT_QUICK_CONTROLS_STYLE:-org.kde.desktop}"
+export QT_MEDIA_BACKEND="${QT_MEDIA_BACKEND:-gstreamer}"
+export QT_QUICK_CONTROLS_HOVER_ENABLED="${QT_QUICK_CONTROLS_HOVER_ENABLED:-1}"
+
+exec audiotube "$@"

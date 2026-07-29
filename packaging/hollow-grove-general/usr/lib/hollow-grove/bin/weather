@@ -1,0 +1,73 @@
+#!/usr/bin/bash
+set -u
+
+mode=${1:-current}
+config_root=${XDG_CONFIG_HOME:-"$HOME/.config"}
+settings_path="$config_root/hollow-grove/general-edition.toml"
+
+read_setting() {
+    local key=$1
+    awk -F= -v wanted="$key" '
+        $1 ~ "^[[:space:]]*" wanted "[[:space:]]*$" {
+            value = $2
+            sub(/^[[:space:]]*"/, "", value)
+            sub(/"[[:space:]]*$/, "", value)
+            print value
+            exit
+        }
+    ' "$settings_path"
+}
+
+not_configured() {
+    local detail="Set weather_location in $settings_path."
+    if [[ "$mode" == radar ]]; then
+        detail="Set weather_latitude and weather_longitude in $settings_path."
+    fi
+    /usr/lib/hollow-grove/bin/notify "Weather location not configured" "$detail" normal
+    printf '%s\n' "$detail"
+    exit 0
+}
+
+[[ -f "$settings_path" ]] || not_configured
+
+case "$mode" in
+    current)
+        location=$(read_setting weather_location)
+        [[ -n "$location" ]] || not_configured
+        for command_name in curl jq; do
+            if ! command -v "$command_name" >/dev/null 2>&1; then
+                /usr/lib/hollow-grove/bin/notify \
+                    "Weather unavailable" \
+                    "Missing command: $command_name" \
+                    normal
+                exit 127
+            fi
+        done
+        encoded=$(jq -rn --arg value "$location" '$value | @uri')
+        exec curl --fail --silent --show-error "https://wttr.in/${encoded}?format=3"
+        ;;
+    radar)
+        latitude=$(read_setting weather_latitude)
+        longitude=$(read_setting weather_longitude)
+        [[ -n "$latitude" && -n "$longitude" ]] || not_configured
+        if [[ ! "$latitude" =~ ^-?[0-9]+([.][0-9]+)?$ || ! "$longitude" =~ ^-?[0-9]+([.][0-9]+)?$ ]]; then
+            /usr/lib/hollow-grove/bin/notify \
+                "Weather coordinates invalid" \
+                "Use decimal latitude and longitude values in $settings_path." \
+                normal
+            exit 2
+        fi
+        if ! command -v radar >/dev/null 2>&1; then
+            /usr/lib/hollow-grove/bin/notify \
+                "Weather radar unavailable" \
+                "The optional radar command is not installed." \
+                normal
+            exit 127
+        fi
+        exec radar "--lat=$latitude" "--long=$longitude"
+        ;;
+    *)
+        printf 'usage: %s {current|radar}\n' "${0##*/}" >&2
+        exit 2
+        ;;
+esac

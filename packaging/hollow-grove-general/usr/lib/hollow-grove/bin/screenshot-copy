@@ -1,0 +1,35 @@
+#!/usr/bin/bash
+set -u
+
+mode=${1:-}
+
+for command_name in grim wl-copy; do
+    if ! command -v "$command_name" >/dev/null 2>&1; then
+        /usr/lib/hollow-grove/bin/notify \
+            "Screenshot copy unavailable" \
+            "Missing command: $command_name" \
+            normal
+        exit 127
+    fi
+done
+
+case "$mode" in
+    region)
+        if ! command -v slurp >/dev/null 2>&1; then
+            /usr/lib/hollow-grove/bin/notify \
+                "Region capture unavailable" \
+                "Missing command: slurp" \
+                normal
+            exit 127
+        fi
+        geometry=$(slurp) || exit 0
+        grim -g "$geometry" - | wl-copy
+        ;;
+    screen)
+        grim - | wl-copy
+        ;;
+    *)
+        printf 'usage: %s {region|screen}\n' "${0##*/}" >&2
+        exit 2
+        ;;
+esac

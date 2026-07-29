@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+set -u
+
+if ! command -v walker >/dev/null 2>&1; then
+    exec /usr/bin/hollow-launch \
+        --label "Walker application launcher" \
+        --require walker \
+        -- walker
+fi
+
+if command -v niri >/dev/null 2>&1 && command -v jq >/dev/null 2>&1; then
+    walker_id=$(
+        niri msg --json windows 2>/dev/null \
+            | jq -r '.[] | select(.app_id == "dev.benz.walker" or .app_id == "walker" or .app_id == "z.walker" or .title == "Walker") | .id' \
+            | head -n 1
+    )
+    if [[ -n "$walker_id" ]]; then
+        exec niri msg action focus-window --id "$walker_id"
+    fi
+fi
+
+exec walker

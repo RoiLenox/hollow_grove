@@ -1,0 +1,35 @@
+#!/usr/bin/bash
+set -u
+
+action=${1:-}
+
+if ! command -v brightnessctl >/dev/null 2>&1; then
+    /usr/lib/hollow-grove/bin/notify \
+        "Brightness control unavailable" \
+        "brightnessctl is not installed." \
+        normal
+    exit 127
+fi
+
+if ! brightnessctl info >/dev/null 2>&1; then
+    /usr/lib/hollow-grove/bin/notify \
+        "Brightness control unavailable" \
+        "No supported backlight or brightness device was detected." \
+        normal
+    exit 0
+fi
+
+case "$action" in
+    raise)
+        brightnessctl set 5%+ >/dev/null || exit 1
+        ;;
+    lower)
+        brightnessctl set 5%- >/dev/null || exit 1
+        ;;
+    *)
+        printf 'usage: %s {raise|lower}\n' "${0##*/}" >&2
+        exit 2
+        ;;
+esac
+
+exec /usr/lib/hollow-grove/bin/brightness-notify

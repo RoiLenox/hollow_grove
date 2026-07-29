@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+set -u
+
+summary=${1:-Hollow Grove}
+body=${2:-}
+urgency=${3:-normal}
+
+printf '%s: %s\n' "$summary" "$body" >&2
+
+if command -v notify-send >/dev/null 2>&1; then
+    notify-send \
+        --app-name="Hollow Grove" \
+        --urgency="$urgency" \
+        "$summary" "$body" >/dev/null 2>&1 || true
+fi

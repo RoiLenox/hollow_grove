@@ -1,0 +1,146 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+action=${1:-launch}
+if (( $# > 0 )); then
+    shift
+fi
+
+config_root=${XDG_CONFIG_HOME:-"$HOME/.config"}
+data_root=${XDG_DATA_HOME:-"$HOME/.local/share"}
+state_root=${XDG_STATE_HOME:-"$HOME/.local/state"}
+hueman_state="$state_root/hollow-grove"
+pair_state="$hueman_state/hueman_pair_state.json"
+preview_state="$hueman_state/hueman_pair_preview_state.json"
+preview_image="$hueman_state/hueman_pair_preview.png"
+application_registry="$data_root/hollow-grove/hollow_grove_application_registry.json"
+
+mkdir -p -- "$hueman_state"
+chmod 700 -- "$hueman_state"
+
+notify_missing() {
+    /usr/lib/hollow-grove/bin/notify \
+        "Hueman unavailable" \
+        "Install the Hollow Grove Hueman application package; no home-directory checkout is used." \
+        normal
+}
+
+write_default_pair() {
+    jq -n '{
+        schema_version: "0.2.0",
+        paired_window_mode: false,
+        sticky_actor: false,
+        probe_source: "focused_window_center",
+        binding_source: "hollow-hueman",
+        binding_status: "released",
+        diagonal_angle_degrees: 135,
+        spread_ratio: 0.25,
+        rotation_index: 0,
+        spread_index: 0,
+        active_output: null,
+        normalized: null,
+        application_attachment: null,
+        focused_window: null
+    }' >"$pair_state"
+}
+
+case "$action" in
+    launch)
+        if [[ -x /usr/lib/hollow-grove/hueman/launch ]]; then
+            exec /usr/lib/hollow-grove/hueman/launch "$@"
+        fi
+        if [[ -f /usr/share/hollow-grove/hueman/project.godot ]]; then
+            if ! command -v godot >/dev/null 2>&1; then
+                /usr/lib/hollow-grove/bin/notify \
+                    "Hueman unavailable" \
+                    "The installed Hueman project requires Godot." \
+                    normal
+                exit 127
+            fi
+            export HOLLOW_GROVE_CONFIG_HOME="$config_root/hollow-grove"
+            export HOLLOW_GROVE_DATA_HOME="$data_root/hollow-grove"
+            export HOLLOW_GROVE_STATE_HOME="$hueman_state"
+            exec godot --path /usr/share/hollow-grove/hueman "$@"
+        fi
+        notify_missing
+        exit 127
+        ;;
+    rebind)
+        if [[ -x /usr/lib/hollow-grove/hueman/pair ]]; then
+            exec /usr/lib/hollow-grove/hueman/pair rebind "$@"
+        fi
+        for command_name in niri jq; do
+            if ! command -v "$command_name" >/dev/null 2>&1; then
+                /usr/lib/hollow-grove/bin/notify \
+                    "Hueman rebind unavailable" \
+                    "Missing command: $command_name" \
+                    normal
+                exit 127
+            fi
+        done
+        focused_window=$(niri msg -j focused-window 2>/dev/null || printf 'null')
+        if [[ "$focused_window" == null ]]; then
+            /usr/lib/hollow-grove/bin/notify \
+                "Hueman rebind waiting" \
+                "No focused window is available." \
+                normal
+            exit 0
+        fi
+        if [[ -f "$pair_state" ]]; then
+            existing=$pair_state
+        else
+            write_default_pair
+            existing=$pair_state
+        fi
+        jq --argjson focused "$focused_window" '
+            .paired_window_mode = true
+            | .sticky_actor = true
+            | .probe_source = "paired_window_center"
+            | .binding_source = "hollow-hueman"
+            | .binding_status = "binding"
+            | .focused_window = $focused
+        ' "$existing" >"${pair_state}.tmp"
+        mv -- "${pair_state}.tmp" "$pair_state"
+        jq -n '{
+            schema_version: "0.2.0",
+            status: "rebinding",
+            detail: "paired window rebind requested"
+        }' >"$preview_state"
+        ;;
+    clear)
+        if [[ -x /usr/lib/hollow-grove/hueman/pair ]]; then
+            exec /usr/lib/hollow-grove/hueman/pair clear "$@"
+        fi
+        command -v jq >/dev/null 2>&1 || exit 127
+        write_default_pair
+        rm -f -- "$preview_image"
+        jq -n '{
+            schema_version: "0.2.0",
+            status: "released",
+            detail: "paired window released"
+        }' >"$preview_state"
+        ;;
+    step-spread)
+        if [[ -x /usr/lib/hollow-grove/hueman/pair ]]; then
+            exec /usr/lib/hollow-grove/hueman/pair step-spread "$@"
+        fi
+        command -v jq >/dev/null 2>&1 || exit 127
+        if [[ ! -f "$pair_state" ]]; then
+            write_default_pair
+        fi
+        jq '
+            .paired_window_mode = true
+            | .spread_index = (((.spread_index // 0) + 1) % 4)
+            | .spread_ratio = ([0.25, 0.50, 0.75, 1.00][.spread_index])
+        ' "$pair_state" >"${pair_state}.tmp"
+        mv -- "${pair_state}.tmp" "$pair_state"
+        ;;
+    *)
+        printf 'usage: %s {launch|rebind|clear|step-spread}\n' "${0##*/}" >&2
+        exit 2
+        ;;
+esac
+
+# The registry path is intentionally user-owned. It is reserved here so a
+# separately packaged Hueman implementation can consume the same XDG contract.
+: "$application_registry"

@@ -1,0 +1,48 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+direction=${1:-}
+case "$direction" in
+    left|right|up|down) ;;
+    *)
+        printf 'usage: %s {left|right|up|down}\n' "${0##*/}" >&2
+        exit 2
+        ;;
+esac
+
+if ! command -v flock >/dev/null 2>&1; then
+    /usr/lib/hollow-grove/bin/notify \
+        "Niri wrap move unavailable" \
+        "Missing command: flock" \
+        normal
+    exit 127
+fi
+
+runtime_root=${XDG_RUNTIME_DIR:-"/run/user/$UID"}
+state_root="$runtime_root/hollow-grove/niri-wrap-move"
+
+if [[ ! -d "$runtime_root" || ! -w "$runtime_root" ]]; then
+    /usr/lib/hollow-grove/bin/notify \
+        "Niri wrap move unavailable" \
+        "A writable XDG runtime directory is required." \
+        normal
+    exit 1
+fi
+
+umask 077
+if [[ -L "$state_root" ]]; then
+    printf 'refusing symlinked state directory: %s\n' "$state_root" >&2
+    exit 1
+fi
+
+mkdir -p -- "$state_root"
+chmod 700 -- "$state_root"
+exec {lock_fd}>"$state_root/lock"
+chmod 600 -- "$state_root/lock"
+
+if ! flock -w 1 "$lock_fd"; then
+    exit 75
+fi
+
+/usr/lib/hollow-grove/bin/niri-wrap-move-impl "$direction"
+sleep 0.06

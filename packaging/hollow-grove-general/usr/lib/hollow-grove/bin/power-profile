@@ -1,0 +1,27 @@
+#!/usr/bin/bash
+set -u
+
+profile=${1:-}
+case "$profile" in
+    power-saver|balanced|performance) ;;
+    *)
+        printf 'usage: %s {power-saver|balanced|performance}\n' "${0##*/}" >&2
+        exit 2
+        ;;
+esac
+
+if ! command -v powerprofilesctl >/dev/null 2>&1; then
+    /usr/lib/hollow-grove/bin/notify \
+        "Power profile unavailable" \
+        "Install and enable power-profiles-daemon." \
+        normal
+    exit 127
+fi
+
+if ! output=$(powerprofilesctl set "$profile" 2>&1); then
+    /usr/lib/hollow-grove/bin/notify \
+        "Power profile unavailable" \
+        "$output" \
+        normal
+    exit 1
+fi

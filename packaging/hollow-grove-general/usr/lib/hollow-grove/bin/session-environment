@@ -1,0 +1,26 @@
+#!/usr/bin/bash
+set -u
+
+export XDG_CURRENT_DESKTOP=niri
+export XDG_SESSION_DESKTOP=niri
+export XDG_SESSION_TYPE=wayland
+
+variables=(
+    WAYLAND_DISPLAY
+    NIRI_SOCKET
+    XDG_CURRENT_DESKTOP
+    XDG_SESSION_DESKTOP
+    XDG_SESSION_TYPE
+    MOZ_ENABLE_WAYLAND
+    GDK_BACKEND
+    QT_QPA_PLATFORM
+    ELECTRON_OZONE_PLATFORM_HINT
+)
+
+if command -v dbus-update-activation-environment >/dev/null 2>&1; then
+    dbus-update-activation-environment --systemd "${variables[@]}" >/dev/null 2>&1 || true
+fi
+
+if command -v systemctl >/dev/null 2>&1; then
+    systemctl --user import-environment "${variables[@]}" >/dev/null 2>&1 || true
+fi

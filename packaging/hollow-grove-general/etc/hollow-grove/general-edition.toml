@@ -1,0 +1,20 @@
+schema_version = 1
+edition = "Hollow Grove General Edition"
+profile = "niri"
+
+[paths]
+helper_root = "/usr/lib/hollow-grove/bin"
+shared_data = "/usr/share/hollow-grove"
+system_applications = "/etc/hollow-grove/applications.toml"
+
+[defaults]
+wallpaper_color = "#101218"
+weather_provider = "https://wttr.in"
+hardware_output_policy = "automatic"
+graphics_driver_policy = "system-selected"
+brightness_startup_policy = "unchanged"
+
+[state]
+user_config = "$XDG_CONFIG_HOME/hollow-grove/general-edition.toml"
+user_data = "$XDG_DATA_HOME/hollow-grove"
+user_state = "$XDG_STATE_HOME/hollow-grove"

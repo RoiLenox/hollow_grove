@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+libexec=${HOLLOW_GROVE_LIBEXEC:-/usr/lib/hollow-grove/bin}
+exec "$libexec/hueman" "$@"

@@ -1,0 +1,11 @@
+schema_version = 1
+
+# Set this to an absolute image path to replace the neutral solid wallpaper.
+wallpaper_path = ""
+
+# Weather is intentionally disabled until the installed user supplies a place.
+weather_location = ""
+
+# Optional coordinates are used only by the separate radar integration.
+weather_latitude = ""
+weather_longitude = ""

@@ -1,0 +1,411 @@
+// Hollow Grove General Edition
+// Hardware-neutral Niri profile for new users.
+
+prefer-no-csd
+screenshot-path "~/Screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png"
+
+cursor {
+  xcursor-theme "Adwaita"
+  xcursor-size 28
+}
+
+input {
+  keyboard {
+    xkb { }
+    repeat-delay 300
+    repeat-rate 35
+  }
+
+  touchpad {
+    tap
+    drag true
+    drag-lock
+    natural-scroll
+    tap-button-map "left-right-middle"
+    click-method "clickfinger"
+    accel-speed 0.2
+    accel-profile "flat"
+    scroll-method "two-finger"
+  }
+}
+
+// No output block belongs in the General Edition. Niri selects attached
+// displays automatically. Post-install tooling may add a machine-local file.
+
+layout {
+  gaps 0
+
+  struts {
+    left 0
+    right 0
+    top 0
+    bottom 0
+  }
+
+  focus-ring { off; }
+  border { off; }
+  shadow { off; }
+
+  default-column-width { proportion 0.25; }
+
+  preset-column-widths {
+    proportion 0.25
+    proportion 0.33
+    proportion 0.50
+    proportion 0.66
+    proportion 0.75
+    proportion 1.00
+  }
+
+  preset-window-heights {
+    proportion 0.15
+    proportion 0.25
+    proportion 0.33
+    proportion 0.50
+    proportion 0.66
+    proportion 0.75
+    proportion 0.85
+    proportion 1.00
+  }
+}
+
+window-rule {
+  open-floating false
+  geometry-corner-radius 0
+  clip-to-geometry true
+}
+
+window-rule {
+  match app-id=r#"(^walker$|^z\.walker$|[.]walker$|^anyrun$)"#
+  default-column-width { proportion 0.25; }
+}
+
+window-rule {
+  match app-id=r#"^org\.kde\.audiotube$"#
+  default-column-width { proportion 0.33333; }
+  geometry-corner-radius 14
+  clip-to-geometry true
+}
+
+window-rule {
+  match app-id=r#"^river$"# title=r#"^river - WL-[0-9]+$"#
+  default-column-width { proportion 0.25; }
+  opacity 1.0
+}
+
+environment {
+  MOZ_ENABLE_WAYLAND "1"
+  GDK_BACKEND "wayland,x11,*"
+  QT_QPA_PLATFORM "wayland;xcb"
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
+
+spawn-at-startup "/usr/lib/hollow-grove/bin/session-environment"
+spawn-at-startup "/usr/lib/hollow-grove/bin/start-optional-service" "mako.service"
+spawn-at-startup "/usr/lib/hollow-grove/bin/start-optional-service" "elephant.service"
+spawn-at-startup "/usr/bin/hollow-launch" "--label" "PolicyKit authentication agent" "--require" "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1" "--" "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-at-startup "/usr/bin/hollow-launch" "--label" "XWayland compatibility" "--require" "xwayland-satellite" "--" "xwayland-satellite"
+spawn-at-startup "/usr/lib/hollow-grove/bin/start-wallpaper"
+spawn-at-startup "/usr/lib/hollow-grove/bin/clipboard-watch"
+
+binds {
+  // Recall model:
+  // left hand  = application and domain launch grid
+  // right hand = focus, movement, reshape, and scope
+  //
+  // Left-hand modifiers:
+  // Mod = primary, Shift = visual/adjacent, Ctrl = inspect, Alt = advanced
+  //
+  // Right-hand modifiers:
+  // Mod = focus, Shift = move, Ctrl = reshape, Alt = scope
+
+  Mod+Escape                 { close-window; }
+  Mod+Shift+Escape           { spawn "/usr/lib/hollow-grove/bin/lock-session"; }
+  Mod+Ctrl+Escape            { quit; }
+  Mod+Alt+Escape             { spawn "/usr/bin/hollow-launch" "--label" "Nested River close" "--require" "river-scope-close" "--" "river-scope-close"; }
+  Mod+Ctrl+Alt+Escape        { spawn "systemctl" "reboot"; }
+  Mod+Ctrl+Alt+Shift+Escape  { spawn "systemctl" "poweroff"; }
+
+  // Return: terminal and Hollow Grove / Hueman transport.
+  Mod+Return            { spawn "kitty"; }
+  Mod+Shift+Return      { spawn "/usr/bin/hollow-launch" "--label" "Zellij terminal" "--require" "kitty" "--require" "zellij" "--" "kitty" "zellij"; }
+  Mod+Ctrl+Return       { spawn "kitty" "bash"; }
+  Mod+Alt+Return        { spawn "/usr/bin/hollow-hueman" "launch"; }
+  Mod+Alt+Ctrl+Return   { spawn "/usr/bin/hollow-hueman" "rebind"; }
+  Mod+Alt+Shift+Return  { spawn "/usr/bin/hollow-launch" "--label" "Nested River terminal scope" "--require" "river-scope-spawn" "--require" "river-kitty" "--" "river-scope-spawn" "river-kitty"; }
+  Mod+Alt+KP_Enter      { spawn "/usr/bin/hollow-hueman" "launch"; }
+  Mod+Alt+Slash         { spawn "/usr/bin/hollow-launch" "--label" "Nested River Hollow Grove probe" "--require" "river-scope-probe" "--" "river-scope-probe"; }
+
+  // q: query / browser
+  Mod+q repeat=false hotkey-overlay-title="Open Launcher: Walker" { spawn "/usr/lib/hollow-grove/bin/walker-toggle-niri"; }
+  Mod+Shift+q { spawn "/usr/bin/hollow-launch" "--label" "Firefox" "--require" "/usr/bin/firefox" "--" "/usr/bin/firefox"; }
+  Mod+Ctrl+q  { spawn "/usr/bin/hollow-launch" "--label" "Anyrun launcher" "--require" "anyrun" "--" "anyrun"; }
+  Mod+Alt+q   { spawn "/usr/bin/hollow-launch" "--label" "Chromium" "--require" "chromium" "--" "chromium"; }
+
+  // w: write / notes / docs
+  Mod+w       { spawn "/usr/bin/hollow-launch" "--label" "Helix editor" "--require" "kitty" "--require" "helix" "--" "kitty" "helix"; }
+  Mod+Shift+w { spawn "/usr/bin/hollow-launch" "--label" "Obsidian" "--require" "obsidian" "--" "obsidian"; }
+  Mod+Ctrl+w  { spawn "/usr/bin/hollow-launch" "--label" "Glow Markdown reader" "--require" "kitty" "--require" "glow" "--" "kitty" "--hold" "glow"; }
+  Mod+Alt+w   { spawn "/usr/bin/hollow-launch" "--label" "Lapce editor" "--require" "lapce" "--" "lapce"; }
+
+  // e: emulators
+  Mod+e       { spawn "/usr/bin/hollow-launch" "--label" "mGBA" "--require" "mgba-qt" "--" "mgba-qt"; }
+  Mod+Shift+e { spawn "/usr/bin/hollow-launch" "--label" "melonDS" "--require" "melonDS" "--" "melonDS"; }
+  Mod+Ctrl+e  { spawn "/usr/bin/hollow-launch" "--label" "Dolphin emulator" "--require" "dolphin-emu" "--" "dolphin-emu"; }
+  Mod+Alt+e   { spawn "/usr/bin/hollow-launch" "--label" "RPCS3" "--require" "rpcs3" "--" "rpcs3"; }
+
+  // r: record / DAW
+  Mod+r       { spawn "/usr/bin/hollow-launch" "--label" "Tracktion Waveform" "--require" "Waveform13" "--" "Waveform13"; }
+  Mod+Shift+r { spawn "/usr/lib/hollow-grove/bin/ardour-niri"; }
+  Mod+Ctrl+r  { spawn "/usr/bin/hollow-launch" "--label" "Audacity" "--require" "audacity" "--" "audacity"; }
+  Mod+Alt+r   { spawn "/usr/bin/hollow-launch" "--label" "REAPER" "--require" "reaper" "--" "reaper"; }
+
+  // t: tasks
+  Mod+t       { spawn "/usr/bin/hollow-launch" "--label" "Taskwarrior TUI" "--require" "kitty" "--require" "taskwarrior-tui" "--" "kitty" "taskwarrior-tui"; }
+  Mod+Shift+t { spawn "/usr/bin/hollow-launch" "--label" "Taskwarrior next" "--require" "kitty" "--require" "task" "--" "kitty" "--hold" "task" "next"; }
+  Mod+Ctrl+t  { spawn "/usr/bin/hollow-launch" "--label" "Planify" "--require" "planify" "--" "planify"; }
+  Mod+Alt+t   { spawn "/usr/bin/hollow-launch" "--label" "Taskwarrior projects" "--require" "kitty" "--require" "task" "--" "kitty" "--hold" "task" "projects"; }
+
+  // y: streaming
+  Mod+y       { spawn "/usr/lib/hollow-grove/bin/audiotube-niri"; }
+  Mod+Shift+y { spawn "/usr/bin/hollow-launch" "--label" "YouTUI" "--require" "kitty" "--require" "youtui" "--" "kitty" "youtui"; }
+  Mod+Ctrl+y  { spawn "/usr/bin/hollow-launch" "--label" "FreeTube" "--require" "freetube" "--" "freetube"; }
+  Mod+Alt+y   { spawn "/usr/bin/hollow-launch" "--label" "YewTube" "--require" "kitty" "--require" "yewtube" "--" "kitty" "yewtube"; }
+
+  // u: storage / devices
+  Mod+u       { spawn "/usr/bin/hollow-launch" "--label" "Yazi file manager" "--require" "kitty" "--require" "yazi" "--" "kitty" "yazi"; }
+  Mod+Shift+u { spawn "/usr/bin/hollow-launch" "--label" "NCurses disk usage" "--require" "kitty" "--require" "ncdu" "--" "kitty" "ncdu"; }
+  Mod+Ctrl+u  { spawn "/usr/bin/hollow-launch" "--label" "UDisks status" "--require" "kitty" "--require" "udisksctl" "--" "kitty" "--hold" "udisksctl" "status"; }
+  Mod+Alt+u   { spawn "/usr/bin/hollow-launch" "--label" "Home disk usage" "--require" "kitty" "--require" "dust" "--require" "bash" "--" "kitty" "--hold" "bash" "-lc" "exec dust \"$HOME\""; }
+
+  // i: info / weather
+  Mod+i       { spawn "/usr/bin/hollow-launch" "--label" "Peaclock" "--require" "kitty" "--require" "peaclock" "--" "kitty" "peaclock"; }
+  Mod+Shift+i { spawn "/usr/bin/hollow-launch" "--label" "Three-month calendar" "--require" "kitty" "--require" "cal" "--" "kitty" "--hold" "cal" "--three"; }
+  Mod+Ctrl+i  { spawn "/usr/bin/hollow-launch" "--label" "Weather" "--require" "kitty" "--" "kitty" "--hold" "/usr/lib/hollow-grove/bin/weather" "current"; }
+  Mod+Alt+i   { spawn "/usr/bin/hollow-launch" "--label" "Weather radar" "--require" "kitty" "--" "kitty" "--hold" "/usr/lib/hollow-grove/bin/weather" "radar"; }
+
+  // o: office
+  Mod+o          { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Writer" "--require" "libreoffice" "--" "libreoffice" "--writer"; }
+  Mod+Shift+o    { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Calc" "--require" "libreoffice" "--" "libreoffice" "--calc"; }
+  Mod+Ctrl+o     { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Impress" "--require" "libreoffice" "--" "libreoffice" "--impress"; }
+  Mod+Alt+o      { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Draw" "--require" "libreoffice" "--" "libreoffice" "--draw"; }
+  Mod+Alt+Ctrl+o { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Math" "--require" "libreoffice" "--" "libreoffice" "--math"; }
+
+  // p: power / battery
+  Mod+p          { spawn "/usr/bin/hollow-launch" "--label" "Battop" "--require" "kitty" "--require" "battop" "--" "kitty" "battop"; }
+  Mod+Shift+p    { spawn "/usr/bin/hollow-launch" "--label" "UPower status" "--require" "kitty" "--require" "upower" "--" "kitty" "--hold" "upower" "-d"; }
+  Mod+Ctrl+p     { spawn "/usr/lib/hollow-grove/bin/power-profile" "power-saver"; }
+  Mod+Alt+p      { spawn "/usr/lib/hollow-grove/bin/power-profile" "balanced"; }
+  Mod+Alt+Ctrl+p { spawn "/usr/lib/hollow-grove/bin/power-profile" "performance"; }
+
+  // a: alerts / mail
+  Mod+a       { spawn "/usr/bin/hollow-launch" "--label" "Himalaya mail" "--require" "kitty" "--require" "himalaya" "--" "kitty" "himalaya"; }
+  Mod+Shift+a { spawn "/usr/bin/hollow-launch" "--label" "Outlook integration" "--require" "hollow-outlook" "--" "hollow-outlook"; }
+  Mod+Alt+a   { spawn "/usr/bin/hollow-launch" "--label" "Notification history" "--require" "kitty" "--require" "makoctl" "--" "kitty" "--hold" "makoctl" "history"; }
+
+  // s: system stats
+  Mod+s       { spawn "/usr/bin/hollow-launch" "--label" "Bottom system monitor" "--require" "kitty" "--require" "btm" "--" "kitty" "btm"; }
+  Mod+Shift+s { spawn "/usr/bin/hollow-launch" "--label" "Btop system monitor" "--require" "kitty" "--require" "btop" "--" "kitty" "btop"; }
+  Mod+Ctrl+s  { spawn "/usr/bin/hollow-launch" "--label" "Hardware sensors" "--require" "kitty" "--require" "sensors" "--" "kitty" "--hold" "sensors"; }
+  Mod+Alt+s   { spawn "/usr/bin/hollow-launch" "--label" "GPU process monitor" "--require" "kitty" "--require" "nvtop" "--" "kitty" "nvtop"; }
+
+  // d: downloads / packages
+  Mod+d       { spawn "/usr/bin/hollow-launch" "--label" "rTorrent" "--require" "kitty" "--require" "rtorrent" "--" "kitty" "rtorrent"; }
+  Mod+Shift+d { spawn "/usr/bin/hollow-launch" "--label" "qBittorrent" "--require" "qbittorrent" "--" "qbittorrent"; }
+  Mod+Ctrl+d  { spawn "/usr/bin/hollow-launch" "--label" "Pacseek" "--require" "kitty" "--require" "pacseek" "--" "kitty" "pacseek"; }
+  Mod+Alt+d   { spawn "/usr/bin/hollow-launch" "--label" "Paru" "--require" "kitty" "--require" "paru" "--" "kitty" "paru"; }
+
+  // f: framing / window state
+  Mod+f       { fullscreen-window; }
+  Mod+Shift+f { toggle-windowed-fullscreen; }
+  Mod+Ctrl+f  { toggle-column-tabbed-display; }
+  Mod+Alt+f   { maximize-window-to-edges; }
+
+  // g: assistants. Credentials are never included in this profile.
+  Mod+g       { spawn "/usr/bin/hollow-launch" "--label" "Codex CLI" "--require" "kitty" "--require" "codex" "--" "kitty" "codex"; }
+  Mod+Shift+g { spawn "/usr/bin/hollow-launch" "--label" "Gemini CLI" "--require" "kitty" "--require" "gemini" "--" "kitty" "gemini"; }
+  Mod+Ctrl+g  { spawn "/usr/bin/hollow-launch" "--label" "Ollama" "--require" "kitty" "--require" "ollama" "--" "kitty" "ollama"; }
+  Mod+Alt+g   { spawn "/usr/bin/hollow-launch" "--label" "OpenCode" "--require" "kitty" "--require" "opencode" "--" "kitty" "opencode"; }
+
+  // Right hand: focus.
+  Mod+h { focus-column-left; }
+  Mod+l { focus-column-right; }
+  Mod+j { focus-window-or-workspace-down; }
+  Mod+k { focus-window-or-workspace-up; }
+
+  // Right hand: move.
+  Mod+Shift+h { move-column-left; }
+  Mod+Shift+l { move-column-right; }
+  Mod+Shift+j { move-window-down-or-to-workspace-down; }
+  Mod+Shift+k { move-window-up-or-to-workspace-up; }
+
+  // Right hand: reshape.
+  Mod+Ctrl+h { consume-or-expel-window-left; }
+  Mod+Ctrl+j { switch-preset-window-height; }
+  Mod+Ctrl+k { switch-preset-window-height-back; }
+  Mod+Ctrl+l { consume-or-expel-window-right; }
+
+  // Tiled-window conveyor with horizontal and vertical wrapping.
+  Mod+Ctrl+Shift+h { spawn "/usr/lib/hollow-grove/bin/niri-wrap-move" "left"; }
+  Mod+Ctrl+Shift+j { spawn "/usr/lib/hollow-grove/bin/niri-wrap-move" "down"; }
+  Mod+Ctrl+Shift+k { spawn "/usr/lib/hollow-grove/bin/niri-wrap-move" "up"; }
+  Mod+Ctrl+Shift+l { spawn "/usr/lib/hollow-grove/bin/niri-wrap-move" "right"; }
+
+  // Hueman column transport.
+  Mod+Alt+Ctrl+h { move-column-left; }
+  Mod+Alt+Ctrl+j { move-column-to-workspace-down; }
+  Mod+Alt+Ctrl+k { move-column-to-workspace-up; }
+  Mod+Alt+Ctrl+l { move-column-right; }
+
+  Mod+BracketLeft             { focus-column-left-or-last; }
+  Mod+BracketRight            { focus-column-right-or-first; }
+  Mod+Shift+BracketLeft       { move-column-to-first; }
+  Mod+Shift+BracketRight      { move-column-to-last; }
+  Mod+Ctrl+BracketLeft        { focus-column-first; }
+  Mod+Ctrl+BracketRight       { focus-column-last; }
+
+  Mod+Comma        { consume-window-into-column; }
+  Mod+Period       { expel-window-from-column; }
+  Mod+Shift+Comma  { spawn "/usr/bin/hollow-launch" "--label" "Previous media track" "--require" "playerctl" "--" "playerctl" "previous"; }
+  Mod+Shift+Period { spawn "/usr/bin/hollow-launch" "--label" "Next media track" "--require" "playerctl" "--" "playerctl" "next"; }
+  Mod+Alt+Comma    { center-column; }
+  Mod+Alt+Period   { center-visible-columns; }
+
+  Mod+Semicolon       { switch-focus-between-floating-and-tiling; }
+  Mod+Shift+Semicolon { toggle-window-floating; }
+  Mod+Ctrl+Semicolon  { focus-tiling; }
+  Mod+Alt+Semicolon   { focus-floating; }
+
+  // Change scope.
+  Mod+Alt+Left  { focus-monitor-left; }
+  Mod+Alt+Right { focus-monitor-right; }
+  Mod+Alt+Down  { focus-workspace-down; }
+  Mod+Alt+Up    { focus-workspace-up; }
+  Mod+Alt+Ctrl+Shift+h { move-column-to-monitor-left; }
+  Mod+Alt+Ctrl+Shift+j { move-column-to-workspace-down; }
+  Mod+Alt+Ctrl+Shift+k { move-column-to-workspace-up; }
+  Mod+Alt+Ctrl+Shift+l { move-column-to-monitor-right; }
+
+  // Workspaces: focus.
+  Mod+1 { focus-workspace 1; }
+  Mod+2 { focus-workspace 2; }
+  Mod+3 { focus-workspace 3; }
+  Mod+4 { focus-workspace 4; }
+  Mod+5 { focus-workspace 5; }
+  Mod+6 { focus-workspace 6; }
+  Mod+7 { focus-workspace 7; }
+  Mod+8 { focus-workspace 8; }
+  Mod+9 { focus-workspace 9; }
+  Mod+0 { focus-workspace 10; }
+
+  // Workspaces: send window and stay.
+  Mod+Shift+1 { move-window-to-workspace 1 focus=false; }
+  Mod+Shift+2 { move-window-to-workspace 2 focus=false; }
+  Mod+Shift+3 { move-window-to-workspace 3 focus=false; }
+  Mod+Shift+4 { move-window-to-workspace 4 focus=false; }
+  Mod+Shift+5 { move-window-to-workspace 5 focus=false; }
+  Mod+Shift+6 { move-window-to-workspace 6 focus=false; }
+  Mod+Shift+7 { move-window-to-workspace 7 focus=false; }
+  Mod+Shift+8 { move-window-to-workspace 8 focus=false; }
+  Mod+Shift+9 { move-window-to-workspace 9 focus=false; }
+  Mod+Shift+0 { move-window-to-workspace 10 focus=false; }
+
+  // Workspaces: send column and stay.
+  Mod+Ctrl+1 { move-column-to-workspace 1 focus=false; }
+  Mod+Ctrl+2 { move-column-to-workspace 2 focus=false; }
+  Mod+Ctrl+3 { move-column-to-workspace 3 focus=false; }
+  Mod+Ctrl+4 { move-column-to-workspace 4 focus=false; }
+  Mod+Ctrl+5 { move-column-to-workspace 5 focus=false; }
+  Mod+Ctrl+6 { move-column-to-workspace 6 focus=false; }
+  Mod+Ctrl+7 { move-column-to-workspace 7 focus=false; }
+  Mod+Ctrl+8 { move-column-to-workspace 8 focus=false; }
+  Mod+Ctrl+9 { move-column-to-workspace 9 focus=false; }
+  Mod+Ctrl+0 { move-column-to-workspace 10 focus=false; }
+
+  // Workspaces: send column and follow.
+  Mod+Ctrl+Shift+1 { move-column-to-workspace 1; }
+  Mod+Ctrl+Shift+2 { move-column-to-workspace 2; }
+  Mod+Ctrl+Shift+3 { move-column-to-workspace 3; }
+  Mod+Ctrl+Shift+4 { move-column-to-workspace 4; }
+  Mod+Ctrl+Shift+5 { move-column-to-workspace 5; }
+  Mod+Ctrl+Shift+6 { move-column-to-workspace 6; }
+  Mod+Ctrl+Shift+7 { move-column-to-workspace 7; }
+  Mod+Ctrl+Shift+8 { move-column-to-workspace 8; }
+  Mod+Ctrl+Shift+9 { move-column-to-workspace 9; }
+  Mod+Ctrl+Shift+0 { move-column-to-workspace 10; }
+
+  // z: studio / reader
+  Mod+z       { spawn "/usr/lib/hollow-grove/bin/lmms-niri"; }
+  Mod+Shift+z { spawn "/usr/bin/hollow-launch" "--label" "Image viewer" "--require" "imv" "--" "imv"; }
+  Mod+Ctrl+z  { spawn "/usr/bin/hollow-launch" "--label" "PDF information" "--require" "kitty" "--require" "pdfinfo" "--" "kitty" "--hold" "pdfinfo"; }
+  Mod+Alt+z   { spawn "/usr/bin/hollow-launch" "--label" "Okular document viewer" "--require" "okular" "--" "okular"; }
+
+  // x: exchange
+  Mod+x       { spawn "/usr/bin/hollow-launch" "--label" "LocalSend" "--require" "localsend" "--" "localsend"; }
+  Mod+Shift+x { spawn "/usr/bin/hollow-launch" "--label" "Croc transfer" "--require" "kitty" "--require" "croc" "--" "kitty" "croc"; }
+  Mod+Ctrl+x  { spawn "/usr/bin/hollow-launch" "--label" "Magic Wormhole receive" "--require" "kitty" "--require" "wormhole" "--" "kitty" "wormhole" "receive"; }
+  Mod+Alt+x   { spawn "/usr/bin/hollow-launch" "--label" "Magic Wormhole send" "--require" "kitty" "--require" "wormhole" "--" "kitty" "wormhole" "send"; }
+
+  // c: capture
+  Mod+c       { screenshot; }
+  Mod+Shift+c { screenshot-window; }
+  Mod+Ctrl+c  { screenshot-screen; }
+  Mod+Alt+c   { screenshot-screen write-to-disk=false; }
+
+  // v: volume / audio graph
+  Mod+v       { spawn "/usr/bin/hollow-launch" "--label" "PipeWire status" "--require" "kitty" "--require" "wpctl" "--" "kitty" "--hold" "wpctl" "status"; }
+  Mod+Shift+v { spawn "/usr/bin/hollow-launch" "--label" "Wiremix" "--require" "wiremix" "--" "wiremix"; }
+  Mod+Ctrl+v  { spawn "/usr/bin/hollow-launch" "--label" "PipeWire volume control" "--require" "pwvucontrol" "--" "pwvucontrol"; }
+  Mod+Alt+v   { spawn "/usr/bin/hollow-launch" "--label" "QPWGraph" "--require" "qpwgraph" "--" "qpwgraph"; }
+
+  // b: Bluetooth
+  Mod+b       { spawn "/usr/bin/hollow-launch" "--label" "Bluetooth TUI" "--require" "kitty" "--require" "bluetui" "--" "kitty" "bluetui"; }
+  Mod+Shift+b { spawn "/usr/bin/hollow-launch" "--label" "Blueman manager" "--require" "blueman-manager" "--" "blueman-manager"; }
+  Mod+Ctrl+b  { spawn "/usr/bin/hollow-launch" "--label" "Bluetooth devices" "--require" "kitty" "--require" "bluetoothctl" "--" "kitty" "--hold" "bluetoothctl" "devices"; }
+  Mod+Alt+b   { spawn "/usr/bin/hollow-launch" "--label" "Bluetooth adapters" "--require" "blueman-adapters" "--" "blueman-adapters"; }
+
+  // n: network
+  Mod+n       { spawn "/usr/bin/hollow-launch" "--label" "NetworkManager TUI" "--require" "kitty" "--require" "nmtui" "--" "kitty" "nmtui"; }
+  Mod+Shift+n { spawn "/usr/bin/hollow-launch" "--label" "Network connection editor" "--require" "nm-connection-editor" "--" "nm-connection-editor"; }
+  Mod+Ctrl+n  { spawn "/usr/bin/hollow-launch" "--label" "Network device status" "--require" "kitty" "--require" "nmcli" "--" "kitty" "--hold" "nmcli" "device" "status"; }
+  Mod+Alt+n   { spawn "/usr/bin/hollow-launch" "--label" "Network connections" "--require" "kitty" "--require" "nmcli" "--" "kitty" "--hold" "nmcli" "connection" "show"; }
+
+  // m: music
+  Mod+m       { spawn "/usr/bin/hollow-launch" "--label" "Cmus" "--require" "kitty" "--require" "cmus" "--" "kitty" "cmus"; }
+  Mod+Shift+m { spawn "/usr/bin/hollow-launch" "--label" "Cava visualizer" "--require" "kitty" "--require" "cava" "--" "kitty" "cava"; }
+  Mod+Ctrl+m  { spawn "/usr/bin/hollow-launch" "--label" "Cmus stop" "--require" "cmus-remote" "--" "cmus-remote" "-U"; }
+  Mod+Alt+m   { spawn "/usr/bin/hollow-launch" "--label" "Cmus status" "--require" "kitty" "--require" "cmus-remote" "--" "kitty" "--hold" "cmus-remote" "-Q"; }
+
+  Mod+Tab       { toggle-overview; }
+  Mod+Shift+Tab { focus-window-previous; }
+  Mod+Ctrl+Tab  { focus-workspace-previous; }
+  Mod+Alt+Tab   { focus-monitor-previous; }
+
+  Mod+Space                    { switch-preset-column-width; }
+  Mod+Shift+Space              { switch-preset-column-width-back; }
+  Mod+Ctrl+Space               { maximize-column; }
+  Mod+Ctrl+Shift+Space         { set-window-height "100%"; }
+  Mod+Alt+Space                { expand-column-to-available-width; }
+  Mod+Alt+Ctrl+Space           { toggle-windowed-fullscreen; }
+  Mod+Alt+BackSpace            { spawn "/usr/bin/hollow-hueman" "clear"; }
+  Mod+Alt+Shift+Space          { spawn "/usr/bin/hollow-hueman" "step-spread"; }
+  Mod+Ctrl+Alt+BackSpace       { reset-window-height; }
+  Mod+Ctrl+Alt+Shift+Space     { set-column-width "25%"; }
+
+  Mod+Minus       { set-dynamic-cast-window; }
+  Mod+Equal       { set-dynamic-cast-monitor; }
+  Mod+Shift+Minus { clear-dynamic-cast-target; }
+  Mod+Shift+Equal { spawn "/usr/bin/hollow-launch" "--label" "OBS Studio" "--require" "obs" "--" "obs"; }
+  Mod+Ctrl+Minus  { spawn "/usr/lib/hollow-grove/bin/screenshot-copy" "region"; }
+  Mod+Ctrl+Equal  { spawn "/usr/lib/hollow-grove/bin/screenshot-copy" "screen"; }
+
+  XF86AudioRaiseVolume allow-when-locked=true { spawn "/usr/lib/hollow-grove/bin/volume-control" "raise"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn "/usr/lib/hollow-grove/bin/volume-control" "lower"; }
+  XF86AudioMute        allow-when-locked=true { spawn "/usr/lib/hollow-grove/bin/volume-control" "mute"; }
+  XF86AudioMicMute     allow-when-locked=true { spawn "/usr/lib/hollow-grove/bin/volume-control" "mic-mute"; }
+
+  XF86MonBrightnessUp   { spawn "/usr/lib/hollow-grove/bin/brightness-control" "raise"; }
+  XF86MonBrightnessDown { spawn "/usr/lib/hollow-grove/bin/brightness-control" "lower"; }
+
+  Print { screenshot; }
+}

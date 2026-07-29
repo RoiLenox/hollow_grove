@@ -1,0 +1,34 @@
+#!/usr/bin/bash
+set -u
+
+action=${1:-}
+
+if ! command -v wpctl >/dev/null 2>&1; then
+    /usr/lib/hollow-grove/bin/notify \
+        "Audio control unavailable" \
+        "wpctl is missing; install wireplumber." \
+        normal
+    exit 127
+fi
+
+case "$action" in
+    raise)
+        wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ || exit 1
+        ;;
+    lower)
+        wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05- || exit 1
+        ;;
+    mute)
+        wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle || exit 1
+        ;;
+    mic-mute)
+        wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle || exit 1
+        exit 0
+        ;;
+    *)
+        printf 'usage: %s {raise|lower|mute|mic-mute}\n' "${0##*/}" >&2
+        exit 2
+        ;;
+esac
+
+exec /usr/lib/hollow-grove/bin/volume-notify

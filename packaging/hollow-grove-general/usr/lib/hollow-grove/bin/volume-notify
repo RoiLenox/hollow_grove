@@ -1,0 +1,33 @@
+#!/usr/bin/bash
+set -u
+
+command -v wpctl >/dev/null 2>&1 || exit 0
+command -v notify-send >/dev/null 2>&1 || exit 0
+
+raw=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null) || exit 0
+volume=$(awk '{print $2}' <<<"$raw")
+percent=$(awk -v value="$volume" 'BEGIN { printf "%d", value * 100 }')
+display=$percent
+(( display > 100 )) && display=100
+filled=$((display / 5))
+bar=
+
+for ((index = 1; index <= 20; index++)); do
+    if (( index <= filled )); then
+        bar+="█"
+    else
+        bar+="░"
+    fi
+done
+
+if [[ "$raw" == *"[MUTED]"* ]]; then
+    title="Muted"
+else
+    title="Volume ${percent}%"
+fi
+
+notify-send \
+    --app-name="volume-osd" \
+    --expire-time=1800 \
+    --replace-id=41001 \
+    "$title" "$bar" >/dev/null 2>&1 || true

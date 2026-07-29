@@ -1,0 +1,50 @@
+#!/usr/bin/bash
+set -u
+
+config_root=${XDG_CONFIG_HOME:-"$HOME/.config"}
+data_root=${XDG_DATA_HOME:-"$HOME/.local/share"}
+settings_path="$config_root/hollow-grove/general-edition.toml"
+default_user_wallpaper="$data_root/hollow-grove/wallpaper"
+wallpaper=
+
+read_setting() {
+    local key=$1
+    local path=$2
+    awk -F= -v wanted="$key" '
+        $1 ~ "^[[:space:]]*" wanted "[[:space:]]*$" {
+            value = $2
+            sub(/^[[:space:]]*"/, "", value)
+            sub(/"[[:space:]]*$/, "", value)
+            print value
+            exit
+        }
+    ' "$path"
+}
+
+if [[ -f "$settings_path" ]]; then
+    wallpaper=$(read_setting wallpaper_path "$settings_path")
+fi
+
+if [[ -z "$wallpaper" && -f "$default_user_wallpaper" ]]; then
+    wallpaper=$default_user_wallpaper
+fi
+
+if ! command -v swaybg >/dev/null 2>&1; then
+    /usr/lib/hollow-grove/bin/notify \
+        "Wallpaper unavailable" \
+        "Install swaybg or configure another wallpaper service." \
+        low
+    exit 0
+fi
+
+if [[ -n "$wallpaper" ]]; then
+    if [[ -f "$wallpaper" ]]; then
+        exec swaybg --mode fill --image "$wallpaper"
+    fi
+    /usr/lib/hollow-grove/bin/notify \
+        "Wallpaper not found" \
+        "Configured file does not exist: $wallpaper" \
+        normal
+fi
+
+exec swaybg --color "#101218"
