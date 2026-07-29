@@ -69,6 +69,7 @@ fn main_binary_reports_integrated_help() {
     assert!(stdout.contains("model ..."));
     assert!(stdout.contains("dataset ..."));
     assert!(stdout.contains("verify-foundation"));
+    assert!(stdout.contains("guides status"));
     assert!(stdout.contains("world context"));
     assert!(stdout.contains("world witness"));
     assert!(stdout.contains("world validate"));
@@ -114,6 +115,22 @@ fn main_binary_reports_integrated_help() {
     assert!(stdout.contains("player decide"));
     assert!(stdout.contains("cleopatra tick"));
     assert!(stdout.contains("cleopatra run"));
+}
+
+#[test]
+fn main_binary_presents_the_outside_seer_forms() {
+    let output = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["guides", "status"])
+        .output()
+        .expect("Guide status should run");
+
+    assert!(output.status.success());
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(stdout.starts_with("THE SEERS\n"));
+    assert!(stdout.contains("\nRoï\n"));
+    assert!(stdout.contains("\nRosaliña\n"));
+    assert!(stdout.contains("authority: The Federation"));
+    assert!(!stdout.contains("The Guide"));
 }
 
 #[test]

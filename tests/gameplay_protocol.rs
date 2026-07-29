@@ -7,6 +7,7 @@ use hollow_grove::gameplay::{
     HOLLOW_GROVE_GAMEPLAY_PROTOCOL_VERSION, ProtocolRejectionCode, ProtocolRequestEnvelope,
     ProtocolResponseEnvelope, ProtocolResponseStatus,
 };
+use hollow_grove::guide_identity::{GuideIdentity, WorldLayer};
 
 const SYNC_FIXTURE: &str = include_str!("../hueman_godot/protocol/fixtures/sync_request_v1.json");
 const SYNC_RESPONSE_FIXTURE: &str =
@@ -86,6 +87,18 @@ fn shared_sync_fixture_round_trips_and_returns_an_authoritative_snapshot_view() 
     assert_eq!(view.revision, 0);
     assert_eq!(view.identity_count, 0);
     assert!(view.hueman.is_none());
+    assert_eq!(view.guide_context.layer, WorldLayer::HollowGrove);
+    assert_eq!(
+        view.guide_context
+            .guides
+            .iter()
+            .map(|guide| (guide.identity, guide.display_name.as_str()))
+            .collect::<Vec<_>>(),
+        [
+            (GuideIdentity::Roi, "Roi"),
+            (GuideIdentity::Roselina, "Roselina"),
+        ]
+    );
     assert!(
         view.capabilities
             .iter()
@@ -97,6 +110,16 @@ fn shared_sync_fixture_round_trips_and_returns_an_authoritative_snapshot_view() 
         )
         .unwrap(),
         response
+    );
+    let mut legacy_value = serde_json::to_value(&response).unwrap();
+    legacy_value["view"]
+        .as_object_mut()
+        .unwrap()
+        .remove("guide_context");
+    let migrated_legacy: ProtocolResponseEnvelope = serde_json::from_value(legacy_value).unwrap();
+    assert_eq!(
+        migrated_legacy.view.unwrap().guide_context.guides[0].display_name,
+        "Roi"
     );
     // Protocol V1 permits additive view fields and capabilities. The shared
     // fixture remains the mandatory minimum projection and must stay an exact

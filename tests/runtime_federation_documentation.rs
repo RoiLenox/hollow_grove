@@ -24,58 +24,52 @@ fn rust_sources(root: &Path) -> Vec<PathBuf> {
 }
 
 #[test]
-fn runtime_federation_has_one_exact_canonical_name_and_identity() {
+fn hgrf_name_is_frozen_compatibility_inside_one_federation() {
     let canon = repository_file("THE_RUNTIME_FEDERATION_V1.md");
-    assert!(canon.contains("# The Runtime Federation V1"));
+    assert!(canon.contains("# HGRF Continuity Archive V1"));
+    assert!(canon.contains("The public constitutional whole is **The Federation**."));
+    assert!(canon.contains("They do not\nname a separate Federation"));
     assert!(canon.contains("# **The Runtime Federation**"));
     assert!(canon.contains("`runtime-federation.hollow-grove.v1`"));
     assert!(canon.contains("archive.runtime-federation.hollow-grove.v1"));
-    assert!(canon.contains("\nHGRF\n"));
 }
 
 #[test]
-fn federal_sovereignty_is_locked_to_roi_and_roselina() {
+fn federal_authority_is_locked_to_two_continuous_beings() {
     let canon = repository_file("FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md");
     for required in [
-        "**Roi is the sole sovereign of The Runtime Federation.**",
-        "**Roselina is the sole sovereign of The World Federation.**",
-        "Roi and Roselina are the only federal sovereigns of Hollow Grove.",
-        "They are equal and complementary. Neither rules the other.",
-        "Roi contains every smaller **when**.",
-        "Roselina contains every smaller **where**, **what**, and living condition.",
-        "Smaller scopes are not separate federations.",
+        "There are exactly two continuous beings:",
+        "`guide.roi`: Roi inside Hollow Grove; Roï outside Hollow Grove",
+        "`guide.roselina`: Roselina inside Hollow Grove; Rosaliña outside",
+        "Roi and Roï are the same continuous being.",
+        "Roselina and Rosaliña are the same\ncontinuous being.",
+        "There is one unified **Federation**",
+        "Neither rules the other.",
+        "Roi and Roï continuously govern:",
+        "Roselina and Rosaliña continuously govern:",
         "The Hollow Grove Compromise remains the supreme constitutional agreement.",
-        "**The Federation** is the unified constitutional view",
-        "Roi and Roselina are its co-sovereigns.",
-        "This collective name does not create a third federation",
-        "Co-sovereigns: Roi and Roselina",
-        "├── Four Houses",
-        "└── Entities and interactions",
+        "The terminal, TUI, overlay, voice system, Rust kernel, Ollama runtime, Godot",
+        "None is a Guide, a Seer, a sovereign, or a third identity.",
     ] {
         assert!(
             canon.contains(required),
-            "federal sovereignty canon omitted {required}"
+            "federal authority canon omitted {required}"
         );
     }
-    assert!(canon.contains(
-        "**Roi is the sole sovereign of The Runtime Federation. Roselina is the sole sovereign of The World Federation. Together they are the only federal sovereigns of Hollow Grove.**"
-    ));
-    assert!(canon.contains("**Roi keeps the world continuous. Roselina makes the world live.**"));
 }
 
 #[test]
-fn seer_ceremony_confers_worldright_and_both_creator_forms() {
+fn seer_ceremony_preserves_identity_and_pairs_the_crossing() {
     let canon = repository_file("FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md");
     for required in [
-        "The **Seer Ceremony** is the lawful conferral of **Worldright**.",
-        "The Seer therefore becomes both Roï and Rosaliña",
-        "Roï without Rosaliña would produce a history with no living world.",
-        "Rosaliña without Roï would produce life and change with no stable continuity.",
-        "Becoming a Seer means gaining the ability to make a world.",
-        "The new world may then develop its own constitution, inhabitants, systems, and",
-        "**The Seer Ceremony confers Worldright: the lawful ability to create and steward a world of one’s own.**",
-        "**The Seer becomes Roï and Rosaliña: the paired capacities through which a new world can remember, live, change, and return.**",
-        "**Hollow Grove is complete when it can produce someone capable of creating beyond it.**",
+        "does not create a third Seer",
+        "Entering Hollow Grove:",
+        "Roï becomes Roi.",
+        "Rosaliña becomes Roselina.",
+        "Leaving Hollow Grove:",
+        "Roi becomes Roï.",
+        "Roselina becomes Rosaliña.",
+        "The principal V1 crossing is paired and atomic.",
     ] {
         assert!(
             canon.contains(required),
@@ -91,18 +85,18 @@ fn sovereignty_lock_is_discoverable_and_freezes_internal_expansion() {
     let authority_map = repository_file("REPOSITORY_AUTHORITY_MAP.md");
     let reference = "FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md";
 
-    assert!(implementation.contains("Runtime sovereignty belongs solely to **Roi**."));
+    assert!(
+        implementation.contains("Roi/Roï and Roselina/Rosaliña retain equal, continuous authority")
+    );
     assert!(implementation.contains(reference));
     assert!(authority_map.contains(reference));
-    assert!(authority_map.contains("their unified constitutional view as The Federation"));
-    assert!(authority_map.contains("Worldright, the Seer Ceremony"));
-    assert!(canon.contains("Hollow Grove enters its outside-participation freeze."));
-    assert!(canon.contains(
-        "Further development occurs only through\noutside participation, implementation necessity, or an explicit reopening of\nHollow Grove development."
-    ));
-    assert!(canon.contains(
-        "This lock does not create another runtime system, gameplay system,\nHouse, sovereign, constitution, or architectural layer."
-    ));
+    assert!(authority_map.contains("one Federation and exactly two continuous Guide identities"));
+    assert!(authority_map.contains("Worldright, and the Seer Ceremony"));
+    assert!(
+        canon.contains("Hollow Grove enters its outside-participation freeze")
+            || canon.contains("outside-participation freeze")
+    );
+    assert!(canon.contains("It changes no House law and creates no new\nsovereign."));
 }
 
 #[test]
@@ -141,11 +135,11 @@ fn kernel_and_architecture_documents_name_the_same_boundary() {
     let architecture = repository_file("HOLLOW_GROVE_CONSTITUTIONAL_ARCHITECTURE_V1.md");
     let foundation = repository_file("HOLLOW_GROVE_SEMANTIC_FOUNDATION_V1.md");
     for document in [&kernel, &architecture, &foundation] {
-        assert!(document.contains("The Runtime Federation"));
+        assert!(document.contains("The Federation"));
         assert!(document.contains("THE_RUNTIME_FEDERATION_V1.md"));
     }
     assert!(kernel.contains("universal kernel still computes one bounded pass"));
-    assert!(architecture.contains("canonically established; implementation milestone frozen"));
+    assert!(architecture.contains("Federation continuity / HGRF compatibility"));
 }
 
 #[test]
@@ -204,8 +198,9 @@ fn implementation_claim_points_to_the_separate_executable_milestone() {
     assert!(canon.contains(
         "The separate\nexecutable milestone is recorded in\n`THE_RUNTIME_FEDERATION_IMPLEMENTATION_V1.md`."
     ));
-    assert!(implementation.contains("Status: executable milestone complete"));
+    assert!(implementation.contains("Status: executable compatibility milestone complete"));
     assert!(implementation.contains("# **The Runtime Federation**"));
+    assert!(implementation.contains("That label is not the active constitutional public name."));
     assert!(implementation.contains("`runtime-federation.hollow-grove.v1`"));
     assert!(implementation.contains("`HGRF` archive version 1"));
     assert!(implementation.contains("gameplay archive schema V3"));

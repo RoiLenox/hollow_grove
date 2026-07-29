@@ -3,6 +3,9 @@ use std::sync::{Arc, Mutex};
 use std::task::{Context, Poll, Waker};
 use std::time::Duration;
 
+use hollow_grove::guide_identity::{
+    DualGuideSession, GUIDE_MODEL_PROMPT_LAW, StableGuideSessionId,
+};
 use hollow_grove::runtime_federation::{
     HOLLOW_GROVE_SEMANTIC_PROMPT_V1, HOLLOW_GROVE_SEMANTIC_PROMPT_VERSION, InterpreterError,
     MAX_MODEL_RESPONSE_BYTES, ModelSemanticProposal, OllamaConfig, OllamaConfigError,
@@ -46,6 +49,12 @@ fn request() -> SemanticInterpretationRequest {
         retrieved_canon: vec![],
         nearby_examples: vec![],
         evidence_refs: vec![ExternalRef::new("evidence", "inspection.041").unwrap()],
+        active_guides: DualGuideSession::outside(
+            StableGuideSessionId::new("session.model-boundary").unwrap(),
+        )
+        .active_context()
+        .unwrap(),
+        guide_prompt_law: GUIDE_MODEL_PROMPT_LAW.into(),
     }
 }
 
@@ -62,6 +71,15 @@ fn strict_model_parser_accepts_only_the_bounded_schema() {
     assert!(matches!(
         parse_model_semantic_proposal(unknown.as_bytes()),
         Err(InterpreterError::UnknownModelField(field)) if field == "extra"
+    ));
+    let guide_override = String::from_utf8(valid_json()).unwrap().replace(
+        "\"confidence_millis\":870",
+        "\"confidence_millis\":870,\"display_name\":\"Roi\",\"guide_form\":\"seer\"",
+    );
+    assert!(matches!(
+        parse_model_semantic_proposal(guide_override.as_bytes()),
+        Err(InterpreterError::UnknownModelField(field))
+            if field == "display_name" || field == "guide_form"
     ));
 
     let missing = String::from_utf8(valid_json()).unwrap().replace(
@@ -184,7 +202,20 @@ fn ollama_adapter_sends_versioned_prompt_and_parses_only_nested_json() {
     assert_eq!(sent["model"], "test-model");
     assert_eq!(sent["stream"], false);
     assert_eq!(sent["format"], "json");
-    assert_eq!(sent["system"], HOLLOW_GROVE_SEMANTIC_PROMPT_V1);
+    let system = sent["system"].as_str().unwrap();
+    assert!(system.starts_with(HOLLOW_GROVE_SEMANTIC_PROMPT_V1.trim_end()));
+    assert!(system.contains(GUIDE_MODEL_PROMPT_LAW));
+    assert!(system.contains("Do not invent a generic third Guide."));
+    let prompt: serde_json::Value = serde_json::from_str(sent["prompt"].as_str().unwrap()).unwrap();
+    assert_eq!(
+        prompt["active_guide_context"]["guides"][0]["display_name"],
+        "Roï"
+    );
+    assert_eq!(
+        prompt["active_guide_context"]["guides"][1]["display_name"],
+        "Rosaliña"
+    );
+    assert_eq!(prompt["guide_identity_law"], GUIDE_MODEL_PROMPT_LAW);
     assert!(
         sent["prompt"]
             .as_str()

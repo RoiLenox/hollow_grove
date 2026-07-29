@@ -6,10 +6,11 @@ use hollow_grove::composition::{
     SemanticScope,
 };
 use hollow_grove::constitutional::{GroveCycleId, GrovePhase};
+use hollow_grove::guide_identity::{DualGuideSession, StableGuideSessionId};
 use hollow_grove::runtime_federation::{
     CatalogRoiContinuity, DeterministicSemanticInterpreter, FederationError,
     FederationOrchestrator, FederationRequest, KernelSemanticConstitution, ModelSemanticProposal,
-    ProposedSemanticOperation, ReadOnlyRosalinaWorldState, RoiContinuity, RosalinaWorldState,
+    ProposedSemanticOperation, ReadOnlyRoselinaWorldState, RoiContinuity, RoselinaWorldState,
     SemanticConstitution, SemanticDecision, SemanticProposal, SemanticValidationError,
     ValidationReport, WayBackContext,
 };
@@ -64,6 +65,9 @@ fn request(intent: &str) -> FederationRequest {
         nearby_semantic_refs: vec![],
         retrieved_canon: vec![],
         nearby_examples: vec![],
+        guide_session: DualGuideSession::outside(
+            StableGuideSessionId::new("session.semantic-federation").unwrap(),
+        ),
     }
 }
 
@@ -83,13 +87,13 @@ fn orchestrator(
     model: ModelSemanticProposal,
 ) -> FederationOrchestrator<
     CatalogRoiContinuity,
-    ReadOnlyRosalinaWorldState,
+    ReadOnlyRoselinaWorldState,
     DeterministicSemanticInterpreter,
     KernelSemanticConstitution,
 > {
     FederationOrchestrator::new(
         CatalogRoiContinuity,
-        ReadOnlyRosalinaWorldState,
+        ReadOnlyRoselinaWorldState,
         DeterministicSemanticInterpreter::responding_with(model),
         KernelSemanticConstitution,
     )
@@ -215,7 +219,7 @@ fn festival_rechecks_source_and_rejects_stale_state() {
     let destination = Position3::from_raw(100, 0, 500).unwrap();
     let runtime_cycle = FederationOrchestrator::new(
         StaleRoi,
-        ReadOnlyRosalinaWorldState,
+        ReadOnlyRoselinaWorldState,
         DeterministicSemanticInterpreter::responding_with(proposal(destination)),
         KernelSemanticConstitution,
     );
@@ -257,7 +261,7 @@ fn constitutional_rejection_reaches_festival_but_never_changes_position() {
     let mut runtime = catalog();
     let runtime_cycle = FederationOrchestrator::new(
         CatalogRoiContinuity,
-        ReadOnlyRosalinaWorldState,
+        ReadOnlyRoselinaWorldState,
         DeterministicSemanticInterpreter::responding_with(proposal(Position3::ORIGIN)),
         DenyingConstitution,
     );
@@ -287,7 +291,7 @@ fn initiation_failure_and_interpreter_unavailability_mutate_nothing() {
         let mut runtime = catalog();
         let runtime_cycle = FederationOrchestrator::new(
             CatalogRoiContinuity,
-            ReadOnlyRosalinaWorldState,
+            ReadOnlyRoselinaWorldState,
             interpreter,
             KernelSemanticConstitution,
         );
@@ -301,9 +305,9 @@ fn initiation_failure_and_interpreter_unavailability_mutate_nothing() {
 }
 
 #[derive(Debug, Clone, Copy)]
-struct FailingPersistRosalina;
+struct FailingPersistRoselina;
 
-impl RosalinaWorldState for FailingPersistRosalina {
+impl RoselinaWorldState for FailingPersistRoselina {
     fn inspect_world_state(
         &self,
         request: &FederationRequest,
@@ -338,7 +342,7 @@ fn festival_catalog_commit_is_rolled_back_when_world_persistence_fails() {
     let mut runtime = catalog();
     let runtime_cycle = FederationOrchestrator::new(
         CatalogRoiContinuity,
-        FailingPersistRosalina,
+        FailingPersistRoselina,
         DeterministicSemanticInterpreter::responding_with(proposal(Position3::ORIGIN)),
         KernelSemanticConstitution,
     );

@@ -41,6 +41,23 @@ func _run() -> void:
 		"geometry": "Round",
 		"dominant_verb": "Refine",
 	}
+	game.guide_context = {
+		"layer": "hollow_grove",
+		"guides": [
+			{
+				"identity": "roi",
+				"form": "hollow_grove_guide",
+				"display_name": "Roi",
+				"jurisdiction": "when",
+			},
+			{
+				"identity": "roselina",
+				"form": "hollow_grove_guide",
+				"display_name": "Roselina",
+				"jurisdiction": "where_what",
+			},
+		],
+	}
 	game.physical_exits = [{
 		"exit_x": 18,
 		"exit_y": 9,
@@ -63,6 +80,8 @@ func _run() -> void:
 	assert("Glausbahn" in str(world_semantics.get("context")))
 	assert("tile x 7, y 9, facing East" in str(world_semantics.get("context")))
 	assert("Current Seanad" in str(world_semantics.get("context")))
+	assert("Roi and Roselina are embodied Guides" in str(world_semantics.get("context")))
+	assert(game._active_guide_display_names() == ["Roi", "Roselina"])
 	assert("Mara Venn, weather reader, at tile x 5, y 6" in str(world_semantics.get("context")))
 	assert("Arrow keys" in str(world_semantics.get("controls")))
 
