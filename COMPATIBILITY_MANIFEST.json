@@ -1,0 +1,105 @@
+{
+  "manifest_version": 1,
+  "policy": "Frozen fixtures are immutable. Historical inputs remain readable through explicit migration; unknown future versions fail closed.",
+  "artifacts": [
+    {
+      "id": "gameplay.archive.v1",
+      "path": "tests/fixtures/compatibility/gameplay_v1.json",
+      "format": "hollow-grove-gameplay",
+      "version": "1",
+      "support": "read-migrate",
+      "byte_length": 183,
+      "digest": "fnv1a64:c730276d0314bd9b"
+    },
+    {
+      "id": "gameplay.archive.v2",
+      "path": "tests/fixtures/compatibility/gameplay_v2.json",
+      "format": "hollow-grove-gameplay",
+      "version": "2",
+      "support": "read-migrate",
+      "byte_length": 232,
+      "digest": "fnv1a64:dcbaf38159f2dc4a"
+    },
+    {
+      "id": "gameplay.archive.v3",
+      "path": "tests/fixtures/compatibility/gameplay_v3.json",
+      "format": "hollow-grove-gameplay",
+      "version": "3",
+      "support": "current-round-trip",
+      "byte_length": 502,
+      "digest": "fnv1a64:259f80add4b6d1dd"
+    },
+    {
+      "id": "runtime-federation.archive.v1",
+      "path": "tests/fixtures/compatibility/runtime_federation_v1.hgrf.json",
+      "format": "HGRF",
+      "version": "1",
+      "support": "frozen-round-trip",
+      "byte_length": 800596,
+      "digest": "fnv1a64:e680bfaa33f89611"
+    },
+    {
+      "id": "spatial-inheritance.archive.v1",
+      "path": "tests/fixtures/compatibility/spatial_inheritance_v1.json",
+      "format": "hollow-grove-spatial",
+      "version": "1",
+      "support": "frozen-round-trip",
+      "byte_length": 6441,
+      "digest": "fnv1a64:a025ce6f3292b3b6"
+    },
+    {
+      "id": "gameplay.protocol.request.v1",
+      "path": "hueman_godot/protocol/fixtures/sync_request_v1.json",
+      "format": "ndjson-request",
+      "version": "1",
+      "support": "required-input",
+      "byte_length": 135,
+      "digest": "fnv1a64:78650008bb8bb47e"
+    },
+    {
+      "id": "gameplay.protocol.response.v1",
+      "path": "hueman_godot/protocol/fixtures/sync_response_v1.json",
+      "format": "ndjson-response",
+      "version": "1",
+      "support": "minimum-additive-output",
+      "byte_length": 1834,
+      "digest": "fnv1a64:167bfe623012b4e6"
+    },
+    {
+      "id": "screen.intent.v0.1.0",
+      "path": "tests/fixtures/compatibility/screen_intent_v0_1.json",
+      "format": "screen-map-intent",
+      "version": "0.1.0",
+      "support": "legacy-input",
+      "byte_length": 376,
+      "digest": "fnv1a64:f315dc06647515d0"
+    },
+    {
+      "id": "screen.intent.v0.2.0",
+      "path": "tests/fixtures/compatibility/screen_intent_v0_2.json",
+      "format": "screen-map-intent",
+      "version": "0.2.0",
+      "support": "current-input",
+      "byte_length": 790,
+      "digest": "fnv1a64:1feda3267881614a"
+    },
+    {
+      "id": "screen.live-state.v0.3.0",
+      "path": "tests/fixtures/compatibility/screen_live_state_v0_3.json",
+      "format": "screen-map-live-state",
+      "version": "0.3.0",
+      "support": "current-output",
+      "byte_length": 1398,
+      "digest": "fnv1a64:a450c6da80e0ccf5"
+    },
+    {
+      "id": "screen.intent-receipt.v0.3.0",
+      "path": "tests/fixtures/compatibility/screen_intent_receipt_v0_3.json",
+      "format": "screen-map-intent-receipt",
+      "version": "0.3.0",
+      "support": "current-output",
+      "byte_length": 895,
+      "digest": "fnv1a64:b59dab9fe0f86cf3"
+    }
+  ]
+}

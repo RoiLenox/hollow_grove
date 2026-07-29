@@ -1,0 +1,10 @@
+{
+  "format": "hollow-grove-gameplay",
+  "schema_version": 2,
+  "checksum": "fnv1a64:48c9bc3ae3ef09bb",
+  "payload": {
+    "rule_set": "rules.hollow-grove-v2",
+    "events": [],
+    "institutional_state": "schema_version:2\n"
+  }
+}

@@ -1331,7 +1331,10 @@ pub fn write_constitutional_archive(
     path: impl AsRef<Path>,
     runtime: &ConstitutionalRuntime,
 ) -> Result<(), ConstitutionalArchiveError> {
-    fs::write(path, encode_constitutional_archive(runtime)?)?;
+    crate::artifact_io::write_bytes_atomically(
+        path.as_ref(),
+        &encode_constitutional_archive(runtime)?,
+    )?;
     Ok(())
 }
 

@@ -718,7 +718,7 @@ pub fn write_regional_archive(
     path: impl AsRef<Path>,
     runtime: &RegionalSynthesisRuntime,
 ) -> Result<(), RegionalArchiveError> {
-    fs::write(path, encode_regional_archive(runtime)?)?;
+    crate::artifact_io::write_bytes_atomically(path.as_ref(), &encode_regional_archive(runtime)?)?;
     Ok(())
 }
 

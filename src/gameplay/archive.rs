@@ -334,6 +334,28 @@ pub fn encode_legacy_gameplay_archive_v2(
     .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))
 }
 
+/// Encodes the minimal schema-V1 archive retained by the compatibility suite.
+///
+/// V1 had no institutional snapshot, federation binding, or migration
+/// history. New callers must write V3; this function exists only to preserve a
+/// deterministic historical fixture for decoder and migration tests.
+pub fn encode_empty_legacy_gameplay_archive_v1(
+    rule_set: &RuleSetId,
+) -> Result<String, GameplayArchiveError> {
+    let payload = GameplayArchivePayloadV1 {
+        rule_set: rule_set.as_str().into(),
+        events: Vec::new(),
+    };
+    let checksum = checksum_for(&payload)?;
+    serde_json::to_string_pretty(&GameplayArchiveEnvelopeV1 {
+        format: GAMEPLAY_ARCHIVE_FORMAT.into(),
+        schema_version: LEGACY_GAMEPLAY_ARCHIVE_SCHEMA_VERSION,
+        checksum,
+        payload,
+    })
+    .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))
+}
+
 pub fn decode_gameplay_archive(
     encoded: &str,
 ) -> Result<(RuleSetId, Vec<GameplayEventEnvelope>, Option<String>), GameplayArchiveError> {
