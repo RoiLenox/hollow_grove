@@ -16,6 +16,7 @@ pub mod flow_glow_grammar;
 pub mod frame_state;
 pub mod gameplay;
 pub mod grove_seam;
+pub mod guide_identity;
 pub mod hollow_beam;
 pub mod hollow_grove;
 pub mod hollow_grove_content;
