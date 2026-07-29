@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+use crate::guide_identity::{ActiveGuideContext, DualGuideSession, StableGuideSessionId};
 use crate::world::aura_basin::canonical_aura_basin;
 use crate::world::aura_beach::canonical_aura_beach;
 use crate::world::aura_field::canonical_aura_field;
@@ -1065,6 +1066,8 @@ pub struct GameView {
     pub revision: u64,
     pub identity_count: usize,
     pub regional_event_count: usize,
+    #[serde(default = "default_inside_guide_context")]
+    pub guide_context: ActiveGuideContext,
     pub hueman: Option<BeingIdentityView>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub overworld: Option<OverworldView>,
@@ -1085,6 +1088,15 @@ pub struct GameView {
     pub party: PartyView,
     pub physical_exits: Vec<PhysicalExitView>,
     pub capabilities: Vec<IntentCapabilityView>,
+}
+
+fn default_inside_guide_context() -> ActiveGuideContext {
+    DualGuideSession::inside(
+        StableGuideSessionId::new("session.hollow-grove.migrated-view")
+            .expect("canonical migrated-view Guide session ID is stable"),
+    )
+    .active_context()
+    .expect("canonical inside Guide session has a presentation context")
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -1241,10 +1253,27 @@ impl GameView {
         runtime: &HollowGroveGameRuntime,
         capabilities: Vec<IntentCapabilityView>,
     ) -> Self {
+        Self::from_runtime_with_guide_session(
+            runtime,
+            capabilities,
+            StableGuideSessionId::new("session.hollow-grove.gameplay")
+                .expect("canonical gameplay Guide session ID is stable"),
+        )
+    }
+
+    #[must_use]
+    pub fn from_runtime_with_guide_session(
+        runtime: &HollowGroveGameRuntime,
+        capabilities: Vec<IntentCapabilityView>,
+        guide_session_id: StableGuideSessionId,
+    ) -> Self {
         Self {
             revision: runtime.revision().get(),
             identity_count: runtime.identity_count(),
             regional_event_count: runtime.regional().events().len(),
+            guide_context: DualGuideSession::inside(guide_session_id)
+                .active_context()
+                .expect("canonical inside Guide session has a presentation context"),
             hueman: runtime.hueman().map(BeingIdentityView::from_record),
             overworld: runtime.hueman_position().map(|position| {
                 let map = map_definition(runtime.hueman_map());

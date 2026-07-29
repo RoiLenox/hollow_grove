@@ -4,6 +4,7 @@ use std::path::{Path, PathBuf};
 use serde::{Deserialize, Serialize};
 
 use crate::constitutional::{CausalPosition, ParticipantId, RuleSetId};
+use crate::guide_identity::StableGuideSessionId;
 use crate::institution::InstitutionalBeingId;
 use crate::world::session::WorldSession;
 use crate::{read_text_artifact, write_text_artifact};
@@ -899,9 +900,11 @@ impl GameProtocolService {
     }
 
     fn current_view(&self) -> GameView {
-        GameView::from_runtime(
+        GameView::from_runtime_with_guide_session(
             self.application.runtime(),
             capability_views(self.application.runtime(), self.save_root.is_some()),
+            StableGuideSessionId::new(self.session_id.clone())
+                .expect("validated gameplay session IDs are valid Guide session IDs"),
         )
     }
 
