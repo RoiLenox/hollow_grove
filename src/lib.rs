@@ -36,6 +36,7 @@ pub mod point;
 pub mod point_progression;
 pub mod runtime_federation;
 pub mod runtime_federation_fixture;
+pub mod semantic;
 pub mod snapshot_boundary;
 pub mod symptom;
 pub mod synthesis_execution;
@@ -98,17 +99,20 @@ pub use civic_body::{
     canonical_civic_crisis_steps, civic_body_definition, validate_civic_body_contract,
 };
 pub use composition::{
-    AxisHandedness, CompositionCatalog, CompositionCatalogError, CompositionNode,
-    CompositionNodeId, CompositionRecord, CompositionRecordId, Containment, ExpandedPointField,
+    AXIS_MAX, AXIS_MIN, AxisDelta, AxisHandedness, AxisValue, CompositionCatalog,
+    CompositionCatalogError, CompositionNode, CompositionNodeId, CompositionRecord,
+    CompositionRecordId, Containment, CoordinateError, DELTA_MAX, DELTA_MIN, ExpandedPointField,
     ExternalRef, ExternalRefError, FieldId, NormalizedCoordinate, NormalizedPoint, NormalizedRect,
-    OrientedPoint, OrientedPointError, PhysicalExtent, PhysicalPosition, PointCenterId, PointId,
-    PointInversion, PointScaling, PolarityAxis, PolarityTendency, PoleId, PositiveScaleFactor,
-    RelativePolarity, ResolvedSpatialAnchor, ResolvedSpatialPath, ResolvedSpatialRegion, ScaleKey,
-    SpatialAnchor, SpatialAnchorId, SpatialAuthorityId, SpatialCatalogSnapshot, SpatialEvidenceId,
-    SpatialFrame, SpatialFrameId, SpatialInheritanceCatalog, SpatialInheritanceError, SpatialPath,
-    SpatialPathGeometry, SpatialPathId, SpatialRegion, SpatialRegionId, SpatialRuleSetId,
-    SpatialTemplate, SpatialTemplateId, SpatialTransform, SpatialViewpoint,
-    SpatialViewpointSelection, StableKeyError, invert_point, lawfully_scale_point,
+    OrientedPoint, OrientedPointError, OriginRelation, PhysicalExtent, PhysicalPosition,
+    PointCenterId, PointId, PointInversion, PointScaling, PolarityAxis, PolarityTendency, PoleId,
+    Position3, PositiveScaleFactor, RelativePolarity, ResolvedSpatialAnchor, ResolvedSpatialPath,
+    ResolvedSpatialRegion, ScaleKey, SpatialAnchor, SpatialAnchorId, SpatialAuthorityId,
+    SpatialCatalogSnapshot, SpatialEvidenceId, SpatialFrame, SpatialFrameId,
+    SpatialInheritanceCatalog, SpatialInheritanceError, SpatialPath, SpatialPathGeometry,
+    SpatialPathId, SpatialRegion, SpatialRegionId, SpatialRuleSetId, SpatialTemplate,
+    SpatialTemplateId, SpatialTransform, SpatialViewpoint, SpatialViewpointSelection,
+    StableKeyError, Translation3, crosses_vertical_origin, invert_point, lawfully_scale_point,
+    squared_distance, verify_translation, vertical_origin_relation,
 };
 pub use current_grip_inheritance::{
     CurrentGripActionRequest, CurrentGripInheritanceContractInput, CurrentGripResolution,
@@ -177,7 +181,7 @@ pub use hollow_grove_content::{
 pub use hollow_grove_contract::{
     AuraIlluminationClaim, CurrentDepthIdentityClaim, CurrentDepthOwnershipClaim,
     CurrentRelationClaim, CurrentSpeedSemanticClaim, DepthIdentityValue,
-    HollowGroveProgressionContractInput, PointSquaredSemanticClaim,
+    HollowGroveProgressionContractInput, House, PointSquaredSemanticClaim,
     build_hollow_grove_progression_witness, canonical_progression_contract_fixture,
     validate_hollow_grove_progression_contract,
 };
@@ -230,6 +234,7 @@ pub use point_progression::{
     build_point_squared_witness, build_progression_validation_report, build_progression_witness,
     parse_point_progression_state, prepare_point_squared_ascension, validate_point_progression,
 };
+pub use semantic::*;
 pub use snapshot_boundary::{SnapshotBoundary, build_snapshot_boundary_output};
 pub use symptom::Symptom;
 pub use synthesis_execution::{

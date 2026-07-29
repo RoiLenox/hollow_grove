@@ -9,6 +9,7 @@ use std::fmt;
 use serde::{Deserialize, Serialize};
 
 mod oriented_point;
+mod semantic_geometry;
 mod spatial_inheritance;
 
 pub use oriented_point::{
@@ -16,6 +17,11 @@ pub use oriented_point::{
     PhysicalPosition, PointCenterId, PointId, PointInversion, PointScaling, PolarityAxis,
     PolarityTendency, PoleId, PositiveScaleFactor, RelativePolarity, SpatialAuthorityId,
     SpatialEvidenceId, SpatialRegionId, invert_point, lawfully_scale_point,
+};
+pub use semantic_geometry::{
+    AXIS_MAX, AXIS_MIN, AxisDelta, AxisValue, CoordinateError, DELTA_MAX, DELTA_MIN,
+    OriginRelation, Position3, Translation3, crosses_vertical_origin, squared_distance,
+    verify_translation, vertical_origin_relation,
 };
 pub use spatial_inheritance::{
     NORMALIZED_UNIT, NormalizedCoordinate, NormalizedPoint, NormalizedRect, ResolvedSpatialAnchor,
