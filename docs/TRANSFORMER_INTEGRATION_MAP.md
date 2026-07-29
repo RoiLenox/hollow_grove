@@ -250,6 +250,20 @@ Semantic commands will be routed by `src/main.rs` to one focused semantic CLI
 implementation. Mutating semantic commands will call the Federation
 orchestrator; inspection and validation commands remain read-only.
 
+The local hosted-model-style boundary extends that same focused semantic
+binary rather than creating another runtime:
+
+- `hollow-grove federation serve` owns loopback-only HTTP transport.
+- `FederationHttpApi` owns staged catalog execution and atomic provenance
+  persistence.
+- `POST /v1/federation/cycles` calls the same four-phase orchestrator used by
+  `federation run`.
+- `/health` and `/v1/models` are read-only discovery routes.
+
+Concurrent connections serialize their semantic cycles through one existing
+`CompositionCatalog`; no API-specific semantic catalog or confirmation path is
+introduced.
+
 ### Godot boundary
 
 - `src/gameplay/protocol.rs` owns strict Rust request/response envelopes.

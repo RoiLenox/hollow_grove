@@ -123,7 +123,7 @@ fn usage() -> &'static str {
        app ...           inspect, launch, or attach a Hollow Grove-managed application\n\
        hueman-slice      run the Hueman vertical-slice demo surface\n\
        semantic ...      inspect witnessed semantic positions and history\n\
-       federation ...    run the authoritative transformer-assisted semantic cycle\n\
+       federation ...    run or serve the authoritative transformer-assisted semantic cycle\n\
        model ...         validate an untrusted model response\n\
        dataset ...       validate witnessed semantic JSONL\n\
        verify-foundation print the Hollow Grove semantic foundation regression report\n\
@@ -174,6 +174,7 @@ fn usage() -> &'static str {
        hollow-grove hueman-slice walk\n\
        hollow-grove semantic inspect semantic-witnesses-v1.jsonl object.support-column.041 structural-repair\n\
        hollow-grove federation run point.hueman.origin structural-repair \"Restore the supporting frame.\"\n\
+       hollow-grove federation serve --listen 127.0.0.1:47820\n\
        hollow-grove model validate-response response.json\n\
        hollow-grove dataset validate-semantic semantic-witnesses-v1.jsonl\n\
        hollow-grove verify-foundation\n\
@@ -844,6 +845,7 @@ mod tests {
         assert!(usage.contains("app ..."));
         assert!(usage.contains("app launch chroma_cord"));
         assert!(usage.contains("hueman-slice"));
+        assert!(usage.contains("federation serve"));
         assert!(usage.contains("verify-foundation"));
         assert!(usage.contains("scenario list"));
         assert!(usage.contains("world context"));

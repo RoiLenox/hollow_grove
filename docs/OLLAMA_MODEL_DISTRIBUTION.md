@@ -150,6 +150,33 @@ For deterministic offline validation, `--proposal-json <path>` replaces only
 the Initiation interpreter response. The supplied proposal still passes through
 the same Gathering, Festival, provenance, witness, and persistence path.
 
+Local applications can use the same authoritative path over HTTP:
+
+```sh
+hollow-grove federation serve \
+  --listen 127.0.0.1:47820 \
+  --state /home/warren/hollow_grove/artifacts/semantic_federation_state_v1.json
+```
+
+Then submit a strict JSON request:
+
+```sh
+curl \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "point_ref": "point.hueman.origin",
+    "scale_key": "structural-repair",
+    "intent": "Restore the supporting frame.",
+    "context_ref": null
+  }' \
+  http://127.0.0.1:47820/v1/federation/cycles
+```
+
+The V1 listener is loopback-only. It serializes cycles through one authoritative
+catalog and atomically persists the resulting provenance snapshot. See
+`docs/FEDERATION_HTTP_API_V1.md` for the complete contract, discovery routes,
+status codes, limits, and trust boundary.
+
 The local alias is a prompt-packaged model, not a newly trained foundation
 model from the class of models published by Meta or Google. A future shared
 Hollow Grove adapter can be attached beneath the same local model name after

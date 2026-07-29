@@ -38,10 +38,12 @@ use crate::world::world_point_archive::{
     encode_world_point_archive,
 };
 
+mod http_api;
 mod ollama;
 mod semantic;
 mod semantic_command;
 
+pub use http_api::*;
 pub use ollama::*;
 pub use semantic::*;
 pub use semantic_command::*;

@@ -222,6 +222,7 @@ impl OllamaTransport for HttpOllamaTransport {
     }
 }
 
+#[derive(Debug, Clone)]
 pub struct OllamaSemanticInterpreter<T = HttpOllamaTransport> {
     config: OllamaConfig,
     transport: T,

@@ -252,4 +252,5 @@ fn root_cli_delegates_federation_help_without_contacting_ollama() {
         String::from_utf8_lossy(&output.stdout)
             .contains("federation run <point-ref> <scale> <intent>")
     );
+    assert!(String::from_utf8_lossy(&output.stdout).contains("federation serve"));
 }
