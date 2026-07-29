@@ -18,6 +18,7 @@ use hollow_grove::current_synthesis_engine::{
     select_current_synthesis_scenario_at, write_view_artifacts,
 };
 use hollow_grove::current_synthesis_scenario::list_scenarios;
+use hollow_grove::guide_identity::{DualSeerPresentation, StableGuideSessionId};
 use hollow_grove::hollow_grove_contract::{
     build_hollow_grove_alignment_validation_report, build_hollow_grove_alignment_witness,
 };
@@ -43,6 +44,7 @@ use hollow_grove::{
 #[derive(Debug, Clone, PartialEq, Eq)]
 enum CurrentSynthesisTuiCli {
     Help,
+    GuidesStatus,
     ScenarioList,
     ScenarioUse(String),
     WorldContext,
@@ -122,6 +124,13 @@ where
 
     match section.as_str() {
         "--help" | "-h" | "help" => Ok(CurrentSynthesisTuiCli::Help),
+        "guides" => match args.next().as_deref() {
+            Some("status") => {
+                require_no_extra(args, CurrentSynthesisTuiCli::GuidesStatus, "guides status")
+            }
+            Some(other) => Err(format!("unknown guides command: {other}")),
+            None => Err(String::from("guides requires status")),
+        },
         "scenario" => match args.next().as_deref() {
             Some("list") => {
                 require_no_extra(args, CurrentSynthesisTuiCli::ScenarioList, "scenario list")
@@ -653,9 +662,10 @@ fn parse_player_action(
 }
 
 fn usage() -> &'static str {
-    "Usage: current_synthesis_tui <scenario|world|visual-colors|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|civic-body|civic-crisis|flow-glow|embodied-action|current-inheritance|grip|aura-polarity|light-aura|dark-aura|aura-route|foundation-checkpoint|stanislavski|falloutman|engine|bond|resource|player|npc|cleopatra> [args]\n\
+    "Usage: current_synthesis_tui <guides|scenario|world|visual-colors|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|civic-body|civic-crisis|flow-glow|embodied-action|current-inheritance|grip|aura-polarity|light-aura|dark-aura|aura-route|foundation-checkpoint|stanislavski|falloutman|engine|bond|resource|player|npc|cleopatra> [args]\n\
      \n\
      Commands:\n\
+       guides status\n\
        scenario list\n\
        scenario use <scenario-id>\n\
        world context\n\
@@ -770,6 +780,13 @@ fn advance_player_action_state(
 fn run_cli(root: &Path, cli: CurrentSynthesisTuiCli) -> io::Result<String> {
     match cli {
         CurrentSynthesisTuiCli::Help => Ok(String::from(usage())),
+        CurrentSynthesisTuiCli::GuidesStatus => {
+            let session_id = StableGuideSessionId::new("session.current-synthesis-tui")
+                .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))?;
+            DualSeerPresentation::outside(session_id)
+                .render_tui()
+                .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))
+        }
         CurrentSynthesisTuiCli::ScenarioList => {
             let scenarios = list_scenarios()?;
             let mut output = String::from("# Scenario List\n\n");
@@ -1063,6 +1080,11 @@ mod tests {
     #[test]
     fn parser_accepts_engine_and_cleopatra_commands() {
         assert_eq!(
+            parse_cli([String::from("guides"), String::from("status")])
+                .expect("Guide status should parse"),
+            CurrentSynthesisTuiCli::GuidesStatus
+        );
+        assert_eq!(
             parse_cli([String::from("scenario"), String::from("list")])
                 .expect("scenario list should parse"),
             CurrentSynthesisTuiCli::ScenarioList
@@ -1336,6 +1358,7 @@ mod tests {
     #[test]
     fn usage_mentions_inspection_commands() {
         let usage = usage();
+        assert!(usage.contains("guides status"));
         assert!(usage.contains("scenario list"));
         assert!(usage.contains("scenario use <scenario-id>"));
         assert!(usage.contains("world context"));
@@ -1389,6 +1412,20 @@ mod tests {
         assert!(usage.contains("npc focus <npc-id>"));
         assert!(usage.contains("cleopatra tick [npc-id]"));
         assert!(usage.contains("cleopatra run <count> [npc-id]"));
+    }
+
+    #[test]
+    fn guide_status_presents_the_two_outside_seer_forms() {
+        let output = run_cli(
+            std::path::Path::new("."),
+            CurrentSynthesisTuiCli::GuidesStatus,
+        )
+        .expect("Guide status should render");
+        assert!(output.starts_with("THE SEERS\n"));
+        assert!(output.contains("\nRoï\n"));
+        assert!(output.contains("\nRosaliña\n"));
+        assert!(output.contains("interface: TUI"));
+        assert!(!output.contains("The Guide"));
     }
 
     #[test]

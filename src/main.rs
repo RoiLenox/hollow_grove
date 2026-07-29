@@ -73,7 +73,8 @@ where
                 Ok(MainCli::VerifyFoundation)
             }
         }
-        "scenario"
+        "guides"
+        | "scenario"
         | "world"
         | "progression"
         | "point-squared"
@@ -125,6 +126,7 @@ fn usage() -> &'static str {
        model ...         validate an untrusted model response\n\
        dataset ...       validate witnessed semantic JSONL\n\
        verify-foundation print the Hollow Grove semantic foundation regression report\n\
+       guides status     present Roï and Rosaliña through the outside TUI\n\
        scenario ...      list or switch Current Synthesis scenarios\n\
        world ...         inspect authoritative Current Synthesis world context and alignment\n\
        progression ...   inspect Point and Point² progression state\n\
@@ -171,6 +173,7 @@ fn usage() -> &'static str {
        hollow-grove model validate-response response.json\n\
        hollow-grove dataset validate-semantic semantic-witnesses-v1.jsonl\n\
        hollow-grove verify-foundation\n\
+       hollow-grove guides status\n\
        hollow-grove scenario list\n\
        hollow-grove world context\n\
        hollow-grove world witness\n\

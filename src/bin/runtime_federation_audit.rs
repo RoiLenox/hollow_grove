@@ -1,6 +1,7 @@
 use std::process::ExitCode;
 
 use hollow_grove::constitutional::{GrovePhase, V2_RULE_SET};
+use hollow_grove::guide_identity::FEDERATION_CANONICAL_NAME;
 use hollow_grove::runtime_federation::{
     FederationComponentKind, RUNTIME_FEDERATION_ARCHIVE_FORMAT, RUNTIME_FEDERATION_ARCHIVE_VERSION,
     RUNTIME_FEDERATION_CANONICAL_NAME, RUNTIME_FEDERATION_IDENTITY,
@@ -34,7 +35,7 @@ fn audit() -> Result<(), String> {
         decode_runtime_federation_archive(&bytes).map_err(|error| error.to_string())?;
     let manifest = runtime.manifest();
 
-    println!("{RUNTIME_FEDERATION_CANONICAL_NAME} V1 Audit");
+    println!("{FEDERATION_CANONICAL_NAME} — HGRF V1 Compatibility Audit");
     require(
         manifest.canonical_name == RUNTIME_FEDERATION_CANONICAL_NAME
             && manifest.federation_identity == RUNTIME_FEDERATION_IDENTITY

@@ -1,4 +1,4 @@
-//! Transformer-assisted actions inside the one Runtime Federation.
+//! Transformer-assisted actions inside the one Federation.
 //!
 //! Roï restores continuity, Rosaliña inspects embodiment, and the existing
 //! composition catalog remains the authoritative semantic state.
@@ -15,6 +15,7 @@ use crate::composition::{
     Translation3,
 };
 use crate::constitutional::{GroveCycleId, GrovePhase};
+use crate::guide_identity::{ActiveGuideContext, DualGuideSession, GUIDE_MODEL_PROMPT_LAW};
 use crate::semantic::{
     NearbySemanticExample, RetrievedCanonFragment, SemanticProvenanceError,
     confirm_semantic_transition, record_rejected_semantic_witness,
@@ -175,6 +176,8 @@ pub struct SemanticInterpretationRequest {
     pub retrieved_canon: Vec<RetrievedCanonFragment>,
     pub nearby_examples: Vec<NearbySemanticExample>,
     pub evidence_refs: Vec<ExternalRef>,
+    pub active_guides: ActiveGuideContext,
+    pub guide_prompt_law: String,
 }
 
 pub trait SemanticInterpreter: Send + Sync {
@@ -463,6 +466,7 @@ pub struct FederationRequest {
     pub nearby_semantic_refs: Vec<ExternalRef>,
     pub retrieved_canon: Vec<RetrievedCanonFragment>,
     pub nearby_examples: Vec<NearbySemanticExample>,
+    pub guide_session: DualGuideSession,
 }
 
 pub trait RoiContinuity: Send + Sync {
@@ -489,7 +493,7 @@ pub trait RoiContinuity: Send + Sync {
     fn prepare_replay(&self, proposal: &SemanticProposal) -> Result<(), SemanticValidationError>;
 }
 
-pub trait RosalinaWorldState: Send + Sync {
+pub trait RoselinaWorldState: Send + Sync {
     fn inspect_world_state(
         &self,
         request: &FederationRequest,
@@ -590,9 +594,9 @@ impl RoiContinuity for CatalogRoiContinuity {
 }
 
 #[derive(Debug, Clone, Copy, Default)]
-pub struct ReadOnlyRosalinaWorldState;
+pub struct ReadOnlyRoselinaWorldState;
 
-impl RosalinaWorldState for ReadOnlyRosalinaWorldState {
+impl RoselinaWorldState for ReadOnlyRoselinaWorldState {
     fn inspect_world_state(
         &self,
         request: &FederationRequest,
@@ -654,17 +658,17 @@ impl SemanticConstitution for KernelSemanticConstitution {
 
 pub struct FederationOrchestrator<R, S, I, C> {
     roi: R,
-    rosalina: S,
+    roselina: S,
     interpreter: I,
     constitution: C,
 }
 
 impl<R, S, I, C> FederationOrchestrator<R, S, I, C> {
     #[must_use]
-    pub const fn new(roi: R, rosalina: S, interpreter: I, constitution: C) -> Self {
+    pub const fn new(roi: R, roselina: S, interpreter: I, constitution: C) -> Self {
         Self {
             roi,
-            rosalina,
+            roselina,
             interpreter,
             constitution,
         }
@@ -674,7 +678,7 @@ impl<R, S, I, C> FederationOrchestrator<R, S, I, C> {
 impl<R, S, I, C> FederationOrchestrator<R, S, I, C>
 where
     R: RoiContinuity,
-    S: RosalinaWorldState,
+    S: RoselinaWorldState,
     I: SemanticInterpreter,
     C: SemanticConstitution,
 {
@@ -700,7 +704,7 @@ where
         let next_way_back = self
             .roi
             .restore_history(&request, &staged_runtime, cycle_id)?;
-        self.rosalina
+        self.roselina
             .persist_world_result(&prepared_world_result_refs)?;
         *runtime = staged_runtime;
 
@@ -718,7 +722,7 @@ where
         cycle_id: GroveCycleId,
     ) -> Result<WayBackContext, FederationError> {
         let mut context = self.roi.restore_history(request, runtime, cycle_id)?;
-        context.world_state_refs = self.rosalina.inspect_world_state(request)?;
+        context.world_state_refs = self.roselina.inspect_world_state(request)?;
         Ok(context)
     }
 
@@ -736,6 +740,11 @@ where
             retrieved_canon: request.retrieved_canon.clone(),
             nearby_examples: request.nearby_examples.clone(),
             evidence_refs: way_back.evidence_refs.clone(),
+            active_guides: request
+                .guide_session
+                .active_context()
+                .map_err(|error| FederationError::GuideContext(error.to_string()))?,
+            guide_prompt_law: GUIDE_MODEL_PROMPT_LAW.into(),
         };
         let model = self
             .interpreter
@@ -827,7 +836,7 @@ where
         let constitution = self.constitution.validate(&initiation.proposal, way_back);
         preflight_errors.extend(constitution.errors);
         let embodiment = self
-            .rosalina
+            .roselina
             .validate_embodiment(&initiation.proposal, way_back);
         preflight_errors.extend(embodiment.errors);
 
@@ -944,7 +953,7 @@ where
         );
 
         let world_refs = self
-            .rosalina
+            .roselina
             .execute_confirmed_effect(&gathering.proposal)?;
         confirm_semantic_transition(runtime, position_record, witness)
             .map_err(|error| FederationError::Provenance(Box::new(error)))?;
@@ -1137,6 +1146,7 @@ pub enum FederationError {
     ExternalReference(String),
     Coordinate(String),
     WorldState(String),
+    GuideContext(String),
 }
 
 impl fmt::Display for FederationError {

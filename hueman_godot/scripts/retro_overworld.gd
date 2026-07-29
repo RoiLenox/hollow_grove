@@ -121,6 +121,7 @@ var stonebend_case := {}
 var route_view := {}
 var surface_view := {}
 var extraction_view := {}
+var guide_context := {}
 var living_world := {}
 var deep_pressure := {}
 var party := {}
@@ -337,6 +338,7 @@ func _draw() -> void:
 
 	_draw_environment(viewport_size)
 	_draw_scheduled_people(viewport_size)
+	_draw_embodied_guides(viewport_size)
 	_draw_player(viewport_size)
 	_draw_hud(viewport_size)
 	if party_menu_open:
@@ -796,6 +798,7 @@ func _on_runtime_response(response: Dictionary) -> void:
 
 
 func _apply_view(view: Dictionary) -> void:
+	guide_context = _dict_or_empty(view.get("guide_context"))
 	var next_overworld: Dictionary = _dict_or_empty(view.get("overworld"))
 	if next_overworld.is_empty():
 		return
@@ -1261,10 +1264,53 @@ func _draw_player(viewport_size: Vector2) -> void:
 	_draw_logical_rect(Rect2(actor_origin + Vector2(2, 8), Vector2(1, 3)), cloak_dark, viewport_size)
 
 
+func _draw_embodied_guides(viewport_size: Vector2) -> void:
+	var guide_names := _active_guide_display_names()
+	if guide_names.size() != 2:
+		return
+	var guide_colors := [
+		_color("hollow_grove.house.stonebend.highlight"),
+		_color("hollow_grove.house.sandmanor.highlight"),
+	]
+	for guide_index in range(guide_names.size()):
+		var horizontal_offset := -11.0 if guide_index == 0 else 13.0
+		var independent_step := guide_index
+		if animation_elapsed < STEP_DURATION_SECONDS:
+			independent_step = (int(animation_elapsed * 30.0) + guide_index) % 2
+		var origin := Vector2(
+			roundf(display_position.x * 8.0) + horizontal_offset,
+			roundf(display_position.y * 8.0) - 4.0 - float(independent_step)
+		)
+		var outline := _color("hollow_grove.universal.outline")
+		var body: Color = guide_colors[guide_index]
+		_draw_logical_rect(Rect2(origin + Vector2(1, 0), Vector2(5, 4)), outline, viewport_size)
+		_draw_logical_rect(Rect2(origin + Vector2(2, 1), Vector2(3, 2)), body, viewport_size)
+		_draw_logical_rect(Rect2(origin + Vector2(0, 4), Vector2(7, 6)), outline, viewport_size)
+		_draw_logical_rect(Rect2(origin + Vector2(1, 5), Vector2(5, 4)), body, viewport_size)
+		_draw_logical_rect(Rect2(origin + Vector2(1, 10), Vector2(2, 2)), outline, viewport_size)
+		_draw_logical_rect(Rect2(origin + Vector2(4, 10), Vector2(2, 2)), outline, viewport_size)
+		_draw_pixel_text(
+			str(guide_names[guide_index]).left(1),
+			origin + Vector2(2, 5),
+			outline,
+			viewport_size
+		)
+
+
 func _draw_hud(viewport_size: Vector2) -> void:
 	_draw_logical_rect(Rect2(2, 2, 48, 9), _color("hollow_grove.universal.outline"), viewport_size)
 	_draw_logical_rect(Rect2(3, 3, 46, 7), _color("hollow_grove.universal.shadow.raised"), viewport_size)
 	_draw_pixel_text(_map_label(), Vector2(5, 4), _color("hollow_grove.house.flynt.highlight"), viewport_size)
+	var guide_names := _active_guide_display_names()
+	if guide_names.size() == 2:
+		_draw_logical_rect(Rect2(50, 2, 61, 9), _color("hollow_grove.universal.outline"), viewport_size)
+		_draw_logical_rect(Rect2(51, 3, 59, 7), _color("hollow_grove.universal.shadow.raised"), viewport_size)
+		_draw_pixel_text(
+			"%s + %s" % [guide_names[0], guide_names[1]],
+			Vector2(52, 4),
+			_color("hollow_grove.house.flynt.highlight"),
+			viewport_size
+		)
 	var party_count := int(party.get("member_count", 0))
 	var party_max := int(party.get("max_members", 6))
 	_draw_logical_rect(Rect2(111, 2, 47, 9), _color("hollow_grove.universal.outline"), viewport_size)
@@ -1749,6 +1795,14 @@ func _world_context_semantics() -> String:
 			str(player.get("facing", player_facing)),
 		],
 	]
+	var guide_names := _active_guide_display_names()
+	if guide_names.size() == 2:
+		parts.append(
+			"%s and %s are embodied Guides and equal rulers of Central Junction." % [
+				guide_names[0],
+				guide_names[1],
+			]
+		)
 	var weather := str(living_world.get("weather", ""))
 	if weather != "":
 		parts.append("Weather: %s." % weather)
@@ -1786,6 +1840,18 @@ func _world_context_semantics() -> String:
 			]
 		)
 	return " ".join(parts)
+
+
+func _active_guide_display_names() -> Array[String]:
+	var names: Array[String] = []
+	if str(guide_context.get("layer", "")) != "hollow_grove":
+		return names
+	for guide_value in guide_context.get("guides", []):
+		var guide := _dict_or_empty(guide_value)
+		var name := str(guide.get("display_name", ""))
+		if name != "":
+			names.append(name)
+	return names
 
 
 func _semantic_status() -> String:

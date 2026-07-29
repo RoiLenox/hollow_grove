@@ -174,7 +174,7 @@ where
 #[derive(Serialize)]
 struct OllamaGenerateRequest<'a> {
     model: &'a str,
-    system: &'static str,
+    system: String,
     prompt: String,
     stream: bool,
     format: &'static str,
@@ -205,6 +205,8 @@ fn build_ollama_request(
         "retrieved_canon": request.retrieved_canon,
         "nearby_examples": request.nearby_examples,
         "evidence_refs": evidence_refs,
+        "active_guide_context": request.active_guides,
+        "guide_identity_law": request.guide_prompt_law,
         "required_response_shape": {
             "scale_key": "string",
             "proposed_position": {"x": "integer", "y": 0, "z": "integer"},
@@ -219,7 +221,11 @@ fn build_ollama_request(
         .map_err(|error| InterpreterError::MalformedModelResponse(error.to_string()))?;
     serde_json::to_vec(&OllamaGenerateRequest {
         model,
-        system: HOLLOW_GROVE_SEMANTIC_PROMPT_V1,
+        system: format!(
+            "{}\n\n{}",
+            HOLLOW_GROVE_SEMANTIC_PROMPT_V1.trim_end(),
+            request.guide_prompt_law
+        ),
         prompt,
         stream: false,
         format: "json",

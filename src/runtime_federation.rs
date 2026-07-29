@@ -1,5 +1,5 @@
-//! The Runtime Federation: deterministic continuity across accepted Hollow
-//! Grove domain archives.
+//! HGRF compatibility machinery for deterministic continuity across accepted
+//! Hollow Grove domain archives.
 //!
 //! The federation owns no domain decision. It binds independently replayable
 //! component archives, validates their relationships, and carries accepted
@@ -44,6 +44,8 @@ mod semantic;
 pub use ollama::*;
 pub use semantic::*;
 
+/// Frozen HGRF V1 archive label. The active constitutional public name is
+/// [`crate::guide_identity::FEDERATION_CANONICAL_NAME`], "The Federation".
 pub const RUNTIME_FEDERATION_CANONICAL_NAME: &str = "The Runtime Federation";
 pub const RUNTIME_FEDERATION_IDENTITY: &str = "runtime-federation.hollow-grove.v1";
 pub const RUNTIME_FEDERATION_ARCHIVE_IDENTITY: &str = "archive.runtime-federation.hollow-grove.v1";
