@@ -1,8 +1,14 @@
-use std::fs;
+use std::fs::{self, OpenOptions};
 use std::io;
+use std::io::Write;
 use std::path::Path;
+use std::process::Command;
+use std::time::{SystemTime, UNIX_EPOCH};
 
-use hollow_grove::runtime_federation::parse_model_semantic_proposal;
+use hollow_grove::runtime_federation::{
+    DEFAULT_HOLLOW_GROVE_OLLAMA_MODEL, parse_model_semantic_proposal,
+    render_hollow_grove_ollama_modelfile, validate_ollama_model_reference,
+};
 use hollow_grove::{
     Position3, decode_semantic_witness_jsonl, format_semantic_dataset_record,
     inspect_semantic_dataset, semantic_dataset_history, semantic_dataset_nearby,
@@ -16,12 +22,44 @@ fn usage() -> &'static str {
        semantic inspect <jsonl> <point-ref> <scale> [--json]\n\
        semantic history <jsonl> <point-ref> <scale> [--json]\n\
        semantic nearby <jsonl> <scale> <x> <y> <z> [limit] [--json]\n\
+       model show-modelfile <base-model>\n\
+       model install-ollama <base-model> [model-name]\n\
        model validate-response <json> [--json]\n\
        dataset validate-semantic <jsonl>\n\
        dataset split-semantic <jsonl> <train-jsonl> <validation-jsonl> <seed> [validation-millis]\n\
      \n\
      All semantic dataset commands are read-only. Canonical mutation remains\n\
      exclusively inside Federation and Festival."
+}
+
+struct TemporaryModelfile {
+    path: std::path::PathBuf,
+}
+
+impl TemporaryModelfile {
+    fn create(contents: &str) -> io::Result<Self> {
+        let nonce = SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .map_err(|error| io::Error::other(error.to_string()))?
+            .as_nanos();
+        let path = std::env::temp_dir().join(format!(
+            "hollow-grove-Modelfile-{}-{nonce}",
+            std::process::id()
+        ));
+        let mut file = OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .open(&path)?;
+        file.write_all(contents.as_bytes())?;
+        file.sync_all()?;
+        Ok(Self { path })
+    }
+}
+
+impl Drop for TemporaryModelfile {
+    fn drop(&mut self) {
+        let _ = fs::remove_file(&self.path);
+    }
 }
 
 fn invalid(message: impl Into<String>) -> io::Error {
@@ -131,6 +169,47 @@ fn run_model(args: &[String]) -> io::Result<()> {
             println!("{}", usage());
             Ok(())
         }
+        Some("show-modelfile") if args.len() == 2 => {
+            let modelfile = render_hollow_grove_ollama_modelfile(&args[1])
+                .map_err(|error| invalid(error.to_string()))?;
+            print!("{modelfile}");
+            Ok(())
+        }
+        Some("install-ollama") if args.len() == 2 || args.len() == 3 => {
+            let base_model = &args[1];
+            let model_name = args
+                .get(2)
+                .map_or(DEFAULT_HOLLOW_GROVE_OLLAMA_MODEL, String::as_str);
+            validate_ollama_model_reference(model_name)
+                .map_err(|error| invalid(error.to_string()))?;
+            let modelfile = render_hollow_grove_ollama_modelfile(base_model)
+                .map_err(|error| invalid(error.to_string()))?;
+            let temporary = TemporaryModelfile::create(&modelfile)?;
+            let status = Command::new("ollama")
+                .args(["create", model_name, "-f"])
+                .arg(&temporary.path)
+                .status()
+                .map_err(|error| {
+                    io::Error::new(
+                        error.kind(),
+                        format!(
+                            "could not run Ollama; install it and start `ollama serve`: {error}"
+                        ),
+                    )
+                })?;
+            if !status.success() {
+                return Err(io::Error::other(format!(
+                    "Ollama could not create {model_name:?} from {base_model:?}; \
+                     make sure `ollama serve` is running and the base model is installed"
+                )));
+            }
+            println!(
+                "Installed proposal-only Ollama model {model_name:?} from {base_model:?}.\n\
+                 Run: ollama run {model_name} --format json\n\
+                 Canonical confirmation still requires Hollow Grove Federation and Festival."
+            );
+            Ok(())
+        }
         Some("validate-response") if args.len() == 2 || args.len() == 3 && has_json_flag(args) => {
             let bytes = fs::read(Path::new(&args[1]))?;
             let proposal = parse_model_semantic_proposal(&bytes)
@@ -226,6 +305,8 @@ mod tests {
         assert!(usage.contains("semantic inspect"));
         assert!(usage.contains("semantic history"));
         assert!(usage.contains("semantic nearby"));
+        assert!(usage.contains("model show-modelfile"));
+        assert!(usage.contains("model install-ollama"));
         assert!(usage.contains("model validate-response"));
         assert!(usage.contains("dataset validate-semantic"));
         assert!(usage.contains("dataset split-semantic"));

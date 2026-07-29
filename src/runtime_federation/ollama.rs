@@ -18,10 +18,119 @@ use super::{
 pub const HOLLOW_GROVE_MODEL_ENV: &str = "HOLLOW_GROVE_MODEL";
 pub const HOLLOW_GROVE_OLLAMA_URL_ENV: &str = "HOLLOW_GROVE_OLLAMA_URL";
 pub const DEFAULT_OLLAMA_URL: &str = "http://127.0.0.1:11434/api/generate";
+pub const DEFAULT_HOLLOW_GROVE_OLLAMA_MODEL: &str = "hollow-grove";
+pub const HOLLOW_GROVE_OLLAMA_MODEL_SCHEMA_VERSION: &str = "hollow-grove-ollama-model-v1";
 pub const HOLLOW_GROVE_SEMANTIC_PROMPT_VERSION: &str = "hollow-grove-semantic-interpreter-v1";
 pub const HOLLOW_GROVE_SEMANTIC_PROMPT_V1: &str =
     include_str!("../../ai/prompts/hollow-grove-semantic-interpreter-v1.txt");
 pub const MAX_OLLAMA_HTTP_RESPONSE_BYTES: usize = 1_048_576;
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum OllamaModelPackageError {
+    InvalidModelReference(String),
+    PromptDelimiterConflict,
+}
+
+impl fmt::Display for OllamaModelPackageError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::InvalidModelReference(value) => write!(
+                formatter,
+                "invalid Ollama model reference {value:?}; use an installed model name or tag"
+            ),
+            Self::PromptDelimiterConflict => {
+                formatter.write_str("the semantic prompt cannot be embedded in an Ollama Modelfile")
+            }
+        }
+    }
+}
+
+impl std::error::Error for OllamaModelPackageError {}
+
+/// Validates a model reference before it is placed in a Modelfile or supplied
+/// to the Ollama CLI. This surface intentionally accepts model names and tags,
+/// not local filesystem paths.
+pub fn validate_ollama_model_reference(value: &str) -> Result<(), OllamaModelPackageError> {
+    let valid_length = !value.is_empty() && value.len() <= 256;
+    let valid_first = value
+        .as_bytes()
+        .first()
+        .is_some_and(u8::is_ascii_alphanumeric);
+    let valid_characters = value.bytes().all(|byte| {
+        byte.is_ascii_alphanumeric() || matches!(byte, b'.' | b'_' | b'-' | b'/' | b':')
+    });
+    let valid_path_segments = value
+        .split('/')
+        .all(|segment| !matches!(segment, "" | "." | ".."));
+
+    if valid_length && valid_first && valid_characters && valid_path_segments {
+        Ok(())
+    } else {
+        Err(OllamaModelPackageError::InvalidModelReference(value.into()))
+    }
+}
+
+/// Builds the deterministic Ollama model package used by
+/// `ollama run hollow-grove`.
+///
+/// This package creates an Aura/proposal surface. It does not contain catalog
+/// mutation, constitutional confirmation, IDs, evidence resolution, or
+/// Festival execution.
+pub fn render_hollow_grove_ollama_modelfile(
+    base_model: &str,
+) -> Result<String, OllamaModelPackageError> {
+    validate_ollama_model_reference(base_model)?;
+    if HOLLOW_GROVE_SEMANTIC_PROMPT_V1.contains("\"\"\"") {
+        return Err(OllamaModelPackageError::PromptDelimiterConflict);
+    }
+
+    let mut output = String::new();
+    output.push_str("# ");
+    output.push_str(HOLLOW_GROVE_OLLAMA_MODEL_SCHEMA_VERSION);
+    output.push('\n');
+    output.push_str("# Aura/proposal-only surface; Rust Festival remains authoritative.\n");
+    output.push_str("FROM ");
+    output.push_str(base_model);
+    output.push('\n');
+    output.push_str("PARAMETER temperature 0\n");
+    output.push_str("SYSTEM \"\"\"\n");
+    output.push_str(HOLLOW_GROVE_SEMANTIC_PROMPT_V1.trim_end());
+    output.push_str(
+        r#"
+
+Direct Ollama model contract:
+
+Treat the user's message as a semantic interpretation request.
+
+Return exactly one JSON object with this shape:
+
+{
+  "scale_key": "concise-nonempty-contextual-scale",
+  "proposed_position": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "operation": "locate",
+  "evidence_refs": [],
+  "semantic_tags": [],
+  "summary": "concise noncanonical explanation",
+  "confidence_millis": 0
+}
+
+Allowed operations are locate, inspect, translate, repair, compose, and transform.
+X and Z must be integers from -1000 through 1000.
+Y must be exactly zero.
+Confidence must be an integer from 0 through 1000.
+Use an empty evidence_refs array unless the request supplies references.
+Never invent a reference.
+The response is an untrusted Aura proposal, never a confirmed Current state.
+Only Rust Federation and Festival may validate, witness, persist, or confirm it.
+"#,
+    );
+    output.push_str("\"\"\"\n");
+    Ok(output)
+}
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct OllamaConfig {
