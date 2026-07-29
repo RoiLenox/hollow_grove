@@ -22,6 +22,13 @@ use crate::semantic::{
 
 pub const SEMANTIC_PROPOSAL_SCHEMA_VERSION: &str = "hollow-grove-semantic-proposal-v1";
 pub const DETERMINISTIC_INTERPRETER_VERSION: &str = "deterministic-semantic-interpreter-v1";
+pub const MAX_MODEL_RESPONSE_BYTES: usize = 65_536;
+pub const MAX_MODEL_SCALE_BYTES: usize = 128;
+pub const MAX_MODEL_SUMMARY_BYTES: usize = 2_048;
+pub const MAX_MODEL_EVIDENCE_REFS: usize = 32;
+pub const MAX_MODEL_EVIDENCE_REF_BYTES: usize = 512;
+pub const MAX_MODEL_TAGS: usize = 32;
+pub const MAX_MODEL_TAG_BYTES: usize = 128;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
@@ -49,18 +56,99 @@ pub struct ModelSemanticProposal {
 impl ModelSemanticProposal {
     pub fn validate(&self) -> Result<(), InterpreterError> {
         if self.scale_key.trim().is_empty() {
-            return Err(InterpreterError::MissingModelField("scale_key"));
+            return Err(InterpreterError::MissingModelField("scale_key".into()));
         }
         if self.summary.trim().is_empty() {
-            return Err(InterpreterError::MissingModelField("summary"));
+            return Err(InterpreterError::MissingModelField("summary".into()));
         }
         if self.confidence_millis > 1000 {
             return Err(InterpreterError::ConfidenceOutOfBounds(
                 self.confidence_millis,
             ));
         }
+        if self.scale_key.len() > MAX_MODEL_SCALE_BYTES {
+            return Err(InterpreterError::ModelFieldTooLarge {
+                field: "scale_key",
+                actual: self.scale_key.len(),
+                maximum: MAX_MODEL_SCALE_BYTES,
+            });
+        }
+        if self.summary.len() > MAX_MODEL_SUMMARY_BYTES {
+            return Err(InterpreterError::ModelFieldTooLarge {
+                field: "summary",
+                actual: self.summary.len(),
+                maximum: MAX_MODEL_SUMMARY_BYTES,
+            });
+        }
+        if self.evidence_refs.len() > MAX_MODEL_EVIDENCE_REFS {
+            return Err(InterpreterError::TooManyEvidenceReferences {
+                actual: self.evidence_refs.len(),
+                maximum: MAX_MODEL_EVIDENCE_REFS,
+            });
+        }
+        if self.semantic_tags.len() > MAX_MODEL_TAGS {
+            return Err(InterpreterError::TooManySemanticTags {
+                actual: self.semantic_tags.len(),
+                maximum: MAX_MODEL_TAGS,
+            });
+        }
+        if let Some(reference) = self
+            .evidence_refs
+            .iter()
+            .find(|reference| reference.len() > MAX_MODEL_EVIDENCE_REF_BYTES)
+        {
+            return Err(InterpreterError::ModelFieldTooLarge {
+                field: "evidence_refs[]",
+                actual: reference.len(),
+                maximum: MAX_MODEL_EVIDENCE_REF_BYTES,
+            });
+        }
+        if let Some(tag) = self
+            .semantic_tags
+            .iter()
+            .find(|tag| tag.len() > MAX_MODEL_TAG_BYTES)
+        {
+            return Err(InterpreterError::ModelFieldTooLarge {
+                field: "semantic_tags[]",
+                actual: tag.len(),
+                maximum: MAX_MODEL_TAG_BYTES,
+            });
+        }
         Ok(())
     }
+}
+
+pub fn parse_model_semantic_proposal(
+    response: &[u8],
+) -> Result<ModelSemanticProposal, InterpreterError> {
+    if response.len() > MAX_MODEL_RESPONSE_BYTES {
+        return Err(InterpreterError::ResponseTooLarge {
+            actual: response.len(),
+            maximum: MAX_MODEL_RESPONSE_BYTES,
+        });
+    }
+    let proposal: ModelSemanticProposal =
+        serde_json::from_slice(response).map_err(classify_model_json_error)?;
+    proposal.validate()?;
+    Ok(proposal)
+}
+
+fn classify_model_json_error(error: serde_json::Error) -> InterpreterError {
+    let message = error.to_string();
+    if message.contains("unknown field") {
+        return InterpreterError::UnknownModelField(extract_json_field(&message));
+    }
+    if message.contains("missing field") {
+        return InterpreterError::MissingModelField(extract_json_field(&message));
+    }
+    InterpreterError::MalformedModelResponse(message)
+}
+
+fn extract_json_field(message: &str) -> String {
+    message
+        .split('`')
+        .nth(1)
+        .map_or_else(|| "unknown".into(), str::to_owned)
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -108,6 +196,14 @@ impl DeterministicSemanticInterpreter {
     }
 
     #[must_use]
+    pub fn from_json(response: &[u8]) -> Self {
+        match parse_model_semantic_proposal(response) {
+            Ok(proposal) => Self::responding_with(proposal),
+            Err(error) => Self::failing_with(error),
+        }
+    }
+
+    #[must_use]
     pub fn timeout() -> Self {
         Self::failing_with(InterpreterError::InterpreterTimeout)
     }
@@ -136,8 +232,24 @@ impl SemanticInterpreter for DeterministicSemanticInterpreter {
 pub enum InterpreterError {
     MalformedModelResponse(String),
     UnknownModelField(String),
-    MissingModelField(&'static str),
-    ResponseTooLarge { actual: usize, maximum: usize },
+    MissingModelField(String),
+    ResponseTooLarge {
+        actual: usize,
+        maximum: usize,
+    },
+    ModelFieldTooLarge {
+        field: &'static str,
+        actual: usize,
+        maximum: usize,
+    },
+    TooManyEvidenceReferences {
+        actual: usize,
+        maximum: usize,
+    },
+    TooManySemanticTags {
+        actual: usize,
+        maximum: usize,
+    },
     ConfidenceOutOfBounds(u16),
     InvalidScale(String),
     InvalidEvidenceReference(String),

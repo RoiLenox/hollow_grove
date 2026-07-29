@@ -38,8 +38,10 @@ use crate::world::world_point_archive::{
     encode_world_point_archive,
 };
 
+mod ollama;
 mod semantic;
 
+pub use ollama::*;
 pub use semantic::*;
 
 pub const RUNTIME_FEDERATION_CANONICAL_NAME: &str = "The Runtime Federation";
