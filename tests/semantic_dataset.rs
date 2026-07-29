@@ -4,8 +4,8 @@ use std::time::{SystemTime, UNIX_EPOCH};
 use hollow_grove::{
     CompositionCatalog, ExternalRef, Position3, SEMANTIC_WITNESS_SCHEMA_VERSION, ScaleKey,
     SemanticDatasetDecision, SemanticScope, SemanticTrainingCategory, SemanticWitnessDecision,
-    SemanticWitnessRecord, export_semantic_witness_jsonl, validate_semantic_witness_jsonl,
-    write_semantic_witness_dataset,
+    SemanticWitnessRecord, decode_semantic_witness_jsonl, export_semantic_witness_jsonl,
+    validate_semantic_witness_jsonl, write_semantic_witness_dataset,
 };
 
 fn reference(namespace: &str, key: &str) -> ExternalRef {
@@ -180,4 +180,15 @@ fn pre_operation_witnesses_migrate_without_guessing_an_intent() {
     let migrated: SemanticWitnessRecord = serde_json::from_value(value).unwrap();
     assert_eq!(migrated.operation.namespace, "semantic-intent");
     assert_eq!(migrated.operation.key, "unspecified-v1");
+}
+
+#[test]
+fn legacy_dataset_records_do_not_guess_a_point_identity() {
+    let bytes = export_semantic_witness_jsonl(&catalog(false)).unwrap();
+    let first = std::str::from_utf8(&bytes).unwrap().lines().next().unwrap();
+    let mut value: serde_json::Value = serde_json::from_str(first).unwrap();
+    value.as_object_mut().unwrap().remove("point_ref");
+    let legacy = format!("{}\n", serde_json::to_string(&value).unwrap());
+    let decoded = decode_semantic_witness_jsonl(legacy.as_bytes()).unwrap();
+    assert_eq!(decoded[0].point_ref, "point.unknown-v1");
 }

@@ -42,6 +42,8 @@ pub struct SemanticWitnessDatasetRecord {
     pub witness_ref: String,
     pub proposal_ref: String,
     pub cycle_id: String,
+    #[serde(default = "legacy_dataset_point_ref")]
+    pub point_ref: String,
     pub input: String,
     pub scope: SemanticDatasetScope,
     pub prior_position: Option<Position3>,
@@ -58,6 +60,10 @@ pub struct SemanticWitnessDatasetRecord {
     pub summary: String,
     pub prompt_version: String,
     pub interpreter_version: String,
+}
+
+fn legacy_dataset_point_ref() -> String {
+    "point.unknown-v1".into()
 }
 
 pub fn export_semantic_witness_jsonl(
@@ -81,6 +87,7 @@ pub fn export_semantic_witness_jsonl(
             witness_ref: external_label(&witness.witness_ref),
             proposal_ref: external_label(&witness.proposal_ref),
             cycle_id: external_label(&witness.cycle_ref),
+            point_ref: external_label(&witness.point_ref),
             input: witness.input,
             scope: SemanticDatasetScope {
                 scale_key: witness.scope.scale.as_str().into(),
@@ -125,15 +132,21 @@ pub fn write_semantic_witness_dataset(
 }
 
 pub fn validate_semantic_witness_jsonl(bytes: &[u8]) -> Result<usize, SemanticDatasetError> {
+    Ok(decode_semantic_witness_jsonl(bytes)?.len())
+}
+
+pub fn decode_semantic_witness_jsonl(
+    bytes: &[u8],
+) -> Result<Vec<SemanticWitnessDatasetRecord>, SemanticDatasetError> {
     if !bytes.is_empty() && !bytes.ends_with(b"\n") {
         return Err(SemanticDatasetError::MissingFinalNewline);
     }
     let text = std::str::from_utf8(bytes)
         .map_err(|error| SemanticDatasetError::Utf8(error.to_string()))?;
-    let mut count = 0;
+    let mut records = Vec::new();
     for line in text.lines() {
         if line.trim().is_empty() {
-            return Err(SemanticDatasetError::EmptyLine(count + 1));
+            return Err(SemanticDatasetError::EmptyLine(records.len() + 1));
         }
         let record: SemanticWitnessDatasetRecord = serde_json::from_str(line)
             .map_err(|error| SemanticDatasetError::Json(error.to_string()))?;
@@ -142,9 +155,9 @@ pub fn validate_semantic_witness_jsonl(bytes: &[u8]) -> Result<usize, SemanticDa
                 record.schema_version,
             ));
         }
-        count += 1;
+        records.push(record);
     }
-    Ok(count)
+    Ok(records)
 }
 
 fn training_categories(

@@ -16,6 +16,7 @@ const BRIDGE_BINARY_NAME: &str = "hollow_grove_niri_bridge";
 const BENCHMARK_BINARY_NAME: &str = "current_synthesis_benchmark";
 const HUEMAN_SLICE_BINARY_NAME: &str = "hueman_slice_demo";
 const CURRENT_SYNTHESIS_TUI_BINARY_NAME: &str = "current_synthesis_tui";
+const SEMANTIC_BINARY_NAME: &str = "hollow_grove_semantic";
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 enum MainCli {
@@ -29,6 +30,7 @@ enum MainCli {
     HuemanSlice(Vec<String>),
     VerifyFoundation,
     CurrentSynthesisTui(Vec<String>),
+    SemanticTools(Vec<String>),
 }
 
 fn parse_main_cli<I>(args: I) -> Result<MainCli, String>
@@ -57,6 +59,11 @@ where
         "benchmark" => Ok(MainCli::Benchmark(args.collect())),
         "app" | "application" => Ok(MainCli::App(args.collect())),
         "hueman-slice" => Ok(MainCli::HuemanSlice(args.collect())),
+        "semantic" | "model" | "dataset" => {
+            let mut forwarded = vec![command];
+            forwarded.extend(args);
+            Ok(MainCli::SemanticTools(forwarded))
+        }
         "verify-foundation" => {
             if let Some(extra) = args.next() {
                 Err(format!(
@@ -114,6 +121,9 @@ fn usage() -> &'static str {
        benchmark [args]  run the Current-Synthesis-style benchmark suite\n\
        app ...           inspect, launch, or attach a Hollow Grove-managed application\n\
        hueman-slice      run the Hueman vertical-slice demo surface\n\
+       semantic ...      inspect witnessed semantic positions and history\n\
+       model ...         validate an untrusted model response\n\
+       dataset ...       validate witnessed semantic JSONL\n\
        verify-foundation print the Hollow Grove semantic foundation regression report\n\
        scenario ...      list or switch Current Synthesis scenarios\n\
        world ...         inspect authoritative Current Synthesis world context and alignment\n\
@@ -157,6 +167,9 @@ fn usage() -> &'static str {
        hollow-grove app launch chroma_cord\n\
        hollow-grove app attach chroma_cord\n\
        hollow-grove hueman-slice walk\n\
+       hollow-grove semantic inspect semantic-witnesses-v1.jsonl object.support-column.041 structural-repair\n\
+       hollow-grove model validate-response response.json\n\
+       hollow-grove dataset validate-semantic semantic-witnesses-v1.jsonl\n\
        hollow-grove verify-foundation\n\
        hollow-grove scenario list\n\
        hollow-grove world context\n\
@@ -554,6 +567,7 @@ fn main() -> io::Result<()> {
         MainCli::Benchmark(args) => run_child_binary(BENCHMARK_BINARY_NAME, &args),
         MainCli::App(args) => run_application_cli(&args),
         MainCli::HuemanSlice(args) => run_child_binary(HUEMAN_SLICE_BINARY_NAME, &args),
+        MainCli::SemanticTools(args) => run_child_binary(SEMANTIC_BINARY_NAME, &args),
         MainCli::VerifyFoundation => {
             println!("{}", build_hollow_grove_foundation_verification_report()?);
             Ok(())
@@ -626,6 +640,19 @@ mod tests {
             parse_main_cli([String::from("hueman-slice"), String::from("status")])
                 .expect("hueman-slice cli should parse"),
             MainCli::HuemanSlice(vec![String::from("status")])
+        );
+        assert_eq!(
+            parse_main_cli([
+                String::from("semantic"),
+                String::from("inspect"),
+                String::from("witnesses.jsonl"),
+            ])
+            .expect("semantic cli should parse"),
+            MainCli::SemanticTools(vec![
+                String::from("semantic"),
+                String::from("inspect"),
+                String::from("witnesses.jsonl"),
+            ])
         );
         assert_eq!(
             parse_main_cli([String::from("verify-foundation")])

@@ -65,6 +65,9 @@ fn main_binary_reports_integrated_help() {
     assert!(stdout.contains("desktop [args]"));
     assert!(stdout.contains("benchmark [args]"));
     assert!(stdout.contains("hueman-slice"));
+    assert!(stdout.contains("semantic ..."));
+    assert!(stdout.contains("model ..."));
+    assert!(stdout.contains("dataset ..."));
     assert!(stdout.contains("verify-foundation"));
     assert!(stdout.contains("world context"));
     assert!(stdout.contains("world witness"));
@@ -166,6 +169,19 @@ fn main_binary_delegates_hueman_slice_help() {
     assert!(stdout.contains("defense"));
     assert!(stdout.contains("recognize"));
     assert!(stdout.contains("unlock"));
+}
+
+#[test]
+fn main_binary_delegates_semantic_help() {
+    let output = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["semantic", "--help"])
+        .output()
+        .expect("semantic help should run");
+    assert!(output.status.success());
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(stdout.contains("semantic inspect"));
+    assert!(stdout.contains("model validate-response"));
+    assert!(stdout.contains("read-only"));
 }
 
 #[test]
