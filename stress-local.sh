@@ -2,10 +2,15 @@
 
 set -euo pipefail
 
-cd /home/warren/hollow-grove
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+cd "${SCRIPT_DIR}"
 
 CANONICAL_WITNESS=$'Point\n↓\nTriway\n↓\nFourway\n↓\nHollowGrove\n↓\nCurrentSeam [PlebExterior]\n↓\nAuraBeam [BlepReturn]\n↓\nPoint² (Landed Point) [BlepArrival]'
 BINARY="target/release/hollow-grove"
+WARMUP_RUNS="${WARMUP_RUNS:-100}"
+STANDARD_RUNS="${STANDARD_RUNS:-10000}"
+HEAVY_RUNS="${HEAVY_RUNS:-100000}"
+SKIP_BUILD="${SKIP_BUILD:-0}"
 
 run_level() {
     local label="$1"
@@ -68,12 +73,17 @@ printf 'CPU model:\n'
 lscpu | grep "Model name"
 
 cargo fmt --check
-cargo test
-cargo build --release
+if [[ "${SKIP_BUILD}" == "0" ]]; then
+    cargo test --quiet
+    cargo build --release --quiet
+elif [[ ! -x "${BINARY}" ]]; then
+    printf 'Missing release binary while SKIP_BUILD is set: %s\n' "${BINARY}" >&2
+    exit 1
+fi
 
 printf 'Release binary:\n'
 ls -lh "${BINARY}"
 
-run_level "warmup" 100
-run_level "standard" 10000
-run_level "heavy" 100000
+run_level "warmup" "${WARMUP_RUNS}"
+run_level "standard" "${STANDARD_RUNS}"
+run_level "heavy" "${HEAVY_RUNS}"

@@ -50,6 +50,95 @@ fn wait_for_path(path: &Path) -> bool {
 }
 
 #[test]
+fn local_scripts_derive_the_checkout_root_instead_of_naming_one() {
+    let repo_root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    for script in [
+        "bench-local.sh",
+        "stress-local.sh",
+        "run-local.sh",
+        "run-runtime.sh",
+        "run-runtime-niri.sh",
+        "verify-fast.sh",
+    ] {
+        let contents =
+            fs::read_to_string(repo_root.join(script)).expect("local script should read");
+        assert!(
+            contents.contains("${BASH_SOURCE[0]}"),
+            "{script} should derive its own location"
+        );
+        assert!(
+            !contents.contains("/home/"),
+            "{script} should not name a personal checkout"
+        );
+    }
+}
+
+#[test]
+fn runtime_launchers_default_to_their_staged_checkout_from_any_working_directory() {
+    let repo_root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    let temp_root = unique_temp_dir("hollow-grove-portable-launchers");
+    let temp_bin = temp_root.join("bin");
+    let temp_target_debug = temp_root.join("target/debug");
+    fs::create_dir_all(&temp_bin).expect("temp bin should create");
+    fs::create_dir_all(&temp_target_debug).expect("temp target should create");
+
+    for script in ["run-runtime.sh", "run-runtime-niri.sh"] {
+        create_executable_script(
+            &temp_root.join(script),
+            &fs::read_to_string(repo_root.join(script)).expect("launcher should read"),
+        );
+    }
+
+    let cargo_log = temp_root.join("cargo.log");
+    let launch_log = temp_root.join("launch.log");
+    create_executable_script(
+        &temp_bin.join("cargo"),
+        &format!(
+            "#!/usr/bin/env bash\nset -euo pipefail\nprintf '%s|%s\\n' \"$PWD\" \"$*\" >> '{}'\n",
+            cargo_log.display()
+        ),
+    );
+    create_executable_script(
+        &temp_target_debug.join("hollow-grove"),
+        &format!(
+            "#!/usr/bin/env bash\nset -euo pipefail\nprintf '%s|%s\\n' \"$PWD\" \"$*\" >> '{}'\n",
+            launch_log.display()
+        ),
+    );
+
+    let path = format!(
+        "{}:{}",
+        temp_bin.display(),
+        std::env::var("PATH").unwrap_or_default()
+    );
+    for (script, argument) in [
+        ("run-runtime.sh", "runtime-probe"),
+        ("run-runtime-niri.sh", "desktop-probe"),
+    ] {
+        let status = Command::new("bash")
+            .current_dir(std::env::temp_dir())
+            .env_remove("HOLLOW_GROVE_ROOT")
+            .env("PATH", &path)
+            .arg(temp_root.join(script))
+            .arg(argument)
+            .status()
+            .expect("portable launcher should run");
+        assert!(status.success());
+    }
+
+    let cargo_log = fs::read_to_string(cargo_log).expect("cargo log should read");
+    let launch_log = fs::read_to_string(launch_log).expect("launch log should read");
+    assert_eq!(cargo_log.lines().count(), 2);
+    assert!(cargo_log.lines().all(|line| {
+        line.starts_with(&format!("{}|build --bin hollow-grove", temp_root.display()))
+    }));
+    assert!(launch_log.contains(&format!("{}|runtime runtime-probe", temp_root.display())));
+    assert!(launch_log.contains(&format!("{}|desktop desktop-probe", temp_root.display())));
+
+    fs::remove_dir_all(&temp_root).expect("temp cleanup should succeed");
+}
+
+#[test]
 fn launcher_runs_runtime_and_bridge_in_a_staged_workspace() {
     let repo_root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let temp_root = unique_temp_dir("hollow-grove-launcher");

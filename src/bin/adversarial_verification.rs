@@ -71,7 +71,24 @@ fn run_report(args: &[String]) -> Result<(), String> {
     }
 
     println!("{}", report_to_markdown(&report));
-    Ok(())
+    ensure_semantic_hash_match(
+        report.semantic_hash.mismatch_count,
+        report.semantic_hash.comparison_label.as_deref(),
+    )
+}
+
+fn ensure_semantic_hash_match(
+    mismatch_count: usize,
+    comparison_label: Option<&str>,
+) -> Result<(), String> {
+    if mismatch_count == 0 {
+        Ok(())
+    } else {
+        Err(format!(
+            "semantic hash differs from {} comparison",
+            comparison_label.unwrap_or("requested")
+        ))
+    }
 }
 
 fn run_matrix(args: &[String]) -> Result<(), String> {
@@ -182,4 +199,18 @@ fn usage() -> String {
         "usage:\n  cargo run --bin adversarial_verification -- report --profile fast --seed 0xC0FFEE --json artifacts/adversarial_verification_report.json --md artifacts/adversarial_verification_report.md --matrix artifacts/verification/exhaustive_matrix.tsv\n  cargo run --bin adversarial_verification -- hash-corpus --cases 65536 --seed 0xC0FFEE\n  cargo run --bin adversarial_verification -- matrix --profile fast --output artifacts/verification/exhaustive_matrix.tsv\n  cargo run --bin adversarial_verification -- soak --duration-seconds 300 --seed {:#x} --report-interval-seconds 60 --json artifacts/verification/soak_report.json --md artifacts/verification/soak_report.md --checkpoint-json artifacts/verification/soak_checkpoint.json --checkpoint-md artifacts/verification/soak_checkpoint.md",
         DEFAULT_VERIFICATION_SEED
     )
+}
+
+#[cfg(test)]
+mod tests {
+    use super::ensure_semantic_hash_match;
+
+    #[test]
+    fn report_status_rejects_cross_build_semantic_hash_drift() {
+        assert!(ensure_semantic_hash_match(0, Some("release")).is_ok());
+        assert_eq!(
+            ensure_semantic_hash_match(1, Some("release")).unwrap_err(),
+            "semantic hash differs from release comparison"
+        );
+    }
 }

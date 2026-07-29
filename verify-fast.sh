@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+cd "${SCRIPT_DIR}"
+
 SEED="${SEED:-0xC0FFEE42}"
 HASH_CASES="${HASH_CASES:-10000}"
 ARTIFACT_DIR="artifacts/verification"
@@ -19,13 +22,14 @@ cargo test
 cargo build
 cargo build --release
 ./bench-local.sh | tee "$ARTIFACT_DIR/bench-fast.log"
-./stress-local.sh | tee "$ARTIFACT_DIR/stress-fast.log"
+SKIP_BUILD=1 ./stress-local.sh | tee "$ARTIFACT_DIR/stress-fast.log"
 cargo run --quiet --bin client_desktop_status >/dev/null
 
 RELEASE_HASH="$(cargo run --release --quiet --bin adversarial_verification -- hash-corpus --cases "$HASH_CASES" --seed "$SEED")"
 cargo run --quiet --bin adversarial_verification -- report \
   --profile fast \
   --seed "$SEED" \
+  --hash-cases "$HASH_CASES" \
   --compare-other-label release \
   --compare-other-hash "$RELEASE_HASH" \
   --json artifacts/adversarial_verification_report.json \

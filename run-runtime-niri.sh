@@ -2,7 +2,8 @@
 
 set -euo pipefail
 
-ROOT_DIR="${HOLLOW_GROVE_ROOT:-/home/warren/hollow-grove}"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="${HOLLOW_GROVE_ROOT:-${SCRIPT_DIR}}"
 
 cd "${ROOT_DIR}"
 cargo build --bin hollow-grove --bin hollow_grove_runtime --bin hollow_grove_niri_bridge >/dev/null

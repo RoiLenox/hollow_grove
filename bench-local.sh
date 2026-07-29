@@ -2,7 +2,8 @@
 
 set -euo pipefail
 
-cd /home/warren/hollow-grove
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+cd "${SCRIPT_DIR}"
 
 REPEAT_COUNT=10
 CANONICAL_WITNESS=$'Point\n↓\nTriway\n↓\nFourway\n↓\nHollowGrove\n↓\nCurrentSeam [PlebExterior]\n↓\nAuraBeam [BlepReturn]\n↓\nPoint² (Landed Point) [BlepArrival]'
@@ -10,7 +11,7 @@ CANONICAL_WITNESS=$'Point\n↓\nTriway\n↓\nFourway\n↓\nHollowGrove\n↓\nCur
 time_once_ms() {
     local start_ns end_ns
     start_ns="$(date +%s%N)"
-    "$@" >/dev/null 2>&1
+    "$@" >/dev/null
     end_ns="$(date +%s%N)"
     printf '%s\n' "$(((end_ns - start_ns) / 1000000))"
 }
@@ -21,7 +22,7 @@ time_average_us() {
 
     for _ in $(seq 1 "${REPEAT_COUNT}"); do
         start_ns="$(date +%s%N)"
-        "$@" >/dev/null 2>&1
+        "$@" >/dev/null
         end_ns="$(date +%s%N)"
         total_ns="$((total_ns + end_ns - start_ns))"
     done
@@ -41,11 +42,11 @@ printf 'debug + release\n'
 cargo fmt --check
 
 echo "cargo test time (ms):"
-test_time_ms="$(time_once_ms cargo test)"
+test_time_ms="$(time_once_ms cargo test --quiet)"
 printf '%s\n' "${test_time_ms}"
 
 echo "cargo build --release time (ms):"
-build_time_ms="$(time_once_ms cargo build --release)"
+build_time_ms="$(time_once_ms cargo build --release --quiet)"
 printf '%s\n' "${build_time_ms}"
 
 echo "Release binary:"
