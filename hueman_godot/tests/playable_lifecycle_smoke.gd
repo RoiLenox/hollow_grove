@@ -46,6 +46,30 @@ func _run_save_phase(snapshot_path: String) -> void:
 	if int(response.get("revision", -1)) != 0:
 		_fail("new service did not begin at revision zero")
 		return
+	var outside_context := _dictionary(_dictionary(response.get("view")).get("guide_context"))
+	if str(outside_context.get("layer", "")) != "outside_hollow_grove":
+		_fail("new service did not begin with Roï and Rosaliña outside Hollow Grove")
+		return
+
+	response = await _send(
+		"request.lifecycle.guide-entry",
+		"EnterHollowGroveIntent"
+	)
+	if not _require_completed(response, "Guide entry"):
+		return
+	if int(response.get("revision", -1)) != 1:
+		_fail("Guide entry did not advance the unified revision")
+		return
+	var entry_view := _dictionary(response.get("view"))
+	var entry_context := _dictionary(entry_view.get("guide_context"))
+	if str(entry_context.get("layer", "")) != "hollow_grove":
+		_fail("Guide entry did not produce Roi and Roselina inside Hollow Grove")
+		return
+	var transition_events: Array = entry_view.get("guide_transition_events", [])
+	if transition_events.is_empty() \
+			or str(_dictionary(transition_events.back()).get("kind", "")) != "confirmed":
+		_fail("Guide entry did not deliver the confirmed crossing event")
+		return
 
 	response = await _send(
 		"request.lifecycle.establish",
@@ -90,7 +114,7 @@ func _run_save_phase(snapshot_path: String) -> void:
 	)
 	if not _require_completed(response, "save"):
 		return
-	if int(response.get("revision", -1)) != 8:
+	if int(response.get("revision", -1)) != 9:
 		_fail("save phase ended at an unexpected revision")
 		return
 	var view := _dictionary(response.get("view"))
@@ -136,8 +160,12 @@ func _run_load_phase(snapshot_path: String) -> void:
 	)
 	if not _require_completed(response, "post-restart sync"):
 		return
-	if int(response.get("revision", -1)) != 0:
-		_fail("restarted service did not begin at revision zero before load")
+	if int(response.get("revision", -1)) != 1:
+		_fail("restarted service did not restore the Guide entry revision before load")
+		return
+	var restored_context := _dictionary(_dictionary(response.get("view")).get("guide_context"))
+	if str(restored_context.get("layer", "")) != "hollow_grove":
+		_fail("restarted service did not restore Roi and Roselina inside Hollow Grove")
 		return
 
 	response = await _send(
@@ -147,8 +175,8 @@ func _run_load_phase(snapshot_path: String) -> void:
 	)
 	if not _require_completed(response, "post-restart load"):
 		return
-	if int(response.get("revision", -1)) != 8:
-		_fail("loaded service did not restore revision eight")
+	if int(response.get("revision", -1)) != 9:
+		_fail("loaded service did not restore revision nine")
 		return
 	var loaded_view := _dictionary(response.get("view"))
 	if loaded_view != expected_view:

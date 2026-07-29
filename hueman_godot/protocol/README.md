@@ -11,6 +11,13 @@ Bond, action, progression, House, Synthesis, and persistence state.
 may still be unavailable until its authoritative Rust reducer is implemented;
 the service reports that state with `CapabilityUnavailable`.
 
+The live service synchronizes outside Hollow Grove as Roï and Rosaliña.
+Godot submits `EnterHollowGroveIntent` and waits for the Rust-confirmed paired
+transition before it establishes or resumes Hueman gameplay as Roi and
+Roselina. `LeaveHollowGroveIntent` performs the reverse crossing. Both
+operations share the request revision with gameplay commands, and transition
+events arrive in the immutable `view.guide_transition_events` projection.
+
 `MoveIntent` and `EnterRegionIntent` become available after Hueman is
 established. The authoritative view includes the current typed map rows, tile
 size, player position, and optional Boardwalk case projection; Godot does not
@@ -24,7 +31,9 @@ actors, optional relationship kind/Bond/term, uncertainty, and refusal
 protections. `SaveIntent` and `LoadIntent` use stable slot IDs and the service's
 configured save root. Gameplay save schema V3 embeds the validated
 institutional state loaded from the separate world root and the explicit
-Runtime Federation binding.
+Runtime Federation binding. The service save envelope additionally stores the
+canonical dual-Guide session and unified operational revision, while legacy
+bare gameplay archives remain readable.
 
 The Current Sea Stonebend case uses the same faculty intent plus
 `SupportStonebendContinuityOptionIntent` and

@@ -21,7 +21,9 @@ Read the setting in this order:
    [Central Junction Transition](docs/CENTRAL_JUNCTION_TRANSITION_V1.md), and
    [Surface–Hueman Guide Protocol](docs/SURFACE_HUEMAN_GUIDE_PROTOCOL_V1.md).
    The crash-safe typed execution boundary is specified by
-   [Guide State-Machine Hardening V2](docs/GUIDE_STATE_MACHINE_HARDENING_V2.md).
+   [Guide State-Machine Hardening V2](docs/GUIDE_STATE_MACHINE_HARDENING_V2.md),
+   and its live gameplay-service binding is
+   [Guide Operational Seam V1](docs/GUIDE_OPERATIONAL_SEAM_V1.md).
 4. [Repository Authority Map](REPOSITORY_AUTHORITY_MAP.md) — what is
    constitutional law, executable enforcement, a draft, a witness, or a
    generated projection.
@@ -147,7 +149,7 @@ infrastructure, Manticorp, recognition, and its institutional hierarchy.
 | Geography and travel | [Constitutional Geography](HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md), [Route Network](HOLLOW_GROVE_ROUTE_NETWORK_V1.md), [Screen Map](HUEMAN_SCREEN_MAP_v0.1.0.md), [Spatial Inheritance](SPATIAL_INHERITANCE_V1.md) | House boundaries, route verbs, route shape, recursively inherited map projection |
 | Shared judiciary | [Minoan County Court](MINOAN_COUNTY_COURT_SYSTEM_AND_RESTITUTION_CYCLE_V1.md) | disputes, amendment review, Restitution |
 | Shared economy | [Central Junction Four-Pole Economy](CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md) | public exchange, indexes, settlement |
-| Guide identity, the Federation, and continuity archives | [Federal Sovereignty and Seer Ceremony](FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md), [Guide and Seer Identity](docs/GUIDE_AND_SEER_IDENTITY_V1.md), [Central Junction Transition](docs/CENTRAL_JUNCTION_TRANSITION_V1.md), [Surface–Hueman Guide Protocol](docs/SURFACE_HUEMAN_GUIDE_PROTOCOL_V1.md), [Guide State-Machine Hardening V2](docs/GUIDE_STATE_MACHINE_HARDENING_V2.md), [HGRF compatibility architecture](THE_RUNTIME_FEDERATION_V1.md), [Executable Implementation V1](THE_RUNTIME_FEDERATION_IMPLEMENTATION_V1.md) | two stable Guide identities, layer-derived form-names, one Federation, typed and crash-safe atomic seam crossing, deterministic cross-domain manifest, replay, inspection, migration, and accepted consequence |
+| Guide identity, the Federation, and continuity archives | [Federal Sovereignty and Seer Ceremony](FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md), [Guide and Seer Identity](docs/GUIDE_AND_SEER_IDENTITY_V1.md), [Central Junction Transition](docs/CENTRAL_JUNCTION_TRANSITION_V1.md), [Surface–Hueman Guide Protocol](docs/SURFACE_HUEMAN_GUIDE_PROTOCOL_V1.md), [Guide State-Machine Hardening V2](docs/GUIDE_STATE_MACHINE_HARDENING_V2.md), [Guide Operational Seam V1](docs/GUIDE_OPERATIONAL_SEAM_V1.md), [HGRF compatibility architecture](THE_RUNTIME_FEDERATION_V1.md), [Executable Implementation V1](THE_RUNTIME_FEDERATION_IMPLEMENTATION_V1.md) | two stable Guide identities, layer-derived form-names, one Federation, typed and crash-safe atomic seam crossing, live restart recovery and save continuity, deterministic cross-domain manifest, replay, inspection, migration, and accepted consequence |
 | Shared civic Function | [Service Tournament — Central Junction Canon](SERVICE_TOURNAMENT_CENTRAL_JUNCTION_CANON_V1.md) | four paired-service House identities, War of a Thousand Hues, nonlethal scenarios, paint records, Service Marks, constitutional scoring |
 | Hueman | [Hueman](HUEMAN_v0.1.0.md), [Faculties](HUEMAN_FACULTIES_V1.md) | constitutional entry point, Body/Spirit/Mind/Soul faculties |
 | Regional surfaces | [Aura Field](AURA_FIELD_SURFACE_V1.md), [Aura Beach](AURA_BEACH_SURFACE_V1.md), [Aura Basin](AURA_BASIN_SURFACE_V1.md) | the three interior world surfaces |

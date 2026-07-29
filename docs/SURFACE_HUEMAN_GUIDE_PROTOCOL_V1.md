@@ -5,6 +5,9 @@ Status: canonical session, phase, model, and presentation contract
 All new adapters consume the versioned `GuideContextV1` projection and
 presentation-neutral transition events defined in
 [Guide State-Machine Hardening V2](GUIDE_STATE_MACHINE_HARDENING_V2.md).
+The live gameplay-service binding, restart recovery, save envelope, and
+concurrency law are defined in
+[Guide Operational Seam V1](GUIDE_OPERATIONAL_SEAM_V1.md).
 
 ## Continuous Session
 
@@ -132,8 +135,10 @@ interpretation metadata instead of rewriting prior audit prose.
 ```text
 cargo run --bin current_synthesis_tui -- guides status
 cargo run --bin guide_transition_audit
+cargo test --test guide_operational_seam
 ```
 
 The first command presents the outside Seer forms through the TUI. The second
 executes an entry and exit cycle, proving paired transition, stable identities,
-and stable session continuity.
+and stable session continuity. The integration test proves that those same
+transitions are durable through the live gameplay protocol and restart path.

@@ -1,10 +1,21 @@
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, BTreeSet};
+use std::fs::{self, OpenOptions};
+use std::io::Write;
 use std::path::{Path, PathBuf};
+use std::sync::atomic::{AtomicU64, Ordering};
 
 use serde::{Deserialize, Serialize};
 
+use crate::composition::ExternalRef;
 use crate::constitutional::{CausalPosition, ParticipantId, RuleSetId};
-use crate::guide_identity::StableGuideSessionId;
+use crate::guide_identity::{
+    DualGuideSession, GuideTransitionDirection, GuideTransitionEvidence, PairedGuideTransition,
+    StableGuideSessionId, StableTransitionId, WorldLayer,
+};
+use crate::guide_state_machine::{
+    CanonicalGuideSession, DurableGuideTransitionCoordinator, DurableGuideTransitionOutcome,
+    GuideTransitionEvent, GuideTransitionJournalStatus, GuideTransitionJournalStore,
+};
 use crate::institution::InstitutionalBeingId;
 use crate::world::session::WorldSession;
 use crate::{read_text_artifact, write_text_artifact};
@@ -21,6 +32,10 @@ use super::{
 pub const HOLLOW_GROVE_GAMEPLAY_PROTOCOL_VERSION: u16 = 1;
 pub const DEFAULT_GAMEPLAY_SERVICE_ADDRESS: &str = "127.0.0.1:47819";
 pub const MAX_GAMEPLAY_MESSAGE_BYTES: usize = 64 * 1024;
+pub const GAMEPLAY_SERVICE_SAVE_SCHEMA_VERSION: u16 = 1;
+pub const GUIDE_OPERATIONAL_STATE_SCHEMA_VERSION: &str = "hollow-grove-guide-operational-state-v1";
+
+static RUNTIME_LEASE_NONCE: AtomicU64 = AtomicU64::new(0);
 
 /// Version-one player intents. Schema presence does not imply capability.
 /// Availability is projected by the runtime and unavailable intents fail
@@ -29,6 +44,8 @@ pub const MAX_GAMEPLAY_MESSAGE_BYTES: usize = 64 * 1024;
 #[serde(tag = "type", deny_unknown_fields)]
 pub enum GameplayIntent {
     SyncIntent,
+    EnterHollowGroveIntent,
+    LeaveHollowGroveIntent,
     EstablishHuemanIntent {
         continuity_id: String,
         participant_id: String,
@@ -100,6 +117,8 @@ impl GameplayIntent {
     pub const fn kind(&self) -> &'static str {
         match self {
             Self::SyncIntent => "SyncIntent",
+            Self::EnterHollowGroveIntent => "EnterHollowGroveIntent",
+            Self::LeaveHollowGroveIntent => "LeaveHollowGroveIntent",
             Self::EstablishHuemanIntent { .. } => "EstablishHuemanIntent",
             Self::MoveIntent { .. } => "MoveIntent",
             Self::InteractIntent => "InteractIntent",
@@ -187,6 +206,106 @@ struct CompletedProtocolRequest {
     response: ProtocolResponseEnvelope,
 }
 
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct GameplayServiceSaveArchive {
+    service_schema_version: u16,
+    service_revision: u64,
+    gameplay_archive: String,
+    guide_session: DualGuideSession,
+    #[serde(default)]
+    applied_guide_transitions: BTreeSet<StableTransitionId>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct GuideOperationalStateArchive {
+    schema_version: String,
+    session_id: String,
+    service_revision: u64,
+    guide_session: DualGuideSession,
+    #[serde(default)]
+    applied_guide_transitions: BTreeSet<StableTransitionId>,
+}
+
+#[derive(Debug)]
+struct GameplayRuntimeLease {
+    lock_path: PathBuf,
+    claim_path: PathBuf,
+    claim_name: String,
+}
+
+impl GameplayRuntimeLease {
+    fn acquire(root: &Path, session_id: &str) -> Result<Self, ProtocolServiceError> {
+        fs::create_dir_all(root)
+            .map_err(|error| ProtocolServiceError::OperationalState(error.to_string()))?;
+        let lock_path = gameplay_runtime_lease_path(root, session_id);
+        for _ in 0..3 {
+            let nonce = RUNTIME_LEASE_NONCE.fetch_add(1, Ordering::Relaxed);
+            let pid = std::process::id();
+            let start = process_start_token(pid).unwrap_or(0);
+            let claim_name = format!(".{session_id}.runtime-lease.{pid}.{start}.{nonce}.claim");
+            let claim_path = root.join(&claim_name);
+            let mut claim = OpenOptions::new()
+                .write(true)
+                .create_new(true)
+                .open(&claim_path)
+                .map_err(|error| ProtocolServiceError::RuntimeLease(error.to_string()))?;
+            claim
+                .write_all(claim_name.as_bytes())
+                .and_then(|()| claim.sync_all())
+                .map_err(|error| ProtocolServiceError::RuntimeLease(error.to_string()))?;
+            drop(claim);
+            match fs::hard_link(&claim_path, &lock_path) {
+                Ok(()) => {
+                    if let Err(error) =
+                        fs::File::open(root).and_then(|directory| directory.sync_all())
+                    {
+                        let _ = fs::remove_file(&lock_path);
+                        let _ = fs::remove_file(&claim_path);
+                        return Err(ProtocolServiceError::RuntimeLease(error.to_string()));
+                    }
+                    return Ok(Self {
+                        lock_path,
+                        claim_path,
+                        claim_name,
+                    });
+                }
+                Err(error) if error.kind() == std::io::ErrorKind::AlreadyExists => {
+                    let _ = fs::remove_file(&claim_path);
+                    let owner = fs::read_to_string(&lock_path)
+                        .map_err(|error| ProtocolServiceError::RuntimeLease(error.to_string()))?;
+                    if runtime_lease_owner_is_active(owner.trim()) {
+                        return Err(ProtocolServiceError::RuntimeLease(format!(
+                            "session {session_id} already has an active gameplay service"
+                        )));
+                    }
+                    let stale_claim = root.join(owner.trim());
+                    fs::remove_file(&lock_path)
+                        .map_err(|error| ProtocolServiceError::RuntimeLease(error.to_string()))?;
+                    let _ = fs::remove_file(stale_claim);
+                }
+                Err(error) => {
+                    let _ = fs::remove_file(&claim_path);
+                    return Err(ProtocolServiceError::RuntimeLease(error.to_string()));
+                }
+            }
+        }
+        Err(ProtocolServiceError::RuntimeLease(format!(
+            "could not acquire the gameplay service lease for {session_id}"
+        )))
+    }
+}
+
+impl Drop for GameplayRuntimeLease {
+    fn drop(&mut self) {
+        if fs::read_to_string(&self.lock_path).is_ok_and(|owner| owner.trim() == self.claim_name) {
+            let _ = fs::remove_file(&self.lock_path);
+        }
+        let _ = fs::remove_file(&self.claim_path);
+    }
+}
+
 /// Stateful application boundary used by transport adapters.
 ///
 /// It owns request idempotency and revision checks. Only accepted intents are
@@ -195,8 +314,14 @@ struct CompletedProtocolRequest {
 pub struct GameProtocolService {
     session_id: String,
     application: GameApplicationService,
+    guide_session: DualGuideSession,
+    guide_coordinator: Option<DurableGuideTransitionCoordinator>,
+    pending_guide_events: Vec<GuideTransitionEvent>,
+    applied_guide_transitions: BTreeSet<StableTransitionId>,
+    operational_revision: u64,
     completed_requests: BTreeMap<String, CompletedProtocolRequest>,
     save_root: Option<PathBuf>,
+    _runtime_lease: Option<GameplayRuntimeLease>,
 }
 
 impl GameProtocolService {
@@ -208,11 +333,19 @@ impl GameProtocolService {
         if !is_stable_wire_id(&session_id) {
             return Err(ProtocolServiceError::InvalidSessionId(session_id));
         }
+        let guide_session_id = StableGuideSessionId::new(session_id.clone())
+            .map_err(|error| ProtocolServiceError::OperationalState(error.to_string()))?;
         Ok(Self {
             session_id,
             application: GameApplicationService::new(rule_set),
+            guide_session: DualGuideSession::inside(guide_session_id),
+            guide_coordinator: None,
+            pending_guide_events: Vec::new(),
+            applied_guide_transitions: BTreeSet::new(),
+            operational_revision: 0,
             completed_requests: BTreeMap::new(),
             save_root: None,
+            _runtime_lease: None,
         })
     }
 
@@ -222,7 +355,14 @@ impl GameProtocolService {
         save_root: impl Into<PathBuf>,
     ) -> Result<Self, ProtocolServiceError> {
         let mut service = Self::new(session_id, rule_set)?;
-        service.save_root = Some(save_root.into());
+        let save_root = save_root.into();
+        service.guide_coordinator = Some(DurableGuideTransitionCoordinator::new(
+            GuideTransitionJournalStore::new(guide_transition_journal_root(
+                &save_root,
+                &service.session_id,
+            )),
+        ));
+        service.save_root = Some(save_root);
         Ok(service)
     }
 
@@ -236,14 +376,41 @@ impl GameProtocolService {
         if !is_stable_wire_id(&session_id) {
             return Err(ProtocolServiceError::InvalidSessionId(session_id));
         }
+        let save_root = save_root.into();
+        let runtime_lease = GameplayRuntimeLease::acquire(&save_root, &session_id)?;
         let world = WorldSession::load_or_canonical_at(world_root.as_ref())
             .map_err(|error| ProtocolServiceError::InstitutionalState(error.to_string()))?;
-        Ok(Self {
+        let guide_session_id = StableGuideSessionId::new(session_id.clone())
+            .map_err(|error| ProtocolServiceError::OperationalState(error.to_string()))?;
+        let state_path = guide_operational_state_path(&save_root, &session_id);
+        let (guide_session, operational_revision, applied_guide_transitions) =
+            if state_path.exists() {
+                load_guide_operational_state(&state_path, &session_id, &guide_session_id)?
+            } else {
+                (
+                    DualGuideSession::outside(guide_session_id),
+                    0,
+                    BTreeSet::new(),
+                )
+            };
+        let coordinator = DurableGuideTransitionCoordinator::new(GuideTransitionJournalStore::new(
+            guide_transition_journal_root(&save_root, &session_id),
+        ));
+        let mut service = Self {
             session_id,
             application: GameApplicationService::with_world_session(rule_set, world),
+            guide_session,
+            guide_coordinator: Some(coordinator),
+            pending_guide_events: Vec::new(),
+            applied_guide_transitions,
+            operational_revision,
             completed_requests: BTreeMap::new(),
-            save_root: Some(save_root.into()),
-        })
+            save_root: Some(save_root),
+            _runtime_lease: Some(runtime_lease),
+        };
+        service.recover_guide_transitions()?;
+        service.persist_guide_operational_state()?;
+        Ok(service)
     }
 
     #[must_use]
@@ -253,12 +420,17 @@ impl GameProtocolService {
 
     #[must_use]
     pub fn revision(&self) -> u64 {
-        self.application.revision().get()
+        self.operational_revision
     }
 
     #[must_use]
     pub const fn application(&self) -> &GameApplicationService {
         &self.application
+    }
+
+    #[must_use]
+    pub const fn guide_session(&self) -> &DualGuideSession {
+        &self.guide_session
     }
 
     #[must_use]
@@ -330,13 +502,36 @@ impl GameProtocolService {
     }
 
     fn dispatch(&mut self, request: &ProtocolRequestEnvelope) -> ProtocolResponseEnvelope {
-        match &request.intent {
-            GameplayIntent::SyncIntent => self.completed(
+        if self.guide_session.current_layer != WorldLayer::HollowGrove
+            && intent_requires_hollow_grove(&request.intent)
+        {
+            return self.rejection(
                 request.request_id.clone(),
-                vec![GameplayEventView::snapshot_loaded(
-                    self.application.revision(),
-                )],
-            ),
+                ProtocolRejectionCode::CapabilityUnavailable,
+                format!(
+                    "{} requires Roï and Rosaliña to enter Hollow Grove first",
+                    request.intent.kind()
+                ),
+                true,
+            );
+        }
+        match &request.intent {
+            GameplayIntent::SyncIntent => {
+                let guide_events = std::mem::take(&mut self.pending_guide_events);
+                self.completed_with_guide_events(
+                    request.request_id.clone(),
+                    vec![GameplayEventView::snapshot_loaded(
+                        self.application.revision(),
+                    )],
+                    guide_events,
+                )
+            }
+            GameplayIntent::EnterHollowGroveIntent => {
+                self.transition_guides(request, GuideTransitionDirection::EnterHollowGrove)
+            }
+            GameplayIntent::LeaveHollowGroveIntent => {
+                self.transition_guides(request, GuideTransitionDirection::LeaveHollowGrove)
+            }
             GameplayIntent::EstablishHuemanIntent {
                 continuity_id,
                 participant_id,
@@ -365,7 +560,15 @@ impl GameProtocolService {
                         );
                     }
                 };
-                let causal = match self.revision().checked_add(1) {
+                if self.operational_revision == u64::MAX {
+                    return self.rejection(
+                        request.request_id.clone(),
+                        ProtocolRejectionCode::RuntimeRejected,
+                        "gameplay service revision overflowed".into(),
+                        true,
+                    );
+                }
+                let causal = match self.application.revision().get().checked_add(1) {
                     Some(value) => value,
                     None => {
                         return self.rejection(
@@ -406,10 +609,10 @@ impl GameProtocolService {
                     .map(GameplayEventView::from_canonical)
                     .map_err(|error| error.to_string());
                 match projected {
-                    Ok(event) => self.completed(
-                        request.request_id.clone(),
-                        vec![event],
-                    ),
+                    Ok(event) => {
+                        self.operational_revision += 1;
+                        self.completed(request.request_id.clone(), vec![event])
+                    }
                     Err(message) => self.rejection(
                         request.request_id.clone(),
                         ProtocolRejectionCode::RuntimeRejected,
@@ -427,7 +630,15 @@ impl GameProtocolService {
                         true,
                     );
                 }
-                let causal = match self.revision().checked_add(1) {
+                if self.operational_revision == u64::MAX {
+                    return self.rejection(
+                        request.request_id.clone(),
+                        ProtocolRejectionCode::RuntimeRejected,
+                        "gameplay service revision overflowed".into(),
+                        true,
+                    );
+                }
+                let causal = match self.application.revision().get().checked_add(1) {
                     Some(value) => value,
                     None => {
                         return self.rejection(
@@ -466,7 +677,10 @@ impl GameProtocolService {
                     .map(GameplayEventView::from_canonical)
                     .map_err(|error| error.to_string());
                 match projected {
-                    Ok(event) => self.completed(request.request_id.clone(), vec![event]),
+                    Ok(event) => {
+                        self.operational_revision += 1;
+                        self.completed(request.request_id.clone(), vec![event])
+                    }
                     Err(message) => self.rejection(
                         request.request_id.clone(),
                         ProtocolRejectionCode::RuntimeRejected,
@@ -484,7 +698,15 @@ impl GameProtocolService {
                         true,
                     );
                 }
-                let causal = match self.revision().checked_add(1) {
+                if self.operational_revision == u64::MAX {
+                    return self.rejection(
+                        request.request_id.clone(),
+                        ProtocolRejectionCode::RuntimeRejected,
+                        "gameplay service revision overflowed".into(),
+                        true,
+                    );
+                }
+                let causal = match self.application.revision().get().checked_add(1) {
                     Some(value) => value,
                     None => {
                         return self.rejection(
@@ -521,7 +743,10 @@ impl GameProtocolService {
                     .map(GameplayEventView::from_canonical)
                     .map_err(|error| error.to_string());
                 match projected {
-                    Ok(event) => self.completed(request.request_id.clone(), vec![event]),
+                    Ok(event) => {
+                        self.operational_revision += 1;
+                        self.completed(request.request_id.clone(), vec![event])
+                    }
                     Err(message) => self.rejection(
                         request.request_id.clone(),
                         ProtocolRejectionCode::RuntimeRejected,
@@ -726,6 +951,252 @@ impl GameProtocolService {
         }
     }
 
+    fn transition_guides(
+        &mut self,
+        request: &ProtocolRequestEnvelope,
+        direction: GuideTransitionDirection,
+    ) -> ProtocolResponseEnvelope {
+        let required_source = direction.source().1;
+        if self.guide_session.current_layer != required_source {
+            return self.rejection(
+                request.request_id.clone(),
+                ProtocolRejectionCode::CapabilityUnavailable,
+                format!(
+                    "{} requires the Guides to be in {:?}, but they are in {:?}",
+                    request.intent.kind(),
+                    required_source,
+                    self.guide_session.current_layer
+                ),
+                true,
+            );
+        }
+        if self.operational_revision == u64::MAX {
+            return self.rejection(
+                request.request_id.clone(),
+                ProtocolRejectionCode::RuntimeRejected,
+                "gameplay service revision overflowed".into(),
+                true,
+            );
+        }
+        let Some(coordinator) = self.guide_coordinator.clone() else {
+            return self.rejection(
+                request.request_id.clone(),
+                ProtocolRejectionCode::CapabilityUnavailable,
+                "Guide crossing requires a configured durable save root".into(),
+                true,
+            );
+        };
+        let transition_id =
+            match StableTransitionId::new(format!("transition.{}", request.request_id)) {
+                Ok(transition_id) => transition_id,
+                Err(error) => {
+                    return self.rejection(
+                        request.request_id.clone(),
+                        ProtocolRejectionCode::RuntimeRejected,
+                        error.to_string(),
+                        true,
+                    );
+                }
+            };
+        let evidence = match guide_transition_evidence(&request.request_id) {
+            Ok(evidence) => evidence,
+            Err(message) => {
+                return self.rejection(
+                    request.request_id.clone(),
+                    ProtocolRejectionCode::RuntimeRejected,
+                    message,
+                    true,
+                );
+            }
+        };
+        let transition = match PairedGuideTransition::proposed(
+            &self.guide_session,
+            transition_id,
+            direction,
+            evidence,
+        ) {
+            Ok(transition) => transition,
+            Err(error) => {
+                return self.rejection(
+                    request.request_id.clone(),
+                    ProtocolRejectionCode::RuntimeRejected,
+                    error.to_string(),
+                    true,
+                );
+            }
+        };
+        let applied_transition_id = transition.transition_id.clone();
+        let outcome = match (
+            direction,
+            CanonicalGuideSession::restore(self.guide_session.clone()),
+        ) {
+            (
+                GuideTransitionDirection::EnterHollowGrove,
+                Ok(CanonicalGuideSession::Outside(outside)),
+            ) => outside
+                .begin_entry(transition)
+                .map_err(|error| error.to_string())
+                .and_then(|pending| {
+                    coordinator
+                        .execute_entry(pending)
+                        .map_err(|error| error.to_string())
+                }),
+            (
+                GuideTransitionDirection::LeaveHollowGrove,
+                Ok(CanonicalGuideSession::Inside(inside)),
+            ) => inside
+                .begin_exit(transition)
+                .map_err(|error| error.to_string())
+                .and_then(|pending| {
+                    coordinator
+                        .execute_exit(pending)
+                        .map_err(|error| error.to_string())
+                }),
+            (_, Ok(_)) => Err("Guide transition source layer did not match its direction".into()),
+            (_, Err(error)) => Err(error.to_string()),
+        };
+        match outcome {
+            Ok(DurableGuideTransitionOutcome::Confirmed {
+                session, events, ..
+            }) => {
+                self.guide_session = session.as_session().clone();
+                self.applied_guide_transitions.insert(applied_transition_id);
+                self.operational_revision += 1;
+                if let Err(error) = self.persist_guide_operational_state() {
+                    eprintln!(
+                        "Guide transition was journaled but its operational checkpoint failed: \
+                         {error}"
+                    );
+                }
+                self.completed_with_guide_events(request.request_id.clone(), Vec::new(), events)
+            }
+            Ok(DurableGuideTransitionOutcome::Rejected {
+                session,
+                rejection,
+                events,
+                ..
+            }) => {
+                self.guide_session = session.as_session().clone();
+                self.rejection_with_guide_events(
+                    request.request_id.clone(),
+                    ProtocolRejectionCode::RuntimeRejected,
+                    format!("the Federation rejected the Guide crossing: {rejection:?}"),
+                    events,
+                )
+            }
+            Err(message) => self.rejection(
+                request.request_id.clone(),
+                ProtocolRejectionCode::RuntimeRejected,
+                message,
+                true,
+            ),
+        }
+    }
+
+    fn recover_guide_transitions(&mut self) -> Result<(), ProtocolServiceError> {
+        let Some(coordinator) = self.guide_coordinator.clone() else {
+            return Ok(());
+        };
+        let mut journals = coordinator
+            .store()
+            .journals()
+            .map_err(|error| ProtocolServiceError::OperationalState(error.to_string()))?
+            .into_iter()
+            .filter(|journal| journal.source_session.session_id == self.guide_session.session_id)
+            .filter(|journal| {
+                journal.status != GuideTransitionJournalStatus::Rejected
+                    && !self
+                        .applied_guide_transitions
+                        .contains(&journal.transition_id)
+            })
+            .collect::<Vec<_>>();
+        let mut recovered_events = Vec::new();
+        loop {
+            let continuing = journals
+                .iter()
+                .enumerate()
+                .filter(|(_, journal)| journal.source_session == self.guide_session)
+                .map(|(index, _)| index)
+                .collect::<Vec<_>>();
+            if continuing.len() > 1 {
+                return Err(ProtocolServiceError::OperationalState(format!(
+                    "multiple Guide transitions fork from the same recovered session: {}",
+                    continuing
+                        .iter()
+                        .map(|index| journals[*index].transition_id.as_str())
+                        .collect::<Vec<_>>()
+                        .join(", ")
+                )));
+            }
+            let Some(index) = continuing.first().copied() else {
+                break;
+            };
+            let journal = journals.remove(index);
+            let before = self.guide_session.clone();
+            let outcome = coordinator
+                .recover(&journal.transition_id)
+                .map_err(|error| ProtocolServiceError::OperationalState(error.to_string()))?;
+            match outcome {
+                DurableGuideTransitionOutcome::Confirmed {
+                    session, events, ..
+                } => {
+                    self.guide_session = session.as_session().clone();
+                    self.applied_guide_transitions
+                        .insert(journal.transition_id.clone());
+                    recovered_events.extend(events);
+                }
+                DurableGuideTransitionOutcome::Rejected {
+                    session, events, ..
+                } => {
+                    self.guide_session = session.as_session().clone();
+                    recovered_events.extend(events);
+                }
+            }
+            if self.guide_session != before {
+                self.operational_revision =
+                    self.operational_revision.checked_add(1).ok_or_else(|| {
+                        ProtocolServiceError::OperationalState(
+                            "gameplay service revision overflowed during Guide recovery".into(),
+                        )
+                    })?;
+            }
+        }
+        if let Some(orphan) = journals.iter().find(|journal| {
+            journal.status == GuideTransitionJournalStatus::Prepared
+                && journal.source_session.session_id == self.guide_session.session_id
+        }) {
+            return Err(ProtocolServiceError::OperationalState(format!(
+                "prepared Guide transition {} does not continue from the recovered session",
+                orphan.transition_id
+            )));
+        }
+        self.pending_guide_events = recovered_events;
+        Ok(())
+    }
+
+    fn persist_guide_operational_state(&self) -> Result<(), ProtocolServiceError> {
+        let Some(root) = self.save_root.as_deref() else {
+            return Ok(());
+        };
+        self.guide_session
+            .validate()
+            .map_err(|error| ProtocolServiceError::OperationalState(error.to_string()))?;
+        let archive = GuideOperationalStateArchive {
+            schema_version: GUIDE_OPERATIONAL_STATE_SCHEMA_VERSION.into(),
+            session_id: self.session_id.clone(),
+            service_revision: self.operational_revision,
+            guide_session: self.guide_session.clone(),
+            applied_guide_transitions: self.applied_guide_transitions.clone(),
+        };
+        let encoded = serde_json::to_string_pretty(&archive)
+            .map_err(|error| ProtocolServiceError::OperationalState(error.to_string()))?;
+        write_text_artifact(
+            &guide_operational_state_path(root, &self.session_id),
+            &encoded,
+        )
+        .map_err(|error| ProtocolServiceError::OperationalState(error.to_string()))
+    }
+
     fn save(&self, request: &ProtocolRequestEnvelope, slot_id: &str) -> ProtocolResponseEnvelope {
         let Some(path) = self.save_path(slot_id) else {
             return self.rejection(
@@ -739,6 +1210,19 @@ impl GameProtocolService {
             .application
             .encode_archive()
             .map_err(|error| error.to_string())
+            .and_then(|archive| {
+                self.guide_session
+                    .validate()
+                    .map_err(|error| error.to_string())?;
+                serde_json::to_string_pretty(&GameplayServiceSaveArchive {
+                    service_schema_version: GAMEPLAY_SERVICE_SAVE_SCHEMA_VERSION,
+                    service_revision: self.operational_revision,
+                    gameplay_archive: archive,
+                    guide_session: self.guide_session.clone(),
+                    applied_guide_transitions: self.applied_guide_transitions.clone(),
+                })
+                .map_err(|error| error.to_string())
+            })
             .and_then(|archive| {
                 write_text_artifact(&path, &archive).map_err(|error| error.to_string())
             });
@@ -773,15 +1257,10 @@ impl GameProtocolService {
         };
         let loaded = read_text_artifact(&path)
             .map_err(|error| error.to_string())
-            .and_then(|archive| {
-                GameApplicationService::from_archive_with_world_session(
-                    &archive,
-                    self.application.runtime().world_session().clone(),
-                )
-                .map_err(|error| error.to_string())
-            });
-        let application = match loaded {
-            Ok(application) => application,
+            .and_then(|archive| self.decode_service_save(&archive));
+        let (application, guide_session, service_revision, applied_guide_transitions) = match loaded
+        {
+            Ok(loaded) => loaded,
             Err(message) => {
                 return self.rejection(
                     request.request_id.clone(),
@@ -799,13 +1278,116 @@ impl GameProtocolService {
                 true,
             );
         }
+        let mut applied_guide_transitions = applied_guide_transitions;
+        if let Some(coordinator) = &self.guide_coordinator {
+            let journals = match coordinator.store().journals() {
+                Ok(journals) => journals,
+                Err(error) => {
+                    return self.rejection(
+                        request.request_id.clone(),
+                        ProtocolRejectionCode::RuntimeRejected,
+                        error.to_string(),
+                        true,
+                    );
+                }
+            };
+            if journals.iter().any(|journal| {
+                journal.source_session.session_id == guide_session.session_id
+                    && journal.status == GuideTransitionJournalStatus::Prepared
+            }) {
+                return self.rejection(
+                    request.request_id.clone(),
+                    ProtocolRejectionCode::RuntimeRejected,
+                    "a prepared Guide transition must be recovered before loading a save".into(),
+                    true,
+                );
+            }
+            applied_guide_transitions.extend(
+                journals
+                    .into_iter()
+                    .filter(|journal| {
+                        journal.source_session.session_id == guide_session.session_id
+                            && journal.status == GuideTransitionJournalStatus::Confirmed
+                    })
+                    .map(|journal| journal.transition_id),
+            );
+        }
         self.application = application;
+        self.guide_session = guide_session;
+        self.applied_guide_transitions = applied_guide_transitions;
+        self.operational_revision = service_revision;
+        if let Err(error) = self.persist_guide_operational_state() {
+            return self.rejection(
+                request.request_id.clone(),
+                ProtocolRejectionCode::RuntimeRejected,
+                error.to_string(),
+                true,
+            );
+        }
         self.completed(
             request.request_id.clone(),
             vec![GameplayEventView::snapshot_loaded(
                 self.application.revision(),
             )],
         )
+    }
+
+    fn decode_service_save(
+        &self,
+        archive: &str,
+    ) -> Result<
+        (
+            GameApplicationService,
+            DualGuideSession,
+            u64,
+            BTreeSet<StableTransitionId>,
+        ),
+        String,
+    > {
+        let value = serde_json::from_str::<serde_json::Value>(archive)
+            .map_err(|error| error.to_string())?;
+        if value.get("service_schema_version").is_none() {
+            let application = GameApplicationService::from_archive_with_world_session(
+                archive,
+                self.application.runtime().world_session().clone(),
+            )
+            .map_err(|error| error.to_string())?;
+            let session_id = StableGuideSessionId::new(self.session_id.clone())
+                .map_err(|error| error.to_string())?;
+            let revision = application.revision().get();
+            return Ok((
+                application,
+                DualGuideSession::inside(session_id),
+                revision,
+                BTreeSet::new(),
+            ));
+        }
+        let saved = serde_json::from_value::<GameplayServiceSaveArchive>(value)
+            .map_err(|error| error.to_string())?;
+        if saved.service_schema_version != GAMEPLAY_SERVICE_SAVE_SCHEMA_VERSION {
+            return Err(format!(
+                "unsupported gameplay service save schema version {}",
+                saved.service_schema_version
+            ));
+        }
+        saved
+            .guide_session
+            .validate()
+            .map_err(|error| error.to_string())?;
+        if saved.guide_session.session_id.as_str() != self.session_id {
+            return Err("saved Guide session does not match this gameplay service".into());
+        }
+        let application = GameApplicationService::from_archive_with_world_session(
+            &saved.gameplay_archive,
+            self.application.runtime().world_session().clone(),
+        )
+        .map_err(|error| error.to_string())?;
+        Ok((
+            application,
+            saved.guide_session,
+            saved.service_revision,
+            saved.applied_guide_transitions,
+        ))
     }
 
     fn save_path(&self, slot_id: &str) -> Option<PathBuf> {
@@ -822,7 +1404,15 @@ impl GameProtocolService {
         request: &ProtocolRequestEnvelope,
         command: GameplayCommand,
     ) -> ProtocolResponseEnvelope {
-        let Some(causal) = self.revision().checked_add(1) else {
+        if self.operational_revision == u64::MAX {
+            return self.rejection(
+                request.request_id.clone(),
+                ProtocolRejectionCode::RuntimeRejected,
+                "gameplay service revision overflowed".into(),
+                true,
+            );
+        }
+        let Some(causal) = self.application.revision().get().checked_add(1) else {
             return self.rejection(
                 request.request_id.clone(),
                 ProtocolRejectionCode::RuntimeRejected,
@@ -853,7 +1443,10 @@ impl GameProtocolService {
             .map(GameplayEventView::from_canonical)
             .map_err(|error| error.to_string());
         match projected {
-            Ok(event) => self.completed(request.request_id.clone(), vec![event]),
+            Ok(event) => {
+                self.operational_revision += 1;
+                self.completed(request.request_id.clone(), vec![event])
+            }
             Err(message) => self.rejection(
                 request.request_id.clone(),
                 ProtocolRejectionCode::RuntimeRejected,
@@ -868,6 +1461,15 @@ impl GameProtocolService {
         request_id: String,
         events: Vec<GameplayEventView>,
     ) -> ProtocolResponseEnvelope {
+        self.completed_with_guide_events(request_id, events, Vec::new())
+    }
+
+    fn completed_with_guide_events(
+        &self,
+        request_id: String,
+        events: Vec<GameplayEventView>,
+        guide_events: Vec<GuideTransitionEvent>,
+    ) -> ProtocolResponseEnvelope {
         ProtocolResponseEnvelope {
             protocol_version: HOLLOW_GROVE_GAMEPLAY_PROTOCOL_VERSION,
             session_id: self.session_id.clone(),
@@ -875,7 +1477,7 @@ impl GameProtocolService {
             status: ProtocolResponseStatus::Completed,
             revision: self.revision(),
             events,
-            view: Some(self.current_view()),
+            view: Some(self.current_view_with_guide_events(guide_events)),
             rejection: None,
         }
     }
@@ -899,13 +1501,47 @@ impl GameProtocolService {
         }
     }
 
+    fn rejection_with_guide_events(
+        &self,
+        request_id: String,
+        code: ProtocolRejectionCode,
+        message: String,
+        guide_events: Vec<GuideTransitionEvent>,
+    ) -> ProtocolResponseEnvelope {
+        ProtocolResponseEnvelope {
+            protocol_version: HOLLOW_GROVE_GAMEPLAY_PROTOCOL_VERSION,
+            session_id: self.session_id.clone(),
+            request_id,
+            status: ProtocolResponseStatus::Rejected,
+            revision: self.revision(),
+            events: Vec::new(),
+            view: Some(self.current_view_with_guide_events(guide_events)),
+            rejection: Some(ProtocolRejection { code, message }),
+        }
+    }
+
     fn current_view(&self) -> GameView {
-        GameView::from_runtime_with_guide_session(
+        self.current_view_with_guide_events(Vec::new())
+    }
+
+    fn current_view_with_guide_events(&self, guide_events: Vec<GuideTransitionEvent>) -> GameView {
+        let mut view = GameView::from_runtime_with_guide_session(
             self.application.runtime(),
-            capability_views(self.application.runtime(), self.save_root.is_some()),
-            StableGuideSessionId::new(self.session_id.clone())
-                .expect("validated gameplay session IDs are valid Guide session IDs"),
-        )
+            capability_views(
+                self.application.runtime(),
+                self.save_root.is_some(),
+                self.guide_coordinator.is_some(),
+                self.guide_session.current_layer,
+            ),
+            self.guide_session.session_id.clone(),
+        );
+        view.revision = self.operational_revision;
+        view.guide_context = self
+            .guide_session
+            .guide_context_v1()
+            .expect("the service stores only canonical Guide sessions");
+        view.guide_transition_events = guide_events;
+        view
     }
 
     #[must_use]
@@ -946,9 +1582,131 @@ fn gameplay_save_path(root: &Path, session_id: &str, slot_id: &str) -> PathBuf {
     root.join(format!("{session_id}.{slot_id}.hgplay.json"))
 }
 
+#[must_use]
+pub fn guide_operational_state_path(root: &Path, session_id: &str) -> PathBuf {
+    root.join(format!("{session_id}.guides.json"))
+}
+
+#[must_use]
+pub fn guide_transition_journal_root(root: &Path, session_id: &str) -> PathBuf {
+    root.join(format!("{session_id}.guide-transitions-v2"))
+}
+
+fn gameplay_runtime_lease_path(root: &Path, session_id: &str) -> PathBuf {
+    root.join(format!("{session_id}.runtime.lock"))
+}
+
+fn process_start_token(pid: u32) -> std::io::Result<u64> {
+    let stat = fs::read_to_string(format!("/proc/{pid}/stat"))?;
+    let close = stat.rfind(')').ok_or_else(|| {
+        std::io::Error::new(
+            std::io::ErrorKind::InvalidData,
+            "process stat omitted its command terminator",
+        )
+    })?;
+    stat[close + 1..]
+        .split_whitespace()
+        .nth(19)
+        .ok_or_else(|| {
+            std::io::Error::new(
+                std::io::ErrorKind::InvalidData,
+                "process stat omitted its start token",
+            )
+        })?
+        .parse()
+        .map_err(|error| std::io::Error::new(std::io::ErrorKind::InvalidData, error))
+}
+
+fn runtime_lease_owner_is_active(owner: &str) -> bool {
+    if Path::new(owner)
+        .file_name()
+        .and_then(|value| value.to_str())
+        != Some(owner)
+    {
+        return true;
+    }
+    let Some(without_suffix) = owner.strip_suffix(".claim") else {
+        return true;
+    };
+    let mut parts = without_suffix.rsplit('.');
+    let Some(_nonce) = parts.next().and_then(|value| value.parse::<u64>().ok()) else {
+        return true;
+    };
+    let Some(start) = parts.next().and_then(|value| value.parse::<u64>().ok()) else {
+        return true;
+    };
+    let Some(pid) = parts.next().and_then(|value| value.parse::<u32>().ok()) else {
+        return true;
+    };
+    if start == 0 {
+        return true;
+    }
+    process_start_token(pid).is_ok_and(|actual| actual == start)
+}
+
+fn load_guide_operational_state(
+    path: &Path,
+    session_id: &str,
+    guide_session_id: &StableGuideSessionId,
+) -> Result<(DualGuideSession, u64, BTreeSet<StableTransitionId>), ProtocolServiceError> {
+    let encoded = read_text_artifact(path)
+        .map_err(|error| ProtocolServiceError::OperationalState(error.to_string()))?;
+    let archive = serde_json::from_str::<GuideOperationalStateArchive>(&encoded)
+        .map_err(|error| ProtocolServiceError::OperationalState(error.to_string()))?;
+    if archive.schema_version != GUIDE_OPERATIONAL_STATE_SCHEMA_VERSION {
+        return Err(ProtocolServiceError::OperationalState(format!(
+            "unsupported Guide operational state schema {}",
+            archive.schema_version
+        )));
+    }
+    archive
+        .guide_session
+        .validate()
+        .map_err(|error| ProtocolServiceError::OperationalState(error.to_string()))?;
+    if archive.session_id != session_id || archive.guide_session.session_id != *guide_session_id {
+        return Err(ProtocolServiceError::OperationalState(
+            "Guide operational state does not match the requested gameplay session".into(),
+        ));
+    }
+    Ok((
+        archive.guide_session,
+        archive.service_revision,
+        archive.applied_guide_transitions,
+    ))
+}
+
+fn guide_transition_evidence(request_id: &str) -> Result<GuideTransitionEvidence, String> {
+    let reference = |namespace: &str, suffix: &str| {
+        ExternalRef::new(namespace, format!("{request_id}.{suffix}"))
+            .map_err(|error| error.to_string())
+    };
+    Ok(GuideTransitionEvidence {
+        roi_continuity_ref: reference("guide-continuity-proof", "roi")?,
+        roi_embodiment_ref: reference("guide-embodiment-proof", "roi")?,
+        roselina_continuity_ref: reference("guide-continuity-proof", "roselina")?,
+        roselina_embodiment_ref: reference("guide-embodiment-proof", "roselina")?,
+        source_witness_ref: Some(
+            ExternalRef::new("protocol-request", request_id).map_err(|error| error.to_string())?,
+        ),
+    })
+}
+
+fn intent_requires_hollow_grove(intent: &GameplayIntent) -> bool {
+    !matches!(
+        intent,
+        GameplayIntent::SyncIntent
+            | GameplayIntent::EnterHollowGroveIntent
+            | GameplayIntent::LeaveHollowGroveIntent
+            | GameplayIntent::SaveIntent { .. }
+            | GameplayIntent::LoadIntent { .. }
+    )
+}
+
 fn capability_views(
     runtime: &HollowGroveGameRuntime,
     persistence_available: bool,
+    guide_transition_available: bool,
+    guide_layer: WorldLayer,
 ) -> Vec<IntentCapabilityView> {
     let can_establish_hueman = runtime.hueman().is_none();
     let mut capabilities = vec![
@@ -1209,6 +1967,50 @@ fn capability_views(
             },
         ]);
     }
+    capabilities.extend([
+        IntentCapabilityView {
+            intent_type: "EnterHollowGroveIntent".into(),
+            available: guide_transition_available && guide_layer == WorldLayer::OutsideHollowGrove,
+            unavailable_reason: (!(guide_transition_available
+                && guide_layer == WorldLayer::OutsideHollowGrove))
+                .then(|| {
+                    if !guide_transition_available {
+                        "a durable Guide transition coordinator is not configured".into()
+                    } else {
+                        "Roi and Roselina are already inside Hollow Grove".into()
+                    }
+                }),
+        },
+        IntentCapabilityView {
+            intent_type: "LeaveHollowGroveIntent".into(),
+            available: guide_transition_available && guide_layer == WorldLayer::HollowGrove,
+            unavailable_reason: (!(guide_transition_available
+                && guide_layer == WorldLayer::HollowGrove))
+                .then(|| {
+                    if !guide_transition_available {
+                        "a durable Guide transition coordinator is not configured".into()
+                    } else {
+                        "Roï and Rosaliña are already outside Hollow Grove".into()
+                    }
+                }),
+        },
+    ]);
+    if guide_layer != WorldLayer::HollowGrove {
+        for capability in &mut capabilities {
+            if !matches!(
+                capability.intent_type.as_str(),
+                "SyncIntent"
+                    | "EnterHollowGroveIntent"
+                    | "LeaveHollowGroveIntent"
+                    | "SaveIntent"
+                    | "LoadIntent"
+            ) {
+                capability.available = false;
+                capability.unavailable_reason =
+                    Some("Roï and Rosaliña must enter Hollow Grove first".into());
+            }
+        }
+    }
     capabilities
 }
 
@@ -1216,6 +2018,8 @@ fn capability_views(
 pub enum ProtocolServiceError {
     InvalidSessionId(String),
     InstitutionalState(String),
+    OperationalState(String),
+    RuntimeLease(String),
 }
 
 impl std::fmt::Display for ProtocolServiceError {
@@ -1226,6 +2030,12 @@ impl std::fmt::Display for ProtocolServiceError {
             }
             Self::InstitutionalState(error) => {
                 write!(formatter, "invalid gameplay institutional state: {error}")
+            }
+            Self::OperationalState(error) => {
+                write!(formatter, "invalid Guide operational state: {error}")
+            }
+            Self::RuntimeLease(error) => {
+                write!(formatter, "gameplay runtime lease failed: {error}")
             }
         }
     }

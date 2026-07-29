@@ -101,6 +101,7 @@ var status_message := "CONNECTING"
 var retry_elapsed := RETRY_INTERVAL_SECONDS
 var was_connected := false
 var sync_pending := false
+var seam_pending := false
 var establish_pending := false
 var movement_pending := false
 var interaction_pending := false
@@ -175,6 +176,7 @@ func _process(delta: float) -> void:
 		if was_connected:
 			was_connected = false
 			sync_pending = false
+			seam_pending = false
 			establish_pending = false
 			movement_pending = false
 			interaction_pending = false
@@ -200,7 +202,11 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if not (event is InputEventKey) or not event.pressed:
 		return
-	if movement_pending or interaction_pending or case_pending or animation_elapsed < STEP_DURATION_SECONDS:
+	if seam_pending \
+			or movement_pending \
+			or interaction_pending \
+			or case_pending \
+			or animation_elapsed < STEP_DURATION_SECONDS:
 		return
 	if recruitment_menu_open:
 		match event.keycode:
@@ -356,6 +362,20 @@ func _send_sync() -> void:
 	if error != OK:
 		sync_pending = false
 		status_message = "SYNC SEND ERROR"
+
+
+func _send_enter_hollow_grove() -> void:
+	if seam_pending:
+		return
+	seam_pending = true
+	status_message = "ENTERING HOLLOW GROVE"
+	var error := runtime_client.send_intent(
+		_next_request_id("guide-entry"),
+		"EnterHollowGroveIntent"
+	)
+	if error != OK:
+		seam_pending = false
+		status_message = "GUIDE ENTRY SEND ERROR"
 
 
 func _send_establish_hueman() -> void:
@@ -764,6 +784,7 @@ func _send_load() -> void:
 
 func _on_runtime_response(response: Dictionary) -> void:
 	sync_pending = false
+	seam_pending = false
 	establish_pending = false
 	movement_pending = false
 	interaction_pending = false
@@ -777,6 +798,11 @@ func _on_runtime_response(response: Dictionary) -> void:
 		status_message = str(rejection.get("message", "PROTOCOL REJECTED")).to_upper()
 		if str(rejection.get("code", "")) == "StaleRevision":
 			_send_sync()
+		queue_redraw()
+		return
+
+	if str(guide_context.get("layer", "")) == "outside_hollow_grove":
+		_send_enter_hollow_grove()
 		queue_redraw()
 		return
 
