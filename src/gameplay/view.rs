@@ -1,6 +1,7 @@
 use serde::{Deserialize, Serialize};
 
-use crate::guide_identity::{ActiveGuideContext, DualGuideSession, StableGuideSessionId};
+use crate::guide_identity::{DualGuideSession, GuideContextV1, StableGuideSessionId};
+use crate::guide_state_machine::GuideTransitionEvent;
 use crate::world::aura_basin::canonical_aura_basin;
 use crate::world::aura_beach::canonical_aura_beach;
 use crate::world::aura_field::canonical_aura_field;
@@ -1067,7 +1068,9 @@ pub struct GameView {
     pub identity_count: usize,
     pub regional_event_count: usize,
     #[serde(default = "default_inside_guide_context")]
-    pub guide_context: ActiveGuideContext,
+    pub guide_context: GuideContextV1,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub guide_transition_events: Vec<GuideTransitionEvent>,
     pub hueman: Option<BeingIdentityView>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub overworld: Option<OverworldView>,
@@ -1090,12 +1093,12 @@ pub struct GameView {
     pub capabilities: Vec<IntentCapabilityView>,
 }
 
-fn default_inside_guide_context() -> ActiveGuideContext {
+fn default_inside_guide_context() -> GuideContextV1 {
     DualGuideSession::inside(
         StableGuideSessionId::new("session.hollow-grove.migrated-view")
             .expect("canonical migrated-view Guide session ID is stable"),
     )
-    .active_context()
+    .guide_context_v1()
     .expect("canonical inside Guide session has a presentation context")
 }
 
@@ -1272,8 +1275,9 @@ impl GameView {
             identity_count: runtime.identity_count(),
             regional_event_count: runtime.regional().events().len(),
             guide_context: DualGuideSession::inside(guide_session_id)
-                .active_context()
+                .guide_context_v1()
                 .expect("canonical inside Guide session has a presentation context"),
+            guide_transition_events: Vec::new(),
             hueman: runtime.hueman().map(BeingIdentityView::from_record),
             overworld: runtime.hueman_position().map(|position| {
                 let map = map_definition(runtime.hueman_map());

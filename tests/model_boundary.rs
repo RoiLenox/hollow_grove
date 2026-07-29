@@ -52,7 +52,7 @@ fn request() -> SemanticInterpretationRequest {
         active_guides: DualGuideSession::outside(
             StableGuideSessionId::new("session.model-boundary").unwrap(),
         )
-        .active_context()
+        .guide_context_v1()
         .unwrap(),
         guide_prompt_law: GUIDE_MODEL_PROMPT_LAW.into(),
     }

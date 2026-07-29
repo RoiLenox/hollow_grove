@@ -2,6 +2,10 @@
 
 Status: canonical identity and presentation contract
 
+The constructor-controlled states, shared adapter contract, durable crossing
+journal, recovery, and invariant audit are defined in
+[Guide State-Machine Hardening V2](GUIDE_STATE_MACHINE_HARDENING_V2.md).
+
 ## The Rule
 
 ```text

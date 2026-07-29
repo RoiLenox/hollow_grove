@@ -70,6 +70,8 @@ fn main_binary_reports_integrated_help() {
     assert!(stdout.contains("dataset ..."));
     assert!(stdout.contains("verify-foundation"));
     assert!(stdout.contains("guides status"));
+    assert!(stdout.contains("guides audit"));
+    assert!(stdout.contains("guides schema"));
     assert!(stdout.contains("world context"));
     assert!(stdout.contains("world witness"));
     assert!(stdout.contains("world validate"));
@@ -131,6 +133,26 @@ fn main_binary_presents_the_outside_seer_forms() {
     assert!(stdout.contains("\nRosaliña\n"));
     assert!(stdout.contains("authority: The Federation"));
     assert!(!stdout.contains("The Guide"));
+}
+
+#[test]
+fn main_binary_exposes_the_guide_audit_and_versioned_schema() {
+    let root = unique_temp_dir("hollow-grove-main-guide-audit");
+    let audit = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["guides", "audit", root.to_str().unwrap()])
+        .output()
+        .expect("Guide audit should run");
+    assert!(audit.status.success());
+    assert!(String::from_utf8_lossy(&audit.stdout).starts_with("GUIDE STATE AUDIT — PASS"));
+
+    let schema = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["guides", "schema"])
+        .output()
+        .expect("Guide schema should run");
+    assert!(schema.status.success());
+    let stdout = String::from_utf8_lossy(&schema.stdout);
+    assert!(stdout.contains("hollow-grove-guide-context-v1"));
+    assert!(stdout.contains("\"guide.roselina\""));
 }
 
 #[test]

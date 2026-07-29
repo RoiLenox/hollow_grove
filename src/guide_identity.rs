@@ -12,6 +12,9 @@ use crate::composition::{ExternalRef, Position3};
 use crate::constitutional::GrovePhase;
 
 pub const GUIDE_IDENTITY_SCHEMA_VERSION: &str = "hollow-grove-guide-identity-v1";
+pub const GUIDE_CONTEXT_SCHEMA_VERSION: &str = "hollow-grove-guide-context-v1";
+pub const GUIDE_IDENTITY_MIGRATION_SCHEMA_VERSION: &str =
+    "hollow-grove-guide-identity-migration-v2";
 pub const FEDERATION_CANONICAL_NAME: &str = "The Federation";
 pub const CENTRAL_JUNCTION_ORIGIN: Position3 = Position3::ORIGIN;
 pub const GUIDE_MODEL_PROMPT_LAW: &str = "There are two continuous Guide identities.\n\
@@ -665,6 +668,10 @@ impl DualGuideSession {
     pub fn active_context(&self) -> Result<ActiveGuideContext, GuidePresenceError> {
         ActiveGuideContext::from_session(self)
     }
+
+    pub fn guide_context_v1(&self) -> Result<GuideContextV1, GuidePresenceError> {
+        GuideContextV1::from_session(self)
+    }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -1117,6 +1124,177 @@ impl ActiveGuideContext {
     }
 }
 
+/// The versioned projection shared by every Guide-facing adapter.
+///
+/// Rust remains authoritative for the values in this contract. Presentation
+/// layers may render it, but must never edit names, forms, identities, or the
+/// current world layer.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct GuideContextV1 {
+    #[serde(default = "default_guide_context_schema_version")]
+    pub schema_version: String,
+    #[serde(default = "default_guide_context_session_ref")]
+    pub session_ref: ExternalRef,
+    pub layer: WorldLayer,
+    pub guides: Vec<ActiveGuideDescriptor>,
+    pub seam_transition: Option<JunctionTransitionState>,
+    pub transition_ref: Option<ExternalRef>,
+}
+
+fn default_guide_context_schema_version() -> String {
+    GUIDE_CONTEXT_SCHEMA_VERSION.into()
+}
+
+fn default_guide_context_session_ref() -> ExternalRef {
+    ExternalRef::new("guide-session", "session.migrated-guide-context")
+        .expect("migrated Guide context reference is canonical")
+}
+
+impl GuideContextV1 {
+    pub fn from_session(session: &DualGuideSession) -> Result<Self, GuidePresenceError> {
+        let active = ActiveGuideContext::from_session(session)?;
+        Ok(Self::from_active(session.external_ref(), active))
+    }
+
+    pub fn during_transition(
+        session: &DualGuideSession,
+        transition: &PairedGuideTransition,
+        state: JunctionTransitionState,
+    ) -> Result<Self, GuideTransitionError> {
+        let active = ActiveGuideContext::during_transition(session, transition, state)?;
+        Ok(Self::from_active(session.external_ref(), active))
+    }
+
+    fn from_active(session_ref: ExternalRef, active: ActiveGuideContext) -> Self {
+        Self {
+            schema_version: GUIDE_CONTEXT_SCHEMA_VERSION.into(),
+            session_ref,
+            layer: active.layer,
+            guides: active.guides,
+            seam_transition: active.seam_transition,
+            transition_ref: active.transition_ref,
+        }
+    }
+
+    pub fn validate(&self) -> Result<(), GuidePresenceError> {
+        if self.schema_version != GUIDE_CONTEXT_SCHEMA_VERSION {
+            return Err(GuidePresenceError::GuideContextSchemaVersion(
+                self.schema_version.clone(),
+            ));
+        }
+        if self.session_ref.namespace != "guide-session" {
+            return Err(GuidePresenceError::GuideContextSessionRef(
+                self.session_ref.clone(),
+            ));
+        }
+        self.as_active().validate()
+    }
+
+    #[must_use]
+    pub fn as_active(&self) -> ActiveGuideContext {
+        ActiveGuideContext {
+            layer: self.layer,
+            guides: self.guides.clone(),
+            seam_transition: self.seam_transition,
+            transition_ref: self.transition_ref.clone(),
+        }
+    }
+
+    pub fn display_name(&self, speaker: GuideSpeaker) -> Result<String, GuidePresenceError> {
+        self.validate()?;
+        self.as_active().display_name(speaker)
+    }
+
+    pub fn model_context_json(&self) -> Result<String, GuidePresenceError> {
+        self.validate()?;
+        serde_json::to_string(self)
+            .map_err(|error| GuidePresenceError::Serialization(error.to_string()))
+    }
+}
+
+/// Machine-readable contract used to generate and verify adapter fixtures.
+#[must_use]
+pub fn guide_context_v1_json_schema() -> serde_json::Value {
+    serde_json::json!({
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://hollow-grove.local/schema/guide-context-v1.json",
+        "title": "Hollow Grove GuideContextV1",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+            "schema_version",
+            "session_ref",
+            "layer",
+            "guides",
+            "seam_transition",
+            "transition_ref"
+        ],
+        "properties": {
+            "schema_version": {"const": GUIDE_CONTEXT_SCHEMA_VERSION},
+            "session_ref": {"$ref": "#/$defs/external_ref"},
+            "layer": {
+                "enum": ["outside_hollow_grove", "central_junction", "hollow_grove"]
+            },
+            "guides": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {"$ref": "#/$defs/guide"}
+            },
+            "seam_transition": {
+                "oneOf": [
+                    {"type": "null"},
+                    {
+                        "enum": [
+                            "approaching",
+                            "at_origin",
+                            "form_changing",
+                            "completed",
+                            "rejected"
+                        ]
+                    }
+                ]
+            },
+            "transition_ref": {
+                "oneOf": [
+                    {"type": "null"},
+                    {"$ref": "#/$defs/external_ref"}
+                ]
+            }
+        },
+        "$defs": {
+            "external_ref": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["namespace", "key"],
+                "properties": {
+                    "namespace": {"type": "string", "minLength": 1},
+                    "key": {"type": "string", "minLength": 1}
+                }
+            },
+            "guide": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "identity",
+                    "identity_id",
+                    "form",
+                    "display_name",
+                    "jurisdiction"
+                ],
+                "properties": {
+                    "identity": {"enum": ["roi", "roselina"]},
+                    "identity_id": {"enum": ["guide.roi", "guide.roselina"]},
+                    "form": {"enum": ["hollow_grove_guide", "seer"]},
+                    "display_name": {"enum": ["Roi", "Roï", "Roselina", "Rosaliña"]},
+                    "jurisdiction": {"enum": ["when", "where_what"]}
+                }
+            }
+        }
+    })
+}
+
 fn active_descriptors(
     roi_state: &GuideFormState,
     roselina_state: &GuideFormState,
@@ -1138,14 +1316,14 @@ fn active_descriptors(
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct DualSeerPresentation {
-    pub context: ActiveGuideContext,
+    pub context: GuideContextV1,
 }
 
 impl DualSeerPresentation {
     pub fn outside(session_id: StableGuideSessionId) -> Self {
         Self {
             context: DualGuideSession::outside(session_id)
-                .active_context()
+                .guide_context_v1()
                 .expect("canonical outside session has a presentation context"),
         }
     }
@@ -1197,9 +1375,75 @@ pub struct GuideIdentityMigrationMetadata {
 #[serde(deny_unknown_fields)]
 pub struct GuideIdentityMigration {
     pub schema_version: String,
+    #[serde(default = "default_guide_identity_migration_schema_version")]
+    pub migration_schema_version: String,
+    #[serde(default)]
+    pub applied_migrations: Vec<String>,
     pub identity_records: Vec<GuideIdentityRecord>,
     pub form_states: Vec<GuideFormState>,
     pub metadata: Vec<GuideIdentityMigrationMetadata>,
+}
+
+fn default_guide_identity_migration_schema_version() -> String {
+    GUIDE_IDENTITY_MIGRATION_SCHEMA_VERSION.into()
+}
+
+impl GuideIdentityMigration {
+    pub fn validate(&self) -> Result<(), GuideMigrationError> {
+        if self.schema_version != GUIDE_IDENTITY_SCHEMA_VERSION
+            || self.migration_schema_version != GUIDE_IDENTITY_MIGRATION_SCHEMA_VERSION
+        {
+            return Err(GuideMigrationError::UnsupportedMigrationSchema {
+                identity_schema: self.schema_version.clone(),
+                migration_schema: self.migration_schema_version.clone(),
+            });
+        }
+        if self.applied_migrations != vec![GUIDE_IDENTITY_MIGRATION_SCHEMA_VERSION.to_string()] {
+            return Err(GuideMigrationError::MigrationLineageMismatch);
+        }
+        if self.identity_records != canonical_guide_identity_records()
+            || self.form_states.len() != GuideIdentity::ALL.len()
+            || self.metadata.len() != GuideIdentity::ALL.len()
+        {
+            return Err(GuideMigrationError::NonCanonicalMigrationOutput);
+        }
+        for identity in GuideIdentity::ALL {
+            if !self
+                .form_states
+                .iter()
+                .any(|state| state.identity().ok() == Some(identity))
+                || !self
+                    .metadata
+                    .iter()
+                    .any(|metadata| metadata.identity == identity)
+            {
+                return Err(GuideMigrationError::NonCanonicalMigrationOutput);
+            }
+        }
+        Ok(())
+    }
+}
+
+pub fn encode_guide_identity_migration(
+    migration: &GuideIdentityMigration,
+) -> Result<Vec<u8>, GuideMigrationError> {
+    migration.validate()?;
+    serde_json::to_vec_pretty(migration)
+        .map_err(|error| GuideMigrationError::Serialization(error.to_string()))
+}
+
+pub fn decode_guide_identity_migration(
+    bytes: &[u8],
+) -> Result<GuideIdentityMigration, GuideMigrationError> {
+    let mut migration = serde_json::from_slice::<GuideIdentityMigration>(bytes)
+        .map_err(|error| GuideMigrationError::Serialization(error.to_string()))?;
+    // Older V1 migration artifacts did not carry an explicit applied lineage.
+    // Reading them upgrades metadata only; identity and witness history remain untouched.
+    if migration.applied_migrations.is_empty() {
+        migration.applied_migrations = vec![GUIDE_IDENTITY_MIGRATION_SCHEMA_VERSION.into()];
+    }
+    migration.validate()?;
+    Ok(migration)
 }
 
 pub fn migrate_legacy_guide_identities(
@@ -1319,6 +1563,8 @@ pub fn migrate_legacy_guide_identities(
         .collect();
     Ok(GuideIdentityMigration {
         schema_version: GUIDE_IDENTITY_SCHEMA_VERSION.into(),
+        migration_schema_version: GUIDE_IDENTITY_MIGRATION_SCHEMA_VERSION.into(),
+        applied_migrations: vec![GUIDE_IDENTITY_MIGRATION_SCHEMA_VERSION.into()],
         identity_records,
         form_states,
         metadata,
@@ -1335,6 +1581,13 @@ pub enum GuideMigrationError {
     },
     MissingIdentity(GuideIdentity),
     AmbiguousTransitionLayer,
+    UnsupportedMigrationSchema {
+        identity_schema: String,
+        migration_schema: String,
+    },
+    MigrationLineageMismatch,
+    NonCanonicalMigrationOutput,
+    Serialization(String),
 }
 
 impl fmt::Display for GuideMigrationError {
@@ -1371,6 +1624,8 @@ pub enum GuidePresenceError {
     GuideContextIdentitySet,
     GuideContextProjection(GuideIdentity),
     GuideContextTransitionState,
+    GuideContextSchemaVersion(String),
+    GuideContextSessionRef(ExternalRef),
     OutsidePresentationRequiresSeers,
     Serialization(String),
     UnsupportedSchemaVersion(String),
@@ -1404,6 +1659,7 @@ pub enum GuideTransitionError {
     PendingTransitionAlreadyExists,
     PendingTransitionMismatch,
     InvalidJunctionState(JunctionTransitionState),
+    ConstitutionalRejection(String),
 }
 
 impl fmt::Display for GuideTransitionError {

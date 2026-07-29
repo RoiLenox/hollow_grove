@@ -2,6 +2,11 @@
 
 Status: canonical paired form-transition contract
 
+The constructor-controlled state types, durable Festival journal, and restart
+recovery profile are defined in
+[Guide State-Machine Hardening V2](GUIDE_STATE_MACHINE_HARDENING_V2.md). V2
+preserves every transition law in this document.
+
 ## Seam
 
 Central Junction remains `[0,0,0]`, outside the House enum, and between the

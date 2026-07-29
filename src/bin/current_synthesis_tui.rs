@@ -18,7 +18,12 @@ use hollow_grove::current_synthesis_engine::{
     select_current_synthesis_scenario_at, write_view_artifacts,
 };
 use hollow_grove::current_synthesis_scenario::list_scenarios;
-use hollow_grove::guide_identity::{DualSeerPresentation, StableGuideSessionId};
+use hollow_grove::guide_identity::{
+    DualSeerPresentation, StableGuideSessionId, guide_context_v1_json_schema,
+};
+use hollow_grove::guide_state_machine::{
+    DEFAULT_GUIDE_TRANSITION_JOURNAL_DIR, audit_guide_transition_store,
+};
 use hollow_grove::hollow_grove_contract::{
     build_hollow_grove_alignment_validation_report, build_hollow_grove_alignment_witness,
 };
@@ -45,6 +50,8 @@ use hollow_grove::{
 enum CurrentSynthesisTuiCli {
     Help,
     GuidesStatus,
+    GuidesAudit(Option<String>),
+    GuidesSchema,
     ScenarioList,
     ScenarioUse(String),
     WorldContext,
@@ -128,8 +135,19 @@ where
             Some("status") => {
                 require_no_extra(args, CurrentSynthesisTuiCli::GuidesStatus, "guides status")
             }
+            Some("audit") => {
+                let journal_root = args.next();
+                require_no_extra(
+                    args,
+                    CurrentSynthesisTuiCli::GuidesAudit(journal_root),
+                    "guides audit",
+                )
+            }
+            Some("schema") => {
+                require_no_extra(args, CurrentSynthesisTuiCli::GuidesSchema, "guides schema")
+            }
             Some(other) => Err(format!("unknown guides command: {other}")),
-            None => Err(String::from("guides requires status")),
+            None => Err(String::from("guides requires status, audit, or schema")),
         },
         "scenario" => match args.next().as_deref() {
             Some("list") => {
@@ -666,6 +684,8 @@ fn usage() -> &'static str {
      \n\
      Commands:\n\
        guides status\n\
+       guides audit [journal-directory]\n\
+       guides schema\n\
        scenario list\n\
        scenario use <scenario-id>\n\
        world context\n\
@@ -785,6 +805,17 @@ fn run_cli(root: &Path, cli: CurrentSynthesisTuiCli) -> io::Result<String> {
                 .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))?;
             DualSeerPresentation::outside(session_id)
                 .render_tui()
+                .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))
+        }
+        CurrentSynthesisTuiCli::GuidesAudit(journal_root) => {
+            let journal_root = journal_root.map_or_else(
+                || root.join(DEFAULT_GUIDE_TRANSITION_JOURNAL_DIR),
+                std::path::PathBuf::from,
+            );
+            Ok(audit_guide_transition_store(&journal_root).render_tui())
+        }
+        CurrentSynthesisTuiCli::GuidesSchema => {
+            serde_json::to_string_pretty(&guide_context_v1_json_schema())
                 .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))
         }
         CurrentSynthesisTuiCli::ScenarioList => {
@@ -1085,6 +1116,25 @@ mod tests {
             CurrentSynthesisTuiCli::GuidesStatus
         );
         assert_eq!(
+            parse_cli([String::from("guides"), String::from("audit")])
+                .expect("Guide audit should parse"),
+            CurrentSynthesisTuiCli::GuidesAudit(None)
+        );
+        assert_eq!(
+            parse_cli([
+                String::from("guides"),
+                String::from("audit"),
+                String::from("custom-journals")
+            ])
+            .expect("Guide audit path should parse"),
+            CurrentSynthesisTuiCli::GuidesAudit(Some(String::from("custom-journals")))
+        );
+        assert_eq!(
+            parse_cli([String::from("guides"), String::from("schema")])
+                .expect("Guide schema should parse"),
+            CurrentSynthesisTuiCli::GuidesSchema
+        );
+        assert_eq!(
             parse_cli([String::from("scenario"), String::from("list")])
                 .expect("scenario list should parse"),
             CurrentSynthesisTuiCli::ScenarioList
@@ -1359,6 +1409,8 @@ mod tests {
     fn usage_mentions_inspection_commands() {
         let usage = usage();
         assert!(usage.contains("guides status"));
+        assert!(usage.contains("guides audit [journal-directory]"));
+        assert!(usage.contains("guides schema"));
         assert!(usage.contains("scenario list"));
         assert!(usage.contains("scenario use <scenario-id>"));
         assert!(usage.contains("world context"));
@@ -1426,6 +1478,20 @@ mod tests {
         assert!(output.contains("\nRosaliña\n"));
         assert!(output.contains("interface: TUI"));
         assert!(!output.contains("The Guide"));
+    }
+
+    #[test]
+    fn guide_audit_and_schema_are_available_to_every_tui_caller() {
+        let root = unique_temp_dir("current-synthesis-tui-guide-audit");
+        let audit = run_cli(&root, CurrentSynthesisTuiCli::GuidesAudit(None))
+            .expect("empty Guide journal should audit cleanly");
+        let schema = run_cli(&root, CurrentSynthesisTuiCli::GuidesSchema)
+            .expect("Guide schema should render");
+
+        assert!(audit.starts_with("GUIDE STATE AUDIT — PASS"));
+        assert!(audit.contains("stable identities: guide.roi, guide.roselina"));
+        assert!(schema.contains("hollow-grove-guide-context-v1"));
+        assert!(schema.contains("\"guide.roi\""));
     }
 
     #[test]

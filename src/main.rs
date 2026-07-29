@@ -127,6 +127,8 @@ fn usage() -> &'static str {
        dataset ...       validate witnessed semantic JSONL\n\
        verify-foundation print the Hollow Grove semantic foundation regression report\n\
        guides status     present Roï and Rosaliña through the outside TUI\n\
+       guides audit      audit sessions and durable crossing journals\n\
+       guides schema     print the versioned GuideContextV1 JSON Schema\n\
        scenario ...      list or switch Current Synthesis scenarios\n\
        world ...         inspect authoritative Current Synthesis world context and alignment\n\
        progression ...   inspect Point and Point² progression state\n\
@@ -174,6 +176,8 @@ fn usage() -> &'static str {
        hollow-grove dataset validate-semantic semantic-witnesses-v1.jsonl\n\
        hollow-grove verify-foundation\n\
        hollow-grove guides status\n\
+       hollow-grove guides audit\n\
+       hollow-grove guides schema\n\
        hollow-grove scenario list\n\
        hollow-grove world context\n\
        hollow-grove world witness\n\

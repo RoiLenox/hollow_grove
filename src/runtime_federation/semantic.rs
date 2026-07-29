@@ -15,7 +15,7 @@ use crate::composition::{
     Translation3,
 };
 use crate::constitutional::{GroveCycleId, GrovePhase};
-use crate::guide_identity::{ActiveGuideContext, DualGuideSession, GUIDE_MODEL_PROMPT_LAW};
+use crate::guide_identity::{DualGuideSession, GUIDE_MODEL_PROMPT_LAW, GuideContextV1};
 use crate::semantic::{
     NearbySemanticExample, RetrievedCanonFragment, SemanticProvenanceError,
     confirm_semantic_transition, record_rejected_semantic_witness,
@@ -176,7 +176,7 @@ pub struct SemanticInterpretationRequest {
     pub retrieved_canon: Vec<RetrievedCanonFragment>,
     pub nearby_examples: Vec<NearbySemanticExample>,
     pub evidence_refs: Vec<ExternalRef>,
-    pub active_guides: ActiveGuideContext,
+    pub active_guides: GuideContextV1,
     pub guide_prompt_law: String,
 }
 
@@ -742,7 +742,7 @@ where
             evidence_refs: way_back.evidence_refs.clone(),
             active_guides: request
                 .guide_session
-                .active_context()
+                .guide_context_v1()
                 .map_err(|error| FederationError::GuideContext(error.to_string()))?,
             guide_prompt_law: GUIDE_MODEL_PROMPT_LAW.into(),
         };

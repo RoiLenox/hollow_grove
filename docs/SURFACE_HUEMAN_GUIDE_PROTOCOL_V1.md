@@ -2,6 +2,10 @@
 
 Status: canonical session, phase, model, and presentation contract
 
+All new adapters consume the versioned `GuideContextV1` projection and
+presentation-neutral transition events defined in
+[Guide State-Machine Hardening V2](GUIDE_STATE_MACHINE_HARDENING_V2.md).
+
 ## Continuous Session
 
 One dual-Guide session continues through:

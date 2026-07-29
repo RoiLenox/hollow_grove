@@ -1,0 +1,26 @@
+{
+  "schema_version": "hollow-grove-guide-context-v1",
+  "session_ref": {
+    "namespace": "guide-session",
+    "key": "session.contract-fixture"
+  },
+  "layer": "hollow_grove",
+  "guides": [
+    {
+      "identity": "roi",
+      "identity_id": "guide.roi",
+      "form": "hollow_grove_guide",
+      "display_name": "Roi",
+      "jurisdiction": "when"
+    },
+    {
+      "identity": "roselina",
+      "identity_id": "guide.roselina",
+      "form": "hollow_grove_guide",
+      "display_name": "Roselina",
+      "jurisdiction": "where_what"
+    }
+  ],
+  "seam_transition": null,
+  "transition_ref": null
+}

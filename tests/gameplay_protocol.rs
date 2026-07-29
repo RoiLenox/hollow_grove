@@ -111,6 +111,18 @@ fn shared_sync_fixture_round_trips_and_returns_an_authoritative_snapshot_view() 
         .unwrap(),
         response
     );
+    let mut legacy_context_value = serde_json::to_value(&response).unwrap();
+    let legacy_context = legacy_context_value["view"]["guide_context"]
+        .as_object_mut()
+        .unwrap();
+    legacy_context.remove("schema_version");
+    legacy_context.remove("session_ref");
+    let migrated_context: ProtocolResponseEnvelope =
+        serde_json::from_value(legacy_context_value).unwrap();
+    assert_eq!(
+        migrated_context.view.unwrap().guide_context.schema_version,
+        "hollow-grove-guide-context-v1"
+    );
     let mut legacy_value = serde_json::to_value(&response).unwrap();
     legacy_value["view"]
         .as_object_mut()

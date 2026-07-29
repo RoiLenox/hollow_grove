@@ -85,6 +85,18 @@ func _run() -> void:
 	assert("Mara Venn, weather reader, at tile x 5, y 6" in str(world_semantics.get("context")))
 	assert("Arrow keys" in str(world_semantics.get("controls")))
 
+	game.guide_transition_events = [{
+		"kind": "confirmed",
+		"guide_context": game.guide_context,
+	}]
+	game._refresh_screen_semantics()
+	var transition_semantics: Dictionary = game.get_meta(SCREEN_SEMANTICS_META_KEY)
+	assert(
+		str(transition_semantics.get("status"))
+		== "GUIDE CROSSING CONFIRMED: Roi + Roselina"
+	)
+	game.guide_transition_events = []
+
 	var long_page := "THIS COMPLETE DIALOGUE LINE IS LONGER THAN THIRTY SIX PIXEL CHARACTERS"
 	game._apply_interaction({
 		"target_id": "interaction.test",

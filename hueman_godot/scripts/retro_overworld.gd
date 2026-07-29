@@ -122,6 +122,7 @@ var route_view := {}
 var surface_view := {}
 var extraction_view := {}
 var guide_context := {}
+var guide_transition_events: Array = []
 var living_world := {}
 var deep_pressure := {}
 var party := {}
@@ -799,6 +800,7 @@ func _on_runtime_response(response: Dictionary) -> void:
 
 func _apply_view(view: Dictionary) -> void:
 	guide_context = _dict_or_empty(view.get("guide_context"))
+	guide_transition_events = view.get("guide_transition_events", [])
 	var next_overworld: Dictionary = _dict_or_empty(view.get("overworld"))
 	if next_overworld.is_empty():
 		return
@@ -1855,11 +1857,33 @@ func _active_guide_display_names() -> Array[String]:
 
 
 func _semantic_status() -> String:
+	var transition_status := _guide_transition_status()
+	if transition_status != "":
+		return transition_status
 	if overworld.is_empty():
 		return status_message
 	if movement_pending or status_message == _map_label():
 		return _case_status()
 	return status_message
+
+
+func _guide_transition_status() -> String:
+	if guide_transition_events.is_empty():
+		return ""
+	var event := _dict_or_empty(guide_transition_events.back())
+	var event_context := _dict_or_empty(event.get("guide_context"))
+	var names: Array[String] = []
+	for guide_value in event_context.get("guides", []):
+		var guide := _dict_or_empty(guide_value)
+		var display_name := str(guide.get("display_name", ""))
+		if display_name != "":
+			names.append(display_name)
+	if names.size() != 2:
+		return "GUIDE CROSSING EVENT REJECTED BY PRESENTATION"
+	return "GUIDE CROSSING %s: %s" % [
+		str(event.get("kind", "unknown")).replace("_", " ").to_upper(),
+		" + ".join(names),
+	]
 
 
 func _dialogue_semantics() -> String:

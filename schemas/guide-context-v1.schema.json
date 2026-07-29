@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hollow-grove.local/schema/guide-context-v1.json",
+  "title": "Hollow Grove GuideContextV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "session_ref",
+    "layer",
+    "guides",
+    "seam_transition",
+    "transition_ref"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "hollow-grove-guide-context-v1"
+    },
+    "session_ref": {
+      "$ref": "#/$defs/external_ref"
+    },
+    "layer": {
+      "enum": [
+        "outside_hollow_grove",
+        "central_junction",
+        "hollow_grove"
+      ]
+    },
+    "guides": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "$ref": "#/$defs/guide"
+      }
+    },
+    "seam_transition": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "enum": [
+            "approaching",
+            "at_origin",
+            "form_changing",
+            "completed",
+            "rejected"
+          ]
+        }
+      ]
+    },
+    "transition_ref": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/external_ref"
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "external_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "key"
+      ],
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "minLength": 1
+        },
+        "key": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "guide": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity",
+        "identity_id",
+        "form",
+        "display_name",
+        "jurisdiction"
+      ],
+      "properties": {
+        "identity": {
+          "enum": [
+            "roi",
+            "roselina"
+          ]
+        },
+        "identity_id": {
+          "enum": [
+            "guide.roi",
+            "guide.roselina"
+          ]
+        },
+        "form": {
+          "enum": [
+            "hollow_grove_guide",
+            "seer"
+          ]
+        },
+        "display_name": {
+          "enum": [
+            "Roi",
+            "Roï",
+            "Roselina",
+            "Rosaliña"
+          ]
+        },
+        "jurisdiction": {
+          "enum": [
+            "when",
+            "where_what"
+          ]
+        }
+      }
+    }
+  }
+}
