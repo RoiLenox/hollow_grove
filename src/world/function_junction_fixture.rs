@@ -354,7 +354,8 @@ fn attestation_id(law: PermanenceLaw) -> PermanenceAttestationId {
         PermanenceLaw::Identity => "attestation.permanence.bridge.identity",
         PermanenceLaw::Pattern => "attestation.permanence.bridge.pattern",
         PermanenceLaw::Integrity => "attestation.permanence.bridge.integrity",
-        PermanenceLaw::Recognition => "attestation.permanence.bridge.recognition",
+        PermanenceLaw::Capacity => "attestation.permanence.bridge.capacity",
+        PermanenceLaw::LegacyRecognition => "attestation.permanence.bridge.recognition",
     })
     .expect("canonical permanence attestation ID")
 }
@@ -375,7 +376,8 @@ pub fn canonical_permanence_attestations_fixture() -> Vec<PermanenceAttestation>
                     PermanenceLaw::Identity => "authority.stonebend.freemason",
                     PermanenceLaw::Pattern => "authority.sandmanor.pattern-review",
                     PermanenceLaw::Integrity => "authority.glaushouse.integrity-clearance",
-                    PermanenceLaw::Recognition => "authority.flynt.recog-commission",
+                    PermanenceLaw::Capacity => "authority.flynt.capacity-review",
+                    PermanenceLaw::LegacyRecognition => "authority.flynt.recog-commission",
                 }),
                 status: AttestationStatus::Accepted,
                 evidence_ids: [evidence(&format!("evidence.{id}"))].into_iter().collect(),
@@ -383,7 +385,8 @@ pub fn canonical_permanence_attestations_fixture() -> Vec<PermanenceAttestation>
                     PermanenceLaw::Identity => "2047-09-23T08:00:00Z",
                     PermanenceLaw::Pattern => "2047-09-23T09:00:00Z",
                     PermanenceLaw::Integrity => "2047-09-23T10:00:00Z",
-                    PermanenceLaw::Recognition => "2047-09-23T11:00:00Z",
+                    PermanenceLaw::Capacity => "2047-09-23T11:00:00Z",
+                    PermanenceLaw::LegacyRecognition => "2047-09-23T11:00:00Z",
                 }),
                 provenance_ids: [evidence(&format!("provenance.{id}"))]
                     .into_iter()

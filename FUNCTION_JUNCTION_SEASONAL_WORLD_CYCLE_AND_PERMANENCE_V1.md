@@ -277,14 +277,14 @@ expression from Flynt toward Stonebend.
 The Current system remains type-distinct:
 
 - medium: Current Sea;
-- force: Riptide or Undertow;
+- force: Riptide or Underway;
 - traveler route: Boardwalk.
 
 > **The Current Sea sets in Glaüshouse, rises by Riptide, and reaches Flynt,
 > MI along the Boardwalk.**
 
 The sea rises through Riptide. The traveler reaches Flynt by the Boardwalk.
-Undertow is the dangerous inverse hazard. Arrival and Glaüshouse clearance do
+Underway is the dangerous inverse hazard. Arrival and Glaüshouse clearance do
 not automatically grant Recog; Flynt Resynce and lawful Recog remain separate
 validated events.
 
@@ -337,7 +337,7 @@ constitutional condition.
 | Stonebend | **Law of Identity** | It is the same lawful thing across time. |
 | Sandmanor | **Law of Pattern** | Its arrangement and relationships are explicit. |
 | Glaüshouse | **Law of Integrity** | It can endure without hidden corruption or collapse. |
-| Flynt | **Law of Recognition** | It actually operates and is recognized in the world. |
+| Flynt | **Law of Capacity** | It can operate lawfully and endure under real pressure. |
 
 Stonebend asks:
 
@@ -353,7 +353,7 @@ Glaüshouse asks:
 
 Flynt asks:
 
-> **Does the world actually recognize and operate this thing?**
+> **Can this operate lawfully and endure under real pressure?**
 
 All four accepted proofs must refer to the same stable subject. A missing,
 rejected, duplicated, or conflicting proof blocks the seal without erasing the
@@ -363,7 +363,7 @@ petition or the underlying event.
 
 The constitutional sequence is:
 
-> **Claim → Pattern → Integrity → Recognition → Title → Yield**
+> **Claim → Pattern → Integrity → Capacity → Title → Yield**
 
 ```text
 temporary subject
@@ -374,7 +374,7 @@ Sandmanor attests Pattern
     ↓
 Glaüshouse clears Integrity
     ↓
-Flynt proves Recognition
+Flynt proves Capacity
     ↓
 Stonebend Diamond / Hypergiant grants Title and the Permanence Seal
     ↓
@@ -440,7 +440,7 @@ The golden fixture demonstrates:
 - four astronomical anchors, Great Functions, Function Junctions, and Seasons;
 - every physical–digital synchronization phase;
 - directional Way Back passages and Stairway ascent;
-- Current Sea, Riptide, Undertow, and Boardwalk;
+- Current Sea, Riptide, Underway, and Boardwalk;
 - The Initiation at Aura Field;
 - The Ceremony at Aura Beach;
 - Derrick resolving to The Gathering;

@@ -164,9 +164,11 @@ ordinary semantic translation and not a string replacement.
 
 ## Seer Ceremony Lock
 
-The Seer Ceremony witnesses the lawful outside form and Worldright of the same
-two continuous Guides. It does not create a third Seer and does not split one
-person into two capacities.
+The Seer Ceremony is a separate constitutional event from the paired Guide
+seam. It concerns one individual at a time and creates one Seer. It does not
+create a third Guide identity, split one Guide into two capacities, or replace
+the Roi/Roselina continuity model. Its complete movement, path, and recursive
+Point rules are defined in [Seer Ceremony Protocol V1](SEER_CEREMONY_PROTOCOL_V1.md).
 
 Worldright is the lawful ability to guide, create, establish, and steward
 consequence outside Hollow Grove while preserving continuity with the inside
@@ -255,6 +257,7 @@ transition. Display names never change before confirmation.
 
 ## Outside-Participation Freeze
 
-This corrected identity lock is implementation necessity under the existing
-outside-participation freeze. It changes no House law and creates no new
-sovereign. Further internal canon remains frozen unless explicitly reopened.
+This corrected identity lock remains the implementation boundary for the paired
+Guide seam. It changes no House law and creates no fifth House or replacement
+Federation. Seerhood and successor-Point founding are governed exclusively by
+the Seer Ceremony Protocol.

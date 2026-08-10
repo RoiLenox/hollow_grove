@@ -168,11 +168,14 @@ Asset organization:
 
 Controls:
 
+- `G`: cross the Guide seam; enter Hollow Grove from outside or return to Hueman from inside
 - `Enter`: write an `inspect` intent for the current resolved zone
 - `Space`: write a `move` intent for the current resolved zone
+- `H J K L` are Hueman-local movement aliases and only act while the Hueman window is focused;
+  outside it, use Niri's `Mod+J` / `Mod+K` for window focus so plain application keys are not captured globally
 - `Super+Alt+Enter`: open the Hueman/Godot shell
 - `Super+Alt+Control+Enter`: attach the focused window through the existing pair control
-- `Super+Alt+Backspace`: clear the paired window
+- `Super+Alt+Backspace`: clear the paired window and restore focus to it when it still exists
 - `Super+Alt+Shift+Space`: step the pair spread by the existing 25% interval
 
 For `chroma_cord`, launch with `cargo run -- app launch chroma_cord`, focus that

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1180" viewBox="0 0 1600 1180" role="img" aria-labelledby="map-title map-description">
+<title id="map-title">Hollow Grove Keyboard Grove Map</title>
+<desc id="map-description">A keyboard ecology map showing House landmarks, Office and Music domain plants, operational tools, provisional plots, and the modifier branches of each admitted plant.</desc>
+<metadata>Generated from keyboard-grove.json under HOLLOW_GROVE_KEYBOARD_CONSTITUTION_V1.md. Do not edit by hand.</metadata>
+<defs>
+<linearGradient id="plant-O"><stop offset="0%" stop-color="#5A1F2A"/><stop offset="100%" stop-color="#5A1F2A"/></linearGradient>
+<linearGradient id="plant-edge-O"><stop offset="0%" stop-color="#E07A86"/><stop offset="100%" stop-color="#E07A86"/></linearGradient>
+<linearGradient id="plant-M"><stop offset="0%" stop-color="#101525"/><stop offset="100%" stop-color="#163C35"/></linearGradient>
+<linearGradient id="plant-edge-M"><stop offset="0%" stop-color="#A7B6D9"/><stop offset="100%" stop-color="#78C9A4"/></linearGradient>
+</defs>
+<style>
+:root{--outline:#0A1024;--shadow:#121B38;--raised:#1C2A52;--text:#A7B6D9;--foundation:#79B7D8;--deep:#121B38;}
+text{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#A7B6D9}
+.title{font-size:38px;font-weight:750;letter-spacing:.5px}
+.subtitle{font-size:17px;fill:#79B7D8}
+.section-title{font-size:20px;font-weight:700;fill:#79B7D8}
+.key rect{stroke-width:2.5}
+.key-name{font-size:18px;font-weight:800}
+.key-name-small{font-size:13px}
+.semantic-label{font-size:11px;font-weight:650}
+.category{font-size:8.5px;letter-spacing:1.3px;opacity:.88}
+.tool-category{fill:#79B7D8}
+.card-title{font-size:22px;font-weight:750}
+.card-subtitle{font-size:13px;fill:#79B7D8}
+.branch-label{font-size:12px;font-weight:600}
+.legend-label{font-size:13px}
+.ontology{font-size:14px;font-weight:650}
+</style>
+<rect width="1600" height="1180" fill="#0A1024"/>
+<rect x="40" y="32" width="1520" height="1116" rx="28" fill="#121B38" stroke="#1C2A52" stroke-width="3"/>
+<text x="78.0" y="86.0" class="title" text-anchor="start">Hollow Grove Keyboard Grove</text>
+<text x="78.0" y="116.0" class="subtitle" text-anchor="start">Stonebend foundation · House landmarks · domain plants · operational tools</text>
+<rect x="62" y="142" width="1476" height="544" rx="24" fill="#0A1024" stroke="#1C2A52" stroke-width="2"/>
+<text x="82.0" y="176.0" class="section-title" text-anchor="start">THE KEYBOARD ECOLOGY</text>
+<g class="key landmark"><rect x="78.0" y="202.0" width="105.0" height="78" rx="13" fill="#163A5F" stroke="#79B7D8"/>
+<text x="130.5" y="229.0" class="key-name" text-anchor="middle">ESC</text>
+<text x="130.5" y="251.0" class="semantic-label" text-anchor="middle">Boundary</text>
+<text x="130.5" y="270.0" class="category" text-anchor="middle">LANDMARK</text>
+</g>
+<g class="key landmark"><rect x="193.0" y="202.0" width="82.0" height="78" rx="13" fill="#101525" stroke="#A7B6D9"/>
+<text x="234.0" y="229.0" class="key-name" text-anchor="middle">`</text>
+<text x="234.0" y="251.0" class="semantic-label" text-anchor="middle">Invoke</text>
+<text x="234.0" y="270.0" class="category" text-anchor="middle">LANDMARK</text>
+</g>
+<g class="key tool"><rect x="285.0" y="202.0" width="82.0" height="78" rx="13" fill="#1C2A52" stroke="#79B7D8" stroke-dasharray="7 5"/>
+<text x="326.0" y="229.0" class="key-name" text-anchor="middle">1</text>
+<text x="326.0" y="251.0" class="semantic-label" text-anchor="middle">WS 1</text>
+<text x="326.0" y="270.0" class="category tool-category" text-anchor="middle">TOOL</text>
+</g>
+<g class="key tool"><rect x="377.0" y="202.0" width="82.0" height="78" rx="13" fill="#1C2A52" stroke="#79B7D8" stroke-dasharray="7 5"/>
+<text x="418.0" y="229.0" class="key-name" text-anchor="middle">2</text>
+<text x="418.0" y="251.0" class="semantic-label" text-anchor="middle">WS 2</text>
+<text x="418.0" y="270.0" class="category tool-category" text-anchor="middle">TOOL</text>
+</g>
+<g class="key tool"><rect x="469.0" y="202.0" width="82.0" height="78" rx="13" fill="#1C2A52" stroke="#79B7D8" stroke-dasharray="7 5"/>
+<text x="510.0" y="229.0" class="key-name" text-anchor="middle">3</text>
+<text x="510.0" y="251.0" class="semantic-label" text-anchor="middle">WS 3</text>
+<text x="510.0" y="270.0" class="category tool-category" text-anchor="middle">TOOL</text>
+</g>
+<g class="key tool"><rect x="561.0" y="202.0" width="82.0" height="78" rx="13" fill="#1C2A52" stroke="#79B7D8" stroke-dasharray="7 5"/>
+<text x="602.0" y="229.0" class="key-name" text-anchor="middle">4</text>
+<text x="602.0" y="251.0" class="semantic-label" text-anchor="middle">WS 4</text>
+<text x="602.0" y="270.0" class="category tool-category" text-anchor="middle">TOOL</text>
+</g>
+<g class="key tool"><rect x="653.0" y="202.0" width="82.0" height="78" rx="13" fill="#1C2A52" stroke="#79B7D8" stroke-dasharray="7 5"/>
+<text x="694.0" y="229.0" class="key-name" text-anchor="middle">5</text>
+<text x="694.0" y="251.0" class="semantic-label" text-anchor="middle">WS 5</text>
+<text x="694.0" y="270.0" class="category tool-category" text-anchor="middle">TOOL</text>
+</g>
+<g class="key tool"><rect x="745.0" y="202.0" width="82.0" height="78" rx="13" fill="#1C2A52" stroke="#79B7D8" stroke-dasharray="7 5"/>
+<text x="786.0" y="229.0" class="key-name" text-anchor="middle">6</text>
+<text x="786.0" y="251.0" class="semantic-label" text-anchor="middle">WS 6</text>
+<text x="786.0" y="270.0" class="category tool-category" text-anchor="middle">TOOL</text>
+</g>
+<g class="key tool"><rect x="837.0" y="202.0" width="82.0" height="78" rx="13" fill="#1C2A52" stroke="#79B7D8" stroke-dasharray="7 5"/>
+<text x="878.0" y="229.0" class="key-name" text-anchor="middle">7</text>
+<text x="878.0" y="251.0" class="semantic-label" text-anchor="middle">WS 7</text>
+<text x="878.0" y="270.0" class="category tool-category" text-anchor="middle">TOOL</text>
+</g>
+<g class="key tool"><rect x="929.0" y="202.0" width="82.0" height="78" rx="13" fill="#1C2A52" stroke="#79B7D8" stroke-dasharray="7 5"/>
+<text x="970.0" y="229.0" class="key-name" text-anchor="middle">8</text>
+<text x="970.0" y="251.0" class="semantic-label" text-anchor="middle">WS 8</text>
+<text x="970.0" y="270.0" class="category tool-category" text-anchor="middle">TOOL</text>
+</g>
+<g class="key tool"><rect x="1021.0" y="202.0" width="82.0" height="78" rx="13" fill="#1C2A52" stroke="#79B7D8" stroke-dasharray="7 5"/>
+<text x="1062.0" y="229.0" class="key-name" text-anchor="middle">9</text>
+<text x="1062.0" y="251.0" class="semantic-label" text-anchor="middle">WS 9</text>
+<text x="1062.0" y="270.0" class="category tool-category" text-anchor="middle">TOOL</text>
+</g>
+<g class="key tool"><rect x="1113.0" y="202.0" width="82.0" height="78" rx="13" fill="#1C2A52" stroke="#79B7D8" stroke-dasharray="7 5"/>
+<text x="1154.0" y="229.0" class="key-name" text-anchor="middle">0</text>
+<text x="1154.0" y="251.0" class="semantic-label" text-anchor="middle">WS 10</text>
+<text x="1154.0" y="270.0" class="category tool-category" text-anchor="middle">TOOL</text>
+</g>
+<g class="key landmark"><rect x="1205.0" y="202.0" width="174.0" height="78" rx="13" fill="#5A1F2A" stroke="#E07A86"/>
+<text x="1292.0" y="229.0" class="key-name key-name-small" text-anchor="middle">BACKSPACE</text>
+<text x="1292.0" y="251.0" class="semantic-label" text-anchor="middle">Revise</text>
+<text x="1292.0" y="270.0" class="category" text-anchor="middle">LANDMARK</text>
+</g>
+<g class="key provisional"><rect x="118.0" y="294.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="159.0" y="321.0" class="key-name" text-anchor="middle">Q</text>
+<text x="159.0" y="343.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="159.0" y="362.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key provisional"><rect x="210.0" y="294.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="251.0" y="321.0" class="key-name" text-anchor="middle">W</text>
+<text x="251.0" y="343.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="251.0" y="362.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key provisional"><rect x="302.0" y="294.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="343.0" y="321.0" class="key-name" text-anchor="middle">E</text>
+<text x="343.0" y="343.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="343.0" y="362.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key provisional"><rect x="394.0" y="294.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="435.0" y="321.0" class="key-name" text-anchor="middle">R</text>
+<text x="435.0" y="343.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="435.0" y="362.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key provisional"><rect x="486.0" y="294.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="527.0" y="321.0" class="key-name" text-anchor="middle">T</text>
+<text x="527.0" y="343.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="527.0" y="362.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key provisional"><rect x="578.0" y="294.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="619.0" y="321.0" class="key-name" text-anchor="middle">Y</text>
+<text x="619.0" y="343.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="619.0" y="362.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key provisional"><rect x="670.0" y="294.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="711.0" y="321.0" class="key-name" text-anchor="middle">U</text>
+<text x="711.0" y="343.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="711.0" y="362.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key provisional"><rect x="762.0" y="294.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="803.0" y="321.0" class="key-name" text-anchor="middle">I</text>
+<text x="803.0" y="343.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="803.0" y="362.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key plant"><rect x="854.0" y="294.0" width="82.0" height="78" rx="13" fill="url(#plant-O)" stroke="url(#plant-edge-O)"/>
+<text x="895.0" y="321.0" class="key-name" text-anchor="middle">O</text>
+<text x="895.0" y="343.0" class="semantic-label" text-anchor="middle">Office</text>
+<text x="895.0" y="362.0" class="category" text-anchor="middle">PLANT</text>
+</g>
+<g class="key provisional"><rect x="946.0" y="294.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="987.0" y="321.0" class="key-name" text-anchor="middle">P</text>
+<text x="987.0" y="343.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="987.0" y="362.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key tool"><rect x="1038.0" y="294.0" width="82.0" height="78" rx="13" fill="#1C2A52" stroke="#79B7D8" stroke-dasharray="7 5"/>
+<text x="1079.0" y="321.0" class="key-name" text-anchor="middle">[</text>
+<text x="1079.0" y="343.0" class="semantic-label" text-anchor="middle">Left edge</text>
+<text x="1079.0" y="362.0" class="category tool-category" text-anchor="middle">TOOL</text>
+</g>
+<g class="key tool"><rect x="1130.0" y="294.0" width="82.0" height="78" rx="13" fill="#1C2A52" stroke="#79B7D8" stroke-dasharray="7 5"/>
+<text x="1171.0" y="321.0" class="key-name" text-anchor="middle">]</text>
+<text x="1171.0" y="343.0" class="semantic-label" text-anchor="middle">Right edge</text>
+<text x="1171.0" y="362.0" class="category tool-category" text-anchor="middle">TOOL</text>
+</g>
+<g class="key provisional"><rect x="164.0" y="386.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="205.0" y="413.0" class="key-name" text-anchor="middle">A</text>
+<text x="205.0" y="435.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="205.0" y="454.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key provisional"><rect x="256.0" y="386.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="297.0" y="413.0" class="key-name" text-anchor="middle">S</text>
+<text x="297.0" y="435.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="297.0" y="454.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key provisional"><rect x="348.0" y="386.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="389.0" y="413.0" class="key-name" text-anchor="middle">D</text>
+<text x="389.0" y="435.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="389.0" y="454.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key provisional"><rect x="440.0" y="386.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="481.0" y="413.0" class="key-name" text-anchor="middle">F</text>
+<text x="481.0" y="435.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="481.0" y="454.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key provisional"><rect x="532.0" y="386.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="573.0" y="413.0" class="key-name" text-anchor="middle">G</text>
+<text x="573.0" y="435.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="573.0" y="454.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key tool"><rect x="624.0" y="386.0" width="82.0" height="78" rx="13" fill="#1C2A52" stroke="#A7B6D9" stroke-dasharray="7 5"/>
+<text x="665.0" y="413.0" class="key-name" text-anchor="middle">H</text>
+<text x="665.0" y="435.0" class="semantic-label" text-anchor="middle">Left</text>
+<text x="665.0" y="454.0" class="category tool-category" text-anchor="middle">TOOL</text>
+</g>
+<g class="key tool"><rect x="716.0" y="386.0" width="82.0" height="78" rx="13" fill="#1C2A52" stroke="#78C9A4" stroke-dasharray="7 5"/>
+<text x="757.0" y="413.0" class="key-name" text-anchor="middle">J</text>
+<text x="757.0" y="435.0" class="semantic-label" text-anchor="middle">Down</text>
+<text x="757.0" y="454.0" class="category tool-category" text-anchor="middle">TOOL</text>
+</g>
+<g class="key tool"><rect x="808.0" y="386.0" width="82.0" height="78" rx="13" fill="#1C2A52" stroke="#79B7D8" stroke-dasharray="7 5"/>
+<text x="849.0" y="413.0" class="key-name" text-anchor="middle">K</text>
+<text x="849.0" y="435.0" class="semantic-label" text-anchor="middle">Up</text>
+<text x="849.0" y="454.0" class="category tool-category" text-anchor="middle">TOOL</text>
+</g>
+<g class="key tool"><rect x="900.0" y="386.0" width="82.0" height="78" rx="13" fill="#1C2A52" stroke="#E07A86" stroke-dasharray="7 5"/>
+<text x="941.0" y="413.0" class="key-name" text-anchor="middle">L</text>
+<text x="941.0" y="435.0" class="semantic-label" text-anchor="middle">Right</text>
+<text x="941.0" y="454.0" class="category tool-category" text-anchor="middle">TOOL</text>
+</g>
+<g class="key landmark"><rect x="992.0" y="386.0" width="187.8" height="78" rx="13" fill="#5A1F2A" stroke="#E07A86"/>
+<text x="1085.9" y="413.0" class="key-name key-name-small" text-anchor="middle">ENTER</text>
+<text x="1085.9" y="435.0" class="semantic-label" text-anchor="middle">Commit</text>
+<text x="1085.9" y="454.0" class="category" text-anchor="middle">LANDMARK</text>
+</g>
+<g class="key provisional"><rect x="218.0" y="478.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="259.0" y="505.0" class="key-name" text-anchor="middle">Z</text>
+<text x="259.0" y="527.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="259.0" y="546.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key provisional"><rect x="310.0" y="478.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="351.0" y="505.0" class="key-name" text-anchor="middle">X</text>
+<text x="351.0" y="527.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="351.0" y="546.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key provisional"><rect x="402.0" y="478.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="443.0" y="505.0" class="key-name" text-anchor="middle">C</text>
+<text x="443.0" y="527.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="443.0" y="546.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key provisional"><rect x="494.0" y="478.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="535.0" y="505.0" class="key-name" text-anchor="middle">V</text>
+<text x="535.0" y="527.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="535.0" y="546.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key provisional"><rect x="586.0" y="478.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="627.0" y="505.0" class="key-name" text-anchor="middle">B</text>
+<text x="627.0" y="527.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="627.0" y="546.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key provisional"><rect x="678.0" y="478.0" width="82.0" height="78" rx="13" fill="#121B38" stroke="#1C2A52"/>
+<text x="719.0" y="505.0" class="key-name" text-anchor="middle">N</text>
+<text x="719.0" y="527.0" class="semantic-label" text-anchor="middle">Open plot</text>
+<text x="719.0" y="546.0" class="category" text-anchor="middle">PROVISIONAL</text>
+</g>
+<g class="key plant"><rect x="770.0" y="478.0" width="82.0" height="78" rx="13" fill="url(#plant-M)" stroke="url(#plant-edge-M)"/>
+<text x="811.0" y="505.0" class="key-name" text-anchor="middle">M</text>
+<text x="811.0" y="527.0" class="semantic-label" text-anchor="middle">Music</text>
+<text x="811.0" y="546.0" class="category" text-anchor="middle">PLANT</text>
+</g>
+<g class="key landmark"><rect x="478.0" y="582.0" width="560.4" height="78" rx="13" fill="#163C35" stroke="#78C9A4"/>
+<text x="758.2" y="609.0" class="key-name key-name-small" text-anchor="middle">SPACE</text>
+<text x="758.2" y="631.0" class="semantic-label" text-anchor="middle">Usable room</text>
+<text x="758.2" y="650.0" class="category" text-anchor="middle">LANDMARK</text>
+</g>
+<text x="78.0" y="718.0" class="section-title" text-anchor="start">READING</text>
+<rect x="78" y="737" width="24" height="24" rx="6" fill="#163A5F" stroke="#79B7D8"/>
+<text x="112.0" y="755.0" class="legend-label" text-anchor="start">Landmark — House meaning</text>
+<rect x="326" y="737" width="24" height="24" rx="6" fill="#5A1F2A" stroke="#E07A86"/>
+<text x="360.0" y="755.0" class="legend-label" text-anchor="start">Plant — admitted domain</text>
+<rect x="596" y="737" width="24" height="24" rx="6" fill="#1C2A52" stroke="#79B7D8" stroke-dasharray="5 4"/>
+<text x="630.0" y="755.0" class="legend-label" text-anchor="start">Tool — operates on the Grove</text>
+<rect x="920" y="737" width="24" height="24" rx="6" fill="#121B38" stroke="#1C2A52"/>
+<text x="954.0" y="755.0" class="legend-label" text-anchor="start">Provisional plot — useful, not admitted</text>
+<text x="78.0" y="810.0" class="section-title" text-anchor="start">ADMITTED PLANTS AND BRANCHES</text>
+<g class="plant-card">
+<rect x="78.0" y="832.0" width="704.0" height="218" rx="18" fill="#121B38" stroke="#E07A86"/>
+<text x="102.0" y="866.0" class="card-title" text-anchor="start">O · Office</text>
+<text x="102.0" y="891.0" class="card-subtitle" text-anchor="start">Affinities: Sandmanor</text>
+<rect x="98.0" y="910.0" width="322.0" height="34" rx="9" fill="#1C2A52" stroke="#121B38"/>
+<text x="110.0" y="932.0" class="branch-label" text-anchor="start">Primary: Writer</text>
+<rect x="440.0" y="910.0" width="322.0" height="34" rx="9" fill="#1C2A52" stroke="#121B38"/>
+<text x="452.0" y="932.0" class="branch-label" text-anchor="start">Adjacent: Calc</text>
+<rect x="98.0" y="953.0" width="322.0" height="34" rx="9" fill="#1C2A52" stroke="#121B38"/>
+<text x="110.0" y="975.0" class="branch-label" text-anchor="start">Focused: Impress</text>
+<rect x="440.0" y="953.0" width="322.0" height="34" rx="9" fill="#1C2A52" stroke="#121B38"/>
+<text x="452.0" y="975.0" class="branch-label" text-anchor="start">Alternate: Draw</text>
+<rect x="98.0" y="996.0" width="322.0" height="34" rx="9" fill="#1C2A52" stroke="#121B38"/>
+<text x="110.0" y="1018.0" class="branch-label" text-anchor="start">Focused Alternate: Math</text>
+</g>
+<g class="plant-card">
+<rect x="810.0" y="832.0" width="704.0" height="218" rx="18" fill="#121B38" stroke="#A7B6D9"/>
+<text x="834.0" y="866.0" class="card-title" text-anchor="start">M · Music</text>
+<text x="834.0" y="891.0" class="card-subtitle" text-anchor="start">Affinities: Flynt + Glaüshouse</text>
+<rect x="830.0" y="910.0" width="322.0" height="34" rx="9" fill="#1C2A52" stroke="#121B38"/>
+<text x="842.0" y="932.0" class="branch-label" text-anchor="start">Primary: Library</text>
+<rect x="1172.0" y="910.0" width="322.0" height="34" rx="9" fill="#1C2A52" stroke="#121B38"/>
+<text x="1184.0" y="932.0" class="branch-label" text-anchor="start">Adjacent: Visualizer</text>
+<rect x="830.0" y="953.0" width="322.0" height="34" rx="9" fill="#1C2A52" stroke="#121B38"/>
+<text x="842.0" y="975.0" class="branch-label" text-anchor="start">Focused: Play/Pause</text>
+<rect x="1172.0" y="953.0" width="322.0" height="34" rx="9" fill="#1C2A52" stroke="#121B38"/>
+<text x="1184.0" y="975.0" class="branch-label" text-anchor="start">Alternate: Status</text>
+</g>
+<rect x="90" y="1090" width="208" height="42" rx="12" fill="#1C2A52" stroke="#79B7D8"/>
+<text x="194.0" y="1117.0" class="ontology" text-anchor="middle">Stonebend foundation</text>
+<text x="313.0" y="1117.0" class="ontology" text-anchor="middle">→</text>
+<rect x="328" y="1090" width="174" height="42" rx="12" fill="#1C2A52" stroke="#79B7D8"/>
+<text x="415.0" y="1117.0" class="ontology" text-anchor="middle">House affinity</text>
+<text x="517.0" y="1117.0" class="ontology" text-anchor="middle">→</text>
+<rect x="532" y="1090" width="174" height="42" rx="12" fill="#1C2A52" stroke="#79B7D8"/>
+<text x="619.0" y="1117.0" class="ontology" text-anchor="middle">Plot</text>
+<text x="721.0" y="1117.0" class="ontology" text-anchor="middle">→</text>
+<rect x="736" y="1090" width="174" height="42" rx="12" fill="#1C2A52" stroke="#79B7D8"/>
+<text x="823.0" y="1117.0" class="ontology" text-anchor="middle">Plant</text>
+<text x="925.0" y="1117.0" class="ontology" text-anchor="middle">→</text>
+<rect x="940" y="1090" width="174" height="42" rx="12" fill="#1C2A52" stroke="#79B7D8"/>
+<text x="1027.0" y="1117.0" class="ontology" text-anchor="middle">Branch</text>
+<text x="1129.0" y="1117.0" class="ontology" text-anchor="middle">→</text>
+<rect x="1144" y="1090" width="174" height="42" rx="12" fill="#1C2A52" stroke="#79B7D8"/>
+<text x="1231.0" y="1117.0" class="ontology" text-anchor="middle">Fruit</text>
+</svg>

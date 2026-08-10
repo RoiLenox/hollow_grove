@@ -1,7 +1,7 @@
 //! Four-House proofs and Stonebend's final Laws of Permanence.
 //!
 //! The universal kernel remains House-neutral. This constitutional layer
-//! requires Identity, Pattern, Integrity, and Recognition proofs together,
+//! requires Identity, Pattern, Integrity, and Capacity proofs together,
 //! while reserving the final Permanence Seal to Stonebend.
 
 use std::collections::{BTreeMap, BTreeSet};
@@ -15,7 +15,7 @@ use crate::hollow_grove_contract::House;
 pub const PERMANENCE_SCHEMA_VERSION: u16 = 1;
 pub const PERMANENCE_SOURCE: &str = "FUNCTION_JUNCTION_SEASONAL_WORLD_CYCLE_AND_PERMANENCE_V1.md";
 pub const PERMANENCE_MAXIM: &str = "The world cannot pretend the thing never happened.";
-pub const PERMANENCE_CYCLE: &str = "Claim → Pattern → Integrity → Recognition → Title → Yield";
+pub const PERMANENCE_CYCLE: &str = "Claim → Pattern → Integrity → Capacity → Title → Yield";
 pub const ILLEGAL_HOLLOWING: &str = "Illegal Hollowing";
 
 macro_rules! permanence_id {
@@ -82,7 +82,10 @@ pub enum PermanenceLaw {
     Identity,
     Pattern,
     Integrity,
-    Recognition,
+    Capacity,
+    /// Historical V1 wire spelling retained only for immutable archive replay.
+    #[serde(rename = "Recognition")]
+    LegacyRecognition,
 }
 
 impl PermanenceLaw {
@@ -90,7 +93,7 @@ impl PermanenceLaw {
         Self::Identity,
         Self::Pattern,
         Self::Integrity,
-        Self::Recognition,
+        Self::Capacity,
     ];
 
     #[must_use]
@@ -99,7 +102,16 @@ impl PermanenceLaw {
             Self::Identity => House::Stonebend,
             Self::Pattern => House::Sandmanor,
             Self::Integrity => House::Glaushouse,
-            Self::Recognition => House::Flynt,
+            Self::Capacity | Self::LegacyRecognition => House::Flynt,
+        }
+    }
+
+    /// Returns the active constitutional law represented by this wire value.
+    #[must_use]
+    pub const fn canonical(self) -> Self {
+        match self {
+            Self::LegacyRecognition => Self::Capacity,
+            law => law,
         }
     }
 
@@ -109,7 +121,9 @@ impl PermanenceLaw {
             Self::Identity => "What exactly is being made permanent?",
             Self::Pattern => "What arrangement is being preserved?",
             Self::Integrity => "Can this endure without becoming harmful, dead, or fraudulent?",
-            Self::Recognition => "Does the world actually recognize and operate this thing?",
+            Self::Capacity | Self::LegacyRecognition => {
+                "Can this operate lawfully and endure under real pressure?"
+            }
         }
     }
 }
@@ -451,7 +465,7 @@ fn validate_petition(
                 petition.petition_id.clone(),
             ));
         }
-        laws.insert(attestation.law);
+        laws.insert(attestation.law.canonical());
         eligible &= attestation.status == AttestationStatus::Accepted;
     }
     if laws != PermanenceLaw::ALL.into_iter().collect() {

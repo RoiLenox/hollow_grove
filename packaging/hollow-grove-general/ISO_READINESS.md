@@ -15,6 +15,9 @@
 - Wallpaper and weather use blank new-user settings with safe fallbacks.
 - Installed commands and XDG paths replace personal paths and repository
   checkout assumptions.
+- The keyboard Grove registry distinguishes House landmarks, admitted domain
+  plants, modifier branches, replaceable application fruit, and operational
+  tools; its verifier passes against the portable profile before release.
 
 This work is distribution packaging only. It changes no Hollow Grove canon,
 constitutional architecture, gameplay system, institution, lineage, or

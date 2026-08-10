@@ -61,6 +61,20 @@ make generated output constitutional authority.
 - `hollow-grove app attach chroma_cord`: validates and attaches the focused managed window
 - `./maintain-chroma-cord.sh [--full]`: checks integration health without modifying clinical records
 
+## Desktop Keyboard Grove
+
+- `artifacts/hollow_grove_keyboard_grove_map.svg`: deterministic visual map of
+  House landmarks, admitted domain plants, operational tools, and provisional
+  plots
+- `artifacts/hollow_grove_keyboard_grove_map.md`: accessible generated reading
+  of the map and admitted branches
+- `packaging/hollow-grove-general/etc/hollow-grove/keyboard-grove.json`:
+  machine-readable operational source beneath the keyboard constitution
+
+The SVG and Markdown are generated review projections. The keyboard
+constitution remains authoritative, and the registry supplies their bounded
+operational data.
+
 ## Key Artifact Families
 
 ### Kernel And Client Artifacts

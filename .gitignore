@@ -36,6 +36,10 @@
 # Local Godot editor metadata.
 /hueman_godot/.godot/
 
+# Python bytecode produced by packaging/release helpers.
+**/__pycache__/
+*.py[cod]
+
 # External development reference material.
 .reference-assets/
 reference-assets/

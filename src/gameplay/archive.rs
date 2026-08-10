@@ -1,5 +1,8 @@
 use serde::{Deserialize, Serialize};
 
+use crate::ai_personas::{
+    PersonaAdvisoryRecord, SharedInterfaceRecord, encode_advisory, replay_advisory,
+};
 use crate::constitutional::{
     AuthorityActorId, BondId, CausalPosition, HouseDecisionId, ParticipantId, RuleSetId,
 };
@@ -34,6 +37,10 @@ pub struct GameplayFederationBinding {
     pub federation_archive_format: String,
     pub federation_archive_version: u16,
     pub component_id: String,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub advisory_records: Vec<PersonaAdvisoryRecord>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub shared_interface_records: Vec<SharedInterfaceRecord>,
 }
 
 impl GameplayFederationBinding {
@@ -46,10 +53,27 @@ impl GameplayFederationBinding {
             federation_archive_version:
                 crate::runtime_federation::RUNTIME_FEDERATION_ARCHIVE_VERSION,
             component_id: component_id.into(),
+            advisory_records: Vec::new(),
+            shared_interface_records: Vec::new(),
         }
     }
 
+    #[must_use]
+    pub fn with_advisory(mut self, record: PersonaAdvisoryRecord) -> Self {
+        self.advisory_records.push(record);
+        self
+    }
+
+    #[must_use]
+    pub fn with_shared_interface_record(mut self, record: SharedInterfaceRecord) -> Self {
+        self.shared_interface_records.push(record);
+        self
+    }
+
     fn validate(&self) -> Result<(), GameplayArchiveError> {
+        crate::kernel_invariants::audit_gameplay_federation_binding(self)
+            .ensure_passed()
+            .map_err(|error| GameplayArchiveError::InvalidDomainValue(error.to_string()))?;
         if self.federation_identity != crate::runtime_federation::RUNTIME_FEDERATION_IDENTITY
             || self.federation_archive_format
                 != crate::runtime_federation::RUNTIME_FEDERATION_ARCHIVE_FORMAT
@@ -59,6 +83,17 @@ impl GameplayFederationBinding {
             || self.component_id.chars().any(char::is_whitespace)
         {
             return Err(GameplayArchiveError::InvalidFederationBinding);
+        }
+        for record in &self.advisory_records {
+            let bytes = encode_advisory(record)
+                .map_err(|error| GameplayArchiveError::InvalidDomainValue(error.to_string()))?;
+            replay_advisory(&bytes)
+                .map_err(|error| GameplayArchiveError::InvalidDomainValue(error.to_string()))?;
+        }
+        for record in &self.shared_interface_records {
+            record
+                .validate()
+                .map_err(|error| GameplayArchiveError::InvalidDomainValue(error.to_string()))?;
         }
         Ok(())
     }
@@ -280,6 +315,17 @@ pub fn encode_gameplay_archive_for_component(
         GameplayFederationBinding::canonical(component_id),
         Vec::new(),
     )
+}
+
+/// Encodes the authoritative gameplay component while carrying advisory-only
+/// persona evidence through the existing Federation binding.
+pub fn encode_gameplay_archive_with_federation_binding(
+    rule_set: &RuleSetId,
+    events: &[GameplayEventEnvelope],
+    world: &WorldSession,
+    federation_binding: GameplayFederationBinding,
+) -> Result<String, GameplayArchiveError> {
+    encode_gameplay_archive_with_history(rule_set, events, world, federation_binding, Vec::new())
 }
 
 fn encode_gameplay_archive_with_history(

@@ -54,6 +54,14 @@ Constitutional Geography and Route Network authority. It is normative for
 spatial identity and projection, but it creates no House, route meaning,
 ownership, access right, or second constitutional runtime.
 
+The operational role, AI-associated persona, and Current Synthesis boundary
+contracts are likewise Compromise-level interfaces. They may prepare and carry
+evidence, but they cannot perform a House gate or redefine the PLEB/META route
+grammar. Cleopatra is the Underway/BLEP reflection, Hal is the Boardwalk/META
+public interface, and Clouseau is the Current Synthesis `PLEB ↔ PLEB` witness.
+Their accepted records enter the Federation only through the same authority,
+provenance, refusal, and replay envelope as every other domain record.
+
 ## Backbone
 
 ```text
@@ -87,6 +95,18 @@ earlier laws in living, social, and playable form; they do not rewrite them.
 | Aura Ladder | Reconcile | six typed Frames in current production law; Compromise proposes eight stages | decide `Pixy`/`Pixie` and whether Spirit and Sylph become Frames, expressions, or another category |
 | Synthesis Constitution | Locked / Expand | `Troglodyte + Muse = Seer`; regional Synthesis law | embody transformation as consent-bearing, evidence-backed continuity rather than automatic evolution |
 | Regional / Cultural Domains | Expand / Proposed | geography, House, faculty, and Flynt law | build lived cultures, characters, economies, routes, Bonds, and playable cases |
+| Operational Lore Kernel | Reconcile / Expand | `HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md` and Kernel Constitutional State | give every role a bounded question, input, output, stop law, and handoff |
+| AI-associated personas | Reconcile / Expand | `HOLLOW_GROVE_AI_ASSOCIATED_PERSONAS_CONSTITUTION_V1_DRAFT.md`, `src/ai_personas.rs` | carry Cleopatra, Hal, and Clouseau advisories without committing authority |
+| Current Synthesis boundary | Reconcile | PLEB/META client and routing contracts; Current Synthesis remains owner | accept only scoped Clouseau/Hal/Cleopatra witnesses through a shared adapter |
+| Federation continuity | Locked / Expand | `THE_RUNTIME_FEDERATION_V1.md`, `THE_RUNTIME_FEDERATION_IMPLEMENTATION_V1.md`, `src/runtime_federation.rs` | bind accepted records, preserve domain custody, and replay cross-layer consequence |
+
+### Compromise-to-Federation acceptance rule
+
+The Federation accepts a record only when its originating constitutional
+authority, subject identity, causal position, evidence, refusal state, and
+handoff are present. Persona output, dialogue, route visibility, or player
+support alone is never an accepted consequence. Rejected and inconclusive
+records remain federated history without becoming successful state.
 
 ## Universal Laws
 
@@ -902,7 +922,7 @@ custody, nor archive record transfers sovereignty.
 
 Stonebend always enforces the Laws of Permanence. A final Permanence Seal
 requires Stonebend Identity, Sandmanor Pattern, Glaüshouse Integrity, and Flynt
-Recognition proofs for the same stable subject. The Freemason forges Claim;
+Capacity proofs for the same stable subject. The Freemason forges Claim;
 Diamond and its Hypergiant bearer authorize final Title and Seal; the
 Proliteriate protects Yield. No other House may independently declare a
 temporary state permanent.

@@ -1,0 +1,152 @@
+//! Executable invariants shared by domain archives and presentation seams.
+//!
+//! This module deliberately audits boundaries; it does not reduce gameplay or
+//! make House decisions. A passing report means the records are safe to hand
+//! to the Federation and to read from a presentation adapter.
+
+use std::fmt;
+
+use crate::ai_personas::{SharedInterfaceRecord, replay_advisory};
+use crate::gameplay::{
+    GAMEPLAY_ARCHIVE_FORMAT, GAMEPLAY_FEDERATION_COMPONENT_ID, GameplayFederationBinding,
+};
+use crate::guide_identity::GuideContextV1;
+use crate::runtime_federation::{
+    RUNTIME_FEDERATION_ARCHIVE_FORMAT, RUNTIME_FEDERATION_ARCHIVE_VERSION,
+    RUNTIME_FEDERATION_IDENTITY,
+};
+
+pub const KERNEL_INVARIANT_SCHEMA_VERSION: u16 = 1;
+pub const CENTRAL_JUNCTION_COORDINATION_IDENTITY: &str = "region.central-junction";
+pub const PLATINUM_PATH_ID: &str = "path.platinum.v1";
+pub const PLATINUM_PATH_NAME: &str = "Platinum Path";
+pub const PLATINUM_PATH_SHORT_NAME: &str = "the Plath";
+
+const INVARIANTS: [&str; 7] = [
+    "identity-continuity-preserved",
+    "advisories-never-commit-world-state",
+    "shared-records-have-provenance",
+    "federation-binding-is-replayable",
+    "refusal-remains-lawful",
+    "central-junction-is-coordination-only",
+    "roi-and-roselina-oversee-guide-context",
+];
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct KernelInvariantReport {
+    pub schema_version: u16,
+    pub checked_invariants: Vec<&'static str>,
+    pub violations: Vec<String>,
+}
+
+impl KernelInvariantReport {
+    #[must_use]
+    pub fn passed(&self) -> bool {
+        self.violations.is_empty()
+    }
+
+    pub fn ensure_passed(&self) -> Result<(), KernelInvariantError> {
+        self.violations
+            .first()
+            .cloned()
+            .map_or(Ok(()), |violation| Err(KernelInvariantError(violation)))
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct KernelInvariantError(pub String);
+
+impl fmt::Display for KernelInvariantError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(formatter, "kernel invariant failed: {}", self.0)
+    }
+}
+
+impl std::error::Error for KernelInvariantError {}
+
+/// Audits the shared gameplay/Federation boundary without changing state.
+#[must_use]
+pub fn audit_gameplay_federation_binding(
+    binding: &GameplayFederationBinding,
+) -> KernelInvariantReport {
+    let mut violations = Vec::new();
+    if binding.federation_identity != RUNTIME_FEDERATION_IDENTITY {
+        violations.push("federation identity is not canonical".into());
+    }
+    if binding.federation_archive_format != RUNTIME_FEDERATION_ARCHIVE_FORMAT
+        || binding.federation_archive_version != RUNTIME_FEDERATION_ARCHIVE_VERSION
+    {
+        violations.push("federation archive format or version is not canonical".into());
+    }
+    if binding.component_id != GAMEPLAY_FEDERATION_COMPONENT_ID {
+        violations.push("gameplay binding is not the authoritative component".into());
+    }
+    for advisory in &binding.advisory_records {
+        let Ok(bytes) = serde_json::to_vec(advisory) else {
+            violations.push("advisory record is not serializable".into());
+            continue;
+        };
+        if let Err(error) = replay_advisory(&bytes) {
+            violations.push(error.to_string());
+        }
+    }
+    for record in &binding.shared_interface_records {
+        audit_shared_interface_record(record, &mut violations);
+    }
+    KernelInvariantReport {
+        schema_version: KERNEL_INVARIANT_SCHEMA_VERSION,
+        checked_invariants: INVARIANTS.to_vec(),
+        violations,
+    }
+}
+
+/// Audits a Guide projection and requires both canonical Guide identities.
+#[must_use]
+pub fn audit_guide_context(context: &GuideContextV1) -> KernelInvariantReport {
+    let mut violations = Vec::new();
+    if let Err(error) = context.validate() {
+        violations.push(error.to_string());
+    }
+    if context.guides.len() != 2 {
+        violations.push("Guide oversight requires exactly Roi and Roselina".into());
+    }
+    let identities = context
+        .guides
+        .iter()
+        .map(|guide| guide.identity)
+        .collect::<std::collections::BTreeSet<_>>();
+    if identities
+        != crate::guide_identity::GuideIdentity::ALL
+            .into_iter()
+            .collect()
+    {
+        violations.push("Guide oversight identity set is not Roi and Roselina".into());
+    }
+    KernelInvariantReport {
+        schema_version: KERNEL_INVARIANT_SCHEMA_VERSION,
+        checked_invariants: INVARIANTS.to_vec(),
+        violations,
+    }
+}
+
+fn audit_shared_interface_record(record: &SharedInterfaceRecord, violations: &mut Vec<String>) {
+    for (label, value) in [
+        ("record_id", &record.record_id),
+        ("subject_id", &record.subject_id),
+        ("authority_id", &record.authority_id),
+        ("status", &record.status),
+        ("provenance_id", &record.provenance_id),
+    ] {
+        if value.is_empty() || value.chars().any(char::is_whitespace) {
+            violations.push(format!("shared interface {label} is empty or unstable"));
+        }
+    }
+}
+
+/// Stable declaration used by audits and documentation: Central Junction is
+/// the shared coordination district, not a fifth House or decision-maker.
+#[must_use]
+pub fn central_junction_is_coordination_only() -> bool {
+    CENTRAL_JUNCTION_COORDINATION_IDENTITY == "region.central-junction"
+        && GAMEPLAY_ARCHIVE_FORMAT == "hollow-grove-gameplay"
+}

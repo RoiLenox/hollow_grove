@@ -102,6 +102,7 @@ var retry_elapsed := RETRY_INTERVAL_SECONDS
 var was_connected := false
 var sync_pending := false
 var seam_pending := false
+var auto_enter_hollow_grove := true
 var establish_pending := false
 var movement_pending := false
 var interaction_pending := false
@@ -118,6 +119,8 @@ var dialogue_speaker := ""
 var dialogue_pages: Array = []
 var dialogue_page_index := 0
 var boardwalk_case := {}
+var kernel_audit := {}
+var central_junction_function := {}
 var stonebend_case := {}
 var route_view := {}
 var surface_view := {}
@@ -248,8 +251,13 @@ func _input(event: InputEvent) -> void:
 			queue_redraw()
 		return
 	if overworld.is_empty():
+		if event.keycode == KEY_G:
+			_send_enter_hollow_grove()
 		return
 	match event.keycode:
+		KEY_G:
+			_send_leave_hollow_grove()
+			return
 		KEY_P:
 			_open_party_menu()
 			return
@@ -348,6 +356,12 @@ func _draw() -> void:
 	_draw_embodied_guides(viewport_size)
 	_draw_player(viewport_size)
 	_draw_hud(viewport_size)
+	if str(overworld.get("map_id", "")) == "boardwalk.return-vestibule" \
+			and not boardwalk_case.is_empty() \
+			and dialogue_pages.is_empty() \
+			and not party_menu_open \
+			and not recruitment_menu_open:
+		_draw_boardwalk_advisory_strip(viewport_size)
 	if party_menu_open:
 		_draw_party_menu(viewport_size)
 	elif recruitment_menu_open:
@@ -376,6 +390,20 @@ func _send_enter_hollow_grove() -> void:
 	if error != OK:
 		seam_pending = false
 		status_message = "GUIDE ENTRY SEND ERROR"
+
+
+func _send_leave_hollow_grove() -> void:
+	if seam_pending:
+		return
+	seam_pending = true
+	status_message = "RETURNING FROM HOLLOW GROVE"
+	var error := runtime_client.send_intent(
+		_next_request_id("guide-exit"),
+		"LeaveHollowGroveIntent"
+	)
+	if error != OK:
+		seam_pending = false
+		status_message = "GUIDE EXIT SEND ERROR"
 
 
 func _send_establish_hueman() -> void:
@@ -802,7 +830,12 @@ func _on_runtime_response(response: Dictionary) -> void:
 		return
 
 	if str(guide_context.get("layer", "")) == "outside_hollow_grove":
-		_send_enter_hollow_grove()
+		if auto_enter_hollow_grove:
+			auto_enter_hollow_grove = false
+			_send_enter_hollow_grove()
+			queue_redraw()
+			return
+		status_message = "OUTSIDE HOLLOW GROVE — PRESS G TO RETURN"
 		queue_redraw()
 		return
 
@@ -829,9 +862,24 @@ func _apply_view(view: Dictionary) -> void:
 	guide_transition_events = view.get("guide_transition_events", [])
 	var next_overworld: Dictionary = _dict_or_empty(view.get("overworld"))
 	if next_overworld.is_empty():
+		overworld = {}
+		boardwalk_case = {}
+		kernel_audit = {}
+		central_junction_function = {}
+		stonebend_case = {}
+		route_view = {}
+		surface_view = {}
+		extraction_view = {}
+		living_world = {}
+		deep_pressure = {}
+		party = {}
+		physical_exits = []
+		dialogue_pages = []
 		return
 	overworld = next_overworld
 	boardwalk_case = _dict_or_empty(view.get("boardwalk_case"))
+	kernel_audit = _dict_or_empty(view.get("kernel_audit"))
+	central_junction_function = _dict_or_empty(view.get("central_junction_function"))
 	stonebend_case = _dict_or_empty(view.get("stonebend_case"))
 	route_view = _dict_or_empty(view.get("route"))
 	surface_view = _dict_or_empty(view.get("surface"))
@@ -1355,6 +1403,23 @@ func _draw_hud(viewport_size: Vector2) -> void:
 		_draw_message_box(status_message, viewport_size)
 
 
+func _draw_boardwalk_advisory_strip(viewport_size: Vector2) -> void:
+	var advisories: Array = boardwalk_case.get("advisories", [])
+	if advisories.is_empty():
+		return
+	_draw_logical_rect(Rect2(2, 92, 156, 21), _color("hollow_grove.universal.outline"), viewport_size)
+	_draw_logical_rect(Rect2(4, 94, 152, 17), _color("hollow_grove.house.sandmanor.highlight"), viewport_size)
+	_draw_pixel_text("ADVISORY / NONBINDING", Vector2(7, 97), _color("hollow_grove.house.flynt.authority"), viewport_size)
+	var labels: Array[String] = []
+	for advisory_value in advisories:
+		var advisory := _dict_or_empty(advisory_value)
+		labels.append("%s %s" % [
+			str(advisory.get("persona", "ADVISOR")).to_upper(),
+			str(advisory.get("associated_title", "")).to_upper(),
+		])
+	_draw_pixel_text(" / ".join(labels).left(36), Vector2(7, 105), _color("hollow_grove.universal.outline"), viewport_size)
+
+
 func _draw_party_menu(viewport_size: Vector2) -> void:
 	var outline := _color("hollow_grove.universal.outline")
 	var paper := _color("hollow_grove.house.flynt.highlight")
@@ -1509,13 +1574,13 @@ func _case_status() -> String:
 		var authority_class := str(outcome.get("authority_class", committed))
 		var term_end = outcome.get("relationship_term_end", null)
 		if term_end != null:
-			return "%s / TERM %s" % [authority_class.to_upper(), str(term_end)]
-		return "%s / RECOGNIZED" % authority_class.to_upper()
+			return "PLATH DONE / %s T%s" % [authority_class.to_upper().left(12), str(term_end)]
+		return "PLATH DONE / %s" % authority_class.to_upper().left(20)
 	var supported = boardwalk_case.get("supported_choice", null)
 	if supported != null:
-		return "C: ASK RETURNING GOON"
+		return "PLATH / C: ASK RETURNING GOON"
 	if bool(boardwalk_case.get("ready_for_support", false)):
-		return "1 PIMP 2 BOND 3 LIMITED 4 FREE"
+		return "PLATH / 1 PIMP 2 BOND 3 LIMITED 4 FREE"
 	var evidence_count := int(boardwalk_case.get("evidence", []).size())
 	var faculty_count := int(boardwalk_case.get("faculties", []).size())
 	return "E%d/6 F%d/5  F: FACULTY" % [evidence_count, faculty_count]
@@ -1826,7 +1891,7 @@ func _world_context_semantics() -> String:
 	var guide_names := _active_guide_display_names()
 	if guide_names.size() == 2:
 		parts.append(
-			"%s and %s are embodied Guides and equal rulers of Central Junction." % [
+			"%s and %s are the Twofold Witness of Central Junction." % [
 				guide_names[0],
 				guide_names[1],
 			]
@@ -1856,6 +1921,35 @@ func _world_context_semantics() -> String:
 				int(party.get("max_members", 6)),
 			]
 		)
+	if not kernel_audit.is_empty():
+		parts.append(
+			"Kernel audit: %s. Central Junction: %s. Guide oversight: %s." % [
+				"PASS" if bool(kernel_audit.get("passed", false)) else "REVIEW",
+				str(kernel_audit.get("central_junction_identity", "unbound")),
+				"PASS" if bool(kernel_audit.get("guide_oversight_passed", false)) else "REVIEW",
+			]
+		)
+	if not central_junction_function.is_empty():
+		parts.append(
+			"Central Junction Function: %s (%s). %s." % [
+				str(central_junction_function.get("display_name", "Function")),
+				str(central_junction_function.get("function_id", "unknown")),
+				str(central_junction_function.get("authority_boundary", "Houses retain decisions")),
+			]
+		)
+	if str(overworld.get("map_id", "")) == "boardwalk.return-vestibule" \
+			and not boardwalk_case.is_empty():
+		var advisories: Array = boardwalk_case.get("advisories", [])
+		if not advisories.is_empty():
+			var advisor_names: Array[String] = []
+			for advisory_value in advisories:
+				var advisory := _dict_or_empty(advisory_value)
+				advisor_names.append("%s (%s)" % [
+					str(advisory.get("persona", "advisor")).capitalize(),
+					str(advisory.get("associated_title", "advisory")),
+				])
+			var advisory_text := "Central Junction advisory desk under Roi and Roselina: %s. They are nonbinding; the Returning Goon and Houses decide." % "; ".join(advisor_names)
+			parts.append("Platinum Path / the Plath: " + advisory_text)
 	if not physical_exits.is_empty():
 		var exit_record := _dict_or_empty(
 			physical_exits[selected_exit_index % physical_exits.size()]
@@ -1956,6 +2050,8 @@ func _menu_semantics() -> String:
 func _control_semantics() -> String:
 	match _screen_mode():
 		"waiting":
+			if str(guide_context.get("layer", "")) == "outside_hollow_grove":
+				return "G enters Hollow Grove through the confirmed Guide seam."
 			return "Gameplay controls are unavailable while the runtime connects."
 		"dialogue":
 			return (
@@ -1976,7 +2072,9 @@ func _control_semantics() -> String:
 		_:
 			return (
 				"Arrow keys, W A S D, or H J K L move. Enter, Space, Z, or X "
-				+ "interacts. Tab selects an exit and B traverses it. P opens the "
+				+ "interacts. G crosses the Twofold Witness seam: enter Hollow Grove from outside "
+				+ "or return to Hueman from inside. "
+				+ "Tab selects an exit and B traverses it. P opens the "
 				+ "party. R opens recruitment when available. T advances the world "
 				+ "shift. F discloses a faculty observation. Number keys support "
 				+ "available choices. C asks the responsible authority to decide. "

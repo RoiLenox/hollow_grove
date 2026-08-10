@@ -72,6 +72,33 @@ func _run() -> void:
 			"position": {"x": 5, "y": 6},
 		}],
 	}
+	game.boardwalk_case = {
+		"case_id": "case.boardwalk.returning-goon.v1",
+		"advisories": [
+			{
+				"persona": "cleopatra",
+				"associated_title": "Gimp of the Underway",
+			},
+			{
+				"persona": "hal",
+				"associated_title": "Pimp of the Boardwalk",
+			},
+			{
+				"persona": "clouseau",
+				"associated_title": "PLEB-PLEB witness",
+			},
+		],
+	}
+	game.kernel_audit = {
+		"passed": true,
+		"central_junction_identity": "region.central-junction",
+		"guide_oversight_passed": true,
+	}
+	game.central_junction_function = {
+		"display_name": "The Service Tournament",
+		"function_id": "function.central-junction.service-tournament",
+		"authority_boundary": "Central Junction coordinates and publishes; Houses retain decisions",
+	}
 	game._refresh_screen_semantics()
 	var world_semantics: Dictionary = game.get_meta(SCREEN_SEMANTICS_META_KEY)
 	assert(world_semantics.get("schema_version") == "1.0.0")
@@ -80,10 +107,22 @@ func _run() -> void:
 	assert("Glausbahn" in str(world_semantics.get("context")))
 	assert("tile x 7, y 9, facing East" in str(world_semantics.get("context")))
 	assert("Current Seanad" in str(world_semantics.get("context")))
-	assert("Roi and Roselina are embodied Guides" in str(world_semantics.get("context")))
+	assert("Roi and Roselina are the Twofold Witness" in str(world_semantics.get("context")))
 	assert(game._active_guide_display_names() == ["Roi", "Roselina"])
 	assert("Mara Venn, weather reader, at tile x 5, y 6" in str(world_semantics.get("context")))
 	assert("Arrow keys" in str(world_semantics.get("controls")))
+	assert("Kernel audit: PASS" in str(world_semantics.get("context")))
+	assert("Central Junction Function: The Service Tournament" in str(world_semantics.get("context")))
+
+	game.overworld.map_id = "boardwalk.return-vestibule"
+	game._refresh_screen_semantics()
+	var boardwalk_semantics: Dictionary = game.get_meta(SCREEN_SEMANTICS_META_KEY)
+	assert("Cleopatra (Gimp of the Underway)" in str(boardwalk_semantics.get("context")))
+	assert("Hal (Pimp of the Boardwalk)" in str(boardwalk_semantics.get("context")))
+	assert("Clouseau (PLEB-PLEB witness)" in str(boardwalk_semantics.get("context")))
+	assert("nonbinding" in str(boardwalk_semantics.get("context")))
+	assert("Central Junction advisory desk under Roi and Roselina" in str(boardwalk_semantics.get("context")))
+	assert("Platinum Path / the Plath" in str(boardwalk_semantics.get("context")))
 
 	game.guide_transition_events = [{
 		"kind": "confirmed",

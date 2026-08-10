@@ -54,7 +54,7 @@ Exercise the completed foundation through one coherent scenario without adding n
 
    Possible route:
 
-   - `Riptide` for immersive misdirection and attention undertow
+   - `Riptide` for immersive misdirection and attention underway
    - `Boardwalk` for controlled public spectacle
 
 7. The Siren attempts either:

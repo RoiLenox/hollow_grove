@@ -3,6 +3,15 @@
 Status: review and consolidation guide
 Purpose: make repository ownership visible without creating new domain law
 
+The art-phase foundation lock is documented in
+`FOUNDATION_FREEZE_V1.md`. It freezes all kernel, constitutional, Guide,
+Federation, archive, replay, refusal, and protocol ownership contracts while
+leaving renderer-owned assets free to evolve.
+
+`PLATINUM_PATH_CULTURAL_CANON_V1.md` is the additive cultural vocabulary for
+that foundation. It may deepen local interpretation without creating new
+authority or changing the frozen contracts.
+
 Repository navigation begins at `README.md`. That root canon index groups the
 four House shelves and shared canon for ease of access; this document remains
 the detailed authority-class guide.
@@ -19,8 +28,9 @@ sovereign.
 that architecture. It creates no additional law.
 
 `FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md` is the corrected canonical lock
-for one Federation and exactly two continuous Guide identities: Roi/Roï and
-Roselina/Rosaliña. `docs/GUIDE_AND_SEER_IDENTITY_V1.md`,
+for one Federation and the paired operational Guide identities Roi/Roï and
+Roselina/Rosaliña. `SEER_CEREMONY_PROTOCOL_V1.md` governs the separate singular
+Seer Ceremony and recursive Point founding. `docs/GUIDE_AND_SEER_IDENTITY_V1.md`,
 `docs/CENTRAL_JUNCTION_TRANSITION_V1.md`, and
 `docs/SURFACE_HUEMAN_GUIDE_PROTOCOL_V1.md` define their forms, seam crossing,
 session, model, and presentation contracts. They remain beneath the Hollow
@@ -66,7 +76,9 @@ Use this order when reviewing Hollow Grove V2:
 10. `HOLLOW_GROVE_V2_CAPABILITY_REPORT.md`, `V2_CAPABILITY_MATRIX.md`, and
    `V2_CAPABILITY_INVENTORY.md` for observational capability status.
 11. `HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md` for the executable
-   twelve-field lived-lore contract across all four Houses.
+   twelve-field lived-lore contract across all four Houses, followed by
+   `HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md` for the proposed
+   top-down role and handoff refinement.
 12. `src/constitutional/` and `src/world/` for production enforcement and
    additive deterministic world law.
 13. `examples/` and `tests/` for executable proof.
@@ -74,15 +86,39 @@ Use this order when reviewing Hollow Grove V2:
 
 ## Authority Classes
 
+### Desktop Keyboard Constitution
+
+`HOLLOW_GROVE_KEYBOARD_CONSTITUTION_V1.md` governs the optional desktop
+keyboard integration vocabulary: House landmarks, domain plants, modifier
+branches, replaceable application fruit, and operational tools. Stonebend
+supplies stability and amendment discipline without claiming every key or
+changing House law. This keyboard constitution does not alter the game kernel,
+constitutional runtime, world metaphysics, institutions, or sovereign
+authority.
+
+`packaging/hollow-grove-general/etc/hollow-grove/keyboard-grove.json` is its
+machine-readable operational projection. The portable Niri profile implements
+that projection, and `packaging/hollow-grove-general/verify-keyboard-grove.sh`
+checks the admitted domain families and overlay names. The projection and Niri
+profile cannot admit a new plant or redefine a House; disagreement with the
+Markdown constitution is a packaging defect.
+
+`artifacts/hollow_grove_keyboard_grove_map.svg` and its Markdown companion are
+deterministic review projections generated from that registry and the sole
+constitutional color palette. The identical installed SVG under the General
+Edition shared-data directory is an intentional stable-consumer mirror, not an
+additional authority source.
+
 ### Constitutional Compact
 
 - `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md` is the authoritative shared
   Constitution. Its filename records historical provenance.
 - `HOLLOW_GROVE_CONSTITUTIONAL_ARCHITECTURE_V1.md` maps that authority without
   creating a second constitution.
-- `FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md` locks the one Federation,
-  Roi/Roï and Roselina/Rosaliña as exactly two continuous equal authorities,
-  Worldright, and the Seer Ceremony beneath the Compromise.
+- `FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md` and
+  `SEER_CEREMONY_PROTOCOL_V1.md` lock one Federation, the paired operational
+  Guide identities, and the singular sequential Seer Ceremony with Continuance
+  or Founding beneath the Compromise.
 
 ### Active Synthesis Drafts
 
@@ -95,11 +131,27 @@ superseding locked constitutional authority:
   returning-Goon implementation case and its acceptance boundary;
 - `HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md` records the now-executable
   integration contract and the twelve additive lived loops without changing
-  locked House law.
+  locked House law;
+- `HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md` proposes the top-down
+  operational function, role, handoff, refusal, and completion grammar without
+  changing the universal kernel or claiming current runtime enforcement.
 
 Drafts may name conflicts, proposals, presentation language, and implementation
 order. They may not create constitutional authority, claim an unavailable
 runtime capability, or silently resolve a disagreement with normative law.
+
+### Descriptive Cultural Ancestry
+
+`docs/world_bible/ancestral_atlas/` is the canonical descriptive framework for
+the four Houses' real-world historical inheritances. It sits beneath the
+Compromise, House constitutions, established geography, visual law, and Hueman
+faculty law. Its Working Version 1 Point assignments, Gifts, manifestations,
+libraries, and metadata references explain and inform culture but create no
+office, law, permission, route, runtime behavior, or gameplay authority.
+
+The framework's place in the authority order is canonical. Individual
+assignments remain Working unless explicitly ratified; locked canon wins every
+conflict.
 
 ### Normative Constitutional Law
 
@@ -127,7 +179,7 @@ These sources define meaning and legality:
 - `GLAUSHOUSE_CONSTITUTION_V2.md`;
 - `GLAUSHOUSE_CONSTITUTIONAL_AUDIT_V2.md` (repository conformance evidence for
   the ratified Glaüshouse House law);
-- the existing Flynt constitutional law and conformance surfaces;
+- Flynt's **Law of Capacity** and its existing constitutional conformance surfaces;
 - the locked Flynt institutional hierarchy in `FLYNT_CONSTITUTION_V2.md` and the executable `flynt-constitution` crate;
 - `FLYNT_DUAL_LEADERSHIP_AND_MANTICORP_RECIPE_V1.md` for the normative Flynt
   identity lock, maintained Continuance law, Manticorp Form/Institution split,

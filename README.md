@@ -7,6 +7,10 @@ it does not create lore or outrank any source below.
 
 ## Start Here
 
+For the current implementation path, start with the concise
+[Operational Entrypoint](HOLLOW_GROVE_OPERATIONAL_ENTRYPOINT_V1.md), then use
+the constitutional reading order below for authority and lore depth.
+
 Read the setting in this order:
 
 1. [Hollow Grove Compromise](HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md) — the shared
@@ -15,8 +19,9 @@ Read the setting in this order:
 2. [Constitutional Architecture](HOLLOW_GROVE_CONSTITUTIONAL_ARCHITECTURE_V1.md)
    — how shared law, the four Houses, Hueman, and regional projections relate.
 3. [Federal Sovereignty and Seer Ceremony](FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md)
-   — the one Federation, Roi/Roï and Roselina/Rosaliña as two continuous
-   beings across layers, Worldright, and the outside-participation freeze.
+   — the one Federation, the paired Roi/Roï and Roselina/Rosaliña Guide seam,
+   and the singular Seer Ceremony. Continue with the
+   [Seer Ceremony Protocol](SEER_CEREMONY_PROTOCOL_V1.md),
    Continue with [Guide and Seer Identity](docs/GUIDE_AND_SEER_IDENTITY_V1.md),
    [Central Junction Transition](docs/CENTRAL_JUNCTION_TRANSITION_V1.md), and
    [Surface–Hueman Guide Protocol](docs/SURFACE_HUEMAN_GUIDE_PROTOCOL_V1.md).
@@ -35,7 +40,13 @@ Read the setting in this order:
    followed by [Spatial Inheritance](SPATIAL_INHERITANCE_V1.md) for recursive
    placement, viewpoint, archive, and replay law.
 8. [Functional Lore Integration](HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md)
-   for lived, playable lore.
+   for lived, playable lore, followed by the
+   [Operational Lore Kernel proposal](HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md)
+   and [Gimp-to-Pimp Sympiote Integrity Trial](BOARDWALK_GIMP_TO_PIMP_SYMPIOTE_TRIAL_V1_DRAFT.md)
+   and [AI-Associated Personas Constitution](HOLLOW_GROVE_AI_ASSOCIATED_PERSONAS_CONSTITUTION_V1_DRAFT.md)
+   and [Kernel Constitutional State](HOLLOW_GROVE_KERNEL_CONSTITUTIONAL_STATE_V1_DRAFT.md)
+   and [Whole Constitutional Reconciliation](HOLLOW_GROVE_WHOLE_CONSTITUTIONAL_RECONCILIATION_V1.md)
+   for the top-down function, role, handoff, refusal, and completion model.
 
 The short rule is: authored constitutional documents define meaning;
 `src/constitutional/` and `src/world/` enforce it; `tests/` prove it; and
@@ -149,11 +160,13 @@ infrastructure, Manticorp, recognition, and its institutional hierarchy.
 | Geography and travel | [Constitutional Geography](HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md), [Route Network](HOLLOW_GROVE_ROUTE_NETWORK_V1.md), [Screen Map](HUEMAN_SCREEN_MAP_v0.1.0.md), [Spatial Inheritance](SPATIAL_INHERITANCE_V1.md) | House boundaries, route verbs, route shape, recursively inherited map projection |
 | Shared judiciary | [Minoan County Court](MINOAN_COUNTY_COURT_SYSTEM_AND_RESTITUTION_CYCLE_V1.md) | disputes, amendment review, Restitution |
 | Shared economy | [Central Junction Four-Pole Economy](CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md) | public exchange, indexes, settlement |
-| Guide identity, the Federation, and continuity archives | [Federal Sovereignty and Seer Ceremony](FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md), [Guide and Seer Identity](docs/GUIDE_AND_SEER_IDENTITY_V1.md), [Central Junction Transition](docs/CENTRAL_JUNCTION_TRANSITION_V1.md), [Surface–Hueman Guide Protocol](docs/SURFACE_HUEMAN_GUIDE_PROTOCOL_V1.md), [Guide State-Machine Hardening V2](docs/GUIDE_STATE_MACHINE_HARDENING_V2.md), [Guide Operational Seam V1](docs/GUIDE_OPERATIONAL_SEAM_V1.md), [HGRF compatibility architecture](THE_RUNTIME_FEDERATION_V1.md), [Executable Implementation V1](THE_RUNTIME_FEDERATION_IMPLEMENTATION_V1.md) | two stable Guide identities, layer-derived form-names, one Federation, typed and crash-safe atomic seam crossing, live restart recovery and save continuity, deterministic cross-domain manifest, replay, inspection, migration, and accepted consequence |
+| Guide identity, the Federation, and Seer continuity | [Federal Sovereignty and Seer Ceremony](FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md), [Seer Ceremony Protocol](SEER_CEREMONY_PROTOCOL_V1.md), [Guide and Seer Identity](docs/GUIDE_AND_SEER_IDENTITY_V1.md), [Central Junction Transition](docs/CENTRAL_JUNCTION_TRANSITION_V1.md), [Surface–Hueman Guide Protocol](docs/SURFACE_HUEMAN_GUIDE_PROTOCOL_V1.md), [Guide State-Machine Hardening V2](docs/GUIDE_STATE_MACHINE_HARDENING_V2.md), [Guide Operational Seam V1](docs/GUIDE_OPERATIONAL_SEAM_V1.md), [HGRF compatibility architecture](THE_RUNTIME_FEDERATION_V1.md), [Executable Implementation V1](THE_RUNTIME_FEDERATION_IMPLEMENTATION_V1.md) | one Federation, paired operational Guide identities, one individual Seer Ceremony at a time, Continuance or Founding, recursive successor Points, typed seam crossing, replay, inspection, migration, and accepted consequence |
 | Shared civic Function | [Service Tournament — Central Junction Canon](SERVICE_TOURNAMENT_CENTRAL_JUNCTION_CANON_V1.md) | four paired-service House identities, War of a Thousand Hues, nonlethal scenarios, paint records, Service Marks, constitutional scoring |
 | Hueman | [Hueman](HUEMAN_v0.1.0.md), [Faculties](HUEMAN_FACULTIES_V1.md) | constitutional entry point, Body/Spirit/Mind/Soul faculties |
+| Historical and cultural ancestry | [Ancestral Atlas](docs/world_bible/ancestral_atlas/README.md) | descriptive historical inheritance beneath House canon; Working Point assignments, Gifts, manifestations, libraries, cultural memory, and read-only Hueman references |
 | Regional surfaces | [Aura Field](AURA_FIELD_SURFACE_V1.md), [Aura Beach](AURA_BEACH_SURFACE_V1.md), [Aura Basin](AURA_BASIN_SURFACE_V1.md) | the three interior world surfaces |
 | Lived and playable lore | [Functional Lore Integration](HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md), [Party and Recruitment](HOLLOW_GROVE_PARTY_AND_RECRUITMENT_V1.md) | actors, triggers, choices, consequences, persistence |
+| Operational role refinement | [Operational Lore Kernel V1 Draft](HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md) | proposed top-down functions, exact role boundaries, handoffs, stops, completion, and a compatible executable refinement sequence |
 | Capability status | [Capability Report](HOLLOW_GROVE_V2_CAPABILITY_REPORT.md), [Matrix](V2_CAPABILITY_MATRIX.md), [Inventory](V2_CAPABILITY_INVENTORY.md) | what currently exists versus what is deferred |
 
 ## Route Shape at a Glance
@@ -186,6 +199,7 @@ not as current route authority; new engine inputs use the classification above.
 | A relationship between two or more Houses | the Compromise or a named shared-interface authority |
 | A Service Tournament scenario, mark, Service Mark, objective, or result | Service Tournament canon and `src/world/service_tournament.rs` |
 | A route's boundary, verb, purpose, or shape | Constitutional Geography, then Route Network and Screen Map |
+| A historical assignment, inherited Gift, modern cultural manifestation, or ancestry source status | [Ancestral Atlas](docs/world_bible/ancestral_atlas/README.md); any present law or authority change still belongs in its existing constitutional source |
 | A character, place encounter, conflict, or choice | Functional Lore or a clearly labeled vertical-slice document |
 | Executable state, validation, or replay | `src/world/`, `src/gameplay/`, and matching tests |
 | A proposal not yet ratified | a filename and internal status marked `DRAFT` |

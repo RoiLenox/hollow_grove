@@ -1,7 +1,9 @@
 use serde::{Deserialize, Serialize};
 
+use crate::ai_personas::{AdvisoryStatus, AiPersona, PersonaAdvisoryRecord};
 use crate::guide_identity::{DualGuideSession, GuideContextV1, StableGuideSessionId};
 use crate::guide_state_machine::GuideTransitionEvent;
+use crate::kernel_invariants::KernelInvariantReport;
 use crate::world::aura_basin::canonical_aura_basin;
 use crate::world::aura_beach::canonical_aura_beach;
 use crate::world::aura_field::canonical_aura_field;
@@ -599,6 +601,40 @@ pub struct BoardwalkCaseView {
     pub goon_bond_id: Option<String>,
     pub outcome: Option<BoardwalkOutcomeView>,
     pub decision_maker_id: String,
+    pub advisories: Vec<BoardwalkAdvisoryView>,
+}
+
+/// Read-only Federation guidance for the Returning Goon case. These records
+/// are presentation evidence; they cannot commit a choice, Bond, or Title.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct BoardwalkAdvisoryView {
+    pub record_id: String,
+    pub persona: AiPersona,
+    pub associated_title: String,
+    pub status: AdvisoryStatus,
+    pub finding: String,
+    pub uncertainty: String,
+    pub refusal_state: String,
+    pub next_handoff: String,
+    pub world_state_committed: bool,
+}
+
+impl BoardwalkAdvisoryView {
+    #[must_use]
+    pub fn from_record(record: &PersonaAdvisoryRecord) -> Self {
+        Self {
+            record_id: record.record_id.clone(),
+            persona: record.persona,
+            associated_title: record.associated_title.clone(),
+            status: record.status,
+            finding: record.finding.clone(),
+            uncertainty: record.uncertainty.clone(),
+            refusal_state: record.refusal_state.clone(),
+            next_handoff: record.next_handoff.clone(),
+            world_state_committed: record.world_state_committed,
+        }
+    }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -693,6 +729,11 @@ impl BoardwalkCaseView {
                 .map(|commit| commit.bond.as_str().to_owned()),
             outcome: case.outcome().map(BoardwalkOutcomeView::from_record),
             decision_maker_id: super::RETURNING_GOON_PARTICIPANT_ID.into(),
+            advisories: case
+                .constitutional_advisories()
+                .iter()
+                .map(BoardwalkAdvisoryView::from_record)
+                .collect(),
         }
     }
 }
@@ -1091,6 +1132,90 @@ pub struct GameView {
     pub party: PartyView,
     pub physical_exits: Vec<PhysicalExitView>,
     pub capabilities: Vec<IntentCapabilityView>,
+    #[serde(default)]
+    pub kernel_audit: KernelAuditView,
+    #[serde(default)]
+    pub central_junction_function: CentralJunctionFunctionView,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct CentralJunctionFunctionView {
+    pub district_id: String,
+    pub function_id: String,
+    pub display_name: String,
+    pub role: String,
+    pub authority_boundary: String,
+}
+
+impl Default for CentralJunctionFunctionView {
+    fn default() -> Self {
+        Self::canonical()
+    }
+}
+
+impl CentralJunctionFunctionView {
+    #[must_use]
+    pub fn canonical() -> Self {
+        Self {
+            district_id: "district.central-junction".into(),
+            function_id: "function.central-junction.service-tournament".into(),
+            display_name: "The Service Tournament".into(),
+            role: "largest public Function; coordinates shared civic service evidence".into(),
+            authority_boundary:
+                "Central Junction coordinates and publishes; Houses retain decisions".into(),
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct KernelAuditView {
+    pub schema_version: u16,
+    pub passed: bool,
+    pub checked_invariants: Vec<String>,
+    pub violations: Vec<String>,
+    pub central_junction_identity: String,
+    pub guide_oversight_passed: bool,
+}
+
+impl Default for KernelAuditView {
+    fn default() -> Self {
+        Self {
+            schema_version: crate::kernel_invariants::KERNEL_INVARIANT_SCHEMA_VERSION,
+            passed: false,
+            checked_invariants: Vec::new(),
+            violations: vec!["kernel audit not attached".into()],
+            central_junction_identity:
+                crate::kernel_invariants::CENTRAL_JUNCTION_COORDINATION_IDENTITY.into(),
+            guide_oversight_passed: false,
+        }
+    }
+}
+
+impl KernelAuditView {
+    #[must_use]
+    pub fn from_reports(
+        federation: &KernelInvariantReport,
+        guides: &KernelInvariantReport,
+    ) -> Self {
+        let mut violations = federation.violations.clone();
+        violations.extend(guides.violations.clone());
+        Self {
+            schema_version: federation.schema_version,
+            passed: violations.is_empty(),
+            checked_invariants: federation
+                .checked_invariants
+                .iter()
+                .chain(guides.checked_invariants.iter())
+                .map(|value| (*value).into())
+                .collect(),
+            violations,
+            central_junction_identity:
+                crate::kernel_invariants::CENTRAL_JUNCTION_COORDINATION_IDENTITY.into(),
+            guide_oversight_passed: guides.passed(),
+        }
+    }
 }
 
 fn default_inside_guide_context() -> GuideContextV1 {
@@ -1370,6 +1495,8 @@ impl GameView {
                 })
                 .unwrap_or_default(),
             capabilities,
+            kernel_audit: KernelAuditView::default(),
+            central_junction_function: CentralJunctionFunctionView::canonical(),
         }
     }
 }

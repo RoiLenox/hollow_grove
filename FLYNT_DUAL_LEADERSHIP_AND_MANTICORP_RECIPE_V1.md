@@ -6,6 +6,10 @@ This document extends `FLYNT_CONSTITUTION_V2.md` without changing runtime
 combat behavior. It fixes identity, maintained Synthesis, Manticorp's dual use,
 the divided Recipe, Basin custody, and Glaüshouse's Ledger.
 
+Tross succession follows the bounded four-House and Court process defined in
+`FLYNT_CONSTITUTION_V2.md`; neither the Manticorp Form, Chimera, nor the
+underground Gallows command can self-select a successor.
+
 ## Identity lock and dual sovereignty
 
 **The Tross, the Mystery Man, and Mr. X are the same individual.** The stable

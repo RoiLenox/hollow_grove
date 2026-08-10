@@ -66,7 +66,7 @@ distinctions for three older catalog-name collisions:
 - `region.current-sea` is the Current body that sets in Glaüshouse;
   `geography.route.current-sea` is retained only as its archive-compatible
   civic-interface projection;
-- `force.riptide` and `force.undertow` are forces within the Current Sea;
+- `force.riptide` and `force.underway` are forces within the Current Sea;
   `geography.route.riptide` is retained only as the emergency-intake map
   projection. The lawful traveler route is `route.boardwalk`.
 
@@ -148,7 +148,7 @@ unidentified patients become legible to Glaüshouse. That screen projection is
 not `force.riptide`.
 
 The Boardwalk and Riptide are type-distinct: Current rises by Riptide; a person
-travels by the Boardwalk. Undertow is Riptide's dangerous inverse and never
+travels by the Boardwalk. Underway is Riptide's dangerous inverse and never
 counts as successful emergence.
 
 Riptide is also the geographic and metaphysical symbol of Bathos: material

@@ -429,7 +429,7 @@ not the permanent route identity, does not determine Way Back endpoints, and
 must not be used to infer direction. The controlling permanent identity is
 `route.aura-way`.
 
-## 17. Current Sea, Riptide, Undertow, and Boardwalk
+## 17. Current Sea, Riptide, Underway, and Boardwalk
 
 The hard physical relation is:
 
@@ -440,7 +440,7 @@ The records remain type-distinct:
 
 - body: `region.current-sea`;
 - rising force: `force.riptide`;
-- inverse hazard: `force.undertow`;
+- inverse hazard: `force.underway`;
 - lawful traveler route: `route.boardwalk`.
 
 The Current Sea settles in Glaüshouse for diagnosis, treatment, clearing,
@@ -448,7 +448,7 @@ rest, reflection, viability review, and preparation for renewed movement.
 Glaüshouse does not terminate Current permanently.
 
 Riptide is a force inside the Current Sea. It may renew Current from
-Glaüshouse toward Flynt without carrying a person. Undertow is the dangerous
+Glaüshouse toward Flynt without carrying a person. Underway is the dangerous
 downward or beneath-ward inverse and never satisfies successful emergence.
 Neither force is a road.
 

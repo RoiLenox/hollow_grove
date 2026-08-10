@@ -68,7 +68,7 @@ classification = "hollow_grove"
 
 [[application]]
 role = "application-launcher"
-bindings = ["Mod+Q"]
+bindings = ["Mod+Grave"]
 commands = ["walker"]
 packages = ["walker", "elephant"]
 source = "aur_or_signed_custom_repository"
@@ -148,7 +148,7 @@ classification = "optional"
 
 [[application]]
 role = "office"
-bindings = ["Mod+O", "Mod+Shift+O", "Mod+Ctrl+O", "Mod+Alt+O", "Mod+Alt+Ctrl+O"]
+bindings = ["Mod+O", "Mod+Shift+O", "Mod+Ctrl+O", "Mod+Alt+O", "Mod+Ctrl+Alt+O"]
 commands = ["libreoffice"]
 packages = ["libreoffice-fresh"]
 source = "arch"

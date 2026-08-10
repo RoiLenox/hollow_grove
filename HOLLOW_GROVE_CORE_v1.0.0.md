@@ -374,7 +374,7 @@ The first Stonebend foundation adds symbolic vertical roles without replacing
 the archived projection verbs. `geography.route.riptide` and
 `geography.route.aura-way` retain their old map/interface roles for replay, but
 they are not `force.riptide` or permanent `route.aura-way`. Riptide is the
-rising force within `region.current-sea`; Undertow is its inverse hazard; a
+rising force within `region.current-sea`; Underway is its inverse hazard; a
 traveler uses `route.boardwalk`. The Design projection remains an
 institutional metaphor for ordinary recognized advancement.
 

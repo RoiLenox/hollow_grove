@@ -99,6 +99,7 @@ func _draw() -> void:
 	_draw_curved_routes(viewport_size)
 	_draw_nodes(viewport_size)
 	_draw_surface_labels(viewport_size)
+	_draw_niri_layout_guides(viewport_size)
 	_draw_pair_overlay(viewport_size)
 	_draw_pair_transition(viewport_size)
 	_draw_asset_preview(viewport_size)
@@ -564,6 +565,22 @@ func _draw_player_probe(viewport_size: Vector2) -> void:
 	draw_circle(point, 5.0, _constitutional_color("hollow_grove.house.sandmanor.highlight"))
 
 
+func _draw_niri_layout_guides(viewport_size: Vector2) -> void:
+	if not bool(pair_state.get("paired_window_mode", false)):
+		return
+	var dimensions: Dictionary = _dict_or_empty(coordinate_contract.get("niri_layout_dimensions"))
+	var horizontal: Array = dimensions.get("horizontal_column_presets", [])
+	var vertical: Array = dimensions.get("vertical_window_presets", [])
+	var guide_color := _constitutional_color("hollow_grove.house.flynt.highlight")
+	guide_color.a = 0.10
+	for ratio in horizontal:
+		var x := float(ratio) * viewport_size.x
+		draw_line(Vector2(x, 0.0), Vector2(x, viewport_size.y), guide_color, 1.0, true)
+	for ratio in vertical:
+		var y := float(ratio) * viewport_size.y
+		draw_line(Vector2(0.0, y), Vector2(viewport_size.x, y), guide_color, 1.0, true)
+
+
 func _draw_pair_overlay(viewport_size: Vector2) -> void:
 	if not bool(pair_state.get("paired_window_mode", false)):
 		return
@@ -585,6 +602,7 @@ func _draw_pair_overlay(viewport_size: Vector2) -> void:
 	draw_line(line_start_b, line_end_b, _constitutional_color("hollow_grove.house.flynt.highlight", 0.85), 4.0, true)
 
 	var paired_window: Dictionary = _dict_or_empty(pair_state.get("focused_window"))
+	_draw_pair_geometry(viewport_size)
 	var window_title := str(paired_window.get("title", "Paired Window"))
 	var app_id := str(paired_window.get("app_id", "(none)"))
 	var preview_rect := _pair_preview_rect(viewport_size, center, normal, gap_size)
@@ -624,6 +642,22 @@ func _pair_preview_rect(viewport_size: Vector2, center: Vector2, normal: Vector2
 	preview_position.y = clampf(preview_position.y, 48.0, viewport_size.y - preview_size.y - 96.0)
 
 	return Rect2(preview_position, preview_size)
+
+
+func _draw_pair_geometry(viewport_size: Vector2) -> void:
+	var normalized := _dict_or_empty(pair_state.get("normalized"))
+	var rect := _dict_or_empty(normalized.get("rect"))
+	var width := float(rect.get("width", 0.0))
+	var height := float(rect.get("height", 0.0))
+	if width <= 0.0 or height <= 0.0:
+		return
+	var pair_rect := Rect2(
+		Vector2(float(rect.get("x", 0.0)) * viewport_size.x, float(rect.get("y", 0.0)) * viewport_size.y),
+		Vector2(width * viewport_size.x, height * viewport_size.y)
+	)
+	var geometry_color := _constitutional_color("hollow_grove.house.glaushouse.highlight")
+	geometry_color.a = 0.72
+	draw_rect(pair_rect, geometry_color, false, 3.0)
 
 
 func _draw_pair_preview(preview_rect: Rect2) -> void:

@@ -94,7 +94,7 @@ Each scene presence carries a dominant descriptive intent before any encounter o
 ## Inverse Circle Intent
 
 - The Stairway to Heaven / Ascend: accept higher burden through ascent while its underground inverse curve stores hidden descent pressure
-- The Riptide / Retrieve: carry crises toward Glaushouse intake while its underground inverse curve keeps emergency undertow and Merman range alive on the water rim
+- The Riptide / Retrieve: carry crises toward Glaushouse intake while its underground inverse curve keeps emergency underway and Merman range alive on the water rim
 - The Current Seanad / Deliberate: hold difficult design and repair questions for institutional judgment while its underground inverse curve keeps hidden current structure
 - Mt. Aura / Aspire: hold the established aspirational curve from Stonebend to Sandmanor while its underground inverse curve keeps the hidden under-arc
 

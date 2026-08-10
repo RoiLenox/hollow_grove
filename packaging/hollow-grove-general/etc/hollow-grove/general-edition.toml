@@ -6,6 +6,7 @@ profile = "niri"
 helper_root = "/usr/lib/hollow-grove/bin"
 shared_data = "/usr/share/hollow-grove"
 system_applications = "/etc/hollow-grove/applications.toml"
+keyboard_grove = "/etc/hollow-grove/keyboard-grove.json"
 
 [defaults]
 wallpaper_color = "#101218"

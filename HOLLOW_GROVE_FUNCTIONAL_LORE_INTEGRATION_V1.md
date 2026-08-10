@@ -12,6 +12,12 @@ contract. It does not add another constitutional reducer. It binds ordinary
 places and conflicts to existing House authority so lore can become playable,
 fail lawfully, persist, and replay.
 
+`HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md` is the additive refinement
+proposal for separating affected actor, decision owner, executor, witness,
+handoff, completion, Restitution owner, and final recipient. Those proposed
+role fields do not claim current archive enforcement; this document's
+twelve-field executable contract remains the active V1 boundary.
+
 The causal boundary remains:
 
 ```text

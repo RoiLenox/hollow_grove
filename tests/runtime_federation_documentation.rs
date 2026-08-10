@@ -61,8 +61,8 @@ fn federal_authority_is_locked_to_two_continuous_beings() {
 #[test]
 fn seer_ceremony_preserves_identity_and_pairs_the_crossing() {
     let canon = repository_file("FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md");
+    let protocol = repository_file("SEER_CEREMONY_PROTOCOL_V1.md");
     for required in [
-        "does not create a third Seer",
         "Entering Hollow Grove:",
         "Roï becomes Roi.",
         "Rosaliña becomes Roselina.",
@@ -74,6 +74,21 @@ fn seer_ceremony_preserves_identity_and_pairs_the_crossing() {
         assert!(
             canon.contains(required),
             "Seer Ceremony canon omitted {required}"
+        );
+    }
+    for required in [
+        "Each Ceremony concerns exactly one individual.",
+        "Only one Ceremony may be active",
+        "There is no numerical limit",
+        "Continuance",
+        "Founding",
+        "Another Point is Point²",
+        "versioned `HGSCP/v1` archive",
+        "tampered bytes are rejected",
+    ] {
+        assert!(
+            protocol.contains(required),
+            "Seer protocol omitted {required}"
         );
     }
 }
@@ -90,13 +105,12 @@ fn sovereignty_lock_is_discoverable_and_freezes_internal_expansion() {
     );
     assert!(implementation.contains(reference));
     assert!(authority_map.contains(reference));
-    assert!(authority_map.contains("one Federation and exactly two continuous Guide identities"));
-    assert!(authority_map.contains("Worldright, and the Seer Ceremony"));
-    assert!(
-        canon.contains("Hollow Grove enters its outside-participation freeze")
-            || canon.contains("outside-participation freeze")
-    );
-    assert!(canon.contains("It changes no House law and creates no new\nsovereign."));
+    assert!(authority_map.contains("paired operational Guide identities"));
+    assert!(authority_map.contains("Worldright"));
+    assert!(authority_map.contains("SEER_CEREMONY_PROTOCOL_V1.md"));
+    assert!(canon.contains("paired Guide\nseam"));
+    assert!(canon.contains("Seerhood and successor-Point founding"));
+    assert!(canon.contains("It changes no House law and creates no fifth House"));
 }
 
 #[test]

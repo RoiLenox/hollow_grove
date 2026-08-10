@@ -114,11 +114,16 @@ binds {
   // right hand = focus, movement, reshape, and scope
   //
   // Left-hand modifiers:
-  // Mod = primary, Shift = visual/adjacent, Ctrl = inspect, Alt = advanced
+  // Mod = Primary, Shift = Adjacent, Ctrl = Focused, Alt = Alternate
   //
   // Right-hand modifiers:
   // Mod = focus, Shift = move, Ctrl = reshape, Alt = scope
+  //
+  // Hollow Grove anchors:
+  // Escape = Stonebend; BackSpace/Return = Sandmanor; Space = Glaüshouse; Grave = Flynt
+  // Official domain anchors: O = Office; M = Music
 
+  // Stonebend / Escape: exit and session boundary.
   Mod+Escape                 { close-window; }
   Mod+Shift+Escape           { spawn "/usr/lib/hollow-grove/bin/lock-session"; }
   Mod+Ctrl+Escape            { quit; }
@@ -126,7 +131,7 @@ binds {
   Mod+Ctrl+Alt+Escape        { spawn "systemctl" "reboot"; }
   Mod+Ctrl+Alt+Shift+Escape  { spawn "systemctl" "poweroff"; }
 
-  // Return: terminal and Hollow Grove / Hueman transport.
+  // Sandmanor / Return: entering threshold, terminal, and Hueman transport.
   Mod+Return            { spawn "kitty"; }
   Mod+Shift+Return      { spawn "/usr/bin/hollow-launch" "--label" "Zellij terminal" "--require" "kitty" "--require" "zellij" "--" "kitty" "zellij"; }
   Mod+Ctrl+Return       { spawn "kitty" "bash"; }
@@ -136,8 +141,10 @@ binds {
   Mod+Alt+KP_Enter      { spawn "/usr/bin/hollow-hueman" "launch"; }
   Mod+Alt+Slash         { spawn "/usr/bin/hollow-launch" "--label" "Nested River Hollow Grove probe" "--require" "river-scope-probe" "--" "river-scope-probe"; }
 
-  // q: query / browser
-  Mod+q repeat=false hotkey-overlay-title="Open Launcher: Walker" { spawn "/usr/lib/hollow-grove/bin/walker-toggle-niri"; }
+  // Flynt / Grave: Walker's exclusive operating-system entrance.
+  Mod+Grave repeat=false hotkey-overlay-title="Flynt: Open Launcher (Walker)" { spawn "/usr/lib/hollow-grove/bin/walker-toggle-niri"; }
+
+  // q: query / browser variants; plain Mod+Q is intentionally open
   Mod+Shift+q { spawn "/usr/bin/hollow-launch" "--label" "Firefox" "--require" "/usr/bin/firefox" "--" "/usr/bin/firefox"; }
   Mod+Ctrl+q  { spawn "/usr/bin/hollow-launch" "--label" "Anyrun launcher" "--require" "anyrun" "--" "anyrun"; }
   Mod+Alt+q   { spawn "/usr/bin/hollow-launch" "--label" "Chromium" "--require" "chromium" "--" "chromium"; }
@@ -184,12 +191,12 @@ binds {
   Mod+Ctrl+i  { spawn "/usr/bin/hollow-launch" "--label" "Weather" "--require" "kitty" "--" "kitty" "--hold" "/usr/lib/hollow-grove/bin/weather" "current"; }
   Mod+Alt+i   { spawn "/usr/bin/hollow-launch" "--label" "Weather radar" "--require" "kitty" "--" "kitty" "--hold" "/usr/lib/hollow-grove/bin/weather" "radar"; }
 
-  // o: office
-  Mod+o          { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Writer" "--require" "libreoffice" "--" "libreoffice" "--writer"; }
-  Mod+Shift+o    { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Calc" "--require" "libreoffice" "--" "libreoffice" "--calc"; }
-  Mod+Ctrl+o     { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Impress" "--require" "libreoffice" "--" "libreoffice" "--impress"; }
-  Mod+Alt+o      { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Draw" "--require" "libreoffice" "--" "libreoffice" "--draw"; }
-  Mod+Alt+Ctrl+o { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Math" "--require" "libreoffice" "--" "libreoffice" "--math"; }
+  // O domain anchor: Office
+  Mod+o hotkey-overlay-title="Office · Primary: Writer" { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Writer" "--require" "libreoffice" "--" "libreoffice" "--writer"; }
+  Mod+Shift+o hotkey-overlay-title="Office · Adjacent: Calc" { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Calc" "--require" "libreoffice" "--" "libreoffice" "--calc"; }
+  Mod+Ctrl+o hotkey-overlay-title="Office · Focused: Impress" { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Impress" "--require" "libreoffice" "--" "libreoffice" "--impress"; }
+  Mod+Alt+o hotkey-overlay-title="Office · Alternate: Draw" { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Draw" "--require" "libreoffice" "--" "libreoffice" "--draw"; }
+  Mod+Ctrl+Alt+o hotkey-overlay-title="Office · Focused Alternate: Math" { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Math" "--require" "libreoffice" "--" "libreoffice" "--math"; }
 
   // p: power / battery
   Mod+p          { spawn "/usr/bin/hollow-launch" "--label" "Battop" "--require" "kitty" "--require" "battop" "--" "kitty" "battop"; }
@@ -227,6 +234,8 @@ binds {
   Mod+Ctrl+g  { spawn "/usr/bin/hollow-launch" "--label" "Ollama" "--require" "kitty" "--require" "ollama" "--" "kitty" "ollama"; }
   Mod+Alt+g   { spawn "/usr/bin/hollow-launch" "--label" "OpenCode" "--require" "kitty" "--require" "opencode" "--" "kitty" "opencode"; }
 
+  // House diamond: H = Flynt/left, J = Glaüshouse/down,
+  // K = Stonebend/up, L = Sandmanor/right. Plain h/j/k/l remain in the app.
   // Right hand: focus.
   Mod+h { focus-column-left; }
   Mod+l { focus-column-right; }
@@ -370,23 +379,25 @@ binds {
   Mod+Ctrl+n  { spawn "/usr/bin/hollow-launch" "--label" "Network device status" "--require" "kitty" "--require" "nmcli" "--" "kitty" "--hold" "nmcli" "device" "status"; }
   Mod+Alt+n   { spawn "/usr/bin/hollow-launch" "--label" "Network connections" "--require" "kitty" "--require" "nmcli" "--" "kitty" "--hold" "nmcli" "connection" "show"; }
 
-  // m: music
-  Mod+m       { spawn "/usr/bin/hollow-launch" "--label" "Cmus" "--require" "kitty" "--require" "cmus" "--" "kitty" "cmus"; }
-  Mod+Shift+m { spawn "/usr/bin/hollow-launch" "--label" "Cava visualizer" "--require" "kitty" "--require" "cava" "--" "kitty" "cava"; }
-  Mod+Ctrl+m  { spawn "/usr/bin/hollow-launch" "--label" "Cmus stop" "--require" "cmus-remote" "--" "cmus-remote" "-U"; }
-  Mod+Alt+m   { spawn "/usr/bin/hollow-launch" "--label" "Cmus status" "--require" "kitty" "--require" "cmus-remote" "--" "kitty" "--hold" "cmus-remote" "-Q"; }
+  // M domain anchor: Music
+  Mod+m hotkey-overlay-title="Music · Primary: Library" { spawn "/usr/bin/hollow-launch" "--label" "Cmus" "--require" "kitty" "--require" "cmus" "--" "kitty" "cmus"; }
+  Mod+Shift+m hotkey-overlay-title="Music · Adjacent: Visualizer" { spawn "/usr/bin/hollow-launch" "--label" "Cava visualizer" "--require" "kitty" "--require" "cava" "--" "kitty" "cava"; }
+  Mod+Ctrl+m hotkey-overlay-title="Music · Focused: Play/Pause" { spawn "/usr/bin/hollow-launch" "--label" "Cmus play/pause" "--require" "cmus-remote" "--" "cmus-remote" "-U"; }
+  Mod+Alt+m hotkey-overlay-title="Music · Alternate: Status" { spawn "/usr/bin/hollow-launch" "--label" "Cmus status" "--require" "kitty" "--require" "cmus-remote" "--" "kitty" "--hold" "cmus-remote" "-Q"; }
 
   Mod+Tab       { toggle-overview; }
   Mod+Shift+Tab { focus-window-previous; }
   Mod+Ctrl+Tab  { focus-workspace-previous; }
   Mod+Alt+Tab   { focus-monitor-previous; }
 
-  Mod+Space                    { switch-preset-column-width; }
-  Mod+Shift+Space              { switch-preset-column-width-back; }
+  // Glaüshouse / Space: clearance and usable window room.
+  Mod+Space hotkey-overlay-title="Glaüshouse: Cycle Usable Room Forward" { switch-preset-column-width; }
+  Mod+Shift+Space hotkey-overlay-title="Glaüshouse: Cycle Usable Room Backward" { switch-preset-column-width-back; }
   Mod+Ctrl+Space               { maximize-column; }
   Mod+Ctrl+Shift+Space         { set-window-height "100%"; }
   Mod+Alt+Space                { expand-column-to-available-width; }
   Mod+Alt+Ctrl+Space           { toggle-windowed-fullscreen; }
+  // Sandmanor / Backspace: returning threshold and revision.
   Mod+Alt+BackSpace            { spawn "/usr/bin/hollow-hueman" "clear"; }
   Mod+Alt+Shift+Space          { spawn "/usr/bin/hollow-hueman" "step-spread"; }
   Mod+Ctrl+Alt+BackSpace       { reset-window-height; }

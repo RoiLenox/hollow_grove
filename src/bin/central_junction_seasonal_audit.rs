@@ -8,7 +8,7 @@ use hollow_grove::world::central_junction_seasonal_functions::{
 };
 use hollow_grove::world::current_sea_passage::{
     BOARDWALK_ROUTE_ID, CURRENT_SEA_REGION_ID, CurrentSeaForce, CurrentSeaForceDirection,
-    CurrentSeaState, RIPTIDE_FORCE_ID, UNDERTOW_FORCE_ID,
+    CurrentSeaState, RIPTIDE_FORCE_ID, UNDERWAY_FORCE_ID,
 };
 use hollow_grove::world::seasonal_functions_archive::{
     SEASONAL_ARCHIVE_VERSION, decode_seasonal_archive, encode_seasonal_archive,
@@ -296,14 +296,14 @@ fn audit() -> Result<(), String> {
     )?;
     require(
         current.events().values().any(|event| {
-            event.force == Some(CurrentSeaForce::Undertow)
+            event.force == Some(CurrentSeaForce::Underway)
                 && event
                     .force_id
                     .as_ref()
-                    .is_some_and(|id| id.as_str() == UNDERTOW_FORCE_ID)
+                    .is_some_and(|id| id.as_str() == UNDERWAY_FORCE_ID)
                 && !event.is_successful_rise()
         }),
-        "Undertow is the inverse hazard, not successful emergence",
+        "Underway is the inverse hazard, not successful emergence",
     )?;
     require(
         current.passages().values().all(|passage| {

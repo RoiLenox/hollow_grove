@@ -12,6 +12,12 @@
     "x_range": [0.0, 1.0],
     "y_range": [0.0, 1.0]
   },
+  "niri_layout_dimensions": {
+    "coordinate_space": "normalized_screen",
+    "horizontal_column_presets": [0.25, 0.50, 0.75, 1.0],
+    "vertical_window_presets": [0.1667, 0.3333, 0.50, 0.6667, 0.8333],
+    "one_to_one_rule": "niri_window_rect_maps_directly_to_hueman_rect"
+  },
   "shared_anchors": {
     "center_anchor": {
       "id": "ranina",

@@ -1,7 +1,7 @@
 //! Constitutional semantics for the Current Sea, its forces, and Boardwalk.
 //!
 //! The body (`region.current-sea`), natural forces (`force.riptide` and
-//! `force.undertow`), and lawful traveler route (`route.boardwalk`) are
+//! `force.underway`), and lawful traveler route (`route.boardwalk`) are
 //! deliberately type-distinct. Flynt Resynce and Recog remain separate lawful
 //! events above the universal recursion kernel.
 
@@ -15,7 +15,7 @@ use crate::hollow_grove_contract::House;
 
 pub const CURRENT_SEA_REGION_ID: &str = "region.current-sea";
 pub const RIPTIDE_FORCE_ID: &str = "force.riptide";
-pub const UNDERTOW_FORCE_ID: &str = "force.undertow";
+pub const UNDERWAY_FORCE_ID: &str = "force.underway";
 pub const BOARDWALK_ROUTE_ID: &str = "route.boardwalk";
 
 macro_rules! current_sea_id {
@@ -91,7 +91,10 @@ pub enum CurrentSeaState {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum CurrentSeaForce {
     Riptide,
-    Undertow,
+    Underway,
+    /// Historical V1 wire spelling retained only for immutable archive replay.
+    #[serde(rename = "Undertow")]
+    LegacyUndertow,
 }
 
 impl CurrentSeaForce {
@@ -99,8 +102,14 @@ impl CurrentSeaForce {
     pub const fn stable_id(self) -> &'static str {
         match self {
             Self::Riptide => RIPTIDE_FORCE_ID,
-            Self::Undertow => UNDERTOW_FORCE_ID,
+            Self::Underway => UNDERWAY_FORCE_ID,
+            Self::LegacyUndertow => "force.undertow",
         }
+    }
+
+    #[must_use]
+    pub const fn is_underway(self) -> bool {
+        matches!(self, Self::Underway | Self::LegacyUndertow)
     }
 }
 
@@ -155,11 +164,10 @@ impl CurrentSeaEvent {
                     && self.destination_house == Some(House::Flynt)
             }
             CurrentSeaState::Disturbed => {
-                self.force == Some(CurrentSeaForce::Undertow)
-                    && self
-                        .force_id
-                        .as_ref()
-                        .is_some_and(|id| id.as_str() == UNDERTOW_FORCE_ID)
+                self.force.is_some_and(CurrentSeaForce::is_underway)
+                    && self.force_id.as_ref().is_some_and(|id| {
+                        id.as_str() == UNDERWAY_FORCE_ID || id.as_str() == "force.undertow"
+                    })
                     && self.force_direction == Some(CurrentSeaForceDirection::DownwardOrBeneath)
                     && self.destination_house.is_none()
             }

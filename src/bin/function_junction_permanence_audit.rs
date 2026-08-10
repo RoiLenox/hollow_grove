@@ -247,14 +247,14 @@ fn main() {
     );
     let current = &annual_cycle.current_sea_runtime;
     report(
-        "Current Sea, Riptide, Undertow, and Boardwalk remain distinct",
+        "Current Sea, Riptide, Underway, and Boardwalk remain distinct",
         current.events().values().any(|event| {
             event.region_id.as_str() == CURRENT_SEA_REGION_ID
                 && event.force == Some(CurrentSeaForce::Riptide)
         }) && current
             .events()
             .values()
-            .any(|event| event.force == Some(CurrentSeaForce::Undertow))
+            .any(|event| event.force == Some(CurrentSeaForce::Underway))
             && current
                 .passages()
                 .values()

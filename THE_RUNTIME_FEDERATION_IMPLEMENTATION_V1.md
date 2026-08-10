@@ -107,8 +107,10 @@ sovereignty boundary.
 Roi/Roï and Roselina/Rosaliña retain equal, continuous authority across the
 seam. The HGRF executable machinery preserves and replays lawful state but
 does not itself possess sovereignty or create a separate Federation. The
-complete federal authority and Seer Ceremony lock is recorded in
+paired Guide seam is recorded in
 [Federal Sovereignty and Seer Ceremony V1](FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md).
+The singular, sequential Seer creation and Point-founding rules are recorded in
+[Seer Ceremony Protocol V1](SEER_CEREMONY_PROTOCOL_V1.md).
 
 ## Authority boundary
 

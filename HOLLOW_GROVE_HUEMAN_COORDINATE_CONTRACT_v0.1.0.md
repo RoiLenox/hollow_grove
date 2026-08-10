@@ -36,6 +36,18 @@ This coordinate space is the shared constitutional surface for:
 - surface polygons
 - overlay cells from the Hollow Grove motion map
 
+## Niri Layout Dimensions
+
+The shared field uses the same normalized dimensions as the active Niri
+configuration:
+
+- horizontal column presets: `0.25`, `0.50`, `0.75`, `1.00`;
+- vertical window presets: `0.1667`, `0.3333`, `0.50`, `0.6667`, `0.8333`.
+
+The bridge records the focused window rectangle in normalized screen
+coordinates. Hueman consumes that same rectangle, so a Niri window at a given
+column width and window height occupies the identical Hueman overlay rectangle.
+
 ## Shared Visible Anchors
 
 ### Center Anchor

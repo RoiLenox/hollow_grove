@@ -548,9 +548,9 @@ pub fn canonical_current_sea_events_fixture() -> Vec<CurrentSeaEvent> {
             "2046-12-22T06:15:00Z",
         ),
         current_event(
-            "current-sea-event.canonical-year.undertow-hazard",
+            "current-sea-event.canonical-year.underway-hazard",
             CurrentSeaState::Disturbed,
-            Some(CurrentSeaForce::Undertow),
+            Some(CurrentSeaForce::Underway),
             Some(CurrentSeaForceDirection::DownwardOrBeneath),
             None,
             "2046-12-22T06:30:00Z",

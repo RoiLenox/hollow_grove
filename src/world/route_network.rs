@@ -8,7 +8,7 @@
 //! The Aura Way Design corridor, Current Sea civic interface, and Riptide
 //! intake segment are archive-compatible map projections. Their screen
 //! topology cannot redefine permanent Aura Way direction, the Current Sea
-//! body, Riptide/Undertow force identity, or the Boardwalk traveler route.
+//! body, Riptide/Underway force identity, or the Boardwalk traveler route.
 
 use std::collections::{BTreeMap, BTreeSet};
 use std::fmt;

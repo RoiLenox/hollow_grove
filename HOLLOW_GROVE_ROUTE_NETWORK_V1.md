@@ -33,7 +33,7 @@ the `riptide.emergency-intake` map is not `force.riptide`. Controlling
 directional and body/force/route law lives in
 `CENTRAL_JUNCTION_SEASONAL_FUNCTIONS_V1.md`. Presentation and endpoint-sharing
 for these legacy projections cannot redefine the permanent Aura Way route, the
-Current Sea body, Riptide, Undertow, or Boardwalk.
+Current Sea body, Riptide, Underway, or Boardwalk.
 
 ## Shared House Anchors
 

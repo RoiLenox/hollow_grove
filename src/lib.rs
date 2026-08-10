@@ -1,3 +1,4 @@
+pub mod ai_personas;
 pub mod aim;
 pub mod application_protocol;
 pub mod artifact_io;
@@ -27,6 +28,7 @@ pub mod hueman_slice;
 pub mod hueman_support;
 pub mod institution;
 pub mod institution_affiliation;
+pub mod kernel_invariants;
 pub mod kernel_pass;
 pub mod kernel_pass_output;
 pub mod landing;
@@ -38,6 +40,7 @@ pub mod point;
 pub mod point_progression;
 pub mod runtime_federation;
 pub mod runtime_federation_fixture;
+pub mod seer_ceremony;
 pub mod semantic;
 pub mod snapshot_boundary;
 pub mod symptom;
@@ -48,6 +51,11 @@ pub mod verification;
 pub mod world;
 pub mod world_map_geometry;
 
+pub use ai_personas::{
+    AI_PERSONA_SCHEMA_VERSION, AdvisoryStatus, AiPersona, AiPersonaError, PersonaAdvisoryRecord,
+    PersonaCaseInput, RETURNING_GOON_CASE_ID, SharedInterfaceRecord, SharedInterfaceRecordKind,
+    canonical_returning_goon_case, encode_advisory, evaluate_persona, replay_advisory,
+};
 pub use aim::{Aim, AimBuildError, construct_aim};
 pub use application_protocol::{
     APPLICATION_REGISTRY_ARTIFACT_PATH, APPLICATION_REGISTRY_SCHEMA_VERSION, ApplicationAttachment,
@@ -208,6 +216,11 @@ pub use institution_affiliation::{
     Sponsorship, SponsorshipId, SponsorshipLiability, VerificationResult, WorldTimestamp,
     ZoneEntryAllowed, ZoneEntryResult,
 };
+pub use kernel_invariants::{
+    CENTRAL_JUNCTION_COORDINATION_IDENTITY, KERNEL_INVARIANT_SCHEMA_VERSION, KernelInvariantError,
+    KernelInvariantReport, PLATINUM_PATH_ID, PLATINUM_PATH_NAME, PLATINUM_PATH_SHORT_NAME,
+    audit_gameplay_federation_binding, audit_guide_context, central_junction_is_coordination_only,
+};
 pub use kernel_pass::{
     AURA_BEAM_WITNESS_LABEL, CANONICAL_WITNESS, CURRENT_SEAM_WITNESS_LABEL, FOURWAY_WITNESS_LABEL,
     KernelInput, KernelPass, LANDED_WITNESS_DESCRIPTION, LANDED_WITNESS_LABEL, START_WITNESS_LABEL,
@@ -239,6 +252,11 @@ pub use point_progression::{
     build_point_squared_witness, build_progression_validation_report, build_progression_witness,
     parse_point_progression_state, prepare_point_squared_ascension, validate_point_progression,
 };
+pub use seer_ceremony::{
+    CeremonyMovement, CeremonyStatus, SEER_CEREMONY_ARCHIVE_FORMAT, SEER_CEREMONY_ARCHIVE_VERSION,
+    SEER_CEREMONY_SCHEMA_VERSION, SeerCeremony, SeerCeremonyArchive, SeerCeremonyCoordinator,
+    SeerCeremonyError, SeerCeremonyOutcome, SeerPath,
+};
 pub use semantic::*;
 pub use snapshot_boundary::{SnapshotBoundary, build_snapshot_boundary_output};
 pub use symptom::Symptom;
@@ -250,6 +268,9 @@ pub use synthesis_recipe::{
     compile_recipe, gremlin_tinker_recipe, pixy_confusion_recipe,
 };
 pub use triway::{Triway, Way};
+pub use world::flynt_succession::{
+    TrossSuccessionError, TrossSuccessionRecord, TrossSuccessionStage, TrossSuccessionTrigger,
+};
 pub use world::session::WorldSession;
 pub use world_map_geometry::{
     Foxy, FoxySource, FoxySourceKind, HollowGroveRotationContractInput, HouseNumber,

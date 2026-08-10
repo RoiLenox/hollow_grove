@@ -2,6 +2,7 @@ use hollow_grove::constitutional::{
     BondId, BondPhase, BondTerm, CausalPosition, ConstitutionalRuntime, ParticipantId, RuleSetId,
     V2_RULE_SET,
 };
+use hollow_grove::gameplay::decode_gameplay_archive_with_metadata;
 use hollow_grove::gameplay::{
     BOARDWALK_GOON_BOND_ID, BOARDWALK_LIMITED_COOPERATION_BOND_ID, BOARDWALK_MAP_ROWS,
     BOARDWALK_PATRONAGE_BOND_ID, BOARDWALK_RETURN_CASE_ID, BoardwalkAuthorityClass, BoardwalkCase,
@@ -181,6 +182,24 @@ fn returning_goon_commits_a_finite_active_constitutional_bond() {
         relationship_bond.as_ref().map(BondId::as_str),
         Some(BOARDWALK_GOON_BOND_ID)
     );
+}
+
+#[test]
+fn gameplay_save_automatically_carries_advisory_records() {
+    let service = completed_goon_bond_application();
+    let archive = service.encode_archive().unwrap();
+    let decoded = decode_gameplay_archive_with_metadata(&archive).unwrap();
+    assert_eq!(decoded.federation_binding.advisory_records.len(), 3);
+    assert_eq!(
+        decoded.federation_binding.advisory_records[0].associated_title,
+        "Gimp of the Underway"
+    );
+    assert_eq!(
+        decoded.federation_binding.advisory_records[1].associated_title,
+        "Pimp of the Boardwalk"
+    );
+    let restarted = GameApplicationService::from_archive(&archive).unwrap();
+    assert_eq!(restarted.encode_archive().unwrap(), archive);
 }
 
 #[test]

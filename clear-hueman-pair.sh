@@ -15,6 +15,8 @@ else
     existing_pair_state_json='{}'
 fi
 
+paired_window_id="$(printf '%s\n' "$existing_pair_state_json" | jq -r '.focused_window.id // empty')"
+
 printf '%s\n' "$existing_pair_state_json" | jq '
     {
         schema_version: "0.2.0",
@@ -43,3 +45,7 @@ cat >"$PREVIEW_STATE_PATH" <<'EOF'
   "detail": "paired window released"
 }
 EOF
+
+if [[ -n "$paired_window_id" ]] && command -v niri >/dev/null 2>&1; then
+    niri msg action focus-window --id "$paired_window_id" >/dev/null 2>&1 || true
+fi

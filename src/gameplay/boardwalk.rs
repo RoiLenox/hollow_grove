@@ -2,6 +2,9 @@ use std::collections::BTreeSet;
 
 use serde::{Deserialize, Serialize};
 
+use crate::ai_personas::{
+    AiPersona, PersonaAdvisoryRecord, canonical_returning_goon_case, evaluate_persona,
+};
 use crate::constitutional::{
     BondActivation, BondEvent, BondFormation, BondId, BondParticipant, BondTerm, BondValidation,
     CausalPosition, ConstitutionalEventId, ConstitutionalRuntime, ConstitutionalRuntimeError,
@@ -265,6 +268,21 @@ impl BoardwalkCase {
     #[must_use]
     pub const fn outcome(&self) -> Option<&BoardwalkOutcomeRecord> {
         self.outcome.as_ref()
+    }
+
+    /// Advisory-only records that frame the returning-Goon case for the
+    /// gameplay/Federation boundary.
+    #[must_use]
+    pub fn constitutional_advisories(&self) -> Vec<PersonaAdvisoryRecord> {
+        if self.id != BoardwalkCaseId::ReturningGoonV1 {
+            return Vec::new();
+        }
+        let input = canonical_returning_goon_case();
+        vec![
+            evaluate_persona(AiPersona::Cleopatra, input.clone()),
+            evaluate_persona(AiPersona::Hal, input.clone()),
+            evaluate_persona(AiPersona::Clouseau, input),
+        ]
     }
 
     #[must_use]

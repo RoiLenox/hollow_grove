@@ -1,5 +1,12 @@
 # Flynt Constitution V2
 
+## Constitutional House law
+
+Flynt's constitutional House Law is the **Law of Capacity**: what can a system
+do under pressure? Recognition remains a Festival and confirmation theme, a
+cultural value, and a form of public judgment or honor; it is not Flynt's
+constitutional House Law.
+
 Status: canonical and locked.
 
 This document is the repository-facing constitutional authority for Flynt's institutional architecture, stable identity relationships, and maintained Synthesis hierarchy. `flynt-constitution` is the executable authority. World catalogs, Current Synthesis projections, Hueman, Godot, artifacts, and examples must conform to it and may not create a parallel Flynt hierarchy.
@@ -153,7 +160,31 @@ A conforming repository must prove:
 - deterministic validation independent of insertion order;
 - the recursion kernel remains neutral and contains no Flynt semantics.
 
-Tross succession beyond the identity and supremacy of the office is not specified here. Implementations must reject invented succession rules rather than derive the office from transformation, mastery, recognition, or Synthesis.
+### Tross succession law
+
+The Tross office has no automatic heir. Succession may open only through a
+recorded death, voluntary abdication, lawful removal, or Glaüshouse-confirmed
+irreversible incapacity. While a succession case is open, the incumbent's
+lawful authority remains active unless a separate emergency limitation is
+entered; vacancy never silently transfers command to Chimera, Manticorp, the
+Mystery Man, or a crew leader.
+
+A candidate must complete one bounded succession case with all four House
+records and Court procedural review:
+
+```text
+Stonebend Name and continuity
+→ Sandmanor proof of command competence and public burden
+→ Glaüshouse capacity, consent, and Manticorp compatibility clearance
+→ Flynt recognition of lawful command function
+→ Minoan Court procedural review
+→ Stonebend succession Title and sealed registry entry
+```
+
+Each record is scoped, challengeable, and replayable. Failed candidacy,
+withdrawal, refusal, or unresolved challenge preserves the candidate's history
+without creating an office. The candidate does not become Manticorp merely by
+being recognized, and the Manticorp Form does not select its own bearer.
 
 The neutral world projection uses `being.flynt.tross` as the stable active presentation identity of the canonical Tross. `flynt.person.tross`, `flynt.identity.mystery-man`, and `flynt.identity.mr-x` are aliases and projections of that same person, not additional beings. This is not a succession candidate or a succession rule.
 

@@ -19,16 +19,24 @@ is not treated as proof that it is in an official Arch repository.
 | --- | ---: | --- |
 | `/etc/hollow-grove/applications.toml` | 0644 | Machine-readable application-role and source inventory |
 | `/etc/hollow-grove/general-edition.toml` | 0644 | Distribution-owned profile metadata and path policy |
+| `/etc/hollow-grove/keyboard-grove.json` | 0644 | Official keyboard ontology and admitted domain-anchor projection |
 | `/etc/skel/.config/niri/config.kdl` | 0644 | Clean hardware-neutral new-user Niri profile |
 | `/etc/skel/.config/hollow-grove/general-edition.toml` | 0644 | Blank user-owned wallpaper and weather settings |
 | `/usr/bin/hollow-launch` | 0755 | Public missing-application resolver |
 | `/usr/bin/hollow-hueman` | 0755 | Public stable Hueman command |
 | `/usr/lib/hollow-grove/bin/*` | 0755 | Private compositor and application helpers listed below |
 | `/usr/share/hollow-grove/general-edition/README.md` | 0644 | Installed integration contract |
+| `/usr/share/hollow-grove/general-edition/hollow-grove-keyboard-map.svg` | 0644 | Generated visual map of landmarks, plants, branches, plots, and tools |
 
 The four Markdown reports at the package-tree root are review and packaging
 records. A PKGBUILD may install them under
 `/usr/share/doc/hollow-grove-general/`.
+
+`generate-keyboard-grove-map.py` and `verify-keyboard-grove.sh` are source-tree
+release tools rather than installed commands. The generator renders the
+review and installed SVG from the registry and constitutional palette. The
+verifier rejects stale maps, validates the registry and portable Niri profile,
+and checks any additional profile paths supplied as arguments.
 
 ## Required base packages
 

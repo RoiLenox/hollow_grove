@@ -54,6 +54,9 @@ flowchart TB
     HG --> IF
     HG --> RF
     IF --> RF
+    HG --> OL["Operational Lore Kernel\nroles · handoffs · refusal · completion"]
+    OL --> AI["Cleopatra · Hal · Clouseau\nadvisory boundary clients"]
+    AI --> RF
     RF --> GP
     GP --> PX
     SB --> IF
@@ -130,6 +133,7 @@ Compromise.
 | Central Junction | `CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md` | `src/world/central_junction.rs` | Central Junction tests/audit | public boards/world context | no House exchange |
 | Service Tournament | `SERVICE_TOURNAMENT_CENTRAL_JUNCTION_CANON_V1.md` and `SERVICE_TOURNAMENT_ARCHIVE_AND_CANONICAL_YEAR_FIXTURE_V1.md` under Compromise and House constitutions | `src/world/service_tournament.rs`, archive, fixture, and House Synthesis semantics | canon, archive, migration, replay, and audit tests | Central Junction Function record | no new constitution, service faction, sovereignty transfer, or kernel lore |
 | Federation continuity / HGRF compatibility | `THE_RUNTIME_FEDERATION_V1.md` under the Compromise and existing domain authorities | federation manifest above existing production reducers | executable archive, replay, migration, audit, and operation complete | authoritative gameplay and presentation projections | no fifth House, second Constitution, parallel reducer, domain-history rewrite, kernel lore, or second Federation |
+| operational lore and AI boundary | `HOLLOW_GROVE_KERNEL_CONSTITUTIONAL_STATE_V1_DRAFT.md`, `HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md`, and `HOLLOW_GROVE_AI_ASSOCIATED_PERSONAS_CONSTITUTION_V1_DRAFT.md` beneath the Compromise | `src/ai_personas.rs` and shared role adapters | advisory fixture, refusal, checksum, and replay tests | dialogue, scene, and Hueman projections | no House gate, PLEB/META rewrite, consent substitute, or autonomous world mutation |
 | Minoan Court | `MINOAN_COUNTY_COURT_SYSTEM_AND_RESTITUTION_CYCLE_V1.md` under Compromise | Court model plus shared interface archive | Court tests/audit | courthouse and scene projections | reserved appeal text |
 | amendments and Restitution | Minoan Court document under Compromise | Court/shared interface adapters | amendment/Restitution tests | world context | no judicial ratification |
 

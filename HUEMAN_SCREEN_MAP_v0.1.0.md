@@ -12,6 +12,16 @@ Read that now as one shared coordinate field:
 - `Hueman` is the rendered face of the map
 - the field below is one map, not two independent spaces
 
+The active Niri dimension contract is also shared by both faces:
+
+```text
+horizontal: 25% → 50% → 75% → 100%
+vertical:   16.67% → 33.33% → 50% → 66.67% → 83.33%
+```
+
+The focused Niri rectangle is normalized once and rendered as the same
+Hueman rectangle. This is a geometry contract, not a second authority layer.
+
 ## Intent
 
 - one monitor-sized field maps directly onto one visible Hueman field

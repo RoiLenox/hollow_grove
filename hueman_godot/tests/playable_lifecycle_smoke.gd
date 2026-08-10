@@ -187,6 +187,35 @@ func _run_load_phase(snapshot_path: String) -> void:
 		_fail("loaded view did not preserve the exercised interaction")
 		return
 
+	response = await _send(
+		"request.lifecycle.guide-exit",
+		"LeaveHollowGroveIntent"
+	)
+	if not _require_completed(response, "Guide exit after load"):
+		return
+	if int(response.get("revision", -1)) != 10:
+		_fail("Guide exit did not advance the unified revision")
+		return
+	var exit_view := _dictionary(response.get("view"))
+	var exit_context := _dictionary(exit_view.get("guide_context"))
+	if str(exit_context.get("layer", "")) != "outside_hollow_grove":
+		_fail("Guide exit did not return to the outside layer")
+		return
+
+	response = await _send(
+		"request.lifecycle.guide-reentry",
+		"EnterHollowGroveIntent"
+	)
+	if not _require_completed(response, "Guide re-entry after load"):
+		return
+	if int(response.get("revision", -1)) != 11:
+		_fail("Guide re-entry did not advance the unified revision")
+		return
+	var reentry_context := _dictionary(_dictionary(response.get("view")).get("guide_context"))
+	if str(reentry_context.get("layer", "")) != "hollow_grove":
+		_fail("Guide re-entry did not restore the Hollow Grove layer")
+		return
+
 	client.disconnect_from_runtime()
 	print("Hollow Grove playable lifecycle load phase passed")
 	quit()

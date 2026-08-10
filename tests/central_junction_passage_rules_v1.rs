@@ -1,7 +1,7 @@
 use hollow_grove::hollow_grove_contract::House;
 use hollow_grove::world::current_sea_passage::{
     BOARDWALK_ROUTE_ID, CURRENT_SEA_REGION_ID, CurrentSeaForce, CurrentSeaForceDirection,
-    CurrentSeaState, RIPTIDE_FORCE_ID, UNDERTOW_FORCE_ID,
+    CurrentSeaState, RIPTIDE_FORCE_ID, UNDERWAY_FORCE_ID,
 };
 use hollow_grove::world::seasonal_functions_archive::{
     SeasonalArchiveError, decode_seasonal_archive, encode_seasonal_archive,
@@ -151,12 +151,12 @@ fn way_back_direction_and_endpoint_tampering_are_rejected() {
 }
 
 #[test]
-fn current_sea_body_riptide_undertow_and_boardwalk_are_type_distinct() {
+fn current_sea_body_riptide_underway_and_boardwalk_are_type_distinct() {
     assert_ne!(CURRENT_SEA_REGION_ID, RIPTIDE_FORCE_ID);
     assert_ne!(CURRENT_SEA_REGION_ID, BOARDWALK_ROUTE_ID);
     assert_ne!(RIPTIDE_FORCE_ID, BOARDWALK_ROUTE_ID);
-    assert_ne!(RIPTIDE_FORCE_ID, UNDERTOW_FORCE_ID);
-    assert_ne!(CurrentSeaForce::Riptide, CurrentSeaForce::Undertow);
+    assert_ne!(RIPTIDE_FORCE_ID, UNDERWAY_FORCE_ID);
+    assert_ne!(CurrentSeaForce::Riptide, CurrentSeaForce::Underway);
 }
 
 #[test]
@@ -276,13 +276,13 @@ fn lawful_recog_requires_separate_accepted_resynce_and_manifestation_conditions(
 }
 
 #[test]
-fn undertow_is_inverse_hazard_and_never_successful_emergence() {
+fn underway_is_inverse_hazard_and_never_successful_emergence() {
     let archive = decoded();
     let hazard = cycle(&archive)
         .current_sea_runtime
         .events()
         .values()
-        .find(|event| event.force == Some(CurrentSeaForce::Undertow))
+        .find(|event| event.force == Some(CurrentSeaForce::Underway))
         .unwrap();
     assert_eq!(hazard.state, CurrentSeaState::Disturbed);
     assert_eq!(
@@ -312,7 +312,7 @@ fn force_direction_and_checksum_tampering_are_detected() {
         .iter_mut()
         .find(|event| event.state == CurrentSeaState::Rising)
         .unwrap();
-    rise.force = Some(CurrentSeaForce::Undertow);
+    rise.force = Some(CurrentSeaForce::Underway);
     assert!(matches!(
         encode_seasonal_archive(&force),
         Err(SeasonalArchiveError::CurrentSea(_))
@@ -332,7 +332,7 @@ fn force_direction_and_checksum_tampering_are_detected() {
 
     let bytes = encode_seasonal_archive(&canonical_seasonal_archive_fixture()).unwrap();
     let text = String::from_utf8(bytes).unwrap();
-    let tampered = text.replace("\"Riptide\"", "\"Undertow\"");
+    let tampered = text.replace("\"Riptide\"", "\"Underway\"");
     assert!(matches!(
         decode_seasonal_archive(tampered.as_bytes()),
         Err(SeasonalArchiveError::ChecksumMismatch)
@@ -364,7 +364,7 @@ fn universal_kernel_contains_no_house_specific_passage_lore() {
         "Stairway to Heaven",
         "Current Sea",
         "Riptide",
-        "Undertow",
+        "Underway",
         "Boardwalk",
         "Glaüshouse",
         "Flynt",

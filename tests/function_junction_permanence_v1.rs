@@ -457,7 +457,7 @@ fn way_back_direction_and_stairway_ascent_remain_frozen() {
 }
 
 #[test]
-fn current_sea_riptide_undertow_and_boardwalk_remain_distinct() {
+fn current_sea_riptide_underway_and_boardwalk_remain_distinct() {
     let decoded = decoded();
     let current = &decoded
         .annual_states
@@ -482,7 +482,7 @@ fn current_sea_riptide_undertow_and_boardwalk_remain_distinct() {
         current
             .events()
             .values()
-            .any(|event| event.force == Some(CurrentSeaForce::Undertow))
+            .any(|event| event.force == Some(CurrentSeaForce::Underway))
     );
     assert!(
         current
@@ -558,7 +558,19 @@ fn four_laws_have_exact_house_owners() {
         PermanenceLaw::Integrity.authority_house(),
         House::Glaushouse
     );
-    assert_eq!(PermanenceLaw::Recognition.authority_house(), House::Flynt);
+    assert_eq!(PermanenceLaw::Capacity.authority_house(), House::Flynt);
+}
+
+#[test]
+fn legacy_recognition_law_name_normalizes_without_changing_frozen_wire_bytes() {
+    let legacy: PermanenceLaw =
+        serde_json::from_str("\"Recognition\"").expect("legacy law name decodes");
+    assert_eq!(legacy, PermanenceLaw::LegacyRecognition);
+    assert_eq!(legacy.canonical(), PermanenceLaw::Capacity);
+    assert_eq!(
+        serde_json::to_string(&legacy).expect("legacy law serializes"),
+        "\"Recognition\""
+    );
 }
 
 #[test]

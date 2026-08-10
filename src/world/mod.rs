@@ -9,6 +9,7 @@ pub mod constitutional_interfaces;
 pub mod current_sea_passage;
 pub mod extraction;
 pub mod flynt;
+pub mod flynt_succession;
 pub mod fourway;
 pub mod function_junction;
 pub mod function_junction_archive;

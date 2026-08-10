@@ -17,6 +17,9 @@ transition before it establishes or resumes Hueman gameplay as Roi and
 Roselina. `LeaveHollowGroveIntent` performs the reverse crossing. Both
 operations share the request revision with gameplay commands, and transition
 events arrive in the immutable `view.guide_transition_events` projection.
+The retro overworld binds both directions to one context-aware `G` seam
+command. Initial connection may enter once automatically; after a confirmed
+leave, the client remains outside until `G` is pressed again.
 
 `MoveIntent` and `EnterRegionIntent` become available after Hueman is
 established. The authoritative view includes the current typed map rows, tile
@@ -34,6 +37,19 @@ institutional state loaded from the separate world root and the explicit
 Runtime Federation binding. The service save envelope additionally stores the
 canonical dual-Guide session and unified operational revision, while legacy
 bare gameplay archives remain readable.
+
+Every gameplay view also carries `kernel_audit`: a read-only report showing
+whether the Federation binding and paired Roi/Roselina Guide oversight pass the
+executable kernel invariants. The complete evidence-to-decision-save-replay
+route is the `path.platinum.v1` Platinum Path, or “the Plath.”
+
+The Boardwalk projection also carries the advisory-only `advisories` list for
+Cleopatra (Gimp of the Underway), Hal (Pimp of the Boardwalk), and Clouseau
+(PLEB-PLEB witness). Their presentation is centralized at the Central Junction
+advisory desk under Roi and Roselina. Godot may display their finding,
+uncertainty, refusal, and handoff text, but `world_state_committed` remains
+false and the client still submits the existing support/decision intents to
+Rust.
 
 The Current Sea Stonebend case uses the same faculty intent plus
 `SupportStonebendContinuityOptionIntent` and

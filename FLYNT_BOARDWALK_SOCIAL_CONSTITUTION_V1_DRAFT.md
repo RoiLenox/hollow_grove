@@ -37,17 +37,34 @@ social identities above that locked authority.
 
 ## Root Polarity
 
+### Canonical Naming Lock
+
+The following titles are now fixed terminology for Hollow Grove and must not
+be interchanged:
+
+| Title | Layer | Pole | Function |
+|---|---|---|---|
+| **Gimp of the Underway** | Underway | Current | hidden routes, endurance, sanctuary, protection, and continuity |
+| **Pimp of the Boardwalk** | Boardwalk | Aura | public visibility, patronage, access, reputation, and return |
+
+The titles are cultural identities, not constitutional offices, species,
+medical diagnoses, ownership claims, or automatic Sympiote outcomes. The
+selection, challenge, and ending procedures remain open for the playable trial;
+the names and their jurisdictions do not.
+
 ```text
 The Pimp and his Hoes project Aura.
 The Gimp and his Goons carry Current.
 The Boardwalk makes both visible.
 ```
 
-The Pimp's pole concerns attraction, glamour, patronage, access, leverage,
-rumor, and public recognition.
+The **Pimp of the Boardwalk** is the public Aura pole: attraction, glamour,
+patronage, access, leverage, rumor, and recognition.
 
-The Gimp's pole concerns endurance, embodied burden, loyalty, protection,
-labor, force, and continuity through visible deterioration.
+The **Gimp of the Underway** is the hidden Current pole: endurance, embodied
+burden, loyalty, protection, labor, force, route knowledge, and continuity
+through visible deterioration. The Gimp may operate from the Boardwalk, but
+the Underway is the jurisdictional layer that gives the title its depth.
 
 Neither pole is automatically lawful or unlawful. Each may shelter people,
 create belonging, and distribute opportunity. Each may also become coercive:
@@ -56,7 +73,7 @@ fealty, debt, and force.
 
 ## The Pimp
 
-**The Pimp** is the singular cultural center of the Boardwalk's glamour pole
+**The Pimp of the Boardwalk** is the singular cultural center of the Boardwalk's glamour pole
 for the first playable slice. The title is public, theatrical, and locally
 recognized. It is not the Tross office, a Flynt government office, a
 constitutional sovereign, or a source of House authority.
@@ -117,8 +134,8 @@ participation may reduce or end the Pimp's effective social reach.
 
 ## The Gimp
 
-**The Gimp of the Boardwalk** is the singular kingly cultural center of the
-Boardwalk's endurance pole for the first playable slice. The figure is inspired
+**The Gimp of the Underway** is the singular kingly cultural center of the
+Underway's endurance pole. The figure is inspired
 by the afflicted-sovereign archetype: bodily deterioration is visible, but it
 does not erase identity, continuity, dignity, or an otherwise lawful Title.
 
@@ -325,8 +342,8 @@ A conforming implementation must prove:
 The following remain deliberately open:
 
 1. the exact Name and material behavior of the Gimp's condition;
-2. how the Pimp and Gimp cultural titles are selected, inherited, challenged,
-   or ended;
+2. how the locked Pimp of the Boardwalk and Gimp of the Underway titles are
+   selected, inherited, challenged, or ended;
 3. whether a formal Hoe affiliation is itself a Bond or another lawful
    affiliation record;
 4. whether the first-case Goon Bond obligations should ever become a

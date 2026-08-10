@@ -3,8 +3,9 @@ use crate::world::session::WorldSession;
 
 use super::{
     BeingContinuityId, BeingContinuityRecord, GameRevision, GameplayArchiveError, GameplayCommand,
-    GameplayEventEnvelope, GameplayEventMetadata, GameplayRuntimeError, HollowGroveGameRuntime,
-    decode_gameplay_archive, encode_gameplay_archive,
+    GameplayEventEnvelope, GameplayEventMetadata, GameplayFederationBinding, GameplayRuntimeError,
+    HollowGroveGameRuntime, decode_gameplay_archive_with_metadata,
+    encode_gameplay_archive_with_federation_binding,
 };
 
 /// Presentation-neutral owner of the authoritative gameplay runtime.
@@ -14,6 +15,7 @@ use super::{
 #[derive(Debug)]
 pub struct GameApplicationService {
     runtime: HollowGroveGameRuntime,
+    federation_binding: GameplayFederationBinding,
 }
 
 impl GameApplicationService {
@@ -21,6 +23,9 @@ impl GameApplicationService {
     pub fn new(rule_set: RuleSetId) -> Self {
         Self {
             runtime: HollowGroveGameRuntime::new(rule_set),
+            federation_binding: GameplayFederationBinding::canonical(
+                super::GAMEPLAY_FEDERATION_COMPONENT_ID,
+            ),
         }
     }
 
@@ -28,6 +33,9 @@ impl GameApplicationService {
     pub fn with_world_session(rule_set: RuleSetId, world: WorldSession) -> Self {
         Self {
             runtime: HollowGroveGameRuntime::with_world_session(rule_set, world),
+            federation_binding: GameplayFederationBinding::canonical(
+                super::GAMEPLAY_FEDERATION_COMPONENT_ID,
+            ),
         }
     }
 
@@ -45,6 +53,9 @@ impl GameApplicationService {
     ) -> Result<Self, GameplayRuntimeError> {
         Ok(Self {
             runtime: HollowGroveGameRuntime::replay(rule_set, events)?,
+            federation_binding: GameplayFederationBinding::canonical(
+                super::GAMEPLAY_FEDERATION_COMPONENT_ID,
+            ),
         })
     }
 
@@ -55,40 +66,58 @@ impl GameApplicationService {
     ) -> Result<Self, GameplayRuntimeError> {
         Ok(Self {
             runtime: HollowGroveGameRuntime::replay_with_world_session(rule_set, events, world)?,
+            federation_binding: GameplayFederationBinding::canonical(
+                super::GAMEPLAY_FEDERATION_COMPONENT_ID,
+            ),
         })
     }
 
     pub fn encode_archive(&self) -> Result<String, GameplayArchiveError> {
-        encode_gameplay_archive(
+        let mut binding = self.federation_binding.clone();
+        if let Some(case) = self.runtime.boardwalk_case() {
+            binding.advisory_records = case.constitutional_advisories();
+        }
+        encode_gameplay_archive_with_federation_binding(
             self.runtime.rule_set(),
             self.runtime.events(),
             self.runtime.world_session(),
+            binding,
         )
     }
 
     pub fn from_archive(encoded: &str) -> Result<Self, GameApplicationArchiveError> {
-        let (rule_set, events, persisted_world) = decode_gameplay_archive(encoded)?;
+        let decoded = decode_gameplay_archive_with_metadata(encoded)?;
+        let rule_set = decoded.rule_set.clone();
+        let events = decoded.events;
+        let persisted_world = decoded.institutional_state;
         let world = persisted_world
             .map(|contents| WorldSession::from_persisted_output(&contents))
             .transpose()
             .map_err(|error| GameApplicationArchiveError::InstitutionalState(error.to_string()))?
             .unwrap_or_else(WorldSession::canonical);
-        Self::replay_with_world_session(rule_set, events, world)
-            .map_err(GameApplicationArchiveError::Runtime)
+        let mut service = Self::replay_with_world_session(rule_set, events, world)
+            .map_err(GameApplicationArchiveError::Runtime)?;
+        service.federation_binding = decoded.federation_binding;
+        Ok(service)
     }
 
     pub fn from_archive_with_world_session(
         encoded: &str,
         world: WorldSession,
     ) -> Result<Self, GameApplicationArchiveError> {
-        let (rule_set, events, persisted_world) = decode_gameplay_archive(encoded)?;
+        let decoded = decode_gameplay_archive_with_metadata(encoded)?;
+        let rule_set = decoded.rule_set.clone();
+        let events = decoded.events;
+        let persisted_world = decoded.institutional_state;
         let replay_world = persisted_world
             .map(|contents| WorldSession::from_persisted_output(&contents))
             .transpose()
             .map_err(|error| GameApplicationArchiveError::InstitutionalState(error.to_string()))?
             .unwrap_or(world);
-        Self::replay_with_world_session(rule_set, events, replay_world)
-            .map_err(GameApplicationArchiveError::Runtime)
+        let mut service = Self::replay_with_world_session(rule_set, events, replay_world)
+            .map_err(GameApplicationArchiveError::Runtime)?;
+        service.federation_binding = decoded.federation_binding;
+        Ok(service)
     }
 
     #[must_use]
@@ -119,6 +148,11 @@ impl GameApplicationService {
     #[must_use]
     pub const fn runtime(&self) -> &HollowGroveGameRuntime {
         &self.runtime
+    }
+
+    #[must_use]
+    pub const fn federation_binding(&self) -> &GameplayFederationBinding {
+        &self.federation_binding
     }
 }
 

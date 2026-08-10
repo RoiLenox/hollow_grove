@@ -18,8 +18,10 @@ Pre-Execution Artifact Chain
 
 - Hollow Grove remains the stable recursive core.
 - `KernelPass` remains unchanged.
-- Current Synthesis remains outside Hollow Grove.
-- No Current Synthesis artifact feeds back into Hollow Grove.
+- Current Synthesis remains outside Hollow Grove's constitutional authority.
+- No Current Synthesis artifact mutates Hollow Grove. A later Compromise/Federation
+  boundary may accept a scoped, attributable witness without importing route
+  execution or authority.
 
 ## Pre-Execution Chain
 
@@ -63,9 +65,11 @@ Pre-Execution Artifact Chain
 ## Rule
 
 - `PLEB` and `META` remain Current Synthesis concepts only.
-- HAL remains outside Hollow Grove.
-- Clouseau remains outside Hollow Grove.
-- Hollow Grove does not know Current Synthesis exists.
+- HAL and Clouseau remain outside Hollow Grove's House and kernel authority.
+- The constitutional boundary may name their witness identities without making
+  them kernel roles or executable route owners.
+- Hollow Grove does not execute Current Synthesis; it may receive a read-only
+  boundary record through the Compromise/Federation adapter.
 
 ## Conclusion
 

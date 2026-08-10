@@ -338,7 +338,7 @@ const INVERSE_CIRCLE_PRESENCE_LINES: &[&str] = &[
 
 const INVERSE_CIRCLE_INTENT_LINES: &[&str] = &[
     "The Stairway to Heaven / Ascend: accept higher burden through ascent while its underground inverse curve stores hidden descent pressure",
-    "The Riptide / Retrieve: carry crises toward Glaushouse intake while its underground inverse curve keeps emergency undertow and Merman range alive on the water rim",
+    "The Riptide / Retrieve: carry crises toward Glaushouse intake while its underground inverse curve keeps emergency underway and Merman range alive on the water rim",
     "The Current Seanad / Deliberate: hold difficult design and repair questions for institutional judgment while its underground inverse curve keeps hidden current structure",
     "Mt. Aura / Aspire: hold the established aspirational curve from Stonebend to Sandmanor while its underground inverse curve keeps the hidden under-arc",
 ];
@@ -2484,7 +2484,7 @@ pub fn build_hueman_inverse_circle_from_artifacts(
          ## Underground Reading\n\n\
          - The Stairway to Heaven reads as Ascend: the rising outer acceptance of higher burden along the circle's rim.\n\
          - beneath it, an inverse underground curve carries hidden descent pressure on both sides.\n\
-         - The Riptide reads as Retrieve: emergency undertow carries crises toward Glaushouse intake, with the visible water rim kept alive as Flynt's Merman range.\n\
+         - The Riptide reads as Retrieve: emergency underway carries crises toward Glaushouse intake, with the visible water rim kept alive as Flynt's Merman range.\n\
          - beneath it, an inverse underground curve carries hidden return pull on both sides beneath that roaming seam.\n\
          - The Current Seanad reads as Deliberate: the outer court holds evidence and difficult design or repair questions for judgment.\n\
          - beneath it, an inverse underground curve carries hidden current understructure on both sides.\n\

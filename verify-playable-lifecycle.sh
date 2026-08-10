@@ -5,6 +5,7 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
 GODOT_BIN="${GODOT_BIN:-}"
+CARGO_BIN="${CARGO_BIN:-}"
 TARGET_DIR="${CARGO_TARGET_DIR:-$SCRIPT_DIR/target}"
 SERVICE_BIN="$TARGET_DIR/debug/hollow_grove_game_service"
 SERVICE_PID=""
@@ -17,6 +18,17 @@ if [[ -z "$GODOT_BIN" ]]; then
         GODOT_BIN="godot"
     else
         printf 'godot executable not found; playable lifecycle verification is required\n' >&2
+        exit 1
+    fi
+fi
+
+if [[ -z "$CARGO_BIN" ]]; then
+    if command -v cargo >/dev/null 2>&1; then
+        CARGO_BIN="cargo"
+    elif [[ -x "${CARGO_HOME:-$HOME/.cargo}/bin/cargo" ]]; then
+        CARGO_BIN="${CARGO_HOME:-$HOME/.cargo}/bin/cargo"
+    else
+        printf 'cargo executable not found; playable lifecycle verification is required\n' >&2
         exit 1
     fi
 fi
@@ -83,7 +95,7 @@ run_godot_phase() {
 }
 
 if [[ "${SKIP_BUILD:-0}" != "1" ]]; then
-    cargo build --quiet --bin hollow_grove_game_service
+    "$CARGO_BIN" build --quiet --bin hollow_grove_game_service
 fi
 if [[ ! -x "$SERVICE_BIN" ]]; then
     printf 'gameplay service binary is missing: %s\n' "$SERVICE_BIN" >&2

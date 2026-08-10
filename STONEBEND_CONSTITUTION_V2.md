@@ -509,12 +509,12 @@ not make a state permanent.
 
 Stonebend always enforces the Laws of Permanence. Each House supplies one
 necessary proof: Stonebend proves Identity, Sandmanor proves Pattern,
-Glaüshouse proves Integrity, and Flynt proves Recognition. All four accepted
+Glaüshouse proves Integrity, and Flynt proves Capacity. All four accepted
 proofs must identify the same stable subject. A missing, rejected, or
 conflicting proof blocks final sealing without erasing the petition or the
 underlying event.
 
-The permanence cycle is **Claim → Pattern → Integrity → Recognition → Title →
+The permanence cycle is **Claim → Pattern → Integrity → Capacity → Title →
 Yield**. The Freemason forges Claim and boundary; Diamond and its temporary
 Hypergiant bearer alone authorize the final Permanence Seal; the Proliteriate
 protects public Yield and inheritance. No other House may independently make a

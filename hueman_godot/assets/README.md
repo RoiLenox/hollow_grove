@@ -104,3 +104,12 @@ Current original concept references:
 
 These generated concept files are reference-only. They are not runtime sprite
 sheets and must not be imported as gameplay art.
+Art-phase references:
+
+- [Hollow Grove Visual Bible](../../HOLLOW_GROVE_VISUAL_BIBLE_V1.md)
+- [Art Asset Provenance Template](../../ART_ASSET_PROVENANCE_TEMPLATE.md)
+- [Foundation Freeze](../../FOUNDATION_FREEZE_V1.md)
+
+All renderer-owned assets should carry an asset ID and provenance record before
+they are treated as production canon. Stable runtime IDs and constitutional
+authority remain owned by Rust and the frozen foundation.

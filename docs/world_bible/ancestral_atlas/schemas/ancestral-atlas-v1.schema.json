@@ -1,0 +1,328 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hollow-grove.local/schemas/ancestral-atlas-v1.schema.json",
+  "title": "Hollow Grove Ancestral Atlas V1 Read-Only Metadata",
+  "description": "Proposal schema for descriptive Atlas references; it grants no constitutional or runtime authority.",
+  "type": "object",
+  "required": [
+    "version",
+    "framework_status",
+    "assignment_status",
+    "ages",
+    "assignments",
+    "gifts",
+    "manifestations",
+    "books"
+  ],
+  "properties": {
+    "version": {
+      "const": "working-v1"
+    },
+    "framework_status": {
+      "const": "canonical_descriptive_layer"
+    },
+    "assignment_status": {
+      "const": "working"
+    },
+    "authority": {
+      "type": "string"
+    },
+    "ages": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object"
+      }
+    },
+    "assignments": {
+      "type": "array",
+      "minItems": 164,
+      "items": {
+        "$ref": "#/$defs/assignment"
+      }
+    },
+    "gifts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/gift"
+      }
+    },
+    "manifestations": {
+      "type": "array",
+      "minItems": 60,
+      "maxItems": 60,
+      "items": {
+        "$ref": "#/$defs/manifestation"
+      }
+    },
+    "books": {
+      "type": "array",
+      "minItems": 19,
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "$defs": {
+    "assignment": {
+      "type": "object",
+      "required": [
+        "id",
+        "age",
+        "point",
+        "point_suffix",
+        "point_coordinate",
+        "house",
+        "culture",
+        "status",
+        "temporal_fit",
+        "relevance_range",
+        "relevance_note",
+        "gifts",
+        "manifestations",
+        "canon_links",
+        "hueman_hooks",
+        "point_document"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^atlas\\.age_[0-9]{2}\\.point_[0-9]{2}[a-z]?\\."
+        },
+        "age": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "point": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "point_suffix": {
+          "type": "string",
+          "pattern": "^[A-Z]?$"
+        },
+        "point_coordinate": {
+          "type": "string",
+          "pattern": "^[0-9]+[A-Z]?$"
+        },
+        "house": {
+          "enum": [
+            "stonebend",
+            "sandmanor",
+            "glaushouse",
+            "flynt"
+          ]
+        },
+        "culture": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "const": "working"
+        },
+        "temporal_fit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relevance_range": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relevance_note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "research_status": {
+          "type": "string"
+        },
+        "gifts": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "string"
+          }
+        },
+        "manifestations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "canon_links": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "hueman_hooks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "point_document": {
+          "type": "string"
+        },
+        "dossier_document": {
+          "type": "string"
+        },
+        "review_level": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "gift": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "culture",
+        "house",
+        "sources",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^gift\\."
+        },
+        "name": {
+          "type": "string"
+        },
+        "culture": {
+          "type": "string"
+        },
+        "house": {
+          "type": "string"
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object"
+          }
+        },
+        "status": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "manifestation": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "house",
+        "source_gifts",
+        "source_cultures",
+        "category",
+        "description",
+        "canon_connection",
+        "hueman_hook",
+        "status",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^manifestation\\."
+        },
+        "name": {
+          "type": "string"
+        },
+        "house": {
+          "type": "string"
+        },
+        "source_gifts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "source_cultures": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "canon_connection": {
+          "type": "string"
+        },
+        "possible_location": {
+          "type": "string"
+        },
+        "possible_institution": {
+          "type": "string"
+        },
+        "possible_npc_role": {
+          "type": "string"
+        },
+        "hueman_hook": {
+          "type": "string"
+        },
+        "status": {
+          "const": "working"
+        },
+        "provenance": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object"
+          }
+        },
+        "review_level": {
+          "type": "string"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "historical_ancestry": {
+          "type": "string"
+        },
+        "modern_house_interpretation": {
+          "type": "string"
+        },
+        "physical_appearance": {
+          "type": "string"
+        },
+        "institutional_role": {
+          "type": "string"
+        },
+        "gameplay_potential": {
+          "type": "string"
+        },
+        "implementation_notes": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dossier_document": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

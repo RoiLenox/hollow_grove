@@ -46,13 +46,14 @@ Current Synthesis
 
 ## Rule
 
-`PLEB` and `META` are not Hollow Grove concepts.
+`PLEB` and `META` remain owned by Current Synthesis; they are not universal
+kernel primitives or Hollow Grove House authority. Hollow Grove may define a
+named, read-only boundary adapter that receives a scoped witness from those
+clients without importing their route grammar.
 
-They belong to Current Synthesis.
-
-HAL and Clouseau are not kernel roles.
-
-They are Current Synthesis clients built on top of Hollow Grove.
+HAL and Clouseau remain Current Synthesis clients, not House roles. Cleopatra
+may follow the inverse BLEP/Underway reflection beneath Clouseau's route, but
+does not occupy `PLEB` or `META`.
 
 ## Boundary
 
@@ -72,6 +73,7 @@ Current Synthesis
 
 Neither HAL nor Clouseau may redefine the kernel.
 
-Neither HAL nor Clouseau may feed information back into Hollow Grove.
-
-Their responsibilities begin only after the artifact boundary.
+Neither HAL nor Clouseau may mutate Hollow Grove or feed authority back into
+it. A scoped witness may cross the artifact boundary only as attributable,
+challengeable evidence through the Compromise/Federation adapter; the
+receiving House or Being must still decide.

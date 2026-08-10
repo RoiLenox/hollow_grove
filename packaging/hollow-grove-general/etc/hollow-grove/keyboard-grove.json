@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "id": "hollow-grove-keyboard-grove-v1",
+  "status": "official-operational-projection",
+  "authority": "HOLLOW_GROVE_KEYBOARD_CONSTITUTION_V1.md",
+  "scope": "desktop-keyboard-semantics",
+  "foundation": {
+    "house": "Stonebend",
+    "metaphor": "bedrock-and-soil",
+    "principles": [
+      "stable-addresses",
+      "bounded-change",
+      "coherent-naming",
+      "explicit-amendment"
+    ]
+  },
+  "form_categories": [
+    {
+      "id": "landmark",
+      "grove_reading": "recognized-boundary",
+      "keyboard_role": "house-anchor"
+    },
+    {
+      "id": "plant",
+      "grove_reading": "rooted-domain-family",
+      "keyboard_role": "mnemonic-letter-domain"
+    },
+    {
+      "id": "branch",
+      "grove_reading": "growth-from-one-plant",
+      "keyboard_role": "modifier-lane"
+    },
+    {
+      "id": "fruit",
+      "grove_reading": "replaceable-yield",
+      "keyboard_role": "current-application-or-action"
+    },
+    {
+      "id": "tool",
+      "grove_reading": "crafted-implement",
+      "keyboard_role": "operational-family"
+    }
+  ],
+  "modifier_lanes": [
+    {
+      "niri_modifier": "Mod",
+      "display_modifier": "Super",
+      "lane": "Primary",
+      "grove_reading": "trunk"
+    },
+    {
+      "niri_modifier": "Mod+Shift",
+      "display_modifier": "Super+Shift",
+      "lane": "Adjacent",
+      "grove_reading": "companion-branch"
+    },
+    {
+      "niri_modifier": "Mod+Ctrl",
+      "display_modifier": "Super+Ctrl",
+      "lane": "Focused",
+      "grove_reading": "tended-branch"
+    },
+    {
+      "niri_modifier": "Mod+Alt",
+      "display_modifier": "Super+Alt",
+      "lane": "Alternate",
+      "grove_reading": "alternate-branch"
+    }
+  ],
+  "house_anchors": [
+    {
+      "house": "Stonebend",
+      "members": [
+        {"key": "Escape", "map_label": "Boundary"}
+      ],
+      "reading": "boundary-stop-and-stable-return",
+      "form": "landmark"
+    },
+    {
+      "house": "Sandmanor",
+      "members": [
+        {"key": "BackSpace", "map_label": "Revise"},
+        {"key": "Return", "map_label": "Commit"},
+        {"key": "KP_Enter", "map_label": "Commit"}
+      ],
+      "reading": "returning-and-entering-threshold",
+      "form": "landmark"
+    },
+    {
+      "house": "Glaüshouse",
+      "members": [
+        {"key": "Space", "map_label": "Usable room"}
+      ],
+      "reading": "clearance-and-usable-room",
+      "form": "landmark"
+    },
+    {
+      "house": "Flynt",
+      "members": [
+        {"key": "Grave", "map_label": "Invoke"}
+      ],
+      "reading": "invocation-and-release",
+      "form": "landmark"
+    }
+  ],
+  "domain_anchors": [
+    {
+      "key": "O",
+      "domain": "Office",
+      "form": "plant",
+      "affinities": ["Sandmanor"],
+      "bindings": [
+        {
+          "chord": "Mod+o",
+          "display_chord": "Super+O",
+          "lane": "Primary",
+          "action": "Writer",
+          "overlay_title": "Office · Primary: Writer"
+        },
+        {
+          "chord": "Mod+Shift+o",
+          "display_chord": "Super+Shift+O",
+          "lane": "Adjacent",
+          "action": "Calc",
+          "overlay_title": "Office · Adjacent: Calc"
+        },
+        {
+          "chord": "Mod+Ctrl+o",
+          "display_chord": "Super+Ctrl+O",
+          "lane": "Focused",
+          "action": "Impress",
+          "overlay_title": "Office · Focused: Impress"
+        },
+        {
+          "chord": "Mod+Alt+o",
+          "display_chord": "Super+Alt+O",
+          "lane": "Alternate",
+          "action": "Draw",
+          "overlay_title": "Office · Alternate: Draw"
+        },
+        {
+          "chord": "Mod+Ctrl+Alt+o",
+          "display_chord": "Super+Ctrl+Alt+O",
+          "lane": "Focused Alternate",
+          "action": "Math",
+          "overlay_title": "Office · Focused Alternate: Math"
+        }
+      ]
+    },
+    {
+      "key": "M",
+      "domain": "Music",
+      "form": "plant",
+      "affinities": ["Flynt", "Glaüshouse"],
+      "bindings": [
+        {
+          "chord": "Mod+m",
+          "display_chord": "Super+M",
+          "lane": "Primary",
+          "action": "Library",
+          "overlay_title": "Music · Primary: Library"
+        },
+        {
+          "chord": "Mod+Shift+m",
+          "display_chord": "Super+Shift+M",
+          "lane": "Adjacent",
+          "action": "Visualizer",
+          "overlay_title": "Music · Adjacent: Visualizer"
+        },
+        {
+          "chord": "Mod+Ctrl+m",
+          "display_chord": "Super+Ctrl+M",
+          "lane": "Focused",
+          "action": "Play/Pause",
+          "overlay_title": "Music · Focused: Play/Pause"
+        },
+        {
+          "chord": "Mod+Alt+m",
+          "display_chord": "Super+Alt+M",
+          "lane": "Alternate",
+          "action": "Status",
+          "overlay_title": "Music · Alternate: Status"
+        }
+      ]
+    }
+  ],
+  "operational_tools": [
+    {
+      "name": "Directional diamond",
+      "form": "tool",
+      "purpose": "focus-move-reshape-and-scope",
+      "members": [
+        {"key": "H", "map_label": "Left", "affinity": "Flynt"},
+        {"key": "J", "map_label": "Down", "affinity": "Glaüshouse"},
+        {"key": "K", "map_label": "Up", "affinity": "Stonebend"},
+        {"key": "L", "map_label": "Right", "affinity": "Sandmanor"}
+      ]
+    },
+    {
+      "name": "Workspace addresses",
+      "form": "tool",
+      "purpose": "focus-and-transport",
+      "affinity": "Stonebend",
+      "members": [
+        {"key": "1", "map_label": "WS 1"},
+        {"key": "2", "map_label": "WS 2"},
+        {"key": "3", "map_label": "WS 3"},
+        {"key": "4", "map_label": "WS 4"},
+        {"key": "5", "map_label": "WS 5"},
+        {"key": "6", "map_label": "WS 6"},
+        {"key": "7", "map_label": "WS 7"},
+        {"key": "8", "map_label": "WS 8"},
+        {"key": "9", "map_label": "WS 9"},
+        {"key": "0", "map_label": "WS 10"}
+      ]
+    },
+    {
+      "name": "Horizontal edges",
+      "form": "tool",
+      "purpose": "boundary-addressing",
+      "affinity": "Stonebend",
+      "members": [
+        {"key": "BracketLeft", "map_label": "Left edge"},
+        {"key": "BracketRight", "map_label": "Right edge"}
+      ]
+    }
+  ],
+  "admission_policy": {
+    "minimum_durable_bindings": 2,
+    "allow_empty_branches": true,
+    "allow_slash_names": false,
+    "allow_ampersand_names": false,
+    "combined_modifiers_are_overflow": false,
+    "new_domain_requires_constitutional_amendment": true
+  }
+}
