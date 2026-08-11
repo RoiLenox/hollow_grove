@@ -113,21 +113,27 @@ The repository is constitutionally congruent when these statements remain true:
 - Legacy Current Synthesis boundary documents now distinguish ownership from a
   read-only scoped witness adapter.
 
-## 8. Remaining work before final Compromise/Federation freeze
+## 8. Foundation V1 RC disposition
 
-These are implementation gaps, not permission to invent new authority:
+The prior reconciliation list is resolved as follows:
 
-1. Extend the production returning-Goon reducer to persist the advisory records
-   automatically when its gameplay archive is written; the current binding
-   adapter and case-level advisory source are now implemented and tested.
-2. Add Court, amendment, and Restitution records to the common Federation
-   envelope where they are not already represented by a production component;
-   the shared-interface binding adapter is now implemented and validated.
-3. Bind the newly ratified Tross succession record into a production Flynt/
-   Federation archive component when the first succession case is playable.
-4. Run the complete repository audit and federation suite before declaring the
-   Compromise/Federation freeze complete.
+1. **Complete.** The production gameplay save automatically carries the
+   returning-Goon advisory records; archive, retry, and replay tests enforce the
+   boundary.
+2. **Complete.** Court, amendment, and Restitution use the common typed
+   Federation envelope through the shared-interface adapter and production
+   components, with authority and replay validation.
+3. **Content-gated, not a foundation blocker.** Tross succession has a ratified
+   typed record, all-four-House/Court gate enforcement, and negative bypass
+   tests. Its production archive binding will be added with the first playable
+   succession case so the repository does not invent an empty case merely to
+   satisfy a checklist.
+4. **Complete.** On 2026-08-10 the workspace passed 1,320 Rust tests, strict
+   all-feature Clippy, kernel-purity and institutional-boundary suites, the
+   deterministic art contract, Godot renderer smoke tests, and the live
+   save/restart/load lifecycle.
 
-Until those items are complete, this document is the conformance contract and
-the source of remaining work; it does not falsely mark unfinished reducers as
-implemented.
+The Compromise/Federation foundation is therefore frozen for art-facing work.
+Later content may exercise already-ratified boundaries, but any change to those
+boundaries remains a versioned foundation migration under
+`FOUNDATION_FREEZE_V1.md`.

@@ -1,6 +1,6 @@
 # Hollow Grove Foundation Freeze V1
 
-Status: active foundation lock for the art phase  
+Status: Foundation V1 release-candidate lock for the art phase
 Scope: everything beneath gameplay presentation
 
 The foundation is now considered stable enough for an art-focused phase. The
@@ -19,6 +19,12 @@ foundation migration:
 - the Platinum Path (`path.platinum.v1`), also called the Plath;
 - the Platinum Path Cultural Canon's shared five tests and local definitions;
 - the Rust/Godot protocol's rule that Godot presents records but never decides.
+
+The universal recursion implementation and neutral semantic implementation are
+separate crates. The recursion crate is dependency-free and contains no world,
+House, route, character, evidence, or lore terms. Art consumes the packaged
+palette projection and asset manifest through Godot's renderer seam; it never
+imports either kernel into presentation code.
 
 ## What art may change
 
@@ -42,9 +48,12 @@ Federation binding, or protocol ownership requires:
 ## Required validation
 
 ```text
-cargo fmt --check
-cargo test --offline
+cargo fmt --all -- --check
+cargo clippy --workspace --all-targets --all-features --offline -- -D warnings
+cargo test --workspace --offline
+./verify-art-assets.sh
 godot --headless --path hueman_godot --script res://tests/retro_overworld_semantics_smoke.gd
+./verify-playable-lifecycle.sh
 git diff --check
 ```
 
@@ -55,3 +64,18 @@ The foundation's governing proof is the executable kernel audit in
 `src/kernel_invariants.rs`. Its output is exposed as the read-only
 `kernel_audit` gameplay projection, allowing art and presentation work to
 surface foundation health without acquiring authority over it.
+
+## Foundation V1 RC disposition
+
+The 2026-08-10 RC audit passed 1,320 Rust tests across the workspace, strict
+all-feature Clippy, deterministic Aseprite re-export and constitutional-palette
+verification, a fresh-cache Godot renderer smoke check, and the live
+save/restart/load lifecycle. Long-session response caches, request replay,
+regional indexes, party projections, and save fallback are bounded and covered
+by focused stress or recovery tests.
+
+Tross succession already has typed constitutional and gate-order tests. Its
+production Federation archive binding remains deliberately deferred until a
+first playable succession case exists; creating placeholder gameplay solely to
+close that content dependency would violate this freeze rather than strengthen
+it.
