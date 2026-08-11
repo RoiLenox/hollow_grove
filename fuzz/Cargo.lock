@@ -55,6 +55,7 @@ name = "hollow-grove"
 version = "0.1.0"
 dependencies = [
  "flynt-constitution",
+ "hollow-grove-recursion-kernel",
  "hollow-grove-semantic-kernel",
  "serde",
  "serde_json",
@@ -69,8 +70,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "hollow-grove-recursion-kernel"
+version = "0.1.0"
+
+[[package]]
 name = "hollow-grove-semantic-kernel"
 version = "0.1.0"
+dependencies = [
+ "serde",
+]
 
 [[package]]
 name = "itoa"
