@@ -91,10 +91,12 @@ pub fn load_artifact_index(path: &Path) -> io::Result<String> {
         let guard = cache
             .lock()
             .expect("artifact index cache should not poison");
-        if let Some(cached) = guard.as_ref() {
-            if cached.path == path && cached.modified == modified && cached.len == len {
-                return Ok(cached.contents.clone());
-            }
+        if let Some(cached) = guard.as_ref()
+            && cached.path == path
+            && cached.modified == modified
+            && cached.len == len
+        {
+            return Ok(cached.contents.clone());
         }
     }
 

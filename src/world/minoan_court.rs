@@ -77,25 +77,28 @@ impl DomainEvidenceSource {
 
     #[must_use]
     pub const fn supports(self, jurisdiction: CourtJurisdiction) -> bool {
-        match (self, jurisdiction) {
+        matches!(
+            (self, jurisdiction),
             (Self::MinoanCoastal, CourtJurisdiction::MinoanCoastal)
-            | (Self::House(House::Stonebend), CourtJurisdiction::Stonebend)
-            | (Self::House(House::Flynt), CourtJurisdiction::Flynt)
-            | (Self::House(House::Glaushouse), CourtJurisdiction::Glaushouse)
-            | (Self::House(House::Sandmanor), CourtJurisdiction::Sandmanor)
-            | (Self::CentralJunction, CourtJurisdiction::CentralJunction)
-            | (Self::AffectedParty, _)
-            | (Self::PublicRecord, CourtJurisdiction::Constitutional)
-            | (Self::PublicRecord, CourtJurisdiction::CrossHouse) => true,
-            (Self::House(_), CourtJurisdiction::CrossHouse)
-            | (Self::House(_), CourtJurisdiction::Constitutional)
-            | (Self::CentralJunction, CourtJurisdiction::CrossHouse)
-            | (Self::CentralJunction, CourtJurisdiction::Constitutional)
-            | (Self::MinoanCoastal, CourtJurisdiction::CrossHouse)
-            | (Self::MinoanCoastal, CourtJurisdiction::Constitutional)
-            | (Self::PublicRecord, _) => true,
-            _ => false,
-        }
+                | (Self::House(House::Stonebend), CourtJurisdiction::Stonebend)
+                | (Self::House(House::Flynt), CourtJurisdiction::Flynt)
+                | (
+                    Self::House(House::Glaushouse),
+                    CourtJurisdiction::Glaushouse
+                )
+                | (Self::House(House::Sandmanor), CourtJurisdiction::Sandmanor)
+                | (Self::CentralJunction, CourtJurisdiction::CentralJunction)
+                | (Self::AffectedParty, _)
+                | (Self::PublicRecord, CourtJurisdiction::Constitutional)
+                | (Self::PublicRecord, CourtJurisdiction::CrossHouse)
+                | (Self::House(_), CourtJurisdiction::CrossHouse)
+                | (Self::House(_), CourtJurisdiction::Constitutional)
+                | (Self::CentralJunction, CourtJurisdiction::CrossHouse)
+                | (Self::CentralJunction, CourtJurisdiction::Constitutional)
+                | (Self::MinoanCoastal, CourtJurisdiction::CrossHouse)
+                | (Self::MinoanCoastal, CourtJurisdiction::Constitutional)
+                | (Self::PublicRecord, _)
+        )
     }
 }
 

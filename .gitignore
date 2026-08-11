@@ -47,3 +47,9 @@ pokewilds-reference/
 pokewilds-linux64.zip
 *.sav
 *.sav.backup
+
+# Reproducible release output; package recipes and manifests remain tracked.
+/dist/
+/release/
+*.pkg.tar.zst
+*.AppImage

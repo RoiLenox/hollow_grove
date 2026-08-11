@@ -367,7 +367,7 @@ pub struct CareLevelClaim {
     pub functions: Vec<CareFunction>,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Default)]
 pub struct HollowGroveAlignmentInput {
     pub substance_identity_claims: Vec<SubstanceIdentityClaim>,
     pub hollowing_claims: Vec<HollowingClaim>,
@@ -381,25 +381,6 @@ pub struct HollowGroveAlignmentInput {
     pub profession_claims: Vec<ProfessionClaim>,
     pub civilization_claims: Vec<CivilizationModel>,
     pub care_level_claims: Vec<CareLevelClaim>,
-}
-
-impl Default for HollowGroveAlignmentInput {
-    fn default() -> Self {
-        Self {
-            substance_identity_claims: Vec::new(),
-            hollowing_claims: Vec::new(),
-            entity_claims: Vec::new(),
-            frame_grammar_claims: Vec::new(),
-            house_anchor_claims: Vec::new(),
-            house_rock_claims: Vec::new(),
-            nightingale_claims: Vec::new(),
-            sandmanor_people_claims: Vec::new(),
-            gnome_progression_claims: Vec::new(),
-            profession_claims: Vec::new(),
-            civilization_claims: Vec::new(),
-            care_level_claims: Vec::new(),
-        }
-    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]

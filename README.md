@@ -52,6 +52,21 @@ The short rule is: authored constitutional documents define meaning;
 `src/constitutional/` and `src/world/` enforce it; `tests/` prove it; and
 `artifacts/` only project it.
 
+## Developer commands
+
+The checked `rust-toolchain.toml` pins Rust, formatting, and Clippy. Ordinary
+builds compile only the seven runtime/test-facing binaries; the 71 historical
+audits and generators remain available without inflating every edit cycle.
+
+```text
+cargo test --workspace --offline
+cargo clippy --workspace --all-targets --all-features --offline -- -D warnings
+cargo dev-tool visual_color_constitution
+```
+
+Generated output belongs under `artifacts/` or `dist/`; see
+[Artifact Ownership](docs/ARTIFACT_OWNERSHIP.md) before adding a new output.
+
 ## The Four House Shelves
 
 ### Stonebend

@@ -1,5 +1,9 @@
 //! Scoped contextual positions stored by the neutral composition catalog.
 
+// Complete typed references keep replay failures inspectable. Boxing them
+// would complicate this crate's stable public error contract.
+#![allow(clippy::result_large_err)]
+
 use std::fmt;
 
 use serde::{Deserialize, Serialize};

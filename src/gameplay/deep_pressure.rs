@@ -424,7 +424,7 @@ impl DeepPressureState {
             || self.relationships.len() != DeepPressurePersonId::ALL.len()
             || DeepPressurePersonId::ALL
                 .into_iter()
-                .any(|person| self.relationships.get(&person).is_none())
+                .any(|person| !self.relationships.contains_key(&person))
         {
             return Err(DeepPressureError::IncompleteCanonicalState);
         }
@@ -441,14 +441,13 @@ impl DeepPressureState {
         }) {
             return Err(DeepPressureError::InvalidRelationshipMemory);
         }
-        if let Some(outcome) = &self.outcome {
-            if self.supported_settlement != Some(outcome.choice)
+        if let Some(outcome) = &self.outcome
+            && (self.supported_settlement != Some(outcome.choice)
                 || outcome.id != DeepPressureOutcomeId::for_choice(outcome.choice)
                 || outcome.four_house_acts.len() != 4
-                || outcome.recovery_bond.is_some() != outcome.choice.forms_bond()
-            {
-                return Err(DeepPressureError::OutcomeDivergence);
-            }
+                || outcome.recovery_bond.is_some() != outcome.choice.forms_bond())
+        {
+            return Err(DeepPressureError::OutcomeDivergence);
         }
         Ok(())
     }

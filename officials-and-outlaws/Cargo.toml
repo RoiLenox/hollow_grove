@@ -3,6 +3,7 @@ name = "flynt-constitution"
 version = "0.1.0"
 edition = "2024"
 publish = false
+license-file = "../LICENSE"
 
 [dependencies]
 hollow-grove-semantic-kernel = { path = "../hollow-grove-semantic-kernel" }

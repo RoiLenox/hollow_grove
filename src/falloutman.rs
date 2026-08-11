@@ -1258,7 +1258,7 @@ fn render_menu_block(output: &mut String, menu: &FalloutmanBeatMenu) {
     output.push_str("\"\n\n");
 
     for option in menu.visible_options() {
-        output.push_str("[");
+        output.push('[');
         output.push_str(&format_visible_tags(option));
         output.push_str("]\n");
         output.push_str(option.visible_text());

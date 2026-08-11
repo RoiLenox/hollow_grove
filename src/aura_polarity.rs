@@ -1161,7 +1161,7 @@ pub fn build_aura_route_witness() -> io::Result<String> {
         let definition = canonical_aura_route_definition(*route)
             .ok_or_else(|| io::Error::other("missing Light aura route definition"))?;
         output.push_str(&render_route_definition(&definition));
-        output.push_str("\n");
+        output.push('\n');
     }
 
     output.push_str("\nGlaüshouse -> Flynt\n\nRoutes:\n");
@@ -1169,7 +1169,7 @@ pub fn build_aura_route_witness() -> io::Result<String> {
         let definition = canonical_aura_route_definition(*route)
             .ok_or_else(|| io::Error::other("missing Dark aura route definition"))?;
         output.push_str(&render_route_definition(&definition));
-        output.push_str("\n");
+        output.push('\n');
     }
 
     Ok(output)

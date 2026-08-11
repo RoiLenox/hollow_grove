@@ -112,7 +112,7 @@ cargo build
 cargo build --release
 ./bench-local.sh | tee "$FULL_DIR/bench-full.log"
 ./stress-local.sh | tee "$FULL_DIR/stress-full.log"
-cargo run --quiet --bin client_desktop_status >/dev/null
+cargo run --quiet --features dev-tools --bin client_desktop_status >/dev/null
 if [[ "$VERIFY_FULL_REUSE_FUZZ" == "1" ]] && [[ -f "$FUZZ_SUMMARY_JSON" ]] && validate_fuzz_summary; then
   echo "reusing validated fuzz artifact: $FUZZ_SUMMARY_JSON"
 else
@@ -124,8 +124,8 @@ else
   ./soak-local.sh "$SOAK_PROFILE"
 fi
 
-RELEASE_HASH="$(cargo run --release --quiet --bin adversarial_verification -- hash-corpus --cases "$HASH_CASES" --seed "$SEED")"
-cargo run --quiet --bin adversarial_verification -- report \
+RELEASE_HASH="$(cargo run --release --quiet --features dev-tools --bin adversarial_verification -- hash-corpus --cases "$HASH_CASES" --seed "$SEED")"
+cargo run --quiet --features dev-tools --bin adversarial_verification -- report \
   --profile full \
   --seed "$SEED" \
   --property-cases "$PROPERTY_CASES" \

@@ -405,7 +405,7 @@ fn way_back_support(id: &str, house: House, role: WayBackSupportRole) -> WayBack
         support_id: WayBackSupportId::new(id).expect("canonical Way Back support ID"),
         house,
         role,
-        authority_id: WayBackAuthorityId::new(&format!("authority.{id}"))
+        authority_id: WayBackAuthorityId::new(format!("authority.{id}"))
             .expect("canonical Way Back support authority ID"),
         evidence_ids: [evidence(&format!("evidence.{id}"))].into_iter().collect(),
         claims_route_ownership: false,

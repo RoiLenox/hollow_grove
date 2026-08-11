@@ -1531,9 +1531,9 @@ pub fn render_role_profile(role: &RoleProfile) -> String {
         .collect::<Vec<_>>()
         .join(", ");
     format!(
-        "- {} = Being {}, Frame {:?}, species {}, training {}, profession {}{}, equipment: {}, Flow: {}, Glow: {}",
+        "- {} = Being {:?}, Frame {:?}, species {}, training {}, profession {}{}, equipment: {}, Flow: {}, Glow: {}",
         role.label,
-        format!("{:?}", role.being),
+        role.being,
         role.active_frame,
         role.species_label,
         role.house_training.as_str(),

@@ -430,13 +430,13 @@ mod tests {
             current_synthesis_activation_gate
         );
 
-        fs::remove_file(&artifact_root.join(SNAPSHOT_ARTIFACT_PATH))
+        fs::remove_file(artifact_root.join(SNAPSHOT_ARTIFACT_PATH))
             .expect("snapshot fixture should be removable");
-        fs::remove_file(&artifact_root.join(PROMPT_ARTIFACT_PATH))
+        fs::remove_file(artifact_root.join(PROMPT_ARTIFACT_PATH))
             .expect("prompt fixture should be removable");
-        fs::remove_file(&artifact_root.join(DESKTOP_STATUS_ARTIFACT_PATH))
+        fs::remove_file(artifact_root.join(DESKTOP_STATUS_ARTIFACT_PATH))
             .expect("desktop fixture should be removable");
-        fs::remove_file(&artifact_root.join(ARTIFACT_INDEX_PATH))
+        fs::remove_file(artifact_root.join(ARTIFACT_INDEX_PATH))
             .expect("index fixture should be removable");
         fs::remove_file(&base_path).expect("base artifact should be removable");
         fs::remove_file(&state_path).expect("state artifact should be removable");

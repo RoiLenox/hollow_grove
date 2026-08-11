@@ -17,17 +17,9 @@ pub const LANDED_WITNESS_LABEL: &str = "Point²";
 pub const LANDED_WITNESS_DESCRIPTION: &str = "Landed Point";
 pub const CANONICAL_WITNESS: &str = "Point\n↓\nTriway\n↓\nFourway\n↓\nHollowGrove\n↓\nCurrentSeam [PlebExterior]\n↓\nAuraBeam [BlepReturn]\n↓\nPoint² (Landed Point) [BlepArrival]";
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 pub struct KernelInput {
     pub routing: PlebMetaInput,
-}
-
-impl Default for KernelInput {
-    fn default() -> Self {
-        Self {
-            routing: PlebMetaInput::default(),
-        }
-    }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]

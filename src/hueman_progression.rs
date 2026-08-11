@@ -1034,7 +1034,7 @@ pub fn parse_vertical_slice_state(contents: &str) -> io::Result<VerticalSliceSta
             "vertical slice state missing phase",
         )
     })?;
-    let follow_up_phase = follow_up_phase.unwrap_or_else(|| {
+    let follow_up_phase = follow_up_phase.unwrap_or({
         if matches!(phase, SlicePhase::CurrentFormUnlocked) {
             FollowUpPhase::Ready
         } else {

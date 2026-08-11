@@ -1473,7 +1473,7 @@ fn weather_for(clock: LivingClock) -> AuraWeather {
     match (clock.day + shift_index(clock.shift)) % 8 {
         0 | 1 => AuraWeather::Clear,
         2 | 3 => AuraWeather::Crosswind,
-        4 | 5 | 6 => AuraWeather::PressureDrop,
+        4..=6 => AuraWeather::PressureDrop,
         _ => AuraWeather::Storm,
     }
 }

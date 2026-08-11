@@ -695,25 +695,25 @@ mod tests {
             vertical_integration_stack
         );
 
-        fs::remove_file(&artifact_root.join(CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH))
+        fs::remove_file(artifact_root.join(CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH))
             .expect("current synthesis base fixture should be removable");
-        fs::remove_file(&artifact_root.join(CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH))
+        fs::remove_file(artifact_root.join(CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH))
             .expect("current synthesis activation gate fixture should be removable");
-        fs::remove_file(&artifact_root.join(CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH))
+        fs::remove_file(artifact_root.join(CURRENT_SYNTHESIS_OPERATIONAL_ARTIFACT_PATH))
             .expect("current synthesis operational fixture should be removable");
-        fs::remove_file(&artifact_root.join(CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH))
+        fs::remove_file(artifact_root.join(CURRENT_SYNTHESIS_TOPOLOGY_ARTIFACT_PATH))
             .expect("current synthesis topology fixture should be removable");
-        fs::remove_file(&artifact_root.join(CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH))
+        fs::remove_file(artifact_root.join(CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH))
             .expect("current synthesis sequence fixture should be removable");
-        fs::remove_file(&artifact_root.join(CURRENT_SYNTHESIS_EXECUTION_SPEC_ARTIFACT_PATH))
+        fs::remove_file(artifact_root.join(CURRENT_SYNTHESIS_EXECUTION_SPEC_ARTIFACT_PATH))
             .expect("current synthesis execution spec fixture should be removable");
-        fs::remove_file(&artifact_root.join(CURRENT_SYNTHESIS_BEHAVIOR_RULES_ARTIFACT_PATH))
+        fs::remove_file(artifact_root.join(CURRENT_SYNTHESIS_BEHAVIOR_RULES_ARTIFACT_PATH))
             .expect("current synthesis behavior rules fixture should be removable");
-        fs::remove_file(&artifact_root.join(CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH))
+        fs::remove_file(artifact_root.join(CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH))
             .expect("current synthesis transition fixture should be removable");
-        fs::remove_file(&artifact_root.join(CURRENT_SYNTHESIS_SELECTION_ARTIFACT_PATH))
+        fs::remove_file(artifact_root.join(CURRENT_SYNTHESIS_SELECTION_ARTIFACT_PATH))
             .expect("current synthesis selection fixture should be removable");
-        fs::remove_file(&artifact_root.join(CURRENT_SYNTHESIS_CONSEQUENCE_ARTIFACT_PATH))
+        fs::remove_file(artifact_root.join(CURRENT_SYNTHESIS_CONSEQUENCE_ARTIFACT_PATH))
             .expect("current synthesis consequence fixture should be removable");
         fs::remove_file(&boundary_path).expect("hueman boundary artifact should be removable");
         fs::remove_file(&motion_map_path).expect("hueman motion map artifact should be removable");

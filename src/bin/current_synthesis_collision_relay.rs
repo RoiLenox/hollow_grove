@@ -220,13 +220,13 @@ mod tests {
 
         assert_eq!(error.kind(), io::ErrorKind::NotFound);
 
-        fs::remove_file(&artifact_root.join("artifacts/current_synthesis_contract.md"))
+        fs::remove_file(artifact_root.join("artifacts/current_synthesis_contract.md"))
             .expect("contract fixture should be removable");
-        fs::remove_file(&artifact_root.join("artifacts/current_synthesis_operational.md"))
+        fs::remove_file(artifact_root.join("artifacts/current_synthesis_operational.md"))
             .expect("operational fixture should be removable");
-        fs::remove_file(&artifact_root.join("artifacts/current_synthesis_transition_pm_to_le.md"))
+        fs::remove_file(artifact_root.join("artifacts/current_synthesis_transition_pm_to_le.md"))
             .expect("transition fixture should be removable");
-        fs::remove_dir(&artifact_root.join("artifacts"))
+        fs::remove_dir(artifact_root.join("artifacts"))
             .expect("artifact directory should be removable");
         fs::remove_dir(&artifact_root).expect("fixture root should be removable");
     }

@@ -348,7 +348,9 @@ fn ensure_bins_available(bin_names: &[&str]) -> io::Result<Vec<PathBuf>> {
     }
 
     let mut build = Command::new("cargo");
-    build.current_dir(&repo_root).arg("build");
+    build
+        .current_dir(&repo_root)
+        .args(["build", "--features", "dev-tools"]);
     if profile == "release" {
         build.arg("--release");
     }
@@ -912,7 +914,8 @@ mod tests {
         fs::write(&bin_path, "binary").expect("binary should write");
 
         assert!(
-            binaries_are_fresh(&[bin_path.clone()], &repo_root).expect("freshness should check")
+            binaries_are_fresh(std::slice::from_ref(&bin_path), &repo_root)
+                .expect("freshness should check")
         );
 
         std::thread::sleep(Duration::from_millis(20));
@@ -923,7 +926,7 @@ mod tests {
         .expect("source should rewrite");
 
         assert!(
-            !binaries_are_fresh(&[bin_path.clone()], &repo_root)
+            !binaries_are_fresh(std::slice::from_ref(&bin_path), &repo_root)
                 .expect("freshness should detect stale binary")
         );
 

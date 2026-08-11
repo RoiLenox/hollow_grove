@@ -1385,29 +1385,29 @@ fn score_expression(
         reasons.push(String::from("aim fit"));
     }
 
-    if request.addressing_mode() == AddressingMode::Moxy && !object.connections().is_empty() {
-        if matches!(
+    if request.addressing_mode() == AddressingMode::Moxy
+        && !object.connections().is_empty()
+        && matches!(
             expression,
             GripExpressionId::BridgeGrip
                 | GripExpressionId::FormationGrip
                 | GripExpressionId::SiegeGrip
                 | GripExpressionId::WorldGrip
-        ) {
-            score += 12;
-            reasons.push(String::from("connected-object Moxy support"));
-        }
+        )
+    {
+        score += 12;
+        reasons.push(String::from("connected-object Moxy support"));
     }
 
     if request.addressing_mode() == AddressingMode::Foxy
         && object.condition() == crate::being_object_ontology::ObjectCondition::Hidden
-    {
-        if matches!(
+        && matches!(
             expression,
             GripExpressionId::TinkerGrip | GripExpressionId::BridgeGrip
-        ) {
-            score += 12;
-            reasons.push(String::from("hidden return-side Foxy support"));
-        }
+        )
+    {
+        score += 12;
+        reasons.push(String::from("hidden return-side Foxy support"));
     }
 
     let family_familiarity = request

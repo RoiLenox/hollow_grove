@@ -1216,9 +1216,7 @@ fn move_forward_bias(spec: &MoveActionSpec, candidate_id: &str) -> i32 {
             }
         }
         MoveMethod::Flank => {
-            if candidate_id.contains("flight") {
-                10
-            } else if candidate_id.contains("camouflage") {
+            if candidate_id.contains("flight") || candidate_id.contains("camouflage") {
                 10
             } else {
                 0
@@ -2112,23 +2110,23 @@ impl PlayerActionProfile {
     }
 
     fn joint_relay(&self, selected_bond: &BondCandidate, player_moment: &str) -> String {
-        if self.dominant_kind() == PlayerActionKind::Move {
-            if let Some(definition) = move_route_definition(self) {
-                let inverse = definition
-                    .definition
-                    .inverse_custodian
-                    .map(|custodian| custodian.display_name())
-                    .unwrap_or("none");
-                return format!(
-                    "{} packet: surface route {} belongs to {}, inverse route belongs to {}, Clouseau carries the playable chord, HAL carries the pressure field, and Cleopatra receives `{}` for NPC coordination. Moment focus: {}",
-                    self.dominant_kind().posture_label(),
-                    definition.line_display_name(),
-                    definition.definition.surface_custodian.display_name(),
-                    inverse,
-                    selected_bond.id,
-                    player_moment
-                );
-            }
+        if self.dominant_kind() == PlayerActionKind::Move
+            && let Some(definition) = move_route_definition(self)
+        {
+            let inverse = definition
+                .definition
+                .inverse_custodian
+                .map(|custodian| custodian.display_name())
+                .unwrap_or("none");
+            return format!(
+                "{} packet: surface route {} belongs to {}, inverse route belongs to {}, Clouseau carries the playable chord, HAL carries the pressure field, and Cleopatra receives `{}` for NPC coordination. Moment focus: {}",
+                self.dominant_kind().posture_label(),
+                definition.line_display_name(),
+                definition.definition.surface_custodian.display_name(),
+                inverse,
+                selected_bond.id,
+                player_moment
+            );
         }
         format!(
             "{} packet: Clouseau carries the player's {} posture through {}, HAL mirrors it with complementary pressure mapping, and Cleopatra receives `{}` as the live handoff before NPC selection. Moment focus: {}",
@@ -4707,9 +4705,7 @@ pub fn build_npc_inspector_output(state: &CurrentSynthesisState, npc_id: &str) -
 }
 
 pub fn build_npc_history_output(state: &CurrentSynthesisState, npc_id: &str) -> Option<String> {
-    if state.find_npc(npc_id).is_none() {
-        return None;
-    }
+    state.find_npc(npc_id)?;
     let mut output = String::from("# NPC History\n\n");
     for tick in &state.history {
         if let Some(relay) = tick
@@ -6087,10 +6083,10 @@ fn infer_route_line(
     from: Option<&str>,
     to: Option<&str>,
 ) -> RouteLineName {
-    if let Some(line) = trait_value(traits, &["line", "route"]) {
-        if let Some(named) = parse_route_line_name(line) {
-            return named;
-        }
+    if let Some(line) = trait_value(traits, &["line", "route"])
+        && let Some(named) = parse_route_line_name(line)
+    {
+        return named;
     }
     let context = format!(
         "{} {} {} {}",

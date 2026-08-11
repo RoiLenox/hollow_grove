@@ -1115,7 +1115,7 @@ impl BeingObjectSynthesisSpec {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Default)]
 pub struct BeingObjectContractInput {
     pub object_collapsed_into_being: bool,
     pub universal_appearance_state_only: bool,
@@ -1130,26 +1130,6 @@ pub struct BeingObjectContractInput {
     pub erases_hueman_identity: bool,
     pub inherited_skill_roots_discarded: bool,
     pub idle_time_grants_major_progression: bool,
-}
-
-impl Default for BeingObjectContractInput {
-    fn default() -> Self {
-        Self {
-            object_collapsed_into_being: false,
-            universal_appearance_state_only: false,
-            skill_without_relation: false,
-            move_identical_to_skill: false,
-            hollowing_crosses_boundary: false,
-            synthesis_bypasses_recipe_legality: false,
-            proxy_replaces_object: false,
-            moxy_velocity_only: false,
-            foxy_automatically_evil: false,
-            object_mutation_without_identity_or_history: false,
-            erases_hueman_identity: false,
-            inherited_skill_roots_discarded: false,
-            idle_time_grants_major_progression: false,
-        }
-    }
 }
 
 #[must_use]

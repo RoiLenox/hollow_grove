@@ -1058,15 +1058,15 @@ pub fn validate_player_spatial_contract(
         ));
     }
 
-    if let Some((position, claimed_house)) = input.coordinate_alignment_claim {
-        if house_for_position(position) != claimed_house {
-            diagnostics.push(player_spatial_error(format!(
-                "Position {} derives {} from the Rule of Twelve and cannot be stored as {}.",
-                position,
-                house_display(house_for_position(position)),
-                house_display(claimed_house)
-            )));
-        }
+    if let Some((position, claimed_house)) = input.coordinate_alignment_claim
+        && house_for_position(position) != claimed_house
+    {
+        diagnostics.push(player_spatial_error(format!(
+            "Position {} derives {} from the Rule of Twelve and cannot be stored as {}.",
+            position,
+            house_display(house_for_position(position)),
+            house_display(claimed_house)
+        )));
     }
 
     diagnostics

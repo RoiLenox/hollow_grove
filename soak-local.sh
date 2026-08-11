@@ -38,7 +38,7 @@ echo "duration seconds: $DURATION_SECONDS"
 echo "seed: $SEED"
 echo "report interval seconds: $REPORT_INTERVAL"
 
-cargo build --release
+cargo build --release --features dev-tools --bin adversarial_verification
 
 set +e
 target/release/adversarial_verification soak \

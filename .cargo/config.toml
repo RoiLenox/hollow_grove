@@ -1,0 +1,2 @@
+[alias]
+dev-tool = "run --features dev-tools --bin"

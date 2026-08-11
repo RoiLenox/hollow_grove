@@ -203,11 +203,11 @@ mod tests {
 
         assert_eq!(error.kind(), io::ErrorKind::NotFound);
 
-        fs::remove_file(&artifact_root.join("artifacts/current_synthesis_behavior_rules.md"))
+        fs::remove_file(artifact_root.join("artifacts/current_synthesis_behavior_rules.md"))
             .expect("behavior rules fixture should be removable");
-        fs::remove_file(&artifact_root.join("artifacts/current_synthesis_topology.md"))
+        fs::remove_file(artifact_root.join("artifacts/current_synthesis_topology.md"))
             .expect("topology fixture should be removable");
-        fs::remove_dir(&artifact_root.join("artifacts"))
+        fs::remove_dir(artifact_root.join("artifacts"))
             .expect("artifact directory should be removable");
         fs::remove_dir(&artifact_root).expect("fixture root should be removable");
     }

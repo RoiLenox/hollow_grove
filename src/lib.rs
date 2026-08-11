@@ -1,3 +1,13 @@
+// Domain constructors intentionally name every constitutional input at call
+// sites, and wire parsers retain established `from_str` APIs returning Option.
+// Redundant `must_use` markers keep generated API documentation consistent.
+#![allow(
+    clippy::double_must_use,
+    clippy::should_implement_trait,
+    clippy::too_many_arguments,
+    clippy::type_complexity
+)]
+
 pub mod ai_personas;
 pub mod aim;
 pub mod application_protocol;

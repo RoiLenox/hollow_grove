@@ -24,10 +24,10 @@ cargo build --release
 SKIP_BUILD=1 ./verify-playable-lifecycle.sh | tee "$ARTIFACT_DIR/playable-lifecycle.log"
 ./bench-local.sh | tee "$ARTIFACT_DIR/bench-fast.log"
 SKIP_BUILD=1 ./stress-local.sh | tee "$ARTIFACT_DIR/stress-fast.log"
-cargo run --quiet --bin client_desktop_status >/dev/null
+cargo run --quiet --features dev-tools --bin client_desktop_status >/dev/null
 
-RELEASE_HASH="$(cargo run --release --quiet --bin adversarial_verification -- hash-corpus --cases "$HASH_CASES" --seed "$SEED")"
-cargo run --quiet --bin adversarial_verification -- report \
+RELEASE_HASH="$(cargo run --release --quiet --features dev-tools --bin adversarial_verification -- hash-corpus --cases "$HASH_CASES" --seed "$SEED")"
+cargo run --quiet --features dev-tools --bin adversarial_verification -- report \
   --profile fast \
   --seed "$SEED" \
   --hash-cases "$HASH_CASES" \

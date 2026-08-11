@@ -274,7 +274,7 @@ fn base_events(representatives: &[TournamentCompetitor]) -> Vec<TournamentEvent>
     let scenarios = scenarios();
     let rescue_scenario_id =
         ScenarioId::new("scenario.canonical-year.bridge-rescue").expect("canonical scenario ID");
-    let marks = vec![
+    let marks = [
         paint_mark(
             10,
             &rescue_scenario_id,

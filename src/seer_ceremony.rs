@@ -356,12 +356,12 @@ fn validate_archive(archive: &SeerCeremonyArchive) -> Result<(), SeerCeremonyErr
             )));
         }
     }
-    if let Some(active) = &archive.active {
-        if active.status == CeremonyStatus::Completed {
-            return Err(SeerCeremonyError::InvalidArchive(
-                "active ceremony cannot be completed".into(),
-            ));
-        }
+    if let Some(active) = &archive.active
+        && active.status == CeremonyStatus::Completed
+    {
+        return Err(SeerCeremonyError::InvalidArchive(
+            "active ceremony cannot be completed".into(),
+        ));
     }
     Ok(())
 }
