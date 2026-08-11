@@ -452,8 +452,8 @@ pub struct RegionalEventMetadata {
 pub struct RegionalSynthesisRuntime {
     events: Vec<RegionalEventEnvelope>,
     beings: BTreeMap<RegionalBeingId, RegionalBeingRecord>,
-    event_ids: BTreeSet<RegionalEventId>,
-    synthesis_ids: BTreeSet<RegionalSynthesisId>,
+    event_positions: BTreeMap<RegionalEventId, usize>,
+    synthesis_positions: BTreeMap<RegionalSynthesisId, usize>,
     decision_ids: BTreeSet<HouseDecisionId>,
 }
 
@@ -493,7 +493,8 @@ impl RegionalSynthesisRuntime {
             evidence: registration.evidence.clone(),
         };
         let envelope = self.envelope(metadata, payload)?;
-        self.event_ids.insert(envelope.id.clone());
+        let position = self.events.len();
+        self.event_positions.insert(envelope.id.clone(), position);
         self.beings.insert(record.id.clone(), record);
         self.events.push(envelope);
         Ok(self.events.last().expect("regional event was appended"))
@@ -504,22 +505,20 @@ impl RegionalSynthesisRuntime {
         metadata: RegionalEventMetadata,
         command: RegionalSynthesisCommand,
     ) -> Result<&RegionalEventEnvelope, RegionalSynthesisError> {
-        if let Some(position) = self.events.iter().position(|event| {
-            event.id == metadata.id
-                && matches!(
-                    &event.payload,
-                    RegionalEvent::SynthesisCompleted(record) if record.command == command
-                )
-                && event.causal_position == metadata.causal_position
+        if let Some(position) = self.event_positions.get(&metadata.id).copied() {
+            let event = &self.events[position];
+            if matches!(
+                &event.payload,
+                RegionalEvent::SynthesisCompleted(record) if record.command == command
+            ) && event.causal_position == metadata.causal_position
                 && event.rule_set == metadata.rule_set
-        }) {
-            return Ok(&self.events[position]);
-        }
-        if self.event_ids.contains(&metadata.id) {
+            {
+                return Ok(event);
+            }
             return Err(RegionalSynthesisError::EventIdConflict(metadata.id));
         }
         self.validate_metadata(&metadata)?;
-        if self.synthesis_ids.contains(&command.id) {
+        if self.synthesis_positions.contains_key(&command.id) {
             return Err(RegionalSynthesisError::SynthesisIdConflict(command.id));
         }
 
@@ -531,6 +530,7 @@ impl RegionalSynthesisRuntime {
         let record = self.reduce_synthesis(&predecessor, command, metadata.causal_position)?;
         let payload = RegionalEvent::SynthesisCompleted(record.clone());
         let envelope = self.envelope(metadata, payload)?;
+        let position = self.events.len();
 
         let predecessor_record = self
             .beings
@@ -541,8 +541,9 @@ impl RegionalSynthesisRuntime {
             .insert(record.command.authority.sandmanor_proof.id.clone());
         self.decision_ids
             .insert(record.command.authority.glaushouse_resolution.id.clone());
-        self.synthesis_ids.insert(record.command.id.clone());
-        self.event_ids.insert(envelope.id.clone());
+        self.synthesis_positions
+            .insert(record.command.id.clone(), position);
+        self.event_positions.insert(envelope.id.clone(), position);
         self.beings
             .insert(record.result.id.clone(), record.result.clone());
         self.events.push(envelope);
@@ -568,11 +569,12 @@ impl RegionalSynthesisRuntime {
             return Err(RegionalSynthesisError::BeingNotActive(record.being));
         }
         let envelope = self.envelope(metadata, payload)?;
+        let position = self.events.len();
         self.beings
             .get_mut(&record.being)
             .expect("validated being must remain present")
             .status = RegionalBeingStatus::Tombstoned(record.tombstone);
-        self.event_ids.insert(envelope.id.clone());
+        self.event_positions.insert(envelope.id.clone(), position);
         self.events.push(envelope);
         Ok(self.events.last().expect("regional event was appended"))
     }
@@ -621,10 +623,11 @@ impl RegionalSynthesisRuntime {
 
     #[must_use]
     pub fn synthesis(&self, id: &RegionalSynthesisId) -> Option<&RegionalSynthesisRecord> {
-        self.events.iter().find_map(|event| match &event.payload {
+        let event = &self.events[*self.synthesis_positions.get(id)?];
+        match &event.payload {
             RegionalEvent::SynthesisCompleted(record) if &record.command.id == id => Some(record),
             _ => None,
-        })
+        }
     }
 
     #[must_use]
@@ -831,7 +834,7 @@ impl RegionalSynthesisRuntime {
         metadata: &RegionalEventMetadata,
         payload: &RegionalEvent,
     ) -> Result<Option<usize>, RegionalSynthesisError> {
-        if let Some(position) = self.events.iter().position(|event| event.id == metadata.id) {
+        if let Some(position) = self.event_positions.get(&metadata.id).copied() {
             let existing = &self.events[position];
             if existing.causal_position == metadata.causal_position
                 && existing.rule_set == metadata.rule_set

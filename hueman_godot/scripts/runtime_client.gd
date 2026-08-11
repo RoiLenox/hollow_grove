@@ -13,6 +13,8 @@ signal protocol_error(message: String)
 const PROTOCOL_VERSION := 1
 const DEFAULT_HOST := "127.0.0.1"
 const DEFAULT_PORT := 47819
+const MAX_RESPONSE_BYTES := 64 * 1024
+const MAX_PENDING_REQUESTS := 64
 
 var revision: int = 0
 var _session_id: String
@@ -44,7 +46,12 @@ func is_runtime_connected() -> bool:
 func send_intent(request_id: String, intent_type: String, payload := {}) -> Error:
 	if not is_runtime_connected():
 		return ERR_UNCONFIGURED
-	if request_id == "" or intent_type == "" or _pending_requests.has(request_id):
+	if (
+		request_id == ""
+		or intent_type == ""
+		or _pending_requests.has(request_id)
+		or _pending_requests.size() >= MAX_PENDING_REQUESTS
+	):
 		return ERR_INVALID_PARAMETER
 	var intent: Dictionary = payload.duplicate(true)
 	intent["type"] = intent_type
@@ -78,6 +85,8 @@ func poll() -> void:
 		return
 	_receive_buffer += read_result[1].get_string_from_utf8()
 	_consume_complete_lines()
+	if _receive_buffer.to_utf8_buffer().size() > MAX_RESPONSE_BYTES:
+		_fail_oversized_response()
 
 
 func _consume_complete_lines() -> void:
@@ -89,11 +98,21 @@ func _consume_complete_lines() -> void:
 		_receive_buffer = _receive_buffer.substr(newline + 1)
 		if line == "":
 			continue
+		if line.to_utf8_buffer().size() > MAX_RESPONSE_BYTES:
+			_fail_oversized_response()
+			return
 		var parsed = JSON.parse_string(line)
 		if typeof(parsed) != TYPE_DICTIONARY:
 			protocol_error.emit("runtime response was not a JSON object")
 			continue
 		_accept_response(parsed)
+
+
+func _fail_oversized_response() -> void:
+	_peer.disconnect_from_host()
+	_receive_buffer = ""
+	_pending_requests.clear()
+	protocol_error.emit("runtime response exceeded the %d byte transport limit" % MAX_RESPONSE_BYTES)
 
 
 func _accept_response(response: Dictionary) -> void:

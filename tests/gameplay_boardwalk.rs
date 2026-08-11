@@ -544,6 +544,18 @@ fn protocol_save_survives_service_restart_and_loads_the_boardwalk_map() {
     ));
     assert_eq!(saved.status, ProtocolResponseStatus::Completed);
     assert_eq!(saved.events[0].kind, GameplayEventKind::SnapshotSaved);
+    let second_save = first.handle(protocol_request(
+        "request.boardwalk-save.write-again",
+        2,
+        GameplayIntent::SaveIntent {
+            slot_id: "slot-a".into(),
+        },
+    ));
+    assert_eq!(second_save.status, ProtocolResponseStatus::Completed);
+    let save_path = save_root.join("session.boardwalk-save.slot-a.hgplay.json");
+    let backup_path = save_root.join("session.boardwalk-save.slot-a.hgplay.json.backup");
+    assert!(backup_path.is_file());
+    std::fs::write(&save_path, "corrupt primary save").unwrap();
 
     let mut restarted =
         GameProtocolService::new_with_save_root("session.boardwalk-save", rules(), &save_root)

@@ -320,6 +320,49 @@ fn request_retry_is_exact_and_conflicting_reuse_fails_closed() {
 }
 
 #[test]
+fn response_cache_is_bounded_without_permitting_an_evicted_retry() {
+    let mut service = service();
+    let first = request("request.cache-0", 0, GameplayIntent::SyncIntent);
+    assert_eq!(
+        service.handle(first.clone()).status,
+        ProtocolResponseStatus::Completed
+    );
+    for index in 1..=hollow_grove::gameplay::MAX_CACHED_PROTOCOL_RESPONSES {
+        let response = service.handle(request(
+            &format!("request.cache-{index}"),
+            0,
+            GameplayIntent::SyncIntent,
+        ));
+        assert_eq!(response.status, ProtocolResponseStatus::Completed);
+    }
+
+    assert_eq!(
+        service.cached_response_count(),
+        hollow_grove::gameplay::MAX_CACHED_PROTOCOL_RESPONSES
+    );
+    assert_eq!(
+        service.tracked_request_count(),
+        hollow_grove::gameplay::MAX_CACHED_PROTOCOL_RESPONSES + 1
+    );
+    let expired = service.handle(first);
+    assert_eq!(expired.status, ProtocolResponseStatus::Rejected);
+    assert_eq!(
+        expired.rejection.unwrap().code,
+        ProtocolRejectionCode::RequestReplayExpired
+    );
+    assert!(service.application().events().is_empty());
+}
+
+#[test]
+fn serialized_protocol_responses_respect_the_transport_limit() {
+    let mut service = service();
+    let response = service.handle_json_line(SYNC_FIXTURE);
+    assert!(response.len() <= hollow_grove::gameplay::MAX_GAMEPLAY_RESPONSE_BYTES);
+    let decoded: ProtocolResponseEnvelope = serde_json::from_str(&response).unwrap();
+    assert_eq!(decoded.status, ProtocolResponseStatus::Completed);
+}
+
+#[test]
 fn stale_mutation_is_rejected_while_sync_recovers_the_current_snapshot() {
     let mut service = service();
     assert_eq!(
@@ -458,6 +501,8 @@ fn godot_client_is_transport_only_and_uses_the_shared_protocol_fields() {
         "expected_revision",
         "intent",
         "response_received",
+        "MAX_RESPONSE_BYTES",
+        "MAX_PENDING_REQUESTS",
     ] {
         assert!(source.contains(required), "missing {required}");
     }

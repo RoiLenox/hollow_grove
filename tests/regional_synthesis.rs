@@ -152,6 +152,51 @@ fn idempotent_synthesis_retry_has_one_effect_and_stable_digest() {
 }
 
 #[test]
+fn long_regional_history_replays_and_retries_through_stable_indexes() {
+    const EVENT_COUNT: usize = 2_048;
+    let world = hollow_grove::world::institutional_access_fixture();
+    let mut runtime = RegionalSynthesisRuntime::new();
+    for index in 0..EVENT_COUNT {
+        let being = regional_id(&format!("being.test.indexed-history-{index}"));
+        runtime
+            .register_being(
+                scenario_regional_metadata(
+                    &format!("indexed-history-{index}"),
+                    u64::try_from(index + 1).unwrap(),
+                ),
+                scenario_regional_registration(
+                    &world.catalog,
+                    being,
+                    SandmanorForm::Gnome,
+                    ConstitutionalRegion::AuraFields,
+                    RegionalStandingKind::Established,
+                )
+                .unwrap(),
+            )
+            .unwrap();
+    }
+    let first_being = regional_id("being.test.indexed-history-0");
+    let retried = runtime
+        .register_being(
+            scenario_regional_metadata("indexed-history-0", 1),
+            scenario_regional_registration(
+                &world.catalog,
+                first_being,
+                SandmanorForm::Gnome,
+                ConstitutionalRegion::AuraFields,
+                RegionalStandingKind::Established,
+            )
+            .unwrap(),
+        )
+        .unwrap();
+    assert_eq!(retried.sequence, 0);
+    assert_eq!(runtime.events().len(), EVENT_COUNT);
+
+    let replayed = RegionalSynthesisRuntime::replay(runtime.events().iter().cloned()).unwrap();
+    assert_eq!(replayed, runtime);
+}
+
+#[test]
 fn reversed_and_cross_lineage_transformations_fail_without_mutation() {
     for name in ["gnome-centaur", "elf-minotaur"] {
         let scenario = run_rejected_regional_scenario(name).unwrap();

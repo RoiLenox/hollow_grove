@@ -1293,8 +1293,13 @@ pub struct PartyView {
     pub lead_continuity_id: String,
     pub members: Vec<PartyMemberView>,
     pub candidates: Vec<RecruitmentCandidateView>,
+    #[serde(default)]
+    pub field_action_count: usize,
     pub field_actions: Vec<super::FieldActionRecord>,
 }
+
+/// Presentation carries only a recent tail; the authoritative archive retains every action.
+pub const MAX_PROJECTED_FIELD_ACTIONS: usize = 64;
 
 impl PartyView {
     #[must_use]
@@ -1355,6 +1360,14 @@ impl PartyView {
                 }
             })
             .collect();
+        let mut field_actions = party
+            .field_actions
+            .iter()
+            .rev()
+            .take(MAX_PROJECTED_FIELD_ACTIONS)
+            .cloned()
+            .collect::<Vec<_>>();
+        field_actions.reverse();
         Self {
             revision: party.revision,
             max_members: MAX_PARTY_MEMBERS,
@@ -1370,7 +1383,8 @@ impl PartyView {
                 .into(),
             members,
             candidates,
-            field_actions: party.field_actions.clone(),
+            field_action_count: party.field_actions.len(),
+            field_actions,
         }
     }
 }

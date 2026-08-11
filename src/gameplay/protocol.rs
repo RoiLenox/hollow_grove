@@ -1,4 +1,4 @@
-use std::collections::{BTreeMap, BTreeSet};
+use std::collections::{BTreeMap, BTreeSet, VecDeque};
 use std::fs::{self, OpenOptions};
 use std::io::Write;
 use std::path::{Path, PathBuf};
@@ -33,6 +33,12 @@ use super::{
 pub const HOLLOW_GROVE_GAMEPLAY_PROTOCOL_VERSION: u16 = 1;
 pub const DEFAULT_GAMEPLAY_SERVICE_ADDRESS: &str = "127.0.0.1:47819";
 pub const MAX_GAMEPLAY_MESSAGE_BYTES: usize = 64 * 1024;
+/// Maximum encoded response sent by line-oriented transports.
+pub const MAX_GAMEPLAY_RESPONSE_BYTES: usize = 64 * 1024;
+/// Recent responses retained for byte-for-byte retry handling.
+pub const MAX_CACHED_PROTOCOL_RESPONSES: usize = 256;
+/// Session-wide request IDs retained to prevent an evicted retry from running twice.
+pub const MAX_TRACKED_PROTOCOL_REQUESTS: usize = 16_384;
 pub const GAMEPLAY_SERVICE_SAVE_SCHEMA_VERSION: u16 = 1;
 pub const GUIDE_OPERATIONAL_STATE_SCHEMA_VERSION: &str = "hollow-grove-guide-operational-state-v1";
 
@@ -175,10 +181,13 @@ pub enum ProtocolRejectionCode {
     InvalidSession,
     InvalidRequestId,
     RequestIdConflict,
+    RequestReplayExpired,
+    RequestLedgerFull,
     StaleRevision,
     CapabilityUnavailable,
     MalformedRequest,
     RuntimeRejected,
+    ResponseTooLarge,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -321,6 +330,8 @@ pub struct GameProtocolService {
     applied_guide_transitions: BTreeSet<StableTransitionId>,
     operational_revision: u64,
     completed_requests: BTreeMap<String, CompletedProtocolRequest>,
+    completed_request_order: VecDeque<String>,
+    tracked_requests: BTreeMap<String, ProtocolRequestEnvelope>,
     save_root: Option<PathBuf>,
     _runtime_lease: Option<GameplayRuntimeLease>,
 }
@@ -345,6 +356,8 @@ impl GameProtocolService {
             applied_guide_transitions: BTreeSet::new(),
             operational_revision: 0,
             completed_requests: BTreeMap::new(),
+            completed_request_order: VecDeque::new(),
+            tracked_requests: BTreeMap::new(),
             save_root: None,
             _runtime_lease: None,
         })
@@ -406,6 +419,8 @@ impl GameProtocolService {
             applied_guide_transitions,
             operational_revision,
             completed_requests: BTreeMap::new(),
+            completed_request_order: VecDeque::new(),
+            tracked_requests: BTreeMap::new(),
             save_root: Some(save_root),
             _runtime_lease: Some(runtime_lease),
         };
@@ -432,6 +447,16 @@ impl GameProtocolService {
     #[must_use]
     pub const fn guide_session(&self) -> &DualGuideSession {
         &self.guide_session
+    }
+
+    #[must_use]
+    pub fn cached_response_count(&self) -> usize {
+        self.completed_requests.len()
+    }
+
+    #[must_use]
+    pub fn tracked_request_count(&self) -> usize {
+        self.tracked_requests.len()
     }
 
     #[must_use]
@@ -475,6 +500,35 @@ impl GameProtocolService {
                 )
             };
         }
+        if let Some(completed) = self.tracked_requests.get(&request.request_id) {
+            return if completed == &request {
+                self.rejection(
+                    request.request_id,
+                    ProtocolRejectionCode::RequestReplayExpired,
+                    "the exact request was completed, but its response aged out; synchronize with a new request ID"
+                        .into(),
+                    true,
+                )
+            } else {
+                self.rejection(
+                    request.request_id,
+                    ProtocolRejectionCode::RequestIdConflict,
+                    "request ID was already used for a different request".into(),
+                    true,
+                )
+            };
+        }
+        if self.tracked_requests.len() >= MAX_TRACKED_PROTOCOL_REQUESTS {
+            return self.rejection(
+                request.request_id,
+                ProtocolRejectionCode::RequestLedgerFull,
+                format!(
+                    "this session reached its {} request safety limit; save and restart the service before issuing more intents",
+                    MAX_TRACKED_PROTOCOL_REQUESTS
+                ),
+                true,
+            );
+        }
 
         let response = if !matches!(request.intent, GameplayIntent::SyncIntent)
             && request.expected_revision != self.revision()
@@ -492,13 +546,22 @@ impl GameProtocolService {
         } else {
             self.dispatch(&request)
         };
+        let request_id = request.request_id.clone();
+        self.tracked_requests
+            .insert(request_id.clone(), request.clone());
         self.completed_requests.insert(
-            request.request_id.clone(),
+            request_id.clone(),
             CompletedProtocolRequest {
                 request,
                 response: response.clone(),
             },
         );
+        self.completed_request_order.push_back(request_id);
+        while self.completed_request_order.len() > MAX_CACHED_PROTOCOL_RESPONSES {
+            if let Some(expired) = self.completed_request_order.pop_front() {
+                self.completed_requests.remove(&expired);
+            }
+        }
         response
     }
 
@@ -1224,9 +1287,7 @@ impl GameProtocolService {
                 })
                 .map_err(|error| error.to_string())
             })
-            .and_then(|archive| {
-                write_text_artifact(&path, &archive).map_err(|error| error.to_string())
-            });
+            .and_then(|archive| self.write_save_with_backup(&path, &archive));
         match result {
             Ok(()) => self.completed(
                 request.request_id.clone(),
@@ -1256,9 +1317,7 @@ impl GameProtocolService {
                 true,
             );
         };
-        let loaded = read_text_artifact(&path)
-            .map_err(|error| error.to_string())
-            .and_then(|archive| self.decode_service_save(&archive));
+        let loaded = self.read_save_or_backup(&path);
         let (application, guide_session, service_revision, applied_guide_transitions) = match loaded
         {
             Ok(loaded) => loaded,
@@ -1389,6 +1448,49 @@ impl GameProtocolService {
             saved.service_revision,
             saved.applied_guide_transitions,
         ))
+    }
+
+    fn write_save_with_backup(&self, path: &Path, archive: &str) -> Result<(), String> {
+        if let Ok(existing) = read_text_artifact(path)
+            && self.decode_service_save(&existing).is_ok()
+        {
+            write_text_artifact(&gameplay_save_backup_path(path), &existing)
+                .map_err(|error| error.to_string())?;
+        }
+        write_text_artifact(path, archive).map_err(|error| error.to_string())
+    }
+
+    fn read_save_or_backup(
+        &self,
+        path: &Path,
+    ) -> Result<
+        (
+            GameApplicationService,
+            DualGuideSession,
+            u64,
+            BTreeSet<StableTransitionId>,
+        ),
+        String,
+    > {
+        match read_text_artifact(path)
+            .map_err(|error| error.to_string())
+            .and_then(|archive| self.decode_service_save(&archive))
+        {
+            Ok(save) => Ok(save),
+            Err(primary_error) => read_text_artifact(&gameplay_save_backup_path(path))
+                .map_err(|backup_error| {
+                    format!(
+                        "primary save failed ({primary_error}); backup could not be read ({backup_error})"
+                    )
+                })
+                .and_then(|archive| {
+                    self.decode_service_save(&archive).map_err(|backup_error| {
+                        format!(
+                            "primary save failed ({primary_error}); backup failed ({backup_error})"
+                        )
+                    })
+                }),
+        }
     }
 
     fn save_path(&self, slot_id: &str) -> Option<PathBuf> {
@@ -1572,7 +1674,28 @@ impl GameProtocolService {
                 ),
             }
         };
-        serde_json::to_string(&response).expect("protocol response values are serializable")
+        let encoded =
+            serde_json::to_string(&response).expect("protocol response values are serializable");
+        if encoded.len() <= MAX_GAMEPLAY_RESPONSE_BYTES {
+            return encoded;
+        }
+        serde_json::to_string(&ProtocolResponseEnvelope {
+            protocol_version: HOLLOW_GROVE_GAMEPLAY_PROTOCOL_VERSION,
+            session_id: self.session_id.clone(),
+            request_id: response.request_id,
+            status: ProtocolResponseStatus::Rejected,
+            revision: self.revision(),
+            events: Vec::new(),
+            view: None,
+            rejection: Some(ProtocolRejection {
+                code: ProtocolRejectionCode::ResponseTooLarge,
+                message: format!(
+                    "authoritative response exceeded the {} byte transport limit; retry SyncIntent after reducing projected history",
+                    MAX_GAMEPLAY_RESPONSE_BYTES
+                ),
+            }),
+        })
+        .expect("bounded protocol rejection is serializable")
     }
 }
 
@@ -1585,6 +1708,12 @@ fn is_stable_wire_id(value: &str) -> bool {
 
 fn gameplay_save_path(root: &Path, session_id: &str, slot_id: &str) -> PathBuf {
     root.join(format!("{session_id}.{slot_id}.hgplay.json"))
+}
+
+fn gameplay_save_backup_path(path: &Path) -> PathBuf {
+    let mut value = path.as_os_str().to_owned();
+    value.push(".backup");
+    PathBuf::from(value)
 }
 
 #[must_use]
