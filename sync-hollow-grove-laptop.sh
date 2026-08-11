@@ -168,6 +168,10 @@ tar -xzf "$incoming/hollow-grove-hueman-$version.tar.gz" \
     cd "$install_path"
     sha256sum --check SHA256SUMS
 )
+if ! grep -Fqx "git_commit=$release_commit" "$install_path/BUILD-MANIFEST.txt"; then
+    printf 'Hueman release was not built from the transferred source commit\n' >&2
+    exit 1
+fi
 
 next_link="$current_link.next-$stamp"
 ln -s "$install_path" "$next_link"
