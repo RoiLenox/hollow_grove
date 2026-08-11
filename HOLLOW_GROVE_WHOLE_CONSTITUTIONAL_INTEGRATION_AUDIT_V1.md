@@ -166,7 +166,7 @@ constitutional state.
 - `src/world/persistence.rs`
 - `src/gameplay/*.rs`
 - `officials-and-outlaws/src/lib.rs`
-- `hollow-grove-kernel/src/lib.rs`
+- `hollow-grove-semantic-kernel/src/lib.rs`
 
 ### 3.3 Executable witnesses inspected or run
 
@@ -607,7 +607,7 @@ Commands completed against the audited state:
 - `cargo fmt --all -- --check`: **pass**
 - `cargo test --all-targets`: **1,072 passed; 0 failed**
 - `cargo test --all-targets` in `officials-and-outlaws`: **16 passed; 0 failed**
-- `cargo test --all-targets` in `hollow-grove-kernel`: **7 passed; 0 failed**
+- `cargo test --all-targets` in `hollow-grove-semantic-kernel`: **7 passed; 0 failed**
 - combined: **1,095 passed; 0 failed**
 - `cargo clippy --all-targets`: **pass with the existing warning baseline**
 - executable constitutional/world audits: **16 of 16 passed**

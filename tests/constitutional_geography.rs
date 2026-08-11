@@ -120,7 +120,7 @@ fn established_route_names_and_meanings_remain_exact() {
 fn frozen_layers_do_not_import_constitutional_geography() {
     let root = Path::new(env!("CARGO_MANIFEST_DIR"));
     for frozen_root in [
-        root.join("hollow-grove-kernel"),
+        root.join("hollow-grove-semantic-kernel"),
         root.join("officials-and-outlaws"),
         root.join("src/constitutional"),
     ] {
@@ -133,7 +133,7 @@ fn geography_projection_does_not_import_frozen_authority_engines() {
     let source = include_str!("../src/world/geography.rs");
     assert!(!source.contains("flynt_constitution"));
     assert!(!source.contains("crate::constitutional"));
-    assert!(!source.contains("hollow_grove_kernel"));
+    assert!(!source.contains("hollow_grove_semantic_kernel"));
     assert!(!source.contains("current_synthesis_engine"));
 }
 

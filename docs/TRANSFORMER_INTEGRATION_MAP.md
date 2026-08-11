@@ -18,7 +18,7 @@ not a competing architecture.
 - Worktree after index refresh: clean
 - Root package: `hollow-grove` (`Cargo.toml`)
 - Path crates:
-  - `hollow-grove-kernel` (`hollow-grove-kernel/Cargo.toml`)
+  - `hollow-grove-semantic-kernel` (`hollow-grove-semantic-kernel/Cargo.toml`)
   - `flynt-constitution` (`officials-and-outlaws/Cargo.toml`)
 - The root manifest is a package manifest, not a declared Cargo workspace.
 - No Cargo feature flags existed at discovery.
@@ -31,7 +31,7 @@ Baseline verification:
 | --- | --- |
 | `cargo fmt --all -- --check` | passed |
 | `cargo test --all-targets` in the root package | passed; 1,244 tests |
-| `cargo test` in `hollow-grove-kernel` | passed; 21 tests |
+| `cargo test` in `hollow-grove-semantic-kernel` | passed; 21 tests |
 | `cargo test` in `officials-and-outlaws` | passed; 16 tests |
 
 No pre-existing test failure was observed.
@@ -58,20 +58,23 @@ Federation.
 
 ### Authoritative kernel
 
-There are two related kernel surfaces:
+There are two related, physically separate kernel surfaces:
 
-- `hollow-grove-kernel/src/lib.rs` is the isolated, House-neutral composition
-  and provenance kernel.
-- The root recursion kernel is assembled from `src/point.rs`,
-  `src/symptom.rs`, `src/triway.rs`, `src/hollow_grove.rs`,
-  `src/grove_seam.rs`, `src/hollow_beam.rs`, `src/kernel_pass.rs`, and
-  `src/pleb_meta/`.
+- `hollow-grove-recursion-kernel/src/lib.rs` owns the dependency-free, bounded
+  cycle topology and Pleb/Meta routing grammar.
+- `hollow-grove-semantic-kernel/src/lib.rs` owns isolated, House-neutral
+  geometry, composition, and provenance.
+
+The root crate adapts application-owned `Point`, progression, and world state
+through that neutral routing grammar in `src/symptom.rs`, `src/triway.rs`,
+`src/hollow_grove.rs`, `src/grove_seam.rs`, `src/hollow_beam.rs`, and
+`src/kernel_pass.rs`. `src/pleb_meta.rs` is only a compatibility re-export.
 
 `src/composition.rs` is only a compatibility re-export of
-`hollow-grove-kernel`; it is not a second implementation.
+`hollow-grove-semantic-kernel`; it is not a second implementation.
 
 The fixed-point coordinate primitives and neutral scoped position records will
-be added to `hollow-grove-kernel`. House names and constitutional
+be added to `hollow-grove-semantic-kernel`. House names and constitutional
 interpretation will remain in the root crate so the neutral-kernel purity
 boundary stays intact.
 
@@ -79,8 +82,8 @@ boundary stays intact.
 
 - The existing recursion `Point` is `src/point.rs::Point`.
 - Its stable physical identity is represented through
-  `hollow_grove_kernel::OrientedPoint` and related IDs in
-  `hollow-grove-kernel/src/oriented_point.rs`.
+  `hollow_grove_semantic_kernel::OrientedPoint` and related IDs in
+  `hollow-grove-semantic-kernel/src/oriented_point.rs`.
 - Point² is an established progression operation rather than a duplicate
   `PointSquared` entity type. Its principal records are
   `PointSquaredAscension`, `PointSquaredApplication`, and
@@ -93,7 +96,7 @@ progression.
 
 ### Catalogs
 
-- `hollow_grove_kernel::CompositionCatalog` is the authoritative neutral
+- `hollow_grove_semantic_kernel::CompositionCatalog` is the authoritative neutral
   catalog for addressable nodes, causal composition records, and containment.
 - `SpatialInheritanceCatalog` is a separate physical map-template catalog and
   is not suitable for contextual meaning.
@@ -105,7 +108,7 @@ Semantic position storage will extend `CompositionCatalog`. No
 
 ### Composition, causality, and provenance
 
-`hollow-grove-kernel/src/lib.rs` provides:
+`hollow-grove-semantic-kernel/src/lib.rs` provides:
 
 - `CompositionNode`
 - `CompositionRecord`
@@ -124,7 +127,7 @@ ordinary `CompositionRecord` provenance rather than a second event log.
 
 ### Containment
 
-`hollow-grove_kernel::Containment` is direct structural membership.
+`hollow_grove_semantic_kernel::Containment` is direct structural membership.
 `CompositionCatalog::add_containment` rejects missing endpoints,
 self-containment, duplicates, and cycles. Its reachability check is the
 existing containment-cycle detector.
@@ -137,7 +140,7 @@ Containment will not update semantic position.
 The repository consistently uses validated caller-supplied ASCII-safe IDs:
 
 - `CompositionNodeId`, `CompositionRecordId`, `ScaleKey`, and spatial IDs in
-  `hollow-grove-kernel/src/lib.rs`
+  `hollow-grove-semantic-kernel/src/lib.rs`
 - constitutional IDs in `src/constitutional/ids.rs`
 - cycle IDs in `src/constitutional/grove_phase.rs`
 - domain-specific stable IDs throughout `src/world/` and `src/gameplay/`
@@ -152,7 +155,7 @@ a proposal is neither a composition record nor a confirmed state.
 
 ### External references and evidence
 
-`hollow_grove_kernel::ExternalRef` is the neutral reference to a
+`hollow_grove_semantic_kernel::ExternalRef` is the neutral reference to a
 domain-owned object, operation, or evidence trace.
 `src/constitutional/model.rs::EvidenceRef` is a constitutional wrapper around
 `ExternalRef`.
@@ -355,7 +358,7 @@ evidence.
 ```text
 Hollow Grove canon documents and existing House law
     ↓
-hollow-grove-kernel semantic geometry
+hollow-grove-semantic-kernel semantic geometry
     ↓
 CompositionCatalog scoped semantic records
     ↓
@@ -374,7 +377,7 @@ root CLI/TUI and Rust-owned Godot events
 
 Enforced negative dependencies:
 
-- `hollow-grove-kernel` will not contain House names, Federation names,
+- `hollow-grove-semantic-kernel` will not contain House names, Federation names,
   Ollama, Godot, or canon document paths.
 - geometry will not depend on model response types.
 - validation will not depend on Ollama wire JSON.

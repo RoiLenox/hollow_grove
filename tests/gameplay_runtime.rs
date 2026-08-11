@@ -420,7 +420,7 @@ fn recursion_kernels_do_not_import_the_gameplay_layer() {
     for relative in [
         "src/hollow_grove.rs",
         "src/kernel_pass.rs",
-        "hollow-grove-kernel/src/lib.rs",
+        "hollow-grove-semantic-kernel/src/lib.rs",
     ] {
         let source = std::fs::read_to_string(root.join(relative)).unwrap();
         assert!(!source.contains("crate::gameplay"), "{relative}");

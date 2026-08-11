@@ -328,12 +328,13 @@ Presynce ladder, and distinct We Fairy Men/Gallows Resynce jurisdictions.
 compilation validates them but emits no additional scripts; the existing
 deterministic decision and proof lifecycles remain authoritative.
 
-The two recursion kernels remain below this layer and own no constitutional
-geography, authority, evidence, or regional Synthesis decision.
+The recursion and semantic kernels remain below this layer and own no
+constitutional geography, authority, evidence meaning, or regional Synthesis
+decision.
 
 `src/world/geography.rs` is the neutral executable projection of constitutional route law. It validates route purpose and boundary coherence above Constitutional Runtime V2, and may not be imported by the recursion kernel, `src/constitutional/`, or `flynt-constitution`.
 
-`hollow-grove-kernel/src/spatial_inheritance.rs` owns only generic fixed-point
+`hollow-grove-semantic-kernel/src/spatial_inheritance.rs` owns only generic fixed-point
 coordinates, reusable spatial templates, parent/child frames, and cached
 coordinate transforms. It also owns the neutral versioned snapshot, canonical
 digest, deterministic overlap-selection policy, replay validation, and cycle

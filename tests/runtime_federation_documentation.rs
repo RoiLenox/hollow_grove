@@ -180,7 +180,7 @@ fn federation_canon_keeps_domain_reducers_and_archives_distinct() {
 
 #[test]
 fn universal_kernel_contains_no_runtime_federation_dependency() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("hollow-grove-kernel/src");
+    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("hollow-grove-semantic-kernel/src");
     for source in rust_sources(&root) {
         let text = fs::read_to_string(&source).expect("kernel source");
         for forbidden in [

@@ -773,8 +773,8 @@ fn legacy_outer_archive_migrates_without_rewriting_nested_seasonal_identity() {
 #[test]
 fn universal_kernel_remains_free_of_hollow_grove_and_house_names() {
     let kernel = concat!(
-        include_str!("../hollow-grove-kernel/src/lib.rs"),
-        include_str!("../hollow-grove-kernel/src/oriented_point.rs")
+        include_str!("../hollow-grove-semantic-kernel/src/lib.rs"),
+        include_str!("../hollow-grove-semantic-kernel/src/oriented_point.rs")
     );
     for forbidden in [
         "Central Junction",

@@ -186,8 +186,8 @@ fn result_identity_is_caller_supplied_not_derived_from_order() {
 
 #[test]
 fn universal_kernel_has_no_hollow_grove_proper_name_binding() {
-    const KERNEL: &str = include_str!("../hollow-grove-kernel/src/lib.rs");
-    const ORIENTED: &str = include_str!("../hollow-grove-kernel/src/oriented_point.rs");
+    const KERNEL: &str = include_str!("../hollow-grove-semantic-kernel/src/lib.rs");
+    const ORIENTED: &str = include_str!("../hollow-grove-semantic-kernel/src/oriented_point.rs");
     for forbidden in [
         "Central Junction",
         "Light Aura",

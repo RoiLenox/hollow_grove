@@ -222,7 +222,7 @@ fn sprite_export_derives_an_ephemeral_palette_from_the_constitution() {
 #[test]
 fn visual_identity_domain_does_not_depend_on_the_recursion_kernel() {
     let source = include_str!("../src/constitutional/visual_identity.rs");
-    assert!(!source.contains("hollow_grove_kernel"));
+    assert!(!source.contains("hollow_grove_semantic_kernel"));
     assert!(!source.contains("KernelPass"));
     assert!(!source.contains("run_kernel_cycle"));
 }

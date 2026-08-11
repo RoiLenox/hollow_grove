@@ -160,6 +160,6 @@ fn world_context_mirror_is_byte_identical() {
 fn third_pass_has_no_recursion_kernel_dependency() {
     let implementation = read("src/world/stonebend/third_pass.rs");
     assert!(!implementation.contains("recursion_kernel"));
-    assert!(!implementation.contains("hollow_grove_kernel"));
+    assert!(!implementation.contains("hollow_grove_semantic_kernel"));
     assert!(implementation.contains("not replace the Bond aggregate"));
 }

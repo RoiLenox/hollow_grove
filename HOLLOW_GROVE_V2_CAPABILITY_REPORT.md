@@ -81,7 +81,7 @@ and scenario identities are recorded in
 ### 1.3 Spatial inheritance
 
 **Implemented as a canonical recursive world contract.**
-`hollow-grove-kernel/src/spatial_inheritance.rs` owns neutral fixed-point
+`hollow-grove-semantic-kernel/src/spatial_inheritance.rs` owns neutral fixed-point
 coordinates, templates, frames, cached transforms, deterministic candidate
 selection, versioned snapshots, replay, cycle rejection, and digests.
 `src/world/spatial_inheritance.rs` binds those primitives to exactly one

@@ -2,7 +2,7 @@ use std::fs;
 use std::path::PathBuf;
 
 #[test]
-fn hollow_grove_kernel_has_no_flynt_constitution_dependency_or_terms() {
+fn hollow_grove_kernels_have_no_flynt_constitution_dependency_or_terms() {
     let layer_root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let kernel_root = layer_root.parent().unwrap();
     let kernel_files = [
@@ -13,14 +13,14 @@ fn hollow_grove_kernel_has_no_flynt_constitution_dependency_or_terms() {
         "src/grove_seam.rs",
         "src/hollow_beam.rs",
         "src/kernel_pass.rs",
-        "src/pleb_meta/mod.rs",
-        "src/pleb_meta/sequence.rs",
-        "src/pleb_meta/mode.rs",
-        "src/pleb_meta/operator.rs",
-        "src/pleb_meta/route.rs",
-        "src/pleb_meta/bond.rs",
-        "src/pleb_meta/grammar.rs",
-        "src/pleb_meta/routing_pass.rs",
+        "hollow-grove-recursion-kernel/src/pleb_meta/mod.rs",
+        "hollow-grove-recursion-kernel/src/pleb_meta/sequence.rs",
+        "hollow-grove-recursion-kernel/src/pleb_meta/mode.rs",
+        "hollow-grove-recursion-kernel/src/pleb_meta/operator.rs",
+        "hollow-grove-recursion-kernel/src/pleb_meta/route.rs",
+        "hollow-grove-recursion-kernel/src/pleb_meta/bond.rs",
+        "hollow-grove-recursion-kernel/src/pleb_meta/grammar.rs",
+        "hollow-grove-recursion-kernel/src/pleb_meta/routing_pass.rs",
     ];
     let banned_lowercase = [
         "flynt constitution",
@@ -47,12 +47,16 @@ fn hollow_grove_kernel_has_no_flynt_constitution_dependency_or_terms() {
         }
     }
 
-    let neutral_kernel_manifest =
-        fs::read_to_string(kernel_root.join("hollow-grove-kernel/Cargo.toml")).unwrap();
-    assert!(!neutral_kernel_manifest.contains("flynt-constitution"));
+    let semantic_kernel_manifest =
+        fs::read_to_string(kernel_root.join("hollow-grove-semantic-kernel/Cargo.toml")).unwrap();
+    assert!(!semantic_kernel_manifest.contains("flynt-constitution"));
+    let recursion_kernel_manifest =
+        fs::read_to_string(kernel_root.join("hollow-grove-recursion-kernel/Cargo.toml")).unwrap();
+    assert!(!recursion_kernel_manifest.contains("flynt-constitution"));
+    assert!(!recursion_kernel_manifest.contains("serde"));
     let application_manifest = fs::read_to_string(kernel_root.join("Cargo.toml")).unwrap();
     assert!(application_manifest.contains("flynt-constitution"));
     let layer_manifest = fs::read_to_string(layer_root.join("Cargo.toml")).unwrap();
     assert!(!layer_manifest.contains("hollow-grove = { path = \"..\" }"));
-    assert!(layer_manifest.contains("hollow-grove-kernel"));
+    assert!(layer_manifest.contains("hollow-grove-semantic-kernel"));
 }

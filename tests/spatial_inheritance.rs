@@ -263,7 +263,7 @@ fn a_deeper_map_resolves_directly_to_the_root_and_back_to_its_viewpoint() {
 
 #[test]
 fn spatial_kernel_remains_free_of_hollow_grove_geography() {
-    const KERNEL: &str = include_str!("../hollow-grove-kernel/src/spatial_inheritance.rs");
+    const KERNEL: &str = include_str!("../hollow-grove-semantic-kernel/src/spatial_inheritance.rs");
     for forbidden in [
         "Hollow Grove",
         "Ranina",

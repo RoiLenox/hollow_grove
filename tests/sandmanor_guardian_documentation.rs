@@ -9,7 +9,7 @@ const AUTHORITY_MAP: &str = include_str!("../REPOSITORY_AUTHORITY_MAP.md");
 const CAPABILITIES: &str = include_str!("../V2_CAPABILITY_INVENTORY.md");
 const IMPLEMENTATION: &str = include_str!("../src/world/sandmanor/milestone.rs");
 const PROJECTION: &str = include_str!("../artifacts/hueman_sandmanor_roles.md");
-const KERNEL: &str = include_str!("../hollow-grove-kernel/src/lib.rs");
+const KERNEL: &str = include_str!("../hollow-grove-semantic-kernel/src/lib.rs");
 
 #[test]
 fn all_required_canonical_maxims_are_ratified() {

@@ -1,7 +1,7 @@
 # Oriented Point and World-Scale Central Junction V1
 
 - Status: frozen universal physical primitive and Hollow Grove world binding
-- Kernel layer: `hollow-grove-kernel::oriented_point`
+- Kernel layer: `hollow-grove-semantic-kernel::oriented_point`
 - World archive: `HGPNT` version `1`
 - Legacy orientation migration: `HGPNT` version `0` → version `1`
 - Constitutional basis: the existing Hollow Grove Compromise

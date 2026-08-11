@@ -154,8 +154,8 @@ infrastructure, Manticorp, recognition, and its institutional hierarchy.
 | Shelf | Start with | Scope |
 |---|---|---|
 | Universal meaning | [Semantic Foundation](HOLLOW_GROVE_SEMANTIC_FOUNDATION_V1.md) | Current, Aura, Relativity, Synthesis, Being/Object roots |
-| Pure recursion kernel | [Kernel v0.1.2](KERNEL_v0.1.2.md), [hollow-grove-kernel](hollow-grove-kernel/) | deterministic recursion only; no House, route, character, evidence, or lore authority |
-| Composition provenance | [Constitutional Review](COMPOSITION_PROVENANCE_CONSTITUTIONAL_REVIEW_v0.1.0.md), [Contract Proposal v0.2.0](COMPOSITION_PROVENANCE_CONTRACT_PROPOSAL_v0.2.0.md) | how composed inputs retain identity and provenance without putting world law into the kernel |
+| Pure recursion kernel | [Kernel v0.1.2](KERNEL_v0.1.2.md), [hollow-grove-recursion-kernel](hollow-grove-recursion-kernel/) | dependency-free, bounded routing grammar; no House, route, character, evidence, or lore authority |
+| Semantic geometry and composition provenance | [hollow-grove-semantic-kernel](hollow-grove-semantic-kernel/), [Constitutional Review](COMPOSITION_PROVENANCE_CONSTITUTIONAL_REVIEW_v0.1.0.md), [Contract Proposal v0.2.0](COMPOSITION_PROVENANCE_CONTRACT_PROPOSAL_v0.2.0.md) | neutral geometry plus identity-preserving composition; separate from recursion and world law |
 | Shared constitutional runtime | [V2 Constitutional Specification](HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md) | identity, evidence, authority, Bonds, lifecycle, replay |
 | Geography and travel | [Constitutional Geography](HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md), [Route Network](HOLLOW_GROVE_ROUTE_NETWORK_V1.md), [Screen Map](HUEMAN_SCREEN_MAP_v0.1.0.md), [Spatial Inheritance](SPATIAL_INHERITANCE_V1.md) | House boundaries, route verbs, route shape, recursively inherited map projection |
 | Shared judiciary | [Minoan County Court](MINOAN_COUNTY_COURT_SYSTEM_AND_RESTITUTION_CYCLE_V1.md) | disputes, amendment review, Restitution |

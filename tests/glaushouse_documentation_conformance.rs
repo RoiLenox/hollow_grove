@@ -15,7 +15,7 @@ const MANTICORP: &str = include_str!("../FLYNT_DUAL_LEADERSHIP_AND_MANTICORP_REC
 const POWER_RECIPE: &str = include_str!("../HOLLOW_GROVE_POWER_RECIPE_CONSTITUTION_V1.md");
 const WORLD_CONTEXT_PROJECTION: &str =
     include_str!("../artifacts/current_synthesis_world_context.md");
-const KERNEL: &str = include_str!("../hollow-grove-kernel/src/lib.rs");
+const KERNEL: &str = include_str!("../hollow-grove-semantic-kernel/src/lib.rs");
 
 #[test]
 fn constitution_preserves_all_thirty_articles() {

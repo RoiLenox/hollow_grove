@@ -7,7 +7,7 @@ const CORE: &str = include_str!("../HOLLOW_GROVE_CORE_v1.0.0.md");
 const IMPLEMENTATION: &str = include_str!("../src/world/stonebend.rs");
 const INSTITUTION_PROJECTION: &str = include_str!("../src/world/house_institutions.rs");
 const HUEMAN_PROJECTION: &str = include_str!("../artifacts/hueman_stonebend_roles.md");
-const KERNEL: &str = include_str!("../hollow-grove-kernel/src/lib.rs");
+const KERNEL: &str = include_str!("../hollow-grove-semantic-kernel/src/lib.rs");
 
 #[test]
 fn constitution_preserves_all_twenty_one_articles() {

@@ -5,14 +5,14 @@
 //! sovereign executive, Tross; one constitutional companion, Chimera; and two
 //! complementary institutional expressions beneath that same authority.
 //!
-//! The neutral `hollow-grove-kernel` remains responsible only for composition
+//! The neutral `hollow-grove-semantic-kernel` remains responsible only for composition
 //! provenance. This crate owns the Flynt meaning of the unique Chimera recipe
 //! and the institutional hierarchy surrounding it.
 
 use std::collections::{BTreeMap, BTreeSet, HashSet};
 use std::fmt;
 
-use hollow_grove_kernel::{
+use hollow_grove_semantic_kernel::{
     CompositionCatalog, CompositionCatalogError, CompositionNode, CompositionNodeId,
     CompositionRecord, CompositionRecordId, ExternalRef, ScaleKey, StableKeyError,
 };

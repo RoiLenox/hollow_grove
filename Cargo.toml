@@ -3,9 +3,32 @@ name = "hollow-grove"
 version = "0.1.0"
 edition = "2024"
 default-run = "hollow-grove"
+publish = false
+
+[workspace]
+members = [
+    ".",
+    "hollow-grove-recursion-kernel",
+    "hollow-grove-semantic-kernel",
+    "officials-and-outlaws",
+]
+resolver = "3"
 
 [dependencies]
-hollow-grove-kernel = { path = "hollow-grove-kernel" }
+hollow-grove-recursion-kernel = { path = "hollow-grove-recursion-kernel" }
+hollow-grove-semantic-kernel = { path = "hollow-grove-semantic-kernel" }
 flynt-constitution = { path = "officials-and-outlaws" }
 serde = { version = "1.0.228", features = ["derive"] }
 serde_json = "1.0.149"
+
+[profile.dev]
+debug = 1
+
+[profile.test]
+debug = 1
+incremental = false
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
+strip = "symbols"

@@ -356,8 +356,8 @@ fn opposite_insertion_order_does_not_merge_force_route_or_reverse_passages() {
 
 #[test]
 fn universal_kernel_contains_no_house_specific_passage_lore() {
-    const KERNEL: &str = include_str!("../hollow-grove-kernel/src/lib.rs");
-    const ORIENTED: &str = include_str!("../hollow-grove-kernel/src/oriented_point.rs");
+    const KERNEL: &str = include_str!("../hollow-grove-semantic-kernel/src/lib.rs");
+    const ORIENTED: &str = include_str!("../hollow-grove-semantic-kernel/src/oriented_point.rs");
     for forbidden in [
         "Way Back",
         "Aura Way",

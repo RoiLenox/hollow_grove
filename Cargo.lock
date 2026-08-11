@@ -6,7 +6,7 @@ version = 4
 name = "flynt-constitution"
 version = "0.1.0"
 dependencies = [
- "hollow-grove-kernel",
+ "hollow-grove-semantic-kernel",
 ]
 
 [[package]]
@@ -14,13 +14,18 @@ name = "hollow-grove"
 version = "0.1.0"
 dependencies = [
  "flynt-constitution",
- "hollow-grove-kernel",
+ "hollow-grove-recursion-kernel",
+ "hollow-grove-semantic-kernel",
  "serde",
  "serde_json",
 ]
 
 [[package]]
-name = "hollow-grove-kernel"
+name = "hollow-grove-recursion-kernel"
+version = "0.1.0"
+
+[[package]]
+name = "hollow-grove-semantic-kernel"
 version = "0.1.0"
 dependencies = [
  "serde",

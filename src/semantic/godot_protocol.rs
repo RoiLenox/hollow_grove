@@ -9,7 +9,7 @@ use crate::runtime_federation::{
     FestivalResult, ProposalStatus, SemanticDecision, SemanticProposal, SemanticRejectionReason,
 };
 
-use hollow_grove_kernel::OriginRelation;
+use hollow_grove_semantic_kernel::OriginRelation;
 
 pub const SEMANTIC_EVENT_SCHEMA_VERSION: &str = "hollow-grove-semantic-event-v1";
 
@@ -141,8 +141,12 @@ pub fn semantic_proposal_events(
             status: ProposalStatus::Proposed,
         },
         (Some(from), Some(translation)) => {
-            hollow_grove_kernel::verify_translation(from, translation, proposal.proposed_position)
-                .map_err(|_| SemanticEventProjectionError::TranslationMismatch)?;
+            hollow_grove_semantic_kernel::verify_translation(
+                from,
+                translation,
+                proposal.proposed_position,
+            )
+            .map_err(|_| SemanticEventProjectionError::TranslationMismatch)?;
             SemanticGodotEvent::SemanticTranslationProposed {
                 cycle_id: common.cycle_id,
                 proposal_ref: common.proposal_ref,
@@ -190,7 +194,7 @@ pub fn semantic_festival_events(
                     },
                 )),
                 (Some(from), Some(translation)) => {
-                    hollow_grove_kernel::verify_translation(
+                    hollow_grove_semantic_kernel::verify_translation(
                         from,
                         translation,
                         confirmed.confirmed_position,
@@ -321,7 +325,7 @@ fn ensure_decision_identity(
     proposal: &SemanticProposal,
     decision_proposal_ref: &ExternalRef,
     decision_point_ref: &ExternalRef,
-    decision_scope: &hollow_grove_kernel::SemanticScope,
+    decision_scope: &hollow_grove_semantic_kernel::SemanticScope,
 ) -> Result<(), SemanticEventProjectionError> {
     if decision_proposal_ref != &proposal.proposal_id
         || decision_point_ref != &proposal.point_ref

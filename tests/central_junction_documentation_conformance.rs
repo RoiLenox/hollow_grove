@@ -15,7 +15,7 @@ const WORLD_CONTEXT_PROJECTION: &str =
 const PATH_CROSSOVERS: &str = include_str!("../artifacts/hueman_path_crossovers.md");
 const FLYNT: &str = include_str!("../FLYNT_DUAL_LEADERSHIP_AND_MANTICORP_RECIPE_V1.md");
 const GLAUSHOUSE: &str = include_str!("../GLAUSHOUSE_CONSTITUTION_V2.md");
-const KERNEL: &str = include_str!("../hollow-grove-kernel/src/lib.rs");
+const KERNEL: &str = include_str!("../hollow-grove-semantic-kernel/src/lib.rs");
 
 #[test]
 fn canon_records_all_required_public_statements() {

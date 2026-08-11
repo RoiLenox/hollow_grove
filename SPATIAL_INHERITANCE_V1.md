@@ -3,7 +3,7 @@
 - Status: canonical spatial-composition and live-projection contract
 - Contract schema: `1`
 - Rule set: `ruleset.hollow-grove.spatial-inheritance-v1`
-- Kernel primitive: `hollow-grove-kernel::spatial_inheritance`
+- Kernel primitive: `hollow-grove-semantic-kernel::spatial_inheritance`
 - World binding: `src/world/spatial_inheritance.rs`
 - Live projection: `src/bin/hollow_grove_niri_bridge.rs`
 - Presentation consumer: `hueman_godot/scripts/hueman_screen_shell.gd`
@@ -989,9 +989,9 @@ Live tests MUST cover:
 
 - Neutral coordinate, template, frame, transform, snapshot, digest, and
   selection rules:
-  `hollow-grove-kernel/src/spatial_inheritance.rs`
+  `hollow-grove-semantic-kernel/src/spatial_inheritance.rs`
 - Stable neutral identities:
-  `hollow-grove-kernel/src/lib.rs`
+  `hollow-grove-semantic-kernel/src/lib.rs`
 - Hollow Grove levels, declarations, provenance, conformance, archives, and
   canonical map:
   `src/world/spatial_inheritance.rs`

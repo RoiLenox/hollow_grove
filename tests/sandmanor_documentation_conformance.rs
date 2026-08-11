@@ -13,7 +13,7 @@ const RECIPE_IMPLEMENTATION: &str = include_str!("../src/synthesis_recipe.rs");
 const INSTITUTIONS: &str = include_str!("../src/world/house_institutions.rs");
 const HUEMAN: &str = include_str!("../artifacts/hueman_sandmanor_roles.md");
 const VERTICAL_STACK: &str = include_str!("../artifacts/vertical_integration_stack.md");
-const KERNEL: &str = include_str!("../hollow-grove-kernel/src/lib.rs");
+const KERNEL: &str = include_str!("../hollow-grove-semantic-kernel/src/lib.rs");
 
 #[test]
 fn constitution_preserves_all_forty_four_articles() {

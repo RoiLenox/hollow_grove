@@ -440,7 +440,7 @@ fn all_four_great_functions_are_nonsovereign_and_anchor_complete() {
 
 #[test]
 fn universal_recursion_kernel_remains_free_of_seasonal_house_lore() {
-    const KERNEL: &str = include_str!("../hollow-grove-kernel/src/lib.rs");
+    const KERNEL: &str = include_str!("../hollow-grove-semantic-kernel/src/lib.rs");
     for forbidden in [
         "The Way Back",
         "The Initiation",

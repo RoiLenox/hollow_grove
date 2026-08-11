@@ -95,8 +95,8 @@ fn audit() -> Result<(), String> {
         "polarity and morality are distinct; presentation cannot alter orientation",
     )?;
 
-    const KERNEL: &str = include_str!("../../hollow-grove-kernel/src/lib.rs");
-    const ORIENTED: &str = include_str!("../../hollow-grove-kernel/src/oriented_point.rs");
+    const KERNEL: &str = include_str!("../../hollow-grove-semantic-kernel/src/lib.rs");
+    const ORIENTED: &str = include_str!("../../hollow-grove-semantic-kernel/src/oriented_point.rs");
     require(
         [
             "Central Junction",

@@ -110,7 +110,7 @@ cargo run --bin glaushouse_constitutional_audit
 cargo test
 cargo fmt --check
 cargo clippy --all-targets --all-features
-cargo test --manifest-path hollow-grove-kernel/Cargo.toml
+cargo test --manifest-path hollow-grove-semantic-kernel/Cargo.toml
 cargo test --manifest-path officials-and-outlaws/Cargo.toml
 ```
 

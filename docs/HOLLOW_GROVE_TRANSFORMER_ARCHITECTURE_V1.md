@@ -42,9 +42,9 @@ Contextual position        = Relativity
 ```text
 existing constitutional canon and House
         ↓
-hollow-grove-kernel semantic geometry
+hollow-grove-semantic-kernel semantic geometry
         ↓
-hollow-grove-kernel scoped semantic records
+hollow-grove-semantic-kernel scoped semantic records
         ↓
 existing CompositionCatalog provenance and replay
         ↓

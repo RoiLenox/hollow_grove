@@ -115,7 +115,7 @@ migration, and kernel isolation.
 - `cargo test --quiet`: pass, 746 tests total, including 371 library tests and
   every integration, binary, architecture, documentation, persistence, and
   regional suite. The additive faculty suite contributes 11 focused tests.
-- `cargo test --quiet` in `hollow-grove-kernel`: pass, 7 tests.
+- `cargo test --quiet` in `hollow-grove-semantic-kernel`: pass, 7 tests.
 - `cargo test --quiet` in `officials-and-outlaws`: pass, 13 tests across its
   library and integration suites.
 - `cargo run --quiet --bin sandmanor_constitutional_audit`: pass.
@@ -125,7 +125,7 @@ migration, and kernel isolation.
   library retains its pre-existing 42-warning baseline, with no Hueman faculty
   or Sandmanor constitutional warning introduced.
 - `git diff --check`: pass.
-- `hollow-grove-kernel/` diff: empty.
+- `hollow-grove-semantic-kernel/` diff: empty.
 
 ## Conclusion
 

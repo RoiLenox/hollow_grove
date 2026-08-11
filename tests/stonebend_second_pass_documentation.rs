@@ -13,7 +13,7 @@ const CAPABILITY_INVENTORY: &str = include_str!("../V2_CAPABILITY_INVENTORY.md")
 const ARTIFACT_INDEX: &str = include_str!("../artifacts/index.md");
 const HUEMAN_PROJECTION: &str = include_str!("../artifacts/hueman_stonebend_roles.md");
 const IMPLEMENTATION: &str = include_str!("../src/world/stonebend/second_pass.rs");
-const KERNEL: &str = include_str!("../hollow-grove-kernel/src/lib.rs");
+const KERNEL: &str = include_str!("../hollow-grove-semantic-kernel/src/lib.rs");
 
 #[test]
 fn dedicated_second_pass_document_has_all_canonical_statements() {

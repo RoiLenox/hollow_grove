@@ -36,7 +36,7 @@ checksum = "5baebc0774151f905a1a2cc41989300b1e6fbb29aff0ceffa1064fdd3088d582"
 name = "flynt-constitution"
 version = "0.1.0"
 dependencies = [
- "hollow-grove-kernel",
+ "hollow-grove-semantic-kernel",
 ]
 
 [[package]]
@@ -55,7 +55,7 @@ name = "hollow-grove"
 version = "0.1.0"
 dependencies = [
  "flynt-constitution",
- "hollow-grove-kernel",
+ "hollow-grove-semantic-kernel",
  "serde",
  "serde_json",
 ]
@@ -69,7 +69,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "hollow-grove-kernel"
+name = "hollow-grove-semantic-kernel"
 version = "0.1.0"
 
 [[package]]
