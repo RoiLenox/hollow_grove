@@ -15,6 +15,19 @@ func _run() -> void:
 	game.set_process(false)
 
 	assert(game.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST)
+	assert(game.art_asset_catalog != null)
+	assert(game.art_asset_catalog.is_valid())
+	assert(
+		game.art_asset_catalog.asset_ids()
+		== ["hollow-grove.prototype.foundation-pipeline-probe"]
+	)
+	var pipeline_record: Dictionary = game.art_asset_catalog.record(
+		"hollow-grove.prototype.foundation-pipeline-probe"
+	)
+	assert(pipeline_record.get("required_tags") == ["idle"])
+	var pipeline_texture: Texture2D = game.foundation_pipeline_texture()
+	assert(pipeline_texture != null)
+	assert(pipeline_texture.get_size() == Vector2(16, 16))
 	assert(game.get_window().title == "Hollow Grove")
 	assert(game.get_window().min_size.x >= 160)
 	assert(game.get_window().min_size.y >= 144)

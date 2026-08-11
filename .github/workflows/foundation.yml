@@ -23,6 +23,8 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('Cargo.lock', 'rust-toolchain.toml') }}
       - name: Format
         run: cargo fmt --all -- --check
+      - name: Art asset contract
+        run: ./verify-art-assets.sh
       - name: Strict Clippy
         run: cargo clippy --workspace --all-targets --all-features --locked -- -D warnings
       - name: Test workspace

@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.0.0",
+  "constitution_id": "hollow-grove.visual-color-constitution",
+  "colors": [
+    {
+      "id": "universal.oxford_blue",
+      "name": "Oxford Blue",
+      "hex": "#0A1024",
+      "semantic_identity": "hollow_grove.universal.outline"
+    },
+    {
+      "id": "universal.midnight_blue",
+      "name": "Midnight Blue",
+      "hex": "#121B38",
+      "semantic_identity": "hollow_grove.universal.shadow.deep"
+    },
+    {
+      "id": "universal.space_cadet",
+      "name": "Space Cadet",
+      "hex": "#1C2A52",
+      "semantic_identity": "hollow_grove.universal.shadow.raised"
+    },
+    {
+      "id": "stonebend.prussian_blue",
+      "name": "Prussian Blue",
+      "hex": "#163A5F",
+      "semantic_identity": "hollow_grove.house.stonebend.dark"
+    },
+    {
+      "id": "stonebend.lapis_lazuli",
+      "name": "Lapis Lazuli",
+      "hex": "#2F6FA3",
+      "semantic_identity": "hollow_grove.house.stonebend.primary"
+    },
+    {
+      "id": "stonebend.air_superiority_blue",
+      "name": "Air Superiority Blue",
+      "hex": "#79B7D8",
+      "semantic_identity": "hollow_grove.house.stonebend.highlight"
+    },
+    {
+      "id": "sandmanor.wine",
+      "name": "Wine",
+      "hex": "#5A1F2A",
+      "semantic_identity": "hollow_grove.house.sandmanor.dark"
+    },
+    {
+      "id": "sandmanor.redwood",
+      "name": "Redwood",
+      "hex": "#A6404F",
+      "semantic_identity": "hollow_grove.house.sandmanor.primary"
+    },
+    {
+      "id": "sandmanor.blush",
+      "name": "Blush",
+      "hex": "#E07A86",
+      "semantic_identity": "hollow_grove.house.sandmanor.highlight"
+    },
+    {
+      "id": "glaushouse.brunswick_green",
+      "name": "Brunswick Green",
+      "hex": "#163C35",
+      "semantic_identity": "hollow_grove.house.glaushouse.dark"
+    },
+    {
+      "id": "glaushouse.viridian",
+      "name": "Viridian",
+      "hex": "#2F7A62",
+      "semantic_identity": "hollow_grove.house.glaushouse.primary"
+    },
+    {
+      "id": "glaushouse.eton_blue",
+      "name": "Eton Blue",
+      "hex": "#78C9A4",
+      "semantic_identity": "hollow_grove.house.glaushouse.highlight"
+    },
+    {
+      "id": "flynt.rich_black_blue",
+      "name": "Rich Black Blue",
+      "hex": "#101525",
+      "semantic_identity": "hollow_grove.house.flynt.dark"
+    },
+    {
+      "id": "flynt.gunmetal",
+      "name": "Gunmetal",
+      "hex": "#242C42",
+      "semantic_identity": "hollow_grove.house.flynt.primary"
+    },
+    {
+      "id": "flynt.powder_blue",
+      "name": "Powder Blue",
+      "hex": "#A7B6D9",
+      "semantic_identity": "hollow_grove.house.flynt.highlight"
+    },
+    {
+      "id": "flynt.tropical_indigo",
+      "name": "Tropical Indigo",
+      "hex": "#7F8BC4",
+      "semantic_identity": "hollow_grove.house.flynt.authority"
+    }
+  ],
+  "universal_foundation": {
+    "ordinary_sprite_order": [
+      "universal.oxford_blue",
+      "universal.midnight_blue",
+      "universal.space_cadet"
+    ],
+    "outline": "universal.oxford_blue",
+    "shadow": [
+      "universal.midnight_blue",
+      "universal.space_cadet"
+    ]
+  },
+  "houses": [
+    {
+      "id": "stonebend",
+      "name": "Stonebend",
+      "dark": "stonebend.prussian_blue",
+      "primary": "stonebend.lapis_lazuli",
+      "highlight": "stonebend.air_superiority_blue",
+      "semantic_overlays": [],
+      "meanings": [
+        "Body",
+        "Structure",
+        "Architecture",
+        "Title",
+        "Naming",
+        "Mercury"
+      ]
+    },
+    {
+      "id": "sandmanor",
+      "name": "Sandmanor",
+      "dark": "sandmanor.wine",
+      "primary": "sandmanor.redwood",
+      "highlight": "sandmanor.blush",
+      "semantic_overlays": [],
+      "meanings": [
+        "Soul",
+        "Proof",
+        "Design",
+        "Interior",
+        "Exterior",
+        "Crystal"
+      ]
+    },
+    {
+      "id": "glaushouse",
+      "name": "Glaüshouse",
+      "dark": "glaushouse.brunswick_green",
+      "primary": "glaushouse.viridian",
+      "highlight": "glaushouse.eton_blue",
+      "semantic_overlays": [],
+      "meanings": [
+        "Mind",
+        "Medicine",
+        "Aura",
+        "Synthesis",
+        "Healing",
+        "Jade"
+      ]
+    },
+    {
+      "id": "flynt",
+      "name": "Flynt",
+      "dark": "flynt.rich_black_blue",
+      "primary": "flynt.gunmetal",
+      "highlight": "flynt.powder_blue",
+      "semantic_overlays": [
+        {
+          "identity": "authority",
+          "color": "flynt.tropical_indigo"
+        }
+      ],
+      "meanings": [
+        "Spirit",
+        "Recognition",
+        "Engineering",
+        "Opal",
+        "Motion",
+        "Authority"
+      ]
+    }
+  ],
+  "rendering_law": {
+    "order": [
+      "universal_outline",
+      "universal_shadow",
+      "house_dark",
+      "house_primary",
+      "house_highlight",
+      "overlays"
+    ],
+    "overlay_families": [
+      "current",
+      "aura",
+      "material"
+    ]
+  },
+  "pure_black_policy": {
+    "id": "constitutional.pure_black",
+    "hex": "#000000",
+    "ordinary_sprite_default": false,
+    "reserved_states": [
+      "Void",
+      "Absolute Absence",
+      "Erasure"
+    ],
+    "future_states_require_explicit_constitutional_definition": true
+  }
+}

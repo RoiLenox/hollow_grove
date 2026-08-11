@@ -10,11 +10,12 @@ run/main_scene="res://scenes/retro_overworld.tscn"
 
 [display]
 
-window/size/viewport_width=3840
-window/size/viewport_height=2160
+window/size/viewport_width=960
+window/size/viewport_height=864
 window/stretch/mode="disabled"
 window/stretch/aspect="keep"
 
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/default_filters/use_nearest_mipmap_filter=false

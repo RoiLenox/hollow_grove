@@ -12,6 +12,8 @@ mkdir -p "$ARTIFACT_DIR"
 echo "== Hollow Grove adversarial verification: FAST =="
 echo "seed: $SEED"
 
+./verify-art-assets.sh
+
 TEST_COUNT="$(cargo test -- --list | rg ': test$' | wc -l | tr -d ' ')"
 GIT_HEAD="$(git rev-parse HEAD 2>/dev/null || printf 'unknown')"
 WORKTREE_STATUS="$(git status --short 2>/dev/null || true)"

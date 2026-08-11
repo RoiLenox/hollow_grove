@@ -31,10 +31,12 @@
 /artifacts/adversarial_verification_report.json
 /artifacts/adversarial_verification_report.md
 /artifacts/verification/
+/artifacts/kernel-benchmarks/
 /fuzz-*.log
 
 # Local Godot editor metadata.
 /hueman_godot/.godot/
+/hueman_godot/assets/export/**/*.import
 
 # Python bytecode produced by packaging/release helpers.
 **/__pycache__/
@@ -53,3 +55,5 @@ pokewilds-linux64.zip
 /release/
 *.pkg.tar.zst
 *.AppImage
+/packaging/**/pkg/
+/packaging/**/src/

@@ -2,6 +2,10 @@ extends Control
 
 const LOGICAL_SIZE := Vector2(160.0, 144.0)
 const VISUAL_COLOR_CONSTITUTION_RELATIVE_PATH := "src/constitutional/hollow_grove_visual_color_palette.json"
+const PACKAGED_VISUAL_COLOR_CONSTITUTION_PATH := "res://protocol/hollow_grove_visual_color_palette.json"
+const ART_ASSET_CATALOG := preload("res://scripts/art_asset_catalog.gd")
+const RUNTIME_CLIENT := preload("res://scripts/runtime_client.gd")
+const FOUNDATION_PIPELINE_ASSET_ID := "hollow-grove.prototype.foundation-pipeline-probe"
 const SESSION_ID := "session.hollow-grove.local"
 const RETRY_INTERVAL_SECONDS := 1.0
 const STEP_DURATION_SECONDS := 0.12
@@ -95,7 +99,7 @@ const FONT_3X5 := {
 
 var repo_root_path := ""
 var colors_by_semantic_identity := {}
-var runtime_client: HollowGroveRuntimeClient
+var runtime_client: RUNTIME_CLIENT
 var overworld := {}
 var status_message := "CONNECTING"
 var retry_elapsed := RETRY_INTERVAL_SECONDS
@@ -143,10 +147,17 @@ var last_screen_semantics := {}
 var logical_scale := 1.0
 var logical_origin := Vector2.ZERO
 var logical_viewport_size := Vector2.ZERO
+var art_asset_catalog: ART_ASSET_CATALOG
 
 
 func _ready() -> void:
 	repo_root_path = _resolve_repo_root()
+	art_asset_catalog = ART_ASSET_CATALOG.new()
+	if not art_asset_catalog.is_valid():
+		push_error("The Hueman art asset manifest could not be loaded: %s" % art_asset_catalog.error_message)
+		set_process(false)
+		set_process_input(false)
+		return
 	if not _load_visual_color_constitution():
 		push_error("The canonical Hollow Grove visual color constitution could not be loaded.")
 		set_process(false)
@@ -156,7 +167,7 @@ func _ready() -> void:
 	get_window().min_size = Vector2i(int(LOGICAL_SIZE.x), int(LOGICAL_SIZE.y))
 	_ensure_screen_semantics()
 	_update_logical_transform(get_viewport_rect().size)
-	runtime_client = HollowGroveRuntimeClient.new(SESSION_ID)
+	runtime_client = RUNTIME_CLIENT.new(SESSION_ID)
 	runtime_client.response_received.connect(_on_runtime_response)
 	runtime_client.protocol_error.connect(_on_protocol_error)
 	set_process(true)
@@ -2093,7 +2104,9 @@ func _map_display_name() -> String:
 
 
 func _load_visual_color_constitution() -> bool:
-	var path := repo_root_path.path_join(VISUAL_COLOR_CONSTITUTION_RELATIVE_PATH)
+	var path := PACKAGED_VISUAL_COLOR_CONSTITUTION_PATH
+	if not FileAccess.file_exists(path):
+		path = repo_root_path.path_join(VISUAL_COLOR_CONSTITUTION_RELATIVE_PATH)
 	if not FileAccess.file_exists(path):
 		return false
 	var handle := FileAccess.open(path, FileAccess.READ)
@@ -2111,6 +2124,12 @@ func _load_visual_color_constitution() -> bool:
 			return false
 		colors_by_semantic_identity[identity] = Color.from_string(hexadecimal, Color.TRANSPARENT)
 	return not colors_by_semantic_identity.is_empty()
+
+
+func foundation_pipeline_texture() -> Texture2D:
+	if art_asset_catalog == null:
+		return null
+	return art_asset_catalog.texture(FOUNDATION_PIPELINE_ASSET_ID)
 
 
 func _color(semantic_identity: String) -> Color:

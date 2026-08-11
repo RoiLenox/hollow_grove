@@ -1,0 +1,33 @@
+pkgname=hollow-grove-general
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Hardware-neutral Hollow Grove General Edition Niri profile'
+arch=('any')
+url='https://github.com/RoiLenox/hollow_grove'
+license=('custom')
+depends=('bash' 'coreutils' 'jq' 'niri' 'util-linux')
+optdepends=(
+    'hollow-grove-hueman: Hueman gameplay client'
+    'kitty: default terminal'
+    'mako: desktop notifications'
+    'swaybg: wallpaper support'
+    'swaylock: screen locking'
+)
+source=()
+sha256sums=()
+
+package() {
+    local repository_root="$startdir/../.."
+    cp -r "$startdir/etc" "$pkgdir/"
+    cp -r "$startdir/usr" "$pkgdir/"
+    install -Dm644 "$startdir/PACKAGE_MANIFEST.md" \
+        "$pkgdir/usr/share/doc/$pkgname/PACKAGE_MANIFEST.md"
+    install -Dm644 "$startdir/OPTIONAL_APPLICATIONS.md" \
+        "$pkgdir/usr/share/doc/$pkgname/OPTIONAL_APPLICATIONS.md"
+    install -Dm644 "$startdir/SANITIZATION_REPORT.md" \
+        "$pkgdir/usr/share/doc/$pkgname/SANITIZATION_REPORT.md"
+    install -Dm644 "$startdir/ISO_READINESS.md" \
+        "$pkgdir/usr/share/doc/$pkgname/ISO_READINESS.md"
+    install -Dm644 "$repository_root/LICENSE" \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "hollow-grove.hueman-art-assets",
+  "palette": {
+    "authority_path": "src/constitutional/hollow_grove_visual_color_palette.json",
+    "packaged_projection_path": "hueman_godot/protocol/hollow_grove_visual_color_palette.json",
+    "sha256": "3a99b37f5af06e60edd37ff09037839de4e72cff8eccace7e87301f30dfd0c77"
+  },
+  "assets": [
+    {
+      "asset_id": "hollow-grove.prototype.foundation-pipeline-probe",
+      "status": "pipeline-fixture",
+      "source_path": "hueman_godot/assets/source/prototypes/foundation_pipeline_probe.aseprite",
+      "source_sha256": "58b5374fb6d5c5dcc0ddb38fd3a40c7ec568825f0743e07859ddcfcc1708b7d6",
+      "texture_path": "hueman_godot/assets/export/prototypes/foundation_pipeline_probe.png",
+      "resource_path": "res://assets/export/prototypes/foundation_pipeline_probe.png",
+      "texture_sha256": "ed7ba096d33e6cff55f14e744e7974a43c7f0fd3cc4cad36d55585d34449f63a",
+      "metadata_path": "hueman_godot/assets/export/prototypes/foundation_pipeline_probe.json",
+      "metadata_sha256": "597f1c1a2ce220f45fa4b6d6f90c6dac95d55095aa1d9820060e97432e55eb63",
+      "width": 16,
+      "height": 16,
+      "frame_count": 1,
+      "required_tags": [
+        "idle"
+      ],
+      "palette_color_ids": [
+        "universal.oxford_blue",
+        "glaushouse.eton_blue",
+        "flynt.powder_blue",
+        "flynt.tropical_indigo"
+      ],
+      "generated_by": {
+        "application": "Aseprite",
+        "script_path": "tools/create-foundation-art-fixture.lua",
+        "script_sha256": "f9f8953de5aeeba5b313c30268f47b4be6f4438b49dbd21029f24dac4fb9b3d1"
+      },
+      "reference": {
+        "shipping": false,
+        "image_path": "hueman_godot/assets/reference/prototypes/foundation_pipeline_probe.generated.png",
+        "image_sha256": "7995270cac3cd6394a92f103bdaefd698d0bbf0027a27ad254d461edae5d852d",
+        "provenance_path": "hueman_godot/assets/reference/prototypes/foundation_pipeline_probe.generated.md",
+        "provenance_sha256": "1d0c52f085ebe60a759020a6f865fac1996ea6398ca50cee2045ba4934cf8d2f"
+      }
+    }
+  ]
+}

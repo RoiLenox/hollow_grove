@@ -9,6 +9,8 @@ Source of truth:
   shaders, and icons.
 - `source/` contains hand-edited `.aseprite` or `.ase` files only.
 - `export/` contains generated `.png` sprite sheets and `.json` metadata only.
+- `manifest.json` is the fail-closed source/export/runtime contract; an export is
+  not accepted merely because the PNG exists.
 - `reference/` contains internet reference images, moodboards, palettes, and screenshots that are not shipped.
 - `third_party/` contains downloaded asset packs that you are legally allowed to use, along with their license files.
 
@@ -56,6 +58,9 @@ Practical workflow:
 9. Let the watcher derive an ephemeral Aseprite palette from the constitutional
    JSON and export into the mirrored path under `export/`.
 10. Use the exported `.png` and `.json` in Godot.
+11. Update the manifest record and run `./verify-art-assets.sh`; the verifier
+    checks source, generator, export, metadata, reference provenance, dimensions,
+    tags, hashes, and every visible pixel against the constitutional palette.
 
 Internet rule:
 
@@ -89,6 +94,7 @@ Useful commands:
 - `./watch-aseprite.sh`
 - `./run-hueman-live.sh`
 - `./asset-pipeline-status.sh`
+- `./verify-art-assets.sh`
 
 Rule of thumb:
 

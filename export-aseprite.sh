@@ -15,6 +15,7 @@ trap cleanup EXIT
 
 cargo run --quiet \
     --manifest-path "$SCRIPT_DIR/Cargo.toml" \
+    --features dev-tools \
     --bin visual_color_constitution \
     -- aseprite-gpl >"$PALETTE_FILE"
 

@@ -142,6 +142,10 @@ For live art iteration with Aseprite:
 Put `.aseprite` files in `hueman_godot/assets/source/`. The watcher exports them into
 `hueman_godot/assets/export/` as sprite sheets plus JSON metadata every time you save.
 Godot will reimport the changed PNGs automatically while the shell is open.
+The runtime renderer reaches committed textures only through
+`scripts/art_asset_catalog.gd` and `assets/manifest.json`; this keeps asset
+paths, dimensions, animation tags, palette identities, and provenance out of
+the gameplay renderer itself.
 
 Useful commands:
 
@@ -150,6 +154,7 @@ Useful commands:
 ./watch-aseprite.sh
 ./run-hueman-live.sh
 ./asset-pipeline-status.sh
+./verify-art-assets.sh
 ```
 
 Recommended loop:

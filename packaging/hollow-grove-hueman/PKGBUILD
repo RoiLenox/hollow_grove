@@ -1,0 +1,44 @@
+pkgname=hollow-grove-hueman
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Hollow Grove Hueman gameplay client and authoritative service'
+arch=('x86_64')
+url='https://github.com/RoiLenox/hollow_grove'
+license=('custom')
+options=('!debug')
+depends=('godot>=4.7')
+makedepends=('cargo' 'python')
+source=()
+sha256sums=()
+
+build() {
+    local repository_root="$startdir/../.."
+    cd "$repository_root"
+    cargo build --release --locked --offline --bin hollow_grove_game_service
+    godot --headless --path hueman_godot \
+        --export-pack Linux "$srcdir/hollow-grove-hueman.pck"
+}
+
+check() {
+    local repository_root="$startdir/../.."
+    cd "$repository_root"
+    ./verify-art-assets.sh
+    godot --headless --path hueman_godot \
+        --script res://tests/retro_overworld_semantics_smoke.gd
+}
+
+package() {
+    local repository_root="$startdir/../.."
+    install -Dm755 "$repository_root/target/release/hollow_grove_game_service" \
+        "$pkgdir/usr/lib/hollow-grove/hueman/hollow_grove_game_service"
+    install -Dm755 "$startdir/launch" \
+        "$pkgdir/usr/lib/hollow-grove/hueman/launch"
+    install -Dm755 "$startdir/hollow-grove-hueman" \
+        "$pkgdir/usr/bin/hollow-grove-hueman"
+    install -Dm644 "$srcdir/hollow-grove-hueman.pck" \
+        "$pkgdir/usr/share/hollow-grove-hueman/hollow-grove-hueman.pck"
+    install -Dm644 "$startdir/README.md" \
+        "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 "$repository_root/LICENSE" \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
