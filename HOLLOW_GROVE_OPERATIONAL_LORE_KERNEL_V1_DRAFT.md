@@ -2,7 +2,10 @@
 
 Date: 2026-07-30
 
-Status: refinement proposal and consolidation guide
+Status: adopted operational contract and consolidation guide
+
+The filename preserves the document's proposal provenance; the runtime adoption
+record appears in §15.
 
 Authority: beneath the Hollow Grove Compromise and every incorporated House
 constitution. This document creates no House, office, sovereign, constitutional
@@ -395,7 +398,7 @@ The existing twelve-field record remains the executable V1 core:
 11. presentation;
 12. failure and refusal.
 
-New lore should refine that record with eight role fields:
+Functional-lore archive schema V2 refines that record with eight role fields:
 
 13. affected actor and consent/refusal owner;
 14. decision owner;
@@ -406,9 +409,10 @@ New lore should refine that record with eight role fields:
 19. rollback, recovery, or Restitution owner;
 20. final recipient of the lived result.
 
-Until an executable archive schema carries fields 13–20, an authored proposal
-must state them beside its twelve-field definition. It must not claim that the
-runtime currently validates them.
+Every authored functional-lore definition must state fields 13–20 beside its
+twelve-field definition. The runtime persists and validates all eight fields;
+proposed lore outside the executable catalog must not claim adoption until it
+has the same explicit bindings.
 
 ## 14. Definition of Done
 
@@ -430,46 +434,30 @@ A lore unit is operationally complete only when:
 Dialogue, animation, a title card, a successful dice roll, or an authority's
 spoken approval is not completion by itself.
 
-## 15. Current Runtime Gap and Refinement Sequence
+## 15. Runtime role-envelope adoption
 
-`FunctionalLoreDefinition` already records the House function, authority
-class, location, entities, trigger, evidence, uncertainty, choices, state
-changes, persistence, presentation, and refusal. `scenario_house_decision`
-binds each definition to a live apex office and fails closed on vacancy.
+`FunctionalLoreDefinition` now carries the twelve original fields plus an
+operational envelope: affected actor, decision owner, executor, witness,
+ordered handoffs, completion condition, Restitution owner, and final recipient.
+The envelope is persisted by functional-lore archive schema V2. Schema V1
+records remain readable through an explicit migration that verifies the exact
+V1 payload checksum first, then selects the canonical scenario-specific role
+envelope by stable lore identity. No role derives from entity-list position.
 
-The current record does not yet type:
+The runtime validates one non-empty value for every role, at least two explicit
+ordered handoffs, the live House office as decision owner, the presence of the
+decision owner, executor, witness, and recipient in the handoff chain, and the
+existing House authority, route, uncertainty, refusal, and replay requirements.
+One entity may lawfully occupy multiple capacities, but a handoff still
+transfers a question and its evidence rather than sovereignty.
 
-- affected actor;
-- decision owner separately from the authority snapshot;
-- executor;
-- witness;
-- ordered handoffs;
-- completion condition;
-- Restitution owner;
-- or recipient.
-
-The smallest compatible implementation sequence is:
-
-1. introduce stable `OperationalRoleId` and `LoreRoleBinding` types;
-2. add affected actor, decision owner, executor, witness, and recipient
-   bindings to functional-lore definitions;
-3. add an ordered handoff record that preserves evidence and uncertainty;
-4. validate exactly one decision owner and at least one affected actor,
-   executor, and witness, while allowing one entity to hold lawful multiple
-   capacities;
-5. distinguish apex decisions from delegated ordinary work instead of routing
-   every case directly through the House sovereign;
-6. introduce functional-lore archive schema V2 with explicit V1 migration;
-7. bind the existing twelve lived loops before adding new loops;
-8. prove refusal, vacancy, out-of-jurisdiction return, failed execution,
-   partial Restitution, and replay divergence.
-
-This sequence refines responsibility without changing the pure kernel, the
-four Houses, or existing stable lore identities.
+This is a responsibility boundary, not a new reducer. It does not change the
+pure recursion kernel, the four Houses, stable lore identities, or the
+Federation's authority to bind only accepted consequence.
 
 ## 16. Adoption Test
 
-This proposal is ready to become an executable integration contract only when:
+The adopted integration remains valid only while:
 
 - each listed role agrees with its controlling constitution;
 - Twofold Witness, Houses, Court, Central Junction, Federation, gameplay, and

@@ -12,11 +12,13 @@ contract. It does not add another constitutional reducer. It binds ordinary
 places and conflicts to existing House authority so lore can become playable,
 fail lawfully, persist, and replay.
 
-`HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md` is the additive refinement
-proposal for separating affected actor, decision owner, executor, witness,
-handoff, completion, Restitution owner, and final recipient. Those proposed
-role fields do not claim current archive enforcement; this document's
-twelve-field executable contract remains the active V1 boundary.
+`HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md` supplies the operational
+role envelope layered over the twelve-field contract: affected actor, decision
+owner, executor, witness, ordered handoffs, completion, Restitution owner, and
+recipient. Functional-lore archive schema V2 carries these fields, while schema
+V1 records first verify against their exact V1 payload shape and then receive
+the explicit current role envelope selected by stable lore identity. Migration
+never assigns roles from entity-list position or invents a new decision.
 
 The causal boundary remains:
 
@@ -131,13 +133,21 @@ manufactures consent.
 
 ## Persistence and Replay
 
-`FunctionalLoreCatalog::encode` emits schema-V1 JSON containing:
+`FunctionalLoreCatalog::encode` emits schema-V2 JSON containing:
 
 - every functional-lore field;
 - the observation position;
 - exact authority decision ID;
 - exact active authority actor and office;
 - an FNV-1a checksum over the canonical payload.
+
+Schema V2 additionally persists the operational role envelope and ordered
+handoffs. Replay requires one affected actor, decision owner, executor, witness,
+recipient, completion condition, Restitution owner, and at least two explicit
+handoffs. The decision owner must be the live House office, and the handoff
+chain must address the decision owner, executor, witness, and recipient. Schema
+V1 remains readable through an explicit, stable-identity role migration after
+its original payload checksum succeeds.
 
 `FunctionalLoreCatalog::replay` verifies format, schema, checksum, the complete
 canonical definition set, and the live authority snapshot. Altered prose,
@@ -179,8 +189,9 @@ The Stonebend Current Sea continuity case is the second functional-lore record
 projected through the client. Mercy Deep supplies capable subject testimony
 alongside a prior Name, Glaüshouse restoration record, crowd witness, Mercury
 Mirror comparison, and all five Hueman faculties. The Current Sea setting is
-the Many-Witness Concourse: a sea of people testing continuity through dense
-public contact rather than through a literal water crossing.
+the Many-Witness Concourse surrounding the distinct Current body: dense public
+contact tests continuity, while the civic crowd and literal Current Sea remain
+separate but interacting layers.
 
 The three outcomes affirm the existing Name, link a provisional
 transformed-form Name without erasure, or refer the conflict while allowing no
@@ -191,9 +202,11 @@ creates Title, proof, Clearance, recognition, office, or accession.
 ## Verification
 
 `tests/functional_lore_integration.rs` proves complete House and route coverage,
-all twelve fields, exact authority classes, no House substitution, non-fixture
-live authority, archive replay, checksum rejection, fail-closed vacant offices,
-and absence of kernel imports.
+all twelve fields, explicit operational roles and handoffs, exact authority
+classes, no House substitution, non-fixture live authority, archive replay,
+checksum rejection, fail-closed vacant offices, and absence of kernel imports.
+The runtime unit suite also replays an authentic schema-V1 fixture to prove
+checksum verification occurs before role-envelope migration.
 
 `tests/gameplay_boardwalk.rs` proves all four outcome types, all three active
 finite Bonds, Independent Return without a Bond, non-ownership, subject

@@ -20,7 +20,7 @@ use super::geography::{ConstitutionalRouteId, canonical_constitutional_geography
 use super::session::WorldSession;
 
 pub const FUNCTIONAL_LORE_ARCHIVE_FORMAT: &str = "hollow-grove-functional-lore";
-pub const FUNCTIONAL_LORE_ARCHIVE_SCHEMA_VERSION: u16 = 1;
+pub const FUNCTIONAL_LORE_ARCHIVE_SCHEMA_VERSION: u16 = 2;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct FunctionalLoreDefinition {
@@ -53,6 +53,27 @@ pub struct FunctionalLoreDefinition {
     pub presentation: &'static str,
     /// 12. Failure and refusal.
     pub failure_and_refusal: &'static [&'static str],
+    /// Operational role envelope carried by schema V2.
+    pub affected_actor: &'static str,
+    pub decision_owner: &'static str,
+    pub executor: &'static str,
+    pub witness: &'static str,
+    pub ordered_handoffs: &'static [&'static str],
+    pub completion_condition: &'static str,
+    pub restitution_owner: &'static str,
+    pub recipient: &'static str,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+struct OperationalRoleEnvelope {
+    affected_actor: &'static str,
+    decision_owner: &'static str,
+    executor: &'static str,
+    witness: &'static str,
+    ordered_handoffs: &'static [&'static str],
+    completion_condition: &'static str,
+    restitution_owner: &'static str,
+    recipient: &'static str,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -140,27 +161,43 @@ impl FunctionalLoreCatalog {
     }
 
     pub fn replay(encoded: &str, world: &WorldSession) -> Result<Self, FunctionalLoreError> {
-        let envelope: FunctionalLoreArchiveEnvelope = serde_json::from_str(encoded)
+        let header: FunctionalLoreArchiveHeader = serde_json::from_str(encoded)
             .map_err(|error| FunctionalLoreError::Serialization(error.to_string()))?;
-        if envelope.format != FUNCTIONAL_LORE_ARCHIVE_FORMAT {
-            return Err(FunctionalLoreError::UnsupportedFormat(envelope.format));
-        }
-        if envelope.schema_version != FUNCTIONAL_LORE_ARCHIVE_SCHEMA_VERSION {
-            return Err(FunctionalLoreError::UnsupportedSchema(
-                envelope.schema_version,
-            ));
-        }
-        let actual_checksum = checksum_for(&envelope.payload)?;
-        if envelope.checksum != actual_checksum {
-            return Err(FunctionalLoreError::ChecksumMismatch);
-        }
-        let replayed = Self::instantiate(world, CausalPosition::new(envelope.payload.observed_at))?;
+        let (observed_at, records) = match header.schema_version {
+            1 => {
+                let envelope: FunctionalLoreArchiveEnvelopeV1 = serde_json::from_str(encoded)
+                    .map_err(|error| FunctionalLoreError::Serialization(error.to_string()))?;
+                validate_archive_header(&envelope.format, envelope.schema_version)?;
+                if envelope.checksum != checksum_for(&envelope.payload)? {
+                    return Err(FunctionalLoreError::ChecksumMismatch);
+                }
+                let mut records = envelope
+                    .payload
+                    .records
+                    .into_iter()
+                    .map(WireFunctionalLoreRecord::from)
+                    .collect::<Vec<_>>();
+                normalize_v1_role_envelope(&mut records)?;
+                (envelope.payload.observed_at, records)
+            }
+            FUNCTIONAL_LORE_ARCHIVE_SCHEMA_VERSION => {
+                let envelope: FunctionalLoreArchiveEnvelope = serde_json::from_str(encoded)
+                    .map_err(|error| FunctionalLoreError::Serialization(error.to_string()))?;
+                validate_archive_header(&envelope.format, envelope.schema_version)?;
+                if envelope.checksum != checksum_for(&envelope.payload)? {
+                    return Err(FunctionalLoreError::ChecksumMismatch);
+                }
+                (envelope.payload.observed_at, envelope.payload.records)
+            }
+            schema_version => return Err(FunctionalLoreError::UnsupportedSchema(schema_version)),
+        };
+        let replayed = Self::instantiate(world, CausalPosition::new(observed_at))?;
         let actual = replayed
             .records
             .iter()
             .map(WireFunctionalLoreRecord::from)
             .collect::<Vec<_>>();
-        if actual != envelope.payload.records {
+        if actual != records {
             return Err(FunctionalLoreError::ReplayDivergence);
         }
         Ok(replayed)
@@ -184,6 +221,8 @@ impl FunctionalLoreCatalog {
                  - Trigger: {}\n\
                  - Choice count: {}\n\
                  - Failure/refusal count: {}\n\
+                 - Roles: affected `{}`, decision `{}`, executor `{}`, witness `{}`, recipient `{}`\n\
+                 - Handoffs: {}\n\
                  - Persistence: {}\n",
                 definition.id,
                 definition.dominant_verb,
@@ -195,11 +234,48 @@ impl FunctionalLoreCatalog {
                 definition.trigger,
                 definition.player_choices.len(),
                 definition.failure_and_refusal.len(),
+                definition.affected_actor,
+                definition.decision_owner,
+                definition.executor,
+                definition.witness,
+                definition.recipient,
+                definition.ordered_handoffs.join(", "),
                 definition.persistence_and_replay,
             ));
         }
         output
     }
+}
+
+fn validate_archive_header(format: &str, schema_version: u16) -> Result<(), FunctionalLoreError> {
+    if format != FUNCTIONAL_LORE_ARCHIVE_FORMAT {
+        return Err(FunctionalLoreError::UnsupportedFormat(format.into()));
+    }
+    if !matches!(schema_version, 1 | FUNCTIONAL_LORE_ARCHIVE_SCHEMA_VERSION) {
+        return Err(FunctionalLoreError::UnsupportedSchema(schema_version));
+    }
+    Ok(())
+}
+
+fn normalize_v1_role_envelope(
+    records: &mut [WireFunctionalLoreRecord],
+) -> Result<(), FunctionalLoreError> {
+    let definitions = canonical_functional_lore_definitions();
+    for record in records {
+        let definition = definitions
+            .iter()
+            .find(|definition| definition.id == record.id)
+            .ok_or(FunctionalLoreError::ReplayDivergence)?;
+        record.affected_actor = definition.affected_actor.into();
+        record.decision_owner = definition.decision_owner.into();
+        record.executor = definition.executor.into();
+        record.witness = definition.witness.into();
+        record.ordered_handoffs = strings(definition.ordered_handoffs);
+        record.completion_condition = definition.completion_condition.into();
+        record.restitution_owner = definition.restitution_owner.into();
+        record.recipient = definition.recipient.into();
+    }
+    Ok(())
 }
 
 pub fn validate_definitions(
@@ -238,13 +314,35 @@ pub fn validate_definitions(
             definition.trigger,
             definition.persistence_and_replay,
             definition.presentation,
+            definition.affected_actor,
+            definition.decision_owner,
+            definition.executor,
+            definition.witness,
+            definition.completion_condition,
+            definition.restitution_owner,
+            definition.recipient,
         ];
+        let handoff_chain = definition.ordered_handoffs.join(" | ");
         if required_text.iter().any(|value| value.trim().is_empty())
             || definition.entities.is_empty()
             || definition.evidence.is_empty()
             || definition.uncertainty.is_empty()
             || definition.player_choices.len() < 2
             || definition.player_choices.len() != definition.lawful_state_changes.len()
+            || definition.ordered_handoffs.len() < 2
+            || definition
+                .ordered_handoffs
+                .iter()
+                .any(|handoff| handoff.trim().is_empty() || !handoff.contains('→'))
+            || [
+                definition.decision_owner,
+                definition.executor,
+                definition.witness,
+                definition.recipient,
+            ]
+            .iter()
+            .any(|role| !handoff_chain.contains(role))
+            || definition.decision_owner != house_decision_office(definition.house)
             || definition.failure_and_refusal.is_empty()
         {
             return Err(FunctionalLoreError::IncompleteContract(definition.id));
@@ -308,6 +406,20 @@ pub fn canonical_functional_lore_definitions() -> Vec<FunctionalLoreDefinition> 
                 "resident may refuse every affiliation",
                 "recognition cannot become Title or custody",
             ],
+            roles(
+                "Returning resident",
+                "office.flynt.tross",
+                "Boardwalk return steward",
+                "Boardwalk witnesses",
+                &[
+                    "office.flynt.tross→Boardwalk return steward: scoped recognition decision",
+                    "Boardwalk return steward→Boardwalk witnesses: public recognition record",
+                    "Boardwalk witnesses→Returning resident: voluntary return receipt",
+                ],
+                "the resident receives scoped recognition with every exit still open",
+                "office.flynt.tross",
+                "Returning resident",
+            ),
         ),
         definition(
             "lore.flynt.stairway-functional-recognition",
@@ -347,6 +459,20 @@ pub fn canonical_functional_lore_definitions() -> Vec<FunctionalLoreDefinition> 
                 "crew cannot manufacture office",
                 "refusal cannot erase completed work",
             ],
+            roles(
+                "independent worker",
+                "office.flynt.tross",
+                "Gallows crew",
+                "Stonebend registry observer",
+                &[
+                    "office.flynt.tross→Gallows crew: bounded function decision",
+                    "Gallows crew→Stonebend registry observer: attributed performance record",
+                    "Stonebend registry observer→independent worker: scoped standing receipt",
+                ],
+                "the worker receives an attributable scope without office or coerced affiliation",
+                "office.flynt.tross",
+                "independent worker",
+            ),
         ),
         definition(
             "lore.flynt.basin-dual-expression",
@@ -386,6 +512,20 @@ pub fn canonical_functional_lore_definitions() -> Vec<FunctionalLoreDefinition> 
                 "one expression cannot erase the other",
                 "Tross sovereignty cannot be duplicated",
             ],
+            roles(
+                "independent carrier",
+                "office.flynt.tross",
+                "independent carrier",
+                "Manticorp and Gallows delegates",
+                &[
+                    "office.flynt.tross→independent carrier: bounded delivery disposition",
+                    "independent carrier→Manticorp and Gallows delegates: performed delivery evidence",
+                    "Manticorp and Gallows delegates→independent carrier: witnessed custody receipt",
+                ],
+                "cargo custody and each institutional scope are recorded without duplicate sovereignty",
+                "office.flynt.tross",
+                "independent carrier",
+            ),
         ),
         definition(
             "lore.stonebend.current-sea-continuity",
@@ -425,6 +565,20 @@ pub fn canonical_functional_lore_definitions() -> Vec<FunctionalLoreDefinition> 
                 "subject may challenge substitution",
                 "provisional status cannot grant Title",
             ],
+            roles(
+                "restored being",
+                "office.stonebend.hypergiant",
+                "Gerald registrar",
+                "Current Sea public witnesses",
+                &[
+                    "office.stonebend.hypergiant→Gerald registrar: bounded Name disposition",
+                    "Gerald registrar→Current Sea public witnesses: continuity record",
+                    "Current Sea public witnesses→restored being: witnessed Name receipt",
+                ],
+                "the restored being receives a challengeable Name record preserving both forms",
+                "office.stonebend.hypergiant",
+                "restored being",
+            ),
         ),
         definition(
             "lore.stonebend.aura-ridge-public-name",
@@ -464,6 +618,20 @@ pub fn canonical_functional_lore_definitions() -> Vec<FunctionalLoreDefinition> 
                 "renaming cannot erase debt or history",
                 "witness does not create ownership",
             ],
+            roles(
+                "returning citizen",
+                "office.stonebend.hypergiant",
+                "Proliteriate hearing clerk",
+                "public witnesses",
+                &[
+                    "office.stonebend.hypergiant→Proliteriate hearing clerk: provisional Name disposition",
+                    "Proliteriate hearing clerk→public witnesses: notice and challenge record",
+                    "public witnesses→returning citizen: provisional public reference receipt",
+                ],
+                "the citizen receives a reversible public reference with former history intact",
+                "office.stonebend.hypergiant",
+                "returning citizen",
+            ),
         ),
         definition(
             "lore.stonebend.mnt-aura-illegal-hollowing",
@@ -503,6 +671,20 @@ pub fn canonical_functional_lore_definitions() -> Vec<FunctionalLoreDefinition> 
                 "emergency cannot excuse research",
                 "refusal cannot be relabeled incapacity",
             ],
+            roles(
+                "injured structure-being",
+                "office.stonebend.hypergiant",
+                "Freemason examiner",
+                "Mt. Aura custody witness",
+                &[
+                    "office.stonebend.hypergiant→Freemason examiner: emergency custody scope",
+                    "Freemason examiner→Mt. Aura custody witness: non-destructive survey record",
+                    "Mt. Aura custody witness→injured structure-being: protected-subject receipt",
+                ],
+                "the subject and sample receive distinct custody records without destructive inspection",
+                "office.stonebend.hypergiant",
+                "injured structure-being",
+            ),
         ),
         definition(
             "lore.sandmanor.aura-way-public-design",
@@ -542,6 +724,20 @@ pub fn canonical_functional_lore_definitions() -> Vec<FunctionalLoreDefinition> 
                 "critics may refuse endorsement",
                 "negative results cannot be deleted",
             ],
+            roles(
+                "ordinary route users",
+                "office.sandmanor.sandman",
+                "Minoan exterior team",
+                "Minorian interior team",
+                &[
+                    "office.sandmanor.sandman→Minoan exterior team: bounded proof disposition",
+                    "Minoan exterior team→Minorian interior team: measured field result",
+                    "Minorian interior team→ordinary route users: tested-scope receipt",
+                ],
+                "route users receive a versioned shelter result limited to tested conditions",
+                "office.sandmanor.sandman",
+                "ordinary route users",
+            ),
         ),
         definition(
             "lore.sandmanor.glausbahn-recovery-design",
@@ -577,6 +773,20 @@ pub fn canonical_functional_lore_definitions() -> Vec<FunctionalLoreDefinition> 
                 "patient refusal immediately stops participation",
                 "Sandmanor proof cannot override clinical clearance",
             ],
+            roles(
+                "recovery patient",
+                "office.sandmanor.sandman",
+                "Glaüshouse therapist",
+                "Gnome method keeper",
+                &[
+                    "office.sandmanor.sandman→Glaüshouse therapist: bounded revision question",
+                    "Glaüshouse therapist→Gnome method keeper: patient-tolerance evidence",
+                    "Gnome method keeper→recovery patient: revised-method receipt",
+                ],
+                "the patient receives a stopped, narrowed, or revised method with recovery intact",
+                "office.sandmanor.sandman",
+                "recovery patient",
+            ),
         ),
         definition(
             "lore.sandmanor.aura-beach-current-sea-role-proof",
@@ -612,6 +822,20 @@ pub fn canonical_functional_lore_definitions() -> Vec<FunctionalLoreDefinition> 
                 "transition is never automatic",
                 "proof grants neither consent nor office",
             ],
+            roles(
+                "coastal access users",
+                "office.sandmanor.sandman",
+                "Elf candidate",
+                "Centaur mentor",
+                &[
+                    "office.sandmanor.sandman→Elf candidate: bounded regional proof question",
+                    "Elf candidate→Centaur mentor: coastal demonstration evidence",
+                    "Centaur mentor→coastal access users: witnessed safety receipt",
+                ],
+                "coastal users receive a reproducible safety result without automatic transition",
+                "office.sandmanor.sandman",
+                "coastal access users",
+            ),
         ),
         definition(
             "lore.glaushouse.riptide-emergency-intake",
@@ -647,6 +871,20 @@ pub fn canonical_functional_lore_definitions() -> Vec<FunctionalLoreDefinition> 
                 "silence never becomes consent",
                 "retrieval custody never becomes ownership",
             ],
+            roles(
+                "retrieved patient",
+                "office.glaushouse.prima-donna",
+                "emergency operator",
+                "Nightingale",
+                &[
+                    "office.glaushouse.prima-donna→emergency operator: narrow stabilization scope",
+                    "emergency operator→Nightingale: intervention and stop evidence",
+                    "Nightingale→retrieved patient: care and refusal receipt",
+                ],
+                "the patient is stabilized or lawfully stopped without elective consent being inferred",
+                "office.glaushouse.prima-donna",
+                "retrieved patient",
+            ),
         ),
         definition(
             "lore.glaushouse.current-seanad-high-risk-clearance",
@@ -686,6 +924,20 @@ pub fn canonical_functional_lore_definitions() -> Vec<FunctionalLoreDefinition> 
                 "proof cannot compel participation",
                 "refusal is not incapacity",
             ],
+            roles(
+                "procedure subject",
+                "office.glaushouse.prima-donna",
+                "Prima Donna authority",
+                "Sandmanor proof body",
+                &[
+                    "office.glaushouse.prima-donna→Prima Donna authority: consent-bounded clearance question",
+                    "Prima Donna authority→Sandmanor proof body: separated proof and clinical record",
+                    "Sandmanor proof body→procedure subject: conditional or refused procedure receipt",
+                ],
+                "the subject receives a separate proof, consent, and clearance disposition",
+                "office.glaushouse.prima-donna",
+                "procedure subject",
+            ),
         ),
         definition(
             "lore.glaushouse.aura-ridge-recovery-discharge",
@@ -721,6 +973,20 @@ pub fn canonical_functional_lore_definitions() -> Vec<FunctionalLoreDefinition> 
                 "premature discharge may be stopped",
                 "livelihood dependence cannot manufacture consent",
             ],
+            roles(
+                "recovering worker",
+                "office.glaushouse.prima-donna",
+                "Persephone service",
+                "worksite receiver",
+                &[
+                    "office.glaushouse.prima-donna→Persephone service: bounded transfer clearance",
+                    "Persephone service→worksite receiver: explicit restriction record",
+                    "worksite receiver→recovering worker: accepted or refused transfer receipt",
+                ],
+                "the worker receives a restricted transfer or continued recovery without loss of standing",
+                "office.glaushouse.prima-donna",
+                "recovering worker",
+            ),
         ),
     ]
 }
@@ -742,6 +1008,7 @@ const fn definition(
     persistence_and_replay: &'static str,
     presentation: &'static str,
     failure_and_refusal: &'static [&'static str],
+    roles: OperationalRoleEnvelope,
 ) -> FunctionalLoreDefinition {
     FunctionalLoreDefinition {
         id,
@@ -761,6 +1028,46 @@ const fn definition(
         persistence_and_replay,
         presentation,
         failure_and_refusal,
+        affected_actor: roles.affected_actor,
+        decision_owner: roles.decision_owner,
+        executor: roles.executor,
+        witness: roles.witness,
+        ordered_handoffs: roles.ordered_handoffs,
+        completion_condition: roles.completion_condition,
+        restitution_owner: roles.restitution_owner,
+        recipient: roles.recipient,
+    }
+}
+
+#[allow(clippy::too_many_arguments)]
+const fn roles(
+    affected_actor: &'static str,
+    decision_owner: &'static str,
+    executor: &'static str,
+    witness: &'static str,
+    ordered_handoffs: &'static [&'static str],
+    completion_condition: &'static str,
+    restitution_owner: &'static str,
+    recipient: &'static str,
+) -> OperationalRoleEnvelope {
+    OperationalRoleEnvelope {
+        affected_actor,
+        decision_owner,
+        executor,
+        witness,
+        ordered_handoffs,
+        completion_condition,
+        restitution_owner,
+        recipient,
+    }
+}
+
+const fn house_decision_office(house: House) -> &'static str {
+    match house {
+        House::Stonebend => "office.stonebend.hypergiant",
+        House::Sandmanor => "office.sandmanor.sandman",
+        House::Glaushouse => "office.glaushouse.prima-donna",
+        House::Flynt => "office.flynt.tross",
     }
 }
 
@@ -798,6 +1105,27 @@ struct FunctionalLoreArchiveEnvelope {
     payload: FunctionalLoreArchivePayload,
 }
 
+#[derive(Debug, Clone, PartialEq, Eq, Deserialize)]
+struct FunctionalLoreArchiveHeader {
+    schema_version: u16,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct FunctionalLoreArchiveEnvelopeV1 {
+    format: String,
+    schema_version: u16,
+    checksum: String,
+    payload: FunctionalLoreArchivePayloadV1,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct FunctionalLoreArchivePayloadV1 {
+    observed_at: u64,
+    records: Vec<WireFunctionalLoreRecordV1>,
+}
+
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 struct FunctionalLoreArchivePayload {
@@ -828,6 +1156,82 @@ struct WireFunctionalLoreRecord {
     persistence_and_replay: String,
     presentation: String,
     failure_and_refusal: Vec<String>,
+    #[serde(default)]
+    affected_actor: String,
+    #[serde(default)]
+    decision_owner: String,
+    #[serde(default)]
+    executor: String,
+    #[serde(default)]
+    witness: String,
+    #[serde(default)]
+    ordered_handoffs: Vec<String>,
+    #[serde(default)]
+    completion_condition: String,
+    #[serde(default)]
+    restitution_owner: String,
+    #[serde(default)]
+    recipient: String,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct WireFunctionalLoreRecordV1 {
+    id: String,
+    house: String,
+    authority_function: String,
+    authority_class: String,
+    authority_decision_id: String,
+    authority_actor: String,
+    authority_office: String,
+    route: String,
+    location: String,
+    jurisdiction: String,
+    entities: Vec<String>,
+    dominant_verb: String,
+    trigger: String,
+    evidence: Vec<String>,
+    uncertainty: Vec<String>,
+    player_choices: Vec<String>,
+    lawful_state_changes: Vec<String>,
+    persistence_and_replay: String,
+    presentation: String,
+    failure_and_refusal: Vec<String>,
+}
+
+impl From<WireFunctionalLoreRecordV1> for WireFunctionalLoreRecord {
+    fn from(record: WireFunctionalLoreRecordV1) -> Self {
+        Self {
+            id: record.id,
+            house: record.house,
+            authority_function: record.authority_function,
+            authority_class: record.authority_class,
+            authority_decision_id: record.authority_decision_id,
+            authority_actor: record.authority_actor,
+            authority_office: record.authority_office,
+            route: record.route,
+            location: record.location,
+            jurisdiction: record.jurisdiction,
+            entities: record.entities,
+            dominant_verb: record.dominant_verb,
+            trigger: record.trigger,
+            evidence: record.evidence,
+            uncertainty: record.uncertainty,
+            player_choices: record.player_choices,
+            lawful_state_changes: record.lawful_state_changes,
+            persistence_and_replay: record.persistence_and_replay,
+            presentation: record.presentation,
+            failure_and_refusal: record.failure_and_refusal,
+            affected_actor: String::new(),
+            decision_owner: String::new(),
+            executor: String::new(),
+            witness: String::new(),
+            ordered_handoffs: Vec::new(),
+            completion_condition: String::new(),
+            restitution_owner: String::new(),
+            recipient: String::new(),
+        }
+    }
 }
 
 impl From<&FunctionalLoreRecord> for WireFunctionalLoreRecord {
@@ -854,6 +1258,14 @@ impl From<&FunctionalLoreRecord> for WireFunctionalLoreRecord {
             persistence_and_replay: definition.persistence_and_replay.into(),
             presentation: definition.presentation.into(),
             failure_and_refusal: strings(definition.failure_and_refusal),
+            affected_actor: definition.affected_actor.into(),
+            decision_owner: definition.decision_owner.into(),
+            executor: definition.executor.into(),
+            witness: definition.witness.into(),
+            ordered_handoffs: strings(definition.ordered_handoffs),
+            completion_condition: definition.completion_condition.into(),
+            restitution_owner: definition.restitution_owner.into(),
+            recipient: definition.recipient.into(),
         }
     }
 }
@@ -909,3 +1321,70 @@ impl fmt::Display for FunctionalLoreError {
 }
 
 impl std::error::Error for FunctionalLoreError {}
+
+#[cfg(test)]
+mod migration_tests {
+    use std::path::Path;
+
+    use super::*;
+
+    fn v1_record(record: &FunctionalLoreRecord) -> WireFunctionalLoreRecordV1 {
+        let record = WireFunctionalLoreRecord::from(record);
+        WireFunctionalLoreRecordV1 {
+            id: record.id,
+            house: record.house,
+            authority_function: record.authority_function,
+            authority_class: record.authority_class,
+            authority_decision_id: record.authority_decision_id,
+            authority_actor: record.authority_actor,
+            authority_office: record.authority_office,
+            route: record.route,
+            location: record.location,
+            jurisdiction: record.jurisdiction,
+            entities: record.entities,
+            dominant_verb: record.dominant_verb,
+            trigger: record.trigger,
+            evidence: record.evidence,
+            uncertainty: record.uncertainty,
+            player_choices: record.player_choices,
+            lawful_state_changes: record.lawful_state_changes,
+            persistence_and_replay: record.persistence_and_replay,
+            presentation: record.presentation,
+            failure_and_refusal: record.failure_and_refusal,
+        }
+    }
+
+    #[test]
+    fn authentic_schema_one_checksum_is_verified_before_role_migration() {
+        let world = WorldSession::load_or_canonical_at(Path::new(env!("CARGO_MANIFEST_DIR")))
+            .expect("live world");
+        let catalog = FunctionalLoreCatalog::instantiate(&world, CausalPosition::new(43))
+            .expect("functional lore");
+        let payload = FunctionalLoreArchivePayloadV1 {
+            observed_at: catalog.observed_at().get(),
+            records: catalog.records().iter().map(v1_record).collect(),
+        };
+        let envelope = FunctionalLoreArchiveEnvelopeV1 {
+            format: FUNCTIONAL_LORE_ARCHIVE_FORMAT.into(),
+            schema_version: 1,
+            checksum: checksum_for(&payload).expect("schema-one checksum"),
+            payload,
+        };
+        let encoded = serde_json::to_string_pretty(&envelope).expect("schema-one archive");
+
+        assert_eq!(
+            FunctionalLoreCatalog::replay(&encoded, &world).expect("schema-one migration"),
+            catalog
+        );
+
+        let damaged = encoded.replacen(
+            "public return lane",
+            "unconstitutionally closed return lane",
+            1,
+        );
+        assert_eq!(
+            FunctionalLoreCatalog::replay(&damaged, &world),
+            Err(FunctionalLoreError::ChecksumMismatch)
+        );
+    }
+}

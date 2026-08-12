@@ -42,6 +42,14 @@ fn all_four_houses_have_three_complete_lived_loops_and_every_route_is_used() {
             assert!(!record.persistence_and_replay.is_empty());
             assert!(!record.presentation.is_empty());
             assert!(!record.failure_and_refusal.is_empty());
+            assert!(!record.affected_actor.is_empty());
+            assert!(!record.decision_owner.is_empty());
+            assert!(!record.executor.is_empty());
+            assert!(!record.witness.is_empty());
+            assert!(record.ordered_handoffs.len() >= 2);
+            assert!(!record.completion_condition.is_empty());
+            assert!(!record.restitution_owner.is_empty());
+            assert!(!record.recipient.is_empty());
         }
     }
     let routes = definitions
@@ -75,6 +83,19 @@ fn lived_lore_uses_live_non_fixture_authority_without_house_substitution() {
                 .as_str()
                 .contains("fixture")
         );
+        assert_eq!(
+            record.definition.decision_owner,
+            record.authority.authority.office.as_str()
+        );
+        let handoff_chain = record.definition.ordered_handoffs.join(" | ");
+        for role in [
+            record.definition.decision_owner,
+            record.definition.executor,
+            record.definition.witness,
+            record.definition.recipient,
+        ] {
+            assert!(handoff_chain.contains(role), "{role}");
+        }
         let expected = match record.definition.house {
             House::Stonebend => HouseFunction::Name,
             House::Sandmanor => HouseFunction::Prove,
@@ -107,6 +128,38 @@ fn functional_lore_archive_replays_exactly_and_rejects_drift() {
     assert_eq!(
         FunctionalLoreCatalog::replay(&damaged, &world),
         Err(FunctionalLoreError::ChecksumMismatch)
+    );
+}
+
+#[test]
+fn functional_lore_role_envelope_is_documented_and_replayed() {
+    let document = std::fs::read_to_string(
+        Path::new(env!("CARGO_MANIFEST_DIR")).join("FUNCTIONAL_LORE_ARCHIVE_V2_MIGRATION.md"),
+    )
+    .unwrap();
+    for field in [
+        "affected actor",
+        "decision owner",
+        "executor",
+        "witness",
+        "ordered handoffs",
+        "completion condition",
+        "Restitution owner",
+        "final recipient",
+    ] {
+        assert!(document.contains(field), "{field}");
+    }
+    let catalog =
+        FunctionalLoreCatalog::instantiate(&live_world(), CausalPosition::new(42)).unwrap();
+    let encoded = catalog.encode().unwrap();
+    assert!(encoded.contains("\"schema_version\": 2"));
+    assert!(
+        encoded
+            .contains("office.flynt.tross→Boardwalk return steward: scoped recognition decision")
+    );
+    assert_eq!(
+        FunctionalLoreCatalog::replay(&encoded, &live_world()).unwrap(),
+        catalog
     );
 }
 
