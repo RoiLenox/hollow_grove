@@ -15,6 +15,7 @@ pub const POWER_RECIPE_SOURCE: &str = "HOLLOW_GROVE_POWER_RECIPE_CONSTITUTION_V1
 pub const POWER_RECIPE_ARCHIVE_FORMAT: &str = "HGPRC";
 pub const POWER_RECIPE_ARCHIVE_SCHEMA_VERSION: u16 = 1;
 pub const MAX_PREPARED_POWER_RECIPES: usize = 4;
+pub const RESYNCE_PROPULSION_RECIPE_ID: &str = "recipe.flight.resynce-propulsion";
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum CurrentPowerRoot {
@@ -455,7 +456,7 @@ pub fn validate_power_recipe_catalog(
 pub fn draft_power_recipe_catalog() -> Vec<PowerRecipeDefinition> {
     vec![
         recipe(
-            "recipe.flight.resynce-propulsion",
+            RESYNCE_PROPULSION_RECIPE_ID,
             "Resynce Propulsion",
             PowerOutcome::Flight,
             RecipeProvenance::InstitutionalTechnique,

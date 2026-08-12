@@ -1158,6 +1158,14 @@ pub fn build_canonical_being_state_for_frame(frame: FrameId) -> BeingState {
     build_canonical_being_state_with_aura(frame, paired_aura_frame(frame))
 }
 
+/// New-player baseline: the Current Form is Hueman and no Aura Frame has formed.
+/// Legacy frame constructors retain their historical paired projections for
+/// compatibility fixtures; gameplay entrypoints should use this constructor.
+#[must_use]
+pub fn build_default_hueman_state() -> BeingState {
+    build_canonical_being_state_with_aura(FrameId::Hueman, None)
+}
+
 #[must_use]
 pub fn build_canonical_being_state_with_aura(
     frame: FrameId,
@@ -2279,6 +2287,32 @@ mod tests {
         canonical_troglodyte_proxy_action_fixture, resolve_being_object_action,
         validate_being_object_contract,
     };
+
+    #[test]
+    fn hueman_point_conversion_preserves_learned_and_progression_state() {
+        let frame_state = crate::FrameState::new(
+            crate::FrameId::Hueman,
+            crate::CurrentPrism::new(3, 4, 5, 6, 7),
+            vec![crate::FlowId::TinkerGrip],
+            vec![crate::GlowId::Confusion],
+        );
+        let progression =
+            crate::point_progression::PointProgressionState::origin().with_applied_ascension(2);
+        let point = crate::Point::with_domain_state(
+            frame_state,
+            progression,
+            crate::point_progression::ReachableWorldState::origin(),
+        );
+
+        let being = super::build_being_state(&point);
+
+        assert_eq!(being.current_form(), crate::FrameId::Hueman);
+        assert_eq!(being.aura_frame(), None);
+        assert_eq!(being.flow_learnset(), &[crate::FlowId::TinkerGrip]);
+        assert_eq!(being.glow_learnset(), &[crate::GlowId::Confusion]);
+        assert_eq!(being.current_prism(), point.frame_state().prism());
+        assert_eq!(being.stable_point_level(), 2);
+    }
 
     #[test]
     fn gremlin_tinker_grip_fixture_resolves_through_existing_recipe_boundary() {
