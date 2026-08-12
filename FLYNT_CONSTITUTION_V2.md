@@ -7,6 +7,12 @@ do under pressure? Recognition remains a Festival and confirmation theme, a
 cultural value, and a form of public judgment or honor; it is not Flynt's
 constitutional House Law.
 
+Capacity is the substantive Flynt question: what can a person, crew,
+institution, or system do under pressure, and within what scope? Recognition is
+the attributable public record and consequence of that capacity judgment. It
+does not replace the Law of Capacity and it does not create office, Title,
+membership, or sovereignty by itself.
+
 Status: canonical and locked.
 
 This document is the repository-facing constitutional authority for Flynt's institutional architecture, stable identity relationships, and maintained Synthesis hierarchy. `flynt-constitution` is the executable authority. World catalogs, Current Synthesis projections, Hueman, Godot, artifacts, and examples must conform to it and may not create a parallel Flynt hierarchy.
@@ -109,6 +115,29 @@ Urban and rural Flynt are complementary expressions of one authority. They are n
 | Manticorp and Mystery Men | the Gallows, We Fairy Men, and the Basin bands |
 
 Both expressions answer to the same sovereign Tross, while Chimera remains the lower-apex First Companion and Manticorp remains the distinct maintained Form beyond it. The public and underground commands are intentionally unresolved political tension: the Tross may control the Gallows to protect Flynt, or use lawful authority to protect and expand it. Neither reading is canonically forced.
+
+## Ordinary capacity life
+
+Flynt's constitutional tension must also be visible below the Tross and its
+apex institutions. Operators, carriers, riggers, dispatchers, repair crews,
+signalers, performers, apprentices, and independent workers may demonstrate a
+function without becoming an officeholder or a Manticorp Form. Their ordinary
+capacity history includes scope, training, maintenance burden, failure,
+attribution, challenge, suspension, renewal, retirement, and safe return to
+non-operational life.
+
+The ordinary capacity lifecycle is:
+
+```text
+practice → demonstration → scoped recognition → maintenance
+→ challenge or failure → suspension, renewal, retirement, or return
+```
+
+This lifecycle is cultural and operationally bounded. It does not create a
+second Flynt hierarchy. A crew may carry work and memory, but only the lawful
+recognition authority can confirm the public scope of a function; capacity
+never becomes consent, Stonebend Title, Sandmanor proof, or Glaüshouse
+Clearance.
 
 ## Executable mapping
 

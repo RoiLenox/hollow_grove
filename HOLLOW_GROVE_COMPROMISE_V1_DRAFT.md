@@ -84,18 +84,18 @@ earlier laws in living, social, and playable form; they do not rewrite them.
 
 | Compromise branch | Status | Existing authority | Expansion responsibility |
 |---|---|---|---|
-| Universal Laws | Locked | `CURRENT_SYNTHESIS_HOLLOW_GROVE_WORLD_CONTEXT_v0.1.0.md`; semantic and embodied foundations | make Current, Aura, Relativity, Hollow, Hollowing, and Synthesis perceptible through play |
+| Universal Laws | Locked / Balance Adopted | `CURRENT_SYNTHESIS_HOLLOW_GROVE_WORLD_CONTEXT_v0.1.0.md`; semantic and embodied foundations; `HOLLOW_GROVE_METAPHYSICAL_BALANCE_V1_DRAFT.md` | make Current, Aura, Relativity, Hollow, and Synthesis perceptible through play, including cost, excess, and return |
 | Constitutional Runtime | Locked | `src/constitutional/`; V2 specification | preserve determinism, evidence, replay, serialization, migration, and fail-closed decisions |
 | Bond Constitution | Locked / Expand | `src/constitutional/bond.rs`; runtime, persistence, trace, and application layers | give lawful Bond events social and narrative consequences |
 | Spatial Inheritance | Locked / Expand | `SPATIAL_INHERITANCE_V1.md`; neutral kernel, world binding, archive, bridge, Godot, and runtime verifier | author lawful district/site/room/object/detail instances without copying or redefining the canonical plan |
 | Four Houses | Locked / Expand | the four House constitutions and world projections | express Name, Proof, Clearance, and Recognition through ordinary people and conflicts |
 | Hueman Constitution | Locked / Expand | Frame, Flow, Glow, faculty, progression, and Recipe law | turn faculties into player-facing perception and action grammar |
-| Sympian Lineage | Reconcile | partial Natural and Matural expression language; no unified typed lineage authority | define Natural Sympian, Matural Sympian, and Synthetic without replacing Being continuity |
-| Current Ladder | Reconcile | eight typed Frames in faculty law; some older ladders and Grip subsets omit Spectre | publish one complete ladder and explain Frames that do not inherit a particular Skill family |
-| Aura Ladder | Reconcile | six typed Frames in current production law; Compromise proposes eight stages | decide `Pixy`/`Pixie` and whether Spirit and Sylph become Frames, expressions, or another category |
+| Sympian Lineage | V1 Reconciled / Expand | `HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md` | embody Natural, Matural, and Synthetic continuity without replacing Being identity |
+| Current Ladder | V1 Reconciled / Expand | `HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md`; eight typed Current Frames | embody Spectre as a valid bridge Frame without inventing automatic Grip inheritance |
+| Aura Ladder | V1 Reconciled / Expand | `HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md`; six production Frames | embody Pixy→Muse; retain Spirit and Sylph as non-Frame expressions until migration |
 | Synthesis Constitution | Locked / Expand | `Troglodyte + Muse = Seer`; regional Synthesis law | embody transformation as consent-bearing, evidence-backed continuity rather than automatic evolution |
 | Regional / Cultural Domains | Expand / Proposed | geography, House, faculty, and Flynt law | build lived cultures, characters, economies, routes, Bonds, and playable cases |
-| Operational Lore Kernel | Reconcile / Expand | `HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md` and Kernel Constitutional State | give every role a bounded question, input, output, stop law, and handoff |
+| Operational Lore Kernel | Adopted / Expand | `HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md`, functional-lore archive schema V2, and Kernel Constitutional State | give every role a bounded question, input, output, stop law, and handoff |
 | AI-associated personas | Reconcile / Expand | `HOLLOW_GROVE_AI_ASSOCIATED_PERSONAS_CONSTITUTION_V1_DRAFT.md`, `src/ai_personas.rs` | carry Cleopatra, Hal, and Clouseau advisories without committing authority |
 | Current Synthesis boundary | Reconcile | PLEB/META client and routing contracts; Current Synthesis remains owner | accept only scoped Clouseau/Hal/Cleopatra witnesses through a shared adapter |
 | Federation continuity | Locked / Expand | `THE_RUNTIME_FEDERATION_V1.md`, `THE_RUNTIME_FEDERATION_IMPLEMENTATION_V1.md`, `src/runtime_federation.rs` | bind accepted records, preserve domain custody, and replay cross-layer consequence |
@@ -126,6 +126,12 @@ Aura = air / pressure / light.
 New lore must expose at least one observable consequence of the law it invokes.
 A phrase that never affects a body, relationship, place, choice, or persistent
 record remains atmosphere rather than functional lore.
+
+The adopted additive balance contract in
+`HOLLOW_GROVE_METAPHYSICAL_BALANCE_V1_DRAFT.md` supplies the formerly thin
+Relativity grammar, shared material pressures, House shadow grammar, and
+consequence lifecycle. It does not alter the neutral recursion kernel or create
+new constitutional authority.
 
 ## Constitutional Runtime
 
@@ -268,26 +274,20 @@ choose for the player or manufacture legality.
 
 ## Sympian Lineage Reconciliation
 
-The Compromise proposes:
+V1 interpretation is locked by
+`HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md`.
+
+The V1 categories are:
 
 - **Natural Sympian**;
 - **Matural Sympian**;
 - **Synthetic**.
 
-The existing core already uses Natural and Matural as House expression terms,
-but no locked source currently establishes the three as one lineage model.
-Before production implementation, a dedicated reconciliation must answer:
-
-1. whether Sympian describes origin, embodiment, Synthesis history, culture, or
-   some combination;
-2. whether one Being may move between categories while retaining continuity;
-3. whether Synthetic is a Sympian member, a construction origin, or a distinct
-   constitutional relationship;
-4. which House acts establish identity, proof, Clearance, and recognition;
-5. what evidence persists when classification changes.
-
-No legacy field, visual appearance, or transformation may infer a Sympian
-category automatically.
+Sympian describes a Being's continuity relationship to embodied Synthesis. It
+is not a species ladder, profession, or replacement for Frame identity. One
+Being may move between categories while retaining stable identity; prior Names,
+Forms, evidence, consent, Recipe, recovery, and recognition remain historical.
+No legacy field, visual appearance, or transformation may infer a category.
 
 ## Current Ladder Reconciliation
 
@@ -304,14 +304,16 @@ Gremlin
 → Troglodyte
 ```
 
-`Spectre` exists in typed Frame law and the faculty ladder. Skill-specific
-subsets that omit Spectre do not erase it from the Current ladder. A later
-reconciliation must define Spectre's exact inherited and unique Skill
-relationships rather than silently skipping the Frame.
+`Spectre` is a valid bridge Frame. It preserves the Being and practiced Skill
+roots but grants no automatic Grip specialization. Skill-specific subsets that
+omit Spectre do not erase it from the Current ladder.
 
 ## Aura Ladder Reconciliation
 
-The Compromise proposes:
+V1 interpretation is locked by
+`HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md`.
+
+The future expansion proposal remains:
 
 ```text
 Pixie
@@ -335,15 +337,15 @@ Pixy
 → Muse
 ```
 
-Until ratified:
+V1 production law remains:
 
 - executable identity remains `Pixy`;
 - Spirit remains the Flynt Hueman domain, not automatically a Frame;
 - Sylph has no production Frame identity;
 - no migration or matching-tier rule may be inferred.
 
-The eight-stage proposal remains a first-class reconciliation task rather than
-being discarded.
+The eight-stage proposal remains future expansion material rather than current
+Frame law.
 
 ## Synthesis Constitution
 
@@ -396,10 +398,11 @@ task, recruitment, a Bond, ownership, or debt for refusing or leaving.
 Aura Beach is one singular Sandmanor Minoan exterior surface for coastal
 approach, navigation, public meeting, weather, rescue, Elf design, and Centaur
 mobility. `region.current-sea` is the distinct Current body that sets in
-Glaüshouse. The older civic-circulation jurisdiction and map key are retained
-only as a public-interface compatibility projection; they do not redefine the
-Current Sea as a road or a sea of people. The implemented surface contract
-lives in `AURA_BEACH_SURFACE_V1.md`.
+Glaüshouse. Its public concourse is densely populated and witnesses continuity,
+but the civic crowd is a surrounding presentation of the Current body rather
+than a replacement for it. The older civic-circulation jurisdiction and map key
+remain compatibility projections only. The implemented surface contract lives
+in `AURA_BEACH_SURFACE_V1.md`.
 
 Aura Basin is one singular surface serving Flynt first through hunting,
 competition, rescue, racing, collision, material recovery, and lawful return.

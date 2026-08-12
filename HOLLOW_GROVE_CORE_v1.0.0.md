@@ -407,6 +407,11 @@ Current asks:
 
 > What can I do?
 
+The V1 balance contract adds that repetition carries memory and wear. Current
+capacity therefore requires circulation, rest, maintenance, and a return path;
+repeated force without learning is a failure pressure rather than automatic
+progression.
+
 Current exists in two active states:
 
 - Regular Current
@@ -425,6 +430,16 @@ Aura is understanding, judgment, perception, context, and meaningful sight.
 Aura asks:
 
 > What do I understand, and how should I use it?
+
+The V1 balance contract adds that revelation creates exposure and pressure.
+Visibility is therefore not identical to consent, safety, or truth; a lawful
+Aura reading preserves context, shielding, and the subject's return path.
+
+Relativity is the shared bend between Current and Aura. Every bend retains an
+anchor and identifies its frame, pressure, distortion, and return. Synthesis
+changes an arrangement but leaves remainder and obligation; Hollow refinement
+preserves provenance of what was separated. See
+`HOLLOW_GROVE_METAPHYSICAL_BALANCE_V1_DRAFT.md`.
 
 Aura exists in two active states:
 

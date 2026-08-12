@@ -31,6 +31,13 @@ interpretation and evidence.
 - `Aura = air / pressure / light`
 - `Whole -> Hollowing -> Hollow + Hollowed`
 
+The additive balance and V1 classification contracts are recorded in
+`HOLLOW_GROVE_METAPHYSICAL_BALANCE_V1_DRAFT.md` and
+`HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md`. They remain above the
+neutral recursion implementation. In particular, Relativity requires an
+anchor, frame, pressure, distortion, and return; Synthesis carries remainder
+and obligation; and classification never replaces stable Being identity.
+
 Primary enforcement:
 
 - `src/hollow_grove_contract.rs`
@@ -147,6 +154,17 @@ Canonical note:
 
 - `Troglodyte` and `Muse` remain matched apex counterparts.
 - `Troglodyte + Muse = Seer` remains canonical world law and is not flattened into a single ladder.
+
+In Hueman presentation, these Current entries are available Synthesis forms:
+bounded transformations of the continuing Hueman, with preserved anchors,
+Recipe history, strain, and return obligations. They are not automatically
+separate companions or species entries. Constitutional regional peoples remain
+distinct from a Hueman's visually related Synthesis form.
+
+Stonebend, Sandmanor, Glaüshouse, and Flynt each practice the shared Current
+through distinct recipes and evidence cultures: structure and repair;
+measurement and lineage; embodied care and recovery; and demonstrated capacity
+under witness. These are House traditions, not separate Current ladders.
 
 Current runtime references:
 

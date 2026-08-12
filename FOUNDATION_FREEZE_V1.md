@@ -26,6 +26,13 @@ House, route, character, evidence, or lore terms. Art consumes the packaged
 palette projection and asset manifest through Godot's renderer seam; it never
 imports either kernel into presentation code.
 
+The art-phase Synthesis interpretation remains above this boundary. Current
+ladder names such as Gremlin and Goblin, plus the separate Flynt Gargoyle
+branch, may be rendered as bounded Hueman transformations, while
+Current-Synthesis techniques such as Signal and Brace remain
+world/presentation effects with measurable setup, load, failure, and recovery.
+None of these names or meanings are added to the pure recursion kernel.
+
 ## What art may change
 
 Art work may change sprites, tiles, palettes, animations, sound, layout,
@@ -44,6 +51,11 @@ Federation binding, or protocol ownership requires:
 3. an invariant-audit update;
 4. full Rust validation;
 5. explicit approval before art-facing projections are changed.
+
+The functional-lore role envelope is the first applied additive migration under
+this rule. Its V1→V2 record is documented in
+`FUNCTIONAL_LORE_ARCHIVE_V2_MIGRATION.md`; it changes responsibility metadata,
+not constitutional authority or the neutral recursion kernel.
 
 ## Required validation
 

@@ -172,7 +172,7 @@ infrastructure, Manticorp, recognition, and its institutional hierarchy.
 
 | Shelf | Start with | Scope |
 |---|---|---|
-| Universal meaning | [Semantic Foundation](HOLLOW_GROVE_SEMANTIC_FOUNDATION_V1.md) | Current, Aura, Relativity, Synthesis, Being/Object roots |
+| Universal meaning | [Semantic Foundation](HOLLOW_GROVE_SEMANTIC_FOUNDATION_V1.md), [Metaphysical Balance](HOLLOW_GROVE_METAPHYSICAL_BALANCE_V1_DRAFT.md), [Classification Reconciliation](HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md) | Current, Aura, Relativity, Hollow, Synthesis, Being/Object roots, material pressures, excess, return, and V1 lineage interpretation |
 | Pure recursion kernel | [Kernel v0.1.2](KERNEL_v0.1.2.md), [hollow-grove-recursion-kernel](hollow-grove-recursion-kernel/) | dependency-free, bounded routing grammar; no House, route, character, evidence, or lore authority |
 | Semantic geometry and composition provenance | [hollow-grove-semantic-kernel](hollow-grove-semantic-kernel/), [Constitutional Review](COMPOSITION_PROVENANCE_CONSTITUTIONAL_REVIEW_v0.1.0.md), [Contract Proposal v0.2.0](COMPOSITION_PROVENANCE_CONTRACT_PROPOSAL_v0.2.0.md) | neutral geometry plus identity-preserving composition; separate from recursion and world law |
 | Shared constitutional runtime | [V2 Constitutional Specification](HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md) | identity, evidence, authority, Bonds, lifecycle, replay |
@@ -199,9 +199,9 @@ defines why a route exists.
 
 Glausbahn is the Round road sector: a repeated refinement loop between
 Sandmanor design and Glaüshouse repair. Current Sea is a Straight civic
-concourse between Glaüshouse and Stonebend. Its “sea” is primarily a sea of
-people—dense public contact, competing claims, and ordinary civic pressure—not
-a body of water.
+concourse between Glaüshouse and Stonebend surrounding the distinct Current
+body. Its dense public contact witnesses continuity, but does not replace the
+literal Current Sea body with a metaphorical crowd.
 
 The stable wire name `current-sea.deep-certification-landing` and similarly
 named depth-witness identifiers remain for archive compatibility. Their

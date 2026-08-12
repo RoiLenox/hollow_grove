@@ -47,6 +47,13 @@ There is also a third materially distinct substance:
 
 Current, Hollow, and Aura must not be collapsed into one another.
 
+The additive balance contract in
+`HOLLOW_GROVE_METAPHYSICAL_BALANCE_V1_DRAFT.md` gives these substances shared
+pressures without collapsing them: Current carries memory and wear through
+repetition; Aura creates exposure and pressure through revelation; Relativity
+retains an anchor while bending a frame; Synthesis leaves remainder and
+obligation; Hollow retains provenance through extraction and refinement.
+
 ---
 
 # 2. The Three Primary Substances
@@ -2120,11 +2127,18 @@ The existing vertical ladders remain:
 Gremlin
 → Goblin
 → Ghoul
+→ Spectre
 → Troll
 → Ork
 → Ogre
 → Troglodyte
 ```
+
+For Hueman presentation, these are Synthesis forms: bounded transformations of
+the continuing Hueman, not automatically separate companions or species. Each
+form preserves visible identity anchors, Recipe history, strain, and return
+obligations. A stable regional Gargoyle people remains constitutionally
+distinct from a Hueman's Gargoyle-like Synthesis expression.
 
 ## Aura Frames
 

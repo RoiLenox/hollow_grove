@@ -120,10 +120,10 @@ additional authority source.
   Guide identities, and the singular sequential Seer Ceremony with Continuance
   or Founding beneath the Compromise.
 
-### Active Synthesis Drafts
+### Active Additive Synthesis and Lore Contracts
 
-The following documents guide additive lore and gameplay work without
-superseding locked constitutional authority:
+The following documents and executable seams guide additive lore and gameplay
+work without superseding locked constitutional authority:
 
 - `FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md` defines the proposed
   Pimp/Hoes and Gimp/Goons Boardwalk polarity above locked Flynt and route law;
@@ -132,13 +132,44 @@ superseding locked constitutional authority:
 - `HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md` records the now-executable
   integration contract and the twelve additive lived loops without changing
   locked House law;
-- `HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md` proposes the top-down
-  operational function, role, handoff, refusal, and completion grammar without
-  changing the universal kernel or claiming current runtime enforcement.
+- `HOLLOW_GROVE_METAPHYSICAL_BALANCE_V1_DRAFT.md` records the adopted additive
+  Current/Aura/Relativity/Synthesis/Hollow pressure and return contract without
+  entering the neutral recursion kernel; its filename preserves proposal
+  provenance;
+- `HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md` locks the V1 Sympian,
+  Current, and Aura interpretation without adding executable Frame IDs;
+- `FUNCTIONAL_LORE_ARCHIVE_V2_MIGRATION.md` records the applied role-envelope
+  archive migration and its V1 compatibility rule;
+- `HOLLOW_GROVE_HUEMAN_SYNTHESIS_ART_GRAMMAR_V1.md` defines the presentation
+  grammar linking persistent Hueman trainer/avatar sprites to their Synthesis
+  transformation forms without adding lore or runtime authority;
+- `HUEMAN_SYNTHESIS_PILOT_SPEC_V1.md` defines the first player-Hueman visual
+  slice and its functional Synthesis test forms;
+- `HOLLOW_GROVE_SYNTHESIS_CANON_V1.md` locks the Current, Aura, Synthesis,
+  House-practice, Relativity, and neutral-kernel boundaries;
+- `HOLLOW_GROVE_RECIPE_CONSTITUTION_V1.md` defines evidence-backed Recipe
+  discovery, materials, trials, authority, and maintenance;
+- `HUEMAN_WINGED_GARGOYLE_TREASURE_HUNT_V1.md` specifies the first cross-House
+  Recipe treasure hunt and pilot progression;
+- `HUEMAN_CAPABILITY_TAXONOMY_V1.md` defines scoped kinesis aliases, canonical
+  faculty/root relationships, progression vocabulary, and Recipe-facing fields;
+- `HUEMAN_CURRENT_BODY_AURA_MIND_PROGRESSION_MATRIX_V1.md` defines the paired
+  physical and mental progression axes, Noökinesis, coupled expressions, and
+  pilot acceptance slice;
+- `src/capability_taxonomy.rs` validates the kinesis aliases against the
+  existing faculty authority and `CurrentPowerRoot` / `AuraPowerRoot` law;
+- `src/recipe_discovery.rs` enforces the ordered winged-Gargoyle evidence,
+  confidence, trial, Clearance, unlock, and safe-return gates above the existing
+  executable power-Recipe catalog;
+- `HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md` records the adopted
+  top-down operational function, role, handoff, refusal, and completion grammar;
+  archive schema V2 enforces its functional-lore role envelope without changing
+  the universal kernel.
 
-Drafts may name conflicts, proposals, presentation language, and implementation
-order. They may not create constitutional authority, claim an unavailable
-runtime capability, or silently resolve a disagreement with normative law.
+Items on this shelf may name conflicts, proposals, presentation language, and
+implementation order. They may not create constitutional authority, claim an
+unavailable runtime capability, or silently resolve a disagreement with
+normative law.
 
 ### Descriptive Cultural Ancestry
 
