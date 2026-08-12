@@ -33,6 +33,14 @@ jq -e '
         .form == "tool"
         and ((.members | length) >= 1)
         and all(.members[]; (.key | length) >= 1 and (.map_label | length) >= 1))
+    and .profile_reconciliation.status == "reconciled"
+    and (([.profile_reconciliation.shared_bindings[].chord] | unique | length)
+        == (.profile_reconciliation.shared_bindings | length))
+    and all(.profile_reconciliation.shared_bindings[];
+        (.chord | startswith("Mod+"))
+        and (.semantic_id | length) >= 1
+        and (.allowed_action_fragments | length) >= 1
+        and all(.allowed_action_fragments[]; length >= 1))
     and (([.domain_anchors[].key] | unique | length) == (.domain_anchors | length))
     and (([.domain_anchors[].domain] | unique | length) == (.domain_anchors | length))
     and (([.domain_anchors[].bindings[].chord] | unique | length)
@@ -103,6 +111,48 @@ for config_path in "${config_paths[@]}"; do
         fi
     done < <(jq -r '.domain_anchors[].key' "${registry_path}")
 
+    while IFS= read -r reconciliation_entry; do
+        chord="$(jq -r '.chord' <<<"${reconciliation_entry}")"
+        semantic_id="$(jq -r '.semantic_id' <<<"${reconciliation_entry}")"
+        binding_line="$(awk -v chord="${chord}" '$1 == chord { print }' "${config_path}")"
+        binding_count="$(awk -v chord="${chord}" '$1 == chord { count += 1 } END { print count + 0 }' "${config_path}")"
+        if [[ "${binding_count}" != "1" ]]; then
+            printf '%s: expected exactly one reconciled binding for %s (%s)\n' \
+                "${config_path}" "${chord}" "${semantic_id}" >&2
+            exit 1
+        fi
+
+        action_matched=false
+        while IFS= read -r action_fragment; do
+            if [[ "${binding_line}" == *"${action_fragment}"* ]]; then
+                action_matched=true
+                break
+            fi
+        done < <(jq -r '.allowed_action_fragments[]' <<<"${reconciliation_entry}")
+        if [[ "${action_matched}" != true ]]; then
+            printf '%s: reconciled binding action differs for %s (%s)\n' \
+                "${config_path}" "${chord}" "${semantic_id}" >&2
+            printf 'actual: %s\n' "${binding_line}" >&2
+            exit 1
+        fi
+
+        personal_executable="$(
+            awk '
+                match($0, /spawn "\/home\/[^"]+"/) {
+                    value = substr($0, RSTART, RLENGTH)
+                    sub(/^spawn "/, "", value)
+                    sub(/"$/, "", value)
+                    print value
+                }
+            ' <<<"${binding_line}"
+        )"
+        if [[ -n "${personal_executable}" && ! -x "${personal_executable}" ]]; then
+            printf '%s: reconciled executable is missing or not executable: %s\n' \
+                "${config_path}" "${personal_executable}" >&2
+            exit 1
+        fi
+    done < <(jq -c '.profile_reconciliation.shared_bindings[]' "${registry_path}")
+
     duplicate_chords="$(
         awk '
             $1 ~ /^Mod\+/ { count[$1] += 1 }
@@ -116,3 +166,22 @@ for config_path in "${config_paths[@]}"; do
 
     printf 'keyboard grove valid: %s\n' "${config_path}"
 done
+
+if (( ${#config_paths[@]} > 1 )); then
+    reference_path="${config_paths[0]}"
+    reference_chords="$(
+        awk '$1 ~ /^Mod\+/ || $1 ~ /^XF86/ || $1 == "Print" { print $1 }' \
+            "${reference_path}" | sort
+    )"
+    for comparison_path in "${config_paths[@]:1}"; do
+        comparison_chords="$(
+            awk '$1 ~ /^Mod\+/ || $1 ~ /^XF86/ || $1 == "Print" { print $1 }' \
+                "${comparison_path}" | sort
+        )"
+        if [[ "${comparison_chords}" != "${reference_chords}" ]]; then
+            printf '%s and %s do not expose the same binding chords\n' \
+                "${reference_path}" "${comparison_path}" >&2
+            exit 1
+        fi
+    done
+fi

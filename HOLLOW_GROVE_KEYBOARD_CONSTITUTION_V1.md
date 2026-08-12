@@ -1,8 +1,8 @@
 # Hollow Grove Keyboard Constitution V1
 
-Date: 2026-08-09
+Date: 2026-08-12
 
-Status: official; Steps 1 through 3 locked, later profile-drift reconciliation pending
+Status: official; Steps 1 through 3 locked, personal and General Edition profile semantics reconciled
 
 ## Purpose
 
@@ -174,7 +174,9 @@ without a later admission decision.
 The machine-readable operational projection is
 `packaging/hollow-grove-general/etc/hollow-grove/keyboard-grove.json`. It may
 record this ontology, official anchors, affinities, and canonical overlay
-titles, but it may not create new constitutional meaning. The Markdown
+titles. Its `profile_reconciliation` ledger locks shared chord semantics while
+permitting deployment-specific executable paths, but it may not create new
+constitutional meaning. The Markdown
 constitution remains authoritative when the projection and prose disagree.
 `artifacts/hollow_grove_keyboard_grove_map.svg` and its accessible Markdown
 companion are deterministic visual projections generated from that registry
@@ -229,11 +231,9 @@ The source profiles inspected for this draft are:
 - General Edition: `packaging/hollow-grove-general/etc/skel/.config/niri/config.kdl`
 
 Both contain 214 binding entries after locking Walker to Flynt and removing its
-former Q alias. Of their binding names, 213 match exactly.
-The single name-level difference is in the vertical HJKL conveyor:
-
-- personal: `Mod+Alt+Shift+k`
-- General Edition: `Mod+Ctrl+Shift+k`
+former Q alias. All 214 binding chords now match exactly. Shared chord semantics
+also match for the reconciled Space, HJKL conveyor, and Hueman threshold
+families.
 
 There are also intentional command-path differences: the personal profile
 uses local programs and paths, while the General Edition uses portable Hollow
@@ -288,16 +288,16 @@ destructive meaning should be added here.
 |---|---|---|---|
 | `Mod+Space` | cycle column width forward | adjust usable room | Official Step 2 primary |
 | `Mod+Shift+Space` | cycle column width backward | restore the preceding room | Official Step 2 reverse |
-| `Mod+Ctrl+Space` | set or maximize column width, depending on profile | structural clearance | Keep; reconcile profile expression |
-| `Mod+Ctrl+Shift+Space` | set window height to 25% or 100%, depending on profile | displaced structural clearance | Keep; reconcile profile expression |
+| `Mod+Ctrl+Space` | maximize the focused column | structural clearance | Official shared expression |
+| `Mod+Ctrl+Shift+Space` | set focused window height to 100% | displaced structural clearance | Official shared expression |
 | `Mod+Alt+Space` | expand to available width | occupy the safely available room | Keep |
-| `Mod+Alt+Shift+Space` | set full height or perform Hueman step-spread, depending on profile | alternate presentation clearance | Keep; reconcile profile expression |
-| `Mod+Alt+Ctrl+Space` | maximize column or toggle windowed fullscreen, depending on profile | widen the permitted presentation | Keep; reconcile profile expression |
+| `Mod+Alt+Shift+Space` | perform Hueman step-spread | alternate presentation clearance | Official shared expression with profile-specific launcher |
+| `Mod+Alt+Ctrl+Space` | toggle windowed fullscreen | widen the permitted presentation | Official shared expression |
 | `Mod+Ctrl+Alt+Shift+Space` | set column width to 25% | restore the base quarter-width chamber | Keep |
 
 The Space family is already conceptually Glaüshouse: it cares for the room in
-which the focused window can live. The profiles differ in four expressions,
-but none of those differences requires assigning a new House.
+which the focused window can live. The former four profile differences are
+reconciled to distinct, shared semantics; only executable adaptation differs.
 
 ### Flynt — Grave/Tilde
 
@@ -339,7 +339,7 @@ the family onto an anchor.
 | `Mod+h/j/k/l` | focus left/down/up/right | Flynt/Glaüshouse/Stonebend/Sandmanor spatial diamond | Keep |
 | `Mod+Shift+h/j/k/l` | move left/down/up/right | same spatial diamond with displacement | Keep |
 | `Mod+Ctrl+h/j/k/l` | consume, resize, and expel | same spatial diamond with structural change | Keep |
-| higher-modifier `h/j/k/l` | wrap and transport windows or columns | same spatial diamond across wider scope | Keep; reconcile one K/J profile drift |
+| higher-modifier `h/j/k/l` | wrap and transport windows or columns | same spatial diamond across wider scope | Keep; four-direction conveyor reconciled across profiles |
 | bracket families | focus or move to horizontal edges | Stonebend boundary addressing | Keep |
 | comma/period families | consume, expel, media previous/next, center | Glaüshouse shaping plus Flynt sequence | Keep as paired punctuation |
 | semicolon family | floating/tiling focus and state | Sandmanor comparison of presentation modes | Keep |
@@ -382,28 +382,30 @@ This draft does not impose the Rule of Twelve across every letter row. That
 pattern can become a later optional overlay, but it is not allowed to erase a
 working binding merely to make the keyboard visually regular.
 
-## Reconciliation Queue
+## Reconciliation Lock
 
-Only these items need a decision before implementation:
+Profile reconciliation is complete:
 
-1. Decide whether the personal or General Edition Space expressions become the
-   shared baseline, or document them as intentional profile variants.
-2. Reconcile the HJKL conveyor difference: the General Edition has symmetric
-   `Mod+Ctrl+Shift+h/j/k/l` wrapping, while the personal profile currently uses
-   J/K for stepped height changes and has `Mod+Alt+Shift+k` on the reverse step.
-3. Extend House labels in Niri's hotkey overlay and package documentation after
-   the behavior is settled. The official Flynt Walker binding already carries
-   its label.
+1. The General Edition's distinct Space expressions are the shared baseline.
+2. `Mod+Ctrl+Shift+h/j/k/l` is the symmetric four-direction conveyor in both
+   profiles; `Mod+Ctrl+j/k` retains forward and reverse height cycling.
+3. The personal Hueman bindings use the active repository helpers, while the
+   General Edition uses the portable `hollow-hueman` contract.
+4. The verifier checks the reconciled semantic ledger, identical chord
+   inventory, canonical domain overlays, duplicate chords, executable personal
+   reconciliation paths, deterministic map output, and both Niri profiles.
 
-No existing binding needs to be deleted for V1.
+Future behavioral divergence requires an explicit amendment. Packaging-only
+path or optional-application guards remain ordinary adaptations when they
+preserve the registered semantic action.
 
-## Safe Implementation Order
+## Maintenance Order
 
-1. Exercise the exclusive `Mod+Grave` Walker binding in normal daily use.
-2. Resolve only the Space and HJKL profile drift.
-3. Validate both files with `niri validate` after each change.
-4. Use the portable profile as the USB/ISO source after a short daily-use
-   trial.
+1. Amend this constitution before changing a locked anchor or shared semantic.
+2. Update the registry and both profiles in the same change.
+3. Regenerate the map and run the keyboard verifier against both profiles.
+4. Exercise safe changed bindings in normal use before using the portable
+   profile as an image source.
 
 The personal profile remains the behavioral reference. The General Edition
 may replace hard-coded personal paths with helpers and optional-application

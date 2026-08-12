@@ -225,6 +225,130 @@
       ]
     }
   ],
+  "profile_reconciliation": {
+    "status": "reconciled",
+    "date": "2026-08-12",
+    "policy": "Shared chords carry identical semantics; deployment-specific executable paths may differ.",
+    "shared_bindings": [
+      {
+        "chord": "Mod+Ctrl+Shift+h",
+        "semantic_id": "conveyor.wrap_left",
+        "allowed_action_fragments": [
+          "niri-wrap-move\" \"left"
+        ]
+      },
+      {
+        "chord": "Mod+Ctrl+Shift+j",
+        "semantic_id": "conveyor.wrap_down",
+        "allowed_action_fragments": [
+          "niri-wrap-move\" \"down"
+        ]
+      },
+      {
+        "chord": "Mod+Ctrl+Shift+k",
+        "semantic_id": "conveyor.wrap_up",
+        "allowed_action_fragments": [
+          "niri-wrap-move\" \"up"
+        ]
+      },
+      {
+        "chord": "Mod+Ctrl+Shift+l",
+        "semantic_id": "conveyor.wrap_right",
+        "allowed_action_fragments": [
+          "niri-wrap-move\" \"right"
+        ]
+      },
+      {
+        "chord": "Mod+Space",
+        "semantic_id": "usable_room.cycle_forward",
+        "allowed_action_fragments": [
+          "switch-preset-column-width;"
+        ]
+      },
+      {
+        "chord": "Mod+Shift+Space",
+        "semantic_id": "usable_room.cycle_backward",
+        "allowed_action_fragments": [
+          "switch-preset-column-width-back;"
+        ]
+      },
+      {
+        "chord": "Mod+Ctrl+Space",
+        "semantic_id": "usable_room.maximize_column",
+        "allowed_action_fragments": [
+          "maximize-column;"
+        ]
+      },
+      {
+        "chord": "Mod+Ctrl+Shift+Space",
+        "semantic_id": "usable_room.full_height",
+        "allowed_action_fragments": [
+          "set-window-height \"100%\";"
+        ]
+      },
+      {
+        "chord": "Mod+Alt+Space",
+        "semantic_id": "usable_room.available_width",
+        "allowed_action_fragments": [
+          "expand-column-to-available-width;"
+        ]
+      },
+      {
+        "chord": "Mod+Alt+Ctrl+Space",
+        "semantic_id": "usable_room.windowed_fullscreen",
+        "allowed_action_fragments": [
+          "toggle-windowed-fullscreen;"
+        ]
+      },
+      {
+        "chord": "Mod+Alt+Shift+Space",
+        "semantic_id": "usable_room.hueman_step_spread",
+        "allowed_action_fragments": [
+          "step-hueman-pair-spread.sh",
+          "hollow-hueman\" \"step-spread"
+        ]
+      },
+      {
+        "chord": "Mod+Ctrl+Alt+Shift+Space",
+        "semantic_id": "usable_room.quarter_width_reset",
+        "allowed_action_fragments": [
+          "set-column-width \"25%\";"
+        ]
+      },
+      {
+        "chord": "Mod+Alt+Return",
+        "semantic_id": "hueman.launch",
+        "allowed_action_fragments": [
+          "run-hueman-godot.sh",
+          "hollow-hueman\" \"launch"
+        ]
+      },
+      {
+        "chord": "Mod+Alt+Ctrl+Return",
+        "semantic_id": "hueman.rebind",
+        "allowed_action_fragments": [
+          "rebind-hueman-pair.sh",
+          "hollow-hueman\" \"rebind"
+        ]
+      },
+      {
+        "chord": "Mod+Alt+KP_Enter",
+        "semantic_id": "hueman.launch_keypad_alias",
+        "allowed_action_fragments": [
+          "run-hueman-godot.sh",
+          "hollow-hueman\" \"launch"
+        ]
+      },
+      {
+        "chord": "Mod+Alt+BackSpace",
+        "semantic_id": "hueman.clear",
+        "allowed_action_fragments": [
+          "clear-hueman-pair.sh",
+          "hollow-hueman\" \"clear"
+        ]
+      }
+    ]
+  },
   "admission_policy": {
     "minimum_durable_bindings": 2,
     "allow_empty_branches": true,
