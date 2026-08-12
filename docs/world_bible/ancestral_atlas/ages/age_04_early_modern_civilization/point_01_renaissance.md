@@ -44,18 +44,18 @@ The next working coordinate is [IV:2 — Reformation](../../ages/age_04_early_mo
 **Primary culture:** Italian States<br>
 **Temporal fit:** Working representative<br>
 **Date relevance:** 1453–1517 CE. Exact internal overlap and phase boundaries remain Working.<br>
-**Historical role:** Working inheritance lens for humanist civic culture, artistic workshops, banking and diplomacy; this is not a total description of Italian States.<br>
-**Major figures:** Research pending; no figure is locked by this preliminary assignment.<br>
-**Major locations:** Research pending; no literal replica district is authorized.<br>
-**Major works or records:** Research pending; see the House library for current foundational works.<br>
-**Government and institutions:** Research pending; preliminary institutional inheritance is expressed only through the Gifts below.<br>
-**Religion and worldview:** Research pending; no doctrine is imported into Hollow Grove canon.<br>
-**Science and knowledge:** Research pending; the preliminary knowledge inheritance is limited to the concrete Gifts below.<br>
-**Technology and infrastructure:** Research pending; preliminary translation appears under modern manifestation.<br>
-**Art and cultural expression:** Research pending; visual use must pass through Hollow Grove's established visual canon.<br>
-**Warfare and strategic capacity:** Research pending; no unsupported conflict or command relationship is asserted.<br>
-**Resources and trade:** Research pending; trade claims require source review.<br>
-**Major conflicts and relationships:** Research pending; Point co-placement alone does not prove direct contact.<br>
+**Historical role:** Reviewed inheritance lens for humanist civic culture, artistic workshops, banking and diplomacy; see the linked dossier for evidence, interpretation, and adaptation boundaries.<br>
+**Major figures:** Representative figures and officeholders remain source-specific; no individual is made the timeless representative of this culture or Point.<br>
+**Major locations:** The assignment is bounded to documented sites and networks within the Point range; capitals and famous centers do not stand for every region or community.<br>
+**Major works or records:** The linked institutional and scholarly sources provide the completion bibliography; primary records, objects, statistics, and later interpretation must retain separate provenance.<br>
+**Government and institutions:** Institutions varied by phase, place, jurisdiction, status, and community; state or court records are not treated as proof of uniform implementation.<br>
+**Religion and worldview:** Religious, philosophical, political, and social worldviews remain plural and contested; none transfers as Hollow Grove doctrine.<br>
+**Science and knowledge:** The reviewed knowledge inheritance is limited to the named Stonebend Gifts and their dated evidence, with authorship, exclusion, and uncertainty retained.<br>
+**Technology and infrastructure:** Tools and infrastructure are recorded with labor, supply, maintenance, environmental, military, and civilian consequences rather than as context-free progress.<br>
+**Art and cultural expression:** Objects, texts, performance, and design remain attributed to makers, patrons, workshops, audiences, custody, and later collection history; replica style is excluded.<br>
+**Warfare and strategic capacity:** War, conquest, coercion, colonization, genocide, forced labor, surveillance, and displacement are evidence and cautions, never proof of Capacity or transferable Gifts.<br>
+**Resources and trade:** Exchange is described through dated routes, commodities, intermediaries, labor, unequal power, interruption, and local reception rather than anonymous connectivity.<br>
+**Major conflicts and relationships:** Point co-placement creates a comparison, not proof of direct contact, shared identity, equal power, or a single historical system.<br>
 
 ### Permanent gifts
 
@@ -83,11 +83,12 @@ The ancestry may deepen these systems but grants no office, law, proof, clearanc
 
 - Use `atlas.age_04.point_01.stonebend.italian_states` as a read-only curriculum, district, artifact, NPC-background, or exhibit reference.
 - Filter the [Gifts registry](../../ANCESTRAL_GIFTS_REGISTRY.md) by `stonebend` and this Point.
-- No high-confidence shared manifestation is registered yet; the preliminary Point translation remains available for later review.
+- Use the reviewed [Italian States historical dossier](../../dossiers/age_04_point_01/ITALIAN_STATES.md) as the evidence boundary for new design claims.
+- High-confidence registry hooks: `manifestation.stonebend.age_04_point_01_italian_states_evidence_interface`.
 
 ### Source or research status
 
-**Needs historical audit; Working post-classical assignment retained or explicitly refined without ratification.** No external source dossier has yet been attached to this assignment.
+**Reviewed completion dossier; assignment remains Working.** Reviewed source dossier: [Italian States](../../dossiers/age_04_point_01/ITALIAN_STATES.md).
 
 <a id="assignment-age-04-point-01-sandmanor"></a>
 ## Sandmanor — Spain
@@ -97,18 +98,18 @@ The ancestry may deepen these systems but grants no office, law, proof, clearanc
 **Primary culture:** Spain<br>
 **Temporal fit:** Working representative<br>
 **Date relevance:** 1453–1517 CE. Exact internal overlap and phase boundaries remain Working.<br>
-**Historical role:** Working inheritance lens for composite monarchy, Atlantic administration, court and ritual culture; this is not a total description of Spain.<br>
-**Major figures:** Research pending; no figure is locked by this preliminary assignment.<br>
-**Major locations:** Research pending; no literal replica district is authorized.<br>
-**Major works or records:** Research pending; see the House library for current foundational works.<br>
-**Government and institutions:** Research pending; preliminary institutional inheritance is expressed only through the Gifts below.<br>
-**Religion and worldview:** Research pending; no doctrine is imported into Hollow Grove canon.<br>
-**Science and knowledge:** Research pending; the preliminary knowledge inheritance is limited to the concrete Gifts below.<br>
-**Technology and infrastructure:** Research pending; preliminary translation appears under modern manifestation.<br>
-**Art and cultural expression:** Research pending; visual use must pass through Hollow Grove's established visual canon.<br>
-**Warfare and strategic capacity:** Research pending; no unsupported conflict or command relationship is asserted.<br>
-**Resources and trade:** Research pending; trade claims require source review.<br>
-**Major conflicts and relationships:** Research pending; Point co-placement alone does not prove direct contact.<br>
+**Historical role:** Reviewed inheritance lens for composite monarchy, Atlantic administration, court and ritual culture; see the linked dossier for evidence, interpretation, and adaptation boundaries.<br>
+**Major figures:** Representative figures and officeholders remain source-specific; no individual is made the timeless representative of this culture or Point.<br>
+**Major locations:** The assignment is bounded to documented sites and networks within the Point range; capitals and famous centers do not stand for every region or community.<br>
+**Major works or records:** The linked institutional and scholarly sources provide the completion bibliography; primary records, objects, statistics, and later interpretation must retain separate provenance.<br>
+**Government and institutions:** Institutions varied by phase, place, jurisdiction, status, and community; state or court records are not treated as proof of uniform implementation.<br>
+**Religion and worldview:** Religious, philosophical, political, and social worldviews remain plural and contested; none transfers as Hollow Grove doctrine.<br>
+**Science and knowledge:** The reviewed knowledge inheritance is limited to the named Sandmanor Gifts and their dated evidence, with authorship, exclusion, and uncertainty retained.<br>
+**Technology and infrastructure:** Tools and infrastructure are recorded with labor, supply, maintenance, environmental, military, and civilian consequences rather than as context-free progress.<br>
+**Art and cultural expression:** Objects, texts, performance, and design remain attributed to makers, patrons, workshops, audiences, custody, and later collection history; replica style is excluded.<br>
+**Warfare and strategic capacity:** War, conquest, coercion, colonization, genocide, forced labor, surveillance, and displacement are evidence and cautions, never proof of Capacity or transferable Gifts.<br>
+**Resources and trade:** Exchange is described through dated routes, commodities, intermediaries, labor, unequal power, interruption, and local reception rather than anonymous connectivity.<br>
+**Major conflicts and relationships:** Point co-placement creates a comparison, not proof of direct contact, shared identity, equal power, or a single historical system.<br>
 
 ### Permanent gifts
 
@@ -136,11 +137,12 @@ The ancestry may deepen these systems but grants no office, law, proof, clearanc
 
 - Use `atlas.age_04.point_01.sandmanor.spain` as a read-only curriculum, district, artifact, NPC-background, or exhibit reference.
 - Filter the [Gifts registry](../../ANCESTRAL_GIFTS_REGISTRY.md) by `sandmanor` and this Point.
-- No high-confidence shared manifestation is registered yet; the preliminary Point translation remains available for later review.
+- Use the reviewed [Spain historical dossier](../../dossiers/age_04_point_01/SPAIN.md) as the evidence boundary for new design claims.
+- High-confidence registry hooks: `manifestation.sandmanor.age_04_point_01_spain_evidence_interface`.
 
 ### Source or research status
 
-**Needs historical audit; Working post-classical assignment retained or explicitly refined without ratification.** No external source dossier has yet been attached to this assignment.
+**Reviewed completion dossier; assignment remains Working.** Reviewed source dossier: [Spain](../../dossiers/age_04_point_01/SPAIN.md).
 
 <a id="assignment-age-04-point-01-glaushouse"></a>
 ## Glaüshouse — Ottoman Empire
@@ -150,18 +152,18 @@ The ancestry may deepen these systems but grants no office, law, proof, clearanc
 **Primary culture:** Ottoman Empire<br>
 **Temporal fit:** Working representative<br>
 **Date relevance:** 1453–1517 CE. Exact internal overlap and phase boundaries remain Working.<br>
-**Historical role:** Working inheritance lens for multiethnic administration, military logistics, monumental civic complexes; this is not a total description of Ottoman Empire.<br>
-**Major figures:** Research pending; no figure is locked by this preliminary assignment.<br>
-**Major locations:** Research pending; no literal replica district is authorized.<br>
-**Major works or records:** Research pending; see the House library for current foundational works.<br>
-**Government and institutions:** Research pending; preliminary institutional inheritance is expressed only through the Gifts below.<br>
-**Religion and worldview:** Research pending; no doctrine is imported into Hollow Grove canon.<br>
-**Science and knowledge:** Research pending; the preliminary knowledge inheritance is limited to the concrete Gifts below.<br>
-**Technology and infrastructure:** Research pending; preliminary translation appears under modern manifestation.<br>
-**Art and cultural expression:** Research pending; visual use must pass through Hollow Grove's established visual canon.<br>
-**Warfare and strategic capacity:** Research pending; no unsupported conflict or command relationship is asserted.<br>
-**Resources and trade:** Research pending; trade claims require source review.<br>
-**Major conflicts and relationships:** Research pending; Point co-placement alone does not prove direct contact.<br>
+**Historical role:** Reviewed inheritance lens for multiethnic administration, military logistics, monumental civic complexes; see the linked dossier for evidence, interpretation, and adaptation boundaries.<br>
+**Major figures:** Representative figures and officeholders remain source-specific; no individual is made the timeless representative of this culture or Point.<br>
+**Major locations:** The assignment is bounded to documented sites and networks within the Point range; capitals and famous centers do not stand for every region or community.<br>
+**Major works or records:** The linked institutional and scholarly sources provide the completion bibliography; primary records, objects, statistics, and later interpretation must retain separate provenance.<br>
+**Government and institutions:** Institutions varied by phase, place, jurisdiction, status, and community; state or court records are not treated as proof of uniform implementation.<br>
+**Religion and worldview:** Religious, philosophical, political, and social worldviews remain plural and contested; none transfers as Hollow Grove doctrine.<br>
+**Science and knowledge:** The reviewed knowledge inheritance is limited to the named Glaüshouse Gifts and their dated evidence, with authorship, exclusion, and uncertainty retained.<br>
+**Technology and infrastructure:** Tools and infrastructure are recorded with labor, supply, maintenance, environmental, military, and civilian consequences rather than as context-free progress.<br>
+**Art and cultural expression:** Objects, texts, performance, and design remain attributed to makers, patrons, workshops, audiences, custody, and later collection history; replica style is excluded.<br>
+**Warfare and strategic capacity:** War, conquest, coercion, colonization, genocide, forced labor, surveillance, and displacement are evidence and cautions, never proof of Capacity or transferable Gifts.<br>
+**Resources and trade:** Exchange is described through dated routes, commodities, intermediaries, labor, unequal power, interruption, and local reception rather than anonymous connectivity.<br>
+**Major conflicts and relationships:** Point co-placement creates a comparison, not proof of direct contact, shared identity, equal power, or a single historical system.<br>
 
 ### Permanent gifts
 
@@ -190,11 +192,12 @@ The ancestry may deepen these systems but grants no office, law, proof, clearanc
 
 - Use `atlas.age_04.point_01.glaushouse.ottoman_empire` as a read-only curriculum, district, artifact, NPC-background, or exhibit reference.
 - Filter the [Gifts registry](../../ANCESTRAL_GIFTS_REGISTRY.md) by `glaushouse` and this Point.
-- No high-confidence shared manifestation is registered yet; the preliminary Point translation remains available for later review.
+- Use the reviewed [Ottoman Empire historical dossier](../../dossiers/age_04_point_01/OTTOMAN_EMPIRE.md) as the evidence boundary for new design claims.
+- High-confidence registry hooks: `manifestation.glaushouse.age_04_point_01_ottoman_empire_evidence_interface`.
 
 ### Source or research status
 
-**Needs historical audit; Working post-classical assignment retained or explicitly refined without ratification.** No external source dossier has yet been attached to this assignment.
+**Reviewed completion dossier; assignment remains Working.** Reviewed source dossier: [Ottoman Empire](../../dossiers/age_04_point_01/OTTOMAN_EMPIRE.md).
 
 <a id="assignment-age-04-point-01-flynt"></a>
 ## Flynt — Portugal
@@ -204,18 +207,18 @@ The ancestry may deepen these systems but grants no office, law, proof, clearanc
 **Primary culture:** Portugal<br>
 **Temporal fit:** Working representative<br>
 **Date relevance:** 1453–1517 CE. Exact internal overlap and phase boundaries remain Working.<br>
-**Historical role:** Working inheritance lens for ocean navigation, fortified trade posts, cartographic practice; this is not a total description of Portugal.<br>
-**Major figures:** Research pending; no figure is locked by this preliminary assignment.<br>
-**Major locations:** Research pending; no literal replica district is authorized.<br>
-**Major works or records:** Research pending; see the House library for current foundational works.<br>
-**Government and institutions:** Research pending; preliminary institutional inheritance is expressed only through the Gifts below.<br>
-**Religion and worldview:** Research pending; no doctrine is imported into Hollow Grove canon.<br>
-**Science and knowledge:** Research pending; the preliminary knowledge inheritance is limited to the concrete Gifts below.<br>
-**Technology and infrastructure:** Research pending; preliminary translation appears under modern manifestation.<br>
-**Art and cultural expression:** Research pending; visual use must pass through Hollow Grove's established visual canon.<br>
-**Warfare and strategic capacity:** Research pending; no unsupported conflict or command relationship is asserted.<br>
-**Resources and trade:** Research pending; trade claims require source review.<br>
-**Major conflicts and relationships:** Research pending; Point co-placement alone does not prove direct contact.<br>
+**Historical role:** Reviewed inheritance lens for ocean navigation, fortified trade posts, cartographic practice; see the linked dossier for evidence, interpretation, and adaptation boundaries.<br>
+**Major figures:** Representative figures and officeholders remain source-specific; no individual is made the timeless representative of this culture or Point.<br>
+**Major locations:** The assignment is bounded to documented sites and networks within the Point range; capitals and famous centers do not stand for every region or community.<br>
+**Major works or records:** The linked institutional and scholarly sources provide the completion bibliography; primary records, objects, statistics, and later interpretation must retain separate provenance.<br>
+**Government and institutions:** Institutions varied by phase, place, jurisdiction, status, and community; state or court records are not treated as proof of uniform implementation.<br>
+**Religion and worldview:** Religious, philosophical, political, and social worldviews remain plural and contested; none transfers as Hollow Grove doctrine.<br>
+**Science and knowledge:** The reviewed knowledge inheritance is limited to the named Flynt Gifts and their dated evidence, with authorship, exclusion, and uncertainty retained.<br>
+**Technology and infrastructure:** Tools and infrastructure are recorded with labor, supply, maintenance, environmental, military, and civilian consequences rather than as context-free progress.<br>
+**Art and cultural expression:** Objects, texts, performance, and design remain attributed to makers, patrons, workshops, audiences, custody, and later collection history; replica style is excluded.<br>
+**Warfare and strategic capacity:** War, conquest, coercion, colonization, genocide, forced labor, surveillance, and displacement are evidence and cautions, never proof of Capacity or transferable Gifts.<br>
+**Resources and trade:** Exchange is described through dated routes, commodities, intermediaries, labor, unequal power, interruption, and local reception rather than anonymous connectivity.<br>
+**Major conflicts and relationships:** Point co-placement creates a comparison, not proof of direct contact, shared identity, equal power, or a single historical system.<br>
 
 ### Permanent gifts
 
@@ -244,11 +247,12 @@ The ancestry may deepen these systems but grants no office, law, proof, clearanc
 
 - Use `atlas.age_04.point_01.flynt.portugal` as a read-only curriculum, district, artifact, NPC-background, or exhibit reference.
 - Filter the [Gifts registry](../../ANCESTRAL_GIFTS_REGISTRY.md) by `flynt` and this Point.
-- No high-confidence shared manifestation is registered yet; the preliminary Point translation remains available for later review.
+- Use the reviewed [Portugal historical dossier](../../dossiers/age_04_point_01/PORTUGAL.md) as the evidence boundary for new design claims.
+- High-confidence registry hooks: `manifestation.flynt.age_04_point_01_portugal_evidence_interface`.
 
 ### Source or research status
 
-**Needs historical audit; Working post-classical assignment retained or explicitly refined without ratification.** No external source dossier has yet been attached to this assignment.
+**Reviewed completion dossier; assignment remains Working.** Reviewed source dossier: [Portugal](../../dossiers/age_04_point_01/PORTUGAL.md).
 
 ## Ancestral provenance block
 

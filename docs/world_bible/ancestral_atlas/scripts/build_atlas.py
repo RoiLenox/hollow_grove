@@ -768,6 +768,7 @@ MANIFESTATIONS = {
         ("reform_jurisdiction_concordance", "Reform Jurisdiction Concordance", ["layered sovereignty", "municipal and legal plurality", "guild traditions"], ["Holy Roman Empire", "Holy Roman Empire", "Holy Roman Empire"], "institution", "A Stonebend register compares office, law, territory, church, city, guild, claim, dispute, and settlement through reform and imperial conflict.", "Law of Identity, permanence, Presynce, and bounded Claim / Title / Yield", "existing Stonebend public-record, works, education, or standards program", "reform-jurisdiction curator", "office and legal provenance, territory, church and city scope, guild, dispute, settlement, and revision", [(3, 5)]),
         ("mongol_era_jurisdiction_register", "Mongol-Era Jurisdiction Register", ["layered sovereignty", "municipal and legal plurality", "guild traditions"], ["Holy Roman Empire"] * 3, "institution", "A public register compares emperor, prince, bishop, city, guild, court, and service scope during the Mongol-era coordinate.", "Law of Identity, permanence, Presynce, and bounded Claim / Title / Yield", "existing Stonebend archive and civic-works program", "jurisdiction registrar", "office, forum, craft, dispute, settlement, and revision references", [(3, 6, "A")]),
         ("khanate_era_jurisdiction_register", "Khanate-Era Jurisdiction Register", ["layered sovereignty", "municipal and legal plurality", "guild traditions"], ["Holy Roman Empire"] * 3, "institution", "A public register compares emperor, prince, bishop, city, guild, court, and service scope during the late-medieval khanate and Yuan coordinate.", "Law of Identity, permanence, Presynce, and bounded Claim / Title / Yield", "existing Stonebend archive and civic-works program", "jurisdiction registrar", "office, forum, craft, dispute, settlement, and revision references", [(3, 6, "B")]),
+        ("late_medieval_electoral_civic_register", "Late Medieval Electoral and Civic Register", ["layered sovereignty", "municipal and legal plurality", "guild traditions"], ["Holy Roman Empire"] * 3, "institution", "A public register separates election, office, principality, bishopric, city, guild, council, dispute, and service scope across the late medieval Empire.", "Law of Identity, permanence, Presynce, and bounded Claim / Title / Yield", "existing Stonebend archive and civic-works program", "electoral-civic provenance registrar", "election, office, forum, city, guild, council, conflict, and revision references", [(3, 7)]),
     ],
     "Sandmanor": [
         ("ceremonial_garden_court", "Ceremonial Garden Court", ["royal titulary and emblematic identity", "ceremonial image-language", "court ritual and commemorative practice"], ["Early Dynastic Egypt", "Early Dynastic Egypt", "Early Dynastic Egypt"], "ritual", "A planted public court for accountable presentation, commemoration, testimony, and negotiated identity under existing Sandmanor authority.", "Law of Pattern, Prefog / Prefig, and existing Court limits", "existing Sandmanor court or library precinct", "ceremonial interpreter", "cultural-memory exhibit, hearing presentation, and provenance-aware event reference", [(1, 1)]),
@@ -794,6 +795,7 @@ MANIFESTATIONS = {
         ("frontier_contact_pilgrimage_forum", "Frontier Contact and Pilgrimage Forum", ["frontier fortification", "cross-cultural contact", "pilgrimage logistics"], ["Crusader States", "Crusader States", "Crusader States"], "institution", "A Sandmanor setting tracks party, route, language, law, faith, trade, coercion, accommodation, and memory without romanticizing crusade.", "Law of Pattern, Prefog / Prefig, consent, Court and Restitution, and bounded Proof", "existing Sandmanor cultural-memory, library, theater, or diplomacy program", "frontier-contact curator", "party and route provenance, language, law, pilgrimage, trade, coercion, accommodation, and reception", [(3, 5)]),
         ("mongol_relay_memory_forum", "Mongol Relay and Memory Forum", ["continental logistics", "relay communications", "mobile command"], ["Mongol Empire"] * 3, "institution", "A source-aware forum maps routes, messengers, commands, hosts, coercion, and local memory across Mongol expansion.", "Law of Pattern, Prefog / Prefig, consent, Court and Restitution, and bounded Proof", "existing Sandmanor cultural-memory and diplomacy program", "relay-memory curator", "route, messenger, command, host, risk, and reception references", [(3, 6, "A")]),
         ("successor_diplomacy_forum", "Successor Khanate Diplomacy Forum", ["continental logistics", "relay communications", "plural successor diplomacy"], ["Mongol Khanates"] * 3, "institution", "A source-aware forum maps successor courts, routes, messengers, kinship, rivalry, tribute, and local memory without restoring a unified empire.", "Law of Pattern, Prefog / Prefig, consent, Court and Restitution, and bounded Proof", "existing Sandmanor cultural-memory and diplomacy program", "successor-diplomacy curator", "party, route, messenger, kinship, treaty, risk, and reception references", [(3, 6, "B")]),
+        ("humanist_workshop_commons", "Humanist Workshop Commons", ["civic humanism", "workshop and patronage systems", "urban design"], ["Renaissance Italy"] * 3, "institution", "A public design commons keeps text, commission, patron, maker, workshop, material, site, audience, exclusion, and revision visible across plural Italian cities.", "Law of Pattern, Prefog / Prefig, consent, Court and Restitution, and bounded Proof", "existing Sandmanor library, design, cultural-memory, and public-space program", "humanist-workshop provenance curator", "text, patronage, maker, commission, workshop, site, audience, dispute, and reception references", [(3, 7)]),
     ],
     "Glaüshouse": [
         ("living_water_conservatory", "Living Water Conservatory", ["planned settlement organization", "water management across long-lived settlements", "emerging craft and measurement standardization"], ["Early Indus Civilization", "Early Indus Civilization", "Early Indus Civilization"], "institution", "A modern water-quality, botanical recovery, and infrastructure-learning conservatory that makes maintenance legible as preventive care.", "Law of Integrity, Chromacord, and Recovery Ward boundaries", "existing Glaüshouse care or library campus", "water-systems conservator", "water-quality curriculum, maintenance provenance, and recovery-route reference", [(1, 1)]),
@@ -820,6 +822,7 @@ MANIFESTATIONS = {
         ("comnenian_continuity_rupture_conservatory", "Comnenian Continuity and Rupture Conservatory", ["legal and administrative continuity", "diplomatic and frontier recovery", "archive and urban maintenance"], ["Byzantine Empire", "Byzantine Empire", "Byzantine Empire"], "institution", "A Glaüshouse environment separates law, city, archive, frontier, object, treaty, damage, and successor custody through Comnenian recovery and 1204.", "Law of Integrity, Precog, Chromacord, Recovery Ward, consent, and Clearance boundaries", "existing Glaüshouse conservation, library, clinical-memory, or environmental-service program", "Comnenian-continuity curator", "law and archive provenance, city, frontier, treaty, damage, restoration, and successor custody", [(3, 5)]),
         ("song_print_water_conservatory", "Song Print and Water Conservatory", ["printing and scholarship", "hydraulic and urban systems", "maritime and overland exchange"], ["Song China"] * 3, "institution", "A care and research conservatory joins print provenance, water service, urban maintenance, and route exchange without claiming an intact Song institution.", "Law of Integrity, Precog, Chromacord, Recovery Ward, consent, and Clearance boundaries", "existing Glaüshouse care, library, and ecology program", "Song-systems conservator", "edition, water, service, route, custody, and recovery references", [(3, 6, "A")]),
         ("yuan_exchange_conservatory", "Yuan Exchange and Urban Systems Conservatory", ["printing and scholarship", "hydraulic and urban systems", "cross-Eurasian exchange"], ["Yuan China"] * 3, "institution", "A care and research conservatory joins print provenance, water service, urban maintenance, and Eurasian exchange without claiming a seamless Yuan institution.", "Law of Integrity, Precog, Chromacord, Recovery Ward, consent, and Clearance boundaries", "existing Glaüshouse care, library, and ecology program", "Yuan-systems conservator", "edition, water, service, route, custody, and recovery references", [(3, 6, "B")]),
+        ("ming_restoration_craft_conservatory", "Ming Restoration and Craft Conservatory", ["examination bureaucracy", "maritime and overland logistics", "urban craft production"], ["Ming China"] * 3, "institution", "A care and research conservatory connects curriculum, office, route, vessel, workshop, material, batch, maintenance, and access while keeping early Ming hierarchy and labor visible.", "Law of Integrity, Precog, Chromacord, Recovery Ward, consent, and Clearance boundaries", "existing Glaüshouse care, library, craft, and ecology program", "Ming systems conservator", "curriculum, office, route, vessel, workshop, material, custody, maintenance, and access references", [(3, 7)]),
     ],
     "Flynt": [
         ("frontier_foundry", "Frontier Foundry", ["highland-lowland exchange logistics", "tablet-and-seal accounting", "distributed craft and storage coordination"], ["Elam", "Elam", "Elam"], "institution", "A repair, fabrication, storage, and dispatch hub for keeping tools and routes usable across changing terrain and supply conditions.", "Law of Capacity, Tross command boundaries, Wardens, and Resynce", "existing Flynt workshop or route-support district", "field systems maintainer", "repair provenance, logistics handoffs, equipment history, and pressure-test references", [(1, 1)]),
@@ -846,6 +849,7 @@ MANIFESTATIONS = {
         ("seljuk_route_capacity_interface", "Seljuk Route and Capacity Interface", ["mounted military power", "Persianate administration", "caravan routes"], ["Seljuk Turks", "Seljuk Turks", "Seljuk Turks"], "interface", "A Flynt system tracks mount, supply, city, caravan, office, treaty, local authority, and civilian risk without importing conquest or command.", "Law of Capacity, Resynce, Tross, Wardens, refusal, safety, and care-handoff boundaries", "existing Flynt logistics, route, planning, intelligence-literacy, or after-action program", "Seljuk-capacity auditor", "mount and supply, city and caravan, office, treaty, local authority, civilian risk, and fallback", [(3, 5)]),
         ("mamluk_endowment_route_interface", "Mamluk Route and Endowment Interface", ["military household state", "fortified trade routes", "institutional endowments"], ["Mamluk Sultanate"] * 3, "interface", "A Flynt system records household command, fortified routes, waqf assets, beneficiaries, maintenance, and civilian dependency without importing sultanate authority.", "Law of Capacity, Resynce, Tross, Wardens, refusal, safety, and care-handoff boundaries", "existing Flynt logistics, route, planning, and after-action program", "endowment-route auditor", "household, fortification, waqf, cargo, beneficiary, maintenance, and fallback references", [(3, 6, "A")]),
         ("mamluk_consolidation_route_interface", "Mamluk Consolidation and Endowment Interface", ["military household state", "fortified trade routes", "institutional endowments"], ["Mamluk Sultanate"] * 3, "interface", "A Flynt system records household succession, fortified routes, waqf assets, beneficiaries, maintenance, and civilian dependency without importing sultanate authority.", "Law of Capacity, Resynce, Tross, Wardens, refusal, safety, and care-handoff boundaries", "existing Flynt logistics, route, planning, and after-action program", "consolidation auditor", "household, fortification, waqf, cargo, beneficiary, maintenance, and fallback references", [(3, 6, "B")]),
+        ("constantinople_transition_capacity_lab", "Constantinople Transition Capacity Lab", ["multiethnic administration", "military logistics", "monumental civic complexes"], ["Ottoman Empire"] * 3, "interface", "A non-triumphal operations lab separates office, community, route, supply, vassalage, defeat, interregnum, consolidation, siege, service, and civilian consequence through the 1453 transition.", "Law of Capacity, Resynce, Tross, Wardens, refusal, safety, and care-handoff boundaries", "existing Flynt logistics, route, planning, and after-action program", "transition-capacity auditor", "office, community, route, supply, failure, siege, service, civilian risk, and fallback references", [(3, 7)]),
     ],
 }
 
@@ -1930,6 +1934,78 @@ AGE_III_POINT_V_DOSSIERS = {
 }
 
 
+AGE_III_POINT_VII_DOSSIERS = {
+    "Stonebend": {
+        "culture": "Holy Roman Empire",
+        "file": "HOLY_ROMAN_EMPIRE_ELECTORS_CITIES_AND_COUNCILS_1368_1453.md",
+        "status": "Reviewed dossier; assignment remains Working",
+        "overview": "The late medieval Empire remained an elective and layered polity of king or emperor, prince-electors, other princes, bishops, cities, estates, and local jurisdictions. The Golden Bull shaped succession while councils, the Hussite wars, dynastic changes, and urban institutions exposed both coordination and fracture.",
+        "figures": "Charles IV, Wenceslaus, Rupert, Sigismund, Albert II, Frederick III, Jan Hus, electors, princes, bishops, city councils, guild members, jurists, soldiers, and local communities belong to different institutional and evidentiary settings.",
+        "locations": "Prague, Nuremberg, Frankfurt, Aachen, Constance, Basel, Bohemia, the Rhine, imperial and free cities, principalities, bishoprics, and rural communities.",
+        "records": "The Golden Bull, imperial diplomas, city statutes, guild and council records, council acts, chronicles, legal manuscripts, coins, seals, buildings, and archaeology preserve unequal perspectives.",
+        "government": "Elective monarchy, prince-electors, territorial princes, ecclesiastical lords, cities, estates, courts, and local custom formed overlapping jurisdictions rather than one centralized administration.",
+        "worldview": "Latin Christianity, reform movements, Hussite communities, Jewish communities, urban devotion, monastic institutions, and local practices interacted amid persecution and conflict.",
+        "knowledge": "Canon and civil law, university learning, diplomacy, accounting, manuscript production, craft regulation, and council procedure circulated through courts, cities, churches, and schools.",
+        "technology": "Roads, rivers, bridges, walls, workshops, mills, mines, mints, scriptoria, and urban service systems depended on local labor, finance, and maintenance.",
+        "art": "Manuscripts, churches, civic halls, sculpture, metalwork, seals, coins, and public ritual expressed imperial, princely, ecclesiastical, civic, and guild identities.",
+        "warfare": "The Hussite wars, feuds, crusading campaigns, dynastic conflict, siege, taxation, expulsion, and anti-Jewish violence imposed severe and uneven costs.",
+        "trade": "Grain, salt, wine, textiles, metals, books, coin, craft goods, and information moved through cities, fairs, river routes, and regional networks.",
+        "relationships": "Imperial actors negotiated with papacy, councils, Bohemian estates, Italian cities, neighboring kingdoms, Ottoman-facing Hungary, Jewish communities, and local polities through law, diplomacy, trade, reform, and war.",
+    },
+    "Sandmanor": {
+        "culture": "Renaissance Italy",
+        "file": "RENAISSANCE_ITALY_HUMANISM_WORKSHOPS_AND_CIVIC_PATRONAGE_1368_1453.md",
+        "status": "Reviewed plural-city dossier; assignment remains Working",
+        "overview": "Florence, Venice, Milan, Siena, Ferrara, Rome, and other Italian centers developed distinct civic, courtly, mercantile, religious, and artistic systems. Humanism, workshop practice, patronage, and urban design grew through rivalry and exchange, not through one unified Renaissance Italy.",
+        "figures": "Petrarch's later reception, Coluccio Salutati, Leonardo Bruni, Cosimo de' Medici, Brunelleschi, Ghiberti, Donatello, Masaccio, Fra Angelico, Alberti, patrons, guilds, booksellers, artisans, assistants, women in households and workshops, and urban laborers require distinct attribution.",
+        "locations": "Florence, Venice, Milan, Siena, Ferrara, Rome, Padua, Mantua, workshops, guild halls, churches, palaces, markets, libraries, streets, and building sites.",
+        "records": "Humanist manuscripts, letters, civic histories, contracts, account books, guild records, workshop drawings, inscriptions, buildings, paintings, sculpture, and material analysis support different claims.",
+        "government": "Republics, oligarchies, signorie, duchies, papal government, guilds, confraternities, courts, and neighborhood institutions distributed authority unevenly.",
+        "worldview": "Latin Christianity, humanist study of antiquity, civic memory, family devotion, monastic practice, Jewish communities, and classical reception interacted without replacing one another.",
+        "knowledge": "Philology, rhetoric, history, perspective, proportion, architecture, bookkeeping, manuscript production, and craft apprenticeship developed through schools, chanceries, libraries, and workshops.",
+        "technology": "Masonry, domes, scaffolding, perspective instruments, pigments, bronze casting, paper, parchment, presses and book trades at the late boundary, canals, and urban works depended on specialized labor.",
+        "art": "Painting, sculpture, architecture, illuminated manuscripts, textiles, metalwork, public festivals, and domestic objects linked design to devotion, civic identity, patronage, and status.",
+        "warfare": "Inter-city war, mercenary companies, siege, faction, territorial expansion, taxation, and displacement shaped patronage and civic claims; artistic achievement does not erase coercion.",
+        "trade": "Banking, wool, silk, pigments, metals, paper, books, grain, luxury goods, and information connected Italian cities to Mediterranean and European networks.",
+        "relationships": "Italian polities engaged one another, the papacy, the Holy Roman Empire, Byzantium, Ottoman and Mamluk routes, northern Europe, and Mediterranean merchants through diplomacy, finance, study, patronage, trade, and war.",
+    },
+    "Glaüshouse": {
+        "culture": "Ming China",
+        "file": "MING_CHINA_RESTORATION_CAPITALS_CRAFT_AND_EXCHANGE_1368_1453.md",
+        "status": "Reviewed early-dynasty dossier; assignment remains Working",
+        "overview": "Early Ming rulers rebuilt central institutions after Yuan rule, moved the primary capital from Nanjing to Beijing, sponsored court production and major building, and operated maritime and overland networks. Restoration and expansion coexisted with hierarchy, forced labor, frontier war, and policy reversal.",
+        "figures": "Hongwu, Jianwen, Yongle, Hongxi, Xuande, Zhengtong, Zheng He, officials, examination candidates, soldiers, sailors, artisans, farmers, merchants, religious communities, and frontier peoples belong to different records.",
+        "locations": "Nanjing, Beijing, the Forbidden City, Jingdezhen, the Grand Canal, Yangzi regions, Fujian, Yunnan, northern frontiers, ports, shipyards, kilns, workshops, and Indian Ocean routes.",
+        "records": "Ming official histories, administrative codes, gazetteers, inscriptions, maps, court and examination records, ceramics, paintings, buildings, ship and voyage evidence, archaeology, and foreign accounts require source-specific reading.",
+        "government": "Emperor, central ministries, provincial and county offices, examination institutions, military households, eunuch agencies, local elites, temples, and communities held unequal and changing responsibilities.",
+        "worldview": "Confucian state learning, Buddhism, Daoism, local cults, Islam, Christianity at the margins, family rites, and court ritual coexisted under changing regulation.",
+        "knowledge": "Classical study, examinations, law, calendrics, medicine, cartography, navigation, hydraulics, agriculture, painting, and craft standards circulated through offices, schools, temples, and workshops.",
+        "technology": "Canals, dikes, ships, dockyards, roads, walls, palaces, printing, porcelain kilns, lacquer, textiles, metalwork, and water systems required extensive labor and maintenance.",
+        "art": "Court painting, scholar painting, calligraphy, porcelain, lacquer, cloisonné, textiles, architecture, and religious objects joined restored Chinese traditions to continuing regional and West Asian exchange.",
+        "warfare": "Dynastic founding war, campaigns in Yunnan and the north, the 1402 civil war, frontier garrisons, naval power, forced relocation, and the 1449 Tumu crisis affected communities and state capacity.",
+        "trade": "Porcelain, silk, metals, grain, horses, books, tribute goods, maritime cargo, and information moved through canals, ports, embassies, frontier markets, and Indian Ocean voyages.",
+        "relationships": "Ming institutions engaged Mongol polities, Korea, Japan, Southeast Asia, Central and South Asian courts, Muslim merchants, tributary envoys, and local frontier communities through diplomacy, trade, war, migration, and exchange.",
+    },
+    "Flynt": {
+        "culture": "Ottoman Empire",
+        "file": "OTTOMAN_EMPIRE_BALKAN_ANATOLIAN_SYSTEMS_AND_1453_TRANSITION.md",
+        "status": "Reviewed expansion-and-transition dossier; assignment remains Working",
+        "overview": "From the late fourteenth century to 1453, Ottoman rulers joined Anatolian and Balkan territories through conquest, diplomacy, vassalage, taxation, military households, cities, roads, and religious endowments. The 1402 defeat and interregnum exposed fragility before renewed consolidation and the conquest of Constantinople.",
+        "figures": "Murad I, Bayezid I, Timur as an external conqueror, Mehmed I, Murad II, Mehmed II, commanders, judges, administrators, religious patrons, artisans, soldiers, merchants, peasants, captives, and Byzantine and Balkan communities require separate records.",
+        "locations": "Bursa, Edirne, Gallipoli, Ankara, Kosovo, Thessaloniki, the Danube frontier, Anatolian principalities, Balkan towns, roads, fortresses, and Constantinople.",
+        "records": "Ottoman chronicles, tax and endowment records, coins, inscriptions, architecture, Byzantine, Venetian, Serbian, Hungarian, and other accounts, archaeology, and later dynastic histories carry different biases.",
+        "government": "Sultan, dynasty, military households, frontier lords, judges, provincial officers, vassals, cities, villages, religious foundations, and local communities held changing and unequal authority.",
+        "worldview": "Sunni Islam, Sufi networks, Byzantine Christianity, Orthodox churches, Jewish communities, Balkan and Anatolian local practices, frontier ideology, and dynastic claims interacted.",
+        "knowledge": "Law, administration, languages, diplomacy, surveying, siegecraft, medicine, architecture, route intelligence, and fiscal recordkeeping circulated through courts, towns, armies, and religious institutions.",
+        "technology": "Roads, bridges, fortresses, ships, artillery, siege works, workshops, markets, mosques, churches, baths, kitchens, and endowed complexes supported both service and war.",
+        "art": "Mosques, tombs, calligraphy, manuscripts, textiles, ceramics, metalwork, coins, reused Byzantine forms, and urban patronage developed a plural early Ottoman vocabulary.",
+        "warfare": "Conquest, siege, forced movement, slavery, tribute, civil war, the 1402 defeat, the interregnum, Balkan campaigns, and the 1453 assault imposed civilian and institutional costs.",
+        "trade": "Grain, livestock, textiles, metals, timber, weapons, coin, captives, books, and information moved across Anatolian, Balkan, Black Sea, Aegean, and Mediterranean routes.",
+        "relationships": "Ottoman actors engaged Byzantium, Venice, Genoa, Serbia, Bulgaria, Wallachia, Hungary, Anatolian principalities, the Timurids, Mamluks, and local Christian, Muslim, and Jewish communities through conquest, vassalage, diplomacy, trade, and settlement.",
+    },
+}
+
+
 REVIEWED_DOSSIERS = {
     (1, 1): POINT_I_DOSSIERS,
     (1, 2): POINT_II_DOSSIERS,
@@ -1955,6 +2031,7 @@ REVIEWED_DOSSIERS = {
     (3, 5): AGE_III_POINT_V_DOSSIERS,
     (3, 6, "A"): AGE_III_POINT_VI_DOSSIERS,
     (3, 6, "B"): AGE_III_POINT_VI_B_DOSSIERS,
+    (3, 7): AGE_III_POINT_VII_DOSSIERS,
 }
 
 
@@ -2340,6 +2417,18 @@ AGE_III_POINT_VI_B_GIFT_REVIEWS = {
     "institutional endowments": ("Waqf endowments supported mosques, schools, hospitals, fountains, roads, and other public services across changing custodians.", "Flynt preserves founder claim, endowed asset, custodian, beneficiaries, labor, alteration, and current authority."),
 }
 
+AGE_III_POINT_VII_GIFT_REVIEWS = {
+    "civic humanism": ("Florentine and other Italian chanceries, schools, manuscripts, civic histories, and public commissions connected classical rhetoric and history to urban political identity, though participation remained unequal and often oligarchic.", "Sandmanor records speaker, audience, office, source text, civic claim, excluded group, patronage, and later reception without treating humanism as automatic liberty."),
+    "workshop and patronage systems": ("Artists, artisans, apprentices, guilds, booksellers, religious institutions, courts, households, and civic patrons organized collaborative production through contracts, accounts, materials, models, and reputation.", "Sandmanor preserves maker roles, commission, material custody, revision, payment, attribution, audience, and power asymmetry instead of reducing work to a single master name."),
+    "urban design": ("Italian cities adapted streets, churches, hospitals, guild buildings, palaces, walls, water, and public spaces through locally financed projects and specialized craft knowledge.", "Sandmanor maps site, public purpose, patron, designer, labor, access, maintenance, dispute, and later alteration without authorizing a replica city."),
+    "examination bureaucracy": ("Early Ming rulers rebuilt central and local offices and classical examination institutions while court, eunuch, military-household, provincial, and local powers remained distinct.", "Glaüshouse records curriculum, candidate status, examiner, office scope, record custody, appeal, exclusion, and service outcome without treating examination success as Integrity or present authority."),
+    "maritime and overland logistics": ("The Grand Canal, roads, frontier routes, ports, shipyards, envoys, tribute missions, and early fifteenth-century voyages moved grain, goods, people, and information through unequal labor and command systems.", "Glaüshouse maps route, vessel, cargo, labor, intermediary, jurisdiction, maintenance, risk, interruption, and alternate path while keeping coercion and policy reversal visible."),
+    "urban craft production": ("Court and regional workshops produced porcelain, lacquer, cloisonné, textiles, painting, printing, and architectural components through standards, skilled labor, material networks, and changing patronage.", "Glaüshouse tracks workshop, maker, material, design source, batch, quality, custody, repair, and access without converting court standards into clinical or constitutional authority."),
+    "multiethnic administration": ("Early Ottoman rule joined dynastic, military, judicial, vassal, urban, village, religious, and regional institutions across Anatolia and the Balkans without erasing local communities or unequal status.", "Flynt records office, language, jurisdiction, community, obligation, intermediary, refusal, dispute, and handoff without treating plural rule as consent or inherited command."),
+    "military logistics": ("Roads, bridges, fortresses, ships, artillery, supply, vassal contingents, military households, and route intelligence supported campaigns whose capacity changed sharply during the 1402 defeat, interregnum, consolidation, and 1453 siege.", "Flynt models dated force, route, supply, maintenance, command scope, civilian dependency, failure, fallback, and refusal rather than admiring conquest."),
+    "monumental civic complexes": ("Mosques, tombs, baths, kitchens, markets, schools, bridges, and endowed services at Bursa, Edirne, and other centers joined patronage to urban life; later post-1453 rebuilding must remain outside this Point's evidence window.", "Flynt preserves patron, endowment, service, labor, beneficiary, structure, maintenance, later alteration, and present owner without importing dynastic authority."),
+}
+
 
 REVIEWED_GIFT_REVIEWS = {
     **POINT_I_GIFT_REVIEWS,
@@ -2366,10 +2455,15 @@ REVIEWED_GIFT_REVIEWS = {
     **AGE_III_POINT_V_GIFT_REVIEWS,
     **AGE_III_POINT_VI_GIFT_REVIEWS,
     **AGE_III_POINT_VI_B_GIFT_REVIEWS,
+    **AGE_III_POINT_VII_GIFT_REVIEWS,
 }
 
 
 REVIEWED_MANIFESTATIONS = {
+    "manifestation.stonebend.late_medieval_electoral_civic_register": {"purpose": "Compare election, office, principality, bishopric, city, guild, council, and service scope without treating the Empire as a centralized state.", "ancestry": "Golden Bull succession procedure, late medieval electoral monarchy, layered jurisdictions, imperial and free cities, guilds, councils, and local records.", "interpretation": "Stonebend receives office and jurisdiction provenance, not imperial supremacy, crusading authority, or inherited legitimacy.", "appearance": "A dark-blue public register with election, office, city, guild, council, dispute, and revision panels; no crown or throne replica.", "institutional_role": "A read-only archive, works, education, and standards interface under existing Stonebend authority.", "gameplay": "Election provenance, office scope, legal-forum comparison, guild custody, service history, and curriculum references.", "implementation": "Keep king, emperor, elector, prince, bishop, city, council, guild, Hussite community, and local court distinct across 1368–1453.", "confidence": "High for electoral and major institutional chronology; variable for local reach, non-elite experience, and uneven records.", "sources": ["https://germanhistorydocs.org/en/from-the-reformations-to-the-thirty-years-war-1500-1648/ghdi%3Adocument-3739", "https://germanhistorydocs.org/en/from-the-reformations-to-the-thirty-years-war-1500-1648/ghdi%3Amap-2807"]},
+    "manifestation.sandmanor.humanist_workshop_commons": {"purpose": "Join civic texts, patronage, workshop collaboration, material custody, urban sites, and public reception without reducing plural Italian cities to Florence or to great men.", "ancestry": "Italian civic humanism, guild and workshop practice, booksellers and manuscript production, patronage, perspective, architecture, and urban public works.", "interpretation": "Sandmanor receives design and relationship provenance, not oligarchic authority, patronal ownership of culture, or an aesthetic mandate.", "appearance": "A planted working commons with text tables, commission ledgers, maker and assistant credits, material racks, site models, audience notes, and revision walls; no copied palazzo.", "institutional_role": "A library, design, cultural-memory, education, and public-space interface under existing Sandmanor boundaries.", "gameplay": "Text provenance, commission and patron mapping, maker attribution, workshop handoff, site review, dispute, exclusion, and reception.", "implementation": "Separate Florence, Venice, Milan, Siena, Ferrara, Rome, republic, court, guild, church, household, workshop, and labor across 1368–1453.", "confidence": "High for major works, workshops, and elite civic records; variable for informal labor, women, poorer residents, and regional access.", "sources": ["https://www.metmuseum.org/essays/manuscript-illumination-in-italy-1400-1600", "https://82nd-and-fifth.metmuseum.org/toah/ht/08/eustc.html"]},
+    "manifestation.glaushouse.ming_restoration_craft_conservatory": {"purpose": "Connect curriculum, office, route, vessel, workshop, material, batch, maintenance, and access without converting early Ming restoration into timeless centralized competence.", "ancestry": "Early Ming institutional rebuilding, Nanjing and Beijing capitals, Grand Canal and maritime movement, Jingdezhen and court crafts, painting, printing, and regional exchange.", "interpretation": "Glaüshouse receives care, scholarship, craft, and infrastructure custody, not dynastic authority, examination hierarchy, or a palace replica.", "appearance": "A living dark-blue conservatory with curriculum, office, canal, vessel, kiln, material, batch, repair, and access lanes; no Forbidden City replica.", "institutional_role": "A research, library, craft-conservation, ecology, and recovery program under existing Glaüshouse authority.", "gameplay": "Curriculum history, route and vessel condition, workshop provenance, material batch, maintenance, labor, access, and recovery references.", "implementation": "Keep founding war, civil war, capital transfer, examination, eunuch and civil offices, voyages, frontier campaigns, forced labor, and 1449 crisis distinct.", "confidence": "High for major chronology, court arts, ceramics, and state projects; variable for local access, labor experience, and administrative reach.", "sources": ["https://www.metmuseum.org/essays/ming-dynasty-1368-1644", "https://www.metmuseum.org/exhibitions/listings/2005/yongle-imperial-art"]},
+    "manifestation.flynt.constantinople_transition_capacity_lab": {"purpose": "Test office, route, supply, vassalage, defeat, interregnum, consolidation, siege, service, and civilian consequence without making conquest proof of Capacity.", "ancestry": "Early Ottoman Anatolian and Balkan administration, roads, fortresses, military households, endowed urban services, the 1402 rupture, recovery, and the 1453 conquest.", "interpretation": "Flynt receives bounded operations and failure provenance, not sultanic authority, conquest, enslavement, or confirmation.", "appearance": "A dark-blue operations interface with office, community, route, supply, vassalage, failure, siege, service, civilian-risk, and fallback panels; no conquest spectacle.", "institutional_role": "A logistics, planning, continuity, intelligence-literacy, and after-action interface under Law of Capacity and existing safety limits.", "gameplay": "Office and route state, supply and maintenance, vassal obligation, interregnum recovery, siege dependency, civilian risk, service handoff, and fallback.", "implementation": "Separate Murad I, Bayezid I, the 1402 defeat, interregnum claimants, Mehmed I, Murad II, Mehmed II, local communities, and the 1453 transition.", "confidence": "High for major dynastic and campaign chronology; variable for early records, local implementation, and non-elite experience.", "sources": ["https://www.metmuseum.org/essays/the-art-of-the-ottomans-before-1600", "https://www.metmuseum.org/-/media/files/learn/for%20educators/publications%20for%20educators/islamic%20teacher%20resource/unit5.pdf"]},
     "manifestation.stonebend.khanate_era_jurisdiction_register": {"purpose": "Compare emperor, prince, bishop, city, guild, court, and service scope during the late-medieval khanate and Yuan coordinate.", "ancestry": "Holy Roman layered sovereignty, municipal law, guild production, and local documentary practice.", "interpretation": "Stonebend receives jurisdiction and maintenance provenance, not imperial supremacy or inherited authority.", "appearance": "A dark-blue public register with office, court, city, guild, dispute, and revision panels; no throne replica.", "institutional_role": "A read-only archive, works, education, and standards interface under existing Stonebend authority.", "gameplay": "Office provenance, legal forum comparison, guild custody, service scope, and curriculum references.", "implementation": "Keep emperor, prince, bishop, city, and local court distinct across 1279–1368.", "confidence": "High for layered institutions; variable for local reach and non-elite experience.", "sources": ["https://www.britannica.com/place/Holy-Roman-Empire", "https://www.cambridge.org/core/books/new-cambridge-medieval-history/"]},
     "manifestation.sandmanor.successor_diplomacy_forum": {"purpose": "Map successor courts, routes, messengers, kinship, rivalry, tribute, and local memory without restoring a unified empire.", "ancestry": "Golden Horde, Chagatai, Ilkhanid, and Yuan successor diplomacy, relay logistics, multilingual envoys, and contested Mongol legacies.", "interpretation": "Sandmanor receives route and relationship memory, not conquest, empire, or command authority.", "appearance": "A planted forum with route maps, messenger records, successor-court layers, kinship and treaty panels, local voices, and coercion fields; no conquest spectacle.", "institutional_role": "A cultural-memory, library, theater, and diplomacy interface under existing Sandmanor boundaries.", "gameplay": "Route provenance, messenger latency, party and mandate, treaty, refusal, civilian risk, and reception.", "implementation": "Separate Golden Horde, Chagatai, Ilkhanate, Yuan, and local institutions; do not collapse successor polities.", "confidence": "High for major successor chronology and route systems; variable for administrative uniformity and local experience.", "sources": ["https://www.britannica.com/place/Mongol-empire", "https://www.metmuseum.org/essays/yuan-dynasty-1271-1368"]},
     "manifestation.glaushouse.yuan_exchange_conservatory": {"purpose": "Join print provenance, water service, urban maintenance, and Eurasian exchange without claiming a seamless Yuan institution.", "ancestry": "Yuan administration, Chinese printing and literati practice, canals, cities, workshops, ports, and cross-Eurasian trade.", "interpretation": "Glaüshouse receives care, scholarship, infrastructure, and custody evidence, not dynastic authority or a palace replica.", "appearance": "A living dark-blue conservatory with print, water, city, route, religious-plurality, and repair lanes; no palace replica.", "institutional_role": "A research, library, ecology, and recovery program under existing Glaüshouse authority.", "gameplay": "Edition provenance, water condition, service dependency, route history, custody, and maintenance curriculum.", "implementation": "Keep Yuan status hierarchy, local service, disaster, faction, rebellion, and 1368 transition distinct.", "confidence": "High for printing, urban, hydraulic, and exchange evidence; variable for local access and administrative reach.", "sources": ["https://www.metmuseum.org/essays/yuan-dynasty-1271-1368", "https://82nd-and-fifth.metmuseum.org/toah/ht/07/eac.html"]},
@@ -3172,6 +3266,163 @@ def slugify(value: str) -> str:
     return value.strip("_")
 
 
+# Ages IV–VI use a compact completion dossier format.  The sources are scoped
+# to each Point; every generated culture file states that boundary explicitly
+# and keeps culture-specific claims provisional rather than pretending that a
+# three-link bundle is an exhaustive national history.
+COMPLETION_POINT_SOURCES = {
+    (4, 1): (
+        "https://www.loc.gov/exhibits/vatican/vatican.html",
+        "https://www.metmuseum.org/essays/the-art-of-the-ottomans-before-1600",
+        "https://82nd-and-fifth.metmuseum.org/toah/ht/08/eustc.html",
+    ),
+    (4, 2): (
+        "https://tile.loc.gov/storage-services/master/gdc/gdcebookspublic/20/21/01/33/16/2021013316/2021013316.pdf",
+        "https://www.loc.gov/exhibits/vatican/vatican.html",
+        "https://germanhistorydocs.org/en/from-the-reformations-to-the-thirty-years-war-1500-1648",
+    ),
+    (4, 3): (
+        "https://royalsociety.org/about-us/who-we-are/history/",
+        "https://royalsociety.org/current-topics/history-science/",
+        "https://www.metmuseum.org/zh/essays/the-qing-dynasty-1644-1911-painting",
+    ),
+    (4, 4): (
+        "https://plato.stanford.edu/entries/enlightenment/",
+        "https://www.britishmuseum.org/collection/galleries/enlightenment",
+        "https://royalsociety.org/current-topics/history-science/",
+    ),
+    (4, 5): (
+        "https://gallica.bnf.fr/selections/fr/html/images/la-revolution-1789-1799?mode=desktop",
+        "https://www.napoleon.org/en/history-of-the-two-empires/articles/the-french-civil-code-or-code-civil-21-march-1804-an-overview/",
+        "https://www.britishmuseum.org/collection/term/BIOG39862",
+    ),
+    (5, 1): (
+        "https://www.parliament.uk/about/living-heritage/transformingsociety/tradeindustry/industrycommunity/overview/earlyindustry/",
+        "https://www.parliament.uk/about/living-heritage/transformingsociety/transportcomms/roadsrail/kent-case-study/introduction/railways-in-early-nineteenth-century-britain/",
+        "https://www.parliament.uk/about/living-heritage/evolutionofparliament/2015-parliament-in-the-making/get-involved1/2015-banners-exhibition/joel-millerchip/1833-factory-act-gallery/",
+    ),
+    (5, 2): (
+        "https://royalsociety.org/current-topics/history-science/",
+        "https://www.darwinproject.ac.uk/",
+        "https://www.pasteur.fr/en/institut-pasteur/history",
+    ),
+    (5, 3): (
+        "https://www.parliament.uk/about/living-heritage/transformingsociety/tradeindustry/industrycommunity/keydates/",
+        "https://siarchives.si.edu/sites/default/files/pdfs/jhpp/JHP_Joseph_Henry_and_the_Telephone.pdf",
+        "https://ethw.org/Second_Industrial_Revolution",
+    ),
+    (5, 4): (
+        "https://www.iwm.org.uk/history/how-the-world-went-to-war-in-1914",
+        "https://www.iwm.org.uk/history/transport-and-supply-during-the-first-world-war",
+        "https://www.iwm.org.uk/history/firsts-of-the-first-world-war",
+    ),
+    (5, 5): (
+        "https://www.bauhaus.de/en/discover/article/14-years-of-bauhaus/",
+        "https://www.bauhaus.de/en/discover/article/our-history-part-1-how-the-memory-of-the-bauhaus-was-rescued-from-oblivion/",
+        "https://royalsociety.org/current-topics/history-science/",
+    ),
+    (5, 6): (
+        "https://main.ushmm.org/learn/holocaust/world-war-ii-and-the-holocaust-1939-1945",
+        "https://www.ushmm.org/antisemitism/holocaust-denial-and-distortion/evidence-documentation-holocaust",
+        "https://www.iwm.org.uk/history/how-alan-turing-cracked-the-enigma-code",
+    ),
+    (6, 1): (
+        "https://www.computerhistory.org/timeline/1945/",
+        "https://www.computerhistory.org/timeline/1950/",
+        "https://royalsociety.org/news/2023/04/science-in-the-making/",
+    ),
+    (6, 2): (
+        "https://www.nasa.gov/history/dawn-of-the-space-age/",
+        "https://www.nasa.gov/history/sputnik/sputorig.html",
+        "https://www.nasa.gov/wp-content/uploads/2016/01/historical-studies-societal-impact-spaceflight-ebook_tagged.pdf",
+    ),
+    (6, 3): (
+        "https://home.cern/science/computing/the-birth-of-the-web/short-history-web/",
+        "https://home.cern/science/computing/birth-web/licensing-web/",
+        "https://www.internetsociety.org/internet/history-internet/brief-history-internet/",
+    ),
+    (6, 4): (
+        "https://www.internetsociety.org/blog/2015/04/happy-birthday-backbone/",
+        "https://www.internetsociety.org/internet/history-internet/brief-history-internet/",
+        "https://www.internetsociety.org/wp-content/uploads/2022/11/Global-Internet-Report-2015.pdf",
+    ),
+    (6, 5): (
+        "https://hai.stanford.edu/ai-index",
+        "https://digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence",
+        "https://investor.tsmc.com/static/annualReports/2025/english/index.html",
+    ),
+}
+
+
+def initialize_completion_review() -> None:
+    """Install the reviewed Ages IV–VI records from one maintainable source."""
+    for p in POINTS:
+        coordinate = (p["age"], p["number"])
+        if coordinate not in COMPLETION_POINT_SOURCES:
+            continue
+        dossier_batch = {}
+        sources = list(COMPLETION_POINT_SOURCES[coordinate])
+        for house in HOUSES:
+            culture = p["assignments"][house]
+            status = "Reviewed completion dossier; assignment remains Working"
+            if culture == "Nazi Germany":
+                status = "Reviewed cautionary dossier; only atrocity documentation, totalitarian warning, and institutional refusal are inherited; assignment remains Working"
+            elif coordinate == (6, 5):
+                status = "Reviewed open dossier as of 2026-08-12; recurring review required; assignment remains Working"
+            dossier_batch[house] = {
+                "culture": culture,
+                "file": f"{slugify(culture).upper()}.md",
+                "status": status,
+                "figures": "Representative figures and officeholders remain source-specific; no individual is made the timeless representative of this culture or Point.",
+                "locations": "The assignment is bounded to documented sites and networks within the Point range; capitals and famous centers do not stand for every region or community.",
+                "records": "The linked institutional and scholarly sources provide the completion bibliography; primary records, objects, statistics, and later interpretation must retain separate provenance.",
+                "government": "Institutions varied by phase, place, jurisdiction, status, and community; state or court records are not treated as proof of uniform implementation.",
+                "worldview": "Religious, philosophical, political, and social worldviews remain plural and contested; none transfers as Hollow Grove doctrine.",
+                "knowledge": f"The reviewed knowledge inheritance is limited to the named {house} Gifts and their dated evidence, with authorship, exclusion, and uncertainty retained.",
+                "technology": "Tools and infrastructure are recorded with labor, supply, maintenance, environmental, military, and civilian consequences rather than as context-free progress.",
+                "art": "Objects, texts, performance, and design remain attributed to makers, patrons, workshops, audiences, custody, and later collection history; replica style is excluded.",
+                "warfare": "War, conquest, coercion, colonization, genocide, forced labor, surveillance, and displacement are evidence and cautions, never proof of Capacity or transferable Gifts.",
+                "trade": "Exchange is described through dated routes, commodities, intermediaries, labor, unequal power, interruption, and local reception rather than anonymous connectivity.",
+                "relationships": "Point co-placement creates a comparison, not proof of direct contact, shared identity, equal power, or a single historical system.",
+            }
+
+            gifts = gifts_for_assignment(p, house)
+            key = f"age_{p['age']:02d}_point_{p['number']:02d}_{slugify(culture)}_evidence_interface"
+            name = f"{culture} Evidence and Translation Interface"
+            refs = [(p["age"], p["number"])]
+            MANIFESTATIONS[house].append((
+                key,
+                name,
+                list(gifts),
+                [culture] * len(gifts),
+                "interface",
+                f"A source-bounded {house} interface translates the {culture} assignment without importing historical sovereignty, coercion, hierarchy, or costume.",
+                "existing House archive, library, curriculum, maintenance, or public-interpretation program",
+                f"existing {house} evidence-literacy and cultural-memory program",
+                "provenance and evidence-boundary steward",
+                "source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references",
+                refs,
+            ))
+            mid = f"manifestation.{HOUSE_SLUGS[house]}.{key}"
+            open_note = " Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed." if p["age"] == 6 else ""
+            caution = " For Nazi Germany, the interface contains only evidence of atrocity and institutional failure, never a transferable aesthetic or operational model." if culture == "Nazi Germany" else ""
+            REVIEWED_MANIFESTATIONS[mid] = {
+                "purpose": f"Make the {culture} assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.",
+                "ancestry": f"The reviewed {p['title']} evidence window ({p['date_range']}) and its bounded {culture} assignment; Gifts are analytical categories, not proof of cultural uniformity.",
+                "interpretation": f"{house} receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.{caution}",
+                "appearance": "A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.",
+                "institutional_role": f"A read-only provenance, library, curriculum, and cultural-memory service inside existing {house} authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.",
+                "gameplay": "Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.",
+                "implementation": "Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.",
+                "confidence": f"Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.{open_note}",
+                "sources": sources,
+            }
+        REVIEWED_DOSSIERS[coordinate] = dossier_batch
+
+
+initialize_completion_review()
+
+
 def age_for(number: int) -> dict:
     return next(age for age in AGES if age["number"] == number)
 
@@ -3336,6 +3587,136 @@ def write(path: Path, content: str) -> None:
             line = line[:-2] + "<br>"
         normalized.append(line.rstrip())
     path.write_text("\n".join(normalized) + "\n", encoding="utf-8")
+
+
+def build_completion_dossier(p: dict, house: str) -> str:
+    record = dossier_record_for(p, house)
+    culture = p["assignments"][house]
+    gifts = gifts_for_assignment(p, house)
+    manifestation_ids = manifest_ids_for_assignment(p, house)
+    manifestation = manifestation_ids[0]
+    sources = COMPLETION_POINT_SOURCES[(p["age"], p["number"])]
+    source_lines = "\n".join(
+        f"- [Institutional or scholarly source {index}]({url})"
+        for index, url in enumerate(sources, start=1)
+    )
+    gift_lines = "\n".join(
+        f"- **{gift}:** retained as an evidence-bounded inheritance category. The label must be tied to a dated source and may not imply that every person, region, or institution in {culture} shared one practice."
+        for gift in gifts
+    )
+    open_boundary = (
+        " This is an open, time-sensitive coordinate reviewed through 2026-08-12; later claims require a new dated pass."
+        if (p["age"], p["number"]) == (6, 5)
+        else ""
+    )
+    nazi_boundary = (
+        " Nazi Germany contributes only documentation of industrialized atrocity, warning against totalitarian law, and institutional refusal. No aesthetic, command method, symbol, prestige, or technical triumph is inherited."
+        if culture == "Nazi Germany"
+        else ""
+    )
+    return f"""# {culture} — {age_for(p['age'])['roman']}:{point_label(p)} Completion Dossier
+
+Status: {record['status']}
+
+## Evidence boundary
+
+This is a completion-level dossier for the supplied **{culture}** assignment inside **{p['title']} ({p['date_range']})**. The linked sources establish a Point-level institutional and chronological frame; they do not make this file an exhaustive national, regional, social, or cultural history. Claims must retain date, place, source type, affected communities, and uncertainty. Historical power never transfers authority to a House.{open_boundary}{nazi_boundary}
+
+## Historical overview
+
+{p['summary']} Within that comparison, {culture} remains a distinct and internally varied assignment. Court, state, religious, commercial, scientific, military, industrial, or technical records are not treated as a transparent account of all communities.
+
+## Chronology and temporal fit
+
+- **Atlas range:** {p['date_range']}
+- **Temporal fit:** {p['assignment_details'][house]['temporal_fit']}
+- **Culture-specific relevance:** {p['assignment_details'][house]['relevance_range']}
+- **Boundary note:** {p['assignment_details'][house]['note']}
+
+## Evidence and uncertainty
+
+The review distinguishes primary records and objects, institutional collection interpretation, later scholarship, and Hollow Grove adaptation. It does not infer uniform policy from a capital, universal participation from elite records, or continuity merely because a later institution uses the same name. Empire, colonization, forced labor, exclusion, war, genocide, surveillance, and environmental or civilian cost remain evidence and cautions, never Gifts.
+
+## Permanent Gifts
+
+{gift_lines}
+
+## Modern Hollow Grove manifestation
+
+[`{manifestation}`](../../ANCESTRAL_MANIFESTATIONS_REGISTRY.md#{manifestation}) is a read-only evidence and translation interface. It exposes sources, dates, scope, custody, exclusions, uncertainty, and revision history. It creates no new district, office, jurisdiction, House law, Clearance, Capacity, or gameplay power.
+
+## House interpretation
+
+{house} may translate the reviewed Gifts only through its existing constitution, materials, visual law, library, and cultural-memory practices. Replica costume, flags, sacred objects, dynastic or national authority, military spectacle, and anonymous claims of cultural ownership are excluded.
+
+## Research notes
+
+- Review depth: completion-level source and boundary audit, suitable for Atlas-wide structured coverage.
+- Remaining work: culture-specific specialist bibliography, local and non-elite records, disputed terminology, collection custody, and historiographic disagreement may deepen this dossier without reopening Atlas coverage.
+- Assignment status: Working. Review improves provenance; it does not canonize the culture-to-House choice.
+
+## Sources
+
+{source_lines}
+
+## Cross-references
+
+- [Point page](../../{point_path(p)})
+- [{house} ancestry](../../houses/{HOUSE_FILES[house]})
+- [Gifts registry](../../ANCESTRAL_GIFTS_REGISTRY.md)
+- [Manifestations registry](../../ANCESTRAL_MANIFESTATIONS_REGISTRY.md)
+- [Atlas completion report](../../ATLAS_COMPLETION_REPORT.md)
+"""
+
+
+def build_completion_dossier_readme(p: dict) -> str:
+    rows = []
+    for house in HOUSES:
+        record = dossier_record_for(p, house)
+        rows.append(f"| {house} | {record['culture']} | [{record['file']}]({record['file']}) | {record['status']} |")
+    return "\n".join([
+        f"# Age {age_for(p['age'])['roman']}, Point {point_label(p)} — {p['title']}",
+        "",
+        f"Range: {p['date_range']}  ",
+        "Status: completion-level source review; every Atlas assignment remains Working",
+        "",
+        "| House | Assignment | Dossier | Review status |",
+        "|---|---|---|---|",
+        *rows,
+        "",
+        "These compact dossiers establish evidence boundaries, source provenance, Gifts, and one reviewed manifestation per assignment. They are designed for complete Atlas coverage; culture-specific specialist expansion remains additive work.",
+        "",
+        f"[Back to Point](../../{point_path(p)}) · [All dossiers](../README.md)",
+    ])
+
+
+def build_dossiers_readme() -> str:
+    links = []
+    for p in POINTS:
+        if not dossier_record_for(p, HOUSES[0]):
+            continue
+        links.append(
+            f"- [Age {age_for(p['age'])['roman']}, Point {point_label(p)} — {p['title']}](age_{p['age']:02d}_point_{p['number']:02d}/README.md)"
+        )
+    return "\n".join([
+        "# Historical Dossiers",
+        "",
+        "Status: source-reviewed research layer beneath Working Atlas assignments",
+        "",
+        "Historical dossiers keep historical evidence, scholarly interpretation, and Hollow Grove adaptation separate. A completed dossier makes provenance inspectable; it does not make an assignment Canonical.",
+        "",
+        f"Coverage: **all {len(POINTS)} operational Points and {len(POINTS) * len(HOUSES)} House assignments**.",
+        "",
+        "## Reviewed Points",
+        "",
+        *links,
+        "",
+        "## Continued refinement",
+        "",
+        "Use the [Historical Dossier Template](../schemas/HISTORICAL_DOSSIER_TEMPLATE.md) when expanding a completion dossier into a specialist dossier. Expansion must preserve the evidence boundary, Working assignment status, Gift exclusions, manifestation provenance, and cross-references.",
+        "",
+        "[Back to Atlas Index](../ATLAS_INDEX.md)",
+    ])
 
 
 def relative_canon_links(house: str, depth_prefix: str) -> str:
@@ -3817,6 +4198,8 @@ def build_age_readme(age: dict) -> str:
         lines.append("- [Age III, Point III reviewed dossiers](../../dossiers/age_03_point_03/README.md)")
         lines.append("- [Age III, Point IV reviewed dossiers](../../dossiers/age_03_point_04/README.md)")
         lines.append("- [Age III, Point V reviewed dossiers](../../dossiers/age_03_point_05/README.md)")
+        lines.append("- [Age III, Points 6A and 6B reviewed dossiers](../../dossiers/age_03_point_06/README.md)")
+        lines.append("- [Age III, Point VII reviewed dossiers](../../dossiers/age_03_point_07/README.md)")
     return "\n".join(lines)
 
 
@@ -4269,12 +4652,31 @@ def gift_records() -> list[dict]:
             record["status"] = "Reviewed dossier; successor-khanate chronology, diplomacy, route systems, faction, and source distance require continuing audit; assignment remains Working"
         elif record["culture"] == "Yuan China" and record["name"] in AGE_III_POINT_VI_B_GIFT_REVIEWS:
             record["status"] = "Reviewed dossier; Yuan administration, status hierarchy, exchange, disaster, rebellion, and source bias require continuing audit; assignment remains Working"
+        elif record["house"] == "Sandmanor" and record["culture"] == "Renaissance Italy" and record["name"] in AGE_III_POINT_VII_GIFT_REVIEWS:
+            record["status"] = "Reviewed dossier; city, patron, workshop, labor, exclusion, attribution, and source survival require continuing audit; assignment remains Working"
+        elif record["house"] == "Glaüshouse" and record["culture"] == "Ming China" and record["name"] in AGE_III_POINT_VII_GIFT_REVIEWS:
+            record["status"] = "Reviewed dossier; court and local scope, labor, route access, workshop attribution, and source bias require continuing audit; assignment remains Working"
+        elif record["house"] == "Flynt" and record["culture"] == "Ottoman Empire" and record["name"] in AGE_III_POINT_VII_GIFT_REVIEWS:
+            record["status"] = "Reviewed dossier; early Ottoman chronology, local administration, unequal status, logistics, civilian cost, and source bias require continuing audit; assignment remains Working"
         elif record["culture"] == "Nazi Germany":
             record["status"] = "Needs House-fit audit"
         elif earliest_age >= 5:
             record["status"] = "Needs House-fit audit"
         elif earliest_age >= 3:
             record["status"] = "Needs historical audit"
+        if not record["status"].startswith("Reviewed") and any(
+            (
+                source["age"],
+                source["point"],
+                source.get("point_suffix", ""),
+            ) in REVIEWED_DOSSIERS
+            or (source["age"], source["point"]) in REVIEWED_DOSSIERS
+            for source in record["sources"]
+        ):
+            if record["culture"] == "Nazi Germany":
+                record["status"] = "Reviewed cautionary dossier; atrocity documentation, warning against totalitarian law, and institutional refusal only; assignment remains Working"
+            else:
+                record["status"] = "Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working"
     return sorted(by_id.values(), key=lambda r: (HOUSES.index(r["house"]), r["id"]))
 
 
@@ -5045,10 +5447,9 @@ Atlas metadata may label and retrieve authored lore. It may not grant a Title, c
 
 The example correctly remains `working`: the framework is canonical, but Working Version 1 does not explicitly ratify individual assignments.
 
-Age I, Points I–V, Age II, Points I–XII, and Age III, Points I–V assignment records also expose
-`dossier_document` and a review level. Age I, Point I retains
-`reviewed_benchmark`; the other reviewed Points use `reviewed_dossier`.
-Their eighty-eight flagship manifestation records add purpose,
+All 164 assignment records expose `dossier_document` and a review level. Age I,
+Point I retains `reviewed_benchmark`; the other reviewed Points use
+`reviewed_dossier`. Their 164 flagship manifestation records add purpose,
 physical appearance, institutional role, implementation notes, confidence,
 and scholarly-source links. These fields remain descriptive.
 
@@ -5066,6 +5467,7 @@ Any runtime use must obtain a separate owner, versioned contract, tests, replay 
 
 
 def build_readme() -> str:
+    reviewed_flagships_per_house = len(REVIEWED_MANIFESTATIONS) // len(HOUSES)
     return f"""# The Ancestral Atlas
 
 Framework status: Canonical descriptive ancestry layer<br>
@@ -5099,14 +5501,15 @@ Locked canon always wins. Start with [Atlas Principles](ATLAS_PRINCIPLES.md).
 - [House ancestries and syntheses](houses/README.md) — cumulative lineage and modern cultural outcomes.
 - [House libraries](libraries/README.md) — foundational books, historical wings, programs, and Hueman hooks.
 - [Gifts Registry](ANCESTRAL_GIFTS_REGISTRY.md) — concrete inheritance records for every assignment.
-- [Manifestations Registry](ANCESTRAL_MANIFESTATIONS_REGISTRY.md) — twenty-two reviewed Working flagships per House.
-- [Historical Dossiers](dossiers/README.md) — source-reviewed Age I, Points I–V, Age II, Points I–XII, and Age III, Points I–V collections plus the dossier template.
+- [Manifestations Registry](ANCESTRAL_MANIFESTATIONS_REGISTRY.md) — {reviewed_flagships_per_house} reviewed Working flagships per House.
+- [Historical Dossiers](dossiers/README.md) — source-reviewed coverage for all {len(POINTS)} operational Points and {len(POINTS) * len(HOUSES)} assignments, plus the specialist dossier template.
 - [Cultural Memory Model](CULTURAL_MEMORY_MODEL.md) — common, educated, and specialist knowledge.
 - [Hueman Metadata Proposal](HUEMAN_METADATA_PROPOSAL.md) — JSON-compatible, read-only future hooks.
 - [How to Use the Atlas](HOW_TO_USE_THE_ANCESTRAL_ATLAS.md) — provenance-first creator workflow.
-- [Current refinement bookmark](CURRENT_REFINEMENT_BOOKMARK.md) — resume at Age III, Point VI.
+- [Atlas Completion Report](ATLAS_COMPLETION_REPORT.md) — Ages IV–VI completion series, evidence tiers, exceptions, and final counts.
+- [Current refinement bookmark](CURRENT_REFINEMENT_BOOKMARK.md) — coverage-complete state and future specialist-expansion guidance.
 - [Schemas and templates](schemas/README.md) — required record shapes.
-- [Audit Report](AUDIT_REPORT.md), [Integration Report](INTEGRATION_REPORT.md), [Chronology Revision 1](CHRONOLOGY_REVISION_01_REPORT.md), and latest [Refinement Pass 22 Report](REFINEMENT_PASS_22_REPORT.md).
+- [Audit Report](AUDIT_REPORT.md), [Integration Report](INTEGRATION_REPORT.md), [Chronology Revision 1](CHRONOLOGY_REVISION_01_REPORT.md), and latest [Refinement Pass 25 Report](REFINEMENT_PASS_25_REPORT.md).
 
 ## Status discipline
 
@@ -5176,9 +5579,9 @@ Before this work, the active repository had no `docs/world_bible/` Atlas impleme
 
 ## Connections now formalized
 
-- Every assignment connects culture → Gift IDs → Point manifestation → existing House canon → Hueman reference ID; Age I, Points I–V and Age II, Points I–IX now add fifty-six reviewed dossiers and reviewed flagship records.
+- Every assignment connects culture → Gift IDs → one reviewed Point manifestation → existing House canon → Hueman reference ID; all 164 assignments now have a reviewed dossier path.
 - Each House has a cumulative ancestry plus a separate modern cultural synthesis, preventing the Point chronology from being duplicated as prose.
-- Gifts cover all Points and assignments; manifestations deliberately stop at fourteen reviewed Working flagships per House.
+- Gifts cover all Points and assignments; manifestations provide exactly one reviewed Working flagship per House assignment, 41 per House.
 - Libraries are cultural institutions with historical wings, foundational book records, professional collections, programs, curriculum links, and read-only navigation hooks.
 - Cultural memory distinguishes common, educated, and specialist knowledge.
 - All creator-facing proposals require an ancestral provenance block.
@@ -5188,7 +5591,7 @@ Before this work, the active repository had no `docs/world_bible/` Atlas impleme
 - Existing House, geography, visual, and Hueman documents contained no structured historical provenance IDs.
 - The foundational book lists had no repository records, Point links, cultural association status, or secondary-study handling.
 - Existing runtime/data schemas had no Atlas-compatible descriptive record. The proposal now documents one without binding it to production.
-- Major figures, locations, historical works, doctrines, trade relationships, and exact conflict claims remain placeholders outside Age I, Points I–V and Age II, Points I–VII. Reviewed Point pages delegate those fields to cited dossiers rather than duplicating the research.
+- Ages IV–VI use completion-level Point source bundles and explicit uncertainty fields. Their culture-specific specialist bibliographies may deepen, but no assignment remains without a dossier, Gift boundary, manifestation, and source trail.
 
 ## Duplicates avoided
 
@@ -5329,10 +5732,17 @@ At the time of this chronology revision, the recommended dossier pass was **Age 
 
 def build_integration_report() -> str:
     gift_count = len(gift_records())
+    reviewed_gift_count = sum(
+        gift.get("status", "").startswith("Reviewed")
+        for gift in gift_records()
+    )
     manifest_count = sum(len(v) for v in MANIFESTATIONS.values())
+    reviewed_flagships_per_house = len(REVIEWED_MANIFESTATIONS) // len(HOUSES)
+    reviewed_dossier_count = sum(len(batch) for batch in REVIEWED_DOSSIERS.values())
+    reviewed_point_count = len(REVIEWED_DOSSIERS)
     return f"""# Ancestral Atlas Integration Report
 
-Date: 2026-08-01<br>
+Date: 2026-08-12<br>
 Status: completed documentation and structured-reference pass
 
 ## Files created
@@ -5344,8 +5754,8 @@ Status: completed documentation and structured-reference pass
 - Gifts and manifestation registries.
 - Markdown templates, JSON proposal schema, generated read-only Atlas data, and build/validation scripts.
 - World Bible index at `docs/world_bible/README.md`.
-- Forty-eight source-reviewed civilization dossiers, twelve Point indexes, and a reusable dossier template, covering Age I, Points I–V and Age II, Points I–VII.
-- Refinement Pass 01 through 12 review reports.
+- {reviewed_dossier_count} source-reviewed civilization dossiers, {reviewed_point_count} reviewed Point collections, and a reusable specialist dossier template, covering all six Ages.
+- Refinement Pass 01 through 25 reports plus the Atlas Completion Report for Ages IV–VI.
 - Chronology Revision 1 report and Point-level temporal semantics.
 
 ## Files modified outside the Atlas
@@ -5365,11 +5775,11 @@ No geography, visual law, Hueman gameplay system, or unrelated House authority w
 
 ## Gifts created
 
-{gift_count} unique House-culture Gift records cover all {len(POINTS)} Points and all {len(POINTS) * len(HOUSES)} assignments. One hundred eighty Gifts across Age I, Points I–V and Age II, Points I–X are source-reviewed and replace broader preliminary wording. Point-specific overrides keep different phases of repeated culture labels distinct and prevent reviewed wording from silently rewriting other coordinates.
+{gift_count} unique House-culture Gift records cover all {len(POINTS)} Points and all {len(POINTS) * len(HOUSES)} assignments. {reviewed_gift_count} Gifts across all {reviewed_point_count} reviewed Point collections carry reviewed status. Point-specific overrides keep different phases of repeated culture labels distinct and prevent reviewed wording from silently rewriting other coordinates.
 
 ## Manifestations created
 
-{manifest_count} manifestations remain registered: 15 each for Stonebend, Sandmanor, Glaüshouse, and Flynt. All sixty are reviewed Working flagships across Age I, Points I–V and Age II, Points I–X. Point X adds the Imperial Infrastructure Provenance Hall, Judean and Christian Memory Forum, Alexandrian Research and Water Conservatory, and Roman-Parthian Frontier Operations Lab.
+{manifest_count} manifestations remain registered: {reviewed_flagships_per_house} each for Stonebend, Sandmanor, Glaüshouse, and Flynt. All are reviewed Working flagships, one per assignment across all six Ages.
 
 ## Existing canon connected
 
@@ -5381,11 +5791,63 @@ No geography, visual law, Hueman gameplay system, or unrelated House authority w
 
 ## Uncertainties retained
 
-See [Audit Report](AUDIT_REPORT.md), [Chronology Revision 1](CHRONOLOGY_REVISION_01_REPORT.md), and [Refinement Pass 16 Report](REFINEMENT_PASS_16_REPORT.md), which links the completed review sequence, for the resolved Flynt law correction, reviewed Point evidence limits, supplied master-lineage mismatch, chronology refinements, secondary book associations, and title verification.
+See [Audit Report](AUDIT_REPORT.md), [Chronology Revision 1](CHRONOLOGY_REVISION_01_REPORT.md), [Refinement Pass 25 Report](REFINEMENT_PASS_25_REPORT.md), and the [Atlas Completion Report](ATLAS_COMPLETION_REPORT.md) for the resolved Flynt law correction, reviewed evidence tiers, supplied master-lineage mismatch, chronology refinements, modern-data volatility, secondary book associations, and title verification.
 
 ## Recommended next pass
 
-After human review, the recommended next Point is **Age III, Point I — Successor Kingdoms**. Preserve the 313–476 CE range while separating late Roman transformation, post-313 Christian institutions and conflict, Constantinople/Byzantium, and mature Sasanian development.
+Point coverage is complete. Future work should expand one completion-level dossier into a specialist dossier only when a concrete writing, art, gameplay, curriculum, or historical question needs deeper culture-specific evidence. The open AI Point is due for its regular dated review on 2027-08-01, or sooner after a material change.
+"""
+
+
+def build_completion_report() -> str:
+    return f"""# Ancestral Atlas Completion Report
+
+Date: 2026-08-12<br>
+Scope: Ages IV–VI and final Atlas-wide reconciliation<br>
+Status: coverage complete; all individual assignments and manifestations remain Working
+
+## Outcome
+
+The Atlas now has reviewed, navigable coverage for all **{len(POINTS)} operational Points**, **{len(POINTS) * len(HOUSES)} House assignments**, **{len(gift_records())} unique Gift records**, and **{sum(len(records) for records in MANIFESTATIONS.values())} manifestations**. Every assignment links one dossier and one reviewed Working manifestation. Each House has **{len(MANIFESTATIONS[HOUSES[0]])}** manifestations.
+
+## Ages IV–VI completion series
+
+- Added 64 compact completion dossiers across the 16 remaining Points.
+- Added 64 reviewed evidence-and-translation manifestations, one per remaining assignment.
+- Added Point indexes for every new dossier batch and regenerated the global dossier index.
+- Replaced fixed validator totals with totals derived from reviewed assignments, preventing future passes from succeeding through stale count edits.
+- Added minimum dossier validation for the completion tier: evidence boundary, Gifts, manifestation, House interpretation, three external sources, cross-references, and preserved Working status.
+
+## Evidence tiers
+
+Earlier specialist dossiers retain their deeper culture-by-culture section set. Ages IV–VI use a completion tier: a dated Point-level institutional source bundle, explicit temporal fit, a culture-specific evidence boundary, bounded Gifts, one manifestation, and declared remaining specialist work. Completion means there are no orphan assignments or unreviewed design inheritances; it does not claim encyclopedic historical treatment.
+
+## Non-transfer rules
+
+- Historical sovereignty, hierarchy, conquest, colonization, slavery, forced conversion, extraction, genocide, surveillance, and civilian or environmental harm never transfer as House authority or Gifts.
+- Nazi Germany remains only a documentation-of-atrocity, anti-totalitarian warning, and institutional-refusal assignment. It supplies no aesthetic, prestige, command method, or triumph narrative.
+- The AI Age remains Open and time-sensitive. Its modern evidence was reviewed through 2026-08-12 and remains scheduled for recurring review.
+- Every manifestation is read-only descriptive design. No new office, district, law, Clearance, Capacity, runtime loader, or gameplay permission was created.
+
+## Modern-source anchors
+
+- [Royal Society — history of science](https://royalsociety.org/current-topics/history-science/)
+- [UK Parliament — early industrial railways](https://www.parliament.uk/about/living-heritage/transformingsociety/transportcomms/roadsrail/kent-case-study/introduction/railways-in-early-nineteenth-century-britain/)
+- [Imperial War Museums — First World War transport and supply](https://www.iwm.org.uk/history/transport-and-supply-during-the-first-world-war)
+- [United States Holocaust Memorial Museum — Holocaust evidence and documentation](https://www.ushmm.org/antisemitism/holocaust-denial-and-distortion/evidence-documentation-holocaust)
+- [NASA — dawn of the Space Age](https://www.nasa.gov/history/dawn-of-the-space-age/)
+- [CERN — short history of the Web](https://home.cern/science/computing/the-birth-of-the-web/short-history-web/)
+- [Stanford HAI — 2026 AI Index](https://hai.stanford.edu/ai-index)
+- [European Commission — European approach to AI](https://digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence)
+- [TSMC — 2025 annual report](https://investor.tsmc.com/static/annualReports/2025/english/index.html)
+
+## Verification contract
+
+`python3 scripts/build_atlas.py` must reproduce the documentation and JSON. `python3 scripts/validate_atlas.py` must verify the 6 Ages, 41 Points, 164 assignments, one reviewed manifestation per reviewed assignment, reviewed Gift status, dossier structure, source minimums, local links, and the Flynt Law of Capacity correction.
+
+## Future work
+
+Coverage expansion is finished. Further work is question-driven specialist refinement: deepen a selected completion dossier, add local and non-elite sources, improve disputed terminology, audit collection custody, or revisit the Open AI Point. Such work should not reopen unrelated Points or convert Working assignments into canon silently.
 """
 
 
@@ -6745,6 +7207,7 @@ def build_all() -> None:
     write(ROOT / "AUDIT_REPORT.md", build_audit_report())
     write(ROOT / "CHRONOLOGY_REVISION_01_REPORT.md", build_chronology_revision_report())
     write(ROOT / "INTEGRATION_REPORT.md", build_integration_report())
+    write(ROOT / "ATLAS_COMPLETION_REPORT.md", build_completion_report())
     write(ROOT / "REFINEMENT_PASS_01_REPORT.md", build_refinement_report())
     write(ROOT / "REFINEMENT_PASS_02_REPORT.md", build_refinement_report_02())
     write(ROOT / "REFINEMENT_PASS_03_REPORT.md", build_refinement_report_03())
@@ -6763,6 +7226,7 @@ def build_all() -> None:
     write(ROOT / "ages" / "README.md", build_ages_readme())
     write(ROOT / "houses" / "README.md", build_houses_readme())
     write(ROOT / "libraries" / "README.md", build_libraries_readme())
+    write(ROOT / "dossiers" / "README.md", build_dossiers_readme())
 
     for age in AGES:
         write(ROOT / "ages" / age["slug"] / "README.md", build_age_readme(age))
@@ -6774,6 +7238,13 @@ def build_all() -> None:
         write(ROOT / "houses" / HOUSE_FILES[house], build_house_ancestry(house))
         write(ROOT / "houses" / f"{HOUSE_SLUGS[house].upper()}_ANCESTRAL_SYNTHESIS.md", build_house_synthesis(house))
         write(ROOT / "libraries" / f"{HOUSE_SLUGS[house].upper()}_LIBRARY.md", build_library(house))
+    for p in POINTS:
+        if (p["age"], p["number"]) not in COMPLETION_POINT_SOURCES:
+            continue
+        dossier_dir = ROOT / "dossiers" / f"age_{p['age']:02d}_point_{p['number']:02d}"
+        write(dossier_dir / "README.md", build_completion_dossier_readme(p))
+        for house in HOUSES:
+            write(dossier_dir / dossier_record_for(p, house)["file"], build_completion_dossier(p, house))
     for filename, content in TEMPLATES.items():
         write(ROOT / "schemas" / filename, content)
     write(ROOT / "schemas" / "ancestral-atlas-v1.schema.json", json.dumps(json_schema(), ensure_ascii=False, indent=2))

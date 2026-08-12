@@ -31,14 +31,15 @@ Locked canon always wins. Start with [Atlas Principles](ATLAS_PRINCIPLES.md).
 - [House ancestries and syntheses](houses/README.md) — cumulative lineage and modern cultural outcomes.
 - [House libraries](libraries/README.md) — foundational books, historical wings, programs, and Hueman hooks.
 - [Gifts Registry](ANCESTRAL_GIFTS_REGISTRY.md) — concrete inheritance records for every assignment.
-- [Manifestations Registry](ANCESTRAL_MANIFESTATIONS_REGISTRY.md) — twenty-two reviewed Working flagships per House.
-- [Historical Dossiers](dossiers/README.md) — source-reviewed Age I, Points I–V, Age II, Points I–XII, and Age III, Points I–V collections plus the dossier template.
+- [Manifestations Registry](ANCESTRAL_MANIFESTATIONS_REGISTRY.md) — 41 reviewed Working flagships per House.
+- [Historical Dossiers](dossiers/README.md) — source-reviewed coverage for all 41 operational Points and 164 assignments, plus the specialist dossier template.
 - [Cultural Memory Model](CULTURAL_MEMORY_MODEL.md) — common, educated, and specialist knowledge.
 - [Hueman Metadata Proposal](HUEMAN_METADATA_PROPOSAL.md) — JSON-compatible, read-only future hooks.
 - [How to Use the Atlas](HOW_TO_USE_THE_ANCESTRAL_ATLAS.md) — provenance-first creator workflow.
-- [Current refinement bookmark](CURRENT_REFINEMENT_BOOKMARK.md) — resume at Age III, Point VI.
+- [Atlas Completion Report](ATLAS_COMPLETION_REPORT.md) — Ages IV–VI completion series, evidence tiers, exceptions, and final counts.
+- [Current refinement bookmark](CURRENT_REFINEMENT_BOOKMARK.md) — coverage-complete state and future specialist-expansion guidance.
 - [Schemas and templates](schemas/README.md) — required record shapes.
-- [Audit Report](AUDIT_REPORT.md), [Integration Report](INTEGRATION_REPORT.md), [Chronology Revision 1](CHRONOLOGY_REVISION_01_REPORT.md), and latest [Refinement Pass 22 Report](REFINEMENT_PASS_22_REPORT.md).
+- [Audit Report](AUDIT_REPORT.md), [Integration Report](INTEGRATION_REPORT.md), [Chronology Revision 1](CHRONOLOGY_REVISION_01_REPORT.md), and latest [Refinement Pass 25 Report](REFINEMENT_PASS_25_REPORT.md).
 
 ## Status discipline
 

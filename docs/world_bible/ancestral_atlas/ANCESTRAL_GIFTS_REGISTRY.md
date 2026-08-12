@@ -429,7 +429,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of experimental method informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-stonebend)
 
 <a id="gift.stonebend.england.mathematical_natural_law"></a>
@@ -445,7 +445,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of mathematical natural law informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-stonebend)
 
 <a id="gift.stonebend.england.scientific_societies"></a>
@@ -461,7 +461,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of scientific societies informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-stonebend)
 
 <a id="gift.stonebend.german_empire.engineering_institutions"></a>
@@ -477,7 +477,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of engineering institutions informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-stonebend); [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-stonebend)
 
 <a id="gift.stonebend.german_empire.industrial_science"></a>
@@ -493,7 +493,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of industrial science informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-stonebend); [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-stonebend)
 
 <a id="gift.stonebend.german_empire.military_logistics"></a>
@@ -505,12 +505,13 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Age:** 5, 5<br>
 **Point:** 3, 4<br>
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
-**Historical meaning:** Preliminary design term extracted from the supplied German Empire assignment; detailed historical scope requires cited research.<br>
-**Modern House expression:** Architecture / infrastructure: The inheritance of military logistics informs durable, repairable civic form and clearly recorded public works.<br>
+**Historical meaning:** Roads, bridges, fortresses, ships, artillery, supply, vassal contingents, military households, and route intelligence supported campaigns whose capacity changed sharply during the 1402 defeat, interregnum, consolidation, and 1453 siege.<br>
+**Modern House expression:** Flynt models dated force, route, supply, maintenance, command scope, civilian dependency, failure, fallback, and refusal rather than admiring conquest.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-stonebend); [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-stonebend)
+**Reviewed dossier:** [German Empire](dossiers/age_05_point_03/GERMAN_EMPIRE.md)
 
 <a id="gift.stonebend.great_britain.commercial_networks"></a>
 ## gift.stonebend.great_britain.commercial_networks
@@ -525,7 +526,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of commercial networks informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-stonebend)
 
 <a id="gift.stonebend.great_britain.parliamentary_institutions"></a>
@@ -541,7 +542,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of parliamentary institutions informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-stonebend)
 
 <a id="gift.stonebend.great_britain.scientific_public_culture"></a>
@@ -557,7 +558,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of scientific public culture informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-stonebend)
 
 <a id="gift.stonebend.holy_roman_empire.guild_traditions"></a>
@@ -675,7 +676,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of artistic workshops informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-stonebend)
 
 <a id="gift.stonebend.italian_states.banking_and_diplomacy"></a>
@@ -691,7 +692,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of banking and diplomacy informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-stonebend)
 
 <a id="gift.stonebend.italian_states.humanist_civic_culture"></a>
@@ -707,7 +708,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of humanist civic culture informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-stonebend)
 
 <a id="gift.stonebend.judah.distributed_community_and_household_legal_records"></a>
@@ -876,7 +877,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of centralized administration informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-stonebend)
 
 <a id="gift.stonebend.napoleonic_france.legal_codification"></a>
@@ -892,7 +893,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of legal codification informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-stonebend)
 
 <a id="gift.stonebend.napoleonic_france.mass_mobilization"></a>
@@ -908,7 +909,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of mass mobilization informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-stonebend)
 
 <a id="gift.stonebend.nazi_germany.documentation_of_industrialized_atrocity"></a>
@@ -924,7 +925,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of documentation of industrialized atrocity informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed cautionary dossier; atrocity documentation, warning against totalitarian law, and institutional refusal only; assignment remains Working<br>
 **Source Points:** [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-stonebend)
 
 <a id="gift.stonebend.nazi_germany.ethics_of_institutional_refusal"></a>
@@ -940,7 +941,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of ethics of institutional refusal informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed cautionary dossier; atrocity documentation, warning against totalitarian law, and institutional refusal only; assignment remains Working<br>
 **Source Points:** [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-stonebend)
 
 <a id="gift.stonebend.nazi_germany.warning_against_totalitarian_law"></a>
@@ -956,7 +957,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of warning against totalitarian law informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed cautionary dossier; atrocity documentation, warning against totalitarian law, and institutional refusal only; assignment remains Working<br>
 **Source Points:** [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-stonebend)
 
 <a id="gift.stonebend.new_kingdom_egypt.drafting_and_correction_practice"></a>
@@ -1329,7 +1330,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of global transport networks informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-stonebend); [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-stonebend)
 
 <a id="gift.stonebend.united_kingdom.industrial_systems"></a>
@@ -1345,7 +1346,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of industrial systems informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-stonebend); [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-stonebend)
 
 <a id="gift.stonebend.united_kingdom.parliamentary_administration"></a>
@@ -1361,7 +1362,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of parliamentary administration informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-stonebend); [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-stonebend)
 
 <a id="gift.stonebend.united_states.continental_networks"></a>
@@ -1377,7 +1378,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of continental networks informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-stonebend); [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-stonebend); [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-stonebend); [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-stonebend); [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-stonebend)
 
 <a id="gift.stonebend.united_states.industrial_and_computational_systems"></a>
@@ -1393,7 +1394,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of industrial and computational systems informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-stonebend); [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-stonebend); [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-stonebend); [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-stonebend); [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-stonebend)
 
 <a id="gift.stonebend.united_states.large_scale_research"></a>
@@ -1409,7 +1410,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of large-scale research informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-stonebend); [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-stonebend); [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-stonebend); [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-stonebend); [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-stonebend)
 
 <a id="gift.stonebend.ur_iii.dated_legal_and_labor_documentation"></a>
@@ -1476,7 +1477,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of mass democratic culture informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-stonebend)
 
 <a id="gift.stonebend.weimar_germany.modernist_design"></a>
@@ -1492,7 +1493,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of modernist design informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-stonebend)
 
 <a id="gift.stonebend.weimar_germany.theoretical_science"></a>
@@ -1508,7 +1509,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Architecture / infrastructure: The inheritance of theoretical science informs durable, repairable civic form and clearly recorded public works.<br>
 **Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-stonebend)
 
 # Sandmanor Gifts
@@ -1577,7 +1578,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of global transport and telegraph informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-sandmanor)
 
 <a id="gift.sandmanor.british_empire.imperial_administration_and_its_cautions"></a>
@@ -1593,7 +1594,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of imperial administration and its cautions informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-sandmanor)
 
 <a id="gift.sandmanor.british_empire.industrial_finance"></a>
@@ -1609,7 +1610,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of industrial finance informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-sandmanor)
 
 <a id="gift.sandmanor.crusader_states.cross_cultural_contact"></a>
@@ -1676,7 +1677,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of commercial republicanism informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-sandmanor)
 
 <a id="gift.sandmanor.dutch_republic.maritime_finance"></a>
@@ -1692,7 +1693,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of maritime finance informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-sandmanor)
 
 <a id="gift.sandmanor.dutch_republic.print_culture"></a>
@@ -1708,7 +1709,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of print culture informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-sandmanor)
 
 <a id="gift.sandmanor.early_church.communal_identity"></a>
@@ -1877,7 +1878,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of public digital institutions informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-sandmanor); [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-sandmanor)
 
 <a id="gift.sandmanor.european_union.regulatory_cooperation"></a>
@@ -1893,7 +1894,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of regulatory cooperation informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-sandmanor); [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-sandmanor)
 
 <a id="gift.sandmanor.european_union.shared_technical_standards"></a>
@@ -1909,7 +1910,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of shared technical standards informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-sandmanor); [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-sandmanor)
 
 <a id="gift.sandmanor.fatimid_caliphate.cairo_institutions"></a>
@@ -1976,7 +1977,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of public academies informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-sandmanor); [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-sandmanor)
 
 <a id="gift.sandmanor.france.scientific_and_cultural_patronage"></a>
@@ -1992,7 +1993,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of scientific and cultural patronage informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-sandmanor); [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-sandmanor)
 
 <a id="gift.sandmanor.france.state_engineering"></a>
@@ -2008,7 +2009,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of state engineering informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-sandmanor); [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-sandmanor)
 
 <a id="gift.sandmanor.franks.church_state_alliance"></a>
@@ -2075,7 +2076,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of industrial standardization informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-sandmanor)
 
 <a id="gift.sandmanor.german_states_and_german_empire.laboratory_science"></a>
@@ -2091,7 +2092,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of laboratory science informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-sandmanor)
 
 <a id="gift.sandmanor.german_states_and_german_empire.research_university"></a>
@@ -2107,7 +2108,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of research university informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-sandmanor)
 
 <a id="gift.sandmanor.great_britain.commercial_networks"></a>
@@ -2123,7 +2124,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of commercial networks informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-sandmanor)
 
 <a id="gift.sandmanor.great_britain.parliamentary_institutions"></a>
@@ -2139,7 +2140,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of parliamentary institutions informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-sandmanor)
 
 <a id="gift.sandmanor.great_britain.scientific_public_culture"></a>
@@ -2155,7 +2156,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of scientific public culture informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-sandmanor)
 
 <a id="gift.sandmanor.greek.festival_theater_as_civic_interpretation"></a>
@@ -2477,7 +2478,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of consumer electronics informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-sandmanor)
 
 <a id="gift.sandmanor.japan.high_reliability_transport"></a>
@@ -2493,7 +2494,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of high-reliability transport informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-sandmanor)
 
 <a id="gift.sandmanor.japan.quality_manufacturing"></a>
@@ -2509,7 +2510,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of quality manufacturing informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-sandmanor)
 
 <a id="gift.sandmanor.judea_and_early_christianity.early_christian_community_networks"></a>
@@ -2984,7 +2985,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of confessional communities informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md#assignment-age-04-point-02-sandmanor)
 
 <a id="gift.sandmanor.protestant_europe.popular_education"></a>
@@ -3000,7 +3001,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of popular education informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md#assignment-age-04-point-02-sandmanor)
 
 <a id="gift.sandmanor.protestant_europe.vernacular_literacy"></a>
@@ -3016,7 +3017,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of vernacular literacy informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md#assignment-age-04-point-02-sandmanor)
 
 <a id="gift.sandmanor.rashidun_and_umayyad_caliphates.arabic_public_culture"></a>
@@ -3079,12 +3080,13 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Age:** 3<br>
 **Point:** 7<br>
 **Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
-**Historical meaning:** Preliminary design term extracted from the supplied Renaissance Italy assignment; detailed historical scope requires cited research.<br>
-**Modern House expression:** Ritual / public space: The inheritance of civic humanism informs relational space, ceremony, and public presentation without copied historical costume.<br>
+**Historical meaning:** Florentine and other Italian chanceries, schools, manuscripts, civic histories, and public commissions connected classical rhetoric and history to urban political identity, though participation remained unequal and often oligarchic.<br>
+**Modern House expression:** Sandmanor records speaker, audience, office, source text, civic claim, excluded group, patronage, and later reception without treating humanism as automatic liberty.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed dossier; city, patron, workshop, labor, exclusion, attribution, and source survival require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md#assignment-age-03-point-07-sandmanor)
+**Reviewed dossier:** [Renaissance Italy](dossiers/age_03_point_07/RENAISSANCE_ITALY_HUMANISM_WORKSHOPS_AND_CIVIC_PATRONAGE_1368_1453.md)
 
 <a id="gift.sandmanor.renaissance_italy.urban_design"></a>
 ## gift.sandmanor.renaissance_italy.urban_design
@@ -3095,12 +3097,13 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Age:** 3<br>
 **Point:** 7<br>
 **Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
-**Historical meaning:** Preliminary design term extracted from the supplied Renaissance Italy assignment; detailed historical scope requires cited research.<br>
-**Modern House expression:** Ritual / public space: The inheritance of urban design informs relational space, ceremony, and public presentation without copied historical costume.<br>
+**Historical meaning:** Italian cities adapted streets, churches, hospitals, guild buildings, palaces, walls, water, and public spaces through locally financed projects and specialized craft knowledge.<br>
+**Modern House expression:** Sandmanor maps site, public purpose, patron, designer, labor, access, maintenance, dispute, and later alteration without authorizing a replica city.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed dossier; city, patron, workshop, labor, exclusion, attribution, and source survival require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md#assignment-age-03-point-07-sandmanor)
+**Reviewed dossier:** [Renaissance Italy](dossiers/age_03_point_07/RENAISSANCE_ITALY_HUMANISM_WORKSHOPS_AND_CIVIC_PATRONAGE_1368_1453.md)
 
 <a id="gift.sandmanor.renaissance_italy.workshop_and_patronage_systems"></a>
 ## gift.sandmanor.renaissance_italy.workshop_and_patronage_systems
@@ -3111,12 +3114,13 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Age:** 3<br>
 **Point:** 7<br>
 **Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
-**Historical meaning:** Preliminary design term extracted from the supplied Renaissance Italy assignment; detailed historical scope requires cited research.<br>
-**Modern House expression:** Ritual / public space: The inheritance of workshop and patronage systems informs relational space, ceremony, and public presentation without copied historical costume.<br>
+**Historical meaning:** Artists, artisans, apprentices, guilds, booksellers, religious institutions, courts, households, and civic patrons organized collaborative production through contracts, accounts, materials, models, and reputation.<br>
+**Modern House expression:** Sandmanor preserves maker roles, commission, material custody, revision, payment, attribution, audience, and power asymmetry instead of reducing work to a single master name.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed dossier; city, patron, workshop, labor, exclusion, attribution, and source survival require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md#assignment-age-03-point-07-sandmanor)
+**Reviewed dossier:** [Renaissance Italy](dossiers/age_03_point_07/RENAISSANCE_ITALY_HUMANISM_WORKSHOPS_AND_CIVIC_PATRONAGE_1368_1453.md)
 
 <a id="gift.sandmanor.saite_egypt.military_and_diplomatic_intermediary_networks"></a>
 ## gift.sandmanor.saite_egypt.military_and_diplomatic_intermediary_networks
@@ -3182,7 +3186,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of centralized research informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-sandmanor)
 
 <a id="gift.sandmanor.soviet_union.industrial_planning"></a>
@@ -3198,7 +3202,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of industrial planning informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-sandmanor)
 
 <a id="gift.sandmanor.soviet_union.space_and_systems_engineering"></a>
@@ -3214,7 +3218,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of space and systems engineering informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-sandmanor)
 
 <a id="gift.sandmanor.spain.atlantic_administration"></a>
@@ -3230,7 +3234,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of Atlantic administration informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-sandmanor)
 
 <a id="gift.sandmanor.spain.composite_monarchy"></a>
@@ -3246,7 +3250,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of composite monarchy informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-sandmanor)
 
 <a id="gift.sandmanor.spain.court_and_ritual_culture"></a>
@@ -3262,7 +3266,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of court and ritual culture informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-sandmanor)
 
 <a id="gift.sandmanor.united_kingdom.global_transport_networks"></a>
@@ -3278,7 +3282,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of global transport networks informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-sandmanor); [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-sandmanor); [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-sandmanor)
 
 <a id="gift.sandmanor.united_kingdom.industrial_systems"></a>
@@ -3294,7 +3298,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of industrial systems informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-sandmanor); [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-sandmanor); [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-sandmanor)
 
 <a id="gift.sandmanor.united_kingdom.parliamentary_administration"></a>
@@ -3310,7 +3314,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of parliamentary administration informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-sandmanor); [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-sandmanor); [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-sandmanor)
 
 <a id="gift.sandmanor.western_europe.postwar_reconstruction"></a>
@@ -3326,7 +3330,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of postwar reconstruction informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-sandmanor)
 
 <a id="gift.sandmanor.western_europe.public_technical_institutions"></a>
@@ -3342,7 +3346,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of public technical institutions informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-sandmanor)
 
 <a id="gift.sandmanor.western_europe.transnational_research"></a>
@@ -3358,7 +3362,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Ritual / public space: The inheritance of transnational research informs relational space, ceremony, and public presentation without copied historical costume.<br>
 **Existing canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-sandmanor)
 
 # Glaüshouse Gifts
@@ -3801,7 +3805,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of education networks informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md#assignment-age-04-point-02-glaushouse)
 
 <a id="gift.glaushouse.catholic_counter_reformation.institutional_reform"></a>
@@ -3817,7 +3821,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of institutional reform informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md#assignment-age-04-point-02-glaushouse)
 
 <a id="gift.glaushouse.catholic_counter_reformation.sacred_art_and_ritual"></a>
@@ -3833,7 +3837,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of sacred art and ritual informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md#assignment-age-04-point-02-glaushouse)
 
 <a id="gift.glaushouse.early_indus_civilization.emerging_craft_and_measurement_standardization"></a>
@@ -3900,7 +3904,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of network standards informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-glaushouse)
 
 <a id="gift.glaushouse.european_communities_and_western_europe.public_research_collaboration"></a>
@@ -3916,7 +3920,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of public research collaboration informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-glaushouse)
 
 <a id="gift.glaushouse.european_communities_and_western_europe.world_wide_web_institutions"></a>
@@ -3932,7 +3936,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of World Wide Web institutions informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-glaushouse)
 
 <a id="gift.glaushouse.france.public_academies"></a>
@@ -3948,7 +3952,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of public academies informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-glaushouse); [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-glaushouse); [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-glaushouse); [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-glaushouse)
 
 <a id="gift.glaushouse.france.scientific_and_cultural_patronage"></a>
@@ -3964,7 +3968,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of scientific and cultural patronage informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-glaushouse); [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-glaushouse); [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-glaushouse); [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-glaushouse)
 
 <a id="gift.glaushouse.france.state_engineering"></a>
@@ -3980,7 +3984,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of state engineering informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-glaushouse); [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-glaushouse); [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-glaushouse); [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-glaushouse)
 
 <a id="gift.glaushouse.german_confederation.federal_plurality"></a>
@@ -3996,7 +4000,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of federal plurality informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-glaushouse)
 
 <a id="gift.glaushouse.german_confederation.industrial_coordination"></a>
@@ -4012,7 +4016,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of industrial coordination informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-glaushouse)
 
 <a id="gift.glaushouse.german_confederation.technical_education"></a>
@@ -4028,7 +4032,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of technical education informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-glaushouse)
 
 <a id="gift.glaushouse.habsburg_austria.composite_administration"></a>
@@ -4044,7 +4048,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of composite administration informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-glaushouse); [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-glaushouse)
 
 <a id="gift.glaushouse.habsburg_austria.court_diplomacy"></a>
@@ -4060,7 +4064,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of court diplomacy informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-glaushouse); [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-glaushouse)
 
 <a id="gift.glaushouse.habsburg_austria.musical_and_intellectual_culture"></a>
@@ -4076,7 +4080,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of musical and intellectual culture informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-glaushouse); [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-glaushouse)
 
 <a id="gift.glaushouse.japan.consumer_electronics"></a>
@@ -4092,7 +4096,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of consumer electronics informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-glaushouse)
 
 <a id="gift.glaushouse.japan.high_reliability_transport"></a>
@@ -4108,7 +4112,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of high-reliability transport informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-glaushouse)
 
 <a id="gift.glaushouse.japan.quality_manufacturing"></a>
@@ -4124,7 +4128,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of quality manufacturing informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-glaushouse)
 
 <a id="gift.glaushouse.kassite_babylonia.long_duration_scribal_and_literary_preservation"></a>
@@ -4289,12 +4293,13 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Age:** 3<br>
 **Point:** 7<br>
 **Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
-**Historical meaning:** Preliminary design term extracted from the supplied Ming China assignment; detailed historical scope requires cited research.<br>
-**Modern House expression:** Care infrastructure: The inheritance of examination bureaucracy informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
+**Historical meaning:** Early Ming rulers rebuilt central and local offices and classical examination institutions while court, eunuch, military-household, provincial, and local powers remained distinct.<br>
+**Modern House expression:** Glaüshouse records curriculum, candidate status, examiner, office scope, record custody, appeal, exclusion, and service outcome without treating examination success as Integrity or present authority.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed dossier; court and local scope, labor, route access, workshop attribution, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md#assignment-age-03-point-07-glaushouse)
+**Reviewed dossier:** [Ming China](dossiers/age_03_point_07/MING_CHINA_RESTORATION_CAPITALS_CRAFT_AND_EXCHANGE_1368_1453.md)
 
 <a id="gift.glaushouse.ming_china.maritime_and_overland_logistics"></a>
 ## gift.glaushouse.ming_china.maritime_and_overland_logistics
@@ -4305,12 +4310,13 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Age:** 3<br>
 **Point:** 7<br>
 **Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
-**Historical meaning:** Preliminary design term extracted from the supplied Ming China assignment; detailed historical scope requires cited research.<br>
-**Modern House expression:** Care infrastructure: The inheritance of maritime and overland logistics informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
+**Historical meaning:** The Grand Canal, roads, frontier routes, ports, shipyards, envoys, tribute missions, and early fifteenth-century voyages moved grain, goods, people, and information through unequal labor and command systems.<br>
+**Modern House expression:** Glaüshouse maps route, vessel, cargo, labor, intermediary, jurisdiction, maintenance, risk, interruption, and alternate path while keeping coercion and policy reversal visible.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed dossier; court and local scope, labor, route access, workshop attribution, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md#assignment-age-03-point-07-glaushouse)
+**Reviewed dossier:** [Ming China](dossiers/age_03_point_07/MING_CHINA_RESTORATION_CAPITALS_CRAFT_AND_EXCHANGE_1368_1453.md)
 
 <a id="gift.glaushouse.ming_china.urban_craft_production"></a>
 ## gift.glaushouse.ming_china.urban_craft_production
@@ -4321,12 +4327,13 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Age:** 3<br>
 **Point:** 7<br>
 **Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
-**Historical meaning:** Preliminary design term extracted from the supplied Ming China assignment; detailed historical scope requires cited research.<br>
-**Modern House expression:** Care infrastructure: The inheritance of urban craft production informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
+**Historical meaning:** Court and regional workshops produced porcelain, lacquer, cloisonné, textiles, painting, printing, and architectural components through standards, skilled labor, material networks, and changing patronage.<br>
+**Modern House expression:** Glaüshouse tracks workshop, maker, material, design source, batch, quality, custody, repair, and access without converting court standards into clinical or constitutional authority.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed dossier; court and local scope, labor, route access, workshop attribution, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md#assignment-age-03-point-07-glaushouse)
+**Reviewed dossier:** [Ming China](dossiers/age_03_point_07/MING_CHINA_RESTORATION_CAPITALS_CRAFT_AND_EXCHANGE_1368_1453.md)
 
 <a id="gift.glaushouse.minoan_crete.court_centered_storage_and_workshop_coordination"></a>
 ## gift.glaushouse.minoan_crete.court_centered_storage_and_workshop_coordination
@@ -4541,12 +4548,13 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Age:** 4<br>
 **Point:** 1<br>
 **Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
-**Historical meaning:** Preliminary design term extracted from the supplied Ottoman Empire assignment; detailed historical scope requires cited research.<br>
-**Modern House expression:** Care infrastructure: The inheritance of military logistics informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
+**Historical meaning:** Roads, bridges, fortresses, ships, artillery, supply, vassal contingents, military households, and route intelligence supported campaigns whose capacity changed sharply during the 1402 defeat, interregnum, consolidation, and 1453 siege.<br>
+**Modern House expression:** Flynt models dated force, route, supply, maintenance, command scope, civilian dependency, failure, fallback, and refusal rather than admiring conquest.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-glaushouse)
+**Reviewed dossier:** [Ottoman Empire](dossiers/age_04_point_01/OTTOMAN_EMPIRE.md)
 
 <a id="gift.glaushouse.ottoman_empire.monumental_civic_complexes"></a>
 ## gift.glaushouse.ottoman_empire.monumental_civic_complexes
@@ -4557,12 +4565,13 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Age:** 4<br>
 **Point:** 1<br>
 **Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
-**Historical meaning:** Preliminary design term extracted from the supplied Ottoman Empire assignment; detailed historical scope requires cited research.<br>
-**Modern House expression:** Care infrastructure: The inheritance of monumental civic complexes informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
+**Historical meaning:** Mosques, tombs, baths, kitchens, markets, schools, bridges, and endowed services at Bursa, Edirne, and other centers joined patronage to urban life; later post-1453 rebuilding must remain outside this Point's evidence window.<br>
+**Modern House expression:** Flynt preserves patron, endowment, service, labor, beneficiary, structure, maintenance, later alteration, and present owner without importing dynastic authority.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-glaushouse)
+**Reviewed dossier:** [Ottoman Empire](dossiers/age_04_point_01/OTTOMAN_EMPIRE.md)
 
 <a id="gift.glaushouse.ottoman_empire.multiethnic_administration"></a>
 ## gift.glaushouse.ottoman_empire.multiethnic_administration
@@ -4573,12 +4582,13 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Age:** 4<br>
 **Point:** 1<br>
 **Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
-**Historical meaning:** Preliminary design term extracted from the supplied Ottoman Empire assignment; detailed historical scope requires cited research.<br>
-**Modern House expression:** Care infrastructure: The inheritance of multiethnic administration informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
+**Historical meaning:** Early Ottoman rule joined dynastic, military, judicial, vassal, urban, village, religious, and regional institutions across Anatolia and the Balkans without erasing local communities or unequal status.<br>
+**Modern House expression:** Flynt records office, language, jurisdiction, community, obligation, intermediary, refusal, dispute, and handoff without treating plural rule as consent or inherited command.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-glaushouse)
+**Reviewed dossier:** [Ottoman Empire](dossiers/age_04_point_01/OTTOMAN_EMPIRE.md)
 
 <a id="gift.glaushouse.ptolemaic.multilingual_fiscal_and_legal_record_alignment"></a>
 ## gift.glaushouse.ptolemaic.multilingual_fiscal_and_legal_record_alignment
@@ -4848,7 +4858,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of broadband infrastructure informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-glaushouse)
 
 <a id="gift.glaushouse.south_korea.networked_media_culture"></a>
@@ -4864,7 +4874,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of networked media culture informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-glaushouse)
 
 <a id="gift.glaushouse.south_korea.semiconductor_manufacturing"></a>
@@ -4880,7 +4890,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of semiconductor manufacturing informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-glaushouse)
 
 <a id="gift.glaushouse.soviet_union.centralized_research"></a>
@@ -4896,7 +4906,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of centralized research informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-glaushouse); [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-glaushouse)
 
 <a id="gift.glaushouse.soviet_union.industrial_planning"></a>
@@ -4912,7 +4922,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of industrial planning informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-glaushouse); [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-glaushouse)
 
 <a id="gift.glaushouse.soviet_union.space_and_systems_engineering"></a>
@@ -4928,7 +4938,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of space and systems engineering informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-glaushouse); [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-glaushouse)
 
 <a id="gift.glaushouse.syriac_and_monastic_scholarship.cross_language_scholarship"></a>
@@ -4995,7 +5005,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of advanced semiconductor fabrication informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-glaushouse)
 
 <a id="gift.glaushouse.taiwan.high_reliability_manufacturing"></a>
@@ -5011,7 +5021,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of high-reliability manufacturing informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-glaushouse)
 
 <a id="gift.glaushouse.taiwan.precision_supply_networks"></a>
@@ -5027,7 +5037,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of precision supply networks informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-glaushouse)
 
 <a id="gift.glaushouse.western_europe.postwar_reconstruction"></a>
@@ -5043,7 +5053,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of postwar reconstruction informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-glaushouse)
 
 <a id="gift.glaushouse.western_europe.public_technical_institutions"></a>
@@ -5059,7 +5069,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of public technical institutions informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-glaushouse)
 
 <a id="gift.glaushouse.western_europe.transnational_research"></a>
@@ -5075,7 +5085,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Care infrastructure: The inheritance of transnational research informs preventive care, restoration, accessible maintenance, or environmental integrity.<br>
 **Existing canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-glaushouse)
 
 <a id="gift.glaushouse.yuan_china.cross_eurasian_exchange"></a>
@@ -5297,7 +5307,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of large-scale infrastructure informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-flynt); [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-flynt); [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-flynt)
 
 <a id="gift.flynt.china.manufacturing_ecosystems"></a>
@@ -5313,7 +5323,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of manufacturing ecosystems informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-flynt); [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-flynt); [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-flynt)
 
 <a id="gift.flynt.china.state_scale_digital_systems"></a>
@@ -5329,7 +5339,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of state-scale digital systems informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-flynt); [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-flynt); [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-flynt)
 
 <a id="gift.flynt.elam.distributed_craft_and_storage_coordination"></a>
@@ -5396,7 +5406,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of consumer electronics informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-flynt)
 
 <a id="gift.flynt.japan.high_reliability_transport"></a>
@@ -5412,7 +5422,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of high-reliability transport informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-flynt)
 
 <a id="gift.flynt.japan.quality_manufacturing"></a>
@@ -5428,7 +5438,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of quality manufacturing informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-flynt)
 
 <a id="gift.flynt.kievan_rus.cross_cultural_diplomatic_exchange"></a>
@@ -5848,12 +5858,13 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Age:** 3, 4<br>
 **Point:** 7, 2<br>
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
-**Historical meaning:** Preliminary design term extracted from the supplied Ottoman Empire assignment; detailed historical scope requires cited research.<br>
-**Modern House expression:** Workshop / network: The inheritance of military logistics informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
+**Historical meaning:** Roads, bridges, fortresses, ships, artillery, supply, vassal contingents, military households, and route intelligence supported campaigns whose capacity changed sharply during the 1402 defeat, interregnum, consolidation, and 1453 siege.<br>
+**Modern House expression:** Flynt models dated force, route, supply, maintenance, command scope, civilian dependency, failure, fallback, and refusal rather than admiring conquest.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed dossier; early Ottoman chronology, local administration, unequal status, logistics, civilian cost, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md#assignment-age-03-point-07-flynt); [Age 4, Point 2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md#assignment-age-04-point-02-flynt)
+**Reviewed dossier:** [Ottoman Empire](dossiers/age_03_point_07/OTTOMAN_EMPIRE_BALKAN_ANATOLIAN_SYSTEMS_AND_1453_TRANSITION.md)
 
 <a id="gift.flynt.ottoman_empire.monumental_civic_complexes"></a>
 ## gift.flynt.ottoman_empire.monumental_civic_complexes
@@ -5864,12 +5875,13 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Age:** 3, 4<br>
 **Point:** 7, 2<br>
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
-**Historical meaning:** Preliminary design term extracted from the supplied Ottoman Empire assignment; detailed historical scope requires cited research.<br>
-**Modern House expression:** Workshop / network: The inheritance of monumental civic complexes informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
+**Historical meaning:** Mosques, tombs, baths, kitchens, markets, schools, bridges, and endowed services at Bursa, Edirne, and other centers joined patronage to urban life; later post-1453 rebuilding must remain outside this Point's evidence window.<br>
+**Modern House expression:** Flynt preserves patron, endowment, service, labor, beneficiary, structure, maintenance, later alteration, and present owner without importing dynastic authority.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed dossier; early Ottoman chronology, local administration, unequal status, logistics, civilian cost, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md#assignment-age-03-point-07-flynt); [Age 4, Point 2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md#assignment-age-04-point-02-flynt)
+**Reviewed dossier:** [Ottoman Empire](dossiers/age_03_point_07/OTTOMAN_EMPIRE_BALKAN_ANATOLIAN_SYSTEMS_AND_1453_TRANSITION.md)
 
 <a id="gift.flynt.ottoman_empire.multiethnic_administration"></a>
 ## gift.flynt.ottoman_empire.multiethnic_administration
@@ -5880,12 +5892,13 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Age:** 3, 4<br>
 **Point:** 7, 2<br>
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
-**Historical meaning:** Preliminary design term extracted from the supplied Ottoman Empire assignment; detailed historical scope requires cited research.<br>
-**Modern House expression:** Workshop / network: The inheritance of multiethnic administration informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
+**Historical meaning:** Early Ottoman rule joined dynastic, military, judicial, vassal, urban, village, religious, and regional institutions across Anatolia and the Balkans without erasing local communities or unequal status.<br>
+**Modern House expression:** Flynt records office, language, jurisdiction, community, obligation, intermediary, refusal, dispute, and handoff without treating plural rule as consent or inherited command.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed dossier; early Ottoman chronology, local administration, unequal status, logistics, civilian cost, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md#assignment-age-03-point-07-flynt); [Age 4, Point 2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md#assignment-age-04-point-02-flynt)
+**Reviewed dossier:** [Ottoman Empire](dossiers/age_03_point_07/OTTOMAN_EMPIRE_BALKAN_ANATOLIAN_SYSTEMS_AND_1453_TRANSITION.md)
 
 <a id="gift.flynt.parthian_empire.border_diplomacy_and_intelligence_records"></a>
 ## gift.flynt.parthian_empire.border_diplomacy_and_intelligence_records
@@ -6002,7 +6015,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of cartographic practice informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-flynt)
 
 <a id="gift.flynt.portugal.fortified_trade_posts"></a>
@@ -6018,7 +6031,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of fortified trade posts informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-flynt)
 
 <a id="gift.flynt.portugal.ocean_navigation"></a>
@@ -6034,7 +6047,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of ocean navigation informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-flynt)
 
 <a id="gift.flynt.qing_china.craft_and_knowledge_exchange"></a>
@@ -6050,7 +6063,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of craft and knowledge exchange informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-flynt)
 
 <a id="gift.flynt.qing_china.frontier_governance"></a>
@@ -6066,7 +6079,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of frontier governance informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-flynt)
 
 <a id="gift.flynt.qing_china.imperial_administration"></a>
@@ -6082,8 +6095,9 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Flynt models phase, office, tax, supply, command, local authority, and coercive burden instead of uniform centralization.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-flynt)
+**Reviewed dossier:** [Qing China](dossiers/age_04_point_03/QING_CHINA.md)
 
 <a id="gift.flynt.russian_empire.continental_administration"></a>
 ## gift.flynt.russian_empire.continental_administration
@@ -6098,7 +6112,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of continental administration informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-flynt); [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-flynt)
 
 <a id="gift.flynt.russian_empire.frontier_infrastructure"></a>
@@ -6114,7 +6128,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of frontier infrastructure informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-flynt); [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-flynt)
 
 <a id="gift.flynt.russian_empire.military_reform"></a>
@@ -6130,7 +6144,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of military reform informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs historical audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-flynt); [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-flynt)
 
 <a id="gift.flynt.sasanian_persia.frontier_strategy"></a>
@@ -6452,7 +6466,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of centralized research informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-flynt)
 
 <a id="gift.flynt.soviet_union.industrial_planning"></a>
@@ -6468,7 +6482,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of industrial planning informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-flynt)
 
 <a id="gift.flynt.soviet_union.space_and_systems_engineering"></a>
@@ -6484,7 +6498,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of space and systems engineering informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-flynt)
 
 <a id="gift.flynt.tang_china.cosmopolitan_exchange_networks"></a>
@@ -6551,7 +6565,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of continental networks informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-flynt); [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-flynt); [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-flynt); [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-flynt); [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-flynt); [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-flynt)
 
 <a id="gift.flynt.united_states.industrial_and_computational_systems"></a>
@@ -6567,7 +6581,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of industrial and computational systems informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-flynt); [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-flynt); [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-flynt); [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-flynt); [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-flynt); [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-flynt)
 
 <a id="gift.flynt.united_states.large_scale_research"></a>
@@ -6583,7 +6597,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Modern House expression:** Workshop / network: The inheritance of large-scale research informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
 **Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
-**Status:** Needs House-fit audit<br>
+**Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-flynt); [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-flynt); [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-flynt); [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-flynt); [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-flynt); [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-flynt)
 
 <a id="gift.flynt.vikings.cross_cultural_exchange_records"></a>

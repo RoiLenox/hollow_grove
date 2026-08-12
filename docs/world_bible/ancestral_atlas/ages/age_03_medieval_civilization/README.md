@@ -28,3 +28,5 @@ This Age page is an index. Each Point preserves exactly four primary assignments
 - [Age III, Point III reviewed dossiers](../../dossiers/age_03_point_03/README.md)
 - [Age III, Point IV reviewed dossiers](../../dossiers/age_03_point_04/README.md)
 - [Age III, Point V reviewed dossiers](../../dossiers/age_03_point_05/README.md)
+- [Age III, Points 6A and 6B reviewed dossiers](../../dossiers/age_03_point_06/README.md)
+- [Age III, Point VII reviewed dossiers](../../dossiers/age_03_point_07/README.md)

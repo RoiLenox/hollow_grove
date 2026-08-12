@@ -17,9 +17,9 @@ Before this work, the active repository had no `docs/world_bible/` Atlas impleme
 
 ## Connections now formalized
 
-- Every assignment connects culture → Gift IDs → Point manifestation → existing House canon → Hueman reference ID; Age I, Points I–V and Age II, Points I–IX now add fifty-six reviewed dossiers and reviewed flagship records.
+- Every assignment connects culture → Gift IDs → one reviewed Point manifestation → existing House canon → Hueman reference ID; all 164 assignments now have a reviewed dossier path.
 - Each House has a cumulative ancestry plus a separate modern cultural synthesis, preventing the Point chronology from being duplicated as prose.
-- Gifts cover all Points and assignments; manifestations deliberately stop at fourteen reviewed Working flagships per House.
+- Gifts cover all Points and assignments; manifestations provide exactly one reviewed Working flagship per House assignment, 41 per House.
 - Libraries are cultural institutions with historical wings, foundational book records, professional collections, programs, curriculum links, and read-only navigation hooks.
 - Cultural memory distinguishes common, educated, and specialist knowledge.
 - All creator-facing proposals require an ancestral provenance block.
@@ -29,7 +29,7 @@ Before this work, the active repository had no `docs/world_bible/` Atlas impleme
 - Existing House, geography, visual, and Hueman documents contained no structured historical provenance IDs.
 - The foundational book lists had no repository records, Point links, cultural association status, or secondary-study handling.
 - Existing runtime/data schemas had no Atlas-compatible descriptive record. The proposal now documents one without binding it to production.
-- Major figures, locations, historical works, doctrines, trade relationships, and exact conflict claims remain placeholders outside Age I, Points I–V and Age II, Points I–VII. Reviewed Point pages delegate those fields to cited dossiers rather than duplicating the research.
+- Ages IV–VI use completion-level Point source bundles and explicit uncertainty fields. Their culture-specific specialist bibliographies may deepen, but no assignment remains without a dossier, Gift boundary, manifestation, and source trail.
 
 ## Duplicates avoided
 

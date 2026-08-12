@@ -6,10 +6,10 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 
 | House | Count |
 |---|---:|
-| Stonebend | 24 |
-| Sandmanor | 24 |
-| Glaüshouse | 24 |
-| Flynt | 24 |
+| Stonebend | 41 |
+| Sandmanor | 41 |
+| Glaüshouse | 41 |
+| Flynt | 41 |
 
 # Stonebend
 
@@ -541,6 +541,380 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Status:** Reviewed flagship; design remains Working until separately adopted<br>
 **Ancestral provenance:** [III:6B — Khanates, Yuan, and Mamluk World](ages/age_03_medieval_civilization/point_06b_khanates_yuan_and_mamluk_world.md)
 
+<a id="manifestation.stonebend.late_medieval_electoral_civic_register"></a>
+## Late Medieval Electoral and Civic Register
+
+**Manifestation ID:** `manifestation.stonebend.late_medieval_electoral_civic_register`<br>
+**Manifestation:** Late Medieval Electoral and Civic Register<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Compare election, office, principality, bishopric, city, guild, council, and service scope without treating the Empire as a centralized state.<br>
+**Historical ancestry:** Golden Bull succession procedure, late medieval electoral monarchy, layered jurisdictions, imperial and free cities, guilds, councils, and local records. See the [Holy Roman Empire dossier](dossiers/age_03_point_07/HOLY_ROMAN_EMPIRE_ELECTORS_CITIES_AND_COUNCILS_1368_1453.md).<br>
+**Source Gifts:** [`gift.stonebend.holy_roman_empire.layered_sovereignty`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.holy_roman_empire.layered_sovereignty), [`gift.stonebend.holy_roman_empire.municipal_and_legal_plurality`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.holy_roman_empire.municipal_and_legal_plurality), [`gift.stonebend.holy_roman_empire.guild_traditions`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.holy_roman_empire.guild_traditions)<br>
+**Modern House interpretation:** Stonebend receives office and jurisdiction provenance, not imperial supremacy, crusading authority, or inherited legitimacy.<br>
+**Physical appearance:** A dark-blue public register with election, office, city, guild, council, dispute, and revision panels; no crown or throne replica.<br>
+**Institutional role:** A read-only archive, works, education, and standards interface under existing Stonebend authority.<br>
+**Gameplay potential:** Election provenance, office scope, legal-forum comparison, guild custody, service history, and curriculum references.<br>
+**Implementation notes:** Keep king, emperor, elector, prince, bishop, city, council, guild, Hussite community, and local court distinct across 1368–1453.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** electoral-civic provenance registrar<br>
+**Possible Hueman data hook:** election, office, forum, city, guild, council, conflict, and revision references<br>
+**Confidence:** High for electoral and major institutional chronology; variable for local reach, non-elite experience, and uneven records.<br>
+**Sources:** [Scholarly or collection source 1](https://germanhistorydocs.org/en/from-the-reformations-to-the-thirty-years-war-1500-1648/ghdi%3Adocument-3739); [Scholarly or collection source 2](https://germanhistorydocs.org/en/from-the-reformations-to-the-thirty-years-war-1500-1648/ghdi%3Amap-2807)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [III:7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md)
+
+<a id="manifestation.stonebend.age_04_point_01_italian_states_evidence_interface"></a>
+## Italian States Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.stonebend.age_04_point_01_italian_states_evidence_interface`<br>
+**Manifestation:** Italian States Evidence and Translation Interface<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Make the Italian States assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Renaissance evidence window (1453–1517 CE) and its bounded Italian States assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Italian States dossier](dossiers/age_04_point_01/ITALIAN_STATES.md).<br>
+**Source Gifts:** [`gift.stonebend.italian_states.humanist_civic_culture`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.italian_states.humanist_civic_culture), [`gift.stonebend.italian_states.artistic_workshops`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.italian_states.artistic_workshops), [`gift.stonebend.italian_states.banking_and_diplomacy`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.italian_states.banking_and_diplomacy)<br>
+**Modern House interpretation:** Stonebend receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.loc.gov/exhibits/vatican/vatican.html); [Scholarly or collection source 2](https://www.metmuseum.org/essays/the-art-of-the-ottomans-before-1600); [Scholarly or collection source 3](https://82nd-and-fifth.metmuseum.org/toah/ht/08/eustc.html)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md)
+
+<a id="manifestation.stonebend.age_04_point_02_holy_roman_empire_evidence_interface"></a>
+## Holy Roman Empire Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.stonebend.age_04_point_02_holy_roman_empire_evidence_interface`<br>
+**Manifestation:** Holy Roman Empire Evidence and Translation Interface<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Make the Holy Roman Empire assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Reformation evidence window (1517–1600 CE) and its bounded Holy Roman Empire assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Holy Roman Empire dossier](dossiers/age_04_point_02/HOLY_ROMAN_EMPIRE.md).<br>
+**Source Gifts:** [`gift.stonebend.holy_roman_empire.layered_sovereignty`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.holy_roman_empire.layered_sovereignty), [`gift.stonebend.holy_roman_empire.municipal_and_legal_plurality`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.holy_roman_empire.municipal_and_legal_plurality), [`gift.stonebend.holy_roman_empire.guild_traditions`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.holy_roman_empire.guild_traditions)<br>
+**Modern House interpretation:** Stonebend receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://tile.loc.gov/storage-services/master/gdc/gdcebookspublic/20/21/01/33/16/2021013316/2021013316.pdf); [Scholarly or collection source 2](https://www.loc.gov/exhibits/vatican/vatican.html); [Scholarly or collection source 3](https://germanhistorydocs.org/en/from-the-reformations-to-the-thirty-years-war-1500-1648)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md)
+
+<a id="manifestation.stonebend.age_04_point_03_england_evidence_interface"></a>
+## England Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.stonebend.age_04_point_03_england_evidence_interface`<br>
+**Manifestation:** England Evidence and Translation Interface<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Make the England assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Scientific Revolution evidence window (1600–1700 CE) and its bounded England assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [England dossier](dossiers/age_04_point_03/ENGLAND.md).<br>
+**Source Gifts:** [`gift.stonebend.england.experimental_method`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.england.experimental_method), [`gift.stonebend.england.mathematical_natural_law`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.england.mathematical_natural_law), [`gift.stonebend.england.scientific_societies`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.england.scientific_societies)<br>
+**Modern House interpretation:** Stonebend receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://royalsociety.org/about-us/who-we-are/history/); [Scholarly or collection source 2](https://royalsociety.org/current-topics/history-science/); [Scholarly or collection source 3](https://www.metmuseum.org/zh/essays/the-qing-dynasty-1644-1911-painting)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md)
+
+<a id="manifestation.stonebend.age_04_point_04_great_britain_evidence_interface"></a>
+## Great Britain Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.stonebend.age_04_point_04_great_britain_evidence_interface`<br>
+**Manifestation:** Great Britain Evidence and Translation Interface<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Make the Great Britain assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Enlightenment evidence window (1700–1789 CE) and its bounded Great Britain assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Great Britain dossier](dossiers/age_04_point_04/GREAT_BRITAIN.md).<br>
+**Source Gifts:** [`gift.stonebend.great_britain.parliamentary_institutions`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.great_britain.parliamentary_institutions), [`gift.stonebend.great_britain.scientific_public_culture`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.great_britain.scientific_public_culture), [`gift.stonebend.great_britain.commercial_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.great_britain.commercial_networks)<br>
+**Modern House interpretation:** Stonebend receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://plato.stanford.edu/entries/enlightenment/); [Scholarly or collection source 2](https://www.britishmuseum.org/collection/galleries/enlightenment); [Scholarly or collection source 3](https://royalsociety.org/current-topics/history-science/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md)
+
+<a id="manifestation.stonebend.age_04_point_05_napoleonic_france_evidence_interface"></a>
+## Napoleonic France Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.stonebend.age_04_point_05_napoleonic_france_evidence_interface`<br>
+**Manifestation:** Napoleonic France Evidence and Translation Interface<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Make the Napoleonic France assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Revolutionary World evidence window (1789–1815 CE) and its bounded Napoleonic France assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Napoleonic France dossier](dossiers/age_04_point_05/NAPOLEONIC_FRANCE.md).<br>
+**Source Gifts:** [`gift.stonebend.napoleonic_france.legal_codification`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.napoleonic_france.legal_codification), [`gift.stonebend.napoleonic_france.centralized_administration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.napoleonic_france.centralized_administration), [`gift.stonebend.napoleonic_france.mass_mobilization`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.napoleonic_france.mass_mobilization)<br>
+**Modern House interpretation:** Stonebend receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://gallica.bnf.fr/selections/fr/html/images/la-revolution-1789-1799?mode=desktop); [Scholarly or collection source 2](https://www.napoleon.org/en/history-of-the-two-empires/articles/the-french-civil-code-or-code-civil-21-march-1804-an-overview/); [Scholarly or collection source 3](https://www.britishmuseum.org/collection/term/BIOG39862)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md)
+
+<a id="manifestation.stonebend.age_05_point_01_united_kingdom_evidence_interface"></a>
+## United Kingdom Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.stonebend.age_05_point_01_united_kingdom_evidence_interface`<br>
+**Manifestation:** United Kingdom Evidence and Translation Interface<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Make the United Kingdom assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Industrial Acceleration evidence window (c. 1815–1850 CE) and its bounded United Kingdom assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [United Kingdom dossier](dossiers/age_05_point_01/UNITED_KINGDOM.md).<br>
+**Source Gifts:** [`gift.stonebend.united_kingdom.industrial_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_kingdom.industrial_systems), [`gift.stonebend.united_kingdom.parliamentary_administration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_kingdom.parliamentary_administration), [`gift.stonebend.united_kingdom.global_transport_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_kingdom.global_transport_networks)<br>
+**Modern House interpretation:** Stonebend receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.parliament.uk/about/living-heritage/transformingsociety/tradeindustry/industrycommunity/overview/earlyindustry/); [Scholarly or collection source 2](https://www.parliament.uk/about/living-heritage/transformingsociety/transportcomms/roadsrail/kent-case-study/introduction/railways-in-early-nineteenth-century-britain/); [Scholarly or collection source 3](https://www.parliament.uk/about/living-heritage/evolutionofparliament/2015-parliament-in-the-making/get-involved1/2015-banners-exhibition/joel-millerchip/1833-factory-act-gallery/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md)
+
+<a id="manifestation.stonebend.age_05_point_02_united_kingdom_evidence_interface"></a>
+## United Kingdom Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.stonebend.age_05_point_02_united_kingdom_evidence_interface`<br>
+**Manifestation:** United Kingdom Evidence and Translation Interface<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Make the United Kingdom assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Age of Science evidence window (c. 1850–1875 CE) and its bounded United Kingdom assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [United Kingdom dossier](dossiers/age_05_point_02/UNITED_KINGDOM.md).<br>
+**Source Gifts:** [`gift.stonebend.united_kingdom.industrial_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_kingdom.industrial_systems), [`gift.stonebend.united_kingdom.parliamentary_administration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_kingdom.parliamentary_administration), [`gift.stonebend.united_kingdom.global_transport_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_kingdom.global_transport_networks)<br>
+**Modern House interpretation:** Stonebend receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://royalsociety.org/current-topics/history-science/); [Scholarly or collection source 2](https://www.darwinproject.ac.uk/); [Scholarly or collection source 3](https://www.pasteur.fr/en/institut-pasteur/history)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md)
+
+<a id="manifestation.stonebend.age_05_point_03_german_empire_evidence_interface"></a>
+## German Empire Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.stonebend.age_05_point_03_german_empire_evidence_interface`<br>
+**Manifestation:** German Empire Evidence and Translation Interface<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Make the German Empire assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Second Industrial Revolution evidence window (c. 1875–1914 CE) and its bounded German Empire assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [German Empire dossier](dossiers/age_05_point_03/GERMAN_EMPIRE.md).<br>
+**Source Gifts:** [`gift.stonebend.german_empire.engineering_institutions`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.german_empire.engineering_institutions), [`gift.stonebend.german_empire.industrial_science`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.german_empire.industrial_science), [`gift.stonebend.german_empire.military_logistics`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.german_empire.military_logistics)<br>
+**Modern House interpretation:** Stonebend receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.parliament.uk/about/living-heritage/transformingsociety/tradeindustry/industrycommunity/keydates/); [Scholarly or collection source 2](https://siarchives.si.edu/sites/default/files/pdfs/jhpp/JHP_Joseph_Henry_and_the_Telephone.pdf); [Scholarly or collection source 3](https://ethw.org/Second_Industrial_Revolution)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md)
+
+<a id="manifestation.stonebend.age_05_point_04_german_empire_evidence_interface"></a>
+## German Empire Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.stonebend.age_05_point_04_german_empire_evidence_interface`<br>
+**Manifestation:** German Empire Evidence and Translation Interface<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Make the German Empire assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed World War I evidence window (1914–1918 CE) and its bounded German Empire assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [German Empire dossier](dossiers/age_05_point_04/GERMAN_EMPIRE.md).<br>
+**Source Gifts:** [`gift.stonebend.german_empire.engineering_institutions`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.german_empire.engineering_institutions), [`gift.stonebend.german_empire.industrial_science`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.german_empire.industrial_science), [`gift.stonebend.german_empire.military_logistics`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.german_empire.military_logistics)<br>
+**Modern House interpretation:** Stonebend receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.iwm.org.uk/history/how-the-world-went-to-war-in-1914); [Scholarly or collection source 2](https://www.iwm.org.uk/history/transport-and-supply-during-the-first-world-war); [Scholarly or collection source 3](https://www.iwm.org.uk/history/firsts-of-the-first-world-war)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md)
+
+<a id="manifestation.stonebend.age_05_point_05_weimar_germany_evidence_interface"></a>
+## Weimar Germany Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.stonebend.age_05_point_05_weimar_germany_evidence_interface`<br>
+**Manifestation:** Weimar Germany Evidence and Translation Interface<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Make the Weimar Germany assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Interwar World evidence window (1918–1939 CE) and its bounded Weimar Germany assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Weimar Germany dossier](dossiers/age_05_point_05/WEIMAR_GERMANY.md).<br>
+**Source Gifts:** [`gift.stonebend.weimar_germany.modernist_design`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.weimar_germany.modernist_design), [`gift.stonebend.weimar_germany.theoretical_science`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.weimar_germany.theoretical_science), [`gift.stonebend.weimar_germany.mass_democratic_culture`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.weimar_germany.mass_democratic_culture)<br>
+**Modern House interpretation:** Stonebend receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.bauhaus.de/en/discover/article/14-years-of-bauhaus/); [Scholarly or collection source 2](https://www.bauhaus.de/en/discover/article/our-history-part-1-how-the-memory-of-the-bauhaus-was-rescued-from-oblivion/); [Scholarly or collection source 3](https://royalsociety.org/current-topics/history-science/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md)
+
+<a id="manifestation.stonebend.age_05_point_06_nazi_germany_evidence_interface"></a>
+## Nazi Germany Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.stonebend.age_05_point_06_nazi_germany_evidence_interface`<br>
+**Manifestation:** Nazi Germany Evidence and Translation Interface<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Make the Nazi Germany assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed World War II evidence window (1939–1945 CE) and its bounded Nazi Germany assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Nazi Germany dossier](dossiers/age_05_point_06/NAZI_GERMANY.md).<br>
+**Source Gifts:** [`gift.stonebend.nazi_germany.documentation_of_industrialized_atrocity`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.nazi_germany.documentation_of_industrialized_atrocity), [`gift.stonebend.nazi_germany.warning_against_totalitarian_law`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.nazi_germany.warning_against_totalitarian_law), [`gift.stonebend.nazi_germany.ethics_of_institutional_refusal`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.nazi_germany.ethics_of_institutional_refusal)<br>
+**Modern House interpretation:** Stonebend receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer. For Nazi Germany, the interface contains only evidence of atrocity and institutional failure, never a transferable aesthetic or operational model.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://main.ushmm.org/learn/holocaust/world-war-ii-and-the-holocaust-1939-1945); [Scholarly or collection source 2](https://www.ushmm.org/antisemitism/holocaust-denial-and-distortion/evidence-documentation-holocaust); [Scholarly or collection source 3](https://www.iwm.org.uk/history/how-alan-turing-cracked-the-enigma-code)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md)
+
+<a id="manifestation.stonebend.age_06_point_01_united_states_evidence_interface"></a>
+## United States Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.stonebend.age_06_point_01_united_states_evidence_interface`<br>
+**Manifestation:** United States Evidence and Translation Interface<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Make the United States assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Early Computing evidence window (c. 1945–1960 CE) and its bounded United States assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [United States dossier](dossiers/age_06_point_01/UNITED_STATES.md).<br>
+**Source Gifts:** [`gift.stonebend.united_states.large_scale_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_states.large_scale_research), [`gift.stonebend.united_states.continental_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_states.continental_networks), [`gift.stonebend.united_states.industrial_and_computational_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_states.industrial_and_computational_systems)<br>
+**Modern House interpretation:** Stonebend receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://www.computerhistory.org/timeline/1945/); [Scholarly or collection source 2](https://www.computerhistory.org/timeline/1950/); [Scholarly or collection source 3](https://royalsociety.org/news/2023/04/science-in-the-making/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md)
+
+<a id="manifestation.stonebend.age_06_point_02_united_states_evidence_interface"></a>
+## United States Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.stonebend.age_06_point_02_united_states_evidence_interface`<br>
+**Manifestation:** United States Evidence and Translation Interface<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Make the United States assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Space Age evidence window (c. 1957–1975 CE) and its bounded United States assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [United States dossier](dossiers/age_06_point_02/UNITED_STATES.md).<br>
+**Source Gifts:** [`gift.stonebend.united_states.large_scale_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_states.large_scale_research), [`gift.stonebend.united_states.continental_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_states.continental_networks), [`gift.stonebend.united_states.industrial_and_computational_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_states.industrial_and_computational_systems)<br>
+**Modern House interpretation:** Stonebend receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://www.nasa.gov/history/dawn-of-the-space-age/); [Scholarly or collection source 2](https://www.nasa.gov/history/sputnik/sputorig.html); [Scholarly or collection source 3](https://www.nasa.gov/wp-content/uploads/2016/01/historical-studies-societal-impact-spaceflight-ebook_tagged.pdf)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md)
+
+<a id="manifestation.stonebend.age_06_point_03_united_states_evidence_interface"></a>
+## United States Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.stonebend.age_06_point_03_united_states_evidence_interface`<br>
+**Manifestation:** United States Evidence and Translation Interface<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Make the United States assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Digital Revolution evidence window (c. 1975–1995 CE) and its bounded United States assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [United States dossier](dossiers/age_06_point_03/UNITED_STATES.md).<br>
+**Source Gifts:** [`gift.stonebend.united_states.large_scale_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_states.large_scale_research), [`gift.stonebend.united_states.continental_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_states.continental_networks), [`gift.stonebend.united_states.industrial_and_computational_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_states.industrial_and_computational_systems)<br>
+**Modern House interpretation:** Stonebend receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://home.cern/science/computing/the-birth-of-the-web/short-history-web/); [Scholarly or collection source 2](https://home.cern/science/computing/birth-web/licensing-web/); [Scholarly or collection source 3](https://www.internetsociety.org/internet/history-internet/brief-history-internet/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md)
+
+<a id="manifestation.stonebend.age_06_point_04_united_states_evidence_interface"></a>
+## United States Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.stonebend.age_06_point_04_united_states_evidence_interface`<br>
+**Manifestation:** United States Evidence and Translation Interface<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Make the United States assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Network Age evidence window (c. 1995–2015 CE) and its bounded United States assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [United States dossier](dossiers/age_06_point_04/UNITED_STATES.md).<br>
+**Source Gifts:** [`gift.stonebend.united_states.large_scale_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_states.large_scale_research), [`gift.stonebend.united_states.continental_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_states.continental_networks), [`gift.stonebend.united_states.industrial_and_computational_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_states.industrial_and_computational_systems)<br>
+**Modern House interpretation:** Stonebend receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://www.internetsociety.org/blog/2015/04/happy-birthday-backbone/); [Scholarly or collection source 2](https://www.internetsociety.org/internet/history-internet/brief-history-internet/); [Scholarly or collection source 3](https://www.internetsociety.org/wp-content/uploads/2022/11/Global-Internet-Report-2015.pdf)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md)
+
+<a id="manifestation.stonebend.age_06_point_05_united_states_evidence_interface"></a>
+## United States Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.stonebend.age_06_point_05_united_states_evidence_interface`<br>
+**Manifestation:** United States Evidence and Translation Interface<br>
+**Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
+**Purpose:** Make the United States assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed AI Age evidence window (c. 2015 CE–Present) and its bounded United States assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [United States dossier](dossiers/age_06_point_05/UNITED_STATES.md).<br>
+**Source Gifts:** [`gift.stonebend.united_states.large_scale_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_states.large_scale_research), [`gift.stonebend.united_states.continental_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_states.continental_networks), [`gift.stonebend.united_states.industrial_and_computational_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.stonebend.united_states.industrial_and_computational_systems)<br>
+**Modern House interpretation:** Stonebend receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://hai.stanford.edu/ai-index); [Scholarly or collection source 2](https://digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence); [Scholarly or collection source 3](https://investor.tsmc.com/static/annualReports/2025/english/index.html)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md)
+
 # Sandmanor
 
 <a id="manifestation.sandmanor.ceremonial_garden_court"></a>
@@ -1070,6 +1444,380 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Sources:** [Scholarly or collection source 1](https://www.britannica.com/place/Mongol-empire); [Scholarly or collection source 2](https://www.metmuseum.org/essays/yuan-dynasty-1271-1368)<br>
 **Status:** Reviewed flagship; design remains Working until separately adopted<br>
 **Ancestral provenance:** [III:6B — Khanates, Yuan, and Mamluk World](ages/age_03_medieval_civilization/point_06b_khanates_yuan_and_mamluk_world.md)
+
+<a id="manifestation.sandmanor.humanist_workshop_commons"></a>
+## Humanist Workshop Commons
+
+**Manifestation ID:** `manifestation.sandmanor.humanist_workshop_commons`<br>
+**Manifestation:** Humanist Workshop Commons<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Join civic texts, patronage, workshop collaboration, material custody, urban sites, and public reception without reducing plural Italian cities to Florence or to great men.<br>
+**Historical ancestry:** Italian civic humanism, guild and workshop practice, booksellers and manuscript production, patronage, perspective, architecture, and urban public works. See the [Renaissance Italy dossier](dossiers/age_03_point_07/RENAISSANCE_ITALY_HUMANISM_WORKSHOPS_AND_CIVIC_PATRONAGE_1368_1453.md).<br>
+**Source Gifts:** [`gift.sandmanor.renaissance_italy.civic_humanism`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.renaissance_italy.civic_humanism), [`gift.sandmanor.renaissance_italy.workshop_and_patronage_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.renaissance_italy.workshop_and_patronage_systems), [`gift.sandmanor.renaissance_italy.urban_design`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.renaissance_italy.urban_design)<br>
+**Modern House interpretation:** Sandmanor receives design and relationship provenance, not oligarchic authority, patronal ownership of culture, or an aesthetic mandate.<br>
+**Physical appearance:** A planted working commons with text tables, commission ledgers, maker and assistant credits, material racks, site models, audience notes, and revision walls; no copied palazzo.<br>
+**Institutional role:** A library, design, cultural-memory, education, and public-space interface under existing Sandmanor boundaries.<br>
+**Gameplay potential:** Text provenance, commission and patron mapping, maker attribution, workshop handoff, site review, dispute, exclusion, and reception.<br>
+**Implementation notes:** Separate Florence, Venice, Milan, Siena, Ferrara, Rome, republic, court, guild, church, household, workshop, and labor across 1368–1453.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** humanist-workshop provenance curator<br>
+**Possible Hueman data hook:** text, patronage, maker, commission, workshop, site, audience, dispute, and reception references<br>
+**Confidence:** High for major works, workshops, and elite civic records; variable for informal labor, women, poorer residents, and regional access.<br>
+**Sources:** [Scholarly or collection source 1](https://www.metmuseum.org/essays/manuscript-illumination-in-italy-1400-1600); [Scholarly or collection source 2](https://82nd-and-fifth.metmuseum.org/toah/ht/08/eustc.html)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [III:7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md)
+
+<a id="manifestation.sandmanor.age_04_point_01_spain_evidence_interface"></a>
+## Spain Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.sandmanor.age_04_point_01_spain_evidence_interface`<br>
+**Manifestation:** Spain Evidence and Translation Interface<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Make the Spain assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Renaissance evidence window (1453–1517 CE) and its bounded Spain assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Spain dossier](dossiers/age_04_point_01/SPAIN.md).<br>
+**Source Gifts:** [`gift.sandmanor.spain.composite_monarchy`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.spain.composite_monarchy), [`gift.sandmanor.spain.atlantic_administration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.spain.atlantic_administration), [`gift.sandmanor.spain.court_and_ritual_culture`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.spain.court_and_ritual_culture)<br>
+**Modern House interpretation:** Sandmanor receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Sandmanor authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.loc.gov/exhibits/vatican/vatican.html); [Scholarly or collection source 2](https://www.metmuseum.org/essays/the-art-of-the-ottomans-before-1600); [Scholarly or collection source 3](https://82nd-and-fifth.metmuseum.org/toah/ht/08/eustc.html)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md)
+
+<a id="manifestation.sandmanor.age_04_point_02_protestant_europe_evidence_interface"></a>
+## Protestant Europe Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.sandmanor.age_04_point_02_protestant_europe_evidence_interface`<br>
+**Manifestation:** Protestant Europe Evidence and Translation Interface<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Make the Protestant Europe assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Reformation evidence window (1517–1600 CE) and its bounded Protestant Europe assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Protestant Europe dossier](dossiers/age_04_point_02/PROTESTANT_EUROPE.md).<br>
+**Source Gifts:** [`gift.sandmanor.protestant_europe.vernacular_literacy`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.protestant_europe.vernacular_literacy), [`gift.sandmanor.protestant_europe.confessional_communities`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.protestant_europe.confessional_communities), [`gift.sandmanor.protestant_europe.popular_education`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.protestant_europe.popular_education)<br>
+**Modern House interpretation:** Sandmanor receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Sandmanor authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://tile.loc.gov/storage-services/master/gdc/gdcebookspublic/20/21/01/33/16/2021013316/2021013316.pdf); [Scholarly or collection source 2](https://www.loc.gov/exhibits/vatican/vatican.html); [Scholarly or collection source 3](https://germanhistorydocs.org/en/from-the-reformations-to-the-thirty-years-war-1500-1648)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md)
+
+<a id="manifestation.sandmanor.age_04_point_03_dutch_republic_evidence_interface"></a>
+## Dutch Republic Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.sandmanor.age_04_point_03_dutch_republic_evidence_interface`<br>
+**Manifestation:** Dutch Republic Evidence and Translation Interface<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Make the Dutch Republic assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Scientific Revolution evidence window (1600–1700 CE) and its bounded Dutch Republic assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Dutch Republic dossier](dossiers/age_04_point_03/DUTCH_REPUBLIC.md).<br>
+**Source Gifts:** [`gift.sandmanor.dutch_republic.commercial_republicanism`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.dutch_republic.commercial_republicanism), [`gift.sandmanor.dutch_republic.print_culture`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.dutch_republic.print_culture), [`gift.sandmanor.dutch_republic.maritime_finance`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.dutch_republic.maritime_finance)<br>
+**Modern House interpretation:** Sandmanor receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Sandmanor authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://royalsociety.org/about-us/who-we-are/history/); [Scholarly or collection source 2](https://royalsociety.org/current-topics/history-science/); [Scholarly or collection source 3](https://www.metmuseum.org/zh/essays/the-qing-dynasty-1644-1911-painting)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md)
+
+<a id="manifestation.sandmanor.age_04_point_04_france_evidence_interface"></a>
+## France Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.sandmanor.age_04_point_04_france_evidence_interface`<br>
+**Manifestation:** France Evidence and Translation Interface<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Make the France assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Enlightenment evidence window (1700–1789 CE) and its bounded France assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [France dossier](dossiers/age_04_point_04/FRANCE.md).<br>
+**Source Gifts:** [`gift.sandmanor.france.public_academies`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.france.public_academies), [`gift.sandmanor.france.state_engineering`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.france.state_engineering), [`gift.sandmanor.france.scientific_and_cultural_patronage`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.france.scientific_and_cultural_patronage)<br>
+**Modern House interpretation:** Sandmanor receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Sandmanor authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://plato.stanford.edu/entries/enlightenment/); [Scholarly or collection source 2](https://www.britishmuseum.org/collection/galleries/enlightenment); [Scholarly or collection source 3](https://royalsociety.org/current-topics/history-science/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md)
+
+<a id="manifestation.sandmanor.age_04_point_05_great_britain_evidence_interface"></a>
+## Great Britain Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.sandmanor.age_04_point_05_great_britain_evidence_interface`<br>
+**Manifestation:** Great Britain Evidence and Translation Interface<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Make the Great Britain assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Revolutionary World evidence window (1789–1815 CE) and its bounded Great Britain assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Great Britain dossier](dossiers/age_04_point_05/GREAT_BRITAIN.md).<br>
+**Source Gifts:** [`gift.sandmanor.great_britain.parliamentary_institutions`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.great_britain.parliamentary_institutions), [`gift.sandmanor.great_britain.scientific_public_culture`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.great_britain.scientific_public_culture), [`gift.sandmanor.great_britain.commercial_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.great_britain.commercial_networks)<br>
+**Modern House interpretation:** Sandmanor receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Sandmanor authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://gallica.bnf.fr/selections/fr/html/images/la-revolution-1789-1799?mode=desktop); [Scholarly or collection source 2](https://www.napoleon.org/en/history-of-the-two-empires/articles/the-french-civil-code-or-code-civil-21-march-1804-an-overview/); [Scholarly or collection source 3](https://www.britishmuseum.org/collection/term/BIOG39862)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md)
+
+<a id="manifestation.sandmanor.age_05_point_01_france_evidence_interface"></a>
+## France Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.sandmanor.age_05_point_01_france_evidence_interface`<br>
+**Manifestation:** France Evidence and Translation Interface<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Make the France assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Industrial Acceleration evidence window (c. 1815–1850 CE) and its bounded France assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [France dossier](dossiers/age_05_point_01/FRANCE.md).<br>
+**Source Gifts:** [`gift.sandmanor.france.public_academies`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.france.public_academies), [`gift.sandmanor.france.state_engineering`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.france.state_engineering), [`gift.sandmanor.france.scientific_and_cultural_patronage`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.france.scientific_and_cultural_patronage)<br>
+**Modern House interpretation:** Sandmanor receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Sandmanor authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.parliament.uk/about/living-heritage/transformingsociety/tradeindustry/industrycommunity/overview/earlyindustry/); [Scholarly or collection source 2](https://www.parliament.uk/about/living-heritage/transformingsociety/transportcomms/roadsrail/kent-case-study/introduction/railways-in-early-nineteenth-century-britain/); [Scholarly or collection source 3](https://www.parliament.uk/about/living-heritage/evolutionofparliament/2015-parliament-in-the-making/get-involved1/2015-banners-exhibition/joel-millerchip/1833-factory-act-gallery/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md)
+
+<a id="manifestation.sandmanor.age_05_point_02_german_states_and_german_empire_evidence_interface"></a>
+## German States and German Empire Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.sandmanor.age_05_point_02_german_states_and_german_empire_evidence_interface`<br>
+**Manifestation:** German States and German Empire Evidence and Translation Interface<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Make the German States and German Empire assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Age of Science evidence window (c. 1850–1875 CE) and its bounded German States and German Empire assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [German States and German Empire dossier](dossiers/age_05_point_02/GERMAN_STATES_AND_GERMAN_EMPIRE.md).<br>
+**Source Gifts:** [`gift.sandmanor.german_states_and_german_empire.research_university`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.german_states_and_german_empire.research_university), [`gift.sandmanor.german_states_and_german_empire.laboratory_science`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.german_states_and_german_empire.laboratory_science), [`gift.sandmanor.german_states_and_german_empire.industrial_standardization`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.german_states_and_german_empire.industrial_standardization)<br>
+**Modern House interpretation:** Sandmanor receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Sandmanor authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://royalsociety.org/current-topics/history-science/); [Scholarly or collection source 2](https://www.darwinproject.ac.uk/); [Scholarly or collection source 3](https://www.pasteur.fr/en/institut-pasteur/history)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md)
+
+<a id="manifestation.sandmanor.age_05_point_03_british_empire_evidence_interface"></a>
+## British Empire Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.sandmanor.age_05_point_03_british_empire_evidence_interface`<br>
+**Manifestation:** British Empire Evidence and Translation Interface<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Make the British Empire assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Second Industrial Revolution evidence window (c. 1875–1914 CE) and its bounded British Empire assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [British Empire dossier](dossiers/age_05_point_03/BRITISH_EMPIRE.md).<br>
+**Source Gifts:** [`gift.sandmanor.british_empire.global_transport_and_telegraph`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.british_empire.global_transport_and_telegraph), [`gift.sandmanor.british_empire.industrial_finance`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.british_empire.industrial_finance), [`gift.sandmanor.british_empire.imperial_administration_and_its_cautions`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.british_empire.imperial_administration_and_its_cautions)<br>
+**Modern House interpretation:** Sandmanor receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Sandmanor authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.parliament.uk/about/living-heritage/transformingsociety/tradeindustry/industrycommunity/keydates/); [Scholarly or collection source 2](https://siarchives.si.edu/sites/default/files/pdfs/jhpp/JHP_Joseph_Henry_and_the_Telephone.pdf); [Scholarly or collection source 3](https://ethw.org/Second_Industrial_Revolution)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md)
+
+<a id="manifestation.sandmanor.age_05_point_04_united_kingdom_evidence_interface"></a>
+## United Kingdom Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.sandmanor.age_05_point_04_united_kingdom_evidence_interface`<br>
+**Manifestation:** United Kingdom Evidence and Translation Interface<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Make the United Kingdom assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed World War I evidence window (1914–1918 CE) and its bounded United Kingdom assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [United Kingdom dossier](dossiers/age_05_point_04/UNITED_KINGDOM.md).<br>
+**Source Gifts:** [`gift.sandmanor.united_kingdom.industrial_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.united_kingdom.industrial_systems), [`gift.sandmanor.united_kingdom.parliamentary_administration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.united_kingdom.parliamentary_administration), [`gift.sandmanor.united_kingdom.global_transport_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.united_kingdom.global_transport_networks)<br>
+**Modern House interpretation:** Sandmanor receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Sandmanor authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.iwm.org.uk/history/how-the-world-went-to-war-in-1914); [Scholarly or collection source 2](https://www.iwm.org.uk/history/transport-and-supply-during-the-first-world-war); [Scholarly or collection source 3](https://www.iwm.org.uk/history/firsts-of-the-first-world-war)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md)
+
+<a id="manifestation.sandmanor.age_05_point_05_united_kingdom_evidence_interface"></a>
+## United Kingdom Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.sandmanor.age_05_point_05_united_kingdom_evidence_interface`<br>
+**Manifestation:** United Kingdom Evidence and Translation Interface<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Make the United Kingdom assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Interwar World evidence window (1918–1939 CE) and its bounded United Kingdom assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [United Kingdom dossier](dossiers/age_05_point_05/UNITED_KINGDOM.md).<br>
+**Source Gifts:** [`gift.sandmanor.united_kingdom.industrial_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.united_kingdom.industrial_systems), [`gift.sandmanor.united_kingdom.parliamentary_administration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.united_kingdom.parliamentary_administration), [`gift.sandmanor.united_kingdom.global_transport_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.united_kingdom.global_transport_networks)<br>
+**Modern House interpretation:** Sandmanor receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Sandmanor authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.bauhaus.de/en/discover/article/14-years-of-bauhaus/); [Scholarly or collection source 2](https://www.bauhaus.de/en/discover/article/our-history-part-1-how-the-memory-of-the-bauhaus-was-rescued-from-oblivion/); [Scholarly or collection source 3](https://royalsociety.org/current-topics/history-science/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md)
+
+<a id="manifestation.sandmanor.age_05_point_06_united_kingdom_evidence_interface"></a>
+## United Kingdom Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.sandmanor.age_05_point_06_united_kingdom_evidence_interface`<br>
+**Manifestation:** United Kingdom Evidence and Translation Interface<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Make the United Kingdom assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed World War II evidence window (1939–1945 CE) and its bounded United Kingdom assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [United Kingdom dossier](dossiers/age_05_point_06/UNITED_KINGDOM.md).<br>
+**Source Gifts:** [`gift.sandmanor.united_kingdom.industrial_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.united_kingdom.industrial_systems), [`gift.sandmanor.united_kingdom.parliamentary_administration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.united_kingdom.parliamentary_administration), [`gift.sandmanor.united_kingdom.global_transport_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.united_kingdom.global_transport_networks)<br>
+**Modern House interpretation:** Sandmanor receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Sandmanor authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://main.ushmm.org/learn/holocaust/world-war-ii-and-the-holocaust-1939-1945); [Scholarly or collection source 2](https://www.ushmm.org/antisemitism/holocaust-denial-and-distortion/evidence-documentation-holocaust); [Scholarly or collection source 3](https://www.iwm.org.uk/history/how-alan-turing-cracked-the-enigma-code)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md)
+
+<a id="manifestation.sandmanor.age_06_point_01_western_europe_evidence_interface"></a>
+## Western Europe Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.sandmanor.age_06_point_01_western_europe_evidence_interface`<br>
+**Manifestation:** Western Europe Evidence and Translation Interface<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Make the Western Europe assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Early Computing evidence window (c. 1945–1960 CE) and its bounded Western Europe assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Western Europe dossier](dossiers/age_06_point_01/WESTERN_EUROPE.md).<br>
+**Source Gifts:** [`gift.sandmanor.western_europe.postwar_reconstruction`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.western_europe.postwar_reconstruction), [`gift.sandmanor.western_europe.transnational_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.western_europe.transnational_research), [`gift.sandmanor.western_europe.public_technical_institutions`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.western_europe.public_technical_institutions)<br>
+**Modern House interpretation:** Sandmanor receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Sandmanor authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://www.computerhistory.org/timeline/1945/); [Scholarly or collection source 2](https://www.computerhistory.org/timeline/1950/); [Scholarly or collection source 3](https://royalsociety.org/news/2023/04/science-in-the-making/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md)
+
+<a id="manifestation.sandmanor.age_06_point_02_soviet_union_evidence_interface"></a>
+## Soviet Union Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.sandmanor.age_06_point_02_soviet_union_evidence_interface`<br>
+**Manifestation:** Soviet Union Evidence and Translation Interface<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Make the Soviet Union assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Space Age evidence window (c. 1957–1975 CE) and its bounded Soviet Union assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Soviet Union dossier](dossiers/age_06_point_02/SOVIET_UNION.md).<br>
+**Source Gifts:** [`gift.sandmanor.soviet_union.centralized_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.soviet_union.centralized_research), [`gift.sandmanor.soviet_union.industrial_planning`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.soviet_union.industrial_planning), [`gift.sandmanor.soviet_union.space_and_systems_engineering`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.soviet_union.space_and_systems_engineering)<br>
+**Modern House interpretation:** Sandmanor receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Sandmanor authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://www.nasa.gov/history/dawn-of-the-space-age/); [Scholarly or collection source 2](https://www.nasa.gov/history/sputnik/sputorig.html); [Scholarly or collection source 3](https://www.nasa.gov/wp-content/uploads/2016/01/historical-studies-societal-impact-spaceflight-ebook_tagged.pdf)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md)
+
+<a id="manifestation.sandmanor.age_06_point_03_japan_evidence_interface"></a>
+## Japan Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.sandmanor.age_06_point_03_japan_evidence_interface`<br>
+**Manifestation:** Japan Evidence and Translation Interface<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Make the Japan assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Digital Revolution evidence window (c. 1975–1995 CE) and its bounded Japan assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Japan dossier](dossiers/age_06_point_03/JAPAN.md).<br>
+**Source Gifts:** [`gift.sandmanor.japan.quality_manufacturing`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.japan.quality_manufacturing), [`gift.sandmanor.japan.consumer_electronics`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.japan.consumer_electronics), [`gift.sandmanor.japan.high_reliability_transport`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.japan.high_reliability_transport)<br>
+**Modern House interpretation:** Sandmanor receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Sandmanor authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://home.cern/science/computing/the-birth-of-the-web/short-history-web/); [Scholarly or collection source 2](https://home.cern/science/computing/birth-web/licensing-web/); [Scholarly or collection source 3](https://www.internetsociety.org/internet/history-internet/brief-history-internet/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md)
+
+<a id="manifestation.sandmanor.age_06_point_04_european_union_evidence_interface"></a>
+## European Union Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.sandmanor.age_06_point_04_european_union_evidence_interface`<br>
+**Manifestation:** European Union Evidence and Translation Interface<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Make the European Union assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Network Age evidence window (c. 1995–2015 CE) and its bounded European Union assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [European Union dossier](dossiers/age_06_point_04/EUROPEAN_UNION.md).<br>
+**Source Gifts:** [`gift.sandmanor.european_union.regulatory_cooperation`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.european_union.regulatory_cooperation), [`gift.sandmanor.european_union.public_digital_institutions`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.european_union.public_digital_institutions), [`gift.sandmanor.european_union.shared_technical_standards`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.european_union.shared_technical_standards)<br>
+**Modern House interpretation:** Sandmanor receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Sandmanor authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://www.internetsociety.org/blog/2015/04/happy-birthday-backbone/); [Scholarly or collection source 2](https://www.internetsociety.org/internet/history-internet/brief-history-internet/); [Scholarly or collection source 3](https://www.internetsociety.org/wp-content/uploads/2022/11/Global-Internet-Report-2015.pdf)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md)
+
+<a id="manifestation.sandmanor.age_06_point_05_european_union_evidence_interface"></a>
+## European Union Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.sandmanor.age_06_point_05_european_union_evidence_interface`<br>
+**Manifestation:** European Union Evidence and Translation Interface<br>
+**Primary House:** [Sandmanor](houses/SANDMANOR_ANCESTRY.md)<br>
+**Purpose:** Make the European Union assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed AI Age evidence window (c. 2015 CE–Present) and its bounded European Union assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [European Union dossier](dossiers/age_06_point_05/EUROPEAN_UNION.md).<br>
+**Source Gifts:** [`gift.sandmanor.european_union.regulatory_cooperation`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.european_union.regulatory_cooperation), [`gift.sandmanor.european_union.public_digital_institutions`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.european_union.public_digital_institutions), [`gift.sandmanor.european_union.shared_technical_standards`](ANCESTRAL_GIFTS_REGISTRY.md#gift.sandmanor.european_union.shared_technical_standards)<br>
+**Modern House interpretation:** Sandmanor receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Sandmanor authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Pattern; Prefog; Prefig; Minorians; Minoans; Contest of Improvement; Court and Restitution; see [Sandmanor canon links](houses/SANDMANOR_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://hai.stanford.edu/ai-index); [Scholarly or collection source 2](https://digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence); [Scholarly or collection source 3](https://investor.tsmc.com/static/annualReports/2025/english/index.html)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md)
 
 # Glaüshouse
 
@@ -1601,6 +2349,380 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Status:** Reviewed flagship; design remains Working until separately adopted<br>
 **Ancestral provenance:** [III:6B — Khanates, Yuan, and Mamluk World](ages/age_03_medieval_civilization/point_06b_khanates_yuan_and_mamluk_world.md)
 
+<a id="manifestation.glaushouse.ming_restoration_craft_conservatory"></a>
+## Ming Restoration and Craft Conservatory
+
+**Manifestation ID:** `manifestation.glaushouse.ming_restoration_craft_conservatory`<br>
+**Manifestation:** Ming Restoration and Craft Conservatory<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Connect curriculum, office, route, vessel, workshop, material, batch, maintenance, and access without converting early Ming restoration into timeless centralized competence.<br>
+**Historical ancestry:** Early Ming institutional rebuilding, Nanjing and Beijing capitals, Grand Canal and maritime movement, Jingdezhen and court crafts, painting, printing, and regional exchange. See the [Ming China dossier](dossiers/age_03_point_07/MING_CHINA_RESTORATION_CAPITALS_CRAFT_AND_EXCHANGE_1368_1453.md).<br>
+**Source Gifts:** [`gift.glaushouse.ming_china.examination_bureaucracy`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.ming_china.examination_bureaucracy), [`gift.glaushouse.ming_china.maritime_and_overland_logistics`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.ming_china.maritime_and_overland_logistics), [`gift.glaushouse.ming_china.urban_craft_production`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.ming_china.urban_craft_production)<br>
+**Modern House interpretation:** Glaüshouse receives care, scholarship, craft, and infrastructure custody, not dynastic authority, examination hierarchy, or a palace replica.<br>
+**Physical appearance:** A living dark-blue conservatory with curriculum, office, canal, vessel, kiln, material, batch, repair, and access lanes; no Forbidden City replica.<br>
+**Institutional role:** A research, library, craft-conservation, ecology, and recovery program under existing Glaüshouse authority.<br>
+**Gameplay potential:** Curriculum history, route and vessel condition, workshop provenance, material batch, maintenance, labor, access, and recovery references.<br>
+**Implementation notes:** Keep founding war, civil war, capital transfer, examination, eunuch and civil offices, voyages, frontier campaigns, forced labor, and 1449 crisis distinct.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** Ming systems conservator<br>
+**Possible Hueman data hook:** curriculum, office, route, vessel, workshop, material, custody, maintenance, and access references<br>
+**Confidence:** High for major chronology, court arts, ceramics, and state projects; variable for local access, labor experience, and administrative reach.<br>
+**Sources:** [Scholarly or collection source 1](https://www.metmuseum.org/essays/ming-dynasty-1368-1644); [Scholarly or collection source 2](https://www.metmuseum.org/exhibitions/listings/2005/yongle-imperial-art)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [III:7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md)
+
+<a id="manifestation.glaushouse.age_04_point_01_ottoman_empire_evidence_interface"></a>
+## Ottoman Empire Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.glaushouse.age_04_point_01_ottoman_empire_evidence_interface`<br>
+**Manifestation:** Ottoman Empire Evidence and Translation Interface<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Make the Ottoman Empire assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Renaissance evidence window (1453–1517 CE) and its bounded Ottoman Empire assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Ottoman Empire dossier](dossiers/age_04_point_01/OTTOMAN_EMPIRE.md).<br>
+**Source Gifts:** [`gift.glaushouse.ottoman_empire.multiethnic_administration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.ottoman_empire.multiethnic_administration), [`gift.glaushouse.ottoman_empire.military_logistics`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.ottoman_empire.military_logistics), [`gift.glaushouse.ottoman_empire.monumental_civic_complexes`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.ottoman_empire.monumental_civic_complexes)<br>
+**Modern House interpretation:** Glaüshouse receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Glaüshouse authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.loc.gov/exhibits/vatican/vatican.html); [Scholarly or collection source 2](https://www.metmuseum.org/essays/the-art-of-the-ottomans-before-1600); [Scholarly or collection source 3](https://82nd-and-fifth.metmuseum.org/toah/ht/08/eustc.html)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md)
+
+<a id="manifestation.glaushouse.age_04_point_02_catholic_counter_reformation_evidence_interface"></a>
+## Catholic Counter-Reformation Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.glaushouse.age_04_point_02_catholic_counter_reformation_evidence_interface`<br>
+**Manifestation:** Catholic Counter-Reformation Evidence and Translation Interface<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Make the Catholic Counter-Reformation assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Reformation evidence window (1517–1600 CE) and its bounded Catholic Counter-Reformation assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Catholic Counter-Reformation dossier](dossiers/age_04_point_02/CATHOLIC_COUNTER_REFORMATION.md).<br>
+**Source Gifts:** [`gift.glaushouse.catholic_counter_reformation.institutional_reform`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.catholic_counter_reformation.institutional_reform), [`gift.glaushouse.catholic_counter_reformation.education_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.catholic_counter_reformation.education_networks), [`gift.glaushouse.catholic_counter_reformation.sacred_art_and_ritual`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.catholic_counter_reformation.sacred_art_and_ritual)<br>
+**Modern House interpretation:** Glaüshouse receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Glaüshouse authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://tile.loc.gov/storage-services/master/gdc/gdcebookspublic/20/21/01/33/16/2021013316/2021013316.pdf); [Scholarly or collection source 2](https://www.loc.gov/exhibits/vatican/vatican.html); [Scholarly or collection source 3](https://germanhistorydocs.org/en/from-the-reformations-to-the-thirty-years-war-1500-1648)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md)
+
+<a id="manifestation.glaushouse.age_04_point_03_france_evidence_interface"></a>
+## France Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.glaushouse.age_04_point_03_france_evidence_interface`<br>
+**Manifestation:** France Evidence and Translation Interface<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Make the France assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Scientific Revolution evidence window (1600–1700 CE) and its bounded France assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [France dossier](dossiers/age_04_point_03/FRANCE.md).<br>
+**Source Gifts:** [`gift.glaushouse.france.public_academies`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.france.public_academies), [`gift.glaushouse.france.state_engineering`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.france.state_engineering), [`gift.glaushouse.france.scientific_and_cultural_patronage`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.france.scientific_and_cultural_patronage)<br>
+**Modern House interpretation:** Glaüshouse receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Glaüshouse authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://royalsociety.org/about-us/who-we-are/history/); [Scholarly or collection source 2](https://royalsociety.org/current-topics/history-science/); [Scholarly or collection source 3](https://www.metmuseum.org/zh/essays/the-qing-dynasty-1644-1911-painting)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md)
+
+<a id="manifestation.glaushouse.age_04_point_04_habsburg_austria_evidence_interface"></a>
+## Habsburg Austria Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.glaushouse.age_04_point_04_habsburg_austria_evidence_interface`<br>
+**Manifestation:** Habsburg Austria Evidence and Translation Interface<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Make the Habsburg Austria assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Enlightenment evidence window (1700–1789 CE) and its bounded Habsburg Austria assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Habsburg Austria dossier](dossiers/age_04_point_04/HABSBURG_AUSTRIA.md).<br>
+**Source Gifts:** [`gift.glaushouse.habsburg_austria.composite_administration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.habsburg_austria.composite_administration), [`gift.glaushouse.habsburg_austria.court_diplomacy`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.habsburg_austria.court_diplomacy), [`gift.glaushouse.habsburg_austria.musical_and_intellectual_culture`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.habsburg_austria.musical_and_intellectual_culture)<br>
+**Modern House interpretation:** Glaüshouse receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Glaüshouse authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://plato.stanford.edu/entries/enlightenment/); [Scholarly or collection source 2](https://www.britishmuseum.org/collection/galleries/enlightenment); [Scholarly or collection source 3](https://royalsociety.org/current-topics/history-science/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md)
+
+<a id="manifestation.glaushouse.age_04_point_05_habsburg_austria_evidence_interface"></a>
+## Habsburg Austria Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.glaushouse.age_04_point_05_habsburg_austria_evidence_interface`<br>
+**Manifestation:** Habsburg Austria Evidence and Translation Interface<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Make the Habsburg Austria assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Revolutionary World evidence window (1789–1815 CE) and its bounded Habsburg Austria assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Habsburg Austria dossier](dossiers/age_04_point_05/HABSBURG_AUSTRIA.md).<br>
+**Source Gifts:** [`gift.glaushouse.habsburg_austria.composite_administration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.habsburg_austria.composite_administration), [`gift.glaushouse.habsburg_austria.court_diplomacy`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.habsburg_austria.court_diplomacy), [`gift.glaushouse.habsburg_austria.musical_and_intellectual_culture`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.habsburg_austria.musical_and_intellectual_culture)<br>
+**Modern House interpretation:** Glaüshouse receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Glaüshouse authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://gallica.bnf.fr/selections/fr/html/images/la-revolution-1789-1799?mode=desktop); [Scholarly or collection source 2](https://www.napoleon.org/en/history-of-the-two-empires/articles/the-french-civil-code-or-code-civil-21-march-1804-an-overview/); [Scholarly or collection source 3](https://www.britishmuseum.org/collection/term/BIOG39862)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md)
+
+<a id="manifestation.glaushouse.age_05_point_01_german_confederation_evidence_interface"></a>
+## German Confederation Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.glaushouse.age_05_point_01_german_confederation_evidence_interface`<br>
+**Manifestation:** German Confederation Evidence and Translation Interface<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Make the German Confederation assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Industrial Acceleration evidence window (c. 1815–1850 CE) and its bounded German Confederation assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [German Confederation dossier](dossiers/age_05_point_01/GERMAN_CONFEDERATION.md).<br>
+**Source Gifts:** [`gift.glaushouse.german_confederation.technical_education`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.german_confederation.technical_education), [`gift.glaushouse.german_confederation.federal_plurality`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.german_confederation.federal_plurality), [`gift.glaushouse.german_confederation.industrial_coordination`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.german_confederation.industrial_coordination)<br>
+**Modern House interpretation:** Glaüshouse receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Glaüshouse authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.parliament.uk/about/living-heritage/transformingsociety/tradeindustry/industrycommunity/overview/earlyindustry/); [Scholarly or collection source 2](https://www.parliament.uk/about/living-heritage/transformingsociety/transportcomms/roadsrail/kent-case-study/introduction/railways-in-early-nineteenth-century-britain/); [Scholarly or collection source 3](https://www.parliament.uk/about/living-heritage/evolutionofparliament/2015-parliament-in-the-making/get-involved1/2015-banners-exhibition/joel-millerchip/1833-factory-act-gallery/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md)
+
+<a id="manifestation.glaushouse.age_05_point_02_france_evidence_interface"></a>
+## France Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.glaushouse.age_05_point_02_france_evidence_interface`<br>
+**Manifestation:** France Evidence and Translation Interface<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Make the France assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Age of Science evidence window (c. 1850–1875 CE) and its bounded France assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [France dossier](dossiers/age_05_point_02/FRANCE.md).<br>
+**Source Gifts:** [`gift.glaushouse.france.public_academies`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.france.public_academies), [`gift.glaushouse.france.state_engineering`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.france.state_engineering), [`gift.glaushouse.france.scientific_and_cultural_patronage`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.france.scientific_and_cultural_patronage)<br>
+**Modern House interpretation:** Glaüshouse receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Glaüshouse authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://royalsociety.org/current-topics/history-science/); [Scholarly or collection source 2](https://www.darwinproject.ac.uk/); [Scholarly or collection source 3](https://www.pasteur.fr/en/institut-pasteur/history)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md)
+
+<a id="manifestation.glaushouse.age_05_point_03_france_evidence_interface"></a>
+## France Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.glaushouse.age_05_point_03_france_evidence_interface`<br>
+**Manifestation:** France Evidence and Translation Interface<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Make the France assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Second Industrial Revolution evidence window (c. 1875–1914 CE) and its bounded France assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [France dossier](dossiers/age_05_point_03/FRANCE.md).<br>
+**Source Gifts:** [`gift.glaushouse.france.public_academies`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.france.public_academies), [`gift.glaushouse.france.state_engineering`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.france.state_engineering), [`gift.glaushouse.france.scientific_and_cultural_patronage`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.france.scientific_and_cultural_patronage)<br>
+**Modern House interpretation:** Glaüshouse receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Glaüshouse authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.parliament.uk/about/living-heritage/transformingsociety/tradeindustry/industrycommunity/keydates/); [Scholarly or collection source 2](https://siarchives.si.edu/sites/default/files/pdfs/jhpp/JHP_Joseph_Henry_and_the_Telephone.pdf); [Scholarly or collection source 3](https://ethw.org/Second_Industrial_Revolution)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md)
+
+<a id="manifestation.glaushouse.age_05_point_04_france_evidence_interface"></a>
+## France Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.glaushouse.age_05_point_04_france_evidence_interface`<br>
+**Manifestation:** France Evidence and Translation Interface<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Make the France assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed World War I evidence window (1914–1918 CE) and its bounded France assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [France dossier](dossiers/age_05_point_04/FRANCE.md).<br>
+**Source Gifts:** [`gift.glaushouse.france.public_academies`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.france.public_academies), [`gift.glaushouse.france.state_engineering`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.france.state_engineering), [`gift.glaushouse.france.scientific_and_cultural_patronage`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.france.scientific_and_cultural_patronage)<br>
+**Modern House interpretation:** Glaüshouse receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Glaüshouse authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.iwm.org.uk/history/how-the-world-went-to-war-in-1914); [Scholarly or collection source 2](https://www.iwm.org.uk/history/transport-and-supply-during-the-first-world-war); [Scholarly or collection source 3](https://www.iwm.org.uk/history/firsts-of-the-first-world-war)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md)
+
+<a id="manifestation.glaushouse.age_05_point_05_soviet_union_evidence_interface"></a>
+## Soviet Union Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.glaushouse.age_05_point_05_soviet_union_evidence_interface`<br>
+**Manifestation:** Soviet Union Evidence and Translation Interface<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Make the Soviet Union assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Interwar World evidence window (1918–1939 CE) and its bounded Soviet Union assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Soviet Union dossier](dossiers/age_05_point_05/SOVIET_UNION.md).<br>
+**Source Gifts:** [`gift.glaushouse.soviet_union.centralized_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.soviet_union.centralized_research), [`gift.glaushouse.soviet_union.industrial_planning`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.soviet_union.industrial_planning), [`gift.glaushouse.soviet_union.space_and_systems_engineering`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.soviet_union.space_and_systems_engineering)<br>
+**Modern House interpretation:** Glaüshouse receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Glaüshouse authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.bauhaus.de/en/discover/article/14-years-of-bauhaus/); [Scholarly or collection source 2](https://www.bauhaus.de/en/discover/article/our-history-part-1-how-the-memory-of-the-bauhaus-was-rescued-from-oblivion/); [Scholarly or collection source 3](https://royalsociety.org/current-topics/history-science/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md)
+
+<a id="manifestation.glaushouse.age_05_point_06_soviet_union_evidence_interface"></a>
+## Soviet Union Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.glaushouse.age_05_point_06_soviet_union_evidence_interface`<br>
+**Manifestation:** Soviet Union Evidence and Translation Interface<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Make the Soviet Union assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed World War II evidence window (1939–1945 CE) and its bounded Soviet Union assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Soviet Union dossier](dossiers/age_05_point_06/SOVIET_UNION.md).<br>
+**Source Gifts:** [`gift.glaushouse.soviet_union.centralized_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.soviet_union.centralized_research), [`gift.glaushouse.soviet_union.industrial_planning`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.soviet_union.industrial_planning), [`gift.glaushouse.soviet_union.space_and_systems_engineering`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.soviet_union.space_and_systems_engineering)<br>
+**Modern House interpretation:** Glaüshouse receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Glaüshouse authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://main.ushmm.org/learn/holocaust/world-war-ii-and-the-holocaust-1939-1945); [Scholarly or collection source 2](https://www.ushmm.org/antisemitism/holocaust-denial-and-distortion/evidence-documentation-holocaust); [Scholarly or collection source 3](https://www.iwm.org.uk/history/how-alan-turing-cracked-the-enigma-code)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md)
+
+<a id="manifestation.glaushouse.age_06_point_01_japan_evidence_interface"></a>
+## Japan Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.glaushouse.age_06_point_01_japan_evidence_interface`<br>
+**Manifestation:** Japan Evidence and Translation Interface<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Make the Japan assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Early Computing evidence window (c. 1945–1960 CE) and its bounded Japan assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Japan dossier](dossiers/age_06_point_01/JAPAN.md).<br>
+**Source Gifts:** [`gift.glaushouse.japan.quality_manufacturing`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.japan.quality_manufacturing), [`gift.glaushouse.japan.consumer_electronics`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.japan.consumer_electronics), [`gift.glaushouse.japan.high_reliability_transport`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.japan.high_reliability_transport)<br>
+**Modern House interpretation:** Glaüshouse receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Glaüshouse authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://www.computerhistory.org/timeline/1945/); [Scholarly or collection source 2](https://www.computerhistory.org/timeline/1950/); [Scholarly or collection source 3](https://royalsociety.org/news/2023/04/science-in-the-making/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md)
+
+<a id="manifestation.glaushouse.age_06_point_02_western_europe_evidence_interface"></a>
+## Western Europe Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.glaushouse.age_06_point_02_western_europe_evidence_interface`<br>
+**Manifestation:** Western Europe Evidence and Translation Interface<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Make the Western Europe assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Space Age evidence window (c. 1957–1975 CE) and its bounded Western Europe assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Western Europe dossier](dossiers/age_06_point_02/WESTERN_EUROPE.md).<br>
+**Source Gifts:** [`gift.glaushouse.western_europe.postwar_reconstruction`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.western_europe.postwar_reconstruction), [`gift.glaushouse.western_europe.transnational_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.western_europe.transnational_research), [`gift.glaushouse.western_europe.public_technical_institutions`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.western_europe.public_technical_institutions)<br>
+**Modern House interpretation:** Glaüshouse receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Glaüshouse authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://www.nasa.gov/history/dawn-of-the-space-age/); [Scholarly or collection source 2](https://www.nasa.gov/history/sputnik/sputorig.html); [Scholarly or collection source 3](https://www.nasa.gov/wp-content/uploads/2016/01/historical-studies-societal-impact-spaceflight-ebook_tagged.pdf)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md)
+
+<a id="manifestation.glaushouse.age_06_point_03_european_communities_and_western_europe_evidence_interface"></a>
+## European Communities and Western Europe Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.glaushouse.age_06_point_03_european_communities_and_western_europe_evidence_interface`<br>
+**Manifestation:** European Communities and Western Europe Evidence and Translation Interface<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Make the European Communities and Western Europe assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Digital Revolution evidence window (c. 1975–1995 CE) and its bounded European Communities and Western Europe assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [European Communities and Western Europe dossier](dossiers/age_06_point_03/EUROPEAN_COMMUNITIES_AND_WESTERN_EUROPE.md).<br>
+**Source Gifts:** [`gift.glaushouse.european_communities_and_western_europe.network_standards`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.european_communities_and_western_europe.network_standards), [`gift.glaushouse.european_communities_and_western_europe.public_research_collaboration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.european_communities_and_western_europe.public_research_collaboration), [`gift.glaushouse.european_communities_and_western_europe.world_wide_web_institutions`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.european_communities_and_western_europe.world_wide_web_institutions)<br>
+**Modern House interpretation:** Glaüshouse receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Glaüshouse authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://home.cern/science/computing/the-birth-of-the-web/short-history-web/); [Scholarly or collection source 2](https://home.cern/science/computing/birth-web/licensing-web/); [Scholarly or collection source 3](https://www.internetsociety.org/internet/history-internet/brief-history-internet/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md)
+
+<a id="manifestation.glaushouse.age_06_point_04_south_korea_evidence_interface"></a>
+## South Korea Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.glaushouse.age_06_point_04_south_korea_evidence_interface`<br>
+**Manifestation:** South Korea Evidence and Translation Interface<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Make the South Korea assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Network Age evidence window (c. 1995–2015 CE) and its bounded South Korea assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [South Korea dossier](dossiers/age_06_point_04/SOUTH_KOREA.md).<br>
+**Source Gifts:** [`gift.glaushouse.south_korea.broadband_infrastructure`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.south_korea.broadband_infrastructure), [`gift.glaushouse.south_korea.semiconductor_manufacturing`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.south_korea.semiconductor_manufacturing), [`gift.glaushouse.south_korea.networked_media_culture`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.south_korea.networked_media_culture)<br>
+**Modern House interpretation:** Glaüshouse receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Glaüshouse authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://www.internetsociety.org/blog/2015/04/happy-birthday-backbone/); [Scholarly or collection source 2](https://www.internetsociety.org/internet/history-internet/brief-history-internet/); [Scholarly or collection source 3](https://www.internetsociety.org/wp-content/uploads/2022/11/Global-Internet-Report-2015.pdf)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md)
+
+<a id="manifestation.glaushouse.age_06_point_05_taiwan_evidence_interface"></a>
+## Taiwan Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.glaushouse.age_06_point_05_taiwan_evidence_interface`<br>
+**Manifestation:** Taiwan Evidence and Translation Interface<br>
+**Primary House:** [Glaüshouse](houses/GLAUSHOUSE_ANCESTRY.md)<br>
+**Purpose:** Make the Taiwan assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed AI Age evidence window (c. 2015 CE–Present) and its bounded Taiwan assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Taiwan dossier](dossiers/age_06_point_05/TAIWAN.md).<br>
+**Source Gifts:** [`gift.glaushouse.taiwan.advanced_semiconductor_fabrication`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.taiwan.advanced_semiconductor_fabrication), [`gift.glaushouse.taiwan.precision_supply_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.taiwan.precision_supply_networks), [`gift.glaushouse.taiwan.high_reliability_manufacturing`](ANCESTRAL_GIFTS_REGISTRY.md#gift.glaushouse.taiwan.high_reliability_manufacturing)<br>
+**Modern House interpretation:** Glaüshouse receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Glaüshouse authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Integrity; Precog; Prima Donna; Persephones; Nightingales; Chromacord; Recovery Ward; see [Glaüshouse canon links](houses/GLAUSHOUSE_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://hai.stanford.edu/ai-index); [Scholarly or collection source 2](https://digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence); [Scholarly or collection source 3](https://investor.tsmc.com/static/annualReports/2025/english/index.html)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md)
+
 # Flynt
 
 <a id="manifestation.flynt.frontier_foundry"></a>
@@ -2130,3 +3252,377 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Sources:** [Scholarly or collection source 1](https://www.britannica.com/place/Mamluk); [Scholarly or collection source 2](https://www.metmuseum.org/toah/hd/maml/hd_maml.htm)<br>
 **Status:** Reviewed flagship; design remains Working until separately adopted<br>
 **Ancestral provenance:** [III:6B — Khanates, Yuan, and Mamluk World](ages/age_03_medieval_civilization/point_06b_khanates_yuan_and_mamluk_world.md)
+
+<a id="manifestation.flynt.constantinople_transition_capacity_lab"></a>
+## Constantinople Transition Capacity Lab
+
+**Manifestation ID:** `manifestation.flynt.constantinople_transition_capacity_lab`<br>
+**Manifestation:** Constantinople Transition Capacity Lab<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Test office, route, supply, vassalage, defeat, interregnum, consolidation, siege, service, and civilian consequence without making conquest proof of Capacity.<br>
+**Historical ancestry:** Early Ottoman Anatolian and Balkan administration, roads, fortresses, military households, endowed urban services, the 1402 rupture, recovery, and the 1453 conquest. See the [Ottoman Empire dossier](dossiers/age_03_point_07/OTTOMAN_EMPIRE_BALKAN_ANATOLIAN_SYSTEMS_AND_1453_TRANSITION.md).<br>
+**Source Gifts:** [`gift.flynt.ottoman_empire.multiethnic_administration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.ottoman_empire.multiethnic_administration), [`gift.flynt.ottoman_empire.military_logistics`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.ottoman_empire.military_logistics), [`gift.flynt.ottoman_empire.monumental_civic_complexes`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.ottoman_empire.monumental_civic_complexes)<br>
+**Modern House interpretation:** Flynt receives bounded operations and failure provenance, not sultanic authority, conquest, enslavement, or confirmation.<br>
+**Physical appearance:** A dark-blue operations interface with office, community, route, supply, vassalage, failure, siege, service, civilian-risk, and fallback panels; no conquest spectacle.<br>
+**Institutional role:** A logistics, planning, continuity, intelligence-literacy, and after-action interface under Law of Capacity and existing safety limits.<br>
+**Gameplay potential:** Office and route state, supply and maintenance, vassal obligation, interregnum recovery, siege dependency, civilian risk, service handoff, and fallback.<br>
+**Implementation notes:** Separate Murad I, Bayezid I, the 1402 defeat, interregnum claimants, Mehmed I, Murad II, Mehmed II, local communities, and the 1453 transition.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** transition-capacity auditor<br>
+**Possible Hueman data hook:** office, community, route, supply, failure, siege, service, civilian risk, and fallback references<br>
+**Confidence:** High for major dynastic and campaign chronology; variable for early records, local implementation, and non-elite experience.<br>
+**Sources:** [Scholarly or collection source 1](https://www.metmuseum.org/essays/the-art-of-the-ottomans-before-1600); [Scholarly or collection source 2](https://www.metmuseum.org/-/media/files/learn/for%20educators/publications%20for%20educators/islamic%20teacher%20resource/unit5.pdf)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [III:7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md)
+
+<a id="manifestation.flynt.age_04_point_01_portugal_evidence_interface"></a>
+## Portugal Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.flynt.age_04_point_01_portugal_evidence_interface`<br>
+**Manifestation:** Portugal Evidence and Translation Interface<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Make the Portugal assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Renaissance evidence window (1453–1517 CE) and its bounded Portugal assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Portugal dossier](dossiers/age_04_point_01/PORTUGAL.md).<br>
+**Source Gifts:** [`gift.flynt.portugal.ocean_navigation`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.portugal.ocean_navigation), [`gift.flynt.portugal.fortified_trade_posts`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.portugal.fortified_trade_posts), [`gift.flynt.portugal.cartographic_practice`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.portugal.cartographic_practice)<br>
+**Modern House interpretation:** Flynt receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.loc.gov/exhibits/vatican/vatican.html); [Scholarly or collection source 2](https://www.metmuseum.org/essays/the-art-of-the-ottomans-before-1600); [Scholarly or collection source 3](https://82nd-and-fifth.metmuseum.org/toah/ht/08/eustc.html)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md)
+
+<a id="manifestation.flynt.age_04_point_02_ottoman_empire_evidence_interface"></a>
+## Ottoman Empire Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.flynt.age_04_point_02_ottoman_empire_evidence_interface`<br>
+**Manifestation:** Ottoman Empire Evidence and Translation Interface<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Make the Ottoman Empire assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Reformation evidence window (1517–1600 CE) and its bounded Ottoman Empire assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Ottoman Empire dossier](dossiers/age_04_point_02/OTTOMAN_EMPIRE.md).<br>
+**Source Gifts:** [`gift.flynt.ottoman_empire.multiethnic_administration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.ottoman_empire.multiethnic_administration), [`gift.flynt.ottoman_empire.military_logistics`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.ottoman_empire.military_logistics), [`gift.flynt.ottoman_empire.monumental_civic_complexes`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.ottoman_empire.monumental_civic_complexes)<br>
+**Modern House interpretation:** Flynt receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://tile.loc.gov/storage-services/master/gdc/gdcebookspublic/20/21/01/33/16/2021013316/2021013316.pdf); [Scholarly or collection source 2](https://www.loc.gov/exhibits/vatican/vatican.html); [Scholarly or collection source 3](https://germanhistorydocs.org/en/from-the-reformations-to-the-thirty-years-war-1500-1648)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md)
+
+<a id="manifestation.flynt.age_04_point_03_qing_china_evidence_interface"></a>
+## Qing China Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.flynt.age_04_point_03_qing_china_evidence_interface`<br>
+**Manifestation:** Qing China Evidence and Translation Interface<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Make the Qing China assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Scientific Revolution evidence window (1600–1700 CE) and its bounded Qing China assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Qing China dossier](dossiers/age_04_point_03/QING_CHINA.md).<br>
+**Source Gifts:** [`gift.flynt.qing_china.imperial_administration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.qing_china.imperial_administration), [`gift.flynt.qing_china.frontier_governance`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.qing_china.frontier_governance), [`gift.flynt.qing_china.craft_and_knowledge_exchange`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.qing_china.craft_and_knowledge_exchange)<br>
+**Modern House interpretation:** Flynt receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://royalsociety.org/about-us/who-we-are/history/); [Scholarly or collection source 2](https://royalsociety.org/current-topics/history-science/); [Scholarly or collection source 3](https://www.metmuseum.org/zh/essays/the-qing-dynasty-1644-1911-painting)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md)
+
+<a id="manifestation.flynt.age_04_point_04_russian_empire_evidence_interface"></a>
+## Russian Empire Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.flynt.age_04_point_04_russian_empire_evidence_interface`<br>
+**Manifestation:** Russian Empire Evidence and Translation Interface<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Make the Russian Empire assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Enlightenment evidence window (1700–1789 CE) and its bounded Russian Empire assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Russian Empire dossier](dossiers/age_04_point_04/RUSSIAN_EMPIRE.md).<br>
+**Source Gifts:** [`gift.flynt.russian_empire.continental_administration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.russian_empire.continental_administration), [`gift.flynt.russian_empire.military_reform`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.russian_empire.military_reform), [`gift.flynt.russian_empire.frontier_infrastructure`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.russian_empire.frontier_infrastructure)<br>
+**Modern House interpretation:** Flynt receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://plato.stanford.edu/entries/enlightenment/); [Scholarly or collection source 2](https://www.britishmuseum.org/collection/galleries/enlightenment); [Scholarly or collection source 3](https://royalsociety.org/current-topics/history-science/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md)
+
+<a id="manifestation.flynt.age_04_point_05_russian_empire_evidence_interface"></a>
+## Russian Empire Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.flynt.age_04_point_05_russian_empire_evidence_interface`<br>
+**Manifestation:** Russian Empire Evidence and Translation Interface<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Make the Russian Empire assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Revolutionary World evidence window (1789–1815 CE) and its bounded Russian Empire assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Russian Empire dossier](dossiers/age_04_point_05/RUSSIAN_EMPIRE.md).<br>
+**Source Gifts:** [`gift.flynt.russian_empire.continental_administration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.russian_empire.continental_administration), [`gift.flynt.russian_empire.military_reform`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.russian_empire.military_reform), [`gift.flynt.russian_empire.frontier_infrastructure`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.russian_empire.frontier_infrastructure)<br>
+**Modern House interpretation:** Flynt receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://gallica.bnf.fr/selections/fr/html/images/la-revolution-1789-1799?mode=desktop); [Scholarly or collection source 2](https://www.napoleon.org/en/history-of-the-two-empires/articles/the-french-civil-code-or-code-civil-21-march-1804-an-overview/); [Scholarly or collection source 3](https://www.britishmuseum.org/collection/term/BIOG39862)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [IV:5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md)
+
+<a id="manifestation.flynt.age_05_point_01_united_states_evidence_interface"></a>
+## United States Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.flynt.age_05_point_01_united_states_evidence_interface`<br>
+**Manifestation:** United States Evidence and Translation Interface<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Make the United States assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Industrial Acceleration evidence window (c. 1815–1850 CE) and its bounded United States assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [United States dossier](dossiers/age_05_point_01/UNITED_STATES.md).<br>
+**Source Gifts:** [`gift.flynt.united_states.large_scale_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.large_scale_research), [`gift.flynt.united_states.continental_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.continental_networks), [`gift.flynt.united_states.industrial_and_computational_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.industrial_and_computational_systems)<br>
+**Modern House interpretation:** Flynt receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.parliament.uk/about/living-heritage/transformingsociety/tradeindustry/industrycommunity/overview/earlyindustry/); [Scholarly or collection source 2](https://www.parliament.uk/about/living-heritage/transformingsociety/transportcomms/roadsrail/kent-case-study/introduction/railways-in-early-nineteenth-century-britain/); [Scholarly or collection source 3](https://www.parliament.uk/about/living-heritage/evolutionofparliament/2015-parliament-in-the-making/get-involved1/2015-banners-exhibition/joel-millerchip/1833-factory-act-gallery/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md)
+
+<a id="manifestation.flynt.age_05_point_02_united_states_evidence_interface"></a>
+## United States Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.flynt.age_05_point_02_united_states_evidence_interface`<br>
+**Manifestation:** United States Evidence and Translation Interface<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Make the United States assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Age of Science evidence window (c. 1850–1875 CE) and its bounded United States assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [United States dossier](dossiers/age_05_point_02/UNITED_STATES.md).<br>
+**Source Gifts:** [`gift.flynt.united_states.large_scale_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.large_scale_research), [`gift.flynt.united_states.continental_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.continental_networks), [`gift.flynt.united_states.industrial_and_computational_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.industrial_and_computational_systems)<br>
+**Modern House interpretation:** Flynt receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://royalsociety.org/current-topics/history-science/); [Scholarly or collection source 2](https://www.darwinproject.ac.uk/); [Scholarly or collection source 3](https://www.pasteur.fr/en/institut-pasteur/history)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md)
+
+<a id="manifestation.flynt.age_05_point_03_united_states_evidence_interface"></a>
+## United States Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.flynt.age_05_point_03_united_states_evidence_interface`<br>
+**Manifestation:** United States Evidence and Translation Interface<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Make the United States assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Second Industrial Revolution evidence window (c. 1875–1914 CE) and its bounded United States assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [United States dossier](dossiers/age_05_point_03/UNITED_STATES.md).<br>
+**Source Gifts:** [`gift.flynt.united_states.large_scale_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.large_scale_research), [`gift.flynt.united_states.continental_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.continental_networks), [`gift.flynt.united_states.industrial_and_computational_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.industrial_and_computational_systems)<br>
+**Modern House interpretation:** Flynt receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.parliament.uk/about/living-heritage/transformingsociety/tradeindustry/industrycommunity/keydates/); [Scholarly or collection source 2](https://siarchives.si.edu/sites/default/files/pdfs/jhpp/JHP_Joseph_Henry_and_the_Telephone.pdf); [Scholarly or collection source 3](https://ethw.org/Second_Industrial_Revolution)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md)
+
+<a id="manifestation.flynt.age_05_point_04_united_states_evidence_interface"></a>
+## United States Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.flynt.age_05_point_04_united_states_evidence_interface`<br>
+**Manifestation:** United States Evidence and Translation Interface<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Make the United States assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed World War I evidence window (1914–1918 CE) and its bounded United States assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [United States dossier](dossiers/age_05_point_04/UNITED_STATES.md).<br>
+**Source Gifts:** [`gift.flynt.united_states.large_scale_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.large_scale_research), [`gift.flynt.united_states.continental_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.continental_networks), [`gift.flynt.united_states.industrial_and_computational_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.industrial_and_computational_systems)<br>
+**Modern House interpretation:** Flynt receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.iwm.org.uk/history/how-the-world-went-to-war-in-1914); [Scholarly or collection source 2](https://www.iwm.org.uk/history/transport-and-supply-during-the-first-world-war); [Scholarly or collection source 3](https://www.iwm.org.uk/history/firsts-of-the-first-world-war)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md)
+
+<a id="manifestation.flynt.age_05_point_05_united_states_evidence_interface"></a>
+## United States Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.flynt.age_05_point_05_united_states_evidence_interface`<br>
+**Manifestation:** United States Evidence and Translation Interface<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Make the United States assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Interwar World evidence window (1918–1939 CE) and its bounded United States assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [United States dossier](dossiers/age_05_point_05/UNITED_STATES.md).<br>
+**Source Gifts:** [`gift.flynt.united_states.large_scale_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.large_scale_research), [`gift.flynt.united_states.continental_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.continental_networks), [`gift.flynt.united_states.industrial_and_computational_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.industrial_and_computational_systems)<br>
+**Modern House interpretation:** Flynt receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://www.bauhaus.de/en/discover/article/14-years-of-bauhaus/); [Scholarly or collection source 2](https://www.bauhaus.de/en/discover/article/our-history-part-1-how-the-memory-of-the-bauhaus-was-rescued-from-oblivion/); [Scholarly or collection source 3](https://royalsociety.org/current-topics/history-science/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md)
+
+<a id="manifestation.flynt.age_05_point_06_united_states_evidence_interface"></a>
+## United States Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.flynt.age_05_point_06_united_states_evidence_interface`<br>
+**Manifestation:** United States Evidence and Translation Interface<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Make the United States assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed World War II evidence window (1939–1945 CE) and its bounded United States assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [United States dossier](dossiers/age_05_point_06/UNITED_STATES.md).<br>
+**Source Gifts:** [`gift.flynt.united_states.large_scale_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.large_scale_research), [`gift.flynt.united_states.continental_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.continental_networks), [`gift.flynt.united_states.industrial_and_computational_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.united_states.industrial_and_computational_systems)<br>
+**Modern House interpretation:** Flynt receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
+**Sources:** [Scholarly or collection source 1](https://main.ushmm.org/learn/holocaust/world-war-ii-and-the-holocaust-1939-1945); [Scholarly or collection source 2](https://www.ushmm.org/antisemitism/holocaust-denial-and-distortion/evidence-documentation-holocaust); [Scholarly or collection source 3](https://www.iwm.org.uk/history/how-alan-turing-cracked-the-enigma-code)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [V:6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md)
+
+<a id="manifestation.flynt.age_06_point_01_soviet_union_evidence_interface"></a>
+## Soviet Union Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.flynt.age_06_point_01_soviet_union_evidence_interface`<br>
+**Manifestation:** Soviet Union Evidence and Translation Interface<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Make the Soviet Union assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Early Computing evidence window (c. 1945–1960 CE) and its bounded Soviet Union assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Soviet Union dossier](dossiers/age_06_point_01/SOVIET_UNION.md).<br>
+**Source Gifts:** [`gift.flynt.soviet_union.centralized_research`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.soviet_union.centralized_research), [`gift.flynt.soviet_union.industrial_planning`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.soviet_union.industrial_planning), [`gift.flynt.soviet_union.space_and_systems_engineering`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.soviet_union.space_and_systems_engineering)<br>
+**Modern House interpretation:** Flynt receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://www.computerhistory.org/timeline/1945/); [Scholarly or collection source 2](https://www.computerhistory.org/timeline/1950/); [Scholarly or collection source 3](https://royalsociety.org/news/2023/04/science-in-the-making/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md)
+
+<a id="manifestation.flynt.age_06_point_02_japan_evidence_interface"></a>
+## Japan Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.flynt.age_06_point_02_japan_evidence_interface`<br>
+**Manifestation:** Japan Evidence and Translation Interface<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Make the Japan assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Space Age evidence window (c. 1957–1975 CE) and its bounded Japan assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [Japan dossier](dossiers/age_06_point_02/JAPAN.md).<br>
+**Source Gifts:** [`gift.flynt.japan.quality_manufacturing`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.japan.quality_manufacturing), [`gift.flynt.japan.consumer_electronics`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.japan.consumer_electronics), [`gift.flynt.japan.high_reliability_transport`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.japan.high_reliability_transport)<br>
+**Modern House interpretation:** Flynt receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://www.nasa.gov/history/dawn-of-the-space-age/); [Scholarly or collection source 2](https://www.nasa.gov/history/sputnik/sputorig.html); [Scholarly or collection source 3](https://www.nasa.gov/wp-content/uploads/2016/01/historical-studies-societal-impact-spaceflight-ebook_tagged.pdf)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md)
+
+<a id="manifestation.flynt.age_06_point_03_china_evidence_interface"></a>
+## China Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.flynt.age_06_point_03_china_evidence_interface`<br>
+**Manifestation:** China Evidence and Translation Interface<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Make the China assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Digital Revolution evidence window (c. 1975–1995 CE) and its bounded China assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [China dossier](dossiers/age_06_point_03/CHINA.md).<br>
+**Source Gifts:** [`gift.flynt.china.large_scale_infrastructure`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.china.large_scale_infrastructure), [`gift.flynt.china.manufacturing_ecosystems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.china.manufacturing_ecosystems), [`gift.flynt.china.state_scale_digital_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.china.state_scale_digital_systems)<br>
+**Modern House interpretation:** Flynt receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://home.cern/science/computing/the-birth-of-the-web/short-history-web/); [Scholarly or collection source 2](https://home.cern/science/computing/birth-web/licensing-web/); [Scholarly or collection source 3](https://www.internetsociety.org/internet/history-internet/brief-history-internet/)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md)
+
+<a id="manifestation.flynt.age_06_point_04_china_evidence_interface"></a>
+## China Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.flynt.age_06_point_04_china_evidence_interface`<br>
+**Manifestation:** China Evidence and Translation Interface<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Make the China assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed Network Age evidence window (c. 1995–2015 CE) and its bounded China assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [China dossier](dossiers/age_06_point_04/CHINA.md).<br>
+**Source Gifts:** [`gift.flynt.china.large_scale_infrastructure`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.china.large_scale_infrastructure), [`gift.flynt.china.manufacturing_ecosystems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.china.manufacturing_ecosystems), [`gift.flynt.china.state_scale_digital_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.china.state_scale_digital_systems)<br>
+**Modern House interpretation:** Flynt receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://www.internetsociety.org/blog/2015/04/happy-birthday-backbone/); [Scholarly or collection source 2](https://www.internetsociety.org/internet/history-internet/brief-history-internet/); [Scholarly or collection source 3](https://www.internetsociety.org/wp-content/uploads/2022/11/Global-Internet-Report-2015.pdf)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md)
+
+<a id="manifestation.flynt.age_06_point_05_china_evidence_interface"></a>
+## China Evidence and Translation Interface
+
+**Manifestation ID:** `manifestation.flynt.age_06_point_05_china_evidence_interface`<br>
+**Manifestation:** China Evidence and Translation Interface<br>
+**Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
+**Purpose:** Make the China assignment's dates, sources, inherited Gifts, exclusions, and later revisions inspectable.<br>
+**Historical ancestry:** The reviewed AI Age evidence window (c. 2015 CE–Present) and its bounded China assignment; Gifts are analytical categories, not proof of cultural uniformity. See the [China dossier](dossiers/age_06_point_05/CHINA.md).<br>
+**Source Gifts:** [`gift.flynt.china.large_scale_infrastructure`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.china.large_scale_infrastructure), [`gift.flynt.china.manufacturing_ecosystems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.china.manufacturing_ecosystems), [`gift.flynt.china.state_scale_digital_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.china.state_scale_digital_systems)<br>
+**Modern House interpretation:** Flynt receives documented practices and cautions through existing House authority; historical rule, rank, violence, extraction, and identity claims do not transfer.<br>
+**Physical appearance:** A contemporary universal dark-blue evidence interface using the locked House palette, source cards, dated layers, uncertainty marks, revision history, and accessible text; no replica monument, uniform, flag, or sacred object.<br>
+**Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
+**Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
+**Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Possible NPC role:** provenance and evidence-boundary steward<br>
+**Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
+**Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
+**Sources:** [Scholarly or collection source 1](https://hai.stanford.edu/ai-index); [Scholarly or collection source 2](https://digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence); [Scholarly or collection source 3](https://investor.tsmc.com/static/annualReports/2025/english/index.html)<br>
+**Status:** Reviewed flagship; design remains Working until separately adopted<br>
+**Ancestral provenance:** [VI:5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md)

@@ -1,6 +1,6 @@
 # Ancestral Atlas Integration Report
 
-Date: 2026-08-01<br>
+Date: 2026-08-12<br>
 Status: completed documentation and structured-reference pass
 
 ## Files created
@@ -12,8 +12,8 @@ Status: completed documentation and structured-reference pass
 - Gifts and manifestation registries.
 - Markdown templates, JSON proposal schema, generated read-only Atlas data, and build/validation scripts.
 - World Bible index at `docs/world_bible/README.md`.
-- Forty-eight source-reviewed civilization dossiers, twelve Point indexes, and a reusable dossier template, covering Age I, Points I–V and Age II, Points I–VII.
-- Refinement Pass 01 through 12 review reports.
+- 164 source-reviewed civilization dossiers, 41 reviewed Point collections, and a reusable specialist dossier template, covering all six Ages.
+- Refinement Pass 01 through 25 reports plus the Atlas Completion Report for Ages IV–VI.
 - Chronology Revision 1 report and Point-level temporal semantics.
 
 ## Files modified outside the Atlas
@@ -33,11 +33,11 @@ No geography, visual law, Hueman gameplay system, or unrelated House authority w
 
 ## Gifts created
 
-397 unique House-culture Gift records cover all 41 Points and all 164 assignments. One hundred eighty Gifts across Age I, Points I–V and Age II, Points I–X are source-reviewed and replace broader preliminary wording. Point-specific overrides keep different phases of repeated culture labels distinct and prevent reviewed wording from silently rewriting other coordinates.
+397 unique House-culture Gift records cover all 41 Points and all 164 assignments. 397 Gifts across all 41 reviewed Point collections carry reviewed status. Point-specific overrides keep different phases of repeated culture labels distinct and prevent reviewed wording from silently rewriting other coordinates.
 
 ## Manifestations created
 
-96 manifestations remain registered: 15 each for Stonebend, Sandmanor, Glaüshouse, and Flynt. All sixty are reviewed Working flagships across Age I, Points I–V and Age II, Points I–X. Point X adds the Imperial Infrastructure Provenance Hall, Judean and Christian Memory Forum, Alexandrian Research and Water Conservatory, and Roman-Parthian Frontier Operations Lab.
+164 manifestations remain registered: 41 each for Stonebend, Sandmanor, Glaüshouse, and Flynt. All are reviewed Working flagships, one per assignment across all six Ages.
 
 ## Existing canon connected
 
@@ -49,8 +49,8 @@ No geography, visual law, Hueman gameplay system, or unrelated House authority w
 
 ## Uncertainties retained
 
-See [Audit Report](AUDIT_REPORT.md), [Chronology Revision 1](CHRONOLOGY_REVISION_01_REPORT.md), and [Refinement Pass 16 Report](REFINEMENT_PASS_16_REPORT.md), which links the completed review sequence, for the resolved Flynt law correction, reviewed Point evidence limits, supplied master-lineage mismatch, chronology refinements, secondary book associations, and title verification.
+See [Audit Report](AUDIT_REPORT.md), [Chronology Revision 1](CHRONOLOGY_REVISION_01_REPORT.md), [Refinement Pass 25 Report](REFINEMENT_PASS_25_REPORT.md), and the [Atlas Completion Report](ATLAS_COMPLETION_REPORT.md) for the resolved Flynt law correction, reviewed evidence tiers, supplied master-lineage mismatch, chronology refinements, modern-data volatility, secondary book associations, and title verification.
 
 ## Recommended next pass
 
-After human review, the recommended next Point is **Age III, Point I — Successor Kingdoms**. Preserve the 313–476 CE range while separating late Roman transformation, post-313 Christian institutions and conflict, Constantinople/Byzantium, and mature Sasanian development.
+Point coverage is complete. Future work should expand one completion-level dossier into a specialist dossier only when a concrete writing, art, gameplay, curriculum, or historical question needs deeper culture-specific evidence. The open AI Point is due for its regular dated review on 2027-08-01, or sooner after a material change.

@@ -49,10 +49,9 @@ Atlas metadata may label and retrieve authored lore. It may not grant a Title, c
 
 The example correctly remains `working`: the framework is canonical, but Working Version 1 does not explicitly ratify individual assignments.
 
-Age I, Points I–V, Age II, Points I–XII, and Age III, Points I–V assignment records also expose
-`dossier_document` and a review level. Age I, Point I retains
-`reviewed_benchmark`; the other reviewed Points use `reviewed_dossier`.
-Their eighty-eight flagship manifestation records add purpose,
+All 164 assignment records expose `dossier_document` and a review level. Age I,
+Point I retains `reviewed_benchmark`; the other reviewed Points use
+`reviewed_dossier`. Their 164 flagship manifestation records add purpose,
 physical appearance, institutional role, implementation notes, confidence,
 and scholarly-source links. These fields remain descriptive.
 

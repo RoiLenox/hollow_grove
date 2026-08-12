@@ -48,18 +48,18 @@ The next working coordinate is [IV:1 — Renaissance](../../ages/age_04_early_mo
 **Primary culture:** Holy Roman Empire<br>
 **Temporal fit:** Working representative<br>
 **Date relevance:** 1368–1453 CE. Exact internal overlap and phase boundaries remain Working.<br>
-**Historical role:** Working inheritance lens for layered sovereignty, municipal and legal plurality, guild traditions; this is not a total description of Holy Roman Empire.<br>
-**Major figures:** Research pending; no figure is locked by this preliminary assignment.<br>
-**Major locations:** Research pending; no literal replica district is authorized.<br>
-**Major works or records:** Research pending; see the House library for current foundational works.<br>
-**Government and institutions:** Research pending; preliminary institutional inheritance is expressed only through the Gifts below.<br>
-**Religion and worldview:** Research pending; no doctrine is imported into Hollow Grove canon.<br>
-**Science and knowledge:** Research pending; the preliminary knowledge inheritance is limited to the concrete Gifts below.<br>
-**Technology and infrastructure:** Research pending; preliminary translation appears under modern manifestation.<br>
-**Art and cultural expression:** Research pending; visual use must pass through Hollow Grove's established visual canon.<br>
-**Warfare and strategic capacity:** Research pending; no unsupported conflict or command relationship is asserted.<br>
-**Resources and trade:** Research pending; trade claims require source review.<br>
-**Major conflicts and relationships:** Research pending; Point co-placement alone does not prove direct contact.<br>
+**Historical role:** Reviewed inheritance lens for layered sovereignty, municipal and legal plurality, guild traditions; see the linked dossier for evidence, interpretation, and adaptation boundaries.<br>
+**Major figures:** Charles IV, Wenceslaus, Rupert, Sigismund, Albert II, Frederick III, Jan Hus, electors, princes, bishops, city councils, guild members, jurists, soldiers, and local communities belong to different institutional and evidentiary settings.<br>
+**Major locations:** Prague, Nuremberg, Frankfurt, Aachen, Constance, Basel, Bohemia, the Rhine, imperial and free cities, principalities, bishoprics, and rural communities.<br>
+**Major works or records:** The Golden Bull, imperial diplomas, city statutes, guild and council records, council acts, chronicles, legal manuscripts, coins, seals, buildings, and archaeology preserve unequal perspectives.<br>
+**Government and institutions:** Elective monarchy, prince-electors, territorial princes, ecclesiastical lords, cities, estates, courts, and local custom formed overlapping jurisdictions rather than one centralized administration.<br>
+**Religion and worldview:** Latin Christianity, reform movements, Hussite communities, Jewish communities, urban devotion, monastic institutions, and local practices interacted amid persecution and conflict.<br>
+**Science and knowledge:** Canon and civil law, university learning, diplomacy, accounting, manuscript production, craft regulation, and council procedure circulated through courts, cities, churches, and schools.<br>
+**Technology and infrastructure:** Roads, rivers, bridges, walls, workshops, mills, mines, mints, scriptoria, and urban service systems depended on local labor, finance, and maintenance.<br>
+**Art and cultural expression:** Manuscripts, churches, civic halls, sculpture, metalwork, seals, coins, and public ritual expressed imperial, princely, ecclesiastical, civic, and guild identities.<br>
+**Warfare and strategic capacity:** The Hussite wars, feuds, crusading campaigns, dynastic conflict, siege, taxation, expulsion, and anti-Jewish violence imposed severe and uneven costs.<br>
+**Resources and trade:** Grain, salt, wine, textiles, metals, books, coin, craft goods, and information moved through cities, fairs, river routes, and regional networks.<br>
+**Major conflicts and relationships:** Imperial actors negotiated with papacy, councils, Bohemian estates, Italian cities, neighboring kingdoms, Ottoman-facing Hungary, Jewish communities, and local polities through law, diplomacy, trade, reform, and war.<br>
 
 ### Permanent gifts
 
@@ -87,11 +87,12 @@ The ancestry may deepen these systems but grants no office, law, proof, clearanc
 
 - Use `atlas.age_03.point_07.stonebend.holy_roman_empire` as a read-only curriculum, district, artifact, NPC-background, or exhibit reference.
 - Filter the [Gifts registry](../../ANCESTRAL_GIFTS_REGISTRY.md) by `stonebend` and this Point.
-- No high-confidence shared manifestation is registered yet; the preliminary Point translation remains available for later review.
+- Use the reviewed [Holy Roman Empire historical dossier](../../dossiers/age_03_point_07/HOLY_ROMAN_EMPIRE_ELECTORS_CITIES_AND_COUNCILS_1368_1453.md) as the evidence boundary for new design claims.
+- High-confidence registry hooks: `manifestation.stonebend.late_medieval_electoral_civic_register`.
 
 ### Source or research status
 
-**Needs historical audit; Working post-classical assignment retained or explicitly refined without ratification.** No external source dossier has yet been attached to this assignment.
+**Reviewed dossier; assignment remains Working.** Reviewed source dossier: [Holy Roman Empire](../../dossiers/age_03_point_07/HOLY_ROMAN_EMPIRE_ELECTORS_CITIES_AND_COUNCILS_1368_1453.md).
 
 <a id="assignment-age-03-point-07-sandmanor"></a>
 ## Sandmanor — Renaissance Italy
@@ -101,18 +102,18 @@ The ancestry may deepen these systems but grants no office, law, proof, clearanc
 **Primary culture:** Renaissance Italy<br>
 **Temporal fit:** Working representative<br>
 **Date relevance:** 1368–1453 CE. Exact internal overlap and phase boundaries remain Working.<br>
-**Historical role:** Working inheritance lens for civic humanism, workshop and patronage systems, urban design; this is not a total description of Renaissance Italy.<br>
-**Major figures:** Research pending; no figure is locked by this preliminary assignment.<br>
-**Major locations:** Research pending; no literal replica district is authorized.<br>
-**Major works or records:** Research pending; see the House library for current foundational works.<br>
-**Government and institutions:** Research pending; preliminary institutional inheritance is expressed only through the Gifts below.<br>
-**Religion and worldview:** Research pending; no doctrine is imported into Hollow Grove canon.<br>
-**Science and knowledge:** Research pending; the preliminary knowledge inheritance is limited to the concrete Gifts below.<br>
-**Technology and infrastructure:** Research pending; preliminary translation appears under modern manifestation.<br>
-**Art and cultural expression:** Research pending; visual use must pass through Hollow Grove's established visual canon.<br>
-**Warfare and strategic capacity:** Research pending; no unsupported conflict or command relationship is asserted.<br>
-**Resources and trade:** Research pending; trade claims require source review.<br>
-**Major conflicts and relationships:** Research pending; Point co-placement alone does not prove direct contact.<br>
+**Historical role:** Reviewed inheritance lens for civic humanism, workshop and patronage systems, urban design; see the linked dossier for evidence, interpretation, and adaptation boundaries.<br>
+**Major figures:** Petrarch's later reception, Coluccio Salutati, Leonardo Bruni, Cosimo de' Medici, Brunelleschi, Ghiberti, Donatello, Masaccio, Fra Angelico, Alberti, patrons, guilds, booksellers, artisans, assistants, women in households and workshops, and urban laborers require distinct attribution.<br>
+**Major locations:** Florence, Venice, Milan, Siena, Ferrara, Rome, Padua, Mantua, workshops, guild halls, churches, palaces, markets, libraries, streets, and building sites.<br>
+**Major works or records:** Humanist manuscripts, letters, civic histories, contracts, account books, guild records, workshop drawings, inscriptions, buildings, paintings, sculpture, and material analysis support different claims.<br>
+**Government and institutions:** Republics, oligarchies, signorie, duchies, papal government, guilds, confraternities, courts, and neighborhood institutions distributed authority unevenly.<br>
+**Religion and worldview:** Latin Christianity, humanist study of antiquity, civic memory, family devotion, monastic practice, Jewish communities, and classical reception interacted without replacing one another.<br>
+**Science and knowledge:** Philology, rhetoric, history, perspective, proportion, architecture, bookkeeping, manuscript production, and craft apprenticeship developed through schools, chanceries, libraries, and workshops.<br>
+**Technology and infrastructure:** Masonry, domes, scaffolding, perspective instruments, pigments, bronze casting, paper, parchment, presses and book trades at the late boundary, canals, and urban works depended on specialized labor.<br>
+**Art and cultural expression:** Painting, sculpture, architecture, illuminated manuscripts, textiles, metalwork, public festivals, and domestic objects linked design to devotion, civic identity, patronage, and status.<br>
+**Warfare and strategic capacity:** Inter-city war, mercenary companies, siege, faction, territorial expansion, taxation, and displacement shaped patronage and civic claims; artistic achievement does not erase coercion.<br>
+**Resources and trade:** Banking, wool, silk, pigments, metals, paper, books, grain, luxury goods, and information connected Italian cities to Mediterranean and European networks.<br>
+**Major conflicts and relationships:** Italian polities engaged one another, the papacy, the Holy Roman Empire, Byzantium, Ottoman and Mamluk routes, northern Europe, and Mediterranean merchants through diplomacy, finance, study, patronage, trade, and war.<br>
 
 ### Permanent gifts
 
@@ -140,11 +141,12 @@ The ancestry may deepen these systems but grants no office, law, proof, clearanc
 
 - Use `atlas.age_03.point_07.sandmanor.renaissance_italy` as a read-only curriculum, district, artifact, NPC-background, or exhibit reference.
 - Filter the [Gifts registry](../../ANCESTRAL_GIFTS_REGISTRY.md) by `sandmanor` and this Point.
-- No high-confidence shared manifestation is registered yet; the preliminary Point translation remains available for later review.
+- Use the reviewed [Renaissance Italy historical dossier](../../dossiers/age_03_point_07/RENAISSANCE_ITALY_HUMANISM_WORKSHOPS_AND_CIVIC_PATRONAGE_1368_1453.md) as the evidence boundary for new design claims.
+- High-confidence registry hooks: `manifestation.sandmanor.humanist_workshop_commons`.
 
 ### Source or research status
 
-**Needs historical audit; Working post-classical assignment retained or explicitly refined without ratification.** No external source dossier has yet been attached to this assignment.
+**Reviewed plural-city dossier; assignment remains Working.** Reviewed source dossier: [Renaissance Italy](../../dossiers/age_03_point_07/RENAISSANCE_ITALY_HUMANISM_WORKSHOPS_AND_CIVIC_PATRONAGE_1368_1453.md).
 
 <a id="assignment-age-03-point-07-glaushouse"></a>
 ## Glaüshouse — Ming China
@@ -154,18 +156,18 @@ The ancestry may deepen these systems but grants no office, law, proof, clearanc
 **Primary culture:** Ming China<br>
 **Temporal fit:** Working representative<br>
 **Date relevance:** 1368–1453 CE. Exact internal overlap and phase boundaries remain Working.<br>
-**Historical role:** Working inheritance lens for examination bureaucracy, maritime and overland logistics, urban craft production; this is not a total description of Ming China.<br>
-**Major figures:** Research pending; no figure is locked by this preliminary assignment.<br>
-**Major locations:** Research pending; no literal replica district is authorized.<br>
-**Major works or records:** Research pending; see the House library for current foundational works.<br>
-**Government and institutions:** Research pending; preliminary institutional inheritance is expressed only through the Gifts below.<br>
-**Religion and worldview:** Research pending; no doctrine is imported into Hollow Grove canon.<br>
-**Science and knowledge:** Research pending; the preliminary knowledge inheritance is limited to the concrete Gifts below.<br>
-**Technology and infrastructure:** Research pending; preliminary translation appears under modern manifestation.<br>
-**Art and cultural expression:** Research pending; visual use must pass through Hollow Grove's established visual canon.<br>
-**Warfare and strategic capacity:** Research pending; no unsupported conflict or command relationship is asserted.<br>
-**Resources and trade:** Research pending; trade claims require source review.<br>
-**Major conflicts and relationships:** Research pending; Point co-placement alone does not prove direct contact.<br>
+**Historical role:** Reviewed inheritance lens for examination bureaucracy, maritime and overland logistics, urban craft production; see the linked dossier for evidence, interpretation, and adaptation boundaries.<br>
+**Major figures:** Hongwu, Jianwen, Yongle, Hongxi, Xuande, Zhengtong, Zheng He, officials, examination candidates, soldiers, sailors, artisans, farmers, merchants, religious communities, and frontier peoples belong to different records.<br>
+**Major locations:** Nanjing, Beijing, the Forbidden City, Jingdezhen, the Grand Canal, Yangzi regions, Fujian, Yunnan, northern frontiers, ports, shipyards, kilns, workshops, and Indian Ocean routes.<br>
+**Major works or records:** Ming official histories, administrative codes, gazetteers, inscriptions, maps, court and examination records, ceramics, paintings, buildings, ship and voyage evidence, archaeology, and foreign accounts require source-specific reading.<br>
+**Government and institutions:** Emperor, central ministries, provincial and county offices, examination institutions, military households, eunuch agencies, local elites, temples, and communities held unequal and changing responsibilities.<br>
+**Religion and worldview:** Confucian state learning, Buddhism, Daoism, local cults, Islam, Christianity at the margins, family rites, and court ritual coexisted under changing regulation.<br>
+**Science and knowledge:** Classical study, examinations, law, calendrics, medicine, cartography, navigation, hydraulics, agriculture, painting, and craft standards circulated through offices, schools, temples, and workshops.<br>
+**Technology and infrastructure:** Canals, dikes, ships, dockyards, roads, walls, palaces, printing, porcelain kilns, lacquer, textiles, metalwork, and water systems required extensive labor and maintenance.<br>
+**Art and cultural expression:** Court painting, scholar painting, calligraphy, porcelain, lacquer, cloisonné, textiles, architecture, and religious objects joined restored Chinese traditions to continuing regional and West Asian exchange.<br>
+**Warfare and strategic capacity:** Dynastic founding war, campaigns in Yunnan and the north, the 1402 civil war, frontier garrisons, naval power, forced relocation, and the 1449 Tumu crisis affected communities and state capacity.<br>
+**Resources and trade:** Porcelain, silk, metals, grain, horses, books, tribute goods, maritime cargo, and information moved through canals, ports, embassies, frontier markets, and Indian Ocean voyages.<br>
+**Major conflicts and relationships:** Ming institutions engaged Mongol polities, Korea, Japan, Southeast Asia, Central and South Asian courts, Muslim merchants, tributary envoys, and local frontier communities through diplomacy, trade, war, migration, and exchange.<br>
 
 ### Permanent gifts
 
@@ -194,11 +196,12 @@ The ancestry may deepen these systems but grants no office, law, proof, clearanc
 
 - Use `atlas.age_03.point_07.glaushouse.ming_china` as a read-only curriculum, district, artifact, NPC-background, or exhibit reference.
 - Filter the [Gifts registry](../../ANCESTRAL_GIFTS_REGISTRY.md) by `glaushouse` and this Point.
-- No high-confidence shared manifestation is registered yet; the preliminary Point translation remains available for later review.
+- Use the reviewed [Ming China historical dossier](../../dossiers/age_03_point_07/MING_CHINA_RESTORATION_CAPITALS_CRAFT_AND_EXCHANGE_1368_1453.md) as the evidence boundary for new design claims.
+- High-confidence registry hooks: `manifestation.glaushouse.ming_restoration_craft_conservatory`.
 
 ### Source or research status
 
-**Needs historical audit; Working post-classical assignment retained or explicitly refined without ratification.** No external source dossier has yet been attached to this assignment.
+**Reviewed early-dynasty dossier; assignment remains Working.** Reviewed source dossier: [Ming China](../../dossiers/age_03_point_07/MING_CHINA_RESTORATION_CAPITALS_CRAFT_AND_EXCHANGE_1368_1453.md).
 
 <a id="assignment-age-03-point-07-flynt"></a>
 ## Flynt — Ottoman Empire
@@ -208,18 +211,18 @@ The ancestry may deepen these systems but grants no office, law, proof, clearanc
 **Primary culture:** Ottoman Empire<br>
 **Temporal fit:** Working representative<br>
 **Date relevance:** 1368–1453 CE. Exact internal overlap and phase boundaries remain Working.<br>
-**Historical role:** Working inheritance lens for multiethnic administration, military logistics, monumental civic complexes; this is not a total description of Ottoman Empire.<br>
-**Major figures:** Research pending; no figure is locked by this preliminary assignment.<br>
-**Major locations:** Research pending; no literal replica district is authorized.<br>
-**Major works or records:** Research pending; see the House library for current foundational works.<br>
-**Government and institutions:** Research pending; preliminary institutional inheritance is expressed only through the Gifts below.<br>
-**Religion and worldview:** Research pending; no doctrine is imported into Hollow Grove canon.<br>
-**Science and knowledge:** Research pending; the preliminary knowledge inheritance is limited to the concrete Gifts below.<br>
-**Technology and infrastructure:** Research pending; preliminary translation appears under modern manifestation.<br>
-**Art and cultural expression:** Research pending; visual use must pass through Hollow Grove's established visual canon.<br>
-**Warfare and strategic capacity:** Research pending; no unsupported conflict or command relationship is asserted.<br>
-**Resources and trade:** Research pending; trade claims require source review.<br>
-**Major conflicts and relationships:** Research pending; Point co-placement alone does not prove direct contact.<br>
+**Historical role:** Reviewed inheritance lens for multiethnic administration, military logistics, monumental civic complexes; see the linked dossier for evidence, interpretation, and adaptation boundaries.<br>
+**Major figures:** Murad I, Bayezid I, Timur as an external conqueror, Mehmed I, Murad II, Mehmed II, commanders, judges, administrators, religious patrons, artisans, soldiers, merchants, peasants, captives, and Byzantine and Balkan communities require separate records.<br>
+**Major locations:** Bursa, Edirne, Gallipoli, Ankara, Kosovo, Thessaloniki, the Danube frontier, Anatolian principalities, Balkan towns, roads, fortresses, and Constantinople.<br>
+**Major works or records:** Ottoman chronicles, tax and endowment records, coins, inscriptions, architecture, Byzantine, Venetian, Serbian, Hungarian, and other accounts, archaeology, and later dynastic histories carry different biases.<br>
+**Government and institutions:** Sultan, dynasty, military households, frontier lords, judges, provincial officers, vassals, cities, villages, religious foundations, and local communities held changing and unequal authority.<br>
+**Religion and worldview:** Sunni Islam, Sufi networks, Byzantine Christianity, Orthodox churches, Jewish communities, Balkan and Anatolian local practices, frontier ideology, and dynastic claims interacted.<br>
+**Science and knowledge:** Law, administration, languages, diplomacy, surveying, siegecraft, medicine, architecture, route intelligence, and fiscal recordkeeping circulated through courts, towns, armies, and religious institutions.<br>
+**Technology and infrastructure:** Roads, bridges, fortresses, ships, artillery, siege works, workshops, markets, mosques, churches, baths, kitchens, and endowed complexes supported both service and war.<br>
+**Art and cultural expression:** Mosques, tombs, calligraphy, manuscripts, textiles, ceramics, metalwork, coins, reused Byzantine forms, and urban patronage developed a plural early Ottoman vocabulary.<br>
+**Warfare and strategic capacity:** Conquest, siege, forced movement, slavery, tribute, civil war, the 1402 defeat, the interregnum, Balkan campaigns, and the 1453 assault imposed civilian and institutional costs.<br>
+**Resources and trade:** Grain, livestock, textiles, metals, timber, weapons, coin, captives, books, and information moved across Anatolian, Balkan, Black Sea, Aegean, and Mediterranean routes.<br>
+**Major conflicts and relationships:** Ottoman actors engaged Byzantium, Venice, Genoa, Serbia, Bulgaria, Wallachia, Hungary, Anatolian principalities, the Timurids, Mamluks, and local Christian, Muslim, and Jewish communities through conquest, vassalage, diplomacy, trade, and settlement.<br>
 
 ### Permanent gifts
 
@@ -248,11 +251,12 @@ The ancestry may deepen these systems but grants no office, law, proof, clearanc
 
 - Use `atlas.age_03.point_07.flynt.ottoman_empire` as a read-only curriculum, district, artifact, NPC-background, or exhibit reference.
 - Filter the [Gifts registry](../../ANCESTRAL_GIFTS_REGISTRY.md) by `flynt` and this Point.
-- No high-confidence shared manifestation is registered yet; the preliminary Point translation remains available for later review.
+- Use the reviewed [Ottoman Empire historical dossier](../../dossiers/age_03_point_07/OTTOMAN_EMPIRE_BALKAN_ANATOLIAN_SYSTEMS_AND_1453_TRANSITION.md) as the evidence boundary for new design claims.
+- High-confidence registry hooks: `manifestation.flynt.constantinople_transition_capacity_lab`.
 
 ### Source or research status
 
-**Needs historical audit; Working post-classical assignment retained or explicitly refined without ratification.** No external source dossier has yet been attached to this assignment.
+**Reviewed expansion-and-transition dossier; assignment remains Working.** Reviewed source dossier: [Ottoman Empire](../../dossiers/age_03_point_07/OTTOMAN_EMPIRE_BALKAN_ANATOLIAN_SYSTEMS_AND_1453_TRANSITION.md).
 
 ## Ancestral provenance block
 

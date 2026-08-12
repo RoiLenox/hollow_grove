@@ -1,51 +1,54 @@
 # Ancestral Atlas — Current Refinement Bookmark
 
-Date: 2026-08-02  
-Status: paused after completed Age III, Point 6B review
+Date: 2026-08-12
+Status: coverage complete; specialist refinement remains question-driven
 
-## Completed through
+## Completed coverage
 
-**Age III, Point 6B — Khanates, Yuan, and Mamluk World (1279–1368 CE)**
-
-Age III, Point 6B has four reviewed Working dossiers and four reviewed flagship manifestations:
-
-- Holy Roman Empire — Khanate-Era Jurisdiction Register
-- Mongol Khanates — Successor Khanate Diplomacy Forum
-- Yuan China — Yuan Exchange and Urban Systems Conservatory
-- Mamluk Sultanate — Mamluk Consolidation and Endowment Interface
-
-## Current validation state
+All six Ages and all 41 operational Points now have reviewed coverage. Every
+House assignment links a dossier, reviewed Gifts, and one reviewed Working
+manifestation.
 
 ```text
 6 Ages
 41 Points
 164 assignments
-397 Gifts
-96 manifestations
+397 Gifts with reviewed status
+164 reviewed manifestations (41 per House)
 19 foundational books
 ```
 
-Age III, Point 6B has four reviewed assignments.
+Ages IV–VI were completed as a 16-Point series with 64 compact dossiers and
+64 evidence-and-translation manifestations. These use a completion evidence
+tier: Point-level institutional sources, explicit scope and uncertainty, Gift
+boundaries, and declared specialist work still possible.
 
-## Resume point
+## Standing exceptions
 
-Resume with **Age III, Point VII — Late Medieval World (1368–1453 CE)**.
+- Every culture-to-House assignment remains Working; review does not silently
+  make it Canonical.
+- Nazi Germany contributes only atrocity documentation, warning against
+  totalitarian law, and institutional refusal. It supplies no aesthetic,
+  prestige, command method, or triumph narrative.
+- Age VI, Point V remains Open. Its evidence is current through 2026-08-12 and
+  its scheduled review remains 2027-08-01, or sooner after material change.
+- No manifestation creates a district, office, law, Clearance, Capacity,
+  runtime loader, or gameplay permission.
 
-Preserve the supplied assignments:
+## Resume rule
 
-- Stonebend — Holy Roman Empire
-- Sandmanor — Renaissance Italy
-- Glaüshouse — Ming China
-- Flynt — Ottoman Empire
+There is no next uncovered Point. Resume only from a concrete need:
 
-The next pass should distinguish late-medieval European layers, Italian humanism, Ming restoration, Ottoman expansion, and the supplied 1453 terminal transition without rewriting the timeline or existing canon.
-
-Recommended next report: `REFINEMENT_PASS_25_REPORT.md`.
+1. select the assignment or manifestation used by the work;
+2. expand that compact dossier with culture-specific specialist sources;
+3. preserve its evidence boundary, Working status, exclusions, and provenance;
+4. regenerate and validate the Atlas before integration.
 
 ## Key files
 
+- [Atlas Completion Report](ATLAS_COMPLETION_REPORT.md)
 - [Atlas README](README.md)
-- [Point 6B report](REFINEMENT_PASS_24_REPORT.md)
-- [Point 6B page](ages/age_03_medieval_civilization/point_06b_khanates_yuan_and_mamluk_world.md)
+- [Historical dossiers](dossiers/README.md)
+- [Point VII report](REFINEMENT_PASS_25_REPORT.md)
 - [Validator](scripts/validate_atlas.py)
 - [Generator](scripts/build_atlas.py)

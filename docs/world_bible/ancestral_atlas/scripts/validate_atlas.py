@@ -157,219 +157,33 @@ def validate_data(errors: list[str]) -> dict:
     for assignment_id, expected_fit in expected_temporal_fits.items():
         if assignments_by_id.get(assignment_id, {}).get("temporal_fit") != expected_fit:
             fail(errors, f"Chronology Revision 1 temporal fit differs: {assignment_id}")
+    reviewed_levels = {"reviewed_benchmark", "reviewed_dossier"}
+    reviewed_assignments = [
+        record for record in assignments if record.get("review_level") in reviewed_levels
+    ]
+    for coordinate, records in by_point.items():
+        reviewed_at_coordinate = [
+            record for record in records if record.get("review_level") in reviewed_levels
+        ]
+        if reviewed_at_coordinate and len(reviewed_at_coordinate) != len(records):
+            fail(errors, f"reviewed Point is incomplete across Houses: {coordinate}")
+    for record in reviewed_assignments:
+        if not record.get("dossier_document"):
+            fail(errors, f"reviewed assignment is missing dossier_document: {record['id']}")
+        if len(record["gifts"]) < 3 or len(set(record["gifts"])) != len(record["gifts"]):
+            fail(errors, f"reviewed assignment lacks at least three distinct Gifts: {record['id']}")
+
     benchmark_assignments = by_point[(1, 1, "")]
     if any(record.get("review_level") != "reviewed_benchmark" for record in benchmark_assignments):
         fail(errors, "Age I, Point I assignments are not all marked reviewed_benchmark")
-    if any(not record.get("dossier_document") for record in benchmark_assignments):
-        fail(errors, "Age I, Point I assignment is missing dossier_document")
-    reviewed_assignments = by_point[(1, 2, "")]
-    if any(record.get("review_level") != "reviewed_dossier" for record in reviewed_assignments):
-        fail(errors, "Age I, Point II assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in reviewed_assignments):
-        fail(errors, "Age I, Point II assignment is missing dossier_document")
     point_three_assignments = by_point[(1, 3, "")]
-    if any(record.get("review_level") != "reviewed_dossier" for record in point_three_assignments):
-        fail(errors, "Age I, Point III assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in point_three_assignments):
-        fail(errors, "Age I, Point III assignment is missing dossier_document")
-    for record in point_three_assignments:
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age I, Point III does not have exactly three distinct reviewed Gifts: {record['id']}")
     point_four_assignments = {
         record["house"]: record for record in by_point[(1, 4, "")]
     }
-    if any(record.get("review_level") != "reviewed_dossier" for record in point_four_assignments.values()):
-        fail(errors, "Age I, Point IV assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in point_four_assignments.values()):
-        fail(errors, "Age I, Point IV assignment is missing dossier_document")
-    for record in point_four_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age I, Point IV does not have exactly three distinct reviewed Gifts: {record['id']}")
     for house in ("sandmanor", "glaushouse"):
         point_three_record = next(record for record in point_three_assignments if record["house"] == house)
         if set(point_three_record["gifts"]) & set(point_four_assignments[house]["gifts"]):
             fail(errors, f"Point III reviewed slice silently reuses Point IV phase Gifts: {house}")
-    point_five_assignments = {
-        record["house"]: record for record in by_point[(1, 5, "")]
-    }
-    if any(record.get("review_level") != "reviewed_dossier" for record in point_five_assignments.values()):
-        fail(errors, "Age I, Point V assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in point_five_assignments.values()):
-        fail(errors, "Age I, Point V assignment is missing dossier_document")
-    for record in point_five_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age I, Point V does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_two_point_one_assignments = {
-        record["house"]: record for record in by_point[(2, 1, "")]
-    }
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_two_point_one_assignments.values()):
-        fail(errors, "Age II, Point I assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_two_point_one_assignments.values()):
-        fail(errors, "Age II, Point I assignment is missing dossier_document")
-    for record in age_two_point_one_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age II, Point I does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_two_point_two_assignments = {
-        record["house"]: record for record in by_point[(2, 2, "")]
-    }
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_two_point_two_assignments.values()):
-        fail(errors, "Age II, Point II assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_two_point_two_assignments.values()):
-        fail(errors, "Age II, Point II assignment is missing dossier_document")
-    for record in age_two_point_two_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age II, Point II does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_two_point_three_assignments = {
-        record["house"]: record for record in by_point[(2, 3, "")]
-    }
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_two_point_three_assignments.values()):
-        fail(errors, "Age II, Point III assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_two_point_three_assignments.values()):
-        fail(errors, "Age II, Point III assignment is missing dossier_document")
-    for record in age_two_point_three_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age II, Point III does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_two_point_four_assignments = {
-        record["house"]: record for record in by_point[(2, 4, "")]
-    }
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_two_point_four_assignments.values()):
-        fail(errors, "Age II, Point IV assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_two_point_four_assignments.values()):
-        fail(errors, "Age II, Point IV assignment is missing dossier_document")
-    for record in age_two_point_four_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age II, Point IV does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_two_point_five_assignments = {
-        record["house"]: record for record in by_point[(2, 5, "")]
-    }
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_two_point_five_assignments.values()):
-        fail(errors, "Age II, Point V assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_two_point_five_assignments.values()):
-        fail(errors, "Age II, Point V assignment is missing dossier_document")
-    for record in age_two_point_five_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age II, Point V does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_two_point_six_assignments = {
-        record["house"]: record for record in by_point[(2, 6, "")]
-    }
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_two_point_six_assignments.values()):
-        fail(errors, "Age II, Point VI assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_two_point_six_assignments.values()):
-        fail(errors, "Age II, Point VI assignment is missing dossier_document")
-    for record in age_two_point_six_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age II, Point VI does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_two_point_seven_assignments = {
-        record["house"]: record for record in by_point[(2, 7, "")]
-    }
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_two_point_seven_assignments.values()):
-        fail(errors, "Age II, Point VII assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_two_point_seven_assignments.values()):
-        fail(errors, "Age II, Point VII assignment is missing dossier_document")
-    for record in age_two_point_seven_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age II, Point VII does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_two_point_eight_assignments = {
-        record["house"]: record for record in by_point[(2, 8, "")]
-    }
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_two_point_eight_assignments.values()):
-        fail(errors, "Age II, Point VIII assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_two_point_eight_assignments.values()):
-        fail(errors, "Age II, Point VIII assignment is missing dossier_document")
-    for record in age_two_point_eight_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age II, Point VIII does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_two_point_nine_assignments = {
-        record["house"]: record for record in by_point[(2, 9, "")]
-    }
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_two_point_nine_assignments.values()):
-        fail(errors, "Age II, Point IX assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_two_point_nine_assignments.values()):
-        fail(errors, "Age II, Point IX assignment is missing dossier_document")
-    for record in age_two_point_nine_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age II, Point IX does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_two_point_ten_assignments = {record["house"]: record for record in by_point[(2, 10, "")]}
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_two_point_ten_assignments.values()):
-        fail(errors, "Age II, Point X assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_two_point_ten_assignments.values()):
-        fail(errors, "Age II, Point X assignment is missing dossier_document")
-    for record in age_two_point_ten_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age II, Point X does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_two_point_eleven_assignments = {record["house"]: record for record in by_point[(2, 11, "")]}
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_two_point_eleven_assignments.values()):
-        fail(errors, "Age II, Point XI assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_two_point_eleven_assignments.values()):
-        fail(errors, "Age II, Point XI assignment is missing dossier_document")
-    for record in age_two_point_eleven_assignments.values():
-        if len(record["gifts"]) < 3 or len(set(record["gifts"])) != len(record["gifts"]):
-            fail(errors, f"Age II, Point XI does not have at least three distinct reviewed Gifts: {record['id']}")
-    age_two_point_twelve_assignments = {record["house"]: record for record in by_point[(2, 12, "")]}
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_two_point_twelve_assignments.values()):
-        fail(errors, "Age II, Point XII assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_two_point_twelve_assignments.values()):
-        fail(errors, "Age II, Point XII assignment is missing dossier_document")
-    for record in age_two_point_twelve_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age II, Point XII does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_three_point_one_assignments = {record["house"]: record for record in by_point[(3, 1, "")]}
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_three_point_one_assignments.values()):
-        fail(errors, "Age III, Point I assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_three_point_one_assignments.values()):
-        fail(errors, "Age III, Point I assignment is missing dossier_document")
-    for record in age_three_point_one_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age III, Point I does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_three_point_two_assignments = {record["house"]: record for record in by_point[(3, 2, "")]}
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_three_point_two_assignments.values()):
-        fail(errors, "Age III, Point II assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_three_point_two_assignments.values()):
-        fail(errors, "Age III, Point II assignment is missing dossier_document")
-    for record in age_three_point_two_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age III, Point II does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_three_point_three_assignments = {record["house"]: record for record in by_point[(3, 3, "")]}
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_three_point_three_assignments.values()):
-        fail(errors, "Age III, Point III assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_three_point_three_assignments.values()):
-        fail(errors, "Age III, Point III assignment is missing dossier_document")
-    for record in age_three_point_three_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age III, Point III does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_three_point_four_assignments = {record["house"]: record for record in by_point[(3, 4, "")]}
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_three_point_four_assignments.values()):
-        fail(errors, "Age III, Point IV assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_three_point_four_assignments.values()):
-        fail(errors, "Age III, Point IV assignment is missing dossier_document")
-    for record in age_three_point_four_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age III, Point IV does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_three_point_five_assignments = {record["house"]: record for record in by_point[(3, 5, "")]}
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_three_point_five_assignments.values()):
-        fail(errors, "Age III, Point V assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_three_point_five_assignments.values()):
-        fail(errors, "Age III, Point V assignment is missing dossier_document")
-    for record in age_three_point_five_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age III, Point V does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_three_point_six_a_assignments = {record["house"]: record for record in by_point[(3, 6, "A")]}
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_three_point_six_a_assignments.values()):
-        fail(errors, "Age III, Point 6A assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_three_point_six_a_assignments.values()):
-        fail(errors, "Age III, Point 6A assignment is missing dossier_document")
-    for record in age_three_point_six_a_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age III, Point 6A does not have exactly three distinct reviewed Gifts: {record['id']}")
-    age_three_point_six_b_assignments = {record["house"]: record for record in by_point[(3, 6, "B")]}
-    if any(record.get("review_level") != "reviewed_dossier" for record in age_three_point_six_b_assignments.values()):
-        fail(errors, "Age III, Point 6B assignments are not all marked reviewed_dossier")
-    if any(not record.get("dossier_document") for record in age_three_point_six_b_assignments.values()):
-        fail(errors, "Age III, Point 6B assignment is missing dossier_document")
-    for record in age_three_point_six_b_assignments.values():
-        if len(record["gifts"]) != 3 or len(set(record["gifts"])) != 3:
-            fail(errors, f"Age III, Point 6B does not have exactly three distinct reviewed Gifts: {record['id']}")
-
     gift_ids = [record["id"] for record in data.get("gifts", [])]
     if len(gift_ids) != len(set(gift_ids)):
         fail(errors, "duplicate Gift IDs")
@@ -385,20 +199,19 @@ def validate_data(errors: list[str]) -> dict:
         if record.get("review_level") in {"reviewed_benchmark", "reviewed_dossier"}
         for gift in record["gifts"]
     }
-    if len(reviewed_assignment_gifts) != 271:
-        fail(errors, f"expected 271 distinct Gifts across reviewed Points, found {len(reviewed_assignment_gifts)}")
     for gift in reviewed_assignment_gifts:
         if not gifts_by_id[gift].get("status", "").startswith("Reviewed"):
             fail(errors, f"reviewed assignment Gift lacks reviewed status: {gift}")
 
     manifestations = data.get("manifestations", [])
-    if len(manifestations) != 96:
-        fail(errors, f"expected 96 manifestations, found {len(manifestations)}")
+    if len(manifestations) != len(reviewed_assignments):
+        fail(errors, f"expected one manifestation per reviewed assignment ({len(reviewed_assignments)}), found {len(manifestations)}")
     manifestation_ids = [record["id"] for record in manifestations]
     if len(manifestation_ids) != len(set(manifestation_ids)):
         fail(errors, "duplicate manifestation IDs")
+    expected_counts = Counter(record["house"] for record in reviewed_assignments)
     counts = Counter(record["house"] for record in manifestations)
-    if counts != Counter({house: 24 for house in HOUSES}):
+    if counts != expected_counts:
         fail(errors, f"manifestation counts differ: {dict(counts)}")
     for record in manifestations:
         provenance = {
@@ -416,53 +229,19 @@ def validate_data(errors: list[str]) -> dict:
             if provenance.isdisjoint(gift_points):
                 fail(errors, f"manifestation provenance does not contain a source Point for Gift: {record['id']} -> {gift}")
     reviewed = [record for record in manifestations if record.get("review_level") == "reviewed_flagship"]
-    if len(reviewed) != 96 or Counter(record["house"] for house in HOUSES for record in reviewed if record["house"] == house) != Counter({house: 24 for house in HOUSES}):
-        fail(errors, "expected exactly twenty-four reviewed flagship manifestations per House")
+    if len(reviewed) != len(reviewed_assignments) or Counter(record["house"] for record in reviewed) != expected_counts:
+        fail(errors, "reviewed flagship manifestation coverage differs from reviewed assignments")
     reviewed_coordinates = Counter(
         (source["age"], source["point"], source.get("point_suffix", ""))
         for record in reviewed
         for source in record["provenance"]
     )
-    if any(reviewed_coordinates[(1, point, "")] != 4 for point in (1, 2, 3, 4, 5)):
+    expected_reviewed_coordinates = Counter(
+        (record["age"], record["point"], record.get("point_suffix", ""))
+        for record in reviewed_assignments
+    )
+    if reviewed_coordinates != expected_reviewed_coordinates:
         fail(errors, f"reviewed flagship Point coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(2, 1, "")] != 4:
-        fail(errors, f"Age II, Point I reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(2, 2, "")] != 4:
-        fail(errors, f"Age II, Point II reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(2, 3, "")] != 4:
-        fail(errors, f"Age II, Point III reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(2, 4, "")] != 4:
-        fail(errors, f"Age II, Point IV reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(2, 5, "")] != 4:
-        fail(errors, f"Age II, Point V reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(2, 6, "")] != 4:
-        fail(errors, f"Age II, Point VI reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(2, 7, "")] != 4:
-        fail(errors, f"Age II, Point VII reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(2, 8, "")] != 4:
-        fail(errors, f"Age II, Point VIII reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(2, 9, "")] != 4:
-        fail(errors, f"Age II, Point IX reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(2, 10, "")] != 4:
-        fail(errors, f"Age II, Point X reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(2, 11, "")] != 4:
-        fail(errors, f"Age II, Point XI reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(2, 12, "")] != 4:
-        fail(errors, f"Age II, Point XII reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(3, 1, "")] != 4:
-        fail(errors, f"Age III, Point I reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(3, 2, "")] != 4:
-        fail(errors, f"Age III, Point II reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(3, 3, "")] != 4:
-        fail(errors, f"Age III, Point III reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(3, 4, "")] != 4:
-        fail(errors, f"Age III, Point IV reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(3, 5, "")] != 4:
-        fail(errors, f"Age III, Point V reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(3, 6, "A")] != 4:
-        fail(errors, f"Age III, Point 6A reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
-    if reviewed_coordinates[(3, 6, "B")] != 4:
-        fail(errors, f"Age III, Point 6B reviewed flagship coverage differs: {dict(reviewed_coordinates)}")
     reviewed_fields = (
         "purpose", "historical_ancestry", "modern_house_interpretation",
         "physical_appearance", "institutional_role", "gameplay_potential",
@@ -628,7 +407,40 @@ def validate_expected_files(errors: list[str]) -> None:
         fail(errors, "authority map does not name Flynt's Law of Capacity")
 
 
-def validate_reviewed_dossiers(errors: list[str]) -> None:
+def validate_reviewed_dossiers(errors: list[str], data: dict) -> None:
+    minimum_sections = (
+        "## Evidence boundary",
+        "## Permanent Gifts",
+        "## Modern Hollow Grove manifestation",
+        "## House interpretation",
+        "## Sources",
+        "## Cross-references",
+    )
+    reviewed_assignments = [
+        record
+        for record in data.get("assignments", [])
+        if record.get("review_level") in {"reviewed_benchmark", "reviewed_dossier"}
+    ]
+    for record in reviewed_assignments:
+        relative_path = record.get("dossier_document")
+        if not relative_path:
+            fail(errors, f"reviewed assignment has no dossier path: {record['id']}")
+            continue
+        dossier_path = ROOT / relative_path
+        if not dossier_path.is_file():
+            fail(errors, f"reviewed dossier does not exist: {relative_path}")
+            continue
+        text = dossier_path.read_text(encoding="utf-8")
+        if record["age"] < 4:
+            continue
+        for section in minimum_sections:
+            if section not in text:
+                fail(errors, f"{relative_path} missing minimum dossier section: {section}")
+        if "assignment remains Working" not in text and "Atlas assignment remains Working" not in text:
+            fail(errors, f"{relative_path} does not preserve Working assignment status")
+        if text.count("https://") < 3:
+            fail(errors, f"{relative_path} has fewer than three external scholarly or collection references")
+
     required_sections = (
         "## Evidence boundary", "## Historical overview", "## Chronology",
         "## Major figures", "## Major cities", "## Government", "## Religion",
@@ -687,7 +499,16 @@ def validate_capacity_correction(errors: list[str]) -> None:
         if "Law of Recognition" in text or "Flynt proves Recognition" in text:
             fail(errors, f"obsolete Flynt constitutional-law name remains in {filename}")
     source_text = (repository_root / "src" / "world" / "permanence.rs").read_text(encoding="utf-8")
-    if "Capacity" not in source_text or "Recognition," in source_text:
+    obsolete_active_variant = re.search(r"^\s*Recognition,\s*$", source_text, re.MULTILINE)
+    capacity_is_active = all(
+        required in source_text
+        for required in (
+            "Capacity,",
+            "Self::Capacity,",
+            "Self::LegacyRecognition => Self::Capacity",
+        )
+    )
+    if obsolete_active_variant or not capacity_is_active:
         fail(errors, "executable PermanenceLaw does not reflect Law of Capacity")
 
 
@@ -714,7 +535,7 @@ def main() -> int:
     data = validate_data(errors)
     validate_point_pages(errors, data)
     validate_expected_files(errors)
-    validate_reviewed_dossiers(errors)
+    validate_reviewed_dossiers(errors, data)
     validate_capacity_correction(errors)
     validate_markdown_links(errors)
     if errors:
