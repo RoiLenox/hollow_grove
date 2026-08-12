@@ -393,7 +393,7 @@ binds {
   // Glaüshouse / Space: clearance and usable window room.
   Mod+Space hotkey-overlay-title="Glaüshouse: Cycle Usable Room Forward" { switch-preset-column-width; }
   Mod+Shift+Space hotkey-overlay-title="Glaüshouse: Cycle Usable Room Backward" { switch-preset-column-width-back; }
-  Mod+Ctrl+Space               { maximize-column; }
+  Mod+Ctrl+Space               { set-column-width "25%"; }
   Mod+Ctrl+Shift+Space         { set-window-height "100%"; }
   Mod+Alt+Space                { expand-column-to-available-width; }
   Mod+Alt+Ctrl+Space           { toggle-windowed-fullscreen; }

@@ -274,9 +274,9 @@
       },
       {
         "chord": "Mod+Ctrl+Space",
-        "semantic_id": "usable_room.maximize_column",
+        "semantic_id": "usable_room.quarter_width_reset",
         "allowed_action_fragments": [
-          "maximize-column;"
+          "set-column-width \"25%\";"
         ]
       },
       {

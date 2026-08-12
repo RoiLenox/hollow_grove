@@ -288,12 +288,12 @@ destructive meaning should be added here.
 |---|---|---|---|
 | `Mod+Space` | cycle column width forward | adjust usable room | Official Step 2 primary |
 | `Mod+Shift+Space` | cycle column width backward | restore the preceding room | Official Step 2 reverse |
-| `Mod+Ctrl+Space` | maximize the focused column | structural clearance | Official shared expression |
+| `Mod+Ctrl+Space` | set column width to 25% | restore the default quarter-width chamber | Official shared expression |
 | `Mod+Ctrl+Shift+Space` | set focused window height to 100% | displaced structural clearance | Official shared expression |
 | `Mod+Alt+Space` | expand to available width | occupy the safely available room | Keep |
 | `Mod+Alt+Shift+Space` | perform Hueman step-spread | alternate presentation clearance | Official shared expression with profile-specific launcher |
 | `Mod+Alt+Ctrl+Space` | toggle windowed fullscreen | widen the permitted presentation | Official shared expression |
-| `Mod+Ctrl+Alt+Shift+Space` | set column width to 25% | restore the base quarter-width chamber | Keep |
+| `Mod+Ctrl+Alt+Shift+Space` | set column width to 25% | legacy alias for the base quarter-width chamber | Keep |
 
 The Space family is already conceptually Glaüshouse: it cares for the room in
 which the focused window can live. The former four profile differences are
