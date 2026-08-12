@@ -29,6 +29,9 @@ Controls:
 - B: traverse the selected physical exit; away from the exit tile, traversal
   fails without moving the player
 - T: advance one deterministic Dawn/Day/Dusk/Night living-world shift
+- Y: advance the next authoritative winged-Gargoyle treasure-hunt step; the
+  six ordered House fragments lead to a grounded trial, separate clinical
+  clearance, safe flight, and return to ordinary Hueman
 - F: disclose the next Hueman faculty observation for the active case
 - living-region 1–3: after inspecting the three evidence facilities, support
   one of two lawful duty-officer responses or exercise the authored refusal
@@ -58,6 +61,7 @@ scene. The original Hueman screen shell remains available through
 Visual development references live in the non-shipping reference tree:
 
 - `assets/reference/characters/hueman_multiscale_character_concept.png`
+- `assets/reference/characters/hueman_gargoyle_transformation_concept.png`
 - `assets/reference/moodboards/hollow_grove_handheld_overworld_mood.png`
 
 They establish character scale and environment density only. Runtime art is
@@ -203,6 +207,7 @@ cargo run --bin hollow_grove_game_service -- \
 The client sends versioned JSONL intents and presents returned event/view data.
 Grid movement, collision, facing, faced-tile interaction, the route network,
 all three surfaces and their facilities, the Boardwalk and Current Sea cases,
+the nine-step winged-Gargoyle Recipe pilot and its persistent Resynce unlock,
 five extraction maps, physical exits, Aura weather, worker schedules, seven
 living-region/extraction cases, material custody, cross-region consequences,
 the character-driven Deep Pressure campaign, the Hueman-plus-five party,
@@ -220,9 +225,10 @@ and Limited Cooperation each form, validate, and activate a distinct finite
 Bond in the common constitutional runtime. Independent Return records
 recognized refusal without a Bond. Godot only asks and presents. World
 authority is loaded from schema-V2 institutional state and embedded in
-federation-aware schema-V3 gameplay saves for exact replay. Encounter, combat, general
-progression, equipment, and Synthesis decisions remain unavailable until their
-Rust reducers exist. Shared request/response fixtures live under
+federation-aware schema-V4 gameplay saves for exact replay; schemas V1–V3
+migrate without inventing Synthesis progress. Encounter, combat, equipment,
+and Synthesis families beyond the bounded winged-Gargoyle pilot remain
+unavailable until their Rust reducers exist. Shared request/response fixtures live under
 `protocol/fixtures/`.
 
 The extraction and living-state law is documented in

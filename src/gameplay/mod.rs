@@ -15,6 +15,7 @@ mod party;
 mod protocol;
 mod runtime;
 mod stonebend;
+mod synthesis_pilot;
 mod view;
 mod world;
 
@@ -28,5 +29,6 @@ pub use party::*;
 pub use protocol::*;
 pub use runtime::*;
 pub use stonebend::*;
+pub use synthesis_pilot::*;
 pub use view::*;
 pub use world::*;

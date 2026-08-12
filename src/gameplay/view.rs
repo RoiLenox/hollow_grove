@@ -22,8 +22,8 @@ use super::{
     MAP_TILE_SIZE, MAP_WIDTH, MAX_PARTY_MEMBERS, PartyActorId, PartyEvent, PartyMemberAvailability,
     RecruitmentCandidateId, RecruitmentDecision, RecruitmentDecisionReason, RecruitmentPath,
     RelationshipMemory, StonebendAuthorityClass, StonebendCasePhase, StonebendContinuityCase,
-    StonebendContinuityChoice, StonebendEvidence, StonebendOutcomeRecord, TilePosition, WorldMapId,
-    map_definition,
+    StonebendContinuityChoice, StonebendEvidence, StonebendOutcomeRecord, TilePosition,
+    WingedGargoylePilotAction, WingedGargoylePilotForm, WorldMapId, map_definition,
 };
 
 /// Stable presentation event names. Variants without an implemented reducer
@@ -172,6 +172,18 @@ impl GameplayEventView {
                     | PartyEvent::ShiftRecoveryApplied { .. } => GameplayEventKind::PartyChanged,
                     PartyEvent::LeadChanged { .. } => GameplayEventKind::LeadChanged,
                     PartyEvent::FieldActionResolved { .. } => GameplayEventKind::ActionResolved,
+                },
+                None,
+                None,
+            ),
+            GameplayEvent::WingedGargoylePilotAdvanced { event } => (
+                match event.action {
+                    WingedGargoylePilotAction::RecordStableTrial
+                    | WingedGargoylePilotAction::GrantClinicalClearance
+                    | WingedGargoylePilotAction::CompleteSafeFlightAndReturn => {
+                        GameplayEventKind::FrameChanged
+                    }
+                    _ => GameplayEventKind::SynthesisAvailable,
                 },
                 None,
                 None,
@@ -1130,12 +1142,103 @@ pub struct GameView {
     pub living_world: LivingWorldState,
     pub deep_pressure: DeepPressureView,
     pub party: PartyView,
+    #[serde(default)]
+    pub winged_gargoyle_pilot: WingedGargoylePilotView,
     pub physical_exits: Vec<PhysicalExitView>,
     pub capabilities: Vec<IntentCapabilityView>,
     #[serde(default)]
     pub kernel_audit: KernelAuditView,
     #[serde(default)]
     pub central_junction_function: CentralJunctionFunctionView,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct WingedGargoylePilotView {
+    pub recipe_id: String,
+    pub stage: crate::recipe_discovery::GargoyleHuntStage,
+    pub form: WingedGargoylePilotForm,
+    pub fragment_count: usize,
+    pub required_fragment_count: usize,
+    pub capability_id: Option<String>,
+    pub power_recipe_id: Option<String>,
+    pub next_action: Option<WingedGargoylePilotAction>,
+    pub can_advance: bool,
+    pub completed: bool,
+    pub objective: String,
+}
+
+impl Default for WingedGargoylePilotView {
+    fn default() -> Self {
+        Self {
+            recipe_id: super::WINGED_GARGOYLE_RECIPE_ID.into(),
+            stage: crate::recipe_discovery::GargoyleHuntStage::Rumor,
+            form: WingedGargoylePilotForm::Hueman,
+            fragment_count: 0,
+            required_fragment_count: 6,
+            capability_id: None,
+            power_recipe_id: None,
+            next_action: Some(WingedGargoylePilotAction::RecoverStonebendStructure),
+            can_advance: false,
+            completed: false,
+            objective: "Establish Hueman to begin the winged Gargoyle treasure hunt.".into(),
+        }
+    }
+}
+
+impl WingedGargoylePilotView {
+    fn from_runtime(runtime: &HollowGroveGameRuntime) -> Self {
+        let pilot = runtime.winged_gargoyle_pilot();
+        let next_action = pilot.next_action();
+        Self {
+            recipe_id: pilot.recipe_id().into(),
+            stage: pilot.stage(),
+            form: pilot.form(),
+            fragment_count: pilot.fragment_count(),
+            required_fragment_count: 6,
+            capability_id: pilot.capability_id().map(Into::into),
+            power_recipe_id: pilot.power_recipe_id().map(Into::into),
+            next_action,
+            can_advance: runtime.hueman().is_some() && next_action.is_some(),
+            completed: pilot.completed(),
+            objective: pilot_objective(next_action, pilot.completed()),
+        }
+    }
+}
+
+fn pilot_objective(next_action: Option<WingedGargoylePilotAction>, completed: bool) -> String {
+    if completed {
+        return "Safe flight witnessed; Hueman returned with Resynce propulsion unlocked.".into();
+    }
+    match next_action {
+        Some(WingedGargoylePilotAction::RecoverStonebendStructure) => {
+            "Recover the Stonebend scar-wall structure record."
+        }
+        Some(WingedGargoylePilotAction::RecoverSandmanorMeasurement) => {
+            "Corroborate the lift measurements in Sandmanor's sky archive."
+        }
+        Some(WingedGargoylePilotAction::ObtainGlaushouseCompatibility) => {
+            "Obtain Glaushouse compatibility clearance for Hueman's Aura pattern."
+        }
+        Some(WingedGargoylePilotAction::EarnFlyntWitness) => {
+            "Earn a Flynt witness for the bounded Resynce pulse."
+        }
+        Some(WingedGargoylePilotAction::RecoverStonebendMaterial) => {
+            "Recover the Stonebend material register for the releasable shell."
+        }
+        Some(WingedGargoylePilotAction::PreserveSandmanorMethod) => {
+            "Preserve Sandmanor's ordered grounding and return method."
+        }
+        Some(WingedGargoylePilotAction::RecordStableTrial) => "Record the grounded Gargoyle trial.",
+        Some(WingedGargoylePilotAction::GrantClinicalClearance) => {
+            "Complete independent clinical clearance before winged flight."
+        }
+        Some(WingedGargoylePilotAction::CompleteSafeFlightAndReturn) => {
+            "Complete a safe flight, release the form, and return as Hueman."
+        }
+        None => "The winged Gargoyle treasure hunt is unavailable.",
+    }
+    .into()
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -1484,6 +1587,7 @@ impl GameView {
                 }
             },
             party: PartyView::from_runtime(runtime),
+            winged_gargoyle_pilot: WingedGargoylePilotView::from_runtime(runtime),
             physical_exits: runtime
                 .hueman_position()
                 .map(|_| {

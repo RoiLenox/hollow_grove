@@ -19,7 +19,10 @@ func _run() -> void:
 	assert(game.art_asset_catalog.is_valid())
 	assert(
 		game.art_asset_catalog.asset_ids()
-		== ["hollow-grove.prototype.foundation-pipeline-probe"]
+		== [
+			"hollow-grove.player.hueman-gargoyle-pilot",
+			"hollow-grove.prototype.foundation-pipeline-probe",
+		]
 	)
 	var pipeline_record: Dictionary = game.art_asset_catalog.record(
 		"hollow-grove.prototype.foundation-pipeline-probe"
@@ -28,6 +31,12 @@ func _run() -> void:
 	var pipeline_texture: Texture2D = game.foundation_pipeline_texture()
 	assert(pipeline_texture != null)
 	assert(pipeline_texture.get_size() == Vector2(16, 16))
+	var pilot_record: Dictionary = game.art_asset_catalog.record(
+		"hollow-grove.player.hueman-gargoyle-pilot"
+	)
+	assert(pilot_record.get("required_tags") == ["hueman", "gargoyle", "winged", "return"])
+	assert(game.hueman_gargoyle_texture != null)
+	assert(game.hueman_gargoyle_texture.get_size() == Vector2(32, 32))
 	assert(game.get_window().title == "Hollow Grove")
 	assert(game.get_window().min_size.x >= 160)
 	assert(game.get_window().min_size.y >= 144)
@@ -180,6 +189,22 @@ func _run() -> void:
 		"lead_continuity_id": "being-continuity.hueman",
 		"members": [],
 	}
+	game.synthesis_pilot = {
+		"stage": "TrialSynthesis",
+		"form": "Gargoyle",
+		"fragment_count": 6,
+		"required_fragment_count": 6,
+		"next_action": "GrantClinicalClearance",
+		"can_advance": true,
+		"completed": false,
+		"objective": "Complete independent clinical clearance before winged flight.",
+	}
+	game._refresh_screen_semantics()
+	var synthesis_semantics: Dictionary = game.get_meta(SCREEN_SEMANTICS_META_KEY)
+	assert("stage TrialSynthesis, form Gargoyle, 6 of 6 fragments" in str(
+		synthesis_semantics.get("context")
+	))
+	assert("Y advances" in str(synthesis_semantics.get("controls")))
 	game.party_menu_open = true
 	game._refresh_screen_semantics()
 	var party_semantics: Dictionary = game.get_meta(SCREEN_SEMANTICS_META_KEY)

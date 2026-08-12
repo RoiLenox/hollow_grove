@@ -27,7 +27,8 @@ use super::{
     GameplayEventId, GameplayEventMetadata, GameplayEventView, HollowGroveGameRuntime,
     HuemanFaculty, IntentCapabilityView, KernelAuditView, LivingCaseChoice, LivingCaseId,
     MAX_PARTY_MEMBERS, PartyActionId, PartyActorId, PartyMemberAvailability,
-    RecruitmentCandidateId, RecruitmentPath, StonebendContinuityChoice, WorldMapId,
+    RecruitmentCandidateId, RecruitmentPath, StonebendContinuityChoice, WingedGargoylePilotAction,
+    WorldMapId,
 };
 
 pub const HOLLOW_GROVE_GAMEPLAY_PROTOCOL_VERSION: u16 = 1;
@@ -107,9 +108,14 @@ pub enum GameplayIntent {
         choice: StonebendContinuityChoice,
     },
     AskStonebendToDetermineContinuityIntent,
+    /// Generic protocol reservation. The bounded playable pilot uses the
+    /// typed `AdvanceWingedGargoylePilotIntent` path below.
     BeginSynthesisIntent {
         continuity_id: String,
         procedure_id: String,
+    },
+    AdvanceWingedGargoylePilotIntent {
+        action: WingedGargoylePilotAction,
     },
     SaveIntent {
         slot_id: String,
@@ -153,6 +159,7 @@ impl GameplayIntent {
                 "AskStonebendToDetermineContinuityIntent"
             }
             Self::BeginSynthesisIntent { .. } => "BeginSynthesisIntent",
+            Self::AdvanceWingedGargoylePilotIntent { .. } => "AdvanceWingedGargoylePilotIntent",
             Self::SaveIntent { .. } => "SaveIntent",
             Self::LoadIntent { .. } => "LoadIntent",
         }
@@ -1000,6 +1007,10 @@ impl GameProtocolService {
             GameplayIntent::AskStonebendToDetermineContinuityIntent => self.execute_command(
                 request,
                 GameplayCommand::AskStonebendToDetermineContinuity,
+            ),
+            GameplayIntent::AdvanceWingedGargoylePilotIntent { action } => self.execute_command(
+                request,
+                GameplayCommand::AdvanceWingedGargoylePilot { action: *action },
             ),
             GameplayIntent::SaveIntent { slot_id } => self.save(request, slot_id),
             GameplayIntent::LoadIntent { slot_id } => self.load(request, slot_id),
@@ -1943,6 +1954,19 @@ fn capability_views(
                 .then(|| "authoritative reducer not implemented".into()),
         });
     }
+    let pilot = runtime.winged_gargoyle_pilot();
+    let pilot_available = hueman_exists && pilot.next_action().is_some();
+    capabilities.push(IntentCapabilityView {
+        intent_type: "AdvanceWingedGargoylePilotIntent".into(),
+        available: pilot_available,
+        unavailable_reason: (!pilot_available).then(|| {
+            if !hueman_exists {
+                "the permanent Hueman identity is not established".into()
+            } else {
+                "the winged Gargoyle treasure hunt is complete".into()
+            }
+        }),
+    });
     capabilities.insert(
         9,
         IntentCapabilityView {

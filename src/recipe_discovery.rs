@@ -1,16 +1,18 @@
 //! Treasure-hunt Recipe discovery above the constitutional runtime boundary.
 
+use serde::{Deserialize, Serialize};
+
 use crate::capability_taxonomy::FLYNT_TELEKINESIS;
 use crate::world::power_recipes::RESYNCE_PROPULSION_RECIPE_ID;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum RecipeHouse {
     Stonebend,
     Sandmanor,
     Glaushouse,
     Flynt,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum FragmentKind {
     Rumor,
     Structure,
@@ -21,7 +23,7 @@ pub enum FragmentKind {
     Method,
     Return,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 pub enum EvidenceConfidence {
     Rumored,
     Partial,
@@ -29,7 +31,7 @@ pub enum EvidenceConfidence {
     Witnessed,
     Cleared,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum TrialOutcome {
     StableDiscovery,
     VariantDiscovery,
@@ -38,7 +40,7 @@ pub enum TrialOutcome {
     NewClue,
     Refusal,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum GargoyleHuntStage {
     Rumor,
     StonebendScarWall,

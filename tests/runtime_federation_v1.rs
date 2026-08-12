@@ -172,6 +172,28 @@ fn component_tampering_and_dependency_contradictions_fail_closed() {
 }
 
 #[test]
+fn unknown_future_gameplay_component_codec_version_fails_closed() {
+    let mut future = canonical_runtime_federation_payload().unwrap();
+    future
+        .manifest
+        .components
+        .iter_mut()
+        .find(|component| component.component_id == FEDERATION_GAMEPLAY_COMPONENT_ID)
+        .unwrap()
+        .archive_version = GAMEPLAY_ARCHIVE_SCHEMA_VERSION + 1;
+    future.manifest.refresh_aggregate_digest().unwrap();
+
+    assert!(matches!(
+        RuntimeFederation::replay(&future),
+        Err(RuntimeFederationError::ComponentCodecMismatch {
+            version,
+            kind: FederationComponentKind::AuthoritativeGameplay,
+            ..
+        }) if version == GAMEPLAY_ARCHIVE_SCHEMA_VERSION + 1
+    ));
+}
+
+#[test]
 fn hgrf_envelope_checksum_detects_manifest_tampering() {
     let bytes = encode_runtime_federation_archive(&canonical_runtime_federation_payload().unwrap())
         .unwrap();
@@ -264,7 +286,7 @@ fn read_only_subject_and_evidence_indexes_do_not_create_authority() {
 }
 
 #[test]
-fn gameplay_schema_v3_is_federation_aware_and_v2_migration_is_idempotent() {
+fn gameplay_schema_v4_is_federation_aware_and_v2_migration_is_idempotent() {
     let rule_set = RuleSetId::new(V2_RULE_SET).unwrap();
     let application = GameApplicationService::new(rule_set.clone());
     let encoded = application.encode_archive().unwrap();
@@ -297,10 +319,14 @@ fn gameplay_schema_v3_is_federation_aware_and_v2_migration_is_idempotent() {
         GAMEPLAY_ARCHIVE_SCHEMA_VERSION
     );
     assert_eq!(migrated_decoded.events, decoded.events);
-    assert_eq!(migrated_decoded.migration_history.len(), 1);
+    assert_eq!(migrated_decoded.migration_history.len(), 2);
     assert_eq!(
         migrated_decoded.migration_history[0].migration_id,
         "migration.gameplay.v2-to-v3.runtime-federation"
+    );
+    assert_eq!(
+        migrated_decoded.migration_history[1].migration_id,
+        "migration.gameplay.v3-to-v4.winged-gargoyle-pilot"
     );
     assert_eq!(migrate_gameplay_archive(&migrated).unwrap(), migrated);
 }

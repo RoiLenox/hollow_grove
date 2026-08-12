@@ -32,11 +32,16 @@ The implemented Boardwalk wire intents are
 decision-maker and returns a typed outcome view with exact House-authority
 actors, optional relationship kind/Bond/term, uncertainty, and refusal
 protections. `SaveIntent` and `LoadIntent` use stable slot IDs and the service's
-configured save root. Gameplay save schema V3 embeds the validated
+configured save root. Gameplay save schema V4 embeds the validated
 institutional state loaded from the separate world root and the explicit
 Runtime Federation binding. The service save envelope additionally stores the
 canonical dual-Guide session and unified operational revision, while legacy
-bare gameplay archives remain readable.
+bare gameplay archives remain readable. The typed
+`AdvanceWingedGargoylePilotIntent` advances only the runtime-projected next
+action in the ordered Recipe hunt; the Godot client cannot grant itself a
+different stage or capability. The older generic `BeginSynthesisIntent`
+remains an unavailable protocol reservation; it is not an alternate path into
+the implemented pilot.
 
 Every gameplay view also carries `kernel_audit`: a read-only report showing
 whether the Federation binding and paired Roi/Roselina Guide oversight pass the

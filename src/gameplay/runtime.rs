@@ -27,7 +27,8 @@ use super::{
     MERCY_DEEP_PARTICIPANT_ID, PartyActionId, PartyActorId, PartyError, PartyEvent, PartyState,
     RETURNING_GOON_PARTICIPANT_ID, RecruitmentCandidateId, RecruitmentPath, StonebendCaseError,
     StonebendContinuityCase, StonebendContinuityChoice, StonebendEvidence, StonebendOutcomeId,
-    TilePosition, WorldMapError, WorldMapId, map_definition, scheduled_people_on_map,
+    TilePosition, WingedGargoylePilotAction, WingedGargoylePilotError, WingedGargoylePilotEvent,
+    WingedGargoylePilotState, WorldMapError, WorldMapId, map_definition, scheduled_people_on_map,
     statement_for_interaction,
 };
 
@@ -148,6 +149,9 @@ pub enum GameplayCommand {
         choice: StonebendContinuityChoice,
     },
     AskStonebendToDetermineContinuity,
+    AdvanceWingedGargoylePilot {
+        action: WingedGargoylePilotAction,
+    },
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -212,6 +216,9 @@ pub enum GameplayEvent {
     PartyChanged {
         event: PartyEvent,
     },
+    WingedGargoylePilotAdvanced {
+        event: WingedGargoylePilotEvent,
+    },
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -245,6 +252,7 @@ pub struct HollowGroveGameRuntime {
     living_world: LivingWorldState,
     deep_pressure: DeepPressureState,
     party: PartyState,
+    winged_gargoyle_pilot: WingedGargoylePilotState,
     constitutional: ConstitutionalRuntime,
     regional: RegionalSynthesisRuntime,
     world: WorldSession,
@@ -273,6 +281,7 @@ impl HollowGroveGameRuntime {
                 .expect("canonical living Hollow Grove state must validate"),
             deep_pressure: DeepPressureState::new(),
             party: PartyState::new(),
+            winged_gargoyle_pilot: WingedGargoylePilotState::default(),
             constitutional: ConstitutionalRuntime::new(),
             regional: RegionalSynthesisRuntime::new(),
             world,
@@ -485,6 +494,10 @@ impl HollowGroveGameRuntime {
                 GameplayEvent::StonebendContinuityDeterminationCommitted { .. },
                 GameplayCommand::AskStonebendToDetermineContinuity,
             ) => true,
+            (
+                GameplayEvent::WingedGargoylePilotAdvanced { event },
+                GameplayCommand::AdvanceWingedGargoylePilot { action },
+            ) => event.action == *action,
             _ => false,
         }
     }
@@ -805,6 +818,13 @@ impl HollowGroveGameRuntime {
                     decision_id: outcome.stonebend_naming.id.clone(),
                     authority_actor: outcome.stonebend_naming.authority.actor.clone(),
                 })
+            }
+            GameplayCommand::AdvanceWingedGargoylePilot { action } => {
+                if self.hueman().is_none() {
+                    return Err(GameplayRuntimeError::SynthesisRequiresHueman);
+                }
+                let event = self.winged_gargoyle_pilot.advance(action)?;
+                Ok(GameplayEvent::WingedGargoylePilotAdvanced { event })
             }
         }
     }
@@ -1405,6 +1425,12 @@ impl HollowGroveGameRuntime {
                     self.active_interaction = None;
                 }
             }
+            GameplayEvent::WingedGargoylePilotAdvanced { event } => {
+                if self.hueman().is_none() {
+                    return Err(GameplayRuntimeError::SynthesisRequiresHueman);
+                }
+                self.winged_gargoyle_pilot.replay(event)?;
+            }
         }
         Ok(())
     }
@@ -1482,6 +1508,11 @@ impl HollowGroveGameRuntime {
     #[must_use]
     pub const fn party(&self) -> &PartyState {
         &self.party
+    }
+
+    #[must_use]
+    pub const fn winged_gargoyle_pilot(&self) -> &WingedGargoylePilotState {
+        &self.winged_gargoyle_pilot
     }
 
     #[must_use]
@@ -1721,6 +1752,7 @@ pub enum GameplayRuntimeError {
     LivingWorldReplayDivergence,
     DeepPressureReplayDivergence,
     PartyReplayDivergence,
+    SynthesisRequiresHueman,
     DeepPressureSettlementLocationRequired,
     DeepPressureOutcomeRequiredForRecruitment,
     RecruitmentConversationRequired(RecruitmentCandidateId),
@@ -1739,6 +1771,7 @@ pub enum GameplayRuntimeError {
     LivingWorld(LivingWorldError),
     DeepPressure(DeepPressureError),
     Party(PartyError),
+    WingedGargoylePilot(WingedGargoylePilotError),
     WorldMap(WorldMapError),
 }
 
@@ -1811,6 +1844,12 @@ impl From<DeepPressureError> for GameplayRuntimeError {
 impl From<PartyError> for GameplayRuntimeError {
     fn from(value: PartyError) -> Self {
         Self::Party(value)
+    }
+}
+
+impl From<WingedGargoylePilotError> for GameplayRuntimeError {
+    fn from(value: WingedGargoylePilotError) -> Self {
+        Self::WingedGargoylePilot(value)
     }
 }
 

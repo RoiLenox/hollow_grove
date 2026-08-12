@@ -105,6 +105,9 @@ Current original concept references:
 
 - `reference/characters/hueman_multiscale_character_concept.png` defines the
   tiny-overworld / medium-character / large-encounter scale relationship.
+- `reference/characters/hueman_gargoyle_transformation_concept.png` defines
+  continuity anchors across ordinary, grounded Gargoyle, winged Gargoyle, and
+  safe-return forms; its adjacent Markdown file records generation provenance.
 - `reference/moodboards/hollow_grove_handheld_overworld_mood.png` defines the
   target tile density and compact grove readability.
 

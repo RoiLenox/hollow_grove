@@ -41,6 +41,51 @@
         "provenance_path": "hueman_godot/assets/reference/prototypes/foundation_pipeline_probe.generated.md",
         "provenance_sha256": "1d0c52f085ebe60a759020a6f865fac1996ea6398ca50cee2045ba4934cf8d2f"
       }
+    },
+    {
+      "asset_id": "hollow-grove.player.hueman-gargoyle-pilot",
+      "status": "production-pilot",
+      "source_path": "hueman_godot/assets/source/characters/player/hueman_gargoyle_pilot.aseprite",
+      "source_sha256": "2ec8db42bd011eb5f7c9ebf5184585009fd04a66c8c80ea91c3ee61c6106ef44",
+      "texture_path": "hueman_godot/assets/export/characters/player/hueman_gargoyle_pilot.png",
+      "resource_path": "res://assets/export/characters/player/hueman_gargoyle_pilot.png",
+      "texture_sha256": "f46ef93427d766432d76bc742a88e718fc4d4bb040c26f37b7c370c20ebe3422",
+      "metadata_path": "hueman_godot/assets/export/characters/player/hueman_gargoyle_pilot.json",
+      "metadata_sha256": "fd660c835b311bb30de6db98770526a35124496eec9c0987c285ea6b1cdd8acd",
+      "width": 32,
+      "height": 32,
+      "frame_count": 4,
+      "required_tags": [
+        "hueman",
+        "gargoyle",
+        "winged",
+        "return"
+      ],
+      "palette_color_ids": [
+        "universal.oxford_blue",
+        "universal.midnight_blue",
+        "stonebend.prussian_blue",
+        "stonebend.lapis_lazuli",
+        "stonebend.air_superiority_blue",
+        "glaushouse.brunswick_green",
+        "glaushouse.viridian",
+        "glaushouse.eton_blue",
+        "flynt.gunmetal",
+        "flynt.powder_blue",
+        "flynt.tropical_indigo"
+      ],
+      "generated_by": {
+        "application": "Aseprite",
+        "script_path": "tools/create-hueman-gargoyle-pilot.lua",
+        "script_sha256": "9932b0fcffdbe8f54f1d91fd94154f915cc0e77dadbcebef0552ea607d1b4e10"
+      },
+      "reference": {
+        "shipping": false,
+        "image_path": "hueman_godot/assets/reference/characters/hueman_gargoyle_transformation_concept.png",
+        "image_sha256": "bdbfefba1ef7f51173a0ddb44c42f192ad911870d2ee0f47ba4140a6ef4774c6",
+        "provenance_path": "hueman_godot/assets/reference/characters/hueman_gargoyle_transformation_concept.md",
+        "provenance_sha256": "e9984065a250057383c5874ee23749d6eb73eae67113901042a13a740d00e663"
+      }
     }
   ]
 }

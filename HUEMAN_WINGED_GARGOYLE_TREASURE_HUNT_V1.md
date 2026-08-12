@@ -1,5 +1,15 @@
 # Hueman Winged Gargoyle Treasure Hunt V1
 
+## Implementation status
+
+The first playable vertical slice is implemented in the authoritative gameplay
+runtime. `Y` advances the runtime-projected next bounded step; Rust owns
+ordering, form changes, the capability candidate, replay, and safe return.
+Gameplay archive schema V4 stores the canonical pilot events and migrates
+V1–V3 histories without fabricating hunt progress. Godot renders a four-frame,
+constitutional-palette Aseprite sheet through the fail-closed art manifest and
+exposes equivalent screen semantics.
+
 ## Premise
 
 The player hears that the first winged Gargoyle did not receive wings from a

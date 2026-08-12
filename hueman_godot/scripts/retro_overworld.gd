@@ -6,6 +6,7 @@ const PACKAGED_VISUAL_COLOR_CONSTITUTION_PATH := "res://protocol/hollow_grove_vi
 const ART_ASSET_CATALOG := preload("res://scripts/art_asset_catalog.gd")
 const RUNTIME_CLIENT := preload("res://scripts/runtime_client.gd")
 const FOUNDATION_PIPELINE_ASSET_ID := "hollow-grove.prototype.foundation-pipeline-probe"
+const HUEMAN_GARGOYLE_ASSET_ID := "hollow-grove.player.hueman-gargoyle-pilot"
 const SESSION_ID := "session.hollow-grove.local"
 const RETRY_INTERVAL_SECONDS := 1.0
 const STEP_DURATION_SECONDS := 0.12
@@ -111,6 +112,7 @@ var establish_pending := false
 var movement_pending := false
 var interaction_pending := false
 var case_pending := false
+var synthesis_pending := false
 var request_serial := 0
 var display_position := Vector2.ZERO
 var target_position := Vector2.ZERO
@@ -134,6 +136,7 @@ var guide_transition_events: Array = []
 var living_world := {}
 var deep_pressure := {}
 var party := {}
+var synthesis_pilot := {}
 var physical_exits: Array = []
 var selected_exit_index := 0
 var party_menu_open := false
@@ -148,6 +151,7 @@ var logical_scale := 1.0
 var logical_origin := Vector2.ZERO
 var logical_viewport_size := Vector2.ZERO
 var art_asset_catalog: ART_ASSET_CATALOG
+var hueman_gargoyle_texture: Texture2D
 
 
 func _ready() -> void:
@@ -155,6 +159,12 @@ func _ready() -> void:
 	art_asset_catalog = ART_ASSET_CATALOG.new()
 	if not art_asset_catalog.is_valid():
 		push_error("The Hueman art asset manifest could not be loaded: %s" % art_asset_catalog.error_message)
+		set_process(false)
+		set_process_input(false)
+		return
+	hueman_gargoyle_texture = art_asset_catalog.texture(HUEMAN_GARGOYLE_ASSET_ID)
+	if hueman_gargoyle_texture == null:
+		push_error("The Hueman Gargoyle production sprite could not be loaded.")
 		set_process(false)
 		set_process_input(false)
 		return
@@ -195,6 +205,7 @@ func _process(delta: float) -> void:
 			movement_pending = false
 			interaction_pending = false
 			case_pending = false
+			synthesis_pending = false
 			_clear_dialogue()
 			status_message = "RUNTIME OFFLINE"
 		retry_elapsed += delta
@@ -220,6 +231,7 @@ func _input(event: InputEvent) -> void:
 			or movement_pending \
 			or interaction_pending \
 			or case_pending \
+			or synthesis_pending \
 			or animation_elapsed < STEP_DURATION_SECONDS:
 		return
 	if recruitment_menu_open:
@@ -283,6 +295,9 @@ func _input(event: InputEvent) -> void:
 			return
 		KEY_T:
 			_send_advance_shift()
+			return
+		KEY_Y:
+			_send_synthesis_pilot_action()
 			return
 		KEY_F:
 			_send_next_faculty()
@@ -488,6 +503,30 @@ func _send_advance_shift() -> void:
 	if error != OK:
 		case_pending = false
 		status_message = "SHIFT SEND ERROR"
+
+
+func _send_synthesis_pilot_action() -> void:
+	if synthesis_pilot.is_empty():
+		status_message = "SYNTHESIS PILOT UNAVAILABLE"
+		queue_redraw()
+		return
+	var action = synthesis_pilot.get("next_action", null)
+	if action == null or not bool(synthesis_pilot.get("can_advance", false)):
+		status_message = str(
+			synthesis_pilot.get("objective", "SYNTHESIS PILOT COMPLETE")
+		).to_upper()
+		queue_redraw()
+		return
+	synthesis_pending = true
+	status_message = str(synthesis_pilot.get("objective", "SYNTHESIS")).to_upper()
+	var error := runtime_client.send_intent(
+		_next_request_id("gargoyle-pilot"),
+		"AdvanceWingedGargoylePilotIntent",
+		{"action": action}
+	)
+	if error != OK:
+		synthesis_pending = false
+		status_message = "SYNTHESIS SEND ERROR"
 
 
 func _open_party_menu() -> void:
@@ -828,6 +867,7 @@ func _on_runtime_response(response: Dictionary) -> void:
 	movement_pending = false
 	interaction_pending = false
 	case_pending = false
+	synthesis_pending = false
 	var view: Dictionary = _dict_or_empty(response.get("view"))
 	if not view.is_empty():
 		_apply_view(view)
@@ -865,6 +905,10 @@ func _on_runtime_response(response: Dictionary) -> void:
 				status_message = "PARTY DECISION PERSISTS"
 			elif str(event_record.get("kind", "")) == "LeadChanged":
 				status_message = "PARTY LEAD CHANGED"
+			elif str(event_record.get("kind", "")) in ["SynthesisAvailable", "FrameChanged"]:
+				status_message = str(
+					synthesis_pilot.get("objective", "SYNTHESIS RECORDED")
+				).to_upper()
 	queue_redraw()
 
 
@@ -884,6 +928,7 @@ func _apply_view(view: Dictionary) -> void:
 		living_world = {}
 		deep_pressure = {}
 		party = {}
+		synthesis_pilot = {}
 		physical_exits = []
 		dialogue_pages = []
 		return
@@ -898,6 +943,7 @@ func _apply_view(view: Dictionary) -> void:
 	living_world = _dict_or_empty(view.get("living_world"))
 	deep_pressure = _dict_or_empty(view.get("deep_pressure"))
 	party = _dict_or_empty(view.get("party"))
+	synthesis_pilot = _dict_or_empty(view.get("winged_gargoyle_pilot"))
 	physical_exits = view.get("physical_exits", [])
 	selected_exit_index = 0
 	var player: Dictionary = _dict_or_empty(overworld.get("player"))
@@ -1306,6 +1352,26 @@ func _draw_scheduled_people(viewport_size: Vector2) -> void:
 
 
 func _draw_player(viewport_size: Vector2) -> void:
+	if hueman_gargoyle_texture != null and not synthesis_pilot.is_empty():
+		var sprite_origin := Vector2(
+			roundf(display_position.x * 8.0) - 4.0,
+			roundf(display_position.y * 8.0) - 8.0
+		)
+		var source_origin := Vector2.ZERO
+		var form := str(synthesis_pilot.get("form", "Hueman"))
+		if bool(synthesis_pilot.get("completed", false)):
+			source_origin = Vector2(16, 16)
+		elif form == "Gargoyle":
+			source_origin = Vector2(16, 0)
+		elif form == "WingedGargoyle":
+			source_origin = Vector2(0, 16)
+		_draw_logical_texture_region(
+			hueman_gargoyle_texture,
+			Rect2(sprite_origin, Vector2(16, 16)),
+			Rect2(source_origin, Vector2(16, 16)),
+			viewport_size
+		)
+		return
 	var actor_origin := Vector2(
 		roundf(display_position.x * 8.0) - 2.0,
 		roundf(display_position.y * 8.0) - 8.0
@@ -1710,6 +1776,24 @@ func _draw_logical_rect(rect: Rect2, color: Color, viewport_size: Vector2) -> vo
 	)
 
 
+func _draw_logical_texture_region(
+	texture: Texture2D,
+	destination: Rect2,
+	source: Rect2,
+	viewport_size: Vector2
+) -> void:
+	if viewport_size != logical_viewport_size:
+		_update_logical_transform(viewport_size)
+	draw_texture_rect_region(
+		texture,
+		Rect2(
+			logical_origin + destination.position * logical_scale,
+			destination.size * logical_scale
+		),
+		source
+	)
+
+
 func _update_logical_transform(viewport_size: Vector2) -> void:
 	logical_viewport_size = viewport_size
 	logical_scale = maxf(
@@ -1932,6 +2016,16 @@ func _world_context_semantics() -> String:
 				int(party.get("max_members", 6)),
 			]
 		)
+	if not synthesis_pilot.is_empty():
+		parts.append(
+			"Winged Gargoyle treasure hunt: stage %s, form %s, %d of %d fragments. %s" % [
+				str(synthesis_pilot.get("stage", "Rumor")),
+				str(synthesis_pilot.get("form", "Hueman")),
+				int(synthesis_pilot.get("fragment_count", 0)),
+				int(synthesis_pilot.get("required_fragment_count", 6)),
+				str(synthesis_pilot.get("objective", "")),
+			]
+		)
 	if not kernel_audit.is_empty():
 		parts.append(
 			"Kernel audit: %s. Central Junction: %s. Guide oversight: %s." % [
@@ -2089,6 +2183,7 @@ func _control_semantics() -> String:
 				+ "party. R opens recruitment when available. T advances the world "
 				+ "shift. F discloses a faculty observation. Number keys support "
 				+ "available choices. C asks the responsible authority to decide. "
+				+ "Y advances the next bounded winged Gargoyle treasure-hunt step. "
 				+ "F5 saves and F9 loads."
 			)
 

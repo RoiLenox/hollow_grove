@@ -14,14 +14,30 @@ use super::{
     BoardwalkEvidence, BoardwalkOutcomeId, DeepPressureEvent, GameRevision, GameplayEvent,
     GameplayEventEnvelope, GameplayEventId, HuemanFaculty, InteractionId, LivingWorldEvent,
     PartyEvent, StonebendContinuityChoice, StonebendEvidence, StonebendOutcomeId, TilePosition,
-    WorldMapId,
+    WingedGargoylePilotEvent, WorldMapId,
 };
 
 pub const GAMEPLAY_ARCHIVE_FORMAT: &str = "hollow-grove-gameplay";
-pub const GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 3;
+pub const GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 4;
 pub const GAMEPLAY_FEDERATION_COMPONENT_ID: &str = "component.gameplay.authoritative";
+const PRE_SYNTHESIS_GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 3;
 const PRE_FEDERATION_GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 2;
 const LEGACY_GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 1;
+
+/// Reports whether the gameplay decoder has an explicit migration path for a
+/// schema version. Federation component validation uses the same boundary as
+/// the standalone archive decoder instead of assuming only the latest schema
+/// can be replayed.
+#[must_use]
+pub const fn is_supported_gameplay_archive_schema_version(schema_version: u16) -> bool {
+    matches!(
+        schema_version,
+        GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+            | PRE_SYNTHESIS_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+            | PRE_FEDERATION_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+            | LEGACY_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+    )
+}
 // Schema V1 formed Boardwalk Bonds against these test-era authority actors.
 // Migration preserves that historical dependency explicitly so replay is
 // exact; new sessions never load these actors and use live schema-V2 state.
@@ -126,6 +142,25 @@ struct GameplayArchiveEnvelopeV3 {
     schema_version: u16,
     checksum: String,
     payload: GameplayArchivePayloadV3,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct GameplayArchiveEnvelopeV4 {
+    format: String,
+    schema_version: u16,
+    checksum: String,
+    payload: GameplayArchivePayloadV4,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct GameplayArchivePayloadV4 {
+    rule_set: String,
+    events: Vec<WireGameplayEventEnvelope>,
+    institutional_state: String,
+    federation_binding: GameplayFederationBinding,
+    migration_history: Vec<GameplayArchiveMigrationRecord>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -257,6 +292,9 @@ enum WireGameplayEvent {
     PartyChanged {
         event: PartyEvent,
     },
+    WingedGargoylePilotAdvanced {
+        event: WingedGargoylePilotEvent,
+    },
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -337,7 +375,7 @@ fn encode_gameplay_archive_with_history(
 ) -> Result<String, GameplayArchiveError> {
     federation_binding.validate()?;
     migration_history.sort_by(|left, right| left.migration_id.cmp(&right.migration_id));
-    let payload = GameplayArchivePayloadV3 {
+    let payload = GameplayArchivePayloadV4 {
         rule_set: rule_set.as_str().into(),
         events: events
             .iter()
@@ -348,7 +386,7 @@ fn encode_gameplay_archive_with_history(
         migration_history,
     };
     let checksum = checksum_for(&payload)?;
-    serde_json::to_string_pretty(&GameplayArchiveEnvelopeV3 {
+    serde_json::to_string_pretty(&GameplayArchiveEnvelopeV4 {
         format: GAMEPLAY_ARCHIVE_FORMAT.into(),
         schema_version: GAMEPLAY_ARCHIVE_SCHEMA_VERSION,
         checksum,
@@ -383,7 +421,7 @@ pub fn encode_legacy_gameplay_archive_v2(
 /// Encodes the minimal schema-V1 archive retained by the compatibility suite.
 ///
 /// V1 had no institutional snapshot, federation binding, or migration
-/// history. New callers must write V3; this function exists only to preserve a
+/// history. New callers must write V4; this function exists only to preserve a
 /// deterministic historical fixture for decoder and migration tests.
 pub fn encode_empty_legacy_gameplay_archive_v1(
     rule_set: &RuleSetId,
@@ -428,7 +466,7 @@ pub fn decode_gameplay_archive_with_metadata(
     let (rule_set, wire_events, institutional_state, federation_binding, migration_history) =
         match schema_version {
             GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
-                let envelope: GameplayArchiveEnvelopeV3 = serde_json::from_value(value)
+                let envelope: GameplayArchiveEnvelopeV4 = serde_json::from_value(value)
                     .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
                 validate_envelope(
                     &envelope.format,
@@ -445,6 +483,27 @@ pub fn decode_gameplay_archive_with_metadata(
                     envelope.payload.migration_history,
                 )
             }
+            PRE_SYNTHESIS_GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
+                let envelope: GameplayArchiveEnvelopeV3 = serde_json::from_value(value)
+                    .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
+                validate_envelope(
+                    &envelope.format,
+                    envelope.schema_version,
+                    &envelope.checksum,
+                    &envelope.payload,
+                )?;
+                envelope.payload.federation_binding.validate()?;
+                reject_pre_synthesis_events(&envelope.payload.events)?;
+                let mut migration_history = envelope.payload.migration_history;
+                migration_history.push(synthesis_pilot_migration_record());
+                (
+                    envelope.payload.rule_set,
+                    envelope.payload.events,
+                    Some(envelope.payload.institutional_state),
+                    envelope.payload.federation_binding,
+                    migration_history,
+                )
+            }
             PRE_FEDERATION_GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
                 let envelope: GameplayArchiveEnvelopeV2 = serde_json::from_value(value)
                     .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
@@ -454,12 +513,16 @@ pub fn decode_gameplay_archive_with_metadata(
                     &envelope.checksum,
                     &envelope.payload,
                 )?;
+                reject_pre_synthesis_events(&envelope.payload.events)?;
                 (
                     envelope.payload.rule_set,
                     envelope.payload.events,
                     Some(envelope.payload.institutional_state),
                     GameplayFederationBinding::canonical(GAMEPLAY_FEDERATION_COMPONENT_ID),
-                    vec![federation_migration_record()],
+                    vec![
+                        federation_migration_record(),
+                        synthesis_pilot_migration_record(),
+                    ],
                 )
             }
             LEGACY_GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
@@ -484,6 +547,7 @@ pub fn decode_gameplay_archive_with_metadata(
                     vec![
                         legacy_authority_migration_record(),
                         federation_migration_record(),
+                        synthesis_pilot_migration_record(),
                     ],
                 )
             }
@@ -556,6 +620,32 @@ fn federation_migration_record() -> GameplayArchiveMigrationRecord {
     }
 }
 
+fn synthesis_pilot_migration_record() -> GameplayArchiveMigrationRecord {
+    GameplayArchiveMigrationRecord {
+        migration_id: "migration.gameplay.v3-to-v4.winged-gargoyle-pilot".into(),
+        from_schema_version: 3,
+        to_schema_version: 4,
+        decision: "preserve pre-pilot gameplay history without inventing Synthesis progress".into(),
+        provenance_id: "provenance.gameplay.migration.v3-to-v4".into(),
+    }
+}
+
+fn reject_pre_synthesis_events(
+    events: &[WireGameplayEventEnvelope],
+) -> Result<(), GameplayArchiveError> {
+    if events.iter().any(|event| {
+        matches!(
+            event.payload,
+            WireGameplayEvent::WingedGargoylePilotAdvanced { .. }
+        )
+    }) {
+        return Err(GameplayArchiveError::InvalidDomainValue(
+            "gameplay archive schemas before V4 cannot contain winged Gargoyle pilot events".into(),
+        ));
+    }
+    Ok(())
+}
+
 fn validate_envelope(
     format: &str,
     schema_version: u16,
@@ -565,12 +655,7 @@ fn validate_envelope(
     if format != GAMEPLAY_ARCHIVE_FORMAT {
         return Err(GameplayArchiveError::UnsupportedFormat(format.into()));
     }
-    if !matches!(
-        schema_version,
-        GAMEPLAY_ARCHIVE_SCHEMA_VERSION
-            | PRE_FEDERATION_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
-            | LEGACY_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
-    ) {
+    if !is_supported_gameplay_archive_schema_version(schema_version) {
         return Err(GameplayArchiveError::UnsupportedSchema(schema_version));
     }
     let actual_checksum = checksum_for(payload)?;
@@ -741,6 +826,11 @@ impl TryFrom<&GameplayEventEnvelope> for WireGameplayEventEnvelope {
             GameplayEvent::PartyChanged { event } => WireGameplayEvent::PartyChanged {
                 event: event.clone(),
             },
+            GameplayEvent::WingedGargoylePilotAdvanced { event } => {
+                WireGameplayEvent::WingedGargoylePilotAdvanced {
+                    event: event.clone(),
+                }
+            }
         };
         Ok(Self {
             id: event.id.as_str().into(),
@@ -841,6 +931,9 @@ impl WireGameplayEventEnvelope {
                 GameplayEvent::DeepPressureChanged { event }
             }
             WireGameplayEvent::PartyChanged { event } => GameplayEvent::PartyChanged { event },
+            WireGameplayEvent::WingedGargoylePilotAdvanced { event } => {
+                GameplayEvent::WingedGargoylePilotAdvanced { event }
+            }
         };
         Ok(GameplayEventEnvelope {
             id: parse(self.id, GameplayEventId::new)?,
@@ -897,6 +990,87 @@ mod tests {
     use crate::constitutional::V2_RULE_SET;
 
     #[test]
+    fn schema_three_archive_migrates_without_inventing_synthesis_progress() {
+        let world = WorldSession::canonical();
+        let payload = GameplayArchivePayloadV3 {
+            rule_set: V2_RULE_SET.into(),
+            events: Vec::new(),
+            institutional_state: world.persisted_state_output(),
+            federation_binding: GameplayFederationBinding::canonical(
+                GAMEPLAY_FEDERATION_COMPONENT_ID,
+            ),
+            migration_history: Vec::new(),
+        };
+        let encoded = serde_json::to_string(&GameplayArchiveEnvelopeV3 {
+            format: GAMEPLAY_ARCHIVE_FORMAT.into(),
+            schema_version: PRE_SYNTHESIS_GAMEPLAY_ARCHIVE_SCHEMA_VERSION,
+            checksum: checksum_for(&payload).unwrap(),
+            payload,
+        })
+        .unwrap();
+        let decoded = decode_gameplay_archive_with_metadata(&encoded).unwrap();
+        assert_eq!(
+            decoded.source_schema_version,
+            PRE_SYNTHESIS_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+        );
+        assert!(decoded.events.is_empty());
+        assert_eq!(
+            decoded.migration_history,
+            vec![synthesis_pilot_migration_record()]
+        );
+
+        let migrated = migrate_gameplay_archive(&encoded).unwrap();
+        let migrated = decode_gameplay_archive_with_metadata(&migrated).unwrap();
+        assert_eq!(
+            migrated.source_schema_version,
+            GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+        );
+        assert!(migrated.events.is_empty());
+        assert_eq!(
+            migrated.migration_history,
+            vec![synthesis_pilot_migration_record()]
+        );
+
+        let payload = GameplayArchivePayloadV3 {
+            rule_set: V2_RULE_SET.into(),
+            events: vec![WireGameplayEventEnvelope {
+                id: "game-event.impossible-v3-pilot".into(),
+                sequence: 0,
+                revision: 1,
+                causal_position: 1,
+                payload: WireGameplayEvent::WingedGargoylePilotAdvanced {
+                    event: WingedGargoylePilotEvent {
+                        action: crate::gameplay::WingedGargoylePilotAction::RecordStableTrial,
+                        stage: crate::recipe_discovery::GargoyleHuntStage::TrialSynthesis,
+                        form: crate::gameplay::WingedGargoylePilotForm::Gargoyle,
+                        fragment_count: 6,
+                        capability_id: None,
+                        power_recipe_id: None,
+                        completed: false,
+                    },
+                },
+            }],
+            institutional_state: world.persisted_state_output(),
+            federation_binding: GameplayFederationBinding::canonical(
+                GAMEPLAY_FEDERATION_COMPONENT_ID,
+            ),
+            migration_history: Vec::new(),
+        };
+        let encoded = serde_json::to_string(&GameplayArchiveEnvelopeV3 {
+            format: GAMEPLAY_ARCHIVE_FORMAT.into(),
+            schema_version: PRE_SYNTHESIS_GAMEPLAY_ARCHIVE_SCHEMA_VERSION,
+            checksum: checksum_for(&payload).unwrap(),
+            payload,
+        })
+        .unwrap();
+        assert!(matches!(
+            decode_gameplay_archive_with_metadata(&encoded),
+            Err(GameplayArchiveError::InvalidDomainValue(message))
+                if message.contains("before V4")
+        ));
+    }
+
+    #[test]
     fn schema_one_archive_migrates_its_historical_authority_dependency() {
         let payload = GameplayArchivePayloadV1 {
             rule_set: V2_RULE_SET.into(),
@@ -946,7 +1120,7 @@ mod tests {
             GAMEPLAY_ARCHIVE_SCHEMA_VERSION
         );
         assert_eq!(migrated.events.len(), 1);
-        assert_eq!(migrated.migration_history.len(), 2);
+        assert_eq!(migrated.migration_history.len(), 3);
         assert!(migrated.migration_history.iter().any(
             |record| record.migration_id == "migration.gameplay.v1-to-v2.authority-dependency"
         ));
@@ -957,5 +1131,8 @@ mod tests {
                 .any(|record| record.migration_id
                     == "migration.gameplay.v2-to-v3.runtime-federation")
         );
+        assert!(migrated.migration_history.iter().any(|record| {
+            record.migration_id == "migration.gameplay.v3-to-v4.winged-gargoyle-pilot"
+        }));
     }
 }

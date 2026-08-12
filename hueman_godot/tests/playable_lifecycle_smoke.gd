@@ -107,6 +107,35 @@ func _run_save_phase(snapshot_path: String) -> void:
 		_fail("movement did not reach the authoritative Ridgefolk Guide interaction")
 		return
 
+	var pilot_actions := [
+		"RecoverStonebendStructure",
+		"RecoverSandmanorMeasurement",
+		"ObtainGlaushouseCompatibility",
+		"EarnFlyntWitness",
+		"RecoverStonebendMaterial",
+		"PreserveSandmanorMethod",
+		"RecordStableTrial",
+		"GrantClinicalClearance",
+		"CompleteSafeFlightAndReturn",
+	]
+	for index in range(pilot_actions.size()):
+		response = await _send(
+			"request.lifecycle.gargoyle-pilot-%d" % index,
+			"AdvanceWingedGargoylePilotIntent",
+			{"action": pilot_actions[index]}
+		)
+		if not _require_completed(response, "winged Gargoyle pilot step %d" % index):
+			return
+	var completed_pilot := _dictionary(
+		_dictionary(response.get("view")).get("winged_gargoyle_pilot")
+	)
+	if not bool(completed_pilot.get("completed", false)) \
+			or str(completed_pilot.get("form", "")) != "Hueman" \
+			or str(completed_pilot.get("capability_id", "")) \
+				!= "capability.flynt.telekinesis":
+		_fail("winged Gargoyle pilot did not complete a safe return with its unlock")
+		return
+
 	response = await _send(
 		"request.lifecycle.save",
 		"SaveIntent",
@@ -114,7 +143,7 @@ func _run_save_phase(snapshot_path: String) -> void:
 	)
 	if not _require_completed(response, "save"):
 		return
-	if int(response.get("revision", -1)) != 9:
+	if int(response.get("revision", -1)) != 18:
 		_fail("save phase ended at an unexpected revision")
 		return
 	var view := _dictionary(response.get("view"))
@@ -175,8 +204,8 @@ func _run_load_phase(snapshot_path: String) -> void:
 	)
 	if not _require_completed(response, "post-restart load"):
 		return
-	if int(response.get("revision", -1)) != 9:
-		_fail("loaded service did not restore revision nine")
+	if int(response.get("revision", -1)) != 18:
+		_fail("loaded service did not restore revision eighteen")
 		return
 	var loaded_view := _dictionary(response.get("view"))
 	if loaded_view != expected_view:
@@ -186,6 +215,13 @@ func _run_load_phase(snapshot_path: String) -> void:
 	if str(interaction.get("target_id", "")) != "interaction.aura-ridge.ridgefolk-guide":
 		_fail("loaded view did not preserve the exercised interaction")
 		return
+	var loaded_pilot := _dictionary(loaded_view.get("winged_gargoyle_pilot"))
+	if not bool(loaded_pilot.get("completed", false)) \
+			or str(loaded_pilot.get("form", "")) != "Hueman" \
+			or str(loaded_pilot.get("power_recipe_id", "")) \
+				!= "recipe.flight.resynce-propulsion":
+		_fail("loaded view did not preserve safe-return Synthesis progress")
+		return
 
 	response = await _send(
 		"request.lifecycle.guide-exit",
@@ -193,7 +229,7 @@ func _run_load_phase(snapshot_path: String) -> void:
 	)
 	if not _require_completed(response, "Guide exit after load"):
 		return
-	if int(response.get("revision", -1)) != 10:
+	if int(response.get("revision", -1)) != 19:
 		_fail("Guide exit did not advance the unified revision")
 		return
 	var exit_view := _dictionary(response.get("view"))
@@ -208,7 +244,7 @@ func _run_load_phase(snapshot_path: String) -> void:
 	)
 	if not _require_completed(response, "Guide re-entry after load"):
 		return
-	if int(response.get("revision", -1)) != 11:
+	if int(response.get("revision", -1)) != 20:
 		_fail("Guide re-entry did not advance the unified revision")
 		return
 	var reentry_context := _dictionary(_dictionary(response.get("view")).get("guide_context"))

@@ -18,7 +18,8 @@ use crate::constitutional::{
 };
 use crate::gameplay::{
     GAMEPLAY_ARCHIVE_FORMAT, GAMEPLAY_ARCHIVE_SCHEMA_VERSION, GameApplicationService,
-    decode_gameplay_archive_with_metadata,
+    decode_gameplay_archive_with_metadata, is_supported_gameplay_archive_schema_version,
+    migrate_gameplay_archive,
 };
 use crate::world::function_junction_archive::{
     FUNCTION_JUNCTION_ARCHIVE_FORMAT, FUNCTION_JUNCTION_ARCHIVE_VERSION,
@@ -713,12 +714,18 @@ fn replay_component(
         }
         FederationComponentKind::AuthoritativeGameplay
             if descriptor.format == GAMEPLAY_ARCHIVE_FORMAT
-                && descriptor.archive_version == GAMEPLAY_ARCHIVE_SCHEMA_VERSION =>
+                && is_supported_gameplay_archive_schema_version(descriptor.archive_version) =>
         {
             let text =
                 std::str::from_utf8(bytes).map_err(|error| replay_error(error.to_string()))?;
             let decoded = decode_gameplay_archive_with_metadata(text)
                 .map_err(|error| replay_error(error.to_string()))?;
+            if decoded.source_schema_version != descriptor.archive_version {
+                return Err(replay_error(format!(
+                    "gameplay archive schema {} does not match component descriptor version {}",
+                    decoded.source_schema_version, descriptor.archive_version
+                )));
+            }
             if decoded.federation_binding.federation_identity != RUNTIME_FEDERATION_IDENTITY
                 || decoded.federation_binding.component_id != descriptor.component_id
             {
@@ -726,12 +733,17 @@ fn replay_component(
                     "gameplay archive is not linked to this federation component".into(),
                 ));
             }
-            let replayed = GameApplicationService::from_archive(text)
+            let migrated =
+                migrate_gameplay_archive(text).map_err(|error| replay_error(error.to_string()))?;
+            GameApplicationService::from_archive(&migrated)
                 .map_err(|error| replay_error(error.to_string()))?;
-            let replayed = replayed
-                .encode_archive()
+            let canonical = migrate_gameplay_archive(&migrated)
                 .map_err(|error| replay_error(error.to_string()))?;
-            exact_component_bytes(bytes, replayed.as_bytes(), replay_error)
+            if descriptor.archive_version == GAMEPLAY_ARCHIVE_SCHEMA_VERSION {
+                exact_component_bytes(bytes, migrated.as_bytes(), replay_error)
+            } else {
+                exact_component_bytes(migrated.as_bytes(), canonical.as_bytes(), replay_error)
+            }
         }
         _ => Err(mismatch()),
     }
