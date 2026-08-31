@@ -1,6 +1,6 @@
 use std::process::Command;
 
-use hollow_grove::runtime_federation::{
+use hollow_grove::runtime_rampart::{
     HOLLOW_GROVE_OLLAMA_MODEL_SCHEMA_VERSION, render_hollow_grove_ollama_modelfile,
     validate_ollama_model_reference,
 };
@@ -30,7 +30,7 @@ fn modelfile_preserves_the_proposal_only_constitution() {
         "\"proposed_position\"",
         "\"confidence_millis\"",
         "untrusted Aura proposal",
-        "Only Rust Federation and Festival may validate",
+        "Only the Rust Rampart and Festival may validate",
     ] {
         assert!(
             modelfile.contains(required),

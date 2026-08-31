@@ -1,7 +1,12 @@
 # Hueman Current Body / Aura Mind Progression Matrix V1
 
-**Status:** additive progression specification
+**Status:** LEGACY / DEPRECATED physical-runtime compatibility matrix
 **Purpose:** connect lore, skill trees, Recipes, backend capability records, and art states.
+
+This V1 matrix does not define the active Practitioner ontology or active
+House progressions. Its serialized stages and power-root fields remain
+decodable for replay and pilot compatibility. Current canon is governed by
+`HOLLOW_GROVE_SYNTHESIS_CANON_V1.md`.
 
 ## Two-axis model
 
@@ -46,15 +51,36 @@ their embodied root and do not inherit Gargoyle Presence automatically.
 
 | Stage | Form | Canonical faculty/root | Primary capacity | Typical distortion |
 |---|---|---|---|---|
-| A1 | Pixy | Precog / Clairvoyance | detect attention, feeling, and field pressure | sensory overload |
+| A1 | Pixie | Precog / Clairvoyance | detect attention, feeling, and field pressure | sensory overload |
 | A2 | Sprite | Precog / Clairvoyance | read emotional synchronization and calming possibilities | emotional bleed |
-| A3 | Faerie | Precog / Clairvoyance | read shifts in attention and interpretation | distraction rebound |
-| A4 | Nymph | Precog / Clairvoyance | read memory association and recognition pressure | identity confusion |
+| A3 | Fairy | Precog / Clairvoyance | read shifts in attention and interpretation | distraction rebound |
+| A4 | Spirit | Precog / Clairvoyance | read continuity across embodied and relational state | desynchronization burden |
 | A5 | Siren | Precog / Clairvoyance | read group feeling, rhythm, and focus | group feedback |
-| A6 | Muse | Precog / Clairvoyance | perceive branching intention and probable consequence | future fixation, uncertainty burden |
+| A6 | Sylph | Precog / Clairvoyance | read movement, distance, and changing field relation | drift, weak anchoring |
+| A7 | Nymph | Precog / Clairvoyance | read memory association and recognition pressure | identity confusion |
+| A8 | Muse | Precog / Clairvoyance | perceive branching intention and probable consequence | future fixation, uncertainty burden |
+
+`Pixy` and `Faerie` remain stable compatibility aliases for `Pixie` and
+`Fairy`.
+
+## Exact level pairing
+
+| Level | Current Body | Aura Mind |
+|---:|---|---|
+| 1 | Gremlin | Pixie |
+| 2 | Goblin | Sprite |
+| 3 | Ghoul | Fairy |
+| 4 | Spectre | Spirit |
+| 5 | Troll | Siren |
+| 6 | Ork | Sylph |
+| 7 | Ogre | Nymph |
+| 8 | Troglodyte | Muse |
+
+The table is the canonical one-to-one crosswalk; neither ladder may be shifted
+or compressed when deriving a counterpart.
 
 The Aura ladder changes perceptual scope within `Precog / Clairvoyance`.
-Noökinesis is a separate Flynt `Resynce / Telepathy` capability, not a Faerie
+Nookinesis is a separate Flynt `Resynce / Telepathy` compatibility capability, not a Fairy
 stage or an unrestricted mind-control upgrade. Living Aura resists, consent and
 identity remain meaningful, and influence cannot create knowledge from nothing.
 
@@ -67,14 +93,14 @@ Suggestokinesis → Affectokinesis → Cognikinesis → Mnemonokinesis
 
 This is indirect influence through prediction, emotion, interpretation, memory,
 and decision pressure. Direct movement of attention or intention remains
-Flynt's Noökinesis.
+Flynt's Nookinesis.
 
 ## Combined Current/Aura expressions
 
 | Current + Aura | Result |
 |---|---|
 | Gargoyle Telekinesis + Pixy-stage Precog | precise force guided by pressure and attention |
-| Winged Gargoyle + separately trained Noökinesis | aerial control while coordinating attention or rescue movement |
+| Winged Gargoyle + separately trained Nookinesis | aerial control while coordinating attention or rescue movement |
 | Werewolf Somatokinesis + Muse-stage Precog | predictive movement and controlled transformation |
 | Merman compound flow method + Siren-stage Precog | flow shaping, vibration, navigation, and communication |
 | Troglodyte Presynce + Muse-stage Precog | deep structural intervention with consequence awareness |
@@ -119,7 +145,7 @@ The first vertical slice must support:
 3. Presence I telekinetic coupling;
 4. winged Gargoyle movement and braking;
 5. Pixy/Sprite perception support;
-6. one Noökinesis attention effect;
+6. one Nookinesis attention effect;
 7. safe release, strain, refusal, recovery, and return;
 8. a Recipe record preserving every material, evidence fragment, and outcome.
 

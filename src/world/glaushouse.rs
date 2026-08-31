@@ -14,6 +14,8 @@ use crate::institution::{IdentityId, InstitutionId, OfficeId, RoleId};
 pub const GLAUSHOUSE_CONSTITUTION_SOURCE: &str = "GLAUSHOUSE_CONSTITUTION_V2.md";
 pub const GLAUSHOUSE_GOVERNING_VERB: &str = "Clear";
 pub const GLAUSHOUSE_SIGNATURE_OFFENSE: &str = "Illegal Synthesis";
+pub const GLAUSHOUSE_CURRENT_EXPRESSION: &str = "Biokinesis";
+pub const GLAUSHOUSE_AURA_EXPRESSION: &str = "Noomancy";
 
 fn institution(value: &str) -> InstitutionId {
     InstitutionId::new(value).expect("canonical Glaüshouse institution ID")
@@ -221,6 +223,82 @@ pub const PRINCIPAL_AUTHORITIES: [AuthorityDefinition; 5] = [
         placement: ConstitutionalPlacement::UniversalClinicalFoundation,
         singular: false,
         constitutional_power: "bedside protection, maintenance, and renewal",
+    },
+];
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum ClinicalSynthesisForm {
+    Pixie,
+    Sprite,
+    Spirit,
+    Fairy,
+    Nymph,
+    Siren,
+    Muse,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum ClinicalSynthesisPlacement {
+    Foundation,
+    BiokineticBranch,
+    NoomanticBranch,
+    Reunified,
+    Apex,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct ClinicalSynthesisCorrespondence {
+    pub authority: PrincipalAuthority,
+    pub form: ClinicalSynthesisForm,
+    pub placement: ClinicalSynthesisPlacement,
+    pub advanced_branch_form: bool,
+}
+
+/// Form correspondences do not create additional institutional ranks. In
+/// particular, Spirit remains advanced Marshal Synthesis and Nymph remains
+/// advanced Matron Synthesis; neither creates an `Advanced*` office.
+pub const CLINICAL_SYNTHESIS_CORRESPONDENCES: [ClinicalSynthesisCorrespondence; 7] = [
+    ClinicalSynthesisCorrespondence {
+        authority: PrincipalAuthority::Nightingales,
+        form: ClinicalSynthesisForm::Pixie,
+        placement: ClinicalSynthesisPlacement::Foundation,
+        advanced_branch_form: false,
+    },
+    ClinicalSynthesisCorrespondence {
+        authority: PrincipalAuthority::Marshal,
+        form: ClinicalSynthesisForm::Sprite,
+        placement: ClinicalSynthesisPlacement::BiokineticBranch,
+        advanced_branch_form: false,
+    },
+    ClinicalSynthesisCorrespondence {
+        authority: PrincipalAuthority::Marshal,
+        form: ClinicalSynthesisForm::Spirit,
+        placement: ClinicalSynthesisPlacement::BiokineticBranch,
+        advanced_branch_form: true,
+    },
+    ClinicalSynthesisCorrespondence {
+        authority: PrincipalAuthority::Matron,
+        form: ClinicalSynthesisForm::Fairy,
+        placement: ClinicalSynthesisPlacement::NoomanticBranch,
+        advanced_branch_form: false,
+    },
+    ClinicalSynthesisCorrespondence {
+        authority: PrincipalAuthority::Matron,
+        form: ClinicalSynthesisForm::Nymph,
+        placement: ClinicalSynthesisPlacement::NoomanticBranch,
+        advanced_branch_form: true,
+    },
+    ClinicalSynthesisCorrespondence {
+        authority: PrincipalAuthority::Persephone,
+        form: ClinicalSynthesisForm::Siren,
+        placement: ClinicalSynthesisPlacement::Reunified,
+        advanced_branch_form: false,
+    },
+    ClinicalSynthesisCorrespondence {
+        authority: PrincipalAuthority::PrimaDonna,
+        form: ClinicalSynthesisForm::Muse,
+        placement: ClinicalSynthesisPlacement::Apex,
+        advanced_branch_form: false,
     },
 ];
 
@@ -2299,6 +2377,26 @@ mod tests {
                 .filter(|standing| standing.is_qualified_persephone())
                 .count(),
             2
+        );
+    }
+
+    #[test]
+    fn form_correspondences_branch_and_reunify_without_new_public_ranks() {
+        assert_eq!(GLAUSHOUSE_CURRENT_EXPRESSION, "Biokinesis");
+        assert_eq!(GLAUSHOUSE_AURA_EXPRESSION, "Noomancy");
+        assert!(CLINICAL_SYNTHESIS_CORRESPONDENCES.iter().any(|entry| {
+            entry.authority == PrincipalAuthority::Marshal
+                && entry.form == ClinicalSynthesisForm::Spirit
+                && entry.advanced_branch_form
+        }));
+        assert!(CLINICAL_SYNTHESIS_CORRESPONDENCES.iter().any(|entry| {
+            entry.authority == PrincipalAuthority::Matron
+                && entry.form == ClinicalSynthesisForm::Nymph
+                && entry.advanced_branch_form
+        }));
+        assert_eq!(
+            ClinicalRank::Persephone.advancement_level(),
+            ClinicalRank::Marshal.advancement_level() + 1
         );
     }
 

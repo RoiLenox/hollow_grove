@@ -18,7 +18,7 @@ fn artifact_path() -> PathBuf {
     PathBuf::from(SNAPSHOT_ARTIFACT_PATH)
 }
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let kernel_pass = run_kernel_cycle(Symptom::origin());
     let snapshot = build_snapshot_from_client(&kernel_pass);
     let artifact_path = artifact_path();

@@ -6,7 +6,7 @@ use hollow_grove::constitutional::CausalPosition;
 use hollow_grove::world::lived_lore::FunctionalLoreCatalog;
 use hollow_grove::world::session::WorldSession;
 
-fn main() {
+pub(crate) fn tool_main() {
     if let Err(error) = run(std::env::args().skip(1)) {
         eprintln!("functional-lore audit failed: {error}");
         std::process::exit(1);

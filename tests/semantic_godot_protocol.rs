@@ -1,5 +1,5 @@
 use hollow_grove::constitutional::GroveCycleId;
-use hollow_grove::runtime_federation::{
+use hollow_grove::runtime_rampart::{
     ConfirmedSemanticTransition, FestivalResult, ProposalStatus, ProposedSemanticOperation,
     RejectedSemanticProposal, SemanticDecision, SemanticProposal, SemanticRejectionReason,
     SemanticValidationError,

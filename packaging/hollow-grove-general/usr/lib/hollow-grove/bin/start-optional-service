@@ -9,5 +9,5 @@ if ! command -v systemctl >/dev/null 2>&1; then
 fi
 
 if systemctl --user cat "$unit" >/dev/null 2>&1; then
-    systemctl --user restart "$unit" >/dev/null 2>&1 || true
+    systemctl --user start "$unit" >/dev/null 2>&1 || true
 fi

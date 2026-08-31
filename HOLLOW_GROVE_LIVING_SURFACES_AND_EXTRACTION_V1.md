@@ -302,9 +302,12 @@ Every rig contains:
 - depth certification laboratory;
 - custody transfer manifold.
 
-### Current and living blood
+### Legacy physical current-medium and living blood
 
-The universal law remains `Current = blood`.
+> **STATUS: LEGACY / SUPERSEDED AS UNIVERSAL LORE.** The extraction and custody
+> protocol below retains its blood-associated current-medium fields for V1
+> archive and replay compatibility. Semantic Practitioner Current is relational
+> participation and is not blood.
 
 `Current-bearing brine` is the working extraction classification for the
 circulating deep fluid encountered by these wells. It does not declare the
@@ -514,7 +517,7 @@ lot, revision, or partial consequence.
 Inspect the canonical state with:
 
 ```bash
-cargo run --quiet --bin living_world_audit
+cargo run --quiet --features dev-tools --bin hg-dev -- living_world_audit
 ```
 
 The first character-driven consumer of this substrate is the implemented Deep

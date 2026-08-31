@@ -234,7 +234,7 @@ authority map, but several are stale or semantically misleading.
 | People/regions | Geralds; Stonebend; three gates; Lazerhorn path | Minorians/Minoans; Farm, Fields, Content Farm, Beach, Current Break | Nightingales and clinical ranks; Glauspitals; Glaüshouse | Basin founding peoples, Manticorp, Gallows/Gallowry |
 | Principal offices | Diamond/Hypergiant; High Freemason; distributed Proliteriate | singular Sandman; guardian mantles; joint vacancy stewards in canon | singular Prima Donna; Persephone, Matron, Marshal, Nightingale structure | singular Tross; Chimera is companion, not office |
 | Acquisition | typed Title and office sequences | typed Contest, guardian Recipes, sovereign convergence | typed twelve-stage clinical selection | current Tross identity is locked; future acquisition absent |
-| Maintenance | typed maintenance/renewal and bounded intervention | maintained guardian/Sandman Synthesis; proof renewal concepts | strong clinical Continuance and renewal | maintained Manticorp Form is documented |
+| Maintenance | typed maintenance/renewal and bounded intervention | maintained guardian/Sandman Synthesis; proof renewal concepts | strong clinical Continuance and renewal | maintained Manticore Form is documented |
 | Challenge/removal | one-challenge/two-remove and targeted lifecycle | Contest challenges and removal grounds; shared Court link absent | independent review/removal grounds; shared Court link absent | no complete challenge/removal procedure |
 | Succession/vacancy | Lazerhorn path, Diamond vacancy, Forge replacement, Proliteriate continuity | Contest succession; joint interim governance is primarily documentary | accession sequence exists; full vacancy/restoration continuity is incomplete | explicitly unspecified and unreachable |
 | Evidence | seals, provenance, Claim/Title/Yield, gate evidence | Design, reciprocity, baselines, teaching, crowd evidence | consent, clinical, compatibility, Living/Recipe Ledgers | operational and Proof of Persistence evidence |
@@ -648,6 +648,6 @@ Compromise. It should not expand ordinary gameplay, regions, professions,
 criminal law, property law, or lived culture.
 
 No combat, movement, rendering, party, transformation, recursion-kernel,
-Central Junction calculation, Flynt/Manticorp identity, Glaüshouse clinical,
+Central Junction calculation, Flynt/Manticore identity, Glaüshouse clinical,
 Sandmanor succession, or Stonebend material-physics behavior was intentionally
 changed by this audit.

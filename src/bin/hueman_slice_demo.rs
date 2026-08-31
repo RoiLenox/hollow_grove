@@ -547,7 +547,7 @@ fn advance_state_to_completion(
     }
 }
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let cli = parse_slice_demo_cli(std::env::args().skip(1))
         .map_err(|error| io::Error::new(io::ErrorKind::InvalidInput, error))?;
 

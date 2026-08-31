@@ -16,6 +16,10 @@ use crate::institution_affiliation::{
 };
 use flynt_constitution::{ConstitutionError, FlyntConstitution};
 
+pub const FLYNT_CURRENT_EXPRESSION: &str = "Telekinesis";
+pub const FLYNT_AURA_EXPRESSION: &str = "Nookinesis";
+pub const STEEL_TEMPER_PRINCIPLE: &str = "Capacity is revealed under load.";
+
 fn id<T>(value: &str, make: impl FnOnce(String) -> Result<T, IdError>) -> T {
     make(value.into()).expect("canonical Flynt stable ID")
 }
@@ -51,8 +55,8 @@ pub fn tross_being_id() -> InstitutionalBeingId {
     being_id("being.flynt.tross")
 }
 #[must_use]
-pub fn manticorp_form_id() -> &'static str {
-    flynt_constitution::FORM_MANTICORP
+pub fn manticore_form_id() -> &'static str {
+    flynt_constitution::FORM_MANTICORE
 }
 pub fn constitutional_chimera_id() -> InstitutionalBeingId {
     being_id("being.flynt.constitutional-chimera")
@@ -62,6 +66,12 @@ pub fn manticorp_id() -> InstitutionId {
 }
 pub fn mystery_men_id() -> InstitutionId {
     institution_id("institution.flynt.mystery-men")
+}
+pub fn marquise_group_id() -> GroupId {
+    group_id("group.flynt.marquise")
+}
+pub fn marquise_office_id() -> OfficeId {
+    office_id("office.flynt.marquise")
 }
 pub fn mystery_man_role_id() -> RoleId {
     role_id("role.flynt.mystery-man")
@@ -80,6 +90,12 @@ pub fn manticorp_member_role_id() -> RoleId {
 }
 pub fn mystery_operative_role_id() -> RoleId {
     role_id("role.flynt.mystery-operative")
+}
+pub fn privateer_role_id() -> RoleId {
+    role_id("role.flynt.privateer")
+}
+pub fn corsair_role_id() -> RoleId {
+    role_id("role.flynt.corsair")
 }
 pub fn gallows_member_role_id() -> RoleId {
     role_id("role.flynt.gallows-member")
@@ -222,6 +238,7 @@ impl FlyntInstitutions {
             self.catalog.offices.iter().map(|entry| entry.id.as_str()),
             &[
                 tross_office_id().as_str(),
+                marquise_office_id().as_str(),
                 bro_white_office_id().as_str(),
                 cinderellaman_office_id().as_str(),
                 the_beauty_office_id().as_str(),
@@ -232,6 +249,7 @@ impl FlyntInstitutions {
             self.catalog.groups.iter().map(|entry| entry.id.as_str()),
             &[
                 we_fairy_men_group_id().as_str(),
+                marquise_group_id().as_str(),
                 bro_white_crew_id().as_str(),
                 cinderellaman_crew_id().as_str(),
                 the_beauty_crew_id().as_str(),
@@ -244,6 +262,8 @@ impl FlyntInstitutions {
                 manticorp_member_role_id().as_str(),
                 mystery_operative_role_id().as_str(),
                 mystery_man_role_id().as_str(),
+                privateer_role_id().as_str(),
+                corsair_role_id().as_str(),
                 gallows_member_role_id().as_str(),
             ],
             FlyntValidationError::RoleRoster,
@@ -334,27 +354,42 @@ fn required_relationships() -> Vec<(
         (
             InstitutionalEntityId::Office(tross_office_id()),
             RelationshipKind::Commands,
-            InstitutionalEntityId::Institution(gallows_id()),
+            InstitutionalEntityId::Group(we_fairy_men_group_id()),
         ),
         (
-            InstitutionalEntityId::Institution(manticorp_id()),
+            InstitutionalEntityId::Office(tross_office_id()),
             RelationshipKind::Commands,
             InstitutionalEntityId::Institution(mystery_men_id()),
+        ),
+        (
+            InstitutionalEntityId::Institution(mystery_men_id()),
+            RelationshipKind::Commands,
+            InstitutionalEntityId::Group(marquise_group_id()),
+        ),
+        (
+            InstitutionalEntityId::Group(marquise_group_id()),
+            RelationshipKind::SubgroupOf,
+            InstitutionalEntityId::Institution(mystery_men_id()),
+        ),
+        (
+            InstitutionalEntityId::Office(marquise_office_id()),
+            RelationshipKind::AnswersTo,
+            InstitutionalEntityId::Institution(mystery_men_id()),
+        ),
+        (
+            InstitutionalEntityId::Office(marquise_office_id()),
+            RelationshipKind::Commands,
+            InstitutionalEntityId::Group(marquise_group_id()),
+        ),
+        (
+            InstitutionalEntityId::Group(we_fairy_men_group_id()),
+            RelationshipKind::Commands,
+            InstitutionalEntityId::Institution(gallows_id()),
         ),
         (
             InstitutionalEntityId::Institution(gallows_id()),
             RelationshipKind::HeadquarteredAt,
             InstitutionalEntityId::Site(gallowry_site_id()),
-        ),
-        (
-            InstitutionalEntityId::Institution(gallows_id()),
-            RelationshipKind::Commands,
-            InstitutionalEntityId::Group(we_fairy_men_group_id()),
-        ),
-        (
-            InstitutionalEntityId::Group(we_fairy_men_group_id()),
-            RelationshipKind::Represents,
-            InstitutionalEntityId::Being(constitutional_chimera_id()),
         ),
         (
             InstitutionalEntityId::Office(bro_white_office_id()),
@@ -452,6 +487,7 @@ fn canonical_catalog() -> InstitutionCatalog {
     let gallows = gallows_id();
     let gallowry = gallowry_site_id();
     let we_fairy_men = we_fairy_men_group_id();
+    let marquise = marquise_group_id();
     InstitutionCatalog {
         institutions: vec![
             Institution {
@@ -519,16 +555,29 @@ fn canonical_catalog() -> InstitutionCatalog {
         offices: vec![
             Office {
                 id: tross_office_id(),
-                name: "Tross".into(),
+                name: "The Tross".into(),
                 scope: OfficeScope::House,
                 institution: None,
                 house: Some(House::Flynt),
                 singular: true,
                 authority: vec!["FlyntSovereignty".into(), "InstitutionalRecognition".into()],
             },
-            founding_office(bro_white_office_id(), "Bro White", &gallows),
-            founding_office(cinderellaman_office_id(), "Cinderellaman", &gallows),
-            founding_office(the_beauty_office_id(), "The Beauty", &gallows),
+            Office {
+                id: marquise_office_id(),
+                name: "The Marquise".into(),
+                scope: OfficeScope::Institution,
+                institution: Some(mystery_men.clone()),
+                house: Some(House::Flynt),
+                singular: true,
+                authority: vec![
+                    "MaritimeExtensionLeadership".into(),
+                    "LicensedIndependentOperations".into(),
+                    "ComplexSystemCommand".into(),
+                ],
+            },
+            founding_office(bro_white_office_id(), "Bro White"),
+            founding_office(cinderellaman_office_id(), "Cinderellaman"),
+            founding_office(the_beauty_office_id(), "Beauty"),
         ],
         roles: vec![
             Role {
@@ -547,12 +596,28 @@ fn canonical_catalog() -> InstitutionCatalog {
                 institution: mystery_men.clone(),
             },
             Role {
+                id: privateer_role_id(),
+                name: "Privateer".into(),
+                institution: mystery_men.clone(),
+            },
+            Role {
+                id: corsair_role_id(),
+                name: "Corsair".into(),
+                institution: mystery_men.clone(),
+            },
+            Role {
                 id: gallows_member_role_id(),
                 name: "Gallows member".into(),
                 institution: gallows.clone(),
             },
         ],
         groups: vec![
+            Group {
+                id: marquise,
+                name: "The Marquise".into(),
+                institution: mystery_men.clone(),
+                parent: None,
+            },
             Group {
                 id: we_fairy_men.clone(),
                 name: "We Fairy Men".into(),
@@ -573,7 +638,7 @@ fn canonical_catalog() -> InstitutionCatalog {
             ),
             founding_crew(
                 the_beauty_crew_id(),
-                "The Beauty and His Beasts",
+                "Beauty and His Beasts",
                 &gallows,
                 &we_fairy_men,
             ),
@@ -619,15 +684,18 @@ fn canonical_catalog() -> InstitutionCatalog {
     }
 }
 
-fn founding_office(id: OfficeId, name: &str, gallows: &InstitutionId) -> Office {
+fn founding_office(id: OfficeId, name: &str) -> Office {
     Office {
         id,
         name: name.into(),
-        scope: OfficeScope::Institution,
-        institution: Some(gallows.clone()),
+        scope: OfficeScope::House,
+        institution: None,
         house: Some(House::Flynt),
         singular: true,
-        authority: vec!["FoundingLeaderLineage".into()],
+        authority: vec![
+            "CreatureSectLeadership".into(),
+            "DividedManticoreRecipeCustody".into(),
+        ],
     }
 }
 
@@ -657,6 +725,19 @@ mod tests {
         assert!(flynt.catalog.institution(&mystery_men_id()).is_some());
         assert!(flynt.catalog.institution(&gallows_id()).is_some());
         assert_eq!(flynt.catalog.institutions.len(), 3);
+        let marquise = flynt
+            .catalog
+            .groups
+            .iter()
+            .find(|group| group.id == marquise_group_id())
+            .unwrap();
+        assert_eq!(marquise.institution, mystery_men_id());
+        assert!(
+            flynt
+                .catalog
+                .institution(&institution_id("institution.flynt.marquise"))
+                .is_none()
+        );
     }
 
     #[test]
@@ -702,7 +783,7 @@ mod tests {
     }
 
     #[test]
-    fn tross_directly_commands_public_and_underground_institutions() {
+    fn tross_commands_public_institution_and_we_fairy_men_underworld_structure() {
         let flynt = canonical_flynt_institutions();
         assert!(flynt.catalog.relationships.iter().any(|relationship| {
             relationship.source == InstitutionalEntityId::Office(tross_office_id())
@@ -710,14 +791,26 @@ mod tests {
         }));
         assert!(flynt.catalog.relationships.iter().any(|relationship| {
             relationship.source == InstitutionalEntityId::Office(tross_office_id())
+                && relationship.target == InstitutionalEntityId::Group(we_fairy_men_group_id())
+        }));
+        assert!(flynt.catalog.relationships.iter().any(|relationship| {
+            relationship.source == InstitutionalEntityId::Group(we_fairy_men_group_id())
                 && relationship.target == InstitutionalEntityId::Institution(gallows_id())
+        }));
+        assert!(flynt.catalog.relationships.iter().any(|relationship| {
+            relationship.source == InstitutionalEntityId::Office(tross_office_id())
+                && relationship.target == InstitutionalEntityId::Institution(mystery_men_id())
+        }));
+        assert!(flynt.catalog.relationships.iter().any(|relationship| {
+            relationship.source == InstitutionalEntityId::Institution(mystery_men_id())
+                && relationship.target == InstitutionalEntityId::Group(marquise_group_id())
         }));
     }
 
     #[test]
-    fn manticorp_form_is_a_distinct_flynt_form_identifier() {
-        assert_eq!(manticorp_form_id(), flynt_constitution::FORM_MANTICORP);
-        assert_ne!(manticorp_form_id(), manticorp_id().as_str());
+    fn manticore_form_is_distinct_from_the_manticorp_soldier_body() {
+        assert_eq!(manticore_form_id(), flynt_constitution::FORM_MANTICORE);
+        assert_ne!(manticore_form_id(), manticorp_id().as_str());
     }
 
     #[test]

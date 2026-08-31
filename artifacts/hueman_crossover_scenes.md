@@ -57,7 +57,7 @@ When `current`-biased and `aura`-biased unresolved links appear at the same cros
 ## Artifact Inputs
 
 Hueman Path Crossovers bytes: 4601.
-Hueman Link Physics bytes: 3086.
+Hueman Link Physics bytes: 3166.
 Current Synthesis collision relay bytes: 3024.
 
 ## Boundary Reminder

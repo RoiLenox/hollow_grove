@@ -19,27 +19,27 @@ Links that do not get bonded may later resolve into `current` or `aura` accordin
 - Hueman reads that unresolved weight upward as `current` or `aura` while Hollow Grove keeps the same event as the lower witness simultaneously
 - simultaneous reading does not grant Hueman authority to rewrite the kernel witness
 
-## Current Bias Physics
+## Legacy Physical Current-Bias Physics
 
 - continuity pressure favors `current`
 - occupancy load favors `current`
 - inland persistence favors `current`
 - repeat traversal favors `current`
 
-## Aura Bias Physics
+## Legacy Physical Aura-Bias Physics
 
 - exposure pressure favors `aura`
 - threshold bleed favors `aura`
 - atmospheric spill favors `aura`
 - edge drift favors `aura`
 
-## Element Names
+## Legacy Physical Element Names
 
 - `current` appears as regular current or hollow current.
 - Hollowing does not kill current; it reallocates carried pressure.
 - `aura` appears as reflective aura or holographic aura.
-- Current asks what the Hueman can do.
-- Aura asks what the Hueman understands and how capability should be used.
+- legacy physical Current asks what the Hueman can do.
+- legacy physical Aura asks what the Hueman understands and how capability should be used.
 
 ## Relay Packet Reading
 

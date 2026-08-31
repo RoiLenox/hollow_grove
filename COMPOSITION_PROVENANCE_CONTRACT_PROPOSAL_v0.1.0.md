@@ -1,7 +1,10 @@
 # Composition and Provenance Contract Proposal v0.1.0
 
-Status: design only. This document proposes no production-code change, refactor,
-deletion, migration, or commit.
+Status: historical, superseded design only. This document proposes no
+production-code change, refactor, deletion, migration, or commit. Its former
+Sandmanor ladder examples are excluded from current authority; current Form law
+is `Gnome → Faun → Minotaur` and `Elf → Satyr → Centaur`, with Hecaton and
+Pegasus modeled separately as sovereign Hands.
 
 ## 1. Problem
 

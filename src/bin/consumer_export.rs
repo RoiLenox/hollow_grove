@@ -4,7 +4,7 @@ fn build_export_from_consumer(kernel_pass: &KernelPass) -> String {
     build_snapshot_output(kernel_pass)
 }
 
-fn main() {
+pub(crate) fn tool_main() {
     let kernel_pass = run_kernel_cycle(Symptom::origin());
     println!("{}", build_export_from_consumer(&kernel_pass));
 }

@@ -15,7 +15,7 @@ fn artifact_path() -> PathBuf {
     PathBuf::from(CURRENT_SYNTHESIS_ACTIVATION_GATE_ARTIFACT_PATH)
 }
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let current_synthesis_transition_pm_to_le = read_artifact(Path::new(
         CURRENT_SYNTHESIS_TRANSITION_PM_TO_LE_ARTIFACT_PATH,
     ))?;

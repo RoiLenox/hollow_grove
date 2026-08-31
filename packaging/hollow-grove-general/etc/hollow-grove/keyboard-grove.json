@@ -1,9 +1,10 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "id": "hollow-grove-keyboard-grove-v1",
   "status": "official-operational-projection",
   "authority": "HOLLOW_GROVE_KEYBOARD_CONSTITUTION_V1.md",
   "scope": "desktop-keyboard-semantics",
+  "governing_rule": "Key = WHAT · Modifier = HOW",
   "foundation": {
     "house": "Stonebend",
     "metaphor": "bedrock-and-soil",
@@ -45,33 +46,198 @@
     {
       "niri_modifier": "Mod",
       "display_modifier": "Super",
-      "lane": "Primary",
-      "grove_reading": "trunk"
+      "meaning": "Primary",
+      "think": "Normal way"
     },
     {
       "niri_modifier": "Mod+Shift",
       "display_modifier": "Super+Shift",
-      "lane": "Adjacent",
-      "grove_reading": "companion-branch"
+      "meaning": "Adjacent",
+      "think": "Different form"
     },
     {
       "niri_modifier": "Mod+Ctrl",
       "display_modifier": "Super+Ctrl",
-      "lane": "Focused",
-      "grove_reading": "tended-branch"
+      "meaning": "Focused",
+      "think": "Specialized/control"
     },
     {
       "niri_modifier": "Mod+Alt",
       "display_modifier": "Super+Alt",
-      "lane": "Alternate",
-      "grove_reading": "alternate-branch"
+      "meaning": "Alternate",
+      "think": "Other way"
+    }
+  ],
+  "letter_vocabulary": [
+    {
+      "key": "A",
+      "meaning": "Assets",
+      "memory_hook": "MAKE",
+      "form": "plant"
+    },
+    {
+      "key": "B",
+      "meaning": "Browse",
+      "memory_hook": "Web",
+      "form": "plant"
+    },
+    {
+      "key": "C",
+      "meaning": "Chat",
+      "memory_hook": "Communicate",
+      "form": "plant"
+    },
+    {
+      "key": "D",
+      "meaning": "Develop",
+      "memory_hook": "Code/build",
+      "form": "plant"
+    },
+    {
+      "key": "E",
+      "meaning": "Edit",
+      "memory_hook": "Modify",
+      "form": "plant"
+    },
+    {
+      "key": "F",
+      "meaning": "Files",
+      "memory_hook": "Filesystem",
+      "form": "plant"
+    },
+    {
+      "key": "G",
+      "meaning": "Games",
+      "memory_hook": "PLAY",
+      "form": "plant"
+    },
+    {
+      "key": "H",
+      "meaning": "← Movement",
+      "memory_hook": "Flynt",
+      "form": "tool",
+      "affinity": "Flynt"
+    },
+    {
+      "key": "I",
+      "meaning": "Images",
+      "memory_hook": "View images",
+      "form": "plant"
+    },
+    {
+      "key": "J",
+      "meaning": "↓ Movement",
+      "memory_hook": "Glaüshouse",
+      "form": "tool",
+      "affinity": "Glaüshouse"
+    },
+    {
+      "key": "K",
+      "meaning": "↑ Movement",
+      "memory_hook": "Stonebend",
+      "form": "tool",
+      "affinity": "Stonebend"
+    },
+    {
+      "key": "L",
+      "meaning": "→ Movement",
+      "memory_hook": "Sandmanor",
+      "form": "tool",
+      "affinity": "Sandmanor"
+    },
+    {
+      "key": "M",
+      "meaning": "Music",
+      "memory_hook": "HEAR",
+      "form": "plant"
+    },
+    {
+      "key": "N",
+      "meaning": "News",
+      "memory_hook": "Feeds",
+      "form": "plant"
+    },
+    {
+      "key": "O",
+      "meaning": "Office",
+      "memory_hook": "Productivity",
+      "form": "plant"
+    },
+    {
+      "key": "P",
+      "meaning": "Photos",
+      "memory_hook": "Photography",
+      "form": "plant"
+    },
+    {
+      "key": "Q",
+      "meaning": "Query",
+      "memory_hook": "Ask AI/search",
+      "form": "plant"
+    },
+    {
+      "key": "R",
+      "meaning": "Record",
+      "memory_hook": "Capture",
+      "form": "plant"
+    },
+    {
+      "key": "S",
+      "meaning": "Settings",
+      "memory_hook": "Configure",
+      "form": "plant"
+    },
+    {
+      "key": "T",
+      "meaning": "Tasks",
+      "memory_hook": "To-do/work",
+      "form": "plant"
+    },
+    {
+      "key": "U",
+      "meaning": "Utilities",
+      "memory_hook": "System tools",
+      "form": "plant"
+    },
+    {
+      "key": "V",
+      "meaning": "Video",
+      "memory_hook": "WATCH",
+      "form": "plant"
+    },
+    {
+      "key": "W",
+      "meaning": "Write",
+      "memory_hook": "Compose",
+      "form": "plant"
+    },
+    {
+      "key": "X",
+      "meaning": "eXchange",
+      "memory_hook": "Finance/markets",
+      "form": "plant"
+    },
+    {
+      "key": "Y",
+      "meaning": "sYnc",
+      "memory_hook": "Transfer/sync",
+      "form": "plant"
+    },
+    {
+      "key": "Z",
+      "meaning": "Zip",
+      "memory_hook": "Archives",
+      "form": "plant"
     }
   ],
   "house_anchors": [
     {
       "house": "Stonebend",
       "members": [
-        {"key": "Escape", "map_label": "Boundary"}
+        {
+          "key": "Escape",
+          "map_label": "Exit"
+        }
       ],
       "reading": "boundary-stop-and-stable-return",
       "form": "landmark"
@@ -79,9 +245,14 @@
     {
       "house": "Sandmanor",
       "members": [
-        {"key": "BackSpace", "map_label": "Revise"},
-        {"key": "Return", "map_label": "Commit"},
-        {"key": "KP_Enter", "map_label": "Commit"}
+        {
+          "key": "BackSpace",
+          "map_label": "History"
+        },
+        {
+          "key": "Return",
+          "map_label": "Terminal"
+        }
       ],
       "reading": "returning-and-entering-threshold",
       "form": "landmark"
@@ -89,7 +260,10 @@
     {
       "house": "Glaüshouse",
       "members": [
-        {"key": "Space", "map_label": "Usable room"}
+        {
+          "key": "Space",
+          "map_label": "Usable room"
+        }
       ],
       "reading": "clearance-and-usable-room",
       "form": "landmark"
@@ -97,121 +271,62 @@
     {
       "house": "Flynt",
       "members": [
-        {"key": "Grave", "map_label": "Invoke"}
+        {
+          "key": "Grave",
+          "map_label": "Navigate"
+        }
       ],
       "reading": "invocation-and-release",
       "form": "landmark"
     }
   ],
-  "domain_anchors": [
-    {
-      "key": "O",
-      "domain": "Office",
-      "form": "plant",
-      "affinities": ["Sandmanor"],
-      "bindings": [
-        {
-          "chord": "Mod+o",
-          "display_chord": "Super+O",
-          "lane": "Primary",
-          "action": "Writer",
-          "overlay_title": "Office · Primary: Writer"
-        },
-        {
-          "chord": "Mod+Shift+o",
-          "display_chord": "Super+Shift+O",
-          "lane": "Adjacent",
-          "action": "Calc",
-          "overlay_title": "Office · Adjacent: Calc"
-        },
-        {
-          "chord": "Mod+Ctrl+o",
-          "display_chord": "Super+Ctrl+O",
-          "lane": "Focused",
-          "action": "Impress",
-          "overlay_title": "Office · Focused: Impress"
-        },
-        {
-          "chord": "Mod+Alt+o",
-          "display_chord": "Super+Alt+O",
-          "lane": "Alternate",
-          "action": "Draw",
-          "overlay_title": "Office · Alternate: Draw"
-        },
-        {
-          "chord": "Mod+Ctrl+Alt+o",
-          "display_chord": "Super+Ctrl+Alt+O",
-          "lane": "Focused Alternate",
-          "action": "Math",
-          "overlay_title": "Office · Focused Alternate: Math"
-        }
-      ]
-    },
-    {
-      "key": "M",
-      "domain": "Music",
-      "form": "plant",
-      "affinities": ["Flynt", "Glaüshouse"],
-      "bindings": [
-        {
-          "chord": "Mod+m",
-          "display_chord": "Super+M",
-          "lane": "Primary",
-          "action": "Library",
-          "overlay_title": "Music · Primary: Library"
-        },
-        {
-          "chord": "Mod+Shift+m",
-          "display_chord": "Super+Shift+M",
-          "lane": "Adjacent",
-          "action": "Visualizer",
-          "overlay_title": "Music · Adjacent: Visualizer"
-        },
-        {
-          "chord": "Mod+Ctrl+m",
-          "display_chord": "Super+Ctrl+M",
-          "lane": "Focused",
-          "action": "Play/Pause",
-          "overlay_title": "Music · Focused: Play/Pause"
-        },
-        {
-          "chord": "Mod+Alt+m",
-          "display_chord": "Super+Alt+M",
-          "lane": "Alternate",
-          "action": "Status",
-          "overlay_title": "Music · Alternate: Status"
-        }
-      ]
-    }
-  ],
   "operational_tools": [
-    {
-      "name": "Directional diamond",
-      "form": "tool",
-      "purpose": "focus-move-reshape-and-scope",
-      "members": [
-        {"key": "H", "map_label": "Left", "affinity": "Flynt"},
-        {"key": "J", "map_label": "Down", "affinity": "Glaüshouse"},
-        {"key": "K", "map_label": "Up", "affinity": "Stonebend"},
-        {"key": "L", "map_label": "Right", "affinity": "Sandmanor"}
-      ]
-    },
     {
       "name": "Workspace addresses",
       "form": "tool",
       "purpose": "focus-and-transport",
       "affinity": "Stonebend",
       "members": [
-        {"key": "1", "map_label": "WS 1"},
-        {"key": "2", "map_label": "WS 2"},
-        {"key": "3", "map_label": "WS 3"},
-        {"key": "4", "map_label": "WS 4"},
-        {"key": "5", "map_label": "WS 5"},
-        {"key": "6", "map_label": "WS 6"},
-        {"key": "7", "map_label": "WS 7"},
-        {"key": "8", "map_label": "WS 8"},
-        {"key": "9", "map_label": "WS 9"},
-        {"key": "0", "map_label": "WS 10"}
+        {
+          "key": "1",
+          "map_label": "WS 1"
+        },
+        {
+          "key": "2",
+          "map_label": "WS 2"
+        },
+        {
+          "key": "3",
+          "map_label": "WS 3"
+        },
+        {
+          "key": "4",
+          "map_label": "WS 4"
+        },
+        {
+          "key": "5",
+          "map_label": "WS 5"
+        },
+        {
+          "key": "6",
+          "map_label": "WS 6"
+        },
+        {
+          "key": "7",
+          "map_label": "WS 7"
+        },
+        {
+          "key": "8",
+          "map_label": "WS 8"
+        },
+        {
+          "key": "9",
+          "map_label": "WS 9"
+        },
+        {
+          "key": "0",
+          "map_label": "WS 10"
+        }
       ]
     },
     {
@@ -220,141 +335,22 @@
       "purpose": "boundary-addressing",
       "affinity": "Stonebend",
       "members": [
-        {"key": "BracketLeft", "map_label": "Left edge"},
-        {"key": "BracketRight", "map_label": "Right edge"}
+        {
+          "key": "BracketLeft",
+          "map_label": "Left edge"
+        },
+        {
+          "key": "BracketRight",
+          "map_label": "Right edge"
+        }
       ]
     }
   ],
-  "profile_reconciliation": {
-    "status": "reconciled",
-    "date": "2026-08-12",
-    "policy": "Shared chords carry identical semantics; deployment-specific executable paths may differ.",
-    "shared_bindings": [
-      {
-        "chord": "Mod+Ctrl+Shift+h",
-        "semantic_id": "conveyor.wrap_left",
-        "allowed_action_fragments": [
-          "niri-wrap-move\" \"left"
-        ]
-      },
-      {
-        "chord": "Mod+Ctrl+Shift+j",
-        "semantic_id": "conveyor.wrap_down",
-        "allowed_action_fragments": [
-          "niri-wrap-move\" \"down"
-        ]
-      },
-      {
-        "chord": "Mod+Ctrl+Shift+k",
-        "semantic_id": "conveyor.wrap_up",
-        "allowed_action_fragments": [
-          "niri-wrap-move\" \"up"
-        ]
-      },
-      {
-        "chord": "Mod+Ctrl+Shift+l",
-        "semantic_id": "conveyor.wrap_right",
-        "allowed_action_fragments": [
-          "niri-wrap-move\" \"right"
-        ]
-      },
-      {
-        "chord": "Mod+Space",
-        "semantic_id": "usable_room.cycle_forward",
-        "allowed_action_fragments": [
-          "switch-preset-column-width;"
-        ]
-      },
-      {
-        "chord": "Mod+Shift+Space",
-        "semantic_id": "usable_room.cycle_backward",
-        "allowed_action_fragments": [
-          "switch-preset-column-width-back;"
-        ]
-      },
-      {
-        "chord": "Mod+Ctrl+Space",
-        "semantic_id": "usable_room.quarter_width_reset",
-        "allowed_action_fragments": [
-          "set-column-width \"25%\";"
-        ]
-      },
-      {
-        "chord": "Mod+Ctrl+Shift+Space",
-        "semantic_id": "usable_room.full_height",
-        "allowed_action_fragments": [
-          "set-window-height \"100%\";"
-        ]
-      },
-      {
-        "chord": "Mod+Alt+Space",
-        "semantic_id": "usable_room.available_width",
-        "allowed_action_fragments": [
-          "expand-column-to-available-width;"
-        ]
-      },
-      {
-        "chord": "Mod+Alt+Ctrl+Space",
-        "semantic_id": "usable_room.windowed_fullscreen",
-        "allowed_action_fragments": [
-          "toggle-windowed-fullscreen;"
-        ]
-      },
-      {
-        "chord": "Mod+Alt+Shift+Space",
-        "semantic_id": "usable_room.hueman_step_spread",
-        "allowed_action_fragments": [
-          "step-hueman-pair-spread.sh",
-          "hollow-hueman\" \"step-spread"
-        ]
-      },
-      {
-        "chord": "Mod+Ctrl+Alt+Shift+Space",
-        "semantic_id": "usable_room.quarter_width_reset",
-        "allowed_action_fragments": [
-          "set-column-width \"25%\";"
-        ]
-      },
-      {
-        "chord": "Mod+Alt+Return",
-        "semantic_id": "hueman.launch",
-        "allowed_action_fragments": [
-          "run-hueman-godot.sh",
-          "hollow-hueman\" \"launch"
-        ]
-      },
-      {
-        "chord": "Mod+Alt+Ctrl+Return",
-        "semantic_id": "hueman.rebind",
-        "allowed_action_fragments": [
-          "rebind-hueman-pair.sh",
-          "hollow-hueman\" \"rebind"
-        ]
-      },
-      {
-        "chord": "Mod+Alt+KP_Enter",
-        "semantic_id": "hueman.launch_keypad_alias",
-        "allowed_action_fragments": [
-          "run-hueman-godot.sh",
-          "hollow-hueman\" \"launch"
-        ]
-      },
-      {
-        "chord": "Mod+Alt+BackSpace",
-        "semantic_id": "hueman.clear",
-        "allowed_action_fragments": [
-          "clear-hueman-pair.sh",
-          "hollow-hueman\" \"clear"
-        ]
-      }
-    ]
-  },
-  "admission_policy": {
-    "minimum_durable_bindings": 2,
-    "allow_empty_branches": true,
-    "allow_slash_names": false,
-    "allow_ampersand_names": false,
-    "combined_modifiers_are_overflow": false,
-    "new_domain_requires_constitutional_amendment": true
+  "overlay_contract": "Meaning · Modifier meaning: Action",
+  "profile_policy": {
+    "status": "semantically-reconciled",
+    "date": "2026-08-14",
+    "rule": "Profiles preserve WHAT and HOW while executable paths and available fruit may differ.",
+    "empty_branch_policy": "Unavailable or unsuitable implementations remain explicitly empty."
   }
 }

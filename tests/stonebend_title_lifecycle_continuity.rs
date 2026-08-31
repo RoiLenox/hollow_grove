@@ -904,7 +904,7 @@ fn continuity_mandate() -> DiamondContinuityMandate {
         ]),
         administrator.clone(),
         Some(StonebendGateFacing::Flynt),
-        "Diamond is lawfully vacant",
+        "Hypergiant title is lawfully vacant",
         ContinuityTerminationCondition::EmergencyResolved,
         vec![evidence("evidence.stonebend.vacancy")],
         canonical_vacancy_dimension_traces(&administrator),
@@ -913,11 +913,11 @@ fn continuity_mandate() -> DiamondContinuityMandate {
 }
 
 #[test]
-fn vacancy_continuity_is_bounded_and_not_diamond() {
+fn vacancy_continuity_is_bounded_and_not_hypergiant() {
     let mandate = continuity_mandate();
     assert_eq!(
         mandate.diamond,
-        hollow_grove::world::stonebend::second_pass::diamond_title_id()
+        hollow_grove::world::stonebend::second_pass::hypergiant_title_id()
     );
     assert_eq!(mandate.status, ContinuityMandateStatus::Active);
     assert!(
@@ -1202,32 +1202,30 @@ fn replacement_selection_is_insertion_order_independent_and_singular() {
             state.active_tenure.as_ref().unwrap().bearer,
             id("being.stonebend.candidate-qualified")
         );
-        assert!(
-            state
-                .invest_replacement(
-                    FreemasonInvestiture {
-                        identity: id("tenure.stonebend.freemason-second"),
-                        claim: id(
-                            "claim.stonebend.freemason-replacement.being.stonebend.candidate-qualified",
-                        ),
-                        candidate: id("being.stonebend.candidate-qualified"),
-                        independent_review: id(
-                            "review.stonebend.forge.being.stonebend.candidate-qualified",
-                        ),
-                        proliteriate_yield_hearing: evidence(
-                            "evidence.stonebend.freemason-yield-hearing",
-                        ),
-                        diamond_boundary_recognition: None,
-                        active_diamond_bearer: None,
-                        seal: seal("seal.stonebend.freemason-second"),
-                        evidence: vec![evidence("evidence.stonebend.second")],
-                        began_at: 21,
-                    },
-                    None,
-                    &BTreeSet::new(),
-                )
-                .is_err()
-        );
+        assert!(state
+            .invest_replacement(
+                FreemasonInvestiture {
+                    identity: id("tenure.stonebend.freemason-second"),
+                    claim: id(
+                        "claim.stonebend.freemason-replacement.being.stonebend.candidate-qualified",
+                    ),
+                    candidate: id("being.stonebend.candidate-qualified"),
+                    independent_review: id(
+                        "review.stonebend.forge.being.stonebend.candidate-qualified",
+                    ),
+                    proliteriate_yield_hearing: evidence(
+                        "evidence.stonebend.freemason-yield-hearing",
+                    ),
+                    diamond_boundary_recognition: None,
+                    active_diamond_bearer: None,
+                    seal: seal("seal.stonebend.freemason-second"),
+                    evidence: vec![evidence("evidence.stonebend.second")],
+                    began_at: 21,
+                },
+                None,
+                &BTreeSet::new(),
+            )
+            .is_err());
     }
 }
 

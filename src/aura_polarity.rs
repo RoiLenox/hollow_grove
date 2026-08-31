@@ -835,7 +835,7 @@ pub fn resolve_aura_polarity_action(
 pub fn canonical_light_nightingale_diagnosis_fixture() -> AuraPolarityActionRequest {
     AuraPolarityActionRequest::new(
         "Nightingale",
-        build_canonical_being_state_with_aura(FrameId::Hueman, Some(FrameId::Faerie)),
+        build_canonical_being_state_with_aura(FrameId::Hueman, Some(FrameId::Fairy)),
         ExpressionDomain::Glow,
         EmbodiedGesture::Show,
         ActionMode::Beam,
@@ -929,8 +929,8 @@ pub fn canonical_defensive_dark_siren_warning_fixture() -> AuraPolarityActionReq
 #[must_use]
 pub fn canonical_dark_riptide_misdirection_fixture() -> AuraPolarityActionRequest {
     AuraPolarityActionRequest::new(
-        "Faerie",
-        build_canonical_being_state_with_aura(FrameId::Hueman, Some(FrameId::Faerie)),
+        "Fairy",
+        build_canonical_being_state_with_aura(FrameId::Hueman, Some(FrameId::Fairy)),
         ExpressionDomain::Glow,
         EmbodiedGesture::Show,
         ActionMode::Beam,
@@ -949,7 +949,7 @@ pub fn canonical_dark_riptide_misdirection_fixture() -> AuraPolarityActionReques
 pub fn canonical_dark_seam_counter_bind_fixture() -> AuraPolarityActionRequest {
     AuraPolarityActionRequest::new(
         "Spirit",
-        build_canonical_being_state_with_aura(FrameId::Hueman, Some(FrameId::Faerie)),
+        build_canonical_being_state_with_aura(FrameId::Hueman, Some(FrameId::Fairy)),
         ExpressionDomain::Glow,
         EmbodiedGesture::Grip,
         ActionMode::Seam,
@@ -1025,7 +1025,7 @@ pub fn canonical_false_light_label_fixture() -> AuraPolarityActionRequest {
 pub fn canonical_mixed_clinical_disclosure_fixture() -> AuraPolarityActionRequest {
     AuraPolarityActionRequest::new(
         "Nightingale",
-        build_canonical_being_state_with_aura(FrameId::Hueman, Some(FrameId::Faerie)),
+        build_canonical_being_state_with_aura(FrameId::Hueman, Some(FrameId::Fairy)),
         ExpressionDomain::Glow,
         EmbodiedGesture::Show,
         ActionMode::Beam,
@@ -1665,7 +1665,7 @@ fn select_candidate_move(request: &AuraPolarityActionRequest) -> AuraMoveId {
 fn canonical_light_seam_boundary_fixture() -> AuraPolarityActionRequest {
     AuraPolarityActionRequest::new(
         "Nightingale",
-        build_canonical_being_state_with_aura(FrameId::Hueman, Some(FrameId::Faerie)),
+        build_canonical_being_state_with_aura(FrameId::Hueman, Some(FrameId::Fairy)),
         ExpressionDomain::Glow,
         EmbodiedGesture::Grip,
         ActionMode::Seam,
@@ -1719,6 +1719,7 @@ fn frame_label(frame: FrameId) -> &'static str {
         FrameId::Ork => "Ork",
         FrameId::Ogre => "Ogre",
         FrameId::Troglodyte => "Troglodyte",
+        FrameId::Pixie => "Pixie",
         FrameId::Pixy => "Pixy",
         FrameId::Sprite => "Sprite",
         FrameId::Faerie => "Faerie",
@@ -1730,11 +1731,16 @@ fn frame_label(frame: FrameId) -> &'static str {
         FrameId::Merman => "Merman",
         FrameId::Chimera => "Chimera",
         FrameId::Gnome => "Gnome",
+        FrameId::Faun => "Faun",
         FrameId::Minotaur => "Minotaur",
         FrameId::Hecaton => "Hecaton",
         FrameId::Elf => "Elf",
+        FrameId::Satyr => "Satyr",
         FrameId::Centaur => "Centaur",
         FrameId::Pegasus => "Pegasus",
+        FrameId::Fairy => "Fairy",
+        FrameId::Spirit => "Spirit",
+        FrameId::Sylph => "Sylph",
     }
 }
 

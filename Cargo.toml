@@ -4,12 +4,14 @@ version = "0.1.0"
 edition = "2024"
 default-run = "hollow-grove"
 autobins = false
+autotests = false
 publish = false
 license-file = "LICENSE"
 
 [workspace]
 members = [
     ".",
+    "hollow-niri",
     "hollow-grove-recursion-kernel",
     "hollow-grove-semantic-kernel",
     "officials-and-outlaws",
@@ -18,6 +20,7 @@ exclude = ["fuzz"]
 resolver = "3"
 
 [dependencies]
+hollow-niri = { path = "hollow-niri" }
 hollow-grove-recursion-kernel = { path = "hollow-grove-recursion-kernel" }
 hollow-grove-semantic-kernel = { path = "hollow-grove-semantic-kernel" }
 flynt-constitution = { path = "officials-and-outlaws" }
@@ -30,6 +33,10 @@ dev-tools = []
 [[bin]]
 name = "hollow-grove"
 path = "src/main.rs"
+
+[[bin]]
+name = "adaptive_topology_live"
+path = "src/bin/adaptive_topology_live.rs"
 
 [[bin]]
 name = "current_synthesis_tui"
@@ -56,359 +63,41 @@ name = "hollow_grove_semantic"
 path = "src/bin/hollow_grove_semantic.rs"
 
 [[bin]]
-name = "adversarial_verification"
-path = "src/bin/adversarial_verification.rs"
+name = "hg-dev"
+path = "src/bin/hg_dev.rs"
 required-features = ["dev-tools"]
 
-[[bin]]
-name = "aura_field_audit"
-path = "src/bin/aura_field_audit.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "aura_surfaces_audit"
-path = "src/bin/aura_surfaces_audit.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "central_junction_constitutional_audit"
-path = "src/bin/central_junction_constitutional_audit.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "central_junction_seasonal_audit"
-path = "src/bin/central_junction_seasonal_audit.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "client_desktop_status"
-path = "src/bin/client_desktop_status.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "client_prompt_artifact"
-path = "src/bin/client_prompt_artifact.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "client_snapshot"
-path = "src/bin/client_snapshot.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "constitutional_geography_audit"
-path = "src/bin/constitutional_geography_audit.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "consumer_boundary"
-path = "src/bin/consumer_boundary.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "consumer_export"
-path = "src/bin/consumer_export.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "consumer_prompt"
-path = "src/bin/consumer_prompt.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "consumer_tree"
-path = "src/bin/consumer_tree.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis"
-path = "src/bin/current_synthesis.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_activation_gate"
-path = "src/bin/current_synthesis_activation_gate.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_base"
-path = "src/bin/current_synthesis_base.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_behavior_rules"
-path = "src/bin/current_synthesis_behavior_rules.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_benchmark"
-path = "src/bin/current_synthesis_benchmark.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_choice"
-path = "src/bin/current_synthesis_choice.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_clients"
-path = "src/bin/current_synthesis_clients.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_collision_relay"
-path = "src/bin/current_synthesis_collision_relay.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_consequence"
-path = "src/bin/current_synthesis_consequence.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_contract"
-path = "src/bin/current_synthesis_contract.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_execution_spec"
-path = "src/bin/current_synthesis_execution_spec.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_operational"
-path = "src/bin/current_synthesis_operational.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_preview"
-path = "src/bin/current_synthesis_preview.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_readiness"
-path = "src/bin/current_synthesis_readiness.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_selection"
-path = "src/bin/current_synthesis_selection.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_sequence"
-path = "src/bin/current_synthesis_sequence.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_state"
-path = "src/bin/current_synthesis_state.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_topology"
-path = "src/bin/current_synthesis_topology.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "current_synthesis_transition_pm_to_le"
-path = "src/bin/current_synthesis_transition_pm_to_le.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "deep_pressure_audit"
-path = "src/bin/deep_pressure_audit.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "flynt_constitutional_audit"
-path = "src/bin/flynt_constitutional_audit.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "function_junction_permanence_audit"
-path = "src/bin/function_junction_permanence_audit.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "glaushouse_constitutional_audit"
-path = "src/bin/glaushouse_constitutional_audit.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hollow_grove_functional_lore_audit"
-path = "src/bin/hollow_grove_functional_lore_audit.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hollow_grove_route_network_audit"
-path = "src/bin/hollow_grove_route_network_audit.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hollow_grove_world_point_audit"
-path = "src/bin/hollow_grove_world_point_audit.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman"
-path = "src/bin/hueman.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_archetype_lens"
-path = "src/bin/hueman_archetype_lens.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_aura_behavior"
-path = "src/bin/hueman_aura_behavior.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_aura_triad"
-path = "src/bin/hueman_aura_triad.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_boundary"
-path = "src/bin/hueman_boundary.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_crossover_scenes"
-path = "src/bin/hueman_crossover_scenes.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_flynt_constitution"
-path = "src/bin/hueman_flynt_constitution.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_fourway"
-path = "src/bin/hueman_fourway.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_glaushouse_roles"
-path = "src/bin/hueman_glaushouse_roles.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_inverse_circle"
-path = "src/bin/hueman_inverse_circle.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_link_physics"
-path = "src/bin/hueman_link_physics.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_motion_map"
-path = "src/bin/hueman_motion_map.rs"
-required-features = ["dev-tools"]
+[[test]]
+name = "integration"
+path = "tests/integration.rs"
 
-[[bin]]
-name = "hueman_path_crossovers"
-path = "src/bin/hueman_path_crossovers.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_procedural_uplift"
-path = "src/bin/hueman_procedural_uplift.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_sandmanor_roles"
-path = "src/bin/hueman_sandmanor_roles.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_scene_drift"
-path = "src/bin/hueman_scene_drift.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_scene_intent"
-path = "src/bin/hueman_scene_intent.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_scene_presence"
-path = "src/bin/hueman_scene_presence.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_slice_demo"
-path = "src/bin/hueman_slice_demo.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_start_choices"
-path = "src/bin/hueman_start_choices.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_start_paths"
-path = "src/bin/hueman_start_paths.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_stonebend_roles"
-path = "src/bin/hueman_stonebend_roles.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "hueman_vertical_slice"
-path = "src/bin/hueman_vertical_slice.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "living_world_audit"
-path = "src/bin/living_world_audit.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "party_recruitment_audit"
-path = "src/bin/party_recruitment_audit.rs"
-required-features = ["dev-tools"]
-
-[[bin]]
-name = "runtime_federation_audit"
-path = "src/bin/runtime_federation_audit.rs"
-required-features = ["dev-tools"]
+[[test]]
+name = "deep_pressure_campaign"
+path = "tests/deep_pressure_campaign.rs"
 
-[[bin]]
-name = "sandmanor_constitutional_audit"
-path = "src/bin/sandmanor_constitutional_audit.rs"
-required-features = ["dev-tools"]
+[[test]]
+name = "gameplay_boardwalk"
+path = "tests/gameplay_boardwalk.rs"
 
-[[bin]]
-name = "service_tournament_constitutional_audit"
-path = "src/bin/service_tournament_constitutional_audit.rs"
-required-features = ["dev-tools"]
+[[test]]
+name = "guide_operational_seam"
+path = "tests/guide_operational_seam.rs"
 
-[[bin]]
-name = "stonebend_constitutional_audit"
-path = "src/bin/stonebend_constitutional_audit.rs"
-required-features = ["dev-tools"]
+[[test]]
+name = "institutional_boundary"
+path = "tests/institutional_boundary.rs"
 
-[[bin]]
-name = "stonebend_three_gates_audit"
-path = "src/bin/stonebend_three_gates_audit.rs"
-required-features = ["dev-tools"]
+[[test]]
+name = "party_recruitment"
+path = "tests/party_recruitment.rs"
 
-[[bin]]
-name = "stonebend_title_lifecycle_audit"
-path = "src/bin/stonebend_title_lifecycle_audit.rs"
-required-features = ["dev-tools"]
+[[test]]
+name = "runtime_rampart_documentation"
+path = "tests/runtime_rampart_documentation.rs"
 
-[[bin]]
-name = "visual_color_constitution"
-path = "src/bin/visual_color_constitution.rs"
-required-features = ["dev-tools"]
+[[test]]
+name = "runtime_rampart_v1"
+path = "tests/runtime_rampart_v1.rs"
 
 
 [profile.dev]

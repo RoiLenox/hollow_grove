@@ -5,9 +5,8 @@ use hollow_grove::gameplay::{
     GAMEPLAY_ARCHIVE_SCHEMA_VERSION, GameplayArchiveError, decode_gameplay_archive_with_metadata,
     migrate_gameplay_archive,
 };
-use hollow_grove::runtime_federation::{
-    RUNTIME_FEDERATION_ARCHIVE_VERSION, decode_runtime_federation_archive,
-    encode_runtime_federation_archive,
+use hollow_grove::runtime_rampart::{
+    RUNTIME_RAMPART_ARCHIVE_VERSION, decode_runtime_rampart_archive, encode_runtime_rampart_archive,
 };
 use hollow_grove::world::spatial_inheritance::{
     HOLLOW_GROVE_SPATIAL_ARCHIVE_VERSION, decode_hollow_grove_spatial_archive,
@@ -114,16 +113,16 @@ fn gameplay_v1_v2_and_v3_fixtures_decode_and_migrate_to_the_current_schema() {
 }
 
 #[test]
-fn runtime_federation_v1_fixture_is_an_immutable_round_trip() {
-    let archive = fixture("tests/fixtures/compatibility/runtime_federation_v1.hgrf.json");
+fn runtime_rampart_v1_fixture_is_an_immutable_round_trip() {
+    let archive = fixture("tests/fixtures/compatibility/runtime_rampart_v1.hgrf.json");
     let (payload, runtime) =
-        decode_runtime_federation_archive(&archive).expect("HGRF fixture should decode");
+        decode_runtime_rampart_archive(&archive).expect("HGRF fixture should decode");
     assert_eq!(
         runtime.manifest().archive_version,
-        RUNTIME_FEDERATION_ARCHIVE_VERSION
+        RUNTIME_RAMPART_ARCHIVE_VERSION
     );
     assert_eq!(
-        encode_runtime_federation_archive(&payload).expect("HGRF fixture should re-encode"),
+        encode_runtime_rampart_archive(&payload).expect("HGRF fixture should re-encode"),
         archive
     );
 }
@@ -152,12 +151,12 @@ fn unknown_future_archive_versions_fail_closed() {
             if version == GAMEPLAY_ARCHIVE_SCHEMA_VERSION + 1
     ));
 
-    let hgrf = fixture("tests/fixtures/compatibility/runtime_federation_v1.hgrf.json");
+    let hgrf = fixture("tests/fixtures/compatibility/runtime_rampart_v1.hgrf.json");
     let mut hgrf_value: serde_json::Value =
         serde_json::from_slice(&hgrf).expect("HGRF fixture should parse");
-    hgrf_value["archive_version"] = serde_json::json!(RUNTIME_FEDERATION_ARCHIVE_VERSION + 1);
+    hgrf_value["archive_version"] = serde_json::json!(RUNTIME_RAMPART_ARCHIVE_VERSION + 1);
     assert!(
-        decode_runtime_federation_archive(
+        decode_runtime_rampart_archive(
             &serde_json::to_vec(&hgrf_value).expect("future HGRF should serialize")
         )
         .is_err()

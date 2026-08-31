@@ -13,6 +13,12 @@ Stonebend government, Hypergiant succession, the Title lifecycle, Gerald
 institutions, Freemason structure, or the full Illegal Hollowing code. Existing
 Stonebend authority, subject-Hollowing, and succession law remains in force.
 
+> **Compatibility boundary — LEGACY PHYSICAL EXPRESSIONS.** This document's
+> material `Current`, `Aura`, Aether, and Hollowing records remain authoritative
+> for V1 runtime, archive, and replay behavior. They do not define universal
+> Practitioner Current or Aura. The active semantic ontology is governed by
+> `HOLLOW_GROVE_SYNTHESIS_CANON_V1.md`.
+
 ## 1. The vertical law
 
 Hollow Grove has one central vertical relationship:
@@ -21,12 +27,12 @@ Hollow Grove has one central vertical relationship:
 
 > Riptide is Bathos.
 
-> Aura is Aether revealed through Form.
+> Legacy physical Aura is Aether revealed through Form.
 
-> Current is Bathos embodied through weight.
+> Legacy physical Current is Bathos embodied through weight.
 
-Aether and Bathos are metaphysical poles. Aura and Current are their physical
-manifestations. They describe one continuous relationship among ideal and
+Aether and Bathos are metaphysical poles. Legacy physical Aura and Current are
+their V1 material manifestations. They describe one continuous relationship among ideal and
 consequence, weightlessness and weight, ascent and descent, possibility and
 embodiment, revelation and repetition.
 
@@ -37,34 +43,36 @@ without Aether can become cynicism, mockery, or burden without direction.
 > Aether gives life something worth becoming. Bathos ensures becoming remains
 > answerable to reality.
 
-## 2. The Aether–Current continuum
+## 2. The Aether–legacy Current continuum
 
-> Aether is weightless Current.
+> Aether is weightless legacy physical Current.
 
-> Current is the heaviest Aether.
+> Legacy physical Current is the heaviest Aether.
 
-Aether and Current are opposite burden states of one underlying medium, not
+Aether and legacy physical Current are opposite burden states of one underlying medium, not
 unrelated resources. Aether is the least-burdened limit: universal,
 weightless, clear, highly potential, and not yet given a regional, mineral,
 bodily, or cultural property.
 
-Current is that same medium bearing material consequence. It is condensed,
+Legacy physical Current is that same medium bearing material consequence. It is condensed,
 mixed, resistant, embodied, storable, transportable, and repeatable. It may
 flow, pool, circulate, settle into channels, carry residue, become
 contaminated, be pumped, be stored, be separated into fractions, or be
 exhausted.
 
-> Aether is Current without burden. Current is Aether bearing the world.
+> Aether is legacy physical Current without burden. Legacy physical Current is
+> Aether bearing the world.
 
-Current is not waste, corruption, failed Aether, or evil. Its weight makes
+Legacy physical Current is not waste, corruption, failed Aether, or evil. Its weight makes
 embodiment, persistence, storage, circulation, memory, and consequence
 possible.
 
-> Current repeats because weight teaches it where to return.
+> Legacy physical Current repeats because weight teaches it where to return.
 
 This foundation preserves the bedrock law:
 
-> Current repeats. Aura reveals. Relativity bends. Synthesis transforms.
+> Legacy physical Current repeats. Legacy physical Aura reveals. Relativity
+> bends. Synthesis transforms.
 
 ## 3. Mt. Aura
 
@@ -203,9 +211,9 @@ boundaries, and claims publicly legible.
 > Stonebend names what has been proven. It does not pretend proof is
 > perfection.
 
-## 8. Current batches
+## 8. Legacy physical Current batches
 
-A raw Current batch is a heavy, flowing, mixed material state. Its lawful
+A raw legacy physical Current batch is a heavy, flowing, mixed material state. Its lawful
 record preserves stable batch identity, the identity of its shared
 Aether–Current lineage, source, quantity, burden state, constituent fractions,
 custodian, and extraction evidence.
@@ -214,12 +222,12 @@ Fractions distinguish essential support from inert, unstable, contaminating,
 or otherwise removable burden. These fields are constitutional records, not a
 requirement that every value become a public game statistic.
 
-Current batch identity is caller supplied and stable. It is never derived from
+Legacy physical Current batch identity is caller supplied and stable. It is never derived from
 output position, collection order, or randomness.
 
 ## 9. Lawful material Hollowing
 
-Hollowing is Stonebend's lawful refinement of Current. It is consistent with
+Hollowing is Stonebend's lawful refinement of legacy physical Current. It is consistent with
 the parent Constitution's wider law of controlled opening, exposure,
 separation, extraction, preservation, and removal.
 
@@ -234,7 +242,7 @@ Raw Current
 → lawful sealing and provenance
 ```
 
-> Hollowing raises Current by removing what weighs it down.
+> Hollowing raises legacy physical Current by removing what weighs it down.
 
 Lawful material Hollowing records source and result identities, shared medium
 lineage, responsible operator, decision authority, permitted removals,
@@ -282,22 +290,22 @@ An invalid attempt never silently replaces its source batch.
 
 ## 12. Refined Aether
 
-> Aether is Current relieved of weight.
+> Aether is legacy physical Current relieved of weight.
 
 Refined Aether is lighter, less burdened, more volatile, more universal, and
 less materially specific than Current. It remains linked to its source through
 batch provenance.
 
-Aether is not automatically Aura, a House fuel, a House color, an ordinary
+Aether is not automatically legacy physical Aura, a House fuel, a House color, an ordinary
 Title, or an unrelated inventory resource. Lawful storage and transport may
 require containment, sealed vessels, stability limits, proof, and custody
 records. This pass does not lock particular industrial machinery.
 
-## 13. Aura and the prism model
+## 13. Legacy physical Aura and the prism model
 
-> Aura is Aether revealed through Form.
+> Legacy physical Aura is Aether revealed through Form.
 
-Aura is Aether made visible, particular, usable, shaped, colored, or
+Legacy physical Aura is Aether made visible, particular, usable, shaped, colored, or
 behaviorally specific. It is not an unrelated third fuel and is not ordinarily
 a liquid stored inside every gemstone.
 
@@ -310,14 +318,16 @@ Aether passes through Form
 → the manifested property is usable Aura
 ```
 
-> Current flows. Hollowing refines. Aether rises. Stone refracts. Aura reveals.
+> Legacy physical Current flows. Hollowing refines. Aether rises. Stone
+> refracts. Legacy physical Aura reveals.
 
-> Current supplies the force. Crystal supplies the pattern. Aura is the
-> pattern revealed as light.
+> Legacy physical Current supplies the force. Crystal supplies the pattern.
+> Legacy physical Aura is the pattern revealed as light.
 
-Aura may appear as visible light, field, resonance, heat, pattern, biological
-response, signal, or another Form-dependent property. Light and spectrum
-remain the primary explanation.
+This legacy physical Aura expression may appear as visible light, field,
+resonance, heat, pattern, biological response, signal, or another
+Form-dependent property. Light and spectrum remain the primary V1 material
+explanation.
 
 ## 14. Geography and stone
 
@@ -333,9 +343,9 @@ geography
 → regional technology and culture
 ```
 
-> Aether is universal. Aura is particular.
+> Aether is universal. Legacy physical Aura is particular.
 
-The same Aether batch may manifest different Aura through different regional
+The same Aether batch may manifest different legacy physical Aura through different regional
 stone profiles. Geography affects the profile; it does not manufacture a
 separate cosmic substance.
 
@@ -365,11 +375,11 @@ examples into exclusive cosmic ownership.
 
 ## 16. Stone preservation
 
-Ordinary Aura refraction preserves the stone's internal lattice. A stone may
+Ordinary legacy physical Aura refraction preserves the stone's internal lattice. A stone may
 be discovered, recorded, examined, cut, oriented, polished, mounted, tuned,
 sealed, and supplied with proofed Aether.
 
-Melting is not the ordinary Aura process because it may destroy or transform
+Melting is not the ordinary legacy physical Aura process because it may destroy or transform
 the lattice that reveals the stone's characteristic behavior. Synthetic recast
 materials remain outside this foundation.
 
@@ -417,10 +427,11 @@ does not reopen or modify this material continuum.
 
 > Mt. Aura is Aether. Riptide is Bathos.
 
-> Aether is weightless Current. Current is the heaviest Aether.
+> Aether is weightless legacy physical Current. Legacy physical Current is the
+> heaviest Aether.
 
-> Aura is Aether revealed through Form. Current is Bathos embodied through
-> weight.
+> Legacy physical Aura is Aether revealed through Form. Legacy physical
+> Current is Bathos embodied through weight.
 
 > The Houses teach the work. Aura Way organizes the path. Stonebend names the
 > completion.
@@ -428,4 +439,5 @@ does not reopen or modify this material continuum.
 > Stonebend names what has been proven. It does not pretend proof is
 > perfection.
 
-> Current flows. Hollowing refines. Aether rises. Stone refracts. Aura reveals.
+> Legacy physical Current flows. Hollowing refines. Aether rises. Stone
+> refracts. Legacy physical Aura reveals.

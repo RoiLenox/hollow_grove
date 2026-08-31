@@ -17,9 +17,10 @@ clearance or consent, Flynt recognition, Synthesis execution, or office.
 
 | Subject | Stable placement | One superior or governing source |
 |---|---|---|
-| Minorians / Gnomes | `role.sandmanor.minorian`; `group.sandmanor.minorians` | equal interior civic tradition within the House-wide proof body |
-| Minoans / Elves | `role.sandmanor.minoan`; `group.sandmanor.minoans` | equal exterior civic tradition within the House-wide proof body |
-| The Sandman | `office.sandmanor.sandman` | the Sandmanor Constitution and a completed Contest of Improvement accession |
+| Minorians | `role.sandmanor.minorian`; `group.sandmanor.minorians` | equal interior/family people within the House-wide proof body |
+| Minoans | `role.sandmanor.minoan`; `group.sandmanor.minoans` | equal outward/social people within the House-wide proof body |
+| The Sandman / Demiurge | `office.sandmanor.sandman` | sovereign identity under the Constitution and completed Contest accession |
+| Hecaton / Pegasus | typed sovereign-Hand records | parallel Hands; appointment and succession mechanisms remain open |
 | common proof-body adapter | `institution.sandmanor.sandmen` | coordinated by the Sandman; not a third people or second sovereign |
 | Aura Field | `site.sandmanor.aura-fields` | Minorian regional proving ground |
 | Aura Beach | `site.sandmanor.aura-beach` | Minoan regional proving ground; Current Sea guardianship remains the Centaur result duty |
@@ -46,8 +47,9 @@ rejected authority origins.
 - `src/world/house_institutions.rs` contains one Sandmanor institution
   projection, one singular Sandman office, two equal civic-tradition roles and
   groups, and two regional proving-ground sites.
-- `src/sandmanor_lineage.rs` remains the reused lineage authority. The House
-  validator does not create a second form or transformation engine.
+- `src/sandmanor_lineage.rs` is the explicit ontology authority for peoples,
+  six Forms, social roles, cultural domains, attendant classes, sovereign
+  Hands, sovereign identity, and open-canon markers.
 - `src/constitutional/regional.rs` remains authoritative for executing the two
   already-ratified regional Syntheses and their canonical assignments.
 - `src/world/persistence.rs` maps historical Sandman or Sandmen role strings to
@@ -59,8 +61,8 @@ rejected authority origins.
 
 | Proven design | Required regional scope | Resulting constitutional function |
 |---|---|---|
-| Gnome → Minotaur | Aura Field | advanced tending and field labor |
-| Elf → Centaur | Aura Beach and Current Sea | roam Aura Beach and safeguard Current Sea approaches, crowd movement, and public access |
+| Faun → Minotaur | Aura Field | advanced tending and field labor |
+| Satyr → Centaur | Aura Beach and Current Sea | roam Aura Beach and safeguard Current Sea approaches, crowd movement, and public access |
 
 Sandmanor proves these regional roles. Glaüshouse clears actual Synthesis,
 Stonebend preserves identity and Title, and Flynt recognizes any lawful role or
@@ -79,7 +81,11 @@ institution. Regional proof grants none of those other House acts.
 - Actual failures remain evidence. Prototype, simulation, revision, emergency
   status, and Tombstone status cannot be laundered into current proof.
 - Intellectual lineage and successor correction obligations remain preserved.
-- `Gnome → Minotaur` and `Elf → Centaur` each have one exact regional meaning.
+- The locked Form lines are `Gnome → Faun → Minotaur` and `Elf → Satyr → Centaur`.
+- The legacy regional slugs `gnome-minotaur` and `elf-centaur` emit only the
+  active mature `Faun → Minotaur` and `Satyr → Centaur` records.
+- Social roles, Forms, attendant classes, Hands, and sovereign identity remain
+  separate typed axes.
 - No proof, office, mastery, authorship, credential, consent, clearance, or
   recognition is inferred from legacy progression.
 - No Sandmanor-specific type or authority enters the universal recursion kernel.
@@ -118,7 +124,7 @@ migration, and kernel isolation.
 - `cargo test --quiet` in `hollow-grove-semantic-kernel`: pass, 7 tests.
 - `cargo test --quiet` in `officials-and-outlaws`: pass, 13 tests across its
   library and integration suites.
-- `cargo run --quiet --bin sandmanor_constitutional_audit`: pass.
+- `cargo run --quiet --features dev-tools --bin hg-dev -- sandmanor_constitutional_audit`: pass.
 - Godot headless runtime-client smoke test: pass.
 - `cargo fmt --all -- --check`: pass.
 - `cargo clippy --all-targets --all-features`: completes successfully; the
@@ -147,7 +153,8 @@ The audit now additionally covers:
 - courthouse-to-Glaüshouse clinical transfer without jurisdictional transfer;
 - caller-ID-based replay of qualification, Recipe authorization, maintained
   Synthesis, investiture, suspension, restoration, removal, and retirement;
-- full Gnome → Minotaur → Hecaton and Elf → Centaur → Pegasus proofs;
+- full Gnome → Faun → Minotaur and Elf → Satyr → Centaur Form definitions,
+  with Hecaton and Pegasus represented separately as sovereign Hands;
 - distinct persistent Form and revocable mantle;
 - five Contest trial domains, baseline-relative improvement, duplicate and
   conflict filtering, deterministic crowd tally, tie, and sabotage handling;

@@ -3,12 +3,19 @@ use hollow_grove::world::aura_beach::canonical_aura_beach;
 use hollow_grove::world::aura_field::canonical_aura_field;
 use hollow_grove::world::interior_surface::InteriorSurfaceId;
 
-fn main() {
+pub(crate) fn tool_main() {
     let field = canonical_aura_field().expect("canonical Aura Field");
     let beach = canonical_aura_beach().expect("canonical Aura Beach");
     let basin = canonical_aura_basin().expect("canonical Aura Basin");
 
     println!("interior surfaces={}", InteriorSurfaceId::ALL.len());
+    println!(
+        "{} / halves={} / upper={} / lower={}",
+        field.composite_display_name(),
+        field.cultivation_halves.len(),
+        field.cultivation_halves[0].id.display_name(),
+        field.cultivation_halves[1].id.display_name(),
+    );
     println!(
         "{} / house={:?} / routes={} / facilities={} / map={}",
         field.id.display_name(),

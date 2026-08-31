@@ -157,9 +157,10 @@ defeat terms, and civilian consequences without triumphal or Romanizing display.
 ## House interpretation
 
 Flynt asks what a system can do under pressure. Law of Capacity, Resynce,
-Tross, Wardens, Mystery Men, refusal, and care-handoff boundaries require
+Tross, Mystery Men, refusal, and care-handoff boundaries require
 capacity to be dated, supplied, maintainable, ethically constrained, and honest
-about defeat. Naval reach is not Capacity by itself.
+about defeat. Flynt's general civic designation remains STATUS: OPEN; the
+superseded Wardens title is not projected here. Naval reach is not Capacity by itself.
 
 ## Library integration
 

@@ -9,7 +9,7 @@ ollama run hollow-grove
         ↓
 Aura semantic proposal
         ↓
-Rust Federation and Festival
+Rust Rampart and Festival
         ↓
 confirmed or rejected Current state
 ```
@@ -110,7 +110,7 @@ These direct calls return proposal JSON. They do not confirm state.
 ## Call the authoritative path
 
 Applications that require a real Hollow Grove state transition must send the
-proposal through the existing Rust semantic parser, Federation phases, and
+proposal through the existing Rust semantic parser, Rampart phases, and
 Festival validation. A syntactically valid Ollama response means only
 `Proposed`; it does not mean `Confirmed`.
 
@@ -118,7 +118,7 @@ Run the complete authoritative cycle with a Point already present in the
 composition catalog:
 
 ```sh
-hollow-grove federation run \
+hollow-grove rampart run \
   point.hueman.origin \
   structural-repair \
   "Restore the supporting frame."
@@ -138,7 +138,7 @@ By default it uses the `hollow-grove` Ollama model and stores replayable
 semantic provenance at:
 
 ```text
-artifacts/semantic_federation_state_v1.json
+artifacts/semantic_rampart_state_v1.json
 ```
 
 Set `HOLLOW_GROVE_MODEL` to select another installed Ollama interpreter. Use
@@ -153,9 +153,9 @@ the same Gathering, Festival, provenance, witness, and persistence path.
 Local applications can use the same authoritative path over HTTP:
 
 ```sh
-hollow-grove federation serve \
+hollow-grove rampart serve \
   --listen 127.0.0.1:47820 \
-  --state /home/warren/hollow_grove/artifacts/semantic_federation_state_v1.json
+  --state /home/warren/hollow_grove/artifacts/semantic_rampart_state_v1.json
 ```
 
 Then submit a strict JSON request:
@@ -169,12 +169,12 @@ curl \
     "intent": "Restore the supporting frame.",
     "context_ref": null
   }' \
-  http://127.0.0.1:47820/v1/federation/cycles
+  http://127.0.0.1:47820/v1/rampart/cycles
 ```
 
 The V1 listener is loopback-only. It serializes cycles through one authoritative
 catalog and atomically persists the resulting provenance snapshot. See
-`docs/FEDERATION_HTTP_API_V1.md` for the complete contract, discovery routes,
+`docs/RAMPART_HTTP_API_V1.md` for the complete contract, discovery routes,
 status codes, limits, and trust boundary.
 
 The local alias is a prompt-packaged model, not a newly trained foundation

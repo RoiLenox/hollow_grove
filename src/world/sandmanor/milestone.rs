@@ -11,10 +11,16 @@ use std::fmt;
 
 use crate::hollow_grove_contract::House;
 use crate::institution::{IdentityId, InstitutionId, SiteId};
-use crate::lineage_contract::{SandmanorForm, SandmanorLineage, validate_sandmanor_transition};
+use crate::lineage_contract::{
+    SandmanorForm, SandmanorLineage, SandmanorSovereignHand, validate_sandmanor_transition,
+};
 use crate::world::glaushouse::{SynthesisContinuance, SynthesisLifecycle, SynthesisLifecycleState};
 
 use super::{ContestId, EvidenceId, RecipeId};
+
+pub const SANDMANOR_SOVEREIGN: &str = "The Sandman";
+pub const SANDMANOR_APEX_IDENTITY: &str = "Demiurge";
+pub const SANDMAN_ROLE_AT_APEX: &str = "sovereign Synthesizer and apex identity";
 
 macro_rules! milestone_id {
     ($name:ident) => {
@@ -91,7 +97,15 @@ impl SandmanorPeople {
     }
 
     #[must_use]
-    pub const fn first_guardian_form(self) -> SandmanorForm {
+    pub const fn intermediate_form(self) -> SandmanorForm {
+        match self {
+            Self::Minorian => SandmanorForm::Faun,
+            Self::Minoan => SandmanorForm::Satyr,
+        }
+    }
+
+    #[must_use]
+    pub const fn mature_form(self) -> SandmanorForm {
         match self {
             Self::Minorian => SandmanorForm::Minotaur,
             Self::Minoan => SandmanorForm::Centaur,
@@ -99,10 +113,10 @@ impl SandmanorPeople {
     }
 
     #[must_use]
-    pub const fn senior_guardian_form(self) -> SandmanorForm {
+    pub const fn sovereign_hand(self) -> SandmanorSovereignHand {
         match self {
-            Self::Minorian => SandmanorForm::Hecaton,
-            Self::Minoan => SandmanorForm::Pegasus,
+            Self::Minorian => SandmanorSovereignHand::Hecaton,
+            Self::Minoan => SandmanorSovereignHand::Pegasus,
         }
     }
 
@@ -128,6 +142,14 @@ pub const AURA_FARM_HALVES: [CultivationDomain; 2] = [
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub enum ContentFarmPractice {
+    CultivatesFamily,
+    SustainsDescendantsAndRelationships,
+    PreservesStoriesAndMemories,
+    InheritsTraditionAndKnowledge,
+    DevelopsCraftAndCreativeWork,
+    StewardsPossessionsAndHouseholdCulture,
+    BuildsInheritanceAndReputation,
+    AccumulatesLifeExperience,
     Educates,
     PreservesMemory,
     EntertainsResponsibly,
@@ -144,6 +166,21 @@ pub enum ContentFarmPractice {
 }
 
 impl ContentFarmPractice {
+    #[must_use]
+    pub const fn family_or_generational(self) -> bool {
+        matches!(
+            self,
+            Self::CultivatesFamily
+                | Self::SustainsDescendantsAndRelationships
+                | Self::PreservesStoriesAndMemories
+                | Self::InheritsTraditionAndKnowledge
+                | Self::DevelopsCraftAndCreativeWork
+                | Self::StewardsPossessionsAndHouseholdCulture
+                | Self::BuildsInheritanceAndReputation
+                | Self::AccumulatesLifeExperience
+        )
+    }
+
     #[must_use]
     pub const fn exploitative(self) -> bool {
         matches!(
@@ -175,7 +212,10 @@ impl ContentFarmAssessment {
 
     #[must_use]
     pub fn is_healthy(&self) -> bool {
-        !self.practices.is_empty() && !self.is_exploitative()
+        self.practices
+            .iter()
+            .any(|practice| practice.family_or_generational())
+            && !self.is_exploitative()
     }
 }
 
@@ -265,10 +305,19 @@ impl GuardianMantle {
     pub const fn required_regional_form(self) -> Option<SandmanorForm> {
         match self {
             Self::GuardianOfTheFields => Some(SandmanorForm::Minotaur),
-            Self::GuardianOfTheWholeFarm => Some(SandmanorForm::Hecaton),
+            Self::GuardianOfTheWholeFarm => Some(SandmanorForm::Minotaur),
             Self::GuardianOfTheBeach => Some(SandmanorForm::Centaur),
-            Self::GuardianOfTheHorizon => Some(SandmanorForm::Pegasus),
+            Self::GuardianOfTheHorizon => Some(SandmanorForm::Centaur),
             Self::SandmanSovereign => None,
+        }
+    }
+
+    #[must_use]
+    pub const fn required_sovereign_hand(self) -> Option<SandmanorSovereignHand> {
+        match self {
+            Self::GuardianOfTheWholeFarm => Some(SandmanorSovereignHand::Hecaton),
+            Self::GuardianOfTheHorizon => Some(SandmanorSovereignHand::Pegasus),
+            Self::GuardianOfTheFields | Self::GuardianOfTheBeach | Self::SandmanSovereign => None,
         }
     }
 
@@ -351,6 +400,9 @@ pub struct GuardianInvestiture {
     pub person: IdentityId,
     pub synthesis: GuardianSynthesisId,
     pub mantle: GuardianMantle,
+    /// Records which sovereign Hand the investiture expresses. The process by
+    /// which a Hecaton or Pegasus is appointed remains open canon.
+    pub sovereign_hand: Option<SandmanorSovereignHand>,
     pub jurisdiction: String,
     pub authority_state: GuardianAuthorityState,
     pub renewal_current: bool,
@@ -540,6 +592,21 @@ impl GuardianState {
         if active_sandmen > 1 {
             return Err(SandmanorMilestoneError::MultipleActiveSandmen);
         }
+        for hand in [
+            SandmanorSovereignHand::Hecaton,
+            SandmanorSovereignHand::Pegasus,
+        ] {
+            let active_holders = self
+                .investitures
+                .values()
+                .filter(|record| {
+                    record.sovereign_hand == Some(hand) && record.may_exercise_authority()
+                })
+                .count();
+            if active_holders > 1 {
+                return Err(SandmanorMilestoneError::MultipleActiveSovereignHands(hand));
+            }
+        }
         for investiture in self.investitures.values() {
             let synthesis = self.syntheses.get(&investiture.synthesis).ok_or_else(|| {
                 SandmanorMilestoneError::MissingRecord(investiture.synthesis.as_str().into())
@@ -550,6 +617,7 @@ impl GuardianState {
                     .mantle
                     .required_regional_form()
                     .is_some_and(|required| synthesis.to != required)
+                || investiture.sovereign_hand != investiture.mantle.required_sovereign_hand()
             {
                 return Err(SandmanorMilestoneError::InvalidInvestiture(
                     investiture.id.clone(),
@@ -674,6 +742,7 @@ pub struct ImprovementCandidate {
     pub person: IdentityId,
     pub people: SandmanorPeople,
     pub form: SandmanorForm,
+    pub sovereign_hand: SandmanorSovereignHand,
     pub mantle: GuardianInvestitureId,
     pub baseline: CandidateBaseline,
     pub improvement: ImprovementEvidence,
@@ -791,9 +860,23 @@ impl ContestOfImprovementProof {
         if first.person == second.person
             || first.people == second.people
             || !matches!(
-                (first.form, second.form),
-                (SandmanorForm::Hecaton, SandmanorForm::Pegasus)
-                    | (SandmanorForm::Pegasus, SandmanorForm::Hecaton)
+                (
+                    first.form,
+                    first.sovereign_hand,
+                    second.form,
+                    second.sovereign_hand,
+                ),
+                (
+                    SandmanorForm::Minotaur,
+                    SandmanorSovereignHand::Hecaton,
+                    SandmanorForm::Centaur,
+                    SandmanorSovereignHand::Pegasus,
+                ) | (
+                    SandmanorForm::Centaur,
+                    SandmanorSovereignHand::Pegasus,
+                    SandmanorForm::Minotaur,
+                    SandmanorSovereignHand::Hecaton,
+                )
             )
         {
             return Err(SandmanorMilestoneError::InvalidContestPair);
@@ -810,9 +893,13 @@ impl ContestOfImprovementProof {
                 .ok_or_else(|| {
                     SandmanorMilestoneError::MissingRecord(candidate.mantle.as_str().into())
                 })?;
-            let expected = match candidate.form {
-                SandmanorForm::Hecaton => GuardianMantle::GuardianOfTheWholeFarm,
-                SandmanorForm::Pegasus => GuardianMantle::GuardianOfTheHorizon,
+            let expected = match (candidate.form, candidate.sovereign_hand) {
+                (SandmanorForm::Minotaur, SandmanorSovereignHand::Hecaton) => {
+                    GuardianMantle::GuardianOfTheWholeFarm
+                }
+                (SandmanorForm::Centaur, SandmanorSovereignHand::Pegasus) => {
+                    GuardianMantle::GuardianOfTheHorizon
+                }
                 _ => return Err(SandmanorMilestoneError::InvalidContestPair),
             };
             if mantle.person != candidate.person
@@ -935,6 +1022,7 @@ pub const SANDMAN_COMMON_NAME: &str = "The Sandman";
 pub struct SandmanConvergence {
     pub person: IdentityId,
     pub source_form: SandmanorForm,
+    pub source_hand: SandmanorSovereignHand,
     pub recipe: RecipeId,
     pub integrates_other_way: bool,
     pub glaushouse_compatibility_cleared: bool,
@@ -946,8 +1034,9 @@ pub struct SandmanConvergence {
 impl SandmanConvergence {
     pub fn validate(&self) -> Result<(), SandmanorMilestoneError> {
         if !matches!(
-            self.source_form,
-            SandmanorForm::Hecaton | SandmanorForm::Pegasus
+            (self.source_form, self.source_hand),
+            (SandmanorForm::Minotaur, SandmanorSovereignHand::Hecaton)
+                | (SandmanorForm::Centaur, SandmanorSovereignHand::Pegasus)
         ) || !self.integrates_other_way
             || !self.glaushouse_compatibility_cleared
             || self.lifecycle.validate().is_err()
@@ -1042,6 +1131,7 @@ pub enum SandmanorMilestoneError {
     InvalidGuardianSynthesis(GuardianSynthesisId),
     InvalidInvestiture(GuardianInvestitureId),
     MultipleActiveSandmen,
+    MultipleActiveSovereignHands(SandmanorSovereignHand),
     InvalidCourthouseTransfer(CoastalTransferId),
     InvalidManticorpHosting(MaritimeTrainingId),
     InvalidContestPair,

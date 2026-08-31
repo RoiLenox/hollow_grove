@@ -28,7 +28,7 @@ The inverse circle names the underground curved mirror system beneath Hueman's l
 
 - The Stairway to Heaven reads as Ascend: the rising outer acceptance of higher burden along the circle's rim.
 - beneath it, an inverse underground curve carries hidden descent pressure on both sides.
-- The Riptide reads as Retrieve: emergency underway carries crises toward Glaushouse intake, with the visible water rim kept alive as Flynt's Merman range.
+- The Riptide reads as Retrieve: emergency underway carries crises toward Glaushouse intake, with the visible water rim kept alive as Flynt's Mariner/Merman range.
 - beneath it, an inverse underground curve carries hidden return pull on both sides beneath that roaming seam.
 - The Current Seanad reads as Deliberate: the outer court holds evidence and difficult design or repair questions for judgment.
 - beneath it, an inverse underground curve carries hidden current understructure on both sides.
@@ -46,7 +46,7 @@ The inverse circle names the underground curved mirror system beneath Hueman's l
 ## Artifact Inputs
 
 Hueman Fourway bytes: 1457.
-Hueman Link Physics bytes: 3086.
+Hueman Link Physics bytes: 3166.
 
 ## Boundary Reminder
 

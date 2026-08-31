@@ -75,5 +75,5 @@ Neither HAL nor Clouseau may redefine the kernel.
 
 Neither HAL nor Clouseau may mutate Hollow Grove or feed authority back into
 it. A scoped witness may cross the artifact boundary only as attributable,
-challengeable evidence through the Compromise/Federation adapter; the
+challengeable evidence through the Compromise/Rampart adapter; the
 receiving House or Being must still decide.

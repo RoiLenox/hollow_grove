@@ -5,7 +5,7 @@ use std::fmt;
 use serde::{Deserialize, Serialize};
 
 use crate::composition::{ExternalRef, Position3, Translation3, vertical_origin_relation};
-use crate::runtime_federation::{
+use crate::runtime_rampart::{
     FestivalResult, ProposalStatus, SemanticDecision, SemanticProposal, SemanticRejectionReason,
 };
 

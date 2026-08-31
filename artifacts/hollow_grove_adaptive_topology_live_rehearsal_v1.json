@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "rule_set": "ruleset.hollow-grove.adaptive-topology-live-rehearsal-v1",
+  "rehearsal_id": "rehearsal.adaptive-topology.spring-initiation.circle-to-rectangle-v1",
+  "execution_date": "2026-08-25",
+  "isolated_from_checked_world_state": true,
+  "godot_version": "4.7.2.stable.arch_linux.ed1daf0bf",
+  "function_junction": {
+    "archive_path": "artifacts/hollow_grove_function_junction_rehearsal_archive_v1.json",
+    "archive_format": "HGFJP",
+    "archive_version": 1,
+    "archive_checksum": "55f703150ed4852c",
+    "archive_sha256": "53d4b60b4a7152cb73d5cbc9e943552f68ed13bfbf630cb8aaa9e1ddb4f21e15",
+    "junction_id": "function-junction.canonical-year.spring-equinox",
+    "seasonal_function": "The Initiation"
+  },
+  "poses": [
+    {
+      "percentage": 0,
+      "rectangularity": 0,
+      "state_revision": 0,
+      "command_status": "committed",
+      "command_id": "adaptive-topology-rebuild.committed.r0.ef2eaf00",
+      "geometry_digest": "fnv1a32-adaptive-topology-geometry-v1:ef2eaf00",
+      "collision_polygon_count": 9,
+      "navigation_region_count": 1,
+      "result": "passed"
+    },
+    {
+      "percentage": 25,
+      "rectangularity": 250000000,
+      "state_revision": 2,
+      "command_status": "prepared_and_acknowledged",
+      "command_id": "adaptive-topology-rebuild.prepared.r2.ac188744",
+      "geometry_digest": "fnv1a32-adaptive-topology-geometry-v1:ac188744",
+      "collision_polygon_count": 9,
+      "navigation_region_count": 1,
+      "result": "passed"
+    },
+    {
+      "percentage": 50,
+      "rectangularity": 500000000,
+      "state_revision": 3,
+      "command_status": "prepared_and_acknowledged",
+      "command_id": "adaptive-topology-rebuild.prepared.r3.5491c338",
+      "geometry_digest": "fnv1a32-adaptive-topology-geometry-v1:5491c338",
+      "collision_polygon_count": 9,
+      "navigation_region_count": 1,
+      "result": "passed"
+    },
+    {
+      "percentage": 75,
+      "rectangularity": 750000000,
+      "state_revision": 4,
+      "command_status": "prepared_and_acknowledged",
+      "command_id": "adaptive-topology-rebuild.prepared.r4.20cc42af",
+      "geometry_digest": "fnv1a32-adaptive-topology-geometry-v1:20cc42af",
+      "collision_polygon_count": 9,
+      "navigation_region_count": 1,
+      "result": "passed"
+    },
+    {
+      "percentage": 100,
+      "rectangularity": 1000000000,
+      "state_revision": 5,
+      "command_status": "prepared_acknowledged_and_committed",
+      "command_id": "adaptive-topology-rebuild.prepared.r5.0613cdf9",
+      "restored_command_id": "adaptive-topology-rebuild.committed.r5.0613cdf9",
+      "geometry_digest": "fnv1a32-adaptive-topology-geometry-v1:0613cdf9",
+      "collision_polygon_count": 9,
+      "navigation_region_count": 1,
+      "result": "passed"
+    }
+  ],
+  "final_state": {
+    "revision": 5,
+    "rectangularity": 1000000000,
+    "active_transition": false,
+    "target": "locked_rectangle"
+  },
+  "visual_capture": {
+    "renderer": "Godot 4.7.2 OpenGL compatibility / AMD Radeon RX 7900 XTX",
+    "capture_size": "1280x720",
+    "fresh_capture_matches_approved_renders": true,
+    "sha256_by_percentage": {
+      "0": "41b7a522a552b0218ca22adcc11ed8cae2d2717c3c80cf4be9a017a7d616c807",
+      "25": "4745814397f03ab9108920b9207cf8790c41bca98b2b7eaa371b147fbb2d2247",
+      "50": "977de8b92a324d04d52db6b04cfaff0a22557af704a5624a4c1605e737bff595",
+      "75": "9b31c3837ebf06077789939f14c8911a53d3117a0f0a3c497b765781a2809dd2",
+      "100": "b6bdb861130f6488c763557803d3c8952b935bcf45cfbf673616d5a02db40441"
+    }
+  },
+  "acceptance": {
+    "all_five_poses_realized_by_godot": true,
+    "all_moving_poses_acknowledged_before_commit": true,
+    "all_nine_routes_have_collision_geometry": true,
+    "navigation_union_present_at_every_pose": true,
+    "geometry_digests_matched": true,
+    "fresh_visual_capture_digests_matched": true,
+    "stale_acknowledgements_observed": false,
+    "godot_error_count": 0,
+    "bridge_error_count": 0,
+    "checked_circular_state_mutated": false,
+    "result": "passed"
+  }
+}

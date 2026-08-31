@@ -271,7 +271,7 @@ impl BoardwalkCase {
     }
 
     /// Advisory-only records that frame the returning-Goon case for the
-    /// gameplay/Federation boundary.
+    /// gameplay/Rampart boundary.
     #[must_use]
     pub fn constitutional_advisories(&self) -> Vec<PersonaAdvisoryRecord> {
         if self.id != BoardwalkCaseId::ReturningGoonV1 {

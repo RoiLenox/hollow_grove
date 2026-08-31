@@ -4,7 +4,7 @@ Date: 2026-07-30
 Status: current reconciliation record; additive authority beneath the Hollow
 Grove Compromise  
 Purpose: verify that kernel, Houses, interfaces, roles, Current Synthesis
-clients, gameplay, and Federation share one constitutional boundary
+clients, gameplay, and Rampart share one constitutional boundary
 
 ## 1. Result
 
@@ -17,13 +17,13 @@ Universal Laws
 → four House constitutions
 → shared interfaces and Current Synthesis boundary
 → operational roles and AI-associated clients
-→ Federation continuity archive
+→ Rampart continuity archive
 → gameplay
 → presentation
 ```
 
 This reconciliation adds no fifth House, second Constitution, second
-Federation, or second recursion kernel.
+Rampart, or second recursion kernel.
 
 ## 2. Authority locks
 
@@ -36,7 +36,7 @@ Federation, or second recursion kernel.
 | Current Synthesis | PLEB/META contracts and clients | owns route grammar; crosses only through scoped witness adapters |
 | operational roles | `HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md` | bounded question, input, act, output, stop, and handoff |
 | AI-associated clients | `HOLLOW_GROVE_AI_ASSOCIATED_PERSONAS_CONSTITUTION_V1_DRAFT.md` and `src/ai_personas.rs` | advisory-only, attributable, refusal-aware, replayable |
-| Federation | HGRF V1 documents and `src/runtime_federation.rs` | carries accepted consequence; does not reinterpret domain history |
+| Rampart | HGRF V1 documents and `src/runtime_rampart.rs` | carries accepted consequence; does not reinterpret domain history |
 | gameplay/presentation | authoritative gameplay runtime and clients | gameplay asks; presentation witnesses; neither creates authority |
 
 ## 3. Current Synthesis boundary
@@ -67,9 +67,9 @@ legibility. Clouseau may witness the PLEB-PLEB relation between the systems.
 None of these associations transfers title-bearer identity or authority to an
 AI/client.
 
-## 5. Federation acceptance contract
+## 5. Rampart acceptance contract
 
-The Federation may bind a record only when all of the following are present:
+The Rampart of Roi and Roselina may bind a record only when all of the following are present:
 
 - stable subject, actor, case, role, and event identities;
 - originating authority and jurisdiction;
@@ -82,7 +82,7 @@ The Federation may bind a record only when all of the following are present:
 
 Persona advisories and presentation output remain evidence until the responsible
 Being, House, Court, or institution commits the lawful result. Rejected and
-inconclusive records may enter Federation history as true failed attempts but
+inconclusive records may enter Rampart history as true failed attempts but
 cannot produce their intended state.
 
 ## 6. Congruence checks
@@ -96,7 +96,7 @@ The repository is constitutionally congruent when these statements remain true:
    Title, Bond, or Resolve.
 5. No gameplay choice silently decides for a capable Being.
 6. No presentation path mutates authoritative state.
-7. Every accepted cross-layer result has a replayable Federation reference.
+7. Every accepted cross-layer result has a replayable Rampart reference.
 8. Every refusal, failure, contradiction, and inconclusive result remains
    historical evidence.
 
@@ -121,7 +121,7 @@ The prior reconciliation list is resolved as follows:
    returning-Goon advisory records; archive, retry, and replay tests enforce the
    boundary.
 2. **Complete.** Court, amendment, and Restitution use the common typed
-   Federation envelope through the shared-interface adapter and production
+   Rampart envelope through the shared-interface adapter and production
    components, with authority and replay validation.
 3. **Content-gated, not a foundation blocker.** Tross succession has a ratified
    typed record, all-four-House/Court gate enforcement, and negative bypass
@@ -133,7 +133,7 @@ The prior reconciliation list is resolved as follows:
    deterministic art contract, Godot renderer smoke tests, and the live
    save/restart/load lifecycle.
 
-The Compromise/Federation foundation is therefore frozen for art-facing work.
+The Compromise/Rampart foundation is therefore frozen for art-facing work.
 Later content may exercise already-ratified boundaries, but any change to those
 boundaries remains a versioned foundation migration under
 `FOUNDATION_FREEZE_V1.md`.

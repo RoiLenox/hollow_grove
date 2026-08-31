@@ -2145,7 +2145,7 @@ fn write_benchmark_artifacts(root: &Path, report: &BenchmarkReport) -> io::Resul
     Ok([markdown_path, json_path, release_path])
 }
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let cli = parse_benchmark_cli(env::args().skip(1))
         .map_err(|error| io::Error::new(io::ErrorKind::InvalidInput, error))?;
 

@@ -3,7 +3,7 @@ use std::collections::BTreeSet;
 use hollow_grove::hollow_grove_contract::House;
 use hollow_grove::world::{glaushouse, house_institutions};
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+pub(crate) fn tool_main() -> Result<(), Box<dyn std::error::Error>> {
     glaushouse::validate_principal_authorities()?;
     let catalog = house_institutions::canonical_house_institutions();
     catalog

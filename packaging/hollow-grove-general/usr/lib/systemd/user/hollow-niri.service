@@ -1,0 +1,24 @@
+[Unit]
+Description=Low-latency Hollow Grove Niri command broker
+PartOf=graphical-session.target
+After=graphical-session.target
+ConditionFileIsExecutable=/usr/lib/hollow-grove/bin/hollow-niri
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/hollow-grove/bin/hollow-niri daemon
+Restart=on-failure
+RestartSec=100ms
+UMask=0077
+RuntimeDirectory=hollow-niri
+RuntimeDirectoryMode=0700
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%t/hollow-niri
+RestrictAddressFamilies=AF_UNIX
+LockPersonality=true
+
+[Install]
+WantedBy=graphical-session.target

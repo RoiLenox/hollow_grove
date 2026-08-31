@@ -1,12 +1,18 @@
-schema_version = 1
+schema_version = 2
 edition = "Hollow Grove General Edition"
 profile = "niri"
+desktop_identity = "Hollow Grove"
+shell_policy = "one-bar-one-launcher-one-compositor"
 
 [paths]
 helper_root = "/usr/lib/hollow-grove/bin"
 shared_data = "/usr/share/hollow-grove"
 system_applications = "/etc/hollow-grove/applications.toml"
 keyboard_grove = "/etc/hollow-grove/keyboard-grove.json"
+keyboard_command = "/usr/bin/hollow-keyboard"
+shell_command = "/usr/bin/hollow-shell"
+shell_config = "/etc/xdg/hollow-grove/waybar/config.jsonc"
+shell_style = "/etc/xdg/hollow-grove/waybar/style.css"
 
 [defaults]
 wallpaper_color = "#101218"
@@ -14,6 +20,23 @@ weather_provider = "https://wttr.in"
 hardware_output_policy = "automatic"
 graphics_driver_policy = "system-selected"
 brightness_startup_policy = "unchanged"
+
+[palette]
+outline = "#0A1024"
+surface = "#121B38"
+raised = "#1C2A52"
+text = "#A7B6D9"
+authority = "#7F8BC4"
+healthy = "#78C9A4"
+urgent = "#E07A86"
+
+[shell]
+top_bar = "waybar"
+launcher = "walker"
+overview = "niri"
+dock = "none"
+desktop_icons = false
+parallel_settings_shell = false
 
 [state]
 user_config = "$XDG_CONFIG_HOME/hollow-grove/general-edition.toml"

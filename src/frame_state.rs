@@ -14,6 +14,7 @@ pub enum FrameId {
     Ork,
     Ogre,
     Troglodyte,
+    Pixie,
     Pixy,
     Sprite,
     Faerie,
@@ -25,11 +26,91 @@ pub enum FrameId {
     Merman,
     Chimera,
     Gnome,
+    Faun,
     Minotaur,
     Hecaton,
     Elf,
+    Satyr,
     Centaur,
     Pegasus,
+    Fairy,
+    Spirit,
+    Sylph,
+}
+
+impl FrameId {
+    /// Projects stable legacy identifiers into active canon without changing
+    /// the historical enum variant that an archive or replay may carry.
+    #[must_use]
+    pub const fn active_canonical_form(self) -> Option<Self> {
+        match self {
+            Self::Hecaton | Self::Pegasus => None,
+            Self::Pixy => Some(Self::Pixie),
+            Self::Faerie => Some(Self::Fairy),
+            form => Some(form),
+        }
+    }
+
+    #[must_use]
+    pub const fn is_legacy_compatibility_only(self) -> bool {
+        matches!(
+            self,
+            Self::Pixy | Self::Faerie | Self::Hecaton | Self::Pegasus
+        )
+    }
+}
+
+pub const ACTIVE_STONEBEND_SYNTHESIS_FRAMES: [FrameId; 8] = [
+    FrameId::Gremlin,
+    FrameId::Goblin,
+    FrameId::Ghoul,
+    FrameId::Spectre,
+    FrameId::Troll,
+    FrameId::Ork,
+    FrameId::Ogre,
+    FrameId::Troglodyte,
+];
+
+pub const ACTIVE_GLAUSHOUSE_SYNTHESIS_FRAMES: [FrameId; 8] = [
+    FrameId::Pixie,
+    FrameId::Sprite,
+    FrameId::Fairy,
+    FrameId::Spirit,
+    FrameId::Siren,
+    FrameId::Sylph,
+    FrameId::Nymph,
+    FrameId::Muse,
+];
+
+/// The locked one-to-one Current/Aura pairing at each Hollow Grove level.
+///
+/// Keep this registry ordered from the first level through the eighth. Runtime
+/// consumers should query it rather than maintaining local pairing tables.
+pub const HOLLOW_GROVE_LEVEL_PAIRINGS: [(FrameId, FrameId); 8] = [
+    (FrameId::Gremlin, FrameId::Pixie),
+    (FrameId::Goblin, FrameId::Sprite),
+    (FrameId::Ghoul, FrameId::Fairy),
+    (FrameId::Spectre, FrameId::Spirit),
+    (FrameId::Troll, FrameId::Siren),
+    (FrameId::Ork, FrameId::Sylph),
+    (FrameId::Ogre, FrameId::Nymph),
+    (FrameId::Troglodyte, FrameId::Muse),
+];
+
+#[must_use]
+pub fn paired_aura_frame(current: FrameId) -> Option<FrameId> {
+    let current = current.active_canonical_form()?;
+    HOLLOW_GROVE_LEVEL_PAIRINGS
+        .iter()
+        .find_map(|(candidate, aura)| (*candidate == current).then_some(*aura))
+}
+
+#[must_use]
+pub fn paired_current_frame(aura: FrameId) -> Option<FrameId> {
+    let aura = aura.active_canonical_form()?;
+    HOLLOW_GROVE_LEVEL_PAIRINGS
+        .iter()
+        .find_map(|(current, candidate)| (*candidate == aura).then_some(*current))
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -191,7 +272,11 @@ impl Default for FrameState {
 
 #[cfg(test)]
 mod tests {
-    use super::{BeingId, CurrentPrism, FrameId, FrameState};
+    use super::{
+        ACTIVE_GLAUSHOUSE_SYNTHESIS_FRAMES, ACTIVE_STONEBEND_SYNTHESIS_FRAMES, BeingId,
+        CurrentPrism, FrameId, FrameState, HOLLOW_GROVE_LEVEL_PAIRINGS, paired_aura_frame,
+        paired_current_frame,
+    };
 
     #[test]
     fn origin_frame_state_matches_the_first_fixture() {
@@ -221,5 +306,43 @@ mod tests {
 
         assert_eq!(gremlin.being(), BeingId::Hueman);
         assert_eq!(pixy.being(), BeingId::Hueman);
+    }
+
+    #[test]
+    fn active_frames_include_every_locked_pairing_level() {
+        assert!(ACTIVE_STONEBEND_SYNTHESIS_FRAMES.contains(&FrameId::Spectre));
+        assert!(ACTIVE_GLAUSHOUSE_SYNTHESIS_FRAMES.contains(&FrameId::Pixie));
+        assert!(ACTIVE_GLAUSHOUSE_SYNTHESIS_FRAMES.contains(&FrameId::Fairy));
+        assert!(ACTIVE_GLAUSHOUSE_SYNTHESIS_FRAMES.contains(&FrameId::Spirit));
+        assert!(ACTIVE_GLAUSHOUSE_SYNTHESIS_FRAMES.contains(&FrameId::Sylph));
+        assert!(!ACTIVE_GLAUSHOUSE_SYNTHESIS_FRAMES.contains(&FrameId::Pixy));
+        assert!(!ACTIVE_GLAUSHOUSE_SYNTHESIS_FRAMES.contains(&FrameId::Faerie));
+        assert_eq!(FrameId::Pixy.active_canonical_form(), Some(FrameId::Pixie));
+        assert_eq!(
+            FrameId::Faerie.active_canonical_form(),
+            Some(FrameId::Fairy)
+        );
+    }
+
+    #[test]
+    fn every_hollow_grove_level_has_the_exact_bidirectional_pair() {
+        let expected = [
+            (FrameId::Gremlin, FrameId::Pixie),
+            (FrameId::Goblin, FrameId::Sprite),
+            (FrameId::Ghoul, FrameId::Fairy),
+            (FrameId::Spectre, FrameId::Spirit),
+            (FrameId::Troll, FrameId::Siren),
+            (FrameId::Ork, FrameId::Sylph),
+            (FrameId::Ogre, FrameId::Nymph),
+            (FrameId::Troglodyte, FrameId::Muse),
+        ];
+
+        assert_eq!(HOLLOW_GROVE_LEVEL_PAIRINGS, expected);
+        for (current, aura) in expected {
+            assert_eq!(paired_aura_frame(current), Some(aura));
+            assert_eq!(paired_current_frame(aura), Some(current));
+        }
+        assert_eq!(paired_current_frame(FrameId::Pixy), Some(FrameId::Gremlin));
+        assert_eq!(paired_current_frame(FrameId::Faerie), Some(FrameId::Ghoul));
     }
 }

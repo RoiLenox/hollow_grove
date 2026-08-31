@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Hollow Grove Keyboard
+Comment=Explore the Key = WHAT · Modifier = HOW constitution
+Exec=hollow-keyboard show
+Icon=input-keyboard
+Terminal=false
+Categories=Utility;

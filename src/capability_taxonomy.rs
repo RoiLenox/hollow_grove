@@ -1,4 +1,8 @@
-//! Additive Current/Aura capability vocabulary above the frozen kernel.
+//! Practitioner capability vocabulary above the frozen kernel.
+//!
+//! `CurrentPowerRoot` and `AuraPowerRoot` are V1 compatibility mechanics. They
+//! remain attached to stable capability records for replay, but do not define
+//! the semantic Current and Aura axes in the practitioner ontology.
 
 use std::collections::BTreeSet;
 
@@ -26,6 +30,8 @@ pub enum KinesisFamily {
     Technokinesis,
     Ideokinesis,
     Biokinesis,
+    Noomancy,
+    /// Stable V1 spelling retained for old records.
     Precognition,
     Telekinesis,
     Nookinesis,
@@ -122,19 +128,23 @@ pub const GLAUSHOUSE_BIOKINESIS: CapabilityDefinition = CapabilityDefinition {
     recovery: "stop authority, care, reassessment, and lawful return",
 };
 
-pub const GLAUSHOUSE_PRECOGNITION: CapabilityDefinition = CapabilityDefinition {
+pub const GLAUSHOUSE_NOOMANCY: CapabilityDefinition = CapabilityDefinition {
     id: "capability.glaushouse.precognition",
     house: CapabilityHouse::Glaushouse,
     axis: CapabilityAxis::Aura,
-    family: KinesisFamily::Precognition,
+    family: KinesisFamily::Noomancy,
     faculty: HuemanFaculty::Precog,
     canonical_root: CanonicalPowerRoot::Aura(AuraPowerRoot::Clairvoyance),
-    frame: "Pixy→Muse",
+    frame: "Pixie→(Sprite→Spirit | Fairy→Nymph)→Siren→Muse",
     range: "evidence-grounded probable consequence",
     load: "attention, pattern, uncertainty, and living context",
     distortion: "future fixation and coerced interpretation",
     recovery: "disclosed uncertainty, consent, and present evidence",
 };
+
+/// Stable source-level alias for V1 callers. Current canon exposes Noomancy.
+#[deprecated(note = "use GLAUSHOUSE_NOOMANCY; the stable V1 ID still decodes")]
+pub const GLAUSHOUSE_PRECOGNITION: CapabilityDefinition = GLAUSHOUSE_NOOMANCY;
 
 pub const FLYNT_TELEKINESIS: CapabilityDefinition = CapabilityDefinition {
     id: "capability.flynt.telekinesis",
@@ -164,16 +174,26 @@ pub const FLYNT_NOOKINESIS: CapabilityDefinition = CapabilityDefinition {
     recovery: "consent restoration, disclosure, and return",
 };
 
-pub const CANONICAL_CAPABILITIES: &[CapabilityDefinition] = &[
+/// Locked, active House-side expressions. Stonebend's exact axis mappings and
+/// additional Sandmanor expression aliases remain open in the practitioner
+/// ontology and are not fabricated here.
+pub const ACTIVE_CAPABILITIES: &[CapabilityDefinition] = &[
+    GLAUSHOUSE_BIOKINESIS,
+    GLAUSHOUSE_NOOMANCY,
+    FLYNT_TELEKINESIS,
+    FLYNT_NOOKINESIS,
+];
+
+/// Stable V1 physical/root adapters retained for archive and Recipe replay.
+pub const LEGACY_V1_CAPABILITIES: &[CapabilityDefinition] = &[
     STONEBEND_BAROKINESIS,
     STONEBEND_HAPTOKINESIS,
     SANDMANOR_TECHNOKINESIS,
     SANDMANOR_IDEOKINESIS,
-    GLAUSHOUSE_BIOKINESIS,
-    GLAUSHOUSE_PRECOGNITION,
-    FLYNT_TELEKINESIS,
-    FLYNT_NOOKINESIS,
 ];
+
+/// Backward-compatible public name for the active catalog.
+pub const CANONICAL_CAPABILITIES: &[CapabilityDefinition] = ACTIVE_CAPABILITIES;
 
 pub const PILOT_CAPABILITIES: &[CapabilityDefinition] = &[
     STONEBEND_BAROKINESIS,
@@ -228,18 +248,18 @@ mod tests {
     #[test]
     fn pilot_keeps_current_and_aura_house_boundaries() {
         validate_capabilities(CANONICAL_CAPABILITIES).unwrap();
-        assert_eq!(CANONICAL_CAPABILITIES.len(), 8);
-        assert_eq!(STONEBEND_BAROKINESIS.axis, CapabilityAxis::Current);
-        assert_eq!(STONEBEND_HAPTOKINESIS.axis, CapabilityAxis::Aura);
+        assert_eq!(CANONICAL_CAPABILITIES.len(), 4);
         assert_eq!(FLYNT_TELEKINESIS.house, CapabilityHouse::Flynt);
         assert_eq!(FLYNT_NOOKINESIS.family, KinesisFamily::Nookinesis);
+        assert_eq!(GLAUSHOUSE_NOOMANCY.family, KinesisFamily::Noomancy);
+        assert_eq!(LEGACY_V1_CAPABILITIES.len(), 4);
         assert_eq!(STONEBEND_BAROKINESIS.frame, "Gremlin→Troglodyte");
         assert_eq!(
             FLYNT_TELEKINESIS.canonical_root,
             CanonicalPowerRoot::Current(CurrentPowerRoot::Telekinesis)
         );
         assert_eq!(
-            GLAUSHOUSE_PRECOGNITION.canonical_root,
+            GLAUSHOUSE_NOOMANCY.canonical_root,
             CanonicalPowerRoot::Aura(AuraPowerRoot::Clairvoyance)
         );
     }

@@ -1,4 +1,5 @@
 # Current Synthesis Scenario
+# compatibility: route_warden_04 is a stable replay identifier and Route Warden is a generic operational title, not the superseded Flynt canonical people/title.
 scenario_id: scout_valley_vertical_slice
 title: Scout Valley Vertical Slice
 default_focused_npc_id: route_warden_04

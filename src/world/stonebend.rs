@@ -18,6 +18,8 @@ use crate::institution::{IdentityId, InstitutionId, OfficeId};
 pub const STONEBEND_CONSTITUTION_SOURCE: &str = "STONEBEND_CONSTITUTION_V2.md";
 pub const STONEBEND_GOVERNING_VERB: &str = "Name";
 pub const STONEBEND_SIGNATURE_OFFENSE: &str = "Illegal Hollowing";
+pub const STONEBEND_SOVEREIGN_TITLE: &str = "Hypergiant";
+pub const STONEBEND_DIAMOND_STATUS: &str = "STATUS: OPEN";
 
 #[cfg(test)]
 fn identity(value: &str) -> IdentityId {
@@ -206,7 +208,9 @@ pub enum HypergiantSelectionPhase {
     FlyntProofOfPersistence,
     LazerhornClimbed,
     AccessionEligible,
+    /// Stable source compatibility for the superseded Diamond bearer model.
     DiamondInvested,
+    HypergiantInvested,
 }
 
 impl HypergiantSelectionPhase {
@@ -220,8 +224,8 @@ impl HypergiantSelectionPhase {
             Self::ConsequenceDescentCompleted => Some(Self::FlyntProofOfPersistence),
             Self::FlyntProofOfPersistence => Some(Self::LazerhornClimbed),
             Self::LazerhornClimbed => Some(Self::AccessionEligible),
-            Self::AccessionEligible => Some(Self::DiamondInvested),
-            Self::DiamondInvested => None,
+            Self::AccessionEligible => Some(Self::HypergiantInvested),
+            Self::DiamondInvested | Self::HypergiantInvested => None,
         }
     }
 }
@@ -280,7 +284,12 @@ impl HypergiantSelectionProcess {
     }
 
     pub fn require_complete(&self) -> Result<(), StonebendValidationError> {
-        if self.phase == HypergiantSelectionPhase::DiamondInvested && !self.evidence.is_empty() {
+        if matches!(
+            self.phase,
+            HypergiantSelectionPhase::DiamondInvested
+                | HypergiantSelectionPhase::HypergiantInvested
+        ) && !self.evidence.is_empty()
+        {
             Ok(())
         } else {
             Err(StonebendValidationError::IncompleteSelection(self.phase))
@@ -1615,7 +1624,7 @@ mod tests {
             HypergiantSelectionPhase::FlyntProofOfPersistence,
             HypergiantSelectionPhase::LazerhornClimbed,
             HypergiantSelectionPhase::AccessionEligible,
-            HypergiantSelectionPhase::DiamondInvested,
+            HypergiantSelectionPhase::HypergiantInvested,
         ] {
             process.advance(phase, evidence.clone()).unwrap();
         }

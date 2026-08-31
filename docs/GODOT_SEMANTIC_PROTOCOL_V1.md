@@ -9,7 +9,7 @@ hollow-grove-semantic-event-v1
 This is an outbound, Rust-owned presentation contract. Godot may display these
 events, animate them, and retain nonauthoritative UI history. It may not write
 semantic positions, assign IDs, confirm proposals, create evidence, or bypass
-Federation and The Festival.
+Rampart and The Festival.
 
 The event vocabulary is:
 

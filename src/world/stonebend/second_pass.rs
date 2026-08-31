@@ -437,12 +437,20 @@ pub enum ConstitutionalDimension {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SovereignTitle {
+    /// Stable source compatibility for the superseded sovereign meaning.
     Diamond,
+    Hypergiant,
 }
 
 #[must_use]
 pub fn diamond_title_id() -> TitleRecordId {
-    TitleRecordId::new("title.stonebend.diamond").expect("canonical Diamond Title identity")
+    TitleRecordId::new("title.stonebend.diamond").expect("legacy Diamond Title identity")
+}
+
+#[must_use]
+pub fn hypergiant_title_id() -> TitleRecordId {
+    TitleRecordId::new("title.stonebend.hypergiant")
+        .expect("canonical Hypergiant sovereign Title identity")
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -533,7 +541,7 @@ pub struct DiamondState {
 impl Default for DiamondState {
     fn default() -> Self {
         Self {
-            title: diamond_title_id(),
+            title: hypergiant_title_id(),
             active_tenure: None,
             ended_tenures: Vec::new(),
         }

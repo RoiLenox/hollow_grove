@@ -69,7 +69,7 @@ Every confirmed paired witness additionally records:
 
 - both individual transitions;
 - all junction stages;
-- Federation decision;
+- Rampart decision;
 - resulting session state;
 - stable identity before and after.
 

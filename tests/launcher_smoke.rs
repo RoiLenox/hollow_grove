@@ -75,7 +75,7 @@ fn local_scripts_derive_the_checkout_root_instead_of_naming_one() {
 }
 
 #[test]
-fn runtime_launchers_default_to_their_staged_checkout_from_any_working_directory() {
+fn runtime_launchers_use_their_staged_checkout_in_explicit_dev_mode() {
     let repo_root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let temp_root = unique_temp_dir("hollow-grove-portable-launchers");
     let temp_bin = temp_root.join("bin");
@@ -106,6 +106,13 @@ fn runtime_launchers_default_to_their_staged_checkout_from_any_working_directory
             launch_log.display()
         ),
     );
+    create_executable_script(
+        &temp_target_debug.join("hollow_grove_runtime"),
+        &format!(
+            "#!/usr/bin/env bash\nset -euo pipefail\nprintf '%s|%s\\n' \"$PWD\" \"$*\" >> '{}'\n",
+            launch_log.display()
+        ),
+    );
 
     let path = format!(
         "{}:{}",
@@ -121,6 +128,7 @@ fn runtime_launchers_default_to_their_staged_checkout_from_any_working_directory
             .env_remove("HOLLOW_GROVE_ROOT")
             .env("PATH", &path)
             .arg(temp_root.join(script))
+            .arg("--dev")
             .arg(argument)
             .status()
             .expect("portable launcher should run");
@@ -130,10 +138,12 @@ fn runtime_launchers_default_to_their_staged_checkout_from_any_working_directory
     let cargo_log = fs::read_to_string(cargo_log).expect("cargo log should read");
     let launch_log = fs::read_to_string(launch_log).expect("launch log should read");
     assert_eq!(cargo_log.lines().count(), 2);
-    assert!(cargo_log.lines().all(|line| {
-        line.starts_with(&format!("{}|build --bin hollow-grove", temp_root.display()))
-    }));
-    assert!(launch_log.contains(&format!("{}|runtime runtime-probe", temp_root.display())));
+    assert!(
+        cargo_log
+            .lines()
+            .all(|line| line.contains("build --manifest-path"))
+    );
+    assert!(launch_log.contains(&format!("{}|runtime-probe", temp_root.display())));
     assert!(launch_log.contains(&format!("{}|desktop desktop-probe", temp_root.display())));
 
     fs::remove_dir_all(&temp_root).expect("temp cleanup should succeed");
@@ -191,7 +201,7 @@ fn launcher_runs_runtime_and_bridge_in_a_staged_workspace() {
     create_executable_script(
         &temp_bin.join("niri"),
         &format!(
-            "#!/usr/bin/env bash\nset -euo pipefail\necho \"$@\" >> \"{}\"\nif [[ \"$1\" == \"msg\" && \"$2\" == \"-j\" && \"${{3-}}\" == \"workspaces\" ]]; then\n  printf '%s\\n' '[{{\"id\":1,\"idx\":1,\"name\":\"HollowGrove\",\"output\":\"DP-2\",\"is_urgent\":false,\"is_active\":true,\"is_focused\":true,\"active_window_id\":4}}]'\nelif [[ \"$1\" == \"msg\" && \"$2\" == \"overview-state\" ]]; then\n  printf '%s\\n' 'Overview is open.'\nelif [[ \"$1\" == \"msg\" && \"$2\" == \"action\" && \"${{3-}}\" == \"open-overview\" ]]; then\n  :\nelif [[ \"$1\" == \"msg\" && \"$2\" == \"action\" && \"${{3-}}\" == \"close-overview\" ]]; then\n  :\nelif [[ \"$1\" == \"msg\" && \"$2\" == \"action\" && \"${{3-}}\" == \"focus-workspace\"* ]]; then\n  :\nelse\n  printf '%s\\n' \"unexpected niri invocation: $*\" >&2\n  exit 1\nfi\n",
+            "#!/usr/bin/env bash\nset -euo pipefail\necho \"$@\" >> \"{}\"\nif [[ \"$1\" == \"msg\" && \"$2\" == \"-j\" && \"${{3-}}\" == \"workspaces\" ]]; then\n  printf '%s\\n' '[{{\"id\":1,\"idx\":1,\"name\":\"HollowGrove\",\"output\":\"DP-2\",\"is_urgent\":false,\"is_active\":true,\"is_focused\":true,\"active_window_id\":4}}]'\nelif [[ \"$1\" == \"msg\" && \"$2\" == \"-j\" && \"${{3-}}\" == \"focused-window\" ]]; then\n  printf '%s\\n' '{{\"id\":4,\"title\":\"Terminal\",\"app_id\":\"kitty\",\"output\":\"DP-2\",\"geometry\":{{\"x\":320,\"y\":180,\"width\":1280,\"height\":720}}}}'\nelif [[ \"$1\" == \"msg\" && \"$2\" == \"-j\" && \"${{3-}}\" == \"outputs\" ]]; then\n  printf '%s\\n' '[{{\"name\":\"DP-2\",\"is_focused\":true,\"logical\":{{\"x\":0,\"y\":0,\"width\":2560,\"height\":1440}}}}]'\nelif [[ \"$1\" == \"msg\" && \"$2\" == \"overview-state\" ]]; then\n  printf '%s\\n' 'Overview is open.'\nelif [[ \"$1\" == \"msg\" && \"$2\" == \"action\" && \"${{3-}}\" == \"open-overview\" ]]; then\n  :\nelif [[ \"$1\" == \"msg\" && \"$2\" == \"action\" && \"${{3-}}\" == \"close-overview\" ]]; then\n  :\nelif [[ \"$1\" == \"msg\" && \"$2\" == \"action\" && \"${{3-}}\" == \"focus-workspace\"* ]]; then\n  :\nelse\n  printf '%s\\n' \"unexpected niri invocation: $*\" >&2\n  exit 1\nfi\n",
             niri_log.display()
         ),
     );
@@ -229,7 +239,8 @@ fn launcher_runs_runtime_and_bridge_in_a_staged_workspace() {
             ),
         )
         .arg("./run-runtime-niri.sh")
-        .args(["--cycles", "2", "--interval-ms", "1500", "--quiet"])
+        .args(["--dev", "--cycles", "2", "--interval-ms", "1500", "--quiet"])
+        .env("HOLLOW_GROVE_NIRI_CLI", "1")
         .status()
         .expect("launcher should run");
 
@@ -246,7 +257,7 @@ fn launcher_runs_runtime_and_bridge_in_a_staged_workspace() {
     assert!(launcher_runtime_status.contains("refreshed pipeline"));
     let niri_log_contents = fs::read_to_string(&niri_log).expect("niri log should exist");
     let cargo_log_contents = fs::read_to_string(&cargo_log).expect("cargo log should exist");
-    assert!(cargo_log_contents.contains("build --bin hollow-grove"));
+    assert!(cargo_log_contents.contains("--bin hollow-grove"));
     assert!(niri_log_contents.contains("msg -j workspaces"));
 
     fs::remove_dir_all(&temp_root).expect("temp cleanup should succeed");

@@ -35,6 +35,15 @@ clearance, and technical possibility is not lawful permission.
 
 ## Article I — Constitutional Domain
 
+Glaüshouse's Domain is **Mind**, its Law is **Integrity**, and its distinct
+faculty is **Precog**. Precog is neither Current, Aura, Synthesis, nor rank.
+
+Glaüshouse's Current-side expression is **Biokinesis**: outward and physical
+interaction with living systems in service of Integrity. Its Aura-side
+expression is **Noomancy**: internal knowing, perception, interpretation, and
+regulation of mind or Aura in service of Integrity. The `noo-` relationship to
+mind and intellect is intentional.
+
 The governing verb is **Clear**. Clearance permits a defined intervention for
 a named subject, by a qualified operator, within a stated scope, facility,
 time, risk, consent, capacity, and recovery boundary. It neither guarantees
@@ -80,42 +89,49 @@ lawful closure.
 
 ## Article III — Clinical and Constitutional Ladder
 
-Glaüshouse uses one generative clinical ladder:
+Glaüshouse uses one split-and-reunify clinical and Synthesis geometry:
 
 ```text
-                         Prima Donna
-                      one singular leader
-                               ↑
-                         Persephones
-                    multiple balanced leaders
-                               ↑
-                 ┌─────────────┴─────────────┐
-                 │                           │
-              Matrons                     Marshals
-         Aura-forward branch         Current-forward branch
-                 ↑                           ↑
-                 └─────────────┬─────────────┘
-                               │
-                         Nightingales
-                    unified clinical foundation
+                 NIGHTINGALE
+                     PIXY
+                      │
+             ┌────────┴────────┐
+             │                 │
+          MARSHAL            MATRON
+           SPRITE             FAIRY
+             │                 │
+           SPIRIT             NYMPH
+             │                 │
+             └────────┬────────┘
+                      │
+                 PERSEPHONE
+                    SIREN
+                      │
+                 PRIMA DONNA
+                     MUSE
 ```
 
-Every clinician begins from, or proves the full equivalent of, the Nightingale
-foundation. A Nightingale may choose Matron or Marshal. Those branches have
+Every clinician begins from, or proves the full equivalent of, the
+Nightingale/Pixie foundation. A Nightingale may choose Marshal/Sprite, the
+physical Biokinetic-dominant branch, or Matron/Fairy, the Aura
+Noomantic-dominant branch. Those branches have
 equal constitutional rank and dignity, remain complementary specializations,
 and neither is preliminary or subordinate to the other. A clinician may later
 cross-train, change emphasis, and prove both domains.
 
-Persephone is an advanced multiple rank earned through mastery of both Matron
-and Marshal domains. Multiple Persephones may serve simultaneously. Prima
-Donna is the only singular apex office. Doctor Ratchet is its frozen current
+Spirit is the advanced Marshal-branch Synthesis correspondence and Nymph the
+advanced Matron-branch correspondence. They are not public offices called
+“Advanced Marshal” or “Advanced Matron.” Persephone/Siren is an advanced
+multiple rank and reunified Synthesis earned through mastery of both domains.
+Multiple Persephones may serve simultaneously. Prima Donna/Muse is the singular
+apex office and Synthesis correspondence. Doctor Ratchet is its frozen current
 holder identity. Nurse House is a frozen current Persephone identity, not the
 only possible Persephone and not a separate office.
 
-These are progressive Synthesis Forms, clinical ranks, and constitutional
-authorities arising from one foundation—not species, castes, or disconnected
-professions. Advancement never replaces the clinician's stable person identity
-or erases prior mastery.
+The rank and form correspondences arise from one foundation but are not
+interchangeable schema axes. Advancement never replaces the practitioner's
+stable person identity or erases prior mastery. `Fairy` is active canonical
+spelling; `Faerie` is retained only as a legacy serialization alias.
 
 ## Article IV — Prima Donna
 
@@ -201,7 +217,7 @@ after lawful stop criteria, or exceed clinical authorization.
 
 > **Every higher Glaüshouse authority begins by learning to remain beside the patient.**
 
-Matron is the Aura-forward branch. Matrons specialize in observation,
+Matron is the Aura/Noomancy-forward branch. Matrons specialize in observation,
 cognition, perception, emotional continuity, meaningful lived consent,
 identity preservation, Aura regulation, advocacy, subtle symptoms, recovery,
 rehabilitation, and the subjective experience of maintained Synthesis.
@@ -215,7 +231,7 @@ identity destabilizes, Aura coherence fails, cognition deteriorates,
 psychological rejection begins, or the procedure becomes experientially
 unlivable.
 
-Marshal is the Current-forward branch. Marshals specialize in physical
+Marshal is the Current/Biokinesis-forward branch. Marshals specialize in physical
 stabilization, Current circulation, movement and positioning, procedural
 readiness, graft integrity, emergency response, structural support,
 containment, intensive care, and bodily survival.
@@ -313,18 +329,18 @@ deterioration without discrimination. Restraint is a last, least-restrictive,
 monitored, reviewed safety measure and never punishment, convenience,
 intimidation, forced experimentation, or suppression.
 
-## Article XII — Aura and Current Care
+## Article XII — Aura, Current, and legacy physical care
 
-Aura care governs perception, projection, influence, psychic distress,
-illusion, memory, emotional resonance, Glow instability, and Aura depletion or
-overload while protecting mental autonomy. Aura influence cannot manufacture
-consent.
+Practitioner Aura care concerns internally cultivated perception, knowledge,
+discipline, cognition, magic, and capacity while protecting mental autonomy.
+Practitioner Current care concerns relational participation in households,
+institutions, communities, environments, and collective systems. Neither may
+manufacture consent.
 
-Current care governs bodily force, movement, pressure, durability, momentum,
-Flow instability, depletion, disruption, overload, and loss of control.
-Combined instability is stabilized and distinguished from injury, identity,
-emerging lawful change, and external imposition; it is not an excuse for forced
-Synthesis.
+Historical Glow, Flow, depletion, pressure, circulation, and observation
+meters remain **LEGACY PHYSICAL COMPATIBILITY MECHANICS**. Clinicians may still
+treat those recorded conditions without treating them as universal definitions
+of Current or Aura.
 
 ## Article XIII — Synthesis
 
@@ -392,7 +408,7 @@ Lawful classes include restorative, elective, developmental, regional,
 emergency, composite, staged, experimental, reversible, partially reversible,
 irreversible, successor, corrective, failed, and incomplete Synthesis.
 
-Regional canon remains Gnome to Minotaur on the Aura Field and Elf to Centaur
+Regional mature-Form canon is Faun to Minotaur on the Aura Field and Satyr to Centaur
 at Aura Beach and the Current Sea. Glaüshouse clears safety; Sandmanor proves
 design and role; Stonebend preserves identity, Name, and Title; Flynt
 recognizes institutional function. Symbolism alone authorizes nothing.

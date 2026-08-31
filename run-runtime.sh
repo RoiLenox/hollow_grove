@@ -3,14 +3,25 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-ROOT_DIR="${HOLLOW_GROVE_ROOT:-${SCRIPT_DIR}}"
+ROOT_DIR="${HOLLOW_GROVE_ROOT:-$SCRIPT_DIR}"
+BIN_DIR="${HOLLOW_GROVE_BIN_DIR:-$HOME/.local/lib/hollow-grove/bin}"
+RUNTIME_BIN="$BIN_DIR/hollow_grove_runtime"
 
-cd "${ROOT_DIR}"
-
-cargo build --bin hollow-grove --bin hollow_grove_runtime >/dev/null
-
-if [[ $# -eq 0 ]]; then
-    exec target/debug/hollow-grove runtime --cycles 5 --interval-ms 1000
+if [[ "${1:-}" == "--dev" ]]; then
+    shift
+    cargo build --manifest-path "$SCRIPT_DIR/Cargo.toml" --bin hollow_grove_runtime >/dev/null
+    RUNTIME_BIN="$SCRIPT_DIR/target/debug/hollow_grove_runtime"
+elif [[ ! -x "$RUNTIME_BIN" && -x "$SCRIPT_DIR/target/release/hollow_grove_runtime" ]]; then
+    RUNTIME_BIN="$SCRIPT_DIR/target/release/hollow_grove_runtime"
 fi
 
-exec target/debug/hollow-grove runtime "$@"
+if [[ ! -x "$RUNTIME_BIN" ]]; then
+    printf 'release runtime not installed; run %s/install-local-release.sh\n' "$SCRIPT_DIR" >&2
+    exit 1
+fi
+
+cd "$ROOT_DIR"
+if [[ $# -eq 0 ]]; then
+    exec "$RUNTIME_BIN" --cycles 5 --interval-ms 1000
+fi
+exec "$RUNTIME_BIN" "$@"

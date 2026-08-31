@@ -1776,6 +1776,7 @@ fn current_form_label(frame: FrameId) -> &'static str {
         FrameId::Ork => "Ork",
         FrameId::Ogre => "Ogre",
         FrameId::Troglodyte => "Troglodyte",
+        FrameId::Pixie => "Pixie",
         FrameId::Pixy => "Pixy",
         FrameId::Sprite => "Sprite",
         FrameId::Faerie => "Faerie",
@@ -1787,11 +1788,16 @@ fn current_form_label(frame: FrameId) -> &'static str {
         FrameId::Merman => "Merman",
         FrameId::Chimera => "Chimera",
         FrameId::Gnome => "Gnome",
+        FrameId::Faun => "Faun",
         FrameId::Minotaur => "Minotaur",
         FrameId::Hecaton => "Hecaton",
         FrameId::Elf => "Elf",
+        FrameId::Satyr => "Satyr",
         FrameId::Centaur => "Centaur",
         FrameId::Pegasus => "Pegasus",
+        FrameId::Fairy => "Fairy",
+        FrameId::Spirit => "Spirit",
+        FrameId::Sylph => "Sylph",
     }
 }
 

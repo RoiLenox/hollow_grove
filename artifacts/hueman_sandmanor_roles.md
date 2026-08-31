@@ -11,32 +11,32 @@ Sandmanor proves through equal Minorian interior and Minoan exterior traditions,
 - from Glaushouse, Sandmanor may read southward across the relational arc without changing the canonical map.
 
 - Sandmanor proves: design proposes, method orders, teaching transmits, demonstration reveals, evidence supports, criticism tests, reproduction confirms, failure teaches, revision improves, and reciprocity transforms.
-- Pixy is Sandmanor's confirmed Aura-origin path.
+- Sandmanor's distinct Minorian and Minoan peoples carry separate Form, social-role, cultural, attendant, and sovereign-Hand axes.
 - Sandmanor mines crystals and refines Prism Sand as its signature proof-and-record resource.
 - Prismiron is the accepted hard branch for proof-ready structures and instruments.
 
 ## Equal Civic Traditions
 
-- Minorians are Sandmanor's interior Gnome tradition and ask how a design works from within.
-- Minoans are Sandmanor's exterior Elf tradition and ask how a design meets the world beyond itself.
+- Minorians are Sandmanor's Prefog / Hearth / interior-family people and ask how a design works from within.
+- Minoans are Sandmanor's Prefig / Current Sea / outward-social people and ask how a design meets and celebrates the world.
 - Minorians and Minoans have equal constitutional standing and remain distinct enough to correct one another.
 - the Sandmen stable institution ID remains the House-wide proof-body adapter; it is not a third people, a second government, or the singular Sandman office.
 
 ## Regional Design
 
-- Aura Field is the Minorian proving ground for cultivation, repeated labor, maintenance, yield, sustainability, Gnome practice, and Minotaur advancement.
-- Aura Beach and the Current Sea are the Minoan proving grounds for coastal access and dense civic circulation, navigation, exploration, Elf practice, and Centaur mobility.
-- Gnome -> Minotaur is the canonical Aura Field regional Synthesis design; Minotaurs perform advanced tending and field labor.
-- Elf -> Centaur is the canonical Aura Beach and Current Sea regional Synthesis design; Centaurs roam Aura Beach and safeguard Current Sea approaches, crowd movement, and public access.
+- Minorian Forms: Gnome -> Faun -> Minotaur; Minoan Forms: Elf -> Satyr -> Centaur.
+- Minorian social roles: Husbandman -> Householder -> Hearthkeeper; Minoan social roles: Beach Bum -> Party Boy -> Socialite.
+- Geomancer and Labyrinthian are institutional attendant classes; Hecaton and Pegasus are sovereign Hands, never fourth-stage Forms.
+- Content Farm cultivates what family life has and makes; Aura Field preserves and projects household life; Aura Beach expresses, celebrates, and enjoys it.
 - Sandmanor proves regional role and recipe logic; Glaushouse clears Synthesis; Stonebend preserves identity; Flynt recognizes lawful role or institution.
 
 ## Hueman Soul Faculties
 
-- Sandmanor is the Hueman Soul, divided equally into Minorian/Gnome Soul Interior -> Prefog and Minoan/Elf Soul Exterior -> Prefig.
-- Prefog opens multiple legal possibilities; Prefig gives the selected legal possibility provisional or demonstrable form; neither is proof and neither independently executes Synthesis.
+- Sandmanor is the Hueman Soul, divided equally into the Minorian / Prefog interior and Minoan / Prefig horizon traditions.
+- Prefog recognizes Pattern already present but obscured; Prefig recognizes or projects Pattern before manifestation; neither is proof and neither independently executes Synthesis.
 - the reciprocal cycle is Prefog -> Prefig -> Proof -> Evidence or Failure -> Revision -> Prefog, with all failed Prefig evidence preserved.
 - only the existing proof lifecycle may advance a Prefig source through demonstration, reproduction, proof, credential, or standard status.
-- Minotaur is cultivated Prefog at Aura Field; Centaur is embodied Prefig at Aura Beach and Current Sea; both are mature regional manifestations rather than new peoples or authorities.
+- Prefog and Prefig are faculties orthogonal to Current, Aura, Synthesis, and institutional rank.
 
 ## Proof Law
 
@@ -54,9 +54,11 @@ Sandmanor proves through equal Minorian interior and Minoan exterior traditions,
 - the audience judges documented improvement rather than selecting a favorite; review includes both traditions, teachers, affected citizens, evidence stewards, and conflict reviewers.
 - insufficient improvement produces no winner; a genuine tie leaves the Sandman unresolved until a further reciprocal trial or later Contest; Contest fraud or teaching sabotage voids affected evidence or the result.
 
-## Sandman Office
+## The Sandman / Demiurge
 
-- The Sandman is the singular highest constitutional office and asks whether a claim has earned the right to be relied upon as proven.
+- The Sandman = Demiurge; Demiurge is the sovereign Synthesizer and apex identity, not an ordinary attendant class.
+- Hecaton is the Minorian Hand and Pegasus is the Minoan Hand beneath and around the reigning Sandman.
+- the appointment, succession, and removal mechanics of both Hands remain STATUS: OPEN.
 - the candidate most transformed by learning from the other may accede only after a completed lawful Contest, resolved challenges, Stonebend Title, Flynt recognition, a public learning statement, and Seal.
 - combat, heredity, wealth, popularity, transformation, recognition alone, or legacy progression never creates the office.
 - during vacancy, one Minorian steward and one Minoan steward govern jointly without becoming Sandman or permanently altering the Constitution.
@@ -74,7 +76,7 @@ Sandmanor proves through equal Minorian interior and Minoan exterior traditions,
 
 - SANDMANOR_CONSTITUTION_V2.md is the ratified canonical Sandmanor law
 - src/world/sandmanor.rs validates proof, Contest, accession, education, revision, failure, and regional design above frozen Current Runtime V2
-- the common runtime still owns Bond lifecycle, signed Current and Aura, shared House decisions, common Synthesis causality, persistence, and replay
+- the common runtime still owns Bond lifecycle, legacy signed Current/Aura quantities, shared House decisions, common event causality, persistence, and replay; those fields are compatibility mechanics rather than universal semantic definitions
 - Hueman and Godot may present Sandmanor records but may not create proof, authorship, mastery, credential, office, clearance, Title, recognition, or Synthesis outcome
 - the universal recursion kernel remains isolated from Sandmanor-specific law
 
@@ -95,17 +97,19 @@ Sandmanor roles belong to Hueman's kingdom layer. They do not replace Fourway pl
 ## Guardian, Coast, and Succession Constitution
 
 - The Minorian asks how a place is lived within; the Minoan asks how a place lives within the world.
-- Aura Farm contains Aura Fields and Content Farm as physical and cultural cultivation inside one Minorian system.
-- healthy Content Farms educate, preserve memory, cultivate skill, and nourish attention; exploitative practices may exhaust or deceive an audience without making all content production corrupt.
+- Content Farm cultivates what family life has and makes; Aura Field preserves and projects household life; neither is merely internet content production.
+- Aura Beach is the Minoan social-celebratory environment where accumulated life and Aura become public pleasure, style, gathering, and cultural circulation.
 - the Minoan coast runs Free Aura Beach -> Southern Coast -> Current Break -> Minoan County Courthouse -> Glaushouse, with regulation increasing gradually southward.
 - Current Break is Sandmanor territory that hosts Flynt-authorized Manticorp training; Flynt retains Manticorp command and Minoan guardians teach coastal survival.
 - the Minoan County Courthouse remains a Sandmanor institution when it transfers a patient or detainee into Glaushouse clinical care.
-- Gnome -> Minotaur -> Hecaton and Elf -> Centaur -> Pegasus require service proof, Recipe authorization, Glaushouse compatibility, maintained Synthesis, investiture, and renewal.
-- Minotaur carries Guardian of the Fields; Hecaton carries Guardian of the Whole Farm; Centaur carries Guardian of the Beach; Pegasus carries Guardian of the Horizon.
-- the Form remains a body and the mantle remains a trust; suspension or removal ends authority without automatically erasing the maintained Form.
-- the Contest final pair is one lawful Hecaton and one lawful Pegasus who sincerely teach each other and complete Aura Field, Content Farm, Liberty and Hospitality, Rescue and Horizon, and Reciprocal Integration trials.
+- Gnome -> Faun -> Minotaur and Elf -> Satyr -> Centaur are the Form progressions; their deeper mechanics remain open.
+- Husbandman -> Householder -> Hearthkeeper and Beach Bum -> Party Boy -> Socialite are separate social-role progressions.
+- Geomancer and Labyrinthian are attendant classes; Hecaton and Pegasus are sovereign Hands rather than maintained Forms.
+- the Form remains a body and the mantle remains a trust; the Hand remains a sovereign office.
+- the Contest final pair is one lawful Minotaur holding Hecaton and one lawful Centaur holding Pegasus who sincerely teach each other and complete five reciprocal trials.
 - the audited crowd measures improvement from each candidate's own baseline; candidate order, insertion order, original mastery, duplicate ballots, and conflicts cannot choose the winner.
 - a valid tie leaves the Sandman unresolved; teaching sabotage voids affected evidence or the responsible candidate.
 - the winner remains one stable person, undergoes lawful maintained Sandman convergence, and may receive the one active sovereign mantle; the losing guardian keeps their Form and mantle unless separately removed.
+- The Sandman = Demiurge.
 - Long ago, the sovereign was called Aegon. Today, the same sovereign identity and tradition is known as the Sandman.
 - Sandmanor remains one Design pole and one official Design Index; interior/cultivated and exterior/coastal design are complementary subdisciplines, not separate currencies or indexes.

@@ -8,7 +8,7 @@ use hollow_grove::world::stonebend::third_pass::{
     TitleRenewalDisposition, TitleTerminalDisposition,
 };
 
-fn main() {
+pub(crate) fn tool_main() {
     assert_eq!(StonebendGateFacing::ALL.len(), 3);
     assert_eq!(GateScope::ALL.len(), 3);
     assert!(

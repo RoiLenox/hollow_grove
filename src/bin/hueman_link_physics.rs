@@ -8,7 +8,7 @@ use hollow_grove::hueman_support::{
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let current_synthesis_sequence =
         read_text_artifact(Path::new(CURRENT_SYNTHESIS_SEQUENCE_ARTIFACT_PATH))?;
     let hueman_path_crossovers =

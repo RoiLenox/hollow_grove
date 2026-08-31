@@ -118,19 +118,23 @@ Canonical witness fixtures:
 
 ## Natural Inheritance
 
-Current lineage remains:
+The active Current lineage is:
 
 - `Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre -> Troglodyte`
 
-Aura pairing remains conceptually:
+Aura pairing is exact and bidirectional at every level:
 
-- `Gremlin <-> Pixy`
+- `Gremlin <-> Pixie`
 - `Goblin <-> Sprite`
-- `Ghoul <-> Spirit`
-- `Troll <-> Faerie`
-- `Ork <-> Nymph`
-- `Ogre <-> Siren`
+- `Ghoul <-> Fairy`
+- `Spectre <-> Spirit`
+- `Troll <-> Siren`
+- `Ork <-> Sylph`
+- `Ogre <-> Nymph`
 - `Troglodyte <-> Muse`
+
+`Pixy` and `Faerie` remain stable legacy aliases for active `Pixie` and
+`Fairy`.
 
 Runtime lock:
 

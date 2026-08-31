@@ -412,7 +412,7 @@ pub fn tui_events_from_trace(trace: &ConstitutionalTrace) -> Vec<TuiEvent> {
                 sequence: u64::try_from(events.len()).unwrap_or(u64::MAX),
                 scenario: trace.scenario.clone(),
                 kind: TuiEventKind::GuardianshipGranted,
-                fields: BTreeMap::from([("region".into(), "Aura Sea".into())]),
+                fields: BTreeMap::from([("region".into(), "Current Sea".into())]),
             });
             events.push(TuiEvent {
                 sequence: u64::try_from(events.len()).unwrap_or(u64::MAX),

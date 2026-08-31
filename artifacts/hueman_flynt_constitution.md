@@ -2,73 +2,84 @@
 
 ## Structural Rule
 
-Tross is Flynt's sovereign executive; the unique Chimera is First Companion; urban and rural traditions remain complementary expressions of that one constitutional authority.
+The Tross is Flynt's sovereign and masculine Manticore identity; Manticorp is his body of soldiers; the unique feminine Chimera is First Companion; Mystery Men answers to him with The Marquise as its maritime extension; We Fairy Men answers to him and manifests as The Gallows in the underworld.
 
 ## Constitutional Executive
 
 - Tross is the sovereign executive of Flynt.
+- The Tross = Manticore: Manticore is his masculine mythological identity and maintained Form, not a separate person, office, or authority.
 - Every Flynt institution and office ultimately derives constitutional authority from Tross.
-- Manticorp and the Gallows answer directly to Tross through distinct public and underground authorities.
+- Manticorp is the body of soldiers that answers to the Tross in public command; We Fairy Men answers to him as the Basin creature-sect leadership body.
 
-## Constitutional Companion
+## Creature Pairs and Constitutional Companion
 
-- There is exactly one constitutional Chimera.
-- Chimera is the lower apex integration of Wolf, Bat, and Snake/Fish, with meaningful refinement before Manticorp.
-- Manticorp is a distinct maintained Synthesis Form beyond Chimera and the institution named after that sovereign ideal.
-- The Tross is the presently maintained living holder of Manticorp and the formal constitutional leader of Manticorp Institution.
-- Stable identity invariant: Tross = Mystery Man = Mr. X.
-- Manticorp Form stable ID: flynt.form.manticorp.
-- Manticorp Recipe stable ID: flynt.recipe.divided-manticorp.
-- Manticorp may continue throughout the Tross's life through bodily discipline, Recipe renewal, divided Basin knowledge, institutional recognition, and specialized Glaushouse care.
-- Gremlincoin is the Gremlin Way: meaningful salvage, improvisation, risk, mobility, low-resource adaptation, frontier labor, and discovered abandoned value become lawful Synthesis evidence.
-- Gargoyle is never automatic at a numeric threshold; Recipe viability must turn Gremlin opportunity into maintained structure, territory, responsibility, maintenance, and renewal.
-- The Gremlin finds value. The Gargoyle makes that value stand.
+- Gargoyle/Medusa, Werewolf/Vampire, Mariner/Mermaid, and Manticore/Chimera are the four exact masculine/feminine Flynt Basin creature pairs.
+- Gargoyle, Werewolf, Mariner, and Manticore are masculine; Medusa, Vampire, Mermaid, and Chimera are feminine.
+- Medusa is a Flynt creature/species designation; Gargoyle embodies stone while Medusa petrifies.
+- Mariner = Merman in Flynt terminology and names the masculine mer-creature, not merely a human sailor.
+- There is exactly one constitutional Chimera, the feminine First Companion and counterpart to the Tross/Manticore.
+- Gargoyle + Werewolf + Mariner/Merman -> Chimera -> Manticore is the locked higher-Synthesis relationship.
+- Chimera as selection among capacities and Manticore as their integration are STATUS: WORKING; exact higher-Synthesis mechanics remain STATUS: OPEN.
+- Manticore is the Tross's specifically masculine maintained Synthesis Form beyond Chimera; Manticorp is the separate body of soldiers he commands.
+- Stable identity invariant: The Tross = Manticore = Mystery Man = Mr. X.
+- Manticore Form stable ID: flynt.form.manticore.
+- Manticore Recipe legacy provenance ID: flynt.recipe.divided-manticorp; this machine key does not make Manticorp a Form.
+- Manticore may continue throughout the Tross's life through bodily discipline, Recipe renewal, divided Basin knowledge, institutional recognition, and specialized Glaushouse care.
+- Warlock -> Gargoyle and Lycan -> Werewolf remain inherited practitioner-tradition/Synthesis correspondences; any distinct source tradition for Mariner remains unnamed.
+- The exact Current/Aura equations for those base forms remain STATUS: OPEN and must not be fabricated.
 
 ## Urban Expression
 
-- The public hierarchy is Tross -> Manticorp Institution; the same Tross is underground Mystery Man/Mr. X -> The Gallows.
-- The public chain is Tross -> Manticorp Institution.
-- The underground chain is Mystery Man/Mr. X -> The Gallows.
-- Manticorp is Flynt's formal military institution for territorial defense, military command, constitutional protection, disciplined force, military training, and lawful deployment.
-- Mystery Men is Flynt's unified publicly recognized, operationally classified federal investigative bureau; it is distinct from the Mystery Man identity of Tross.
+- The public hierarchy is The Tross/Manticore -> Manticorp soldier body; the Basin hierarchy is The Tross/Manticore -> We Fairy Men -> The Gallows in its underworld context.
+- The public chain is Tross -> Manticorp soldier body.
+- The underworld manifestation chain is Tross/Manticore -> We Fairy Men -> The Gallows; Mystery Man/Mr. X are underworld identities of that same Tross.
+- Manticorp is Flynt's body of soldiers for territorial defense, military command, constitutional protection, disciplined force, military training, and lawful deployment.
+- Mystery Men is Flynt's consolidated publicly recognized, operationally classified intelligence, covert-security, and federal-investigative apparatus; it is separate from We Fairy Men and The Gallows and distinct from the Mystery Man identity of Tross.
 - The Mystery Man and Mr. X are aliases or operational identities of Tross, not separate persons or subordinates.
-- The Gallows is Flynt's underground Yakuza/mafia-like body governing illicit trade, debts, contraband, and deniable action.
+- The Gallows is the organized-crime underworld manifestation of We Fairy Men acting collectively under the Tross.
 
 ## Rural Expression
 
-- The Gallows is an underground command expression of Tross, while We Fairy Men is a coalition of distinct Basin traditions.
-- Bro White, The Beauty, and Cinderellaman remain distinct leaders and custodians of divided Manticorp Recipe components.
-- The Basin bands may negotiate with either face of Tross without being permanently absorbed into Manticorp or the Gallows.
-- Music and roaming culture are expressions of We Fairy Men, not a replacement for its separate identities and territories.
+- We Fairy Men is the exact proper collective identity and may not be normalized to Fairy Men or the Fairy Men.
+- The Tross/Manticore leads We Fairy Men; The Gallows is the same underlying body acting under his direction in the underworld, not an unrelated organization.
+- Bro White leads Gargoyle/Medusa, Beauty leads Werewolf/Vampire, and Cinderellaman with his Midnight Crew leads Mariner/Mermaid.
+- The Midnight Crew belongs to Flynt's maritime side; no formal maritime guild name is canonical.
+- The Basin bands may negotiate with either face of Tross without being permanently absorbed into Manticorp or the Gallows context.
+- Music and roaming culture are expressions of We Fairy Men, not a replacement for its distinct crews, populations, and territories.
 
 ## The Gallowry
 
 - The Gallowry is the hidden headquarters and home of the Gallows; it is not the Gallows itself.
 - The Gallowry is the Gallows meeting place, headquarters, cultural center, gallery, and operational hub.
 
-## Founding Leaders
+## Creature-Sect Leaders
 
-- Bro White is the enduring Gargoyle Founding Leader office; Bro White and the 7 Brothas is its crew.
-- Cinderellaman is the enduring Merman Founding Leader office; Cinderellaman and His Midnight Crew is its crew.
-- The Beauty is the enduring Werewolf Founding Leader office; The Beauty and His Beasts is its crew.
+- Bro White is the enduring Gargoyle/Medusa leader; Bro White and the 7 Brothas remains his established crew, preserving the Snow White relation.
+- Cinderellaman is the enduring Mariner/Mermaid leader; Cinderellaman and His Midnight Crew is his maritime crew.
+- Beauty is the enduring Werewolf/Vampire leader; Beauty and His Beasts preserves the Beauty and the Beast inversion.
 - Successors may inherit each Founding Leader office without creating a new constitutional office.
 
 ## Constitutional Union
 
-- Bro White, Cinderellaman, and The Beauty unite as We Fairy Men.
-- We Fairy Men is the constitutional folk expression of the completed Chimera, not a temporary alliance.
-- The urban and rural expressions are complementary traditions of the same Chimera authority, not competing governments.
+- Bro White, Beauty, and Cinderellaman form We Fairy Men beneath the Tross/Manticore.
+- We Fairy Men is the underlying leadership and sect structure; The Gallows is its contextual underworld manifestation under the Tross.
+- We Fairy Men is not Mystery Men, and Mystery Men does not belong to the Gallows structure.
+- The public and underworld expressions answer to the same sovereign without becoming competing governments.
 
-## Spirit and Resynce
+## Practitioner Expressions and Resynce
 
-- Spirit -> Resynce is Flynt's Hueman faculty: relational synchronization through Beings, groups, routes, encounters, Bonds, affiliation, and recognition, never mind reading or a replacement Current Form ladder.
-- We Fairy Men remain a distinct Aura Ridge frontier culture of caravaners, scouts, guides, traders, performers, salvagers, escorts, and pathfinders expressing mobile communal Resynce without formal Flynt state authority.
-- The Gallows remain the distinct Flynt civic institution of consequential Resynce through reputation, public challenge, accountability, honor, disgrace, and judgment.
-- This faculty jurisdiction preserves the frozen rural hierarchy while never merging the We Fairy Men group identity into the Gallows institution identity.
+- Resynce is Flynt's faculty: recognition of Capacity through response, change, pressure, or load.
+- Telekinesis is Flynt's Current-side expression: outward action, movement, and force upon what is external to the practitioner.
+- Nookinesis is Flynt's Aura-side expression: inward action, movement, or manipulation of mind, cognition, intention, internal state, or Aura.
+- Capacity is revealed under load.
+- We Fairy Men express mobile communal Resynce through Aura Ridge caravaners, scouts, guides, traders, performers, salvagers, escorts, and pathfinders without formal Flynt state authority.
+- The Gallows expresses organized underworld Resynce through regional crews, loyalty, territory, favors, obligation, and contraband routes without gaining civic authority.
+- These contexts remain separately addressable while sharing We Fairy Men as the underlying Tross-led structure.
 
 ## Status
 
-- the Flynt hierarchy is constitutionally locked
+- Flynt's four creature pairs, three sect assignments, and higher Synthesis relationship are constitutionally locked; exact Level 1 equations remain STATUS: OPEN
+- Wardens are Flynt's primary civic identity; Geralds are Stonebend's and Sandmen are Sandmanor's; the former Warden platelet correspondence remains superseded
 - Tross succession is not defined by this architecture and may not be inferred from creature progression
 - Current Synthesis remains authoritative over constitutional state and validation
 - Hueman and Godot may present the hierarchy but may not reinterpret it

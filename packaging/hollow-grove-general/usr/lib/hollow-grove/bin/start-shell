@@ -1,0 +1,28 @@
+#!/usr/bin/bash
+set -u
+
+libexec=${HOLLOW_GROVE_LIBEXEC:-/usr/lib/hollow-grove/bin}
+system_root=${HOLLOW_GROVE_WAYBAR_ROOT:-/etc/xdg/hollow-grove/waybar}
+config_home=${XDG_CONFIG_HOME:-"$HOME/.config"}
+user_root=$config_home/hollow-grove/waybar
+
+if ! command -v waybar >/dev/null 2>&1; then
+    "$libexec/notify" "Hollow Grove shell unavailable" "Missing command: waybar" low
+    exit 0
+fi
+
+if pgrep -x waybar >/dev/null 2>&1; then
+    exit 0
+fi
+
+config=$system_root/config.jsonc
+style=$system_root/style.css
+[[ -r "$user_root/config.jsonc" ]] && config=$user_root/config.jsonc
+[[ -r "$user_root/style.css" ]] && style=$user_root/style.css
+
+if [[ ! -r "$config" || ! -r "$style" ]]; then
+    "$libexec/notify" "Hollow Grove shell unavailable" "Waybar configuration is incomplete." normal
+    exit 1
+fi
+
+exec waybar --config "$config" --style "$style"

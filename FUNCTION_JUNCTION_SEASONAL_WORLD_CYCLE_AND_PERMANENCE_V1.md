@@ -148,6 +148,15 @@ physical checkpoint, digital checkpoint, synchronization phase, authority,
 evidence, and provenance. It must close the outgoing Season before opening the
 incoming Season. It transfers no sovereignty.
 
+### Adaptive topology projection
+
+Adaptive Topology State V1 consumes only a completed, validated Function
+Junction. The Spring Initiation incarnates the approved rectangle in four
+rebuild-gated ticks. The Gathering and Festival of Mirrors preserve that civic
+form. The Winter Way Back returns it to the canonical circle in four
+rebuild-gated ticks. A calendar instant or player location cannot trigger this
+projection directly, and the projection transfers no seasonal authority.
+
 ## Four Great Functions and House Seasons
 
 | Anchor | Great Function | Outgoing | Incoming | Sacred motion |
@@ -376,7 +385,7 @@ Glaüshouse clears Integrity
     ↓
 Flynt proves Capacity
     ↓
-Stonebend Diamond / Hypergiant grants Title and the Permanence Seal
+Stonebend Hypergiant grants Title and the Permanence Seal
     ↓
 Stonebend Proliteriate protects Yield
 ```
@@ -384,7 +393,7 @@ Stonebend Proliteriate protects Yield
 The existing offices remain intact:
 
 - Freemason forges the Claim, establishes boundary, and records provenance;
-- Diamond / Hypergiant ratifies the final Permanence Seal;
+- Hypergiant ratifies the final Permanence Seal; Diamond's role is STATUS: OPEN;
 - Proliteriate protects public Yield, inheritance, work, districts, guilds,
   worksites, and commonwealth consequence.
 

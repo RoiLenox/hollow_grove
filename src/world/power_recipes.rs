@@ -1,4 +1,9 @@
-//! Additive Current–Aura power Recipe constitution.
+//! Legacy V1 Current–Aura power Recipe constitution.
+//!
+//! `CurrentPowerRoot` and `AuraPowerRoot` are stable serialized V1 names with
+//! historical power-root meanings. They are compatibility mechanics, not
+//! Practitioner Current roles or Aura practices, and are not silently
+//! reinterpreted by the typed practitioner ontology.
 //!
 //! A power is an observable outcome. A Recipe is the constitutional method
 //! used to reach it. This module deliberately declares and validates methods;

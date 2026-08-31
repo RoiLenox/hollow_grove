@@ -618,7 +618,7 @@ pub fn trace_rejected_assignment_scenario(
             command: "VERIFY_REGIONAL_ASSIGNMENT_CLAIM",
             prior_state: "Accepted regional Being".into(),
             proposed_state: if scenario.name == "minotaur-sea-claim" {
-                "Aura Sea guardian"
+                "Current Sea guardian"
             } else {
                 "Aura Field steward"
             }

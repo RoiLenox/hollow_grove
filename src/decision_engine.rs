@@ -2107,7 +2107,7 @@ fn canonical_hidden_wound_beat_two(previous: &DecisionBeat) -> DecisionBeat {
 }
 
 fn hidden_wound_candidates() -> Vec<CandidateTactic> {
-    let nightingale = build_canonical_being_state_with_aura(FrameId::Hueman, Some(FrameId::Faerie));
+    let nightingale = build_canonical_being_state_with_aura(FrameId::Hueman, Some(FrameId::Fairy));
     vec![
         CandidateTactic {
             tactic_id: CandidateTacticId::SurfaceSymptomShow,

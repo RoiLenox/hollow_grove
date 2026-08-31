@@ -19,7 +19,7 @@ Pre-Execution Artifact Chain
 - Hollow Grove remains the stable recursive core.
 - `KernelPass` remains unchanged.
 - Current Synthesis remains outside Hollow Grove's constitutional authority.
-- No Current Synthesis artifact mutates Hollow Grove. A later Compromise/Federation
+- No Current Synthesis artifact mutates Hollow Grove. A later Compromise/Rampart
   boundary may accept a scoped, attributable witness without importing route
   execution or authority.
 
@@ -69,7 +69,7 @@ Pre-Execution Artifact Chain
 - The constitutional boundary may name their witness identities without making
   them kernel roles or executable route owners.
 - Hollow Grove does not execute Current Synthesis; it may receive a read-only
-  boundary record through the Compromise/Federation adapter.
+  boundary record through the Compromise/Rampart adapter.
 
 ## Conclusion
 

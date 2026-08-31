@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "rule_set": "ruleset.hollow-grove.adaptive-topology-state-v1",
+  "revision": 0,
+  "rectangularity": 0,
+  "movement_policy": "preserve_route_identity_and_progress",
+  "rebuild_policy": "collision_and_navigation_before_commit",
+  "active_transition": null,
+  "completed_transition_ids": [],
+  "last_commit": null
+}

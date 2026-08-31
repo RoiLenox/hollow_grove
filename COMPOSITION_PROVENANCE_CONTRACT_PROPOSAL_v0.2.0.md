@@ -84,7 +84,7 @@ systems remain authoritative.
 
 1. Point progression: existing `KernelPass` and `PointSquaredAscension` are
    referenced, not copied; Point² becomes a later source.
-2. Sandmanor: existing legal Gnome -> Minotaur -> Hecaton transitions remain
+2. Sandmanor: existing legal Gnome -> Faun -> Minotaur transitions remain
    validated by `validate_sandmanor_transition`; the persistent Being node is
    retained across Frame changes.
 3. House: Sandmanor is a House-scale result from a deliberately small local

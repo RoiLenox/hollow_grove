@@ -32,7 +32,7 @@ fn build_current_synthesis_transition_pm_to_le_at(root: &Path) -> io::Result<Str
     ))
 }
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let current_synthesis_transition_pm_to_le =
         build_current_synthesis_transition_pm_to_le_at(Path::new("."))?;
     let artifact_path = artifact_path();

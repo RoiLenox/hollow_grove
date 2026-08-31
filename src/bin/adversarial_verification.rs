@@ -9,7 +9,7 @@ use hollow_grove::verification::{
     semantic_hash_only, soak_report_to_json, soak_report_to_markdown,
 };
 
-fn main() {
+pub(crate) fn tool_main() {
     if let Err(error) = run(env::args().skip(1).collect()) {
         eprintln!("{error}");
         std::process::exit(1);

@@ -9,8 +9,8 @@ use std::fmt;
 use serde::{Deserialize, Serialize};
 
 use super::{
-    ScaleKey, SpatialAnchorId, SpatialFrameId, SpatialPathId, SpatialRegionId, SpatialRuleSetId,
-    SpatialTemplateId, StableKeyError,
+    ScaleKey, SpatialAnchorId, SpatialFrameId, SpatialHingeId, SpatialPathId, SpatialRegionId,
+    SpatialRuleSetId, SpatialTemplateId, StableKeyError,
 };
 
 /// Fixed-point precision used by every normalized spatial coordinate.
@@ -186,6 +186,99 @@ pub struct SpatialPath {
     pub band_width: NormalizedCoordinate,
 }
 
+/// Stable lane identity inside a double-slotted structural hinge.
+///
+/// Lanes never imply traversal between their paths. They preserve two
+/// independently addressable route bands while a shared hinge changes pose.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
+pub enum SpatialHingeLane {
+    Inner,
+    Outer,
+}
+
+/// One path attachment in a double-slotted hinge.
+///
+/// The circular position is always derived from the referenced path at
+/// `t = 0.5`. `rectangular_position` is the isolated corner target for this
+/// lane when rectangularity reaches one.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct SpatialHingeSlot {
+    pub lane: SpatialHingeLane,
+    pub path_id: SpatialPathId,
+    pub rectangular_position: NormalizedPoint,
+}
+
+/// A neutral two-lane hinge binding two paths with the same endpoint pair.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct DoubleSlottedSpatialHinge {
+    pub id: SpatialHingeId,
+    pub slots: [SpatialHingeSlot; 2],
+}
+
+impl DoubleSlottedSpatialHinge {
+    #[must_use]
+    pub fn new(id: SpatialHingeId, inner: SpatialHingeSlot, outer: SpatialHingeSlot) -> Self {
+        Self {
+            id,
+            slots: [inner, outer],
+        }
+    }
+}
+
+/// One quadratic segment in a deterministic adaptive path projection.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct QuadraticSpatialSegment {
+    pub from: NormalizedPoint,
+    pub control: NormalizedPoint,
+    pub to: NormalizedPoint,
+}
+
+impl QuadraticSpatialSegment {
+    /// Evaluates this segment without changing coordinate precision.
+    #[must_use]
+    pub fn point_at(self, progress: NormalizedCoordinate) -> NormalizedPoint {
+        quadratic_point(self.from, self.control, self.to, progress)
+    }
+}
+
+/// The projected geometry for one isolated hinge slot.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct AdaptivePathProjection {
+    pub lane: SpatialHingeLane,
+    pub path_id: SpatialPathId,
+    pub circular_midpoint: NormalizedPoint,
+    pub rectangular_position: NormalizedPoint,
+    pub adaptive_midpoint: NormalizedPoint,
+    pub segments: [QuadraticSpatialSegment; 2],
+}
+
+impl AdaptivePathProjection {
+    /// Evaluates the complete adaptive route while keeping a traveler's
+    /// normalized progress stable across circle-to-rectangle pose changes.
+    #[must_use]
+    pub fn point_at_route_progress(&self, progress: NormalizedCoordinate) -> NormalizedPoint {
+        let halfway = NormalizedCoordinate::midpoint().parts();
+        if progress.parts() <= halfway {
+            let local_progress = NormalizedCoordinate(progress.parts() * 2);
+            self.segments[0].point_at(local_progress)
+        } else {
+            let local_progress = NormalizedCoordinate((progress.parts() - halfway) * 2);
+            self.segments[1].point_at(local_progress)
+        }
+    }
+}
+
+/// Template-local projection of one double-slotted hinge.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct AdaptiveHingeProjection {
+    pub hinge_id: SpatialHingeId,
+    pub rectangularity: NormalizedCoordinate,
+    pub circular_pivot: NormalizedPoint,
+    pub rectangular_pivot: NormalizedPoint,
+    pub adaptive_pivot: NormalizedPoint,
+    pub slots: [AdaptivePathProjection; 2],
+}
+
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct SpatialRegion {
     pub id: SpatialRegionId,
@@ -326,6 +419,142 @@ impl SpatialTemplate {
             .and_then(|position| self.paths.get(position))
     }
 
+    /// Evaluates a validated path at a normalized parametric position.
+    ///
+    /// Straight paths use linear interpolation. Round paths use their one
+    /// canonical quadratic control point. All arithmetic is fixed point.
+    pub fn point_on_path(
+        &self,
+        path_id: &SpatialPathId,
+        progress: NormalizedCoordinate,
+    ) -> Result<NormalizedPoint, SpatialInheritanceError> {
+        let path = self
+            .path(path_id)
+            .ok_or_else(|| SpatialInheritanceError::MissingPath {
+                template: self.id.clone(),
+                path: path_id.clone(),
+            })?;
+        let from = self
+            .anchor(&path.from)
+            .expect("validated templates retain path endpoints")
+            .position;
+        let to = self
+            .anchor(&path.to)
+            .expect("validated templates retain path endpoints")
+            .position;
+        Ok(evaluate_path(path, from, to, progress))
+    }
+
+    /// Projects a double-slotted hinge between its circular and rectangular
+    /// poses without changing either path's identity or endpoints.
+    pub fn project_double_slotted_hinge(
+        &self,
+        hinge: &DoubleSlottedSpatialHinge,
+        rectangularity: NormalizedCoordinate,
+    ) -> Result<AdaptiveHingeProjection, SpatialInheritanceError> {
+        if hinge.slots[0].lane != SpatialHingeLane::Inner
+            || hinge.slots[1].lane != SpatialHingeLane::Outer
+        {
+            return Err(SpatialInheritanceError::InvalidHingeSlotOrder(
+                hinge.id.clone(),
+            ));
+        }
+        if hinge.slots[0].path_id == hinge.slots[1].path_id {
+            return Err(SpatialInheritanceError::DuplicateHingePath {
+                hinge: hinge.id.clone(),
+                path: hinge.slots[0].path_id.clone(),
+            });
+        }
+        if hinge.slots[0].rectangular_position == hinge.slots[1].rectangular_position {
+            return Err(SpatialInheritanceError::CoincidentHingeSlots(
+                hinge.id.clone(),
+            ));
+        }
+
+        let inner = self.hinge_slot_projection(&hinge.id, &hinge.slots[0], rectangularity)?;
+        let outer = self.hinge_slot_projection(&hinge.id, &hinge.slots[1], rectangularity)?;
+        let inner_path = self
+            .path(&inner.path_id)
+            .expect("hinge slot projection retains its validated path");
+        let outer_path = self
+            .path(&outer.path_id)
+            .expect("hinge slot projection retains its validated path");
+        if !paths_share_endpoints(inner_path, outer_path) {
+            return Err(SpatialInheritanceError::HingePathEndpointMismatch(
+                hinge.id.clone(),
+            ));
+        }
+
+        Ok(AdaptiveHingeProjection {
+            hinge_id: hinge.id.clone(),
+            rectangularity,
+            circular_pivot: midpoint_point(inner.circular_midpoint, outer.circular_midpoint),
+            rectangular_pivot: midpoint_point(
+                inner.rectangular_position,
+                outer.rectangular_position,
+            ),
+            adaptive_pivot: midpoint_point(inner.adaptive_midpoint, outer.adaptive_midpoint),
+            slots: [inner, outer],
+        })
+    }
+
+    fn hinge_slot_projection(
+        &self,
+        hinge_id: &SpatialHingeId,
+        slot: &SpatialHingeSlot,
+        rectangularity: NormalizedCoordinate,
+    ) -> Result<AdaptivePathProjection, SpatialInheritanceError> {
+        let path =
+            self.path(&slot.path_id)
+                .ok_or_else(|| SpatialInheritanceError::MissingHingePath {
+                    hinge: hinge_id.clone(),
+                    path: slot.path_id.clone(),
+                })?;
+        let from = self
+            .anchor(&path.from)
+            .expect("validated templates retain path endpoints")
+            .position;
+        let to = self
+            .anchor(&path.to)
+            .expect("validated templates retain path endpoints")
+            .position;
+
+        let (circular_midpoint, circular_first_control, circular_second_control) =
+            split_path_at_midpoint(path, from, to);
+        let rectangular_first_control = midpoint_point(from, slot.rectangular_position);
+        let rectangular_second_control = midpoint_point(slot.rectangular_position, to);
+        let adaptive_midpoint =
+            lerp_point(circular_midpoint, slot.rectangular_position, rectangularity);
+
+        Ok(AdaptivePathProjection {
+            lane: slot.lane,
+            path_id: slot.path_id.clone(),
+            circular_midpoint,
+            rectangular_position: slot.rectangular_position,
+            adaptive_midpoint,
+            segments: [
+                QuadraticSpatialSegment {
+                    from,
+                    control: lerp_point(
+                        circular_first_control,
+                        rectangular_first_control,
+                        rectangularity,
+                    ),
+                    to: adaptive_midpoint,
+                },
+                QuadraticSpatialSegment {
+                    from: adaptive_midpoint,
+                    control: lerp_point(
+                        circular_second_control,
+                        rectangular_second_control,
+                        rectangularity,
+                    ),
+                    to,
+                },
+            ],
+        })
+    }
+
     #[must_use]
     pub fn region(&self, id: &SpatialRegionId) -> Option<&SpatialRegion> {
         self.regions
@@ -333,6 +562,111 @@ impl SpatialTemplate {
             .ok()
             .and_then(|position| self.regions.get(position))
     }
+}
+
+fn paths_share_endpoints(left: &SpatialPath, right: &SpatialPath) -> bool {
+    (left.from == right.from && left.to == right.to)
+        || (left.from == right.to && left.to == right.from)
+}
+
+fn evaluate_path(
+    path: &SpatialPath,
+    from: NormalizedPoint,
+    to: NormalizedPoint,
+    progress: NormalizedCoordinate,
+) -> NormalizedPoint {
+    match path.geometry {
+        SpatialPathGeometry::Straight => lerp_point(from, to, progress),
+        SpatialPathGeometry::Round => quadratic_point(from, path.control_points[0], to, progress),
+    }
+}
+
+/// Returns `(midpoint, first_control, second_control)` for an exact
+/// de Casteljau split at `t = 0.5`.
+fn split_path_at_midpoint(
+    path: &SpatialPath,
+    from: NormalizedPoint,
+    to: NormalizedPoint,
+) -> (NormalizedPoint, NormalizedPoint, NormalizedPoint) {
+    match path.geometry {
+        SpatialPathGeometry::Straight => {
+            let midpoint = midpoint_point(from, to);
+            (
+                midpoint,
+                midpoint_point(from, midpoint),
+                midpoint_point(midpoint, to),
+            )
+        }
+        SpatialPathGeometry::Round => {
+            let control = path.control_points[0];
+            let first_control = midpoint_point(from, control);
+            let second_control = midpoint_point(control, to);
+            (
+                midpoint_point(first_control, second_control),
+                first_control,
+                second_control,
+            )
+        }
+    }
+}
+
+fn midpoint_point(left: NormalizedPoint, right: NormalizedPoint) -> NormalizedPoint {
+    lerp_point(left, right, NormalizedCoordinate::midpoint())
+}
+
+fn lerp_point(
+    from: NormalizedPoint,
+    to: NormalizedPoint,
+    progress: NormalizedCoordinate,
+) -> NormalizedPoint {
+    NormalizedPoint::new(
+        lerp_coordinate(from.x, to.x, progress),
+        lerp_coordinate(from.y, to.y, progress),
+    )
+}
+
+fn lerp_coordinate(
+    from: NormalizedCoordinate,
+    to: NormalizedCoordinate,
+    progress: NormalizedCoordinate,
+) -> NormalizedCoordinate {
+    let progress = u128::from(progress.parts());
+    let complement = u128::from(NORMALIZED_UNIT) - progress;
+    let parts = (u128::from(from.parts()) * complement
+        + u128::from(to.parts()) * progress
+        + u128::from(NORMALIZED_UNIT / 2))
+        / u128::from(NORMALIZED_UNIT);
+    NormalizedCoordinate(parts as u64)
+}
+
+fn quadratic_point(
+    from: NormalizedPoint,
+    control: NormalizedPoint,
+    to: NormalizedPoint,
+    progress: NormalizedCoordinate,
+) -> NormalizedPoint {
+    NormalizedPoint::new(
+        quadratic_coordinate(from.x, control.x, to.x, progress),
+        quadratic_coordinate(from.y, control.y, to.y, progress),
+    )
+}
+
+fn quadratic_coordinate(
+    from: NormalizedCoordinate,
+    control: NormalizedCoordinate,
+    to: NormalizedCoordinate,
+    progress: NormalizedCoordinate,
+) -> NormalizedCoordinate {
+    let unit = u128::from(NORMALIZED_UNIT);
+    let progress = u128::from(progress.parts());
+    let complement = unit - progress;
+    let denominator = unit * unit;
+    let parts = (u128::from(from.parts()) * complement * complement
+        + 2 * u128::from(control.parts()) * complement * progress
+        + u128::from(to.parts()) * progress * progress
+        + denominator / 2)
+        / denominator;
+    NormalizedCoordinate(parts as u64)
 }
 
 fn polygon_twice_area(region: &SpatialRegion) -> i128 {
@@ -513,6 +847,40 @@ pub struct ResolvedSpatialPath {
     pub root_to: NormalizedPoint,
     pub root_control_points: Vec<NormalizedPoint>,
     pub depth: usize,
+}
+
+/// One adaptive hinge resolved in both template-local and root coordinates.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ResolvedAdaptiveHinge {
+    pub frame_id: SpatialFrameId,
+    pub local: AdaptiveHingeProjection,
+    pub root: AdaptiveHingeProjection,
+    pub depth: usize,
+}
+
+fn map_hinge_projection(
+    projection: &AdaptiveHingeProjection,
+    transform: SpatialTransform,
+) -> AdaptiveHingeProjection {
+    AdaptiveHingeProjection {
+        hinge_id: projection.hinge_id.clone(),
+        rectangularity: projection.rectangularity,
+        circular_pivot: transform.map_to_root(projection.circular_pivot),
+        rectangular_pivot: transform.map_to_root(projection.rectangular_pivot),
+        adaptive_pivot: transform.map_to_root(projection.adaptive_pivot),
+        slots: projection.slots.clone().map(|slot| AdaptivePathProjection {
+            lane: slot.lane,
+            path_id: slot.path_id,
+            circular_midpoint: transform.map_to_root(slot.circular_midpoint),
+            rectangular_position: transform.map_to_root(slot.rectangular_position),
+            adaptive_midpoint: transform.map_to_root(slot.adaptive_midpoint),
+            segments: slot.segments.map(|segment| QuadraticSpatialSegment {
+                from: transform.map_to_root(segment.from),
+                control: transform.map_to_root(segment.control),
+                to: transform.map_to_root(segment.to),
+            }),
+        }),
+    }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -784,6 +1152,32 @@ impl SpatialInheritanceCatalog {
                 .copied()
                 .map(|point| cached.transform.map_to_root(point))
                 .collect(),
+            depth: cached.depth,
+        })
+    }
+
+    pub fn resolve_double_slotted_hinge(
+        &self,
+        frame_id: &SpatialFrameId,
+        hinge: &DoubleSlottedSpatialHinge,
+        rectangularity: NormalizedCoordinate,
+    ) -> Result<ResolvedAdaptiveHinge, SpatialInheritanceError> {
+        let frame = self
+            .frame(frame_id)
+            .ok_or_else(|| SpatialInheritanceError::MissingFrame(frame_id.clone()))?;
+        let template = self
+            .template(frame.template_id())
+            .ok_or_else(|| SpatialInheritanceError::MissingTemplate(frame.template_id().clone()))?;
+        let local = template.project_double_slotted_hinge(hinge, rectangularity)?;
+        let cached = self
+            .cached_frames
+            .get(frame_id)
+            .expect("validated frames retain cached transforms");
+        let root = map_hinge_projection(&local, cached.transform);
+        Ok(ResolvedAdaptiveHinge {
+            frame_id: frame_id.clone(),
+            local,
+            root,
             depth: cached.depth,
         })
     }
@@ -1197,6 +1591,17 @@ pub enum SpatialInheritanceError {
         path: SpatialPathId,
         anchor: SpatialAnchorId,
     },
+    InvalidHingeSlotOrder(SpatialHingeId),
+    DuplicateHingePath {
+        hinge: SpatialHingeId,
+        path: SpatialPathId,
+    },
+    CoincidentHingeSlots(SpatialHingeId),
+    MissingHingePath {
+        hinge: SpatialHingeId,
+        path: SpatialPathId,
+    },
+    HingePathEndpointMismatch(SpatialHingeId),
     DuplicateRegionId(SpatialRegionId),
     InvalidRegionPolygon(SpatialRegionId),
     DuplicateFrameId(SpatialFrameId),
@@ -1289,6 +1694,26 @@ impl fmt::Display for SpatialInheritanceError {
                     "spatial path {path} references missing anchor {anchor}"
                 )
             }
+            Self::InvalidHingeSlotOrder(hinge) => write!(
+                formatter,
+                "double-slotted hinge {hinge} must declare Inner then Outer"
+            ),
+            Self::DuplicateHingePath { hinge, path } => write!(
+                formatter,
+                "double-slotted hinge {hinge} assigns path {path} to both slots"
+            ),
+            Self::CoincidentHingeSlots(hinge) => write!(
+                formatter,
+                "double-slotted hinge {hinge} has coincident rectangular slots"
+            ),
+            Self::MissingHingePath { hinge, path } => write!(
+                formatter,
+                "double-slotted hinge {hinge} references missing path {path}"
+            ),
+            Self::HingePathEndpointMismatch(hinge) => write!(
+                formatter,
+                "double-slotted hinge {hinge} binds paths from different endpoint pairs"
+            ),
             Self::DuplicateRegionId(id) => write!(formatter, "duplicate spatial region: {id}"),
             Self::InvalidRegionPolygon(id) => {
                 write!(formatter, "spatial region has an invalid polygon: {id}")
@@ -1357,6 +1782,10 @@ mod tests {
         NormalizedPoint::new(coordinate(x, 100), coordinate(y, 100))
     }
 
+    fn per_mille_point(x: u64, y: u64) -> NormalizedPoint {
+        NormalizedPoint::new(coordinate(x, 1_000), coordinate(y, 1_000))
+    }
+
     fn template() -> SpatialTemplate {
         SpatialTemplate::new(
             key("template.test.cross"),
@@ -1398,6 +1827,70 @@ mod tests {
             }],
         )
         .unwrap()
+    }
+
+    fn hinge_template() -> SpatialTemplate {
+        SpatialTemplate::new(
+            key("template.test.hinge"),
+            vec![
+                SpatialAnchor {
+                    id: key("anchor.north"),
+                    position: point(50, 10),
+                },
+                SpatialAnchor {
+                    id: key("anchor.east"),
+                    position: point(90, 50),
+                },
+                SpatialAnchor {
+                    id: key("anchor.center"),
+                    position: point(50, 50),
+                },
+            ],
+            vec![
+                SpatialPath {
+                    id: key("path.inner"),
+                    from: key("anchor.north"),
+                    to: key("anchor.east"),
+                    geometry: SpatialPathGeometry::Straight,
+                    control_points: vec![],
+                    band_width: coordinate(45, 1_000),
+                },
+                SpatialPath {
+                    id: key("path.outer"),
+                    from: key("anchor.north"),
+                    to: key("anchor.east"),
+                    geometry: SpatialPathGeometry::Round,
+                    control_points: vec![point(80, 20)],
+                    band_width: coordinate(45, 1_000),
+                },
+                SpatialPath {
+                    id: key("path.other"),
+                    from: key("anchor.north"),
+                    to: key("anchor.center"),
+                    geometry: SpatialPathGeometry::Straight,
+                    control_points: vec![],
+                    band_width: coordinate(45, 1_000),
+                },
+            ],
+            vec![],
+        )
+        .unwrap()
+    }
+
+    fn hinge() -> DoubleSlottedSpatialHinge {
+        DoubleSlottedSpatialHinge::new(
+            key("hinge.test.northeast"),
+            SpatialHingeSlot {
+                lane: SpatialHingeLane::Inner,
+                path_id: key("path.inner"),
+                rectangular_position: point(85, 15),
+            },
+            SpatialHingeSlot {
+                lane: SpatialHingeLane::Outer,
+                path_id: key("path.outer"),
+                rectangular_position: point(90, 10),
+            },
+        )
     }
 
     fn catalog() -> SpatialInheritanceCatalog {
@@ -1504,6 +1997,179 @@ mod tests {
             region.root_polygon,
             vec![point(40, 24), point(56, 40), point(40, 40)]
         );
+    }
+
+    #[test]
+    fn path_midpoints_use_linear_and_quadratic_fixed_point_geometry() {
+        let template = hinge_template();
+        assert_eq!(
+            template
+                .point_on_path(&key("path.inner"), NormalizedCoordinate::midpoint())
+                .unwrap(),
+            point(70, 30)
+        );
+        assert_eq!(
+            template
+                .point_on_path(&key("path.outer"), NormalizedCoordinate::midpoint())
+                .unwrap(),
+            point(75, 25)
+        );
+    }
+
+    #[test]
+    fn double_slotted_hinge_morphs_exact_paths_into_isolated_rectangle_corners() {
+        let template = hinge_template();
+        let circular = template
+            .project_double_slotted_hinge(&hinge(), NormalizedCoordinate::zero())
+            .unwrap();
+        assert_eq!(circular.slots[0].adaptive_midpoint, point(70, 30));
+        assert_eq!(circular.slots[1].adaptive_midpoint, point(75, 25));
+        assert_eq!(circular.slots[1].segments[0].control, point(65, 15));
+        assert_eq!(circular.slots[1].segments[1].control, point(85, 35));
+
+        let rectangular = template
+            .project_double_slotted_hinge(&hinge(), NormalizedCoordinate::one())
+            .unwrap();
+        assert_eq!(rectangular.slots[0].adaptive_midpoint, point(85, 15));
+        assert_eq!(rectangular.slots[1].adaptive_midpoint, point(90, 10));
+        assert_ne!(
+            rectangular.slots[0].adaptive_midpoint,
+            rectangular.slots[1].adaptive_midpoint
+        );
+        for slot in &rectangular.slots {
+            assert_eq!(
+                slot.segments[0].control,
+                midpoint_point(slot.segments[0].from, slot.segments[0].to)
+            );
+            assert_eq!(
+                slot.segments[1].control,
+                midpoint_point(slot.segments[1].from, slot.segments[1].to)
+            );
+        }
+
+        let halfway = template
+            .project_double_slotted_hinge(&hinge(), coordinate(1, 2))
+            .unwrap();
+        assert_eq!(
+            halfway.slots[0].adaptive_midpoint,
+            per_mille_point(775, 225)
+        );
+        assert_eq!(
+            halfway.slots[1].adaptive_midpoint,
+            per_mille_point(825, 175)
+        );
+        assert_eq!(
+            halfway.adaptive_pivot,
+            midpoint_point(
+                halfway.slots[0].adaptive_midpoint,
+                halfway.slots[1].adaptive_midpoint
+            )
+        );
+    }
+
+    #[test]
+    fn adaptive_route_progress_preserves_endpoints_and_tracks_the_moving_midway() {
+        let template = hinge_template();
+        for rectangularity in [
+            NormalizedCoordinate::zero(),
+            NormalizedCoordinate::midpoint(),
+            NormalizedCoordinate::one(),
+        ] {
+            let projection = template
+                .project_double_slotted_hinge(&hinge(), rectangularity)
+                .unwrap();
+            for slot in &projection.slots {
+                assert_eq!(
+                    slot.point_at_route_progress(NormalizedCoordinate::zero()),
+                    slot.segments[0].from
+                );
+                assert_eq!(
+                    slot.point_at_route_progress(NormalizedCoordinate::midpoint()),
+                    slot.adaptive_midpoint
+                );
+                assert_eq!(
+                    slot.point_at_route_progress(NormalizedCoordinate::one()),
+                    slot.segments[1].to
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn resolved_hinge_inherits_the_same_local_pose_and_maps_every_control_to_root() {
+        let template = hinge_template();
+        let template_id = template.id().clone();
+        let root_id: SpatialFrameId = key("frame.hinge.root");
+        let child_id: SpatialFrameId = key("frame.hinge.child");
+        let mut catalog = SpatialInheritanceCatalog::new();
+        catalog.insert_template(template).unwrap();
+        catalog
+            .insert_frame(SpatialFrame::root(
+                root_id.clone(),
+                template_id.clone(),
+                key("scale.world"),
+            ))
+            .unwrap();
+        catalog
+            .insert_frame(SpatialFrame::child(
+                child_id.clone(),
+                root_id,
+                template_id,
+                key("scale.city"),
+                NormalizedRect::new(point(20, 20), point(60, 60)).unwrap(),
+            ))
+            .unwrap();
+
+        let resolved = catalog
+            .resolve_double_slotted_hinge(&child_id, &hinge(), coordinate(1, 2))
+            .unwrap();
+        assert_eq!(resolved.depth, 1);
+        assert_eq!(
+            resolved.local.slots[0].adaptive_midpoint,
+            per_mille_point(775, 225)
+        );
+        assert_eq!(resolved.root.slots[0].adaptive_midpoint, point(51, 29));
+        assert_ne!(resolved.local.adaptive_pivot, resolved.root.adaptive_pivot);
+    }
+
+    #[test]
+    fn hinge_validation_rejects_slot_order_identity_endpoint_and_target_errors() {
+        let template = hinge_template();
+
+        let mut invalid = hinge();
+        invalid.slots.swap(0, 1);
+        assert!(matches!(
+            template.project_double_slotted_hinge(&invalid, NormalizedCoordinate::zero()),
+            Err(SpatialInheritanceError::InvalidHingeSlotOrder(_))
+        ));
+
+        let mut invalid = hinge();
+        invalid.slots[1].path_id = invalid.slots[0].path_id.clone();
+        assert!(matches!(
+            template.project_double_slotted_hinge(&invalid, NormalizedCoordinate::zero()),
+            Err(SpatialInheritanceError::DuplicateHingePath { .. })
+        ));
+
+        let mut invalid = hinge();
+        invalid.slots[1].rectangular_position = invalid.slots[0].rectangular_position;
+        assert!(matches!(
+            template.project_double_slotted_hinge(&invalid, NormalizedCoordinate::zero()),
+            Err(SpatialInheritanceError::CoincidentHingeSlots(_))
+        ));
+
+        let mut invalid = hinge();
+        invalid.slots[1].path_id = key("path.missing");
+        assert!(matches!(
+            template.project_double_slotted_hinge(&invalid, NormalizedCoordinate::zero()),
+            Err(SpatialInheritanceError::MissingHingePath { .. })
+        ));
+
+        let mut invalid = hinge();
+        invalid.slots[1].path_id = key("path.other");
+        assert!(matches!(
+            template.project_double_slotted_hinge(&invalid, NormalizedCoordinate::zero()),
+            Err(SpatialInheritanceError::HingePathEndpointMismatch(_))
+        ));
     }
 
     #[test]

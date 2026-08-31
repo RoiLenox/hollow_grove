@@ -280,12 +280,12 @@ const FLYNT_PRESENCE_LINES: &[&str] = &[
     "engineering: Flynt is the recognition and field-engineering function that moves capability into lived operation",
     "style: Flynt presents as a boardwalk-casino hunting capital with neon vice, opal glamour, North African desert grounds, and hard modern swagger",
     "Tross: the sovereign executive from whom all Flynt constitutional authority derives",
-    "Chimera: the lower apex integration of Wolf, Bat, and Snake/Fish",
-    "Manticorp: the maintained sovereign Synthesis Form held by Tross, and the lawful military institution formally led by Tross",
-    "urban: Tross publicly commands Manticorp while the same man is Mystery Man/Mr. X, leader of the Gallows underground",
-    "rural: The Gallows is Flynt's underground organized-crime body, with We Fairy Men and the Basin bands remaining distinct",
+    "Chimera: the unique feminine First Companion and higher Synthesis of Gargoyle, Werewolf, and Mariner/Merman; selection among capacities is STATUS: WORKING",
+    "Manticore: the Tross's masculine mythological identity and maintained sovereign Synthesis Form; Manticorp is the body of soldiers he leads",
+    "public: The Tross commands the Manticorp soldier body and Mystery Men, with The Marquise extending Mystery Men into maritime operations",
+    "Basin: the Tross/Manticore leads We Fairy Men; when that body acts under him in the organized underworld, it manifests as The Gallows",
     "opals: mined feedstock and recognition-rich gleam carried through Flynt engineering",
-    "Opal Oil: Flynt's signature resource produced through regular current and holographic aura",
+    "Opal Oil: Flynt's signature resource produced through legacy physical regular current and holographic aura compatibility mechanics",
     "Flynt presence keeps hidden value and field usefulness legible before title catches up",
 ];
 
@@ -293,14 +293,15 @@ const FLYNT_INTENT_LINES: &[&str] = &[
     "engineering: turn practical capability into deployable routes, services, machines, and infrastructure",
     "style: run recognition through boardwalk temptation, casino risk, nocturnal glamour, and outer hunting pressure rather than polite institutional order",
     "Tross: remain the single constitutional executive above both institutional expressions",
-    "Chimera: refine the lower apex integration without becoming Manticorp",
-    "Manticorp: remain both a distinct maintained Form and the institution named for that sovereign ideal",
-    "Tross = Mystery Man = Mr. X: preserve one stable person across public and underground command",
-    "The Gallows and We Fairy Men: preserve underground leverage, Basin distinction, and divided Recipe custodianship",
+    "creature pairs: preserve masculine Gargoyle/feminine Medusa, masculine Werewolf/feminine Vampire, masculine Mariner/feminine Mermaid, and masculine Manticore/feminine Chimera without collapsing paired identities",
+    "Chimera: select among Gargoyle, Werewolf, and Mariner/Merman capacities without creating another Manticore; exact mechanics remain STATUS: OPEN",
+    "Manticorp: remain the soldier body commanded by the Tross/Manticore; do not use the name for his Form",
+    "The Tross = Manticore = Mystery Man = Mr. X: preserve one stable person across public and underground command",
+    "The Gallows and We Fairy Men: preserve separate contextual address while encoding The Gallows as the Tross-directed underworld manifestation of We Fairy Men",
     "The Gallowry: remain the hidden headquarters of the Gallows rather than becoming a separate institution",
     "opals: support advanced engineering feedstock and field-ready refinement",
-    "Opal Oil: turn regular current and holographic aura into a practical engineering medium",
-    "presentation must preserve direct Tross command of both Manticorp and the Gallows",
+    "Opal Oil: turn legacy physical regular current and holographic aura compatibility mechanics into a practical engineering medium",
+    "presentation must preserve Tross command of the Manticorp soldier body, his leadership of We Fairy Men, and The Gallows as their underworld manifestation",
 ];
 
 const SANDMANOR_PRESENCE_LINES: &[&str] = &[
@@ -331,14 +332,14 @@ const SANDMANOR_INTENT_LINES: &[&str] = &[
 
 const INVERSE_CIRCLE_PRESENCE_LINES: &[&str] = &[
     "The Stairway to Heaven / Ascend: high border ascent above an underground inverse curve, with burden stations, rung marks, and lifted edge traffic",
-    "The Riptide / Retrieve: emergency water corridor above an underground inverse curve, with rescue beacons, drag marks, intake traffic, and Merman roaming along the rim",
+    "The Riptide / Retrieve: emergency water corridor above an underground inverse curve, with rescue beacons, drag marks, intake traffic, and Mariner/Merman roaming along the rim",
     "The Current Seanad / Deliberate: institutional water court above an underground inverse curve, with hearing chambers, evidence crossings, and measured assembly",
     "Mt. Aura / Aspire: outer border curve from Stonebend to Sandmanor above an underground inverse curve, with bright air, higher goals, and felt border pressure before sight",
 ];
 
 const INVERSE_CIRCLE_INTENT_LINES: &[&str] = &[
     "The Stairway to Heaven / Ascend: accept higher burden through ascent while its underground inverse curve stores hidden descent pressure",
-    "The Riptide / Retrieve: carry crises toward Glaushouse intake while its underground inverse curve keeps emergency underway and Merman range alive on the water rim",
+    "The Riptide / Retrieve: carry crises toward Glaushouse intake while its underground inverse curve keeps emergency underway and Mariner/Merman range alive on the water rim",
     "The Current Seanad / Deliberate: hold difficult design and repair questions for institutional judgment while its underground inverse curve keeps hidden current structure",
     "Mt. Aura / Aspire: hold the established aspirational curve from Stonebend to Sandmanor while its underground inverse curve keeps the hidden under-arc",
 ];
@@ -417,7 +418,7 @@ const STONEBEND_ROLE_SECTIONS: [HuemanSectionDefinition; 9] = [
     HuemanSectionDefinition {
         title: "Form Continuity",
         lines: &[
-            "the existing Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre -> Troglodyte form sequence remains the complete Presynce embodiment ladder and a creature-form projection, not a political rank ladder.",
+            "the active Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre -> Troglodyte sequence is Stonebend's Synthesis ladder and is not a political rank ladder; its exact Aura counterparts are Pixie, Sprite, Fairy, Spirit, Siren, Sylph, Nymph, and Muse.",
             "a changed Frame may receive a transformed-form Name while its former Names, lineage, liabilities, and continuity remain recorded.",
             "no Current Form, Aura Frame, Synthesis, species, combat rank, wealth level, or lineage automatically grants eligibility for Hypergiant or High Freemason.",
             "transformation may never create office or Title automatically.",
@@ -457,11 +458,12 @@ const STONEBEND_ROLE_SECTIONS: [HuemanSectionDefinition; 9] = [
         ],
     },
     HuemanSectionDefinition {
-        title: "Aura Way, Aether, and Stone",
+        title: "Aura Way, Aether, and Stone (Legacy Physical Mechanics)",
         lines: &[
-            "Mt. Aura is Aether, the shared ideal and pinnacle; Riptide is Bathos, the downward pole of weight and consequence; neither is owned by Stonebend.",
-            "Aether is weightless Current and Current is the heaviest Aether: distinct burden states of one medium whose stable lineage survives lawful refinement.",
-            "Aura is Aether revealed through Form, while Current is Bathos embodied through weight.",
+            "STATUS: LEGACY. The physical Aether/Current/Aura vocabulary in this section is retained for material mechanics and archive compatibility; it does not define the universal Practitioner ontology.",
+            "within that legacy physical model, Mt. Aura is Aether, the shared ideal and pinnacle; Riptide is Bathos, the downward pole of weight and consequence; neither is owned by Stonebend.",
+            "within that legacy physical model, Aether is weightless current-medium and current-medium is the heaviest Aether: distinct burden states of one medium whose stable lineage survives lawful refinement.",
+            "within that legacy physical model, aura-medium is Aether revealed through Form, while current-medium is Bathos embodied through weight.",
             "Aura Way is the standard known path through prerequisites, education, supervised practice, examination, demonstrated responsibility, and recognition eligibility.",
             "the Houses teach the work, Aura Way organizes the path, and Stonebend names completion without declaring metaphysical perfection.",
             "lawful material Hollowing removes only authorized removable burden, preserves essential fractions, and carries source Current, result Aether, proof, provenance, custody, and Seal.",
@@ -470,17 +472,17 @@ const STONEBEND_ROLE_SECTIONS: [HuemanSectionDefinition; 9] = [
         ],
     },
     HuemanSectionDefinition {
-        title: "Three Gates, Diamond, and Bounded Title Scope",
+        title: "Three Gates, Sovereignty, and Bounded Title Scope",
         lines: &[
             "Stonebend has exactly three bidirectional constitutional gates: Flynt-facing through Stairway to Heaven and Basin Motor Speedway, Central Junction-facing through the Craft Corridor, and Sandmanor-facing through Aura Way and Mt. Aura.",
             "Central Junction remains a district, Mt. Aura remains an ideal and route landmark, and Riptide remains outside Stonebend on its established route.",
             "one stable core Title may hold independent Formation Recognition, Public Circulation, and Operational Deployment scopes; rejection or limitation at one gate does not erase another scope.",
             "gate failures return typed evidence and distinguish honest failure, negligence, fraud, illegality, and constitutional hollowness.",
-            "Diamond is Stonebend's continuing sovereign Title; the Hypergiant is its temporary active bearer; Diamond remains when vacant.",
+            "Hypergiant is Stonebend's sovereign title. Diamond's current role is STATUS: OPEN; older Diamond sovereign records and stable identifiers are LEGACY / SUPERSEDED compatibility data.",
             "temporary Proliteriate witnesses carry only a stable bounded mandate, may be recalled, and return authority to the permanent network when the matter ends.",
             "Spartacus is an archetype for a raised witness, not a permanent fourth office.",
             "removal and succession preserve durable Tombstones rather than deleting ended authority.",
-            "no Hypergiant claims Diamond without The Lazerhorn; recommendation, lineage, former office, and self-certification cannot shorten the path.",
+            "Hypergiant accession retains The Lazerhorn and the established evidence path; recommendation, lineage, former office, and self-certification cannot shorten the path.",
             "every gate crossing remains traceable to Claim evidence, Title or boundary disposition, and Yield accountability even when routine work is delegated.",
         ],
     },
@@ -493,7 +495,7 @@ const STONEBEND_ROLE_SECTIONS: [HuemanSectionDefinition; 9] = [
             "honest failure, negligence, fraud, illegality, and constitutional hollowness remain distinct and receive proportionate recorded consequences.",
             "restoration repairs the Title without erasing the interruption, remediation evidence, or continuing limitations.",
             "every ended active term links to a Tombstone, and honorable completion remains distinct from punitive removal.",
-            "during Diamond vacancy, bounded continuity mandates may preserve existing duties but cannot become Diamond, appoint a Hypergiant, create sovereign law, or grow permanent through use.",
+            "during a Hypergiant vacancy, bounded continuity mandates may preserve existing duties but cannot become Hypergiant, appoint a Hypergiant, create sovereign law, or grow permanent through use.",
             "High Freemason replacement requires independent Forge review; no candidate self-certifies and no outgoing bearer appoints the replacement unilaterally.",
             "the Proliteriate network survives node change, witness recall, and mandate completion without a permanent speaker or locked numerical threshold.",
             "Claim, Title, and Yield evidence remain traceable through every temporal review.",
@@ -504,11 +506,11 @@ const STONEBEND_ROLE_SECTIONS: [HuemanSectionDefinition; 9] = [
         lines: &[
             "STONEBEND_CONSTITUTION_V2.md is the canonical Stonebend law",
             "STONEBEND_AURA_WAY_AETHER_HOLLOWING_FOUNDATION_V1.md is the canonical bounded first-pass foundation",
-            "STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md is the canonical bounded second-pass constitutional supplement",
-            "STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md is the canonical bounded third-pass lifecycle supplement",
+            "STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md is a compatibility supplement whose Diamond-sovereign language is SUPERSEDED",
+            "STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md is a compatibility supplement whose Diamond-sovereign language is SUPERSEDED",
             "src/world/stonebend.rs enforces Stonebend-specific authority and registry invariants above the frozen runtime",
             "src/world/stonebend/foundation.rs enforces Aura Way, material provenance, lawful refinement, and stone-refraction invariants without extending Stonebend government",
-            "src/world/stonebend/second_pass.rs enforces the three gates, bounded Title scopes, Diamond tenure, distributed Proliteriate, removal, Tombstones, succession, and delegated accountability without changing gameplay",
+            "src/world/stonebend/second_pass.rs enforces the three gates, bounded Title scopes, active Hypergiant tenure, legacy Diamond decoding, distributed Proliteriate, removal, Tombstones, succession, and delegated accountability without changing gameplay",
             "src/world/stonebend/third_pass.rs enforces recognition, activation, maintenance, renewal, targeted intervention, restoration, vacancy continuity, independent Forge replacement, and temporal Claim/Title/Yield review without replacing the common Bond engine",
             "Body -> Presynce is Stonebend's Hueman faculty: embodied anticipation bounded by Frame, Flow, polarity, evidence, and uncertainty, never an automatic dodge or counter",
             "src/world/house_institutions.rs provides the neutral institution projection",
@@ -523,45 +525,51 @@ const FLYNT_CONSTITUTION_SECTIONS: [HuemanSectionDefinition; 9] = [
         title: "Constitutional Executive",
         lines: &[
             "Tross is the sovereign executive of Flynt.",
+            "The Tross = Manticore: Manticore is his masculine mythological identity and maintained Form, not a separate person, office, or authority.",
             "Every Flynt institution and office ultimately derives constitutional authority from Tross.",
-            "Manticorp and the Gallows answer directly to Tross through distinct public and underground authorities.",
+            "Manticorp is the body of soldiers that answers to the Tross in public command; We Fairy Men answers to him as the Basin creature-sect leadership body.",
         ],
     },
     HuemanSectionDefinition {
-        title: "Constitutional Companion",
+        title: "Creature Pairs and Constitutional Companion",
         lines: &[
-            "There is exactly one constitutional Chimera.",
-            "Chimera is the lower apex integration of Wolf, Bat, and Snake/Fish, with meaningful refinement before Manticorp.",
-            "Manticorp is a distinct maintained Synthesis Form beyond Chimera and the institution named after that sovereign ideal.",
-            "The Tross is the presently maintained living holder of Manticorp and the formal constitutional leader of Manticorp Institution.",
-            "Stable identity invariant: Tross = Mystery Man = Mr. X.",
-            "Manticorp Form stable ID: flynt.form.manticorp.",
-            "Manticorp Recipe stable ID: flynt.recipe.divided-manticorp.",
-            "Manticorp may continue throughout the Tross's life through bodily discipline, Recipe renewal, divided Basin knowledge, institutional recognition, and specialized Glaushouse care.",
-            "Gremlincoin is the Gremlin Way: meaningful salvage, improvisation, risk, mobility, low-resource adaptation, frontier labor, and discovered abandoned value become lawful Synthesis evidence.",
-            "Gargoyle is never automatic at a numeric threshold; Recipe viability must turn Gremlin opportunity into maintained structure, territory, responsibility, maintenance, and renewal.",
-            "The Gremlin finds value. The Gargoyle makes that value stand.",
+            "Gargoyle/Medusa, Werewolf/Vampire, Mariner/Mermaid, and Manticore/Chimera are the four exact masculine/feminine Flynt Basin creature pairs.",
+            "Gargoyle, Werewolf, Mariner, and Manticore are masculine; Medusa, Vampire, Mermaid, and Chimera are feminine.",
+            "Medusa is a Flynt creature/species designation; Gargoyle embodies stone while Medusa petrifies.",
+            "Mariner = Merman in Flynt terminology and names the masculine mer-creature, not merely a human sailor.",
+            "There is exactly one constitutional Chimera, the feminine First Companion and counterpart to the Tross/Manticore.",
+            "Gargoyle + Werewolf + Mariner/Merman -> Chimera -> Manticore is the locked higher-Synthesis relationship.",
+            "Chimera as selection among capacities and Manticore as their integration are STATUS: WORKING; exact higher-Synthesis mechanics remain STATUS: OPEN.",
+            "Manticore is the Tross's specifically masculine maintained Synthesis Form beyond Chimera; Manticorp is the separate body of soldiers he commands.",
+            "Stable identity invariant: The Tross = Manticore = Mystery Man = Mr. X.",
+            "Manticore Form stable ID: flynt.form.manticore.",
+            "Manticore Recipe legacy provenance ID: flynt.recipe.divided-manticorp; this machine key does not make Manticorp a Form.",
+            "Manticore may continue throughout the Tross's life through bodily discipline, Recipe renewal, divided Basin knowledge, institutional recognition, and specialized Glaushouse care.",
+            "Warlock -> Gargoyle and Lycan -> Werewolf remain inherited practitioner-tradition/Synthesis correspondences; any distinct source tradition for Mariner remains unnamed.",
+            "The exact Current/Aura equations for those base forms remain STATUS: OPEN and must not be fabricated.",
         ],
     },
     HuemanSectionDefinition {
         title: "Urban Expression",
         lines: &[
-            "The public hierarchy is Tross -> Manticorp Institution; the same Tross is underground Mystery Man/Mr. X -> The Gallows.",
-            "The public chain is Tross -> Manticorp Institution.",
-            "The underground chain is Mystery Man/Mr. X -> The Gallows.",
-            "Manticorp is Flynt's formal military institution for territorial defense, military command, constitutional protection, disciplined force, military training, and lawful deployment.",
-            "Mystery Men is Flynt's unified publicly recognized, operationally classified federal investigative bureau; it is distinct from the Mystery Man identity of Tross.",
+            "The public hierarchy is The Tross/Manticore -> Manticorp soldier body; the Basin hierarchy is The Tross/Manticore -> We Fairy Men -> The Gallows in its underworld context.",
+            "The public chain is Tross -> Manticorp soldier body.",
+            "The underworld manifestation chain is Tross/Manticore -> We Fairy Men -> The Gallows; Mystery Man/Mr. X are underworld identities of that same Tross.",
+            "Manticorp is Flynt's body of soldiers for territorial defense, military command, constitutional protection, disciplined force, military training, and lawful deployment.",
+            "Mystery Men is Flynt's consolidated publicly recognized, operationally classified intelligence, covert-security, and federal-investigative apparatus; it is separate from We Fairy Men and The Gallows and distinct from the Mystery Man identity of Tross.",
             "The Mystery Man and Mr. X are aliases or operational identities of Tross, not separate persons or subordinates.",
-            "The Gallows is Flynt's underground Yakuza/mafia-like body governing illicit trade, debts, contraband, and deniable action.",
+            "The Gallows is the organized-crime underworld manifestation of We Fairy Men acting collectively under the Tross.",
         ],
     },
     HuemanSectionDefinition {
         title: "Rural Expression",
         lines: &[
-            "The Gallows is an underground command expression of Tross, while We Fairy Men is a coalition of distinct Basin traditions.",
-            "Bro White, The Beauty, and Cinderellaman remain distinct leaders and custodians of divided Manticorp Recipe components.",
-            "The Basin bands may negotiate with either face of Tross without being permanently absorbed into Manticorp or the Gallows.",
-            "Music and roaming culture are expressions of We Fairy Men, not a replacement for its separate identities and territories.",
+            "We Fairy Men is the exact proper collective identity and may not be normalized to Fairy Men or the Fairy Men.",
+            "The Tross/Manticore leads We Fairy Men; The Gallows is the same underlying body acting under his direction in the underworld, not an unrelated organization.",
+            "Bro White leads Gargoyle/Medusa, Beauty leads Werewolf/Vampire, and Cinderellaman with his Midnight Crew leads Mariner/Mermaid.",
+            "The Midnight Crew belongs to Flynt's maritime side; no formal maritime guild name is canonical.",
+            "The Basin bands may negotiate with either face of Tross without being permanently absorbed into Manticorp or the Gallows context.",
+            "Music and roaming culture are expressions of We Fairy Men, not a replacement for its distinct crews, populations, and territories.",
         ],
     },
     HuemanSectionDefinition {
@@ -572,35 +580,40 @@ const FLYNT_CONSTITUTION_SECTIONS: [HuemanSectionDefinition; 9] = [
         ],
     },
     HuemanSectionDefinition {
-        title: "Founding Leaders",
+        title: "Creature-Sect Leaders",
         lines: &[
-            "Bro White is the enduring Gargoyle Founding Leader office; Bro White and the 7 Brothas is its crew.",
-            "Cinderellaman is the enduring Merman Founding Leader office; Cinderellaman and His Midnight Crew is its crew.",
-            "The Beauty is the enduring Werewolf Founding Leader office; The Beauty and His Beasts is its crew.",
+            "Bro White is the enduring Gargoyle/Medusa leader; Bro White and the 7 Brothas remains his established crew, preserving the Snow White relation.",
+            "Cinderellaman is the enduring Mariner/Mermaid leader; Cinderellaman and His Midnight Crew is his maritime crew.",
+            "Beauty is the enduring Werewolf/Vampire leader; Beauty and His Beasts preserves the Beauty and the Beast inversion.",
             "Successors may inherit each Founding Leader office without creating a new constitutional office.",
         ],
     },
     HuemanSectionDefinition {
         title: "Constitutional Union",
         lines: &[
-            "Bro White, Cinderellaman, and The Beauty unite as We Fairy Men.",
-            "We Fairy Men is the constitutional folk expression of the completed Chimera, not a temporary alliance.",
-            "The urban and rural expressions are complementary traditions of the same Chimera authority, not competing governments.",
+            "Bro White, Beauty, and Cinderellaman form We Fairy Men beneath the Tross/Manticore.",
+            "We Fairy Men is the underlying leadership and sect structure; The Gallows is its contextual underworld manifestation under the Tross.",
+            "We Fairy Men is not Mystery Men, and Mystery Men does not belong to the Gallows structure.",
+            "The public and underworld expressions answer to the same sovereign without becoming competing governments.",
         ],
     },
     HuemanSectionDefinition {
-        title: "Spirit and Resynce",
+        title: "Practitioner Expressions and Resynce",
         lines: &[
-            "Spirit -> Resynce is Flynt's Hueman faculty: relational synchronization through Beings, groups, routes, encounters, Bonds, affiliation, and recognition, never mind reading or a replacement Current Form ladder.",
-            "We Fairy Men remain a distinct Aura Ridge frontier culture of caravaners, scouts, guides, traders, performers, salvagers, escorts, and pathfinders expressing mobile communal Resynce without formal Flynt state authority.",
-            "The Gallows remain the distinct Flynt civic institution of consequential Resynce through reputation, public challenge, accountability, honor, disgrace, and judgment.",
-            "This faculty jurisdiction preserves the frozen rural hierarchy while never merging the We Fairy Men group identity into the Gallows institution identity.",
+            "Resynce is Flynt's faculty: recognition of Capacity through response, change, pressure, or load.",
+            "Telekinesis is Flynt's Current-side expression: outward action, movement, and force upon what is external to the practitioner.",
+            "Nookinesis is Flynt's Aura-side expression: inward action, movement, or manipulation of mind, cognition, intention, internal state, or Aura.",
+            "Capacity is revealed under load.",
+            "We Fairy Men express mobile communal Resynce through Aura Ridge caravaners, scouts, guides, traders, performers, salvagers, escorts, and pathfinders without formal Flynt state authority.",
+            "The Gallows expresses organized underworld Resynce through regional crews, loyalty, territory, favors, obligation, and contraband routes without gaining civic authority.",
+            "These contexts remain separately addressable while sharing We Fairy Men as the underlying Tross-led structure.",
         ],
     },
     HuemanSectionDefinition {
         title: "Status",
         lines: &[
-            "the Flynt hierarchy is constitutionally locked",
+            "Flynt's four creature pairs, three sect assignments, and higher Synthesis relationship are constitutionally locked; exact Level 1 equations remain STATUS: OPEN",
+            "Wardens are Flynt's primary civic identity; Geralds are Stonebend's and Sandmen are Sandmanor's; the former Warden platelet correspondence remains superseded",
             "Tross succession is not defined by this architecture and may not be inferred from creature progression",
             "Current Synthesis remains authoritative over constitutional state and validation",
             "Hueman and Godot may present the hierarchy but may not reinterpret it",
@@ -616,7 +629,8 @@ const GLAUSHOUSE_ROLE_SECTIONS: [HuemanSectionDefinition; 7] = [
             "Glaushouse clears medicine, recovery, and lawful Synthesis for both machine and Hueman bodies.",
             "Glaushouse retains exclusive Synthesis authority among Houses while Current Runtime V2 remains authoritative over common Bond resolution and causality.",
             "Glaushouse reads as a mechanical-industrial medical capital: Berlin severity, Milan polish, chrome discipline, and commanding clinic glamour.",
-            "Sprite is Glaushouse's confirmed Aura-origin path.",
+            "Nightingale / Pixie is Glaushouse's common practitioner/Synthesis foundation.",
+            "Biokinesis is Glaushouse's Current-side expression; Noomancy is its exact Aura-side expression.",
             "Glaushouse mines jades and refines Glaus Gel as its jade-colored repair and synthesis medium.",
             "Glausteel is the accepted hard branch for cleared integrated work.",
         ],
@@ -627,9 +641,10 @@ const GLAUSHOUSE_ROLE_SECTIONS: [HuemanSectionDefinition; 7] = [
             "Prima Donna is the singular highest clinical office; Doctor Ratchet is its frozen current holder identity.",
             "Persephone is a multiple balanced clinical rank; Nurse House is one frozen current Persephone identity.",
             "The Nightingales are the universal clinical foundation, constitutional nursing and clinical-care institution, patient advocates, and protected bedside check.",
-            "a Nightingale may choose Matron or Marshal; Matron and Marshal are equal complementary branches, and cross-training remains open.",
+            "a Nightingale may specialize as Marshal / Sprite on the Biokinetic-dominant branch or Matron / Fairy on the Noomantic-dominant branch; cross-training remains open.",
+            "Marshal advances in Synthesis correspondence from Sprite to Spirit; Matron advances from Fairy to Nymph.",
             "mastery of both branches may earn Persephone; multiple Persephones may serve while only one Prima Donna is active.",
-            "the generative ladder is Nightingale -> equal Matron or Marshal branches -> multiple Persephones -> one Prima Donna.",
+            "the branch geometry is Nightingale / Pixie -> Marshal / Sprite -> Spirit OR Matron / Fairy -> Nymph -> Persephone / Siren -> Prima Donna / Muse.",
             "Glauspitals operates clinical facilities, while Chromacord preserves clinical records and evidence.",
             "advancement Toke/Tokens preserve one stable person and prior mastery; neither office, institution, chart, gesture, species, transformation, nor technical ability manufactures another authority.",
         ],
@@ -646,12 +661,12 @@ const GLAUSHOUSE_ROLE_SECTIONS: [HuemanSectionDefinition; 7] = [
         ],
     },
     HuemanSectionDefinition {
-        title: "Form and Practice Ladder",
+        title: "Branching Synthesis Correspondence",
         lines: &[
-            "Glaushouse's separate Aura form-and-practice ladder remains Pixy -> Sprite -> Farie -> Nymph -> Siren -> Muse; it does not replace the clinical ladder.",
-            "Pixy marks nimble bedside attention; Sprite marks active floor care and relay motion; Farie marks delicate restorative practice used with discipline.",
-            "Nymph marks stable healing presence; Siren marks commanding recall and recovery presence; Muse marks the highest restorative inspiration and formal guidance.",
-            "the Aura ladder records Frame, practice, capability, and mastery development; only Nightingale evidence, branch proofs, and lawful advancement create Matron, Marshal, Persephone, or Prima Donna candidacy.",
+            "Nightingale / Pixie is the common foundation, after which Glaüshouse splits rather than forming a straight ladder.",
+            "Marshal / Sprite -> Spirit is the physical/Biokinetic-dominant branch; Matron / Fairy -> Nymph is the Aura/Noomantic-dominant branch.",
+            "the branches reunify at Persephone / Siren and culminate at Prima Donna / Muse.",
+            "Fairy is the active spelling; Faerie remains a LEGACY serialization alias. Advanced Marshal and Advanced Matron are explanatory descriptions, never public offices.",
             "a technically capable form still requires training, current competence, institutional authorization, scope, recognition, and Title where applicable.",
         ],
     },
@@ -663,7 +678,7 @@ const GLAUSHOUSE_ROLE_SECTIONS: [HuemanSectionDefinition; 7] = [
             "Adjustment, Graft, Reconstruction, and Transfiguration are intended clinical depths; Overgrowth is an emergency failure state.",
             "host rejection and Sympiote rejection are distinct, and major Synthesis requires both technical and lived viability.",
             "high-risk Synthesis requires a recovery plan and Nightingale witness; emergency Synthesis requires post-event review; experimental Synthesis is openly marked.",
-            "Gnome -> Minotaur at Aura Field and Elf -> Centaur at Aura Beach remain regional Synthesis canon.",
+            "Sandmanor's Gnome/Faun/Minotaur and Elf/Satyr/Centaur Form progressions remain separate House canon; Hecaton and Pegasus are sovereign Hands.",
             "Glaushouse clears safety, Sandmanor proves design, Stonebend preserves identity and Title, and Flynt recognizes function.",
             "Synthesis never automatically creates Title, office, recognition, or political standing.",
             "failed, partial, unstable, unintended, or injurious Synthesis is recorded as the actual result rather than renamed as success.",
@@ -686,7 +701,7 @@ const GLAUSHOUSE_ROLE_SECTIONS: [HuemanSectionDefinition; 7] = [
         lines: &[
             "Glaushouse constitutional law is ratified in GLAUSHOUSE_CONSTITUTION_V2.md",
             "the House-specific registry validates clinical law above frozen Current Runtime V2",
-            "Mind -> Precog is Glaushouse's Hueman faculty: evidence-grounded probable continuation through Glow and disclosed uncertainty, never omniscience or guaranteed future",
+            "Mind -> Precog is Glaüshouse's faculty: recognition of trajectory or condition in relation to Integrity, never omniscience or guaranteed future",
             "Hueman and Godot may present records but may not create consent, Clearance, privilege, office, or Synthesis outcomes",
             "common Bond, Current, Aura, persistence, replay, and final Synthesis Resolution remain authoritative in Current Runtime V2",
             "the universal recursion kernel remains isolated from Glaushouse-specific law",
@@ -703,7 +718,7 @@ const SANDMANOR_ROLE_SECTIONS: [HuemanSectionDefinition; 9] = [
             "from Glaushouse, Sandmanor may read southward across the relational arc without changing the canonical map.",
             "",
             "Sandmanor proves: design proposes, method orders, teaching transmits, demonstration reveals, evidence supports, criticism tests, reproduction confirms, failure teaches, revision improves, and reciprocity transforms.",
-            "Pixy is Sandmanor's confirmed Aura-origin path.",
+            "Sandmanor's distinct Minorian and Minoan peoples carry separate Form, social-role, cultural, attendant, and sovereign-Hand axes.",
             "Sandmanor mines crystals and refines Prism Sand as its signature proof-and-record resource.",
             "Prismiron is the accepted hard branch for proof-ready structures and instruments.",
         ],
@@ -711,8 +726,8 @@ const SANDMANOR_ROLE_SECTIONS: [HuemanSectionDefinition; 9] = [
     HuemanSectionDefinition {
         title: "Equal Civic Traditions",
         lines: &[
-            "Minorians are Sandmanor's interior Gnome tradition and ask how a design works from within.",
-            "Minoans are Sandmanor's exterior Elf tradition and ask how a design meets the world beyond itself.",
+            "Minorians are Sandmanor's Prefog / Hearth / interior-family people and ask how a design works from within.",
+            "Minoans are Sandmanor's Prefig / Current Sea / outward-social people and ask how a design meets and celebrates the world.",
             "Minorians and Minoans have equal constitutional standing and remain distinct enough to correct one another.",
             "the Sandmen stable institution ID remains the House-wide proof-body adapter; it is not a third people, a second government, or the singular Sandman office.",
         ],
@@ -720,21 +735,21 @@ const SANDMANOR_ROLE_SECTIONS: [HuemanSectionDefinition; 9] = [
     HuemanSectionDefinition {
         title: "Regional Design",
         lines: &[
-            "Aura Field is the Minorian proving ground for cultivation, repeated labor, maintenance, yield, sustainability, Gnome practice, and Minotaur advancement.",
-            "Aura Beach and the Current Sea are the Minoan proving grounds for coastal access and dense civic circulation, navigation, exploration, Elf practice, and Centaur mobility.",
-            "Gnome -> Minotaur is the canonical Aura Field regional Synthesis design; Minotaurs perform advanced tending and field labor.",
-            "Elf -> Centaur is the canonical Aura Beach and Current Sea regional Synthesis design; Centaurs roam Aura Beach and safeguard Current Sea approaches, crowd movement, and public access.",
+            "Minorian Forms: Gnome -> Faun -> Minotaur; Minoan Forms: Elf -> Satyr -> Centaur.",
+            "Minorian social roles: Husbandman -> Householder -> Hearthkeeper; Minoan social roles: Beach Bum -> Party Boy -> Socialite.",
+            "Geomancer and Labyrinthian are institutional attendant classes; Hecaton and Pegasus are sovereign Hands, never fourth-stage Forms.",
+            "Content Farm cultivates what family life has and makes; Aura Field preserves and projects household life; Aura Beach expresses, celebrates, and enjoys it.",
             "Sandmanor proves regional role and recipe logic; Glaushouse clears Synthesis; Stonebend preserves identity; Flynt recognizes lawful role or institution.",
         ],
     },
     HuemanSectionDefinition {
         title: "Hueman Soul Faculties",
         lines: &[
-            "Sandmanor is the Hueman Soul, divided equally into Minorian/Gnome Soul Interior -> Prefog and Minoan/Elf Soul Exterior -> Prefig.",
-            "Prefog opens multiple legal possibilities; Prefig gives the selected legal possibility provisional or demonstrable form; neither is proof and neither independently executes Synthesis.",
+            "Sandmanor is the Hueman Soul, divided equally into the Minorian / Prefog interior and Minoan / Prefig horizon traditions.",
+            "Prefog recognizes Pattern already present but obscured; Prefig recognizes or projects Pattern before manifestation; neither is proof and neither independently executes Synthesis.",
             "the reciprocal cycle is Prefog -> Prefig -> Proof -> Evidence or Failure -> Revision -> Prefog, with all failed Prefig evidence preserved.",
             "only the existing proof lifecycle may advance a Prefig source through demonstration, reproduction, proof, credential, or standard status.",
-            "Minotaur is cultivated Prefog at Aura Field; Centaur is embodied Prefig at Aura Beach and Current Sea; both are mature regional manifestations rather than new peoples or authorities.",
+            "Prefog and Prefig are faculties orthogonal to Current, Aura, Synthesis, and institutional rank.",
         ],
     },
     HuemanSectionDefinition {
@@ -758,9 +773,11 @@ const SANDMANOR_ROLE_SECTIONS: [HuemanSectionDefinition; 9] = [
         ],
     },
     HuemanSectionDefinition {
-        title: "Sandman Office",
+        title: "The Sandman / Demiurge",
         lines: &[
-            "The Sandman is the singular highest constitutional office and asks whether a claim has earned the right to be relied upon as proven.",
+            "The Sandman = Demiurge; Demiurge is the sovereign Synthesizer and apex identity, not an ordinary attendant class.",
+            "Hecaton is the Minorian Hand and Pegasus is the Minoan Hand beneath and around the reigning Sandman.",
+            "the appointment, succession, and removal mechanics of both Hands remain STATUS: OPEN.",
             "the candidate most transformed by learning from the other may accede only after a completed lawful Contest, resolved challenges, Stonebend Title, Flynt recognition, a public learning statement, and Seal.",
             "combat, heredity, wealth, popularity, transformation, recognition alone, or legacy progression never creates the office.",
             "during vacancy, one Minorian steward and one Minoan steward govern jointly without becoming Sandman or permanently altering the Constitution.",
@@ -782,7 +799,7 @@ const SANDMANOR_ROLE_SECTIONS: [HuemanSectionDefinition; 9] = [
         lines: &[
             "SANDMANOR_CONSTITUTION_V2.md is the ratified canonical Sandmanor law",
             "src/world/sandmanor.rs validates proof, Contest, accession, education, revision, failure, and regional design above frozen Current Runtime V2",
-            "the common runtime still owns Bond lifecycle, signed Current and Aura, shared House decisions, common Synthesis causality, persistence, and replay",
+            "the common runtime still owns Bond lifecycle, legacy signed Current/Aura quantities, shared House decisions, common event causality, persistence, and replay; those fields are compatibility mechanics rather than universal semantic definitions",
             "Hueman and Godot may present Sandmanor records but may not create proof, authorship, mastery, credential, office, clearance, Title, recognition, or Synthesis outcome",
             "the universal recursion kernel remains isolated from Sandmanor-specific law",
         ],
@@ -804,7 +821,7 @@ const STONEBEND_ROLE_ARTIFACT: HuemanRoleArtifactDefinition = HuemanRoleArtifact
 
 const FLYNT_CONSTITUTION_ARTIFACT: HuemanRoleArtifactDefinition = HuemanRoleArtifactDefinition {
     title: "Hueman Flynt Constitution",
-    structural_rule: "Tross is Flynt's sovereign executive; the unique Chimera is First Companion; urban and rural traditions remain complementary expressions of that one constitutional authority.",
+    structural_rule: "The Tross is Flynt's sovereign and masculine Manticore identity; Manticorp is his body of soldiers; the unique feminine Chimera is First Companion; Mystery Men answers to him with The Marquise as its maritime extension; We Fairy Men answers to him and manifests as The Gallows in the underworld.",
     sections: &FLYNT_CONSTITUTION_SECTIONS,
     sections_markdown_cache: &FLYNT_CONSTITUTION_SECTIONS_MARKDOWN,
     boundary_reminder: "Current Synthesis owns canonical Flynt authority and validation. Hueman renders the hierarchy but does not reinterpret or duplicate it.",
@@ -842,16 +859,16 @@ const STONEBEND_PROCEDURE_LINES: &[&str] = &[
 const FLYNT_PROCEDURE_LINES: &[&str] = &[
     "Recognize It and Engineering remain the Flynt procedure functions, turning capability into operation and field trust.",
     "Tross is the sovereign executive and the root of all Flynt constitutional authority.",
-    "the same stable person is Tross = Mystery Man = Mr. X = presently maintained holder of Manticorp.",
-    "the public chain is Tross -> Manticorp Institution, while the underground chain is Mystery Man/Mr. X -> The Gallows; both resolve to Tross.",
+    "the same stable person is The Tross = Manticore = Mystery Man = Mr. X.",
+    "the public chain is Tross -> Manticorp soldier body, while the Basin-underworld chain is Tross -> We Fairy Men -> The Gallows.",
     "the Gallowry is the hidden headquarters of the Gallows, not an institution or alternate government.",
     "Flynt routes ascent through boardwalk risk, casino pressure, outer hunting expeditions, and public recognition instead of quiet technical certification.",
     "Flynt knowledge gates open through puzzle trails, treasure-hunt clues, and route memory rather than library inheritance or bloodline permission.",
-    "Flynt's unique constitutional synthesis combines Gargoyle, Merman, and Werewolf into the one Chimera.",
-    "Manticorp is both the formal military institution and a distinct maintained Synthesis Form beyond Chimera; ordinary personnel do not hold the Form.",
-    "Bro White, The Beauty, and Cinderellaman remain distinct Basin leaders and divided Recipe custodians whose union is cooperation, not fusion.",
+    "Flynt's four creature pairs are Gargoyle/Medusa, Werewolf/Vampire, Mariner/Mermaid, and Manticore/Chimera; the unique higher synthesis combines Gargoyle, Mariner/Merman, and Werewolf into Chimera.",
+    "Manticore is the Tross's masculine maintained Synthesis Form beyond Chimera; Manticorp remains the distinct soldier body and its personnel do not hold the Form.",
+    "Bro White, Beauty, and Cinderellaman lead the three We Fairy Men creature sects and remain divided Recipe custodians whose union is cooperation, not fusion.",
     "opal extraction follows the guarded line body rather than an unbounded field claim.",
-    "regular current and holographic aura carry opal yield outward as Opal Oil without breaking the guarded line body.",
+    "legacy physical regular current and holographic aura compatibility mechanics carry opal yield outward as Opal Oil without breaking the guarded line body.",
     "recipe discovery in Flynt is field work, hunt pressure, and route puzzle rather than quiet inheritance.",
     "transition pressure may be read through Current Synthesis route order, but no autonomous traversal is enabled.",
 ];
@@ -1092,18 +1109,20 @@ fn render_sandmanor_guardian_and_succession_section() -> &'static str {
 ## Guardian, Coast, and Succession Constitution
 
 - The Minorian asks how a place is lived within; the Minoan asks how a place lives within the world.
-- Aura Farm contains Aura Fields and Content Farm as physical and cultural cultivation inside one Minorian system.
-- healthy Content Farms educate, preserve memory, cultivate skill, and nourish attention; exploitative practices may exhaust or deceive an audience without making all content production corrupt.
+- Content Farm cultivates what family life has and makes; Aura Field preserves and projects household life; neither is merely internet content production.
+- Aura Beach is the Minoan social-celebratory environment where accumulated life and Aura become public pleasure, style, gathering, and cultural circulation.
 - the Minoan coast runs Free Aura Beach -> Southern Coast -> Current Break -> Minoan County Courthouse -> Glaushouse, with regulation increasing gradually southward.
 - Current Break is Sandmanor territory that hosts Flynt-authorized Manticorp training; Flynt retains Manticorp command and Minoan guardians teach coastal survival.
 - the Minoan County Courthouse remains a Sandmanor institution when it transfers a patient or detainee into Glaushouse clinical care.
-- Gnome -> Minotaur -> Hecaton and Elf -> Centaur -> Pegasus require service proof, Recipe authorization, Glaushouse compatibility, maintained Synthesis, investiture, and renewal.
-- Minotaur carries Guardian of the Fields; Hecaton carries Guardian of the Whole Farm; Centaur carries Guardian of the Beach; Pegasus carries Guardian of the Horizon.
-- the Form remains a body and the mantle remains a trust; suspension or removal ends authority without automatically erasing the maintained Form.
-- the Contest final pair is one lawful Hecaton and one lawful Pegasus who sincerely teach each other and complete Aura Field, Content Farm, Liberty and Hospitality, Rescue and Horizon, and Reciprocal Integration trials.
+- Gnome -> Faun -> Minotaur and Elf -> Satyr -> Centaur are the Form progressions; their deeper mechanics remain open.
+- Husbandman -> Householder -> Hearthkeeper and Beach Bum -> Party Boy -> Socialite are separate social-role progressions.
+- Geomancer and Labyrinthian are attendant classes; Hecaton and Pegasus are sovereign Hands rather than maintained Forms.
+- the Form remains a body and the mantle remains a trust; the Hand remains a sovereign office.
+- the Contest final pair is one lawful Minotaur holding Hecaton and one lawful Centaur holding Pegasus who sincerely teach each other and complete five reciprocal trials.
 - the audited crowd measures improvement from each candidate's own baseline; candidate order, insertion order, original mastery, duplicate ballots, and conflicts cannot choose the winner.
 - a valid tie leaves the Sandman unresolved; teaching sabotage voids affected evidence or the responsible candidate.
 - the winner remains one stable person, undergoes lawful maintained Sandman convergence, and may receive the one active sovereign mantle; the losing guardian keeps their Form and mantle unless separately removed.
+- The Sandman = Demiurge.
 - Long ago, the sovereign was called Aegon. Today, the same sovereign identity and tradition is known as the Sandman.
 - Sandmanor remains one Design pole and one official Design Index; interior/cultivated and exterior/coastal design are complementary subdisciplines, not separate currencies or indexes.
 "
@@ -1451,7 +1470,8 @@ fn render_scene_intent_prefix() -> &'static str {
              ## Intent Map\n\n\
              {}\
              \n\
-             ## Bias Reading\n\n\
+             ## Legacy Physical Bias Reading\n\n\
+             - lower-case `current` and `aura` in this client projection are legacy physical compatibility labels, not Practitioner axes\n\
              - `current` intensifies exchange, storage, and guarded continuity\n\
              - `aura` intensifies warning, drift, shimmer, and ambiguity\n\
              - `current` may surface as regular current or hollow current depending on carried pressure\n\
@@ -1596,17 +1616,17 @@ fn render_vertical_integration_stack_prefix() -> &'static str {
              - constitutional geography owns the world-facing route-purpose roster above Current Synthesis without feeding meaning downward\n\
              - Hueman owns Fourway, AuraTriad reading, Hueman-first opening placement, civic projections, and scene reading\n\n\
              ## Current Alignment\n\n\
-             - Stonebend remains North: Geralds are its people, Hypergiant temporarily bears Diamond, Proliteriate is its distributed Yield network, and High Freemason bears Claim authority above Current Synthesis\n\
-             - Tross = Mystery Man = Mr. X is one stable sovereign person; Tross publicly leads Manticorp Institution, while the same man leads the Gallows underground; Manticorp Form is his presently maintained body\n\
-             - Glaushouse remains East: Nightingale is the universal clinical foundation, Matron and Marshal are equal branches, multiple Persephones preserve whole-course care, Doctor Ratchet holds the one singular Prima Donna office, Glauspitals operates care, and Chromacord preserves evidence without becoming authority\n\
-             - Sandmanor remains South with equal Minorian Gnome and Minoan Elf traditions, regional Gnome-to-Minotaur and Elf-to-Centaur designs, and the evidence-judged Contest of Improvement\n\
+             - Stonebend remains North: Geralds are its people, Hypergiant is its sovereign title, Diamond is STATUS: OPEN, Proliteriate is its distributed Yield network, and High Freemason bears Claim authority above Current Synthesis\n\
+             - The Tross = Manticore = Mystery Man = Mr. X is one stable sovereign person; Tross publicly leads the Manticorp soldier body and leads We Fairy Men, whose underworld manifestation is The Gallows; Manticore Form is his masculine mythological identity and maintained body\n\
+             - Glaüshouse remains East: Nightingale / Pixie is the common foundation; Marshal / Sprite -> Spirit and Matron / Fairy -> Nymph reunify at Persephone / Siren and culminate at Prima Donna / Muse\n\
+             - Sandmanor remains South with distinct Minorian and Minoan peoples, six Forms across two three-stage lines, separate roles, attendants, and Hands, the evidence-judged Contest of Improvement, and The Sandman = Demiurge\n\
              - Hueman faculties remain an additive typed layer: Stonebend/Body/Presynce, Flynt/Spirit/Resynce, Glaushouse/Mind/Precog, and equal Sandmanor Soul halves Minorian/Prefog and Minoan/Prefig\n\
-             - faculties describe Observe, Generate, Evaluate, and Execute-or-demonstrate; the existing deterministic runtime alone Chooses, and the existing Sandmanor proof lifecycle alone proves\n\
+             - faculties are orthogonal to Current, Aura, Synthesis, and rank; the existing deterministic runtime alone chooses, and the existing Sandmanor proof lifecycle alone proves\n\
              - functionally, Stonebend reads as Craft, Flynt reads as Engineering, Glaushouse reads as Repair, and Sandmanor reads as Configuration across the shared Hollow Grove/Hueman interpretation\n\
              - the player begins as Hueman near Aura Ridge before major form commitment\n\
-             - confirmed form origins remain braided: Flynt -> `gremlin`, Stonebend -> `goblin`, Glaushouse -> `sprite`, Sandmanor -> `pixy`\n\
+             - historical start-form routing remains a gameplay compatibility surface and does not redefine the active House ontology\n\
              - resource seams are designated across Hueman: Stonebend diamonds, Flynt opals, Glaushouse jades, Sandmanor crystals and proof materials\n\
-             - the bedrock split remains active upstream: regular current and hollow current, reflective aura and holographic aura\n\
+             - the legacy physical compatibility split remains active upstream: regular current and hollow current, reflective aura and holographic aura\n\
              - the visible Hueman map remains one large circle whose route legs may read as straight ridge runs or rounded bends\n\
              - Aura Ridge / Witness is the visible civic-reintegration body between Glaushouse and Stonebend, while Aura Ridge East remains only a local screen-map segment toward Sandmanor\n\
              - Current Sea / Certify is the Straight Glaushouse-to-Stonebend civic sea-of-people concourse and has no frozen Current Synthesis route projection; Glausbahn / Refine is the Round road sector\n\
@@ -1714,22 +1734,22 @@ fn render_link_physics_prefix() -> &'static str {
              - lighter exposed spill tends to read as `aura`\n\
              - Hueman reads that unresolved weight upward as `current` or `aura` while Hollow Grove keeps the same event as the lower witness simultaneously\n\
              - simultaneous reading does not grant Hueman authority to rewrite the kernel witness\n\n\
-             ## Current Bias Physics\n\n\
+             ## Legacy Physical Current-Bias Physics\n\n\
              - continuity pressure favors `current`\n\
              - occupancy load favors `current`\n\
              - inland persistence favors `current`\n\
              - repeat traversal favors `current`\n\n\
-             ## Aura Bias Physics\n\n\
+             ## Legacy Physical Aura-Bias Physics\n\n\
              - exposure pressure favors `aura`\n\
              - threshold bleed favors `aura`\n\
              - atmospheric spill favors `aura`\n\
              - edge drift favors `aura`\n\n\
-             ## Element Names\n\n\
+             ## Legacy Physical Element Names\n\n\
              - `current` appears as regular current or hollow current.\n\
              - Hollowing does not kill current; it reallocates carried pressure.\n\
              - `aura` appears as reflective aura or holographic aura.\n\
-             - Current asks what the Hueman can do.\n\
-             - Aura asks what the Hueman understands and how capability should be used.\n\n\
+             - legacy physical Current asks what the Hueman can do.\n\
+             - legacy physical Aura asks what the Hueman understands and how capability should be used.\n\n\
              ## Relay Packet Reading\n\n\
              - the HAL/Cleo relay packet declares one shared confirmation body across visible and underground layers\n\
              - Hueman reads that packet as proof that one bias body may persist above the map and below the map simultaneously\n\
@@ -1960,7 +1980,7 @@ pub fn build_hueman_aura_triad_from_artifacts(
          - Aura Basin serves Flynt first: Gargoyle-versus-Werewolf hunting grounds, den pressure, rare encounters, and the nearest hidden body rising into Aura Ridge circulation.\n\
          - Aura Field serves public work first: farming, Stonebend hunt tradition, Minorian proof, and market-facing comparison.\n\
          - Aura Beach serves exterior proof first: Minoan coastal access, navigation, public approach, training, recovery, and threshold exposure.\n\
-         - the Riptide, while outside the triad on the visible border ring, serves as Flynt's Merman roaming water range.\n\
+         - the Riptide, while outside the triad on the visible border ring, serves as Flynt's Mariner/Merman roaming water range.\n\
          - no single region owns every function, but these are the dominant first readings.\n\n\
          ## PLEB and META\n\n\
          - `PLEB` and `META` remain Current Synthesis occupancy semantics.\n\
@@ -2484,7 +2504,7 @@ pub fn build_hueman_inverse_circle_from_artifacts(
          ## Underground Reading\n\n\
          - The Stairway to Heaven reads as Ascend: the rising outer acceptance of higher burden along the circle's rim.\n\
          - beneath it, an inverse underground curve carries hidden descent pressure on both sides.\n\
-         - The Riptide reads as Retrieve: emergency underway carries crises toward Glaushouse intake, with the visible water rim kept alive as Flynt's Merman range.\n\
+         - The Riptide reads as Retrieve: emergency underway carries crises toward Glaushouse intake, with the visible water rim kept alive as Flynt's Mariner/Merman range.\n\
          - beneath it, an inverse underground curve carries hidden return pull on both sides beneath that roaming seam.\n\
          - The Current Seanad reads as Deliberate: the outer court holds evidence and difficult design or repair questions for judgment.\n\
          - beneath it, an inverse underground curve carries hidden current understructure on both sides.\n\
@@ -2924,7 +2944,8 @@ mod tests {
         assert!(output.starts_with("# Hueman Flynt Constitution"));
         assert!(output.contains("Tross is the sovereign executive of Flynt"));
         assert!(output.contains("There is exactly one constitutional Chimera"));
-        assert!(output.contains("The public hierarchy is Tross -> Manticorp Institution"));
+        assert!(output.contains("The Tross = Manticore"));
+        assert!(output.contains("The Tross/Manticore -> We Fairy Men -> The Gallows"));
         assert!(output.contains("The Gallowry is the hidden headquarters"));
         assert!(output.contains("Hueman Fourway bytes: 7."));
     }
@@ -2934,7 +2955,8 @@ mod tests {
         let output = build_hueman_glaushouse_roles_from_artifacts("start", "fourway");
         assert!(output.starts_with("# Hueman Glaushouse Roles"));
         assert!(output.contains("Glaushouse clears medicine, recovery, and lawful Synthesis"));
-        assert!(output.contains("Sprite is Glaushouse's confirmed Aura-origin path."));
+        assert!(output.contains("Nightingale / Pixie is Glaushouse's common"));
+        assert!(output.contains("Noomancy"));
         assert!(output.contains("Doctor Ratchet is its frozen current holder identity"));
         assert!(output.contains("every Nightingale stop triggers mandatory review"));
         assert!(output.contains("Hueman Fourway bytes: 7."));
@@ -2945,11 +2967,11 @@ mod tests {
         let output = build_hueman_sandmanor_roles_from_artifacts("start", "fourway");
         assert!(output.starts_with("# Hueman Sandmanor Roles"));
         assert!(output.contains("Sandmanor proves: design proposes"));
-        assert!(output.contains("Pixy is Sandmanor's confirmed Aura-origin path."));
-        assert!(output.contains("The Sandman is the singular highest constitutional office"));
-        assert!(output.contains("Gnome -> Minotaur is the canonical Aura Field"));
+        assert!(output.contains("Gnome -> Faun -> Minotaur"));
+        assert!(output.contains("The Sandman = Demiurge"));
+        assert!(output.contains("Elf -> Satyr -> Centaur"));
         assert!(output.contains("Fraudulent Design is Sandmanor's signature"));
-        assert!(output.contains("Gnome -> Minotaur -> Hecaton"));
+        assert!(output.contains("Beach Bum -> Party Boy -> Socialite"));
         assert!(output.contains("called Aegon"));
         assert!(output.contains("Hueman Fourway bytes: 7."));
     }
@@ -2972,7 +2994,9 @@ mod tests {
         assert!(output.starts_with("# Hueman Procedural Uplift"));
         assert!(output.contains("## Bottom-Up Procedure Spine"));
         assert!(output.contains("## Relay Procedure"));
-        assert!(output.contains("Manticorp is both the formal military institution and a distinct maintained Synthesis Form"));
+        assert!(output.contains(
+            "Manticore is the Tross's masculine maintained Synthesis Form beyond Chimera"
+        ));
         assert!(output.contains("Current Synthesis collision relay bytes: 5."));
     }
 

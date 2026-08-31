@@ -10,7 +10,7 @@ use hollow_grove::world::world_point_archive::{
 };
 use hollow_grove::world::world_point_fixture::canonical_world_point_archive_fixture;
 
-fn main() -> ExitCode {
+pub(crate) fn tool_main() -> ExitCode {
     match audit() {
         Ok(()) => ExitCode::SUCCESS,
         Err(error) => {

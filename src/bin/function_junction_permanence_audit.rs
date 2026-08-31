@@ -35,7 +35,7 @@ fn report(label: &str, condition: bool, failures: &mut usize) {
     }
 }
 
-fn main() {
+pub(crate) fn tool_main() {
     let payload = canonical_function_junction_archive_fixture();
     let bytes = match encode_function_junction_archive(&payload) {
         Ok(bytes) => bytes,

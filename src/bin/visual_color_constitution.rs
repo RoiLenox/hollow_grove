@@ -5,7 +5,7 @@ use hollow_grove::constitutional::{
     build_visual_color_validation_report, try_canonical_visual_color_constitution,
 };
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let command = std::env::args()
         .nth(1)
         .unwrap_or_else(|| String::from("validate"));

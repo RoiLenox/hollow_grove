@@ -20,12 +20,15 @@ Current Synthesis and the Hollow Grove runtime remain authoritative over:
 - persistence, provenance, replay, and constitutional validation.
 
 For Flynt specifically, `flynt-constitution` owns the Tross-rooted public and
-underground commands, the one-person Tross/Mystery Man/Mr. X identity lock, the
-distinct Manticorp Form and Manticorp Institution, the three divided Recipe
+underground commands, the one-person Tross/Manticore/Mystery Man/Mr. X identity lock, the
+distinct Manticore Form and Manticorp soldier body, the three divided Recipe
 custodians, the three Founding Leader lineages, the Gallowry distinction, and
 the one constitutional Chimera synthesis. Party, encounter, progression, and
 Godot layers may project these facts but may not create another Chimera,
-duplicate the Manticorp Form, split the Tross identity, or infer succession.
+duplicate the masculine Manticore Form, split the Tross/Manticore identity,
+create another feminine Chimera, or infer succession. Party projections must
+also preserve We Fairy Men as the Tross-led creature-sect body, The Gallows as
+its contextual underworld manifestation, and Mystery Men as separate.
 
 Godot is a presentation client. It may render maps, sprites, movement,
 followers, dialogue, menus, encounters, sound, transitions, and effects. It
@@ -61,7 +64,7 @@ increment establishes:
 - live `WorldSession` authority for Glaüshouse discharge Clearance, Stonebend
   Name, Sandmanor proof, and Flynt recognition;
 - schema-V3 gameplay event archives with deterministic checksums, embedded
-  institutional authority state, explicit Runtime Federation binding, V1/V2
+  institutional authority state, explicit Runtime Rampart binding, V1/V2
   migrations, and exact replay for route, Aura Field, Aura Beach, Aura Basin,
   Current Sea, and Boardwalk entry.
 - an event-sourced six-person party consisting of Hueman plus at most five
@@ -96,9 +99,9 @@ including `AuraFields`, `AuraFieldsStewardship`, and
 `site.sandmanor.aura-fields`, remain compatibility identifiers only; they never
 mean that more than one Aura Field exists.
 
-Gnome-to-Minotaur is regional Synthesis under the V2 constitution, not generic
-experience-based evolution. Minotaur-to-Hecaton and Centaur-to-Pegasus remain
-known adjacent forms without ratified gameplay execution.
+Faun-to-Minotaur is mature regional Synthesis under the V2 constitution, not generic
+experience-based evolution. Hecaton and Pegasus are sovereign Hands rather
+than adjacent Forms and have no ordinary Form-progression execution.
 
 ## First Non-Goals
 

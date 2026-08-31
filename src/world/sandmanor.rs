@@ -116,8 +116,8 @@ impl CivicTradition {
     #[must_use]
     pub const fn people(self) -> &'static str {
         match self {
-            Self::Minorian => "Gnomes",
-            Self::Minoan => "Elves",
+            Self::Minorian => "Minorians",
+            Self::Minoan => "Minoans",
         }
     }
 
@@ -149,14 +149,14 @@ pub const CIVIC_TRADITIONS: [TraditionDefinition; 2] = [
     TraditionDefinition {
         tradition: CivicTradition::Minorian,
         domain: DesignDomain::Interior,
-        people: "Gnomes",
+        people: "Minorians",
         governing_question: "How does this work from within?",
         equal_standing: true,
     },
     TraditionDefinition {
         tradition: CivicTradition::Minoan,
         domain: DesignDomain::Exterior,
-        people: "Elves",
+        people: "Minoans",
         governing_question: "How does this meet the world beyond itself?",
         equal_standing: true,
     },
@@ -1339,12 +1339,14 @@ impl SandmanorRegistry {
             validate_sandmanor_transition(record.predecessor.frame(), record.result.frame())
                 .map_err(|_| SandmanorValidationError::InvalidRegionalProof(record.id.clone()))?;
             let expected = match (record.predecessor, record.result) {
-                (SandmanorForm::Gnome, SandmanorForm::Minotaur) => (
+                (SandmanorForm::Gnome, SandmanorForm::Faun)
+                | (SandmanorForm::Faun, SandmanorForm::Minotaur) => (
                     SandmanorLineage::Minorian,
                     RegionalProofDomain::AuraFields,
                     RegionalFunction::AdvancedTendingAndFieldLabor,
                 ),
-                (SandmanorForm::Elf, SandmanorForm::Centaur) => (
+                (SandmanorForm::Elf, SandmanorForm::Satyr)
+                | (SandmanorForm::Satyr, SandmanorForm::Centaur) => (
                     SandmanorLineage::Minoan,
                     RegionalProofDomain::AuraBeachAndCurrentSea,
                     RegionalFunction::RoamAuraBeachAndGuardCurrentSea,
@@ -1541,8 +1543,8 @@ mod tests {
     #[test]
     fn civic_traditions_are_equal_distinct_and_exact() {
         validate_civic_traditions().unwrap();
-        assert_eq!(CivicTradition::Minorian.people(), "Gnomes");
-        assert_eq!(CivicTradition::Minoan.people(), "Elves");
+        assert_eq!(CivicTradition::Minorian.people(), "Minorians");
+        assert_eq!(CivicTradition::Minoan.people(), "Minoans");
         assert_ne!(
             CivicTradition::Minorian.domain(),
             CivicTradition::Minoan.domain()

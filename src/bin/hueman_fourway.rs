@@ -7,7 +7,7 @@ use hollow_grove::hueman_support::{
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let hueman_boundary = read_text_artifact(Path::new(HUEMAN_BOUNDARY_ARTIFACT_PATH))?;
     let hueman_motion_map = read_text_artifact(Path::new(HUEMAN_MOTION_MAP_ARTIFACT_PATH))?;
     let hueman_fourway = build_hueman_fourway_from_artifacts(&hueman_boundary, &hueman_motion_map);

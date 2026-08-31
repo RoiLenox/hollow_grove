@@ -7,7 +7,7 @@ use hollow_grove::world::aura_field::{
     AuraFieldFacilityId, AuraFieldFacilityKind, canonical_aura_field,
 };
 
-fn main() {
+pub(crate) fn tool_main() {
     let candidates = RecruitmentCandidateId::ALL;
     let candidate_ids = candidates
         .iter()

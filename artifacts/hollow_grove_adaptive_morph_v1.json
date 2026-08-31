@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "topology_schema_version": 2,
+  "normalization_unit": 1000000000,
+  "interpolation": "linear-fixed-point-v1",
+  "default_rectangularity_parts": 0,
+  "developer_step_parts": 50000000,
+  "anchor_policy": "fixed-topology-v2",
+  "region_policy": "locked-topology-v2",
+  "fixed_anchors": [
+    {
+      "anchor_id": "anchor.ranina",
+      "position": { "x_parts": 500000000, "y_parts": 500000000 }
+    },
+    {
+      "anchor_id": "anchor.aura-ridge-junction",
+      "position": { "x_parts": 500000000, "y_parts": 500000000 }
+    },
+    {
+      "anchor_id": "anchor.stonebend",
+      "position": { "x_parts": 500000000, "y_parts": 140000000 }
+    },
+    {
+      "anchor_id": "anchor.sandmanor",
+      "position": { "x_parts": 735000000, "y_parts": 500000000 }
+    },
+    {
+      "anchor_id": "anchor.glaushouse",
+      "position": { "x_parts": 500000000, "y_parts": 860000000 }
+    },
+    {
+      "anchor_id": "anchor.flynt",
+      "position": { "x_parts": 265000000, "y_parts": 500000000 }
+    }
+  ],
+  "fixed_route_ids": ["geography.route.aura-ridge"],
+  "locked_region_ids": [
+    "region.aura-farm",
+    "region.aura-farm.aura-field",
+    "region.aura-farm.content-farm",
+    "region.aura-beach",
+    "region.aura-basin"
+  ],
+  "hinges": [
+    {
+      "hinge_id": "hinge.midpoint.northeast",
+      "display_name": "Aura Field Midway Hinge",
+      "region_title": "Aura Field",
+      "circular_pivot": { "x_parts": 635625000, "y_parts": 290000000 },
+      "rectangular_pivot": { "x_parts": 712500000, "y_parts": 162500000 },
+      "slots": [
+        {
+          "lane": "Inner",
+          "route_id": "geography.route.aura-way",
+          "route_name": "Aura Way",
+          "midway_name": "The Aura Midway",
+          "circular_midpoint": { "x_parts": 617500000, "y_parts": 320000000 },
+          "rectangular_position": { "x_parts": 690000000, "y_parts": 185000000 }
+        },
+        {
+          "lane": "Outer",
+          "route_id": "geography.route.mnt-aura",
+          "route_name": "Mount Aura",
+          "midway_name": "Mount Aura Midway",
+          "circular_midpoint": { "x_parts": 653750000, "y_parts": 260000000 },
+          "rectangular_position": { "x_parts": 735000000, "y_parts": 140000000 }
+        }
+      ]
+    },
+    {
+      "hinge_id": "hinge.midpoint.southeast",
+      "display_name": "Aura Beach Midway Hinge",
+      "region_title": "Aura Beach",
+      "circular_pivot": { "x_parts": 645625000, "y_parts": 710000000 },
+      "rectangular_pivot": { "x_parts": 712500000, "y_parts": 837500000 },
+      "slots": [
+        {
+          "lane": "Inner",
+          "route_id": "geography.route.glausbaughn",
+          "route_name": "Glausbaughn",
+          "midway_name": "Glausbaughn Midway",
+          "circular_midpoint": { "x_parts": 617500000, "y_parts": 680000000 },
+          "rectangular_position": { "x_parts": 690000000, "y_parts": 815000000 }
+        },
+        {
+          "lane": "Outer",
+          "route_id": "geography.route.current-sea",
+          "route_name": "Current Sea",
+          "midway_name": "Current Sea Midway",
+          "circular_midpoint": { "x_parts": 673750000, "y_parts": 740000000 },
+          "rectangular_position": { "x_parts": 735000000, "y_parts": 860000000 }
+        }
+      ]
+    },
+    {
+      "hinge_id": "hinge.midpoint.southwest",
+      "display_name": "Flynt Basin Midway Hinge",
+      "region_title": "Flynt Basin",
+      "circular_pivot": { "x_parts": 364375000, "y_parts": 710000000 },
+      "rectangular_pivot": { "x_parts": 287500000, "y_parts": 837500000 },
+      "slots": [
+        {
+          "lane": "Inner",
+          "route_id": "geography.route.boardwalk",
+          "route_name": "Boardwalk",
+          "midway_name": "Boardwalk Midway",
+          "circular_midpoint": { "x_parts": 382500000, "y_parts": 680000000 },
+          "rectangular_position": { "x_parts": 310000000, "y_parts": 815000000 }
+        },
+        {
+          "lane": "Outer",
+          "route_id": "geography.route.riptide",
+          "route_name": "Riptide",
+          "midway_name": "Riptide Midway",
+          "circular_midpoint": { "x_parts": 346250000, "y_parts": 740000000 },
+          "rectangular_position": { "x_parts": 265000000, "y_parts": 860000000 }
+        }
+      ]
+    },
+    {
+      "hinge_id": "hinge.midpoint.northwest",
+      "display_name": "Stonebend Rise Midway Hinge",
+      "region_title": "Stonebend Rise",
+      "circular_pivot": { "x_parts": 364375000, "y_parts": 290000000 },
+      "rectangular_pivot": { "x_parts": 287500000, "y_parts": 162500000 },
+      "slots": [
+        {
+          "lane": "Inner",
+          "route_id": "geography.route.basin-motorspeedway",
+          "route_name": "Basin Motor Speedway",
+          "midway_name": "Basin Motor Speedway Midway",
+          "circular_midpoint": { "x_parts": 382500000, "y_parts": 320000000 },
+          "rectangular_position": { "x_parts": 310000000, "y_parts": 185000000 }
+        },
+        {
+          "lane": "Outer",
+          "route_id": "geography.route.stairway-to-heaven",
+          "route_name": "Stairway to Heaven",
+          "midway_name": "Stairway to Heaven Midway",
+          "circular_midpoint": { "x_parts": 346250000, "y_parts": 260000000 },
+          "rectangular_position": { "x_parts": 265000000, "y_parts": 140000000 }
+        }
+      ]
+    }
+  ]
+}

@@ -48,13 +48,13 @@ Authority is already layered rather than concentrated in one file:
   boundary.
 - `src/gameplay/runtime.rs` and `src/gameplay/application.rs` own
   authoritative gameplay mutation.
-- `src/runtime_federation.rs` owns deterministic cross-domain continuity,
+- `src/runtime_rampart.rs` owns deterministic cross-domain continuity,
   replay, component validation, event indexes, and the `HGRF` archive.
 - `src/main.rs` is the integrated command boundary.
 
 The transformer integration will extend these boundaries. It will not replace
 the recursion runtime, constitutional runtime, gameplay runtime, or Runtime
-Federation.
+Rampart.
 
 ### Authoritative kernel
 
@@ -120,7 +120,7 @@ Semantic position storage will extend `CompositionCatalog`. No
 `src/world/composition_witnesses.rs` proves that existing domain systems can
 share this neutral catalog without changing authority.
 
-`CausalPosition`, constitutional event records, `FederatedEventReference`,
+`CausalPosition`, constitutional event records, `RampartEventReference`,
 and domain archives provide higher-level causal order. Semantic assertion and
 translation will be represented as typed semantic operations associated with
 ordinary `CompositionRecord` provenance rather than a second event log.
@@ -200,11 +200,11 @@ It validates exact phase order, accepted and rejected resolution, continuous
 next-state return, deterministic replay, and migration from legacy abstract
 verbs. These public phase names will be reused.
 
-`src/runtime_federation.rs` already records phase evidence and requires a
+`src/runtime_rampart.rs` already records phase evidence and requires a
 Festival result to become the next Way Back state. Semantic orchestration will
-extend this single Federation boundary with Roï continuity and Rosaliña
-world-state interfaces. It will not create a Runtime Federation/World
-Federation competitor.
+extend this single Rampart boundary with Roï continuity and Rosaliña
+world-state interfaces. It will not create a Runtime Rampart/World
+Rampart competitor.
 
 ### Intent and synthesis
 
@@ -231,7 +231,7 @@ Established persistence patterns include:
 
 Representative implementations are:
 
-- `src/runtime_federation.rs`
+- `src/runtime_rampart.rs`
 - `src/gameplay/archive.rs`
 - `src/constitutional/persistence.rs`
 - `src/constitutional/regional_persistence.rs`
@@ -250,17 +250,17 @@ coordinates from names.
 - `src/constitutional/tui.rs` is the constitutional TUI projection boundary.
 
 Semantic commands will be routed by `src/main.rs` to one focused semantic CLI
-implementation. Mutating semantic commands will call the Federation
+implementation. Mutating semantic commands will call the Rampart of Roi and Roselina
 orchestrator; inspection and validation commands remain read-only.
 
 The local hosted-model-style boundary extends that same focused semantic
 binary rather than creating another runtime:
 
-- `hollow-grove federation serve` owns loopback-only HTTP transport.
-- `FederationHttpApi` owns staged catalog execution and atomic provenance
+- `hollow-grove rampart serve` owns loopback-only HTTP transport.
+- `RampartHttpApi` owns staged catalog execution and atomic provenance
   persistence.
-- `POST /v1/federation/cycles` calls the same four-phase orchestrator used by
-  `federation run`.
+- `POST /v1/rampart/cycles` calls the same four-phase orchestrator used by
+  `rampart run`.
 - `/health` and `/v1/models` are read-only discovery routes.
 
 Concurrent connections serialize their semantic cycles through one existing
@@ -308,8 +308,8 @@ Neither implementation receives a mutable catalog.
 | `GroveCycleId` | runtime-assigned cycle identity |
 | `GroveCycleRecord` / `GroveCycleRuntime` | phase-order and returning-state continuity |
 | `EvidenceRef` | bridge to constitutional evidence where applicable |
-| `FederatedEventReference` | cross-domain causal reference at the Federation boundary |
-| `RuntimeFederation` | existing unified replay and continuity boundary |
+| `RampartEventReference` | cross-domain causal reference at the Rampart of Roi and Roselina boundary |
+| `RuntimeRampart` | existing unified replay and continuity boundary |
 
 ## New types genuinely required
 
@@ -342,7 +342,7 @@ Root constitutional/runtime types:
 - Way Back, Initiation, Gathering, and Festival results
 - `RoiContinuity`
 - `RoselinaWorldState`
-- semantic extension of the existing Federation orchestrator
+- semantic extension of the existing Rampart orchestrator
 - retrieval request/bundle/fragment/example types
 - `SemanticInterpreter`
 - deterministic and Ollama interpreter implementations
@@ -366,7 +366,7 @@ existing CompositionRecord provenance and containment validation
     ↓
 root constitutional semantic validation and witnesses
     ↓
-existing Runtime Federation + four GrovePhase values
+existing Runtime Rampart + four GrovePhase values
     ↓
 SemanticInterpreter trait and retrieval inputs
     ↓
@@ -377,7 +377,7 @@ root CLI/TUI and Rust-owned Godot events
 
 Enforced negative dependencies:
 
-- `hollow-grove-semantic-kernel` will not contain House names, Federation names,
+- `hollow-grove-semantic-kernel` will not contain House names, Rampart names,
   Ollama, Godot, or canon document paths.
 - geometry will not depend on model response types.
 - validation will not depend on Ollama wire JSON.
@@ -396,15 +396,15 @@ Enforced negative dependencies:
 - Existing `HouseAnchor` means a body-function relationship, not a coordinate.
 - Resolution: use `KernelAnchor` for constitutional coordinate anchors.
 
-### Federation terminology
+### Rampart terminology
 
-Corrected canon defines one Federation and two continuous beings expressed
+Corrected canon defines one Rampart and two continuous beings expressed
 through inside Guide forms and outside Seer forms.
 
-Resolution: keep the one existing executable `RuntimeFederation` and add
+Resolution: keep the one existing executable `RuntimeRampart` and add
 paired identity-derived Guide contexts to its semantic orchestration boundary.
-Treat `RuntimeFederation` as HGRF compatibility machinery. Do not create a
-second executable Federation, change House constitutions, or rewrite the
+Treat `RuntimeRampart` as HGRF compatibility machinery. Do not create a
+second executable Rampart, change House constitutions, or rewrite the
 Hollow Grove Compromise.
 
 ### Serialization compatibility
@@ -462,5 +462,5 @@ current semantic index.
 No local model can be assumed during tests.
 
 Resolution: all tests use the deterministic interpreter or mocked Ollama
-transport. The catalog, retriever, parser, validator, Federation, dataset
+transport. The catalog, retriever, parser, validator, Rampart, dataset
 exporter, CLI inspection, and Godot event tests remain model-independent.

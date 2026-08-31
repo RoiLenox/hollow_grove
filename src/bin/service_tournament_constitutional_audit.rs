@@ -16,7 +16,7 @@ use hollow_grove::world::service_tournament_fixture::{
     canonical_service_tournament_archive_fixture, canonical_tournament_year_fixture,
 };
 
-fn main() -> ExitCode {
+pub(crate) fn tool_main() -> ExitCode {
     match audit() {
         Ok(()) => ExitCode::SUCCESS,
         Err(error) => {

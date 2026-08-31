@@ -38,10 +38,10 @@ echo "duration seconds: $DURATION_SECONDS"
 echo "seed: $SEED"
 echo "report interval seconds: $REPORT_INTERVAL"
 
-cargo build --release --features dev-tools --bin adversarial_verification
+cargo build --release --features dev-tools --bin hg-dev
 
 set +e
-target/release/adversarial_verification soak \
+target/release/hg-dev adversarial_verification soak \
   --duration-seconds "$DURATION_SECONDS" \
   --seed "$SEED" \
   --report-interval-seconds "$REPORT_INTERVAL" \

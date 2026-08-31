@@ -18,7 +18,7 @@ fn artifact_path() -> PathBuf {
     PathBuf::from(DESKTOP_STATUS_ARTIFACT_PATH)
 }
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let kernel_pass = run_kernel_cycle(Symptom::origin());
     let desktop_status = build_desktop_status_from_client(&kernel_pass);
     let artifact_path = artifact_path();

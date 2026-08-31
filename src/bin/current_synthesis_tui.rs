@@ -29,8 +29,8 @@ use hollow_grove::hollow_grove_contract::{
 };
 use hollow_grove::hueman_progression::{VerticalSliceState, write_vertical_slice_artifacts_at};
 use hollow_grove::{
-    build_aura_polarity_validation_report, build_aura_polarity_witness, build_aura_route_witness,
-    build_being_object_validation_report, build_being_object_witness,
+    MarquisePanel, build_aura_polarity_validation_report, build_aura_polarity_witness,
+    build_aura_route_witness, build_being_object_validation_report, build_being_object_witness,
     build_civic_body_validation_report, build_civic_body_witness, build_civic_crisis_witness,
     build_current_inheritance_validation_report, build_current_inheritance_witness,
     build_dark_aura_witness, build_embodied_action_witness, build_falloutman_beat_witness,
@@ -40,7 +40,8 @@ use hollow_grove::{
     build_foundation_checkpoint_validation_report, build_foundation_checkpoint_witness,
     build_grip_witness, build_light_aura_witness, build_manager_language_validation_report,
     build_manager_language_witness, build_map_validation_report, build_map_witness,
-    build_move_witness, build_player_location_witness, build_point_squared_witness,
+    build_marquise_panel_output, build_marquise_validation_report, build_move_witness,
+    build_player_location_witness, build_point_squared_witness,
     build_progression_validation_report, build_progression_witness,
     build_rule_of_twelve_validation_report, build_rule_of_twelve_witness,
     build_stanislavski_action_validation_report, build_stanislavski_action_witness,
@@ -95,6 +96,8 @@ enum CurrentSynthesisTuiCli {
     FalloutmanMenuWitness,
     FalloutmanBeatWitness,
     FalloutmanHiddenWoundWitness,
+    Marquise(MarquisePanel),
+    MarquiseValidate,
     Engine(EngineLens),
     BondList,
     BondInspect(String),
@@ -471,6 +474,23 @@ where
                 "falloutman requires witness, validate, menu witness, beat witness, or hidden-wound witness",
             )),
         },
+        "marquise" => match args.next().as_deref() {
+            None => Ok(CurrentSynthesisTuiCli::Marquise(MarquisePanel::Overview)),
+            Some("validate") => require_no_extra(
+                args,
+                CurrentSynthesisTuiCli::MarquiseValidate,
+                "marquise validate",
+            ),
+            Some(panel) => {
+                let panel = MarquisePanel::from_str(panel)
+                    .ok_or_else(|| format!("unknown marquise panel: {panel}"))?;
+                require_no_extra(
+                    args,
+                    CurrentSynthesisTuiCli::Marquise(panel),
+                    "marquise panel",
+                )
+            }
+        },
         "engine" => {
             let lens = args.next().unwrap_or_else(|| String::from("status"));
             if args.next().is_some() {
@@ -680,7 +700,7 @@ fn parse_player_action(
 }
 
 fn usage() -> &'static str {
-    "Usage: current_synthesis_tui <guides|scenario|world|visual-colors|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|civic-body|civic-crisis|flow-glow|embodied-action|current-inheritance|grip|aura-polarity|light-aura|dark-aura|aura-route|foundation-checkpoint|stanislavski|falloutman|engine|bond|resource|player|npc|cleopatra> [args]\n\
+    "Usage: current_synthesis_tui <guides|scenario|world|visual-colors|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|civic-body|civic-crisis|flow-glow|embodied-action|current-inheritance|grip|aura-polarity|light-aura|dark-aura|aura-route|foundation-checkpoint|stanislavski|falloutman|marquise|engine|bond|resource|player|npc|cleopatra> [args]\n\
      \n\
      Commands:\n\
        guides status\n\
@@ -729,6 +749,11 @@ fn usage() -> &'static str {
        falloutman menu witness\n\
        falloutman beat witness\n\
        falloutman hidden-wound witness\n\
+       marquise [overview]\n\
+       marquise hierarchy\n\
+       marquise warden|privateer|corsair|the-marquise\n\
+       marquise mystery-men|merman-mermaid|the-push|operations\n\
+       marquise validate\n\
        engine status|pleb|meta|blep\n\
        bond list\n\
        bond inspect <id>\n\
@@ -912,6 +937,8 @@ fn run_cli(root: &Path, cli: CurrentSynthesisTuiCli) -> io::Result<String> {
         CurrentSynthesisTuiCli::FalloutmanHiddenWoundWitness => {
             build_falloutman_hidden_wound_witness()
         }
+        CurrentSynthesisTuiCli::Marquise(panel) => Ok(build_marquise_panel_output(panel)),
+        CurrentSynthesisTuiCli::MarquiseValidate => Ok(build_marquise_validation_report()),
         CurrentSynthesisTuiCli::Engine(lens) => {
             let (_persisted, state) = load_state(root)?;
             Ok(build_engine_output(&state, lens))
@@ -1454,6 +1481,9 @@ mod tests {
         assert!(usage.contains("falloutman menu witness"));
         assert!(usage.contains("falloutman beat witness"));
         assert!(usage.contains("falloutman hidden-wound witness"));
+        assert!(usage.contains("marquise hierarchy"));
+        assert!(usage.contains("marquise mystery-men|merman-mermaid|the-push|operations"));
+        assert!(usage.contains("marquise validate"));
         assert!(usage.contains("engine status|pleb|meta|blep"));
         assert!(usage.contains("bond inspect <id>"));
         assert!(usage.contains("resource history"));
@@ -1616,7 +1646,8 @@ mod tests {
 
         assert!(scenario_list.contains("Scenario List"));
         assert!(scenario_list.contains("flooded_quarry_night_watch"));
-        assert!(world_context.contains("Current = blood"));
+        assert!(world_context.contains("Practitioner names the whole person"));
+        assert!(world_context.contains("LegacyPhysical::Current = blood-associated quantity"));
         assert!(world_context.contains("Hollow = pus"));
         assert!(world_witness.contains("HOLLOW GROVE ALIGNMENT WITNESS"));
         assert!(world_validate.contains("status: pass"));
@@ -1667,6 +1698,52 @@ mod tests {
         );
 
         fs::remove_dir_all(root).expect("cleanup should succeed");
+    }
+
+    #[test]
+    fn marquise_subpages_render_the_canonical_parent_progression_and_domains() {
+        assert_eq!(
+            parse_cli([String::from("marquise")]).expect("default panel should parse"),
+            CurrentSynthesisTuiCli::Marquise(hollow_grove::MarquisePanel::Overview)
+        );
+        assert_eq!(
+            parse_cli([String::from("marquise"), String::from("corsair")])
+                .expect("Corsair panel should parse"),
+            CurrentSynthesisTuiCli::Marquise(hollow_grove::MarquisePanel::Corsair)
+        );
+        assert_eq!(
+            parse_cli([String::from("marquise"), String::from("validate")])
+                .expect("validation should parse"),
+            CurrentSynthesisTuiCli::MarquiseValidate
+        );
+
+        let root = unique_temp_dir("current-synthesis-tui-marquise");
+        let overview = run_cli(
+            &root,
+            CurrentSynthesisTuiCli::Marquise(hollow_grove::MarquisePanel::Overview),
+        )
+        .expect("overview should render");
+        let hierarchy = run_cli(
+            &root,
+            CurrentSynthesisTuiCli::Marquise(hollow_grove::MarquisePanel::Hierarchy),
+        )
+        .expect("hierarchy should render");
+        let corsair = run_cli(
+            &root,
+            CurrentSynthesisTuiCli::Marquise(hollow_grove::MarquisePanel::Corsair),
+        )
+        .expect("Corsair should render");
+        let validation = run_cli(&root, CurrentSynthesisTuiCli::MarquiseValidate)
+            .expect("canon should validate");
+
+        assert!(overview.contains("PARENT TRADITION\nMystery Men"));
+        assert!(overview.contains("=== LEADERSHIP OFFICE ==="));
+        assert!(hierarchy.contains("THE TROSS → MYSTERY MEN → THE MARQUISE"));
+        assert!(hierarchy.contains("WARDENS"));
+        assert!(corsair.contains("A Corsair pilots systems."));
+        assert!(corsair.contains("COMPUTATIONAL DOMAIN"));
+        assert!(validation.contains("status: pass"));
+        assert!(validation.contains("parent: Mystery Men"));
     }
 
     #[test]

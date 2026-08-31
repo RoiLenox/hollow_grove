@@ -1,18 +1,18 @@
 HOLLOW GROVE POINT² ASCENSION WITNESS
 
-Root Doctrine:
+Legacy Physical Root Doctrine:
 Hollow Current holds.
-Current flows.
+LegacyPhysical::Current flows.
 Abyss feels.
-Aura reveals.
+LegacyPhysical::Aura reveals.
 Point² expands the self and the world together.
 
-Current Depths:
+Legacy Physical Current Depths:
 Hollow Current = Stonebend = life held in form
 Current = derivative = life moving between form and depth
 Abyss = Glaüshouse = life felt in depth
 
-Aura:
+Legacy Physical Aura Dimensions:
 Aura Shine = outward presence
 Aura View = surrounding world and horizon
 Inner Aura = inward identity and clarity
@@ -51,4 +51,3 @@ World Center: Ranina
 Ring: 2
 Position: 7
 V1.1 topology unchanged: yes
-

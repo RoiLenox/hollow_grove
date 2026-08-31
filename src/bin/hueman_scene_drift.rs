@@ -8,7 +8,7 @@ use hollow_grove::hueman_support::{
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let hueman_scene_intent = read_text_artifact(Path::new(HUEMAN_SCENE_INTENT_ARTIFACT_PATH))?;
     let hueman_link_physics = read_text_artifact(Path::new(HUEMAN_LINK_PHYSICS_ARTIFACT_PATH))?;
     let current_synthesis_collision_relay =

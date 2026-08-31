@@ -154,9 +154,9 @@ canonical definition set, and the live authority snapshot. Altered prose,
 choices, transitions, jurisdiction, authority, or ordering causes replay
 divergence rather than silent acceptance.
 
-Gameplay archives use federation-aware schema V3. They embed the exact
+Gameplay archives use Rampart-aware schema V3. They embed the exact
 schema-V2 institutional state needed to replay their House decisions and an
-explicit binding to The Runtime Federation. Schema V1 and V2 gameplay archives
+explicit binding to The Rampart of Roi and Roselina. Schema V1 and V2 gameplay archives
 migrate through recorded decisions without inventing events; new gameplay
 never loads the historical fixture actors.
 
@@ -221,6 +221,6 @@ replay, and Godot's presentation boundary.
 The live witness is inspectable without a presentation client:
 
 ```bash
-cargo run --quiet --bin hollow_grove_functional_lore_audit
-cargo run --quiet --bin hollow_grove_functional_lore_audit -- --json
+cargo run --quiet --features dev-tools --bin hg-dev -- hollow_grove_functional_lore_audit
+cargo run --quiet --features dev-tools --bin hg-dev -- hollow_grove_functional_lore_audit --json
 ```

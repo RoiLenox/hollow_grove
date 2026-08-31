@@ -1,11 +1,13 @@
-schema_version = 1
+schema_version = 2
 resolver = "/usr/bin/hollow-launch"
+governing_rule = "Key = WHAT · Modifier = HOW"
 
 [classifications]
 required_base = "Installed in the General Edition base image."
 hollow_grove = "Provided by a project-owned package or installed command."
 general = "Reasonable desktop software; may be selected by the image profile."
 optional = "Binding is retained, but absence produces a clear notification."
+empty = "The semantic branch is reserved but intentionally has no application."
 excluded = "Personal, hardware-specific, obsolete, or unsuitable for distribution."
 
 [required_base]
@@ -25,6 +27,7 @@ arch_packages = [
   "swaylock",
   "systemd",
   "util-linux",
+  "waybar",
   "wireplumber",
   "wl-clipboard",
   "cliphist",
@@ -40,256 +43,223 @@ arch_packages = [
   "xwayland-satellite",
   "xdg-desktop-portal-gnome",
   "xdg-desktop-portal-gtk",
+  "xdg-utils",
 ]
 
-[[application]]
-role = "terminal"
-bindings = ["Mod+Return", "Mod+Ctrl+Return"]
-commands = ["kitty", "bash"]
-packages = ["kitty", "bash"]
-source = "arch"
-classification = "required_base"
+[[family]]
+key = "A"
+meaning = "Assets"
+memory_hook = "MAKE"
+bindings = ["Mod+A", "Mod+Shift+A", "Mod+Ctrl+A"]
+commands = ["aseprite", "blender", "lmms"]
+classification = "optional"
 
-[[application]]
-role = "terminal-multiplexer"
-bindings = ["Mod+Shift+Return"]
-commands = ["kitty", "zellij"]
-packages = ["kitty", "zellij"]
-source = "arch"
+[[family]]
+key = "B"
+meaning = "Browse"
+memory_hook = "Web"
+bindings = ["Mod+B", "Mod+Shift+B", "Mod+Ctrl+B", "Mod+Alt+B"]
+commands = ["firefox", "chromium", "vivaldi-stable", "brave"]
+classification = "optional"
+
+[[family]]
+key = "C"
+meaning = "Chat"
+memory_hook = "Communicate"
+bindings = ["Mod+C", "Mod+Shift+C", "Mod+Ctrl+C", "Mod+Alt+C"]
+commands = ["himalaya", "hollow-outlook", "element-desktop", "discord"]
+classification = "optional"
+
+[[family]]
+key = "D"
+meaning = "Develop"
+memory_hook = "Code/build"
+bindings = ["Mod+D", "Mod+Shift+D", "Mod+Ctrl+D", "Mod+Alt+D"]
+commands = ["codex", "opencode", "code", "zeditor"]
+classification = "optional"
+
+[[family]]
+key = "E"
+meaning = "Edit"
+memory_hook = "Modify"
+bindings = ["Mod+E", "Mod+Shift+E", "Mod+Ctrl+E", "Mod+Alt+E"]
+commands = ["helix", "lapce", "nvim", "micro"]
+classification = "optional"
+
+[[family]]
+key = "F"
+meaning = "Files"
+memory_hook = "Filesystem"
+bindings = ["Mod+F", "Mod+Shift+F", "Mod+Ctrl+F", "Mod+Alt+F"]
+commands = ["yazi", "thunar", "dolphin", "pcmanfm-qt"]
+classification = "optional"
+
+[[family]]
+key = "G"
+meaning = "Games"
+memory_hook = "PLAY"
+bindings = ["Mod+G", "Mod+Shift+G", "Mod+Ctrl+G", "Mod+Alt+G"]
+commands = ["steam", "rpcs3", "dolphin-emu", "retroarch"]
+classification = "optional"
+
+[[family]]
+key = "I"
+meaning = "Images"
+memory_hook = "View images"
+bindings = ["Mod+I", "Mod+Shift+I", "Mod+Ctrl+I", "Mod+Alt+I"]
+commands = ["imv", "loupe", "gwenview", "qview"]
+classification = "optional"
+
+[[family]]
+key = "M"
+meaning = "Music"
+memory_hook = "HEAR"
+bindings = ["Mod+M", "Mod+Shift+M", "Mod+Ctrl+M", "Mod+Alt+M"]
+commands = ["audiotube", "youtui", "cmus", "tauon"]
+classification = "optional"
+
+[[family]]
+key = "N"
+meaning = "News"
+memory_hook = "Feeds"
+bindings = ["Mod+N", "Mod+Shift+N", "Mod+Ctrl+N", "Mod+Alt+N"]
+commands = ["newsboat", "liferea", "rssguard", "fluent-reader"]
+classification = "optional"
+
+[[family]]
+key = "O"
+meaning = "Office"
+memory_hook = "Productivity"
+bindings = ["Mod+O", "Mod+Shift+O", "Mod+Ctrl+O", "Mod+Alt+O"]
+commands = ["libreoffice"]
 classification = "general"
 
-[[application]]
+[[family]]
+key = "P"
+meaning = "Photos"
+memory_hook = "Photography"
+bindings = ["Mod+P", "Mod+Shift+P", "Mod+Ctrl+P", "Mod+Alt+P"]
+commands = ["darktable", "rawtherapee", "digikam", "shotwell"]
+classification = "optional"
+
+[[family]]
+key = "Q"
+meaning = "Query"
+memory_hook = "Ask AI/search"
+bindings = ["Mod+Q", "Mod+Shift+Q", "Mod+Ctrl+Q"]
+commands = ["gemini", "ollama", "aichat"]
+classification = "optional"
+
+[[family]]
+key = "R"
+meaning = "Record"
+memory_hook = "Capture"
+bindings = ["Mod+R", "Mod+Shift+R", "Mod+Ctrl+R", "Mod+Alt+R"]
+commands = ["Waveform13", "ardour", "audacity", "reaper"]
+classification = "optional"
+
+[[family]]
+key = "S"
+meaning = "Settings"
+memory_hook = "Configure"
+bindings = ["Mod+S", "Mod+Shift+S", "Mod+Ctrl+S", "Mod+Alt+S"]
+commands = ["nmtui", "blueman-manager", "nm-connection-editor", "pwvucontrol"]
+classification = "optional"
+
+[[family]]
+key = "T"
+meaning = "Tasks"
+memory_hook = "To-do/work"
+bindings = ["Mod+T", "Mod+Shift+T", "Mod+Ctrl+T", "Mod+Alt+T"]
+commands = ["taskwarrior-tui", "task", "planify"]
+classification = "optional"
+
+[[family]]
+key = "U"
+meaning = "Utilities"
+memory_hook = "System tools"
+bindings = ["Mod+U", "Mod+Shift+U", "Mod+Ctrl+U", "Mod+Alt+U"]
+commands = ["btop", "ncdu", "nvtop", "battop"]
+classification = "optional"
+
+[[family]]
+key = "V"
+meaning = "Video"
+memory_hook = "WATCH"
+bindings = ["Mod+V", "Mod+Shift+V", "Mod+Ctrl+V", "Mod+Alt+V"]
+commands = ["freetube", "vlc", "mpv", "haruna"]
+classification = "optional"
+
+[[family]]
+key = "W"
+meaning = "Write"
+memory_hook = "Compose"
+bindings = ["Mod+W", "Mod+Shift+W", "Mod+Ctrl+W", "Mod+Alt+W"]
+commands = ["obsidian", "apostrophe", "ghostwriter", "marktext"]
+classification = "optional"
+
+[[family]]
+key = "X"
+meaning = "eXchange"
+memory_hook = "Finance/markets"
+bindings = []
+commands = []
+classification = "empty"
+
+[[family]]
+key = "Y"
+meaning = "sYnc"
+memory_hook = "Transfer/sync"
+bindings = ["Mod+Y", "Mod+Shift+Y", "Mod+Ctrl+Y", "Mod+Alt+Y"]
+commands = ["localsend", "croc", "wormhole-rs"]
+classification = "optional"
+
+[[family]]
+key = "Z"
+meaning = "Zip"
+memory_hook = "Archives"
+bindings = ["Mod+Z", "Mod+Shift+Z", "Mod+Ctrl+Z", "Mod+Alt+Z"]
+commands = ["file-roller", "ark", "xarchiver", "peazip"]
+classification = "optional"
+
+[[special_application]]
+role = "terminal"
+bindings = ["Mod+Return", "Mod+Shift+Return", "Mod+Ctrl+Return"]
+commands = ["kitty", "bash", "zellij"]
+classification = "general"
+
+[[special_application]]
 role = "hueman"
 bindings = ["Mod+Alt+Return", "Mod+Alt+KP_Enter", "Mod+Alt+Ctrl+Return", "Mod+Alt+BackSpace", "Mod+Alt+Shift+Space"]
 commands = ["hollow-hueman"]
-packages = ["hollow-grove-general", "hollow-grove-hueman"]
-source = "project_package_pending"
 classification = "hollow_grove"
 
-[[application]]
-role = "application-launcher"
+[[special_application]]
+role = "navigate"
 bindings = ["Mod+Grave"]
 commands = ["walker"]
-packages = ["walker", "elephant"]
-source = "aur_or_signed_custom_repository"
 classification = "optional"
 
-[[application]]
-role = "web-browsers"
-bindings = ["Mod+Shift+Q", "Mod+Alt+Q"]
-commands = ["firefox", "chromium"]
-packages = ["firefox", "chromium"]
-source = "arch"
-classification = "general"
-
-[[application]]
-role = "alternate-launcher"
-bindings = ["Mod+Ctrl+Q"]
-commands = ["anyrun"]
-packages = ["anyrun"]
-source = "aur_or_custom_repository"
+[[special_application]]
+role = "media-and-capture"
+bindings = ["Mod+Shift+Comma", "Mod+Shift+Period", "Print", "Mod+Shift+Equal", "Mod+Ctrl+Minus", "Mod+Ctrl+Equal", "XF86Audio*"]
+commands = ["playerctl", "niri", "obs", "grim", "slurp", "wl-copy", "wpctl"]
 classification = "optional"
 
-[[application]]
-role = "writing-and-editing"
-bindings = ["Mod+W", "Mod+Shift+W", "Mod+Ctrl+W", "Mod+Alt+W"]
-commands = ["helix", "obsidian", "glow", "lapce"]
-packages = ["helix", "obsidian", "glow", "lapce"]
-source = "arch"
-classification = "general"
-
-[[application]]
-role = "emulators"
-bindings = ["Mod+E", "Mod+Shift+E", "Mod+Ctrl+E", "Mod+Alt+E"]
-commands = ["mgba-qt", "melonDS", "dolphin-emu", "rpcs3"]
-packages = ["mgba-qt", "melonds", "dolphin-emu", "rpcs3"]
-source = "mixed_arch_and_external"
-classification = "optional"
-
-[[application]]
-role = "audio-production"
-bindings = ["Mod+R", "Mod+Shift+R", "Mod+Ctrl+R", "Mod+Alt+R", "Mod+Z"]
-commands = ["Waveform13", "ardour9", "audacity", "reaper", "lmms"]
-packages = ["tracktion-waveform", "ardour", "audacity", "reaper", "lmms"]
-source = "mixed_arch_vendor_and_aur"
-classification = "optional"
-
-[[application]]
-role = "tasks"
-bindings = ["Mod+T", "Mod+Shift+T", "Mod+Ctrl+T", "Mod+Alt+T"]
-commands = ["taskwarrior-tui", "task", "planify"]
-packages = ["taskwarrior-tui", "task", "planify"]
-source = "mixed_arch_and_aur"
-classification = "optional"
-
-[[application]]
-role = "streaming"
-bindings = ["Mod+Y", "Mod+Shift+Y", "Mod+Ctrl+Y", "Mod+Alt+Y"]
-commands = ["audiotube", "youtui", "freetube", "yewtube"]
-packages = ["audiotube", "youtui", "freetube-bin", "yewtube"]
-source = "mixed_arch_aur_and_user_install"
-classification = "optional"
-
-[[application]]
-role = "storage"
-bindings = ["Mod+U", "Mod+Shift+U", "Mod+Ctrl+U", "Mod+Alt+U"]
-commands = ["yazi", "ncdu", "udisksctl", "dust"]
-packages = ["yazi", "ncdu", "udisks2", "dust"]
-source = "arch"
-classification = "general"
-
-[[application]]
-role = "time-and-weather"
-bindings = ["Mod+I", "Mod+Shift+I", "Mod+Ctrl+I", "Mod+Alt+I"]
-commands = ["peaclock", "cal", "hollow-weather", "radar"]
-packages = ["peaclock", "util-linux", "curl", "radar"]
-source = "mixed_arch_and_external"
-classification = "optional"
-
-[[application]]
-role = "office"
-bindings = ["Mod+O", "Mod+Shift+O", "Mod+Ctrl+O", "Mod+Alt+O", "Mod+Ctrl+Alt+O"]
-commands = ["libreoffice"]
-packages = ["libreoffice-fresh"]
-source = "arch"
-classification = "general"
-
-[[application]]
-role = "power-and-battery"
-bindings = ["Mod+P", "Mod+Shift+P", "Mod+Ctrl+P", "Mod+Alt+P", "Mod+Alt+Ctrl+P"]
-commands = ["battop", "upower", "powerprofilesctl"]
-packages = ["battop", "upower", "power-profiles-daemon"]
-source = "mixed_arch_and_aur"
-classification = "optional"
-
-[[application]]
-role = "mail-and-notifications"
-bindings = ["Mod+A", "Mod+Shift+A", "Mod+Alt+A"]
-commands = ["himalaya", "hollow-outlook", "makoctl"]
-packages = ["himalaya", "mako"]
-source = "mixed_arch_and_excluded_personal_wrapper"
-classification = "optional"
-
-[[application]]
-role = "system-monitors"
-bindings = ["Mod+S", "Mod+Shift+S", "Mod+Ctrl+S", "Mod+Alt+S"]
-commands = ["btm", "btop", "sensors", "nvtop"]
-packages = ["bottom", "btop", "lm_sensors", "nvtop"]
-source = "arch"
-classification = "optional"
-
-[[application]]
-role = "downloads-and-packages"
-bindings = ["Mod+D", "Mod+Shift+D", "Mod+Ctrl+D", "Mod+Alt+D"]
-commands = ["rtorrent", "qbittorrent", "pacseek", "paru"]
-packages = ["rtorrent", "qbittorrent", "pacseek", "paru"]
-source = "mixed_arch_and_aur"
-classification = "optional"
-
-[[application]]
-role = "assistants"
-bindings = ["Mod+G", "Mod+Shift+G", "Mod+Ctrl+G", "Mod+Alt+G"]
-commands = ["codex", "gemini", "ollama", "opencode"]
-packages = ["codex-cli", "gemini-cli", "ollama", "opencode"]
-source = "mixed_vendor_user_install_and_arch"
-classification = "optional"
-
-[[application]]
-role = "media-transport"
-bindings = ["Mod+Shift+Comma", "Mod+Shift+Period"]
-commands = ["playerctl"]
-packages = ["playerctl"]
-source = "arch"
-classification = "required_base"
-
-[[application]]
-role = "readers"
-bindings = ["Mod+Shift+Z", "Mod+Ctrl+Z", "Mod+Alt+Z"]
-commands = ["imv", "pdfinfo", "okular"]
-packages = ["imv", "poppler", "okular"]
-source = "arch"
-classification = "general"
-
-[[application]]
-role = "exchange"
-bindings = ["Mod+X", "Mod+Shift+X", "Mod+Ctrl+X", "Mod+Alt+X"]
-commands = ["localsend", "croc", "wormhole"]
-packages = ["localsend-bin", "croc", "magic-wormhole"]
-source = "mixed_arch_and_aur"
-classification = "optional"
-
-[[application]]
-role = "audio-control"
-bindings = ["Mod+V", "Mod+Shift+V", "Mod+Ctrl+V", "Mod+Alt+V", "XF86Audio*"]
-commands = ["wpctl", "wiremix", "pwvucontrol", "qpwgraph"]
-packages = ["wireplumber", "wiremix", "pwvucontrol", "qpwgraph"]
-source = "arch"
-classification = "mixed_required_and_optional"
-
-[[application]]
-role = "bluetooth"
-bindings = ["Mod+B", "Mod+Shift+B", "Mod+Ctrl+B", "Mod+Alt+B"]
-commands = ["bluetui", "blueman-manager", "bluetoothctl", "blueman-adapters"]
-packages = ["bluetui", "blueman", "bluez-utils"]
-source = "arch"
-classification = "mixed_required_and_optional"
-
-[[application]]
-role = "network"
-bindings = ["Mod+N", "Mod+Shift+N", "Mod+Ctrl+N", "Mod+Alt+N"]
-commands = ["nmtui", "nm-connection-editor", "nmcli"]
-packages = ["networkmanager", "network-manager-applet"]
-source = "arch"
-classification = "required_base"
-
-[[application]]
-role = "music"
-bindings = ["Mod+M", "Mod+Shift+M", "Mod+Ctrl+M", "Mod+Alt+M"]
-commands = ["cmus", "cava", "cmus-remote"]
-packages = ["cmus", "cava"]
-source = "arch"
-classification = "optional"
-
-[[application]]
-role = "capture-and-casting"
-bindings = ["Mod+C", "Mod+Shift+C", "Mod+Ctrl+C", "Mod+Alt+C", "Print", "Mod+Shift+Equal", "Mod+Ctrl+Minus", "Mod+Ctrl+Equal"]
-commands = ["niri", "obs", "grim", "slurp", "wl-copy"]
-packages = ["niri", "obs-studio", "grim", "slurp", "wl-clipboard"]
-source = "arch"
-classification = "mixed_required_and_optional"
-
-[[application]]
-role = "brightness"
-bindings = ["XF86MonBrightnessUp", "XF86MonBrightnessDown"]
-commands = ["brightnessctl"]
-packages = ["brightnessctl"]
-source = "arch"
-classification = "required_base_failure_safe"
-
-[[application]]
+[[special_application]]
 role = "nested-river-development"
 bindings = ["Mod+Alt+Escape", "Mod+Alt+Shift+Return", "Mod+Alt+Slash"]
 commands = ["river-scope-close", "river-scope-spawn", "river-kitty", "river-scope-probe"]
-packages = ["hollow-grove-river-scope-addon"]
-source = "excluded_from_base_addon_not_packaged"
 classification = "optional"
 
 [[excluded]]
-item = "personal Outlook wrapper"
-reason = "The referenced file is absent and no personal web-app profile belongs in the image."
+item = "personal browser, mail, and service state"
+reason = "No profile, credentials, or personal account data belongs in the image."
 
 [[excluded]]
-item = "personal Firefox wrapper and browser profiles"
-reason = "The profile launches the distribution Firefox binary and copies no browser state."
+item = "personal weather coordinates and wallpaper"
+reason = "The portable profile keeps machine- and user-owned settings blank."
 
 [[excluded]]
-item = "personal weather commands and coordinates"
-reason = "The packaged weather helper reads blank user-owned settings."
-
-[[excluded]]
-item = "personal wallpaper and cockpit lock image"
-reason = "Personal media, workstation telemetry, GPU assumptions, and fixed canvas sizes are excluded."
-
-[[excluded]]
-item = "personal Niri, Walker, Elephant, swayidle, and tiling-guard user services"
-reason = "They contain home paths, a fixed PCI DRM device, or config-mutating behavior."
+item = "unrelated fruit for an empty semantic branch"
+reason = "An absent implementation remains empty instead of weakening WHAT/HOW recall."

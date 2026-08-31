@@ -152,7 +152,7 @@ venues and route relationships consume, rather than recreate, the world field.
 
 Run:
 
-`cargo run --bin hollow_grove_world_point_audit`
+`cargo run --features dev-tools --bin hg-dev -- hollow_grove_world_point_audit`
 
 The audit fails on duplicate poles, center/pole collapse, scaling inversion,
 incorrect Light/Central/Dark binding, replay drift, checksum failure, improper

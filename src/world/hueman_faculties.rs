@@ -1,9 +1,9 @@
 //! Typed Hueman faculty law above the frozen recursion kernel and common
 //! constitutional runtime.
 //!
-//! Faculties describe how a Recipe perceives, relates, anticipates, generates,
-//! or provisionally embodies action. They do not select a candidate, execute a
-//! Recipe, grant proof, mutate a Frame, or create House authority.
+//! Faculties form a recognition axis orthogonal to Practitioner Current, Aura,
+//! Synthesis, and rank. They do not select a candidate, execute a Recipe, grant
+//! proof, mutate a Frame, or create House authority.
 
 use serde::{Deserialize, Serialize};
 
@@ -59,31 +59,31 @@ pub const FACULTY_DEFINITIONS: [FacultyDefinition; 5] = [
         faculty: HuemanFaculty::Presynce,
         domain: HuemanFacultyDomain::Body,
         authority: FacultyAuthority::Stonebend,
-        canonical_phrase: "Presynce feels emergence.",
+        canonical_phrase: "Presynce recognizes present, material, embodied reality in relation to Identity.",
     },
     FacultyDefinition {
         faculty: HuemanFaculty::Resynce,
         domain: HuemanFacultyDomain::Spirit,
         authority: FacultyAuthority::Flynt,
-        canonical_phrase: "Resynce joins relation.",
+        canonical_phrase: "Resynce recognizes Capacity through response, change, pressure, or load.",
     },
     FacultyDefinition {
         faculty: HuemanFaculty::Precog,
         domain: HuemanFacultyDomain::Mind,
         authority: FacultyAuthority::Glaushouse,
-        canonical_phrase: "Precog foresees consequence.",
+        canonical_phrase: "Precog recognizes trajectory or condition in relation to Integrity.",
     },
     FacultyDefinition {
         faculty: HuemanFaculty::Prefog,
         domain: HuemanFacultyDomain::SoulInterior,
         authority: FacultyAuthority::SandmanorMinorian,
-        canonical_phrase: "Prefog opens possibility.",
+        canonical_phrase: "Prefog recognizes Pattern that already exists but is obscured.",
     },
     FacultyDefinition {
         faculty: HuemanFaculty::Prefig,
         domain: HuemanFacultyDomain::SoulExterior,
         authority: FacultyAuthority::SandmanorMinoan,
-        canonical_phrase: "Prefig forms becoming.",
+        canonical_phrase: "Prefig recognizes or projects Pattern before manifestation.",
     },
 ];
 
@@ -155,6 +155,9 @@ pub enum FacultyRegion {
     AuraFields,
     AuraBeachAndCurrentSea,
     AuraRidge,
+    FlyntUnderworld,
+    /// Retained for archive compatibility; The Gallows is not a civic or state
+    /// authority in active canon.
     FlyntCivic,
     Other,
 }
@@ -322,7 +325,7 @@ const fn expression_matches(faculty: HuemanFaculty, expression: FacultyExpressio
     )
 }
 
-pub const CURRENT_FORM_PRESYNCE_LADDER: [FrameId; 8] = [
+pub const STONEBEND_PRESYNCE_SYNTHESIS_LADDER: [FrameId; 8] = [
     FrameId::Gremlin,
     FrameId::Goblin,
     FrameId::Ghoul,
@@ -332,6 +335,14 @@ pub const CURRENT_FORM_PRESYNCE_LADDER: [FrameId; 8] = [
     FrameId::Ogre,
     FrameId::Troglodyte,
 ];
+
+/// Stable source alias for callers compiled against the superseded universal
+/// Current/Form ladder terminology.
+#[deprecated(
+    since = "0.1.0",
+    note = "use STONEBEND_PRESYNCE_SYNTHESIS_LADDER; this is a House-specific Synthesis ladder"
+)]
+pub const CURRENT_FORM_PRESYNCE_LADDER: [FrameId; 8] = STONEBEND_PRESYNCE_SYNTHESIS_LADDER;
 
 pub fn resynce_preserves_current_form(
     frame: FrameId,
@@ -459,13 +470,13 @@ pub fn validate_regional_soul_manifestation(
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ResynceCulture {
     WeFairyMenAuraRidge,
-    GallowsFlyntCivicRecognition,
+    GallowsUnderworldOrder,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ResynceCultureFunction {
     MobileCommunalRelation,
-    ConsequentialCivicRecognition,
+    OrganizedUnderworldOrder,
 }
 
 pub const WE_FAIRY_MEN_FRONTIER_ROLES: [&str; 8] = [
@@ -479,14 +490,14 @@ pub const WE_FAIRY_MEN_FRONTIER_ROLES: [&str; 8] = [
     "pathfinders",
 ];
 
-pub const GALLOWS_CIVIC_RECOGNITION_DOMAINS: [&str; 7] = [
-    "recognized consequence",
-    "reputation",
-    "public challenge",
-    "accountability",
-    "honor",
-    "disgrace",
-    "judgment",
+pub const GALLOWS_UNDERWORLD_DOMAINS: [&str; 7] = [
+    "organized crime",
+    "regional crews",
+    "loyalty",
+    "territory",
+    "favors",
+    "obligation",
+    "contraband routes",
 ];
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -502,6 +513,7 @@ pub struct ResynceCultureManifestation {
     pub region: FacultyRegion,
     pub function: ResynceCultureFunction,
     pub formal_flynt_state_authority: bool,
+    pub underlying_leadership_body: GroupId,
 }
 
 #[must_use]
@@ -513,13 +525,15 @@ pub fn canonical_resynce_cultures() -> [ResynceCultureManifestation; 2] {
             region: FacultyRegion::AuraRidge,
             function: ResynceCultureFunction::MobileCommunalRelation,
             formal_flynt_state_authority: false,
+            underlying_leadership_body: flynt::we_fairy_men_group_id(),
         },
         ResynceCultureManifestation {
-            culture: ResynceCulture::GallowsFlyntCivicRecognition,
+            culture: ResynceCulture::GallowsUnderworldOrder,
             entity: ResynceCultureEntity::Institution(flynt::gallows_id()),
-            region: FacultyRegion::FlyntCivic,
-            function: ResynceCultureFunction::ConsequentialCivicRecognition,
-            formal_flynt_state_authority: true,
+            region: FacultyRegion::FlyntUnderworld,
+            function: ResynceCultureFunction::OrganizedUnderworldOrder,
+            formal_flynt_state_authority: false,
+            underlying_leadership_body: flynt::we_fairy_men_group_id(),
         },
     ]
 }
@@ -532,6 +546,8 @@ pub fn validate_resynce_cultures(
         || !cultures.contains(&frontier)
         || !cultures.contains(&civic)
         || frontier.entity == civic.entity
+        || frontier.underlying_leadership_body != flynt::we_fairy_men_group_id()
+        || civic.underlying_leadership_body != frontier.underlying_leadership_body
     {
         return Err(FacultyLawError::InvalidResynceCulture);
     }
@@ -755,6 +771,7 @@ fn frame_name(frame: FrameId) -> &'static str {
         FrameId::Ork => "ork",
         FrameId::Ogre => "ogre",
         FrameId::Troglodyte => "troglodyte",
+        FrameId::Pixie => "pixie",
         FrameId::Pixy => "pixy",
         FrameId::Sprite => "sprite",
         FrameId::Faerie => "faerie",
@@ -766,11 +783,16 @@ fn frame_name(frame: FrameId) -> &'static str {
         FrameId::Merman => "merman",
         FrameId::Chimera => "chimera",
         FrameId::Gnome => "gnome",
+        FrameId::Faun => "faun",
         FrameId::Minotaur => "minotaur",
         FrameId::Hecaton => "hecaton",
         FrameId::Elf => "elf",
+        FrameId::Satyr => "satyr",
         FrameId::Centaur => "centaur",
         FrameId::Pegasus => "pegasus",
+        FrameId::Fairy => "fairy",
+        FrameId::Spirit => "spirit",
+        FrameId::Sylph => "sylph",
     }
 }
 
@@ -785,9 +807,13 @@ fn parse_frame(value: &str) -> Result<FrameId, FacultyCodecError> {
         "ork" => Ok(FrameId::Ork),
         "ogre" => Ok(FrameId::Ogre),
         "troglodyte" => Ok(FrameId::Troglodyte),
+        "pixie" => Ok(FrameId::Pixie),
         "pixy" => Ok(FrameId::Pixy),
         "sprite" => Ok(FrameId::Sprite),
         "faerie" => Ok(FrameId::Faerie),
+        "fairy" => Ok(FrameId::Fairy),
+        "spirit" => Ok(FrameId::Spirit),
+        "sylph" => Ok(FrameId::Sylph),
         "nymph" => Ok(FrameId::Nymph),
         "siren" => Ok(FrameId::Siren),
         "muse" => Ok(FrameId::Muse),
@@ -796,9 +822,11 @@ fn parse_frame(value: &str) -> Result<FrameId, FacultyCodecError> {
         "merman" => Ok(FrameId::Merman),
         "chimera" => Ok(FrameId::Chimera),
         "gnome" => Ok(FrameId::Gnome),
+        "faun" => Ok(FrameId::Faun),
         "minotaur" => Ok(FrameId::Minotaur),
         "hecaton" => Ok(FrameId::Hecaton),
         "elf" => Ok(FrameId::Elf),
+        "satyr" => Ok(FrameId::Satyr),
         "centaur" => Ok(FrameId::Centaur),
         "pegasus" => Ok(FrameId::Pegasus),
         _ => Err(FacultyCodecError::UnknownFrame(value.into())),
@@ -900,5 +928,30 @@ fn parse_bond_phase(value: &str) -> Result<BondPhase, FacultyCodecError> {
         "recorded" => Ok(BondPhase::Recorded),
         "resolved" => Ok(BondPhase::Resolved),
         _ => Err(FacultyCodecError::UnknownBondPhase(value.into())),
+    }
+}
+
+#[cfg(test)]
+mod pairing_codec_tests {
+    use super::{frame_name, parse_frame};
+    use crate::FrameId;
+
+    #[test]
+    fn every_active_pairing_frame_round_trips_through_the_faculty_codec() {
+        for (current, aura) in crate::HOLLOW_GROVE_LEVEL_PAIRINGS {
+            assert_eq!(parse_frame(frame_name(current)).unwrap(), current);
+            assert_eq!(parse_frame(frame_name(aura)).unwrap(), aura);
+        }
+    }
+
+    #[test]
+    fn stable_pairing_aliases_decode_without_displacing_active_spelling() {
+        assert_eq!(parse_frame("pixy").unwrap(), FrameId::Pixy);
+        assert_eq!(parse_frame("faerie").unwrap(), FrameId::Faerie);
+        assert_eq!(FrameId::Pixy.active_canonical_form(), Some(FrameId::Pixie));
+        assert_eq!(
+            FrameId::Faerie.active_canonical_form(),
+            Some(FrameId::Fairy)
+        );
     }
 }

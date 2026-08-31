@@ -3,12 +3,12 @@ use std::process::Command;
 use hollow_grove::composition::{ExternalRef, Position3};
 use hollow_grove::guide_identity::{
     ActiveGuideContext, CENTRAL_JUNCTION_ORIGIN, DualGuideSession, DualSeerPresentation,
-    FEDERATION_CANONICAL_NAME, GUIDE_IDENTITY_SCHEMA_VERSION, GUIDE_MODEL_PROMPT_LAW, GuideForm,
-    GuideIdentity, GuideIdentityRecord, GuideMigrationError, GuidePresence, GuideSpeaker,
+    GUIDE_IDENTITY_SCHEMA_VERSION, GUIDE_MODEL_PROMPT_LAW, GuideForm, GuideIdentity,
+    GuideIdentityRecord, GuideMigrationError, GuidePresence, GuideSpeaker,
     GuideTransitionDirection, GuideTransitionError, GuideTransitionEvidence, JunctionGuidePresence,
     JunctionTransitionState, LegacyGuideIdentityRecord, PairedGuideTransition,
-    PairedGuideTransitionOutcome, StableGuideSessionId, StableTransitionId, WayBackGuideContext,
-    WorldLayer, canonical_guide_identity_records, decode_dual_guide_session,
+    PairedGuideTransitionOutcome, RAMPART_CANONICAL_NAME, StableGuideSessionId, StableTransitionId,
+    WayBackGuideContext, WorldLayer, canonical_guide_identity_records, decode_dual_guide_session,
     encode_dual_guide_session, migrate_legacy_guide_identities, perform_paired_guide_transition,
     run_paired_guide_transition_cycle, stage_paired_guide_transition,
 };
@@ -65,7 +65,7 @@ fn exactly_two_stable_guide_identities_exist() {
             "{interface_name} must not deserialize as a Guide identity"
         );
     }
-    assert_eq!(FEDERATION_CANONICAL_NAME, "The Federation");
+    assert_eq!(RAMPART_CANONICAL_NAME, "The Rampart of Roi and Roselina");
 }
 
 #[test]
@@ -581,7 +581,7 @@ fn outside_tui_is_an_interface_for_the_two_state_derived_seer_names() {
     assert!(rendered.contains("\nRoï\n"));
     assert!(rendered.contains("\nRosaliña\n"));
     assert!(rendered.contains("interface: TUI"));
-    assert!(rendered.contains("authority: The Federation"));
+    assert!(rendered.contains("authority: The Rampart of Roi and Roselina"));
     assert!(!rendered.contains("The Guide"));
 }
 

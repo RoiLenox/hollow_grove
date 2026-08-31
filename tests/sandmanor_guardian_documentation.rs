@@ -19,7 +19,7 @@ fn all_required_canonical_maxims_are_ratified() {
         "The Minorians cultivate what enters a life.",
         "The Minoans guard where life meets the world.",
         "Interior gives the world intimacy. Exterior gives intimacy a world.",
-        "Food feeds the Body. Content feeds the Mind and Aura.",
+        "Content Farm cultivates what the family has and makes. Aura Field preserves what the family is and projects.",
         "A field can be overworked. So can an audience.",
         "The Gnome tends the field. The Minotaur answers for it.",
         "The Minotaur guards a field. Hecaton keeps the fields from failing one another.",
@@ -38,10 +38,10 @@ fn all_required_canonical_maxims_are_ratified() {
 #[test]
 fn farm_and_content_health_distinction_reach_public_canon() {
     for document in [SUPPLEMENT, AURA_FIELD, WORLD] {
-        assert!(document.contains("Aura Fields"));
+        assert!(document.contains("Aura Field"));
         assert!(document.contains("Content Farm"));
     }
-    assert!(SUPPLEMENT.contains("Content production is not inherently corrupt"));
+    assert!(SUPPLEMENT.contains("not merely internet or social-media"));
     assert!(IMPLEMENTATION.contains("ContentFarmAssessment"));
     assert!(IMPLEMENTATION.contains("is_exploitative"));
     assert!(IMPLEMENTATION.contains("is_healthy"));
@@ -73,15 +73,17 @@ fn current_break_never_transfers_manticorp_command() {
 }
 
 #[test]
-fn all_guardian_forms_and_mantles_are_public_and_distinct() {
+fn forms_hands_and_mantles_are_public_and_distinct() {
     for term in [
-        "Gnome → Minotaur → Hecaton",
-        "Elf → Centaur → Pegasus",
+        "Gnome → Faun → Minotaur",
+        "Elf → Satyr → Centaur",
+        "Hecaton is the Minorian sovereign Hand",
+        "Pegasus is the Minoan sovereign Hand",
         "GUARDIAN OF THE FIELDS",
         "GUARDIAN OF THE WHOLE FARM",
         "GUARDIAN OF THE BEACH",
         "GUARDIAN OF THE HORIZON",
-        "Qualification, Recipe, Synthesis Form, mantle, jurisdiction, and present",
+        "Qualification, Recipe, Form, social role, attendant class, sovereign Hand",
         "Loss of mantle and physical regression remain distinct events",
     ] {
         assert!(SUPPLEMENT.contains(term), "missing guardian law: {term}");
@@ -137,7 +139,7 @@ fn contest_trials_crowd_and_teaching_integrity_are_explicit() {
 #[test]
 fn sandman_is_one_person_one_mantle_and_aegon_is_only_an_alias() {
     assert!(SUPPLEMENT.contains("The Sandman is not a physical fusion of two people"));
-    assert!(SUPPLEMENT.contains("Only one active mantle exists"));
+    assert!(SUPPLEMENT.contains("Only one\nactive mantle exists"));
     assert!(SUPPLEMENT.contains("losing candidate\nretains their guardian Form and mantle"));
     assert!(SUPPLEMENT.contains("Aegon is a historical name"));
     assert!(SUPPLEMENT.contains("Aegaeon is not canonical terminology"));
@@ -178,10 +180,12 @@ fn authority_map_and_compromise_point_to_the_bounded_implementation() {
 #[test]
 fn generated_projection_contains_new_public_lore() {
     for term in [
-        "Aura Fields and Content Farm",
+        "Content Farm cultivates what family life has and makes",
         "Free Aura Beach -> Southern Coast -> Current Break",
-        "Gnome -> Minotaur -> Hecaton",
-        "Elf -> Centaur -> Pegasus",
+        "Gnome -> Faun -> Minotaur",
+        "Elf -> Satyr -> Centaur",
+        "Beach Bum -> Party Boy -> Socialite",
+        "The Sandman = Demiurge",
         "the audited crowd measures improvement",
         "called Aegon",
         "one official Design Index",

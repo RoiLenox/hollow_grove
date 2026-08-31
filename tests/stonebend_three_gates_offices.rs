@@ -15,7 +15,7 @@ use hollow_grove::world::stonebend::second_pass::{
     ProliteriateNodeKind, RaisedWitness, ReturnedEvidenceDisposition, StonebendConstitutionalPower,
     StonebendGateFacing, StonebendTitleCore, SuccessionStageEvidence, TitleBoundaryAccountability,
     TitleScopeDisposition, YieldAccountability, YieldImpact, YieldRecord,
-    canonical_stonebend_gates, diamond_title_id, remove_active_freemason,
+    canonical_stonebend_gates, diamond_title_id, hypergiant_title_id, remove_active_freemason,
     validate_three_gate_topology,
 };
 use hollow_grove::world::stonebend::{
@@ -508,14 +508,14 @@ fn each_gate_preserves_the_other_domains_evidence_authority() {
 }
 
 #[test]
-fn diamond_is_stable_and_hypergiant_is_only_its_active_bearer() {
+fn hypergiant_title_is_stable_across_active_bearers() {
     let mut diamond = DiamondState::default();
-    assert_eq!(diamond.title, diamond_title_id());
+    assert_eq!(diamond.title, hypergiant_title_id());
     assert!(diamond.is_vacant());
     diamond
         .invest(DiamondTenure {
             identity: identity("tenure.stonebend.fixture-first"),
-            diamond: diamond_title_id(),
+            diamond: hypergiant_title_id(),
             bearer: identity("being.stonebend.fixture-first-hypergiant"),
             supporting_claim: identity("claim.stonebend.fixture-first-hypergiant"),
             succession: succession_id("succession.stonebend.fixture-first"),
@@ -523,7 +523,7 @@ fn diamond_is_stable_and_hypergiant_is_only_its_active_bearer() {
             status: DiamondTenureStatus::Active,
         })
         .expect("lawful tenure");
-    assert_eq!(diamond.title, diamond_title_id());
+    assert_eq!(diamond.title, hypergiant_title_id());
     assert!(!diamond.is_vacant());
     assert_ne!(
         diamond
@@ -537,7 +537,7 @@ fn diamond_is_stable_and_hypergiant_is_only_its_active_bearer() {
 }
 
 #[test]
-fn ended_hypergiant_tenure_leaves_diamond_vacant_and_tombstoned() {
+fn ended_hypergiant_tenure_leaves_title_vacant_and_tombstoned() {
     let mut diamond = DiamondState::default();
     let first = identity("being.stonebend.fixture-ended-hypergiant");
     diamond
@@ -562,7 +562,7 @@ fn ended_hypergiant_tenure_leaves_diamond_vacant_and_tombstoned() {
         )
         .expect("lawful completion");
     assert!(diamond.is_vacant());
-    assert_eq!(diamond.title, diamond_title_id());
+    assert_eq!(diamond.title, hypergiant_title_id());
     assert_eq!(record.bearer_or_representation, first);
     assert_eq!(record.ending, OfficeEnding::HonorableCompletion);
     assert_eq!(diamond.ended_tenures.len(), 1);
@@ -635,7 +635,7 @@ fn later_hypergiant_does_not_inherit_predecessor_person_identity() {
         })
         .expect("second tenure");
     assert_ne!(first, second);
-    assert_eq!(diamond.title, diamond_title_id());
+    assert_eq!(diamond.title, hypergiant_title_id());
 }
 
 #[test]
@@ -652,12 +652,12 @@ fn hypergiant_and_freemason_are_distinct_active_offices() {
 }
 
 #[test]
-fn freemason_can_forge_a_claim_but_cannot_self_certify_diamond() {
+fn freemason_can_forge_a_claim_but_cannot_self_certify_hypergiant() {
     let freemason = identity("being.stonebend.fixture-freemason-candidate");
     let claim = ClaimRecord {
         identity: identity("claim.stonebend.fixture-self-certified"),
         subject: freemason.clone(),
-        proposed_title: diamond_title_id(),
+        proposed_title: hypergiant_title_id(),
         evidence: vec![evidence("evidence.stonebend.fixture-self-certified")],
         examiner: freemason.clone(),
         examination: decision("decision.stonebend.fixture-self-certified"),
@@ -674,6 +674,12 @@ fn freemason_can_forge_a_claim_but_cannot_self_certify_diamond() {
     valid
         .validate_freemason_examination(&independent)
         .expect("independent constitutional examination");
+}
+
+#[test]
+fn legacy_diamond_title_id_remains_distinct_and_available() {
+    assert_ne!(diamond_title_id(), hypergiant_title_id());
+    assert_eq!(diamond_title_id().as_str(), "title.stonebend.diamond");
 }
 
 #[test]

@@ -14,8 +14,8 @@ echo "seed: $SEED"
 ./soak-local.sh twenty-four-hour
 ./mutation-local.sh
 
-RELEASE_HASH="$(cargo run --release --quiet --features dev-tools --bin adversarial_verification -- hash-corpus --cases "$HASH_CASES" --seed "$SEED")"
-cargo run --quiet --features dev-tools --bin adversarial_verification -- report \
+RELEASE_HASH="$(cargo run --release --quiet --features dev-tools --bin hg-dev -- adversarial_verification hash-corpus --cases "$HASH_CASES" --seed "$SEED")"
+cargo run --quiet --features dev-tools --bin hg-dev -- adversarial_verification report \
   --profile overnight \
   --seed "$SEED" \
   --compare-other-label release \

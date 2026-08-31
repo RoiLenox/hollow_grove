@@ -11,6 +11,8 @@ use hollow_grove::world::spatial_inheritance::{
     HollowGroveSpatialMap, canonical_hollow_grove_spatial_map, hollow_grove_spatial_replay_digest,
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
+use hollow_niri::NiriConnection;
+use serde_json::{Value, json};
 
 const RUNTIME_MEMORY_ARTIFACT_PATH: &str = "artifacts/runtime_memory.txt";
 const NIRI_BRIDGE_MEMORY_ARTIFACT_PATH: &str = "artifacts/niri_bridge_memory.txt";
@@ -776,56 +778,147 @@ fn parse_overview_state(contents: &str) -> io::Result<OverviewState> {
     }
 }
 
-fn read_live_workspaces() -> io::Result<Vec<NiriWorkspace>> {
-    let output = Command::new("niri")
-        .args(["msg", "-j", "workspaces"])
-        .output()?;
-    if !output.status.success() {
-        return Err(io::Error::other(format!(
-            "niri msg -j workspaces exited with status {}",
-            output.status
-        )));
-    }
-    parse_workspaces_json(&String::from_utf8_lossy(&output.stdout))
+struct LiveNiri {
+    socket: Option<PathBuf>,
+    connection: Option<NiriConnection>,
+    cli_fallback: bool,
 }
 
-fn read_live_overview_state() -> io::Result<OverviewState> {
-    let output = Command::new("niri")
-        .args(["msg", "overview-state"])
-        .output()?;
-    if !output.status.success() {
-        return Err(io::Error::other(format!(
-            "niri msg overview-state exited with status {}",
-            output.status
-        )));
+impl LiveNiri {
+    fn connect_from_environment() -> io::Result<Self> {
+        let cli_fallback = env::var_os("HOLLOW_GROVE_NIRI_CLI")
+            .is_some_and(|value| value == "1" || value == "true");
+        let socket = env::var_os("NIRI_SOCKET").map(PathBuf::from);
+        if socket.is_none() && !cli_fallback {
+            return Err(io::Error::new(
+                io::ErrorKind::NotFound,
+                "NIRI_SOCKET is not set; set HOLLOW_GROVE_NIRI_CLI=1 only for a CLI compatibility environment",
+            ));
+        }
+        Ok(Self {
+            socket,
+            connection: None,
+            cli_fallback,
+        })
     }
-    parse_overview_state(&String::from_utf8_lossy(&output.stdout))
-}
 
-fn read_live_outputs() -> io::Result<Vec<NiriOutput>> {
-    let output = Command::new("niri")
-        .args(["msg", "-j", "outputs"])
-        .output()?;
-    if !output.status.success() {
-        return Err(io::Error::other(format!(
-            "niri msg -j outputs exited with status {}",
-            output.status
-        )));
+    fn cli_output(args: &[&str]) -> io::Result<String> {
+        let output = Command::new("niri").args(args).output()?;
+        if !output.status.success() {
+            return Err(io::Error::other(format!(
+                "niri {} exited with {}: {}",
+                args.join(" "),
+                output.status,
+                String::from_utf8_lossy(&output.stderr).trim()
+            )));
+        }
+        String::from_utf8(output.stdout).map_err(|error| {
+            io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!("niri output was not UTF-8: {error}"),
+            )
+        })
     }
-    parse_outputs_json(&String::from_utf8_lossy(&output.stdout))
-}
 
-fn read_live_focused_window() -> io::Result<Option<FocusedWindow>> {
-    let output = Command::new("niri")
-        .args(["msg", "-j", "focused-window"])
-        .output()?;
-    if !output.status.success() {
-        return Err(io::Error::other(format!(
-            "niri msg -j focused-window exited with status {}",
-            output.status
-        )));
+    fn cli_request(request: &Value) -> io::Result<Value> {
+        let request = request.as_str().ok_or_else(|| {
+            io::Error::new(io::ErrorKind::InvalidInput, "Niri request was not a string")
+        })?;
+        match request {
+            "Workspaces" => Ok(json!({
+                "Workspaces": serde_json::from_str::<Value>(&Self::cli_output(&["msg", "-j", "workspaces"])?)?
+            })),
+            "Outputs" => Ok(json!({
+                "Outputs": serde_json::from_str::<Value>(&Self::cli_output(&["msg", "-j", "outputs"])?)?
+            })),
+            "FocusedWindow" => Ok(json!({
+                "FocusedWindow": serde_json::from_str::<Value>(&Self::cli_output(&["msg", "-j", "focused-window"])?)?
+            })),
+            "OverviewState" => Ok(json!({
+                "OverviewState": {
+                    "is_open": parse_overview_state(&Self::cli_output(&["msg", "overview-state"])?)? == OverviewState::Open
+                }
+            })),
+            other => Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                format!("unsupported Niri CLI compatibility request: {other}"),
+            )),
+        }
     }
-    parse_focused_window_json(&String::from_utf8_lossy(&output.stdout))
+
+    fn request(&mut self, request: &Value) -> io::Result<Value> {
+        if self.cli_fallback {
+            return Self::cli_request(request);
+        }
+        let socket = self
+            .socket
+            .as_ref()
+            .ok_or_else(|| io::Error::new(io::ErrorKind::NotFound, "NIRI_SOCKET is not set"))?;
+        if self.connection.is_none() {
+            self.connection = Some(NiriConnection::connect(socket)?);
+        }
+        let result = self
+            .connection
+            .as_mut()
+            .expect("connection was initialized")
+            .request(request);
+        match result {
+            Ok(value) => Ok(value),
+            Err(first_error) => {
+                self.connection = Some(NiriConnection::connect(socket)?);
+                self.connection
+                    .as_mut()
+                    .expect("connection was reinitialized")
+                    .request(request)
+                    .map_err(|second_error| {
+                        io::Error::other(format!(
+                            "Niri IPC request failed after reconnect: {first_error}; {second_error}"
+                        ))
+                    })
+            }
+        }
+    }
+
+    fn payload(&mut self, request: &str, key: &str) -> io::Result<Value> {
+        let response = self.request(&json!(request))?;
+        response.get(key).cloned().ok_or_else(|| {
+            io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!("Niri {request} response omitted {key}: {response}"),
+            )
+        })
+    }
+
+    fn workspaces(&mut self) -> io::Result<Vec<NiriWorkspace>> {
+        parse_workspaces_json(&self.payload("Workspaces", "Workspaces")?.to_string())
+    }
+
+    fn overview_state(&mut self) -> io::Result<OverviewState> {
+        let payload = self.payload("OverviewState", "OverviewState")?;
+        let is_open = payload
+            .get("is_open")
+            .and_then(Value::as_bool)
+            .or_else(|| payload.as_bool())
+            .ok_or_else(|| {
+                io::Error::new(
+                    io::ErrorKind::InvalidData,
+                    format!("unexpected Niri overview response: {payload}"),
+                )
+            })?;
+        Ok(if is_open {
+            OverviewState::Open
+        } else {
+            OverviewState::Closed
+        })
+    }
+
+    fn outputs(&mut self) -> io::Result<Vec<NiriOutput>> {
+        parse_outputs_json(&self.payload("Outputs", "Outputs")?.to_string())
+    }
+
+    fn focused_window(&mut self) -> io::Result<Option<FocusedWindow>> {
+        parse_focused_window_json(&self.payload("FocusedWindow", "FocusedWindow")?.to_string())
+    }
 }
 
 fn escape_json(value: &str) -> String {
@@ -996,10 +1089,10 @@ fn build_screen_map_state_output(
     )
 }
 
-fn write_screen_map_state_at(root: &Path) -> io::Result<PathBuf> {
+fn write_screen_map_state_at(root: &Path, live: &mut LiveNiri) -> io::Result<PathBuf> {
     let path = root.join(SCREEN_MAP_STATE_ARTIFACT_PATH);
 
-    let output = match (read_live_focused_window(), read_live_outputs()) {
+    let output = match (live.focused_window(), live.outputs()) {
         (Ok(focused_window), Ok(outputs)) => {
             let active_output = match focused_window
                 .as_ref()
@@ -1271,8 +1364,12 @@ fn build_bridge_status_output(
     )
 }
 
-fn run_bridge_tick(root: &Path, config: BridgeConfig) -> io::Result<BridgeTickResult> {
-    write_screen_map_state_at(root)?;
+fn run_bridge_tick(
+    root: &Path,
+    config: BridgeConfig,
+    live: &mut LiveNiri,
+) -> io::Result<BridgeTickResult> {
+    write_screen_map_state_at(root, live)?;
     let runtime_memory = read_runtime_memory_at(root)?;
     let previous_bridge_memory = read_bridge_memory_at(root)?;
 
@@ -1295,8 +1392,8 @@ fn run_bridge_tick(root: &Path, config: BridgeConfig) -> io::Result<BridgeTickRe
         }
     };
 
-    let workspaces = read_live_workspaces()?;
-    let overview = read_live_overview_state()?;
+    let workspaces = live.workspaces()?;
+    let overview = live.overview_state()?;
     let plan = build_plan(runtime_memory.last_runtime_mode, &workspaces, overview);
     let signature = command_signature(&plan.commands);
 
@@ -1312,12 +1409,12 @@ fn run_bridge_tick(root: &Path, config: BridgeConfig) -> io::Result<BridgeTickRe
     };
 
     let status_workspaces = if config.apply && !plan.commands.is_empty() {
-        read_live_workspaces()?
+        live.workspaces()?
     } else {
         workspaces
     };
     let status_overview = if config.apply && !plan.commands.is_empty() {
-        read_live_overview_state()?
+        live.overview_state()?
     } else {
         overview
     };
@@ -1369,10 +1466,11 @@ fn main() -> io::Result<()> {
     };
 
     let mut tick_count = 0usize;
+    let mut live = LiveNiri::connect_from_environment()?;
 
     loop {
         tick_count += 1;
-        let result = run_bridge_tick(Path::new("."), config)?;
+        let result = run_bridge_tick(Path::new("."), config, &mut live)?;
 
         if !config.quiet {
             println!(

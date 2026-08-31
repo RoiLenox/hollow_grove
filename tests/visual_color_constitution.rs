@@ -212,8 +212,9 @@ fn tracked_presentation_sources_do_not_contain_a_second_palette() {
 #[test]
 fn sprite_export_derives_an_ephemeral_palette_from_the_constitution() {
     let source = include_str!("../export-aseprite.sh");
-    assert!(source.contains("--bin visual_color_constitution"));
-    assert!(source.contains("-- aseprite-gpl"));
+    assert!(source.contains("target/release/hg-dev"));
+    assert!(source.contains("PALETTE_TOOL_ARGS=(visual_color_constitution)"));
+    assert!(source.contains("aseprite-gpl"));
     assert!(source.contains("--palette \"$PALETTE_FILE\""));
     assert!(source.contains("mktemp"));
     assert!(quoted_hex_literals(source).is_empty());

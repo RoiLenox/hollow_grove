@@ -5,6 +5,9 @@ use crate::composition::ExternalRef;
 
 use super::{ParticipantId, UnitId, WaveId};
 
+// Signed quantities are legacy constitutional accounting mechanics. Their use
+// by Current/Aura V1 records does not define the semantic Practitioner axes.
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub struct CausalPosition(u64);
 

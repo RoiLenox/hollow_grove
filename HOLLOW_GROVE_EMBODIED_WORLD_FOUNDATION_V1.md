@@ -76,7 +76,7 @@ Evaluation dimensions:
 
 - `Geralds carry.`
 - `Nightingales clear.`
-- `Wardens close.`
+- `Flynt breach-closing civic designation = STATUS: OPEN.`
 - `Minorians measure.`
 - `Minoans reveal.`
 
@@ -141,7 +141,7 @@ Final checkpoint commit:
 
 Parked future content; not required for Embodied World Foundation V1.
 
-- full Aura Frame inheritance from Pixy through Muse
+- full Aura Frame inheritance from Pixie through Muse
 - broad Current Skill catalog beyond Grip
 - Show-root Skill families
 - Grit-root Skill families

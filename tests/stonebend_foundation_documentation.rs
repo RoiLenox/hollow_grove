@@ -18,20 +18,17 @@ fn vertical_law_is_exact_and_canonical() {
     for statement in [
         "Mt. Aura is Aether.",
         "Riptide is Bathos.",
-        "Aura is Aether revealed through Form.",
-        "Current is Bathos embodied through weight.",
-        "Aether is weightless Current.",
-        "Current is the heaviest Aether.",
-        "Aether is Current without burden. Current is Aether bearing the world.",
-        "Current repeats because weight teaches it where to return.",
+        "Legacy physical Aura is Aether revealed through Form.",
+        "Legacy physical Current is Bathos embodied through weight.",
+        "Aether is weightless legacy physical Current.",
+        "Legacy physical Current is the heaviest Aether.",
+        "Aether is legacy physical Current without burden. Legacy physical Current is",
+        "Legacy physical Current repeats because weight teaches it where to return.",
         "Aether gives life something worth becoming. Bathos ensures becoming remains",
     ] {
         assert!(FOUNDATION.contains(statement), "missing `{statement}`");
     }
-    assert!(
-        FOUNDATION
-            .contains("Current repeats. Aura reveals. Relativity bends. Synthesis transforms.")
-    );
+    assert!(FOUNDATION.contains("Legacy physical Current repeats. Legacy physical Aura reveals."));
 }
 
 #[test]
@@ -167,9 +164,9 @@ fn proof_retains_measurement_and_evidence_without_a_public_scale() {
 #[test]
 fn prism_model_preserves_aether_and_stone_provenance() {
     for statement in [
-        "Current flows. Hollowing refines. Aether rises. Stone refracts. Aura reveals.",
-        "Current supplies the force. Crystal supplies the pattern. Aura is the",
-        "Aether is universal. Aura is particular.",
+        "Legacy physical Current flows. Hollowing refines. Aether rises. Stone",
+        "Legacy physical Current supplies the force. Crystal supplies the pattern.",
+        "Aether is universal. Legacy physical Aura is particular.",
         "Opal varies.",
         "Diamond concentrates.",
         "Quartz resonates.",
@@ -192,7 +189,7 @@ fn first_pass_locks_no_house_stone_melting_or_synthetic_recast_canon() {
     assert!(FOUNDATION.contains("This pass creates no final House-to-stone assignment."));
     assert!(IMPLEMENTATION.contains("final_house_assignment"));
     assert!(IMPLEMENTATION.contains("None"));
-    assert!(FOUNDATION.contains("Melting is not the ordinary Aura process"));
+    assert!(FOUNDATION.contains("Melting is not the ordinary legacy physical Aura process"));
     assert!(IMPLEMENTATION.contains("requires_melting_for_aura"));
     assert!(!FOUNDATION.contains("Aura Glass"));
     assert!(!IMPLEMENTATION.contains("AuraGlass"));

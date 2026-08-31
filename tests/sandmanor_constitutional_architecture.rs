@@ -273,7 +273,8 @@ fn valid_registry() -> sandmanor::SandmanorRegistry {
         }],
         regional_proofs: vec![sandmanor::RegionalSynthesisProofRecord {
             id: sandmanor::RegionalProofId::new("regional-proof.sandmanor.gnome-minotaur").unwrap(),
-            predecessor: SandmanorForm::Gnome,
+            // The ID is retained for archive compatibility; active Form law is adjacent.
+            predecessor: SandmanorForm::Faun,
             result: SandmanorForm::Minotaur,
             domain: sandmanor::RegionalProofDomain::AuraFields,
             function: sandmanor::RegionalFunction::AdvancedTendingAndFieldLabor,
@@ -511,7 +512,8 @@ fn regional_proof_preserves_both_exact_syntheses_without_granting_other_authorit
         .regional_proofs
         .push(sandmanor::RegionalSynthesisProofRecord {
             id: sandmanor::RegionalProofId::new("regional-proof.sandmanor.elf-centaur").unwrap(),
-            predecessor: SandmanorForm::Elf,
+            // The ID is retained for archive compatibility; active Form law is adjacent.
+            predecessor: SandmanorForm::Satyr,
             result: SandmanorForm::Centaur,
             domain: sandmanor::RegionalProofDomain::AuraBeachAndCurrentSea,
             function: sandmanor::RegionalFunction::RoamAuraBeachAndGuardCurrentSea,

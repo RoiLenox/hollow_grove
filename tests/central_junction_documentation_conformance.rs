@@ -180,9 +180,9 @@ fn generated_world_context_is_exact_and_projects_the_public_economy() {
 #[test]
 fn prior_flynt_glaushouse_and_kernel_boundaries_remain_locked() {
     for term in [
-        "The Tross, the Mystery Man, and Mr. X are the same individual.",
-        "Manticorp Form",
-        "Manticorp Institution",
+        "The Tross, Manticore, the Mystery Man, and Mr. X are the same individual.",
+        "Manticore Form",
+        "Manticorp soldier body",
         "Gremlincoin = the Gremlin Way.",
         "Gargoyle maintenance and renewal",
     ] {

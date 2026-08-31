@@ -11,6 +11,16 @@ This layer implements the expansion without changing the frozen recursion
 kernel, the common Constitutional Runtime, House decision authority, or the
 existing `SynthesisRecipe` compiler.
 
+> **STATUS: LEGACY PHYSICAL / RUNTIME COMPATIBILITY.** `CurrentPowerRoot`,
+> `AuraPowerRoot`, Current/Aura costs, and the V1 power wheel below retain their
+> stable schema and historical Recipe meanings. They do not define semantic
+> Practitioner Current or Aura and are not Level 1 Synthesis equations.
+
+The locked active House expressions are Glaüshouse Biokinesis / Noomancy and
+Flynt Telekinesis / Nookinesis. Stonebend's exact Current/Aura mappings remain
+STATUS: OPEN. Sandmanor's Current, Aura, and Synthesis axes are governed by its
+six locked equations rather than by this V1 root table.
+
 A power is a visible or experienced outcome. A Recipe is an addressable
 Current–Aura method for producing that outcome. Outcome labels grant no House
 ownership, office, proof, Clearance, recognition, Title, or permission to
@@ -20,7 +30,7 @@ All definitions in the first catalog remain `Proposed`. They become taught,
 provisional, recognized, disputed, or prohibited only through later
 authority-bearing evidence.
 
-## Faculty Roots
+## Legacy V1 Faculty Power Roots
 
 | Faculty | Authority | Current root | Aura root | Processor principle |
 |---|---|---|---|---|

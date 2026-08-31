@@ -23,7 +23,7 @@
 /artifacts/current_synthesis_resource_inspector.md
 /artifacts/current_synthesis_cleopatra.md
 /artifacts/current_synthesis_events.txt
-/artifacts/semantic_federation_state_v1.json
+/artifacts/semantic_rampart_state_v1.json
 /artifacts/gameplay-saves/
 
 # Local verification output. Promote a minimized failure into a checked test or

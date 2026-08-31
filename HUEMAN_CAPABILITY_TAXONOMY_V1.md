@@ -1,12 +1,16 @@
 # Hueman Capability Taxonomy V1
 
-**Status:** additive backend adapter vocabulary
+**Status:** active expression catalog plus LEGACY V1 backend adapters
 **Authority:** subordinate to `HUEMAN_FACULTIES_V1.md`, House constitutions, and the Synthesis canon.
 
 This taxonomy gives player-facing and Recipe-facing names to capabilities. The
-formal faculty remains constitutional ownership; a `-kinesis` term is a scoped
-expression of that faculty, Current/Aura polarity, Frame, and Recipe. It never
+formal faculty remains constitutional ownership. Current and Aura are semantic
+practitioner axes; a capability term may express one of those axes. It never
 creates a new House, office, species, or kernel authority.
+
+`CurrentPowerRoot` and `AuraPowerRoot` are LEGACY physical/runtime fields. Their
+stable identifiers remain decodable for Recipe and replay compatibility, but
+they do not define Practitioner Current or Aura.
 
 ## Capability stack
 
@@ -33,23 +37,22 @@ Hydrokinesis is a regional outcome name, not an additional persisted power
 root. A Merman Recipe must identify the canonical faculty/root contributions
 that produce it.
 
-## Four House pairings
+## Locked active House expressions
 
-| House | Axis | Scoped alias | Canonical faculty | Canonical power root |
+| House | Axis | Expression | Faculty | Legacy V1 root adapter |
 |---|---|---|---|---|
-| Stonebend | Current | Barokinesis | Presynce | Somatokinesis |
-| Stonebend | Aura | Haptokinesis | Presynce | Psychometry |
-| Sandmanor | Current | Technokinesis | Prefig | Shapeshifting |
-| Sandmanor | Aura | Ideokinesis | Prefog | Dreamwalking |
 | Glaüshouse | Current | Biokinesis | Precog | Biokinesis |
-| Glaüshouse | Aura | Precognition | Precog | Clairvoyance |
+| Glaüshouse | Aura | Noomancy | Precog | Clairvoyance |
 | Flynt | Current | Telekinesis | Resynce | Telekinesis |
-| Flynt | Aura | Noökinesis | Resynce | Telepathy |
+| Flynt | Aura | Nookinesis | Resynce | Telepathy |
 
-These are scoped aliases over the existing faculty and `CurrentPowerRoot` /
-`AuraPowerRoot` law. They do not create parallel roots, new faculty ownership,
-or separate magic systems. Runtime validation rejects an alias whose House,
-faculty authority, axis, or canonical root disagrees with this table.
+Noomancy knows, reads, interprets, or regulates an internal mind/Aura state.
+Nookinesis moves, acts upon, or manipulates such a state. They are not aliases.
+
+Stonebend's exact eight Current/Aura level pairings are locked in the Synthesis
+canon. Sandmanor's locked axes and six equations are defined there as well; the older
+Barokinesis/Haptokinesis/Technokinesis/Ideokinesis records remain LEGACY V1
+root adapters and are not active canonical House-axis assignments.
 
 ## Locked Aura manipulation boundary
 
@@ -60,7 +63,7 @@ Suggestokinesis → Affectokinesis → Cognikinesis → Mnemonokinesis
 → Volitikinesis → Prognokinesis
 ```
 
-Flynt Noökinesis remains the only direct relational mind-influence family. The
+Flynt Nookinesis is the inward action/manipulation family. The
 Glaüshouse sequence shapes conditions and predicts decisions; it does not seize
 another Being's will.
 
@@ -76,8 +79,8 @@ another Being's will.
 - Merman Hydrokinesis is a compound Current/Aura Recipe method. It may include
   Resynce coordination, but must preserve every canonical contribution rather
   than becoming a sixth power root.
-- Glaüshouse Precog may perceive probable consequences of any kinesis but does
-  not automatically perform it.
+- Glaüshouse Noomancy may know, read, interpret, and regulate an internal
+  mind/Aura state but does not become Flynt Nookinesis.
 - Sandmanor Prefog and Prefig generate, model, and demonstrate legal
   possibilities and Recipes; they do not silently grant a capability.
 

@@ -13,6 +13,7 @@ use hollow_grove::{
 
 const RUNTIME_BINARY_NAME: &str = "hollow_grove_runtime";
 const BRIDGE_BINARY_NAME: &str = "hollow_grove_niri_bridge";
+const DEV_BINARY_NAME: &str = "hg-dev";
 const BENCHMARK_BINARY_NAME: &str = "current_synthesis_benchmark";
 const HUEMAN_SLICE_BINARY_NAME: &str = "hueman_slice_demo";
 const CURRENT_SYNTHESIS_TUI_BINARY_NAME: &str = "current_synthesis_tui";
@@ -59,8 +60,13 @@ where
         "benchmark" => Ok(MainCli::Benchmark(args.collect())),
         "app" | "application" => Ok(MainCli::App(args.collect())),
         "hueman-slice" => Ok(MainCli::HuemanSlice(args.collect())),
-        "semantic" | "federation" | "model" | "dataset" => {
-            let mut forwarded = vec![command];
+        "semantic" | "rampart" | "federation" | "model" | "dataset" => {
+            let forwarded_command = if command == "federation" {
+                "rampart".to_owned()
+            } else {
+                command
+            };
+            let mut forwarded = vec![forwarded_command];
             forwarded.extend(args);
             Ok(MainCli::SemanticTools(forwarded))
         }
@@ -97,6 +103,7 @@ where
         | "foundation-checkpoint"
         | "stanislavski"
         | "falloutman"
+        | "marquise"
         | "engine"
         | "bond"
         | "resource"
@@ -123,7 +130,7 @@ fn usage() -> &'static str {
        app ...           inspect, launch, or attach a Hollow Grove-managed application\n\
        hueman-slice      run the Hueman vertical-slice demo surface\n\
        semantic ...      inspect witnessed semantic positions and history\n\
-       federation ...    run or serve the authoritative transformer-assisted semantic cycle\n\
+       rampart ...       run or serve the authoritative transformer-assisted semantic cycle\n\
        model ...         validate an untrusted model response\n\
        dataset ...       validate witnessed semantic JSONL\n\
        verify-foundation print the Hollow Grove semantic foundation regression report\n\
@@ -153,6 +160,7 @@ fn usage() -> &'static str {
        foundation-checkpoint ... inspect the Embodied World Foundation V1 freeze checkpoint\n\
        stanislavski ...  inspect typed Stanislavski action-beat generation and evaluation\n\
        falloutman ...    inspect Falloutman dramatic response presentation over Stanislavski V2\n\
+       marquise ...      inspect canonical Flynt maritime Mystery Men lore\n\
        engine ...        inspect Current Synthesis engine state\n\
        bond ...          inspect bond candidates and traces\n\
        resource ...      inspect Aura, Current, and residue history\n\
@@ -173,8 +181,8 @@ fn usage() -> &'static str {
        hollow-grove app attach chroma_cord\n\
        hollow-grove hueman-slice walk\n\
        hollow-grove semantic inspect semantic-witnesses-v1.jsonl object.support-column.041 structural-repair\n\
-       hollow-grove federation run point.hueman.origin structural-repair \"Restore the supporting frame.\"\n\
-       hollow-grove federation serve --listen 127.0.0.1:47820\n\
+       hollow-grove rampart run point.hueman.origin structural-repair \"Restore the supporting frame.\"\n\
+       hollow-grove rampart serve --listen 127.0.0.1:47820\n\
        hollow-grove model validate-response response.json\n\
        hollow-grove dataset validate-semantic semantic-witnesses-v1.jsonl\n\
        hollow-grove verify-foundation\n\
@@ -320,10 +328,16 @@ fn ensure_bins_available(bin_names: &[&str]) -> io::Result<Vec<PathBuf>> {
     let sibling_dir = current_exe_parent()?;
     let profile = current_profile_dir_name(&sibling_dir);
     let repo_root = find_repo_root();
+    let dev_build_enabled =
+        env::var_os("HOLLOW_GROVE_DEV_BUILD").is_some_and(|value| value == "1" || value == "true");
     let sibling_paths = bin_names
         .iter()
         .map(|bin_name| sibling_dir.join(bin_name))
         .collect::<Vec<_>>();
+
+    if sibling_paths.iter().all(|path| path.exists()) && !dev_build_enabled {
+        return Ok(sibling_paths);
+    }
 
     if sibling_paths.iter().all(|path| path.exists()) {
         match repo_root.as_deref() {
@@ -331,6 +345,16 @@ fn ensure_bins_available(bin_names: &[&str]) -> io::Result<Vec<PathBuf>> {
             None => return Ok(sibling_paths),
             Some(_) => {}
         }
+    }
+
+    if !dev_build_enabled {
+        return Err(io::Error::new(
+            io::ErrorKind::NotFound,
+            format!(
+                "required release binaries are missing beside {}; run install-local-release.sh or set HOLLOW_GROVE_DEV_BUILD=1",
+                sibling_dir.display()
+            ),
+        ));
     }
 
     let repo_root = repo_root.ok_or_else(|| {
@@ -386,6 +410,36 @@ fn run_child_binary(bin_name: &str, args: &[String]) -> io::Result<()> {
     } else {
         Err(io::Error::other(format!(
             "{bin_name} exited with status {status}"
+        )))
+    }
+}
+
+fn run_dev_tool(tool_name: &str, args: &[String]) -> io::Result<()> {
+    let sibling_dir = current_exe_parent()?;
+    let consolidated_binary = sibling_dir.join(DEV_BINARY_NAME);
+    let compatibility_alias = sibling_dir.join(tool_name);
+    let (binary_path, tool_argument) = if consolidated_binary.is_file() {
+        (consolidated_binary, Some(tool_name))
+    } else if compatibility_alias.is_file() {
+        (compatibility_alias, None)
+    } else {
+        let binary_path = ensure_bins_available(&[DEV_BINARY_NAME])?
+            .into_iter()
+            .next()
+            .ok_or_else(|| io::Error::other("missing hg-dev path after resolution"))?;
+        (binary_path, Some(tool_name))
+    };
+
+    let mut command = Command::new(&binary_path);
+    if let Some(tool_argument) = tool_argument {
+        command.arg(tool_argument);
+    }
+    let status = command.args(args).status()?;
+    if status.success() {
+        Ok(())
+    } else {
+        Err(io::Error::other(format!(
+            "{tool_name} exited with status {status}"
         )))
     }
 }
@@ -576,9 +630,9 @@ fn main() -> io::Result<()> {
         MainCli::Runtime(args) => run_child_binary(RUNTIME_BINARY_NAME, &args),
         MainCli::Bridge(args) => run_child_binary(BRIDGE_BINARY_NAME, &args),
         MainCli::Desktop(args) => run_desktop_launcher(&args),
-        MainCli::Benchmark(args) => run_child_binary(BENCHMARK_BINARY_NAME, &args),
+        MainCli::Benchmark(args) => run_dev_tool(BENCHMARK_BINARY_NAME, &args),
         MainCli::App(args) => run_application_cli(&args),
-        MainCli::HuemanSlice(args) => run_child_binary(HUEMAN_SLICE_BINARY_NAME, &args),
+        MainCli::HuemanSlice(args) => run_dev_tool(HUEMAN_SLICE_BINARY_NAME, &args),
         MainCli::SemanticTools(args) => run_child_binary(SEMANTIC_BINARY_NAME, &args),
         MainCli::VerifyFoundation => {
             println!("{}", build_hollow_grove_foundation_verification_report()?);
@@ -668,15 +722,15 @@ mod tests {
         );
         assert_eq!(
             parse_main_cli([
-                String::from("federation"),
+                String::from("rampart"),
                 String::from("run"),
                 String::from("point.hueman.origin"),
                 String::from("structural-repair"),
                 String::from("Restore the supporting frame."),
             ])
-            .expect("federation cli should parse"),
+            .expect("rampart cli should parse"),
             MainCli::SemanticTools(vec![
-                String::from("federation"),
+                String::from("rampart"),
                 String::from("run"),
                 String::from("point.hueman.origin"),
                 String::from("structural-repair"),
@@ -815,6 +869,11 @@ mod tests {
             MainCli::CurrentSynthesisTui(vec![String::from("falloutman"), String::from("witness")])
         );
         assert_eq!(
+            parse_main_cli([String::from("marquise"), String::from("hierarchy")])
+                .expect("Marquise cli should parse"),
+            MainCli::CurrentSynthesisTui(vec![String::from("marquise"), String::from("hierarchy")])
+        );
+        assert_eq!(
             parse_main_cli([String::from("player"), String::from("status")])
                 .expect("player cli should parse"),
             MainCli::CurrentSynthesisTui(vec![String::from("player"), String::from("status")])
@@ -847,7 +906,7 @@ mod tests {
         assert!(usage.contains("app ..."));
         assert!(usage.contains("app launch chroma_cord"));
         assert!(usage.contains("hueman-slice"));
-        assert!(usage.contains("federation serve"));
+        assert!(usage.contains("rampart serve"));
         assert!(usage.contains("verify-foundation"));
         assert!(usage.contains("scenario list"));
         assert!(usage.contains("world context"));
@@ -887,6 +946,7 @@ mod tests {
         assert!(usage.contains("falloutman menu witness"));
         assert!(usage.contains("falloutman beat witness"));
         assert!(usage.contains("falloutman hidden-wound witness"));
+        assert!(usage.contains("marquise ..."));
         assert!(usage.contains("engine status"));
         assert!(usage.contains("player plan"));
         assert!(usage.contains("cleopatra tick"));

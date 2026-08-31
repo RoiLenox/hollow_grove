@@ -114,7 +114,7 @@ A route transfer is valid when:
    constitutional route.
 
 Disconnected jumps fail without changing revision, position, event history, or
-case state. Accepted map-entry events persist in federation-aware gameplay
+case state. Accepted map-entry events persist in Rampart-aware gameplay
 archive schema V3 and replay through the same network check.
 
 The playable client now uses a physical exit projected at each map spawn.
@@ -176,12 +176,12 @@ catalog. Route geometry never supplies those facts.
 - exact route-witness attribution;
 - endpoint-sharing traversal;
 - fail-closed disconnected jumps;
-- schema-V3 save, explicit Runtime Federation binding, and deterministic replay;
+- schema-V3 save, explicit Runtime Rampart binding, and deterministic replay;
 - all three singular surfaces enter only from their declared approaches;
 - surface maps remain distinct from the ten-route count.
 
 Inspect the network with:
 
 ```bash
-cargo run --quiet --bin hollow_grove_route_network_audit
+cargo run --quiet --features dev-tools --bin hg-dev -- hollow_grove_route_network_audit
 ```

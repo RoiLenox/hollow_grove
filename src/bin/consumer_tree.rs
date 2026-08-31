@@ -4,7 +4,7 @@ fn build_tree_from_consumer(kernel_pass: &KernelPass) -> String {
     build_tree_output(kernel_pass)
 }
 
-fn main() {
+pub(crate) fn tool_main() {
     let kernel_pass = run_kernel_cycle(Symptom::origin());
     println!("{}", build_tree_from_consumer(&kernel_pass));
 }

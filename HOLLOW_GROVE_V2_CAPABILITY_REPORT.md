@@ -4,6 +4,10 @@ Status: verified implementation report
 Date: 2026-07-18
 Scope: `hollow-grove` crate
 
+Compatibility scope: V2 `Current` and `Aura` quantities and archive fields are
+legacy physical/accounting mechanics. The report does not reinterpret them as
+the active Practitioner axes.
+
 Capability labels used throughout:
 
 - **Implemented** — executable through production types and reducers.
@@ -24,15 +28,15 @@ either kernel. It reuses the existing Sandmanor form lineage and ratifies exactl
 two region-bound transformations:
 
 ```text
-Gnome → Minotaur
+Faun → Minotaur
 Aura Field
 field stewardship, work, maintenance, and defense
 ```
 
 ```text
-Elf → Centaur
+Satyr → Centaur
 Aura Beach
-beach patrol plus typed guardianship of the Aura Sea
+beach patrol plus typed guardianship of the Current Sea
 ```
 
 Both require stable identities, established regional standing, subject-bound
@@ -58,7 +62,7 @@ separately snapshots Stonebend Name and Sandmanor proof.
 
 Gameplay history, outcome, child Bond, live institutional authority,
 post-choice placement, and revisit dialogue replay from a checksum-verified,
-federation-aware schema-V3 archive. Schemas V1 and V2 have explicit
+Rampart-aware schema-V3 archive. Schemas V1 and V2 have explicit
 migrations. `SaveIntent` and
 `LoadIntent` survive a service restart. Histories containing the separate
 regional-registration event remain explicitly unsupported by this gameplay
@@ -458,12 +462,13 @@ separate from bounded Recipe execution and final Bond Resolution.
 The fixed rule selects legality only from explicit command forms; location is a
 required standing check, not an outcome selector.
 
-## 33. Gnome-to-Minotaur Lineage
+## 33. Faun-to-Minotaur Lineage
 
-**Implemented.** The source Gnome retains its identity and becomes
+**Implemented.** The source Faun retains its identity and becomes
 `SynthesizedInto(result_id)`. The result Minotaur receives a new caller-supplied
 identity, an explicit predecessor, and a two-entry `lineage_history` containing
-the Gnome and Minotaur plus the Synthesis identity.
+the Faun and Minotaur plus the Synthesis identity. The public scenario slug
+`gnome-minotaur` is retained only for V1 compatibility.
 
 ## 34. Minotaur Stewardship of the Aura Field
 
@@ -475,11 +480,12 @@ and stabilize field Current.
 **Not implemented as simulation.** Crop growth, load physics, navigation,
 combat, worker AI, and Current stabilization algorithms remain downstream.
 
-## 35. Elf-to-Centaur Lineage
+## 35. Satyr-to-Centaur Lineage
 
-**Implemented.** The source Elf remains the first lineage entry and becomes
+**Implemented.** The source Satyr remains the first lineage entry and becomes
 `SynthesizedInto(result_id)`. The Centaur has a new stable identity and explicit
-predecessor/Synthesis references.
+predecessor/Synthesis references. The public scenario slug `elf-centaur` is a
+legacy compatibility identifier.
 
 ## 36. Centaur Patrol of the Aura Beach
 
@@ -491,18 +497,18 @@ boundary.
 **Not implemented as simulation.** Movement, pathfinding, encounter detection,
 and escort AI are downstream consumers.
 
-## 37. Centaur Guardianship of the Aura Sea
+## 37. Centaur Guardianship of the Current Sea
 
 **Implemented.** Every valid Centaur result from the ratified rule has an
 `AuraSeaGuardianship` naming `ConstitutionalRegion::AuraSea`, the Centaur holder,
 Glaüshouse authority decision, predecessor-bound evidence, and four duties.
 
-Aura Sea is deliberately not a primary regional standing site for Synthesis.
+Current Sea is deliberately not a primary regional standing site for Synthesis.
 It is the required guardianship relationship attached to the Aura Beach result.
 
 ## 38. Invalid Cross-Regional Transformations
 
-**Deliberately unsupported and tested.** Gnome→Centaur and Elf→Minotaur are
+**Deliberately unsupported and tested.** Faun→Centaur and Satyr→Minotaur are
 rejected by the existing lineage validator. Correct forms in wrong regions are
 rejected for insufficient standing. Wrong function, authority, institution,
 evidence subject, identity, terminal source, or duplicate Synthesis also fails
@@ -522,8 +528,8 @@ guardianship survive canonical reconstruction.
 
 - 0.592 µs single regional registration transition;
 - 90.580 µs full Bond lifecycle;
-- 43.852 µs Gnome→Minotaur complete scenario;
-- 45.566 µs Elf→Centaur complete scenario;
+- 43.852 µs legacy-slug Faun→Minotaur complete scenario;
+- 45.566 µs legacy-slug Satyr→Centaur complete scenario;
 - 8.346 µs two-event regional replay;
 - 107.348 ms 10,000-event regional replay.
 
@@ -538,7 +544,7 @@ These are **proposed consumers**, not implemented features:
 - regional roster views with verified lineage;
 - field-work task systems gated by Minotaur stewardship;
 - coastal patrol/escort systems gated by Centaur occupation;
-- Aura Sea access control gated by Centaur guardianship;
+- Current Sea access control gated by Centaur guardianship;
 - archive inspection and migration tooling;
 - scenario snapshot regression output;
 - institutional authority/evidence audit panels;
@@ -552,17 +558,17 @@ replay, and read-only projections already exist.
 
 **Deliberately unsupported until amended:**
 
-- Gnome→Centaur or Elf→Minotaur;
-- Minotaur→Hecaton and Centaur→Pegasus regional execution;
+- Faun→Centaur or Satyr→Minotaur;
+- Hecaton or Pegasus encoded as a Form transition;
 - regional transfer between Aura Field and Aura Beach;
-- Aura Sea primary standing;
+- Current Sea primary standing;
 - Minotaur sea authority or Centaur field authority;
 - automatic transformation from occupation;
 - non-Stonebend House-office succession and any common-runtime succession reducer (Stonebend Hypergiant selection is ratified separately above the frozen runtime);
 - cross-House appellate court and common-runtime appeal outcomes (Stonebend's own high-appeal jurisdiction remains governed by its V2 constitution);
 - synthesis proposer/validator/executor role separation beyond current decisions;
 - cryptographic authority signatures;
-- cross-archive federation/conflict resolution.
+- cross-archive Rampart/conflict resolution.
 
 ## 43. Known Limitations
 

@@ -1,7 +1,7 @@
 use hollow_grove::gameplay::{LivingCaseId, LivingWorldState};
 use hollow_grove::world::extraction::canonical_extraction_sites;
 
-fn main() {
+pub(crate) fn tool_main() {
     let state = LivingWorldState::canonical().expect("canonical living-world state");
     let sites = canonical_extraction_sites().expect("canonical extraction sites");
     println!(

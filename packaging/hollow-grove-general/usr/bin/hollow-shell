@@ -1,0 +1,80 @@
+#!/usr/bin/bash
+set -u
+
+libexec=${HOLLOW_GROVE_LIBEXEC:-/usr/lib/hollow-grove/bin}
+
+usage() {
+    printf '%s\n' \
+        'usage: hollow-shell <launcher|overview|keyboard|terminal|files|browser|marquise|doctor>' >&2
+    exit 2
+}
+
+available() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+launch_first() {
+    local label=$1
+    shift
+    local command
+    for command in "$@"; do
+        if available "$command"; then
+            exec "$command"
+        fi
+    done
+    "$libexec/notify" "Unavailable: $label" "No configured command is installed: $*" normal
+    exit 127
+}
+
+action=${1:-}
+case "$action" in
+    launcher)
+        exec "$libexec/walker-toggle-niri"
+        ;;
+    overview)
+        exec niri msg action toggle-overview
+        ;;
+    keyboard)
+        exec hollow-keyboard show
+        ;;
+    terminal)
+        launch_first "Terminal" kitty foot alacritty
+        ;;
+    files)
+        launch_first "Files" thunar nautilus dolphin pcmanfm-qt
+        ;;
+    browser)
+        if available xdg-open; then
+            exec xdg-open about:blank
+        fi
+        launch_first "Browser" firefox chromium
+        ;;
+    marquise)
+        if ! available hollow-grove; then
+            "$libexec/notify" "Unavailable: The Marquise" "Missing command: hollow-grove" normal
+            exit 127
+        fi
+        if available kitty; then
+            exec kitty --hold hollow-grove marquise overview
+        fi
+        exec hollow-grove marquise overview
+        ;;
+    doctor)
+        status=0
+        printf 'HOLLOW GROVE DESKTOP DOCTOR\n\n'
+        for command in niri walker mako swaybg swaylock waybar hollow-keyboard hollow-niri; do
+            if available "$command"; then
+                printf 'pass  %s\n' "$command"
+            else
+                printf 'miss  %s\n' "$command"
+                [[ "$command" == waybar || "$command" == niri ]] && status=1
+            fi
+        done
+        printf '\nconfig  %s\n' /etc/xdg/hollow-grove/waybar/config.jsonc
+        printf 'style   %s\n' /etc/xdg/hollow-grove/waybar/style.css
+        exit "$status"
+        ;;
+    *)
+        usage
+        ;;
+esac

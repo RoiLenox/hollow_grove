@@ -106,7 +106,7 @@ second clinical rules engine.
 The conformance commands are:
 
 ```text
-cargo run --bin glaushouse_constitutional_audit
+cargo run --features dev-tools --bin hg-dev -- glaushouse_constitutional_audit
 cargo test
 cargo fmt --check
 cargo clippy --all-targets --all-features

@@ -78,7 +78,7 @@ Exercise the completed foundation through one coherent scenario without adding n
    - route alignment
    - requested versus inferred polarity
 
-9. A Warden closes the immediate breach.
+9. The Flynt breach-closing civic designation remains STATUS: OPEN; no replacement people name is inferred.
 
    Exercises:
    - civic body closure response

@@ -2,18 +2,17 @@
 //!
 //! This module deliberately audits boundaries; it does not reduce gameplay or
 //! make House decisions. A passing report means the records are safe to hand
-//! to the Federation and to read from a presentation adapter.
+//! to the Rampart and to read from a presentation adapter.
 
 use std::fmt;
 
 use crate::ai_personas::{SharedInterfaceRecord, replay_advisory};
 use crate::gameplay::{
-    GAMEPLAY_ARCHIVE_FORMAT, GAMEPLAY_FEDERATION_COMPONENT_ID, GameplayFederationBinding,
+    GAMEPLAY_ARCHIVE_FORMAT, GAMEPLAY_RAMPART_COMPONENT_ID, GameplayRampartBinding,
 };
 use crate::guide_identity::GuideContextV1;
-use crate::runtime_federation::{
-    RUNTIME_FEDERATION_ARCHIVE_FORMAT, RUNTIME_FEDERATION_ARCHIVE_VERSION,
-    RUNTIME_FEDERATION_IDENTITY,
+use crate::runtime_rampart::{
+    RUNTIME_RAMPART_ARCHIVE_FORMAT, RUNTIME_RAMPART_ARCHIVE_VERSION, RUNTIME_RAMPART_IDENTITY,
 };
 
 pub const KERNEL_INVARIANT_SCHEMA_VERSION: u16 = 1;
@@ -26,7 +25,7 @@ const INVARIANTS: [&str; 7] = [
     "identity-continuity-preserved",
     "advisories-never-commit-world-state",
     "shared-records-have-provenance",
-    "federation-binding-is-replayable",
+    "rampart-binding-is-replayable",
     "refusal-remains-lawful",
     "central-junction-is-coordination-only",
     "roi-and-roselina-oversee-guide-context",
@@ -64,21 +63,21 @@ impl fmt::Display for KernelInvariantError {
 
 impl std::error::Error for KernelInvariantError {}
 
-/// Audits the shared gameplay/Federation boundary without changing state.
+/// Audits the shared gameplay/Rampart boundary without changing state.
 #[must_use]
-pub fn audit_gameplay_federation_binding(
-    binding: &GameplayFederationBinding,
-) -> KernelInvariantReport {
+pub fn audit_gameplay_rampart_binding(binding: &GameplayRampartBinding) -> KernelInvariantReport {
     let mut violations = Vec::new();
-    if binding.federation_identity != RUNTIME_FEDERATION_IDENTITY {
-        violations.push("federation identity is not canonical".into());
-    }
-    if binding.federation_archive_format != RUNTIME_FEDERATION_ARCHIVE_FORMAT
-        || binding.federation_archive_version != RUNTIME_FEDERATION_ARCHIVE_VERSION
+    if binding.rampart_identity != RUNTIME_RAMPART_IDENTITY
+        && binding.rampart_identity != crate::runtime_rampart::LEGACY_RUNTIME_FEDERATION_IDENTITY
     {
-        violations.push("federation archive format or version is not canonical".into());
+        violations.push("Rampart identity is not canonical".into());
     }
-    if binding.component_id != GAMEPLAY_FEDERATION_COMPONENT_ID {
+    if binding.rampart_archive_format != RUNTIME_RAMPART_ARCHIVE_FORMAT
+        || binding.rampart_archive_version != RUNTIME_RAMPART_ARCHIVE_VERSION
+    {
+        violations.push("Rampart archive format or version is not canonical".into());
+    }
+    if binding.component_id != GAMEPLAY_RAMPART_COMPONENT_ID {
         violations.push("gameplay binding is not the authoritative component".into());
     }
     for advisory in &binding.advisory_records {
@@ -98,6 +97,14 @@ pub fn audit_gameplay_federation_binding(
         checked_invariants: INVARIANTS.to_vec(),
         violations,
     }
+}
+
+#[deprecated(since = "0.1.0", note = "use audit_gameplay_rampart_binding")]
+#[must_use]
+pub fn audit_gameplay_federation_binding(
+    binding: &GameplayRampartBinding,
+) -> KernelInvariantReport {
+    audit_gameplay_rampart_binding(binding)
 }
 
 /// Audits a Guide projection and requires both canonical Guide identities.

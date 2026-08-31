@@ -131,7 +131,7 @@ fn main_binary_presents_the_outside_seer_forms() {
     assert!(stdout.starts_with("THE SEERS\n"));
     assert!(stdout.contains("\nRoï\n"));
     assert!(stdout.contains("\nRosaliña\n"));
-    assert!(stdout.contains("authority: The Federation"));
+    assert!(stdout.contains("authority: The Rampart of Roi and Roselina"));
     assert!(!stdout.contains("The Guide"));
 }
 
@@ -250,7 +250,8 @@ fn main_binary_delegates_world_context() {
 
     assert!(output.status.success());
     let stdout = String::from_utf8_lossy(&output.stdout);
-    assert!(stdout.contains("Current = blood"));
+    assert!(stdout.contains("Practitioner names the whole person"));
+    assert!(stdout.contains("LegacyPhysical::Current = blood-associated quantity"));
     assert!(stdout.contains("Hollow = pus"));
     assert!(stdout.contains("Frame = living mech only"));
 }
@@ -709,6 +710,7 @@ fn main_binary_launches_desktop_runtime_and_bridge() {
 
     let status = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
         .current_dir(&temp_root)
+        .env("HOLLOW_GROVE_NIRI_CLI", "1")
         .env(
             "PATH",
             format!(
@@ -744,7 +746,7 @@ fn main_binary_launches_desktop_runtime_and_bridge() {
         .expect("screen map state should exist");
     let niri_log_contents = fs::read_to_string(&niri_log).expect("niri log should exist");
 
-    assert!(runtime_status.contains("cycle: 2"));
+    assert!(runtime_status.contains("cycle: 1"));
     assert!(runtime_status.contains("refreshed pipeline"));
     assert!(bridge_status.contains("apply_enabled: true"));
     assert!(screen_map_state.contains("\"status\": \"ok\""));

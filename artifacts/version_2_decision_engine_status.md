@@ -45,7 +45,7 @@ Refreshed witness artifact:
 - `cargo build --release`
 - `./bench-local.sh`
 - `./stress-local.sh`
-- `cargo run --quiet --bin client_desktop_status`
+- `cargo run --quiet --features dev-tools --bin hg-dev -- client_desktop_status`
 - `ls -l target/release/client_desktop_status target/release/current_synthesis_benchmark target/release/hollow-grove`
 
 ## Verification Results

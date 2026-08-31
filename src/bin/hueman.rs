@@ -261,7 +261,7 @@ fn run_hueman_at(root: &Path) -> io::Result<[PathBuf; 22]> {
     ])
 }
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     for artifact_path in run_hueman_at(Path::new("."))? {
         println!("{}", artifact_path.display());
     }

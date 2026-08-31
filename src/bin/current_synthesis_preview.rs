@@ -14,7 +14,7 @@ fn artifact_path() -> PathBuf {
     PathBuf::from(CURRENT_SYNTHESIS_PREVIEW_ARTIFACT_PATH)
 }
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let current_synthesis_contract =
         read_artifact(Path::new(CURRENT_SYNTHESIS_CONTRACT_ARTIFACT_PATH))?;
     let current_synthesis_sequence =

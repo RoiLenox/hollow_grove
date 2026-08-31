@@ -111,7 +111,7 @@ fn gnome_minotaur_runs_through_service_and_assigns_typed_stewardship() {
 }
 
 #[test]
-fn elf_centaur_exposes_beach_region_lineage_and_sea_guardianship() {
+fn satyr_centaur_exposes_beach_region_lineage_and_sea_guardianship() {
     let mut service = ConstitutionalApplicationService::new("session.elf").unwrap();
     let run_response = service
         .execute(request("request.elf.run", run("elf-centaur")))
@@ -135,7 +135,7 @@ fn elf_centaur_exposes_beach_region_lineage_and_sea_guardianship() {
         .filter(|event| event.kind == TuiEventKind::LineagePreserved)
         .map(|event| event.fields["form"].as_str())
         .collect();
-    assert_eq!(forms, ["Elf", "Centaur"]);
+    assert_eq!(forms, ["Satyr", "Centaur"]);
 
     let region = service
         .execute(request(
@@ -159,8 +159,8 @@ fn elf_centaur_exposes_beach_region_lineage_and_sea_guardianship() {
         guardianship.events[0].kind,
         TuiEventKind::GuardianshipGranted
     );
-    assert_eq!(guardianship.events[0].fields["region"], "Aura Sea");
-    assert!(guardianship.events[0].fields["duties"].contains("guard access to the Aura Sea"));
+    assert_eq!(guardianship.events[0].fields["region"], "Current Sea");
+    assert!(guardianship.events[0].fields["duties"].contains("guard access to the Current Sea"));
 }
 
 #[test]

@@ -18,7 +18,7 @@ fn artifact_path() -> PathBuf {
     PathBuf::from(PROMPT_ARTIFACT_PATH)
 }
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let kernel_pass = run_kernel_cycle(Symptom::origin());
     let prompt_artifact = build_prompt_artifact_from_client(&kernel_pass);
     let artifact_path = artifact_path();

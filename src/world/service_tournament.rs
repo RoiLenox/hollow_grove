@@ -250,8 +250,8 @@ impl PairedServiceIdentity {
             ],
             Self::SandmanorCiaNavy => &[
                 "Minorians and Minoans",
-                "Gnomes, Minotaurs, Elves, and Centaurs",
-                "Aura Fields and Aura Beach",
+                "Gnomes, Fauns, Minotaurs, Elves, Satyrs, and Centaurs",
+                "Content Farm, Aura Field, and Aura Beach",
                 "Current Sea",
                 "the Sandman and the Contest of Improvement",
             ],

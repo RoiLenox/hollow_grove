@@ -99,17 +99,19 @@ fn title_scope_and_gate_failure_boundaries_are_canonical() {
 }
 
 #[test]
-fn diamond_and_hypergiant_are_never_flattened_together() {
-    for document in [SECOND_PASS, CONSTITUTION, WORLD_CONTEXT, HUEMAN_PROJECTION] {
-        assert!(document.contains("Diamond"));
-        assert!(document.contains("Hypergiant"));
-        assert!(document.contains("sovereign Title"));
-        assert!(document.contains("temporary"));
-    }
+fn hypergiant_is_active_sovereign_and_diamond_identifiers_are_legacy() {
+    assert!(CONSTITUTION.contains("Hypergiant is Stonebend's sovereign title"));
+    assert!(CONSTITUTION.contains("Diamond is not the sovereign title"));
+    assert!(CONSTITUTION.contains("STATUS: OPEN"));
+    assert!(SECOND_PASS.contains("SUPERSEDED"));
+    assert!(SECOND_PASS.contains("LEGACY / DEPRECATED"));
+    assert!(WORLD_CONTEXT.contains("Hypergiant is Stonebend's sovereign title"));
+    assert!(HUEMAN_PROJECTION.contains("Hypergiant"));
     for term in [
         "SovereignTitle",
         "DiamondState",
         "DiamondTenure",
+        "hypergiant_title_id",
         "DiamondAlreadyBorne",
         "DiamondAlreadyVacant",
     ] {

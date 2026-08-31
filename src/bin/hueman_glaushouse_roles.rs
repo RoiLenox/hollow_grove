@@ -7,7 +7,7 @@ use hollow_grove::hueman_support::{
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let hueman_start_choices = read_text_artifact(Path::new(HUEMAN_START_CHOICES_ARTIFACT_PATH))?;
     let hueman_fourway = read_text_artifact(Path::new(HUEMAN_FOURWAY_ARTIFACT_PATH))?;
     let hueman_glaushouse_roles =
@@ -32,15 +32,18 @@ mod tests {
     fn hueman_glaushouse_roles_reads_existing_artifacts() {
         let output = build_hueman_glaushouse_roles_from_artifacts("start", "fourway");
         assert!(output.starts_with("# Hueman Glaushouse Roles"));
-        assert!(output.contains("Pixy -> Sprite -> Farie -> Nymph -> Siren -> Muse"));
+        assert!(output.contains("Nightingale / Pixie is the common foundation"));
+        assert!(output.contains("Marshal / Sprite -> Spirit"));
+        assert!(output.contains("Matron / Fairy -> Nymph"));
+        assert!(output.contains("Noomancy"));
         assert!(output.contains("exclusive Synthesis"));
         assert!(output.contains("mechanical-industrial medical capital"));
         assert!(output.contains("Doctor Ratchet is its frozen current holder identity"));
-        assert!(output.contains("Muse marks the highest restorative inspiration"));
+        assert!(output.contains("Prima Donna / Muse"));
         assert!(output.contains("mines jades and refines Glaus Gel"));
         assert!(output.contains("every Nightingale stop triggers mandatory review"));
         assert!(output.contains("Nurse House is one frozen current Persephone identity"));
-        assert!(output.contains("Matron and Marshal are equal complementary branches"));
+        assert!(output.contains("equal Matron and Marshal branches"));
         assert!(output.contains("Synthesis is Continuance through renewal"));
         assert!(output.contains("## Composed Medical Roles"));
         assert!(output.contains("Gargoyle Surgeon = Being Hueman"));

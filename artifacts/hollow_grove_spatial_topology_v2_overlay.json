@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "rule_set": "ruleset.hollow-grove.spatial-topology-v2",
+  "straight_routes": [
+    {
+      "id": "aura_ridge",
+      "name": "Aura Ridge",
+      "constitutional_route_id": "geography.route.aura-ridge",
+      "from": "stonebend",
+      "to": "glaushouse",
+      "band_width": 0.045
+    },
+    {
+      "id": "aura_ridge_east",
+      "name": "Aura Ridge East",
+      "projection_of": "geography.route.aura-ridge",
+      "local_only": true,
+      "from": "aura_ridge_junction",
+      "to": "sandmanor",
+      "band_width": 0.045
+    },
+    {
+      "id": "aura_way",
+      "name": "Aura Way",
+      "constitutional_route_id": "geography.route.aura-way",
+      "from": "stonebend",
+      "to": "sandmanor",
+      "band_width": 0.045
+    },
+    {
+      "id": "glausbaughn",
+      "name": "Glausbaughn",
+      "constitutional_route_id": "geography.route.glausbaughn",
+      "from": "sandmanor",
+      "to": "glaushouse",
+      "band_width": 0.045
+    },
+    {
+      "id": "boardwalk",
+      "name": "Boardwalk",
+      "constitutional_route_id": "geography.route.boardwalk",
+      "from": "glaushouse",
+      "to": "flynt",
+      "band_width": 0.045
+    },
+    {
+      "id": "basin_motor_speedway",
+      "name": "Basin Motor Speedway",
+      "constitutional_route_id": "geography.route.basin-motorspeedway",
+      "from": "flynt",
+      "to": "stonebend",
+      "band_width": 0.045
+    }
+  ],
+  "curved_routes": [
+    {
+      "id": "mount_aura",
+      "name": "Mount Aura",
+      "constitutional_route_id": "geography.route.mnt-aura",
+      "from": "stonebend",
+      "to": "sandmanor",
+      "control": { "x": 0.69, "y": 0.2 },
+      "band_width": 0.045
+    },
+    {
+      "id": "current_sea",
+      "name": "Current Sea",
+      "constitutional_route_id": "geography.route.current-sea",
+      "from": "sandmanor",
+      "to": "glaushouse",
+      "control": { "x": 0.73, "y": 0.8 },
+      "band_width": 0.045
+    },
+    {
+      "id": "riptide",
+      "name": "Riptide",
+      "constitutional_route_id": "geography.route.riptide",
+      "from": "glaushouse",
+      "to": "flynt",
+      "control": { "x": 0.31, "y": 0.8 },
+      "band_width": 0.045
+    },
+    {
+      "id": "stairway_to_heaven",
+      "name": "Stairway to Heaven",
+      "constitutional_route_id": "geography.route.stairway-to-heaven",
+      "from": "flynt",
+      "to": "stonebend",
+      "control": { "x": 0.31, "y": 0.2 },
+      "band_width": 0.045
+    }
+  ],
+  "surfaces": [
+    {
+      "id": "aura_field",
+      "name": "Aura Field",
+      "kind": "aura_farm_half",
+      "composite": "aura_farm",
+      "polygon": [
+        { "x": 0.5, "y": 0.14 },
+        { "x": 0.735, "y": 0.5 },
+        { "x": 0.5, "y": 0.32 }
+      ]
+    },
+    {
+      "id": "content_farm",
+      "name": "Content Farm",
+      "kind": "aura_farm_half",
+      "composite": "aura_farm",
+      "polygon": [
+        { "x": 0.5, "y": 0.32 },
+        { "x": 0.735, "y": 0.5 },
+        { "x": 0.5, "y": 0.5 }
+      ]
+    },
+    {
+      "id": "aura_beach",
+      "name": "Aura Beach",
+      "kind": "surface",
+      "polygon": [
+        { "x": 0.5, "y": 0.5 },
+        { "x": 0.735, "y": 0.5 },
+        { "x": 0.5, "y": 0.86 }
+      ]
+    },
+    {
+      "id": "aura_basin",
+      "name": "Aura Basin",
+      "kind": "surface",
+      "polygon": [
+        { "x": 0.5, "y": 0.14 },
+        { "x": 0.265, "y": 0.5 },
+        { "x": 0.5, "y": 0.86 }
+      ]
+    }
+  ],
+  "legacy_decode_aliases": {
+    "geography.route.current-seanad": "geography.route.current-sea",
+    "geography.route.glausbahn": "geography.route.glausbaughn"
+  }
+}

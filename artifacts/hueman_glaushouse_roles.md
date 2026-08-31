@@ -10,7 +10,8 @@ Glaushouse clears lawful medicine and maintained Synthesis through a universal N
 - Glaushouse clears medicine, recovery, and lawful Synthesis for both machine and Hueman bodies.
 - Glaushouse retains exclusive Synthesis authority among Houses while Current Runtime V2 remains authoritative over common Bond resolution and causality.
 - Glaushouse reads as a mechanical-industrial medical capital: Berlin severity, Milan polish, chrome discipline, and commanding clinic glamour.
-- Sprite is Glaushouse's confirmed Aura-origin path.
+- Nightingale / Pixie is Glaushouse's common practitioner/Synthesis foundation.
+- Biokinesis is Glaushouse's Current-side expression; Noomancy is its exact Aura-side expression.
 - Glaushouse mines jades and refines Glaus Gel as its jade-colored repair and synthesis medium.
 - Glausteel is the accepted hard branch for cleared integrated work.
 
@@ -19,9 +20,10 @@ Glaushouse clears lawful medicine and maintained Synthesis through a universal N
 - Prima Donna is the singular highest clinical office; Doctor Ratchet is its frozen current holder identity.
 - Persephone is a multiple balanced clinical rank; Nurse House is one frozen current Persephone identity.
 - The Nightingales are the universal clinical foundation, constitutional nursing and clinical-care institution, patient advocates, and protected bedside check.
-- a Nightingale may choose Matron or Marshal; Matron and Marshal are equal complementary branches, and cross-training remains open.
+- a Nightingale may specialize as Marshal / Sprite on the Biokinetic-dominant branch or Matron / Fairy on the Noomantic-dominant branch; cross-training remains open.
+- Marshal advances in Synthesis correspondence from Sprite to Spirit; Matron advances from Fairy to Nymph.
 - mastery of both branches may earn Persephone; multiple Persephones may serve while only one Prima Donna is active.
-- the generative ladder is Nightingale -> equal Matron or Marshal branches -> multiple Persephones -> one Prima Donna.
+- the branch geometry is Nightingale / Pixie -> Marshal / Sprite -> Spirit OR Matron / Fairy -> Nymph -> Persephone / Siren -> Prima Donna / Muse.
 - Glauspitals operates clinical facilities, while Chromacord preserves clinical records and evidence.
 - advancement Toke/Tokens preserve one stable person and prior mastery; neither office, institution, chart, gesture, species, transformation, nor technical ability manufactures another authority.
 
@@ -34,12 +36,12 @@ Glaushouse clears lawful medicine and maintained Synthesis through a universal N
 - every Clearance names subject, procedure, operator, facility, scope, risk, consent, capacity, stopping conditions, recovery, and expiration.
 - proof is not Clearance; recognition is not Clearance; custody is not ownership; transformation is not accession.
 
-## Form and Practice Ladder
+## Branching Synthesis Correspondence
 
-- Glaushouse's separate Aura form-and-practice ladder remains Pixy -> Sprite -> Farie -> Nymph -> Siren -> Muse; it does not replace the clinical ladder.
-- Pixy marks nimble bedside attention; Sprite marks active floor care and relay motion; Farie marks delicate restorative practice used with discipline.
-- Nymph marks stable healing presence; Siren marks commanding recall and recovery presence; Muse marks the highest restorative inspiration and formal guidance.
-- the Aura ladder records Frame, practice, capability, and mastery development; only Nightingale evidence, branch proofs, and lawful advancement create Matron, Marshal, Persephone, or Prima Donna candidacy.
+- Nightingale / Pixie is the common foundation, after which Glaüshouse splits rather than forming a straight ladder.
+- Marshal / Sprite -> Spirit is the physical/Biokinetic-dominant branch; Matron / Fairy -> Nymph is the Aura/Noomantic-dominant branch.
+- the branches reunify at Persephone / Siren and culminate at Prima Donna / Muse.
+- Fairy is the active spelling; Faerie remains a LEGACY serialization alias. Advanced Marshal and Advanced Matron are explanatory descriptions, never public offices.
 - a technically capable form still requires training, current competence, institutional authorization, scope, recognition, and Title where applicable.
 
 ## Synthesis and Recovery
@@ -49,7 +51,7 @@ Glaushouse clears lawful medicine and maintained Synthesis through a universal N
 - Adjustment, Graft, Reconstruction, and Transfiguration are intended clinical depths; Overgrowth is an emergency failure state.
 - host rejection and Sympiote rejection are distinct, and major Synthesis requires both technical and lived viability.
 - high-risk Synthesis requires a recovery plan and Nightingale witness; emergency Synthesis requires post-event review; experimental Synthesis is openly marked.
-- Gnome -> Minotaur at Aura Field and Elf -> Centaur at Aura Beach remain regional Synthesis canon.
+- Sandmanor's Gnome/Faun/Minotaur and Elf/Satyr/Centaur Form progressions remain separate House canon; Hecaton and Pegasus are sovereign Hands.
 - Glaushouse clears safety, Sandmanor proves design, Stonebend preserves identity and Title, and Flynt recognizes function.
 - Synthesis never automatically creates Title, office, recognition, or political standing.
 - failed, partial, unstable, unintended, or injurious Synthesis is recorded as the actual result rather than renamed as success.
@@ -68,7 +70,7 @@ Glaushouse clears lawful medicine and maintained Synthesis through a universal N
 
 - Glaushouse constitutional law is ratified in GLAUSHOUSE_CONSTITUTION_V2.md
 - the House-specific registry validates clinical law above frozen Current Runtime V2
-- Mind -> Precog is Glaushouse's Hueman faculty: evidence-grounded probable continuation through Glow and disclosed uncertainty, never omniscience or guaranteed future
+- Mind -> Precog is Glaüshouse's faculty: recognition of trajectory or condition in relation to Integrity, never omniscience or guaranteed future
 - Hueman and Godot may present records but may not create consent, Clearance, privilege, office, or Synthesis outcomes
 - common Bond, Current, Aura, persistence, replay, and final Synthesis Resolution remain authoritative in Current Runtime V2
 - the universal recursion kernel remains isolated from Glaushouse-specific law

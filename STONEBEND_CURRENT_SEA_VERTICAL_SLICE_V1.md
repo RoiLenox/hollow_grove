@@ -40,7 +40,7 @@ Title, transformation class, or inferred regional role.
    transformed-form Name, or high identity review.
 9. State change: one typed outcome and exact Stonebend records.
 10. Persistence: gameplay archive schema V3 stores the event, institutional
-    snapshot, and explicit Runtime Federation binding; replay reconstructs and
+    snapshot, and explicit Runtime Rampart binding; replay reconstructs and
     compares the exact outcome and authority.
 11. Presentation: map gate, silhouette, dialogue, registry view, and refusal
     language change after commitment.

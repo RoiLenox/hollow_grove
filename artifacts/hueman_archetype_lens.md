@@ -59,8 +59,8 @@ After the Hueman opening and AuraTriad behavior are declared, each confirmed ori
 
 Hueman Start Choices bytes: 1365.
 Hueman Aura Behavior bytes: 1841.
-Hueman Stonebend Roles bytes: 10286.
-Hueman Sandmanor Roles bytes: 9864.
+Hueman Stonebend Roles bytes: 10803.
+Hueman Sandmanor Roles bytes: 10038.
 
 ## Boundary Reminder
 

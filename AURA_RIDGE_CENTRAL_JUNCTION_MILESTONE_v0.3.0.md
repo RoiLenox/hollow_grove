@@ -254,8 +254,8 @@ This milestone changed no combat, movement, transformation, party, rendering,
 or PokéWilds-reference behavior.
 
 It changed no Flynt/Manticorp behavior or invariant. Tross, Mystery Man, and
-Mr. X remain one stable person; Manticorp Form and Manticorp Institution remain
-distinct.
+Mr. X remain one stable person; Manticore Form and the Manticorp soldier body
+remain distinct.
 
 It changed no Glaüshouse behavior or invariant. The maintained-Synthesis
 doctrine, universal Nightingale foundation, equal Matron and Marshal branches,

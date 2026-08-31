@@ -276,6 +276,8 @@ fn write_region(writer: &mut Writer, value: ConstitutionalRegion) {
     writer.u8(match value {
         ConstitutionalRegion::AuraFields => 0,
         ConstitutionalRegion::AuraBeach => 1,
+        // Tag 2 retains the V1 `AuraSea` source spelling while active lore and
+        // display call the region Current Sea.
         ConstitutionalRegion::AuraSea => 2,
     });
 }
@@ -296,10 +298,12 @@ fn write_form(writer: &mut Writer, value: SandmanorForm) {
     writer.u8(match value {
         SandmanorForm::Gnome => 0,
         SandmanorForm::Minotaur => 1,
-        SandmanorForm::Hecaton => 2,
         SandmanorForm::Elf => 3,
         SandmanorForm::Centaur => 4,
-        SandmanorForm::Pegasus => 5,
+        // Tags 2 and 5 were the obsolete Hecaton/Pegasus-as-Form model and
+        // are intentionally not reused.
+        SandmanorForm::Faun => 6,
+        SandmanorForm::Satyr => 7,
     });
 }
 
@@ -307,10 +311,10 @@ fn read_form(reader: &mut Reader<'_>) -> Result<SandmanorForm, RegionalArchiveEr
     match reader.u8()? {
         0 => Ok(SandmanorForm::Gnome),
         1 => Ok(SandmanorForm::Minotaur),
-        2 => Ok(SandmanorForm::Hecaton),
         3 => Ok(SandmanorForm::Elf),
         4 => Ok(SandmanorForm::Centaur),
-        5 => Ok(SandmanorForm::Pegasus),
+        6 => Ok(SandmanorForm::Faun),
+        7 => Ok(SandmanorForm::Satyr),
         tag => Err(RegionalArchiveError::InvalidTag {
             kind: "SandmanorForm",
             tag,

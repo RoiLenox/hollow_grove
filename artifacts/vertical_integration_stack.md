@@ -42,17 +42,17 @@ World Roles and Scenes
 
 ## Current Alignment
 
-- Stonebend remains North: Geralds are its people, Hypergiant temporarily bears Diamond, Proliteriate is its distributed Yield network, and High Freemason bears Claim authority above Current Synthesis
-- Tross = Mystery Man = Mr. X is one stable sovereign person; Tross publicly leads Manticorp Institution, while the same man leads the Gallows underground; Manticorp Form is his presently maintained body
-- Glaushouse remains East: Nightingale is the universal clinical foundation, Matron and Marshal are equal branches, multiple Persephones preserve whole-course care, Doctor Ratchet holds the one singular Prima Donna office, Glauspitals operates care, and Chromacord preserves evidence without becoming authority
-- Sandmanor remains South with equal Minorian Gnome and Minoan Elf traditions, regional Gnome-to-Minotaur and Elf-to-Centaur designs, and the evidence-judged Contest of Improvement
+- Stonebend remains North: Geralds are its people, Hypergiant is its sovereign title, Diamond is STATUS: OPEN, Proliteriate is its distributed Yield network, and High Freemason bears Claim authority above Current Synthesis
+- The Tross = Manticore = Mystery Man = Mr. X is one stable sovereign person; Tross publicly leads the Manticorp soldier body and leads We Fairy Men, whose underworld manifestation is The Gallows; Manticore Form is his masculine mythological identity and maintained body
+- Glaüshouse remains East: Nightingale / Pixie is the common foundation; Marshal / Sprite -> Spirit and Matron / Fairy -> Nymph reunify at Persephone / Siren and culminate at Prima Donna / Muse
+- Sandmanor remains South with distinct Minorian and Minoan peoples, six Forms across two three-stage lines, separate roles, attendants, and Hands, the evidence-judged Contest of Improvement, and The Sandman = Demiurge
 - Hueman faculties remain an additive typed layer: Stonebend/Body/Presynce, Flynt/Spirit/Resynce, Glaushouse/Mind/Precog, and equal Sandmanor Soul halves Minorian/Prefog and Minoan/Prefig
-- faculties describe Observe, Generate, Evaluate, and Execute-or-demonstrate; the existing deterministic runtime alone Chooses, and the existing Sandmanor proof lifecycle alone proves
+- faculties are orthogonal to Current, Aura, Synthesis, and rank; the existing deterministic runtime alone chooses, and the existing Sandmanor proof lifecycle alone proves
 - functionally, Stonebend reads as Craft, Flynt reads as Engineering, Glaushouse reads as Repair, and Sandmanor reads as Configuration across the shared Hollow Grove/Hueman interpretation
 - the player begins as Hueman near Aura Ridge before major form commitment
-- confirmed form origins remain braided: Flynt -> `gremlin`, Stonebend -> `goblin`, Glaushouse -> `sprite`, Sandmanor -> `pixy`
+- historical start-form routing remains a gameplay compatibility surface and does not redefine the active House ontology
 - resource seams are designated across Hueman: Stonebend diamonds, Flynt opals, Glaushouse jades, Sandmanor crystals and proof materials
-- the bedrock split remains active upstream: regular current and hollow current, reflective aura and holographic aura
+- the legacy physical compatibility split remains active upstream: regular current and hollow current, reflective aura and holographic aura
 - the visible Hueman map remains one large circle whose route legs may read as straight ridge runs or rounded bends
 - Aura Ridge / Witness is the visible civic-reintegration body between Glaushouse and Stonebend, while Aura Ridge East remains only a local screen-map segment toward Sandmanor
 - Current Sea / Certify is the Straight Glaushouse-to-Stonebend civic sea-of-people concourse and has no frozen Current Synthesis route projection; Glausbahn / Refine is the Round road sector
@@ -84,12 +84,12 @@ World Roles and Scenes
 Current Synthesis Base bytes: 1596.
 Current Synthesis collision relay bytes: 3024.
 Hueman Boundary bytes: 2188.
-Hueman Glaushouse Roles bytes: 7910.
-Hueman Sandmanor Roles bytes: 9864.
-Hueman Inverse Circle bytes: 2513.
-Hueman Procedural Uplift bytes: 8483.
-Hueman Scene Presence bytes: 7034.
-Hueman Scene Intent bytes: 8233.
+Hueman Glaushouse Roles bytes: 8063.
+Hueman Sandmanor Roles bytes: 10038.
+Hueman Inverse Circle bytes: 2521.
+Hueman Procedural Uplift bytes: 8608.
+Hueman Scene Presence bytes: 7225.
+Hueman Scene Intent bytes: 8843.
 Hueman Scene Drift bytes: 2001.
 
 ## Boundary Reminder

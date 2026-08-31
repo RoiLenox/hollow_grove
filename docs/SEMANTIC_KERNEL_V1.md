@@ -30,11 +30,12 @@ A confirmed transformation becomes the returning state
 of The Way Back again.
 ```
 
-The universal laws remain:
+The following labels are frozen V1 compatibility vocabulary. They describe the
+semantic-kernel adapter and do not define Practitioner Current or Aura:
 
 ```text
-Current repeats.
-Aura reveals.
+LegacyPhysical::Current repeats.
+LegacyPhysical::Aura reveals.
 Relativity bends.
 Synthesis transforms.
 ```
@@ -42,8 +43,8 @@ Synthesis transforms.
 The governing boundary is:
 
 ```text
-Transformer = Aura
-Rust runtime = Current
+Transformer = LegacyPhysical::Aura adapter
+Rust runtime = LegacyPhysical::Current adapter
 Validated movement = Synthesis
 Contextual interpretation = Relativity
 ```

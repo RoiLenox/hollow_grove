@@ -203,8 +203,9 @@ Flynt asks what a system can do under pressure. Point I answers through
 logistics: maintain custody, move necessary material across terrain, coordinate
 production and stores, and admit what cannot be read. The present constitutional
 law is the **Law of Capacity**. Authority remains with the
-[Flynt Constitution](../../../../../FLYNT_CONSTITUTION_V2.md), Tross, Wardens,
-Manticorp, and other established structures. Recognition may remain a cultural
+[Flynt Constitution](../../../../../FLYNT_CONSTITUTION_V2.md), Tross,
+Manticorp, and other established structures. Flynt's general civic designation
+is STATUS: OPEN; the superseded Wardens title is not replaced here. Recognition may remain a cultural
 or confirmation theme; it is not the House Law.
 
 ## Library integration

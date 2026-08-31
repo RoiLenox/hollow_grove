@@ -50,16 +50,21 @@ The player is always Hueman.
 
 ### Hueman Faculties
 
-- Stonebend / Body / Presynce feels emerging physical movement.
-- Flynt / Spirit / Resynce joins relational momentum.
-- Glaüshouse / Mind / Precog projects evidence-grounded likely consequences.
-- Sandmanor / Minorian / Soul Interior / Prefog opens legal possibilities.
-- Sandmanor / Minoan / Soul Exterior / Prefig provisionally forms one selected
-  possibility.
+- Stonebend / Body / Presynce recognizes present/material/embodied reality in
+  relation to Identity.
+- Flynt / Spirit / Resynce recognizes Capacity through response, change,
+  pressure, or load.
+- Glaüshouse / Mind / Precog recognizes trajectory or condition in relation to
+  Integrity.
+- Sandmanor / Minorian / Soul Interior / Prefog recognizes Pattern already
+  present but obscured.
+- Sandmanor / Minoan / Soul Exterior / Prefig recognizes or projects Pattern
+  before manifestation.
 
-The complete `Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre ->
-Troglodyte` Current Form ladder develops Presynce. Resynce is an additional
-relational manifestation and never splits or mutates that ladder.
+Faculties are orthogonal to Current, Aura, Synthesis, and rank. Stonebend's
+active Synthesis ladder is `Gremlin -> Goblin -> Ghoul -> Spectre -> Troll ->
+Ork -> Ogre -> Troglodyte`. Its exact Aura counterparts are `Pixie`, `Sprite`,
+`Fairy`, `Spirit`, `Siren`, `Sylph`, `Nymph`, and `Muse`, in that order.
 
 Sandmanor's reciprocal cycle is `Prefog -> Prefig -> Proof -> Evidence or
 Failure -> Revision -> Prefog`. Prefog and Prefig are equal Soul halves;
@@ -158,9 +163,9 @@ Advancement is a meaningful-work Toke/Token attached to the same stable Hueman
 identity. Existing rank holders do not close candidacy. Glaüshouse succession
 is generative: one Prima Donna must cultivate many people who may rise.
 
-## Confirmed Form Origins
+## Legacy gameplay form routing and active House ontology
 
-Current-side confirmed origins:
+The old player-start routing remains a gameplay compatibility surface:
 
 - Gremlin originates in Flynt
 - Goblin originates in Stonebend
@@ -172,18 +177,20 @@ opportunity made from discarded material. Accumulated Gremlin Way can support
 Gargoyle Recipe viability, but no numeric threshold automatically creates
 Gargoyle. Gargoyle Continuance requires its Ways, maintenance, and renewal.
 
-Aura-side confirmed origins:
+The old Aura-side routing likewise remains decodable:
 
 - Sprite originates in Glaüshouse
-- Pixy originates in Sandmanor
-- their paths may intersect at Faerie
+- Pixy (the stable compatibility ID for Pixie) originates in Sandmanor
+- their paths may intersect at legacy `Faerie`
 
-These House origins remain braided and do not divide faculty ownership. The
-Current Form sequence itself is the complete Presynce embodiment ladder:
-Gremlin, Goblin, Ghoul, Spectre, Troll, Ork, Ogre, Troglodyte. Resynce remains
-an additional relational manifestation rather than a separate species ladder.
-House-origin attribution outside the confirmed origins remains distinct from
-this faculty classification.
+These are **LEGACY physical/gameplay route labels**, not active Practitioner
+Current/Aura or House Synthesis assignments. Active Stonebend Synthesis
+includes Spectre at level 4. Active Glaüshouse Synthesis begins at Nightingale
+/ Pixie, splits into
+Marshal / Sprite → Spirit and Matron / Fairy → Nymph, reunifies at Persephone /
+Siren, and culminates at Prima Donna / Muse. Sylph is the level-6 Aura
+counterpart without an inferred clinical office. Sandmanor and Flynt retain
+their own distinct geometries as defined by the Synthesis canon.
 
 ## Starting Position
 
@@ -310,8 +317,9 @@ Do not overbuild graphics before the core loop is playable.
 
 The active canon intentionally leaves these open:
 
-- later branch ownership after Ghoul and Faerie
-- final composite names for Stonebend, Sandmanor, and Glaüshouse
+- exact Stonebend Current/Aura mappings and Diamond's current role
+- exact Flynt base Current/Aura equations and general civic designation
+- exact Sandmanor Transcendence and other detailed higher-Synthesis mechanics
 - final opening map geometry
 - full Hueman/Hollow Grove live integration
 - full multiplayer governance

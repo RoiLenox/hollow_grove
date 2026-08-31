@@ -6,7 +6,7 @@ use std::time::Duration;
 use hollow_grove::guide_identity::{
     DualGuideSession, GUIDE_MODEL_PROMPT_LAW, StableGuideSessionId,
 };
-use hollow_grove::runtime_federation::{
+use hollow_grove::runtime_rampart::{
     HOLLOW_GROVE_SEMANTIC_PROMPT_V1, HOLLOW_GROVE_SEMANTIC_PROMPT_VERSION, InterpreterError,
     MAX_MODEL_RESPONSE_BYTES, ModelSemanticProposal, OllamaConfig, OllamaConfigError,
     OllamaSemanticInterpreter, OllamaTransport, SemanticInterpretationRequest, SemanticInterpreter,
@@ -320,7 +320,7 @@ fn deterministic_interpreter_can_simulate_malformed_and_reserved_y_responses() {
         .as_slice(),
     ] {
         let interpreter =
-            hollow_grove::runtime_federation::DeterministicSemanticInterpreter::from_json(bytes);
+            hollow_grove::runtime_rampart::DeterministicSemanticInterpreter::from_json(bytes);
         assert!(block_on(interpreter.propose(&request())).is_err());
     }
 }

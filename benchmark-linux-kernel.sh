@@ -56,7 +56,7 @@ mkdir -p "$output_root"
 
 cd "$SCRIPT_DIR"
 cargo build --release --locked --offline --features dev-tools \
-    --bin hollow-grove --bin current_synthesis_benchmark
+    --bin hollow-grove --bin hg-dev
 
 governor="unavailable"
 energy_preference="unavailable"
@@ -95,7 +95,7 @@ fi
 } >"$output_root/environment.txt"
 
 benchmark_start_ns="$(date +%s%N)"
-target/release/current_synthesis_benchmark \
+target/release/hg-dev current_synthesis_benchmark \
     --warmup "$WARMUP" --samples "$SAMPLES" --no-write --quiet
 benchmark_end_ns="$(date +%s%N)"
 printf 'wall_elapsed_ns=%s\n' "$((benchmark_end_ns - benchmark_start_ns))" \
@@ -106,7 +106,7 @@ cp artifacts/current_synthesis_benchmark.md \
     artifacts/current_synthesis_benchmark_release.md \
     "$output_root/"
 sha256sum target/release/hollow-grove \
-    target/release/current_synthesis_benchmark \
+    target/release/hg-dev \
     >"$output_root/binary-sha256.txt"
 (
     cd "$output_root"

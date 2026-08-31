@@ -19,7 +19,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Late Achaemenid routes, archives, offices, languages, laws, and fiscal practices informed Alexander's government and successor allocations, but continuity involved new rulers, staffing, claims, and losses.<br>
 **Modern House expression:** Stonebend preserves the provenance of a functioning institution across reassignment while visibly changing its sovereign attribution, current authority, legal basis, and maintenance owner.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; political termination, local continuity, and successor attribution require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 6 — Alexander and the Diadochi](ages/age_02_classical_civilization/point_06_alexander_and_the_diadochi.md#assignment-age-02-point-06-stonebend)
@@ -36,7 +36,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Achaemenid government connected royal appointment and oversight to regional governors, local rulers, cities, temples, judges, scribes, and inherited legal practices; terminology and degree of uniformity vary across imperial and classical sources.<br>
 **Modern House expression:** Stonebend records central scope, delegated office, local jurisdiction, language, applicable law, revenue or service duty, appeal path, conflict, and supersession without converting imperial delegation into present constitutional authority.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; regional variation, terminology, labor status, and late continuity require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 5 — Achaemenid World](ages/age_02_classical_civilization/point_05_achaemenid_world.md#assignment-age-02-point-05-stonebend)
@@ -53,7 +53,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Alexander often retained or reassigned regional governors, local officials, temples, cities, and inherited territorial structures while changing sovereign, military oversight, extraction, and personnel; implementation varied by region and phase.<br>
 **Modern House expression:** Stonebend exposes outgoing authority, incoming authority, local custodian, changed scope, coercive condition, unresolved dispute, and service outcome at each handoff without treating conquest as Title.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; political termination, local continuity, and successor attribution require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 6 — Alexander and the Diadochi](ages/age_02_classical_civilization/point_06_alexander_and_the_diadochi.md#assignment-age-02-point-06-stonebend)
@@ -70,7 +70,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Royal inscriptions, Persepolis archives, Babylonian records, Egyptian texts, Aramaic documents, seals, and local archives used several languages and media for different audiences and operations; multilingual monument does not equal universal public access.<br>
 **Modern House expression:** Stonebend preserves issuer, language, script, medium, translator, audience, archive, copy, regional authority, conflict, and present status so coordination never erases the provenance of local records.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; regional variation, terminology, labor status, and late continuity require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 5 — Achaemenid World](ages/age_02_classical_civilization/point_05_achaemenid_world.md#assignment-age-02-point-05-stonebend)
@@ -87,7 +87,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Road and travel networks joined royal routes, older regional roads, messengers, authorizations, way stations, animals, and ration systems; Persepolis travel texts reveal movement and provisioning but not one uniform empire-wide postal manual.<br>
 **Modern House expression:** Stonebend makes every route leg, relay, authorization, ration, service dependency, maintenance custodian, labor status, and alternate path inspectable while refusing imperial movement as rightful access.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; regional variation, terminology, labor status, and late continuity require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 5 — Achaemenid World](ages/age_02_classical_civilization/point_05_achaemenid_world.md#assignment-age-02-point-05-stonebend)
@@ -104,7 +104,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Darius III ruled from 336 until his death in 330; conquest proceeded through several battles, capital occupations, regional resistance, and rival claims, while many local institutions and communities survived the dynasty's political end.<br>
 **Modern House expression:** Stonebend records kingship, capital, territorial control, office, service, archive, community, and resistance as separate terminal states so political loss never erases continuing people or records.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; political termination, local continuity, and successor attribution require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 6 — Alexander and the Diadochi](ages/age_02_classical_civilization/point_06_alexander_and_the_diadochi.md#assignment-age-02-point-06-stonebend)
@@ -121,7 +121,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Akkadian and Sumerian both remained in written use, and older city archives continued within new political arrangements.<br>
 **Modern House expression:** Stonebend records source language, translation, office, and version so institutional identity survives changes in administration.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; assignment remains Working<br>
 **Source Points:** [Age 1, Point 2 — First Empires](ages/age_01_ancient_civilizations/point_02_first_empires.md#assignment-age-01-point-02-stonebend)
@@ -138,7 +138,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Governors, local rulers, officials, and scribal institutions connected cities to Akkadian kings through varying layers of supervision.<br>
 **Modern House expression:** Stonebend exposes jurisdiction, delegation, and maintenance responsibility without treating centralization as constitutional virtue.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; assignment remains Working<br>
 **Source Points:** [Age 1, Point 2 — First Empires](ages/age_01_ancient_civilizations/point_02_first_empires.md#assignment-age-01-point-02-stonebend)
@@ -155,7 +155,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Messengers, reports, labor, stores, tribute, military movement, and local institutions enabled action across a large and uneven territory.<br>
 **Modern House expression:** Stonebend makes inter-district dependencies and handoffs visible as auditable public-work obligations.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; assignment remains Working<br>
 **Source Points:** [Age 1, Point 2 — First Empires](ages/age_01_ancient_civilizations/point_02_first_empires.md#assignment-age-01-point-02-stonebend)
@@ -172,7 +172,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Coins and hoards document royal names, types, mints, circulation, succession, military finance, and dynastic continuity, but attribution and dating can cross reigns and distribution does not equal territorial sovereignty.<br>
 **Modern House expression:** Stonebend attaches issuer, mint, type, metal, die or series, find context, date range, intended payment or audience, attribution confidence, and supersession to every monetary standard.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; late opening, dynastic termination, jurisdiction, and mint attribution require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 7 — Mature Hellenistic World](ages/age_02_classical_civilization/point_07_mature_hellenistic_world.md#assignment-age-02-point-07-stonebend)
@@ -189,7 +189,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Durable Antigonid rule in Macedonia begins only in 277/276, continues through successive reigns to the monarchy's abolition after Pydna in 168, and is followed by Roman district settlement, Andriscus's revolt, and provincial reorganization before 146.<br>
 **Modern House expression:** Stonebend separates dynasty, reign, capital, territory, civic institution, post-monarchy district, rival claim, and current authority so political continuity and institutional survival never collapse into one line.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; late opening, dynastic termination, jurisdiction, and mint attribution require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 7 — Mature Hellenistic World](ages/age_02_classical_civilization/point_07_mature_hellenistic_world.md#assignment-age-02-point-07-stonebend)
@@ -206,7 +206,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Antigonid rulers governed through a changing combination of royal officers, Macedonian communities, cities, leagues, allies, and garrisons whose rights, obligations, and practical autonomy varied by place and phase.<br>
 **Modern House expression:** Stonebend records every crown, city, league, garrison, sanctuary, and regional jurisdiction with scope, source, overlap, dispute, coercion, appeal, and termination rather than treating royal influence as lawful ownership.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; late opening, dynastic termination, jurisdiction, and mint attribution require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 7 — Mature Hellenistic World](ages/age_02_classical_civilization/point_07_mature_hellenistic_world.md#assignment-age-02-point-07-stonebend)
@@ -223,7 +223,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** School and scholarly tablets use sexagesimal place-value notation, tables, coefficients, diagrams, and worked procedures for numerical, geometric, metrological, and commercial problems.<br>
 **Modern House expression:** Stonebend uses worked examples, visible assumptions, units, error checks, and reproducible measurement as curriculum and public-works documentation rather than mythologizing Babylonian invention.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs chronology-system notation; assignment remains Working<br>
 **Source Points:** [Age 1, Point 4 — Old Babylonian World](ages/age_01_ancient_civilizations/point_04_old_babylonian_world.md#assignment-age-01-point-04-stonebend)
@@ -240,7 +240,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** The Hammurabi stele presents a royal collection of nearly three hundred legal judgments concerning family, property, commerce, labor, injury, and procedure. It is jurisprudence and royal self-presentation, not a modern comprehensive code.<br>
 **Modern House expression:** Stonebend presents sourced legal examples, social distinctions, and interpretive history publicly while keeping current law, Claim, Title, and Yield in their constitutional owners.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs chronology-system notation; assignment remains Working<br>
 **Source Points:** [Age 1, Point 4 — Old Babylonian World](ages/age_01_ancient_civilizations/point_04_old_babylonian_world.md#assignment-age-01-point-04-stonebend)
@@ -257,7 +257,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Old Babylonian archives preserve contracts, deeds, loans, partnerships, inheritance records, court proceedings, witnesses, oaths, tablets, envelopes, and seal impressions across many cities and institutions.<br>
 **Modern House expression:** Stonebend joins a civic act to its date, parties, witnesses, source office, version, and custody history without allowing an ancestral record to grant present authority.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs chronology-system notation; assignment remains Working<br>
 **Source Points:** [Age 1, Point 4 — Old Babylonian World](ages/age_01_ancient_civilizations/point_04_old_babylonian_world.md#assignment-age-01-point-04-stonebend)
@@ -274,7 +274,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Heraclius and later eastern Roman rulers reorganized fiscal, military, and provincial practice under war and territorial loss.<br>
 **Modern House expression:** Stonebend records phase, office, tax, service, disruption, and regional custody without treating emergency administration as authority.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Heraclian transformation, provincial change, conquest context, and local service require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 2 — Rise of Islam](ages/age_03_medieval_civilization/point_02_rise_of_islam.md#assignment-age-03-point-02-stonebend)
@@ -291,7 +291,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Byzantine treaties, counteroffensives, tribute, and frontier negotiation connected recovery claims to changing regional conditions.<br>
 **Modern House expression:** Stonebend exposes party, mandate, obligation, asymmetry, translation, cost, and reception.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Heraclian transformation, provincial change, conquest context, and local service require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 2 — Rise of Islam](ages/age_03_medieval_civilization/point_02_rise_of_islam.md#assignment-age-03-point-02-stonebend)
@@ -308,7 +308,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Byzantium negotiated with Abbasid, Bulgar, Slavic, Carolingian, Armenian, and other powers through envoys, tribute, treaties, and marriage.<br>
 **Modern House expression:** Glaüshouse records party, mandate, language, asymmetry, obligation, reception, and breach.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; eastern continuity, legal compilation, reconquest, regional variation, and war cost require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 1 — Successor Kingdoms](ages/age_03_medieval_civilization/point_01_successor_kingdoms.md#assignment-age-03-point-01-stonebend)
@@ -325,7 +325,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Walls, fleets, harbors, churches, roads, and fortifications supported Byzantine recovery and local survival under pressure.<br>
 **Modern House expression:** Glaüshouse records material, condition, labor, jurisdiction, public dependency, repair, and loss.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; eastern continuity, legal compilation, reconquest, regional variation, and war cost require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 1 — Successor Kingdoms](ages/age_03_medieval_civilization/point_01_successor_kingdoms.md#assignment-age-03-point-01-stonebend)
@@ -342,7 +342,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Seventh-century eastern Roman institutions adapted provincial administration and defense as Syria, Egypt, and other regions changed political hands.<br>
 **Modern House expression:** Stonebend tracks jurisdiction, local service, military scope, archive custody, interruption, and handoff.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Heraclian transformation, provincial change, conquest context, and local service require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 2 — Rise of Islam](ages/age_03_medieval_civilization/point_02_rise_of_islam.md#assignment-age-03-point-02-stonebend)
@@ -359,7 +359,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Byzantine law, court practice, diplomatic records, and provincial institutions persisted through iconoclast and frontier phases.<br>
 **Modern House expression:** Glaüshouse tracks source law, jurisdiction, office, enforcement, dispute, and later interpretation without Clearance.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; eastern continuity, legal compilation, reconquest, regional variation, and war cost require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 1 — Successor Kingdoms](ages/age_03_medieval_civilization/point_01_successor_kingdoms.md#assignment-age-03-point-01-stonebend)
@@ -376,7 +376,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Carolingian capitularies, counts, estates, church patronage, and local institutions reorganized rule without erasing regional law.<br>
 **Modern House expression:** Stonebend records office, scope, local forum, obligation, labor, enforcement, and revision.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; reform chronology, local law, manuscript custody, church patronage, and administrative reach require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 3 — Carolingian World](ages/age_03_medieval_civilization/point_03_carolingian_world.md#assignment-age-03-point-03-stonebend)
@@ -393,7 +393,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Carolingian scriptoria, copying, grammar, liturgy, and correction practices increased textual comparability while witnesses and local variants persisted.<br>
 **Modern House expression:** Stonebend tracks manuscript, scribe, script, source, correction, custody, and access.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; reform chronology, local law, manuscript custody, church patronage, and administrative reach require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 3 — Carolingian World](ages/age_03_medieval_civilization/point_03_carolingian_world.md#assignment-age-03-point-03-stonebend)
@@ -410,7 +410,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Courts, churches, monasteries, teachers, and schools connected learning and record custody across the Carolingian world.<br>
 **Modern House expression:** Stonebend maps institution, teacher, learner, text, patronage, route, and local reception without importing clerical authority.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; reform chronology, local law, manuscript custody, church patronage, and administrative reach require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 3 — Carolingian World](ages/age_03_medieval_civilization/point_03_carolingian_world.md#assignment-age-03-point-03-stonebend)
@@ -427,7 +427,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied England assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of experimental method informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-stonebend)
@@ -443,7 +443,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied England assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of mathematical natural law informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-stonebend)
@@ -459,7 +459,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied England assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of scientific societies informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-stonebend)
@@ -475,7 +475,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied German Empire assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of engineering institutions informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-stonebend); [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-stonebend)
@@ -491,7 +491,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied German Empire assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of industrial science informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-stonebend); [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-stonebend)
@@ -507,7 +507,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Roads, bridges, fortresses, ships, artillery, supply, vassal contingents, military households, and route intelligence supported campaigns whose capacity changed sharply during the 1402 defeat, interregnum, consolidation, and 1453 siege.<br>
 **Modern House expression:** Flynt models dated force, route, supply, maintenance, command scope, civilian dependency, failure, fallback, and refusal rather than admiring conquest.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-stonebend); [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-stonebend)
@@ -524,7 +524,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Great Britain assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of commercial networks informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-stonebend)
@@ -540,7 +540,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Great Britain assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of parliamentary institutions informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-stonebend)
@@ -556,7 +556,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Great Britain assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of scientific public culture informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-stonebend)
@@ -572,7 +572,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Urban crafts, workshops, markets, and regulated labor connected material production to civic institutions.<br>
 **Modern House expression:** Stonebend records maker, workshop, material, obligation, quality, custody, and maintenance.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Ottonian chronology, layered office, local law, ecclesiastical power, and urban evidence require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 4 — Imperial Revival](ages/age_03_medieval_civilization/point_04_imperial_revival.md#assignment-age-03-point-04-stonebend); [Age 3, Point 5 — Reform, Seljuk, and Crusader World](ages/age_03_medieval_civilization/point_05_crusader_world.md#assignment-age-03-point-05-stonebend); [Age 3, Point 6A — Mongol Conquests and Late Song](ages/age_03_medieval_civilization/point_06_mongol_world.md#assignment-age-03-point-06a-stonebend); [Age 3, Point 6B — Khanates, Yuan, and Mamluk World](ages/age_03_medieval_civilization/point_06b_khanates_yuan_and_mamluk_world.md#assignment-age-03-point-06b-stonebend); [Age 3, Point 7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md#assignment-age-03-point-07-stonebend); [Age 4, Point 2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md#assignment-age-04-point-02-stonebend)
@@ -589,7 +589,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Holy Roman authority remained distributed among emperor, princes, bishops, cities, and local courts through the late thirteenth and fourteenth centuries.<br>
 **Modern House expression:** Stonebend records office, jurisdiction, dispute, settlement, and revision without importing imperial supremacy.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Ottonian chronology, layered office, local law, ecclesiastical power, and urban evidence require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 4 — Imperial Revival](ages/age_03_medieval_civilization/point_04_imperial_revival.md#assignment-age-03-point-04-stonebend); [Age 3, Point 5 — Reform, Seljuk, and Crusader World](ages/age_03_medieval_civilization/point_05_crusader_world.md#assignment-age-03-point-05-stonebend); [Age 3, Point 6A — Mongol Conquests and Late Song](ages/age_03_medieval_civilization/point_06_mongol_world.md#assignment-age-03-point-06a-stonebend); [Age 3, Point 6B — Khanates, Yuan, and Mamluk World](ages/age_03_medieval_civilization/point_06b_khanates_yuan_and_mamluk_world.md#assignment-age-03-point-06b-stonebend); [Age 3, Point 7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md#assignment-age-03-point-07-stonebend); [Age 4, Point 2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md#assignment-age-04-point-02-stonebend)
@@ -606,7 +606,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Charters, city statutes, ecclesiastical forums, princely courts, and local custom preserved plural legal arrangements.<br>
 **Modern House expression:** Stonebend compares forum, parties, status, remedy, appeal, and reception.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Ottonian chronology, layered office, local law, ecclesiastical power, and urban evidence require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 4 — Imperial Revival](ages/age_03_medieval_civilization/point_04_imperial_revival.md#assignment-age-03-point-04-stonebend); [Age 3, Point 5 — Reform, Seljuk, and Crusader World](ages/age_03_medieval_civilization/point_05_crusader_world.md#assignment-age-03-point-05-stonebend); [Age 3, Point 6A — Mongol Conquests and Late Song](ages/age_03_medieval_civilization/point_06_mongol_world.md#assignment-age-03-point-06a-stonebend); [Age 3, Point 6B — Khanates, Yuan, and Mamluk World](ages/age_03_medieval_civilization/point_06b_khanates_yuan_and_mamluk_world.md#assignment-age-03-point-06b-stonebend); [Age 3, Point 7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md#assignment-age-03-point-07-stonebend); [Age 4, Point 2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md#assignment-age-04-point-02-stonebend)
@@ -623,7 +623,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** The early eighth-century Samaria ostraca record deliveries, personal and place names, commodities, and regnal dating within a palace context, but their exact fiscal mechanism and geographic interpretation remain debated.<br>
 **Modern House expression:** Stonebend links every collected resource to date, place, quantity, responsible record, custody, maintenance purpose, and interpretive confidence without treating an ancient levy as present authority.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; northern-kingdom scope, construction attribution, and terminal chronology need continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 2 — Kings, Prophets, and Assyrian Expansion](ages/age_02_classical_civilization/point_02_kings_prophets_and_assyrian_expansion.md#assignment-age-02-point-02-stonebend)
@@ -640,7 +640,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Samaria, Jezreel, Megiddo, Hazor, and other centers preserve palaces, fortifications, storage, roads, and water systems whose dates, builders, reuse, and dynastic attribution require phase-by-phase comparison.<br>
 **Modern House expression:** Stonebend records design phase, material intervention, service dependency, contested attribution, reuse, repair, destruction, and later restoration without granting Claim or Title through royal construction.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; northern-kingdom scope, construction attribution, and terminal chronology need continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 2 — Kings, Prophets, and Assyrian Expansion](ages/age_02_classical_civilization/point_02_kings_prophets_and_assyrian_expansion.md#assignment-age-02-point-02-stonebend)
@@ -657,7 +657,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** The northern kingdom can be compared through local archaeology and ostraca, Moabite and Aramaic monuments, Assyrian annals and images, and later biblical literature; each source names different actors, genres, dates, and political interests.<br>
 **Modern House expression:** Stonebend maintains a concordance in which internal record, external claim, material phase, later narrative, modern reconstruction, and current constitutional identity remain separately attributable.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; northern-kingdom scope, construction attribution, and terminal chronology need continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 2 — Kings, Prophets, and Assyrian Expansion](ages/age_02_classical_civilization/point_02_kings_prophets_and_assyrian_expansion.md#assignment-age-02-point-02-stonebend)
@@ -674,7 +674,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Italian States assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of artistic workshops informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-stonebend)
@@ -690,7 +690,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Italian States assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of banking and diplomacy informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-stonebend)
@@ -706,7 +706,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Italian States assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of humanist civic culture informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-stonebend)
@@ -722,7 +722,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Neo-Babylonian ration lists, legal tablets, the Al-Yahudu and related archives, seals, names, and homeland archaeology expose differently situated Judahite households, officials, land-service holders, and neighbors; the preserved sample is partial and often later within the sixth century.<br>
 **Modern House expression:** Stonebend keeps person, household, place, legal system, status, obligation, language, witness, custody, and uncertainty attributable without making imperial service voluntary or using ancestry to create present Claim.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; 587/586 chronology, community distribution, and literary layers require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 4 — Neo-Babylonian World](ages/age_02_classical_civilization/point_04_neo_babylonian_world.md#assignment-age-02-point-04-stonebend)
@@ -739,7 +739,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Judah's built environment and 701 campaign can be compared through excavated phases, waterworks and inscriptions, stamped jars, Sennacherib's inscriptions, Lachish reliefs, and later biblical accounts whose speakers and dates differ.<br>
 **Modern House expression:** Stonebend preserves structure, phase, internal record, adversarial claim, damage, repair, later narrative, and modern interpretation in parallel rather than turning one witness into historical Title.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; literary formation, reform history, and building attribution require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 3 — Assyrian Apex](ages/age_02_classical_civilization/point_03_assyrian_apex.md#assignment-age-02-point-03-stonebend)
@@ -756,7 +756,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Babylonian chronicles, Judahite letters and archaeology, ration records, and later literary witnesses distinguish the 609, 605, 597, and 587/586 transitions, the end of monarchy and temple, a provincial phase at Mizpah, and communities continuing in several regions.<br>
 **Modern House expression:** Stonebend records capital, office, temple, territory, population, archive, service, and legal-authority changes as separate dated thresholds so a durable identity never depends on pretending the state remained institutionally unchanged.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; 587/586 chronology, community distribution, and literary layers require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 4 — Neo-Babylonian World](ages/age_02_classical_civilization/point_04_neo_babylonian_world.md#assignment-age-02-point-04-stonebend)
@@ -773,7 +773,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Letters, legal and prophetic traditions, laments, historical compilation, personal names, scribal practices, and administrative forms survived, changed, and crossed languages after Jerusalem's destruction; exact composition, authorship, and community custody remain debated.<br>
 **Modern House expression:** Stonebend preserves witness, layer, copy, language, community, office, loss, adaptation, and later reception so continuity is recorded without turning ancient covenant, monarchy, or scripture into current constitutional law.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; 587/586 chronology, community distribution, and literary layers require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 4 — Neo-Babylonian World](ages/age_02_classical_civilization/point_04_neo_babylonian_world.md#assignment-age-02-point-04-stonebend)
@@ -790,7 +790,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Judahite legal, royal, prophetic, and historical traditions preserve multiple editorial layers and retrospective interpretation alongside contemporary inscriptions; Josianic and Deuteronomic dating models remain debated.<br>
 **Modern House expression:** Stonebend records text witness, proposed layer, editor or institution where known, legal genre, historical claim, later reception, and present constitutional non-authority so preserved law never silently becomes current law.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; literary formation, reform history, and building attribution require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 3 — Assyrian Apex](ages/age_02_classical_civilization/point_03_assyrian_apex.md#assignment-age-02-point-03-stonebend)
@@ -807,7 +807,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** `lmlk` and related seal impressions, storage jars, weights, ostraca, and administrative architecture expose collection and distribution practices, though their precise chronology, scope, and emergency or routine function remain debated.<br>
 **Modern House expression:** Stonebend makes every stored resource traceable by container, mark, date range, place, custody, intended service, later reuse, and uncertainty without reviving ancient extraction authority.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; literary formation, reform history, and building attribution require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 3 — Assyrian Apex](ages/age_02_classical_civilization/point_03_assyrian_apex.md#assignment-age-02-point-03-stonebend)
@@ -824,7 +824,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Iron I surveys and excavations document a marked increase in small highland settlements organized through households, shared paths, local storage, and regionally varied architecture; neither the settlement pattern nor one house form proves a uniform ethnicity or kingdom.<br>
 **Modern House expression:** Stonebend records how durable public form can emerge from linked local settlements before centralized institutions, while every site, phase, service dependency, and uncertainty remains separately attributable.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; supplied kingdom label combines distinct evidence phases; assignment remains Working<br>
 **Source Points:** [Age 2, Point 1 — Early Iron Age](ages/age_02_classical_civilization/point_01_early_iron_age.md#assignment-age-02-point-01-stonebend)
@@ -841,7 +841,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Excavated houses, storage installations, agricultural processing, cisterns or local water systems, plant and animal remains, and settlement locations expose the material work of sustaining early highland communities, with dating and regional variation attached.<br>
 **Modern House expression:** Stonebend makes household-to-district dependencies, stored reserves, water maintenance, and repair responsibilities legible without turning an archaeological household model into present law or identity.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; supplied kingdom label combines distinct evidence phases; assignment remains Working<br>
 **Source Points:** [Age 2, Point 1 — Early Iron Age](ages/age_02_classical_civilization/point_01_early_iron_age.md#assignment-age-02-point-01-stonebend)
@@ -858,7 +858,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** The Merneptah stela, settlement archaeology, sparse early inscriptions, and much later books of Samuel and Kings preserve different kinds of evidence for peoplehood, foundation, monarchy, division, and remembered rule; they cannot be collapsed into one contemporaneous record.<br>
 **Modern House expression:** Stonebend keeps material phase, external witness, later narrative, scholarly reconstruction, and current constitutional record in separate layers so durable identity does not depend on pretending that every foundation story is literal history.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; supplied kingdom label combines distinct evidence phases; assignment remains Working<br>
 **Source Points:** [Age 2, Point 1 — Early Iron Age](ages/age_02_classical_civilization/point_01_early_iron_age.md#assignment-age-02-point-01-stonebend)
@@ -875,7 +875,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Napoleonic France assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of centralized administration informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-stonebend)
@@ -891,7 +891,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Napoleonic France assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of legal codification informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-stonebend)
@@ -907,7 +907,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Napoleonic France assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of mass mobilization informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-stonebend)
@@ -923,7 +923,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Nazi Germany assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of documentation of industrialized atrocity informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed cautionary dossier; atrocity documentation, warning against totalitarian law, and institutional refusal only; assignment remains Working<br>
 **Source Points:** [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-stonebend)
@@ -939,7 +939,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Nazi Germany assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of ethics of institutional refusal informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed cautionary dossier; atrocity documentation, warning against totalitarian law, and institutional refusal only; assignment remains Working<br>
 **Source Points:** [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-stonebend)
@@ -955,7 +955,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Nazi Germany assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of warning against totalitarian law informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed cautionary dossier; atrocity documentation, warning against totalitarian law, and institutional refusal only; assignment remains Working<br>
 **Source Points:** [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-stonebend)
@@ -971,7 +971,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Figured ostraca, sketches, grids, revised lines, models, and unfinished works expose stages of planning, apprenticeship, correction, and execution behind finished New Kingdom images and structures.<br>
 **Modern House expression:** Stonebend makes drafts, tolerances, corrections, rejected states, and responsible review visible so permanence includes inspectable revision rather than a fiction of flawless completion.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Point endpoint precedes the end of the New Kingdom; assignment remains Working<br>
 **Source Points:** [Age 1, Point 5 — Great Bronze Age Powers](ages/age_01_ancient_civilizations/point_05_great_bronze_age_powers.md#assignment-age-01-point-05-stonebend)
@@ -988,7 +988,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Deir el-Medina ostraca and papyri preserve unusually dense day-to-day records of a highly specialized royal tomb crew, including supplies, absences, letters, accounts, disputes, and household life.<br>
 **Modern House expression:** Stonebend joins skilled work, supply, schedule, responsibility, exception, and repair history in a public-works record while marking the ancient community's exceptional and dependent status.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Point endpoint precedes the end of the New Kingdom; assignment remains Working<br>
 **Source Points:** [Age 1, Point 5 — Great Bronze Age Powers](ages/age_01_ancient_civilizations/point_05_great_bronze_age_powers.md#assignment-age-01-point-05-stonebend)
@@ -1005,7 +1005,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** New Kingdom temples and monumental precincts preserve additions, restorations, reused blocks, names, and altered programs across successive rulers, while attribution and political erasure remain part of the evidence.<br>
 **Modern House expression:** Stonebend exposes each construction phase, responsible authority, material intervention, later alteration, and current custodian without copying royal monumentality or allowing an inscription to create Title.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Point endpoint precedes the end of the New Kingdom; assignment remains Working<br>
 **Source Points:** [Age 1, Point 5 — Great Bronze Age Powers](ages/age_01_ancient_civilizations/point_05_great_bronze_age_powers.md#assignment-age-01-point-05-stonebend)
@@ -1022,7 +1022,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Cities, governors, tax offices, armies, churches, and local institutions continued or changed on different schedules across eastern and western regions.<br>
 **Modern House expression:** Stonebend preserves local service, custodian, jurisdiction, interruption, and handoff rather than equating survival with legitimacy.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; eastern and western clocks, office succession, civic continuity, labor, and fifth-century terminal framing require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 12 — Christian Empire](ages/age_02_classical_civilization/point_12_christian_empire.md#assignment-age-02-point-12-stonebend)
@@ -1039,7 +1039,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Forts, roads, supply, water, and military administration sustained distant provinces and frontier communities.<br>
 **Modern House expression:** Stonebend links route, supply, maintenance, command, public use, and coercive cost.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; provincial variation, coercion, frontier chronology, and infrastructure labor require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 10 — Pax Romana](ages/age_02_classical_civilization/point_10_pax_romana.md#assignment-age-02-point-10-stonebend)
@@ -1056,7 +1056,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Roman roads, bridges, ports, aqueducts, cities, and milestones connected imperial administration and local civic life.<br>
 **Modern House expression:** Stonebend records builder, material, labor, jurisdiction, maintenance, and civilian dependency rather than treating infrastructure as neutral power.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; provincial variation, coercion, frontier chronology, and infrastructure labor require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 10 — Pax Romana](ages/age_02_classical_civilization/point_10_pax_romana.md#assignment-age-02-point-10-stonebend)
@@ -1073,7 +1073,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Roads, walls, ports, water systems, mints, workshops, and archives were repaired, reused, or lost unevenly through 313–476.<br>
 **Modern House expression:** Stonebend records material, labor, public dependency, maintenance phase, and successor custody.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; eastern and western clocks, office succession, civic continuity, labor, and fifth-century terminal framing require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 12 — Christian Empire](ages/age_02_classical_civilization/point_12_christian_empire.md#assignment-age-02-point-12-stonebend)
@@ -1090,7 +1090,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Fortifications, roads, water systems, mints, workshops, archives, and supply systems were repaired, repurposed, or abandoned at different local tempos across third-century fracture and Tetrarchic reorganization.<br>
 **Modern House expression:** Stonebend records structure, jurisdiction, labor, civilian dependency, maintenance phase, emergency alteration, and lawful handoff instead of treating survival as legitimacy.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; provincial variation, municipal continuity, legal reach, labor, coercion, and Tetrarchic chronology require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 11 — Crisis and Conversion](ages/age_02_classical_civilization/point_11_crisis_and_conversion.md#assignment-age-02-point-11-stonebend)
@@ -1107,7 +1107,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Late Roman laws, court records, administrative offices, and regional succession preserve changing authority after 313 and across the fifth-century western transition.<br>
 **Modern House expression:** Stonebend records issuer, office, jurisdiction, duration, service effect, successor, appeal, and uncertainty without treating imperial law as present authority.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; eastern and western clocks, office succession, civic continuity, labor, and fifth-century terminal framing require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 12 — Christian Empire](ages/age_02_classical_civilization/point_12_christian_empire.md#assignment-age-02-point-12-stonebend)
@@ -1124,7 +1124,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Cities, councils, tax offices, courts, workshops, households, and local services persisted unevenly through rapid imperial succession, regional breakaways, and administrative subdivision.<br>
 **Modern House expression:** Stonebend preserves local office, service, jurisdiction, record custody, emergency burden, appeal, and handoff across changing imperial phases.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; provincial variation, municipal continuity, legal reach, labor, coercion, and Tetrarchic chronology require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 11 — Crisis and Conversion](ages/age_02_classical_civilization/point_11_crisis_and_conversion.md#assignment-age-02-point-11-stonebend)
@@ -1141,7 +1141,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Roman law, governors, cities, courts, taxation, and local institutions operated in layered and unequal forms.<br>
 **Modern House expression:** Stonebend preserves legal scope, office, status, appeal, local variation, and later alteration.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; provincial variation, coercion, frontier chronology, and infrastructure labor require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 10 — Pax Romana](ages/age_02_classical_civilization/point_10_pax_romana.md#assignment-age-02-point-10-stonebend)
@@ -1158,7 +1158,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Legal constitutions, citizenship expansion in 212, tax and requisition records, court practice, imperial pronouncements, and local documents preserve changing status and public obligation.<br>
 **Modern House expression:** Stonebend records date, issuer, affected status, jurisdiction, enforcement, coercion, appeal, later alteration, and preserved local difference.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; provincial variation, municipal continuity, legal reach, labor, coercion, and Tetrarchic chronology require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 11 — Crisis and Conversion](ages/age_02_classical_civilization/point_11_crisis_and_conversion.md#assignment-age-02-point-11-stonebend)
@@ -1175,7 +1175,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Rome's Italian expansion used treaties, allied obligations, colonies, and graded citizenship rather than one uniform citizenship settlement.<br>
 **Modern House expression:** Stonebend records status, treaty, territory, obligation, appeal, and later legal change without treating incorporation as equal consent.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed nested dossier; republican expansion, citizenship gradations, provincial status, and coercion require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 8 — Roman Republic](ages/age_02_classical_civilization/point_08_roman_republic.md#assignment-age-02-point-08-stonebend)
@@ -1192,7 +1192,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Marius, Sulla, Pompey, Caesar, Antony, and Octavian connected command, finance, recruitment, emergency powers, and civilian cost across repeated civil wars.<br>
 **Modern House expression:** Stonebend audits mandate, funding, recruitment, harm, public claim, and postwar settlement through existing identity and permanence authorities.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; late republican chronology, legal status, civil-war evidence, and institutional transition require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 9 — Fall of the Republic](ages/age_02_classical_civilization/point_09_fall_of_the_republic.md#assignment-age-02-point-09-stonebend)
@@ -1209,7 +1209,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Gracchan land conflict, Social War citizenship, provincial taxation, and changing legal status made land and obligation central to late republican politics.<br>
 **Modern House expression:** Stonebend records person, land, status, obligation, forum, burden, remedy, and later revision without converting Roman legal hierarchy into modern authority.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; late republican chronology, legal status, civil-war evidence, and institutional transition require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 9 — Fall of the Republic](ages/age_02_classical_civilization/point_09_fall_of_the_republic.md#assignment-age-02-point-09-stonebend)
@@ -1226,7 +1226,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** The late Republic retained magistracies, Senate, assemblies, tribunician action, provincial commands, and legal forms while emergency powers and personal armies transformed their operation.<br>
 **Modern House expression:** Stonebend keeps office, emergency mandate, vote, command, law, duration, appeal, and termination separately attributable rather than treating imperial settlement as simple constitutional continuity.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; late republican chronology, legal status, civil-war evidence, and institutional transition require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 9 — Fall of the Republic](ages/age_02_classical_civilization/point_09_fall_of_the_republic.md#assignment-age-02-point-09-stonebend)
@@ -1243,7 +1243,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Magistracies, Senate, assemblies, commanders, indemnities, taxation, and public finance connected war decisions to resource obligations, with elite and provincial asymmetries.<br>
 **Modern House expression:** Stonebend keeps command, finance, vote, extraction, civilian burden, and later audit in separate records rather than turning republican form into automatic legitimacy.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed nested dossier; republican expansion, citizenship gradations, provincial status, and coercion require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 8 — Roman Republic](ages/age_02_classical_civilization/point_08_roman_republic.md#assignment-age-02-point-08-stonebend)
@@ -1260,7 +1260,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Roman roads, colonies, bridges, ports, and milestones supported military, fiscal, and civic movement across changing jurisdictions.<br>
 **Modern House expression:** Stonebend attaches structure, builder, labor, material, route, jurisdiction, maintenance, and later alteration to every public work.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed nested dossier; republican expansion, citizenship gradations, provincial status, and coercion require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 8 — Roman Republic](ages/age_02_classical_civilization/point_08_roman_republic.md#assignment-age-02-point-08-stonebend)
@@ -1277,7 +1277,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Contemporaneous tablets and sealings record quantities, commodities, labor, and institutional transactions.<br>
 **Modern House expression:** Public records bind Stonebend works to named scope, material provenance, and continuing responsibility.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed benchmark; assignment remains Working<br>
 **Source Points:** [Age 1, Point 1 — Birth of Cities](ages/age_01_ancient_civilizations/point_01_birth_of_cities.md#assignment-age-01-point-01-stonebend)
@@ -1294,7 +1294,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Southern Mesopotamian urban life depended on constructed and maintained channels for agriculture, movement, and settlement.<br>
 **Modern House expression:** Canal logic becomes visible service dependency, maintenance custody, and public-works memory rather than a copied ancient waterway.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed benchmark; assignment remains Working<br>
 **Source Points:** [Age 1, Point 1 — Birth of Cities](ages/age_01_ancient_civilizations/point_01_birth_of_cities.md#assignment-age-01-point-01-stonebend)
@@ -1311,7 +1311,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Dense settlement, monumental precincts, households, storage, streets, and administrative practice were organized at city scale.<br>
 **Modern House expression:** Stonebend treats durable form as a coordinated civic system whose institutional responsibilities remain legible.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed benchmark; assignment remains Working<br>
 **Source Points:** [Age 1, Point 1 — Birth of Cities](ages/age_01_ancient_civilizations/point_01_birth_of_cities.md#assignment-age-01-point-01-stonebend)
@@ -1328,7 +1328,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied United Kingdom assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of global transport networks informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-stonebend); [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-stonebend)
@@ -1344,7 +1344,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied United Kingdom assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of industrial systems informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-stonebend); [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-stonebend)
@@ -1360,7 +1360,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied United Kingdom assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of parliamentary administration informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-stonebend); [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-stonebend)
@@ -1376,7 +1376,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied United States assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of continental networks informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-stonebend); [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-stonebend); [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-stonebend); [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-stonebend); [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-stonebend)
@@ -1392,7 +1392,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied United States assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of industrial and computational systems informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-stonebend); [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-stonebend); [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-stonebend); [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-stonebend); [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-stonebend)
@@ -1408,7 +1408,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied United States assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of large-scale research informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-stonebend); [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-stonebend); [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-stonebend); [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-stonebend); [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-stonebend)
@@ -1424,7 +1424,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Contracts, court and legal records, labor accounts, seals, and royal year names make acts and obligations traceable, while the coercive conditions behind many labor records remain visible.<br>
 **Modern House expression:** Stonebend records work, custody, consent or authority source, and completion evidence; documentation never legitimizes coercion or creates Claim by itself.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs date refinement; assignment remains Working<br>
 **Source Points:** [Age 1, Point 3 — Restoration Kingdoms](ages/age_01_ancient_civilizations/point_03_restoration_kingdoms.md#assignment-age-01-point-03-stonebend)
@@ -1441,7 +1441,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Provincial taxes, deliveries, institutional stores, and the debated bala system document recurring obligations and redistribution across an uneven state.<br>
 **Modern House expression:** Stonebend exposes which office owes which maintained service, when a delivery or inspection is due, and how an exception is recorded under existing Title scope.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs date refinement; assignment remains Working<br>
 **Source Points:** [Age 1, Point 3 — Restoration Kingdoms](ages/age_01_ancient_civilizations/point_03_restoration_kingdoms.md#assignment-age-01-point-03-stonebend)
@@ -1458,7 +1458,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Ur III archives repeatedly classify commodities, labor, livestock, fields, offices, dates, and transfers through shared scribal and metrological practice, although local archives differ.<br>
 **Modern House expression:** Stonebend uses comparable measures, dated entries, source offices, and revision history to make civic maintenance auditable without treating ancient bureaucracy as an authority model.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs date refinement; assignment remains Working<br>
 **Source Points:** [Age 1, Point 3 — Restoration Kingdoms](ages/age_01_ancient_civilizations/point_03_restoration_kingdoms.md#assignment-age-01-point-03-stonebend)
@@ -1475,7 +1475,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Weimar Germany assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of mass democratic culture informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-stonebend)
@@ -1491,7 +1491,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Weimar Germany assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of modernist design informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-stonebend)
@@ -1507,7 +1507,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Stonebend](houses/STONEBEND_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Weimar Germany assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Architecture / infrastructure: The inheritance of theoretical science informs durable, repairable civic form and clearly recorded public works.<br>
-**Existing canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-stonebend)
@@ -5152,7 +5152,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Royal inscriptions, letters, provincial archives, legal documents, relief captions, and client-state records expose differences between central claim, governor action, magnate power, local compliance, delay, and failure.<br>
 **Modern House expression:** Flynt compares command intent, delegated scope, transmission, local execution, resource state, civilian effect, refusal, supersession, and independent verification across a distributed system.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; administrative variation, source bias, and terminal succession require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 2 — Kings, Prophets, and Assyrian Expansion](ages/age_02_classical_civilization/point_02_kings_prophets_and_assyrian_expansion.md#assignment-age-02-point-02-flynt)
@@ -5169,7 +5169,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Assyrian eponym lists and chronicles align annual officials with campaigns, plague, revolts, the 763 BCE eclipse, royal successions, and other events, while copies, gaps, and modern astronomical correlation remain part of the evidence.<br>
 **Modern House expression:** Flynt synchronizes orders, reported action, interruptions, environmental events, maintenance, command changes, and after-action evidence without treating a complete timeline as proof of legitimate Capacity.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; administrative variation, source bias, and terminal succession require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 2 — Kings, Prophets, and Assyrian Expansion](ages/age_02_classical_civilization/point_02_kings_prophets_and_assyrian_expansion.md#assignment-age-02-point-02-flynt)
@@ -5186,7 +5186,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Civil war, revolts, plague, magnate autonomy, siege, tribute, deportation, resettlement, forced labor, demographic transformation, and source propaganda reveal the costs and failure modes of Assyrian reach.<br>
 **Modern House expression:** Flynt red-teams scale, redundancy, maintenance, succession, civilian protection, coercion, displacement, recovery, and stopping conditions; successful domination never qualifies as Capacity.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; administrative variation, source bias, and terminal succession require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 2 — Kings, Prophets, and Assyrian Expansion](ages/age_02_classical_civilization/point_02_kings_prophets_and_assyrian_expansion.md#assignment-age-02-point-02-flynt)
@@ -5203,7 +5203,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Akkadian inscriptions portray Elamite and western Iranian rulers and forces acting together, although the accounts are royal victory claims.<br>
 **Modern House expression:** Flynt studies how distributed units coordinate stores, routes, command scope, and fallback under pressure, with adversarial source bias visible.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs historical, location, and date audit<br>
 **Source Points:** [Age 1, Point 2 — First Empires](ages/age_01_ancient_civilizations/point_02_first_empires.md#assignment-age-01-point-02-flynt)
@@ -5220,7 +5220,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Awan appears amid shifting control of Susa and western Iranian territories, repeated campaigns, and incomplete political subordination.<br>
 **Modern House expression:** Flynt trains command to distinguish nominal claim, actual capacity, local custody, and the limits of force at every handoff.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs historical, location, and date audit<br>
 **Source Points:** [Age 1, Point 2 — First Empires](ages/age_01_ancient_civilizations/point_02_first_empires.md#assignment-age-01-point-02-flynt)
@@ -5237,7 +5237,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** The difficult Naram-Sin-era treaty from Susa records negotiated obligation in Elamite written with cuneiform signs and may involve an Awan ruler.<br>
 **Modern House expression:** Flynt turns cross-boundary agreement into translated operational briefs, custody rules, and explicit failure procedures.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs historical, location, and date audit<br>
 **Source Points:** [Age 1, Point 2 — First Empires](ages/age_01_ancient_civilizations/point_02_first_empires.md#assignment-age-01-point-02-flynt)
@@ -5254,7 +5254,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Carthage connected ports, estates, markets, subject and allied communities, tribute, grain, metals, and information across North Africa and the western Mediterranean.<br>
 **Modern House expression:** Flynt maps node, commodity, labor status, route, storage, contract, intermediary, risk, and alternate supply path.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed terminal-polity dossier; Carthaginian constitutional, social, and maritime reconstruction requires continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 8 — Roman Republic](ages/age_02_classical_civilization/point_08_roman_republic.md#assignment-age-02-point-08-flynt)
@@ -5271,7 +5271,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Carthage's harbors, fleets, agricultural hinterlands, ships, crews, and western routes supported long-distance operations and commerce.<br>
 **Modern House expression:** Flynt records vessel, harbor, cargo, crew, supply, route, maintenance, local authority, and civilian dependency without treating naval reach as Capacity by itself.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed terminal-polity dossier; Carthaginian constitutional, social, and maritime reconstruction requires continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 8 — Roman Republic](ages/age_02_classical_civilization/point_08_roman_republic.md#assignment-age-02-point-08-flynt)
@@ -5288,7 +5288,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** The Punic Wars exposed how civil institutions, generals, allies, mercenaries, resources, naval systems, and political decisions shaped both resilience and defeat.<br>
 **Modern House expression:** Flynt audits command purpose, authority, recruitment, supply, civilian harm, defeat terms, disarmament, displacement, and residual capacity without turning Carthage into a triumph or failure stereotype.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed terminal-polity dossier; Carthaginian constitutional, social, and maritime reconstruction requires continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 8 — Roman Republic](ages/age_02_classical_civilization/point_08_roman_republic.md#assignment-age-02-point-08-flynt)
@@ -5305,7 +5305,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied China assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of large-scale infrastructure informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-flynt); [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-flynt); [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-flynt)
@@ -5321,7 +5321,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied China assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of manufacturing ecosystems informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-flynt); [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-flynt); [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-flynt)
@@ -5337,7 +5337,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied China assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of state-scale digital systems informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 3 — Digital Revolution](ages/age_06_information_civilization/point_03_digital_revolution.md#assignment-age-06-point-03-flynt); [Age 6, Point 4 — Network Age](ages/age_06_information_civilization/point_04_network_age.md#assignment-age-06-point-04-flynt); [Age 6, Point 5 — AI Age](ages/age_06_information_civilization/point_05_ai_age.md#assignment-age-06-point-05-flynt)
@@ -5353,7 +5353,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Public buildings, central storage, domestic workshops, and highland material networks show coordinated production without a securely known constitution.<br>
 **Modern House expression:** The inheritance becomes modular repair, fabrication, stock rotation, and dispatch across existing Flynt institutions.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed benchmark; Needs historical audit and date refinement<br>
 **Source Points:** [Age 1, Point 1 — Birth of Cities](ages/age_01_ancient_civilizations/point_01_birth_of_cities.md#assignment-age-01-point-01-flynt)
@@ -5370,7 +5370,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Susa, Anshan, and plateau centers connected distinct ecological zones and moved materials through dispersed routes.<br>
 **Modern House expression:** Flynt translates ecological reach into auditable handoffs, resilient stores, and route-aware technical support.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed benchmark; Needs historical audit and date refinement<br>
 **Source Points:** [Age 1, Point 1 — Birth of Cities](ages/age_01_ancient_civilizations/point_01_birth_of_cities.md#assignment-age-01-point-01-flynt)
@@ -5387,7 +5387,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Proto-Elamite tablets and sealings tracked grain, livestock, labor, rations, receipts, and transfers with numerical systems.<br>
 **Modern House expression:** Flynt uses custody marks and load records to test whether tools, stores, and shipments remain operationally accountable.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed benchmark; Needs historical audit and date refinement<br>
 **Source Points:** [Age 1, Point 1 — Birth of Cities](ages/age_01_ancient_civilizations/point_01_birth_of_cities.md#assignment-age-01-point-01-flynt)
@@ -5404,7 +5404,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Japan assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of consumer electronics informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-flynt)
@@ -5420,7 +5420,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Japan assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of high-reliability transport informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-flynt)
@@ -5436,7 +5436,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Japan assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of quality manufacturing informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 2 — Space Age](ages/age_06_information_civilization/point_02_space_age.md#assignment-age-06-point-02-flynt)
@@ -5452,7 +5452,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Rus' communities interacted with Byzantium, Scandinavia, steppe peoples, Volga Bulgars, and Islamic merchants through treaty, marriage, trade, and conflict.<br>
 **Modern House expression:** Flynt keeps party, language, intermediary, object, obligation, reception, and harm separate.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; river chronology, dynastic formation, tribute, local communities, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 4 — Imperial Revival](ages/age_03_medieval_civilization/point_04_imperial_revival.md#assignment-age-03-point-04-flynt)
@@ -5469,7 +5469,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Princely households, towns, merchants, assemblies, and local communities formed overlapping political and economic networks.<br>
 **Modern House expression:** Flynt preserves node, custodian, tribute, settlement, route, local authority, and contingency.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; river chronology, dynastic formation, tribute, local communities, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 4 — Imperial Revival](ages/age_03_medieval_civilization/point_04_imperial_revival.md#assignment-age-03-point-04-flynt)
@@ -5486,7 +5486,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Rus' river craft, ports, storage, tribute, and route knowledge linked Baltic, river, Black Sea, and steppe systems.<br>
 **Modern House expression:** Flynt records vessel, cargo, route condition, host, maintenance, risk, and alternate path.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; river chronology, dynastic formation, tribute, local communities, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 4 — Imperial Revival](ages/age_03_medieval_civilization/point_04_imperial_revival.md#assignment-age-03-point-04-flynt)
@@ -5503,7 +5503,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Macedonian rulers combined diplomacy, marriage, alliance, hostage relations, incorporated regions, garrisons, leagues, military command, and force; Philip's late hegemony and League of Corinth followed war and unequal settlement.<br>
 **Modern House expression:** Flynt tests coalition purpose, member authority, command scope, refusal, coercion, obligation, intelligence, civilian protection, exit, breach, and after-action evidence without treating hegemonic compliance as confirmation or Capacity.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; phase attribution, early evidence, and army-reform detail require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 5 — Achaemenid World](ages/age_02_classical_civilization/point_05_achaemenid_world.md#assignment-age-02-point-05-flynt)
@@ -5520,7 +5520,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Macedonian field capacity developed unevenly and especially under Philip II, when manpower expanded and infantry, cavalry, specialist and siege functions were coordinated; later narratives do not support projecting the mature system across the whole Point.<br>
 **Modern House expression:** Flynt attaches every force, tool, formation, command relationship, training claim, date, source, readiness limit, civilian risk, and stopping condition to its phase instead of treating later success as timeless Capacity.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; phase attribution, early evidence, and army-reform detail require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 5 — Achaemenid World](ages/age_02_classical_civilization/point_05_achaemenid_world.md#assignment-age-02-point-05-flynt)
@@ -5537,7 +5537,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Timber, horses, grain, metals, mines, mints, harbors, routes, specialists, and revenue underwrote Macedonian operations, especially after Philip acquired resource centers; extraction, destruction, and coercive labor remain part of the cost record.<br>
 **Modern House expression:** Flynt maps each capacity to resource source, custody, labor status, route, storage, maintenance, dependency, civilian effect, alternate supply, and shutdown threshold so possession never proves lawful readiness.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; phase attribution, early evidence, and army-reform detail require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 5 — Achaemenid World](ages/age_02_classical_civilization/point_05_achaemenid_world.md#assignment-age-02-point-05-flynt)
@@ -5554,7 +5554,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Egyptian and Syrian fortresses, roads, bridges, ports, and caravan stations linked security to movement and trade.<br>
 **Modern House expression:** Flynt records route segment, fortification, custodian, cargo, maintenance, civilian dependency, and fallback.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; emergent Mamluk chronology, military households, endowments, routes, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 6A — Mongol Conquests and Late Song](ages/age_03_medieval_civilization/point_06_mongol_world.md#assignment-age-03-point-06a-flynt); [Age 3, Point 6B — Khanates, Yuan, and Mamluk World](ages/age_03_medieval_civilization/point_06b_khanates_yuan_and_mamluk_world.md#assignment-age-03-point-06b-flynt)
@@ -5571,7 +5571,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Waqf endowments supported mosques, schools, hospitals, fountains, roads, and other public services across changing custodians.<br>
 **Modern House expression:** Flynt preserves founder claim, endowed asset, custodian, beneficiaries, labor, alteration, and current authority.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; emergent Mamluk chronology, military households, endowments, routes, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 6A — Mongol Conquests and Late Song](ages/age_03_medieval_civilization/point_06_mongol_world.md#assignment-age-03-point-06a-flynt); [Age 3, Point 6B — Khanates, Yuan, and Mamluk World](ages/age_03_medieval_civilization/point_06b_khanates_yuan_and_mamluk_world.md#assignment-age-03-point-06b-flynt)
@@ -5588,7 +5588,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Mamluk rule consolidated through military households, emirs, sultans, courts, and urban institutions.<br>
 **Modern House expression:** Flynt models household, office, command, succession, resource, coercion, and civilian effect.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; emergent Mamluk chronology, military households, endowments, routes, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 6A — Mongol Conquests and Late Song](ages/age_03_medieval_civilization/point_06_mongol_world.md#assignment-age-03-point-06a-flynt); [Age 3, Point 6B — Khanates, Yuan, and Mamluk World](ages/age_03_medieval_civilization/point_06b_khanates_yuan_and_mamluk_world.md#assignment-age-03-point-06b-flynt)
@@ -5605,7 +5605,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Babylonian chronicles independently anchor Median participation in the fall of Assyrian centers and name Cyaxares, while later Greek accounts add broader narratives at greater source distance.<br>
 **Modern House expression:** Flynt compares coalition parties, dated objective, route, contribution, witness, command uncertainty, civilian effect, and claimed outcome without converting conquest, alliance success, or incomplete reporting into Capacity.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; political scale, archaeological attribution, and source distance require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 4 — Neo-Babylonian World](ages/age_02_classical_civilization/point_04_neo_babylonian_world.md#assignment-age-02-point-04-flynt)
@@ -5622,7 +5622,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Tepe Nush-i Jan and related western Iranian sites preserve fortified mud-brick architecture, columned spaces, storage, craft, and highland settlement planning, but their exact political and ethnic attribution remains contested.<br>
 **Modern House expression:** Flynt maps terrain, node, supply, storage, construction phase, alternate route, abandonment, evidence confidence, and attribution boundary so useful highland logistics never manufacture a Median empire or ethnic style.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; political scale, archaeological attribution, and source distance require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 4 — Neo-Babylonian World](ages/age_02_classical_civilization/point_04_neo_babylonian_world.md#assignment-age-02-point-04-flynt)
@@ -5639,7 +5639,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Astyages's defeat around 550 ended independent Median kingship, yet Medes, regions, elites, military personnel, and administrative practices remained visible within Cyrus's and later Achaemenid systems; exact institutional continuities are unevenly documented.<br>
 **Modern House expression:** Flynt separates ruler change, command handoff, personnel retention, route continuity, local custody, altered obligation, refusal, and unverified inheritance so absorption is neither total disappearance nor proof of seamless imperial succession.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; political scale, archaeological attribution, and source distance require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 4 — Neo-Babylonian World](ages/age_02_classical_civilization/point_04_neo_babylonian_world.md#assignment-age-02-point-04-flynt)
@@ -5656,7 +5656,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Middle Assyrian tablets use annual limmu eponyms and other dating information to place transactions, assignments, deliveries, and officials in an inspectable sequence.<br>
 **Modern House expression:** Flynt attaches every operational record to time, issuer, scope, custody, and supersession so a dated order can be audited without becoming valid merely because it was recorded.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs institutional and post-1200 continuity refinement; assignment remains Working<br>
 **Source Points:** [Age 1, Point 5 — Great Bronze Age Powers](ages/age_01_ancient_civilizations/point_05_great_bronze_age_powers.md#assignment-age-01-point-05-flynt)
@@ -5673,7 +5673,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Assyrian expansion relied on fortified centers, roads and river corridors, garrisons, stored supplies, workshops, and staged provincial administration from the heartland into Hanigalbat.<br>
 **Modern House expression:** Flynt studies redundancy, resupply, repair, evacuation, containment, authority boundaries, and failure under pressure while refusing conquest or deportation as a model.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs institutional and post-1200 continuity refinement; assignment remains Working<br>
 **Source Points:** [Age 1, Point 5 — Great Bronze Age Powers](ages/age_01_ancient_civilizations/point_05_great_bronze_age_powers.md#assignment-age-01-point-05-flynt)
@@ -5690,7 +5690,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Palace and provincial archives classify rations, grain, livestock, equipment, labor, soldiers, dependents, deportees, and officials across a coercive imperial system.<br>
 **Modern House expression:** Flynt exposes load, supply, status, destination, responsible command, civilian protection, and coercion risk at each handoff under existing Capacity and command limits.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs institutional and post-1200 continuity refinement; assignment remains Working<br>
 **Source Points:** [Age 1, Point 5 — Great Bronze Age Powers](ages/age_01_ancient_civilizations/point_05_great_bronze_age_powers.md#assignment-age-01-point-05-flynt)
@@ -5707,7 +5707,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Civil war, Babylonian independence, Median alliance, Assur's fall in 614, Nineveh's fall in 612, and Ashur-uballit II's Harran resistance to 609 show that territorial contraction, capital destruction, kingship, and polity end were staggered.<br>
 **Modern House expression:** Flynt teaches terminal-state analysis with dated thresholds, residual nodes, succession, civilian risk, ally dependence, evidence gaps, and explicit stopping conditions; collapse is investigated, not aestheticized.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; late succession, local execution, and post-612 continuity require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 3 — Assyrian Apex](ages/age_02_classical_civilization/point_03_assyrian_apex.md#assignment-age-02-point-03-flynt)
@@ -5724,7 +5724,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Assyrian eponym lists preserve an annual sequence through Adad-nirari II's reign, including named years from 910 to 900 BCE, while reconstruction still depends on copies and philological work.<br>
 **Modern House expression:** Flynt attaches operational claims, orders, repairs, and after-action records to a dated sequence, issuer, scope, custody, and supersession without treating chronology as proof of legitimate command.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; only an eleven-year boundary slice is admitted; assignment remains Working<br>
 **Source Points:** [Age 2, Point 1 — Early Iron Age](ages/age_02_classical_civilization/point_01_early_iron_age.md#assignment-age-02-point-01-flynt)
@@ -5741,7 +5741,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Dur-Sharrukin, Nineveh, Assur, Kalhu, Arbela, and Harran depended on roads, waterworks, provincial resources, skilled workers, resettled populations, archives, cult institutions, and political choices that changed by reign.<br>
 **Modern House expression:** Flynt maps every capital-scale system to inputs, labor status, maintenance custody, alternate routes, displaced cost, failure propagation, and shutdown conditions instead of admiring scale or copying monuments.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; late succession, local execution, and post-612 continuity require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 3 — Assyrian Apex](ages/age_02_classical_civilization/point_03_assyrian_apex.md#assignment-age-02-point-03-flynt)
@@ -5758,7 +5758,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Late Middle and earliest Neo-Assyrian records associate recovery with rebuilt settlements, restored agriculture, fortified centers, routes, musters, and renewed reach after territorial contraction; exact scale and labor conditions require local evidence.<br>
 **Modern House expression:** Flynt tests whether a restored system is maintained, supplied, bounded, reversible, safe, and constitutionally authorized, with forced movement, extraction, and triumphal claims recorded as failure risks.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; only an eleven-year boundary slice is admitted; assignment remains Working<br>
 **Source Points:** [Age 2, Point 1 — Early Iron Age](ages/age_02_classical_civilization/point_01_early_iron_age.md#assignment-age-02-point-01-flynt)
@@ -5775,7 +5775,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Adad-nirari II's inscriptions arrange campaigns, places, movements, opponents, tribute, and claimed outcomes into sequences, but they are selective royal representations saturated with violence and ideology.<br>
 **Modern House expression:** Flynt can compare intended route, reported action, supply state, civilian consequence, source bias, and later verification while refusing conquest or royal success as Capacity.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; only an eleven-year boundary slice is admitted; assignment remains Working<br>
 **Source Points:** [Age 2, Point 1 — Early Iron Age](ages/age_02_classical_civilization/point_01_early_iron_age.md#assignment-age-02-point-01-flynt)
@@ -5792,7 +5792,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Neo-Assyrian letters, reports, administrative records, treaties, royal inscriptions, and provincial archives reveal gaps between central instruction, local intelligence, execution, petition, delay, and curated commemoration.<br>
 **Modern House expression:** Flynt compares intended command, authorized scope, sender, route, latency, field state, local response, civilian effect, refusal, supersession, and independent verification without declaring Capacity from the royal account.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; late succession, local execution, and post-612 continuity require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 3 — Assyrian Apex](ages/age_02_classical_civilization/point_03_assyrian_apex.md#assignment-age-02-point-03-flynt)
@@ -5809,7 +5809,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Old Assyrian caravan accounts record investment, tin, textiles, silver, guides, donkeys, equipment, fodder, fees, purchases, balances, and discrepancies across journeys lasting weeks.<br>
 **Modern House expression:** Flynt exposes load, cost, custody, stage, delay, maintenance, loss, and reconciliation at each handoff so route Capacity can be tested rather than merely asserted.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs date refinement and evidence-density caution; assignment remains Working<br>
 **Source Points:** [Age 1, Point 4 — Old Babylonian World](ages/age_01_ancient_civilizations/point_04_old_babylonian_world.md#assignment-age-01-point-04-flynt)
@@ -5826,7 +5826,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Private letters linked merchants, wives, relatives, agents, and partners between Assur and Anatolia, coordinating production, credit, travel, household affairs, and disputes across long separation.<br>
 **Modern House expression:** Flynt preserves sender, recipient, role, route state, response, and unresolved obligation in operational communication without turning family structure into command authority.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs date refinement and evidence-density caution; assignment remains Working<br>
 **Source Points:** [Age 1, Point 4 — Old Babylonian World](ages/age_01_ancient_civilizations/point_04_old_babylonian_world.md#assignment-age-01-point-04-flynt)
@@ -5843,7 +5843,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Tablets and sealed envelopes document loans, joint ventures, quittances, lawsuits, depositions, witnesses, taxes, customs, and local jurisdiction within a multicultural commercial system.<br>
 **Modern House expression:** Flynt uses sealed custody, shared risk, explicit jurisdiction, dispute escalation, and closure evidence in logistics records under the Law of Capacity and existing route and command law.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs date refinement and evidence-density caution; assignment remains Working<br>
 **Source Points:** [Age 1, Point 4 — Old Babylonian World](ages/age_01_ancient_civilizations/point_04_old_babylonian_world.md#assignment-age-01-point-04-flynt)
@@ -5860,7 +5860,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Roads, bridges, fortresses, ships, artillery, supply, vassal contingents, military households, and route intelligence supported campaigns whose capacity changed sharply during the 1402 defeat, interregnum, consolidation, and 1453 siege.<br>
 **Modern House expression:** Flynt models dated force, route, supply, maintenance, command scope, civilian dependency, failure, fallback, and refusal rather than admiring conquest.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; early Ottoman chronology, local administration, unequal status, logistics, civilian cost, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md#assignment-age-03-point-07-flynt); [Age 4, Point 2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md#assignment-age-04-point-02-flynt)
@@ -5877,7 +5877,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Mosques, tombs, baths, kitchens, markets, schools, bridges, and endowed services at Bursa, Edirne, and other centers joined patronage to urban life; later post-1453 rebuilding must remain outside this Point's evidence window.<br>
 **Modern House expression:** Flynt preserves patron, endowment, service, labor, beneficiary, structure, maintenance, later alteration, and present owner without importing dynastic authority.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; early Ottoman chronology, local administration, unequal status, logistics, civilian cost, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md#assignment-age-03-point-07-flynt); [Age 4, Point 2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md#assignment-age-04-point-02-flynt)
@@ -5894,7 +5894,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Early Ottoman rule joined dynastic, military, judicial, vassal, urban, village, religious, and regional institutions across Anatolia and the Balkans without erasing local communities or unequal status.<br>
 **Modern House expression:** Flynt records office, language, jurisdiction, community, obligation, intermediary, refusal, dispute, and handoff without treating plural rule as consent or inherited command.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; early Ottoman chronology, local administration, unequal status, logistics, civilian cost, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 7 — Late Medieval World](ages/age_03_medieval_civilization/point_07_late_medieval_world.md#assignment-age-03-point-07-flynt); [Age 4, Point 2 — Reformation](ages/age_04_early_modern_civilization/point_02_reformation.md#assignment-age-04-point-02-flynt)
@@ -5911,7 +5911,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Hostage exchange, dynastic succession, envoys, local rulers, and route intelligence shaped Roman-Parthian relations.<br>
 **Modern House expression:** Flynt audits source, messenger, latency, authority, uncertainty, and consequence.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; decentralized governance, frontier scale, source bias, and chronology require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 10 — Pax Romana](ages/age_02_classical_civilization/point_10_pax_romana.md#assignment-age-02-point-10-flynt)
@@ -5928,7 +5928,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Parthian cavalry, horses, fortified cities, caravan stations, and river routes supported movement across difficult terrain.<br>
 **Modern House expression:** Flynt records terrain, animal supply, cargo, station, maintenance, and alternate route without romanticizing war.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; decentralized governance, frontier scale, source bias, and chronology require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 10 — Pax Romana](ages/age_02_classical_civilization/point_10_pax_romana.md#assignment-age-02-point-10-flynt)
@@ -5945,7 +5945,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Rome and Parthia sustained armies, roads, crossings, envoys, garrisons, and supply along a changing eastern frontier.<br>
 **Modern House expression:** Flynt models route condition, supply, command, diplomacy, civilian use, and fallback.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; decentralized governance, frontier scale, source bias, and chronology require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 10 — Pax Romana](ages/age_02_classical_civilization/point_10_pax_romana.md#assignment-age-02-point-10-flynt)
@@ -5962,7 +5962,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Personal armies and emergency commands made loyalty, finance, communication, and civilian risk decisive across fragmented networks.<br>
 **Modern House expression:** Flynt audits order, authority, resource, latency, refusal, harm, and postwar demobilization rather than celebrating operational reach.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; frontier scale, source bias, Mithridatic chronology, and local relationships require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 9 — Fall of the Republic](ages/age_02_classical_civilization/point_09_fall_of_the_republic.md#assignment-age-02-point-09-flynt)
@@ -5979,7 +5979,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Late republican armies depended on roads, ports, grain, tax, recruitment, contractors, allied communities, and rapidly changing commands.<br>
 **Modern House expression:** Flynt models route, supply, personnel, command scope, maintenance, civilian dependency, and fallback under Law of Capacity.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; frontier scale, source bias, Mithridatic chronology, and local relationships require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 9 — Fall of the Republic](ages/age_02_classical_civilization/point_09_fall_of_the_republic.md#assignment-age-02-point-09-flynt)
@@ -5996,7 +5996,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Pontus combined Black Sea ports, mountain routes, fleets, cavalry, fortifications, diplomacy, and local alliances under Roman pressure.<br>
 **Modern House expression:** Flynt records node condition, crew, cargo, terrain, alternate routes, treaty limits, and failure consequences.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; frontier scale, source bias, Mithridatic chronology, and local relationships require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 9 — Fall of the Republic](ages/age_02_classical_civilization/point_09_fall_of_the_republic.md#assignment-age-02-point-09-flynt)
@@ -6013,7 +6013,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Portugal assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of cartographic practice informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-flynt)
@@ -6029,7 +6029,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Portugal assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of fortified trade posts informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-flynt)
@@ -6045,7 +6045,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Portugal assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of ocean navigation informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 1 — Renaissance](ages/age_04_early_modern_civilization/point_01_renaissance.md#assignment-age-04-point-01-flynt)
@@ -6061,7 +6061,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Qing China assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of craft and knowledge exchange informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-flynt)
@@ -6077,7 +6077,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Qing China assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of frontier governance informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-flynt)
@@ -6093,7 +6093,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Kawād and Khusrow reworked fiscal and military organization through crown, noble, provincial, city, and frontier layers.<br>
 **Modern House expression:** Flynt models phase, office, tax, supply, command, local authority, and coercive burden instead of uniform centralization.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 3 — Scientific Revolution](ages/age_04_early_modern_civilization/point_03_scientific_revolution.md#assignment-age-04-point-03-flynt)
@@ -6110,7 +6110,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Russian Empire assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of continental administration informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-flynt); [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-flynt)
@@ -6126,7 +6126,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Russian Empire assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of frontier infrastructure informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-flynt); [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-flynt)
@@ -6142,7 +6142,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Russian Empire assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of military reform informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 4, Point 4 — Enlightenment](ages/age_04_early_modern_civilization/point_04_enlightenment.md#assignment-age-04-point-04-flynt); [Age 4, Point 5 — Revolutionary World](ages/age_04_early_modern_civilization/point_05_revolutionary_world.md#assignment-age-04-point-05-flynt)
@@ -6158,7 +6158,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Sasanian routes, forts, diplomacy, cavalry, treaties, and frontier communities adapted to Byzantine and eastern pressure across changing reigns.<br>
 **Modern House expression:** Flynt records route state, supply, treaty, civilian risk, fallback, and evidence confidence.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; 180–224 remains late Parthian; early centralization, local authority, religious policy, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 11 — Crisis and Conversion](ages/age_02_classical_civilization/point_11_crisis_and_conversion.md#assignment-age-02-point-11-flynt); [Age 3, Point 1 — Successor Kingdoms](ages/age_03_medieval_civilization/point_01_successor_kingdoms.md#assignment-age-03-point-01-flynt)
@@ -6175,7 +6175,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Roman-Sasanian wars, Armenia, sieges, routes, treaties, and military supply expose changing frontier capacity and civilian risk.<br>
 **Modern House expression:** Flynt records route state, supply, treaty clause, authority, civilian dependency, fallback, and consequence.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; layered authority, frontier chronology, community policy, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 12 — Christian Empire](ages/age_02_classical_civilization/point_12_christian_empire.md#assignment-age-02-point-12-flynt)
@@ -6192,7 +6192,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Kawād and Khusrow reworked fiscal and military organization through crown, noble, provincial, city, and frontier layers.<br>
 **Modern House expression:** Flynt models phase, office, tax, supply, command, local authority, and coercive burden instead of uniform centralization.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; 180–224 remains late Parthian; early centralization, local authority, religious policy, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 11 — Crisis and Conversion](ages/age_02_classical_civilization/point_11_crisis_and_conversion.md#assignment-age-02-point-11-flynt); [Age 3, Point 1 — Successor Kingdoms](ages/age_03_medieval_civilization/point_01_successor_kingdoms.md#assignment-age-03-point-01-flynt)
@@ -6209,7 +6209,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Sasanian kings worked through nobles, provincial rulers, cities, officials, and religious institutions whose authority varied by place and period.<br>
 **Modern House expression:** Flynt models crown, local, city, route, tax, supply, and command layers with explicit scope and uncertainty.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; layered authority, frontier chronology, community policy, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 12 — Christian Empire](ages/age_02_classical_civilization/point_12_christian_empire.md#assignment-age-02-point-12-flynt)
@@ -6226,7 +6226,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Royal, Zoroastrian, Christian, Jewish, Manichaean, Syriac, Armenian, and local records reveal changing custody and institutional relationships.<br>
 **Modern House expression:** Flynt preserves language, institution, patronage, restriction, community effect, and later reinterpretation without importing doctrine.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; layered authority, frontier chronology, community policy, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 12 — Christian Empire](ages/age_02_classical_civilization/point_12_christian_empire.md#assignment-age-02-point-12-flynt)
@@ -6243,7 +6243,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Sasanian courts and cities hosted Zoroastrian, Christian, Jewish, Manichaean, and multilingual scholarly communities with changing patronage and restriction.<br>
 **Modern House expression:** Flynt preserves language, institution, patronage, restriction, community effect, and later reinterpretation without importing doctrine.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; 180–224 remains late Parthian; early centralization, local authority, religious policy, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 11 — Crisis and Conversion](ages/age_02_classical_civilization/point_11_crisis_and_conversion.md#assignment-age-02-point-11-flynt); [Age 3, Point 1 — Successor Kingdoms](ages/age_03_medieval_civilization/point_01_successor_kingdoms.md#assignment-age-03-point-01-flynt)
@@ -6260,7 +6260,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Seleucus's durable state formation begins with his 312/311 return to Babylonia after loss of the satrapy, then depends on Babylonian institutions, routes, supplies, mints, personnel, campaigns, and negotiated regional control.<br>
 **Modern House expression:** Flynt models a reassembly from verified nodes, stores, routes, local custodians, repair states, command limits, and fallback conditions rather than assuming that a prior appointment or royal claim creates Capacity.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; formation chronology, regional control, and institutional detail require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 6 — Alexander and the Diadochi](ages/age_02_classical_civilization/point_06_alexander_and_the_diadochi.md#assignment-age-02-point-06-flynt)
@@ -6277,7 +6277,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Seleucid command developed through satrapal appointment, displacement, return, eastern campaigns, coalition warfare, royal title, regional delegation, and later dynastic partnership; evidence for recruitment and mature institutions is uneven.<br>
 **Modern House expression:** Flynt attaches command scope, phase, source, subordinate authority, recruitment status, settlement obligation, refusal, coercion, civilian risk, succession, and after-action evidence to every asserted capability.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; formation chronology, regional control, and institutional detail require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 6 — Alexander and the Diadochi](ages/age_02_classical_civilization/point_06_alexander_and_the_diadochi.md#assignment-age-02-point-06-flynt)
@@ -6294,7 +6294,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** The early Seleucid realm connected Mesopotamian rivers and canals with Iranian, Central Asian, Syrian, Anatolian, Gulf, and South Asian routes through regional commands, cities, settlements, coin, taxation, animals, and military supply.<br>
 **Modern House expression:** Flynt maps route segment, terrain, cargo, labor status, local authority, latency, maintenance, alternate path, civilian dependency, and shutdown threshold so range remains auditable and bounded.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; formation chronology, regional control, and institutional detail require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 6 — Alexander and the Diadochi](ages/age_02_classical_civilization/point_06_alexander_and_the_diadochi.md#assignment-age-02-point-06-flynt)
@@ -6311,7 +6311,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Seleucid kings worked through governors, strategoi, cities, temples, local dynasts, settlements, garrisons, mints, and fiscal agents whose practical authority and loyalty varied across regions and reigns.<br>
 **Modern House expression:** Flynt models command as interfaces with named local owners, scope, communication latency, resource dependencies, refusal, coercion, fallback, succession, and evidence confidence instead of a single imperial control layer.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; regional control, treaty limits, contraction, and continuation require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 7 — Mature Hellenistic World](ages/age_02_classical_civilization/point_07_mature_hellenistic_world.md#assignment-age-02-point-07-flynt)
@@ -6328,7 +6328,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Roads, rivers, canals, ports, cities, mints, storehouses, animal supply, coin payments, and local institutions connected Seleucid operations, but routes and nodes survived, shifted allegiance, or failed on different schedules.<br>
 **Modern House expression:** Flynt ties every route and supply node to condition, custodian, mint or store authority, labor status, cargo, dependency, civilian use, alternate path, maintenance, loss, and restoration.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; regional control, treaty limits, contraction, and continuation require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 7 — Mature Hellenistic World](ages/age_02_classical_civilization/point_07_mature_hellenistic_world.md#assignment-age-02-point-07-flynt)
@@ -6345,7 +6345,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Defeat at Magnesia and the Treaty of Apamea in 188 removed Seleucid control west of the Taurus and imposed indemnity and military restrictions, while later dynastic conflict and regional secession further altered capacity without ending the dynasty.<br>
 **Modern House expression:** Flynt compares precondition, treaty clause, territorial and equipment limit, payment, route loss, demobilization or adaptation, local effect, compliance evidence, residual risk, and new operating boundary so contraction is as legible as expansion.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; regional control, treaty limits, contraction, and continuation require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 2, Point 7 — Mature Hellenistic World](ages/age_02_classical_civilization/point_07_mature_hellenistic_world.md#assignment-age-02-point-07-flynt)
@@ -6362,7 +6362,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Caravanserais, roads, cities, merchants, animals, guards, and markets connected Seljuk territories and neighboring regions.<br>
 **Modern House expression:** Flynt maps cargo, route state, custodian, cost, risk, alternate path, and local dependency.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Great Seljuk and Rum Seljuk phases, military households, Persianate administration, routes, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 5 — Reform, Seljuk, and Crusader World](ages/age_03_medieval_civilization/point_05_crusader_world.md#assignment-age-03-point-05-flynt)
@@ -6379,7 +6379,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Seljuk military households, horses, mounted equipment, routes, and frontier organization supported expansion but depended on supply, local authority, and coercion.<br>
 **Modern House expression:** Flynt records mount, rider, supply, command scope, route, civilian risk, maintenance, and fallback.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Great Seljuk and Rum Seljuk phases, military households, Persianate administration, routes, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 5 — Reform, Seljuk, and Crusader World](ages/age_03_medieval_civilization/point_05_crusader_world.md#assignment-age-03-point-05-flynt)
@@ -6396,7 +6396,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Seljuk sultans worked through Persianate viziers, scribes, cities, religious scholars, military households, and local rulers.<br>
 **Modern House expression:** Flynt models office, language, tax, city, command, local authority, source, and coercive burden.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Great Seljuk and Rum Seljuk phases, military households, Persianate administration, routes, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 5 — Reform, Seljuk, and Crusader World](ages/age_03_medieval_civilization/point_05_crusader_world.md#assignment-age-03-point-05-flynt)
@@ -6413,7 +6413,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Kindattu is associated with Elamite and Susian forces in the fall of Ur around 2004 BCE, but the sources are external or later and the collapse was multi-causal.<br>
 **Modern House expression:** Flynt studies command scope, coalition handoffs, supply responsibility, and civilian protection at a state-failure boundary while preserving adversarial source bias.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs historical, location, and chronology audit; assignment remains Working<br>
 **Source Points:** [Age 1, Point 3 — Restoration Kingdoms](ages/age_01_ancient_civilizations/point_03_restoration_kingdoms.md#assignment-age-01-point-03-flynt)
@@ -6430,7 +6430,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** The later Susa king list and other inscriptions preserve Šimaškian succession, while the last listed rulers overlap with the emerging Sukkalmah/Epartid order.<br>
 **Modern House expression:** Flynt trains continuity plans to support overlapping, disputed, or incomplete succession without allowing an archive label to confer constitutional command.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs historical, location, and chronology audit; assignment remains Working<br>
 **Source Points:** [Age 1, Point 3 — Restoration Kingdoms](ages/age_01_ancient_civilizations/point_03_restoration_kingdoms.md#assignment-age-01-point-03-flynt)
@@ -6447,7 +6447,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Šimaškian rulers are connected unevenly to Susa and the Iranian plateau before and after Ur's fall; exact geography and territorial control remain disputed.<br>
 **Modern House expression:** Flynt marks who holds a route, store, or command function at each handoff instead of treating a claimed frontier as operational control.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Needs historical, location, and chronology audit; assignment remains Working<br>
 **Source Points:** [Age 1, Point 3 — Restoration Kingdoms](ages/age_01_ancient_civilizations/point_03_restoration_kingdoms.md#assignment-age-01-point-03-flynt)
@@ -6464,7 +6464,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Soviet Union assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of centralized research informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-flynt)
@@ -6480,7 +6480,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Soviet Union assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of industrial planning informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-flynt)
@@ -6496,7 +6496,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied Soviet Union assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of space and systems engineering informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 6, Point 1 — Early Computing](ages/age_06_information_civilization/point_01_early_computing.md#assignment-age-06-point-01-flynt)
@@ -6512,7 +6512,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Chang'an, Dunhuang, Central Asian routes, maritime links, and frontier markets connected people, goods, religions, and information across unequal systems.<br>
 **Modern House expression:** Flynt records node, cargo, language, intermediary, jurisdiction, risk, custody, and alternate path.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Tang chronology, frontier administration, exchange access, religious plurality, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 2 — Rise of Islam](ages/age_03_medieval_civilization/point_02_rise_of_islam.md#assignment-age-03-point-02-flynt)
@@ -6529,7 +6529,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Tang emperors combined ministries, prefectures, examinations, military commands, monasteries, merchant communities, and frontier offices.<br>
 **Modern House expression:** Flynt models civil, military, route, local, and frontier layers with scope, resource, and accountability.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Tang chronology, frontier administration, exchange access, religious plurality, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 2 — Rise of Islam](ages/age_03_medieval_civilization/point_02_rise_of_islam.md#assignment-age-03-point-02-flynt)
@@ -6546,7 +6546,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Tang texts, epitaphs, art, religious objects, and route documents preserve encounters among Chinese, Sogdian, Turkic, Tibetan, Korean, Japanese, Indian-facing, and West Asian communities.<br>
 **Modern House expression:** Flynt keeps maker, language, object, route, audience, patron, conflict, and later interpretation separate.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; Tang chronology, frontier administration, exchange access, religious plurality, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 2 — Rise of Islam](ages/age_03_medieval_civilization/point_02_rise_of_islam.md#assignment-age-03-point-02-flynt)
@@ -6563,7 +6563,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied United States assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of continental networks informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-flynt); [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-flynt); [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-flynt); [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-flynt); [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-flynt); [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-flynt)
@@ -6579,7 +6579,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied United States assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of industrial and computational systems informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-flynt); [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-flynt); [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-flynt); [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-flynt); [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-flynt); [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-flynt)
@@ -6595,7 +6595,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Preliminary design term extracted from the supplied United States assignment; detailed historical scope requires cited research.<br>
 **Modern House expression:** Workshop / network: The inheritance of large-scale research informs repairable tools, routes, machine halls, or defensive infrastructure.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed completion dossier; source scope and culture-specific detail remain revision-capable; assignment remains Working<br>
 **Source Points:** [Age 5, Point 1 — Industrial Acceleration](ages/age_05_industrial_civilization/point_01_industrial_revolution.md#assignment-age-05-point-01-flynt); [Age 5, Point 2 — Age of Science](ages/age_05_industrial_civilization/point_02_age_of_science.md#assignment-age-05-point-02-flynt); [Age 5, Point 3 — Second Industrial Revolution](ages/age_05_industrial_civilization/point_03_second_industrial_revolution.md#assignment-age-05-point-03-flynt); [Age 5, Point 4 — World War I](ages/age_05_industrial_civilization/point_04_world_war_i.md#assignment-age-05-point-04-flynt); [Age 5, Point 5 — Interwar World](ages/age_05_industrial_civilization/point_05_interwar_world.md#assignment-age-05-point-05-flynt); [Age 5, Point 6 — World War II](ages/age_05_industrial_civilization/point_06_world_war_ii.md#assignment-age-05-point-06-flynt)
@@ -6611,7 +6611,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Runes, coins, hoards, textiles, ship objects, settlement archaeology, and foreign accounts expose encounters among mobile and settled communities.<br>
 **Modern House expression:** Flynt separates maker, language, object, route, audience, conflict, and later interpretation.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; mobility, identity, trade, settlement, violence, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 3 — Carolingian World](ages/age_03_medieval_civilization/point_03_carolingian_world.md#assignment-age-03-point-03-flynt)
@@ -6628,7 +6628,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Households, chieftains, merchants, settlements, and host polities linked goods and information across mobile routes.<br>
 **Modern House expression:** Flynt preserves intermediary, jurisdiction, cargo, custody, contract, local reception, and route contingency.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; mobility, identity, trade, settlement, violence, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 3 — Carolingian World](ages/age_03_medieval_civilization/point_03_carolingian_world.md#assignment-age-03-point-03-flynt)
@@ -6645,7 +6645,7 @@ Registry totals: **397 unique House-culture Gift records** across **164 assignme
 **Primary House:** [Flynt](houses/FLYNT_ANCESTRY.md)<br>
 **Historical meaning:** Viking ships, river craft, ports, winter camps, and route knowledge connected North Atlantic, European, Baltic, and eastern networks.<br>
 **Modern House expression:** Flynt records vessel, crew, cargo, route state, host, maintenance, risk, and alternate path.<br>
-**Existing canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
+**Existing canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; ancestry creates no authority.<br>
 **Possible Hueman use:** curriculum tag, artifact provenance, district reference, NPC profession or museum filter.<br>
 **Status:** Reviewed dossier; mobility, identity, trade, settlement, violence, and source bias require continuing audit; assignment remains Working<br>
 **Source Points:** [Age 3, Point 3 — Carolingian World](ages/age_03_medieval_civilization/point_03_carolingian_world.md#assignment-age-03-point-03-flynt)

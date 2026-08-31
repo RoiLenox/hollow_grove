@@ -31,7 +31,7 @@ Each kingdom-facing approach may enter AuraTriad through a first descriptive reg
 ## Artifact Inputs
 
 Hueman Start Choices bytes: 1365.
-Hueman Archetype Lens bytes: 3108.
+Hueman Archetype Lens bytes: 3109.
 
 ## Boundary Reminder
 

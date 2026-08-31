@@ -19,16 +19,16 @@ Root recursion:
 
 Continuing recursion is deferred until the kernel naturally demands recurrence beyond one pass.
 
-## Federation continuity boundary
+## Rampart continuity boundary
 
 The canonical Hollow Grove name for continuity above completed kernel passes
-is **The Federation**. The historical `RuntimeFederation` and HGRF names refer
+is **The Rampart of Roi and Roselina**. The historical `RuntimeRampart` and HGRF names refer
 only to the frozen continuity archive described in
-`THE_RUNTIME_FEDERATION_V1.md`.
+`THE_RAMPART_V1.md`.
 
-The Federation does not remove this kernel's boundary lock. The
+The Rampart of Roi and Roselina does not remove this kernel's boundary lock. The
 universal kernel still computes one bounded pass and contains no House,
-Central Junction, Function, route, gameplay, archive-federation, or
+Central Junction, Function, route, gameplay, archive-Rampart, or
 presentation law. A completed pass may be cited as immutable evidence by the
 constitutional runtime, but no later layer may reopen or rewrite it.
 
@@ -41,7 +41,7 @@ It carries confirmed results between passes without adding continuing world
 state to the universal recursion primitive itself.
 
 The authoritative canon for that boundary is
-`THE_RUNTIME_FEDERATION_V1.md`.
+`THE_RAMPART_V1.md`.
 
 ## Purpose
 

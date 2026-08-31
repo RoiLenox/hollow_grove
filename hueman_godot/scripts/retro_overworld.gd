@@ -10,6 +10,8 @@ const HUEMAN_GARGOYLE_ASSET_ID := "hollow-grove.player.hueman-gargoyle-pilot"
 const SESSION_ID := "session.hollow-grove.local"
 const RETRY_INTERVAL_SECONDS := 1.0
 const STEP_DURATION_SECONDS := 0.12
+const ANIMATION_REDRAW_INTERVAL_SECONDS := 1.0 / 60.0
+const SEMANTICS_REFRESH_INTERVAL_SECONDS := 0.1
 const PIXEL_LINE_WIDTH := 36
 const SCREEN_SEMANTICS_SCHEMA_VERSION := "1.0.0"
 const SCREEN_SEMANTICS_CONTRACT_ID := "hollow-grove.retro-screen-semantics"
@@ -118,6 +120,8 @@ var display_position := Vector2.ZERO
 var target_position := Vector2.ZERO
 var animation_from := Vector2.ZERO
 var animation_elapsed := STEP_DURATION_SECONDS
+var animation_redraw_elapsed := ANIMATION_REDRAW_INTERVAL_SECONDS
+var semantics_refresh_elapsed := SEMANTICS_REFRESH_INTERVAL_SECONDS
 var player_facing := "North"
 var has_player_position := false
 var dialogue_target_id := ""
@@ -220,8 +224,16 @@ func _process(delta: float) -> void:
 		animation_elapsed = minf(animation_elapsed + delta, STEP_DURATION_SECONDS)
 		var progress := animation_elapsed / STEP_DURATION_SECONDS
 		display_position = animation_from.lerp(target_position, progress)
-		queue_redraw()
-	_refresh_screen_semantics()
+		animation_redraw_elapsed += delta
+		if animation_redraw_elapsed >= ANIMATION_REDRAW_INTERVAL_SECONDS \
+				or animation_elapsed >= STEP_DURATION_SECONDS:
+			animation_redraw_elapsed = 0.0
+			queue_redraw()
+
+	semantics_refresh_elapsed += delta
+	if semantics_refresh_elapsed >= SEMANTICS_REFRESH_INTERVAL_SECONDS:
+		semantics_refresh_elapsed = 0.0
+		_refresh_screen_semantics()
 
 
 func _input(event: InputEvent) -> void:

@@ -1,0 +1,87 @@
+@define-color oxford-blue #0A1024;
+@define-color midnight-blue #121B38;
+@define-color space-cadet #1C2A52;
+@define-color flynt-gunmetal #242C42;
+@define-color flynt-powder #A7B6D9;
+@define-color flynt-indigo #7F8BC4;
+@define-color glaushouse-eton #78C9A4;
+@define-color sandmanor-blush #E07A86;
+
+* {
+  min-height: 0;
+  border: none;
+  border-radius: 0;
+  font-family: "Inter", "Cantarell", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+window#waybar.hollow-grove-top {
+  color: @flynt-powder;
+  background: alpha(@midnight-blue, 0.96);
+  border-bottom: 1px solid @oxford-blue;
+}
+
+#custom-grove {
+  color: @oxford-blue;
+  background: @flynt-indigo;
+  letter-spacing: 1px;
+  padding: 0 10px;
+}
+
+#workspaces {
+  background: transparent;
+  margin-left: 4px;
+}
+
+#workspaces button {
+  color: alpha(@flynt-powder, 0.62);
+  background: transparent;
+  padding: 0 7px;
+  transition: none;
+}
+
+#workspaces button.active {
+  color: @flynt-indigo;
+  background: @space-cadet;
+}
+
+#workspaces button.urgent {
+  color: @sandmanor-blush;
+}
+
+#window {
+  color: alpha(@flynt-powder, 0.88);
+  padding: 0 12px;
+}
+
+#tray,
+#network,
+#pulseaudio,
+#battery,
+#clock {
+  background: transparent;
+  padding: 0 8px;
+}
+
+#network.disconnected,
+#pulseaudio.muted,
+#battery.warning {
+  color: @sandmanor-blush;
+}
+
+#battery.charging,
+#battery.full {
+  color: @glaushouse-eton;
+}
+
+tooltip {
+  color: @flynt-powder;
+  background: @space-cadet;
+  border: 1px solid @flynt-gunmetal;
+  border-radius: 6px;
+}
+
+tooltip label {
+  padding: 6px;
+}

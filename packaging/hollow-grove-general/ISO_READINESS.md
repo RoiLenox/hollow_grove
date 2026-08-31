@@ -4,10 +4,13 @@
 
 - The new-user Niri profile is separate from the active personal
   configuration.
-- The left-hand application/domain grid, right-hand focus/move/reshape/scope
-  model, HJKL navigation, workspace bindings, column proportions, wrap motion,
-  screenshots, media, audio, brightness, network, Bluetooth, Hollow Grove, and
-  Hueman concepts are preserved.
+- The distribution now has one restrained Hollow Grove top bar using the
+  constitutional palette, one Walker entrance, and one `hollow-shell`
+  diagnostic/action seam without adding a dock or second desktop framework.
+- The constitutional A–Z WHAT vocabulary, shared HOW modifier grammar, HJKL
+  movement tool, workspace bindings, column proportions, wrap motion,
+  screenshots, media, audio, brightness, Hollow Grove, and Hueman concepts are
+  preserved.
 - No output, resolution, refresh rate, scale, arrangement, GPU vendor, DRM
   device, or backlight device is forced.
 - Optional applications fail through a named notification instead of blocking
@@ -15,19 +18,25 @@
 - Wallpaper and weather use blank new-user settings with safe fallbacks.
 - Installed commands and XDG paths replace personal paths and repository
   checkout assumptions.
-- The keyboard Grove registry distinguishes House landmarks, admitted domain
-  plants, modifier branches, replaceable application fruit, and operational
-  tools; its verifier passes against the portable profile before release.
+- The keyboard Grove registry records every A–Z meaning and memory hook while
+  distinguishing House landmarks, domain plants, modifier branches,
+  replaceable application fruit, and operational tools; its verifier passes
+  against the portable profile before release.
+- `hollow-keyboard` and its desktop entry make that registry searchable,
+  visually discoverable, and locally auditable after installation.
+- The native `hollow-niri` broker removes shell, `jq`, fixed sleeps, and
+  unbounded repeat backlog from the compositor movement path. Its service,
+  planner tests, doctor, benchmark, and renderer report are package-owned.
 
-This work is distribution packaging only. It changes no Hollow Grove canon,
-constitutional architecture, gameplay system, institution, lineage, or
-metaphysics.
+This desktop integration consumes the constitutional palette but changes no
+game or House canon, runtime architecture, gameplay system, institution,
+lineage, or metaphysics.
 
 ## Work remaining before ArchISO inclusion
 
-1. Create and review a PKGBUILD for `hollow-grove-general`, including licenses,
-   checksums, ownership, reproducible build settings, and installation of these
-   reports under the package documentation directory.
+1. Freeze reproducible source inputs and checksums for the existing
+   `hollow-grove-general` PKGBUILD, then review its Rust build and architecture
+   matrix in a clean chroot.
 2. Decide which reasonable desktop applications belong in the base ISO and
    which remain discoverable optional bindings. Resolve each selected package
    against the exact official Arch snapshot or a signed project repository.

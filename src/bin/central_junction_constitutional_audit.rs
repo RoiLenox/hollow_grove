@@ -5,7 +5,7 @@ use hollow_grove::world::central_junction::{
     HouseSectorHall, JunctionApproach, MarketLifecycleState, SummitConcept, ValueInstrument,
 };
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+pub(crate) fn tool_main() -> Result<(), Box<dyn std::error::Error>> {
     let district = central_junction::canonical_central_junction();
     if !district.district_not_single_building
         || district.formal_name != "CENTRAL JUNCTION"

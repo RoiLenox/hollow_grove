@@ -26,18 +26,22 @@ use crate::{
     observe_kernel_pass_decision, resolve_candidate_recipe, run_kernel_cycle_with_input,
 };
 
-const FRAMES: [FrameId; 18] = [
+const FRAMES: [FrameId; 22] = [
     FrameId::Hueman,
     FrameId::Gremlin,
     FrameId::Goblin,
     FrameId::Ghoul,
+    FrameId::Spectre,
     FrameId::Troll,
     FrameId::Ork,
     FrameId::Ogre,
     FrameId::Troglodyte,
+    FrameId::Pixie,
     FrameId::Pixy,
     FrameId::Sprite,
-    FrameId::Faerie,
+    FrameId::Fairy,
+    FrameId::Spirit,
+    FrameId::Sylph,
     FrameId::Nymph,
     FrameId::Siren,
     FrameId::Muse,

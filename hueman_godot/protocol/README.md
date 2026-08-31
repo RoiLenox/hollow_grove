@@ -34,7 +34,7 @@ actors, optional relationship kind/Bond/term, uncertainty, and refusal
 protections. `SaveIntent` and `LoadIntent` use stable slot IDs and the service's
 configured save root. Gameplay save schema V4 embeds the validated
 institutional state loaded from the separate world root and the explicit
-Runtime Federation binding. The service save envelope additionally stores the
+Runtime Rampart binding. The service save envelope additionally stores the
 canonical dual-Guide session and unified operational revision, while legacy
 bare gameplay archives remain readable. The typed
 `AdvanceWingedGargoylePilotIntent` advances only the runtime-projected next
@@ -44,7 +44,7 @@ remains an unavailable protocol reservation; it is not an alternate path into
 the implemented pilot.
 
 Every gameplay view also carries `kernel_audit`: a read-only report showing
-whether the Federation binding and paired Roi/Roselina Guide oversight pass the
+whether the Rampart of Roi and Roselina binding and paired Roi/Roselina Guide oversight pass the
 executable kernel invariants. The complete evidence-to-decision-save-replay
 route is the `path.platinum.v1` Platinum Path, or “the Plath.”
 

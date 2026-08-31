@@ -1,13 +1,15 @@
 use flynt_constitution::{
-    COMPANION_CHIMERA, CREW_BRO_WHITE, CREW_CINDERELLAMAN, CREW_THE_BEAUTY, ConstitutionError,
-    EXPRESSION_MYSTERY_MAN, EXPRESSION_WE_FAIRY_MEN, FORM_CHIMERA, FORM_GARGOYLE, FORM_MANTICORP,
-    FORM_MERMAN, FORM_WEREWOLF, FlyntConstitution, FlyntNodeId, FlyntNodeKind, GREMLINCOIN_MEANING,
-    GargoyleContinuance, GremlincoinRecord, IDENTITY_MR_X, IDENTITY_MYSTERY_MAN,
-    INSTITUTION_GALLOWS, INSTITUTION_MANTICORP, INSTITUTION_MYSTERY_MEN,
-    ManticorpContinuanceRequirement, OFFICE_BRO_WHITE, OFFICE_CINDERELLAMAN, OFFICE_THE_BEAUTY,
-    OFFICE_TROSS, PERSON_TROSS, RECIPE_GARGOYLE_CONTINUANCE, RECIPE_MANTICORP, SITE_GALLOWRY,
+    BASIN_CREATURE_SECTS, COMPANION_CHIMERA, CREW_BRO_WHITE, CREW_CINDERELLAMAN, CREW_THE_BEAUTY,
+    ConstitutionError, CreatureSex, EXPRESSION_MYSTERY_MAN, EXPRESSION_WE_FAIRY_MEN,
+    EXTENSION_MARQUISE, FLYNT_CREATURE_PAIRS, FORM_CHIMERA, FORM_GARGOYLE, FORM_MANTICORE,
+    FORM_MERMAN, FORM_WEREWOLF, FlyntConstitution, FlyntCreature, FlyntNodeId, FlyntNodeKind,
+    FormKind, GREMLINCOIN_MEANING, GargoyleContinuance, GremlincoinRecord, IDENTITY_MR_X,
+    IDENTITY_MYSTERY_MAN, INSTITUTION_GALLOWS, INSTITUTION_MANTICORP, INSTITUTION_MYSTERY_MEN,
+    ManticoreContinuanceRequirement, OFFICE_BRO_WHITE, OFFICE_CINDERELLAMAN, OFFICE_THE_BEAUTY,
+    OFFICE_TROSS, PERSON_TROSS, RECIPE_GARGOYLE_CONTINUANCE, RECIPE_MANTICORE, SITE_GALLOWRY,
     TOKEN_GREMLINCOIN, WAY_GREMLIN, canonical_constitution, canonical_gremlin_way_practices,
-    canonical_hierarchy_rows, canonical_parts, canonical_superior_map,
+    canonical_hierarchy_rows, canonical_lineages, canonical_parts, canonical_superior_map,
+    legacy_founding_lineages,
 };
 
 fn id(value: &str) -> FlyntNodeId {
@@ -41,7 +43,12 @@ fn urban_expression_is_exact() {
 
     assert_eq!(
         chain,
-        [EXPRESSION_MYSTERY_MAN, INSTITUTION_GALLOWS, OFFICE_TROSS,]
+        [
+            EXPRESSION_MYSTERY_MAN,
+            INSTITUTION_GALLOWS,
+            EXPRESSION_WE_FAIRY_MEN,
+            OFFICE_TROSS,
+        ]
     );
     assert_eq!(
         constitution
@@ -57,6 +64,10 @@ fn urban_expression_is_exact() {
             .kind,
         FlyntNodeKind::InvestigativeBureau
     );
+    assert_eq!(
+        constitution.node_by_key(EXTENSION_MARQUISE).unwrap().kind,
+        FlyntNodeKind::MaritimeExtension
+    );
 }
 
 #[test]
@@ -69,15 +80,7 @@ fn rural_expression_is_exact() {
             .into_iter()
             .map(|node| node.id.as_str())
             .collect();
-        assert_eq!(
-            chain,
-            [
-                founder,
-                EXPRESSION_WE_FAIRY_MEN,
-                INSTITUTION_GALLOWS,
-                OFFICE_TROSS,
-            ]
-        );
+        assert_eq!(chain, [founder, EXPRESSION_WE_FAIRY_MEN, OFFICE_TROSS,]);
     }
 
     let superior_map = canonical_superior_map();
@@ -85,16 +88,55 @@ fn rural_expression_is_exact() {
     assert_eq!(superior_map[CREW_CINDERELLAMAN], Some(OFFICE_CINDERELLAMAN));
     assert_eq!(superior_map[CREW_THE_BEAUTY], Some(OFFICE_THE_BEAUTY));
     let union = constitution.founding_union();
-    assert_eq!(union.folk_expression.as_str(), EXPRESSION_WE_FAIRY_MEN);
-    assert_eq!(union.institutional_home.as_str(), INSTITUTION_GALLOWS);
+    assert_eq!(union.leadership_body.as_str(), EXPRESSION_WE_FAIRY_MEN);
+    assert_eq!(union.sovereign_leader.as_str(), OFFICE_TROSS);
+    assert_eq!(union.underworld_manifestation.as_str(), INSTITUTION_GALLOWS);
     assert_eq!(
-        union.constitutional_expression_of.as_str(),
-        COMPANION_CHIMERA
+        constitution
+            .authority_chain(&id(INSTITUTION_GALLOWS))
+            .unwrap()
+            .into_iter()
+            .map(|node| node.id.as_str())
+            .collect::<Vec<_>>(),
+        [INSTITUTION_GALLOWS, EXPRESSION_WE_FAIRY_MEN, OFFICE_TROSS]
     );
 }
 
 #[test]
-fn chimera_is_the_unique_three_people_synthesis() {
+fn creature_pairs_and_sect_leadership_are_exact() {
+    let constitution = canonical_constitution().unwrap();
+    assert_eq!(constitution.creature_pairs(), FLYNT_CREATURE_PAIRS);
+    assert_eq!(constitution.basin_sects(), BASIN_CREATURE_SECTS);
+    assert_eq!(FlyntCreature::Mariner.aliases(), ["Merman"]);
+    assert_eq!(FlyntCreature::Manticore.sex(), CreatureSex::Masculine);
+    assert_eq!(FlyntCreature::Chimera.sex(), CreatureSex::Feminine);
+    assert_eq!(
+        constitution.sovereign_identity().mythological_identity,
+        FlyntCreature::Manticore
+    );
+    assert_eq!(
+        constitution.chimera().mythological_identity,
+        FlyntCreature::Chimera
+    );
+    assert_eq!(
+        FLYNT_CREATURE_PAIRS[3],
+        flynt_constitution::FlyntCreaturePair {
+            masculine: FlyntCreature::Manticore,
+            feminine: FlyntCreature::Chimera,
+            symbolic_connection: "sovereign and First Companion apex counterparts",
+        }
+    );
+    assert_eq!(BASIN_CREATURE_SECTS[0].leader, OFFICE_BRO_WHITE);
+    assert_eq!(BASIN_CREATURE_SECTS[0].pair, FLYNT_CREATURE_PAIRS[0]);
+    assert_eq!(BASIN_CREATURE_SECTS[1].leader, OFFICE_THE_BEAUTY);
+    assert_eq!(BASIN_CREATURE_SECTS[1].pair, FLYNT_CREATURE_PAIRS[1]);
+    assert_eq!(BASIN_CREATURE_SECTS[2].leader, OFFICE_CINDERELLAMAN);
+    assert_eq!(BASIN_CREATURE_SECTS[2].pair, FLYNT_CREATURE_PAIRS[2]);
+    assert_eq!(BASIN_CREATURE_SECTS[2].crew, CREW_CINDERELLAMAN);
+}
+
+#[test]
+fn chimera_is_the_unique_three_form_higher_synthesis() {
     let constitution = canonical_constitution().unwrap();
     let recipe = constitution.chimera_recipe();
     let sources: std::collections::HashSet<_> =
@@ -117,7 +159,25 @@ fn chimera_is_the_unique_three_people_synthesis() {
 }
 
 #[test]
-fn manticorp_form_and_institution_are_distinct_but_canonical() {
+fn practitioner_traditions_are_active_and_founding_people_remain_compatible() {
+    let constitution = canonical_constitution().unwrap();
+    assert!(
+        constitution
+            .forms()
+            .iter()
+            .take(3)
+            .all(|form| form.kind == FormKind::PractitionerSynthesis)
+    );
+    assert!(
+        canonical_lineages()
+            .iter()
+            .all(|lineage| lineage.exact_current_aura_equation.is_none())
+    );
+    assert_eq!(legacy_founding_lineages().len(), 3);
+}
+
+#[test]
+fn manticore_form_and_manticorp_soldier_body_are_distinct_but_canonical() {
     let constitution = canonical_constitution().unwrap();
     assert_eq!(
         constitution
@@ -130,20 +190,68 @@ fn manticorp_form_and_institution_are_distinct_but_canonical() {
         constitution
             .forms()
             .iter()
-            .any(|form| form.id.as_str() == FORM_MANTICORP)
+            .any(|form| form.id.as_str() == FORM_MANTICORE)
     );
     assert_eq!(
-        constitution.manticorp_recipe().recipe.result.as_str(),
-        FORM_MANTICORP
+        constitution.manticore_recipe().recipe.result.as_str(),
+        FORM_MANTICORE
     );
     assert_eq!(
-        constitution.manticorp_recipe().recipe.id.as_str(),
-        RECIPE_MANTICORP
+        constitution.manticore_recipe().recipe.id.as_str(),
+        RECIPE_MANTICORE
+    );
+    assert_ne!(OFFICE_TROSS, INSTITUTION_MANTICORP);
+    assert_ne!(FORM_MANTICORE, INSTITUTION_MANTICORP);
+    assert_ne!(FORM_CHIMERA, INSTITUTION_MANTICORP);
+}
+
+#[test]
+fn manticorp_mystery_men_marquise_we_fairy_men_and_gallows_are_distinct_nodes() {
+    let constitution = canonical_constitution().unwrap();
+    let ids = [
+        INSTITUTION_MANTICORP,
+        INSTITUTION_MYSTERY_MEN,
+        EXTENSION_MARQUISE,
+        EXPRESSION_WE_FAIRY_MEN,
+        INSTITUTION_GALLOWS,
+    ];
+    assert_eq!(
+        ids.into_iter()
+            .collect::<std::collections::HashSet<_>>()
+            .len(),
+        5
+    );
+    assert_eq!(
+        constitution
+            .authority_chain(&id(INSTITUTION_MYSTERY_MEN))
+            .unwrap()
+            .into_iter()
+            .map(|node| node.id.as_str())
+            .collect::<Vec<_>>(),
+        [INSTITUTION_MYSTERY_MEN, OFFICE_TROSS]
+    );
+    assert_eq!(
+        constitution
+            .authority_chain(&id(EXTENSION_MARQUISE))
+            .unwrap()
+            .into_iter()
+            .map(|node| node.id.as_str())
+            .collect::<Vec<_>>(),
+        [EXTENSION_MARQUISE, INSTITUTION_MYSTERY_MEN, OFFICE_TROSS]
+    );
+    assert_eq!(
+        constitution
+            .authority_chain(&id(INSTITUTION_GALLOWS))
+            .unwrap()
+            .into_iter()
+            .map(|node| node.id.as_str())
+            .collect::<Vec<_>>(),
+        [INSTITUTION_GALLOWS, EXPRESSION_WE_FAIRY_MEN, OFFICE_TROSS]
     );
 }
 
 #[test]
-fn tross_mystery_man_mr_x_and_manticorp_bearer_share_one_identity_lock() {
+fn tross_mystery_man_mr_x_and_manticore_bearer_share_one_identity_lock() {
     let constitution = canonical_constitution().unwrap();
     let identity = constitution.sovereign_identity();
     assert_eq!(identity.person.as_str(), PERSON_TROSS);
@@ -156,7 +264,8 @@ fn tross_mystery_man_mr_x_and_manticorp_bearer_share_one_identity_lock() {
             .collect::<Vec<_>>(),
         [IDENTITY_MYSTERY_MAN, IDENTITY_MR_X]
     );
-    assert_eq!(identity.maintained_form.as_str(), FORM_MANTICORP);
+    assert_eq!(identity.maintained_form.as_str(), FORM_MANTICORE);
+    assert_eq!(identity.mythological_identity, FlyntCreature::Manticore);
     assert_eq!(
         identity
             .continuance_requirements
@@ -164,11 +273,11 @@ fn tross_mystery_man_mr_x_and_manticorp_bearer_share_one_identity_lock() {
             .copied()
             .collect::<std::collections::BTreeSet<_>>(),
         std::collections::BTreeSet::from([
-            ManticorpContinuanceRequirement::BodilyDiscipline,
-            ManticorpContinuanceRequirement::RecipeRenewal,
-            ManticorpContinuanceRequirement::DividedBasinKnowledge,
-            ManticorpContinuanceRequirement::InstitutionalRecognition,
-            ManticorpContinuanceRequirement::SpecializedGlaushouseCare,
+            ManticoreContinuanceRequirement::BodilyDiscipline,
+            ManticoreContinuanceRequirement::RecipeRenewal,
+            ManticoreContinuanceRequirement::DividedBasinKnowledge,
+            ManticoreContinuanceRequirement::InstitutionalRecognition,
+            ManticoreContinuanceRequirement::SpecializedGlaushouseCare,
         ])
     );
     assert_eq!(identity.public_institution.as_str(), INSTITUTION_MANTICORP);
@@ -209,12 +318,12 @@ fn gremlincoin_is_the_gremlin_way_and_gargoyle_requires_continuance() {
 }
 
 #[test]
-fn divided_manticorp_recipe_has_three_indispensable_basin_custodians() {
+fn divided_manticore_recipe_has_three_indispensable_basin_custodians() {
     let constitution = canonical_constitution().unwrap();
-    assert_eq!(constitution.manticorp_recipe().custody.len(), 3);
+    assert_eq!(constitution.manticore_recipe().custody.len(), 3);
     assert_eq!(
         constitution
-            .manticorp_recipe()
+            .manticore_recipe()
             .custody
             .iter()
             .map(|entry| entry.custodian.as_str())

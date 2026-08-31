@@ -9,21 +9,50 @@ Status: deterministic generated projection; not constitutional authority
 
 ## Reading
 
-Stonebend supplies the stable foundation. House landmarks carry direct
-constitutional meaning; plants occupy mnemonic letter plots; modifier
-branches remain inside a plant; applications and actions are replaceable
-fruit. Tools use the same binding grammar but operate on the desktop
-environment instead of opening a domain.
+`Key = WHAT · Modifier = HOW`.
 
-## Admitted Plants
+## Modifier Grammar — HOW
 
-| Plot | Plant | Affinities | Branches |
-|---|---|---|---|
-| `O` | Office | Sandmanor | Primary: Writer; Adjacent: Calc; Focused: Impress; Alternate: Draw; Focused Alternate: Math |
-| `M` | Music | Flynt + Glaüshouse | Primary: Library; Adjacent: Visualizer; Focused: Play/Pause; Alternate: Status |
+| Modifier | Meaning | Think |
+|---|---|---|
+| `Super` | Primary | Normal way |
+| `Super+Shift` | Adjacent | Different form |
+| `Super+Ctrl` | Focused | Specialized/control |
+| `Super+Alt` | Alternate | Other way |
 
-All other letter groups remain provisional launch families. Appearance
-on the keyboard does not admit a plant.
+## A–Z — WHAT
+
+| Key | Meaning | Memory hook |
+|---|---|---|
+| A | Assets | MAKE |
+| B | Browse | Web |
+| C | Chat | Communicate |
+| D | Develop | Code/build |
+| E | Edit | Modify |
+| F | Files | Filesystem |
+| G | Games | PLAY |
+| H | ← Movement | Flynt |
+| I | Images | View images |
+| J | ↓ Movement | Glaüshouse |
+| K | ↑ Movement | Stonebend |
+| L | → Movement | Sandmanor |
+| M | Music | HEAR |
+| N | News | Feeds |
+| O | Office | Productivity |
+| P | Photos | Photography |
+| Q | Query | Ask AI/search |
+| R | Record | Capture |
+| S | Settings | Configure |
+| T | Tasks | To-do/work |
+| U | Utilities | System tools |
+| V | Video | WATCH |
+| W | Write | Compose |
+| X | eXchange | Finance/markets |
+| Y | sYnc | Transfer/sync |
+| Z | Zip | Archives |
+
+H/J/K/L are the movement tool. Every other letter is a stable domain
+plant, including domains whose current application branches are empty.
 
 ## Regeneration
 

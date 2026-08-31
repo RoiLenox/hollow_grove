@@ -7,7 +7,7 @@ use hollow_grove::hueman_support::{
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let current_synthesis_base =
         read_text_artifact(Path::new(CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH))?;
     let current_synthesis_activation_gate =

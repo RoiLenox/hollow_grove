@@ -431,7 +431,7 @@ pub fn canonical_permanence_seal_fixture() -> PermanenceSeal {
         subject_id: permanent_subject(),
         version_id: version("version.permanence.bridge.v1"),
         issuing_house: House::Stonebend,
-        office: StonebendSealOffice::DiamondHypergiant,
+        office: StonebendSealOffice::Hypergiant,
         stonebend_authority_id: permanence_authority("authority.stonebend.diamond-hypergiant"),
         supporting_attestation_ids: PermanenceLaw::ALL.into_iter().map(attestation_id).collect(),
         evidence_ids: [evidence("evidence.seal.permanence.bridge.v1")]

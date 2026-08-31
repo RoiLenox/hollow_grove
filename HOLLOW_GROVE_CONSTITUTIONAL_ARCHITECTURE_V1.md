@@ -27,11 +27,11 @@ interoperability do not absorb House authority.
 
 ```mermaid
 flowchart TB
-    UL["Universal Laws<br/>Current · Aura · Relativity · Synthesis"]
+    UL["Practitioner Ontology<br/>Current + Aura → Level 1 Synthesis<br/>Level 2 Higher / Composite Synthesis"]
     RT["Constitutional Runtime<br/>identity · evidence · authority · lifecycle<br/>replay · serialization · migration · history"]
     BC["Bond Constitution<br/>Claim · obligation · challenge · succession<br/>restoration · Tombstone"]
     HG["Hollow Grove Compromise<br/><b>Hollow Grove Constitution</b>"]
-    RF["The Federation<br/>HGRF compatibility · stable cross-domain references<br/>canonical replay · continuing world consequence"]
+    RF["The Rampart of Roi and Roselina<br/>HGRF compatibility · stable cross-domain references<br/>canonical replay · continuing world consequence"]
     GP["Authoritative Gameplay Runtime"]
     PX["Presentation Clients"]
 
@@ -39,7 +39,7 @@ flowchart TB
     SA["Sandmanor Constitution"]
     GL["Glaüshouse Constitution"]
     FL["Flynt Constitution"]
-    HU["Hueman Constitution<br/>Being · Frame · Flow · Glow · faculties<br/>ladders · Synthesis · Seer"]
+    HU["Hueman Constitution<br/>Being · Frame · Flow · Glow · orthogonal faculties<br/>House-specific topologies · Synthesis · Seer"]
     IF["Shared Constitutional Interfaces<br/>geography · routes · gates · Central Junction<br/>Minoan Court · amendments · Restitution · emergencies"]
     RP["Regional and Cultural Projections<br/>surfaces · peoples · crews · professions · traditions"]
 
@@ -70,12 +70,12 @@ flowchart TB
 Arrows into the Compromise mean participation in shared law, not subordination
 to a central ruler.
 
-## The Federation
+## The Rampart of Roi and Roselina
 
-**The Federation** is the canonical Hollow Grove continuity boundary between
+**The Rampart of Roi and Roselina** is the canonical Hollow Grove continuity boundary between
 accepted constitutional/world records and authoritative gameplay. The
-`RuntimeFederation` Rust type and HGRF archive are compatibility machinery
-within that one Federation, not a second constitutional identity.
+`RuntimeRampart` Rust type and HGRF archive are compatibility machinery
+within that one Rampart, not a second constitutional identity.
 
 It preserves the identity, authority, evidence, reducer ownership, archive,
 and provenance of each participating domain while binding their accepted
@@ -84,18 +84,18 @@ a second Constitution, and it owns no power to reinterpret a House decision
 or rewrite a completed kernel pass.
 
 The universal kernel computes one bounded pass. Constitutional and House
-runtimes determine lawful meaning. The Federation carries accepted
-consequence forward. Gameplay submits intents against that federated state.
+runtimes determine lawful meaning. The Rampart of Roi and Roselina carries accepted
+consequence forward. Gameplay submits intents against that Rampart state.
 Presentation witnesses the accepted result.
 
-The full canonical boundary, federation laws, archive target, and first
-playable proof are established in `THE_RUNTIME_FEDERATION_V1.md`.
+The full canonical boundary, Rampart laws, archive target, and first
+playable proof are established in `THE_RAMPART_V1.md`.
 
 ## House-domain responsibility matrix
 
 | House | Constitutional domain | Principal authorities | Evidence retained by House | Shared boundaries |
 |---|---|---|---|---|
-| Stonebend | Body/Presynce, Craft, Continuance of Form, Current, lawful Hollowing, Name, Claim, Title, provenance, boundary, material identity | Diamond/Hypergiant, High Freemason, distributed Proliteriate | Names, Claims, Titles, seals, measures, provenance, Hollowing and Yield | three gates, Court, Central Junction, amendments |
+| Stonebend | Body/Presynce, Craft, Continuance of Form, legacy physical Current, lawful Hollowing, Name, Claim, Title, provenance, boundary, material identity | Hypergiant, High Freemason, distributed Proliteriate; Diamond STATUS OPEN | Names, Claims, Titles, seals, measures, provenance, Hollowing and Yield | three gates, Court, Central Junction, amendments |
 | Sandmanor | Soul, Prefog/Prefig, Design, reciprocity, formation, Minorians/Minoans, Farm/Beach/coast, guardian Synthesis | Sandman, guardian mantles, bounded joint stewards | Design, formation, reciprocity, teaching, Contest, coastal evidence | Aura Way, Court hosting, Central Junction, clinical compatibility |
 | Glaüshouse | Mind/Precog, Repair, Continuance of Function, compatibility, consent, care, maintained Synthesis | Prima Donna and clinical ladder | consent, compatibility, clinical, Living Ledger, Recipe Ledger, recovery | Court, emergency transfer, Central Junction, House Synthesis |
 | Flynt | Spirit/Resynce, Engineering, Function, persistence, deployment, infrastructure, Manticorp | Tross and bounded continuity authorities | operational, deployment, persistence, infrastructure and Manticorp records | Court, Stonebend gate, Central Junction, regional routes |
@@ -132,7 +132,7 @@ Compromise.
 | spatial inheritance | `SPATIAL_INHERITANCE_V1.md` beneath geography and Route Network | neutral spatial kernel, Hollow Grove binding/archive, bridge, Godot, runtime verifier | kernel/world/integration/live tamper and replay tests | live viewpoints and scoped intent receipts | no inherited authority, ownership, route meaning, or private topology copies |
 | Central Junction | `CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md` | `src/world/central_junction.rs` | Central Junction tests/audit | public boards/world context | no House exchange |
 | Service Tournament | `SERVICE_TOURNAMENT_CENTRAL_JUNCTION_CANON_V1.md` and `SERVICE_TOURNAMENT_ARCHIVE_AND_CANONICAL_YEAR_FIXTURE_V1.md` under Compromise and House constitutions | `src/world/service_tournament.rs`, archive, fixture, and House Synthesis semantics | canon, archive, migration, replay, and audit tests | Central Junction Function record | no new constitution, service faction, sovereignty transfer, or kernel lore |
-| Federation continuity / HGRF compatibility | `THE_RUNTIME_FEDERATION_V1.md` under the Compromise and existing domain authorities | federation manifest above existing production reducers | executable archive, replay, migration, audit, and operation complete | authoritative gameplay and presentation projections | no fifth House, second Constitution, parallel reducer, domain-history rewrite, kernel lore, or second Federation |
+| Rampart continuity / HGRF compatibility | `THE_RAMPART_V1.md` under the Compromise and existing domain authorities | Rampart manifest above existing production reducers | executable archive, replay, migration, audit, and operation complete | authoritative gameplay and presentation projections | no fifth House, second Constitution, parallel reducer, domain-history rewrite, kernel lore, or second Rampart |
 | operational lore and AI boundary | `HOLLOW_GROVE_KERNEL_CONSTITUTIONAL_STATE_V1_DRAFT.md`, `HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md`, and `HOLLOW_GROVE_AI_ASSOCIATED_PERSONAS_CONSTITUTION_V1_DRAFT.md` beneath the Compromise | `src/ai_personas.rs` and shared role adapters | advisory fixture, refusal, checksum, and replay tests | dialogue, scene, and Hueman projections | no House gate, PLEB/META rewrite, consent substitute, or autonomous world mutation |
 | Minoan Court | `MINOAN_COUNTY_COURT_SYSTEM_AND_RESTITUTION_CYCLE_V1.md` under Compromise | Court model plus shared interface archive | Court tests/audit | courthouse and scene projections | reserved appeal text |
 | amendments and Restitution | Minoan Court document under Compromise | Court/shared interface adapters | amendment/Restitution tests | world context | no judicial ratification |
@@ -204,7 +204,7 @@ four Houses. Central Junction is not a fifth House.
 | Flynt | constitutionally integrated | detailed administration and prosecution |
 | Hueman | authoritative entry point established | unresolved ladder details explicitly retained |
 | shared interfaces | implemented and persisted | staffing/formulas deferred |
-| Federation continuity / HGRF compatibility | canonically established; implementation milestone frozen | HGRF manifest, gameplay schema V3, unified replay/audit, contained Central Junction operation |
+| Rampart continuity / HGRF compatibility | canonically established; implementation milestone frozen | HGRF manifest, gameplay schema V3, unified replay/audit, contained Central Junction operation |
 | regional projections | synchronized | gameplay and art remain Phase 3 |
 
 “Complete” here means constitutionally operable and integrated, not that every

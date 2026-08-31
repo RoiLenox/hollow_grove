@@ -1,6 +1,12 @@
 # Stonebend Three Gates, Offices, and Title Scope V1
 
-Status: canonical bounded second-pass constitutional supplement
+Status: active gate/Claim/Yield compatibility supplement; its Diamond-as-
+sovereign-title model is **SUPERSEDED** by `STONEBEND_CONSTITUTION_V2.md`.
+Stable Diamond identifiers remain LEGACY / DEPRECATED for replay and archive
+compatibility. Hypergiant is the active Stonebend sovereign title; Diamond's
+additional present role is STATUS: OPEN.
+
+Status: LEGACY bounded second-pass compatibility supplement
 Authority: `STONEBEND_CONSTITUTION_V2.md` plus this supplement
 Executable projection: `src/world/stonebend/second_pass.rs`
 
@@ -15,7 +21,8 @@ It does not complete ordinary government, courts, property, inheritance, public
 finance, the full Title lifecycle, the complete Illegal Hollowing code, or daily
 Stonebend administration. It does not reopen the First Stonebend Pass.
 
-The following remain authoritative:
+The following remain authoritative only inside the LEGACY physical material
+and archive model. They do not define Practitioner Current or Aura:
 
 > Mt. Aura is Aether.
 

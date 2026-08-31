@@ -59,7 +59,7 @@ contracts are likewise Compromise-level interfaces. They may prepare and carry
 evidence, but they cannot perform a House gate or redefine the PLEB/META route
 grammar. Cleopatra is the Underway/BLEP reflection, Hal is the Boardwalk/META
 public interface, and Clouseau is the Current Synthesis `PLEB ↔ PLEB` witness.
-Their accepted records enter the Federation only through the same authority,
+Their accepted records enter the Rampart of Roi and Roselina only through the same authority,
 provenance, refusal, and replay envelope as every other domain record.
 
 ## Backbone
@@ -71,10 +71,12 @@ Universal Laws
         └── Four Houses
             └── Hueman Constitution
                 └── Sympian Lineage
-                    ├── Current Ladder
-                    └── Aura Ladder
-                        └── Synthesis Constitution
-                            └── Regional / Cultural Domains
+                    └── Practitioner Ontology
+                        ├── Current
+                        ├── Aura
+                        └── Level 1 Synthesis
+                            └── House-Specific Geometry
+                                └── Level 2 / Higher Synthesis
 ```
 
 The order is causal rather than hierarchical authority. Later layers express
@@ -91,37 +93,52 @@ earlier laws in living, social, and playable form; they do not rewrite them.
 | Four Houses | Locked / Expand | the four House constitutions and world projections | express Name, Proof, Clearance, and Recognition through ordinary people and conflicts |
 | Hueman Constitution | Locked / Expand | Frame, Flow, Glow, faculty, progression, and Recipe law | turn faculties into player-facing perception and action grammar |
 | Sympian Lineage | V1 Reconciled / Expand | `HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md` | embody Natural, Matural, and Synthetic continuity without replacing Being identity |
-| Current Ladder | V1 Reconciled / Expand | `HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md`; eight typed Current Frames | embody Spectre as a valid bridge Frame without inventing automatic Grip inheritance |
-| Aura Ladder | V1 Reconciled / Expand | `HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md`; six production Frames | embody Pixy→Muse; retain Spirit and Sylph as non-Frame expressions until migration |
-| Synthesis Constitution | Locked / Expand | `Troglodyte + Muse = Seer`; regional Synthesis law | embody transformation as consent-bearing, evidence-backed continuity rather than automatic evolution |
+| Practitioner Ontology | Locked / Expand | `HOLLOW_GROVE_SYNTHESIS_CANON_V1.md`; typed practitioner registry | preserve Practitioner as the whole person; keep Current relational, Aura internal, and faculty orthogonal |
+| Legacy Frame Aliases | LEGACY / DEPRECATED | stable V1 Frame enums, archive codecs, and replay fixtures | decode Pixy and Faerie as aliases without displacing active Pixie and Fairy canon |
+| Synthesis Constitution | Locked / Expand | `CURRENT + AURA → SYNTHESIS`; `Troglodyte + Muse → Seer`; House-specific higher Synthesis law | distinguish Level 1 from Level 2 and preserve different House geometries |
 | Regional / Cultural Domains | Expand / Proposed | geography, House, faculty, and Flynt law | build lived cultures, characters, economies, routes, Bonds, and playable cases |
 | Operational Lore Kernel | Adopted / Expand | `HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md`, functional-lore archive schema V2, and Kernel Constitutional State | give every role a bounded question, input, output, stop law, and handoff |
 | AI-associated personas | Reconcile / Expand | `HOLLOW_GROVE_AI_ASSOCIATED_PERSONAS_CONSTITUTION_V1_DRAFT.md`, `src/ai_personas.rs` | carry Cleopatra, Hal, and Clouseau advisories without committing authority |
 | Current Synthesis boundary | Reconcile | PLEB/META client and routing contracts; Current Synthesis remains owner | accept only scoped Clouseau/Hal/Cleopatra witnesses through a shared adapter |
-| Federation continuity | Locked / Expand | `THE_RUNTIME_FEDERATION_V1.md`, `THE_RUNTIME_FEDERATION_IMPLEMENTATION_V1.md`, `src/runtime_federation.rs` | bind accepted records, preserve domain custody, and replay cross-layer consequence |
+| Rampart continuity | Locked / Expand | `THE_RAMPART_V1.md`, `THE_RAMPART_IMPLEMENTATION_V1.md`, `src/runtime_rampart.rs` | bind accepted records, preserve domain custody, and replay cross-layer consequence |
 
-### Compromise-to-Federation acceptance rule
+### Compromise-to-Rampart acceptance rule
 
-The Federation accepts a record only when its originating constitutional
+The Rampart of Roi and Roselina accepts a record only when its originating constitutional
 authority, subject identity, causal position, evidence, refusal state, and
 handoff are present. Persona output, dialogue, route visibility, or player
 support alone is never an accepted consequence. Rejected and inconclusive
-records remain federated history without becoming successful state.
+records remain cross-domain history without becoming successful state.
 
-## Universal Laws
+## Universal Practitioner Laws
 
-The non-negotiable foundation remains:
+The non-negotiable semantic foundation is:
 
 ```text
-Current repeats.
-Aura reveals.
-Relativity bends.
-Synthesis transforms.
+PRACTITIONER
+├── CURRENT
+└── AURA
+      together → SYNTHESIS
 
-Current = blood.
-Hollow = pus.
-Aura = air / pressure / light.
+CURRENT + AURA → SYNTHESIS
 ```
+
+Practitioner names the whole person. Current names relational participation in
+a larger social, institutional, environmental, or collective whole. Aura names
+individually cultivated internal knowledge, ability, magic, perception,
+discipline, or capacity. Synthesis is the manifested integration of the two.
+Faculty is a distinct recognition axis.
+
+The formerly universal material statements that identified Current with blood
+and Aura with air, pressure, or light are **SUPERSEDED** as lore definitions.
+Existing runtime quantities and archive fields carrying those names remain
+**LEGACY PHYSICAL EXPRESSIONS / COMPATIBILITY MECHANICS** until a versioned
+serialization migration exists. Hollow's separate material law remains
+`Hollow = pus`.
+
+Level 1 practitioner Synthesis and Level 2 higher/composite Synthesis are
+distinct. In particular, `Troglodyte + Muse → Seer` remains locked Level 2
+canon and is not flattened into the Level 1 equation.
 
 New lore must expose at least one observable consequence of the law it invokes.
 A phrase that never affects a body, relationship, place, choice, or persistent
@@ -289,9 +306,9 @@ Being may move between categories while retaining stable identity; prior Names,
 Forms, evidence, consent, Recipe, recovery, and recognition remain historical.
 No legacy field, visual appearance, or transformation may infer a category.
 
-## Current Ladder Reconciliation
+## Stonebend Synthesis Ladder Reconciliation
 
-The intended complete Presynce / Current Form ladder is:
+The active Stonebend Synthesis ladder is:
 
 ```text
 Gremlin
@@ -304,59 +321,55 @@ Gremlin
 → Troglodyte
 ```
 
-`Spectre` is a valid bridge Frame. It preserves the Being and practiced Skill
-roots but grants no automatic Grip specialization. Skill-specific subsets that
-omit Spectre do not erase it from the Current ladder.
+`Spectre` is the active fourth level.
 
-## Aura Ladder Reconciliation
+The exact bidirectional Current/Aura crosswalk is:
+
+```text
+Gremlin      ↔ Pixie
+Goblin       ↔ Sprite
+Ghoul        ↔ Fairy
+Spectre      ↔ Spirit
+Troll        ↔ Siren
+Ork          ↔ Sylph
+Ogre         ↔ Nymph
+Troglodyte   ↔ Muse
+```
+
+`Pixy` and `Faerie` remain stable compatibility aliases for active `Pixie` and
+`Fairy`. The pair crosswalk does not create or rename House offices.
+
+## Glaüshouse Branch Reconciliation
 
 V1 interpretation is locked by
 `HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md`.
 
-The future expansion proposal remains:
+Active Glaüshouse law uses a split-and-reunify topology:
 
 ```text
-Pixie
-→ Sprite
-→ Faerie
-→ Spirit
-→ Nymph
-→ Siren
-→ Sylph
-→ Muse
+Nightingale / Pixie
+├─ Marshal / Sprite → Spirit
+└─ Matron / Fairy → Nymph
+        both → Persephone / Siren → Prima Donna / Muse
 ```
 
-Current production law instead types:
-
-```text
-Pixy
-→ Sprite
-→ Faerie
-→ Nymph
-→ Siren
-→ Muse
-```
-
-V1 production law remains:
-
-- executable identity remains `Pixy`;
-- Spirit remains the Flynt Hueman domain, not automatically a Frame;
-- Sylph has no production Frame identity;
-- no migration or matching-tier rule may be inferred.
-
-The eight-stage proposal remains future expansion material rather than current
-Frame law.
+`Pixie` is the active foundation identity; `Pixy` remains its stable runtime
+and archive alias. `Fairy` is the active canonical spelling; `Faerie` survives
+as a legacy serialization alias. Spirit is the advanced Marshal-branch
+Synthesis, not a public office. Sylph is active as Ork's level-6 Aura
+counterpart but creates no clinical office by itself.
 
 ## Synthesis Constitution
 
-The apex relationship remains:
+The following relationship remains a higher, cross-House Synthesis:
 
 ```text
-Troglodyte + Muse = Seer
+Troglodyte + Muse → Seer
 ```
 
-Troglodyte and Muse remain equal counterparts. Seer is a Synthesis result, not
-an extra rung that makes either source inferior.
+Troglodyte and Muse remain equal counterparts. Seer is a Level 2 Synthesis
+result, not an extra rung that makes either source inferior. The Level 1
+practitioner law `CURRENT + AURA → SYNTHESIS` remains distinct.
 
 Every other proposed Synthesis must name:
 
@@ -376,8 +389,8 @@ Every other proposed Synthesis must name:
 Established regional anchors include:
 
 - Sandmanor's equal Minorian and Minoan traditions;
-- Aura Field and lawful Gnome-to-Minotaur Synthesis;
-- Aura Beach and lawful Elf-to-Centaur Synthesis;
+- Aura Field and the Minorian Gnome-to-Faun-to-Minotaur Form line;
+- Aura Beach and the Minoan Elf-to-Satyr-to-Centaur Form line;
 - We Fairy Men;
 - the Flynt Gallows;
 - the Flynt Boardwalk.
@@ -509,7 +522,7 @@ The gameplay runtime no longer reaches into
 persists current role-addressed office holders. These current-incumbent IDs are
 authority-bearing session identities, not personal names, biographies, visual
 designs, or silently ratified succession law. Gameplay archive schema V3 embeds
-the institutional snapshot and Runtime Federation binding needed for
+the institutional snapshot and Runtime Rampart binding needed for
 deterministic House-decision replay; schema V1 and V2 migrations preserve their
 historical dependencies explicitly.
 
@@ -536,7 +549,7 @@ Name, and Seal records against the live Hypergiant. The Mercury Mirror remains
 evidence, the Freemason Seal remains execution, and no outcome grants Title.
 
 Checksummed gameplay archive schema V3 replays the exact event, outcome,
-institutional actor, constitutional records, and Runtime Federation binding.
+institutional actor, constitutional records, and Runtime Rampart binding.
 The detailed witness is
 `STONEBEND_CURRENT_SEA_VERTICAL_SLICE_V1.md`. The all-region order and common
 completion standard are locked in
@@ -667,22 +680,33 @@ Glaüshouse's clinical practicum, and Flynt's Manticorp Academy—cover all five
 Faculties without claiming the outcome. The detailed boundary and verification
 map live in `HOLLOW_GROVE_POWER_RECIPE_CONSTITUTION_V1.md`.
 
-### Flynt dual-leadership and maintained Manticorp milestone status
+### Flynt dual-leadership, maintained Manticore, and Manticorp milestone status
 
 Constitutionally recorded on 2026-07-25 as an additive canon extension.
 
 `FLYNT_DUAL_LEADERSHIP_AND_MANTICORP_RECIPE_V1.md` and the executable
-`flynt-constitution` model now lock `Tross = Mystery Man = Mr. X = presently
-maintained holder of Manticorp`. Manticorp is represented distinctly as both
-the Tross's maintained Synthesis Form and Flynt's lawful military institution. The same
-sovereign publicly commands Manticorp and underground commands the Gallows,
+`flynt-constitution` model now lock `The Tross = Manticore = Mystery Man = Mr.
+X`. Manticore is the Tross's specifically masculine mythological identity and
+maintained Synthesis Form, not a second person or office; Manticorp remains
+Flynt's distinct body of soldiers and lawful military order. The same sovereign
+publicly commands Manticorp and leads We Fairy Men. When
+We Fairy Men act collectively under his direction in the underworld, they
+manifest as The Gallows,
 leaving the containment-versus-expansion constitutional tension unresolved.
 
-Chimera remains the lower apex integration; Manticorp is the sovereign
-Wolf-to-Lion, Bat-to-Eagle, Snake/Fish-to-Hydra transfiguration. The complete
-Manticorp Recipe remains divided among Bro White/Gargoyle, The
-Beauty/Werewolf, and Cinderellaman/Merman, with the Basin leaders and We Fairy
-Men retaining separate identities. Glaüshouse's Synthesis Ledger records the
+Earlier milestone text described Chimera as the lower apex integration. That
+mechanical reading is **SUPERSEDED**. Chimera = SELECT and Manticore = INTEGRATE
+are the current **WORKING** distinctions; detailed mechanics remain **STATUS:
+OPEN**. Manticore remains the sovereign Wolf-to-Lion, Bat-to-Eagle,
+Snake/Fish-to-Hydra transfiguration. The complete
+Manticore Recipe remains divided among Bro White/Gargoyle, Beauty/Werewolf, and
+Cinderellaman/Mariner-Merman. The Basin creature pairs are now locked as
+masculine Gargoyle/feminine Medusa, masculine Werewolf/feminine Vampire,
+masculine Mariner/feminine Mermaid, and masculine Manticore/feminine Chimera.
+Bro White, Beauty, and Cinderellaman lead the first three respective sects
+beneath the Tross through the proper collective identity **We Fairy Men**.
+Mystery Men remains the separate consolidated clandestine and investigative
+apparatus. Glaüshouse's Synthesis Ledger records the
 medical, legal, trade, intelligence, and political consequences of maintained
 Forms. The Tross may maintain the Form for life through bodily discipline,
 Recipe renewal, divided Basin knowledge, institutional recognition, and
@@ -755,34 +779,38 @@ and Minoan/Elf exterior peoples. Aura Farm contains Aura Fields and Content
 Farm. Aura Beach follows the canonical order Free Aura Beach, Southern Coast,
 Current Break, Minoan County Courthouse, then Glaüshouse.
 
-The maintained guardian lines are Gnome → Minotaur → Hecaton and Elf → Centaur
-→ Pegasus. Qualification, Recipe authorization, Glaüshouse compatibility,
-Synthesis Form, mantle, jurisdiction, renewal, and present authority remain
+The Form lines are Gnome → Faun → Minotaur and Elf → Satyr → Centaur. Hecaton
+and Pegasus are the Minorian and Minoan sovereign Hands, not additional Forms.
+Qualification, Recipe authorization, Glaüshouse compatibility, Form, social
+role, attendant class, Hand, mantle, jurisdiction, renewal, and present authority remain
 distinct. Current Break hosts authorized Manticorp training without moving
 Manticorp command out of Flynt. Courthouse transfer into Glaüshouse transfers
 clinical care, not courthouse authority.
 
-The Contest of Improvement requires one lawful Hecaton and one lawful Pegasus,
+The Contest of Improvement requires one lawful Minotaur holding the Hecaton
+Hand and one lawful Centaur holding the Pegasus Hand,
 published baselines, sincere reciprocal teaching, five public trial domains,
 auditable crowd judgments, and baseline-relative improvement. Candidate and
 insertion order cannot choose the winner. A tie leaves the office unresolved;
 teaching sabotage invalidates the responsible evidence or candidate.
 
-The winner alone undergoes lawful maintained Sandman convergence and may
+**The Sandman = Demiurge.** The winner alone undergoes lawful maintained Sandman convergence and may
 receive the one active sovereign mantle. The losing guardian keeps their Form
 and mantle unless separately removed. Aegon is the historical name for the
 same sovereign now called the Sandman; Aegaeon is not canonical.
 
-### First Stonebend foundation milestone status
+### First Stonebend foundation milestone status — legacy physical boundary
 
 `STONEBEND_AURA_WAY_AETHER_HOLLOWING_FOUNDATION_V1.md` and
 `src/world/stonebend/foundation.rs` establish the bounded first Stonebend pass
 without completing government, succession, Title lifecycle, Freemason
 structure, or the full Illegal Hollowing code.
 
-Mt. Aura is Aether and Riptide is Bathos. Aura is Aether revealed through Form;
-Current is Bathos embodied through weight. Aether is weightless Current and
-Current is the heaviest Aether: opposite burden states of one medium, neither
+The following vocabulary is authoritative only for legacy physical material
+mechanics and archive compatibility; it does not define Practitioner Current or
+Aura. Mt. Aura is Aether and Riptide is Bathos. Legacy aura-medium is Aether revealed through Form;
+legacy current-medium is Bathos embodied through weight. Aether is weightless current-medium and
+legacy current-medium is the heaviest Aether: opposite burden states of one medium, neither
 automatically good nor evil. Riptide remains the Flynt–Glaüshouse `Retrieve`
 route; no House owns the summit or the downward pole.
 
@@ -820,8 +848,9 @@ does not silently destroy the Title or another gate's recognition. Other
 Houses and Central Junction retain their domain evidence and operational
 authority.
 
-Diamond is Stonebend's stable sovereign Title; the Hypergiant is its temporary
-active bearer. The Freemason forges the Claim, the Hypergiant bears the Title,
+Hypergiant is Stonebend's sovereign title. Diamond's current role is
+**STATUS: OPEN**; former Diamond sovereign semantics and stable identifiers are
+LEGACY / SUPERSEDED compatibility data. The Freemason forges the Claim, the Hypergiant bears the Title,
 and the Proliteriate shields the Yield. The Proliteriate is a distributed
 network of stable nodes whose temporary witnesses carry bounded, recallable
 mandates. Spartacus remains an archetype, not a fourth sovereign office.
@@ -831,7 +860,7 @@ and duplicate endorsements never count twice. A corrupted representation may
 end, but the Proliteriate network and the people cannot be abolished. Ended
 tenures and representations link to Tombstones.
 
-No Hypergiant claims Diamond without the full stable Claim, independent
+No practitioner accedes as Hypergiant without the full stable Claim, independent
 Freemason examination, Proliteriate Yield hearing, relinquishment, consequence
 descent, Flynt or Basin Proof of Persistence, Lazerhorn climb, eligibility, and
 investiture path. Recommendation and lineage do not appoint a successor; a
@@ -846,12 +875,12 @@ maintenance and renewal are separate; interventions target a scope,
 activation, license, tenure, mandate, or explicit core review.
 
 Restoration preserves the interruption. Every ended active term links to a
-Tombstone. During Diamond vacancy, bounded continuity mandates may preserve
-existing routine or emergency duties but cannot invest Diamond, appoint a
+Tombstone. During Hypergiant vacancy, bounded continuity mandates may preserve
+existing routine or emergency duties but cannot exercise or appoint the
 Hypergiant, or become permanent by continued use.
 
 High Freemason replacement requires an independently examined Claim,
-Proliteriate Yield accountability, and Diamond-boundary recognition when a
+Proliteriate Yield accountability, and Hypergiant-boundary recognition when a
 Hypergiant is active. No candidate may self-certify and the outgoing bearer
 cannot appoint a replacement. Proliteriate witnesses remain temporary while
 the distributed network persists.
@@ -887,7 +916,8 @@ violations, results, prizes, and House Synthesis semantic events, but an
 archive is evidence and continuity—not a new constitutional source.
 
 The Edge of Tomorrow and Glass of a Thousand Hues are coequal existing
-completed Syntheses at the apex of Current and Aura prize lineages. Their
+completed Syntheses at the apex of legacy physical Current/Aura prize lineages.
+This archive classification does not make them Level 1 Practitioner equations. Their
 stable identities survive lawful refinement. Temporary custody is not
 ownership, office, accession, or sovereignty. The Edge and Glass may have
 different custodians, and neither custodian gains permanent control of Central
@@ -926,7 +956,7 @@ custody, nor archive record transfers sovereignty.
 Stonebend always enforces the Laws of Permanence. A final Permanence Seal
 requires Stonebend Identity, Sandmanor Pattern, Glaüshouse Integrity, and Flynt
 Capacity proofs for the same stable subject. The Freemason forges Claim;
-Diamond and its Hypergiant bearer authorize final Title and Seal; the
+The Hypergiant authorizes final Title and Seal; Diamond remains STATUS: OPEN; the
 Proliteriate protects Yield. No other House may independently declare a
 temporary state permanent.
 

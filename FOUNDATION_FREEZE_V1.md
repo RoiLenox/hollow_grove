@@ -9,13 +9,13 @@ foundation migration:
 
 - the universal kernel and constitutional runtime authority boundary;
 - the four House jurisdictions and Central Junction's coordination-only role;
-- one Federation and exactly two continuous witnesses, Roi and Roselina, known
+- one Rampart and exactly two continuous witnesses, Roi and Roselina, known
   in-world as the Twofold Witness;
 - the continuity/embodiment witness seam, form transitions, and operational
   session records (the legacy technical API may still use `Guide` names);
 - typed evidence, advisory, decision, refusal, provenance, and consequence
   boundaries;
-- Federation binding, archive checksums, schema migrations, and replay rules;
+- Rampart binding, archive checksums, schema migrations, and replay rules;
 - the Platinum Path (`path.platinum.v1`), also called the Plath;
 - the Platinum Path Cultural Canon's shared five tests and local definitions;
 - the Rust/Godot protocol's rule that Godot presents records but never decides.
@@ -38,13 +38,13 @@ None of these names or meanings are added to the pure recursion kernel.
 Art work may change sprites, tiles, palettes, animations, sound, layout,
 dialogue presentation, accessibility copy, and other renderer-owned assets. It
 must consume the existing stable IDs and projections rather than inventing
-new authority, identity, House, Federation, or kernel state.
+new authority, identity, House, Rampart, or kernel state.
 
 ## What requires a foundation migration
 
 Any change to a stable ID, archive schema, causal ordering rule, Guide
 identity, House authority, refusal semantics, advisory commitment boundary,
-Federation binding, or protocol ownership requires:
+Rampart binding, or protocol ownership requires:
 
 1. a versioned migration note;
 2. a replay fixture before and after migration;
@@ -87,7 +87,7 @@ regional indexes, party projections, and save fallback are bounded and covered
 by focused stress or recovery tests.
 
 Tross succession already has typed constitutional and gate-order tests. Its
-production Federation archive binding remains deliberately deferred until a
+production Rampart archive binding remains deliberately deferred until a
 first playable succession case exists; creating placeholder gameplay solely to
 close that content dependency would violate this freeze rather than strengthen
 it.

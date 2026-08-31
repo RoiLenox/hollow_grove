@@ -151,11 +151,12 @@ The additive faculty mapping is:
 - Sandmanor / Soul Interior / Minorian / Prefog;
 - Sandmanor / Soul Exterior / Minoan / Prefig.
 
-Presynce feels emergence. Resynce joins relation. Precog foresees consequence.
-Prefog opens possibility. Prefig forms becoming. Faculties remain bounded by
-Frame, Flow, Glow, polarity, evidence, uncertainty, Bond, region, House, and
-recognition. They never replace a Recipe, choose for the runtime, grant proof,
-or execute Synthesis.
+Presynce recognizes present/material/embodied reality in relation to Identity.
+Resynce recognizes Capacity through response, change, pressure, or load.
+Precog recognizes trajectory or condition in relation to Integrity. Prefog
+recognizes Pattern already present but obscured. Prefig recognizes or projects
+Pattern before manifestation. Faculties are orthogonal to Current, Aura,
+Synthesis, and rank.
 
 ### Stonebend
 
@@ -178,12 +179,15 @@ for Title, and custody never becomes ownership by itself.
 
 Stonebend's signature constitutional offense is Illegal Hollowing. Lawful Hollowing requires a named subject, authority, purpose, defined scope, consent when applicable, evidence, qualified operation, custody, continuity determination, restoration or disposition, and Seal.
 
-The first Stonebend foundation is canonically defined in
+The first Stonebend foundation's physical vocabulary is retained as a LEGACY
+material and archive compatibility layer; it does not define universal
+Practitioner Current or Aura. It is recorded in
 `STONEBEND_AURA_WAY_AETHER_HOLLOWING_FOUNDATION_V1.md`. It adds the vertical
 law without changing those authorities. Mt. Aura is Aether and Riptide is
-Bathos. Aether and Current are opposite burden states of one underlying
-medium: Aether is weightless Current; Current is the heaviest Aether. Aura is
-Aether revealed through Form, while Current is Bathos embodied through weight.
+Bathos. Aether and legacy physical Current are opposite burden states of one
+underlying medium: Aether is weightless legacy physical Current; legacy
+physical Current is the heaviest Aether. Legacy physical Aura is Aether
+revealed through Form, while legacy physical Current is Bathos embodied through weight.
 Neither Aether nor Bathos is a moral absolute, and neither landmark is
 Stonebend property.
 
@@ -205,16 +209,18 @@ Sandmanor-facing through Aura Way and Mt. Aura. Central Junction remains a
 district, not a House, and Mt. Aura remains the ideal rather than a gate.
 
 One stable core Title may carry independent Formation Recognition, Public
-Circulation, and Operational Deployment scopes. Diamond is Stonebend's
-continuing sovereign Title; the Hypergiant is its temporary bearer. The
-Freemason forges the Claim, the Hypergiant bears the Title, and the
+Circulation, and Operational Deployment scopes. **Hypergiant is Stonebend's
+sovereign title.** Diamond's current role is **STATUS: OPEN**; older Diamond
+sovereign terminology and stable IDs are LEGACY / SUPERSEDED compatibility
+data. The Freemason forges the Claim, the Hypergiant bears the Title, and the
 Proliteriate shields the Yield.
 
 The Proliteriate is a permanent distributed network whose active voice is a
 temporary, recallable, issue-specific witness. One power may challenge; the
 other two distinct powers must concur to remove. Removal preserves a
-Tombstone. Diamond may be vacant, never passes by automatic inheritance, and
-cannot be invested without the complete Lazerhorn succession path.
+Tombstone. The Hypergiant title may be vacant, never passes by automatic
+inheritance, and cannot be invested without the complete Lazerhorn succession
+path.
 
 The third Stonebend pass is canonically defined in
 `STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md`. A Claim is not
@@ -224,9 +230,9 @@ policy-defined conditions. Maintenance, renewal, limitation, supervision,
 suspension, remediation, restoration, and terminal disposition preserve one
 stable Title identity and durable interruption history.
 
-Diamond remains unborne during vacancy. Narrow recorded continuity mandates
+During Hypergiant vacancy, narrow recorded continuity mandates
 may preserve existing duties or immediate boundaries but cannot become
-Diamond, appoint a Hypergiant, or grow permanent through use. The Forge may be
+Hypergiant, appoint a Hypergiant, or grow permanent through use. The Forge may be
 vacant without losing its prior records; replacement requires independent
 review and produces only one active High Freemason. The Proliteriate network
 has no total office vacancy and gains no permanent speaker or numerical
@@ -250,29 +256,31 @@ Sandmanor measures, compares, models, configures, tests, and improves.
 Its proof must itself survive inspection.
 Failure should expose which assumption broke and what must be redesigned.
 
-Its two equal civic traditions are:
+Its two equal, distinct peoples and traditions are Minorian / Prefog / Hearth
+and Minoan / Prefig / Current Sea. Their locked Form progressions are **Gnome →
+Faun → Minotaur** and **Elf → Satyr → Centaur**. Their social-role progressions
+are **Husbandman → Householder → Hearthkeeper** and **Beach Bum → Party Boy →
+Socialite**. Geomancer and Labyrinthian are separate institutional attendant
+classes; Hecaton and Pegasus are the two sovereign Hands.
 
-- Minorians — interior Gnomes whose Aura Farm contains Aura Fields and Content
-  Farm and whose guardian line is Gnome → Minotaur → Hecaton;
-- Minoans — exterior Elves whose coast runs Free Aura Beach → Southern Coast →
-  Current Break → Minoan County Courthouse → Glaüshouse and whose guardian
-  line is Elf → Centaur → Pegasus.
+The Current Sea is not necessarily literal water and may manifest across land.
 
-Guardian Forms require service proof, Recipe authorization, Glaüshouse
-compatibility, maintained Synthesis, investiture, and renewal. Form and mantle
-remain distinct. Current Break may host Manticorp training, but Flynt retains
+Maintained mature Forms require service proof, Recipe authorization,
+Glaüshouse compatibility, maintained Synthesis, investiture, and renewal. Form,
+role, attendant class, Hand, and mantle remain distinct. Current Break may host Manticorp training, but Flynt retains
 Manticorp command; the Minoan County Courthouse remains Sandmanor law even
 when it transfers someone into Glaüshouse care.
 
-The Sandman is the singular highest constitutional office and maintained
-sovereign Form-and-mantle tradition. The Contest of Improvement pairs one
-lawful Hecaton and one lawful Pegasus. They teach and learn from each other,
+**The Sandman = Demiurge.** Demiurge is the sovereign Synthesizer and apex
+identity, not an ordinary attendant class. The compatible Contest of
+Improvement pairs one lawful Minotaur holding the Hecaton Hand and one lawful
+Centaur holding the Pegasus Hand. They teach and learn from each other,
 preserve baselines, complete five reciprocal trial domains, and receive an
 auditable crowd verdict based on improvement rather than starting rank.
 Challenge review, Recipe authorization, Glaüshouse compatibility, lawful
 convergence, Stonebend Title where required, Flynt recognition, a public
 learning statement, and Seal precede investiture. A tie leaves the office
-unresolved; the losing guardian keeps their Form and mantle unless separately
+unresolved; the losing guardian keeps their mature Form, Hand, and mantle unless separately
 removed. Combat, heredity, popularity, transformation alone, recognition
 alone, and legacy progression never create office. Aegon is the historical
 name for the same sovereign now called the Sandman.
@@ -302,6 +310,12 @@ Its principal constitutional authorities are:
 - Matrons and Marshals — equal Aura-forward and Current-forward branches;
 - The Nightingales — the universal clinical foundation, constitutional
   clinical-care institution, and bedside check.
+
+Biokinesis is Glaüshouse's Current-side expression and Noomancy is its
+Aura-side expression. The Synthesis geometry is Nightingale / Pixie, splitting
+into Marshal / Sprite → Spirit and Matron / Fairy → Nymph, reunifying at
+Persephone / Siren, and culminating at Prima Donna / Muse. `Faerie` remains a
+legacy serialization alias only.
 
 The frozen current presentation is Doctor Ratchet (Prima Donna) and Nurse House
 (one Persephone), while multiple Persephones may serve. Glauspitals operates
@@ -341,14 +355,25 @@ Flynt can recognize hidden, denied, premature, or overlooked value through Contr
 Its constitutional stance is:
 
 - Tross is the sovereign executive.
-- the unique Chimera is First Companion and stands immediately beneath Tross.
-- Manticorp is both the lawful military institution and the distinct maintained Synthesis Form held by the Tross; ordinary personnel are not the Form.
-- Mystery Men is the classified investigative bureau under Manticorp; the Mystery Man and Mr. X are the Tross's underground identities, not separate people.
-- the Gallows is Flynt's underground organized-crime body led by the same Tross under those identities.
-- the Gallows and We Fairy Men form distinct rural and Basin expressions without collapsing their crews or traditions.
+- the unique feminine Chimera is First Companion and counterpart to the Tross.
+- the Tross is the masculine Manticore identity and maintained Form; Manticorp is the distinct body of soldiers he commands, and ordinary soldiers are not the Form.
+- Mystery Men is the separate classified tradition commanded by The Tross; The Marquise is its maritime extension, while the Mystery Man and Mr. X are the Tross's underground identities, not separate people.
+- We Fairy Men is the proper creature-sect leadership body led by the Tross, with Bro White over Gargoyle/Medusa, Beauty over Werewolf/Vampire, and Cinderellaman with his Midnight Crew over Mariner/Mermaid.
+- the Gallows is We Fairy Men acting collectively under the same Tross in Flynt's organized-crime underworld; the contexts remain addressable without becoming unrelated organizations.
 - the Gallowry is the hidden headquarters of the Gallows, not a separate institution.
 
-Gargoyle, Merman, and Werewolf are Flynt's three founding regional peoples. Their unique lower-apex constitutional synthesis is Chimera. Manticorp is the sovereign transfiguration beyond Chimera: Wolf becomes Lion, Bat becomes Eagle, and Snake/Fish becomes Hydra. The complete Manticorp Recipe is divided among the three enduring Basin leaders and their traditions: Bro White, Cinderellaman, and The Beauty. They remain distinct custodians, not one fused being.
+Telekinesis is Flynt's Current-side expression and Nookinesis is its Aura-side
+expression. Warlock → Gargoyle and Lycan → Werewolf remain inherited
+practitioner/Synthesis correspondences; Mariner = Merman is the masculine
+Flynt mer-creature/form, not merely a human sailor or practitioner label. Their
+exact Current/Aura equations remain **STATUS: OPEN**. Gargoyle + Werewolf + Mariner/Merman →
+Chimera → Manticore is locked higher Synthesis. HOLD, DRIVE, ADAPT, Chimera as
+selection, and Manticore as integration remain **STATUS: WORKING**, with exact
+mechanics **STATUS: OPEN**. The older “three founding regional peoples” model
+and Manticore's former unisex treatment are SUPERSEDED, though stable
+identifiers remain available for archives. The additional sex/species pairs
+are Gargoyle/Medusa, Werewolf/Vampire, Mariner/Mermaid, and Manticore/Chimera;
+the pair grammar does not create new Current/Aura equations.
 
 Flynt is not merely an isolated fourth specialization.
 It is the connective black-iris substrate of the broader Hueman civilization.
@@ -396,63 +421,61 @@ Sandmanor sees record and proof.
 Glaüshouse sees life, healing, and integration.
 Flynt is the shared black iris, not a lesser leftover color.
 
-## Current And Aura
+## Practitioner, Current, Aura, And Synthesis
+
+A Practitioner is the whole person. Current and Aura are components of that
+practitioner; neither is a kind of practitioner.
 
 ### Current
 
-Current carries, moves, and expresses pressure.
-It is capability, embodiment, motion, bearing, and the ability to act.
+Current describes how the practitioner functions relationally with other
+people, households, institutions, communities, environments, society, and
+larger collective systems. A Current title may resemble an occupation without
+being reducible to a literal job.
 
 Current asks:
 
-> What can I do?
-
-The V1 balance contract adds that repetition carries memory and wear. Current
-capacity therefore requires circulation, rest, maintenance, and a return path;
-repeated force without learning is a failure pressure rather than automatic
-progression.
-
-Current exists in two active states:
-
-- Regular Current
-- Hollow Current
-
-At the material-foundation level, Current and Aether share one provenance
-lineage. Current is the heavy, embodied state whose weight supports flow,
-storage, memory, repetition, and consequence. Lawful Hollowing may refine a
-recorded Current batch toward Aether without treating Current as evil, waste,
-or an unrelated inventory resource.
+> What is my part within the larger whole?
 
 ### Aura
 
-Aura is understanding, judgment, perception, context, and meaningful sight.
+Aura describes what the practitioner cultivates internally: knowledge,
+ability, magic, perception, cognition, discipline, and internal capacity.
 
-Aura asks:
+### Synthesis
 
-> What do I understand, and how should I use it?
+Level 1 Practitioner Synthesis follows `CURRENT + AURA → SYNTHESIS`. Level 2
+Higher/Composite Synthesis combines already-manifested Syntheses and/or apex
+traditions under House- or context-specific rules. `Troglodyte + Muse → Seer`
+remains locked Level 2 canon.
 
-The V1 balance contract adds that revelation creates exposure and pressure.
-Visibility is therefore not identical to consent, safety, or truth; a lawful
-Aura reading preserves context, shielding, and the subject's return path.
+### Legacy physical compatibility mechanics
 
-Relativity is the shared bend between Current and Aura. Every bend retains an
+The V1 physical meanings below are **LEGACY / SUPERSEDED as universal lore**.
+Their serialized quantities, roots, recipes, and replay behavior remain stable;
+they are not silently reinterpreted as the semantic ontology.
+
+Legacy physical Current carries blood-associated flow, pressure, repetition,
+memory, and wear. Legacy physical Aura carries air-, pressure-, light-, and
+observation-associated mechanics.
+
+In the legacy physical model, Relativity is the shared bend between its
+current-medium and aura-medium. Every bend retains an
 anchor and identifies its frame, pressure, distortion, and return. Synthesis
 changes an arrangement but leaves remainder and obligation; Hollow refinement
 preserves provenance of what was separated. See
 `HOLLOW_GROVE_METAPHYSICAL_BALANCE_V1_DRAFT.md`.
 
-Aura exists in two active states:
+Legacy physical Current has Regular and Hollow states. Legacy physical Aura
+has Reflective and Holographic states.
 
-- Reflective Aura
-- Holographic Aura
-
-At the material-foundation level, Aura is Aether revealed through Form. Aether
-is not automatically Aura. Geography forms a stone's composition and lattice;
+At the material-foundation level, legacy physical Aura is Aether revealed
+through Form. Aether is not automatically legacy physical Aura. Geography forms a stone's composition and lattice;
 the preserved lattice refracts one universal Aether into a particular visible,
-resonant, thermal, biological, patterned, or signal-bearing Aura.
+resonant, thermal, biological, patterned, or signal-bearing legacy physical Aura.
 
-Stonebend and Sandmanor lean Reflective Aura.
-Glaüshouse and Flynt lean Holographic Aura.
+In that legacy expression layer, Stonebend and Sandmanor lean Reflective Aura,
+while Glaüshouse and Flynt lean Holographic Aura.
 
 ## Hollow Grove OS Translation
 
@@ -505,9 +528,11 @@ concepts are not market offices, settlement agencies, or financial feeds.
 The full public-economy law is
 `CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md`.
 
-## Material Economy
+## Legacy Physical Material Economy
 
-The active resource grid is:
+The following V1 resource grid remains active as a material compatibility
+mechanic. These are not Practitioner Current/Aura equations and do not produce
+Level 1 Synthesis:
 
 - Stonebend: Hollow Current + Reflective Aura -> Mercury Mirror
 - Sandmanor: Regular Current + Reflective Aura -> Prism Sand

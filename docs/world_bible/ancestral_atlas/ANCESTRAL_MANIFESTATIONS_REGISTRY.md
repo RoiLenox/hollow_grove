@@ -27,7 +27,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A documentation service inside existing Stonebend public-record and works authority, not a new office or court.<br>
 **Gameplay potential:** Read-only building provenance, inspection context, repair history, archival research, and future restoration-quest hooks.<br>
 **Implementation notes:** Reference `manifestation.stonebend.foundation_archive`; display source Gifts and current constitutional owner separately; require later runtime ownership before any state mutation.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** civic archivist<br>
 **Possible Hueman data hook:** artifact provenance, building inspection, and maintenance-history references<br>
 **Confidence:** High for recordkeeping and urban institutions; medium for any single archive form across the full Point range.<br>
@@ -49,7 +49,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A documentation and coordination service within existing Stonebend public-record and works authority, not a governorate or new ministry.<br>
 **Gameplay potential:** Read-only jurisdiction lookup, public-work provenance, maintenance dependencies, translated record comparison, and future repair or inspection context.<br>
 **Implementation notes:** Keep current constitutional owner, historical source, and translation version as separate fields; never infer authority from geographic scale or an ancestral tag.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** regional records steward<br>
 **Possible Hueman data hook:** jurisdiction lookup, works provenance, service handoff, and maintenance context<br>
 **Confidence:** High for layered administration, bilingual scribal practice, and reporting; medium for the uniformity of control across all claimed Akkadian territory.<br>
@@ -71,7 +71,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A record service inside existing Stonebend works, standards, and Title authority; it does not impose labor, assess tax, or create Claim, Title, or Yield.<br>
 **Gameplay potential:** Read-only maintenance schedules, delivery provenance, work-history inspection, responsibility handoffs, exception review, and future bounded restoration context.<br>
 **Implementation notes:** Keep ancient source type, archive, date formula, and coercion risk visible; separate historical accounting evidence from the modern office that owns a task.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** civic obligation registrar<br>
 **Possible Hueman data hook:** maintenance schedule, delivery provenance, responsibility handoff, and exception review<br>
 **Confidence:** High for extensive administrative, dated, legal, and labor records; medium for treating the debated bala system as one uniform provincial mechanism.<br>
@@ -93,7 +93,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A library, archive, and standards teaching program within existing Stonebend record, education, and Title boundaries; it cannot decide a case, certify a right, or promulgate law.<br>
 **Gameplay potential:** Read-only case comparison, tablet provenance, unit and assumption inspection, curriculum references, translation history, error checking, and future bounded measurement or archive tasks.<br>
 **Implementation notes:** Label the Hammurabi monument a royal law collection or jurisprudential monument rather than a modern code; show ancient social rank and coercion; attach provenience and genre to every contract and problem tablet.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** case-record curator<br>
 **Possible Hueman data hook:** source comparison, measurement curriculum, and provenance display<br>
 **Confidence:** High for the law stele, contracts, sealed records, and mathematical problem tradition; medium for reconstructing any one standardized school curriculum across the full Old Babylonian world.<br>
@@ -115,7 +115,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A public-history, archive-continuity, and institutional-handoff service within existing Presynce, permanence, record, maintenance, and Claim / Title / Yield boundaries; it cannot establish ancestry, land right, doctrine, or succession.<br>
 **Gameplay potential:** Read-only rupture chronology, community and document custody, institution-loss comparison, legal-context changes, curriculum, and future bounded archive-recovery or continuity references.<br>
 **Implementation notes:** Represent 609, 605, 597, and 587/586 separately; distinguish kingdom, province, homeland, Babylonia, and Egypt; identify deportation, migration, assigned land service, and return by source; attach literary witnesses to proposed layers and dates; never imply the whole population left.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** continuity provenance registrar<br>
 **Possible Hueman data hook:** rupture-state chronology, community and record custody, institutional handoff, and curriculum references<br>
 **Confidence:** High for the staged Babylonian interventions, 597 deportation, Jerusalem's destruction, Jehoiachin ration records, and continued Judahite communities; medium to contested for 587 versus 586, deportation scale, local administrative sequence, individual literary layers, and the exact geography of Al-Yahudu records.<br>
@@ -137,7 +137,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A public-route, archive, works, and jurisdiction-reference service within existing Law of Identity, Presynce, permanence, maintenance, and Claim / Title / Yield boundaries; it cannot grant movement, create an office, or override local authority.<br>
 **Gameplay potential:** Read-only route provenance, jurisdiction and language lookup, relay and supply custody, maintenance-state comparison, archive curriculum, and future bounded travel or restoration references.<br>
 **Implementation notes:** Separate royal claim, regional office, local institution, language, legal forum, archive catchment, route segment, authorization, ration, labor status, and maintenance owner; do not treat `satrapy`, `Royal Road`, or trilingual inscription as uniform empire-wide fields; keep the 336–330 continuation visible.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** relay-jurisdiction registrar<br>
 **Possible Hueman data hook:** route provenance, jurisdiction and language lookup, supply custody, maintenance handoff, and curriculum references<br>
 **Confidence:** High for Achaemenid rule through 336, regional administration, major roads, Persepolis provisioning and travel records, and multilingual archives; medium for consistent empire-wide office hierarchy and relay procedure; contested where later Greek descriptions are generalized beyond their evidence.<br>
@@ -159,7 +159,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A public-history, jurisdiction, archive-continuity, and institutional-handoff reference inside existing Law of Identity, Presynce, permanence, maintenance, and Claim / Title / Yield boundaries; it cannot transfer authority or decide a present claim.<br>
 **Gameplay potential:** Read-only terminal chronology, office and service handoff, archive custody, surviving-community comparison, source-confidence display, curriculum, and future bounded continuity or restoration references.<br>
 **Implementation notes:** Represent 336, 334, 333, 331, and 330 separately; distinguish battle, capital occupation, king's death, dynastic end, regional resistance, office reassignment, institutional continuity, and later successor allocation; preserve Greek-source imbalance and local evidence; never mark conquest as a clean migration or lawful transfer.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** sovereignty-transition registrar<br>
 **Possible Hueman data hook:** terminal-state chronology, authority handoff, service continuity, record custody, and curriculum references<br>
 **Confidence:** High for Darius III's 336–330 reign, principal campaign sequence, dynastic end, and substantial reuse of regional administration; medium for the exact continuity of individual offices and personnel; lower where later Greek narratives are the only detailed witness.<br>
@@ -181,7 +181,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A public-history, archive, and works-provenance service within existing Stonebend Presynce, record, maintenance, and Claim / Title / Yield boundaries; it cannot establish ancestry, territory, doctrine, or legal succession.<br>
 **Gameplay potential:** Read-only source concordance, ostracon and object provenance, phase attribution, infrastructure maintenance history, terminal-event comparison, curriculum, and future bounded archival investigation references.<br>
 **Implementation notes:** Label `Israel` here as the northern kingdom; keep Judah separate; attach date and speaker to every inscription; distinguish commodity delivery from a reconstructed tax system; and show Shalmaneser V, Sargon II, biblical, chronicle, and archaeological terminal evidence without forcing one unqualified account.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** state-record concordance curator<br>
 **Possible Hueman data hook:** source concordance, phase attribution, infrastructure provenance, terminal-state audit, and curriculum references<br>
 **Confidence:** High for Samaria as the ninth-century capital, the independent inscriptional attestations, the early eighth-century ostraca, 732 territorial annexation, and the kingdom's terminal conquest; medium to contested for individual building attributions, exact fiscal reconstruction, and the 722/720 sequence.<br>
@@ -203,7 +203,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A public-works, archive, and professional-education program within existing Stonebend Freemason, Proliteriate, standards, record, and Title boundaries; it cannot commission a work or confer office.<br>
 **Gameplay potential:** Read-only phase provenance, draft comparison, correction history, crew and supply context, maintenance records, curriculum, and future bounded inspection or restoration references.<br>
 **Implementation notes:** Separate original commission, work community, ancient authority, later alteration, modern interpretation, and current constitutional custodian; expose erased or displaced attribution and coercive labor context.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** works record instructor<br>
 **Possible Hueman data hook:** phase provenance, draft comparison, maintenance history, and curriculum references<br>
 **Confidence:** High for successive monumental additions and dense Deir el-Medina records; high for sketches and corrections, but medium for generalizing one exceptional royal work community to all New Kingdom building.<br>
@@ -225,7 +225,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A public-history and infrastructure-provenance service within existing Stonebend archive, planning, Presynce, and Claim / Title / Yield boundaries; it cannot determine ancestry, grant land, or certify a historical narrative.<br>
 **Gameplay potential:** Read-only settlement-phase comparison, source-type filtering, water and storage provenance, competing chronology display, curriculum, and future bounded archaeological or maintenance references.<br>
 **Implementation notes:** Never merge Merneptah's external name, an excavated settlement, a disputed early inscription, a later biblical narrative, and a modern map into one proof layer; Samaria and secure ninth-century royal evidence remain in the next Point.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** foundation evidence registrar<br>
 **Possible Hueman data hook:** settlement-phase comparison, source-status display, infrastructure provenance, and curriculum references<br>
 **Confidence:** High for the Merneptah reference and broad Iron I highland settlement increase; medium for household-pattern interpretation; low to contested for the scale, unity, and institutions of tenth-century monarchy.<br>
@@ -247,7 +247,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A public archive, standards, monetary-provenance, and jurisdiction-history service inside existing Law of Identity, Presynce, permanence, and Claim / Title / Yield boundaries; it cannot validate currency, transfer sovereignty, or decide a present claim.<br>
 **Gameplay potential:** Read-only phase and office comparison, civic and league jurisdiction map, coin and mint provenance, garrison and district handoff, source-confidence display, curriculum, and future bounded archive references.<br>
 **Implementation notes:** Do not start durable Antigonid rule in 281 or extend kingship past 168; store ruler, issuing authority, mint, type, date range, find context, city, league, garrison, district, conflict, supersession, and uncertainty separately; distinguish currency circulation from territory and institutional survival from sovereign continuity.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** authority-and-mint provenance registrar<br>
 **Possible Hueman data hook:** phase chronology, jurisdiction comparison, mint provenance, institutional handoff, and curriculum references<br>
 **Confidence:** High for Antigonus II's 277/276–239 reign, dynastic sequence, Pydna and abolition in 168; high for major coin series and sites; medium for specific crown-city-league jurisdiction and mint attribution; contested where later narratives or hoards carry most of the reconstruction.<br>
@@ -269,7 +269,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A public-history, archive, and infrastructure-provenance service within existing Stonebend Presynce, maintenance, and Claim / Title / Yield boundaries; it cannot establish doctrine, ancestry, land right, or legal succession.<br>
 **Gameplay potential:** Read-only construction-phase comparison, object and stamp provenance, adversarial campaign concordance, damage history, text-layer display, curriculum, and future bounded archive or maintenance references.<br>
 **Implementation notes:** Separate Judah from the northern kingdom; attach date, site, speaker, genre, and custody to each witness; distinguish stamped storage from a known complete tax system; treat Hezekian and Josianic attributions as claims with confidence levels.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** works-and-witness registrar<br>
 **Possible Hueman data hook:** object and construction provenance, source-layer comparison, siege-impact history, and curriculum references<br>
 **Confidence:** High for the 701 campaign, Lachish capture, Jerusalem's survival, stamped administrative material, major urban growth, and the inscriptions; medium to contested for the purpose of the stamp system, individual public-works attribution, reform scope, and literary layers.<br>
@@ -291,7 +291,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A public archive and standards service under existing Law of Identity and Claim / Title / Yield boundaries; it cannot grant citizenship, settle sovereignty, or authorize works.<br>
 **Gameplay potential:** Read-only treaty and infrastructure provenance, status comparison, route and colony records, source-confidence display, curriculum, and future bounded archive references.<br>
 **Implementation notes:** Separate allied, colonial, municipal, and provincial status; record builder, labor, route, jurisdiction, finance, maintenance, command, and later alteration; never infer equality from incorporation.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provincial infrastructure registrar<br>
 **Possible Hueman data hook:** treaty status, road and colony provenance, citizenship metadata, fiscal and command accountability<br>
 **Confidence:** High for Roman expansion, treaties, roads, colonies, and major wars; medium for local administrative practice and the social experience of incorporation.<br>
@@ -313,7 +313,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only archive interface under existing Stonebend constitutional and public-record authority.<br>
 **Gameplay potential:** Curriculum, mandate provenance, land and citizenship records, civil-war chronology, and future institutional-restoration references.<br>
 **Implementation notes:** Separate republican office from emergency power and imperial settlement; retain source confidence, excluded voices, and civilian cost.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** constitutional transition registrar<br>
 **Possible Hueman data hook:** office and mandate provenance, status history, land and obligation records, command accountability, and settlement chronology<br>
 **Confidence:** High for the major political sequence; medium for institutional practice, provincial variation, and social impact.<br>
@@ -335,7 +335,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only public-works and standards interface under existing Stonebend authority.<br>
 **Gameplay potential:** Structure provenance, public works curriculum, maintenance history, and future inspection references.<br>
 **Implementation notes:** Record builder, material, labor, status, jurisdiction, local institution, maintenance, and civilian dependency.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** imperial works provenance curator<br>
 **Possible Hueman data hook:** structure, builder, material, labor, jurisdiction, maintenance, frontier supply, and public-use metadata<br>
 **Confidence:** High for infrastructure and administrative evidence; medium for province-wide uniformity.<br>
@@ -357,7 +357,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A public-record, works, standards, and continuity-teaching interface under Law of Identity and bounded Claim / Title / Yield.<br>
 **Gameplay potential:** Read-only citizenship and jurisdiction history, municipal-service continuity, structure repair provenance, office handoff, conflicting-order comparison, and curriculum references.<br>
 **Implementation notes:** Separate 180–235, 235–284, and 284–313; distinguish imperial decree from local enforcement; record status, labor, requisition, service loss, repair, appeal, and later alteration.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** civic continuity registrar<br>
 **Possible Hueman data hook:** legal-status history, municipal service, works provenance, emergency alteration, office handoff, coercion flags, and source-confidence references<br>
 **Confidence:** High for major imperial phases, citizenship change, regional breakaways, reunification, and Tetrarchic structure; variable for local enforcement and municipal experience.<br>
@@ -379,7 +379,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A public-record, works, standards, and continuity interface under Law of Identity and bounded Claim / Title / Yield.<br>
 **Gameplay potential:** Read-only office succession, service continuity, archive custody, labor context, terminal-event comparison, and curriculum references.<br>
 **Implementation notes:** Keep 313–324, 324–395, and fifth-century western/eastern phases distinct; separate law, enforcement, city practice, and later historical framing.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** late-imperial transition registrar<br>
 **Possible Hueman data hook:** office succession, service continuity, labor status, archive custody, and terminal-event comparison<br>
 **Confidence:** High for major imperial transitions and institutional layers; variable for local service and fifth-century western continuity.<br>
@@ -401,7 +401,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A public-record, works, standards, and continuity interface under Law of Identity and bounded Claim / Title / Yield.<br>
 **Gameplay potential:** Read-only law and office provenance, treaty comparison, structure maintenance, regional custody, and civilian-impact curriculum.<br>
 **Implementation notes:** Keep 476, Anastasius, Justinian, plague, Lombard settlement, and 602–610 crisis distinct; separate Roman claim from local outcome.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** Roman-continuity registrar<br>
 **Possible Hueman data hook:** law and office provenance, treaty comparison, fortification maintenance, civilian-cost flags, and regional custody<br>
 **Confidence:** High for major reigns, legal compilation, urban works, and eastern continuity; variable for provincial experience and fifth-century restoration claims.<br>
@@ -423,7 +423,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A public-record, works, standards, and continuity interface under Law of Identity and bounded Claim / Title / Yield.<br>
 **Gameplay potential:** Read-only jurisdiction change, service continuity, treaty provenance, displacement context, archive custody, and curriculum references.<br>
 **Implementation notes:** Keep 610–628 Sasanian-Byzantine war, 634–642 conquests, later provincial changes, and 717–750 policy distinct; separate decree, enforcement, and local outcome.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** continuity-pressure registrar<br>
 **Possible Hueman data hook:** jurisdiction change, service interruption, treaty provenance, displacement, and regional handoff<br>
 **Confidence:** High for major war and conquest phases; variable for local administrative and social experience.<br>
@@ -445,7 +445,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A public-record, education, works, and archive program under existing Stonebend authority.<br>
 **Gameplay potential:** Read-only office and law provenance, manuscript custody, school network, correction history, and curriculum references.<br>
 **Implementation notes:** Separate Pippin, Charlemagne, Louis, 800 coronation, local institutions, and post-843 regional divisions.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** reform-record instructor<br>
 **Possible Hueman data hook:** office and capitulary provenance, manuscript custody, school network, local law, and revision history<br>
 **Confidence:** High for capitularies, manuscript work, schools, and major reigns; variable for administrative uniformity and non-elite reach.<br>
@@ -467,7 +467,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A public-record, works, education, and standards program within existing Stonebend authority.<br>
 **Gameplay potential:** Read-only office provenance, legal forum, guild and craft custody, land and service scope, and local-reception references.<br>
 **Implementation notes:** Separate Henry I, Otto I, coronation, later Ottonian rulers, bishoprics, cities, and local legal practice.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** jurisdiction-office curator<br>
 **Possible Hueman data hook:** office and jurisdiction provenance, legal forum, guild and craft custody, land and service scope<br>
 **Confidence:** High for major rulers, diplomas, layered office, and ecclesiastical institutions; variable for urban and guild generalization.<br>
@@ -489,7 +489,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A public-record, works, education, and standards program within existing Stonebend authority.<br>
 **Gameplay potential:** Read-only office and legal provenance, territory, church and city scope, guild, dispute, settlement, and revision references.<br>
 **Implementation notes:** Separate Henry IV, Gregory VII, Concordat of Worms, Frederick I, princely layers, communes, and local reception.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** reform-jurisdiction curator<br>
 **Possible Hueman data hook:** office and legal provenance, territory, church and city scope, guild, dispute, settlement, and revision<br>
 **Confidence:** High for reform chronology and layered offices; variable for territorial uniformity and guild generalization.<br>
@@ -511,7 +511,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only archive, works, education, and standards interface under existing Stonebend authority.<br>
 **Gameplay potential:** Office provenance, legal forum comparison, guild custody, service scope, and curriculum references.<br>
 **Implementation notes:** Keep emperor, prince, bishop, city, and local court distinct across 1204–1279.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** jurisdiction registrar<br>
 **Possible Hueman data hook:** office, forum, craft, dispute, settlement, and revision references<br>
 **Confidence:** High for layered institutions; variable for local reach and non-elite experience.<br>
@@ -533,7 +533,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only archive, works, education, and standards interface under existing Stonebend authority.<br>
 **Gameplay potential:** Office provenance, legal forum comparison, guild custody, service scope, and curriculum references.<br>
 **Implementation notes:** Keep emperor, prince, bishop, city, and local court distinct across 1279–1368.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** jurisdiction registrar<br>
 **Possible Hueman data hook:** office, forum, craft, dispute, settlement, and revision references<br>
 **Confidence:** High for layered institutions; variable for local reach and non-elite experience.<br>
@@ -555,7 +555,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only archive, works, education, and standards interface under existing Stonebend authority.<br>
 **Gameplay potential:** Election provenance, office scope, legal-forum comparison, guild custody, service history, and curriculum references.<br>
 **Implementation notes:** Keep king, emperor, elector, prince, bishop, city, council, guild, Hussite community, and local court distinct across 1368–1453.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** electoral-civic provenance registrar<br>
 **Possible Hueman data hook:** election, office, forum, city, guild, council, conflict, and revision references<br>
 **Confidence:** High for electoral and major institutional chronology; variable for local reach, non-elite experience, and uneven records.<br>
@@ -577,7 +577,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -599,7 +599,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -621,7 +621,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -643,7 +643,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -665,7 +665,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -687,7 +687,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -709,7 +709,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -731,7 +731,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -753,7 +753,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -775,7 +775,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -797,7 +797,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -819,7 +819,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
@@ -841,7 +841,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
@@ -863,7 +863,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
@@ -885,7 +885,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
@@ -907,7 +907,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Stonebend authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield; see [Stonebend canon links](houses/STONEBEND_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
@@ -2736,10 +2736,10 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Source Gifts:** [`gift.flynt.elam.highland_lowland_exchange_logistics`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.elam.highland_lowland_exchange_logistics), [`gift.flynt.elam.tablet_and_seal_accounting`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.elam.tablet_and_seal_accounting), [`gift.flynt.elam.distributed_craft_and_storage_coordination`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.elam.distributed_craft_and_storage_coordination)<br>
 **Modern House interpretation:** Flynt receives logistics, custody, adaptive production, and tested Capacity; it does not receive an invented Proto-Elamite military tradition.<br>
 **Physical appearance:** A modern dark-blue and Flynt-material workshop with modular bays, visible load paths, sealable stores, route boards, repair scars, and audited handoff stations; 'foundry' names a Hollow Grove fabrication hub, not a replica ancient smelter.<br>
-**Institutional role:** A technical support facility under existing Flynt command, Warden, route, and safety authority, never an independent arsenal or government.<br>
+**Institutional role:** A technical support facility under existing Flynt command, route, and safety authority, never an independent arsenal or government.<br>
 **Gameplay potential:** Equipment provenance, stores checks, route handoffs, repair history, pressure-test context, and future bounded maintenance tasks.<br>
 **Implementation notes:** Keep the Proto-Elamite script undeciphered; use abstract custody marks rather than fabricated translations; separate Law of Capacity from recognition ceremonies.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** field systems maintainer<br>
 **Possible Hueman data hook:** repair provenance, logistics handoffs, equipment history, and pressure-test references<br>
 **Confidence:** Medium for the Atlas label and political synthesis; high for administrative accounting, storage, and cross-zone exchange.<br>
@@ -2758,10 +2758,10 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Source Gifts:** [`gift.flynt.awan.coalition_mobilization_across_western_iran`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.awan.coalition_mobilization_across_western_iran), [`gift.flynt.awan.treaty_protocol_across_language_systems`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.awan.treaty_protocol_across_language_systems), [`gift.flynt.awan.frontier_command_under_contested_sovereignty`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.awan.frontier_command_under_contested_sovereignty)<br>
 **Modern House interpretation:** Flynt receives the pressure-tested need for coalition logistics, translated protocol, and bounded command; it does not receive Akkadian imperial claims or an invented Awan tactical system.<br>
 **Physical appearance:** A modern dark-blue and Flynt-material dispatch station with redundant route boards, parallel-language briefs, sealable stores, visible command scopes, maintenance bays, and fallback markers; no speculative Awan architecture or pseudo-Elamite writing.<br>
-**Institutional role:** A route-support and handoff facility under existing Tross, Warden, Resynce, safety, and constitutional route authority.<br>
+**Institutional role:** A route-support and handoff facility under existing Tross, Resynce, safety, and constitutional route authority.<br>
 **Gameplay potential:** Read-only handoff provenance, translated route brief, stores check, authority boundary, equipment history, and future pressure-test or evacuation context.<br>
 **Implementation notes:** Label adversarial Akkadian claims as such; never display a guessed location for Awan as fact; distinguish the Law of Capacity from treaty, recognition, and ceremonial themes.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** accord logistics officer<br>
 **Possible Hueman data hook:** handoff provenance, authority display, translated route brief, and pressure-test context<br>
 **Confidence:** Medium for treaty and coalition interpretation; low for Awan's exact geography and internal institutions; high for the need to expose those uncertainties.<br>
@@ -2780,10 +2780,10 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Source Gifts:** [`gift.flynt.simaski.coalition_command_during_ur_iii_collapse`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.simaski.coalition_command_during_ur_iii_collapse), [`gift.flynt.simaski.susa_plateau_political_handoffs`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.simaski.susa_plateau_political_handoffs), [`gift.flynt.simaski.dynastic_continuity_across_overlapping_successor_rule`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.simaski.dynastic_continuity_across_overlapping_successor_rule)<br>
 **Modern House interpretation:** Flynt receives a source-critical continuity exercise, not a conquest tradition. Law of Capacity and existing command authority constrain every modern handoff, while adversarial evidence and uncertain geography remain visible.<br>
 **Physical appearance:** A modern Flynt operations station in the universal dark-blue foundation with redundant route tables, removable command bands, sealed stores, outage maps, civilian transfer lanes, and explicit unknown zones; no invented Šimaškian fortress, pseudo-Elamite script, or trophy display.<br>
-**Institutional role:** A training and after-action surface within existing Tross, Warden, Resynce, route, and safety authority; it cannot appoint a successor or confer command.<br>
+**Institutional role:** A training and after-action surface within existing Tross, Resynce, route, and safety authority; it cannot appoint a successor or confer command.<br>
 **Gameplay potential:** Read-only failure-state simulation, custody and route handoffs, authority-boundary display, evidence comparison, and future evacuation or continuity-training context.<br>
 **Implementation notes:** Never render the disputed location of Šimaški as a settled map; distinguish contemporary Ur III records, later Susian inscriptions, the Old Babylonian king list, and literary memory.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** continuity operations officer<br>
 **Possible Hueman data hook:** failure-state simulation, route custody, command transition, and after-action provenance<br>
 **Confidence:** Medium for Kindattu's connection to the fall of Ur and later rule at Susa; low for exact Šimaškian geography, institutions, and succession; high for exposing those limits.<br>
@@ -2802,10 +2802,10 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Source Gifts:** [`gift.flynt.old_assyria.caravan_cost_and_cargo_accounting`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.old_assyria.caravan_cost_and_cargo_accounting), [`gift.flynt.old_assyria.family_firm_correspondence_across_long_routes`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.old_assyria.family_firm_correspondence_across_long_routes), [`gift.flynt.old_assyria.sealed_loans_partnerships_and_dispute_records`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.old_assyria.sealed_loans_partnerships_and_dispute_records)<br>
 **Modern House interpretation:** Flynt receives operational correspondence, risk accounting, sealed custody, route adaptation, and explicit handoffs under pressure. It does not receive colonial rule, merchant sovereignty, family command, or Capacity merely because an account exists.<br>
 **Physical appearance:** A modern dark-blue Flynt relay system with modular depots, cargo and maintenance bays, sender-recipient boards, local-jurisdiction bands, sealable evidence lockers, redundant message routes, delay markers, and repair history; no caravan cosplay, faux cuneiform, or replica Kanesh quarter.<br>
-**Institutional role:** A logistics and communications support layer within existing Tross, Resynce, Warden, route, safety, and command authority; it cannot extend jurisdiction or settle a dispute.<br>
+**Institutional role:** A logistics and communications support layer within existing Tross, Resynce, route, safety, and command authority; it cannot extend jurisdiction or settle a dispute.<br>
 **Gameplay potential:** Read-only route planning, load and cost provenance, delayed-message context, equipment custody, contract status, jurisdiction handoff, and future bounded logistics simulations.<br>
 **Implementation notes:** Use 'trading settlement,' 'merchant community,' or the ancient term kārum with explanation rather than treating 'colony' as modern territorial rule; keep Level II, Level Ib, document date, and archive household attached.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** relay dispatcher<br>
 **Possible Hueman data hook:** logistics routing, custody history, and evidence-aware handoff provenance<br>
 **Confidence:** High for private archives, caravan costs, loans, letters, seals, and route trade; medium for the complete shape of the network; low for the evidence-poor final portion of the Point.<br>
@@ -2824,10 +2824,10 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Source Gifts:** [`gift.flynt.middle_assyria.eponym_dated_administrative_records`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.middle_assyria.eponym_dated_administrative_records), [`gift.flynt.middle_assyria.provincial_supply_and_personnel_accounting`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.middle_assyria.provincial_supply_and_personnel_accounting), [`gift.flynt.middle_assyria.fortified_route_and_garrison_logistics`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.middle_assyria.fortified_route_and_garrison_logistics)<br>
 **Modern House interpretation:** Flynt receives dated operational provenance, resupply discipline, redundancy, maintenance, and after-action scrutiny. It does not receive conquest, deportation, forced labor, punitive law, massacre rhetoric, or Capacity merely because a command system functioned.<br>
 **Physical appearance:** A non-triumphal modern Flynt operations setting with universal dark-blue foundations, redundant route and supply boards, dated order chains, visible command scopes, civilian lanes, refusal stations, sealed evidence custody, repair bays, and failure-state overlays; no Assyrian palace relief, trophy display, or imperial insignia.<br>
-**Institutional role:** A training, logistics, and after-action program within existing Tross, Warden, Resynce, route, safety, command, and Glaüshouse care-handoff boundaries; it cannot issue command or authorize force.<br>
+**Institutional role:** A training, logistics, and after-action program within existing Tross, Resynce, route, safety, command, and Glaüshouse care-handoff boundaries; it cannot issue command or authorize force.<br>
 **Gameplay potential:** Read-only dated-order review, route and supply inspection, personnel-status context, custody history, failure analysis, civilian-protection checks, and future bounded simulation references.<br>
 **Implementation notes:** Mark royal claims as adversarial; expose deportee, dependent, and coerced-labor categories; distinguish recorded order from valid command; require current authority and refusal paths in any future implementation.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** operations provenance officer<br>
 **Possible Hueman data hook:** dated-order review, supply and route inspection, failure analysis, and bounded simulation references<br>
 **Confidence:** High for the expansion chronology, dated records, provincial accounting, fortified centers, and coercive population management; medium for reconstructing one uniform logistics system across all provinces.<br>
@@ -2846,10 +2846,10 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Source Gifts:** [`gift.flynt.seleucid.babylon_centered_imperial_reassembly_logistics`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.seleucid.babylon_centered_imperial_reassembly_logistics), [`gift.flynt.seleucid.multi_region_route_and_supply_coordination`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.seleucid.multi_region_route_and_supply_coordination), [`gift.flynt.seleucid.distributed_command_with_phase_and_coercion_audit`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.seleucid.distributed_command_with_phase_and_coercion_audit)<br>
 **Modern House interpretation:** Flynt receives verified-node reassembly, multi-region route coordination, phase-attributed distributed command, and coercion audit. It does not receive conquest, conscription, military settlement, plunder, elephant warfare, dynastic kingship, territorial scale, or survival in war as Law of Capacity.<br>
 **Physical appearance:** A non-triumphal dark-blue Flynt operations lab with 321/315/312/305/301/281 phase rails, node and route-health panes, river and overland alternatives, supply custody, local-authority fields, command-scope gates, recruitment-status and civilian-dependency warnings, maintenance limits, and stop conditions; no Seleucia or Antioch replica, elephant spectacle, royal coin enlargement, trophy map, or Hellenistic armor décor.<br>
-**Institutional role:** A logistics, route, planning, maintenance, and after-action teaching interface inside existing Law of Capacity, Resynce, Tross, Wardens, Mystery Men, refusal, safety, and Glaüshouse care-handoff boundaries; it cannot authorize force, settlement, requisition, or command.<br>
+**Institutional role:** A logistics, route, planning, maintenance, and after-action teaching interface inside existing Law of Capacity, Resynce, Tross, Mystery Men, refusal, safety, and Glaüshouse care-handoff boundaries; it cannot authorize force, settlement, requisition, or command.<br>
 **Gameplay potential:** Read-only phase and route-state comparison, node verification, supply and command dependencies, institutional continuity, recruitment and coercion audit, civilian-risk flags, curriculum, and future bounded systems simulation.<br>
 **Implementation notes:** Do not make 321 continuous with 312; distinguish claimed territory, occupied node, functioning route, local institution, settlement, tax, trade, requisition, recruitment, and command; attach mature Seleucid practices only when dated; record the immediate instability after Seleucus's 281 victory and death.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** distributed-route capacity auditor<br>
 **Possible Hueman data hook:** route-state comparison, supply and command dependencies, institutional continuity, coercion audit, and bounded simulation references<br>
 **Confidence:** High for the 321/315/312/305/301/281 sequence and Babylonia's central role; medium for broad route and institutional continuity; lower for recruitment, settlement obligation, office hierarchy, and consistent control across the early realm.<br>
@@ -2868,10 +2868,10 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Source Gifts:** [`gift.flynt.assyria.eponym_chronicle_synchronization`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.assyria.eponym_chronicle_synchronization), [`gift.flynt.assyria.distributed_provincial_and_correspondence_records`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.assyria.distributed_provincial_and_correspondence_records), [`gift.flynt.assyria.system_wide_failure_and_coercion_audit`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.assyria.system_wide_failure_and_coercion_audit)<br>
 **Modern House interpretation:** Flynt receives chronology synchronization, distributed record comparison, redundancy and succession review, communication audit, and explicit failure analysis. It does not receive conquest, siege, forced labor, deportation, demographic engineering, imperial scale, or recorded success as Capacity.<br>
 **Physical appearance:** A non-triumphal dark-blue Flynt systems lab with yearly event rails, central-claim and field-report panes, message-delay paths, province and resource states, succession breaks, environmental-event markers, civilian and displacement ledgers, refusal gates, and stopping-condition overlays; no palace reliefs, winged guardians, siege spectacle, imperial insignia, or trophy display.<br>
-**Institutional role:** A logistics, communications, maintenance, and after-action teaching interface inside existing Tross, Warden, Resynce, command, refusal, safety, and Glaüshouse care-handoff boundaries; it cannot issue command, authorize force, or declare Capacity.<br>
+**Institutional role:** A logistics, communications, maintenance, and after-action teaching interface inside existing Tross, Resynce, command, refusal, safety, and Glaüshouse care-handoff boundaries; it cannot issue command, authorize force, or declare Capacity.<br>
 **Gameplay potential:** Read-only eponym and event synchronization, order-versus-execution comparison, route and message latency, revolt and plague interruption, succession audit, coercion and civilian-risk flags, curriculum, and future bounded network-failure simulation.<br>
 **Implementation notes:** Divide the Point into expansion, civil-war and magnate, crisis, and Tiglath-pileser III/Shalmaneser V phases; distinguish central rhetoric from local record; mark coercive labor and resettlement; keep Sargon II after the endpoint except as a competing terminal witness.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** network consequence auditor<br>
 **Possible Hueman data hook:** chronicle synchronization, order-versus-execution comparison, interruption analysis, coercion flags, and bounded simulation references<br>
 **Confidence:** High for royal chronology, major campaigns, eponym sequence, 763 eclipse, Kalhu building program, Tiglath-pileser III's annexations, and Shalmaneser V's terminal reign; medium for system-wide administrative uniformity and local execution; contested for the exact Samaria sequence.<br>
@@ -2890,10 +2890,10 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Source Gifts:** [`gift.flynt.neo_assyria.continuous_annual_dating_sequence`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.neo_assyria.continuous_annual_dating_sequence), [`gift.flynt.neo_assyria.route_sequenced_operational_annals`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.neo_assyria.route_sequenced_operational_annals), [`gift.flynt.neo_assyria.post_contraction_infrastructure_reactivation`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.neo_assyria.post_contraction_infrastructure_reactivation)<br>
 **Modern House interpretation:** Flynt receives dated sequence, route-state comparison, infrastructure reactivation, and adversarial review. It does not receive reconquest, hostage-taking, deportation, tribute, royal ideology, or Capacity merely because a campaign is recorded as successful.<br>
 **Physical appearance:** A non-triumphal dark-blue Flynt audit bay with annual sequence rails, planned-versus-reported route overlays, maintenance and supply boards, civilian and refusal lanes, evidence-confidence indicators, supersession marks, and recovery stopping conditions; no palace relief, siege spectacle, imperial insignia, or trophy wall.<br>
-**Institutional role:** A logistics, maintenance, and after-action teaching interface inside existing Tross, Warden, Resynce, safety, refusal, and Glaüshouse care-handoff boundaries; it cannot authorize force or declare Capacity.<br>
+**Institutional role:** A logistics, maintenance, and after-action teaching interface inside existing Tross, Resynce, safety, refusal, and Glaüshouse care-handoff boundaries; it cannot authorize force or declare Capacity.<br>
 **Gameplay potential:** Read-only eponym and order sequence, route-state comparison, restoration evidence, coercion and civilian-risk flags, source-bias review, curriculum, and future bounded failure simulation.<br>
 **Implementation notes:** Keep Ashur-dan II as transition context and Adad-nirari II as the only conventional Neo-Assyrian ruler in the slice; exclude later Kalhu reliefs and mature siege systems; compare royal annals with chronology and archaeology before deriving any hook.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** reconstitution auditor<br>
 **Possible Hueman data hook:** annual sequence review, route-state comparison, maintenance evidence, coercion flags, and bounded simulation references<br>
 **Confidence:** High for the 911–900 boundary, Adad-nirari II, annual eponym sequence, and royal campaign records; medium for the scale and mechanics of infrastructure reactivation; low for reconstructing neutral operational outcomes from royal annals alone.<br>
@@ -2912,10 +2912,10 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Source Gifts:** [`gift.flynt.neo_assyria.state_correspondence_and_field_report_comparison`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.neo_assyria.state_correspondence_and_field_report_comparison), [`gift.flynt.neo_assyria.multi_capital_infrastructure_dependency_mapping`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.neo_assyria.multi_capital_infrastructure_dependency_mapping), [`gift.flynt.neo_assyria.collapse_sequence_beyond_capital_loss`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.neo_assyria.collapse_sequence_beyond_capital_loss)<br>
 **Modern House interpretation:** Flynt receives source-aware reporting, dependency mapping, residual-node analysis, succession audit, and staggered terminal-state review. It does not receive imperial scale, forced resettlement, siege, coerced labor, conquest, or capital survival as Capacity.<br>
 **Physical appearance:** A non-triumphal dark-blue Flynt observatory with central and field-report panes, capital and route dependency graphs, water and supply states, succession breaks, civilian and displacement ledgers, alliance dependencies, dated terminal thresholds, residual nodes, and explicit uncertainty; no palace relief, winged guardian, siege scene, royal hunt, or trophy display.<br>
-**Institutional role:** A logistics, communications, maintenance, continuity, and after-action teaching interface inside existing Tross, Wardens, Resynce, command, refusal, safety, and Glaüshouse care-handoff boundaries; it cannot authorize force or declare Capacity.<br>
+**Institutional role:** A logistics, communications, maintenance, continuity, and after-action teaching interface inside existing Tross, Resynce, command, refusal, safety, and Glaüshouse care-handoff boundaries; it cannot authorize force or declare Capacity.<br>
 **Gameplay potential:** Read-only report comparison, dependency graphing, route and capital failure, succession audit, civilian-risk flags, residual-node tracking, curriculum, and future bounded collapse simulation.<br>
 **Implementation notes:** Divide expansion, capital projects, succession, civil conflict, contraction, Assur, Nineveh, and Harran into dated states; keep royal claim distinct from correspondence and chronicles; mark coerced labor and resettlement; do not end Assyria automatically at 612.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** terminal-systems auditor<br>
 **Possible Hueman data hook:** field-report comparison, dependency graphing, collapse sequencing, civilian-risk flags, and bounded simulation references<br>
 **Confidence:** High for the Sargonid ruler sequence, major archives and capitals, Assur's 614 fall, Nineveh's 612 fall, and Harran resistance to 609; medium for local execution and dependency propagation; low where the last succession and post-collapse evidence is sparse.<br>
@@ -2934,10 +2934,10 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Source Gifts:** [`gift.flynt.seleucid.regional_command_with_local_institutional_interfaces`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.seleucid.regional_command_with_local_institutional_interfaces), [`gift.flynt.seleucid.route_mint_and_supply_node_provenance`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.seleucid.route_mint_and_supply_node_provenance), [`gift.flynt.seleucid.treaty_territorial_loss_and_capacity_reduction_audit`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.seleucid.treaty_territorial_loss_and_capacity_reduction_audit)<br>
 **Modern House interpretation:** Flynt receives local-interface command modeling, route and mint provenance, and explicit capacity-reduction audit. It does not receive imperial extent, reconquest, treaty evasion, forced settlement, conscription, plunder, dynastic survival, or military recovery as Law of Capacity.<br>
 **Physical appearance:** A non-triumphal dark-blue Flynt systems lab with dated route and node maps, mint and store custody, local-authority interfaces, treaty-clause gates, indemnity and equipment limits, territorial-loss states, alternate routes, civilian dependencies, fallback conditions, and stop thresholds; no Antioch replica, elephant imagery, royal coin wall, armor display, or expanding empire map.<br>
-**Institutional role:** A logistics, route, planning, treaty-compliance, maintenance, and after-action teaching interface inside existing Law of Capacity, Resynce, Tross, Wardens, Mystery Men, refusal, safety, and Glaüshouse care-handoff boundaries; it cannot authorize force, requisition, settlement, or command.<br>
+**Institutional role:** A logistics, route, planning, treaty-compliance, maintenance, and after-action teaching interface inside existing Law of Capacity, Resynce, Tross, Mystery Men, refusal, safety, and Glaüshouse care-handoff boundaries; it cannot authorize force, requisition, settlement, or command.<br>
 **Gameplay potential:** Read-only command-interface comparison, route and mint state, treaty limits, indemnity and resource dependencies, territorial loss, fallback analysis, coercion and civilian-risk audit, curriculum, and future bounded simulation.<br>
 **Implementation notes:** Phase Antiochus I through the 146 claimant conflict; distinguish title, claim, occupied node, functioning route, local institution, mint, tax, trade, requisition, and command; encode Magnesia and each Apamea restriction separately; preserve eastern regional losses and Babylonian continuity; do not terminate Seleucid rule in 146.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** capacity-contraction auditor<br>
 **Possible Hueman data hook:** route and mint state, treaty limits, command dependencies, loss and fallback analysis, coercion audit, and bounded simulation references<br>
 **Confidence:** High for the principal dynastic chronology, Magnesia, Apamea, major cities, coinages, and surviving Babylonian records; medium for consistent command hierarchy and route operation; lower for remote territorial control, local recruitment status, and uniform effects of treaty or dynastic crisis.<br>
@@ -2956,10 +2956,10 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Source Gifts:** [`gift.flynt.medes.coalition_campaigning_with_independent_witnesses`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.medes.coalition_campaigning_with_independent_witnesses), [`gift.flynt.medes.fortified_highland_node_planning_with_attribution_limits`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.medes.fortified_highland_node_planning_with_attribution_limits), [`gift.flynt.medes.operational_continuity_through_regime_integration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.medes.operational_continuity_through_regime_integration)<br>
 **Modern House interpretation:** Flynt receives coalition-witness comparison, highland-node analysis, attribution discipline, confidence marking, and regime-handoff continuity. It does not receive a fabricated Median constitution, cavalry doctrine, territorial map, ethnic material style, conquest, or imperial succession as Capacity.<br>
 **Physical appearance:** A non-triumphal dark-blue Flynt lab with known/inferred/disputed/unattested states, source-distance rails, coalition witness panes, terrain and node models, attribution gates, regime-handoff graphs, civilian-risk fields, and simulation stop conditions; no Ecbatana reconstruction, horse-warrior theme, Persianized costume, trophy map, or invented Median symbols.<br>
-**Institutional role:** A planning, logistics, intelligence-literacy, and after-action teaching interface inside existing Tross, Wardens, Resynce, command, refusal, safety, and evidence-bound Capacity limits; it cannot authorize force or fill unknown data with command assumptions.<br>
+**Institutional role:** A planning, logistics, intelligence-literacy, and after-action teaching interface inside existing Tross, Resynce, command, refusal, safety, and evidence-bound Capacity limits; it cannot authorize force or fill unknown data with command assumptions.<br>
 **Gameplay potential:** Read-only confidence-state display, independent-witness comparison, coalition handoff, highland node and supply analysis, attribution challenge, regime-transition continuity, curriculum, and future bounded uncertainty simulation.<br>
 **Implementation notes:** Treat Cyaxares, Astyages, Assyria's fall, and Cyrus's takeover as strongest anchors; mark Herodotus's dynasty and territorial claims as later; do not assign Ecbatana architecture without evidence; store archaeological phase separately from Median attribution; distinguish political end from population disappearance.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** sparse-evidence operations auditor<br>
 **Possible Hueman data hook:** source-confidence display, coalition handoff, node attribution, regime-transition continuity, and bounded simulation references<br>
 **Confidence:** High for Median participation in Assyria's fall, Astyages's cuneiform attestation, and Cyrus's c. 550 victory; medium for associating Nush-i Jan with Median-period regional power; low to contested for an empire-wide administration, exact borders, Ecbatana's form, unified material culture, cavalry reform, and earlier Herodotean kings.<br>
@@ -2978,10 +2978,10 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Source Gifts:** [`gift.flynt.macedonia.phase_attributed_force_integration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.macedonia.phase_attributed_force_integration), [`gift.flynt.macedonia.resource_to_logistics_coordination`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.macedonia.resource_to_logistics_coordination), [`gift.flynt.macedonia.coalition_command_with_coercion_audit`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.macedonia.coalition_command_with_coercion_audit)<br>
 **Modern House interpretation:** Flynt receives phase attribution, force-and-resource integration analysis, logistics dependency mapping, coalition-command audit, and explicit stopping conditions. It does not receive conquest, city destruction, enslavement, coerced alliance, dynastic monarchy, royal success, or later Alexander narratives as Law of Capacity.<br>
 **Physical appearance:** A non-triumphal dark-blue Flynt systems lab with dated capability rails, force-component and maintenance panes, terrain and route models, resource-custody graphs, coalition consent and coercion gates, civilian-risk fields, readiness limits, and scenario stop conditions; no sarissa hall, royal tomb replica, cavalry spectacle, sun emblem, trophy map, or Macedonian costume.<br>
-**Institutional role:** A logistics, planning, engineering, coalition, and after-action teaching interface inside existing Law of Capacity, Resynce, Tross, Wardens, Mystery Men, refusal, safety, and Glaüshouse care-handoff boundaries; it cannot authorize force, recognize command, or declare Capacity.<br>
+**Institutional role:** A logistics, planning, engineering, coalition, and after-action teaching interface inside existing Law of Capacity, Resynce, Tross, Mystery Men, refusal, safety, and Glaüshouse care-handoff boundaries; it cannot authorize force, recognize command, or declare Capacity.<br>
 **Gameplay potential:** Read-only phase comparison, resource-to-capability dependency mapping, coalition and coercion audit, readiness and maintenance review, civilian-risk flags, curriculum, and future bounded systems simulation.<br>
 **Implementation notes:** Separate pre-Philip, early Philip, resource-consolidation, siege-and-expansion, and 338–336 hegemonic phases; attach army-reform detail to source date and confidence; record extraction and civilian harm; distinguish alliance, incorporation, garrison, and coercion; stop at Alexander's accession and leave eastern campaigns to Point VI.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** capacity phase auditor<br>
 **Possible Hueman data hook:** phase attribution, resource-dependency mapping, coalition and coercion audit, readiness limits, and bounded simulation references<br>
 **Confidence:** High for Philip II's reign, major expansion sequence, Chaeronea, League of Corinth, Aigai and Pella, coinage, and resource acquisitions; medium for exact force numbers and reform sequence; lower for early Argead administration and claims reconstructed mainly from later literary evidence.<br>
@@ -3000,10 +3000,10 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Source Gifts:** [`gift.flynt.carthage.maritime_logistics_and_naval_supply_coordination`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.carthage.maritime_logistics_and_naval_supply_coordination), [`gift.flynt.carthage.commercial_port_and_agricultural_hinterland_networks`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.carthage.commercial_port_and_agricultural_hinterland_networks), [`gift.flynt.carthage.republican_command_and_defeat_consequence_audit`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.carthage.republican_command_and_defeat_consequence_audit)<br>
 **Modern House interpretation:** Flynt receives maritime logistics and defeat-consequence audit; it does not receive naval reach, colonization, slavery, war, or Carthaginian defeat as Law of Capacity.<br>
 **Physical appearance:** A non-triumphal dark-blue operations lab with harbor, vessel, cargo, crew, supply, command, ally, subject-community, defeat-term, and civilian-risk panels; no elephant spectacle, Punic costume, or Roman victory display.<br>
-**Institutional role:** A logistics, port, after-action, and Warden teaching interface under Law of Capacity, Resynce, Tross, Wardens, refusal, and care-handoff boundaries; it cannot authorize force or requisition.<br>
+**Institutional role:** A logistics, port, after-action, and Capacity teaching interface under Law of Capacity, Resynce, Tross, refusal, and care-handoff boundaries; it cannot authorize force or requisition.<br>
 **Gameplay potential:** Read-only harbor and supply state, fleet logistics, command accountability, defeat consequences, disarmament and displacement records, curriculum, and future bounded simulation.<br>
 **Implementation notes:** Separate metropolitan, colonial, allied, and subject status; record vessel, harbor, cargo, crew, labor, route, command, supply, civilian harm, defeat terms, and residual capacity; treat Roman sources as interested witnesses.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** maritime capacity auditor<br>
 **Possible Hueman data hook:** harbor and supply state, fleet logistics, command accountability, defeat consequences, and bounded simulation references<br>
 **Confidence:** High for the Punic War sequence, Carthaginian maritime infrastructure, and 146 destruction; medium for constitutional and social reconstruction from adversarial evidence.<br>
@@ -3022,10 +3022,10 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Source Gifts:** [`gift.flynt.pontus.late_republican_mobilization_and_logistics`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.pontus.late_republican_mobilization_and_logistics), [`gift.flynt.pontus.civil_war_network_and_command_accountability`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.pontus.civil_war_network_and_command_accountability), [`gift.flynt.pontus.pontic_frontier_adaptation_and_naval_capacity`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.pontus.pontic_frontier_adaptation_and_naval_capacity)<br>
 **Modern House interpretation:** Flynt receives adaptive capacity under pressure, never a Pontic military superiority claim or conquest aesthetic.<br>
 **Physical appearance:** A dark-blue operations lab with harbor, terrain, fleet, cavalry, route, alliance, treaty, and civilian-risk panels; no royal war spectacle.<br>
-**Institutional role:** A bounded logistics, frontier, naval, and after-action interface under Law of Capacity and Warden limits.<br>
+**Institutional role:** A bounded logistics, frontier, naval, and after-action interface under Law of Capacity and Capacity limits.<br>
 **Gameplay potential:** Route condition, naval supply, terrain, command scope, treaty limits, alternate paths, and consequence simulation references.<br>
 **Implementation notes:** Mark Roman and later narrative bias; separate court, city, ally, subject, and frontier status.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** frontier capacity auditor<br>
 **Possible Hueman data hook:** route condition, naval supply, terrain, command scope, treaty limits, alternate paths, and consequence simulation references<br>
 **Confidence:** High for the Mithridatic conflict sequence; medium for Pontic administrative scale and local relationships.<br>
@@ -3047,7 +3047,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A bounded frontier, logistics, signals, and after-action interface under Law of Capacity.<br>
 **Gameplay potential:** Route condition, supply, messenger latency, diplomatic authority, uncertainty, and consequence simulation.<br>
 **Implementation notes:** Separate Rome, Parthia, local dynasts, cities, caravan communities, and frontier civilians.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** frontier operations auditor<br>
 **Possible Hueman data hook:** route condition, animal and cargo supply, messenger latency, diplomatic authority, uncertainty, and consequence references<br>
 **Confidence:** High for frontier conflict and caravan evidence; medium for centralized Parthian administration.<br>
@@ -3066,10 +3066,10 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Source Gifts:** [`gift.flynt.sasanian_persia.imperial_administration`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.sasanian_persia.imperial_administration), [`gift.flynt.sasanian_persia.frontier_strategy`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.sasanian_persia.frontier_strategy), [`gift.flynt.sasanian_persia.scholarly_and_religious_institutions`](ANCESTRAL_GIFTS_REGISTRY.md#gift.flynt.sasanian_persia.scholarly_and_religious_institutions)<br>
 **Modern House interpretation:** Flynt receives transition-aware logistics, layered authority analysis, multilingual operational record, and consequence audit, not conquest, royal charisma, captivity, deportation, religious centralization, or imperial scale as Law of Capacity.<br>
 **Physical appearance:** A dark-blue phase lab with 180–224 late Arsacid and 224–313 early Sasanian rails, route and city maps, crown and local authority panels, supply and treaty states, displacement and civilian-risk fields, claim comparisons, and fallback graphs; no royal spectacle.<br>
-**Institutional role:** A logistics, route, planning, intelligence-literacy, and after-action interface under Law of Capacity, Resynce, Tross, Wardens, refusal, safety, and care-handoff boundaries.<br>
+**Institutional role:** A logistics, route, planning, intelligence-literacy, and after-action interface under Law of Capacity, Resynce, Tross, refusal, safety, and care-handoff boundaries.<br>
 **Gameplay potential:** Read-only phase comparison, route and city continuity, layered-authority mapping, supply and treaty state, source-claim comparison, displacement and civilian-harm audit, and bounded simulation references.<br>
 **Implementation notes:** Label 180–224 late Parthian; separate Ardashir, Shapur I, and later reigns; compare inscriptions with external and archaeological witnesses; distinguish crown, noble, city, religious, and local authority.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** regime-transition systems auditor<br>
 **Possible Hueman data hook:** phase, route, city, authority layer, supply, treaty, displacement, civilian harm, royal claim, source confidence, and bounded simulation references<br>
 **Confidence:** High for the 224 transition, early royal sequence, major conflicts, key inscriptions, coins, and major sites; variable for centralized reach, local administration, religious policy, and exact chronology.<br>
@@ -3091,7 +3091,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A bounded logistics, frontier, intelligence-literacy, and after-action interface under Law of Capacity and existing safety and care-handoff limits.<br>
 **Gameplay potential:** Read-only route condition, supply, treaty, community-risk, custody, source comparison, and bounded simulation references.<br>
 **Implementation notes:** Separate Shapur II, fourth-century frontier, Armenia, fifth-century conflicts, and Peroz-era eastern pressure; distinguish royal claim from local capacity.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** frontier-custody auditor<br>
 **Possible Hueman data hook:** route and supply state, treaty comparison, local authority, community risk, source confidence, and bounded simulation references<br>
 **Confidence:** High for major royal sequence, frontier conflict, inscriptions, and regional relationships; variable for centralization and community policy.<br>
@@ -3113,7 +3113,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A bounded logistics, planning, intelligence-literacy, and after-action interface under Law of Capacity.<br>
 **Gameplay potential:** Read-only reform phase comparison, resource-to-capacity mapping, treaty and route state, local authority, and consequence simulation references.<br>
 **Implementation notes:** Keep Kawād, Khusrow I, Hormozd IV, and early Khusrow II distinct; mark Arabic and Persian retrospective sources and uncertain administrative reach.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** reform-capacity auditor<br>
 **Possible Hueman data hook:** fiscal and military phase, route and treaty state, local authority, community risk, and bounded simulation references<br>
 **Confidence:** High for reign sequence and major reforms; variable for exact fiscal mechanics, centralization, and frontier implementation.<br>
@@ -3135,7 +3135,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A bounded logistics, route, planning, intelligence-literacy, and after-action interface under Law of Capacity.<br>
 **Gameplay potential:** Read-only route condition, cargo and intermediary provenance, language and jurisdiction comparison, risk, custody, and alternate-path references.<br>
 **Implementation notes:** Separate Tang court, prefecture, military frontier, merchant, religious, local, and foreign records; keep 618 foundation, 649–683, 712–750, and post-750 crises distinct.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** interchange-provenance auditor<br>
 **Possible Hueman data hook:** route and node condition, cargo and language, intermediary, jurisdiction, risk, custody, and alternate path<br>
 **Confidence:** High for Tang chronology and broad exchange networks; variable for individual route volumes, social access, and state control.<br>
@@ -3157,7 +3157,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A bounded logistics, route, planning, intelligence-literacy, and after-action interface under Law of Capacity.<br>
 **Gameplay potential:** Read-only vessel and route condition, cargo and host provenance, treaty, settlement, risk, and alternate-path references.<br>
 **Implementation notes:** Separate raid, trade, settlement, service, diplomacy, and later national narratives; keep 793, 865, 870s, and Rus formation distinct.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** route-reciprocity auditor<br>
 **Possible Hueman data hook:** vessel and crew state, cargo and host provenance, treaty, settlement, risk, and alternate path<br>
 **Confidence:** High for broad mobility and major archaeological and textual anchors; variable for fleet size, identities, and route control.<br>
@@ -3179,7 +3179,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A bounded logistics, route, planning, intelligence-literacy, and after-action interface under Law of Capacity.<br>
 **Gameplay potential:** Read-only route condition, vessel and cargo, tribute, settlement, host, treaty, and alternate-path references.<br>
 **Implementation notes:** Separate Oleg, Igor, Olga, Volodymyr, Yaroslav, Kyiv, Novgorod, river routes, Christianization, and later national narratives.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** river-reciprocity auditor<br>
 **Possible Hueman data hook:** route and node condition, vessel and cargo, tribute, settlement, host, treaty, and alternate path<br>
 **Confidence:** High for river connectivity, major rulers, treaty traditions, and material exchange; variable for early state boundaries and social identities.<br>
@@ -3201,7 +3201,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A bounded logistics, route, planning, intelligence-literacy, and after-action interface under Law of Capacity.<br>
 **Gameplay potential:** Read-only mount and supply, city and caravan, office, treaty, local authority, civilian risk, and fallback references.<br>
 **Implementation notes:** Separate Great Seljuk, Rum Seljuk, 1055 Baghdad, 1071 Manzikert, 1092 succession, and twelfth-century fragmentation.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** Seljuk-capacity auditor<br>
 **Possible Hueman data hook:** mount and supply, city and caravan, office, treaty, local authority, civilian risk, and fallback<br>
 **Confidence:** High for major chronology, institutions, and routes; variable for military scale, centralization, and local communities.<br>
@@ -3223,7 +3223,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A logistics, route, planning, and after-action interface under Law of Capacity and existing safety limits.<br>
 **Gameplay potential:** Command scope, route state, asset custody, beneficiary records, maintenance, civilian risk, and fallback.<br>
 **Implementation notes:** Separate Aybak, Qutuz, Baybars, household politics, Crusader conflict, and Mongol pressure.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** endowment-route auditor<br>
 **Possible Hueman data hook:** household, fortification, waqf, cargo, beneficiary, maintenance, and fallback references<br>
 **Confidence:** High for major chronology and institutions; variable for local implementation and non-elite experience.<br>
@@ -3245,7 +3245,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A logistics, route, planning, and after-action interface under Law of Capacity and existing safety limits.<br>
 **Gameplay potential:** Command scope, route state, asset custody, beneficiary records, maintenance, civilian risk, succession, and fallback.<br>
 **Implementation notes:** Separate Baybars, Qalawun, al-Nasir Muhammad, household politics, Crusader conflict, and Mongol pressure.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** consolidation auditor<br>
 **Possible Hueman data hook:** household, fortification, waqf, cargo, beneficiary, maintenance, and fallback references<br>
 **Confidence:** High for major chronology and institutions; variable for local implementation and non-elite experience.<br>
@@ -3267,7 +3267,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A logistics, planning, continuity, intelligence-literacy, and after-action interface under Law of Capacity and existing safety limits.<br>
 **Gameplay potential:** Office and route state, supply and maintenance, vassal obligation, interregnum recovery, siege dependency, civilian risk, service handoff, and fallback.<br>
 **Implementation notes:** Separate Murad I, Bayezid I, the 1402 defeat, interregnum claimants, Mehmed I, Murad II, Mehmed II, local communities, and the 1453 transition.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** transition-capacity auditor<br>
 **Possible Hueman data hook:** office, community, route, supply, failure, siege, service, civilian risk, and fallback references<br>
 **Confidence:** High for major dynastic and campaign chronology; variable for early records, local implementation, and non-elite experience.<br>
@@ -3289,7 +3289,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -3311,7 +3311,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -3333,7 +3333,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -3355,7 +3355,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -3377,7 +3377,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -3399,7 +3399,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -3421,7 +3421,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -3443,7 +3443,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -3465,7 +3465,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -3487,7 +3487,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -3509,7 +3509,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable.<br>
@@ -3531,7 +3531,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
@@ -3553,7 +3553,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
@@ -3575,7 +3575,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
@@ -3597,7 +3597,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>
@@ -3619,7 +3619,7 @@ These manifestations translate several Gifts into modern Hollow Grove design. Th
 **Institutional role:** A read-only provenance, library, curriculum, and cultural-memory service inside existing Flynt authority; it creates no office, jurisdiction, confirmation, Clearance, or Capacity.<br>
 **Gameplay potential:** Inspect source scope, compare phases, trace Gift provenance, surface exclusions and civilian effects, and propose a separately reviewable interpretation.<br>
 **Implementation notes:** Store source date, publisher, claim scope, confidence, affected communities, exclusions, custody, and revision date. Keep evidence, scholarly interpretation, and Hollow Grove adaptation as separate fields.<br>
-**Current canon connection:** Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
+**Current canon connection:** Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp; see [Flynt canon links](houses/FLYNT_ANCESTRY.md#existing-canon-bridge).<br>
 **Possible NPC role:** provenance and evidence-boundary steward<br>
 **Possible Hueman data hook:** source date, claim scope, uncertainty, custody, affected communities, refusal, and revision references<br>
 **Confidence:** Completion-level review: high confidence in the Point boundary and institutional source bundle; culture-specific detail remains revision-capable. Time-sensitive claims are current only through 2026-08-12 and must be re-reviewed.<br>

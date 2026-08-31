@@ -1,5 +1,9 @@
 # Hueman Vertical Slice v0.1.0
 
+> **Compatibility boundary — LEGACY PHYSICAL RUNTIME.** `Regular Current`,
+> `Hollow Current`, `Reflective Aura`, and `Holographic Aura` in this slice are
+> stable V1 resource labels. They do not define Practitioner Current or Aura.
+
 Date: 2026-07-09
 
 ## Purpose

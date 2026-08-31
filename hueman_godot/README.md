@@ -225,7 +225,7 @@ and Limited Cooperation each form, validate, and activate a distinct finite
 Bond in the common constitutional runtime. Independent Return records
 recognized refusal without a Bond. Godot only asks and presents. World
 authority is loaded from schema-V2 institutional state and embedded in
-federation-aware schema-V4 gameplay saves for exact replay; schemas V1–V3
+Rampart-aware schema-V4 gameplay saves for exact replay; schemas V1–V3
 migrate without inventing Synthesis progress. Encounter, combat, equipment,
 and Synthesis families beyond the bounded winged-Gargoyle pilot remain
 unavailable until their Rust reducers exist. Shared request/response fixtures live under

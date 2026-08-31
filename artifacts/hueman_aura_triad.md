@@ -44,7 +44,7 @@ Aura Basin
 - Aura Basin serves Flynt first: Gargoyle-versus-Werewolf hunting grounds, den pressure, rare encounters, and the nearest hidden body rising into Aura Ridge circulation.
 - Aura Field serves public work first: farming, Stonebend hunt tradition, Minorian proof, and market-facing comparison.
 - Aura Beach serves exterior proof first: Minoan coastal access, navigation, public approach, training, recovery, and threshold exposure.
-- the Riptide, while outside the triad on the visible border ring, serves as Flynt's Merman roaming water range.
+- the Riptide, while outside the triad on the visible border ring, serves as Flynt's Mariner/Merman roaming water range.
 - no single region owns every function, but these are the dominant first readings.
 
 ## PLEB and META

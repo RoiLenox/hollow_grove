@@ -6,6 +6,10 @@ use crate::hollow_grove_contract::{House, Lineage, SandmanorPeople};
 pub enum CivicPeople {
     Geralds,
     Nightingales,
+    /// Stable Warden identity whose record in this module retains the retired
+    /// platelet/close correspondence for archive and replay compatibility.
+    /// Active Flynt civic identity is modeled by `world::marquise` without
+    /// inheriting that physiological mapping.
     Wardens,
     Minorians,
     Minoans,
@@ -324,7 +328,7 @@ const NIGHTINGALES: CivicBodyDefinition = CivicBodyDefinition {
     crisis_roles: NIGHTINGALE_CRISIS,
     absence_failure: CivicFailure::BodyInfected,
 };
-const WARDENS: CivicBodyDefinition = CivicBodyDefinition {
+const LEGACY_WARDENS: CivicBodyDefinition = CivicBodyDefinition {
     people: CivicPeople::Wardens,
     house: House::Flynt,
     sandmanor_face: None,
@@ -361,16 +365,19 @@ const MINOANS: CivicBodyDefinition = CivicBodyDefinition {
     absence_failure: CivicFailure::BodyLosesBoundary,
 };
 
-const CANONICAL_CIVIC_DEFINITIONS: [CivicBodyDefinition; 5] =
-    [GERALDS, NIGHTINGALES, WARDENS, MINORIANS, MINOANS];
+const CANONICAL_CIVIC_DEFINITIONS: [CivicBodyDefinition; 4] =
+    [GERALDS, NIGHTINGALES, MINORIANS, MINOANS];
 
 #[must_use]
-pub const fn canonical_civic_body_definitions() -> &'static [CivicBodyDefinition; 5] {
+pub const fn canonical_civic_body_definitions() -> &'static [CivicBodyDefinition; 4] {
     &CANONICAL_CIVIC_DEFINITIONS
 }
 
 #[must_use]
 pub fn civic_body_definition(people: CivicPeople) -> CivicBodyDefinition {
+    if matches!(people, CivicPeople::Wardens) {
+        return LEGACY_WARDENS;
+    }
     canonical_civic_body_definitions()
         .iter()
         .copied()
@@ -378,12 +385,18 @@ pub fn civic_body_definition(people: CivicPeople) -> CivicBodyDefinition {
         .expect("canonical civic definition should exist")
 }
 
+/// Historical Flynt Warden platelet correspondence for archive and replay projections.
+/// It is intentionally absent from [`canonical_civic_body_definitions`].
 #[must_use]
-pub fn canonical_civic_chant() -> [String; 5] {
+pub const fn legacy_flynt_wardens_definition() -> CivicBodyDefinition {
+    LEGACY_WARDENS
+}
+
+#[must_use]
+pub fn canonical_civic_chant() -> [String; 4] {
     [
         GERALDS.chant(),
         NIGHTINGALES.chant(),
-        WARDENS.chant(),
         MINORIANS.chant(),
         MINOANS.chant(),
     ]
@@ -391,6 +404,28 @@ pub fn canonical_civic_chant() -> [String; 5] {
 
 #[must_use]
 pub fn canonical_civic_crisis_steps() -> [String; 5] {
+    [
+        String::from("Minoans reveal the breach."),
+        String::from("Minorians measure the breach."),
+        String::from("Flynt breach-closing civic designation: STATUS OPEN."),
+        String::from("Nightingales clear the threat."),
+        String::from("Geralds carry what recovery requires."),
+    ]
+}
+
+#[must_use]
+pub fn legacy_civic_chant() -> [String; 5] {
+    [
+        GERALDS.chant(),
+        NIGHTINGALES.chant(),
+        LEGACY_WARDENS.chant(),
+        MINORIANS.chant(),
+        MINOANS.chant(),
+    ]
+}
+
+#[must_use]
+pub fn legacy_civic_crisis_steps() -> [String; 5] {
     [
         String::from("Minoans reveal the breach."),
         String::from("Minorians measure the breach."),
@@ -525,7 +560,7 @@ pub fn validate_civic_body_contract(input: &CivicBodyContractInput) -> Vec<Civic
         diagnostics.push(CivicBodyDiagnostic {
             code: CivicBodyDiagnosticCode::CanonicalAction,
             message: String::from(
-                "Canonical chant must remain: Geralds carry. Nightingales clear. Wardens close. Minorians measure. Minoans reveal.",
+                "Active canonical chant must remain: Geralds carry. Nightingales clear. Minorians measure. Minoans reveal. Flynt's replacement civic designation is OPEN.",
             ),
         });
     }
@@ -639,11 +674,8 @@ pub fn build_civic_body_witness() -> io::Result<String> {
          Action:\n\
          Clear\n\n\
          Flynt:\n\
-         Wardens\n\
-         Body Role:\n\
-         Platelets\n\
-         Action:\n\
-         Close\n\n\
+         Civic designation and body role:\n\
+         STATUS OPEN\n\n\
          Sandmanor Interior:\n\
          Minorians\n\
          People:\n\
@@ -664,11 +696,9 @@ pub fn build_civic_body_witness() -> io::Result<String> {
          {}\n\
          {}\n\
          {}\n\
-         {}\n\
          {}\n",
         GERALDS.chant(),
         NIGHTINGALES.chant(),
-        WARDENS.chant(),
         MINORIANS.chant(),
         MINOANS.chant()
     ))
@@ -731,14 +761,15 @@ mod tests {
         CivicAction, CivicBodyContractInput, CivicBodyRole, CivicPeople,
         build_civic_body_validation_report, build_civic_body_witness, build_civic_crisis_witness,
         canonical_civic_body_contract_fixture, canonical_civic_body_definitions,
-        canonical_civic_crisis_steps, validate_civic_body_contract,
+        canonical_civic_crisis_steps, legacy_civic_crisis_steps, legacy_flynt_wardens_definition,
+        validate_civic_body_contract,
     };
     use crate::hollow_grove_contract::{House, Lineage, SandmanorPeople};
 
     #[test]
     fn canonical_civic_people_map_to_house_role_and_action() {
         let definitions = canonical_civic_body_definitions();
-        assert_eq!(definitions.len(), 5);
+        assert_eq!(definitions.len(), 4);
 
         let geralds = definitions[0];
         assert_eq!(geralds.people(), CivicPeople::Geralds);
@@ -752,13 +783,7 @@ mod tests {
         assert_eq!(nightingales.body_role(), CivicBodyRole::WhiteBloodCells);
         assert_eq!(nightingales.canonical_action(), CivicAction::Clear);
 
-        let wardens = definitions[2];
-        assert_eq!(wardens.people(), CivicPeople::Wardens);
-        assert_eq!(wardens.house(), House::Flynt);
-        assert_eq!(wardens.body_role(), CivicBodyRole::Platelets);
-        assert_eq!(wardens.canonical_action(), CivicAction::Close);
-
-        let minorians = definitions[3];
+        let minorians = definitions[2];
         assert_eq!(minorians.people(), CivicPeople::Minorians);
         assert_eq!(minorians.house(), House::Sandmanor);
         assert_eq!(
@@ -772,7 +797,7 @@ mod tests {
         );
         assert_eq!(minorians.canonical_action(), CivicAction::Measure);
 
-        let minoans = definitions[4];
+        let minoans = definitions[3];
         assert_eq!(minoans.people(), CivicPeople::Minoans);
         assert_eq!(minoans.house(), House::Sandmanor);
         assert_eq!(minoans.sandmanor_people(), Some(SandmanorPeople::Minoan));
@@ -789,7 +814,10 @@ mod tests {
         let steps = canonical_civic_crisis_steps();
         assert_eq!(steps[0], "Minoans reveal the breach.");
         assert_eq!(steps[1], "Minorians measure the breach.");
-        assert_eq!(steps[2], "Wardens close the breach.");
+        assert_eq!(
+            steps[2],
+            "Flynt breach-closing civic designation: STATUS OPEN."
+        );
         assert_eq!(steps[3], "Nightingales clear the threat.");
         assert_eq!(steps[4], "Geralds carry what recovery requires.");
     }
@@ -798,6 +826,21 @@ mod tests {
     fn canonical_fixture_validates() {
         let diagnostics = validate_civic_body_contract(&canonical_civic_body_contract_fixture());
         assert!(diagnostics.is_empty(), "{diagnostics:?}");
+    }
+
+    #[test]
+    fn flynt_wardens_are_legacy_only_but_remain_recoverable() {
+        assert!(
+            canonical_civic_body_definitions()
+                .iter()
+                .all(|definition| definition.people() != CivicPeople::Wardens)
+        );
+        assert_eq!(
+            legacy_flynt_wardens_definition().people(),
+            CivicPeople::Wardens
+        );
+        assert!(canonical_civic_crisis_steps()[2].contains("STATUS OPEN"));
+        assert!(legacy_civic_crisis_steps()[2].contains("Wardens"));
     }
 
     #[test]
@@ -829,10 +872,10 @@ mod tests {
     #[test]
     fn contradiction_minorian_minoan_reversal_and_literal_species_fail() {
         let mut reversed = canonical_civic_body_contract_fixture();
-        reversed.definitions[3] = super::CivicBodyDefinition {
+        reversed.definitions[2] = super::CivicBodyDefinition {
             sandmanor_people: Some(SandmanorPeople::Minoan),
             lineage: Some(Lineage::Elf),
-            ..reversed.definitions[3]
+            ..reversed.definitions[2]
         };
         let diagnostics = validate_civic_body_contract(&reversed);
         assert!(
@@ -904,7 +947,7 @@ mod tests {
         let witness = build_civic_body_witness().expect("civic body witness should render");
         assert!(witness.contains("Geralds carry."));
         assert!(witness.contains("Nightingales clear."));
-        assert!(witness.contains("Wardens close."));
+        assert!(witness.contains("STATUS OPEN"));
         assert!(witness.contains("Minorians measure."));
         assert!(witness.contains("Minoans reveal."));
 
@@ -914,6 +957,6 @@ mod tests {
 
         let crisis = build_civic_crisis_witness().expect("civic crisis witness should render");
         assert!(crisis.contains("World Breach"));
-        assert!(crisis.contains("Wardens close the breach."));
+        assert!(crisis.contains("Flynt breach-closing civic designation: STATUS OPEN."));
     }
 }

@@ -16,9 +16,12 @@ fn alignment_witness_prints_the_root_laws() {
     let witness = build_hollow_grove_alignment_witness();
 
     assert!(witness.contains("HOLLOW GROVE ALIGNMENT WITNESS"));
-    assert!(witness.contains("Current = blood"));
+    assert!(witness.contains("Practitioner = the whole person"));
+    assert!(witness.contains("Current = relational participation"));
+    assert!(witness.contains("CURRENT + AURA → SYNTHESIS"));
+    assert!(witness.contains("LegacyPhysical::Current = blood-associated quantity"));
     assert!(witness.contains("Hollow = pus"));
-    assert!(witness.contains("Aura = air / pressure / light"));
+    assert!(witness.contains("LegacyPhysical::Aura = air / pressure / light-associated quantity"));
     assert!(witness.contains("Whole\n→ Hollowing\n→ Hollow + Hollowed"));
     assert!(witness.contains("Frame = named living mech only"));
     assert!(witness.contains("Diamond claims"));

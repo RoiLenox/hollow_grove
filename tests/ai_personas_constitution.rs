@@ -4,8 +4,8 @@ use hollow_grove::ai_personas::{
 };
 use hollow_grove::constitutional::{RuleSetId, V2_RULE_SET};
 use hollow_grove::gameplay::{
-    BoardwalkCase, GameplayFederationBinding, decode_gameplay_archive_with_metadata,
-    encode_gameplay_archive_with_federation_binding,
+    BoardwalkCase, GameplayRampartBinding, decode_gameplay_archive_with_metadata,
+    encode_gameplay_archive_with_rampart_binding,
 };
 use hollow_grove::world::session::WorldSession;
 
@@ -65,21 +65,20 @@ fn advisory_records_federate_through_the_existing_gameplay_component() {
     let rule_set = RuleSetId::new(V2_RULE_SET).unwrap();
     let cleopatra = evaluate_persona(AiPersona::Cleopatra, canonical_returning_goon_case());
     let hal = evaluate_persona(AiPersona::Hal, canonical_returning_goon_case());
-    let binding = GameplayFederationBinding::canonical(
-        hollow_grove::gameplay::GAMEPLAY_FEDERATION_COMPONENT_ID,
-    )
-    .with_advisory(cleopatra)
-    .with_advisory(hal)
-    .with_shared_interface_record(hollow_grove::ai_personas::SharedInterfaceRecord {
-        kind: hollow_grove::ai_personas::SharedInterfaceRecordKind::Restitution,
-        record_id: "restitution.boardwalk.returning-goon.v1".into(),
-        subject_id: "being.boardwalk.returning-goon.v1".into(),
-        authority_id: "authority.minoan-county-court.v1".into(),
-        status: "equilibrium-confirmed".into(),
-        causal_position: 48,
-        provenance_id: "provenance.restitution.boardwalk.returning-goon.v1".into(),
-    });
-    let archive = encode_gameplay_archive_with_federation_binding(
+    let binding =
+        GameplayRampartBinding::canonical(hollow_grove::gameplay::GAMEPLAY_RAMPART_COMPONENT_ID)
+            .with_advisory(cleopatra)
+            .with_advisory(hal)
+            .with_shared_interface_record(hollow_grove::ai_personas::SharedInterfaceRecord {
+                kind: hollow_grove::ai_personas::SharedInterfaceRecordKind::Restitution,
+                record_id: "restitution.boardwalk.returning-goon.v1".into(),
+                subject_id: "being.boardwalk.returning-goon.v1".into(),
+                authority_id: "authority.minoan-county-court.v1".into(),
+                status: "equilibrium-confirmed".into(),
+                causal_position: 48,
+                provenance_id: "provenance.restitution.boardwalk.returning-goon.v1".into(),
+            });
+    let archive = encode_gameplay_archive_with_rampart_binding(
         &rule_set,
         &[],
         &WorldSession::canonical(),
@@ -87,11 +86,11 @@ fn advisory_records_federate_through_the_existing_gameplay_component() {
     )
     .unwrap();
     let decoded = decode_gameplay_archive_with_metadata(&archive).unwrap();
-    assert_eq!(decoded.federation_binding.advisory_records.len(), 2);
-    assert_eq!(decoded.federation_binding.shared_interface_records.len(), 1);
+    assert_eq!(decoded.rampart_binding.advisory_records.len(), 2);
+    assert_eq!(decoded.rampart_binding.shared_interface_records.len(), 1);
     assert!(
         decoded
-            .federation_binding
+            .rampart_binding
             .advisory_records
             .iter()
             .all(|record| !record.world_state_committed)
@@ -99,7 +98,7 @@ fn advisory_records_federate_through_the_existing_gameplay_component() {
 }
 
 #[test]
-fn returning_goon_case_supplies_the_same_advisories_to_federation() {
+fn returning_goon_case_supplies_the_same_advisories_to_rampart() {
     let case = BoardwalkCase::new();
     let records = case.constitutional_advisories();
     assert_eq!(records.len(), 3);

@@ -4,6 +4,12 @@ This document records the locked Hollow Grove extension that turns Point², Curr
 
 It extends the existing semantic foundation. It does not replace the frozen Version 1.1 execution path or the existing Hollow Grove contract.
 
+> **Compatibility boundary — STATUS: LEGACY.** “Current Depth,” “Aura
+> Illumination,” and their capacity fields are V1 physical/runtime mechanics.
+> Their stable records remain replayable, but they do not define Practitioner
+> Current or Aura. The semantic ontology lives in
+> `HOLLOW_GROVE_SYNTHESIS_CANON_V1.md`.
+
 The locked rotational-center extension now lives in:
 
 - `RANINA_TWELVE_POSITION_MAP_V1.md`
@@ -44,11 +50,11 @@ Point² opens new developmental circles. It does not automatically maximize deve
 - `Current Speed = the operating tempo of Current`
 - `Abyss = Glaüshouse = pain, pressure, hidden damage, recovery state, inward bodily feeling`
 
-Material distinction remains locked:
+Legacy material distinction remains locked for V1 decoding:
 
-- `Current = blood`
+- `LegacyPhysical::Current = blood-associated quantity`
 - `Hollow = pus / extracted interior resource`
-- `Aura = air / pressure / light`
+- `LegacyPhysical::Aura = air / pressure / light-associated quantity`
 - `Hollow Current != Hollow`
 
 ## Aura Illumination

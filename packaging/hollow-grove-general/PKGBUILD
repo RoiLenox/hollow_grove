@@ -1,25 +1,41 @@
 pkgname=hollow-grove-general
 pkgver=0.1.0
-pkgrel=1
+pkgrel=5
 pkgdesc='Hardware-neutral Hollow Grove General Edition Niri profile'
-arch=('any')
+arch=('x86_64' 'aarch64')
 url='https://github.com/RoiLenox/hollow_grove'
 license=('custom')
-depends=('bash' 'coreutils' 'jq' 'niri' 'util-linux')
+depends=('bash' 'coreutils' 'jq' 'niri' 'systemd' 'waybar' 'xdg-utils')
+makedepends=('cargo')
+options=('!debug')
 optdepends=(
     'hollow-grove-hueman: Hueman gameplay client'
     'kitty: default terminal'
+    'libnotify: keyboard discovery and fallback notifications'
     'mako: desktop notifications'
     'swaybg: wallpaper support'
     'swaylock: screen locking'
+    'walker: interactive keyboard discovery menu'
 )
 source=()
 sha256sums=()
+
+build() {
+    local repository_root="$startdir/../.."
+    cargo build \
+        --manifest-path "$repository_root/hollow-niri/Cargo.toml" \
+        --package hollow-niri \
+        --release \
+        --locked \
+        --target-dir "$srcdir/target"
+}
 
 package() {
     local repository_root="$startdir/../.."
     cp -r "$startdir/etc" "$pkgdir/"
     cp -r "$startdir/usr" "$pkgdir/"
+    install -Dm755 "$srcdir/target/release/hollow-niri" \
+        "$pkgdir/usr/lib/hollow-grove/bin/hollow-niri"
     install -Dm644 "$startdir/PACKAGE_MANIFEST.md" \
         "$pkgdir/usr/share/doc/$pkgname/PACKAGE_MANIFEST.md"
     install -Dm644 "$startdir/OPTIONAL_APPLICATIONS.md" \

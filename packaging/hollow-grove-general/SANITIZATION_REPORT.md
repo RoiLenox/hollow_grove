@@ -22,7 +22,7 @@ not reproduced.
 | Active Niri startup | Automatic machine-specific output manager | Removed from General Edition startup |
 | Active Niri weather binding | Fixed geographic coordinates | Replaced by blank user-owned settings and an explanatory fallback |
 | Output-manager configuration | Fixed connector, mode, refresh, scale, and placement | Not copied |
-| Personal Niri service | Fixed PCI graphics device and workstation description | Not copied |
+| Personal Niri service | Fixed PCI graphics device and workstation description | Not copied; the package supplies only a hardware-neutral movement broker unit |
 | Personal Walker/Elephant services | Personal home, XDG, PATH, and user-local binary assumptions | Not copied; optional services start only if a package supplies a unit |
 | Personal idle/lock service | Absolute personal lock-helper path | Not copied; portable lock helper uses installed commands |
 | Personal tiling guard | Mutated the active personal Niri configuration | Excluded; distribution defaults are never rewritten at session startup |
@@ -47,7 +47,8 @@ not reproduced.
 - SSH keys/configuration, GPG keyrings, Git hosting authentication, API tokens,
   assistant credentials, and credential stores.
 - Motherboard, fan, GPU, backlight, monitor, or workstation tuning.
-- Personal systemd user units and user-local executables.
+- Personal systemd user units and user-local executables; the package-owned,
+  hardware-neutral `hollow-niri.service` is not derived from either.
 - Any assumption that a Hollow Grove checkout exists beneath the installed
   user's home directory.
 
@@ -55,7 +56,13 @@ not reproduced.
 
 - New-user files live only under `/etc/skel/.config/`.
 - Distribution helpers live beneath `/usr/lib/hollow-grove/bin/`.
-- Public commands are limited to `hollow-launch` and `hollow-hueman`.
+- The native movement broker uses Niri's session socket supplied with each
+  command and retains no personal path, monitor, or GPU identity.
+- Public commands are limited to `hollow-keyboard`, `hollow-launch`, and
+  `hollow-hueman`, plus the account-neutral `hollow-shell` desktop seam.
+- The Waybar profile contains only distribution colors, command roles, and
+  generic system-state modules; it contains no account, host, output, or
+  hardware identity.
 - User settings, data, state, and runtime locks resolve through XDG paths with
   conventional home-directory fallbacks.
 - Weather remains disabled until the user supplies a location.

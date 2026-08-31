@@ -22,8 +22,13 @@ pub enum ConstitutionalRegion {
     /// `Aura Field`. Renaming this variant would break archived events.
     AuraFields,
     AuraBeach,
+    /// Stable V1 schema spelling for the Minoan `Current Sea`. The variant and
+    /// archive tag remain unchanged; active display and lore use Current Sea.
     AuraSea,
 }
+
+pub const CURRENT_SEA_CANONICAL_NAME: &str = "Current Sea";
+pub const LEGACY_AURA_SEA_NAME: &str = "Aura Sea";
 
 impl ConstitutionalRegion {
     #[must_use]
@@ -31,7 +36,7 @@ impl ConstitutionalRegion {
         match self {
             Self::AuraFields => "Aura Field",
             Self::AuraBeach => "Aura Beach",
-            Self::AuraSea => "Aura Sea",
+            Self::AuraSea => CURRENT_SEA_CANONICAL_NAME,
         }
     }
 
@@ -167,7 +172,7 @@ impl AuraBeachDuty {
         match self {
             Self::RoamAuraBeach => "roam the Aura Beach",
             Self::PatrolShoreline => "patrol the shoreline",
-            Self::GuardAuraSeaAccess => "guard Aura Sea access",
+            Self::GuardAuraSeaAccess => "guard Current Sea access",
             Self::WatchCoastalRoute => "watch coastal routes",
             Self::EscortTraveler => "escort travelers",
             Self::RecognizeHorizonChange => "recognize horizon changes",
@@ -189,9 +194,9 @@ impl AuraSeaGuardianshipDuty {
     #[must_use]
     pub const fn as_str(self) -> &'static str {
         match self {
-            Self::GuardSeaAccess => "guard access to the Aura Sea",
-            Self::WatchHorizon => "watch the Aura Sea horizon",
-            Self::DefendSeaBoundary => "defend the Aura Sea boundary",
+            Self::GuardSeaAccess => "guard access to the Current Sea",
+            Self::WatchHorizon => "watch the Current Sea horizon",
+            Self::DefendSeaBoundary => "defend the Current Sea boundary",
             Self::MaintainLandSeaPassage => "maintain lawful land-sea passage",
         }
     }
@@ -211,7 +216,7 @@ impl RegionalFunction {
                 "Aura Field stewardship, work, maintenance, and defense"
             }
             Self::AuraBeachPatrolAndAuraSeaGuardianship => {
-                "Aura Beach patrol and Aura Sea guardianship"
+                "Aura Beach patrol and Current Sea guardianship"
             }
         }
     }
@@ -243,6 +248,12 @@ pub struct AuraSeaGuardianship {
     pub authority: HouseDecisionId,
     pub evidence: Vec<SubjectEvidence>,
 }
+
+/// Active semantic name for the stable V1 `AuraSeaGuardianship` record shape.
+pub type CurrentSeaGuardianship = AuraSeaGuardianship;
+
+/// Active semantic name for the stable V1 guardianship-duty enum.
+pub type CurrentSeaGuardianshipDuty = AuraSeaGuardianshipDuty;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum RegionalAssignment {
@@ -330,48 +341,50 @@ pub struct RegionalSynthesisAuthority {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum RegionalSynthesisRule {
-    GnomeToMinotaurAuraFields,
-    ElfToCentaurAuraBeach,
+    FaunToMinotaurAuraFields,
+    SatyrToCentaurAuraBeach,
 }
 
 impl RegionalSynthesisRule {
     #[must_use]
     pub const fn as_str(self) -> &'static str {
         match self {
-            Self::GnomeToMinotaurAuraFields => "regional.gnome-minotaur.aura-fields.v1",
-            Self::ElfToCentaurAuraBeach => "regional.elf-centaur.aura-beach.v1",
+            Self::FaunToMinotaurAuraFields => "regional.faun-minotaur.aura-fields.v2",
+            Self::SatyrToCentaurAuraBeach => "regional.satyr-centaur.aura-beach.v2",
         }
     }
 
     #[must_use]
     pub const fn predecessor(self) -> SandmanorForm {
         match self {
-            Self::GnomeToMinotaurAuraFields => SandmanorForm::Gnome,
-            Self::ElfToCentaurAuraBeach => SandmanorForm::Elf,
+            Self::FaunToMinotaurAuraFields => SandmanorForm::Faun,
+            Self::SatyrToCentaurAuraBeach => SandmanorForm::Satyr,
         }
     }
 
     #[must_use]
     pub const fn result(self) -> SandmanorForm {
         match self {
-            Self::GnomeToMinotaurAuraFields => SandmanorForm::Minotaur,
-            Self::ElfToCentaurAuraBeach => SandmanorForm::Centaur,
+            Self::FaunToMinotaurAuraFields => SandmanorForm::Minotaur,
+            Self::SatyrToCentaurAuraBeach => SandmanorForm::Centaur,
         }
     }
 
     #[must_use]
     pub const fn region(self) -> ConstitutionalRegion {
         match self {
-            Self::GnomeToMinotaurAuraFields => ConstitutionalRegion::AuraFields,
-            Self::ElfToCentaurAuraBeach => ConstitutionalRegion::AuraBeach,
+            Self::FaunToMinotaurAuraFields => ConstitutionalRegion::AuraFields,
+            Self::SatyrToCentaurAuraBeach => ConstitutionalRegion::AuraBeach,
         }
     }
 
     #[must_use]
     pub const fn function(self) -> RegionalFunction {
         match self {
-            Self::GnomeToMinotaurAuraFields => RegionalFunction::AuraFieldsStewardshipAndDefense,
-            Self::ElfToCentaurAuraBeach => RegionalFunction::AuraBeachPatrolAndAuraSeaGuardianship,
+            Self::FaunToMinotaurAuraFields => RegionalFunction::AuraFieldsStewardshipAndDefense,
+            Self::SatyrToCentaurAuraBeach => {
+                RegionalFunction::AuraBeachPatrolAndAuraSeaGuardianship
+            }
         }
     }
 
@@ -380,8 +393,8 @@ impl RegionalSynthesisRule {
         result: SandmanorForm,
     ) -> Result<Self, RegionalSynthesisError> {
         match (predecessor, result) {
-            (SandmanorForm::Gnome, SandmanorForm::Minotaur) => Ok(Self::GnomeToMinotaurAuraFields),
-            (SandmanorForm::Elf, SandmanorForm::Centaur) => Ok(Self::ElfToCentaurAuraBeach),
+            (SandmanorForm::Faun, SandmanorForm::Minotaur) => Ok(Self::FaunToMinotaurAuraFields),
+            (SandmanorForm::Satyr, SandmanorForm::Centaur) => Ok(Self::SatyrToCentaurAuraBeach),
             _ => {
                 validate_sandmanor_transition(predecessor.frame(), result.frame())
                     .map_err(RegionalSynthesisError::Lineage)?;
@@ -678,7 +691,7 @@ impl RegionalSynthesisRuntime {
             })
     }
 
-    /// Verifies a read-only Aura Sea authority claim against reducer state.
+    /// Verifies a read-only Current Sea authority claim against reducer state.
     pub fn require_guardianship(
         &self,
         id: &RegionalBeingId,
@@ -689,7 +702,7 @@ impl RegionalSynthesisRuntime {
         self.guardianship(id)
             .ok_or_else(|| RegionalSynthesisError::AssignmentNotHeld {
                 being: id.clone(),
-                assignment: "Aura Sea guardianship",
+                assignment: "Current Sea guardianship",
             })
     }
 
@@ -807,7 +820,10 @@ impl RegionalSynthesisRuntime {
                 registration.id.clone(),
             ));
         }
-        if !matches!(registration.form, SandmanorForm::Gnome | SandmanorForm::Elf) {
+        if !matches!(
+            registration.form,
+            SandmanorForm::Gnome | SandmanorForm::Faun | SandmanorForm::Elf | SandmanorForm::Satyr
+        ) {
             return Err(RegionalSynthesisError::OriginRegistrationRequired(
                 registration.form,
             ));
@@ -985,7 +1001,7 @@ fn canonical_assignment(
     command: &RegionalSynthesisCommand,
 ) -> RegionalAssignment {
     match rule {
-        RegionalSynthesisRule::GnomeToMinotaurAuraFields => RegionalAssignment::Minotaur {
+        RegionalSynthesisRule::FaunToMinotaurAuraFields => RegionalAssignment::Minotaur {
             stewardship: AuraFieldsStewardship {
                 steward: command.result.clone(),
                 region: ConstitutionalRegion::AuraFields,
@@ -1002,7 +1018,7 @@ fn canonical_assignment(
                 evidence: command.evidence.clone(),
             },
         },
-        RegionalSynthesisRule::ElfToCentaurAuraBeach => RegionalAssignment::Centaur {
+        RegionalSynthesisRule::SatyrToCentaurAuraBeach => RegionalAssignment::Centaur {
             beach_occupation: AuraBeachOccupation {
                 occupant: command.result.clone(),
                 region: ConstitutionalRegion::AuraBeach,
@@ -1049,7 +1065,7 @@ fn validate_result(
     match (&result.assignment, rule) {
         (
             Some(RegionalAssignment::Minotaur { stewardship }),
-            RegionalSynthesisRule::GnomeToMinotaurAuraFields,
+            RegionalSynthesisRule::FaunToMinotaurAuraFields,
         ) if stewardship.steward == result.id
             && stewardship.region == ConstitutionalRegion::AuraFields
             && stewardship.duties.len() == 7 =>
@@ -1061,7 +1077,7 @@ fn validate_result(
                 beach_occupation,
                 sea_guardianship,
             }),
-            RegionalSynthesisRule::ElfToCentaurAuraBeach,
+            RegionalSynthesisRule::SatyrToCentaurAuraBeach,
         ) if beach_occupation.occupant == result.id
             && beach_occupation.region == ConstitutionalRegion::AuraBeach
             && beach_occupation.duties.len() == 8
@@ -1194,11 +1210,11 @@ impl RegionalSynthesisError {
 pub const fn sandmanor_form_name(form: SandmanorForm) -> &'static str {
     match form {
         SandmanorForm::Gnome => "Gnome",
+        SandmanorForm::Faun => "Faun",
         SandmanorForm::Minotaur => "Minotaur",
-        SandmanorForm::Hecaton => "Hecaton",
         SandmanorForm::Elf => "Elf",
+        SandmanorForm::Satyr => "Satyr",
         SandmanorForm::Centaur => "Centaur",
-        SandmanorForm::Pegasus => "Pegasus",
     }
 }
 

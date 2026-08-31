@@ -1,6 +1,7 @@
 # Civic Body Correspondence V1
 
-This document records the locked civic-body correspondence enforced by code.
+This document records the active civic-body correspondence and its legacy
+compatibility boundary as enforced by code.
 
 It lives above the frozen Version 1.1 execution path. It does not literalize Hollow Grove into biology. It defines how the civic peoples function as if Hollow Grove were a living body.
 
@@ -25,17 +26,22 @@ Canonical distinction:
 
 - `Geralds = Stonebend = red blood cells = carry`
 - `Nightingales = Glaüshouse = white blood cells = clear`
-- `Wardens = Flynt = platelets = close`
-- `Minorians = Sandmanor Interior = Gnomes = interior signaling and regulation = measure`
-- `Minoans = Sandmanor Exterior = Elves = epithelial and sensory boundary = reveal`
+- `Minorians = Sandmanor Interior = interior signaling and regulation = measure`
+- `Minoans = Sandmanor Exterior = epithelial and sensory boundary = reveal`
+- `Wardens = Flynt civic identity`
+- `Flynt platelet correspondence = STATUS: OPEN`
 
 Canonical chant:
 
 - `Geralds carry.`
 - `Nightingales clear.`
-- `Wardens close.`
 - `Minorians measure.`
 - `Minoans reveal.`
+
+The broader House civic identities are `Wardens = Flynt`,
+`Geralds = Stonebend`, and `Sandmen = Sandmanor`. Sandmen is the broader
+Sandmanor civic identity; Minorians and Minoans remain its Interior and
+Exterior civic-body faces in this correspondence model.
 
 ## Geralds
 
@@ -74,28 +80,24 @@ Canonical note:
 
 - Nightingales clear.
 - They are not generic healers.
-- They are not Wardens.
+- They are not the legacy Flynt Wardens compatibility class.
 
-## Wardens
+## Flynt civic correspondence
 
-Wardens are Flynt’s civic breach-response people.
+The former active assignment `Wardens = Flynt = platelets = close` is
+**SUPERSEDED**. `Wardens = Flynt` is restored only as the canonical civic
+identity. Flynt's final platelet or other civic-body correspondence remains
+**STATUS: OPEN** and is not inferred from the shared name.
 
-They correspond to platelets by function:
-
-- converge on rupture
-- form temporary emergency bonds
-- close breaches before catastrophic loss spreads
-- stabilize the world until deeper repair arrives
-
-Canonical note:
-
-- Wardens close.
-- They are not generic police.
-- They are not Nightingales.
+Historical `CivicPeople::Wardens`, `WARDENS`, chant, and crisis-step records are
+**LEGACY / DEPRECATED** compatibility data only when they encode the retired
+platelet/close mapping. They may be decoded or reproduced for old archives and
+replays without displacing the active Warden civic identity.
 
 ## Minorians
 
-Minorians are Sandmanor Interior Gnomes.
+Minorians are Sandmanor's Interior people. Gnome is their base Form, not a name
+for the entire population.
 
 They correspond to interior signaling and regulatory cells by function:
 
@@ -109,12 +111,13 @@ Canonical note:
 
 - Minorians measure.
 - Gnomes retain horizontal occupational specializations. That horizontal civic
-  structure does not erase the separately governed regional
-  `Gnome → Minotaur` Synthesis of the Aura Field.
+  structure does not erase the distinct `Gnome → Faun → Minotaur` Form
+  progression or the Husbandman → Householder → Hearthkeeper social line.
 
 ## Minoans
 
-Minoans are Sandmanor Exterior Elves.
+Minoans are Sandmanor's Exterior people. Elf is their base Form, not a name for
+the entire population.
 
 They correspond to epithelial and sensory boundary cells by function:
 
@@ -131,11 +134,11 @@ Canonical note:
 
 ## Crisis Loop
 
-The canonical civic breach-response witness is:
+The active civic breach-response witness records the unresolved Flynt step:
 
 1. `Minoans reveal the breach.`
 2. `Minorians measure the breach.`
-3. `Wardens close the breach.`
+3. `Flynt breach-closing civic designation: STATUS OPEN.`
 4. `Nightingales clear the threat.`
 5. `Geralds carry what recovery requires.`
 
@@ -145,7 +148,7 @@ This is a semantic response grammar, not a frozen kernel route. Responses may ov
 
 - `Geralds absent -> The body starves.`
 - `Nightingales absent -> The body becomes infected.`
-- `Wardens absent -> The body bleeds out.`
+- `Flynt breach-closing civic function unresolved -> STATUS: OPEN.`
 - `Minorians absent -> The body loses internal coordination.`
 - `Minoans absent -> The body loses its boundary.`
 
@@ -157,7 +160,7 @@ Examples:
 
 - `Gerald + Carry + Supply Object -> delivery interpretation`
 - `Nightingale + Diagnose/Clear + Injury Object -> recognition and clearing interpretation`
-- `Warden + Brace/Close + Breach Object -> containment interpretation`
+- `Flynt OPEN civic role + Brace/Close + Breach Object -> containment interpretation`
 - `Minorian + Measure + System Object -> internal regulation interpretation`
 - `Minoan + Reveal/Sense + Boundary Object -> exterior perception interpretation`
 
@@ -175,7 +178,7 @@ Civic examples:
 
 - `Gerald + Moxy` can supply a connected district through a route.
 - `Nightingale + Foxy` can reveal a hidden or mistaken threat relation.
-- `Warden + Foxy` can stabilize an underside or return leak.
+- the OPEN Flynt civic role may eventually use Foxy to stabilize an underside or return leak.
 - `Minorian + Moxy` can measure what a system routes beyond itself.
 - `Minoan + Foxy` can reveal a concealed boundary condition.
 
@@ -225,6 +228,8 @@ Supporting semantic sources:
 - no new kernel topology
 - no new persisted progression truth
 - no save migration required
+- legacy `CivicPeople::Wardens` decoding remains stable and deprecated
+- active registries omit Flynt Wardens until the OPEN civic designation is resolved
 - `CurrentPrism` remains distinct
 - `Point²` legality remains unchanged
 - `V2 -> Recipe -> V1.1` remains unchanged

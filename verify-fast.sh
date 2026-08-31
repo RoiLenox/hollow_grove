@@ -14,22 +14,23 @@ echo "seed: $SEED"
 
 ./verify-art-assets.sh
 
-TEST_COUNT="$(cargo test -- --list | rg ': test$' | wc -l | tr -d ' ')"
 GIT_HEAD="$(git rev-parse HEAD 2>/dev/null || printf 'unknown')"
 WORKTREE_STATUS="$(git status --short 2>/dev/null || true)"
+WORKTREE_FINGERPRINT="$(git diff --no-ext-diff --binary | sha256sum | awk '{print $1}')"
 
 cargo fmt --check
-cargo clippy --all-targets --all-features
+cargo clippy --workspace --lib --bins --tests
 cargo test
+TEST_COUNT="$(cargo test -- --list | rg ': test$' | wc -l | tr -d ' ')"
 cargo build
 cargo build --release
 SKIP_BUILD=1 ./verify-playable-lifecycle.sh | tee "$ARTIFACT_DIR/playable-lifecycle.log"
-./bench-local.sh | tee "$ARTIFACT_DIR/bench-fast.log"
+SKIP_FMT=1 SKIP_TESTS=1 SKIP_BUILD=1 ./bench-local.sh | tee "$ARTIFACT_DIR/bench-fast.log"
 SKIP_BUILD=1 ./stress-local.sh | tee "$ARTIFACT_DIR/stress-fast.log"
-cargo run --quiet --features dev-tools --bin client_desktop_status >/dev/null
+cargo run --quiet --features dev-tools --bin hg-dev -- client_desktop_status >/dev/null
 
-RELEASE_HASH="$(cargo run --release --quiet --features dev-tools --bin adversarial_verification -- hash-corpus --cases "$HASH_CASES" --seed "$SEED")"
-cargo run --quiet --features dev-tools --bin adversarial_verification -- report \
+RELEASE_HASH="$(cargo run --release --quiet --features dev-tools --bin hg-dev -- adversarial_verification hash-corpus --cases "$HASH_CASES" --seed "$SEED")"
+cargo run --quiet --features dev-tools --bin hg-dev -- adversarial_verification report \
   --profile fast \
   --seed "$SEED" \
   --hash-cases "$HASH_CASES" \
@@ -44,6 +45,7 @@ cargo run --quiet --features dev-tools --bin adversarial_verification -- report 
   printf 'test_count=%s\n' "$TEST_COUNT"
   printf 'seed=%s\n' "$SEED"
   printf 'release_hash=%s\n' "$RELEASE_HASH"
+  printf 'worktree_fingerprint=%s\n' "$WORKTREE_FINGERPRINT"
   printf 'working_tree_status_begin\n%s\nworking_tree_status_end\n' "$WORKTREE_STATUS"
 } > "$ARTIFACT_DIR/run-context.txt"
 

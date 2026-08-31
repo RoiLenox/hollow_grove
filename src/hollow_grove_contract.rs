@@ -9,9 +9,11 @@ const WORLD_CONTEXT_DOCUMENT: &str =
     include_str!("../CURRENT_SYNTHESIS_HOLLOW_GROVE_WORLD_CONTEXT_v0.1.0.md");
 
 const REQUIRED_WORLD_CONTEXT_FRAGMENTS: &[&str] = &[
-    "Current = blood",
+    "CURRENT + AURA → SYNTHESIS",
+    "Practitioner names the whole person",
+    "LegacyPhysical::Current = blood-associated quantity",
     "Hollow = pus",
-    "Aura = air / pressure / light",
+    "LegacyPhysical::Aura = air / pressure / light-associated quantity",
     "Whole\n→ Hollowing\n→ Hollow + Hollowed",
     "Frame = living mech only",
     "Scene = active event",
@@ -22,19 +24,20 @@ const REQUIRED_WORLD_CONTEXT_FRAGMENTS: &[&str] = &[
     "Jade clears",
     "Opal shimmers",
     "The Nightingales are Glaüshouse's constitutional nursing and clinical-care",
-    "Minorians are Gnomes.",
-    "Minoans are Elves.",
+    "Gnome → Faun → Minotaur",
+    "Elf → Satyr → Centaur",
+    "The Sandman = Demiurge",
     "Pus is Hollow.",
 ];
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub enum Substance {
+pub enum LegacyPhysicalSubstance {
     Current,
     Hollow,
     Aura,
 }
 
-impl Substance {
+impl LegacyPhysicalSubstance {
     pub const fn as_str(self) -> &'static str {
         match self {
             Self::Current => "Current",
@@ -43,14 +46,24 @@ impl Substance {
         }
     }
 
-    pub const fn canonical_identity(self) -> &'static str {
+    pub const fn historical_identity(self) -> &'static str {
         match self {
             Self::Current => "blood",
             Self::Hollow => "pus",
             Self::Aura => "air / pressure / light",
         }
     }
+
+    /// Compatibility alias for callers compiled against the pre-ontology API.
+    #[must_use]
+    pub const fn canonical_identity(self) -> &'static str {
+        self.historical_identity()
+    }
 }
+
+/// Stable source alias retained for callers and replay fixtures that still use
+/// the V1 physical substance name.
+pub type Substance = LegacyPhysicalSubstance;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum EntityCategory {
@@ -518,22 +531,29 @@ pub fn build_world_context_output() -> String {
 pub fn build_hollow_grove_alignment_witness() -> String {
     String::from(
         "HOLLOW GROVE ALIGNMENT WITNESS\n\n\
-         Root Doctrine:\n\
+         Practitioner Ontology:\n\
+         Practitioner = the whole person\n\
+         Current = relational participation in a larger whole\n\
+         Aura = internally cultivated knowledge, ability, perception, discipline, or capacity\n\
+         CURRENT + AURA → SYNTHESIS\n\
+         Level 1 = Practitioner Synthesis\n\
+         Level 2 = Higher / Composite Synthesis\n\n\
+         Legacy Physical Root Doctrine:\n\
          Hollow Current holds.\n\
-         Current flows.\n\
+         LegacyPhysical::Current flows.\n\
          Abyss feels.\n\
-         Aura reveals.\n\
+         LegacyPhysical::Aura reveals.\n\
          Point² expands the self and the world together.\n\n\
-         Substances:\n\
-         Current = blood\n\
+         Legacy Physical Compatibility Mechanics:\n\
+         LegacyPhysical::Current = blood-associated quantity\n\
          Hollow = pus\n\
-         Aura = air / pressure / light\n\n\
-         Current Depths:\n\
+         LegacyPhysical::Aura = air / pressure / light-associated quantity\n\n\
+         Legacy Physical Current Depths:\n\
          Hollow Current = Stonebend = held bodily form\n\
          Current = derivative between Stonebend and Glaüshouse\n\
          Current Speed = the operating tempo of Current\n\
          Abyss = Glaüshouse = felt inward condition\n\n\
-         Aura Dimensions:\n\
+         Legacy Physical Aura Dimensions:\n\
          Aura Shine = outward presence\n\
          Aura View = surrounding world and horizon\n\
          Inner Aura = inward identity and clarity\n\n\
@@ -553,7 +573,7 @@ pub fn build_hollow_grove_alignment_witness() -> String {
          Scene = active situation\n\
          Structure = built or grown arrangement\n\
          System = continuing operational relationship\n\n\
-         House Rocks:\n\
+         Legacy Physical House-Rock Correspondences:\n\
          Diamond claims\n\
          Crystal measures\n\
          Jade clears\n\
@@ -566,7 +586,7 @@ pub fn build_hollow_grove_alignment_witness() -> String {
          Operation = Scene\n\
          Hospital = Structure\n\
          MedicalNetwork = System\n\n\
-         Point² Consequence:\n\
+         Legacy Physical Point² Consequence:\n\
          Current Capacity +1\n\
          Aura Capacity +1\n\
          Point² stabilizes into the next Point.\n",
@@ -1012,7 +1032,7 @@ pub fn validate_hollow_grove_alignment(
             diagnostics.push(AlignmentDiagnostic {
                 code: AlignmentDiagnosticCode::GnomeProgressionMismatch,
                 message: String::from(
-                    "Gnomes may follow the Sandmanor Minotaur and Hecaton lineage but must not transform into Gargoyles",
+                    "Minorian Gnomes may progress through Faun to Minotaur but must not transform into Gargoyles",
                 ),
             });
         }
@@ -1351,18 +1371,22 @@ fn is_named_living_mech_name(name: &str) -> bool {
         "MedicalNetwork",
         "AuraBasin",
     ];
-    const FRAME_IDS: [FrameId; 24] = [
+    const FRAME_IDS: [FrameId; 28] = [
         FrameId::Hueman,
         FrameId::Gremlin,
         FrameId::Goblin,
         FrameId::Ghoul,
+        FrameId::Spectre,
         FrameId::Troll,
         FrameId::Ork,
         FrameId::Ogre,
         FrameId::Troglodyte,
+        FrameId::Pixie,
         FrameId::Pixy,
         FrameId::Sprite,
-        FrameId::Faerie,
+        FrameId::Fairy,
+        FrameId::Spirit,
+        FrameId::Sylph,
         FrameId::Nymph,
         FrameId::Siren,
         FrameId::Muse,
@@ -1371,11 +1395,11 @@ fn is_named_living_mech_name(name: &str) -> bool {
         FrameId::Merman,
         FrameId::Chimera,
         FrameId::Gnome,
+        FrameId::Faun,
         FrameId::Minotaur,
-        FrameId::Hecaton,
         FrameId::Elf,
+        FrameId::Satyr,
         FrameId::Centaur,
-        FrameId::Pegasus,
     ];
 
     if ILLEGAL_FRAME_TOKENS

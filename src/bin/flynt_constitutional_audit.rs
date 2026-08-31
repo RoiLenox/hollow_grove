@@ -1,12 +1,12 @@
 use std::error::Error;
 
-use flynt_constitution::{FORM_MANTICORP, RECIPE_MANTICORP, canonical_constitution};
+use flynt_constitution::{FORM_MANTICORE, RECIPE_MANTICORE, canonical_constitution};
 use hollow_grove::world::flynt::canonical_flynt_institutions;
 
 const CONSTITUTION_DOCUMENT: &str = include_str!("../../FLYNT_CONSTITUTION_V2.md");
 const HUEMAN_PROJECTION: &str = include_str!("../../artifacts/hueman_flynt_constitution.md");
 
-fn main() -> Result<(), Box<dyn Error>> {
+pub(crate) fn tool_main() -> Result<(), Box<dyn Error>> {
     println!("{}", build_audit()?);
     Ok(())
 }
@@ -28,13 +28,13 @@ fn build_audit() -> Result<String, Box<dyn Error>> {
         }
     }
     for stable in [
-        FORM_MANTICORP,
-        RECIPE_MANTICORP,
-        "Tross = Mystery Man = Mr. X",
+        FORM_MANTICORE,
+        RECIPE_MANTICORE,
+        "The Tross = Manticore = Mystery Man = Mr. X",
     ] {
         if !CONSTITUTION_DOCUMENT.contains(stable) || !HUEMAN_PROJECTION.contains(stable) {
             return Err(
-                format!("documentation omits Manticorp identity invariant {stable}").into(),
+                format!("documentation omits Manticore identity invariant {stable}").into(),
             );
         }
     }
@@ -54,8 +54,8 @@ fn build_audit() -> Result<String, Box<dyn Error>> {
         audit.chimera_recipe_count
     ));
     output.push_str(&format!(
-        "manticorp_recipe_count: {}\n",
-        audit.manticorp_recipe_count
+        "manticore_recipe_count: {}\n",
+        audit.manticore_recipe_count
     ));
     output.push_str(&format!(
         "duplicate_authority_count: {}\n",
@@ -122,7 +122,7 @@ mod tests {
         assert_eq!(first, build_audit().unwrap());
         assert!(first.contains("status: valid"));
         assert!(first.contains("constitutional_chimera_count: 1"));
-        assert!(first.contains("manticorp_recipe_count: 1"));
+        assert!(first.contains("manticore_recipe_count: 1"));
         assert!(first.contains("duplicate_authority_count: 0"));
         assert!(first.contains("documentation_matches_implementation: yes"));
         assert!(first.contains("world_projection_valid: yes"));

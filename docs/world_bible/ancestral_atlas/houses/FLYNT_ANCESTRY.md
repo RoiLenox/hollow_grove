@@ -57,11 +57,11 @@ Continue to the [modern cultural synthesis](FLYNT_ANCESTRAL_SYNTHESIS.md) and [F
 
 ## Existing canon bridge
 
-The Atlas interprets recurring inheritances through **Law of Capacity; Resynce; Tross; Wardens; Mystery Men; Gallows; Gallowry; Manticorp**. Those are constraints and destinations for cultural translation, not historical derivations of constitutional authority.
+The Atlas interprets recurring inheritances through **Law of Capacity; Resynce; Tross; Flynt civic designation OPEN; Mystery Men; Gallows; Gallowry; Manticorp**. Those are constraints and destinations for cultural translation, not historical derivations of constitutional authority.
 
 - [Flynt Constitution V2](../../../../FLYNT_CONSTITUTION_V2.md)
 - [Dual Leadership and Manticorp Recipe](../../../../FLYNT_DUAL_LEADERSHIP_AND_MANTICORP_RECIPE_V1.md)
-- [Civic Body Correspondence — Wardens](../../../../CIVIC_BODY_CORRESPONDENCE_V1.md)
+- [Civic Body Correspondence — Flynt designation OPEN](../../../../CIVIC_BODY_CORRESPONDENCE_V1.md)
 - [Hueman Faculties — Resynce](../../../../HUEMAN_FACULTIES_V1.md)
 - [Function Junction — Law of Capacity](../../../../FUNCTION_JUNCTION_SEASONAL_WORLD_CYCLE_AND_PERMANENCE_V1.md)
 - [Visual Color Constitution](../../../../HOLLOW_GROVE_VISUAL_COLOR_CONSTITUTION.md)

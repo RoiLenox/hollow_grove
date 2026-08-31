@@ -183,6 +183,35 @@ fn all_five_faculties_serialize_and_replay_deterministically() {
 }
 
 #[test]
+fn active_spectre_pixie_and_sylph_and_legacy_faerie_remain_decodable() {
+    let mut spectre = manifestation(HuemanFaculty::Presynce);
+    spectre.bounds.frame = FrameId::Spectre;
+    let mut pixie = manifestation(HuemanFaculty::Precog);
+    pixie.bounds.frame = FrameId::Pixie;
+    let mut sylph = manifestation(HuemanFaculty::Precog);
+    sylph.bounds.frame = FrameId::Sylph;
+    let mut faerie = manifestation(HuemanFaculty::Precog);
+    faerie.bounds.frame = FrameId::Faerie;
+
+    let encoded = encode_faculty_manifestations(&[
+        spectre.clone(),
+        pixie.clone(),
+        sylph.clone(),
+        faerie.clone(),
+    ])
+    .unwrap();
+    let text = String::from_utf8_lossy(&encoded);
+    assert!(text.contains("\"spectre\""));
+    assert!(text.contains("\"pixie\""));
+    assert!(text.contains("\"sylph\""));
+    assert!(text.contains("\"faerie\""));
+    assert_eq!(
+        decode_faculty_manifestations(&encoded).unwrap(),
+        [spectre, pixie, sylph, faerie]
+    );
+}
+
+#[test]
 fn ownership_trigger_and_expression_cannot_be_reassigned() {
     let mut prefog = manifestation(HuemanFaculty::Prefog);
     prefog.authority = FacultyAuthority::SandmanorMinoan;
@@ -302,9 +331,9 @@ fn minotaur_and_centaur_preserve_exact_regional_soul_manifestations() {
 }
 
 #[test]
-fn full_current_form_ladder_is_presynce_and_resynce_never_replaces_it() {
+fn active_stonebend_synthesis_ladder_is_presynce_and_resynce_never_replaces_it() {
     assert_eq!(
-        CURRENT_FORM_PRESYNCE_LADDER,
+        STONEBEND_PRESYNCE_SYNTHESIS_LADDER,
         [
             FrameId::Gremlin,
             FrameId::Goblin,
@@ -324,16 +353,16 @@ fn full_current_form_ladder_is_presynce_and_resynce_never_replaces_it() {
 }
 
 #[test]
-fn we_fairy_men_and_gallows_are_distinct_resynce_jurisdictions() {
+fn gallows_is_the_underworld_resynce_manifestation_of_we_fairy_men() {
     let cultures = canonical_resynce_cultures();
     validate_resynce_cultures(&cultures).unwrap();
     let frontier = cultures
         .iter()
         .find(|entry| entry.culture == ResynceCulture::WeFairyMenAuraRidge)
         .unwrap();
-    let civic = cultures
+    let underworld = cultures
         .iter()
-        .find(|entry| entry.culture == ResynceCulture::GallowsFlyntCivicRecognition)
+        .find(|entry| entry.culture == ResynceCulture::GallowsUnderworldOrder)
         .unwrap();
     assert_eq!(frontier.region, FacultyRegion::AuraRidge);
     assert_eq!(
@@ -341,15 +370,19 @@ fn we_fairy_men_and_gallows_are_distinct_resynce_jurisdictions() {
         ResynceCultureFunction::MobileCommunalRelation
     );
     assert!(!frontier.formal_flynt_state_authority);
-    assert_eq!(civic.region, FacultyRegion::FlyntCivic);
+    assert_eq!(underworld.region, FacultyRegion::FlyntUnderworld);
     assert_eq!(
-        civic.function,
-        ResynceCultureFunction::ConsequentialCivicRecognition
+        underworld.function,
+        ResynceCultureFunction::OrganizedUnderworldOrder
     );
-    assert!(civic.formal_flynt_state_authority);
-    assert_ne!(frontier.entity, civic.entity);
+    assert!(!underworld.formal_flynt_state_authority);
+    assert_ne!(frontier.entity, underworld.entity);
+    assert_eq!(
+        frontier.underlying_leadership_body,
+        underworld.underlying_leadership_body
+    );
     assert_eq!(WE_FAIRY_MEN_FRONTIER_ROLES.len(), 8);
-    assert_eq!(GALLOWS_CIVIC_RECOGNITION_DOMAINS.len(), 7);
+    assert_eq!(GALLOWS_UNDERWORLD_DOMAINS.len(), 7);
 }
 
 #[test]

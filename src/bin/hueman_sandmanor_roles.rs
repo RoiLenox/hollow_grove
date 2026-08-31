@@ -7,7 +7,7 @@ use hollow_grove::hueman_support::{
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let hueman_start_choices = read_text_artifact(Path::new(HUEMAN_START_CHOICES_ARTIFACT_PATH))?;
     let hueman_fourway = read_text_artifact(Path::new(HUEMAN_FOURWAY_ARTIFACT_PATH))?;
     let hueman_sandmanor_roles =
@@ -32,22 +32,24 @@ mod tests {
     fn hueman_sandmanor_roles_reads_existing_artifacts() {
         let output = build_hueman_sandmanor_roles_from_artifacts("start", "fourway");
         assert!(output.starts_with("# Hueman Sandmanor Roles"));
-        assert!(output.contains("Pixy is Sandmanor's confirmed Aura-origin path."));
-        assert!(output.contains("Minorians are Sandmanor's interior Gnome tradition"));
-        assert!(output.contains("Minoans are Sandmanor's exterior Elf tradition"));
-        assert!(output.contains("Gnome -> Minotaur is the canonical Aura Field"));
-        assert!(output.contains("Elf -> Centaur is the canonical Aura Beach"));
+        assert!(output.contains(
+            "Sandmanor proves through equal Minorian interior and Minoan exterior traditions"
+        ));
+        assert!(output.contains("Minorians are Sandmanor's Prefog / Hearth / interior-family people"));
+        assert!(output.contains("Minoans are Sandmanor's Prefig / Current Sea / outward-social people"));
+        assert!(output.contains("Gnome -> Faun -> Minotaur"));
+        assert!(output.contains("Elf -> Satyr -> Centaur"));
         assert!(output.contains("failure is evidence and remains recorded"));
         assert!(output.contains("Contest of Improvement"));
         assert!(output.contains("## People And Profession Composition"));
         assert!(output.contains("Elf Radiologist = Being Hueman"));
         assert!(output.contains("Gnome Emergency Physician = Being Hueman"));
-        assert!(output.contains("The Sandman is the singular highest constitutional office"));
+        assert!(output.contains("The Sandman = Demiurge"));
         assert!(output.contains("Fraudulent Design is Sandmanor's signature"));
-        assert!(output.contains("Aura Fields and Content Farm"));
+        assert!(output.contains("Content Farm cultivates what family life has and makes"));
         assert!(output.contains("Free Aura Beach -> Southern Coast -> Current Break"));
-        assert!(output.contains("Gnome -> Minotaur -> Hecaton"));
-        assert!(output.contains("Elf -> Centaur -> Pegasus"));
+        assert!(output.contains("Beach Bum -> Party Boy -> Socialite"));
+        assert!(output.contains("Hecaton and Pegasus are sovereign Hands"));
         assert!(output.contains("the audited crowd measures improvement"));
         assert!(output.contains("called Aegon"));
         assert!(output.contains("Hueman Fourway bytes: 7."));

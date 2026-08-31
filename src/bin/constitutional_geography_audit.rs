@@ -6,7 +6,7 @@ const SPECIFICATION: &str = include_str!("../../HOLLOW_GROVE_CONSTITUTIONAL_GEOG
 const SCREEN_MAP: &str = include_str!("../../HUEMAN_SCREEN_MAP_v0.1.0.md");
 const CROSSOVERS: &str = include_str!("../../HUEMAN_PATH_CROSSOVERS_v0.1.0.md");
 
-fn main() -> Result<(), Box<dyn Error>> {
+pub(crate) fn tool_main() -> Result<(), Box<dyn Error>> {
     println!("{}", build_audit()?);
     Ok(())
 }

@@ -41,10 +41,10 @@ No geography, visual law, Hueman gameplay system, or unrelated House authority w
 
 ## Existing canon connected
 
-- Stonebend: Law of Identity, permanence, Presynce, Diamond / Hypergiant, Freemason, Proliteriate, Claim / Title / Yield.
+- Stonebend: Law of Identity, permanence, Presynce, Hypergiant sovereign title, Diamond STATUS OPEN, Freemason, Proliteriate, Claim / Title / Yield.
 - Sandmanor: Law of Pattern, Prefog, Prefig, Minorians, Minoans, Contest of Improvement, Court, and Restitution.
 - Glaüshouse: Law of Integrity, Precog, Prima Donna, Persephones, Nightingales, Chromacord, Recovery Ward, consent, Clearance, and recovery.
-- Flynt: Law of Capacity, Resynce, Tross, Wardens, Mystery Men, Gallows, Gallowry, Manticorp, engineering, logistics, and networks.
+- Flynt: Law of Capacity, Resynce, Tross, Mystery Men, Gallows, Gallowry, Manticorp, engineering, logistics, and networks.
 - Shared: Compromise precedence, constitutional geography, visual foundation and House palettes, Hueman faculty bounds, and presentation/runtime separation.
 
 ## Uncertainties retained

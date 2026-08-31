@@ -34,14 +34,14 @@ make generated output constitutional authority.
 - `STONEBEND_AURA_WAY_AETHER_HOLLOWING_FOUNDATION_V1.md`: canonical first
   Stonebend pass for vertical law, Aura Way, material Hollowing, Aether
   provenance, and geographic stone refraction
-- `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md`: canonical second
-  Stonebend pass for the three gates, bounded Title scopes, Diamond,
+- `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md`: legacy-compatible second
+  Stonebend pass for the three gates, bounded Title scopes, active Hypergiant and legacy Diamond records,
   Claim/Title/Yield offices, Proliteriate mandates, two-power removal,
   Tombstones, and Lazerhorn succession
-- `STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md`: canonical
+- `STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md`: legacy-compatible
   third Stonebend pass for recognition/activation, maintenance/renewal,
-  targeted interventions, restoration, terminal Tombstones, Diamond vacancy
-  continuity, independent Forge replacement, and Proliteriate continuity
+  targeted interventions, restoration, terminal Tombstones, Hypergiant vacancy
+  continuity through legacy-named records, independent Forge replacement, and Proliteriate continuity
 - `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md`: canonical major-route identities, verbs, and boundary processes
 - `CURRENT_SYNTHESIS_HOLLOW_GROVE_WORLD_CONTEXT_v0.1.0.md`: authoritative TUI world and ontology context
 - `HUEMAN_v0.1.0.md`: standalone Hueman companion
@@ -59,17 +59,21 @@ make generated output constitutional authority.
 - `hollow-grove app list`: lists registered native applications
 - `hollow-grove app launch chroma_cord`: launches the managed native clinical window
 - `hollow-grove app attach chroma_cord`: validates and attaches the focused managed window
+- `adaptive_topology_live serve --root PATH`: supervises seasonal topology preparation and acknowledged physics commits
+- `adaptive_topology_live submit --root PATH --archive PATH --junction ID`: validates and submits a completed Function Junction
 - `./maintain-chroma-cord.sh [--full]`: checks integration health without modifying clinical records
 
 ## Desktop Keyboard Grove
 
 - `artifacts/hollow_grove_keyboard_grove_map.svg`: deterministic visual map of
-  House landmarks, admitted domain plants, operational tools, and provisional
-  plots
+  House landmarks, the full A–Z WHAT vocabulary, the HOW grammar, and
+  operational tools
 - `artifacts/hollow_grove_keyboard_grove_map.md`: accessible generated reading
-  of the map and admitted branches
+  of the same keyboard cheat sheet
 - `packaging/hollow-grove-general/etc/hollow-grove/keyboard-grove.json`:
   machine-readable operational source beneath the keyboard constitution
+- `hollow-keyboard`: installed discovery and audit command for the registry,
+  map, configured branches, and active Niri semantic titles
 
 The SVG and Markdown are generated review projections. The keyboard
 constitution remains authoritative, and the registry supplies their bounded
@@ -113,6 +117,19 @@ during `run` mode while preserving that scope in the receipt.
 `artifacts/hollow_grove_application_registry.json` is the checked application-control contract. It fixes native identity, Glaüshouse attachment, ownership, privacy, minimum scope, maximum scope, and prohibited authority.
 
 `artifacts/hollow_grove_hueman_coordinate_contract.json` is the canonical one-system coordinate declaration. It states that Hollow Grove and Hueman share one normalized spatial field even when runtime authority remains on the Hollow Grove side.
+
+### Adaptive Topology Artifacts
+
+- `artifacts/hollow_grove_spatial_topology_v2_overlay.json`
+- `artifacts/hollow_grove_adaptive_morph_v1.json`
+- `artifacts/hollow_grove_adaptive_topology_state_v1.json`
+- `artifacts/hollow_grove_adaptive_topology_seasonal_event_v1.json`
+- `artifacts/hollow_grove_adaptive_topology_rebuild_command_v1.json`
+- `artifacts/hollow_grove_adaptive_topology_rebuild_ack_v1.json`
+- `artifacts/hollow_grove_function_junction_rehearsal_archive_v1.json`
+- `artifacts/hollow_grove_adaptive_topology_live_rehearsal_v1.json`
+
+The topology overlay, morph contract, and initial circular state are checked deterministic contracts. The seasonal event, route-corridor command, and Godot acknowledgement are replace-in-place live artifacts. The rehearsal archive and result preserve the reproducible Spring acceptance input and its five-pose evidence without replacing the checked circular state. Rust validates the Function Junction and owns state commit; Godot owns realized collision/navigation geometry and can acknowledge only the exact independently hashed command. See `HOLLOW_GROVE_ADAPTIVE_TOPOLOGY_STATE_V1.md` for the transaction and replay rules, and `HOLLOW_GROVE_ADAPTIVE_TOPOLOGY_LIVE_REHEARSAL_V1.md` for the accepted live run.
 
 ### Current Synthesis Artifacts
 

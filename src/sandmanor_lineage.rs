@@ -1,23 +1,35 @@
-//! Sandmanor's matched Frame lineages.
+//! Sandmanor's parallel people, Form, social-role, institutional, and sovereign
+//! ontology.
 //!
-//! This is a typed legality and form-description contract. It reuses the
-//! existing `FrameId` grammar and does not select actions or create a separate
-//! transformation engine.
+//! These axes are deliberately distinct. In particular, a mythological Form
+//! does not create a social role, attendant office, sovereign Hand, or the
+//! Sandman office. Detailed biological and metaphysical transition mechanics
+//! remain open canon.
 
 use crate::frame_state::FrameId;
 use crate::hollow_grove_contract::House;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub enum SandmanorLineage {
     Minorian,
     Minoan,
 }
 
+impl SandmanorLineage {
+    #[must_use]
+    pub const fn people_name(self) -> &'static str {
+        match self {
+            Self::Minorian => "Minorian",
+            Self::Minoan => "Minoan",
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub enum SandmanorStage {
-    Origin,
-    Synthesis,
-    Mastery,
+    Base,
+    Intermediate,
+    Mature,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -26,51 +38,112 @@ pub enum SandmanorDomain {
     Exterior,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub enum SandmanorSynthesisSource {
-    GnomeAndBull,
-    ElfAndHorse,
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub enum SandmanorFormTrait {
-    Interior,
-    Exterior,
-    Craft,
-    Cultivation,
-    Precision,
-    Bull,
-    Strength,
-    Fieldwork,
-    Endurance,
-    FourArmed,
-    ParallelAction,
-    Construction,
-    Harvest,
-    Defense,
-    MaterialMastery,
-    Travel,
-    Perception,
-    Adaptability,
-    Horse,
-    Speed,
-    CoastalRange,
-    Winged,
-    Flight,
-    HorizonTravel,
-    AerialRange,
-    MovementMastery,
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub enum SandmanorForm {
     Gnome,
+    Faun,
     Minotaur,
-    Hecaton,
     Elf,
+    Satyr,
     Centaur,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
+pub enum SandmanorSocialRole {
+    Husbandman,
+    Householder,
+    Hearthkeeper,
+    BeachBum,
+    PartyBoy,
+    Socialite,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
+pub enum SandmanorCulturalDomain {
+    ContentFarm,
+    AuraField,
+    AuraBeach,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
+pub enum SandmanorAttendantClass {
+    Geomancer,
+    Labyrinthian,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
+pub enum SandmanorSovereignHand {
+    Hecaton,
     Pegasus,
 }
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
+pub enum SandmanorSovereignIdentity {
+    SandmanDemiurge,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum CanonStatus {
+    Locked,
+    Open,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct SandmanorSideDefinition {
+    pub people: SandmanorLineage,
+    pub forms: [SandmanorForm; 3],
+    pub cultural_domains: &'static [SandmanorCulturalDomain],
+    pub social_roles: [SandmanorSocialRole; 3],
+    pub attendant_class: SandmanorAttendantClass,
+    pub sovereign_hand: SandmanorSovereignHand,
+}
+
+const MINORIAN_CULTURAL_DOMAINS: &[SandmanorCulturalDomain] = &[
+    SandmanorCulturalDomain::ContentFarm,
+    SandmanorCulturalDomain::AuraField,
+];
+const MINOAN_CULTURAL_DOMAINS: &[SandmanorCulturalDomain] = &[SandmanorCulturalDomain::AuraBeach];
+
+pub const MINORIAN_SIDE: SandmanorSideDefinition = SandmanorSideDefinition {
+    people: SandmanorLineage::Minorian,
+    forms: [
+        SandmanorForm::Gnome,
+        SandmanorForm::Faun,
+        SandmanorForm::Minotaur,
+    ],
+    cultural_domains: MINORIAN_CULTURAL_DOMAINS,
+    social_roles: [
+        SandmanorSocialRole::Husbandman,
+        SandmanorSocialRole::Householder,
+        SandmanorSocialRole::Hearthkeeper,
+    ],
+    attendant_class: SandmanorAttendantClass::Geomancer,
+    sovereign_hand: SandmanorSovereignHand::Hecaton,
+};
+
+pub const MINOAN_SIDE: SandmanorSideDefinition = SandmanorSideDefinition {
+    people: SandmanorLineage::Minoan,
+    forms: [
+        SandmanorForm::Elf,
+        SandmanorForm::Satyr,
+        SandmanorForm::Centaur,
+    ],
+    cultural_domains: MINOAN_CULTURAL_DOMAINS,
+    social_roles: [
+        SandmanorSocialRole::BeachBum,
+        SandmanorSocialRole::PartyBoy,
+        SandmanorSocialRole::Socialite,
+    ],
+    attendant_class: SandmanorAttendantClass::Labyrinthian,
+    sovereign_hand: SandmanorSovereignHand::Pegasus,
+};
+
+pub const SANDMANOR_SOVEREIGN: SandmanorSovereignIdentity =
+    SandmanorSovereignIdentity::SandmanDemiurge;
+pub const HECATON_APPOINTMENT_STATUS: CanonStatus = CanonStatus::Open;
+pub const PEGASUS_APPOINTMENT_STATUS: CanonStatus = CanonStatus::Open;
+pub const SOVEREIGN_HAND_SUCCESSION_STATUS: CanonStatus = CanonStatus::Open;
+pub const DETAILED_FORM_TRANSITION_MECHANICS_STATUS: CanonStatus = CanonStatus::Open;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum SandmanorTransitionError {
@@ -84,11 +157,11 @@ impl SandmanorForm {
     pub const fn frame(self) -> FrameId {
         match self {
             Self::Gnome => FrameId::Gnome,
+            Self::Faun => FrameId::Faun,
             Self::Minotaur => FrameId::Minotaur,
-            Self::Hecaton => FrameId::Hecaton,
             Self::Elf => FrameId::Elf,
+            Self::Satyr => FrameId::Satyr,
             Self::Centaur => FrameId::Centaur,
-            Self::Pegasus => FrameId::Pegasus,
         }
     }
 
@@ -96,11 +169,11 @@ impl SandmanorForm {
     pub const fn from_frame(frame: FrameId) -> Option<Self> {
         match frame {
             FrameId::Gnome => Some(Self::Gnome),
+            FrameId::Faun => Some(Self::Faun),
             FrameId::Minotaur => Some(Self::Minotaur),
-            FrameId::Hecaton => Some(Self::Hecaton),
             FrameId::Elf => Some(Self::Elf),
+            FrameId::Satyr => Some(Self::Satyr),
             FrameId::Centaur => Some(Self::Centaur),
-            FrameId::Pegasus => Some(Self::Pegasus),
             _ => None,
         }
     }
@@ -113,17 +186,17 @@ impl SandmanorForm {
     #[must_use]
     pub const fn lineage(self) -> SandmanorLineage {
         match self {
-            Self::Gnome | Self::Minotaur | Self::Hecaton => SandmanorLineage::Minorian,
-            Self::Elf | Self::Centaur | Self::Pegasus => SandmanorLineage::Minoan,
+            Self::Gnome | Self::Faun | Self::Minotaur => SandmanorLineage::Minorian,
+            Self::Elf | Self::Satyr | Self::Centaur => SandmanorLineage::Minoan,
         }
     }
 
     #[must_use]
     pub const fn stage(self) -> SandmanorStage {
         match self {
-            Self::Gnome | Self::Elf => SandmanorStage::Origin,
-            Self::Minotaur | Self::Centaur => SandmanorStage::Synthesis,
-            Self::Hecaton | Self::Pegasus => SandmanorStage::Mastery,
+            Self::Gnome | Self::Elf => SandmanorStage::Base,
+            Self::Faun | Self::Satyr => SandmanorStage::Intermediate,
+            Self::Minotaur | Self::Centaur => SandmanorStage::Mature,
         }
     }
 
@@ -139,21 +212,21 @@ impl SandmanorForm {
     pub const fn previous_form(self) -> Option<Self> {
         match self {
             Self::Gnome | Self::Elf => None,
-            Self::Minotaur => Some(Self::Gnome),
-            Self::Hecaton => Some(Self::Minotaur),
-            Self::Centaur => Some(Self::Elf),
-            Self::Pegasus => Some(Self::Centaur),
+            Self::Faun => Some(Self::Gnome),
+            Self::Minotaur => Some(Self::Faun),
+            Self::Satyr => Some(Self::Elf),
+            Self::Centaur => Some(Self::Satyr),
         }
     }
 
     #[must_use]
     pub const fn next_legal_form(self) -> Option<Self> {
         match self {
-            Self::Gnome => Some(Self::Minotaur),
-            Self::Minotaur => Some(Self::Hecaton),
-            Self::Elf => Some(Self::Centaur),
-            Self::Centaur => Some(Self::Pegasus),
-            Self::Hecaton | Self::Pegasus => None,
+            Self::Gnome => Some(Self::Faun),
+            Self::Faun => Some(Self::Minotaur),
+            Self::Elf => Some(Self::Satyr),
+            Self::Satyr => Some(Self::Centaur),
+            Self::Minotaur | Self::Centaur => None,
         }
     }
 
@@ -161,53 +234,17 @@ impl SandmanorForm {
     pub const fn matched_counterpart(self) -> Self {
         match self {
             Self::Gnome => Self::Elf,
+            Self::Faun => Self::Satyr,
             Self::Minotaur => Self::Centaur,
-            Self::Hecaton => Self::Pegasus,
             Self::Elf => Self::Gnome,
+            Self::Satyr => Self::Faun,
             Self::Centaur => Self::Minotaur,
-            Self::Pegasus => Self::Hecaton,
-        }
-    }
-
-    #[must_use]
-    pub const fn synthesis_source(self) -> Option<SandmanorSynthesisSource> {
-        match self {
-            Self::Gnome | Self::Elf => None,
-            Self::Minotaur | Self::Hecaton => Some(SandmanorSynthesisSource::GnomeAndBull),
-            Self::Centaur | Self::Pegasus => Some(SandmanorSynthesisSource::ElfAndHorse),
-        }
-    }
-
-    #[must_use]
-    pub const fn arm_count(self) -> Option<u8> {
-        match self {
-            Self::Hecaton => Some(4),
-            _ => None,
-        }
-    }
-
-    #[must_use]
-    pub const fn traits(self) -> &'static [SandmanorFormTrait] {
-        use SandmanorFormTrait::*;
-        match self {
-            Self::Gnome => &[Interior, Craft, Cultivation, Precision],
-            Self::Minotaur => &[Bull, Strength, Fieldwork, Endurance],
-            Self::Hecaton => &[
-                FourArmed,
-                ParallelAction,
-                Construction,
-                Harvest,
-                Defense,
-                MaterialMastery,
-            ],
-            Self::Elf => &[Exterior, Travel, Perception, Adaptability],
-            Self::Centaur => &[Horse, Speed, CoastalRange, Endurance],
-            Self::Pegasus => &[Winged, Flight, HorizonTravel, AerialRange, MovementMastery],
         }
     }
 }
 
-/// Validates only the two adjacent transitions in either matched lineage.
+/// Validates documented adjacency without defining the underlying biological
+/// or metaphysical mechanism.
 pub fn validate_sandmanor_transition(
     from: FrameId,
     to: FrameId,
@@ -232,60 +269,77 @@ mod tests {
     use super::*;
 
     #[test]
-    fn matched_lineages_are_legal_and_equal_at_mastery() {
-        assert_eq!(SandmanorForm::Gnome.lineage(), SandmanorLineage::Minorian);
-        assert_eq!(SandmanorForm::Elf.lineage(), SandmanorLineage::Minoan);
+    fn forms_are_parallel_without_cross_people_evolution() {
         assert_eq!(
-            SandmanorForm::Hecaton.stage(),
-            SandmanorForm::Pegasus.stage()
+            MINORIAN_SIDE.forms,
+            [
+                SandmanorForm::Gnome,
+                SandmanorForm::Faun,
+                SandmanorForm::Minotaur
+            ]
         );
-        assert_eq!(SandmanorForm::Hecaton.stage(), SandmanorStage::Mastery);
         assert_eq!(
-            SandmanorForm::Hecaton.matched_counterpart(),
-            SandmanorForm::Pegasus
+            MINOAN_SIDE.forms,
+            [
+                SandmanorForm::Elf,
+                SandmanorForm::Satyr,
+                SandmanorForm::Centaur
+            ]
+        );
+        assert_eq!(
+            SandmanorForm::Faun.matched_counterpart(),
+            SandmanorForm::Satyr
+        );
+        assert_eq!(
+            SandmanorForm::Minotaur.matched_counterpart(),
+            SandmanorForm::Centaur
+        );
+        assert_eq!(
+            validate_sandmanor_transition(FrameId::Gnome, FrameId::Elf),
+            Err(SandmanorTransitionError::CrossLineage)
         );
     }
 
     #[test]
-    fn each_lineage_accepts_only_its_adjacent_transition() {
+    fn social_attendant_hand_and_sovereign_axes_are_distinct() {
         assert_eq!(
-            validate_sandmanor_transition(FrameId::Gnome, FrameId::Minotaur),
-            Ok(())
+            MINORIAN_SIDE.attendant_class,
+            SandmanorAttendantClass::Geomancer
         );
+        assert_eq!(
+            MINOAN_SIDE.attendant_class,
+            SandmanorAttendantClass::Labyrinthian
+        );
+        assert_eq!(
+            MINORIAN_SIDE.sovereign_hand,
+            SandmanorSovereignHand::Hecaton
+        );
+        assert_eq!(MINOAN_SIDE.sovereign_hand, SandmanorSovereignHand::Pegasus);
+        assert_eq!(
+            SANDMANOR_SOVEREIGN,
+            SandmanorSovereignIdentity::SandmanDemiurge
+        );
+        assert_eq!(HECATON_APPOINTMENT_STATUS, CanonStatus::Open);
+        assert_eq!(PEGASUS_APPOINTMENT_STATUS, CanonStatus::Open);
+    }
+
+    #[test]
+    fn only_adjacent_form_transitions_are_documented() {
+        for (from, to) in [
+            (FrameId::Gnome, FrameId::Faun),
+            (FrameId::Faun, FrameId::Minotaur),
+            (FrameId::Elf, FrameId::Satyr),
+            (FrameId::Satyr, FrameId::Centaur),
+        ] {
+            assert_eq!(validate_sandmanor_transition(from, to), Ok(()));
+        }
         assert_eq!(
             validate_sandmanor_transition(FrameId::Minotaur, FrameId::Hecaton),
-            Ok(())
-        );
-        assert_eq!(
-            validate_sandmanor_transition(FrameId::Elf, FrameId::Centaur),
-            Ok(())
+            Err(SandmanorTransitionError::NotSandmanorForm)
         );
         assert_eq!(
             validate_sandmanor_transition(FrameId::Centaur, FrameId::Pegasus),
-            Ok(())
-        );
-        assert_eq!(
-            validate_sandmanor_transition(FrameId::Gnome, FrameId::Centaur),
-            Err(SandmanorTransitionError::CrossLineage)
-        );
-        assert_eq!(
-            validate_sandmanor_transition(FrameId::Minotaur, FrameId::Pegasus),
-            Err(SandmanorTransitionError::CrossLineage)
-        );
-    }
-
-    #[test]
-    fn hecaton_is_four_armed_capacity_not_literal_hundred_arms() {
-        assert_eq!(SandmanorForm::Hecaton.arm_count(), Some(4));
-        assert!(
-            SandmanorForm::Hecaton
-                .traits()
-                .contains(&SandmanorFormTrait::FourArmed)
-        );
-        assert!(
-            !SandmanorForm::Hecaton
-                .traits()
-                .contains(&SandmanorFormTrait::Flight)
+            Err(SandmanorTransitionError::NotSandmanorForm)
         );
     }
 }

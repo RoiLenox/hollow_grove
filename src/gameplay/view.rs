@@ -616,7 +616,7 @@ pub struct BoardwalkCaseView {
     pub advisories: Vec<BoardwalkAdvisoryView>,
 }
 
-/// Read-only Federation guidance for the Returning Goon case. These records
+/// Read-only Rampart guidance for the Returning Goon case. These records
 /// are presentation evidence; they cannot commit a choice, Bond, or Title.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -957,6 +957,16 @@ pub struct SurfaceFacilityView {
     pub display_name: String,
     pub kind: String,
     pub function: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub subregion_id: Option<String>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct SurfaceSubregionView {
+    pub subregion_id: String,
+    pub display_name: String,
+    pub polygon: Vec<SurfacePointView>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -964,10 +974,16 @@ pub struct SurfaceFacilityView {
 pub struct InteriorSurfaceView {
     pub surface_id: String,
     pub display_name: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub composite_surface_id: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub composite_display_name: Option<String>,
     pub singular_region: bool,
     pub dominant_house: String,
     pub regional_attribution: String,
     pub boundary: Vec<SurfacePointView>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub subregions: Vec<SurfaceSubregionView>,
     pub access_routes: Vec<String>,
     pub facilities: Vec<SurfaceFacilityView>,
 }
@@ -1037,10 +1053,21 @@ impl InteriorSurfaceView {
                 Some(Self {
                     surface_id: field.id.stable_id().into(),
                     display_name: field.id.display_name().into(),
+                    composite_surface_id: Some("aura-farm".into()),
+                    composite_display_name: Some(field.composite_display_name().into()),
                     singular_region: true,
                     dominant_house: format!("{:?}", field.dominant_house),
                     regional_attribution: field.regional_attribution.into(),
                     boundary: field.boundary.into_iter().map(Into::into).collect(),
+                    subregions: field
+                        .cultivation_halves
+                        .iter()
+                        .map(|half| SurfaceSubregionView {
+                            subregion_id: half.id.stable_id().into(),
+                            display_name: half.id.display_name().into(),
+                            polygon: half.polygon.into_iter().map(Into::into).collect(),
+                        })
+                        .collect(),
                     access_routes: field
                         .access_routes
                         .into_iter()
@@ -1054,6 +1081,7 @@ impl InteriorSurfaceView {
                             display_name: facility.name.into(),
                             kind: facility.kind.as_str().into(),
                             function: facility.function.into(),
+                            subregion_id: Some(facility.id.cultivation_half().stable_id().into()),
                         })
                         .collect(),
                 })
@@ -1063,10 +1091,13 @@ impl InteriorSurfaceView {
                 Some(Self {
                     surface_id: beach.id.stable_id().into(),
                     display_name: beach.id.display_name().into(),
+                    composite_surface_id: None,
+                    composite_display_name: None,
                     singular_region: true,
                     dominant_house: format!("{:?}", beach.dominant_house),
                     regional_attribution: beach.regional_attribution.into(),
                     boundary: beach.boundary.into_iter().map(Into::into).collect(),
+                    subregions: vec![],
                     access_routes: beach
                         .access_routes
                         .into_iter()
@@ -1080,6 +1111,7 @@ impl InteriorSurfaceView {
                             display_name: facility.name.into(),
                             kind: facility.kind.as_str().into(),
                             function: facility.function.into(),
+                            subregion_id: None,
                         })
                         .collect(),
                 })
@@ -1089,10 +1121,13 @@ impl InteriorSurfaceView {
                 Some(Self {
                     surface_id: basin.id.stable_id().into(),
                     display_name: basin.id.display_name().into(),
+                    composite_surface_id: None,
+                    composite_display_name: None,
                     singular_region: true,
                     dominant_house: format!("{:?}", basin.dominant_house),
                     regional_attribution: basin.regional_attribution.into(),
                     boundary: basin.boundary.into_iter().map(Into::into).collect(),
+                    subregions: vec![],
                     access_routes: basin
                         .access_routes
                         .into_iter()
@@ -1106,6 +1141,7 @@ impl InteriorSurfaceView {
                             display_name: facility.name.into(),
                             kind: facility.kind.as_str().into(),
                             function: facility.function.into(),
+                            subregion_id: None,
                         })
                         .collect(),
                 })
@@ -1298,16 +1334,13 @@ impl Default for KernelAuditView {
 
 impl KernelAuditView {
     #[must_use]
-    pub fn from_reports(
-        federation: &KernelInvariantReport,
-        guides: &KernelInvariantReport,
-    ) -> Self {
-        let mut violations = federation.violations.clone();
+    pub fn from_reports(rampart: &KernelInvariantReport, guides: &KernelInvariantReport) -> Self {
+        let mut violations = rampart.violations.clone();
         violations.extend(guides.violations.clone());
         Self {
-            schema_version: federation.schema_version,
+            schema_version: rampart.schema_version,
             passed: violations.is_empty(),
-            checked_invariants: federation
+            checked_invariants: rampart
                 .checked_invariants
                 .iter()
                 .chain(guides.checked_invariants.iter())

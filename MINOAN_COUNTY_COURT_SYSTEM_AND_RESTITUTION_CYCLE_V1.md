@@ -44,7 +44,7 @@ Restitution, and return a case to the stage that failed.
 
 The Court may not:
 
-- bear Diamond or exercise Hypergiant authority;
+- exercise Hypergiant authority; Diamond's current role remains STATUS: OPEN;
 - forge a Stonebend Claim or issue the High Freemason seal;
 - embody, replace, or abolish the Proliteriate;
 - remove a principal Stonebend power without two-power concurrence;

@@ -180,9 +180,10 @@ dates and coercive dependencies.
 
 Flynt reads this ancestry through the Law of Capacity: what can this system
 actually do under pressure, in which phase, with what resources, limits, and
-human costs? Resynce, Tross, Wardens, Mystery Men, Gallows, Gallowry, and
+human costs? Resynce, Tross, Mystery Men, Gallows, Gallowry, and
 Manticorp constrain the adaptation. Recognition may remain a social value or
-ceremonial theme; it is not Flynt's constitutional law.
+ceremonial theme; it is not Flynt's constitutional law. Flynt's general civic
+designation remains STATUS: OPEN.
 
 ## Library integration
 
@@ -208,7 +209,7 @@ systems, siege archaeology, and explicit debate over reform chronology.
 
 Place the dossier in Flynt's Age II historical wing, linked to logistics,
 engineering, resource systems, coalition command, phase testing, and harm audit.
-Placement grants no command, Warden, or military authority.
+Placement grants no command or military authority.
 
 ### Relationship to foundational House classics
 

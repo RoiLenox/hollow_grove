@@ -8,7 +8,7 @@ fn build_prompt_from_witness(witness: &str) -> String {
     build_inverse_path_prompt(witness)
 }
 
-fn main() {
+pub(crate) fn tool_main() {
     let kernel_pass = run_kernel_cycle(Symptom::origin());
     println!("{}", build_prompt_from_consumer(&kernel_pass));
 }

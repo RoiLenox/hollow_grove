@@ -327,7 +327,7 @@ event. Standalone settlement support and commitment use
 `DeepPressureChanged`.
 
 Gameplay archive schema V3 stores these nested events under the existing
-checksum and explicit Runtime Federation binding. Replay reconstructs the
+checksum and explicit Runtime Rampart binding. Replay reconstructs the
 living world, campaign journal, relationships, House acts, constitutional Bond,
 ending, and aftermath. A mismatch fails as `DeepPressureReplayDivergence`.
 
@@ -355,5 +355,5 @@ Run:
 
 ```bash
 cargo test --test deep_pressure_campaign
-cargo run --quiet --bin deep_pressure_audit
+cargo run --quiet --features dev-tools --bin hg-dev -- deep_pressure_audit
 ```

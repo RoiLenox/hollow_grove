@@ -1,0 +1,71 @@
+[
+  {
+    "name": "hollow-grove-top",
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "spacing": 6,
+    "reload_style_on_change": true,
+    "modules-left": ["custom/grove", "niri/workspaces"],
+    "modules-center": ["niri/window"],
+    "modules-right": ["tray", "network", "pulseaudio", "battery", "clock"],
+
+    "custom/grove": {
+      "format": "  HOLLOW GROVE  ",
+      "tooltip": false,
+      "on-click": "/usr/bin/hollow-shell launcher",
+      "on-click-right": "/usr/bin/hollow-shell overview"
+    },
+
+    "niri/workspaces": {
+      "format": "{icon}",
+      "format-icons": {
+        "active": "●",
+        "default": "○"
+      }
+    },
+
+    "niri/window": {
+      "format": "{title}",
+      "max-length": 72,
+      "separate-outputs": true,
+      "rewrite": {
+        "": "Hollow Grove"
+      }
+    },
+
+    "tray": {
+      "icon-size": 16,
+      "spacing": 8
+    },
+
+    "network": {
+      "format-wifi": "NET {signalStrength}%",
+      "format-ethernet": "NET",
+      "format-disconnected": "NET --",
+      "tooltip-format": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "pulseaudio": {
+      "format": "VOL {volume}%",
+      "format-muted": "VOL --",
+      "scroll-step": 5,
+      "on-click": "/usr/lib/hollow-grove/bin/volume-control mute"
+    },
+
+    "battery": {
+      "states": {
+        "warning": 30,
+        "critical": 15
+      },
+      "format": "PWR {capacity}%",
+      "format-charging": "PWR +{capacity}%",
+      "format-full": "PWR 100%"
+    },
+
+    "clock": {
+      "format": "{:%a %b %d  %H:%M}",
+      "tooltip-format": "<tt>{calendar}</tt>"
+    }
+  }
+]

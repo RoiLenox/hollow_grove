@@ -137,8 +137,15 @@ fn generated_hueman_projection_is_presentation_only_and_current() {
         "Doctor Ratchet is its frozen current holder identity",
         "Nurse House is one frozen current Persephone identity",
         "The Nightingales are the universal clinical foundation",
-        "Matron and Marshal are equal",
+        "Marshal / Sprite on the Biokinetic-dominant branch",
+        "Matron / Fairy on the Noomantic-dominant branch",
         "multiple Persephones may serve",
+        "Biokinesis is Glaushouse's Current-side expression",
+        "Noomancy is its exact Aura-side expression",
+        "Marshal / Sprite -> Spirit",
+        "Matron / Fairy -> Nymph",
+        "Persephone / Siren",
+        "Prima Donna / Muse",
         "Synthesis is Continuance through renewal",
         "Glauspitals operates clinical facilities",
         "Chromacord preserves clinical records and evidence",
@@ -203,8 +210,8 @@ fn continuity_ladder_succession_and_gremlin_way_are_projected_across_canon() {
     ));
     assert!(MANTICORP.contains("Gremlincoin = the Gremlin Way."));
     assert!(MANTICORP.contains("Gargoyle maintenance and renewal"));
-    assert!(FLYNT.contains("presently maintained living holder"));
-    assert!(FLYNT.contains("Manticorp Form distinct from the Manticorp institution"));
+    assert!(FLYNT.contains("presently maintained living"));
+    assert!(FLYNT.contains("Manticore Form distinct from the Manticorp soldier body"));
     assert!(POWER_RECIPE.contains("host rejection / Sympiote rejection"));
     assert!(
         POWER_RECIPE

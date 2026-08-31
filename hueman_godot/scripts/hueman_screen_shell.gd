@@ -1,6 +1,12 @@
 extends Node2D
 
 const MAP_CONTRACT_RELATIVE_PATH := "artifacts/hueman_screen_map.json"
+const SPATIAL_TOPOLOGY_V2_OVERLAY_RELATIVE_PATH := "artifacts/hollow_grove_spatial_topology_v2_overlay.json"
+const ADAPTIVE_MORPH_CONTRACT_RELATIVE_PATH := "artifacts/hollow_grove_adaptive_morph_v1.json"
+const ADAPTIVE_TOPOLOGY_STATE_RELATIVE_PATH := "artifacts/hollow_grove_adaptive_topology_state_v1.json"
+const ADAPTIVE_TOPOLOGY_REBUILD_COMMAND_RELATIVE_PATH := "artifacts/hollow_grove_adaptive_topology_rebuild_command_v1.json"
+const ADAPTIVE_TOPOLOGY_REBUILD_ACK_RELATIVE_PATH := "artifacts/hollow_grove_adaptive_topology_rebuild_ack_v1.json"
+const ADAPTIVE_TOPOLOGY_LIVE_RULE_SET_ID := "ruleset.hollow-grove.adaptive-topology-live-v1"
 const COORDINATE_CONTRACT_RELATIVE_PATH := "artifacts/hollow_grove_hueman_coordinate_contract.json"
 const VISUAL_COLOR_CONSTITUTION_RELATIVE_PATH := "src/constitutional/hollow_grove_visual_color_palette.json"
 const LIVE_STATE_RELATIVE_PATH := "artifacts/screen_map_state.json"
@@ -9,10 +15,17 @@ const PAIR_STATE_RELATIVE_PATH := "artifacts/hueman_pair_state.json"
 const PAIR_PREVIEW_IMAGE_RELATIVE_PATH := "artifacts/hueman_pair_preview.png"
 const PAIR_PREVIEW_STATE_RELATIVE_PATH := "artifacts/hueman_pair_preview_state.json"
 const ASSET_EXPORT_RELATIVE_PATH := "hueman_godot/assets/export"
+const ASSET_EXPORT_REVISION_RELATIVE_PATH := "artifacts/aseprite_export_revision.json"
 const POLL_INTERVAL_SECONDS := 0.25
 
 var repo_root_path := ""
 var map_contract := {}
+var adaptive_morph_contract := {}
+var adaptive_topology_state := {}
+var adaptive_topology_rebuild_command := {}
+var adaptive_rectangularity := 0.0
+var adaptive_morph_developer_override := false
+var topology_review_mode := false
 var coordinate_contract := {}
 var visual_color_constitution := {}
 var colors_by_semantic_identity := {}
@@ -21,6 +34,13 @@ var pair_state := {}
 var pair_preview_state := {}
 var pair_preview_texture = null
 var pair_preview_mtime := -1
+var live_state_mtime := -2
+var adaptive_topology_rebuild_command_id := ""
+var adaptive_topology_rebuild_in_flight := false
+var adaptive_pending_rebuild_command := {}
+var pair_state_mtime := -2
+var pair_preview_state_mtime := -2
+var asset_revision_mtime := -2
 var asset_preview_texture = null
 var asset_preview_path := ""
 var asset_preview_mtime := -1
@@ -40,6 +60,11 @@ var last_pair_mode_active := false
 var hud_layer: CanvasLayer
 var status_label: Label
 var hint_label: Label
+var adaptive_morph_label: Label
+var adaptive_morph_slider: HSlider
+var adaptive_world_state_button: Button
+var adaptive_collision_area: Area2D
+var adaptive_navigation_root: Node2D
 
 
 func _ready() -> void:
@@ -50,6 +75,8 @@ func _ready() -> void:
 		set_process_input(false)
 		return
 	_ensure_hud()
+	_ensure_adaptive_topology_physics_roots()
+	get_viewport().size_changed.connect(_on_adaptive_topology_viewport_size_changed)
 	_load_all_state()
 	set_process(true)
 	set_process_input(true)
@@ -85,25 +112,31 @@ func _draw() -> void:
 
 	var aura_field_color: Color = _constitutional_color("hollow_grove.house.sandmanor.highlight")
 	aura_field_color.a = 0.18
+	var content_farm_color: Color = _constitutional_color("hollow_grove.house.sandmanor.primary")
+	content_farm_color.a = 0.22
 	var aura_beach_color: Color = _constitutional_color("hollow_grove.house.glaushouse.highlight")
 	aura_beach_color.a = 0.18
 	var aura_basin_color: Color = _constitutional_color("hollow_grove.house.stonebend.highlight")
 	aura_basin_color.a = 0.18
 
 	_draw_surface("aura_field", aura_field_color, viewport_size)
+	_draw_surface("content_farm", content_farm_color, viewport_size)
 	_draw_surface("aura_beach", aura_beach_color, viewport_size)
 	_draw_surface("aura_basin", aura_basin_color, viewport_size)
 
-	_draw_motion_grid_overlay(viewport_size)
+	if not topology_review_mode:
+		_draw_motion_grid_overlay(viewport_size)
 	_draw_straight_routes(viewport_size)
 	_draw_curved_routes(viewport_size)
+	_draw_adaptive_midway_hinges(viewport_size)
 	_draw_nodes(viewport_size)
 	_draw_surface_labels(viewport_size)
-	_draw_niri_layout_guides(viewport_size)
-	_draw_pair_overlay(viewport_size)
-	_draw_pair_transition(viewport_size)
-	_draw_asset_preview(viewport_size)
-	_draw_player_probe(viewport_size)
+	if not topology_review_mode:
+		_draw_niri_layout_guides(viewport_size)
+		_draw_pair_overlay(viewport_size)
+		_draw_pair_transition(viewport_size)
+		_draw_asset_preview(viewport_size)
+		_draw_player_probe(viewport_size)
 
 
 func _ensure_hud() -> void:
@@ -126,21 +159,132 @@ func _ensure_hud() -> void:
 	hint_label.modulate = _constitutional_color("hollow_grove.house.flynt.authority")
 	hud_layer.add_child(hint_label)
 
+	adaptive_morph_label = Label.new()
+	adaptive_morph_label.position = Vector2(16.0, 252.0)
+	adaptive_morph_label.size = Vector2(560.0, 24.0)
+	adaptive_morph_label.modulate = _constitutional_color("hollow_grove.house.stonebend.highlight")
+	hud_layer.add_child(adaptive_morph_label)
+
+	adaptive_morph_slider = HSlider.new()
+	adaptive_morph_slider.position = Vector2(16.0, 278.0)
+	adaptive_morph_slider.size = Vector2(320.0, 28.0)
+	adaptive_morph_slider.min_value = 0.0
+	adaptive_morph_slider.max_value = 1.0
+	adaptive_morph_slider.step = 0.05
+	adaptive_morph_slider.value = adaptive_rectangularity
+	adaptive_morph_slider.value_changed.connect(_on_adaptive_rectangularity_changed)
+	hud_layer.add_child(adaptive_morph_slider)
+
+	adaptive_world_state_button = Button.new()
+	adaptive_world_state_button.position = Vector2(344.0, 278.0)
+	adaptive_world_state_button.size = Vector2(144.0, 28.0)
+	adaptive_world_state_button.text = "Use world state"
+	adaptive_world_state_button.pressed.connect(_on_use_adaptive_world_state_pressed)
+	hud_layer.add_child(adaptive_world_state_button)
+	_update_adaptive_morph_label()
+
 
 func _load_all_state() -> void:
+	var changed := false
 	if map_contract.is_empty():
 		map_contract = _read_json_file(_repo_file(MAP_CONTRACT_RELATIVE_PATH))
+		_apply_spatial_topology_v2_overlay()
+		changed = true
+	if adaptive_morph_contract.is_empty():
+		adaptive_morph_contract = _read_json_file(_repo_file(ADAPTIVE_MORPH_CONTRACT_RELATIVE_PATH))
+		if not adaptive_morph_contract.is_empty():
+			var unit := float(adaptive_morph_contract.get("normalization_unit", 1000000000))
+			adaptive_rectangularity = clampf(
+				float(adaptive_morph_contract.get("default_rectangularity_parts", 0)) / unit,
+				0.0,
+				1.0
+			)
+			adaptive_morph_slider.step = float(adaptive_morph_contract.get("developer_step_parts", 50000000)) / unit
+			adaptive_morph_slider.set_value_no_signal(adaptive_rectangularity)
+			_update_adaptive_morph_label()
+		changed = true
+
+	var next_topology_state := _read_json_file(_repo_file(ADAPTIVE_TOPOLOGY_STATE_RELATIVE_PATH))
+	if next_topology_state != adaptive_topology_state:
+		adaptive_topology_state = next_topology_state
+		if not adaptive_morph_developer_override:
+			_apply_adaptive_topology_world_state()
+		changed = true
+
+	var next_rebuild_command := _read_json_file(_repo_file(ADAPTIVE_TOPOLOGY_REBUILD_COMMAND_RELATIVE_PATH))
+	var next_rebuild_command_id := str(next_rebuild_command.get("command_id", ""))
+	if next_rebuild_command_id != "" and next_rebuild_command_id != adaptive_topology_rebuild_command_id:
+		if _adaptive_topology_command_is_valid(next_rebuild_command):
+			adaptive_topology_rebuild_command_id = next_rebuild_command_id
+			adaptive_topology_rebuild_command = next_rebuild_command
+			_queue_adaptive_topology_rebuild(next_rebuild_command)
+			changed = true
+		else:
+			push_error("Rejected an invalid adaptive-topology rebuild command.")
 	if coordinate_contract.is_empty():
 		coordinate_contract = _read_json_file(_repo_file(COORDINATE_CONTRACT_RELATIVE_PATH))
-	live_state = _read_json_file(_repo_file(LIVE_STATE_RELATIVE_PATH))
-	pair_state = _read_json_file(_repo_file(PAIR_STATE_RELATIVE_PATH))
-	pair_preview_state = _read_json_file(_repo_file(PAIR_PREVIEW_STATE_RELATIVE_PATH))
+		changed = true
+
+	var live_path := _repo_file(LIVE_STATE_RELATIVE_PATH)
+	var next_live_mtime := _modified_time_or_missing(live_path)
+	if next_live_mtime != live_state_mtime:
+		live_state_mtime = next_live_mtime
+		live_state = _read_json_file(live_path)
+		changed = true
+
+	var pair_path := _repo_file(PAIR_STATE_RELATIVE_PATH)
+	var next_pair_mtime := _modified_time_or_missing(pair_path)
+	var pair_changed := next_pair_mtime != pair_state_mtime
+	if pair_changed:
+		pair_state_mtime = next_pair_mtime
+		pair_state = _read_json_file(pair_path)
+		changed = true
+
+	var preview_state_path := _repo_file(PAIR_PREVIEW_STATE_RELATIVE_PATH)
+	var next_preview_state_mtime := _modified_time_or_missing(preview_state_path)
+	if next_preview_state_mtime != pair_preview_state_mtime:
+		pair_preview_state_mtime = next_preview_state_mtime
+		pair_preview_state = _read_json_file(preview_state_path)
+		changed = true
+
+	var previous_preview_mtime := pair_preview_mtime
 	_reload_pair_preview_texture()
-	_reload_asset_preview_texture()
-	_refresh_pair_transition_state()
+	changed = changed or previous_preview_mtime != pair_preview_mtime
+
+	var revision_path := _repo_file(ASSET_EXPORT_REVISION_RELATIVE_PATH)
+	var next_asset_revision_mtime := _modified_time_or_missing(revision_path)
+	if next_asset_revision_mtime != asset_revision_mtime:
+		asset_revision_mtime = next_asset_revision_mtime
+		_reload_asset_preview_texture()
+		changed = true
+
+	if not changed:
+		return
+	if pair_changed:
+		_refresh_pair_transition_state()
 	current_resolution = _resolve_current_zone()
 	_update_hud()
 	queue_redraw()
+
+
+func _apply_spatial_topology_v2_overlay() -> void:
+	var overlay := _read_json_file(_repo_file(SPATIAL_TOPOLOGY_V2_OVERLAY_RELATIVE_PATH))
+	if overlay.is_empty():
+		return
+	for key in ["straight_routes", "curved_routes", "surfaces"]:
+		if overlay.has(key):
+			map_contract[key] = overlay[key]
+	map_contract["spatial_topology_v2"] = {
+		"schema_version": overlay.get("schema_version", 2),
+		"rule_set": overlay.get("rule_set", ""),
+		"legacy_decode_aliases": overlay.get("legacy_decode_aliases", {})
+	}
+
+
+func _modified_time_or_missing(path: String) -> int:
+	if not FileAccess.file_exists(path):
+		return -1
+	return FileAccess.get_modified_time(path)
 
 
 func _update_hud() -> void:
@@ -194,7 +338,72 @@ func _update_hud() -> void:
 		output_label,
 	]
 
-	hint_label.text = "Enter writes an inspect intent. Space writes a move intent. Super+Alt+Enter opens Hueman. Super+Alt+Control+Enter attaches the focused window. Super+Alt+Backspace detaches it. Super+Alt+Shift+Space steps spread by 25%."
+	hint_label.text = "Drag the topology slider from canonical circle to locked rectangle. Enter writes inspect; Space writes move. Super+Alt+Enter opens Hueman."
+	_update_adaptive_morph_label()
+
+
+func _on_adaptive_rectangularity_changed(value: float) -> void:
+	adaptive_morph_developer_override = true
+	adaptive_rectangularity = clampf(value, 0.0, 1.0)
+	_update_adaptive_morph_label()
+	current_resolution = _resolve_current_zone()
+	queue_redraw()
+
+
+func _on_use_adaptive_world_state_pressed() -> void:
+	adaptive_morph_developer_override = false
+	_apply_adaptive_topology_world_state()
+	current_resolution = _resolve_current_zone()
+	queue_redraw()
+
+
+func _apply_adaptive_topology_world_state() -> void:
+	if adaptive_topology_state.is_empty():
+		return
+	var unit := float(adaptive_morph_contract.get("normalization_unit", 1000000000))
+	if unit <= 0.0:
+		return
+	adaptive_rectangularity = clampf(
+		float(adaptive_topology_state.get("rectangularity", 0)) / unit,
+		0.0,
+		1.0
+	)
+	if adaptive_morph_slider != null:
+		adaptive_morph_slider.set_value_no_signal(adaptive_rectangularity)
+	_update_adaptive_morph_label()
+
+
+func set_topology_review_mode(enabled: bool) -> void:
+	topology_review_mode = enabled
+	status_label.visible = not enabled
+	hint_label.visible = not enabled
+	adaptive_morph_label.position = Vector2(16.0, 16.0) if enabled else Vector2(16.0, 252.0)
+	adaptive_morph_slider.position = Vector2(16.0, 42.0) if enabled else Vector2(16.0, 278.0)
+	adaptive_world_state_button.visible = not enabled
+	_update_adaptive_morph_label()
+	queue_redraw()
+
+
+func _update_adaptive_morph_label() -> void:
+	if adaptive_morph_label == null:
+		return
+	var pose_name := "Adaptive"
+	if is_zero_approx(adaptive_rectangularity):
+		pose_name = "Canonical circle"
+	elif is_equal_approx(adaptive_rectangularity, 1.0):
+		pose_name = "Locked rectangle"
+	if not topology_review_mode:
+		if adaptive_morph_developer_override:
+			pose_name += " · developer override"
+		elif not adaptive_topology_state.is_empty():
+			pose_name += " · world state r%s %s" % [
+				str(adaptive_topology_state.get("revision", 0)),
+				str(adaptive_topology_state.get("phase", "committed"))
+			]
+	adaptive_morph_label.text = "Hollow Grove topology: %s (%d%%)" % [
+		pose_name,
+		roundi(adaptive_rectangularity * 100.0)
+	]
 
 
 func _resolve_repo_root() -> String:
@@ -222,6 +431,238 @@ func _read_json_file(path: String) -> Dictionary:
 	if typeof(parsed) == TYPE_DICTIONARY:
 		return parsed
 	return {}
+
+
+func _ensure_adaptive_topology_physics_roots() -> void:
+	adaptive_collision_area = Area2D.new()
+	adaptive_collision_area.name = "AdaptiveTopologyRouteCollision"
+	adaptive_collision_area.collision_layer = 1 << 6
+	adaptive_collision_area.collision_mask = 0
+	adaptive_collision_area.monitoring = true
+	adaptive_collision_area.monitorable = true
+	add_child(adaptive_collision_area)
+
+	adaptive_navigation_root = Node2D.new()
+	adaptive_navigation_root.name = "AdaptiveTopologyRouteNavigation"
+	add_child(adaptive_navigation_root)
+
+
+func _on_adaptive_topology_viewport_size_changed() -> void:
+	if not adaptive_topology_rebuild_command.is_empty():
+		_queue_adaptive_topology_rebuild(adaptive_topology_rebuild_command)
+
+
+func _queue_adaptive_topology_rebuild(command: Dictionary) -> void:
+	if not _adaptive_topology_command_is_valid(command):
+		push_error("Rejected an invalid adaptive-topology rebuild command.")
+		return
+	adaptive_pending_rebuild_command = command.duplicate(true)
+	if not adaptive_topology_rebuild_in_flight:
+		call_deferred("_drain_adaptive_topology_rebuild_queue")
+
+
+func _drain_adaptive_topology_rebuild_queue() -> void:
+	if adaptive_topology_rebuild_in_flight:
+		return
+	while not adaptive_pending_rebuild_command.is_empty():
+		var command: Dictionary = adaptive_pending_rebuild_command
+		adaptive_pending_rebuild_command = {}
+		adaptive_topology_rebuild_in_flight = true
+		await _rebuild_adaptive_topology_physics(command)
+		adaptive_topology_rebuild_in_flight = false
+
+
+func _adaptive_topology_command_is_valid(command: Dictionary) -> bool:
+	if int(command.get("schema_version", 0)) != 1:
+		return false
+	if str(command.get("rule_set", "")) != ADAPTIVE_TOPOLOGY_LIVE_RULE_SET_ID:
+		return false
+	if str(command.get("command_id", "")) == "":
+		return false
+	var status := str(command.get("status", ""))
+	if status != "committed" and status != "prepared":
+		return false
+	var geometry := _dict_or_empty(command.get("geometry"))
+	var normalization_unit := int(geometry.get("normalization_unit", 0))
+	var sample_segments := int(geometry.get("sample_segments", 0))
+	var routes: Array = geometry.get("routes", [])
+	if normalization_unit <= 0 or sample_segments <= 0 or routes.is_empty():
+		return false
+	if int(geometry.get("corridor_half_width_parts", 0)) <= 0:
+		return false
+	var route_ids := {}
+	for route_value in routes:
+		var route := _dict_or_empty(route_value)
+		var route_id := str(route.get("route_id", ""))
+		var points: Array = route.get("points", [])
+		if route_id == "" or route_ids.has(route_id) or points.size() != sample_segments + 1:
+			return false
+		route_ids[route_id] = true
+		for point_value in points:
+			var point := _dict_or_empty(point_value)
+			var x := int(point.get("x", -1))
+			var y := int(point.get("y", -1))
+			if x < 0 or x > normalization_unit or y < 0 or y > normalization_unit:
+				return false
+	if str(geometry.get("geometry_digest", "")) != _adaptive_topology_geometry_digest(geometry):
+		return false
+	if status == "prepared":
+		var prepared := _dict_or_empty(command.get("prepared"))
+		if str(prepared.get("transition_id", "")) == "":
+			return false
+		if str(prepared.get("collision_snapshot_id", "")) == "":
+			return false
+		if str(prepared.get("navigation_snapshot_id", "")) == "":
+			return false
+	return true
+
+
+func _adaptive_topology_geometry_digest(geometry: Dictionary) -> String:
+	var canonical_parts := PackedStringArray([
+		"v1",
+		str(int(geometry.get("rectangularity", 0))),
+		str(int(geometry.get("corridor_half_width_parts", 0))),
+		str(int(geometry.get("sample_segments", 0)))
+	])
+	for route_value in geometry.get("routes", []):
+		var route := _dict_or_empty(route_value)
+		canonical_parts.append(str(route.get("route_id", "")))
+		for point_value in route.get("points", []):
+			var point := _dict_or_empty(point_value)
+			canonical_parts.append(str(int(point.get("x", 0))))
+			canonical_parts.append(str(int(point.get("y", 0))))
+	var hash_value: int = 2166136261
+	for byte in "|".join(canonical_parts).to_utf8_buffer():
+		hash_value = ((hash_value ^ int(byte)) * 16777619) & 0xffffffff
+	return "fnv1a32-adaptive-topology-geometry-v1:%08x" % hash_value
+
+
+func _rebuild_adaptive_topology_physics(command: Dictionary) -> void:
+	_clear_adaptive_topology_physics()
+	var geometry := _dict_or_empty(command.get("geometry"))
+	var normalization_unit := float(geometry.get("normalization_unit", 1))
+	var viewport_size := get_viewport_rect().size
+	var corridor_half_width: float = (
+		float(geometry.get("corridor_half_width_parts", 0)) /
+		normalization_unit * min(viewport_size.x, viewport_size.y)
+	)
+	var collision_polygon_count := 0
+	var navigation_region_count := 0
+	var navigation_source_geometry := NavigationMeshSourceGeometryData2D.new()
+	var route_index := 0
+	for route_value in geometry.get("routes", []):
+		var route := _dict_or_empty(route_value)
+		var route_points := PackedVector2Array()
+		for point_value in route.get("points", []):
+			var point := _dict_or_empty(point_value)
+			route_points.append(Vector2(
+				float(point.get("x", 0)) / normalization_unit * viewport_size.x,
+				float(point.get("y", 0)) / normalization_unit * viewport_size.y
+			))
+		var corridor_polygons := Geometry2D.offset_polyline(
+			route_points,
+			corridor_half_width,
+			Geometry2D.JOIN_ROUND,
+			Geometry2D.END_ROUND
+		)
+		var polygon_index := 0
+		for polygon_value in corridor_polygons:
+			var polygon: PackedVector2Array = polygon_value
+			if polygon.size() < 3:
+				continue
+
+			var collision_polygon := CollisionPolygon2D.new()
+			collision_polygon.name = "RouteCollision%d_%d" % [route_index, polygon_index]
+			collision_polygon.polygon = polygon
+			adaptive_collision_area.add_child(collision_polygon)
+			collision_polygon_count += 1
+			navigation_source_geometry.add_traversable_outline(polygon)
+			polygon_index += 1
+		route_index += 1
+
+	var navigation_polygon := NavigationPolygon.new()
+	navigation_polygon.agent_radius = 0.0
+	NavigationServer2D.bake_from_source_geometry_data(
+		navigation_polygon,
+		navigation_source_geometry
+	)
+	if navigation_polygon.get_polygon_count() > 0:
+		var navigation_region := NavigationRegion2D.new()
+		navigation_region.name = "AdaptiveRouteNavigationRegion"
+		navigation_region.navigation_polygon = navigation_polygon
+		adaptive_navigation_root.add_child(navigation_region)
+		navigation_region_count = 1
+
+	await get_tree().physics_frame
+	NavigationServer2D.map_force_update(get_world_2d().navigation_map)
+	await get_tree().physics_frame
+	print(
+		"ADAPTIVE_TOPOLOGY_REALIZED command=%s status=%s rectangularity=%s collision_polygons=%d navigation_regions=%d digest=%s" % [
+			str(command.get("command_id", "")),
+			str(command.get("status", "")),
+			str(int(geometry.get("rectangularity", 0))),
+			collision_polygon_count,
+			navigation_region_count,
+			str(geometry.get("geometry_digest", ""))
+		]
+	)
+
+	if str(command.get("status", "")) == "prepared":
+		var route_count: int = geometry.get("routes", []).size()
+		if collision_polygon_count < route_count or navigation_region_count == 0:
+			push_error("Adaptive topology rebuild did not produce complete collision and navigable corridor geometry.")
+			return
+		_write_adaptive_topology_rebuild_ack(
+			command,
+			collision_polygon_count,
+			navigation_region_count
+		)
+
+
+func _clear_adaptive_topology_physics() -> void:
+	for child in adaptive_collision_area.get_children():
+		adaptive_collision_area.remove_child(child)
+		child.queue_free()
+	for child in adaptive_navigation_root.get_children():
+		adaptive_navigation_root.remove_child(child)
+		child.queue_free()
+
+
+func _write_adaptive_topology_rebuild_ack(
+	command: Dictionary,
+	collision_polygon_count: int,
+	navigation_region_count: int
+) -> void:
+	var geometry := _dict_or_empty(command.get("geometry"))
+	var prepared := _dict_or_empty(command.get("prepared"))
+	var payload := {
+		"schema_version": 1,
+		"rule_set": ADAPTIVE_TOPOLOGY_LIVE_RULE_SET_ID,
+		"command_id": command.get("command_id", ""),
+		"transition_id": prepared.get("transition_id", ""),
+		"base_revision": int(prepared.get("base_revision", 0)),
+		"next_revision": int(prepared.get("next_revision", 0)),
+		"rectangularity": int(geometry.get("rectangularity", 0)),
+		"geometry_digest": geometry.get("geometry_digest", ""),
+		"collision_snapshot_id": prepared.get("collision_snapshot_id", ""),
+		"navigation_snapshot_id": prepared.get("navigation_snapshot_id", ""),
+		"route_count": geometry.get("routes", []).size(),
+		"collision_polygon_count": collision_polygon_count,
+		"navigation_region_count": navigation_region_count
+	}
+	var target_path := _repo_file(ADAPTIVE_TOPOLOGY_REBUILD_ACK_RELATIVE_PATH)
+	var pending_path := target_path + ".godot.%d.tmp" % OS.get_process_id()
+	var handle := FileAccess.open(pending_path, FileAccess.WRITE)
+	if handle == null:
+		push_error("Could not stage adaptive-topology rebuild acknowledgement.")
+		return
+	handle.store_string(JSON.stringify(payload, "\t") + "\n")
+	handle.flush()
+	handle = null
+	var rename_error := DirAccess.rename_absolute(pending_path, target_path)
+	if rename_error != OK:
+		DirAccess.remove_absolute(pending_path)
+		push_error("Could not atomically publish adaptive-topology rebuild acknowledgement.")
 
 
 func _load_visual_color_constitution() -> bool:
@@ -289,7 +730,7 @@ func _resolve_current_zone() -> Dictionary:
 			}, spatial_viewpoint)
 
 	for route in straight_routes:
-		if _distance_to_segment(probe, _route_from_point(route), _route_to_point(route)) <= float(route.get("band_width", 0.045)):
+		if _distance_to_polyline(probe, _adaptive_route_points(route, 32)) <= float(route.get("band_width", 0.045)):
 			return _with_spatial_scope({
 				"id": str(route.get("id", "")),
 				"name": str(route.get("name", "")),
@@ -297,7 +738,7 @@ func _resolve_current_zone() -> Dictionary:
 			}, spatial_viewpoint)
 
 	for route in curved_routes:
-		if _distance_to_polyline(probe, _curve_points(route, 32)) <= float(route.get("band_width", 0.045)):
+		if _distance_to_polyline(probe, _adaptive_route_points(route, 32)) <= float(route.get("band_width", 0.045)):
 			return _with_spatial_scope({
 				"id": str(route.get("id", "")),
 				"name": str(route.get("name", "")),
@@ -351,13 +792,13 @@ func _nearest_route_name(probe: Vector2) -> String:
 	var best_distance := INF
 
 	for route in map_contract.get("straight_routes", []):
-		var distance := _distance_to_segment(probe, _route_from_point(route), _route_to_point(route))
+		var distance := _distance_to_polyline(probe, _adaptive_route_points(route, 32))
 		if distance < best_distance:
 			best_distance = distance
 			best_name = str(route.get("name", best_name))
 
 	for route in map_contract.get("curved_routes", []):
-		var distance := _distance_to_polyline(probe, _curve_points(route, 32))
+		var distance := _distance_to_polyline(probe, _adaptive_route_points(route, 32))
 		if distance < best_distance:
 			best_distance = distance
 			best_name = str(route.get("name", best_name))
@@ -439,26 +880,63 @@ func _draw_nodes(viewport_size: Vector2) -> void:
 		draw_circle(point, radius, color)
 		draw_circle(point, radius * 0.55, _constitutional_color("hollow_grove.universal.outline"))
 		var label_offset := Vector2(-radius * 0.8, -radius * 1.25)
-		if str(node.get("id", "")) == "glaushouse":
-			label_offset = Vector2(-radius * 0.9, radius * 1.5)
-		_draw_label(str(node.get("name", "")), point + label_offset, 28, _constitutional_color("hollow_grove.house.flynt.highlight"))
+		var label_font_size := 28
+		match str(node.get("id", "")):
+			"stonebend":
+				label_offset = Vector2(-radius * 0.8, -radius * 1.05)
+			"glaushouse":
+				label_offset = Vector2(-radius * 0.9, radius * 1.2)
+			"aura_ridge_junction":
+				label_offset = Vector2(-radius * 1.85, radius * 1.65)
+				label_font_size = 18
+		_draw_label(str(node.get("name", "")), point + label_offset, label_font_size, _constitutional_color("hollow_grove.house.flynt.highlight"))
 
 
 func _draw_straight_routes(viewport_size: Vector2) -> void:
 	for route in map_contract.get("straight_routes", []):
-		var points := PackedVector2Array([
-			_to_screen(_route_from_point(route), viewport_size),
-			_to_screen(_route_to_point(route), viewport_size)
-		])
+		var points := PackedVector2Array()
+		for point in _adaptive_route_points(route, 32):
+			points.append(_to_screen(point, viewport_size))
 		draw_polyline(points, _constitutional_color("hollow_grove.house.stonebend.primary"), 5.0, true)
 
 
 func _draw_curved_routes(viewport_size: Vector2) -> void:
 	for route in map_contract.get("curved_routes", []):
 		var points := PackedVector2Array()
-		for point in _curve_points(route, 32):
+		for point in _adaptive_route_points(route, 32):
 			points.append(_to_screen(point, viewport_size))
 		draw_polyline(points, _constitutional_color("hollow_grove.house.glaushouse.primary"), 4.0, true)
+
+
+func _draw_adaptive_midway_hinges(viewport_size: Vector2) -> void:
+	if adaptive_morph_contract.is_empty():
+		return
+	var inner_color := _constitutional_color("hollow_grove.house.stonebend.highlight")
+	var outer_color := _constitutional_color("hollow_grove.house.glaushouse.highlight")
+	var pivot_color := _constitutional_color("hollow_grove.house.flynt.authority")
+	for hinge in adaptive_morph_contract.get("hinges", []):
+		var slots: Array = hinge.get("slots", [])
+		if slots.size() != 2:
+			continue
+		var inner := _adaptive_midway_position(slots[0])
+		var outer := _adaptive_midway_position(slots[1])
+		var pivot := (inner + outer) * 0.5
+		var inner_screen := _to_screen(inner, viewport_size)
+		var outer_screen := _to_screen(outer, viewport_size)
+		var pivot_screen := _to_screen(pivot, viewport_size)
+		draw_line(inner_screen, outer_screen, pivot_color, 1.5, true)
+		draw_circle(inner_screen, 6.0, inner_color)
+		draw_circle(outer_screen, 6.0, outer_color)
+		draw_circle(pivot_screen, 3.0, pivot_color)
+		if adaptive_rectangularity >= 0.75:
+			var hinge_id := str(hinge.get("hinge_id", ""))
+			var upper_hinge := hinge_id.contains("north")
+			var inner_label_offset := Vector2(8.0, 18.0) if upper_hinge else Vector2(8.0, -8.0)
+			var outer_label_offset := Vector2(8.0, -8.0) if upper_hinge else Vector2(8.0, 16.0)
+			if hinge_id.ends_with("northwest"):
+				inner_label_offset = Vector2(-210.0, 18.0)
+			_draw_label(str(slots[0].get("midway_name", "")), inner_screen + inner_label_offset, 14, inner_color)
+			_draw_label(str(slots[1].get("midway_name", "")), outer_screen + outer_label_offset, 14, outer_color)
 
 
 func _draw_surface(surface_id: String, color: Color, viewport_size: Vector2) -> void:
@@ -483,9 +961,17 @@ func _draw_surface_labels(viewport_size: Vector2) -> void:
 		for point in points:
 			center += Vector2(float(point.get("x", 0.0)), float(point.get("y", 0.0)))
 		center /= 3.0
+		var label_offset := Vector2(-70.0, 8.0)
+		match str(surface.get("id", "")):
+			"aura_field":
+				label_offset = Vector2(-90.0, 8.0)
+			"content_farm":
+				label_offset = Vector2(-25.0, 26.0)
+			"aura_beach":
+				label_offset = Vector2(10.0, 18.0)
 		_draw_label(
 			str(surface.get("name", "")),
-			_to_screen(center, viewport_size) + Vector2(-70.0, 8.0),
+			_to_screen(center, viewport_size) + label_offset,
 			24,
 			_constitutional_color("hollow_grove.house.flynt.highlight")
 		)
@@ -760,6 +1246,84 @@ func _named_node_point(node_id: String) -> Vector2:
 		if str(node.get("id", "")) == node_id:
 			return _node_point(node)
 	return Vector2.ZERO
+
+
+func _adaptive_route_points(route: Dictionary, sample_count: int) -> Array[Vector2]:
+	var route_id := str(route.get("constitutional_route_id", ""))
+	var slot := _adaptive_morph_slot(route_id)
+	if slot.is_empty() or is_zero_approx(adaptive_rectangularity):
+		var control_data := _dict_or_empty(route.get("control"))
+		if not control_data.is_empty():
+			return _curve_points(route, sample_count)
+		var straight_points: Array[Vector2] = []
+		straight_points.append(_route_from_point(route))
+		straight_points.append(_route_to_point(route))
+		return straight_points
+
+	var start := _route_from_point(route)
+	var ending := _route_to_point(route)
+	var circular_midpoint := _adaptive_contract_point(_dict_or_empty(slot.get("circular_midpoint")))
+	var rectangular_position := _adaptive_contract_point(_dict_or_empty(slot.get("rectangular_position")))
+	var circular_first_control := (start + circular_midpoint) * 0.5
+	var circular_second_control := (circular_midpoint + ending) * 0.5
+	var control_data := _dict_or_empty(route.get("control"))
+	if not control_data.is_empty():
+		var control := Vector2(float(control_data.get("x", 0.0)), float(control_data.get("y", 0.0)))
+		circular_first_control = (start + control) * 0.5
+		circular_second_control = (control + ending) * 0.5
+
+	var adaptive_midpoint := circular_midpoint.lerp(rectangular_position, adaptive_rectangularity)
+	var rectangular_first_control := (start + rectangular_position) * 0.5
+	var rectangular_second_control := (rectangular_position + ending) * 0.5
+	var adaptive_first_control := circular_first_control.lerp(rectangular_first_control, adaptive_rectangularity)
+	var adaptive_second_control := circular_second_control.lerp(rectangular_second_control, adaptive_rectangularity)
+	var segment_samples := maxi(2, int(sample_count / 2))
+	var points: Array[Vector2] = []
+	_append_quadratic_points(points, start, adaptive_first_control, adaptive_midpoint, segment_samples, true)
+	_append_quadratic_points(points, adaptive_midpoint, adaptive_second_control, ending, segment_samples, false)
+	return points
+
+
+func _adaptive_morph_slot(route_id: String) -> Dictionary:
+	if route_id == "" or adaptive_morph_contract.is_empty():
+		return {}
+	for hinge in adaptive_morph_contract.get("hinges", []):
+		for slot in hinge.get("slots", []):
+			if str(slot.get("route_id", "")) == route_id:
+				return slot
+	return {}
+
+
+func _adaptive_contract_point(point: Dictionary) -> Vector2:
+	var unit := float(adaptive_morph_contract.get("normalization_unit", 1000000000))
+	return Vector2(
+		float(point.get("x_parts", 0)) / unit,
+		float(point.get("y_parts", 0)) / unit
+	)
+
+
+func _adaptive_midway_position(slot: Dictionary) -> Vector2:
+	var circular := _adaptive_contract_point(_dict_or_empty(slot.get("circular_midpoint")))
+	var rectangular := _adaptive_contract_point(_dict_or_empty(slot.get("rectangular_position")))
+	return circular.lerp(rectangular, adaptive_rectangularity)
+
+
+func _append_quadratic_points(
+	points: Array[Vector2],
+	start: Vector2,
+	control: Vector2,
+	ending: Vector2,
+	sample_count: int,
+	include_start: bool
+) -> void:
+	var first_index := 0 if include_start else 1
+	for index in range(first_index, sample_count + 1):
+		var t := float(index) / float(sample_count)
+		points.append(
+			((1.0 - t) * (1.0 - t) * start) +
+			(2.0 * (1.0 - t) * t * control) +
+			((t * t) * ending)
+		)
 
 
 func _curve_points(route: Dictionary, sample_count: int) -> Array[Vector2]:

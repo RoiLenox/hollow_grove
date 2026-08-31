@@ -30,9 +30,11 @@ pub use semantic_records::{
     SemanticWitnessDecision, SemanticWitnessRecord, SemanticWitnessSnapshot,
 };
 pub use spatial_inheritance::{
-    NORMALIZED_UNIT, NormalizedCoordinate, NormalizedPoint, NormalizedRect, ResolvedSpatialAnchor,
-    ResolvedSpatialPath, ResolvedSpatialRegion, SPATIAL_CATALOG_SCHEMA_VERSION,
-    SPATIAL_SELECTION_POLICY_ID, SpatialAnchor, SpatialCatalogSnapshot, SpatialFrame,
+    AdaptiveHingeProjection, AdaptivePathProjection, DoubleSlottedSpatialHinge, NORMALIZED_UNIT,
+    NormalizedCoordinate, NormalizedPoint, NormalizedRect, QuadraticSpatialSegment,
+    ResolvedAdaptiveHinge, ResolvedSpatialAnchor, ResolvedSpatialPath, ResolvedSpatialRegion,
+    SPATIAL_CATALOG_SCHEMA_VERSION, SPATIAL_SELECTION_POLICY_ID, SpatialAnchor,
+    SpatialCatalogSnapshot, SpatialFrame, SpatialHingeLane, SpatialHingeSlot,
     SpatialInheritanceCatalog, SpatialInheritanceError, SpatialPath, SpatialPathGeometry,
     SpatialRegion, SpatialTemplate, SpatialTransform, SpatialViewpoint, SpatialViewpointSelection,
 };
@@ -108,6 +110,7 @@ stable_key!(CompositionRecordId);
 stable_key!(ScaleKey);
 stable_key!(SpatialAnchorId);
 stable_key!(SpatialFrameId);
+stable_key!(SpatialHingeId);
 stable_key!(SpatialPathId);
 stable_key!(SpatialRuleSetId);
 stable_key!(SpatialTemplateId);

@@ -189,13 +189,13 @@ fn gameplay_save_automatically_carries_advisory_records() {
     let service = completed_goon_bond_application();
     let archive = service.encode_archive().unwrap();
     let decoded = decode_gameplay_archive_with_metadata(&archive).unwrap();
-    assert_eq!(decoded.federation_binding.advisory_records.len(), 3);
+    assert_eq!(decoded.rampart_binding.advisory_records.len(), 3);
     assert_eq!(
-        decoded.federation_binding.advisory_records[0].associated_title,
+        decoded.rampart_binding.advisory_records[0].associated_title,
         "Gimp of the Underway"
     );
     assert_eq!(
-        decoded.federation_binding.advisory_records[1].associated_title,
+        decoded.rampart_binding.advisory_records[1].associated_title,
         "Pimp of the Boardwalk"
     );
     let restarted = GameApplicationService::from_archive(&archive).unwrap();

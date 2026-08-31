@@ -25,6 +25,7 @@ pub const COMPANION_CHIMERA: &str = "flynt.companion.chimera";
 
 pub const INSTITUTION_MANTICORP: &str = "flynt.institution.manticorp";
 pub const INSTITUTION_MYSTERY_MEN: &str = "flynt.institution.mystery-men";
+pub const EXTENSION_MARQUISE: &str = "flynt.extension.marquise";
 pub const EXPRESSION_MYSTERY_MAN: &str = "flynt.expression.the-mystery-man";
 
 pub const INSTITUTION_GALLOWS: &str = "flynt.institution.gallows";
@@ -38,13 +39,23 @@ pub const CREW_CINDERELLAMAN: &str = "flynt.crew.cinderellaman-and-his-midnight-
 pub const OFFICE_THE_BEAUTY: &str = "flynt.office.the-beauty";
 pub const CREW_THE_BEAUTY: &str = "flynt.crew.the-beauty-and-his-beasts";
 
+/// Canonical name alias. The older stable key retains `the-beauty` for replay
+/// and source compatibility, but the collective leader's name is Beauty.
+pub const OFFICE_BEAUTY: &str = OFFICE_THE_BEAUTY;
+
 pub const FORM_GARGOYLE: &str = "flynt.form.gargoyle";
 pub const FORM_MERMAN: &str = "flynt.form.merman";
+/// Flynt's canonical creature name is Mariner; the older form key remains
+/// `merman` because Mariner and Merman are the same Flynt creature identity.
+pub const FORM_MARINER: &str = FORM_MERMAN;
 pub const FORM_WEREWOLF: &str = "flynt.form.werewolf";
 pub const FORM_CHIMERA: &str = "flynt.form.chimera";
-pub const FORM_MANTICORP: &str = "flynt.form.manticorp";
+pub const FORM_MANTICORE: &str = "flynt.form.manticore";
 pub const RECIPE_CHIMERA: &str = "flynt.recipe.constitutional-chimera";
-pub const RECIPE_MANTICORP: &str = "flynt.recipe.divided-manticorp";
+/// Legacy provenance key retained for recipe/archive compatibility. The
+/// `manticorp` token in this ID does not name the result Form: the recipe is
+/// typed and displayed as Manticore, while Manticorp is an organization.
+pub const RECIPE_MANTICORE: &str = "flynt.recipe.divided-manticorp";
 pub const RECIPE_GARGOYLE_CONTINUANCE: &str = "flynt.recipe.gargoyle-continuance";
 pub const WAY_GREMLIN: &str = "flynt.way.gremlin";
 pub const TOKEN_GREMLINCOIN: &str = "flynt.token.gremlincoin";
@@ -145,8 +156,11 @@ pub enum FlyntNodeKind {
     ConstitutionalCompanion,
     MilitaryInstitution,
     InvestigativeBureau,
+    MaritimeExtension,
     CriminalSyndicate,
     LegendaryOperative,
+    LeadershipBody,
+    /// Superseded classification retained for source compatibility.
     FolkExpression,
     FoundingLeaderOffice,
     Crew,
@@ -183,6 +197,10 @@ pub enum InstitutionalResponsibility {
     Contraband,
     Espionage,
     ConstitutionalSecurity,
+    Navigation,
+    MaritimeOperations,
+    Communications,
+    ComplexSystemControl,
     OrganizedCrime,
     RegionalCrews,
     Loyalty,
@@ -203,12 +221,101 @@ pub struct FlyntAuthorityNode {
     pub responsibilities: Vec<InstitutionalResponsibility>,
 }
 
+/// Stable source compatibility for the superseded regional-people model.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum FoundingPeople {
     Gargoyle,
     Merman,
     Werewolf,
 }
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum PractitionerTradition {
+    Warlock,
+    Lycan,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum CreatureSex {
+    Masculine,
+    Feminine,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum FlyntCreature {
+    Gargoyle,
+    Medusa,
+    Werewolf,
+    Vampire,
+    Mariner,
+    Mermaid,
+    Manticore,
+    Chimera,
+}
+
+impl FlyntCreature {
+    #[must_use]
+    pub const fn name(self) -> &'static str {
+        match self {
+            Self::Gargoyle => "Gargoyle",
+            Self::Medusa => "Medusa",
+            Self::Werewolf => "Werewolf",
+            Self::Vampire => "Vampire",
+            Self::Mariner => "Mariner",
+            Self::Mermaid => "Mermaid",
+            Self::Manticore => "Manticore",
+            Self::Chimera => "Chimera",
+        }
+    }
+
+    #[must_use]
+    pub const fn sex(self) -> CreatureSex {
+        match self {
+            Self::Gargoyle | Self::Werewolf | Self::Mariner | Self::Manticore => {
+                CreatureSex::Masculine
+            }
+            Self::Medusa | Self::Vampire | Self::Mermaid | Self::Chimera => CreatureSex::Feminine,
+        }
+    }
+
+    #[must_use]
+    pub const fn aliases(self) -> &'static [&'static str] {
+        match self {
+            Self::Mariner => &["Merman"],
+            _ => &[],
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub struct FlyntCreaturePair {
+    pub masculine: FlyntCreature,
+    pub feminine: FlyntCreature,
+    pub symbolic_connection: &'static str,
+}
+
+pub const FLYNT_CREATURE_PAIRS: [FlyntCreaturePair; 4] = [
+    FlyntCreaturePair {
+        masculine: FlyntCreature::Gargoyle,
+        feminine: FlyntCreature::Medusa,
+        symbolic_connection: "stone embodied and stone imposed through petrification",
+    },
+    FlyntCreaturePair {
+        masculine: FlyntCreature::Werewolf,
+        feminine: FlyntCreature::Vampire,
+        symbolic_connection: "complementary nocturnal predatory traditions",
+    },
+    FlyntCreaturePair {
+        masculine: FlyntCreature::Mariner,
+        feminine: FlyntCreature::Mermaid,
+        symbolic_connection: "paired maritime creature traditions",
+    },
+    FlyntCreaturePair {
+        masculine: FlyntCreature::Manticore,
+        feminine: FlyntCreature::Chimera,
+        symbolic_connection: "sovereign and First Companion apex counterparts",
+    },
+];
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LineageAssociation {
@@ -235,6 +342,22 @@ pub struct FoundingLineage {
     pub associations: Vec<LineageAssociation>,
 }
 
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct PractitionerLineage {
+    /// `None` is canonical for the maritime lineage: Mariner is the masculine
+    /// creature designation (and Flynt's name for Merman), not merely a human
+    /// sailor or a human practitioner-tradition name.
+    pub tradition: Option<PractitionerTradition>,
+    pub creature: FlyntCreature,
+    pub synthesis_form: FormId,
+    pub founding_leader: FlyntNodeId,
+    pub crew: FlyntNodeId,
+    pub associations: Vec<LineageAssociation>,
+    pub working_function: &'static str,
+    /// `None` is authoritative: exact base Current/Aura equations are OPEN.
+    pub exact_current_aura_equation: Option<&'static str>,
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum GallowryFunction {
     MeetingPlace,
@@ -255,7 +378,9 @@ pub struct GallowrySite {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum FormKind {
+    /// Superseded active classification retained as a stable source variant.
     FoundingPeople,
+    PractitionerSynthesis,
     ConstitutionalSynthesis,
 }
 
@@ -274,26 +399,51 @@ pub struct SynthesisRecipe {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub enum ManticorpRecipeComponent {
+pub enum ManticoreRecipeComponent {
     Gargoyle,
     Werewolf,
-    Merman,
+    Mariner,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub struct BasinCreatureSect {
+    pub leader: &'static str,
+    pub crew: &'static str,
+    pub pair: FlyntCreaturePair,
+}
+
+pub const BASIN_CREATURE_SECTS: [BasinCreatureSect; 3] = [
+    BasinCreatureSect {
+        leader: OFFICE_BRO_WHITE,
+        crew: CREW_BRO_WHITE,
+        pair: FLYNT_CREATURE_PAIRS[0],
+    },
+    BasinCreatureSect {
+        leader: OFFICE_BEAUTY,
+        crew: CREW_THE_BEAUTY,
+        pair: FLYNT_CREATURE_PAIRS[1],
+    },
+    BasinCreatureSect {
+        leader: OFFICE_CINDERELLAMAN,
+        crew: CREW_CINDERELLAMAN,
+        pair: FLYNT_CREATURE_PAIRS[2],
+    },
+];
+
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct ManticorpRecipeCustody {
+pub struct ManticoreRecipeCustody {
     pub custodian: FlyntNodeId,
-    pub component: ManticorpRecipeComponent,
+    pub component: ManticoreRecipeComponent,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct DividedManticorpRecipe {
+pub struct DividedManticoreRecipe {
     pub recipe: SynthesisRecipe,
-    pub custody: Vec<ManticorpRecipeCustody>,
+    pub custody: Vec<ManticoreRecipeCustody>,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
-pub enum ManticorpContinuanceRequirement {
+pub enum ManticoreContinuanceRequirement {
     BodilyDiscipline,
     RecipeRenewal,
     DividedBasinKnowledge,
@@ -307,7 +457,8 @@ pub struct FlyntSovereignIdentity {
     pub public_title: FlyntNodeId,
     pub underground_identities: Vec<FlyntNodeId>,
     pub maintained_form: FormId,
-    pub continuance_requirements: Vec<ManticorpContinuanceRequirement>,
+    pub mythological_identity: FlyntCreature,
+    pub continuance_requirements: Vec<ManticoreContinuanceRequirement>,
     pub public_institution: FlyntNodeId,
     pub underground_institution: FlyntNodeId,
 }
@@ -389,6 +540,7 @@ pub fn canonical_gremlin_way_practices() -> BTreeSet<GremlinWayPractice> {
 pub struct ConstitutionalChimera {
     pub authority_node: FlyntNodeId,
     pub form: FormId,
+    pub mythological_identity: FlyntCreature,
     pub synthesis: SynthesisRecipeId,
     pub first_companion_to: FlyntNodeId,
 }
@@ -396,18 +548,20 @@ pub struct ConstitutionalChimera {
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct FoundingUnion {
     pub founding_leaders: Vec<FlyntNodeId>,
-    pub folk_expression: FlyntNodeId,
-    pub institutional_home: FlyntNodeId,
-    pub constitutional_expression_of: FlyntNodeId,
+    pub leadership_body: FlyntNodeId,
+    pub sovereign_leader: FlyntNodeId,
+    pub underworld_manifestation: FlyntNodeId,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct FlyntConstitutionParts {
     pub nodes: Vec<FlyntAuthorityNode>,
-    pub lineages: Vec<FoundingLineage>,
+    pub lineages: Vec<PractitionerLineage>,
     pub forms: Vec<TransformationForm>,
     pub chimera_recipe: SynthesisRecipe,
-    pub manticorp_recipe: DividedManticorpRecipe,
+    pub manticore_recipe: DividedManticoreRecipe,
+    pub creature_pairs: Vec<FlyntCreaturePair>,
+    pub basin_sects: Vec<BasinCreatureSect>,
     pub chimera: ConstitutionalChimera,
     pub sovereign_identity: FlyntSovereignIdentity,
     pub founding_union: FoundingUnion,
@@ -417,10 +571,12 @@ pub struct FlyntConstitutionParts {
 #[derive(Debug)]
 pub struct FlyntConstitution {
     nodes: Vec<FlyntAuthorityNode>,
-    lineages: Vec<FoundingLineage>,
+    lineages: Vec<PractitionerLineage>,
     forms: Vec<TransformationForm>,
     chimera_recipe: SynthesisRecipe,
-    manticorp_recipe: DividedManticorpRecipe,
+    manticore_recipe: DividedManticoreRecipe,
+    creature_pairs: Vec<FlyntCreaturePair>,
+    basin_sects: Vec<BasinCreatureSect>,
     chimera: ConstitutionalChimera,
     sovereign_identity: FlyntSovereignIdentity,
     founding_union: FoundingUnion,
@@ -446,7 +602,7 @@ pub struct FlyntConstitutionalAudit {
     pub duplicate_authority_count: usize,
     pub gallowry_is_distinct_from_gallows: bool,
     pub chimera_recipe_count: usize,
-    pub manticorp_recipe_count: usize,
+    pub manticore_recipe_count: usize,
     pub founding_union_is_complete: bool,
 }
 
@@ -467,7 +623,9 @@ pub enum ConstitutionError {
     ChimeraMustBeUnique,
     ChimeraIsNotFirstCompanion,
     InvalidChimeraRecipe,
-    InvalidManticorpRecipe,
+    InvalidManticoreRecipe,
+    InvalidCreaturePairs,
+    InvalidBasinSects,
     InvalidSovereignIdentity,
     InvalidFoundingLineages,
     InvalidFoundingUnion,
@@ -500,19 +658,25 @@ impl fmt::Display for ConstitutionError {
                 "the unique constitutional Chimera must be First Companion directly beneath Tross",
             ),
             Self::InvalidChimeraRecipe => formatter.write_str(
-                "Chimera must be the unique synthesis of Gargoyle, Merman, and Werewolf",
+                "Chimera must be the unique synthesis of Gargoyle, Mariner/Merman, and Werewolf",
             ),
-            Self::InvalidManticorpRecipe => formatter.write_str(
-                "Manticorp must be the divided maintained synthesis beyond Chimera",
+            Self::InvalidManticoreRecipe => formatter.write_str(
+                "Manticore must be the divided maintained synthesis beyond Chimera",
+            ),
+            Self::InvalidCreaturePairs => formatter.write_str(
+                "Flynt must preserve the four canonical masculine/feminine creature pairs",
+            ),
+            Self::InvalidBasinSects => formatter.write_str(
+                "Bro White, Beauty, and Cinderellaman must lead their canonical creature-pair sects",
             ),
             Self::InvalidSovereignIdentity => formatter.write_str(
-                "Tross, Mystery Man, Mr. X, and the Manticorp bearer must be one stable identity",
+                "Tross, Mystery Man, Mr. X, and the Manticore bearer must be one stable identity",
             ),
             Self::InvalidFoundingLineages => formatter.write_str(
-                "Flynt must contain exactly the three canonical founding leader lineages",
+                "Flynt must preserve Warlock/Gargoyle, Lycan/Werewolf, and the Mariner/Merman creature lineage",
             ),
             Self::InvalidFoundingUnion => formatter.write_str(
-                "Bro White, Cinderellaman, and The Beauty must unite as We Fairy Men, the Gallows folk expression of Chimera",
+                "Bro White, Beauty, and Cinderellaman must form We Fairy Men beneath Tross, with the Gallows as their underworld manifestation",
             ),
             Self::GallowryIsNotDistinct => {
                 formatter.write_str("the Gallowry site must not be synonymous with the Gallows")
@@ -557,17 +721,17 @@ impl FlyntConstitution {
             evidence: None,
         })?;
         composition.insert_record(CompositionRecord {
-            id: parts.manticorp_recipe.recipe.id.as_kernel().clone(),
+            id: parts.manticore_recipe.recipe.id.as_kernel().clone(),
             sources: parts
-                .manticorp_recipe
+                .manticore_recipe
                 .recipe
                 .sources
                 .iter()
                 .map(|source| source.as_kernel().clone())
                 .collect(),
-            result: parts.manticorp_recipe.recipe.result.as_kernel().clone(),
+            result: parts.manticore_recipe.recipe.result.as_kernel().clone(),
             operation: ExternalRef::new("flynt-constitution", "sovereign-transfiguration")
-                .expect("canonical Manticorp synthesis operation"),
+                .expect("canonical Manticore synthesis operation"),
             evidence: None,
         })?;
         Ok(Self {
@@ -575,7 +739,9 @@ impl FlyntConstitution {
             lineages: parts.lineages,
             forms: parts.forms,
             chimera_recipe: parts.chimera_recipe,
-            manticorp_recipe: parts.manticorp_recipe,
+            manticore_recipe: parts.manticore_recipe,
+            creature_pairs: parts.creature_pairs,
+            basin_sects: parts.basin_sects,
             chimera: parts.chimera,
             sovereign_identity: parts.sovereign_identity,
             founding_union: parts.founding_union,
@@ -590,7 +756,7 @@ impl FlyntConstitution {
     }
 
     #[must_use]
-    pub fn lineages(&self) -> &[FoundingLineage] {
+    pub fn lineages(&self) -> &[PractitionerLineage] {
         &self.lineages
     }
 
@@ -605,8 +771,18 @@ impl FlyntConstitution {
     }
 
     #[must_use]
-    pub fn manticorp_recipe(&self) -> &DividedManticorpRecipe {
-        &self.manticorp_recipe
+    pub fn manticore_recipe(&self) -> &DividedManticoreRecipe {
+        &self.manticore_recipe
+    }
+
+    #[must_use]
+    pub fn creature_pairs(&self) -> &[FlyntCreaturePair] {
+        &self.creature_pairs
+    }
+
+    #[must_use]
+    pub fn basin_sects(&self) -> &[BasinCreatureSect] {
+        &self.basin_sects
     }
 
     #[must_use]
@@ -733,7 +909,13 @@ impl FlyntConstitution {
             return Err(ConstitutionError::ChimeraIsNotFirstCompanion);
         }
         self.validate_chimera_recipe()?;
-        self.validate_manticorp_recipe()?;
+        self.validate_manticore_recipe()?;
+        if self.creature_pairs != FLYNT_CREATURE_PAIRS {
+            return Err(ConstitutionError::InvalidCreaturePairs);
+        }
+        if self.basin_sects != BASIN_CREATURE_SECTS {
+            return Err(ConstitutionError::InvalidBasinSects);
+        }
         self.validate_sovereign_identity()?;
         if !same_lineages(&self.lineages, &canonical_lineages()) {
             return Err(ConstitutionError::InvalidFoundingLineages);
@@ -748,6 +930,8 @@ impl FlyntConstitution {
     fn validate_chimera_recipe(&self) -> Result<(), ConstitutionError> {
         if !same_forms(&self.forms, &canonical_forms())
             || self.chimera.form.as_str() != FORM_CHIMERA
+            || self.chimera.mythological_identity != FlyntCreature::Chimera
+            || self.chimera.mythological_identity.sex() != CreatureSex::Feminine
             || self.chimera.synthesis.as_str() != RECIPE_CHIMERA
             || self.chimera_recipe.id != self.chimera.synthesis
             || self.chimera_recipe.result != self.chimera.form
@@ -766,8 +950,8 @@ impl FlyntConstitution {
         Ok(())
     }
 
-    fn validate_manticorp_recipe(&self) -> Result<(), ConstitutionError> {
-        let recipe = &self.manticorp_recipe;
+    fn validate_manticore_recipe(&self) -> Result<(), ConstitutionError> {
+        let recipe = &self.manticore_recipe;
         let custodians = recipe
             .custody
             .iter()
@@ -776,20 +960,20 @@ impl FlyntConstitution {
         let expected = HashSet::from([
             (
                 node_id(OFFICE_BRO_WHITE),
-                ManticorpRecipeComponent::Gargoyle,
+                ManticoreRecipeComponent::Gargoyle,
             ),
             (
                 node_id(OFFICE_THE_BEAUTY),
-                ManticorpRecipeComponent::Werewolf,
+                ManticoreRecipeComponent::Werewolf,
             ),
             (
                 node_id(OFFICE_CINDERELLAMAN),
-                ManticorpRecipeComponent::Merman,
+                ManticoreRecipeComponent::Mariner,
             ),
         ]);
         if !same_forms(&self.forms, &canonical_forms())
-            || recipe.recipe.id.as_str() != RECIPE_MANTICORP
-            || recipe.recipe.result.as_str() != FORM_MANTICORP
+            || recipe.recipe.id.as_str() != RECIPE_MANTICORE
+            || recipe.recipe.result.as_str() != FORM_MANTICORE
             || !same_form_set(&recipe.recipe.sources, &[FORM_CHIMERA])
             || custodians != expected
             || self
@@ -798,7 +982,7 @@ impl FlyntConstitution {
                 .len()
                 != 1
         {
-            return Err(ConstitutionError::InvalidManticorpRecipe);
+            return Err(ConstitutionError::InvalidManticoreRecipe);
         }
         Ok(())
     }
@@ -809,18 +993,20 @@ impl FlyntConstitution {
             || identity.public_title.as_str() != OFFICE_TROSS
             || identity.underground_identities
                 != vec![node_id(IDENTITY_MYSTERY_MAN), node_id(IDENTITY_MR_X)]
-            || identity.maintained_form.as_str() != FORM_MANTICORP
+            || identity.maintained_form.as_str() != FORM_MANTICORE
+            || identity.mythological_identity != FlyntCreature::Manticore
+            || identity.mythological_identity.sex() != CreatureSex::Masculine
             || identity
                 .continuance_requirements
                 .iter()
                 .copied()
                 .collect::<BTreeSet<_>>()
                 != BTreeSet::from([
-                    ManticorpContinuanceRequirement::BodilyDiscipline,
-                    ManticorpContinuanceRequirement::RecipeRenewal,
-                    ManticorpContinuanceRequirement::DividedBasinKnowledge,
-                    ManticorpContinuanceRequirement::InstitutionalRecognition,
-                    ManticorpContinuanceRequirement::SpecializedGlaushouseCare,
+                    ManticoreContinuanceRequirement::BodilyDiscipline,
+                    ManticoreContinuanceRequirement::RecipeRenewal,
+                    ManticoreContinuanceRequirement::DividedBasinKnowledge,
+                    ManticoreContinuanceRequirement::InstitutionalRecognition,
+                    ManticoreContinuanceRequirement::SpecializedGlaushouseCare,
                 ])
             || identity.continuance_requirements.len() != 5
             || identity.public_institution.as_str() != INSTITUTION_MANTICORP
@@ -890,9 +1076,9 @@ impl FlyntConstitution {
                 .composition
                 .records_producing_result(self.chimera.form.as_kernel())
                 .len(),
-            manticorp_recipe_count: self
+            manticore_recipe_count: self
                 .composition
-                .records_producing_result(self.manticorp_recipe.recipe.result.as_kernel())
+                .records_producing_result(self.manticore_recipe.recipe.result.as_kernel())
                 .len(),
             founding_union_is_complete: same_founding_union(
                 &self.founding_union,
@@ -922,7 +1108,7 @@ fn same_forms(actual: &[TransformationForm], expected: &[TransformationForm]) ->
             .all(|form| expected.iter().any(|candidate| candidate == form))
 }
 
-fn same_lineages(actual: &[FoundingLineage], expected: &[FoundingLineage]) -> bool {
+fn same_lineages(actual: &[PractitionerLineage], expected: &[PractitionerLineage]) -> bool {
     actual.len() == expected.len()
         && actual
             .iter()
@@ -930,9 +1116,9 @@ fn same_lineages(actual: &[FoundingLineage], expected: &[FoundingLineage]) -> bo
 }
 
 fn same_founding_union(actual: &FoundingUnion, expected: &FoundingUnion) -> bool {
-    actual.folk_expression == expected.folk_expression
-        && actual.institutional_home == expected.institutional_home
-        && actual.constitutional_expression_of == expected.constitutional_expression_of
+    actual.leadership_body == expected.leadership_body
+        && actual.sovereign_leader == expected.sovereign_leader
+        && actual.underworld_manifestation == expected.underworld_manifestation
         && actual.founding_leaders.len() == expected.founding_leaders.len()
         && actual
             .founding_leaders
@@ -946,6 +1132,7 @@ fn canonical_id_literal(value: &str) -> &'static str {
         COMPANION_CHIMERA => COMPANION_CHIMERA,
         INSTITUTION_MANTICORP => INSTITUTION_MANTICORP,
         INSTITUTION_MYSTERY_MEN => INSTITUTION_MYSTERY_MEN,
+        EXTENSION_MARQUISE => EXTENSION_MARQUISE,
         EXPRESSION_MYSTERY_MAN => EXPRESSION_MYSTERY_MAN,
         INSTITUTION_GALLOWS => INSTITUTION_GALLOWS,
         EXPRESSION_WE_FAIRY_MEN => EXPRESSION_WE_FAIRY_MEN,
@@ -998,15 +1185,16 @@ pub fn canonical_authority_nodes() -> Vec<FlyntAuthorityNode> {
         Legendary, PrivateAndExistenceDisputed, Public, PublicWithClassifiedOperations,
     };
     use FlyntNodeKind::{
-        ConstitutionalCompanion, Crew, CriminalSyndicate, FolkExpression, FoundingLeaderOffice,
-        InvestigativeBureau, LegendaryOperative, MilitaryInstitution, SovereignExecutive,
+        ConstitutionalCompanion, Crew, CriminalSyndicate, FoundingLeaderOffice,
+        InvestigativeBureau, LeadershipBody, LegendaryOperative, MaritimeExtension,
+        MilitaryInstitution, SovereignExecutive,
     };
     use InstitutionalResponsibility as R;
 
     vec![
         authority_node(
             OFFICE_TROSS,
-            "Tross",
+            "The Tross",
             SovereignExecutive,
             Common,
             None,
@@ -1043,7 +1231,7 @@ pub fn canonical_authority_nodes() -> Vec<FlyntAuthorityNode> {
             "Mystery Men",
             InvestigativeBureau,
             Urban,
-            Some(INSTITUTION_MANTICORP),
+            Some(OFFICE_TROSS),
             PublicWithClassifiedOperations,
             &[
                 R::Investigation,
@@ -1054,6 +1242,20 @@ pub fn canonical_authority_nodes() -> Vec<FlyntAuthorityNode> {
                 R::Contraband,
                 R::Espionage,
                 R::ConstitutionalSecurity,
+            ],
+        ),
+        authority_node(
+            EXTENSION_MARQUISE,
+            "The Marquise",
+            MaritimeExtension,
+            Urban,
+            Some(INSTITUTION_MYSTERY_MEN),
+            PublicWithClassifiedOperations,
+            &[
+                R::Navigation,
+                R::MaritimeOperations,
+                R::Communications,
+                R::ComplexSystemControl,
             ],
         ),
         authority_node(
@@ -1070,7 +1272,7 @@ pub fn canonical_authority_nodes() -> Vec<FlyntAuthorityNode> {
             "The Gallows",
             CriminalSyndicate,
             Rural,
-            Some(OFFICE_TROSS),
+            Some(EXPRESSION_WE_FAIRY_MEN),
             PrivateAndExistenceDisputed,
             &[
                 R::OrganizedCrime,
@@ -1085,9 +1287,9 @@ pub fn canonical_authority_nodes() -> Vec<FlyntAuthorityNode> {
         authority_node(
             EXPRESSION_WE_FAIRY_MEN,
             "We Fairy Men",
-            FolkExpression,
+            LeadershipBody,
             Rural,
-            Some(INSTITUTION_GALLOWS),
+            Some(OFFICE_TROSS),
             Legendary,
             &[],
         ),
@@ -1129,7 +1331,7 @@ pub fn canonical_authority_nodes() -> Vec<FlyntAuthorityNode> {
         ),
         authority_node(
             OFFICE_THE_BEAUTY,
-            "The Beauty",
+            "Beauty",
             FoundingLeaderOffice,
             Rural,
             Some(EXPRESSION_WE_FAIRY_MEN),
@@ -1138,7 +1340,7 @@ pub fn canonical_authority_nodes() -> Vec<FlyntAuthorityNode> {
         ),
         authority_node(
             CREW_THE_BEAUTY,
-            "The Beauty and His Beasts",
+            "Beauty and His Beasts",
             Crew,
             Rural,
             Some(OFFICE_THE_BEAUTY),
@@ -1149,17 +1351,23 @@ pub fn canonical_authority_nodes() -> Vec<FlyntAuthorityNode> {
 }
 
 #[must_use]
-pub fn canonical_lineages() -> Vec<FoundingLineage> {
+pub fn canonical_lineages() -> Vec<PractitionerLineage> {
     use LineageAssociation as A;
     vec![
-        FoundingLineage {
-            people: FoundingPeople::Gargoyle,
+        PractitionerLineage {
+            tradition: Some(PractitionerTradition::Warlock),
+            creature: FlyntCreature::Gargoyle,
+            synthesis_form: form_id(FORM_GARGOYLE),
             founding_leader: node_id(OFFICE_BRO_WHITE),
             crew: node_id(CREW_BRO_WHITE),
             associations: vec![A::SouthernFlynt, A::Stone, A::Architecture, A::Guardianship],
+            working_function: "HOLD",
+            exact_current_aura_equation: None,
         },
-        FoundingLineage {
-            people: FoundingPeople::Merman,
+        PractitionerLineage {
+            tradition: None,
+            creature: FlyntCreature::Mariner,
+            synthesis_form: form_id(FORM_MERMAN),
             founding_leader: node_id(OFFICE_CINDERELLAMAN),
             crew: node_id(CREW_CINDERELLAMAN),
             associations: vec![
@@ -1169,9 +1377,13 @@ pub fn canonical_lineages() -> Vec<FoundingLineage> {
                 A::Smuggling,
                 A::MidnightTransformation,
             ],
+            working_function: "ADAPT",
+            exact_current_aura_equation: None,
         },
-        FoundingLineage {
-            people: FoundingPeople::Werewolf,
+        PractitionerLineage {
+            tradition: Some(PractitionerTradition::Lycan),
+            creature: FlyntCreature::Werewolf,
+            synthesis_form: form_id(FORM_WEREWOLF),
             founding_leader: node_id(OFFICE_THE_BEAUTY),
             crew: node_id(CREW_THE_BEAUTY),
             associations: vec![
@@ -1180,8 +1392,30 @@ pub fn canonical_lineages() -> Vec<FoundingLineage> {
                 A::Packs,
                 A::RoamingProtection,
             ],
+            working_function: "DRIVE",
+            exact_current_aura_equation: None,
         },
     ]
+}
+
+/// Stable adapter for callers that still consume the superseded
+/// `FoundingPeople` classification. Active canon uses [`canonical_lineages`].
+#[must_use]
+pub fn legacy_founding_lineages() -> Vec<FoundingLineage> {
+    canonical_lineages()
+        .into_iter()
+        .map(|lineage| FoundingLineage {
+            people: match lineage.creature {
+                FlyntCreature::Gargoyle => FoundingPeople::Gargoyle,
+                FlyntCreature::Werewolf => FoundingPeople::Werewolf,
+                FlyntCreature::Mariner => FoundingPeople::Merman,
+                _ => unreachable!("only the three legacy founding lineages are adapted"),
+            },
+            founding_leader: lineage.founding_leader,
+            crew: lineage.crew,
+            associations: lineage.associations,
+        })
+        .collect()
 }
 
 #[must_use]
@@ -1190,17 +1424,17 @@ pub fn canonical_forms() -> Vec<TransformationForm> {
         TransformationForm {
             id: form_id(FORM_GARGOYLE),
             name: "Gargoyle".into(),
-            kind: FormKind::FoundingPeople,
+            kind: FormKind::PractitionerSynthesis,
         },
         TransformationForm {
             id: form_id(FORM_MERMAN),
-            name: "Merman".into(),
-            kind: FormKind::FoundingPeople,
+            name: "Mariner".into(),
+            kind: FormKind::PractitionerSynthesis,
         },
         TransformationForm {
             id: form_id(FORM_WEREWOLF),
             name: "Werewolf".into(),
-            kind: FormKind::FoundingPeople,
+            kind: FormKind::PractitionerSynthesis,
         },
         TransformationForm {
             id: form_id(FORM_CHIMERA),
@@ -1208,33 +1442,33 @@ pub fn canonical_forms() -> Vec<TransformationForm> {
             kind: FormKind::ConstitutionalSynthesis,
         },
         TransformationForm {
-            id: form_id(FORM_MANTICORP),
-            name: "Manticorp".into(),
+            id: form_id(FORM_MANTICORE),
+            name: "Manticore".into(),
             kind: FormKind::ConstitutionalSynthesis,
         },
     ]
 }
 
 #[must_use]
-pub fn canonical_manticorp_recipe() -> DividedManticorpRecipe {
-    DividedManticorpRecipe {
+pub fn canonical_manticore_recipe() -> DividedManticoreRecipe {
+    DividedManticoreRecipe {
         recipe: SynthesisRecipe {
-            id: recipe_id(RECIPE_MANTICORP),
+            id: recipe_id(RECIPE_MANTICORE),
             sources: vec![form_id(FORM_CHIMERA)],
-            result: form_id(FORM_MANTICORP),
+            result: form_id(FORM_MANTICORE),
         },
         custody: vec![
-            ManticorpRecipeCustody {
+            ManticoreRecipeCustody {
                 custodian: node_id(OFFICE_BRO_WHITE),
-                component: ManticorpRecipeComponent::Gargoyle,
+                component: ManticoreRecipeComponent::Gargoyle,
             },
-            ManticorpRecipeCustody {
+            ManticoreRecipeCustody {
                 custodian: node_id(OFFICE_THE_BEAUTY),
-                component: ManticorpRecipeComponent::Werewolf,
+                component: ManticoreRecipeComponent::Werewolf,
             },
-            ManticorpRecipeCustody {
+            ManticoreRecipeCustody {
                 custodian: node_id(OFFICE_CINDERELLAMAN),
-                component: ManticorpRecipeComponent::Merman,
+                component: ManticoreRecipeComponent::Mariner,
             },
         ],
     }
@@ -1246,13 +1480,14 @@ pub fn canonical_sovereign_identity() -> FlyntSovereignIdentity {
         person: node_id(PERSON_TROSS),
         public_title: node_id(OFFICE_TROSS),
         underground_identities: vec![node_id(IDENTITY_MYSTERY_MAN), node_id(IDENTITY_MR_X)],
-        maintained_form: form_id(FORM_MANTICORP),
+        maintained_form: form_id(FORM_MANTICORE),
+        mythological_identity: FlyntCreature::Manticore,
         continuance_requirements: vec![
-            ManticorpContinuanceRequirement::BodilyDiscipline,
-            ManticorpContinuanceRequirement::RecipeRenewal,
-            ManticorpContinuanceRequirement::DividedBasinKnowledge,
-            ManticorpContinuanceRequirement::InstitutionalRecognition,
-            ManticorpContinuanceRequirement::SpecializedGlaushouseCare,
+            ManticoreContinuanceRequirement::BodilyDiscipline,
+            ManticoreContinuanceRequirement::RecipeRenewal,
+            ManticoreContinuanceRequirement::DividedBasinKnowledge,
+            ManticoreContinuanceRequirement::InstitutionalRecognition,
+            ManticoreContinuanceRequirement::SpecializedGlaushouseCare,
         ],
         public_institution: node_id(INSTITUTION_MANTICORP),
         underground_institution: node_id(INSTITUTION_GALLOWS),
@@ -1284,9 +1519,9 @@ pub fn canonical_founding_union() -> FoundingUnion {
             node_id(OFFICE_CINDERELLAMAN),
             node_id(OFFICE_THE_BEAUTY),
         ],
-        folk_expression: node_id(EXPRESSION_WE_FAIRY_MEN),
-        institutional_home: node_id(INSTITUTION_GALLOWS),
-        constitutional_expression_of: node_id(COMPANION_CHIMERA),
+        leadership_body: node_id(EXPRESSION_WE_FAIRY_MEN),
+        sovereign_leader: node_id(OFFICE_TROSS),
+        underworld_manifestation: node_id(INSTITUTION_GALLOWS),
     }
 }
 
@@ -1305,10 +1540,13 @@ pub fn canonical_parts() -> FlyntConstitutionParts {
             ],
             result: form_id(FORM_CHIMERA),
         },
-        manticorp_recipe: canonical_manticorp_recipe(),
+        manticore_recipe: canonical_manticore_recipe(),
+        creature_pairs: FLYNT_CREATURE_PAIRS.to_vec(),
+        basin_sects: BASIN_CREATURE_SECTS.to_vec(),
         chimera: ConstitutionalChimera {
             authority_node: node_id(COMPANION_CHIMERA),
             form: form_id(FORM_CHIMERA),
+            mythological_identity: FlyntCreature::Chimera,
             synthesis: recipe_id(RECIPE_CHIMERA),
             first_companion_to: node_id(OFFICE_TROSS),
         },
@@ -1331,10 +1569,11 @@ pub fn canonical_hierarchy_rows() -> Vec<(&'static str, &'static str)> {
     vec![
         (COMPANION_CHIMERA, OFFICE_TROSS),
         (INSTITUTION_MANTICORP, OFFICE_TROSS),
-        (INSTITUTION_MYSTERY_MEN, INSTITUTION_MANTICORP),
+        (INSTITUTION_MYSTERY_MEN, OFFICE_TROSS),
+        (EXTENSION_MARQUISE, INSTITUTION_MYSTERY_MEN),
         (EXPRESSION_MYSTERY_MAN, INSTITUTION_GALLOWS),
-        (INSTITUTION_GALLOWS, OFFICE_TROSS),
-        (EXPRESSION_WE_FAIRY_MEN, INSTITUTION_GALLOWS),
+        (EXPRESSION_WE_FAIRY_MEN, OFFICE_TROSS),
+        (INSTITUTION_GALLOWS, EXPRESSION_WE_FAIRY_MEN),
         (OFFICE_BRO_WHITE, EXPRESSION_WE_FAIRY_MEN),
         (CREW_BRO_WHITE, OFFICE_BRO_WHITE),
         (OFFICE_CINDERELLAMAN, EXPRESSION_WE_FAIRY_MEN),

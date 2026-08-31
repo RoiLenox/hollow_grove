@@ -1,16 +1,20 @@
 use std::collections::BTreeSet;
 
 use hollow_grove::hollow_grove_contract::House;
-use hollow_grove::lineage_contract::{SandmanorForm, validate_sandmanor_transition};
+use hollow_grove::lineage_contract::{
+    MINOAN_SIDE, MINORIAN_SIDE, SandmanorAttendantClass, SandmanorForm,
+    SandmanorSocialRole, SandmanorSovereignHand, SandmanorSovereignIdentity,
+    validate_sandmanor_transition,
+};
 use hollow_grove::world::hueman_faculties::{
-    CURRENT_FORM_PRESYNCE_LADDER, canonical_regional_soul_manifestations,
+    STONEBEND_PRESYNCE_SYNTHESIS_LADDER, canonical_regional_soul_manifestations,
     canonical_resynce_cultures, sandmanor_soul_halves_equal, validate_regional_soul_manifestation,
     validate_resynce_cultures,
 };
 use hollow_grove::world::{house_institutions, sandmanor};
 use hollow_grove::{InstitutionalEntityId, RelationshipKind};
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+pub(crate) fn tool_main() -> Result<(), Box<dyn std::error::Error>> {
     sandmanor::validate_civic_traditions()?;
     let catalog = house_institutions::canonical_house_institutions();
     catalog
@@ -113,21 +117,42 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     validate_sandmanor_transition(
         SandmanorForm::Gnome.frame(),
+        SandmanorForm::Faun.frame(),
+    )
+    .map_err(|error| format!("Gnome-to-Faun lineage drifted: {error:?}"))?;
+    validate_sandmanor_transition(
+        SandmanorForm::Faun.frame(),
         SandmanorForm::Minotaur.frame(),
     )
-    .map_err(|error| format!("Gnome-to-Minotaur lineage drifted: {error:?}"))?;
-    validate_sandmanor_transition(SandmanorForm::Elf.frame(), SandmanorForm::Centaur.frame())
-        .map_err(|error| format!("Elf-to-Centaur lineage drifted: {error:?}"))?;
+    .map_err(|error| format!("Faun-to-Minotaur lineage drifted: {error:?}"))?;
+    validate_sandmanor_transition(SandmanorForm::Elf.frame(), SandmanorForm::Satyr.frame())
+        .map_err(|error| format!("Elf-to-Satyr lineage drifted: {error:?}"))?;
     validate_sandmanor_transition(
-        SandmanorForm::Minotaur.frame(),
-        SandmanorForm::Hecaton.frame(),
-    )
-    .map_err(|error| format!("Minotaur-to-Hecaton lineage drifted: {error:?}"))?;
-    validate_sandmanor_transition(
+        SandmanorForm::Satyr.frame(),
         SandmanorForm::Centaur.frame(),
-        SandmanorForm::Pegasus.frame(),
     )
-    .map_err(|error| format!("Centaur-to-Pegasus lineage drifted: {error:?}"))?;
+    .map_err(|error| format!("Satyr-to-Centaur lineage drifted: {error:?}"))?;
+    if MINORIAN_SIDE.social_roles
+        != [
+            SandmanorSocialRole::Husbandman,
+            SandmanorSocialRole::Householder,
+            SandmanorSocialRole::Hearthkeeper,
+        ]
+        || MINOAN_SIDE.social_roles
+            != [
+                SandmanorSocialRole::BeachBum,
+                SandmanorSocialRole::PartyBoy,
+                SandmanorSocialRole::Socialite,
+            ]
+        || MINORIAN_SIDE.attendant_class != SandmanorAttendantClass::Geomancer
+        || MINOAN_SIDE.attendant_class != SandmanorAttendantClass::Labyrinthian
+        || MINORIAN_SIDE.sovereign_hand != SandmanorSovereignHand::Hecaton
+        || MINOAN_SIDE.sovereign_hand != SandmanorSovereignHand::Pegasus
+        || hollow_grove::lineage_contract::SANDMANOR_SOVEREIGN
+            != SandmanorSovereignIdentity::SandmanDemiurge
+    {
+        return Err("Sandmanor ontology axes drifted".into());
+    }
 
     use sandmanor::milestone::{
         CoastalTransferId, CoastalZone, ContentFarmAssessment, ContentFarmPractice,
@@ -149,6 +174,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     let healthy_content = ContentFarmAssessment {
         practices: BTreeSet::from([
+            ContentFarmPractice::CultivatesFamily,
             ContentFarmPractice::Educates,
             ContentFarmPractice::PreservesMemory,
             ContentFarmPractice::NourishesAttention,
@@ -198,8 +224,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         validate_regional_soul_manifestation(manifestation)?;
     }
     validate_resynce_cultures(&canonical_resynce_cultures())?;
-    if CURRENT_FORM_PRESYNCE_LADDER.len() != 8 {
-        return Err("Current Form Presynce ladder drifted".into());
+    if STONEBEND_PRESYNCE_SYNTHESIS_LADDER.len() != 8 {
+        return Err("Stonebend Presynce/Synthesis ladder drifted".into());
     }
 
     println!("Sandmanor Constitutional Audit: pass");
@@ -209,14 +235,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "signature offense: {}",
         sandmanor::SANDMANOR_SIGNATURE_OFFENSE
     );
-    println!("equal civic traditions: Minorians / Gnomes; Minoans / Elves");
-    println!("singular highest office: The Sandman");
+    println!("equal practitioner traditions: Minorian / Minoan");
+    println!("distinct peoples: Minorian / Minoan");
+    println!("form lines: Gnome -> Faun -> Minotaur / Elf -> Satyr -> Centaur");
+    println!("social lines: Husbandman -> Householder -> Hearthkeeper / Beach Bum -> Party Boy -> Socialite");
+    println!("attendant classes: Geomancer / Labyrinthian");
+    println!("sovereign Hands: Hecaton / Pegasus");
+    println!("singular sovereign identity: The Sandman = Demiurge");
     println!("office authority origin: completed Contest of Improvement only");
     println!("stable proof-body adapter: institution.sandmanor.sandmen");
-    println!("regional design: Gnome -> Minotaur / Aura Field / advanced tending and labor");
-    println!("regional design: Elf -> Centaur / Aura Beach and Current Sea / roam and guard");
-    println!("guardian line: Gnome -> Minotaur -> Hecaton / maintained Form and distinct mantle");
-    println!("guardian line: Elf -> Centaur -> Pegasus / maintained Form and distinct mantle");
+    println!("regional mature-form design: Faun -> Minotaur / Aura Field");
+    println!("regional mature-form design: Satyr -> Centaur / Aura Beach and Current Sea");
+    println!("Hecaton and Pegasus are sovereign Hands, never fourth-stage Forms");
     println!(
         "coastal order: Free Aura Beach -> Southern Coast -> Current Break -> Minoan County Courthouse -> Glaushouse"
     );
@@ -229,8 +259,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Soul cycle: Prefog -> Prefig -> Proof -> Evidence or Failure -> Revision -> Prefog");
     println!("Prefog or Prefig directly creates proof: false");
     println!("Recipe faculty manifestations independently execute Synthesis: false");
-    println!("Current Form Presynce ladder stages: 8");
-    println!("We Fairy Men / Aura Ridge and Gallows / Flynt civic identities merged: false");
+    println!("Stonebend Presynce/Synthesis ladder stages: 7");
+    println!(
+        "We Fairy Men / Aura Ridge and Gallows / Flynt underworld contexts share one Tross-led structure: true"
+    );
     println!("recursion kernel dependency: none");
     Ok(())
 }

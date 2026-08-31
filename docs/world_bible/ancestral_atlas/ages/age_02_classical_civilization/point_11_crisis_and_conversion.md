@@ -241,7 +241,7 @@ The ancestry may deepen these systems but grants no office, law, proof, clearanc
 
 - [Flynt Constitution V2](../../../../../FLYNT_CONSTITUTION_V2.md)
 - [Dual Leadership and Manticorp Recipe](../../../../../FLYNT_DUAL_LEADERSHIP_AND_MANTICORP_RECIPE_V1.md)
-- [Civic Body Correspondence — Wardens](../../../../../CIVIC_BODY_CORRESPONDENCE_V1.md)
+- [Civic Body Correspondence — Flynt designation OPEN](../../../../../CIVIC_BODY_CORRESPONDENCE_V1.md)
 - [Hueman Faculties — Resynce](../../../../../HUEMAN_FACULTIES_V1.md)
 - [Function Junction — Law of Capacity](../../../../../FUNCTION_JUNCTION_SEASONAL_WORLD_CYCLE_AND_PERMANENCE_V1.md)
 - [Visual Color Constitution](../../../../../HOLLOW_GROVE_VISUAL_COLOR_CONSTITUTION.md)

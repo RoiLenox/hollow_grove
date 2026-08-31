@@ -7,7 +7,7 @@ use hollow_grove::hueman_support::{
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let hueman_fourway = read_text_artifact(Path::new(HUEMAN_FOURWAY_ARTIFACT_PATH))?;
     let hueman_aura_triad = read_text_artifact(Path::new(HUEMAN_AURA_TRIAD_ARTIFACT_PATH))?;
     let hueman_start_choices =

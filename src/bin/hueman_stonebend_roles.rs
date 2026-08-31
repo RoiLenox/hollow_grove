@@ -7,7 +7,7 @@ use hollow_grove::hueman_support::{
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let hueman_start_choices = read_text_artifact(Path::new(HUEMAN_START_CHOICES_ARTIFACT_PATH))?;
     let hueman_fourway = read_text_artifact(Path::new(HUEMAN_FOURWAY_ARTIFACT_PATH))?;
     let hueman_stonebend_roles =
@@ -32,8 +32,13 @@ mod tests {
     fn hueman_stonebend_roles_reads_existing_artifacts() {
         let output = build_hueman_stonebend_roles_from_artifacts("start", "fourway");
         assert!(output.starts_with("# Hueman Stonebend Roles"));
+        assert!(
+            output.contains(
+                "Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre -> Troglodyte"
+            )
+        );
         assert!(output.contains(
-            "Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre -> Troglodyte"
+            "exact Aura counterparts are Pixie, Sprite, Fairy, Spirit, Siren, Sylph, Nymph, and Muse"
         ));
         assert!(output.contains("the Geralds are Stonebend's constitutional people"));
         assert!(output.contains("the Hypergiant is the singular highest Stonebend office"));
@@ -50,8 +55,9 @@ mod tests {
         assert!(output.contains("Aura Way is the standard known path"));
         assert!(output.contains("Opal varies, Diamond concentrates, and Quartz resonates"));
         assert!(output.contains("Stonebend has exactly three bidirectional constitutional gates"));
-        assert!(output.contains("Diamond is Stonebend's continuing sovereign Title"));
-        assert!(output.contains("no Hypergiant claims Diamond without The Lazerhorn"));
+        assert!(output.contains("Hypergiant is Stonebend's sovereign title"));
+        assert!(output.contains("Diamond's current role is STATUS: OPEN"));
+        assert!(output.contains("Hypergiant accession retains The Lazerhorn"));
         assert!(output.contains("a Claim is not automatically a Title"));
         assert!(output.contains("High Freemason replacement requires independent Forge review"));
         assert!(output.contains("Hueman Fourway bytes: 7."));

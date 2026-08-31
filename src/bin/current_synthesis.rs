@@ -194,7 +194,7 @@ fn run_current_synthesis_at(root: &Path) -> io::Result<[PathBuf; 17]> {
     ])
 }
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     for artifact_path in run_current_synthesis_at(Path::new("."))? {
         println!("{}", artifact_path.display());
     }

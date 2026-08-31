@@ -50,8 +50,12 @@ pub mod pleb_meta;
 pub mod point;
 pub mod point_progression;
 pub mod recipe_discovery;
+#[deprecated(since = "0.1.0", note = "use runtime_rampart")]
 pub mod runtime_federation;
+#[deprecated(since = "0.1.0", note = "use runtime_rampart_fixture")]
 pub mod runtime_federation_fixture;
+pub mod runtime_rampart;
+pub mod runtime_rampart_fixture;
 pub mod seer_ceremony;
 pub mod semantic;
 pub mod snapshot_boundary;
@@ -118,26 +122,29 @@ pub use civic_body::{
     CivicBodyDiagnosticCode, CivicBodyRole, CivicFailure, CivicPeople, CrisisRole,
     build_civic_body_validation_report, build_civic_body_witness, build_civic_crisis_witness,
     canonical_civic_body_contract_fixture, canonical_civic_body_definitions, canonical_civic_chant,
-    canonical_civic_crisis_steps, civic_body_definition, validate_civic_body_contract,
+    canonical_civic_crisis_steps, civic_body_definition, legacy_civic_chant,
+    legacy_civic_crisis_steps, legacy_flynt_wardens_definition, validate_civic_body_contract,
 };
 pub use composition::{
-    AXIS_MAX, AXIS_MIN, AxisDelta, AxisHandedness, AxisValue, CompositionCatalog,
-    CompositionCatalogError, CompositionNode, CompositionNodeId, CompositionRecord,
-    CompositionRecordId, Containment, CoordinateError, DELTA_MAX, DELTA_MIN, ExpandedPointField,
-    ExternalRef, ExternalRefError, FieldId, NormalizedCoordinate, NormalizedPoint, NormalizedRect,
-    OrientedPoint, OrientedPointError, OriginRelation, PhysicalExtent, PhysicalPosition,
-    PointCenterId, PointId, PointInversion, PointScaling, PolarityAxis, PolarityTendency, PoleId,
-    Position3, PositiveScaleFactor, RelativePolarity, ResolvedSpatialAnchor, ResolvedSpatialPath,
-    ResolvedSpatialRegion, SEMANTIC_KERNEL_SCHEMA_VERSION, SEMANTIC_WITNESS_SCHEMA_VERSION,
-    ScaleKey, SemanticOperation, SemanticPositionRecord, SemanticPositionSnapshot,
-    SemanticRecordError, SemanticScope, SemanticWitnessDecision, SemanticWitnessRecord,
-    SemanticWitnessSnapshot, SpatialAnchor, SpatialAnchorId, SpatialAuthorityId,
-    SpatialCatalogSnapshot, SpatialEvidenceId, SpatialFrame, SpatialFrameId,
-    SpatialInheritanceCatalog, SpatialInheritanceError, SpatialPath, SpatialPathGeometry,
-    SpatialPathId, SpatialRegion, SpatialRegionId, SpatialRuleSetId, SpatialTemplate,
-    SpatialTemplateId, SpatialTransform, SpatialViewpoint, SpatialViewpointSelection,
-    StableKeyError, Translation3, crosses_vertical_origin, invert_point, lawfully_scale_point,
-    squared_distance, verify_translation, vertical_origin_relation,
+    AXIS_MAX, AXIS_MIN, AdaptiveHingeProjection, AdaptivePathProjection, AxisDelta, AxisHandedness,
+    AxisValue, CompositionCatalog, CompositionCatalogError, CompositionNode, CompositionNodeId,
+    CompositionRecord, CompositionRecordId, Containment, CoordinateError, DELTA_MAX, DELTA_MIN,
+    DoubleSlottedSpatialHinge, ExpandedPointField, ExternalRef, ExternalRefError, FieldId,
+    NormalizedCoordinate, NormalizedPoint, NormalizedRect, OrientedPoint, OrientedPointError,
+    OriginRelation, PhysicalExtent, PhysicalPosition, PointCenterId, PointId, PointInversion,
+    PointScaling, PolarityAxis, PolarityTendency, PoleId, Position3, PositiveScaleFactor,
+    QuadraticSpatialSegment, RelativePolarity, ResolvedAdaptiveHinge, ResolvedSpatialAnchor,
+    ResolvedSpatialPath, ResolvedSpatialRegion, SEMANTIC_KERNEL_SCHEMA_VERSION,
+    SEMANTIC_WITNESS_SCHEMA_VERSION, ScaleKey, SemanticOperation, SemanticPositionRecord,
+    SemanticPositionSnapshot, SemanticRecordError, SemanticScope, SemanticWitnessDecision,
+    SemanticWitnessRecord, SemanticWitnessSnapshot, SpatialAnchor, SpatialAnchorId,
+    SpatialAuthorityId, SpatialCatalogSnapshot, SpatialEvidenceId, SpatialFrame, SpatialFrameId,
+    SpatialHingeId, SpatialHingeLane, SpatialHingeSlot, SpatialInheritanceCatalog,
+    SpatialInheritanceError, SpatialPath, SpatialPathGeometry, SpatialPathId, SpatialRegion,
+    SpatialRegionId, SpatialRuleSetId, SpatialTemplate, SpatialTemplateId, SpatialTransform,
+    SpatialViewpoint, SpatialViewpointSelection, StableKeyError, Translation3,
+    crosses_vertical_origin, invert_point, lawfully_scale_point, squared_distance,
+    verify_translation, vertical_origin_relation,
 };
 pub use current_grip_inheritance::{
     CurrentGripActionRequest, CurrentGripInheritanceContractInput, CurrentGripResolution,
@@ -195,7 +202,11 @@ pub use flow_glow_grammar::{
     canonical_structural_practice_flow_beam_fixture, resolve_embodied_action,
     validate_flow_glow_contract,
 };
-pub use frame_state::{BeingId, CurrentPrism, FlowId, FrameId, FrameState, GlowId};
+pub use frame_state::{
+    ACTIVE_GLAUSHOUSE_SYNTHESIS_FRAMES, ACTIVE_STONEBEND_SYNTHESIS_FRAMES, BeingId, CurrentPrism,
+    FlowId, FrameId, FrameState, GlowId, HOLLOW_GROVE_LEVEL_PAIRINGS, paired_aura_frame,
+    paired_current_frame,
+};
 pub use grove_seam::{GroveSeam, SeamRoute};
 pub use hollow_beam::{BeamRoute, HollowBeam, LandedSymptom, LandingRoute};
 pub use hollow_grove::{Bond, HollowGrove, KernelBond};
@@ -231,7 +242,7 @@ pub use institution_affiliation::{
 pub use kernel_invariants::{
     CENTRAL_JUNCTION_COORDINATION_IDENTITY, KERNEL_INVARIANT_SCHEMA_VERSION, KernelInvariantError,
     KernelInvariantReport, PLATINUM_PATH_ID, PLATINUM_PATH_NAME, PLATINUM_PATH_SHORT_NAME,
-    audit_gameplay_federation_binding, audit_guide_context, central_junction_is_coordination_only,
+    audit_gameplay_rampart_binding, audit_guide_context, central_junction_is_coordination_only,
 };
 pub use kernel_pass::{
     AURA_BEAM_WITNESS_LABEL, CANONICAL_WITNESS, CURRENT_SEAM_WITNESS_LABEL, FOURWAY_WITNESS_LABEL,
@@ -282,6 +293,18 @@ pub use synthesis_recipe::{
 pub use triway::{Triway, Way};
 pub use world::flynt_succession::{
     TrossSuccessionError, TrossSuccessionRecord, TrossSuccessionStage, TrossSuccessionTrigger,
+};
+pub use world::marquise::{
+    CORSAIR_DESIGN_NOTE, CorsairDomainRecord, FLYNT_CIVIC_IDENTITY, HouseCivicIdentityRecord,
+    MARQUISE_APEX_RANK, MARQUISE_AUTHORITY_MODEL, MARQUISE_CANON_SUMMARY, MARQUISE_CITIZEN_ORIGIN,
+    MARQUISE_COMPLEMENTARY_SYNTHESIS, MARQUISE_ENVIRONMENT, MARQUISE_HOUSE, MARQUISE_MEMBER_TITLE,
+    MARQUISE_NAME, MARQUISE_OVERVIEW, MARQUISE_PARENT_TRADITION, MARQUISE_PRACTICE,
+    MARQUISE_PRIMARY_SYNTHESIS, MARQUISE_PUSH_PHRASE, MARQUISE_RELATION_TO_PARENT,
+    MARQUISE_SOVEREIGN, MarquiseInstitutionRecord, MarquiseLoreDiagnostic,
+    MarquiseLoreDiagnosticCode, MarquiseMeaning, MarquisePanel, MarquiseStatusCategory,
+    MarquiseStatusRecord, SANDMANOR_CIVIC_IDENTITY, STONEBEND_CIVIC_IDENTITY,
+    build_marquise_panel_output, build_marquise_validation_report, canonical_marquise_lore,
+    validate_marquise_lore,
 };
 pub use world::session::WorldSession;
 pub use world_map_geometry::{

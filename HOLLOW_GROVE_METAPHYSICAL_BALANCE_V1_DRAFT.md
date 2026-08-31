@@ -15,11 +15,11 @@ The pure recursion kernel remains neutral. This document belongs above the
 kernel, alongside the Semantic Foundation and the Compromise. It adds no House,
 route, office, Frame, or executable authority.
 
-## Five balanced material statements
+## Five balanced semantic statements
 
 ```text
-Current repeats; repetition carries memory and wear.
-Aura reveals; revelation creates exposure and pressure.
+Current relates; participation creates obligation and continuity.
+Aura cultivates; internal capacity carries discipline and strain.
 Relativity bends; every bend retains an anchor and a frame.
 Synthesis transforms; every transformation leaves remainder and obligation.
 Hollow accumulates; refinement preserves provenance of what was separated.
@@ -48,8 +48,8 @@ silently change the anchor into a different identity or authority.
 
 | Law | Healthy expression | Excess pressure | Return path |
 |---|---|---|---|
-| Current | continuity, practice, endurance | rut, clot, exhaustion, repetition without learning | rest, circulation, repair, changed practice |
-| Aura | legibility, communication, recognition | glare, exposure, pressure, coerced visibility | consent, shielding, recontextualization |
+| Current | participation, relation, service, and continuity within a larger whole | role confinement, institutional capture, obligation without reciprocity | changed relation, reciprocal witness, repair, or lawful exit |
+| Aura | cultivated knowledge, ability, perception, magic, discipline, and internal capacity | fixation, exhaustion, self-erasure, or coerced cultivation | consent, rest, reflection, retraining, or boundary-setting |
 | Relativity | adaptation and mutual perspective | distortion, opportunism, incompatible frames | anchor evidence and reciprocal witness |
 | Synthesis | lawful transformation and new capacity | overgrowth, identity strain, dependency, residue | recovery, maintenance, revision, or lawful severance |
 | Hollow | extracted value, separation, refinement | infection, hoarding, provenance loss, destructive depletion | custody, treatment, restitution, preserved remainder |
@@ -96,12 +96,13 @@ changing the recursion crate:
 
 | Universal law | Witnessed lore identity | Excess pressure in the case | Recorded return path |
 |---|---|---|---|
-| Current | `lore.sandmanor.glausbahn-recovery-design` | field strain and failed demonstration | clinical stop, preserved negative result, and versioned revision |
-| Aura | `lore.flynt.boardwalk-return-recognition` | public visibility and affiliation pressure | declared boundaries, protected independent return, and open exits |
+| Current | `lore.sandmanor.glausbahn-recovery-design` | institutional obligation and failed demonstration | clinical stop, preserved negative result, and versioned revision |
+| Aura | `lore.flynt.boardwalk-return-recognition` | cultivated influence under affiliation pressure | declared boundaries, protected independent return, and open exits |
 | Relativity | `lore.stonebend.current-sea-continuity` | changed form read through incompatible civic frames | anchor Name, Mercury Mirror comparison, reciprocal public witness, and challenge |
 | Synthesis | `lore.glaushouse.current-seanad-high-risk-clearance` | irreversible identity strain, dependency, and coercion risk | separate consent and Clearance, reversible alternative, refusal, rescue, and recovery |
 | Hollow | `lore.stonebend.mnt-aura-illegal-hollowing` | provenance loss and destructive depletion | distinct custody, non-destructive survey, preserved remainder, and Restitution ownership |
 
 These cases adopt the semantic grammar, not new wire identities. Stable IDs,
 archive fields, meters, or Frame classification changes still require a
-separate foundation migration.
+separate foundation migration. Pre-migration material Current/Aura behavior is
+LEGACY compatibility and does not control the universal definitions here.

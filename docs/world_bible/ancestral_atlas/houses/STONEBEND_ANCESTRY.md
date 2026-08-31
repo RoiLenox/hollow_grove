@@ -57,7 +57,7 @@ Continue to the [modern cultural synthesis](STONEBEND_ANCESTRAL_SYNTHESIS.md) an
 
 ## Existing canon bridge
 
-The Atlas interprets recurring inheritances through **Law of Identity; permanence; Presynce; Diamond and Hypergiant; Freemason; Proliteriate; Claim / Title / Yield**. Those are constraints and destinations for cultural translation, not historical derivations of constitutional authority.
+The Atlas interprets recurring inheritances through **Law of Identity; permanence; Presynce; Hypergiant sovereign title; Diamond STATUS OPEN; Freemason; Proliteriate; Claim / Title / Yield**. Those are constraints and destinations for cultural translation, not historical derivations of constitutional authority.
 
 - [Stonebend Constitution V2](../../../../STONEBEND_CONSTITUTION_V2.md)
 - [Three Gates, Offices, and Title Scope](../../../../STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md)

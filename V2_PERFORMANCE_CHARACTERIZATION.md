@@ -1,6 +1,6 @@
 # Hollow Grove V2 Performance Characterization
 
-Measurement date: 2026-07-18
+Measurement date: 2026-08-22
 Harness: `examples/constitutional_v2_bench.rs`
 Profile: Cargo `--release`
 Clock: `std::time::Instant`
@@ -29,26 +29,26 @@ cargo run --release --quiet --example constitutional_v2_bench
 
 | Operation | Iterations | Average | Median | Worst observed |
 |---|---:|---:|---:|---:|
-| Single transition reduction | 500 | 0.670 µs | 0.592 µs | 7.324 µs |
-| Full lawful Bond lifecycle | 100 | 94.531 µs | 90.580 µs | 155.462 µs |
-| Full lifecycle plus persistence/decode | 100 | 153.700 µs | 150.302 µs | 214.042 µs |
-| Regional V0→V1 migration | 500 | 6.593 µs | 6.482 µs | 10.870 µs |
-| Regional archive digest | 1,000 | 1.828 µs | 1.823 µs | 4.438 µs |
-| Regional trace generation | 500 | 16.783 µs | 16.641 µs | 23.674 µs |
-| Idempotent Synthesis retry | 1,000 | 0.445 µs | 0.441 µs | 2.284 µs |
-| Complete scenario catalog execution | 50 | 845.807 µs | 842.361 µs | 957.837 µs |
-| Gnome→Minotaur complete scenario | 500 | 44.042 µs | 43.852 µs | 60.133 µs |
-| Elf→Centaur complete scenario | 500 | 45.691 µs | 45.566 µs | 52.869 µs |
-| Regional persistence encode/decode | 500 | 7.602 µs | 7.494 µs | 23.705 µs |
-| Regional live replay | 500 | 8.467 µs | 8.346 µs | 15.859 µs |
-| Regional lineage inspection | 10,000 | 0.021 µs | 0.020 µs | 0.121 µs |
-| Aura Field stewardship lookup | 10,000 | 0.021 µs | 0.020 µs | 1.923 µs |
-| Aura Sea guardianship lookup | 10,000 | 0.021 µs | 0.020 µs | 0.150 µs |
-| Rejected cross-regional Synthesis | 1,000 | 20.814 µs | 20.649 µs | 40.957 µs |
-| Replay 10 events | 200 | 10.501 µs | 10.360 µs | 15.179 µs |
-| Replay 100 events | 100 | 101.601 µs | 101.150 µs | 122.890 µs |
-| Replay 1,000 events | 20 | 1.769 ms | 1.761 ms | 1.928 ms |
-| Replay 10,000 events | 3 | 107.914 ms | 107.348 ms | 110.171 ms |
+| Single transition reduction | 500 | 0.481 µs | 0.461 µs | 6.172 µs |
+| Full lawful Bond lifecycle | 100 | 169.729 µs | 155.996 µs | 487.215 µs |
+| Full lifecycle plus persistence/decode | 100 | 224.188 µs | 217.042 µs | 317.533 µs |
+| Regional V0→V1 migration | 500 | 5.950 µs | 5.731 µs | 13.917 µs |
+| Regional archive digest | 1,000 | 2.033 µs | 2.014 µs | 3.667 µs |
+| Regional trace generation | 500 | 16.126 µs | 15.459 µs | 50.576 µs |
+| Idempotent Synthesis retry | 1,000 | 0.426 µs | 0.421 µs | 2.535 µs |
+| Complete scenario catalog execution | 50 | 1.707 ms | 1.673 ms | 2.091 ms |
+| legacy `gnome-minotaur` slug (now Faun→Minotaur) | 500 | 79.028 µs | 75.834 µs | 317.292 µs |
+| legacy `elf-centaur` slug (now Satyr→Centaur) | 500 | 80.147 µs | 77.136 µs | 275.473 µs |
+| Regional persistence encode/decode | 500 | 6.951 µs | 6.523 µs | 26.901 µs |
+| Regional live replay | 500 | 7.021 µs | 6.853 µs | 17.594 µs |
+| Regional lineage inspection | 10,000 | 0.020 µs | 0.020 µs | 1.102 µs |
+| Aura Field stewardship lookup | 10,000 | 0.021 µs | 0.020 µs | 2.265 µs |
+| Current Sea guardianship lookup | 10,000 | 0.019 µs | 0.020 µs | 0.211 µs |
+| Rejected cross-regional Synthesis | 1,000 | 55.043 µs | 52.660 µs | 221.210 µs |
+| Replay 10 events | 200 | 8.356 µs | 8.025 µs | 20.369 µs |
+| Replay 100 events | 100 | 81.400 µs | 77.748 µs | 174.762 µs |
+| Replay 1,000 events | 20 | 970.088 µs | 929.444 µs | 1.263 ms |
+| Replay 10,000 events | 3 | 11.208 ms | 10.972 ms | 12.047 ms |
 
 ## What Each Measurement Includes
 
@@ -70,12 +70,12 @@ successor Wave, successor formation, and integrity verification.
 ### Full lifecycle with persistence
 
 Adds canonical V1 archive encoding and decode-through-replay to the preceding
-operation. The difference between the medians is approximately 59.7 µs on this
+operation. The difference between the medians is approximately 61.0 µs on this
 run.
 
 ### Regional Synthesis scenarios
 
-Each 43–45 µs scenario includes fixture construction, origin registration,
+Each 76–77 µs scenario includes fixture construction, origin registration,
 institution-derived Sandmanor and Glaüshouse decisions, subject-evidence checks,
 lineage reduction, typed assignment, one idempotent retry, direct replay,
 archive encoding, archive decoding through the reducer, and canonical byte
@@ -101,22 +101,18 @@ performing the real setup and reducer call.
 
 | Events | Median | Median per event | Growth from prior row |
 |---:|---:|---:|---:|
-| 10 | 10.360 µs | 1.036 µs | — |
-| 100 | 101.150 µs | 1.012 µs | 9.76× for 10× events |
-| 1,000 | 1.761 ms | 1.761 µs | 17.41× for 10× events |
-| 10,000 | 107.348 ms | 10.735 µs | 60.96× for 10× events |
+| 10 | 8.025 µs | 0.803 µs | — |
+| 100 | 77.748 µs | 0.777 µs | 9.69× for 10× events |
+| 1,000 | 929.444 µs | 0.929 µs | 11.95× for 10× events |
+| 10,000 | 10.972 ms | 1.097 µs | 11.80× for 10× events |
 
-The small histories are close to linear. The large registration-only history
-exposes superlinear behavior because the regional runtime currently scans the
-event vector for idempotent retry detection before each append, while also
-maintaining ordered maps and cloning owned event data. The 10,000-event result
-is practical for demonstration and recovery but identifies an optimization
-target for sustained high-volume operation.
-
-Any optimization must preserve exact event equality, conflict detection,
-caller-supplied identities, causal ordering, and fail-closed replay. A narrow
-`RegionalEventId → index` map would be the first candidate; it would consolidate
-an existing index responsibility rather than add domain law.
+Replay is now close to linear across the measured range. The regional runtime
+maintains a narrow `RegionalEventId → position` index for duplicate and
+idempotent-retry detection instead of scanning the accumulated event vector on
+every append. The 10,000-event median fell from the prior 107.348 ms baseline
+to 10.972 ms (about 9.8× faster) while preserving exact event equality,
+conflict detection, caller-supplied identities, causal ordering, and
+fail-closed replay.
 
 ## Allocation-Sensitive Observations
 

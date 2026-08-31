@@ -14,6 +14,7 @@ use crate::hollow_grove_contract::House;
 
 use super::geography::ConstitutionalRouteId;
 use super::interior_surface::{InteriorSurfaceId, SurfacePoint};
+use super::spatial_topology_v2::TopologyV2RegionId;
 
 pub const AURA_FIELD_MAP_ID: &str = "aura-field.working-land";
 
@@ -21,6 +22,7 @@ pub const AURA_FIELD_MAP_ID: &str = "aura-field.working-land";
 pub enum AuraFieldFacilityId {
     UpperAuraFarm,
     EastAuraFarm,
+    ContentFarm,
     EngagementFarm,
     ProvingPlots,
     Orchard,
@@ -38,9 +40,10 @@ pub enum AuraFieldFacilityId {
 }
 
 impl AuraFieldFacilityId {
-    pub const ALL: [Self; 16] = [
+    pub const ALL: [Self; 17] = [
         Self::UpperAuraFarm,
         Self::EastAuraFarm,
+        Self::ContentFarm,
         Self::EngagementFarm,
         Self::ProvingPlots,
         Self::Orchard,
@@ -62,6 +65,7 @@ impl AuraFieldFacilityId {
         match self {
             Self::UpperAuraFarm => "aura-field.facility.upper-aura-farm",
             Self::EastAuraFarm => "aura-field.facility.east-aura-farm",
+            Self::ContentFarm => "aura-field.facility.content-farm",
             Self::EngagementFarm => "aura-field.facility.engagement-farm",
             Self::ProvingPlots => "aura-field.facility.proving-plots",
             Self::Orchard => "aura-field.facility.orchard",
@@ -78,11 +82,76 @@ impl AuraFieldFacilityId {
             Self::CompostYard => "aura-field.facility.compost-yard",
         }
     }
+
+    #[must_use]
+    pub const fn cultivation_half(self) -> AuraFarmCultivationHalfId {
+        match self {
+            Self::ContentFarm => AuraFarmCultivationHalfId::ContentFarm,
+            Self::UpperAuraFarm
+            | Self::EastAuraFarm
+            | Self::EngagementFarm
+            | Self::ProvingPlots
+            | Self::Orchard
+            | Self::Paddock
+            | Self::IrrigationWorks
+            | Self::Barn
+            | Self::Granary
+            | Self::SeedHouse
+            | Self::Farmstead
+            | Self::ToolShed
+            | Self::ProduceMarket
+            | Self::Windbreak
+            | Self::Apiary
+            | Self::CompostYard => AuraFarmCultivationHalfId::AuraField,
+        }
+    }
+}
+
+/// The two equal-area cultivation halves inside the one Aura Farm triangle.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
+pub enum AuraFarmCultivationHalfId {
+    AuraField,
+    ContentFarm,
+}
+
+impl AuraFarmCultivationHalfId {
+    pub const ALL: [Self; 2] = [Self::AuraField, Self::ContentFarm];
+
+    #[must_use]
+    pub const fn stable_id(self) -> &'static str {
+        match self {
+            Self::AuraField => "aura-farm.half.aura-field",
+            Self::ContentFarm => "aura-farm.half.content-farm",
+        }
+    }
+
+    #[must_use]
+    pub const fn display_name(self) -> &'static str {
+        match self {
+            Self::AuraField => "Aura Field",
+            Self::ContentFarm => "Content Farm",
+        }
+    }
+
+    #[must_use]
+    pub const fn topology_region(self) -> TopologyV2RegionId {
+        match self {
+            Self::AuraField => TopologyV2RegionId::AuraField,
+            Self::ContentFarm => TopologyV2RegionId::ContentFarm,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub struct AuraFarmCultivationHalf {
+    pub id: AuraFarmCultivationHalfId,
+    pub polygon: [SurfacePoint; 3],
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub enum AuraFieldFacilityKind {
     AuraFarm,
+    ContentFarm,
     EngagementFarm,
     ProvingPlot,
     Orchard,
@@ -100,8 +169,9 @@ pub enum AuraFieldFacilityKind {
 }
 
 impl AuraFieldFacilityKind {
-    pub const REQUIRED: [Self; 15] = [
+    pub const REQUIRED: [Self; 16] = [
         Self::AuraFarm,
+        Self::ContentFarm,
         Self::EngagementFarm,
         Self::ProvingPlot,
         Self::Orchard,
@@ -122,6 +192,7 @@ impl AuraFieldFacilityKind {
     pub const fn as_str(self) -> &'static str {
         match self {
             Self::AuraFarm => "Aura farm",
+            Self::ContentFarm => "content farm",
             Self::EngagementFarm => "engagement farm",
             Self::ProvingPlot => "proving plot",
             Self::Orchard => "orchard",
@@ -178,13 +249,28 @@ pub struct AuraFieldSurface {
     pub map_id: &'static str,
     pub dominant_house: House,
     pub regional_attribution: &'static str,
+    /// V1-compatible envelope, canonically displayed as Aura Farm in V2.
     pub boundary: [SurfacePoint; 3],
+    pub cultivation_halves: [AuraFarmCultivationHalf; 2],
     pub access_routes: [ConstitutionalRouteId; 3],
     pub facilities: Vec<AuraFieldFacility>,
     pub house_roles: [AuraFieldHouseRole; 4],
 }
 
 impl AuraFieldSurface {
+    #[must_use]
+    pub const fn composite_display_name(&self) -> &'static str {
+        "Aura Farm"
+    }
+
+    #[must_use]
+    pub fn cultivation_half(
+        &self,
+        id: AuraFarmCultivationHalfId,
+    ) -> Option<&AuraFarmCultivationHalf> {
+        self.cultivation_halves.iter().find(|half| half.id == id)
+    }
+
     #[must_use]
     pub fn facility(&self, id: AuraFieldFacilityId) -> Option<&AuraFieldFacility> {
         self.facilities.iter().find(|facility| facility.id == id)
@@ -205,22 +291,26 @@ impl AuraFieldSurface {
         {
             return Err(AuraFieldError::IdentityMismatch);
         }
-        let expected_boundary = [
-            SurfacePoint {
-                x_per_mille: 500,
-                y_per_mille: 140,
-            },
-            SurfacePoint {
-                x_per_mille: 735,
-                y_per_mille: 500,
-            },
-            SurfacePoint {
-                x_per_mille: 500,
-                y_per_mille: 500,
-            },
-        ];
+        let expected_boundary = surface_polygon(TopologyV2RegionId::AuraFarm);
         if self.boundary != expected_boundary {
             return Err(AuraFieldError::BoundaryMismatch);
+        }
+        let expected_halves = canonical_cultivation_halves();
+        if self.cultivation_halves != expected_halves
+            || twice_area(self.cultivation_halves[0].polygon)
+                != twice_area(self.cultivation_halves[1].polygon)
+            || twice_area(self.cultivation_halves[0].polygon)
+                + twice_area(self.cultivation_halves[1].polygon)
+                != twice_area(self.boundary)
+        {
+            return Err(AuraFieldError::CultivationPartitionMismatch);
+        }
+        let content = self
+            .cultivation_half(AuraFarmCultivationHalfId::ContentFarm)
+            .ok_or(AuraFieldError::CultivationPartitionMismatch)?;
+        let beach = surface_polygon(TopologyV2RegionId::AuraBeach);
+        if (content.polygon[1], content.polygon[2]) != (beach[1], beach[0]) {
+            return Err(AuraFieldError::ContentFarmBeachAdjacencyMismatch);
         }
         if self.access_routes.as_slice() != self.id.access_routes() {
             return Err(AuraFieldError::AccessRouteMismatch);
@@ -284,6 +374,7 @@ pub fn canonical_aura_field() -> Result<AuraFieldSurface, AuraFieldError> {
                 y_per_mille: 500,
             },
         ],
+        cultivation_halves: canonical_cultivation_halves(),
         access_routes: [
             ConstitutionalRouteId::AuraRidge,
             ConstitutionalRouteId::AuraWay,
@@ -301,6 +392,12 @@ pub fn canonical_aura_field() -> Result<AuraFieldSurface, AuraFieldError> {
                 "East Aura Farm",
                 Kind::AuraFarm,
                 "vegetables, fodder, and seasonal trials",
+            ),
+            AuraFieldFacility::new(
+                Id::ContentFarm,
+                "Content Farm",
+                Kind::ContentFarm,
+                "stories, lessons, memory, tutorials, public information, performance, and cultural nourishment",
             ),
             AuraFieldFacility::new(
                 Id::EngagementFarm,
@@ -418,6 +515,8 @@ pub fn canonical_aura_field() -> Result<AuraFieldSurface, AuraFieldError> {
 pub enum AuraFieldError {
     IdentityMismatch,
     BoundaryMismatch,
+    CultivationPartitionMismatch,
+    ContentFarmBeachAdjacencyMismatch,
     AccessRouteMismatch,
     DuplicateFacility(AuraFieldFacilityId),
     MissingFacility,
@@ -433,3 +532,32 @@ impl fmt::Display for AuraFieldError {
 }
 
 impl std::error::Error for AuraFieldError {}
+
+fn canonical_cultivation_halves() -> [AuraFarmCultivationHalf; 2] {
+    AuraFarmCultivationHalfId::ALL.map(|id| AuraFarmCultivationHalf {
+        id,
+        polygon: surface_polygon(id.topology_region()),
+    })
+}
+
+fn surface_polygon(region: TopologyV2RegionId) -> [SurfacePoint; 3] {
+    region
+        .polygon_per_mille()
+        .map(|(x_per_mille, y_per_mille)| SurfacePoint {
+            x_per_mille,
+            y_per_mille,
+        })
+}
+
+fn twice_area(polygon: [SurfacePoint; 3]) -> u64 {
+    polygon
+        .into_iter()
+        .zip(polygon.into_iter().cycle().skip(1))
+        .take(3)
+        .map(|(left, right)| {
+            i64::from(left.x_per_mille) * i64::from(right.y_per_mille)
+                - i64::from(right.x_per_mille) * i64::from(left.y_per_mille)
+        })
+        .sum::<i64>()
+        .unsigned_abs()
+}

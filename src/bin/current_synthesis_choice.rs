@@ -14,7 +14,7 @@ fn artifact_path() -> PathBuf {
     PathBuf::from(CURRENT_SYNTHESIS_CHOICE_ARTIFACT_PATH)
 }
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let current_synthesis_clients =
         read_artifact(Path::new(CURRENT_SYNTHESIS_CLIENTS_ARTIFACT_PATH))?;
     let current_synthesis_topology =

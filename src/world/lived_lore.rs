@@ -795,8 +795,8 @@ pub fn canonical_functional_lore_definitions() -> Vec<FunctionalLoreDefinition> 
             AuraWay,
             "Aura Beach and Current Sea exterior trial",
             "Sandmanor regional design jurisdiction linked through Aura Way review",
-            &["Elf candidate", "Centaur mentor", "coastal access users"],
-            "an Elf-to-Centaur regional role claims safer coastal rescue performance",
+            &["Satyr candidate", "Centaur mentor", "coastal access users"],
+            "a Satyr-to-Centaur regional role claims safer coastal rescue performance",
             &[
                 "recipe lineage",
                 "coastal demonstration",
@@ -809,7 +809,7 @@ pub fn canonical_functional_lore_definitions() -> Vec<FunctionalLoreDefinition> 
             &[
                 "prove regional role",
                 "require wider reproduction",
-                "preserve Elf practice without transition",
+                "preserve Satyr practice without transition",
             ],
             &[
                 "role proof becomes eligible for separate House acts",
@@ -825,11 +825,11 @@ pub fn canonical_functional_lore_definitions() -> Vec<FunctionalLoreDefinition> 
             roles(
                 "coastal access users",
                 "office.sandmanor.sandman",
-                "Elf candidate",
+                "Satyr candidate",
                 "Centaur mentor",
                 &[
-                    "office.sandmanor.sandman→Elf candidate: bounded regional proof question",
-                    "Elf candidate→Centaur mentor: coastal demonstration evidence",
+                    "office.sandmanor.sandman→Satyr candidate: bounded regional proof question",
+                    "Satyr candidate→Centaur mentor: coastal demonstration evidence",
                     "Centaur mentor→coastal access users: witnessed safety receipt",
                 ],
                 "coastal users receive a reproducible safety result without automatic transition",

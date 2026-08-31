@@ -13,6 +13,9 @@ const RECIPE_IMPLEMENTATION: &str = include_str!("../src/synthesis_recipe.rs");
 const INSTITUTIONS: &str = include_str!("../src/world/house_institutions.rs");
 const HUEMAN: &str = include_str!("../artifacts/hueman_sandmanor_roles.md");
 const VERTICAL_STACK: &str = include_str!("../artifacts/vertical_integration_stack.md");
+const LINEAGE_LOCK: &str = include_str!("../SANDMANOR_LINEAGE_LOCK_v1.md");
+const GUARDIAN_SUPPLEMENT: &str = include_str!("../SANDMANOR_GUARDIAN_AND_SUCCESSION_V1.md");
+const SYNTHESIS_CANON: &str = include_str!("../HOLLOW_GROVE_SYNTHESIS_CANON_V1.md");
 const KERNEL: &str = include_str!("../hollow-grove-semantic-kernel/src/lib.rs");
 
 #[test]
@@ -71,22 +74,23 @@ fn constitution_preserves_all_forty_four_articles() {
 fn additive_hueman_soul_law_is_exact_and_proof_bounded() {
     for term in [
         "Sandmanor is the Soul of the Hueman",
-        "Minorian / Gnome / Soul Interior / Prefog",
-        "Minoan / Elf / Soul Exterior / Prefig",
-        "Prefog -> Prefig -> Proof -> Evidence or Failure -> Revision -> Prefog",
-        "Prefig precedes proof but never substitutes for proof",
-        "Gnome -> Minotaur",
-        "Elf -> Centaur",
+        "Minorian / Soul Interior / Prefog",
+        "Minoan / Soul Exterior / Prefig",
+        "Gnome → Faun → Minotaur",
+        "Elf → Satyr → Centaur",
+        "Husbandman → Householder → Hearthkeeper",
+        "Beach Bum → Party Boy → Socialite",
+        "The Sandman = Demiurge",
         "institution.sandmanor.sandmen",
     ] {
         assert!(CONSTITUTION.contains(term), "constitution omits {term}");
     }
     for term in [
-        "Presynce feels emergence.",
-        "Resynce joins relation.",
-        "Precog foresees consequence.",
-        "Prefog opens possibility.",
-        "Prefig forms becoming.",
+        "Presynce recognizes present, material, embodied reality in relation to Identity.",
+        "Resynce recognizes Capacity through response, change, pressure, or load.",
+        "Precog recognizes trajectory or condition in relation to Integrity.",
+        "Prefog recognizes Pattern that already exists but is obscured.",
+        "Prefig recognizes or projects Pattern before manifestation.",
         "We Fairy Men",
         "The Gallows",
     ] {
@@ -104,13 +108,19 @@ fn canonical_people_office_syntheses_crime_and_palette_are_present() {
         "Sandmanor proves.",
         "Minorians",
         "Minoans",
-        "Gnomes",
-        "Elves",
+        "Gnome → Faun → Minotaur",
+        "Elf → Satyr → Centaur",
+        "Geomancer",
+        "Labyrinthian",
+        "Hecaton",
+        "Pegasus",
+        "The Sandman = Demiurge",
         "The Sandman",
         "Contest of Improvement",
         "Fraudulent Design",
-        "Gnome → Minotaur",
-        "Elf → Centaur",
+        "Husbandman → Householder → Hearthkeeper",
+        "Beach Bum → Party Boy → Socialite",
+        "Content Farm cultivates what a family has and makes",
         "Aura Field",
         "Aura Beach",
         "Current Sea",
@@ -123,15 +133,32 @@ fn canonical_people_office_syntheses_crime_and_palette_are_present() {
 }
 
 #[test]
+fn unresolved_canon_is_explicitly_open_not_invented() {
+    for term in [
+        "exact appointment mechanism for Hecaton",
+        "exact appointment mechanism for Pegasus",
+        "succession and removal mechanics for Hecaton and Pegasus",
+        "detailed Geomancer powers",
+        "detailed Labyrinthian powers",
+        "deeper biological or metaphysical mechanics",
+    ] {
+        assert!(
+            CONSTITUTION.contains(term),
+            "open-canon registry omits {term}"
+        );
+    }
+}
+
+#[test]
 fn public_authority_surfaces_point_to_v2_and_exact_placements() {
     assert!(SUPERSEDED_DRAFT.contains("Status: historical redirect"));
     assert!(SUPERSEDED_DRAFT.contains("SANDMANOR_CONSTITUTION_V2.md"));
     assert!(AUTHORITY_MAP.contains("`SANDMANOR_CONSTITUTION_V2.md`"));
     assert!(AUTHORITY_MAP.contains("`SANDMANOR_CONSTITUTIONAL_AUDIT_V2.md`"));
     assert!(AUTHORITY_MAP.contains("`src/world/sandmanor.rs`"));
-    assert!(CORE.contains("Contest of Improvement"));
+    assert!(CORE.contains("The compatible Contest of\nImprovement"));
     assert!(WORLD_CONTEXT.contains("Sandmanor proves through design"));
-    assert!(CIVIC_BODY.contains("`Gnome → Minotaur` Synthesis"));
+    assert!(CIVIC_BODY.contains("Gnome") && CIVIC_BODY.contains("Minotaur"));
     assert!(IMPLEMENTATION.contains("SandmanorRegistry"));
     assert!(IMPLEMENTATION.contains("SandmanAuthorityOrigin"));
     assert!(INSTITUTIONS.contains("sandmanor::sandman_office_id()"));
@@ -145,8 +172,10 @@ fn audit_maps_authority_regional_law_and_legacy_to_executable_surfaces() {
         "institution.sandmanor.sandmen",
         "role.sandmanor.minorian",
         "role.sandmanor.minoan",
-        "Gnome → Minotaur",
-        "Elf → Centaur",
+        "Gnome → Faun → Minotaur",
+        "Elf → Satyr → Centaur",
+        "Hecaton",
+        "Pegasus",
         "tests/sandmanor_constitutional_architecture.rs",
         "tests/sandmanor_documentation_conformance.rs",
         "src/bin/sandmanor_constitutional_audit.rs",
@@ -159,19 +188,19 @@ fn audit_maps_authority_regional_law_and_legacy_to_executable_surfaces() {
 #[test]
 fn generated_hueman_projection_is_presentation_only_and_current() {
     for term in [
-        "Minorians are Sandmanor's interior Gnome tradition",
-        "Minoans are Sandmanor's exterior Elf tradition",
-        "Gnome -> Minotaur is the canonical Aura Field",
-        "Elf -> Centaur is the canonical Aura Beach and Current Sea",
+        "Minorians are Sandmanor's Prefog / Hearth / interior-family people",
+        "Minoans are Sandmanor's Prefig / Current Sea / outward-social people",
+        "Gnome -> Faun -> Minotaur",
+        "Elf -> Satyr -> Centaur",
         "failure is evidence and remains recorded",
         "Contest of Improvement",
-        "The Sandman is the singular highest constitutional office",
+        "The Sandman = Demiurge",
+        "Hecaton is the Minorian Hand",
         "Fraudulent Design is Sandmanor's signature constitutional offense",
         "Sandmanor is the Hueman Soul",
         "Prefog -> Prefig -> Proof -> Evidence or Failure -> Revision -> Prefog",
         "only the existing proof lifecycle may advance a Prefig source",
-        "Minotaur is cultivated Prefog at Aura Field",
-        "Centaur is embodied Prefig at Aura Beach and Current Sea",
+        "faculties orthogonal to Current, Aura, Synthesis, and institutional rank",
         "Hueman and Godot may present Sandmanor records but may not create proof",
         "the universal recursion kernel remains isolated",
     ] {
@@ -190,6 +219,10 @@ fn active_surfaces_contain_no_obsolete_sandmanor_authority_law() {
         ("institutions", INSTITUTIONS),
         ("Hueman projection", HUEMAN),
         ("vertical stack", VERTICAL_STACK),
+        ("lineage lock", LINEAGE_LOCK),
+        ("guardian supplement", GUARDIAN_SUPPLEMENT),
+        ("Synthesis canon", SYNTHESIS_CANON),
+        ("world context", WORLD_CONTEXT),
     ] {
         for obsolete in [
             "Sandmanor roles are descriptive-only for now",
@@ -198,6 +231,18 @@ fn active_surfaces_contain_no_obsolete_sandmanor_authority_law() {
             "Gnomes do not evolve through a formal ladder",
             "CrowdRecognition",
             "Sandmen are the people and witness body",
+            "Husbandman + Geomancer → Gnome",
+            "Warden + Witch → Elf",
+            "Gnome → Minotaur → Hecaton",
+            "Elf → Centaur → Pegasus",
+            "The Transcendent is Sandmanor's absolute apex",
+            "Beach Bum → Party Boy → Influencer",
+            "Gnome = Geomancer",
+            "Minotaur = Labyrinthian",
+            "Hecaton = Demiurge",
+            "Gnome → Elf",
+            "Minorian → Minoan",
+            "Geomancer → Labyrinthian → Demiurge",
         ] {
             assert!(!document.contains(obsolete), "{name} contains `{obsolete}`");
         }

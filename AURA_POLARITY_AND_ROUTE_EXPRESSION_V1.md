@@ -4,6 +4,12 @@ This document records the locked Aura polarity layer implemented over the existi
 
 It does not create a new Aura substance, a new Frame lineage, or a new execution topology.
 
+> **Compatibility boundary — STATUS: LEGACY.** The Light/Dark `Glow` polarity
+> and `Aura Frame` terminology below describe a V1 runtime expression layer.
+> They do not define semantic Practitioner Aura. Current Glaüshouse canon uses
+> the split-and-reunify Synthesis geometry in
+> `HOLLOW_GROVE_SYNTHESIS_CANON_V1.md`.
+
 ## Purpose
 
 Aura polarity answers how shared `Glow` is oriented:
@@ -39,11 +45,18 @@ They remain separate from:
 - `ActionMode`
 - `Aim`
 
-Every Aura Frame may express both Light and Dark Aura.
+Every legacy Aura Frame may express both Light and Dark Aura.
 
-The lineage remains unified:
+The old runtime sequence remains decodable, with `Faerie` as a legacy alias.
+It must not be projected as active canon. Active Glaüshouse geometry is:
 
-- `Pixy -> Sprite -> Faerie -> Nymph -> Siren -> Muse`
+```text
+Nightingale / Pixie
+├─ Marshal / Sprite → Spirit
+└─ Matron / Fairy → Nymph
+          ↓
+Persephone / Siren → Prima Donna / Muse
+```
 
 ## Light Aura
 

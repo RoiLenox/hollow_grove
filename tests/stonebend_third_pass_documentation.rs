@@ -10,7 +10,7 @@ fn read(path: &str) -> String {
 fn dedicated_third_pass_canon_exists() {
     let canon = read(CANON);
     assert!(canon.contains("# Stonebend Title Lifecycle and Constitutional Continuity V1"));
-    assert!(canon.contains("Status: canonical Stonebend Third Pass"));
+    assert!(canon.contains("Status: LEGACY Stonebend Third Pass compatibility supplement"));
 }
 
 #[test]

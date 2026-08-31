@@ -5,13 +5,19 @@ use std::fs::{self, File, OpenOptions};
 use std::io::{self, Write};
 use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicU64, Ordering};
-use std::time::{Duration, Instant};
+use std::time::{Duration, Instant, SystemTime};
 
 static ATOMIC_WRITE_NONCE: AtomicU64 = AtomicU64::new(0);
 
 struct ArtifactCache {
-    contents: HashMap<PathBuf, Vec<u8>>,
+    contents: HashMap<PathBuf, CachedArtifact>,
     ensured_dirs: HashSet<PathBuf>,
+}
+
+struct CachedArtifact {
+    contents: Vec<u8>,
+    len: u64,
+    modified: Option<SystemTime>,
 }
 
 thread_local! {
@@ -23,13 +29,34 @@ thread_local! {
 
 fn cached_text_artifact_matches(path: &Path, contents: &str) -> bool {
     let target_bytes = contents.as_bytes();
+    let metadata = match fs::metadata(path) {
+        Ok(metadata) => metadata,
+        Err(_) => return false,
+    };
+    let modified = metadata.modified().ok();
+    ARTIFACT_CACHE.with(|cache| {
+        cache.borrow().contents.get(path).is_some_and(|cached| {
+            cached.contents.as_slice() == target_bytes
+                && cached.len == metadata.len()
+                && cached.modified == modified
+        })
+    })
+}
+
+fn cache_artifact(path: &Path, contents: Vec<u8>) -> io::Result<()> {
+    let metadata = fs::metadata(path)?;
+    let cached = CachedArtifact {
+        contents,
+        len: metadata.len(),
+        modified: metadata.modified().ok(),
+    };
     ARTIFACT_CACHE.with(|cache| {
         cache
-            .borrow()
+            .borrow_mut()
             .contents
-            .get(path)
-            .is_some_and(|cached_bytes| cached_bytes.as_slice() == target_bytes)
-    })
+            .insert(path.to_path_buf(), cached);
+    });
+    Ok(())
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -76,24 +103,31 @@ impl ArtifactSession {
     }
 
     pub fn commit(self) -> io::Result<()> {
+        let mut parents = HashSet::new();
         for (path, contents) in self.staged {
-            write_text_artifact(&path, &contents)?;
+            if write_text_artifact_with_parent_sync(&path, &contents, false)? {
+                parents.insert(atomic_parent(&path).to_path_buf());
+            }
         }
-        Ok(())
+        sync_parent_directories(&parents)
     }
 
     pub fn commit_timed(self) -> io::Result<Vec<ArtifactFlushRecord>> {
         let mut flush_records = Vec::with_capacity(self.staged.len());
+        let mut parents = HashSet::new();
 
         for (path, contents) in self.staged {
             let started = Instant::now();
-            write_text_artifact(&path, &contents)?;
+            if write_text_artifact_with_parent_sync(&path, &contents, false)? {
+                parents.insert(atomic_parent(&path).to_path_buf());
+            }
             flush_records.push(ArtifactFlushRecord {
                 path,
                 elapsed: started.elapsed(),
             });
         }
 
+        sync_parent_directories(&parents)?;
         Ok(flush_records)
     }
 }
@@ -188,6 +222,15 @@ fn write_bytes_atomically_with(
     contents: &[u8],
     before_rename: impl FnOnce(&Path) -> io::Result<()>,
 ) -> io::Result<()> {
+    write_bytes_atomically_with_parent_sync(path, contents, before_rename, true)
+}
+
+fn write_bytes_atomically_with_parent_sync(
+    path: &Path,
+    contents: &[u8],
+    before_rename: impl FnOnce(&Path) -> io::Result<()>,
+    sync_parent: bool,
+) -> io::Result<()> {
     let existing_permissions = match fs::metadata(path) {
         Ok(metadata) => Some(metadata.permissions()),
         Err(error) if error.kind() == io::ErrorKind::NotFound => None,
@@ -204,7 +247,17 @@ fn write_bytes_atomically_with(
     before_rename(&pending.path)?;
     fs::rename(&pending.path, path)?;
     pending.committed = true;
-    File::open(atomic_parent(path))?.sync_all()
+    if sync_parent {
+        File::open(atomic_parent(path))?.sync_all()?;
+    }
+    Ok(())
+}
+
+fn sync_parent_directories(parents: &HashSet<PathBuf>) -> io::Result<()> {
+    for parent in parents {
+        File::open(parent)?.sync_all()?;
+    }
+    Ok(())
 }
 
 /// Durably replaces one file without exposing partially written contents.
@@ -217,17 +270,18 @@ pub fn write_bytes_atomically(path: &Path, contents: &[u8]) -> io::Result<()> {
 }
 
 pub fn write_text_artifact(path: &Path, contents: &str) -> io::Result<()> {
+    write_text_artifact_with_parent_sync(path, contents, true).map(|_| ())
+}
+
+fn write_text_artifact_with_parent_sync(
+    path: &Path,
+    contents: &str,
+    sync_parent: bool,
+) -> io::Result<bool> {
     let target_bytes = contents.as_bytes();
 
-    let cache_hit = ARTIFACT_CACHE.with(|cache| {
-        cache
-            .borrow()
-            .contents
-            .get(path)
-            .is_some_and(|cached_bytes| cached_bytes.as_slice() == target_bytes)
-    });
-    if cache_hit {
-        return Ok(());
+    if cached_text_artifact_matches(path, contents) {
+        return Ok(false);
     }
 
     ensure_cached_parent_dir(path)?;
@@ -236,13 +290,8 @@ pub fn write_text_artifact(path: &Path, contents: &str) -> io::Result<()> {
         Ok(metadata) if metadata.len() == target_bytes.len() as u64 => {
             let existing_bytes = fs::read(path)?;
             if existing_bytes == target_bytes {
-                ARTIFACT_CACHE.with(|cache| {
-                    cache
-                        .borrow_mut()
-                        .contents
-                        .insert(path.to_path_buf(), existing_bytes);
-                });
-                return Ok(());
+                cache_artifact(path, existing_bytes)?;
+                return Ok(false);
             }
         }
         Ok(_) => {}
@@ -250,14 +299,9 @@ pub fn write_text_artifact(path: &Path, contents: &str) -> io::Result<()> {
         Err(error) => return Err(error),
     }
 
-    write_bytes_atomically(path, target_bytes)?;
-    ARTIFACT_CACHE.with(|cache| {
-        cache
-            .borrow_mut()
-            .contents
-            .insert(path.to_path_buf(), target_bytes.to_vec());
-    });
-    Ok(())
+    write_bytes_atomically_with_parent_sync(path, target_bytes, |_| Ok(()), sync_parent)?;
+    cache_artifact(path, target_bytes.to_vec())?;
+    Ok(true)
 }
 
 #[cfg(test)]
@@ -376,6 +420,23 @@ mod tests {
             "beta"
         );
 
+        fs::remove_dir_all(&root).expect("temp cleanup should succeed");
+    }
+
+    #[test]
+    fn artifact_cache_detects_an_external_replacement() {
+        let root = unique_temp_dir("hollow-grove-artifact-cache-external-write");
+        let path = root.join("artifacts/example.txt");
+
+        write_text_artifact(&path, "alpha").expect("initial artifact should write");
+        thread::sleep(Duration::from_millis(5));
+        fs::write(&path, "external").expect("external replacement should write");
+        write_text_artifact(&path, "alpha").expect("canonical artifact should be restored");
+
+        assert_eq!(
+            read_text_artifact(&path).expect("artifact should read"),
+            "alpha"
+        );
         fs::remove_dir_all(&root).expect("temp cleanup should succeed");
     }
 

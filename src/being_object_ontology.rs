@@ -611,55 +611,27 @@ pub struct BeingInheritance {
 impl BeingInheritance {
     #[must_use]
     pub fn from_frame(frame: FrameId) -> Self {
-        match frame {
-            FrameId::Gremlin => Self {
-                current_lineage: "Gremlin",
-                paired_aura_frame: Some(FrameId::Pixy),
-                paired_aura_lineage: Some("Pixy"),
-                preserved_skill_roots: vec![SkillId::Grip],
-            },
-            FrameId::Goblin => Self {
-                current_lineage: "Goblin",
-                paired_aura_frame: Some(FrameId::Sprite),
-                paired_aura_lineage: Some("Sprite"),
-                preserved_skill_roots: vec![SkillId::Grip],
-            },
-            FrameId::Ghoul => Self {
-                current_lineage: "Ghoul",
-                paired_aura_frame: None,
-                paired_aura_lineage: Some("Spirit"),
-                preserved_skill_roots: vec![SkillId::Grip],
-            },
-            FrameId::Troll => Self {
-                current_lineage: "Troll",
-                paired_aura_frame: Some(FrameId::Faerie),
-                paired_aura_lineage: Some("Faerie"),
-                preserved_skill_roots: vec![SkillId::Grip, SkillId::Brace],
-            },
-            FrameId::Ork => Self {
-                current_lineage: "Ork",
-                paired_aura_frame: Some(FrameId::Nymph),
-                paired_aura_lineage: Some("Nymph"),
-                preserved_skill_roots: vec![SkillId::Grip, SkillId::Guard],
-            },
-            FrameId::Ogre => Self {
-                current_lineage: "Ogre",
-                paired_aura_frame: Some(FrameId::Siren),
-                paired_aura_lineage: Some("Siren"),
-                preserved_skill_roots: vec![SkillId::Grip, SkillId::Guard],
-            },
-            FrameId::Troglodyte => Self {
-                current_lineage: "Troglodyte",
-                paired_aura_frame: Some(FrameId::Muse),
-                paired_aura_lineage: Some("Muse"),
-                preserved_skill_roots: vec![SkillId::Grip, SkillId::Brace, SkillId::Climb],
-            },
-            _ => Self {
-                current_lineage: "Hueman",
-                paired_aura_frame: None,
-                paired_aura_lineage: None,
-                preserved_skill_roots: Vec::new(),
-            },
+        let (current_lineage, preserved_skill_roots) = match frame {
+            FrameId::Gremlin => ("Gremlin", vec![SkillId::Grip]),
+            FrameId::Goblin => ("Goblin", vec![SkillId::Grip]),
+            FrameId::Ghoul => ("Ghoul", vec![SkillId::Grip]),
+            FrameId::Spectre => ("Spectre", vec![SkillId::Grip]),
+            FrameId::Troll => ("Troll", vec![SkillId::Grip, SkillId::Brace]),
+            FrameId::Ork => ("Ork", vec![SkillId::Grip, SkillId::Guard]),
+            FrameId::Ogre => ("Ogre", vec![SkillId::Grip, SkillId::Guard]),
+            FrameId::Troglodyte => (
+                "Troglodyte",
+                vec![SkillId::Grip, SkillId::Brace, SkillId::Climb],
+            ),
+            _ => ("Hueman", Vec::new()),
+        };
+        let paired_aura_frame = crate::frame_state::paired_aura_frame(frame);
+
+        Self {
+            current_lineage,
+            paired_aura_frame,
+            paired_aura_lineage: paired_aura_frame.map(frame_label),
+            preserved_skill_roots,
         }
     }
 
@@ -2186,15 +2158,7 @@ fn being_object_error(message: impl Into<String>) -> AlignmentDiagnostic {
 
 #[must_use]
 fn paired_aura_frame(frame: FrameId) -> Option<FrameId> {
-    match frame {
-        FrameId::Gremlin => Some(FrameId::Pixy),
-        FrameId::Goblin => Some(FrameId::Sprite),
-        FrameId::Troll => Some(FrameId::Faerie),
-        FrameId::Ork => Some(FrameId::Nymph),
-        FrameId::Ogre => Some(FrameId::Siren),
-        FrameId::Troglodyte => Some(FrameId::Muse),
-        _ => None,
-    }
+    crate::frame_state::paired_aura_frame(frame)
 }
 
 #[must_use]
@@ -2256,6 +2220,7 @@ fn frame_label(frame: FrameId) -> &'static str {
         FrameId::Ork => "Ork",
         FrameId::Ogre => "Ogre",
         FrameId::Troglodyte => "Troglodyte",
+        FrameId::Pixie => "Pixie",
         FrameId::Pixy => "Pixy",
         FrameId::Sprite => "Sprite",
         FrameId::Faerie => "Faerie",
@@ -2267,19 +2232,24 @@ fn frame_label(frame: FrameId) -> &'static str {
         FrameId::Merman => "Merman",
         FrameId::Chimera => "Chimera",
         FrameId::Gnome => "Gnome",
+        FrameId::Faun => "Faun",
         FrameId::Minotaur => "Minotaur",
         FrameId::Hecaton => "Hecaton",
         FrameId::Elf => "Elf",
+        FrameId::Satyr => "Satyr",
         FrameId::Centaur => "Centaur",
         FrameId::Pegasus => "Pegasus",
+        FrameId::Fairy => "Fairy",
+        FrameId::Spirit => "Spirit",
+        FrameId::Sylph => "Sylph",
     }
 }
 
 #[cfg(test)]
 mod tests {
     use super::{
-        AddressingMode, BeingObjectContractInput, HollowingTarget, ObjectId, ResolvedMoveId,
-        SkillId, build_being_object_validation_report, build_being_object_witness,
+        AddressingMode, BeingInheritance, BeingObjectContractInput, HollowingTarget, ObjectId,
+        ResolvedMoveId, SkillId, build_being_object_validation_report, build_being_object_witness,
         build_move_witness, canonical_being_object_contract_fixture,
         canonical_cross_boundary_synthesis_fixture, canonical_foxy_repair_fixture,
         canonical_gremlin_proxy_action_fixture, canonical_hollow_being_fixture,
@@ -2287,6 +2257,26 @@ mod tests {
         canonical_troglodyte_proxy_action_fixture, resolve_being_object_action,
         validate_being_object_contract,
     };
+
+    #[test]
+    fn natural_inheritance_uses_the_locked_pair_at_every_level() {
+        let expected = [
+            (crate::FrameId::Gremlin, crate::FrameId::Pixie, "Pixie"),
+            (crate::FrameId::Goblin, crate::FrameId::Sprite, "Sprite"),
+            (crate::FrameId::Ghoul, crate::FrameId::Fairy, "Fairy"),
+            (crate::FrameId::Spectre, crate::FrameId::Spirit, "Spirit"),
+            (crate::FrameId::Troll, crate::FrameId::Siren, "Siren"),
+            (crate::FrameId::Ork, crate::FrameId::Sylph, "Sylph"),
+            (crate::FrameId::Ogre, crate::FrameId::Nymph, "Nymph"),
+            (crate::FrameId::Troglodyte, crate::FrameId::Muse, "Muse"),
+        ];
+
+        for (current, aura, aura_name) in expected {
+            let inheritance = BeingInheritance::from_frame(current);
+            assert_eq!(inheritance.paired_aura_frame(), Some(aura));
+            assert_eq!(inheritance.paired_aura_lineage(), Some(aura_name));
+        }
+    }
 
     #[test]
     fn hueman_point_conversion_preserves_learned_and_progression_state() {

@@ -39,15 +39,25 @@ lscpu | grep "Model name"
 echo "Rust build mode:"
 printf 'debug + release\n'
 
-cargo fmt --check
+if [[ "${SKIP_FMT:-0}" != "1" ]]; then
+  cargo fmt --check
+fi
 
-echo "cargo test time (ms):"
-test_time_ms="$(time_once_ms cargo test --quiet)"
-printf '%s\n' "${test_time_ms}"
+if [[ "${SKIP_TESTS:-0}" != "1" ]]; then
+  echo "cargo test time (ms):"
+  test_time_ms="$(time_once_ms cargo test --quiet)"
+  printf '%s\n' "${test_time_ms}"
+else
+  echo "cargo test time (ms): skipped (already verified)"
+fi
 
-echo "cargo build --release time (ms):"
-build_time_ms="$(time_once_ms cargo build --release --quiet)"
-printf '%s\n' "${build_time_ms}"
+if [[ "${SKIP_BUILD:-0}" != "1" ]]; then
+  echo "cargo build --release time (ms):"
+  build_time_ms="$(time_once_ms cargo build --release --quiet)"
+  printf '%s\n' "${build_time_ms}"
+else
+  echo "cargo build --release time (ms): skipped (already built)"
+fi
 
 echo "Release binary:"
 ls -lh target/release/hollow-grove

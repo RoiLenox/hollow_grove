@@ -2,9 +2,15 @@
 
 # Rock-Bottom World, Material, Biological, Social, Medical, and Gameplay Context
 
-Use this as authoritative design context for the TUI.
+Use this as authoritative design context for the TUI, subordinate to
+`HOLLOW_GROVE_SYNTHESIS_CANON_V1.md` for Practitioner, Current, Aura, faculty,
+and Synthesis terminology.
 
-Do not simplify these concepts into generic fantasy terms. Do not reinterpret the biological substances metaphorically unless explicitly stated. Preserve the exact distinctions between Current, Hollow, Aura, the House rocks, living Frames, social Structures, and operational Systems.
+Do not simplify these concepts into generic fantasy terms. Preserve the exact
+distinctions between Practitioner Current, Practitioner Aura, faculty,
+Synthesis, Hollow, the House rocks, living Frames, social Structures, and
+operational Systems. Pre-migration physical Current/Aura fields are explicitly
+legacy compatibility mechanics below.
 
 This is intended to establish the world from the lowest material level upward so that future implementation, generation, and reasoning remain consistent.
 
@@ -12,12 +18,14 @@ This is intended to establish the world from the lowest material level upward so
 
 # 1. Bedrock Cosmology
 
-The fundamental laws remain:
+The fundamental practitioner law is:
 
-> **Current repeats.**
-> **Aura reveals.**
+> **Current relates.**
+> **Aura cultivates.**
 > **Relativity bends.**
 > **Synthesis transforms.**
+>
+> **CURRENT + AURA → SYNTHESIS.**
 
 These are not merely poetic themes. They describe the basic operations of the world.
 
@@ -29,42 +37,60 @@ The canonical additive Hueman faculty mapping is:
 * Sandmanor → Soul Interior → Minorian/Gnome → Prefog
 * Sandmanor → Soul Exterior → Minoan/Elf → Prefig
 
-Presynce feels emergence. Resynce joins relation. Precog foresees consequence.
-Prefog opens possibility. Prefig forms becoming. Faculties describe how a
-Recipe perceives, relates, anticipates, generates, or provisionally embodies
-action; they do not choose, create proof, bypass legality, or execute
-Synthesis. The equal Sandmanor Soul cycle is `Prefog → Prefig → Proof →
-Evidence or Failure → Revision → Prefog`.
+Presynce recognizes present and embodied reality in relation to Identity.
+Resynce recognizes Capacity through response, change, pressure, or load.
+Precog recognizes trajectory or condition in relation to Integrity. Prefog
+recognizes Pattern already present but obscured. Prefig recognizes or projects
+Pattern before manifestation. These expanded descriptions are WORKING; the
+faculty names and their separation from Current, Aura, Synthesis, and rank are
+LOCKED.
 
-* Current is the material of bodily continuity, circulation, repetition, force, and physical life.
-* Aura is the atmospheric and perceptual medium of air, pressure, light, recognition, communication, and revelation.
+* Current is the practitioner's outward and relational participation within a larger social, institutional, environmental, or collective whole.
+* Aura is the practitioner's individually cultivated internal knowledge, ability, magic, perception, cognition, discipline, or capacity.
 * Relativity is the bending relationship between Current and Aura.
-* Synthesis transforms existing materials, traits, residues, and meanings into new arrangements.
+* Level 1 Synthesis is the manifested integration of the practitioner's corresponding Current and Aura.
 
-There is also a third materially distinct substance:
+Sandmanor's locked ontology keeps the universal equation from collapsing
+distinct categories:
+
+```text
+Minorian Forms: Gnome → Faun → Minotaur
+Minoan Forms: Elf → Satyr → Centaur
+Minorian social roles: Husbandman → Householder → Hearthkeeper
+Minoan social roles: Beach Bum → Party Boy → Socialite
+Institutional attendants: Geomancer ↔ Labyrinthian
+Sovereign Hands: Hecaton ↔ Pegasus
+Sovereign identity: The Sandman = Demiurge
+```
+
+There is also a materially distinct substance:
 
 * Hollow is the extracted, pale, pus-like interior matter produced or recovered through Hollowing.
 
-Current, Hollow, and Aura must not be collapsed into one another.
+Current, Aura, Synthesis, faculty, and Hollow must not be collapsed into one
+another.
 
 The additive balance contract in
-`HOLLOW_GROVE_METAPHYSICAL_BALANCE_V1_DRAFT.md` gives these substances shared
-pressures without collapsing them: Current carries memory and wear through
-repetition; Aura creates exposure and pressure through revelation; Relativity
+`HOLLOW_GROVE_METAPHYSICAL_BALANCE_V1_DRAFT.md` gives these semantic axes shared
+pressures without collapsing them: Current carries relational obligation;
+Aura carries cultivated discipline and strain; Relativity
 retains an anchor while bending a frame; Synthesis leaves remainder and
 obligation; Hollow retains provenance through extraction and refinement.
 
 ---
 
-# 2. The Three Primary Substances
+# 2. Legacy Physical Compatibility and Hollow
 
-The canonical material mapping is:
+Pre-migration runtime and archive V1 fields used this historical mapping:
 
-> **Current = blood**
-> **Hollow = pus**
-> **Aura = air, pressure, and light**
+> **LegacyPhysical::Current** is blood-associated.
+> **Hollow = pus.**
+> **LegacyPhysical::Aura** is air-, pressure-, and light-associated.
 
-This mapping must remain direct and simple.
+The two `LegacyPhysical` entries are **LEGACY / DEPRECATED as universal lore
+definitions**. Their stable serialized names and historical mechanical behavior
+remain intact for archive and replay compatibility. They must not be silently
+reinterpreted as practitioner Current or Aura.
 
 Do not explain Hollow as blood plasma.
 
@@ -82,23 +108,17 @@ The formal rule is:
 
 Pus is the literal biological and visual basis of Hollow in this setting.
 
-Likewise:
-
-> **Blood is Current.**
-
-And:
-
-> **Air, pressure, and light are Aura.**
-
-The substances can interact, but they are separate.
+The legacy quantities and Hollow can interact, but their compatibility names
+do not redefine the practitioner ontology.
 
 ---
 
-## 2.1 Current
+## 2.1 LegacyPhysical::Current
 
-Current is red, circulating, internal, physical, and repetitive.
+The legacy Current quantity is red, circulating, internal, physical, and
+repetitive.
 
-Current corresponds to:
+This compatibility quantity corresponds to:
 
 * blood
 * bodily circulation
@@ -112,19 +132,17 @@ Current corresponds to:
 * bodily survival
 * physical memory expressed through repeated action
 
-Current moves.
+The legacy quantity moves.
 
-Current returns.
+The legacy quantity returns.
 
-Current circulates through living Frames and operational Systems.
+It circulates through living Frames and operational Systems.
 
 Canonical operation:
 
-> **Current circulates.**
+> **LegacyPhysical::Current circulates.**
 
-Current is not Hollow.
-
-Current is not Aura.
+This archived quantity is not Hollow and is not practitioner Current.
 
 ---
 
@@ -183,11 +201,12 @@ Hollow may later support several of these depending on source, preparation, refi
 
 ---
 
-## 2.3 Aura
+## 2.3 LegacyPhysical::Aura
 
-Aura is clear, atmospheric, radiant, invisible, pressing, and revealing.
+The legacy Aura quantity is clear, atmospheric, radiant, invisible, pressing,
+and revealing.
 
-Aura corresponds to:
+This compatibility quantity corresponds to:
 
 * air
 * breath
@@ -205,17 +224,17 @@ Aura corresponds to:
 * shared atmosphere
 * psychic or social presence
 
-Aura surrounds things rather than circulating through them in the same way as Current.
+It surrounds things rather than circulating through them like the legacy
+Current quantity.
 
-Aura can press inward, radiate outward, reveal form, distort perception, or carry signals.
+It can press inward, radiate outward, reveal form, distort perception, or carry
+signals.
 
 Canonical operation:
 
-> **Aura surrounds, presses, and reveals.**
+> **LegacyPhysical::Aura surrounds, presses, and reveals.**
 
-Aura is not blood.
-
-Aura is not pus.
+This archived quantity is not blood or pus and is not practitioner Aura.
 
 ---
 
@@ -670,6 +689,11 @@ Glow answers:
 
 # 7. The Four House Rocks
 
+**STATUS: LEGACY PHYSICAL / CULTURAL CORRESPONDENCE.** These mineral design
+associations remain available to V1 art, material, archive, and crafting
+systems. They do not make Diamond the Stonebend sovereign title or settle
+Diamond's active ontology, which is **STATUS: OPEN**.
+
 Each House has an actual rock or mineral material.
 
 The rocks provide:
@@ -693,7 +717,7 @@ Instead:
 
 ## 7.1 Stonebend — Diamond
 
-Canonical law:
+Legacy material correspondence:
 
 > **Diamond claims.**
 
@@ -1211,9 +1235,9 @@ Pus remains Hollow.
 
 Do not redefine pus as merely Nightingale waste or clear blood.
 
-The simple material lock overrides complicated biological explanation:
+The clinical correspondence does not override the practitioner ontology:
 
-> **Current is blood.**
+> **LegacyPhysical::Current remains blood-associated for compatibility.**
 > **Nightingales are the clinical institution aligned with white blood cells.**
 > **Hollow is pus.**
 
@@ -1272,9 +1296,11 @@ Illegal Hollowing is Stonebend's signature constitutional offense. Transformatio
 
 ## 12.5 First Stonebend foundation
 
-Mt. Aura is Aether. Riptide is Bathos. Aura is Aether revealed through Form,
-and Current is Bathos embodied through weight. Aether and Current are opposite
-burden states of one underlying medium: Aether is weightless Current; Current
+**STATUS: LEGACY PHYSICAL COMPATIBILITY.** The material terms in this subsection
+do not define Practitioner Current or Aura. Mt. Aura is Aether. Riptide is
+Bathos. Legacy aura-medium is Aether revealed through Form,
+and legacy current-medium is Bathos embodied through weight. Aether and legacy
+current-medium are opposite burden states of one underlying medium: Aether is weightless current-medium; current-medium
 is the heaviest Aether. Neither pole is automatically good or evil.
 
 Mt. Aura remains the shared ideal on the Stonebend–Sandmanor `Aspire` route.
@@ -1297,24 +1323,24 @@ Aura Way does not promise success. It promises that the steps are known. The
 Houses teach the work. Aura Way organizes the path. Stonebend names the
 completion without declaring metaphysical perfection.
 
-Raw Current batches carry stable source, common-medium lineage, fraction,
+Raw legacy physical Current batches carry stable source, common-medium lineage, fraction,
 custody, and evidence identities. Lawful material Hollowing removes only
 authorized removable burden, preserves essential fractions, and records the
 distinct resulting Aether batch, proof, provenance, and Seal. Honest authorized
 failure is not fraud. Unauthorized extraction, false provenance, scope excess,
 essential-fraction removal, and over-Hollowing are Illegal Hollowing.
 
-Aether is not automatically Aura. Geography forms a stone's internal lattice;
-that preserved Form refracts universal Aether into particular Aura. Opal
+Aether is not automatically legacy physical Aura. Geography forms a stone's internal lattice;
+that preserved Form refracts universal Aether into particular legacy physical Aura. Opal
 varies, Diamond concentrates, and Quartz resonates. These behaviors are
 nonexclusive natural examples, not final House-to-stone assignments. Ordinary
-Aura manifestation does not require melting.
+legacy physical Aura manifestation does not require melting.
 
 > **Aether gives life something worth becoming. Bathos ensures becoming remains
 > answerable to reality.**
 
-> **Current flows. Hollowing refines. Aether rises. Stone refracts. Aura
-> reveals.**
+> **Legacy physical Current flows. Hollowing refines. Aether rises. Stone
+> refracts. Legacy physical Aura reveals.**
 
 ---
 
@@ -1353,15 +1379,16 @@ Species must not rigidly determine profession.
 
 The Sandmanor people split remains:
 
-* Minorians are Gnomes.
-* Minoans are Elves.
+* Minorian is one people; Gnome is its base Form.
+* Minoan is another people; Elf is its base Form.
 
 They are equal civic traditions. Do not reverse, collapse, or rank them.
 
-Minorians cultivate life from the inside outward; Minoans design and guard
-where life meets the open world. Aura Farm contains both Aura Fields and
-Content Farm. The Content Farm may nourish attention, memory, learning, and
-culture or become exploitative; content production is not inherently corrupt.
+Minorians cultivate life from the inside outward; Minoans carry life into
+social expression and celebration. Content Farm cultivates what a family has
+and makes across a life. Aura Field preserves and projects what the household
+is. Aura Beach expresses, celebrates, and enjoys accumulated life and Aura.
+Content Farm is not merely internet or social-media production.
 
 The coast proceeds from Free Aura Beach through the increasingly regulated
 Southern Coast, Current Break, and Minoan County Courthouse before the
@@ -1369,27 +1396,31 @@ Glaüshouse border. Southern Law remains Minoan coastal jurisdiction. Current
 Break may host Manticorp maritime training, but Manticorp remains a Flynt
 institution under Flynt command.
 
-Guardian Syntheses are maintained, Recipe-backed, and distinct from their
-mantles:
+Forms, social roles, attendant classes, sovereign Hands, and mantles remain
+distinct:
 
 ```text
-Gnome → Minotaur / Guardian of the Fields
-→ Hecaton / Guardian of the Whole Farm
+Minorian Forms: Gnome → Faun → Minotaur
+Minorian roles: Husbandman → Householder → Hearthkeeper
+Minorian attendant: Geomancer
+Minorian Hand: Hecaton
 
-Elf → Centaur / Guardian of the Beach
-→ Pegasus / Guardian of the Horizon
+Minoan Forms: Elf → Satyr → Centaur
+Minoan roles: Beach Bum → Party Boy → Socialite
+Minoan attendant: Labyrinthian
+Minoan Hand: Pegasus
 ```
 
-The Contest of Improvement pairs one qualified Hecaton and one qualified
-Pegasus. They sincerely teach each other, preserve pre-teaching baselines, and
+The Contest of Improvement pairs one qualified Minotaur holding Hecaton and one
+qualified Centaur holding Pegasus. They sincerely teach each other, preserve pre-teaching baselines, and
 complete Aura Field, Content Farm, Liberty and Hospitality, Rescue and
 Horizon, and Reciprocal Integration trials. The audited crowd measures
 baseline-relative change, not rank. A tie leaves the Sandman office unresolved.
 The winner is one stable person and never a physical fusion of two candidates.
 
-Long ago, the Sandman sovereign was called Aegon. Aegon is a historical alias
-for the same Form-and-mantle tradition, not another creature, office, or
-evolution stage.
+**The Sandman = Demiurge.** Long ago, the Sandman sovereign was called Aegon.
+Aegon is a historical alias for the same sovereign tradition, not another
+creature, office, or evolution stage.
 
 ---
 
@@ -1411,9 +1442,9 @@ They govern:
 * internal organization
 
 Gnomes retain horizontal occupational Names and specializations without those
-Names manufacturing mastery or office. They also possess the distinct,
-constitutionally governed regional Synthesis **Gnome → Minotaur** in the Aura
-Fields. Synthesis is not automatic evolution.
+Names manufacturing mastery or office. The Minorian Form progression is
+**Gnome → Faun → Minotaur**. Its deeper mechanics remain open and it is not
+automatic evolution.
 
 Canonical law:
 
@@ -1463,8 +1494,7 @@ Canonical contrast:
 > **Gnomes internalize Aura into order.**
 > **Elves externalize Aura into expression.**
 
-Elves possess the constitutionally governed regional Synthesis **Elf →
-Centaur** through Aura Beach and Current Sea design. Centaurs roam Aura Beach
+The Minoan Form progression is **Elf → Satyr → Centaur**. Centaurs roam Aura Beach
 and safeguard Current Sea approaches, crowd movement, and public access.
 Sandmanor proves the regional design; Glaüshouse clears the actual Synthesis.
 
@@ -1969,22 +1999,25 @@ EntityCategory:
 
 ---
 
-## 21.2 Possible substance fields
+## 21.2 Legacy V1 substance fields
 
 ```text
-Substance:
+LegacyPhysicalSubstance:
 - Current
 - Hollow
 - Aura
 ```
 
-Canonical meanings:
+Historical serialized meanings:
 
 ```text
-Current = blood
+LegacyPhysical::Current = blood-associated quantity
 Hollow = pus
-Aura = air / pressure / light
+LegacyPhysical::Aura = air / pressure / light-associated quantity
 ```
+
+These V1 names remain stable compatibility data. They are not the typed
+Practitioner Current/Aura registry and must not be reinterpreted as such.
 
 ---
 
@@ -2037,7 +2070,7 @@ HouseRock:
 - Opal
 ```
 
-Canonical operations:
+Legacy material operations:
 
 ```text
 Diamond claims
@@ -2117,11 +2150,11 @@ The engine must not use Frame for nonliving infrastructure.
 
 ---
 
-# 23. Current Transformation Ladders
+# 23. House-Specific Synthesis Geometries
 
-The existing vertical ladders remain:
+There is no universal Current or Aura transformation ladder.
 
-## Current Forms
+## Stonebend active Synthesis forms
 
 ```text
 Gremlin
@@ -2137,49 +2170,81 @@ Gremlin
 For Hueman presentation, these are Synthesis forms: bounded transformations of
 the continuing Hueman, not automatically separate companions or species. Each
 form preserves visible identity anchors, Recipe history, strain, and return
-obligations. A stable regional Gargoyle people remains constitutionally
-distinct from a Hueman's Gargoyle-like Synthesis expression.
+obligations.
 
-## Aura Frames
+Their exact Aura counterparts, in the same level order, are Pixie, Sprite,
+Fairy, Spirit, Siren, Sylph, Nymph, and Muse. The pairs are bidirectional.
+`Pixy` and `Faerie` remain compatibility aliases for Pixie and Fairy.
 
-```text
-Pixy
-→ Sprite
-→ Faerie
-→ Nymph
-→ Siren
-→ Muse
-```
-
-Legal matched tiers:
+## Glaüshouse branch forms
 
 ```text
-Gremlin / Goblin ↔ Pixy / Sprite
-Ghoul ↔ Faerie
-Troll ↔ Nymph
-Ogre ↔ Siren
-Troglodyte ↔ Muse
+Nightingale / Pixie
+├─ Marshal / Sprite → Spirit
+└─ Matron / Fairy → Nymph
+        both → Persephone / Siren → Prima Donna / Muse
 ```
+
+`Fairy` is active canon; `Faerie` is a stable legacy alias. This branch and
+reunification remains institutional geometry layered over the exact eight-level
+pair crosswalk. Sylph's level-6 pairing creates no clinical office.
 
 Apex balance:
 
-> **Troglodyte + Muse = Seer**
+> **Troglodyte + Muse → Seer**
 
-Troglodyte and Muse are equal apex counterparts.
+Troglodyte and Muse are equal counterparts in this Level 2 cross-House
+Synthesis.
 
 ---
 
-# 24. Flynt Regional Peoples
+# 24. Flynt Creature Pairs, Practitioner Traditions, and Synthesis
 
-Flynt creates or hosts stable regional hybrid peoples rather than adding more vertical rungs.
+Flynt preserves two named human practitioner traditions and a distinct
+maritime creature/form identity:
 
-The three constitutional founding peoples are:
+* Warlock → Gargoyle
+* Lycan → Werewolf
+* Mariner = Merman
 
-* Werewolves
-* Gargoyles
-* Mermen
+Mariner is Flynt's masculine mer-creature/form designation, not merely a human
+sailor or practitioner-tradition name. The name of any separate source
+practitioner tradition for Mariner remains **STATUS: OPEN**. Their exact
+Current/Aura equations are **STATUS: OPEN**. Gargoyle = HOLD, Werewolf = DRIVE,
+and Mariner/Merman = ADAPT are **WORKING** functional concepts.
 
-Their unique constitutional synthesis is Chimera.
+The major Basin populations use these exact sex/species pairs:
+
+```text
+Gargoyle  ↔ Medusa
+Werewolf  ↔ Vampire
+Mariner   ↔ Mermaid
+Manticore ↔ Chimera
+```
+
+The left creature is masculine and the right creature feminine. Medusa is a
+Flynt creature/species designation and shares the stone image with Gargoyle.
+Vampire remains distinct from Werewolf. The masculine Manticore is the Tross's
+mythological identity and maintained Form; the unique feminine Chimera remains
+his First Companion. This pair grammar creates no additional Current/Aura
+equations or apex beings.
+
+The locked higher relationship is:
+
+```text
+Gargoyle + Werewolf + Mariner/Merman → Chimera → Manticore
+```
+
+Chimera = SELECT and Manticore = INTEGRATE are **WORKING**; detailed mechanics
+remain **STATUS: OPEN**. Earlier “three founding regional peoples” language is
+SUPERSEDED by this creature-pair and practitioner/Synthesis classification.
+
+The Tross/Manticore leads **We Fairy Men**, the exact proper collective name.
+Bro White leads Gargoyle/Medusa, Beauty leads Werewolf/Vampire, and
+Cinderellaman with his Midnight Crew leads Mariner/Mermaid. When this body acts
+collectively under the Tross in the underworld, it manifests as The Gallows.
+Mystery Men remains the separate consolidated clandestine and investigative
+apparatus.
 
 Other existing regional people may include:
 
@@ -2187,11 +2252,8 @@ Other existing regional people may include:
 
 Orcamen are not a founding Chimera people and hold no place in the locked Flynt institutional hierarchy by virtue of this list.
 
-These are not merely transformations of Gnomes or other Sandmanor peoples.
-
-Gargoyles are their own people.
-
-Do not return to the rejected idea that Gnomes become Gargoyles.
+These forms are not transformations of Gnomes or other Sandmanor forms. Do not
+return to the rejected idea that Gnomes become Gargoyles.
 
 ---
 
@@ -2254,7 +2316,21 @@ Junction Board, Clearing House, and Junction Wire.
 
 Use this paragraph as the shortest authoritative summary:
 
-> Hollow Grove is one connected civilization organized through Frames, Scenes, Structures, and Systems. Frame is reserved exclusively for named living-mech forms, which operate through Frame, Flow, and Glow. Current is blood, Hollow is pus, and Aura is air, pressure, and light. Hollow is useful interior material obtained through bounded extraction. Hollowing is controlled opening, separation, preservation, or removal: extraction Hollowing preserves the lawful remainder, while material-refinement Hollowing removes authorized burden without removing what makes the whole. The four House rocks—Diamond, Crystal, Jade, and Opal—provide Structure, color, architecture, recognizable goods, and cultural design: Diamond claims, Crystal measures, Jade clears, and Opal shimmers. These cultural associations do not make every natural stone behavior exclusive House property. Stonebend names and preserves identity, Title, continuity, boundary, lawful Hollowing, provenance, and history. Mt. Aura is Aether; Riptide is Bathos. Aether and Current are opposite burden states of one underlying medium, and geographic Form refracts universal Aether into particular Aura. Sandmanor proves design and demonstrated function through equal Minorian Gnome and Minoan Elf traditions, preserves failure and criticism, governs Gnome-to-Minotaur and Elf-to-Centaur regional design, and selects the singular Sandman through reciprocal improvement rather than force or inheritance. Glaüshouse clears medicine and Synthesis through diagnosis, explicit consent, capacity, scoped Clearance, qualified care, and recovery. Flynt recognizes competence and lawful operational function. Nightingale is Glaüshouse's universal clinical foundation; equal Matron and Marshal branches lead through mastery of both domains to multiple Persephones; Prima Donna is the one singular apex office. Synthesis creates a real maintained Form whose Continuance depends on renewal, Recipe practice, the Form's Ways, the Hueman, compatible conditions, and institutional care. Glauspitals operates care facilities and Chromacord preserves clinical evidence without becoming authority. Professional medicine belongs to Glaüshouse, but mixed species from across the Grove practice it. No proof, recognition, transformation, legacy state, technical ability, custody, chart, or gesture may silently create consent, Clearance, Title, privilege, office, or Synthesis authority. The engine preserves these laws above the universal recursion kernel.
+> Hollow Grove is one connected civilization organized through Frames, Scenes,
+> Structures, and Systems. Practitioner names the whole person. Current names
+> the practitioner's relational participation in a larger whole; Aura names the
+> practitioner's internally cultivated ability, knowledge, magic, perception,
+> discipline, or capacity; and corresponding Current plus Aura manifests Level
+> 1 Synthesis. Faculties remain orthogonal. Level 2 higher Synthesis uses
+> House-specific mechanics. Hollow remains pus and retains its bounded
+> extraction and provenance law. Historical material Current/Aura quantities,
+> Flow/Glow behavior, and stable archive fields are legacy compatibility
+> machinery, not universal metaphysics. Stonebend, Sandmanor, Glaüshouse, and
+> Flynt retain intentionally different progression geometries. No proof,
+> recognition, transformation, legacy state, technical ability, custody,
+> chart, or gesture may silently create consent, Clearance, Title, privilege,
+> office, or Synthesis authority. The engine preserves these laws above the
+> universal recursion kernel.
 
 ---
 
@@ -2282,7 +2358,10 @@ Do not make any of the following mistakes:
 * Do not make all medical workers native Glaüshouse species.
 * Do not lock professions to species.
 * Do not isolate the four Houses into disconnected civilizations.
-* Do not reduce Gnome-to-Minotaur regional Synthesis to automatic evolution.
+* Do not skip or collapse Gnome-to-Faun-to-Minotaur Form progression.
+* Do not skip or collapse Elf-to-Satyr-to-Centaur Form progression.
+* Do not treat Hecaton or Pegasus as a fourth-stage Form.
+* Do not replace Socialite with Influencer.
 * Do not confuse Minorian Gnomes with Minoan Elves.
 * Do not make Gnomes become Gargoyles.
 * Do not draw the Tross staff unless explicitly requested.
@@ -2310,9 +2389,10 @@ may be lawful without being universally authorized. Failure, limitation, or
 rejection at one gate returns evidence without silently erasing unrelated
 scopes or the core Title.
 
-Diamond is Stonebend's continuing sovereign Title. The Hypergiant is its
-temporary active bearer. Diamond persists through vacancy, removal, surrender,
-death, and succession and is never private inheritable property.
+**Hypergiant is Stonebend's sovereign title.** The historical model that made
+Diamond a continuing title with a temporary Hypergiant bearer is SUPERSEDED.
+Diamond remains a material/visual association; its additional present role is
+**STATUS: OPEN**. Legacy Diamond title IDs persist only for compatibility.
 
 > The Freemason forges the Claim.
 >
@@ -2328,7 +2408,7 @@ corrupted representation may be invalidated, but the network and the people
 cannot be abolished.
 
 Every ended office tenure or representation links to durable Tombstone
-history. No Hypergiant claims Diamond without the stable Claim, independent
+history. No claimant bears the Hypergiant title without the stable Claim, independent
 Freemason examination, Proliteriate Yield hearing, relinquishment of protected
 elevation, consequence descent, Proof of Persistence, and climb of The
 Lazerhorn. Recommendation and lineage are evidence only. A former bearer has no
@@ -2364,20 +2444,20 @@ Every ended active term links to a Tombstone. Honorable completion remains
 different from failure, fraud, illegality, death, surrender, expiration,
 succession, dissolution, or supersession.
 
-During Diamond vacancy, Stonebend continues without a hidden Regent or Acting
+During Hypergiant vacancy, Stonebend continues without a hidden Regent or Acting
 Hypergiant. Narrow continuity mandates may preserve existing records,
 obligations, infrastructure, routine gate work, immediate defense, material
-stability, and succession evidence. They cannot invest Diamond, appoint a
+stability, and succession evidence. They cannot invest the sovereign title, appoint a
 Hypergiant, make sovereign law, permanently enlarge scope, or become permanent
 through use.
 
-> During vacancy, Stonebend continues. Diamond does not secretly change hands.
+> During vacancy, Stonebend continues. The sovereign title does not secretly change hands.
 >
 > Necessity may preserve the boundary. It may not inherit the crown.
 
 The High Freemason seal remains singular. Replacement requires stable candidate
 evidence, independent Forge review, Proliteriate Yield accountability, and
-Diamond-boundary recognition when a Hypergiant is active. No candidate may
+Hypergiant-boundary recognition when a sovereign is active. No candidate may
 self-certify and no outgoing bearer may unilaterally appoint a successor.
 
 > The Forge may fall silent. Its records must not disappear.
@@ -2394,9 +2474,16 @@ threshold is created.
 At the absolute bottom, preserve this:
 
 ```text
-Current = blood
+PRACTITIONER
+├── CURRENT
+└── AURA
+      together → SYNTHESIS
+
+CURRENT + AURA → SYNTHESIS
+
+LegacyPhysical::Current = blood-associated quantity
 Hollow = pus
-Aura = air / pressure / light
+LegacyPhysical::Aura = air / pressure / light-associated quantity
 
 Whole
 → Hollowing
@@ -2407,6 +2494,7 @@ Scene = active event
 Structure = built or grown form
 System = continuing operation
 
+Legacy physical House-rock correspondences:
 Diamond claims
 Crystal measures
 Jade clears

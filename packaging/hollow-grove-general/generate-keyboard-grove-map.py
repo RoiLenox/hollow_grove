@@ -75,9 +75,20 @@ def semantic_indexes(registry: dict) -> tuple[dict, dict, dict]:
                 "label": member["map_label"],
             }
 
-    plants = {plant["key"]: plant for plant in registry["domain_anchors"]}
+    plants = {
+        entry["key"]: entry
+        for entry in registry["letter_vocabulary"]
+        if entry["form"] == "plant"
+    }
 
     tools: dict[str, dict] = {}
+    for entry in registry["letter_vocabulary"]:
+        if entry["form"] == "tool":
+            tools[entry["key"]] = {
+                "name": "Movement diamond",
+                "label": entry["meaning"],
+                "affinity": entry["affinity"],
+            }
     for tool in registry["operational_tools"]:
         for member in tool["members"]:
             tools[member["key"]] = {
@@ -145,7 +156,7 @@ def key_rendering(
         return (
             f"url(#plant-{esc(key)})",
             f"url(#plant-edge-{esc(key)})",
-            plant["domain"],
+            plant["meaning"],
             "PLANT",
         )
 
@@ -201,13 +212,12 @@ def gradient_definitions(
     registry: dict, house_ids: dict, colors: dict[str, str]
 ) -> str:
     definitions: list[str] = []
-    for plant in registry["domain_anchors"]:
-        affinities = plant["affinities"]
+    affinities = ["Flynt", "Glaüshouse", "Stonebend", "Sandmanor"]
+    for plant in registry["letter_vocabulary"]:
+        if plant["form"] != "plant":
+            continue
         gradient_colors = [colors[house_ids[house]["dark"]] for house in affinities]
         edge_colors = [colors[house_ids[house]["highlight"]] for house in affinities]
-        if len(gradient_colors) == 1:
-            gradient_colors *= 2
-            edge_colors *= 2
         stops = "".join(
             f'<stop offset="{index * 100 / (len(gradient_colors) - 1):.0f}%" '
             f'stop-color="{value}"/>'
@@ -235,39 +245,22 @@ def render_plant_card(
     house_ids: dict,
     colors: dict[str, str],
 ) -> str:
-    affinity_names = " + ".join(plant["affinities"])
-    edge = colors[house_ids[plant["affinities"][0]]["highlight"]]
+    if plant["form"] == "tool":
+        edge = colors[house_ids[plant["affinity"]]["highlight"]]
+        form_label = "MOVEMENT TOOL"
+    else:
+        edge = colors[house_ids["Stonebend"]["highlight"]]
+        form_label = "DOMAIN PLANT"
     parts = [
         f'<g class="plant-card">',
         (
-            f'<rect x="{x:.1f}" y="{y:.1f}" width="{width:.1f}" height="218" '
+            f'<rect x="{x:.1f}" y="{y:.1f}" width="{width:.1f}" height="92" '
             f'rx="18" fill="var(--deep)" stroke="{edge}"/>'
         ),
-        svg_text(x + 24, y + 34, f'{plant["key"]} · {plant["domain"]}', "card-title", "start"),
-        svg_text(x + 24, y + 59, f"Affinities: {affinity_names}", "card-subtitle", "start"),
+        svg_text(x + 20, y + 31, f'{plant["key"]} · {plant["meaning"]}', "card-title", "start"),
+        svg_text(x + 20, y + 57, plant["memory_hook"], "card-subtitle", "start"),
+        svg_text(x + 20, y + 78, form_label, "category", "start"),
     ]
-    branch_width = (width - 60) / 2
-    for index, binding in enumerate(plant["bindings"]):
-        column = index % 2
-        row = index // 2
-        branch_x = x + 20 + column * (branch_width + 20)
-        branch_y = y + 78 + row * 43
-        parts.extend(
-            [
-                (
-                    f'<rect x="{branch_x:.1f}" y="{branch_y:.1f}" '
-                    f'width="{branch_width:.1f}" height="34" rx="9" '
-                    f'fill="var(--raised)" stroke="var(--shadow)"/>'
-                ),
-                svg_text(
-                    branch_x + 12,
-                    branch_y + 22,
-                    f'{binding["lane"]}: {binding["action"]}',
-                    "branch-label",
-                    "start",
-                ),
-            ]
-        )
     parts.append("</g>")
     return "\n".join(parts)
 
@@ -281,10 +274,10 @@ def render_svg(registry: dict, palette: dict) -> str:
     universal_raised = colors["universal.space_cadet"]
     general_text = colors["flynt.powder_blue"]
     foundation_text = colors["stonebend.air_superiority_blue"]
-    plant_columns = 2
-    plant_count = len(registry["domain_anchors"])
+    plant_columns = 4
+    plant_count = len(registry["letter_vocabulary"])
     plant_rows = max(1, (plant_count + plant_columns - 1) // plant_columns)
-    height = 1180 + (plant_rows - 1) * 238
+    height = 1080 + (plant_rows - 1) * 110
 
     parts = [
         '<?xml version="1.0" encoding="UTF-8"?>',
@@ -296,8 +289,8 @@ def render_svg(registry: dict, palette: dict) -> str:
         '<title id="map-title">Hollow Grove Keyboard Grove Map</title>',
         (
             '<desc id="map-description">A keyboard ecology map showing House landmarks, '
-            'Office and Music domain plants, operational tools, provisional plots, and the '
-            'modifier branches of each admitted plant.</desc>'
+            'the complete A–Z WHAT vocabulary, movement tools, and the shared HOW '
+            'modifier grammar.</desc>'
         ),
         (
             '<metadata>Generated from keyboard-grove.json under '
@@ -334,7 +327,7 @@ def render_svg(registry: dict, palette: dict) -> str:
         svg_text(
             78,
             116,
-            "Stonebend foundation · House landmarks · domain plants · operational tools",
+            "Key = WHAT · Modifier = HOW",
             "subtitle",
             "start",
         ),
@@ -363,36 +356,49 @@ def render_svg(registry: dict, palette: dict) -> str:
             x += key_width + KEY_GAP
 
     legend_y = 718
-    parts.extend(
-        [
-            svg_text(78, legend_y, "READING", "section-title", "start"),
-            '<rect x="78" y="737" width="24" height="24" rx="6" fill="#163A5F" stroke="#79B7D8"/>',
-            svg_text(112, 755, "Landmark — House meaning", "legend-label", "start"),
-            '<rect x="326" y="737" width="24" height="24" rx="6" fill="#5A1F2A" stroke="#E07A86"/>',
-            svg_text(360, 755, "Plant — admitted domain", "legend-label", "start"),
-            '<rect x="596" y="737" width="24" height="24" rx="6" fill="var(--raised)" stroke="#79B7D8" stroke-dasharray="5 4"/>',
-            svg_text(630, 755, "Tool — operates on the Grove", "legend-label", "start"),
-            '<rect x="920" y="737" width="24" height="24" rx="6" fill="var(--deep)" stroke="var(--raised)"/>',
-            svg_text(954, 755, "Provisional plot — useful, not admitted", "legend-label", "start"),
-            svg_text(78, 810, "ADMITTED PLANTS AND BRANCHES", "section-title", "start"),
-        ]
-    )
+    parts.append(svg_text(78, legend_y, "MODIFIER GRAMMAR — HOW", "section-title", "start"))
+    modifier_width = 348
+    for index, modifier in enumerate(registry["modifier_lanes"]):
+        modifier_x = 78 + index * (modifier_width + 18)
+        parts.extend(
+            [
+                (
+                    f'<rect x="{modifier_x}" y="737" width="{modifier_width}" '
+                    'height="58" rx="12" fill="var(--deep)" stroke="var(--raised)"/>'
+                ),
+                svg_text(
+                    modifier_x + 16,
+                    760,
+                    f'{modifier["display_modifier"]} · {modifier["meaning"]}',
+                    "legend-label",
+                    "start",
+                ),
+                svg_text(
+                    modifier_x + 16,
+                    782,
+                    modifier["think"],
+                    "card-subtitle",
+                    "start",
+                ),
+            ]
+        )
+    parts.append(svg_text(78, 830, "A–Z — WHAT", "section-title", "start"))
 
-    card_width = 704
-    card_gap = 28
-    for index, plant in enumerate(registry["domain_anchors"]):
+    card_width = 348
+    card_gap = 18
+    for index, plant in enumerate(registry["letter_vocabulary"]):
         parts.append(
             render_plant_card(
                 plant,
                 78 + (index % plant_columns) * (card_width + card_gap),
-                832 + (index // plant_columns) * 238,
+                852 + (index // plant_columns) * 110,
                 card_width,
                 house_ids,
                 colors,
             )
         )
 
-    flow_y = 832 + plant_rows * 238 + 20
+    flow_y = 852 + plant_rows * 110 + 20
     flow = ["Stonebend foundation", "House affinity", "Plot", "Plant", "Branch", "Fruit"]
     flow_x = 90
     for index, item in enumerate(flow):
@@ -437,30 +443,36 @@ def render_markdown(registry: dict) -> str:
         "",
         "## Reading",
         "",
-        "Stonebend supplies the stable foundation. House landmarks carry direct",
-        "constitutional meaning; plants occupy mnemonic letter plots; modifier",
-        "branches remain inside a plant; applications and actions are replaceable",
-        "fruit. Tools use the same binding grammar but operate on the desktop",
-        "environment instead of opening a domain.",
+        "`Key = WHAT · Modifier = HOW`.",
         "",
-        "## Admitted Plants",
+        "## Modifier Grammar — HOW",
         "",
-        "| Plot | Plant | Affinities | Branches |",
-        "|---|---|---|---|",
+        "| Modifier | Meaning | Think |",
+        "|---|---|---|",
     ]
-    for plant in registry["domain_anchors"]:
-        branches = "; ".join(
-            f'{binding["lane"]}: {binding["action"]}' for binding in plant["bindings"]
-        )
+    for modifier in registry["modifier_lanes"]:
         lines.append(
-            f'| `{plant["key"]}` | {plant["domain"]} | '
-            f'{" + ".join(plant["affinities"])} | {branches} |'
+            f'| `{modifier["display_modifier"]}` | {modifier["meaning"]} | '
+            f'{modifier["think"]} |'
         )
     lines.extend(
         [
             "",
-            "All other letter groups remain provisional launch families. Appearance",
-            "on the keyboard does not admit a plant.",
+            "## A–Z — WHAT",
+            "",
+            "| Key | Meaning | Memory hook |",
+            "|---|---|---|",
+        ]
+    )
+    for entry in registry["letter_vocabulary"]:
+        lines.append(
+            f'| {entry["key"]} | {entry["meaning"]} | {entry["memory_hook"]} |'
+        )
+    lines.extend(
+        [
+            "",
+            "H/J/K/L are the movement tool. Every other letter is a stable domain",
+            "plant, including domains whose current application branches are empty.",
             "",
             "## Regeneration",
             "",

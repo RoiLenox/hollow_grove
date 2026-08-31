@@ -35,7 +35,6 @@ Cross-Boundary Fixture:
 Being: Gremlin
 Object: Stone Architecture
 Skills: Brace / Guard / Climb
-Paired Aura Lineage: Pixy
+Paired Aura Lineage: Pixie
 Transfer Rules: 3
 Candidate Recipe Boundary: Gremlin Tinker Recipe
-

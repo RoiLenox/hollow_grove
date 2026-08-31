@@ -9,7 +9,7 @@ fn foundation_freeze_names_the_art_safe_contract() {
     for required in [
         "universal kernel",
         "four House jurisdictions",
-        "one Federation",
+        "one Rampart",
         "Roi and Roselina",
         "archive checksums",
         "refusal",

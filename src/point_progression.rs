@@ -1165,17 +1165,17 @@ pub fn build_point_squared_witness() -> io::Result<String> {
 
     Ok(format!(
         "HOLLOW GROVE POINT² ASCENSION WITNESS\n\n\
-         Root Doctrine:\n\
+         Legacy Physical Root Doctrine:\n\
          Hollow Current holds.\n\
-         Current flows.\n\
+         LegacyPhysical::Current flows.\n\
          Abyss feels.\n\
-         Aura reveals.\n\
+         LegacyPhysical::Aura reveals.\n\
          Point² expands the self and the world together.\n\n\
-         Current Depths:\n\
+         Legacy Physical Current Depths:\n\
          Hollow Current = Stonebend = life held in form\n\
          Current = derivative = life moving between form and depth\n\
          Abyss = Glaüshouse = life felt in depth\n\n\
-         Aura:\n\
+         Legacy Physical Aura Dimensions:\n\
          Aura Shine = outward presence\n\
          Aura View = surrounding world and horizon\n\
          Inner Aura = inward identity and clarity\n\n\

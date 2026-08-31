@@ -2,7 +2,7 @@ use std::fs;
 use std::path::Path;
 
 use flynt_constitution::{
-    FORM_MANTICORP, INSTITUTION_GALLOWS, RECIPE_MANTICORP, SITE_GALLOWRY, canonical_constitution,
+    FORM_MANTICORE, INSTITUTION_GALLOWS, RECIPE_MANTICORE, SITE_GALLOWRY, canonical_constitution,
     canonical_hierarchy_rows,
 };
 
@@ -26,20 +26,35 @@ fn canonical_document_names_every_authority_node_and_stable_id() {
     }
     assert!(CONSTITUTION_DOCUMENT.contains(SITE_GALLOWRY));
     assert!(CONSTITUTION_DOCUMENT.contains(INSTITUTION_GALLOWS));
-    assert!(CONSTITUTION_DOCUMENT.contains(FORM_MANTICORP));
-    assert!(CONSTITUTION_DOCUMENT.contains(RECIPE_MANTICORP));
+    assert!(CONSTITUTION_DOCUMENT.contains(FORM_MANTICORE));
+    assert!(CONSTITUTION_DOCUMENT.contains(RECIPE_MANTICORE));
 }
 
 #[test]
 fn public_projection_contains_both_exact_main_hierarchies() {
-    assert!(HUEMAN_PROJECTION.contains("Tross -> Manticorp Institution"));
-    assert!(HUEMAN_PROJECTION.contains("The public chain is Tross -> Manticorp Institution"));
-    assert!(
-        HUEMAN_PROJECTION.contains("The underground chain is Mystery Man/Mr. X -> The Gallows")
-    );
+    assert!(HUEMAN_PROJECTION.contains("Tross -> Manticorp soldier body"));
+    assert!(HUEMAN_PROJECTION.contains("The public chain is Tross -> Manticorp soldier body"));
+    assert!(HUEMAN_PROJECTION.contains(
+        "The underworld manifestation chain is Tross/Manticore -> We Fairy Men -> The Gallows"
+    ));
     assert!(HUEMAN_PROJECTION.contains("There is exactly one constitutional Chimera"));
     assert!(HUEMAN_PROJECTION.contains("The Gallowry is the hidden headquarters"));
-    assert!(HUEMAN_PROJECTION.contains("Tross = Mystery Man = Mr. X"));
+    assert!(HUEMAN_PROJECTION.contains("The Tross = Manticore = Mystery Man = Mr. X"));
+}
+
+#[test]
+fn unresolved_flynt_canon_remains_explicitly_open() {
+    for term in [
+        "source-practitioner tradition",
+        "mechanics for Medusa",
+        "nonconstitutional Chimera population",
+        "deeper creature mechanics",
+    ] {
+        assert!(
+            CONSTITUTION_DOCUMENT.contains(term),
+            "open-canon registry omits {term}"
+        );
+    }
 }
 
 #[test]
@@ -59,7 +74,6 @@ fn repository_text_has_no_obsolete_flynt_authority_vocabulary() {
     let prohibited = [
         concat!("Mystery", "guard"),
         concat!("Manticorp", "s"),
-        concat!("Manti", "core"),
         concat!("Chimera", "Refinement"),
         concat!("Executive", "Mastery"),
         concat!("Lawful", "Accession"),
@@ -67,6 +81,10 @@ fn repository_text_has_no_obsolete_flynt_authority_vocabulary() {
         concat!("White", " Dwarfs"),
         concat!("institution.flynt.", "gallowry"),
         concat!("role.flynt.", "gallowry"),
+        concat!("Tross = ", "Manticorp"),
+        concat!("The Tross is the ", "Manticorp"),
+        concat!("Manticorp ", "↔ Chimera"),
+        concat!("Manticorp ", "<-> Chimera"),
     ];
     scan_text_tree(root, root, &prohibited);
     let retired_artifact = format!("artifacts/hueman_{}_{}.md", "tross", "helpers");

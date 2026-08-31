@@ -11,8 +11,9 @@ Each scene presence carries a dominant descriptive intent before any encounter o
 - Pressure Shelter: concealment, storage, guarded warmth, selective admission
 - Split Trace: witness, ambiguity, coexistence, half-open routing
 
-## Bias Reading
+## Legacy Physical Bias Reading
 
+- lower-case `current` and `aura` in this client projection are legacy physical compatibility labels, not Practitioner axes
 - `current` intensifies exchange, storage, and guarded continuity
 - `aura` intensifies warning, drift, shimmer, and ambiguity
 - `current` may surface as regular current or hollow current depending on carried pressure
@@ -69,14 +70,15 @@ Each scene presence carries a dominant descriptive intent before any encounter o
 - engineering: turn practical capability into deployable routes, services, machines, and infrastructure
 - style: run recognition through boardwalk temptation, casino risk, nocturnal glamour, and outer hunting pressure rather than polite institutional order
 - Tross: remain the single constitutional executive above both institutional expressions
-- Chimera: refine the lower apex integration without becoming Manticorp
-- Manticorp: remain both a distinct maintained Form and the institution named for that sovereign ideal
-- Tross = Mystery Man = Mr. X: preserve one stable person across public and underground command
-- The Gallows and We Fairy Men: preserve underground leverage, Basin distinction, and divided Recipe custodianship
+- creature pairs: preserve masculine Gargoyle/feminine Medusa, masculine Werewolf/feminine Vampire, masculine Mariner/feminine Mermaid, and masculine Manticore/feminine Chimera without collapsing paired identities
+- Chimera: select among Gargoyle, Werewolf, and Mariner/Merman capacities without creating another Manticore; exact mechanics remain STATUS: OPEN
+- Manticorp: remain the soldier body commanded by the Tross/Manticore; do not use the name for his Form
+- The Tross = Manticore = Mystery Man = Mr. X: preserve one stable person across public and underground command
+- The Gallows and We Fairy Men: preserve separate contextual address while encoding The Gallows as the Tross-directed underworld manifestation of We Fairy Men
 - The Gallowry: remain the hidden headquarters of the Gallows rather than becoming a separate institution
 - opals: support advanced engineering feedstock and field-ready refinement
-- Opal Oil: turn regular current and holographic aura into a practical engineering medium
-- presentation must preserve direct Tross command of both Manticorp and the Gallows
+- Opal Oil: turn legacy physical regular current and holographic aura compatibility mechanics into a practical engineering medium
+- presentation must preserve Tross command of the Manticorp soldier body, his leadership of We Fairy Men, and The Gallows as their underworld manifestation
 
 ## Sandmanor Competitive Intent
 
@@ -94,7 +96,7 @@ Each scene presence carries a dominant descriptive intent before any encounter o
 ## Inverse Circle Intent
 
 - The Stairway to Heaven / Ascend: accept higher burden through ascent while its underground inverse curve stores hidden descent pressure
-- The Riptide / Retrieve: carry crises toward Glaushouse intake while its underground inverse curve keeps emergency underway and Merman range alive on the water rim
+- The Riptide / Retrieve: carry crises toward Glaushouse intake while its underground inverse curve keeps emergency underway and Mariner/Merman range alive on the water rim
 - The Current Seanad / Deliberate: hold difficult design and repair questions for institutional judgment while its underground inverse curve keeps hidden current structure
 - Mt. Aura / Aspire: hold the established aspirational curve from Stonebend to Sandmanor while its underground inverse curve keeps the hidden under-arc
 
@@ -108,15 +110,15 @@ Each scene presence carries a dominant descriptive intent before any encounter o
 
 ## Artifact Inputs
 
-Hueman Scene Presence bytes: 7034.
-Hueman Link Physics bytes: 3086.
+Hueman Scene Presence bytes: 7225.
+Hueman Link Physics bytes: 3166.
 Current Synthesis collision relay bytes: 3024.
 Current Synthesis Contract bytes: 1442.
-Hueman Stonebend Roles bytes: 10286.
-Hueman Flynt Constitution bytes: 5513.
-Hueman Glaushouse Roles bytes: 7910.
-Hueman Sandmanor Roles bytes: 9864.
-Hueman Inverse Circle bytes: 2513.
+Hueman Stonebend Roles bytes: 10803.
+Hueman Flynt Constitution bytes: 7340.
+Hueman Glaushouse Roles bytes: 8063.
+Hueman Sandmanor Roles bytes: 10038.
+Hueman Inverse Circle bytes: 2521.
 
 ## Boundary Reminder
 

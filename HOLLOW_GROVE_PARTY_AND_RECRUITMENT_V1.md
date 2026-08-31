@@ -129,7 +129,7 @@ outcome, path, reason, agency statement, nonbinding-player flag, and
 debt-free-refusal flags used at the time.
 
 Gameplay archive schema V3 serializes every party event under the existing
-checksum and binds the history to The Runtime Federation. Replay recomputes
+checksum and binds the history to The Rampart of Roi and Roselina. Replay recomputes
 recruitment, selection, lead, action, and shift recovery against prior Deep
 Pressure and map state. Divergence fails closed.
 Recruited people leave the scheduled-map projection and no longer block a tile
@@ -175,5 +175,5 @@ Verification:
 ```bash
 cargo test --test party_recruitment
 cargo test --test deep_pressure_campaign
-cargo run --quiet --bin party_recruitment_audit
+cargo run --quiet --features dev-tools --bin hg-dev -- party_recruitment_audit
 ```

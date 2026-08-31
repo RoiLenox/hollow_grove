@@ -176,8 +176,8 @@ fn point_progression_witness(
 fn sandmanor_transformation_witness(
     catalog: &mut CompositionCatalog,
 ) -> Result<(), CompositionWitnessError> {
-    validate_sandmanor_transition(FrameId::Gnome, FrameId::Minotaur)?;
-    validate_sandmanor_transition(FrameId::Minotaur, FrameId::Hecaton)?;
+    validate_sandmanor_transition(FrameId::Gnome, FrameId::Faun)?;
+    validate_sandmanor_transition(FrameId::Faun, FrameId::Minotaur)?;
 
     let being = node(
         "node.being.hueman.sandmanor-witness",
@@ -186,10 +186,10 @@ fn sandmanor_transformation_witness(
         "scale.being",
     )?;
     let gnome = node("node.frame.gnome", "frame", "gnome", "scale.frame")?;
+    let faun = node("node.frame.faun", "frame", "faun", "scale.frame")?;
     let minotaur = node("node.frame.minotaur", "frame", "minotaur", "scale.frame")?;
-    let hecaton = node("node.frame.hecaton", "frame", "hecaton", "scale.frame")?;
     let sandmanor = node("node.house.sandmanor", "house", "sandmanor", "scale.house")?;
-    for entry in [&being, &gnome, &minotaur, &hecaton, &sandmanor] {
+    for entry in [&being, &gnome, &faun, &minotaur, &sandmanor] {
         catalog.insert_node(entry.clone())?;
     }
     catalog.add_containment(Containment {
@@ -197,18 +197,18 @@ fn sandmanor_transformation_witness(
         member: being.id.clone(),
     })?;
     catalog.insert_record(record(
-        "record.sandmanor.gnome-to-minotaur",
+        "record.sandmanor.gnome-to-faun",
         vec![being.id.clone(), gnome.id],
         being.id.clone(),
-        reference("sandmanor-transition", "gnome-to-minotaur")?,
-        Some(reference("sandmanor-lineage", "gnome-minotaur-legal")?),
+        reference("sandmanor-transition", "gnome-to-faun")?,
+        Some(reference("sandmanor-lineage", "gnome-faun-legal")?),
     )?)?;
     catalog.insert_record(record(
-        "record.sandmanor.minotaur-to-hecaton",
-        vec![being.id.clone(), minotaur.id],
+        "record.sandmanor.faun-to-minotaur",
+        vec![being.id.clone(), faun.id],
         being.id,
-        reference("sandmanor-transition", "minotaur-to-hecaton")?,
-        Some(reference("sandmanor-lineage", "minotaur-hecaton-legal")?),
+        reference("sandmanor-transition", "faun-to-minotaur")?,
+        Some(reference("sandmanor-lineage", "faun-minotaur-legal")?),
     )?)?;
     Ok(())
 }
@@ -365,7 +365,7 @@ mod tests {
         let being = CompositionNodeId::new("node.being.hueman.sandmanor-witness").unwrap();
         assert_eq!(catalog.records_producing_result(&being).len(), 2);
         assert_eq!(catalog.records_using_source(&being).len(), 2);
-        assert!(validate_sandmanor_transition(FrameId::Gnome, FrameId::Pegasus).is_err());
+        assert!(validate_sandmanor_transition(FrameId::Gnome, FrameId::Elf).is_err());
     }
 
     #[test]

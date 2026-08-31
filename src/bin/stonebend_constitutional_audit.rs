@@ -2,7 +2,7 @@ use std::collections::BTreeSet;
 
 use hollow_grove::world::{house_institutions, stonebend};
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+pub(crate) fn tool_main() -> Result<(), Box<dyn std::error::Error>> {
     stonebend::validate_principal_authorities()?;
     stonebend::foundation::validate_foundation()?;
     stonebend::second_pass::validate_three_gate_topology(
@@ -90,17 +90,17 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("principal Stonebend gates: 3");
     println!("gate facings: Flynt, Central Junction, Sandmanor");
     println!("Central Junction modeled as House: false");
-    println!("sovereign Title: Diamond");
-    println!("Diamond bearer office: Hypergiant");
-    println!("Diamond vacancy supported: true");
+    println!("sovereign Title: Hypergiant");
+    println!("Diamond ontology: STATUS OPEN; legacy ID retained");
+    println!("Hypergiant vacancy supported: true");
     println!("Freemason constitutional dimension: Claim");
     println!("Proliteriate constitutional dimension: Yield");
     println!("permanent Spartacus office: false");
     println!("removal concurrence: two distinct powers");
-    println!("Lazerhorn required for Diamond accession: true");
+    println!("Lazerhorn required for Hypergiant accession: true");
     println!("Title recognition distinct from activation: true");
     println!("Title maintenance distinct from renewal: true");
-    println!("Diamond vacancy creates Regent: false");
+    println!("Hypergiant vacancy creates Regent: false");
     println!("replacement Freemason review: independent");
     println!("permanent Proliteriate speaker: false");
     println!("recursion kernel dependency: none");

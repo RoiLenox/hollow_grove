@@ -22,6 +22,11 @@ Sandmanor supplies measurement and method, and Glaüshouse supplies clinical
 compatibility, consent, Clearance, and recovery. Those contributions do not
 transfer ownership of the resulting capability.
 
+The hunt's `Current circulation` and `Aura-sensitive` runtime phrases are
+legacy physical compatibility vocabulary. They do not assign the
+practitioner's relational Current or internal Aura, whose exact Flynt school
+equations remain **STATUS: OPEN**.
+
 ## Hunt sequence
 
 1. **Stonebend scar-wall:** read impossible load marks and recover the structural

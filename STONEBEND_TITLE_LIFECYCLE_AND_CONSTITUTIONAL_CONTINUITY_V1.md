@@ -1,6 +1,12 @@
 # Stonebend Title Lifecycle and Constitutional Continuity V1
 
-Status: canonical Stonebend Third Pass
+Status: active lifecycle compatibility supplement; its Diamond-as-sovereign-
+title language is **SUPERSEDED** by `STONEBEND_CONSTITUTION_V2.md`. Stable
+Diamond lifecycle identifiers remain LEGACY / DEPRECATED for archive and
+replay. Hypergiant is the active sovereign title; Diamond's additional present
+role is STATUS: OPEN.
+
+Status: LEGACY Stonebend Third Pass compatibility supplement
 Authority: additive to `STONEBEND_CONSTITUTION_V2.md`,
 `STONEBEND_AURA_WAY_AETHER_HOLLOWING_FOUNDATION_V1.md`, and
 `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md`

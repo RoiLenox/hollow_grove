@@ -4,6 +4,12 @@ Status: canonical shared Bond and Constitutional Runtime specification
 Authority: normative within its delegated runtime domain beneath the Hollow Grove Compromise
 Date: 2026-07-18
 
+> **Compatibility boundary — LEGACY PHYSICAL ACCOUNTING.** The V2 Bond fields,
+> operations, observations, archive tags, and exact quantities named `Current`
+> and `Aura` retain their historical material/accounting meaning. They are not
+> Practitioner Current or Aura and are not silently reinterpreted by the active
+> ontology in `HOLLOW_GROVE_SYNTHESIS_CANON_V1.md`.
+
 ## 1. Status, Scope, and Conformance
 
 ### 1.1 Constitutional status
@@ -113,17 +119,17 @@ An implementation that cannot answer an applicable question is constitutionally 
 
 ## 2. Constitutional Vocabulary and Type Distinctions
 
-### 2.1 Core law
+### 2.1 Legacy physical accounting core law
 
 Bond governs.
 
 Wave moves.
 
-Current carries.
+LegacyPhysical::Current carries.
 
-Aura reveals.
+LegacyPhysical::Aura reveals.
 
-Current condenses.
+LegacyPhysical::Current condenses.
 
 Tombstone proves.
 
@@ -3053,12 +3059,12 @@ The following companion House instruments consolidate the audited non-Flynt law:
 - `STONEBEND_AURA_WAY_AETHER_HOLLOWING_FOUNDATION_V1.md` (bounded vertical
   law, standard Aura Way, material Hollowing, proofed Aether provenance, and
   geographic stone-refraction supplement);
-- `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md` (bounded three-gate,
-  scoped-Title, Diamond bearer, Claim/Title/Yield, Proliteriate mandate,
+- `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md` (legacy-compatible three-gate,
+  scoped-Title, active Hypergiant and legacy Diamond records, Claim/Title/Yield, Proliteriate mandate,
   two-power removal, Tombstone, and Lazerhorn succession supplement);
 - `STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md` (bounded
   Stonebend recognition/activation, maintenance/renewal, targeted
-  intervention, restoration, Diamond vacancy continuity, independent Forge
+  intervention, restoration, Hypergiant vacancy continuity through legacy-named compatibility types, independent Forge
   replacement, and temporal Claim/Title/Yield supplement);
 - `SANDMANOR_CONSTITUTION_V2.md` (canonical and executable above this frozen common runtime);
 - `GLAUSHOUSE_CONSTITUTION_V2.md` (canonical and executable above this frozen common runtime).
@@ -6137,7 +6143,7 @@ These structures SHOULD be refined and composed. They SHOULD NOT be replaced wit
 | FrameState | Being-associated Frame, prism, Flow, Glow | Transformation state evidence | Reference from Recipe and transformation participation |
 | SynthesisRecipe in root crate | Ordered transformation intents | Bounded Recipe participation | Retain and reference |
 | SynthesisExecution | Transactional execution result | Strong immutable evidence candidate | Reference, do not copy |
-| SynthesisRecipe in `flynt-constitution` | Gargoyle, Merman, and Werewolf sources with the unique Chimera result | Domain composition rule | Retain domain ownership and the locked Flynt namespace |
+| SynthesisRecipe in `flynt-constitution` | Gargoyle, Mariner/Merman, and Werewolf sources with the unique feminine Chimera result | Domain composition rule | Retain domain ownership and the locked Flynt namespace |
 | DecisionTrace | Deterministic observe-to-execute evidence | Evidence and replay pattern | Reuse trace/reference approach |
 | KernelPass | Deterministic completed recursion witness | Wave or evidence source candidate | Not Bond lifecycle |
 | CurrentSynthesisEvent | Scenario, focus, action, feedback, and tick events | Event-sourcing pattern | Generalize infrastructure only; do not copy domain event vocabulary |
@@ -6573,33 +6579,31 @@ establish transformation. Presentation alone establishes nothing.
 The complete current rule set is:
 
 ```text
-Gnome → Minotaur
+Faun → Minotaur
 Required standing: Aura Field
 Function: field stewardship, work, maintenance, and defense
 ```
 
 ```text
-Elf → Centaur
+Satyr → Centaur
 Required standing: Aura Beach
-Function: beach patrol and Aura Sea guardianship
+Function: beach patrol and Current Sea guardianship
 ```
 
-Gnome→Centaur and Elf→Minotaur are not alternate readings. They are illegal
+Faun→Centaur and Satyr→Minotaur are not alternate readings. They are illegal
 cross-lineage transitions.
 
-The common regional reducer remains frozen to those two first-stage rules.
-`SANDMANOR_GUARDIAN_AND_SUCCESSION_V1.md` subsequently ratifies
-Minotaur→Hecaton and Centaur→Pegasus through the Sandmanor guardian event model
-in `src/world/sandmanor/milestone.rs`, reusing the lineage validator and
-Glaüshouse maintained-Synthesis lifecycle without changing this reducer. Their
-presence in the lineage table alone still grants nothing.
+The common regional reducer retains two mature-stage rules. The complete Form
+lines are Gnome→Faun→Minotaur and Elf→Satyr→Centaur. Hecaton and Pegasus are
+sovereign Hands, not further regional Forms. Detailed mechanics for the base
+to intermediate steps remain open and are not invented by this reducer.
 
 ### 15.3 Responsibilities
 
 The regional Synthesis aggregate SHALL:
 
 - accept caller-controlled stable Being, event, and Synthesis identities;
-- register only the Gnome and Elf origin forms;
+- register only a base or intermediate Form for a known Minorian or Minoan lineage;
 - preserve the existing `SandmanorLineage` distinction;
 - require a typed regional standing;
 - verify that standing against the Sandmanor-controlled site;
@@ -6636,10 +6640,10 @@ The regional aggregate SHALL NOT:
 - infer evidence from presentation or narrative text;
 - infer House authority from a House name;
 - assign a form that the command did not lawfully request;
-- accept Gnome→Centaur or Elf→Minotaur;
+- accept Faun→Centaur or Satyr→Minotaur;
 - grant Minotaur coastal authority;
 - grant Centaur field authority;
-- treat Aura Sea as a primary Synthesis site;
+- treat Current Sea as a primary Synthesis site;
 - erase or replace the predecessor Being;
 - reuse the predecessor identity as the result identity;
 - accept an evolved form as an unlined origin;
@@ -6723,18 +6727,18 @@ The command MUST supply separate evidence for:
 Every subject MUST equal the predecessor. Evidence for another Being is not
 transferable merely because it describes the same form or region.
 
-### 15.9 Gnome-to-Minotaur Lifecycle
+### 15.9 Faun-to-Minotaur Lifecycle
 
 The legal lifecycle is:
 
 ```text
-absent Gnome identity
+absent Faun identity
     ↓ register with established Aura Field standing
-active Gnome
+active Faun
     ↓ prove lineage, readiness, standing, and rule
     ↓ authorize with Glaüshouse Resolution
-    ↓ apply Gnome→Minotaur rule
-Gnome status = SynthesizedInto(Minotaur identity)
+    ↓ apply Faun→Minotaur rule
+Faun status = SynthesizedInto(Minotaur identity)
 active Minotaur with predecessor and lineage
     ↓ atomically derive Aura Field stewardship
 ```
@@ -6760,23 +6764,23 @@ Every valid Minotaur result MUST possess `AuraFieldsStewardship` naming:
   - stabilize field Current.
 
 Missing any duty makes the result internally invalid. The assignment grants no
-Aura Beach occupation and no Aura Sea guardianship.
+Aura Beach occupation and no Current Sea guardianship.
 
-### 15.11 Elf-to-Centaur Lifecycle
+### 15.11 Satyr-to-Centaur Lifecycle
 
 The legal lifecycle is:
 
 ```text
-absent Elf identity
+absent Satyr identity
     ↓ register with established Aura Beach standing
-active Elf
+active Satyr
     ↓ prove lineage, readiness, standing, and rule
     ↓ authorize with Glaüshouse Resolution
-    ↓ apply Elf→Centaur rule
-Elf status = SynthesizedInto(Centaur identity)
+    ↓ apply Satyr→Centaur rule
+Satyr status = SynthesizedInto(Centaur identity)
 active Centaur with predecessor and lineage
     ↓ atomically derive Aura Beach occupation
-    ↓ atomically derive Aura Sea guardianship
+    ↓ atomically derive Current Sea guardianship
 ```
 
 The Centaur is the horse-associated mobile, coastal, horizon-facing,
@@ -6790,7 +6794,7 @@ Beach, assignment authority, evidence, and all eight duties:
 
 - roam the Aura Beach;
 - patrol the shoreline;
-- guard Aura Sea access;
+- guard Current Sea access;
 - watch coastal routes;
 - escort travelers;
 - recognize horizon changes;
@@ -6798,11 +6802,11 @@ Beach, assignment authority, evidence, and all eight duties:
 - maintain the land-sea boundary.
 
 Every valid Centaur MUST simultaneously possess `AuraSeaGuardianship` naming the
-same Centaur, Aura Sea, assignment authority, evidence, and all four duties:
+same Centaur, Current Sea, assignment authority, evidence, and all four duties:
 
-- guard access to the Aura Sea;
-- watch the Aura Sea horizon;
-- defend the Aura Sea boundary;
+- guard access to the Current Sea;
+- watch the Current Sea horizon;
+- defend the Current Sea boundary;
 - maintain lawful land-sea passage.
 
 Missing the guardianship makes the Centaur result internally invalid. The
@@ -6816,9 +6820,9 @@ Legal transitions are:
 
 | Prior | Command | Required result |
 |---|---|---|
-| absent | register Gnome or Elf | Active origin |
-| Active Gnome | ratified Aura Field Synthesis | SynthesizedInto(Minotaur) plus Active Minotaur |
-| Active Elf | ratified Aura Beach Synthesis | SynthesizedInto(Centaur) plus Active Centaur |
+| absent | register Gnome, Faun, Elf, or Satyr | Active known-lineage entry |
+| Active Faun | ratified Aura Field Synthesis | SynthesizedInto(Minotaur) plus Active Minotaur |
+| Active Satyr | ratified Aura Beach Synthesis | SynthesizedInto(Centaur) plus Active Centaur |
 | Active origin/result | regional Tombstone | Tombstoned |
 | any accepted event | exact retry | unchanged state and unchanged event count |
 
@@ -6846,15 +6850,15 @@ Every accepted Synthesis answers:
 
 ### 15.15 Required Invariants
 
-- Every registered origin is exactly Gnome or Elf.
+- Every registered entry is a base or intermediate Form, never a mature Form or sovereign Hand.
 - Every registered origin has one stable identity.
 - Every result has a different stable identity.
-- Every Minotaur has a Gnome predecessor.
-- Every Centaur has an Elf predecessor.
+- Every Minotaur has a Faun predecessor.
+- Every Centaur has a Satyr predecessor.
 - Every result lineage begins with the predecessor lineage history.
 - Every result appends exactly one lineage entry for its Synthesis.
-- Every Gnome→Minotaur event is grounded in established Aura Field standing.
-- Every Elf→Centaur event is grounded in established Aura Beach standing.
+- Every Faun→Minotaur event is grounded in established Aura Field standing.
+- Every Satyr→Centaur event is grounded in established Aura Beach standing.
 - Every accepted command has both required House decisions.
 - Every required item of evidence names the predecessor.
 - Every Minotaur has exactly the canonical field assignment.
@@ -6874,17 +6878,17 @@ Every accepted Synthesis answers:
 Illegal configurations include:
 
 - result identity equal to predecessor identity;
-- Minotaur without Gnome predecessor;
-- Centaur without Elf predecessor;
+- Minotaur without Faun predecessor;
+- Centaur without Satyr predecessor;
 - evolved form registered as an origin;
 - lineage history without the source;
 - lineage history whose Synthesis identity differs from the committed command;
-- Gnome→Centaur;
-- Elf→Minotaur;
-- Gnome→Minotaur without established Aura Field standing;
-- Elf→Centaur without established Aura Beach standing;
-- any Synthesis using Aura Sea as primary standing;
-- Minotaur with Aura Beach occupation or Aura Sea guardianship;
+- Faun→Centaur;
+- Satyr→Minotaur;
+- Faun→Minotaur without established Aura Field standing;
+- Satyr→Centaur without established Aura Beach standing;
+- any Synthesis using Current Sea as primary standing;
+- Minotaur with Aura Beach occupation or Current Sea guardianship;
 - Centaur with Aura Field stewardship;
 - Minotaur missing a field duty;
 - Centaur missing a beach or sea duty;
@@ -6950,7 +6954,7 @@ Conformance MUST test:
 - Synthesis after Tombstone;
 - location-only non-transformation;
 - evolved origin rejection;
-- Aura Sea primary-standing rejection;
+- Current Sea primary-standing rejection;
 - altered replay history;
 - canonical byte round-trip;
 - V0→V1 migration;
@@ -6982,15 +6986,15 @@ Synthesis and final Bond Resolution remain separate domain processes.
 
 Bond governs lawful Current and Aura history.
 
-Regional Synthesis governs the two ratified region-bound form transformations.
+Regional Synthesis governs the two ratified mature region-bound Form transformations.
 
-A Gnome may become a Minotaur only through lawful Aura Field Synthesis.
+A Faun may become a Minotaur only through lawful Aura Field Synthesis.
 
 That Minotaur tends, works, maintains, and defends the Aura Field.
 
-An Elf may become a Centaur only through lawful Aura Beach Synthesis.
+A Satyr may become a Centaur only through lawful Aura Beach Synthesis.
 
-That Centaur roams and patrols the Aura Beach and guards the Aura Sea.
+That Centaur roams and patrols the Aura Beach and guards the Current Sea.
 
 Standing is required and never sufficient by itself.
 

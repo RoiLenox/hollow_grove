@@ -14,7 +14,7 @@ fn artifact_path() -> PathBuf {
     PathBuf::from(CURRENT_SYNTHESIS_BEHAVIOR_RULES_ARTIFACT_PATH)
 }
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let current_synthesis_execution_spec =
         read_artifact(Path::new(CURRENT_SYNTHESIS_EXECUTION_SPEC_ARTIFACT_PATH))?;
     let current_synthesis_selection =

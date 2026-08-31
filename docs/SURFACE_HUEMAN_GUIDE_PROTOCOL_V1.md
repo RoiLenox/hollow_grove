@@ -124,7 +124,7 @@ The TUI and Godot bridge are interfaces, not characters.
 
 A confirmed crossing witness includes stable identity, source public name,
 source form and layer, destination public name, destination form and layer,
-direction, session, continuity assessment, embodiment assessment, Federation
+direction, session, continuity assessment, embodiment assessment, Rampart
 decision, and resulting session state.
 
 Historical witness text remains immutable. Migration attaches corrected

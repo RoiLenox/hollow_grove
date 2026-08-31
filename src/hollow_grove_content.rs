@@ -582,7 +582,7 @@ pub fn validate_civic_body_foundation() -> io::Result<()> {
     for chant in [
         "Geralds carry.",
         "Nightingales clear.",
-        "Wardens close.",
+        "Flynt:\nCivic designation and body role:\nSTATUS OPEN",
         "Minorians measure.",
         "Minoans reveal.",
     ] {
@@ -598,7 +598,7 @@ pub fn validate_civic_body_foundation() -> io::Result<()> {
     for step in [
         "1. Minoans reveal the breach.",
         "2. Minorians measure the breach.",
-        "3. Wardens close the breach.",
+        "3. Flynt breach-closing civic designation: STATUS OPEN.",
         "4. Nightingales clear the threat.",
         "5. Geralds carry what recovery requires.",
     ] {
@@ -990,6 +990,8 @@ pub fn validate_medical_injury_cycle() -> io::Result<()> {
         ));
     }
 
+    // Stable V1 legacy-physical compatibility vocabulary. These strings do
+    // not define the Practitioner ontology's Current or Aura axes.
     let cycle = [
         "Hollow Current is breached.",
         "Current carries the alarm.",
@@ -1002,7 +1004,7 @@ pub fn validate_medical_injury_cycle() -> io::Result<()> {
     if cycle.len() != 7 || !cycle[0].contains("Hollow Current") || !cycle[6].contains("Stonebend") {
         return Err(io::Error::new(
             io::ErrorKind::InvalidData,
-            "medical injury cycle fixture drifted from the canonical order",
+            "legacy medical injury cycle fixture drifted from its stable order",
         ));
     }
 

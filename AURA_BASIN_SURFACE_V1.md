@@ -22,6 +22,10 @@ meet pressure.
 Flynt attribution does not make Aura Basin the property of Manticorp, Mystery
 Men, the Gallows, We Fairy Men, a Founding Leader, or any crew. Urban and rural
 Flynt remain complementary expressions of one constitutional authority.
+Mystery Men remains separate from the Tross-led We Fairy Men structure. The
+Gallows is We Fairy Men acting under the Tross in the underworld, but a public
+waycamp or ordinary Basin appearance does not by itself place We Fairy Men in
+that underworld context.
 
 ## Boundary and Route Access
 
@@ -75,14 +79,18 @@ competition, resolved claims, protected return, and lawful public consequence.
 Recognition makes an achievement or obligation legible; it does not prove a
 weapon, clear an injury, name ownership, or create an office.
 
-Manticorp may train or deploy only through its existing authority. Mystery Men
+Manticorp may train or deploy only through its existing authority.
+Mystery Men
 may investigate within lawful scope without turning all Basin activity into
-classified evidence. The Gallows and We Fairy Men may protect, guide, trade,
-perform, or intervene without becoming public sovereigns.
+classified evidence. We Fairy Men may protect, guide, trade, perform, or
+intervene without becoming public sovereigns; when the same body acts
+collectively under the Tross in the organized underworld, that manifestation is
+The Gallows.
 
-The rural associations of Gargoyle guardianship, Werewolf wilderness and pack
-movement, and Merman water return may appear here without manufacturing the
-unique Chimera or bypassing Tross.
+The rural associations of Gargoyle/Medusa stone guardianship,
+Werewolf/Vampire wilderness and nocturnal predation, and Mariner/Mermaid water
+return may appear here without manufacturing the unique feminine Chimera,
+creating another masculine Manticore, or bypassing the Tross/Manticore.
 
 ## Glaüshouse Complementary Loop
 
@@ -194,7 +202,7 @@ The immutable surface view exposes:
 - every facility's stable identity, kind, and function.
 
 Wrong-route entry fails without revision or event. Accepted entry persists and
-replays through gameplay archive schema V3 with an explicit Runtime Federation
+replays through gameplay archive schema V3 with an explicit Runtime Rampart
 binding. Godot renders ground, trails,
 rocks, dens, thickets, salvage, and witnesses without owning combat, Hollowing,
 care, proof, recognition, or Flynt authority.
@@ -202,7 +210,7 @@ care, proof, recognition, or Flynt authority.
 Inspect all three surface contracts with:
 
 ```bash
-cargo run --quiet --bin aura_surfaces_audit
+cargo run --quiet --features dev-tools --bin hg-dev -- aura_surfaces_audit
 ```
 
 ## Completion Boundary

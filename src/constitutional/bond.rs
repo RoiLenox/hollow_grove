@@ -5,6 +5,10 @@ use crate::institution::InstitutionId;
 
 use super::*;
 
+// Compatibility boundary: fields named Current/Aura in this module are exact
+// signed V1 accounting quantities. They retain their historical archive and
+// replay meaning and are not Practitioner Current roles or Aura practices.
+
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum ParticipantKind {
     Huemen,

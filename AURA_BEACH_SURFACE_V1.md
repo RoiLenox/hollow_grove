@@ -21,6 +21,14 @@ The Current Sea is Aura Beach's linked Minoan civic-circulation jurisdiction.
 It is a sea of people, not a second beach or a maritime body, and Aura Beach is
 not another Current Sea route.
 
+Aura Beach is also a cultural and social environment, not merely this literal
+coastal geography. Its intended atmosphere resembles an idealized wealthy
+beach social scene: nightlife, parties, fashion, music, dancing, leisure,
+hospitality, beauty, romance, public display, festivals, pleasure, gathering,
+and cultural circulation. Content Farm cultivates life, Aura Field preserves
+and projects it, and Aura Beach expresses, celebrates, and enjoys it. This is
+a cultural grammar, not a literal production pipeline.
+
 ## North-to-South Constitutional Gradient
 
 ```text
@@ -114,20 +122,32 @@ An attractive beacon that cannot be read in fog is not proven. A fast landing
 that excludes injured travelers is not complete. A successful single crossing
 is evidence, not automatic credential or Synthesis.
 
-## Elves and Centaurs
+## Minoan Forms, Roles, and Attendants
 
-Elves design, explore, orient, navigate, communicate, and give provisional form
-to exterior relationships. An Elf Name identifies a person and tradition; it
-does not infer mastery.
+Minoans are a people distinct from Minorians. Their Forms progress **Elf →
+Satyr → Centaur**; Gnome never evolves into Elf. Elves design, explore, orient,
+navigate, communicate, and give provisional form to exterior relationships.
 
 Centaurs roam Aura Beach, escort travelers, patrol the shoreline, watch coastal
 routes, defend against incursion, and maintain the land-sea boundary after
-lawful Elf-to-Centaur Synthesis. Mobility is responsibility rather than
+lawful mature progression. Mobility is responsibility rather than
 dominion. Presence, speed, or a completed patrol does not create Synthesis,
 office, or ownership.
 
 Current Sea guardianship remains related but distinct. Beach roaming cannot be
 silently treated as maritime certification.
+
+The social-role progression is **Beach Bum → Party Boy → Socialite**. The
+Beach Bum finds the scene, the Party Boy creates the scene, and the Socialite
+is the scene. Socialite is deliberately broader than Influencer: attention
+follows social presence, reputation, relationships, taste, invitations, and
+associations rather than required content production. Satyr is not Party Boy;
+Form and role remain distinct.
+
+Labyrinthian is the separate Minoan institutional attendant class. Pegasus is
+the Minoan sovereign Hand associated with the reigning Sandman, not Centaur
+stage IV or an ordinary Form. Its appointment and succession mechanics remain
+open canon.
 
 ## Four-House Responsibilities
 
@@ -149,8 +169,10 @@ property.
 
 ## Tide, Weather, Ecology, and Aura
 
-Aura appears here as air, pressure, light, glare, mist, visibility, and
-exposure. It reveals conditions; it does not navigate, choose, or clear them.
+The V1 surface runtime's **legacy physical Aura expression** appears here as
+air, pressure, light, glare, mist, visibility, and exposure. It reveals
+conditions; it does not navigate, choose, or clear them. This compatibility
+mechanic does not define Aura in the Practitioner ontology.
 
 Tide and weather records preserve time, station, observer, instrument, depth,
 current, wind, pressure, visibility, and uncertainty. A forecast remains a
@@ -206,7 +228,7 @@ The immutable surface view exposes:
 - every facility's stable identity, kind, and function.
 
 Wrong-route entry fails without revision or event. Accepted entry persists and
-replays through gameplay archive schema V3 with an explicit Runtime Federation
+replays through gameplay archive schema V3 with an explicit Runtime Rampart
 binding. Godot renders water, sand, coastal
 works, dialogue, and attribution without owning proof, rescue, Synthesis, or
 House authority.
@@ -214,7 +236,7 @@ House authority.
 Inspect all three surface contracts with:
 
 ```bash
-cargo run --quiet --bin aura_surfaces_audit
+cargo run --quiet --features dev-tools --bin hg-dev -- aura_surfaces_audit
 ```
 
 ## Completion Boundary
@@ -229,5 +251,6 @@ rescue case. Riptide spills can harm the shore; Mt. Aura stone can reinforce
 dunes; Current Sea certified lots can support rescue logistics.
 
 It does not yet claim boat physics, individual fish simulation, autonomous
-rescue AI, a complete commodity market, or the full Elf-to-Centaur Synthesis
-case. See `HOLLOW_GROVE_LIVING_SURFACES_AND_EXTRACTION_V1.md`.
+rescue AI, a complete commodity market, or the deeper biological or
+metaphysical mechanics of Elf-to-Satyr-to-Centaur progression. See
+`HOLLOW_GROVE_LIVING_SURFACES_AND_EXTRACTION_V1.md`.

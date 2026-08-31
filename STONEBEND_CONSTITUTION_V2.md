@@ -23,6 +23,9 @@ Stonebend's signature constitutional offense is **Illegal Hollowing**.
 
 ## Article I — Domain
 
+Stonebend's Domain is **Body**, its Law is **Identity**, and its distinct
+faculty is **Presynce**. Presynce is neither Current, Aura, Synthesis, nor rank.
+
 The governing verb is:
 
 > **Stonebend names.**
@@ -54,14 +57,22 @@ Stonebend has three distinct constitutional powers:
 They are necessary powers, not three equal sovereigns. No one power governs
 Claim, Title, and Yield together.
 
+Freemason and Proliteriate are also Stonebend's institutional traditions.
+Their associated practice polarity is **Mage ↔ Pugilist**, expressed as
+**MAGIC ↔ MIGHT**. Exact Current/Aura assignments remain **STATUS: OPEN**; this
+constitution does not fabricate Level 1 equations for Stonebend forms.
+
 ## Article IV — The Hypergiant
 
-**Diamond** is Stonebend's continuing sovereign Title. The Hypergiant is the
-singular highest Stonebend office and Diamond's temporary active bearer. At
-most one lawful active Hypergiant may exist at a time. Diamond remains real
-when vacant.
+**Hypergiant is Stonebend's sovereign title.** At most one lawful active
+Hypergiant may exist at a time. It is not a developmental state, an advanced
+Presynce state, a stage above Mage or Pugilist, or a generic Identity
+condition.
 
-> Diamond belongs to Stonebend. The Hypergiant bears its weight.
+Diamond is not the sovereign title. Beyond its preserved material and visual
+association, Diamond's present role is **STATUS: OPEN**. Historical code and
+documents that use `Diamond` as a sovereign wire identity are
+LEGACY / DEPRECATED compatibility records and do not control active ontology.
 
 The office preserves the integrity of Names, Titles, succession, boundaries,
 sealed records, amendments, high identity disputes, and high continuity
@@ -75,8 +86,8 @@ subject, validate incompatible exclusive claims, order Illegal Hollowing,
 create permanent unreviewable emergency power, erase former Names or Titles,
 turn transformation into office, override a Mirror without recorded reason and
 additional evidence, substitute preference for criteria, abolish the
-Proliteriate network, appoint a successor by command, treat Diamond as private
-property, or simultaneously occupy Proliteriate witness or Freemason office.
+Proliteriate network, appoint a successor by command, privatize the sovereign
+title, or simultaneously occupy Proliteriate witness or Freemason office.
 
 Hypergiant accession requires lawful Stonebend identity, no unresolved identity
 fraud, mastery of Name, Title, boundary, continuity, and Hollowing law,
@@ -87,12 +98,12 @@ Lazerhorn, a lawful vacancy, sealed accession, and public oath. Form, Frame,
 Synthesis, species, combat rank, wealth, lineage, recommendation, and former
 office do not automatically create eligibility.
 
-> No Hypergiant claims Diamond without climbing The Lazerhorn.
+> No claimant bears the Hypergiant title without climbing The Lazerhorn.
 
 An outgoing Hypergiant may prepare or recommend a claimant, but cannot appoint
 one.
 
-> A Hypergiant may prepare an heir. Diamond recognizes no automatic
+> A Hypergiant may prepare an heir. The title recognizes no automatic
 > inheritance.
 
 Removal is available for Illegal Hollowing, Title fraud, identity substitution,
@@ -103,7 +114,7 @@ power may challenge. Removal requires concurrence of the Freemason and a valid
 Proliteriate mandate, plus a Tombstone-linked record. The same power cannot
 count twice.
 
-During vacancy Diamond is unborne. The Proliteriate network preserves public
+During a Hypergiant vacancy, the Proliteriate network preserves public
 witness and the Freemason preserves records, Seals, defenses, and boundaries
 within existing bounded authority. Neither becomes Hypergiant. Permanent
 amendment and irreversible high Title transfer are barred except for narrow,
@@ -140,8 +151,8 @@ examination, or replace Hypergiant Title authority. This pass locks no universal
 numerical threshold, quorum, or permanent seat distribution.
 
 A temporary witness carries one verified mandate and loses authority on recall,
-completion, or lawful invalidation. The witness may not rule Stonebend, exercise
-Diamond, forge a Claim, or expand the mandate.
+completion, or lawful invalidation. The witness may not rule Stonebend,
+exercise Hypergiant sovereignty, forge a Claim, or expand the mandate.
 
 > The Proliteriate does not elect a ruler. It raises a witness.
 
@@ -164,7 +175,7 @@ It governs architecture, construction, structural verification, surveys, boundar
 
 It may certify structures, survey, issue physical and digital Seals, preserve evidence, secure disputed property, halt unsafe construction, refuse unlawful orders, dismantle unlawful structures after due process, stabilize emergencies, safeguard extracted Hollow, certify custody, inspect counterfeit Seals, quarantine compromised records, and maintain Stonebend weapons.
 
-It may not rule Stonebend by validation alone, exercise Diamond, certify its own
+It may not rule Stonebend by validation alone, exercise Hypergiant sovereignty, certify its own
 sovereign Claim, decide public consequence by technical correctness alone,
 create office, invent a Name, grant property by occupation, alter boundaries
 for private benefit, perform unauthorized Hollowing, destroy evidence, settle
@@ -244,11 +255,11 @@ Lineage may be familial, institutional, architectural, artifact-based, office-ba
 
 A successor entity proves continuity, records differences, assigns liabilities, reviews Titles, preserves predecessor records, and seals succession. It cannot retain benefits while discarding obligations.
 
-No one inherits Diamond automatically. A former Hypergiant seeking to return
+No one inherits the Hypergiant title automatically. A former Hypergiant seeking to return
 must complete the whole Claim, Yield hearing, descent, Proof of Persistence,
 Lazerhorn, eligibility, and investiture path.
 
-> Diamond may be lost. The Way back may not be shortened.
+> The sovereign title may be lost. The Way back may not be shortened.
 
 ## Article XI — Mercury Mirrors
 
@@ -358,7 +369,7 @@ The following are categorically invalid:
 ## Article XX — Executable constitutional invariants
 
 The executable registry must enforce at most one active Hypergiant while
-permitting an honest Diamond vacancy; one valid named subject for every Title;
+permitting an honest Hypergiant vacancy; one valid named subject for every Title;
 accession for every active office; authority, subject, scope, and decision for
 every Seal; source provenance and custody for extracted Hollow; no active
 Tombstoned authority; no office from transformation; no recognition substituted
@@ -367,7 +378,7 @@ emergency Hollowing; preserved rename history; preserved succession
 obligations; no authority inferred from legacy progression; three stable gate
 facings; independent gate scopes; a distributed Proliteriate network; one
 challenge before review; two distinct powers before removal; Tombstone-linked
-ended tenure; and The Lazerhorn before Diamond investiture.
+ended tenure; and The Lazerhorn before Hypergiant investiture.
 
 ## Article XXI — Material, symbolic, and regional canon
 
@@ -384,9 +395,10 @@ first-pass supplement for the vertical law, Aura Way, material Hollowing,
 proofed Aether provenance, and geographic stone refraction.
 
 Mt. Aura is Aether; Riptide is Bathos. Neither is owned by Stonebend. Aether
-and Current are opposite burden states of one medium: Aether is weightless
-Current, while Current is Aether bearing material consequence. Aura is Aether
-revealed through Form, and Current is Bathos embodied through weight.
+and legacy physical Current are opposite burden states of one medium: Aether
+is weightless legacy physical Current, while legacy physical Current is Aether
+bearing material consequence. Legacy physical Aura is Aether revealed through
+Form, and legacy physical Current is Bathos embodied through weight.
 
 Aura Way is the ordinary recognized sequence from prerequisites through
 education, supervised practice, examination, demonstrated responsibility, and
@@ -408,9 +420,10 @@ House-to-stone assignment, proof scale, or mineral catalog.
 ### Second Stonebend constitutional pass
 
 `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md` is the canonical bounded
-second-pass supplement. It defines the three bidirectional gates, one stable
-Title with independent scopes, Diamond and its temporary Hypergiant bearer,
-Freemason Claim authority, the distributed Proliteriate Yield network,
+second-pass supplement. It defines the three bidirectional gates and one stable
+Title with independent scopes. Its historical Diamond/Hypergiant bearer model
+is **SUPERSEDED** by Hypergiant as the sovereign title. Freemason Claim
+authority, the distributed Proliteriate Yield network,
 temporary mandates and witnesses, one-challenge/two-remove review, Tombstone
 continuity, and the Lazerhorn succession path.
 
@@ -427,9 +440,9 @@ renewal remain distinct. Honest failure, negligence, fraud, illegality, and
 constitutional hollowness receive proportionate, explicitly targeted review.
 Restoration preserves the interruption rather than rewriting history.
 
-During Diamond vacancy, routine and emergency continuity authority remains
-narrow, temporary, recorded, reviewable, and unable to invest Diamond or
-appoint a Hypergiant. High Freemason replacement requires independent Forge
+During Hypergiant vacancy, routine and emergency continuity authority remains
+narrow, temporary, recorded, reviewable, and unable to invest the sovereign
+title or appoint a Hypergiant. High Freemason replacement requires independent Forge
 review and cannot arise through self-certification or unilateral appointment.
 The Proliteriate network persists through node change, witness recall, and
 mandate completion without acquiring a permanent speaker or numerical
@@ -463,8 +476,8 @@ succession, and Tombstone records described here.
 `src/world/stonebend/foundation.rs` is the bounded first-pass model for Aura Way
 stages, Current and Aether batch provenance, material Hollowing, proof,
 regional stone profiles, and Aura manifestation.
-`src/world/stonebend/second_pass.rs` composes the existing stable identities into
-the three gates, scoped Title, Diamond tenure, distributed Proliteriate,
+`src/world/stonebend/second_pass.rs` composes legacy stable identities into
+the three gates, scoped Title, Hypergiant tenure, distributed Proliteriate,
 challenge/removal, Tombstone, succession, and delegated gate-accountability
 model.
 `src/world/stonebend/third_pass.rs` adapts that stable core to policy-defined
@@ -515,8 +528,8 @@ conflicting proof blocks final sealing without erasing the petition or the
 underlying event.
 
 The permanence cycle is **Claim → Pattern → Integrity → Capacity → Title →
-Yield**. The Freemason forges Claim and boundary; Diamond and its temporary
-Hypergiant bearer alone authorize the final Permanence Seal; the Proliteriate
+Yield**. The Freemason forges Claim and boundary; the active Hypergiant alone
+authorizes the final Permanence Seal; the Proliteriate
 protects public Yield and inheritance. No other House may independently make a
 temporary state permanent.
 

@@ -5,7 +5,7 @@ use hollow_grove::gameplay::{
 };
 use hollow_grove::world::extraction::{ExtractionSiteId, canonical_extraction_sites};
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+pub(crate) fn tool_main() -> Result<(), Box<dyn std::error::Error>> {
     let definition = deep_pressure_functional_lore();
     definition.validate()?;
     let campaign = DeepPressureState::new();

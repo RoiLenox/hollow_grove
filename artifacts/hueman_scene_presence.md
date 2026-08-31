@@ -54,12 +54,12 @@ Each crossover scene carries a characteristic kind of presence before any encoun
 - engineering: Flynt is the recognition and field-engineering function that moves capability into lived operation
 - style: Flynt presents as a boardwalk-casino hunting capital with neon vice, opal glamour, North African desert grounds, and hard modern swagger
 - Tross: the sovereign executive from whom all Flynt constitutional authority derives
-- Chimera: the lower apex integration of Wolf, Bat, and Snake/Fish
-- Manticorp: the maintained sovereign Synthesis Form held by Tross, and the lawful military institution formally led by Tross
-- urban: Tross publicly commands Manticorp while the same man is Mystery Man/Mr. X, leader of the Gallows underground
-- rural: The Gallows is Flynt's underground organized-crime body, with We Fairy Men and the Basin bands remaining distinct
+- Chimera: the unique feminine First Companion and higher Synthesis of Gargoyle, Werewolf, and Mariner/Merman; selection among capacities is STATUS: WORKING
+- Manticore: the Tross's masculine mythological identity and maintained sovereign Synthesis Form; Manticorp is the body of soldiers he leads
+- public: The Tross commands the Manticorp soldier body and Mystery Men, with The Marquise extending Mystery Men into maritime operations
+- Basin: the Tross/Manticore leads We Fairy Men; when that body acts under him in the organized underworld, it manifests as The Gallows
 - opals: mined feedstock and recognition-rich gleam carried through Flynt engineering
-- Opal Oil: Flynt's signature resource produced through regular current and holographic aura
+- Opal Oil: Flynt's signature resource produced through legacy physical regular current and holographic aura compatibility mechanics
 - Flynt presence keeps hidden value and field usefulness legible before title catches up
 
 ## Sandmanor Competitive Presence
@@ -78,7 +78,7 @@ Each crossover scene carries a characteristic kind of presence before any encoun
 ## Inverse Circle Presence
 
 - The Stairway to Heaven / Ascend: high border ascent above an underground inverse curve, with burden stations, rung marks, and lifted edge traffic
-- The Riptide / Retrieve: emergency water corridor above an underground inverse curve, with rescue beacons, drag marks, intake traffic, and Merman roaming along the rim
+- The Riptide / Retrieve: emergency water corridor above an underground inverse curve, with rescue beacons, drag marks, intake traffic, and Mariner/Merman roaming along the rim
 - The Current Seanad / Deliberate: institutional water court above an underground inverse curve, with hearing chambers, evidence crossings, and measured assembly
 - Mt. Aura / Aspire: outer border curve from Stonebend to Sandmanor above an underground inverse curve, with bright air, higher goals, and felt border pressure before sight
 
@@ -99,12 +99,12 @@ Each crossover scene carries a characteristic kind of presence before any encoun
 ## Artifact Inputs
 
 Hueman Crossover Scenes bytes: 2446.
-Hueman Archetype Lens bytes: 3108.
-Hueman Stonebend Roles bytes: 10286.
-Hueman Flynt Constitution bytes: 5513.
-Hueman Glaushouse Roles bytes: 7910.
-Hueman Sandmanor Roles bytes: 9864.
-Hueman Inverse Circle bytes: 2513.
+Hueman Archetype Lens bytes: 3109.
+Hueman Stonebend Roles bytes: 10803.
+Hueman Flynt Constitution bytes: 7340.
+Hueman Glaushouse Roles bytes: 8063.
+Hueman Sandmanor Roles bytes: 10038.
+Hueman Inverse Circle bytes: 2521.
 Current Synthesis collision relay bytes: 3024.
 
 ## Boundary Reminder

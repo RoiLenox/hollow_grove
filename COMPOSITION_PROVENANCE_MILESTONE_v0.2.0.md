@@ -64,7 +64,7 @@ Four production-backed witnesses were verified:
 1. **Point progression:** `Point -> Point² -> stabilized Point`, using the
    existing kernel cycle and canonical Point² fixture. The landed Point² is a
    source for the stabilization record.
-2. **Sandmanor transformation:** `Gnome -> Minotaur -> Hecaton`, using the
+2. **Sandmanor transformation:** `Gnome -> Faun -> Minotaur`, using the
    existing Sandmanor legality validator. The Being node remains stable while
    the existing domain owns Frame legality.
 3. **House composition:** selected Sandmanor local components compose into a

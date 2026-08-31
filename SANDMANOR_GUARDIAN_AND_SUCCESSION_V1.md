@@ -46,21 +46,26 @@ they are not reduced to soldiers or police.
 
 Aura Farm is one Minorian cultivation system with two constitutional halves:
 
-1. **Aura Fields** cultivate physical nourishment and useful material life:
+1. **Aura Fields** preserve and project living household presence, identity,
+   reputation, continuity, heritage, relationship, accumulated Aura, and also
+   cultivate physical nourishment and useful material life:
    crops, orchards, herbs, medicinal plants, flowers, fibers, livestock, soil,
    irrigation, storage, preservation, tools, and cultivated environments.
-2. **Content Farm** cultivates mental, cultural, and Aura nourishment: stories,
-   lessons, articles, memory, tutorials, public information, entertainment,
-   performance, images, archives, advertising, trends, and digital
-   environments.
+2. **Content Farm** cultivates what a family has and produces across a life:
+   family, descendants, relationships, memories, stories, traditions,
+   knowledge, craft, creative work, possessions, household culture,
+   inheritance, reputation, accumulated experience, and material or cultural
+   output. Media and public information may be included, but do not define the
+   whole institution.
 
 They are not separate Houses, currencies, or economic indexes.
 
-> **Food feeds the Body. Content feeds the Mind and Aura.**
+> **Content Farm cultivates what the family has and makes. Aura Field preserves what the family is and projects.**
 
-A healthy Content Farm educates, preserves memory, entertains responsibly,
-cultivates skill, nourishes attention, and maintains cultural continuity.
-Content production is not inherently corrupt.
+A healthy Content Farm cultivates family life, preserves memory, transmits
+tradition, develops skill and craft, stewards inheritance, nourishes attention,
+and maintains cultural continuity. It is not merely internet or social-media
+content production.
 
 An exploitative Content Farm may prioritize volume over quality, exhaust its
 audience, imitate without understanding, manufacture outrage, cultivate
@@ -153,23 +158,27 @@ Ordinary speech includes:
 
 The name County does not impose a world-wide county system.
 
-## 6. Guardian Synthesis and Mantle
+## 6. Form, Hand, and Mantle
 
-Guardian progress is never automatic species evolution or a numerical
-level-up:
+Form progression is never an automatic species evolution or numerical
+level-up. Social roles, attendant classes, sovereign Hands, and mantles remain
+separate from Form:
 
 ```text
 ordinary service
 → demonstrated qualification
 → Recipe authorization
 → Glaüshouse compatibility and lawful Synthesis
-→ investiture into a mantle
+→ any separate lawful investiture into a mantle or sovereign Hand
 → continued service, maintenance, and renewal
 ```
 
-Qualification, Recipe, Synthesis Form, mantle, jurisdiction, and present
-authority remain separate records. Stable person identity continues through
-every stage.
+Qualification, Recipe, Form, social role, attendant class, sovereign Hand,
+mantle, jurisdiction, and present authority remain separate records. Stable
+person identity continues through every stage. The appointment, removal, and
+succession mechanics for Hecaton and Pegasus remain **STATUS: OPEN**; the
+runtime records only an already-lawful Hand association and does not invent
+that mechanism.
 
 The Synthesis Form is a real maintained body. The mantle is a public trust. A
 guardian whose mantle is suspended, removed, or retired loses authority but
@@ -182,14 +191,15 @@ practice, Ways, maintenance, renewal, compatible environment, institutional
 care, and the Hueman. Political defeat never becomes automatic bodily
 punishment.
 
-## 7. Minorian Guardian Line
+## 7. Minorian Form and Hand
 
 ```text
-Gnome → Minotaur → Hecaton
+Gnome → Faun → Minotaur
 ```
 
-A Gnome proves responsible tending of a physical or cultural field. Output
-volume alone never qualifies a candidate.
+A Gnome is the base Minorian Form, Faun is the intermediate Form, and Minotaur
+is the mature Form. The detailed biological or metaphysical mechanism remains
+open; output volume alone never qualifies a candidate.
 
 Minotaur is a real Synthesis Form. Its mantle is **GUARDIAN OF THE FIELDS**,
 assigned to a defined field, farm, orchard, medicinal system, storage and
@@ -201,8 +211,9 @@ failure.
 
 > **The Gnome tends the field. The Minotaur answers for it.**
 
-Hecaton is the higher maintained Minorian Synthesis. Its mantle is **GUARDIAN OF THE WHOLE FARM**.
-Its many hands signify coordination across fields,
+Hecaton is the Minorian sovereign Hand associated with the reigning Sandman,
+not a higher maintained Synthesis or Minotaur stage IV. Its related mantle is
+**GUARDIAN OF THE WHOLE FARM**. Its many hands signify coordination across fields,
 workers, tools, irrigation, medicine, livestock, storage, distribution,
 education, Content Farms, public information, and cultural nourishment.
 
@@ -213,15 +224,17 @@ cascading failure.
 
 > **The Minotaur guards a field. Hecaton keeps the fields from failing one another.**
 
-Hecaton is broader responsibility, not merely a stronger Minotaur.
+Hecaton is sovereign-level responsibility, not a stronger Minotaur and not an
+ordinary Form.
 
-## 8. Minoan Guardian Line
+## 8. Minoan Form and Hand
 
 ```text
-Elf → Centaur → Pegasus
+Elf → Satyr → Centaur
 ```
 
-An Elf proves responsible care for a defined coast through ordinary coastal,
+A base Elf may grow through the intermediate Satyr Form to the mature Centaur
+Form. An Elf proves responsible care for a defined coast through ordinary coastal,
 recreational, rescue, design, conservation, public-event, education,
 hospitality, harbor, weather, surf, or swimming work.
 
@@ -234,16 +247,17 @@ It grants neither unlimited police nor military power.
 
 > **The Elf watches the shore. The Centaur answers when the shore breaks.**
 
-Pegasus is the higher maintained Minoan Synthesis. Its mantle is **GUARDIAN OF THE HORIZON**.
-It governs regional awareness across coastwide weather, storms,
+Pegasus is the Minoan sovereign Hand associated with the reigning Sandman, not
+a higher maintained Synthesis or Centaur stage IV. Its related mantle is
+**GUARDIAN OF THE HORIZON**. It governs regional awareness across coastwide weather, storms,
 distant danger, settlement evacuation, Current Sea approaches, public
 movement, land-sea-sky relationships, navigation, and multiple coastal
 communities.
 
 > **The Centaur guards the beach. Pegasus guards the horizon.**
 
-Pegasus is regional overview and early recognition, not merely a flying
-Centaur.
+Pegasus is sovereign regional overview and early recognition, not a flying
+Centaur or ordinary Form.
 
 ## 9. Suspension, Removal, and Renewal
 
@@ -274,11 +288,11 @@ or index exists.
 
 ## 11. Reciprocal Improvement
 
-Hecaton masters cultivation, nourishment, patience, seasonal thinking,
+The Hecaton holder brings mature Minorian cultivation, nourishment, patience, seasonal thinking,
 interior stewardship, coordinated labor, Aura Fields, Content Farm, and
 long-term Continuance.
 
-Pegasus masters liberty, movement, public hospitality, coastal stewardship,
+The Pegasus holder brings mature Minoan liberty, movement, public hospitality, coastal stewardship,
 rescue, readiness, weather, horizon-awareness, Aura Beach, and Current Sea
 approaches.
 
@@ -291,15 +305,16 @@ must receive another Way without losing their own.
 
 Each final Contest pair contains exactly:
 
-- one qualified Minorian Hecaton holding the Guardian of the Whole Farm mantle;
-- one qualified Minoan Pegasus holding the Guardian of the Horizon mantle.
+- one qualified Minorian Minotaur holding the Hecaton Hand and Guardian of the Whole Farm mantle;
+- one qualified Minoan Centaur holding the Pegasus Hand and Guardian of the Horizon mantle.
 
-No two Hecatons, two Pegasi, base Forms, mantleless candidates, or candidates
-with unresolved disqualifying corruption form the final pair.
+No pair without one holder of each Hand, no base or intermediate Forms,
+mantleless candidates, or candidates with unresolved disqualifying corruption
+form the final pair.
 
-The Hecaton sincerely teaches cultivation, nourishment, patience, seasonal
+The Hecaton holder sincerely teaches cultivation, nourishment, patience, seasonal
 thinking, interior stewardship, coordinated labor, Aura Fields, Content Farm,
-and responsibility for what enters a life. The Pegasus sincerely teaches
+and responsibility for what enters a life. The Pegasus holder sincerely teaches
 liberty, public movement, hospitality, coastal stewardship, rescue, readiness,
 horizon-awareness, Aura Beach, and Current Sea approaches.
 
@@ -320,13 +335,13 @@ winner.
 
 The five canonical trial domains are:
 
-1. **Aura Field Trial** — the Pegasus performs cultivation and interior
-   stewardship without the Hecaton completing the work.
-2. **Content Farm Trial** — the Pegasus cultivates truthful, educational,
-   memory-preserving, or attention-nourishing public content.
-3. **Liberty and Hospitality Trial** — the Hecaton preserves free public life
+1. **Aura Field Trial** — the Pegasus holder performs cultivation and interior
+   stewardship without the Hecaton holder completing the work.
+2. **Content Farm Trial** — the Pegasus holder cultivates family continuity,
+   memory, knowledge, craft, inheritance, or another life-generating content.
+3. **Liberty and Hospitality Trial** — the Hecaton holder preserves free public life
    without enclosing or abandoning it.
-4. **Rescue and Horizon Trial** — the Hecaton demonstrates evacuation, hazard
+4. **Rescue and Horizon Trial** — the Hecaton holder demonstrates evacuation, hazard
    recognition, weather response, rescue, and awareness beyond an enclosed
    domain.
 5. **Reciprocal Integration Trial** — both Ways address one combined field,
@@ -365,7 +380,11 @@ The Contest measures the capacity both to learn and to share mastery:
 
 > **I can receive another Way without losing my own.**
 
-## 16. Sandman Convergence and Mantle
+## 16. Sandman / Demiurge Convergence and Mantle
+
+**The Sandman = Demiurge.** Demiurge is the Sandman's sovereign Synthesizer
+and apex identity, not a third attendant class. Hecaton and Pegasus are the
+parallel sovereign Hands of the Minorian and Minoan sides.
 
 The most-improved candidate becomes eligible through:
 
@@ -383,9 +402,11 @@ other Way while preserving one stable person identity. The losing candidate
 retains their guardian Form and mantle unless independently removed, remains
 honored, may continue serving, and may enter a later lawful Contest.
 
-The Sandman Form is a real maintained Synthesis/convergence. The Sandman mantle
-is the singular sovereign authority. Only one active mantle exists. Removal of
-the mantle does not automatically erase the Form.
+The historical Sandman convergence runtime remains maintained for replay
+compatibility. It projects the sovereign identity without turning either Hand
+into a Form. The Sandman mantle is the singular sovereign authority. Only one
+active mantle exists. Removal of the mantle does not automatically erase an
+existing compatible mature Form record.
 
 The mantle requires equal protection of both peoples; liberty with
 responsibility; restraint of unnecessary Southern Law and reckless beach harm;
@@ -421,13 +442,13 @@ candidate, ballot, insertion, random, or catalog order.
 
 ## 19. Canonical Maxims
 
-> **The Gnome tends the field. The Minotaur answers for it.**
+> **Gnome becomes Faun; Faun becomes Minotaur.**
 
-> **The Minotaur guards a field. Hecaton keeps the fields from failing one another.**
+> **Hecaton is the Minorian Hand, not Minotaur stage IV.**
 
-> **The Elf watches the shore. The Centaur answers when the shore breaks.**
+> **Elf becomes Satyr; Satyr becomes Centaur.**
 
-> **The Centaur guards the beach. Pegasus guards the horizon.**
+> **Pegasus is the Minoan Hand, not Centaur stage IV.**
 
 > **The Form remains a body. The mantle remains a trust.**
 

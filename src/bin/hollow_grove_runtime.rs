@@ -1,4 +1,5 @@
 use std::env;
+use std::fs;
 use std::io;
 use std::path::{Path, PathBuf};
 use std::thread;
@@ -80,10 +81,19 @@ use hollow_grove::{
 const RUNTIME_INPUT_ARTIFACT_PATH: &str = "artifacts/runtime_input.txt";
 const RUNTIME_MEMORY_ARTIFACT_PATH: &str = "artifacts/runtime_memory.txt";
 const RUNTIME_LOOP_STATUS_ARTIFACT_PATH: &str = "artifacts/runtime_loop_status.md";
+const RUNTIME_ARTIFACT_GENERATION_PATH: &str = "artifacts/runtime_artifact_generation.json";
 const INSTITUTIONAL_RUNTIME_CONTEXT_ARTIFACT_PATH: &str =
     "artifacts/institutional_runtime_context.md";
 const SCREEN_MAP_INTENT_ARTIFACT_PATH: &str = "artifacts/screen_map_intent.json";
 const DEFAULT_INTERVAL_MS: u64 = 1_000;
+const RUNTIME_GENERATION_INPUT_PATHS: &[&str] = &[
+    RUNTIME_INPUT_ARTIFACT_PATH,
+    SCREEN_MAP_INTENT_ARTIFACT_PATH,
+    "artifacts/hueman_slice_state.txt",
+    "artifacts/current_synthesis_tui_state.txt",
+    "artifacts/current_synthesis_events.txt",
+    INSTITUTIONAL_STATE_ARTIFACT_PATH,
+];
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 struct RuntimeConfig {
@@ -1407,6 +1417,49 @@ fn runtime_resume_cycle_at(root: &Path) -> io::Result<usize> {
         .unwrap_or(0))
 }
 
+fn hash_generation_bytes(mut hash: u64, bytes: &[u8]) -> u64 {
+    const FNV_PRIME: u64 = 0x0000_0100_0000_01B3;
+    for byte in bytes {
+        hash ^= u64::from(*byte);
+        hash = hash.wrapping_mul(FNV_PRIME);
+    }
+    hash
+}
+
+fn runtime_input_generation_at(root: &Path) -> io::Result<u64> {
+    let mut hash = 0xCBF2_9CE4_8422_2325;
+    for relative_path in RUNTIME_GENERATION_INPUT_PATHS {
+        hash = hash_generation_bytes(hash, relative_path.as_bytes());
+        match fs::read(root.join(relative_path)) {
+            Ok(bytes) => {
+                hash = hash_generation_bytes(hash, b"\x01");
+                hash = hash_generation_bytes(hash, &bytes);
+            }
+            Err(error) if error.kind() == io::ErrorKind::NotFound => {
+                hash = hash_generation_bytes(hash, b"\x00");
+            }
+            Err(error) => return Err(error),
+        }
+    }
+    Ok(hash)
+}
+
+fn parse_completed_runtime_generation(contents: &str) -> Option<u64> {
+    let document: serde_json::Value = serde_json::from_str(contents).ok()?;
+    if document.get("schema_version")?.as_str()? != "0.1.0"
+        || document.get("status")?.as_str()? != "complete"
+    {
+        return None;
+    }
+    u64::from_str_radix(document.get("input_generation")?.as_str()?, 16).ok()
+}
+
+fn completed_runtime_generation_at(root: &Path) -> Option<u64> {
+    fs::read_to_string(root.join(RUNTIME_ARTIFACT_GENERATION_PATH))
+        .ok()
+        .and_then(|contents| parse_completed_runtime_generation(&contents))
+}
+
 fn build_runtime_status_output(
     cycle_number: usize,
     elapsed: Duration,
@@ -1993,6 +2046,14 @@ fn run_runtime_cycle_at(root: &Path, cycle_number: usize) -> io::Result<RuntimeC
                 &root.join(INSTITUTIONAL_STATE_ARTIFACT_PATH),
                 world_session.persisted_state_output(),
             );
+            let input_generation = runtime_input_generation_at(root)?;
+            stage_artifact(
+                &mut session,
+                &root.join(RUNTIME_ARTIFACT_GENERATION_PATH),
+                format!(
+                    "{{\n  \"schema_version\": \"0.1.0\",\n  \"cycle\": {cycle_number},\n  \"input_generation\": \"{input_generation:016x}\",\n  \"status\": \"complete\"\n}}\n"
+                ),
+            );
             session.commit()?;
 
             (
@@ -2063,28 +2124,37 @@ fn main() -> io::Result<()> {
     };
 
     let mut cycle_number = runtime_resume_cycle_at(Path::new("."))?;
+    let mut tick_count = 0usize;
+    let mut last_generation = completed_runtime_generation_at(Path::new("."));
 
     loop {
-        cycle_number += 1;
-        let cycle = run_runtime_cycle_at(Path::new("."), cycle_number)?;
+        tick_count += 1;
+        let generation = runtime_input_generation_at(Path::new("."))?;
+        if last_generation != Some(generation) {
+            cycle_number += 1;
+            let cycle = run_runtime_cycle_at(Path::new("."), cycle_number)?;
+            last_generation = Some(runtime_input_generation_at(Path::new("."))?);
 
-        if !config.quiet {
-            println!(
-                "cycle {} [{}/{}] complete in {} ms -> {}",
-                cycle.cycle_number,
-                cycle.mode.as_str(),
-                cycle.action_taken,
-                cycle.elapsed.as_millis(),
-                cycle.status_path.display()
-            );
-        }
+            if !config.quiet {
+                println!(
+                    "cycle {} [{}/{}] complete in {} ms -> {}",
+                    cycle.cycle_number,
+                    cycle.mode.as_str(),
+                    cycle.action_taken,
+                    cycle.elapsed.as_millis(),
+                    cycle.status_path.display()
+                );
+            }
 
-        if cycle.should_stop {
-            break;
+            if cycle.should_stop {
+                break;
+            }
+        } else if !config.quiet {
+            println!("runtime idle: input generation {generation:016x} is unchanged");
         }
 
         if let Some(max_cycles) = config.cycles
-            && cycle_number >= max_cycles
+            && tick_count >= max_cycles
         {
             break;
         }
@@ -2109,9 +2179,9 @@ mod tests {
         RuntimeMode, SCREEN_MAP_INTENT_ARTIFACT_PATH, ScreenMapApplicationIntent, ScreenMapIntent,
         ScreenMapPairIntent, ScreenMapSpatialScopeIntent, build_consumed_screen_map_intent_receipt,
         build_runtime_input_template, build_runtime_memory_output, build_runtime_status_output,
-        parse_runtime_cli, parse_runtime_input, parse_runtime_memory, parse_screen_map_intent,
-        route_endpoints, run_runtime_cycle_at, runtime_resume_cycle_at,
-        translate_screen_map_intent, usage,
+        parse_completed_runtime_generation, parse_runtime_cli, parse_runtime_input,
+        parse_runtime_memory, parse_screen_map_intent, route_endpoints, run_runtime_cycle_at,
+        runtime_resume_cycle_at, translate_screen_map_intent, usage,
     };
     use crate::current_synthesis_support::{
         ARTIFACT_INDEX_PATH, DESKTOP_STATUS_ARTIFACT_PATH, PROMPT_ARTIFACT_PATH,
@@ -2140,6 +2210,20 @@ mod tests {
 
     fn write_fixture(root: &Path, relative_path: &str, contents: &str) {
         write_text_artifact(&root.join(relative_path), contents).expect("fixture should write");
+    }
+
+    #[test]
+    fn completed_generation_is_reused_only_for_a_valid_complete_record() {
+        let complete = "{\"schema_version\":\"0.1.0\",\"input_generation\":\"0123456789abcdef\",\"status\":\"complete\"}";
+        assert_eq!(
+            parse_completed_runtime_generation(complete),
+            Some(0x0123_4567_89ab_cdef)
+        );
+        assert_eq!(
+            parse_completed_runtime_generation(&complete.replace("complete", "staging")),
+            None
+        );
+        assert_eq!(parse_completed_runtime_generation("not-json"), None);
     }
 
     #[test]

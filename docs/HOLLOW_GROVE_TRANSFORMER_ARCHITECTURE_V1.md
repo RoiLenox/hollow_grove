@@ -48,7 +48,7 @@ hollow-grove-semantic-kernel scoped semantic records
         ↓
 existing CompositionCatalog provenance and replay
         ↓
-existing Runtime Federation semantic orchestration
+existing Runtime Rampart semantic orchestration
         ↓
 model-independent SemanticInterpreter
         ↓
@@ -102,7 +102,7 @@ witness migration supplies only an `unspecified-v1` operation marker, and
 legacy dataset projection supplies only a noncanonical `point.unknown-v1`
 display placeholder.
 
-## Federation cycle
+## Rampart cycle
 
 Every transformer-assisted action follows:
 
@@ -131,7 +131,7 @@ canonical position unchanged. The resulting state is restored as the next Way
 Back context.
 
 Roï continuity and the world-state counterpart jointly serve the one existing
-Runtime Federation through traits. The default world-state implementation is
+Runtime Rampart through traits. The default world-state implementation is
 read-only. Domain-specific House, Compromise, containment, succession, and
 embodied-effect rules plug into those validation traits; they are never
 delegated to the model.

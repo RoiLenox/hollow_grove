@@ -36,7 +36,7 @@ fn build_current_synthesis_collision_relay_at(root: &Path) -> io::Result<String>
     ))
 }
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let current_synthesis_collision_relay =
         build_current_synthesis_collision_relay_at(Path::new("."))?;
     let artifact_path = artifact_path();

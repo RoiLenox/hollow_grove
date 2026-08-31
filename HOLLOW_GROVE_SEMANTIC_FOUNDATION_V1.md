@@ -4,32 +4,43 @@ This checkpoint records the semantic foundation that is now enforced in code.
 
 It is a boundary document, not a second lore source. Canonical meaning lives in the contract, validators, fixtures, and freeze tests named below.
 
-## The Federation and HGRF compatibility
+## The Rampart of Roi and Roselina and HGRF compatibility
 
 The canonical continuity layer above completed universal-kernel passes is:
 
-- `THE_RUNTIME_FEDERATION_V1.md`
+- `THE_RAMPART_V1.md`
 
-The one Federation carries accepted, provenance-preserving consequence between
+The one Rampart carries accepted, provenance-preserving consequence between
 constitutional domains and into authoritative gameplay. The historical
-`RuntimeFederation`/HGRF layer is compatibility machinery, not another
-Federation, sovereign, Guide, fifth House, second Constitution, domain reducer,
+`RuntimeRampart`/HGRF layer is compatibility machinery, not another
+Rampart, sovereign, Guide, fifth House, second Constitution, domain reducer,
 or part of the universal recursion kernel.
 
 Its kernel-facing Hollow Grove grammar is:
 
 `The Way Back -> The Initiation -> The Gathering -> The Festival -> The Way Back`
 
-The universal kernel remains bounded to neutral computation. The Federation
+The universal kernel remains bounded to neutral computation. The Rampart of Roi and Roselina
 begins only after a completed result becomes eligible for constitutional
 interpretation and evidence.
 
-## Root Material Laws
+## Root Semantic Laws
 
-- `Current = blood`
-- `Hollow = pus`
-- `Aura = air / pressure / light`
-- `Whole -> Hollowing -> Hollow + Hollowed`
+- `Practitioner` names the whole person.
+- `Current` names the practitioner's relational participation in a larger
+  social, institutional, environmental, or collective whole.
+- `Aura` names the practitioner's individually cultivated internal ability,
+  knowledge, perception, discipline, magic, or capacity.
+- `CURRENT + AURA → SYNTHESIS` is the Level 1 practitioner equation.
+- faculty is a distinct recognition axis, not Current, Aura, Synthesis, or rank.
+- `Whole -> Hollowing -> Hollow + Hollowed` remains the material Hollow law.
+
+The pre-migration mappings that associated the runtime Current quantity with
+blood and the runtime Aura quantity with air, pressure, or light are
+**LEGACY / DEPRECATED universal definitions**. Their serialized fields and
+historical behavior remain compatibility mechanics; they are not silently
+reinterpreted as the new semantic axes. The separation is enforced by
+`HOLLOW_GROVE_SYNTHESIS_CANON_V1.md` and the typed practitioner ontology.
 
 The additive balance and V1 classification contracts are recorded in
 `HOLLOW_GROVE_METAPHYSICAL_BALANCE_V1_DRAFT.md` and
@@ -57,11 +68,16 @@ Frame exclusivity and alignment checks:
 - `src/current_synthesis_scenario.rs`
 - `tests/hollow_grove_alignment.rs`
 
-## Frame / Flow / Glow
+## Frame / Flow / Glow compatibility
 
 - `Frame` stays attached only to legal living-mech forms.
-- `Flow` remains Current-based physical capability.
-- `Glow` remains Aura-based perceptual and expressive capability.
+- `Flow` remains a legacy Current-based physical capability term in runtime V1.
+- `Glow` remains a legacy Aura-based perceptual and expressive capability term
+  in runtime V1.
+
+Flow and Glow are compatibility mechanics. They do not define the universal
+meaning of practitioner Current and Aura and are not separate practitioner
+classes.
 
 Runtime enforcement:
 
@@ -140,31 +156,29 @@ Primary enforcement for that extension:
 - `src/bin/current_synthesis_tui.rs`
 - `tests/main_cli.rs`
 
-## Progression Ladders
+## House-specific progression geometry
 
-Current ladder:
+Each House retains an intentional institutional topology defined by
+`HOLLOW_GROVE_SYNTHESIS_CANON_V1.md` and its House constitution. Across those
+topologies, Hollow Grove locks one exact eight-level Current/Aura pairing.
 
-- `Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre -> Troglodyte`
+- Stonebend's active Synthesis ladder is
+  `Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre -> Troglodyte`.
+- Sandmanor has distinct Minorian and Minoan peoples, Forms, social roles,
+  cultural domains, attendant classes, and sovereign Hands unified by the
+  Sandman/Demiurge.
+- Glaüshouse uses a common Pixie foundation, Sprite/Spirit and Fairy/Nymph
+  branches, Siren reunification, and Muse apex; Sylph remains the level-6 Aura
+  counterpart without creating a clinical office.
+- Flynt has three practitioner traditions and base Synthesis forms leading to
+  the higher `Chimera -> Manticore` relationship.
 
-Aura ladder:
+`Troglodyte + Muse -> Seer` remains canonical as a Level 2 cross-House
+Synthesis. It is not superseded by the Level 1 practitioner equation.
 
-- `Pixy -> Sprite -> Faerie -> Nymph -> Siren -> Muse`
-
-Canonical note:
-
-- `Troglodyte` and `Muse` remain matched apex counterparts.
-- `Troglodyte + Muse = Seer` remains canonical world law and is not flattened into a single ladder.
-
-In Hueman presentation, these Current entries are available Synthesis forms:
-bounded transformations of the continuing Hueman, with preserved anchors,
-Recipe history, strain, and return obligations. They are not automatically
-separate companions or species entries. Constitutional regional peoples remain
-distinct from a Hueman's visually related Synthesis form.
-
-Stonebend, Sandmanor, Glaüshouse, and Flynt each practice the shared Current
-through distinct recipes and evidence cultures: structure and repair;
-measurement and lineage; embodied care and recovery; and demonstrated capacity
-under witness. These are House traditions, not separate Current ladders.
+The exact level crosswalk is `Gremlin/Pixie`, `Goblin/Sprite`, `Ghoul/Fairy`,
+`Spectre/Spirit`, `Troll/Siren`, `Ork/Sylph`, `Ogre/Nymph`, and
+`Troglodyte/Muse`. `Pixy` and `Faerie` remain compatibility aliases only.
 
 Current runtime references:
 
@@ -204,7 +218,7 @@ Enforcement and generated artifacts:
 - The Nightingales are Glaüshouse's constitutional clinical institution,
   symbolically and functionally aligned with white blood cells.
 - House: Glaüshouse.
-- Medium: Current.
+- Historical runtime medium: legacy Current quantity.
 - They are a civic-body correspondence rather than a literal species definition.
 - They are not a generic nurse species. Their lawful members may serve as
   nurses, patient advocates, witnesses, and emergency clinical responders.
@@ -290,7 +304,8 @@ distinct. One stable core Title may carry independent Formation Recognition,
 Public Circulation, and Operational Deployment scopes. A scope record never
 creates a second core identity.
 
-Diamond is the stable sovereign Title; Hypergiant is its temporary bearer.
+Hypergiant is Stonebend's sovereign title. Diamond's present role is
+**STATUS: OPEN**; its historical sovereign IDs remain LEGACY compatibility.
 Freemason carries Claim authority through the existing High Freemason office.
 The Proliteriate is a permanent distributed Yield network whose issue-specific
 witnesses are temporary and recallable. Spartacus is an archetype, not a
@@ -319,9 +334,9 @@ creating another Title. Limitation, supervision, suspension, remediation,
 restoration, and removal identify the exact constitutional layer affected.
 Restoration retains the interruption and evidence.
 
-Diamond vacancy supports only temporary bounded continuity actions with Claim,
+Hypergiant vacancy supports only temporary bounded continuity actions with Claim,
 boundary, and Yield traces. No continuity record is a Regent, Hypergiant, or
-bearer of Diamond. Independent Forge review replaces a High Freemason without
+bearer of sovereign authority. Independent Forge review replaces a High Freemason without
 self-certification or unilateral appointment. Proliteriate network identity
 persists without a permanent speaker or fixed numerical threshold.
 

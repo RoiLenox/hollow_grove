@@ -182,9 +182,10 @@ options. It is an after-action and planning interface, not an imperial map room.
 ## House interpretation
 
 Flynt asks what a system can do under pressure. Law of Capacity, Resynce,
-Tross, Wardens, Mystery Men, refusal, and care-handoff boundaries require
+Tross, Mystery Men, refusal, and care-handoff boundaries require
 capacity to be dated, situated, supplied, maintainable, and ethically
-constrained. Territory and obedience are not Capacity.
+constrained. Flynt's general civic designation remains STATUS: OPEN; the
+superseded Wardens title is not projected here. Territory and obedience are not Capacity.
 
 ## Library integration
 

@@ -1,14 +1,14 @@
 # Hollow Grove Classification Reconciliation V1
 
-Status: V1 semantic reconciliation; no new executable IDs
-Authority: subordinate to the Compromise, House constitutions, and frozen
-Frame/Flow/Glow runtime
+Status: semantic reconciliation with stable archive compatibility
+Authority: subordinate to the Compromise, the Practitioner/Synthesis canon,
+House constitutions, and frozen runtime formats
 
 ## Sympian lineage
 
 Sympian describes a Being's continuity relationship to embodied Synthesis. It
-is not a fourth House, a species ladder, a profession, or a replacement for
-Frame identity.
+is not a House, species ladder, profession, Current, Aura, faculty, or
+replacement for Frame identity.
 
 | Category | Meaning | What it does not imply |
 |---|---|---|
@@ -16,90 +16,136 @@ Frame identity.
 | Matural Sympian | continuity cultivated through practice, maintenance, lineage, or an endured prior change | automatic Synthesis, superiority, or inherited authority |
 | Synthetic | continuity whose current embodiment depends on a recorded cross-boundary Synthesis relation | loss of Being identity, permanent duration, or office |
 
-One Being may move between categories while retaining its stable identity.
-Classification changes preserve prior Names, Forms, evidence, consent, Recipe,
-recovery, and recognition history. No visual appearance or legacy field may
-infer a category.
+One Being may move between categories while retaining stable identity.
+Classification changes preserve Names, Forms, evidence, consent, Recipe,
+recovery, and recognition history. No appearance or legacy field may infer a
+category.
 
-The four House boundary is explicit:
+## Practitioner classification
+
+Practitioner names the whole person. Current is the practitioner's relational
+part in a larger whole; Aura is the practitioner's individually cultivated
+internal capacity. Their integration manifests a Level 1 Synthesis:
 
 ```text
-Stonebend names continuity.
-Sandmanor proves lineage and method.
-Glaüshouse clears embodiment and recovery.
-Flynt recognizes demonstrated function.
+CURRENT + AURA → SYNTHESIS
 ```
 
-No single category creates Title, consent, Clearance, office, or Synthesis.
+Faculty remains orthogonal. Presynce, Prefog, Prefig, Precog, and Resynce are
+not ranks or substitutes for Current, Aura, or Synthesis.
 
-## Current ladder
+## House-specific Synthesis classification
 
-The V1 Current ladder is:
+House institutions retain distinct progression geometries. The shared
+Current/Aura pairing crosswalk is nevertheless locked at eight levels.
+
+### Stonebend
+
+The active Stonebend Synthesis ladder is:
 
 ```text
 Gremlin → Goblin → Ghoul → Spectre → Troll → Ork → Ogre → Troglodyte
 ```
 
-Spectre is a valid Current Frame and a bridge in the ladder. It preserves the
-Being and previously practiced Skill roots but grants no automatic Grip
-specialization. A Spectre may earn a context-specific expression through the
-ordinary evidence, practice, and House boundaries; omission from a Grip subset
-does not remove Spectre from Current continuity.
+`Spectre` is the active fourth pairing level.
 
-### Synthesis-form interpretation
+### Exact level crosswalk
 
-For Hueman play, the Current ladder names available Synthesis expressions. A
-Gremlin, Goblin, Ghoul, Spectre, Troll, Ork, Ogre, or Troglodyte form is a
-bounded transformation of a continuing Hueman, not an automatically separate
-companion or species entry. The form preserves the Hueman's anchors, Recipe
-history, strain, and return obligations.
+| Level | Current | Aura |
+|---:|---|---|
+| 1 | Gremlin | Pixie |
+| 2 | Goblin | Sprite |
+| 3 | Ghoul | Fairy |
+| 4 | Spectre | Spirit |
+| 5 | Troll | Siren |
+| 6 | Ork | Sylph |
+| 7 | Ogre | Nymph |
+| 8 | Troglodyte | Muse |
 
-This does not erase constitutional peoples. A regional Gargoyle, Werewolf, or
-Merman remains a stable people under Flynt law; a Gargoyle Synthesis form is a
-Hueman transformation that may borrow related visual language without making
-the Hueman a member of that people.
+The mapping is bidirectional. `Pixy` and `Faerie` remain stable legacy aliases
+for active `Pixie` and `Fairy`; they do not create additional levels.
 
-## Four House Current-Synthesis traditions
+### Sandmanor
 
-The Current ladder is shared, but no House practices it identically. Each
-House develops its own recipes, evidence standards, teaching methods, risks,
-and visual language. These are cultural approaches to one Current, not four
-new ladders or four exclusive species systems.
+Minorian and Minoan are parallel peoples, not stages. Their distinct Forms,
+social roles, cultural domains, attendant classes, sovereign Hands, and the
+Sandman/Demiurge apex identity are defined by
+`HOLLOW_GROVE_SYNTHESIS_CANON_V1.md` and `SANDMANOR_CONSTITUTION_V2.md`.
 
-| House | Practice emphasis | Typical Synthesis reading |
-|---|---|---|
-| Stonebend | material load, structure, repair, endurance | Gremlin/Troll/Troglodyte forms as practical mechanisms, braces, anchors, and maintained mass |
-| Sandmanor | lineage, measurement, models, memory, method | Goblin/Spectre forms as instruments of analysis, mapping, pattern, and recorded continuity |
-| Glaüshouse | embodiment, care, adaptation, consent, recovery | Ghoul/Troll forms as monitored clinical or ecological adaptations with visible care limits |
-| Flynt | demonstrated capacity, force, action, recognition, consequence | Gargoyle/Ork/Ogre forms as publicly accountable capability under witnessed pressure |
+### Glaüshouse
 
-Any Hueman may learn across House boundaries where evidence, consent, training,
-and recovery permit. House style changes how a form is cultivated and read; it
-does not erase the Hueman's identity or grant office automatically.
-
-## Aura ladder
-
-V1 executable Aura identity remains:
+The active form geometry is:
 
 ```text
-Pixy → Sprite → Faerie → Nymph → Siren → Muse
+Nightingale / Pixie
+├─ Marshal / Sprite → Spirit
+└─ Matron / Fairy → Nymph
+        both → Persephone / Siren → Prima Donna / Muse
 ```
 
-`Pixy` is the stable identifier; Pixie is a spoken or historical spelling only.
-Spirit remains Flynt's Hueman faculty/domain expression, not an Aura Frame.
-Sylph remains a cultural or descriptive Aura expression, not a production
-Frame. The proposed eight-stage sequence is retained as future expansion
-material and may not be inferred by matching tiers or presentation.
+`Fairy` is active canon. Stable `Faerie` data is a legacy alias. Spirit and
+Nymph are advanced Synthesis correspondences, not new public clinical offices.
+Sylph is active at pairing level 6 without creating a new clinical office.
 
-The matched apex law remains:
+### Flynt
+
+Warlock and Lycan are practitioner traditions; Gargoyle and Werewolf are their
+respective Synthesis forms. Mariner is the masculine Flynt mer-creature/form
+designation and is exactly Merman in Flynt terminology, not merely a human
+sailor or practitioner-tradition label. Any distinct source practitioner
+tradition for Mariner remains unnamed and **STATUS: OPEN**. These forms are no
+longer classified as three founding regional peoples by the practitioner
+ontology. Exact base Current/Aura equations are **STATUS: OPEN**.
+
+The Basin creature-pair classification is additive and exact:
 
 ```text
-Troglodyte + Muse = Seer
+Gargoyle ↔ Medusa
+Werewolf ↔ Vampire
+Mariner ↔ Mermaid
+Manticore ↔ Chimera
 ```
 
-## Migration boundary
+The left member is masculine and the right member feminine. Manticore's former
+unisex treatment and Mariner's former merely-human classification are
+**SUPERSEDED**. The pair layer does not collapse paired creatures or invent new
+Synthesis equations.
 
-This reconciliation changes interpretation, not stable Frame IDs, archive
-schema, or the recursion kernel. A future decision to add Spirit or Sylph as
-Frames, rename Pixy, or assign Spectre a new inherited Skill requires a
-versioned foundation migration with replay fixtures.
+The higher relationship remains:
+
+```text
+Gargoyle + Werewolf + Mariner/Merman → Chimera → Manticore
+```
+
+HOLD, DRIVE, ADAPT, SELECT, and INTEGRATE are **WORKING** concepts. Detailed
+higher mechanics are **STATUS: OPEN**.
+
+## Two Synthesis levels
+
+Level 1 is practitioner integration. Level 2 is a higher, composite, or
+cross-House relationship whose mechanics may be House-specific.
+
+```text
+Troglodyte + Muse → Seer
+```
+
+remains a locked Level 2 cross-House Synthesis. The sources are equal
+counterparts; Seer is not a universal extra rung.
+
+## Civic and compatibility reconciliation
+
+`Wardens` names Flynt's primary civic identity. Capitalized `Warden` also names
+the Tier I Minoan Current in Sandmanor when that progression context is
+explicit. Stable `CivicPeople::Wardens`, `WARDENS`, and other historical wire
+identifiers for the superseded platelet correspondence remain deprecated
+compatibility symbols so old archives and replays decode unchanged.
+
+Earlier runtime types used Current for a blood-associated circulating quantity
+and Aura for air-, pressure-, light-, or observation-associated quantities.
+Those meanings are **LEGACY PHYSICAL EXPRESSIONS / COMPATIBILITY MECHANICS**,
+not universal practitioner definitions. V1 fields retain their historical
+meaning and must not be silently reinterpreted.
+
+This reconciliation changes active semantics while preserving stable archive
+schemas. Future destructive renames require versioning, aliases, and replay
+fixtures.

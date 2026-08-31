@@ -17,7 +17,7 @@ use crate::guide_state_machine::{
     GuideTransitionEvent, GuideTransitionJournalStatus, GuideTransitionJournalStore,
 };
 use crate::institution::InstitutionalBeingId;
-use crate::kernel_invariants::{audit_gameplay_federation_binding, audit_guide_context};
+use crate::kernel_invariants::{audit_gameplay_rampart_binding, audit_guide_context};
 use crate::world::session::WorldSession;
 use crate::{read_text_artifact, write_text_artifact};
 
@@ -1155,7 +1155,7 @@ impl GameProtocolService {
                 self.rejection_with_guide_events(
                     request.request_id.clone(),
                     ProtocolRejectionCode::RuntimeRejected,
-                    format!("the Federation rejected the Guide crossing: {rejection:?}"),
+                    format!("the Rampart rejected the Guide crossing: {rejection:?}"),
                     events,
                 )
             }
@@ -1654,10 +1654,9 @@ impl GameProtocolService {
             .guide_session
             .guide_context_v1()
             .expect("the service stores only canonical Guide sessions");
-        let federation_audit =
-            audit_gameplay_federation_binding(self.application.federation_binding());
+        let rampart_audit = audit_gameplay_rampart_binding(self.application.rampart_binding());
         let guide_audit = audit_guide_context(&view.guide_context);
-        view.kernel_audit = KernelAuditView::from_reports(&federation_audit, &guide_audit);
+        view.kernel_audit = KernelAuditView::from_reports(&rampart_audit, &guide_audit);
         view.guide_transition_events = guide_events;
         view
     }

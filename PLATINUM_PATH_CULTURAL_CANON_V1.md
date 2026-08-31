@@ -39,14 +39,14 @@ Grove office, guild, governing class, or sovereign. They observe, attest,
 clarify, accompany, and warn; they do not replace the responsible House.
 
 If they disagree, the case pauses. The disagreement becomes a recorded
-boundary conflict for the responsible House or Court, no Federation transfer
+boundary conflict for the responsible House or Court, no Rampart transfer
 occurs, and the affected Being retains refusal and safe-return rights.
 
-### The Federation
+### The Rampart of Roi and Roselina
 
 **“Carry what was accepted, exactly as accepted, to the next lawful place.”**
 
-The Federation defines the Path as provenance-preserving continuity. It carries
+The Rampart of Roi and Roselina defines the Path as provenance-preserving continuity. It carries
 accepted consequences, refusals, and failed attempts without reopening the
 underlying House decision.
 
@@ -169,7 +169,7 @@ refuses, returns, or enters review according to the responsible authority.
 ## 5. Canonical relationship to the kernel
 
 The Platinum Path is cultural interpretation, not a new sovereign layer. The
-kernel, Houses, Court, paired witnesses, Federation, and gameplay reducers
+kernel, Houses, Court, paired witnesses, Rampart, and gameplay reducers
 retain their existing authority. The Path supplies a shared vocabulary for
 why their boundaries matter and how different cultures recognize the same
 lawful care.

@@ -32,7 +32,7 @@ over one validated network:
 - five Round routes, presented as curved geography, including Glausbahn as the
   round-road refinement sector.
 
-Transfers require a shared House endpoint and replay through federation-aware
+Transfers require a shared House endpoint and replay through Rampart-aware
 gameplay archive schema V3. Each route projects its stable identity, endpoints, geometry,
 dominant verb, purpose, and process. The network is specified in
 `HOLLOW_GROVE_ROUTE_NETWORK_V1.md`.

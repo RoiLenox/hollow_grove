@@ -3,9 +3,9 @@ use crate::world::session::WorldSession;
 
 use super::{
     BeingContinuityId, BeingContinuityRecord, GameRevision, GameplayArchiveError, GameplayCommand,
-    GameplayEventEnvelope, GameplayEventMetadata, GameplayFederationBinding, GameplayRuntimeError,
+    GameplayEventEnvelope, GameplayEventMetadata, GameplayRampartBinding, GameplayRuntimeError,
     HollowGroveGameRuntime, decode_gameplay_archive_with_metadata,
-    encode_gameplay_archive_with_federation_binding,
+    encode_gameplay_archive_with_rampart_binding,
 };
 
 /// Presentation-neutral owner of the authoritative gameplay runtime.
@@ -15,7 +15,7 @@ use super::{
 #[derive(Debug)]
 pub struct GameApplicationService {
     runtime: HollowGroveGameRuntime,
-    federation_binding: GameplayFederationBinding,
+    rampart_binding: GameplayRampartBinding,
 }
 
 impl GameApplicationService {
@@ -23,8 +23,8 @@ impl GameApplicationService {
     pub fn new(rule_set: RuleSetId) -> Self {
         Self {
             runtime: HollowGroveGameRuntime::new(rule_set),
-            federation_binding: GameplayFederationBinding::canonical(
-                super::GAMEPLAY_FEDERATION_COMPONENT_ID,
+            rampart_binding: GameplayRampartBinding::canonical(
+                super::GAMEPLAY_RAMPART_COMPONENT_ID,
             ),
         }
     }
@@ -33,8 +33,8 @@ impl GameApplicationService {
     pub fn with_world_session(rule_set: RuleSetId, world: WorldSession) -> Self {
         Self {
             runtime: HollowGroveGameRuntime::with_world_session(rule_set, world),
-            federation_binding: GameplayFederationBinding::canonical(
-                super::GAMEPLAY_FEDERATION_COMPONENT_ID,
+            rampart_binding: GameplayRampartBinding::canonical(
+                super::GAMEPLAY_RAMPART_COMPONENT_ID,
             ),
         }
     }
@@ -53,8 +53,8 @@ impl GameApplicationService {
     ) -> Result<Self, GameplayRuntimeError> {
         Ok(Self {
             runtime: HollowGroveGameRuntime::replay(rule_set, events)?,
-            federation_binding: GameplayFederationBinding::canonical(
-                super::GAMEPLAY_FEDERATION_COMPONENT_ID,
+            rampart_binding: GameplayRampartBinding::canonical(
+                super::GAMEPLAY_RAMPART_COMPONENT_ID,
             ),
         })
     }
@@ -66,18 +66,18 @@ impl GameApplicationService {
     ) -> Result<Self, GameplayRuntimeError> {
         Ok(Self {
             runtime: HollowGroveGameRuntime::replay_with_world_session(rule_set, events, world)?,
-            federation_binding: GameplayFederationBinding::canonical(
-                super::GAMEPLAY_FEDERATION_COMPONENT_ID,
+            rampart_binding: GameplayRampartBinding::canonical(
+                super::GAMEPLAY_RAMPART_COMPONENT_ID,
             ),
         })
     }
 
     pub fn encode_archive(&self) -> Result<String, GameplayArchiveError> {
-        let mut binding = self.federation_binding.clone();
+        let mut binding = self.rampart_binding.clone();
         if let Some(case) = self.runtime.boardwalk_case() {
             binding.advisory_records = case.constitutional_advisories();
         }
-        encode_gameplay_archive_with_federation_binding(
+        encode_gameplay_archive_with_rampart_binding(
             self.runtime.rule_set(),
             self.runtime.events(),
             self.runtime.world_session(),
@@ -97,7 +97,7 @@ impl GameApplicationService {
             .unwrap_or_else(WorldSession::canonical);
         let mut service = Self::replay_with_world_session(rule_set, events, world)
             .map_err(GameApplicationArchiveError::Runtime)?;
-        service.federation_binding = decoded.federation_binding;
+        service.rampart_binding = decoded.rampart_binding;
         Ok(service)
     }
 
@@ -116,7 +116,7 @@ impl GameApplicationService {
             .unwrap_or(world);
         let mut service = Self::replay_with_world_session(rule_set, events, replay_world)
             .map_err(GameApplicationArchiveError::Runtime)?;
-        service.federation_binding = decoded.federation_binding;
+        service.rampart_binding = decoded.rampart_binding;
         Ok(service)
     }
 
@@ -151,8 +151,14 @@ impl GameApplicationService {
     }
 
     #[must_use]
-    pub const fn federation_binding(&self) -> &GameplayFederationBinding {
-        &self.federation_binding
+    pub const fn rampart_binding(&self) -> &GameplayRampartBinding {
+        &self.rampart_binding
+    }
+
+    #[deprecated(since = "0.1.0", note = "use rampart_binding")]
+    #[must_use]
+    pub const fn federation_binding(&self) -> &GameplayRampartBinding {
+        self.rampart_binding()
     }
 }
 

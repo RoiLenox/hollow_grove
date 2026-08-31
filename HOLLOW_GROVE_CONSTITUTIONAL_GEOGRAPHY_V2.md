@@ -8,8 +8,8 @@ This specification constitutionalizes the major Hollow Grove routes without chan
 
 The following remain unchanged:
 
-- Current repeats.
-- Aura reveals.
+- Legacy physical Current repeats.
+- Legacy physical Aura reveals.
 - Relativity bends.
 - Synthesis transforms.
 - Stonebend, Sandmanor, Glaüshouse, and Flynt retain their existing authority.
@@ -475,9 +475,9 @@ constitutional transfer. Central Junction remains a district rather than a
 House; Mt. Aura remains an ideal and route landmark rather than a gate; Riptide
 remains on its established Flynt–Glaüshouse route.
 
-During Diamond vacancy, these interfaces continue only through existing
+During Hypergiant vacancy, these interfaces continue only through existing
 delegated authority or bounded terminating continuity mandates. Geographic
-access does not create a Regent, transfer Diamond, enlarge a gate scope, or
+access does not create a Regent, transfer the Hypergiant title, enlarge a gate scope, or
 appoint a Hypergiant. The controlling lifecycle instrument is
 `STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md`.
 
@@ -595,7 +595,7 @@ A conforming implementation must prove:
 Run the executable audit with:
 
 ```text
-cargo run --bin constitutional_geography_audit
+cargo run --features dev-tools --bin hg-dev -- constitutional_geography_audit
 ```
 
 ## Explicit non-goals

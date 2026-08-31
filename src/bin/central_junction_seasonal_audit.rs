@@ -23,7 +23,7 @@ use hollow_grove::world::world_point::{
     WORLD_POINT_ID, WORLD_POSITIVE_POLE_ID,
 };
 
-fn main() -> ExitCode {
+pub(crate) fn tool_main() -> ExitCode {
     match audit() {
         Ok(()) => ExitCode::SUCCESS,
         Err(error) => {

@@ -19,13 +19,15 @@ use super::{
 
 pub const GAMEPLAY_ARCHIVE_FORMAT: &str = "hollow-grove-gameplay";
 pub const GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 4;
-pub const GAMEPLAY_FEDERATION_COMPONENT_ID: &str = "component.gameplay.authoritative";
+pub const GAMEPLAY_RAMPART_COMPONENT_ID: &str = "component.gameplay.authoritative";
+#[deprecated(since = "0.1.0", note = "use GAMEPLAY_RAMPART_COMPONENT_ID")]
+pub const GAMEPLAY_FEDERATION_COMPONENT_ID: &str = GAMEPLAY_RAMPART_COMPONENT_ID;
 const PRE_SYNTHESIS_GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 3;
-const PRE_FEDERATION_GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 2;
+const PRE_RAMPART_GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 2;
 const LEGACY_GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 1;
 
 /// Reports whether the gameplay decoder has an explicit migration path for a
-/// schema version. Federation component validation uses the same boundary as
+/// schema version. Rampart component validation uses the same boundary as
 /// the standalone archive decoder instead of assuming only the latest schema
 /// can be replayed.
 #[must_use]
@@ -34,7 +36,7 @@ pub const fn is_supported_gameplay_archive_schema_version(schema_version: u16) -
         schema_version,
         GAMEPLAY_ARCHIVE_SCHEMA_VERSION
             | PRE_SYNTHESIS_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
-            | PRE_FEDERATION_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+            | PRE_RAMPART_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
             | LEGACY_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
     )
 }
@@ -48,10 +50,13 @@ office-holder\toffice.glaushouse.prima-donna\tbeing.glaushouse.fixture-member\tt
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
-pub struct GameplayFederationBinding {
-    pub federation_identity: String,
-    pub federation_archive_format: String,
-    pub federation_archive_version: u16,
+pub struct GameplayRampartBinding {
+    #[serde(rename = "federation_identity")]
+    pub rampart_identity: String,
+    #[serde(rename = "federation_archive_format")]
+    pub rampart_archive_format: String,
+    #[serde(rename = "federation_archive_version")]
+    pub rampart_archive_version: u16,
     pub component_id: String,
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub advisory_records: Vec<PersonaAdvisoryRecord>,
@@ -59,15 +64,16 @@ pub struct GameplayFederationBinding {
     pub shared_interface_records: Vec<SharedInterfaceRecord>,
 }
 
-impl GameplayFederationBinding {
+#[deprecated(since = "0.1.0", note = "use GameplayRampartBinding")]
+pub type GameplayFederationBinding = GameplayRampartBinding;
+
+impl GameplayRampartBinding {
     #[must_use]
     pub fn canonical(component_id: impl Into<String>) -> Self {
         Self {
-            federation_identity: crate::runtime_federation::RUNTIME_FEDERATION_IDENTITY.into(),
-            federation_archive_format: crate::runtime_federation::RUNTIME_FEDERATION_ARCHIVE_FORMAT
-                .into(),
-            federation_archive_version:
-                crate::runtime_federation::RUNTIME_FEDERATION_ARCHIVE_VERSION,
+            rampart_identity: crate::runtime_rampart::RUNTIME_RAMPART_IDENTITY.into(),
+            rampart_archive_format: crate::runtime_rampart::RUNTIME_RAMPART_ARCHIVE_FORMAT.into(),
+            rampart_archive_version: crate::runtime_rampart::RUNTIME_RAMPART_ARCHIVE_VERSION,
             component_id: component_id.into(),
             advisory_records: Vec::new(),
             shared_interface_records: Vec::new(),
@@ -87,18 +93,21 @@ impl GameplayFederationBinding {
     }
 
     fn validate(&self) -> Result<(), GameplayArchiveError> {
-        crate::kernel_invariants::audit_gameplay_federation_binding(self)
+        crate::kernel_invariants::audit_gameplay_rampart_binding(self)
             .ensure_passed()
             .map_err(|error| GameplayArchiveError::InvalidDomainValue(error.to_string()))?;
-        if self.federation_identity != crate::runtime_federation::RUNTIME_FEDERATION_IDENTITY
-            || self.federation_archive_format
-                != crate::runtime_federation::RUNTIME_FEDERATION_ARCHIVE_FORMAT
-            || self.federation_archive_version
-                != crate::runtime_federation::RUNTIME_FEDERATION_ARCHIVE_VERSION
+        if self.rampart_identity != crate::runtime_rampart::RUNTIME_RAMPART_IDENTITY
+            && self.rampart_identity != crate::runtime_rampart::LEGACY_RUNTIME_FEDERATION_IDENTITY
+        {
+            return Err(GameplayArchiveError::InvalidRampartBinding);
+        }
+        if self.rampart_archive_format != crate::runtime_rampart::RUNTIME_RAMPART_ARCHIVE_FORMAT
+            || self.rampart_archive_version
+                != crate::runtime_rampart::RUNTIME_RAMPART_ARCHIVE_VERSION
             || self.component_id.is_empty()
             || self.component_id.chars().any(char::is_whitespace)
         {
-            return Err(GameplayArchiveError::InvalidFederationBinding);
+            return Err(GameplayArchiveError::InvalidRampartBinding);
         }
         for record in &self.advisory_records {
             let bytes = encode_advisory(record)
@@ -131,7 +140,7 @@ pub struct DecodedGameplayArchive {
     pub rule_set: RuleSetId,
     pub events: Vec<GameplayEventEnvelope>,
     pub institutional_state: Option<String>,
-    pub federation_binding: GameplayFederationBinding,
+    pub rampart_binding: GameplayRampartBinding,
     pub migration_history: Vec<GameplayArchiveMigrationRecord>,
 }
 
@@ -159,7 +168,8 @@ struct GameplayArchivePayloadV4 {
     rule_set: String,
     events: Vec<WireGameplayEventEnvelope>,
     institutional_state: String,
-    federation_binding: GameplayFederationBinding,
+    #[serde(rename = "federation_binding")]
+    rampart_binding: GameplayRampartBinding,
     migration_history: Vec<GameplayArchiveMigrationRecord>,
 }
 
@@ -169,7 +179,8 @@ struct GameplayArchivePayloadV3 {
     rule_set: String,
     events: Vec<WireGameplayEventEnvelope>,
     institutional_state: String,
-    federation_binding: GameplayFederationBinding,
+    #[serde(rename = "federation_binding")]
+    rampart_binding: GameplayRampartBinding,
     migration_history: Vec<GameplayArchiveMigrationRecord>,
 }
 
@@ -337,7 +348,7 @@ pub fn encode_gameplay_archive(
     events: &[GameplayEventEnvelope],
     world: &WorldSession,
 ) -> Result<String, GameplayArchiveError> {
-    encode_gameplay_archive_for_component(rule_set, events, world, GAMEPLAY_FEDERATION_COMPONENT_ID)
+    encode_gameplay_archive_for_component(rule_set, events, world, GAMEPLAY_RAMPART_COMPONENT_ID)
 }
 
 pub fn encode_gameplay_archive_for_component(
@@ -350,30 +361,43 @@ pub fn encode_gameplay_archive_for_component(
         rule_set,
         events,
         world,
-        GameplayFederationBinding::canonical(component_id),
+        GameplayRampartBinding::canonical(component_id),
         Vec::new(),
     )
 }
 
 /// Encodes the authoritative gameplay component while carrying advisory-only
-/// persona evidence through the existing Federation binding.
+/// persona evidence through the existing Rampart binding.
+pub fn encode_gameplay_archive_with_rampart_binding(
+    rule_set: &RuleSetId,
+    events: &[GameplayEventEnvelope],
+    world: &WorldSession,
+    rampart_binding: GameplayRampartBinding,
+) -> Result<String, GameplayArchiveError> {
+    encode_gameplay_archive_with_history(rule_set, events, world, rampart_binding, Vec::new())
+}
+
+#[deprecated(
+    since = "0.1.0",
+    note = "use encode_gameplay_archive_with_rampart_binding"
+)]
 pub fn encode_gameplay_archive_with_federation_binding(
     rule_set: &RuleSetId,
     events: &[GameplayEventEnvelope],
     world: &WorldSession,
-    federation_binding: GameplayFederationBinding,
+    binding: GameplayRampartBinding,
 ) -> Result<String, GameplayArchiveError> {
-    encode_gameplay_archive_with_history(rule_set, events, world, federation_binding, Vec::new())
+    encode_gameplay_archive_with_rampart_binding(rule_set, events, world, binding)
 }
 
 fn encode_gameplay_archive_with_history(
     rule_set: &RuleSetId,
     events: &[GameplayEventEnvelope],
     world: &WorldSession,
-    federation_binding: GameplayFederationBinding,
+    rampart_binding: GameplayRampartBinding,
     mut migration_history: Vec<GameplayArchiveMigrationRecord>,
 ) -> Result<String, GameplayArchiveError> {
-    federation_binding.validate()?;
+    rampart_binding.validate()?;
     migration_history.sort_by(|left, right| left.migration_id.cmp(&right.migration_id));
     let payload = GameplayArchivePayloadV4 {
         rule_set: rule_set.as_str().into(),
@@ -382,7 +406,7 @@ fn encode_gameplay_archive_with_history(
             .map(WireGameplayEventEnvelope::try_from)
             .collect::<Result<_, _>>()?,
         institutional_state: world.persisted_state_output(),
-        federation_binding,
+        rampart_binding,
         migration_history,
     };
     let checksum = checksum_for(&payload)?;
@@ -411,7 +435,7 @@ pub fn encode_legacy_gameplay_archive_v2(
     let checksum = checksum_for(&payload)?;
     serde_json::to_string_pretty(&GameplayArchiveEnvelopeV2 {
         format: GAMEPLAY_ARCHIVE_FORMAT.into(),
-        schema_version: PRE_FEDERATION_GAMEPLAY_ARCHIVE_SCHEMA_VERSION,
+        schema_version: PRE_RAMPART_GAMEPLAY_ARCHIVE_SCHEMA_VERSION,
         checksum,
         payload,
     })
@@ -420,7 +444,7 @@ pub fn encode_legacy_gameplay_archive_v2(
 
 /// Encodes the minimal schema-V1 archive retained by the compatibility suite.
 ///
-/// V1 had no institutional snapshot, federation binding, or migration
+/// V1 had no institutional snapshot, Rampart binding, or migration
 /// history. New callers must write V4; this function exists only to preserve a
 /// deterministic historical fixture for decoder and migration tests.
 pub fn encode_empty_legacy_gameplay_archive_v1(
@@ -463,7 +487,7 @@ pub fn decode_gameplay_archive_with_metadata(
         .ok_or_else(|| {
             GameplayArchiveError::Serialization("missing gameplay archive schema version".into())
         })?;
-    let (rule_set, wire_events, institutional_state, federation_binding, migration_history) =
+    let (rule_set, wire_events, institutional_state, rampart_binding, migration_history) =
         match schema_version {
             GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
                 let envelope: GameplayArchiveEnvelopeV4 = serde_json::from_value(value)
@@ -474,12 +498,12 @@ pub fn decode_gameplay_archive_with_metadata(
                     &envelope.checksum,
                     &envelope.payload,
                 )?;
-                envelope.payload.federation_binding.validate()?;
+                envelope.payload.rampart_binding.validate()?;
                 (
                     envelope.payload.rule_set,
                     envelope.payload.events,
                     Some(envelope.payload.institutional_state),
-                    envelope.payload.federation_binding,
+                    envelope.payload.rampart_binding,
                     envelope.payload.migration_history,
                 )
             }
@@ -492,7 +516,7 @@ pub fn decode_gameplay_archive_with_metadata(
                     &envelope.checksum,
                     &envelope.payload,
                 )?;
-                envelope.payload.federation_binding.validate()?;
+                envelope.payload.rampart_binding.validate()?;
                 reject_pre_synthesis_events(&envelope.payload.events)?;
                 let mut migration_history = envelope.payload.migration_history;
                 migration_history.push(synthesis_pilot_migration_record());
@@ -500,11 +524,11 @@ pub fn decode_gameplay_archive_with_metadata(
                     envelope.payload.rule_set,
                     envelope.payload.events,
                     Some(envelope.payload.institutional_state),
-                    envelope.payload.federation_binding,
+                    envelope.payload.rampart_binding,
                     migration_history,
                 )
             }
-            PRE_FEDERATION_GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
+            PRE_RAMPART_GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
                 let envelope: GameplayArchiveEnvelopeV2 = serde_json::from_value(value)
                     .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
                 validate_envelope(
@@ -518,9 +542,9 @@ pub fn decode_gameplay_archive_with_metadata(
                     envelope.payload.rule_set,
                     envelope.payload.events,
                     Some(envelope.payload.institutional_state),
-                    GameplayFederationBinding::canonical(GAMEPLAY_FEDERATION_COMPONENT_ID),
+                    GameplayRampartBinding::canonical(GAMEPLAY_RAMPART_COMPONENT_ID),
                     vec![
-                        federation_migration_record(),
+                        rampart_migration_record(),
                         synthesis_pilot_migration_record(),
                     ],
                 )
@@ -543,10 +567,10 @@ pub fn decode_gameplay_archive_with_metadata(
                         .map(LegacyWireGameplayEventEnvelope::into_current)
                         .collect(),
                     Some(LEGACY_GAMEPLAY_AUTHORITY_MIGRATION.into()),
-                    GameplayFederationBinding::canonical(GAMEPLAY_FEDERATION_COMPONENT_ID),
+                    GameplayRampartBinding::canonical(GAMEPLAY_RAMPART_COMPONENT_ID),
                     vec![
                         legacy_authority_migration_record(),
-                        federation_migration_record(),
+                        rampart_migration_record(),
                         synthesis_pilot_migration_record(),
                     ],
                 )
@@ -564,7 +588,7 @@ pub fn decode_gameplay_archive_with_metadata(
         rule_set,
         events,
         institutional_state,
-        federation_binding,
+        rampart_binding,
         migration_history,
     })
 }
@@ -591,7 +615,7 @@ fn encode_replayed_gameplay_archive(
         &decoded.rule_set,
         &decoded.events,
         &world,
-        decoded.federation_binding,
+        decoded.rampart_binding,
         decoded.migration_history,
     )
 }
@@ -608,13 +632,13 @@ fn legacy_authority_migration_record() -> GameplayArchiveMigrationRecord {
     }
 }
 
-fn federation_migration_record() -> GameplayArchiveMigrationRecord {
+fn rampart_migration_record() -> GameplayArchiveMigrationRecord {
     GameplayArchiveMigrationRecord {
         migration_id: "migration.gameplay.v2-to-v3.runtime-federation".into(),
         from_schema_version: 2,
         to_schema_version: 3,
         decision:
-            "bind existing gameplay history to The Runtime Federation without inventing domain events"
+            "bind existing gameplay history to The Rampart of Roi and Roselina without inventing domain events"
                 .into(),
         provenance_id: "provenance.gameplay.migration.v2-to-v3".into(),
     }
@@ -973,7 +997,7 @@ pub enum GameplayArchiveError {
     UnsupportedGameplayEvent(String),
     InvalidDomainValue(String),
     IdentityPayloadMismatch,
-    InvalidFederationBinding,
+    InvalidRampartBinding,
 }
 
 impl std::fmt::Display for GameplayArchiveError {
@@ -996,9 +1020,7 @@ mod tests {
             rule_set: V2_RULE_SET.into(),
             events: Vec::new(),
             institutional_state: world.persisted_state_output(),
-            federation_binding: GameplayFederationBinding::canonical(
-                GAMEPLAY_FEDERATION_COMPONENT_ID,
-            ),
+            rampart_binding: GameplayRampartBinding::canonical(GAMEPLAY_RAMPART_COMPONENT_ID),
             migration_history: Vec::new(),
         };
         let encoded = serde_json::to_string(&GameplayArchiveEnvelopeV3 {
@@ -1051,9 +1073,7 @@ mod tests {
                 },
             }],
             institutional_state: world.persisted_state_output(),
-            federation_binding: GameplayFederationBinding::canonical(
-                GAMEPLAY_FEDERATION_COMPONENT_ID,
-            ),
+            rampart_binding: GameplayRampartBinding::canonical(GAMEPLAY_RAMPART_COMPONENT_ID),
             migration_history: Vec::new(),
         };
         let encoded = serde_json::to_string(&GameplayArchiveEnvelopeV3 {

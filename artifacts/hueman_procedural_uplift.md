@@ -40,16 +40,16 @@ Hueman may lift procedural contracts from Current Synthesis into world-facing be
 
 - Recognize It and Engineering remain the Flynt procedure functions, turning capability into operation and field trust.
 - Tross is the sovereign executive and the root of all Flynt constitutional authority.
-- the same stable person is Tross = Mystery Man = Mr. X = presently maintained holder of Manticorp.
-- the public chain is Tross -> Manticorp Institution, while the underground chain is Mystery Man/Mr. X -> The Gallows; both resolve to Tross.
+- the same stable person is The Tross = Manticore = Mystery Man = Mr. X.
+- the public chain is Tross -> Manticorp soldier body, while the Basin-underworld chain is Tross -> We Fairy Men -> The Gallows.
 - the Gallowry is the hidden headquarters of the Gallows, not an institution or alternate government.
 - Flynt routes ascent through boardwalk risk, casino pressure, outer hunting expeditions, and public recognition instead of quiet technical certification.
 - Flynt knowledge gates open through puzzle trails, treasure-hunt clues, and route memory rather than library inheritance or bloodline permission.
-- Flynt's unique constitutional synthesis combines Gargoyle, Merman, and Werewolf into the one Chimera.
-- Manticorp is both the formal military institution and a distinct maintained Synthesis Form beyond Chimera; ordinary personnel do not hold the Form.
-- Bro White, The Beauty, and Cinderellaman remain distinct Basin leaders and divided Recipe custodians whose union is cooperation, not fusion.
+- Flynt's four creature pairs are Gargoyle/Medusa, Werewolf/Vampire, Mariner/Mermaid, and Manticore/Chimera; the unique higher synthesis combines Gargoyle, Mariner/Merman, and Werewolf into Chimera.
+- Manticore is the Tross's masculine maintained Synthesis Form beyond Chimera; Manticorp remains the distinct soldier body and its personnel do not hold the Form.
+- Bro White, Beauty, and Cinderellaman lead the three We Fairy Men creature sects and remain divided Recipe custodians whose union is cooperation, not fusion.
 - opal extraction follows the guarded line body rather than an unbounded field claim.
-- regular current and holographic aura carry opal yield outward as Opal Oil without breaking the guarded line body.
+- legacy physical regular current and holographic aura compatibility mechanics carry opal yield outward as Opal Oil without breaking the guarded line body.
 - recipe discovery in Flynt is field work, hunt pressure, and route puzzle rather than quiet inheritance.
 - transition pressure may be read through Current Synthesis route order, but no autonomous traversal is enabled.
 
@@ -105,10 +105,10 @@ Current Synthesis collision relay bytes: 3024.
 Current Synthesis selection bytes: 499.
 Current Synthesis consequence bytes: 1014.
 Current Synthesis activation gate bytes: 1039.
-Hueman Stonebend Roles bytes: 10286.
-Hueman Flynt Constitution bytes: 5513.
-Hueman Glaushouse Roles bytes: 7910.
-Hueman Sandmanor Roles bytes: 9864.
+Hueman Stonebend Roles bytes: 10803.
+Hueman Flynt Constitution bytes: 7340.
+Hueman Glaushouse Roles bytes: 8063.
+Hueman Sandmanor Roles bytes: 10038.
 
 ## Boundary Reminder
 

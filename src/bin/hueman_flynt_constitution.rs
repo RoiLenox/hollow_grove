@@ -7,7 +7,7 @@ use hollow_grove::hueman_support::{
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let hueman_start_choices = read_text_artifact(Path::new(HUEMAN_START_CHOICES_ARTIFACT_PATH))?;
     let hueman_fourway = read_text_artifact(Path::new(HUEMAN_FOURWAY_ARTIFACT_PATH))?;
     let hueman_flynt_constitution =
@@ -33,16 +33,17 @@ mod tests {
         let output = build_hueman_flynt_constitution_from_artifacts("start", "fourway");
         assert!(output.starts_with("# Hueman Flynt Constitution"));
         assert!(output.contains("Tross is the sovereign executive of Flynt"));
+        assert!(output.contains("The Tross = Manticore"));
         assert!(output.contains("There is exactly one constitutional Chimera"));
         assert!(
-            output.contains("Manticorp is a distinct maintained Synthesis Form beyond Chimera")
+            output.contains("Manticore is the Tross's specifically masculine maintained Synthesis Form beyond Chimera")
         );
         assert!(output.contains("The Mystery Man and Mr. X are aliases or operational identities"));
-        assert!(output.contains("The Gallows is Flynt's underground Yakuza/mafia-like body"));
-        assert!(output.contains("We Fairy Men is a coalition of distinct Basin traditions"));
+        assert!(output.contains("The Gallows is the organized-crime underworld manifestation of We Fairy Men"));
+        assert!(output.contains("We Fairy Men is the exact proper collective identity"));
         assert!(output.contains("Bro White and the 7 Brothas"));
         assert!(output.contains("Cinderellaman and His Midnight Crew"));
-        assert!(output.contains("The Beauty and His Beasts"));
+        assert!(output.contains("Beauty and His Beasts"));
         assert!(output.contains("The Gallowry is the hidden headquarters"));
         assert!(output.contains("## Regional Goods"));
         assert!(output.contains("Flyntian Dagger = Flynt Opal"));

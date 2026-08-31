@@ -5,7 +5,7 @@ Purpose: make repository ownership visible without creating new domain law
 
 The art-phase foundation lock is documented in
 `FOUNDATION_FREEZE_V1.md`. It freezes all kernel, constitutional, Guide,
-Federation, archive, replay, refusal, and protocol ownership contracts while
+Rampart, archive, replay, refusal, and protocol ownership contracts while
 leaving renderer-owned assets free to evolve.
 
 `PLATINUM_PATH_CULTURAL_CANON_V1.md` is the additive cultural vocabulary for
@@ -27,14 +27,14 @@ sovereign.
 `HOLLOW_GROVE_CONSTITUTIONAL_ARCHITECTURE_V1.md` is the authoritative map of
 that architecture. It creates no additional law.
 
-`FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md` is the corrected canonical lock
-for one Federation and the paired operational Guide identities Roi/Roï and
+`RAMPART_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md` is the corrected canonical lock
+for one Rampart and the paired operational Guide identities Roi/Roï and
 Roselina/Rosaliña. `SEER_CEREMONY_PROTOCOL_V1.md` governs the separate singular
 Seer Ceremony and recursive Point founding. `docs/GUIDE_AND_SEER_IDENTITY_V1.md`,
 `docs/CENTRAL_JUNCTION_TRANSITION_V1.md`, and
 `docs/SURFACE_HUEMAN_GUIDE_PROTOCOL_V1.md` define their forms, seam crossing,
 session, model, and presentation contracts. They remain beneath the Hollow
-Grove Compromise and create no additional House, sovereign, federation,
+Grove Compromise and create no additional House, sovereign, central compact,
 generic Guide, or implementation identity.
 
 `HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md` is the detailed normative
@@ -51,12 +51,13 @@ Use this order when reviewing Hollow Grove V2:
 1. `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md` for the Hollow Grove Constitution.
 2. `HOLLOW_GROVE_CONSTITUTIONAL_ARCHITECTURE_V1.md` for the authority and
    dependency map, followed by
-   `FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md` and the three Guide/Seer
+   `RAMPART_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md` and the three Guide/Seer
    documents under `docs/` for continuous identity, the Central Junction seam,
    Worldright, model and presentation boundaries, and the
    outside-participation freeze.
 3. `HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md` for normative Bond and
-   Constitutional Runtime law.
+   Constitutional Runtime law, then `HOLLOW_GROVE_SYNTHESIS_CANON_V1.md` for
+   the Practitioner, Current, Aura, faculty, and two-level Synthesis ontology.
 4. House constitutions, including `STONEBEND_CONSTITUTION_V2.md`,
    `SANDMANOR_CONSTITUTION_V2.md`, `GLAUSHOUSE_CONSTITUTION_V2.md`, and
    `FLYNT_CONSTITUTION_V2.md`, for each House's domain.
@@ -99,9 +100,10 @@ authority.
 `packaging/hollow-grove-general/etc/hollow-grove/keyboard-grove.json` is its
 machine-readable operational projection. The portable Niri profile implements
 that projection, and `packaging/hollow-grove-general/verify-keyboard-grove.sh`
-checks the admitted domain families and overlay names. The projection and Niri
-profile cannot admit a new plant or redefine a House; disagreement with the
-Markdown constitution is a packaging defect.
+checks the complete A–Z WHAT vocabulary, the four HOW meanings, family
+headings, and overlay names. The projection and Niri profile cannot redefine a
+letter or modifier; disagreement with the Markdown constitution is a packaging
+defect.
 
 `artifacts/hollow_grove_keyboard_grove_map.svg` and its Markdown companion are
 deterministic review projections generated from that registry and the sole
@@ -115,8 +117,8 @@ additional authority source.
   Constitution. Its filename records historical provenance.
 - `HOLLOW_GROVE_CONSTITUTIONAL_ARCHITECTURE_V1.md` maps that authority without
   creating a second constitution.
-- `FEDERAL_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md` and
-  `SEER_CEREMONY_PROTOCOL_V1.md` lock one Federation, the paired operational
+- `RAMPART_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md` and
+  `SEER_CEREMONY_PROTOCOL_V1.md` lock one Rampart, the paired operational
   Guide identities, and the singular sequential Seer Ceremony with Continuance
   or Founding beneath the Compromise.
 
@@ -132,12 +134,13 @@ work without superseding locked constitutional authority:
 - `HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md` records the now-executable
   integration contract and the twelve additive lived loops without changing
   locked House law;
-- `HOLLOW_GROVE_METAPHYSICAL_BALANCE_V1_DRAFT.md` records the adopted additive
-  Current/Aura/Relativity/Synthesis/Hollow pressure and return contract without
+- `HOLLOW_GROVE_METAPHYSICAL_BALANCE_V1_DRAFT.md` records the active
+  Practitioner Current/Aura/Synthesis distinctions and separately scopes the
+  legacy physical Relativity/Hollow pressure-and-return mechanics without
   entering the neutral recursion kernel; its filename preserves proposal
   provenance;
-- `HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md` locks the V1 Sympian,
-  Current, and Aura interpretation without adding executable Frame IDs;
+- `HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md` locks Sympian continuity,
+  House-specific active forms, and legacy identifier reconciliation;
 - `FUNCTIONAL_LORE_ARCHIVE_V2_MIGRATION.md` records the applied role-envelope
   archive migration and its V1 compatibility rule;
 - `HOLLOW_GROVE_HUEMAN_SYNTHESIS_ART_GRAMMAR_V1.md` defines the presentation
@@ -145,17 +148,20 @@ work without superseding locked constitutional authority:
   transformation forms without adding lore or runtime authority;
 - `HUEMAN_SYNTHESIS_PILOT_SPEC_V1.md` defines the first player-Hueman visual
   slice and its functional Synthesis test forms;
-- `HOLLOW_GROVE_SYNTHESIS_CANON_V1.md` locks the Current, Aura, Synthesis,
-  House-practice, Relativity, and neutral-kernel boundaries;
+- `HOLLOW_GROVE_SYNTHESIS_CANON_V1.md` is the shared semantic authority for
+  Practitioner as the whole person, relational Current, internal Aura,
+  orthogonal faculties, Level 1 and Level 2 Synthesis, House-specific
+  geometry, OPEN fields, and the legacy physical compatibility boundary;
 - `HOLLOW_GROVE_RECIPE_CONSTITUTION_V1.md` defines evidence-backed Recipe
   discovery, materials, trials, authority, and maintenance;
 - `HUEMAN_WINGED_GARGOYLE_TREASURE_HUNT_V1.md` specifies the first cross-House
   Recipe treasure hunt and pilot progression;
 - `HUEMAN_CAPABILITY_TAXONOMY_V1.md` defines scoped kinesis aliases, canonical
   faculty/root relationships, progression vocabulary, and Recipe-facing fields;
-- `HUEMAN_CURRENT_BODY_AURA_MIND_PROGRESSION_MATRIX_V1.md` defines the paired
-  physical and mental progression axes, Noökinesis, coupled expressions, and
-  pilot acceptance slice;
+- `HUEMAN_CURRENT_BODY_AURA_MIND_PROGRESSION_MATRIX_V1.md` is a legacy physical
+  runtime compatibility matrix. Its V1 power-root and pilot fields remain
+  decodable but do not define Practitioner Current/Aura or active House
+  progression;
 - `src/capability_taxonomy.rs` validates the kinesis aliases against the
   existing faculty authority and `CurrentPowerRoot` / `AuraPowerRoot` law;
 - `src/recipe_discovery.rs` enforces the ordered winged-Gargoyle evidence,
@@ -196,14 +202,18 @@ These sources define meaning and legality:
 - `STONEBEND_AURA_WAY_AETHER_HOLLOWING_FOUNDATION_V1.md` for the bounded
   vertical law, standard Aura Way, material Hollowing, batch provenance,
   proofed Aether, regional stone profiles, and Aura refraction first pass;
-- `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md` for Stonebend's three
-  bidirectional gates, independent Title scopes, Diamond bearer continuity,
+- `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md` as a compatibility
+  supplement for Stonebend's three gates, independent Title scopes,
   Claim/Title/Yield offices, distributed Proliteriate mandates,
-  challenge/removal, Tombstones, and Lazerhorn succession;
-- `STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md` for the
-  shared Stonebend Title lifecycle, recognition/activation boundary,
-  maintenance, renewal, targeted intervention, restoration, Diamond vacancy
-  continuity, independent Forge replacement, and Proliteriate continuity;
+  challenge/removal, Tombstones, and Lazerhorn succession; its former Diamond
+  sovereign semantics are SUPERSEDED by Hypergiant and its Diamond IDs remain
+  stable compatibility data;
+- `STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md` as a
+  compatibility supplement for the Stonebend Title lifecycle,
+  recognition/activation boundary, maintenance, renewal, targeted
+  intervention, restoration, vacancy continuity, independent Forge
+  replacement, and Proliteriate continuity; its former Diamond sovereign
+  semantics are SUPERSEDED;
 - `SANDMANOR_CONSTITUTION_V2.md`;
 - `SANDMANOR_CONSTITUTIONAL_AUDIT_V2.md` (repository conformance evidence for
   the ratified Sandmanor House law);
@@ -213,8 +223,10 @@ These sources define meaning and legality:
 - Flynt's **Law of Capacity** and its existing constitutional conformance surfaces;
 - the locked Flynt institutional hierarchy in `FLYNT_CONSTITUTION_V2.md` and the executable `flynt-constitution` crate;
 - `FLYNT_DUAL_LEADERSHIP_AND_MANTICORP_RECIPE_V1.md` for the normative Flynt
-  identity lock, maintained Continuance law, Manticorp Form/Institution split,
-  divided Recipe custody, Basin leadership, and Synthesis Ledger;
+  identity lock, maintained Continuance law, Manticore Form/Manticorp soldier-body split,
+  masculine/feminine creature pairs, We Fairy Men leadership, Gallows
+  underworld manifestation, separate Mystery Men apparatus, divided Recipe
+  custody, Basin leadership, and Synthesis Ledger;
 - `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md` for the locked route identities, dominant verbs, purposes, and House-boundary process pairs;
 - `CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md` for the Four-Pole productive
   matrix, one unnamed ordinary currency, Central Junction district, South
@@ -258,9 +270,11 @@ kernel:
   access, and renderer-facing palette construction.
 
 `flynt-constitution` is the sole executable authority for Flynt's Tross-rooted
-hierarchy, stable Tross/Mystery Man/Mr. X identity, Chimera and maintained
-Manticorp Form, Manticorp Institution, divided Recipe custodians, founding
-lineages, and Gallowry distinction. `src/world/flynt.rs` is its neutral world
+hierarchy, stable Tross/Manticore/Mystery Man/Mr. X identity, the four creature
+pairs, unique feminine Chimera and masculine maintained Manticore Form,
+Manticorp soldier body, We Fairy Men and Gallows contextual relation, separate
+Mystery Men apparatus, divided Recipe custodians, founding lineages, and
+Gallowry distinction. `src/world/flynt.rs` is its neutral world
 projection and must validate against that authority before its catalog is
 merged.
 
@@ -284,18 +298,20 @@ projection. It reuses the parent module's stable Title, Name, evidence,
 decision, Seal, succession, and Tombstone IDs plus the common challenge, office,
 institution, identity, route, and Central Junction corridor identities. It
 owns no parallel generic registry. It validates exactly three principal gates;
-one core Title with independent scopes; Diamond tenure and vacancy; independent
+one core Title with independent scopes; active Hypergiant tenure plus legacy
+Diamond decoding; independent
 Freemason examination; distributed Proliteriate nodes, mandates, and temporary
 witnesses; one-challenge/two-remove concurrence; Tombstone-linked removal;
 Lazerhorn succession; and delegated Claim/Title/Yield gate accountability.
 
 `src/world/stonebend/third_pass.rs` is the bounded third-pass lifecycle and
 continuity adapter. It composes `StonebendTitleCore`, gate scopes,
-`GateFailureKind`, `DiamondState`, office Tombstones, the Proliteriate network,
+`GateFailureKind`, legacy-named `DiamondState`, office Tombstones, the
+Proliteriate network,
 and existing stable identities with the common Bond event discipline. It
 validates semantic Title stages; separate recognition and activation;
 maintenance and renewal; targeted intervention and restoration; terminal
-Tombstones; bounded Diamond-vacancy action; independent High Freemason
+Tombstones; bounded Hypergiant-vacancy action; independent High Freemason
 replacement; network continuity; and temporal Claim/Title/Yield review. It
 does not create a second universal lifecycle, persistence schema, Regent,
 fourth office, court, or criminal process.
@@ -354,10 +370,17 @@ recursion kernel.
 `src/world/hueman_faculties.rs` is the narrow typed faculty layer above the
 frozen runtime. It fixes House/subtradition ownership, uncertainty and evidence
 bounds, the equal Prefog/Prefig Soul cycle, exact regional manifestations, the
-Presynce ladder, and distinct We Fairy Men/Gallows Resynce jurisdictions.
+Presynce ladder, and the separately addressable We Fairy Men/Gallows Resynce
+contexts of one underlying Tross-led structure.
 `SynthesisRecipe.faculty_manifestations` stores optional declarations. Recipe
 compilation validates them but emits no additional scripts; the existing
 deterministic decision and proof lifecycles remain authoritative.
+
+`src/world/practitioner_ontology.rs` is the typed semantic registry. It keeps
+Current roles, Aura practices, faculties, Level 1 equations, Level 2 rules,
+House-specific topology, semantic status, and absent OPEN mappings distinct.
+It does not reinterpret serialized V1 Current/Aura quantities or enter either
+neutral kernel.
 
 The recursion and semantic kernels remain below this layer and own no
 constitutional geography, authority, evidence meaning, or regional Synthesis
@@ -524,10 +547,14 @@ artifact path.
 
 Sandmanor's completed guardian and succession authority is split deliberately:
 `SANDMANOR_CONSTITUTION_V2.md` remains the House constitution,
+`SANDMANOR_LINEAGE_LOCK_v1.md` locks the dual-people ontology,
 `SANDMANOR_GUARDIAN_AND_SUCCESSION_V1.md` is its ratified detailed supplement,
 `src/world/sandmanor.rs` retains proof law, and
 `src/world/sandmanor/milestone.rs` owns the additive guardian, coast, Contest,
-crowd, and Sandman convergence validators. Glaüshouse's shared lifecycle types
+crowd, and Sandman convergence validators. `src/sandmanor_lineage.rs` is the
+executable ontology source distinguishing Forms, social roles, cultural
+domains, attendant classes, sovereign Hands, and the Sandman/Demiurge identity.
+Glaüshouse's shared lifecycle types
 remain authoritative for maintained Synthesis; Flynt retains Manticorp
 command; Central Junction retains the single Design Index.
 

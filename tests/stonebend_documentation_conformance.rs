@@ -112,8 +112,9 @@ fn generated_hueman_projection_is_presentation_only_and_current() {
         "the High Freemason is the singular office",
         "Illegal Hollowing is Stonebend's signature constitutional offense",
         "Stonebend has exactly three bidirectional constitutional gates",
-        "Diamond is Stonebend's continuing sovereign Title",
-        "no Hypergiant claims Diamond without The Lazerhorn",
+        "Hypergiant is Stonebend's sovereign title",
+        "Diamond's current role is STATUS: OPEN",
+        "Hypergiant accession retains The Lazerhorn",
         "Godot and Hueman artifacts are presentation only",
     ] {
         assert!(HUEMAN_PROJECTION.contains(term), "projection omits {term}");

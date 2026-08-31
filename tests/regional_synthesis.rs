@@ -34,11 +34,11 @@ fn setup_origin(
 }
 
 #[test]
-fn gnome_synthesizes_to_minotaur_with_complete_field_stewardship() {
+fn faun_synthesizes_to_minotaur_with_complete_field_stewardship() {
     let scenario = run_gnome_minotaur_scenario().unwrap();
     let source = scenario.runtime.being(&scenario.predecessor).unwrap();
     let minotaur = scenario.runtime.being(&scenario.result).unwrap();
-    assert_eq!(source.form, SandmanorForm::Gnome);
+    assert_eq!(source.form, SandmanorForm::Faun);
     assert_eq!(
         source.status,
         RegionalBeingStatus::SynthesizedInto(scenario.result.clone())
@@ -264,7 +264,7 @@ fn minotaur_and_centaur_cannot_claim_each_others_regional_authority() {
 fn synthesis_after_tombstone_is_rejected_and_cannot_resurrect_source() {
     let (world, mut runtime, origin) = setup_origin(
         "tombstone",
-        SandmanorForm::Gnome,
+        SandmanorForm::Faun,
         ConstitutionalRegion::AuraFields,
     );
     runtime
@@ -283,7 +283,7 @@ fn synthesis_after_tombstone_is_rejected_and_cannot_resurrect_source() {
         "test.tombstone",
         &origin,
         result.clone(),
-        SandmanorForm::Gnome,
+        SandmanorForm::Faun,
         SandmanorForm::Minotaur,
         ConstitutionalRegion::AuraFields,
         RegionalFunction::AuraFieldsStewardshipAndDefense,
@@ -332,7 +332,7 @@ fn duplicate_non_idempotent_synthesis_is_rejected() {
 fn result_identity_function_and_institution_cannot_be_forged() {
     let (world, runtime, origin) = setup_origin(
         "forgery",
-        SandmanorForm::Gnome,
+        SandmanorForm::Faun,
         ConstitutionalRegion::AuraFields,
     );
     let base = scenario_regional_command(
@@ -340,7 +340,7 @@ fn result_identity_function_and_institution_cannot_be_forged() {
         "test.forgery",
         &origin,
         regional_id("being.test.forgery.result"),
-        SandmanorForm::Gnome,
+        SandmanorForm::Faun,
         SandmanorForm::Minotaur,
         ConstitutionalRegion::AuraFields,
         RegionalFunction::AuraFieldsStewardshipAndDefense,

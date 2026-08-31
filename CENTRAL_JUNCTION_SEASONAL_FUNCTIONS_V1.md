@@ -225,11 +225,11 @@ authoritative.
 > **What can we become together?**
 
 Minorians shape interior preparation, cultivation, arrangement, hospitality,
-Aura Fields, Prefog, Gnome-to-Minotaur development, and maintenance of the
+Aura Fields, Prefog, Gnome-to-Faun-to-Minotaur development, and maintenance of the
 spaces in which the Gathering occurs.
 
 Minoans shape outward travel, navigation, delegations, exchange, Aura Beach,
-Current Sea, Prefig, Elf-to-Centaur development, and connection to the wider
+Current Sea, Prefig, Elf-to-Satyr-to-Centaur development, and connection to the wider
 world.
 
 ### The Service Tournament within The Gathering
@@ -375,7 +375,7 @@ dates.
 
 Run:
 
-`cargo run --bin central_junction_seasonal_audit`
+`cargo run --features dev-tools --bin hg-dev -- central_junction_seasonal_audit`
 
 The audit fails unless the year opens at Winter Solstice, exactly four Great
 Functions cover the four anchors with correct Houses, names, motions, and
@@ -506,4 +506,4 @@ the unchanged nested Tournament archive. Its checksum covers every record.
 
 The seasonal audit now verifies these rules. The dedicated world audit is:
 
-`cargo run --bin hollow_grove_world_point_audit`
+`cargo run --features dev-tools --bin hg-dev -- hollow_grove_world_point_audit`

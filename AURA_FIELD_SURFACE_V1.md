@@ -1,54 +1,58 @@
 # Aura Field Surface V1
 
-Status: implemented singular interior region
+Status: V1-compatible gameplay surface with corrected V2 Aura Farm partition
 Backbone: `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md`
 Constitutional authority: `SANDMANOR_CONSTITUTION_V2.md`
 Executable contract: `src/world/aura_field.rs`
 Gameplay projection: `aura-field.working-land`
 
-## Singular Geographic Lock
+## Aura Farm Geographic Lock
 
-There is one geographic region named **Aura Field**.
+There is one upper-right composite triangle named **Aura Farm**. It is divided
+by the median from Sandmanor to the midpoint of the Stonebend–Junction edge
+into two equal-area triangular cultivation halves:
 
-The region contains multiple Aura farms, crop plots, paddocks, working
-buildings, ecological systems, and public facilities. Those constituents are
-parts of Aura Field. They are not individually named Aura Field and do not
-create a plural geography.
+- upper half: **Aura Field**;
+- lower half: **Content Farm**.
+
+Content Farm shares the complete Sandmanor–Junction edge with Aura Beach
+directly below it. Aura Beach remains its own complete lower-right triangle.
 
 Older machine identities such as `ConstitutionalRegion::AuraFields`,
 `AuraFieldsStewardship`, and `site.sandmanor.aura-fields` remain stable solely
-for archive, event, API, and save compatibility. Their display meaning is the
-one Aura Field. New prose, UI, dialogue, and map labels use the singular.
+for archive, event, API, and save compatibility. The V1 gameplay surface ID
+`aura-field` remains a compatible entry into the Aura Farm composite.
 
 ## Aura Farm Constitutional System
 
 The Minorian Aura Farm contains two cultivation halves:
 
-- **Aura Fields** cultivate food, orchards, herbs, medicine, flowers, fibers,
-  livestock, soil, irrigation, storage, preservation, tools, and physical
-  nourishment.
-- **Content Farm** cultivates stories, lessons, memory, tutorials, public
-  information, entertainment, performance, images, archives, and cultural
-  nourishment.
+- **Aura Field** cultivates and preserves what a family is and projects:
+  identity, reputation, memory, continuity, tradition, relationships,
+  presence, heritage, accumulated Aura, and household culture. Its physical
+  fields also cultivate food, medicine, materials, and useful household life.
+- **Content Farm** cultivates what a family has and makes: family,
+  descendants, relationships, memories, stories, traditions, knowledge,
+  craft, creative work, possessions, household culture, inheritance,
+  reputation, accumulated experience, and material or cultural output.
 
 They remain parts of one Sandmanor system, not separate Houses or indexes.
 
-> **Food feeds the Body. Content feeds the Mind and Aura.**
+> **Content Farm cultivates what the family has and makes. Aura Field preserves what the family is and projects.**
 
-Healthy Content Farm practice educates, preserves memory, entertains
-responsibly, cultivates skill, and nourishes attention. Exploitative practice
-exhausts audiences, manufactures outrage, falsifies popularity, automates
-empty repetition, or harvests attention without nourishment.
+Healthy Content Farm practice forms and sustains family, preserves memory,
+transmits tradition, cultivates skill and craft, stewards inheritance, and
+nourishes attention. Media production may be one expression, but the Content
+Farm is not an internet-content studio or social-media production system.
 
 > **A field can be overworked. So can an audience.**
 
-The executable facility map remains unchanged; the Content Farm is a
-constitutional and future world-facing cultivation domain, not a new movement
-surface in this milestone.
+The Content Farm is both a typed cultivation half and an inspectable entry on
+the working-land map. It is not a new House, route, jurisdiction, or authority.
 
 ## Boundary and Access
 
-Aura Field is the upper-right interior triangle of the Hollow Grove screen:
+Aura Farm is the upper-right interior triangle of the Hollow Grove screen:
 
 | Boundary point | Normalized per-mille coordinate |
 |---|---:|
@@ -56,7 +60,15 @@ Aura Field is the upper-right interior triangle of the Hollow Grove screen:
 | Sandmanor | `(735, 500)` |
 | Aura Ridge Junction | `(500, 500)` |
 
-It is fill enclosed by the world route structure, not an eleventh route. Its
+The exact partition is:
+
+| Region | Polygon |
+|---|---|
+| Aura Field | `(500,140)` → `(735,500)` → `(500,320)` |
+| Content Farm | `(500,320)` → `(735,500)` → `(500,500)` |
+| Aura Beach | `(500,500)` → `(735,500)` → `(500,860)` |
+
+Aura Farm is fill enclosed by the world route structure, not a tenth route. Its
 three lawful gameplay approaches are:
 
 - Aura Ridge, carrying witness toward the Stonebend boundary;
@@ -68,12 +80,16 @@ stewardship, proof, Clearance, recognition, office, or Title.
 
 ## Working Land
 
-Aura Field contains two named Aura farms and one Engagement Farm:
+The Aura Field half contains two named Aura farms and one Engagement Farm. The
+Content Farm occupies the equal lower half:
 
 - **Upper Aura Farm** grows grain and pulse crops in rotations that preserve
   soil structure and make repeated yield comparison possible;
 - **East Aura Farm** grows vegetables and fodder while holding seasonal trials
   whose failed results remain evidence.
+- **Content Farm** cultivates family, relationship, memory, tradition,
+  knowledge, craft, creative work, possessions, inheritance, reputation, and
+  accumulated experience alongside the Aura Field.
 - **Engagement Farm** gives capable people a working place to try voluntary,
   finite joint labor, apprenticeship, recruitment company, and disclosed
   responsibility before taking on a longer commitment. Every engagement names
@@ -81,13 +97,15 @@ Aura Field contains two named Aura farms and one Engagement Farm:
   romance, consent beyond the stated task, recruitment, a Bond, ownership, or
   debt for leaving.
 
-All three are working units inside the same Aura Field. A farm may change tenants,
-crops, methods, or parcel boundaries without splitting the region.
+All are working units inside the same Aura Farm composite. A facility may
+change tenants, crops, methods, or internal parcel boundaries without changing
+the two canonical cultivation halves.
 
 The supporting field system is:
 
 | Place | Field function |
 |---|---|
+| Content Farm | family and household life, memory, tradition, knowledge, craft, inheritance, reputation, and cultural output |
 | Sandmanor Proving Plots | repeatable cultivation proof, including negative results |
 | Engagement Farm | voluntary finite joint work, apprenticeship, disclosed roles, refusal, and leave-without-debt practice |
 | Ridge Orchard | fruit, nuts, grafting, pruning, and pollination |
@@ -103,7 +121,7 @@ The supporting field system is:
 | Field Apiary | pollination, honey, wax, and colony-health observation |
 | Compost Yard | manure, crop residue, decay, heat, and return to soil |
 
-The map places all sixteen facilities as distinct interaction witnesses. A
+The map places all seventeen facilities as distinct interaction witnesses. A
 player can inspect their role, but inspection does not simulate ownership or
 complete their work.
 
@@ -137,10 +155,12 @@ to method, labor, conditions, observations, and repeatable results.
 
 ## Water, Soil, Weather, and Aura
 
-Aura is perceptible here as air, pressure, light, and revealed condition. It
-changes evaporation, wind exposure, pollination, lodging risk, visibility, and
-the felt pressure of work. Aura does not choose a crop, certify health, or
-recognize a claim.
+The V1 surface runtime's **legacy physical Aura expression** is perceptible
+here as air, pressure, light, and revealed condition. It changes evaporation,
+wind exposure, pollination, lodging risk, visibility, and the felt pressure of
+work. These observations are compatibility mechanics, not the universal
+definition of Aura in the Practitioner ontology. Aura does not choose a crop,
+certify health, or recognize a claim.
 
 Water records distinguish source, allocation, gate state, rainfall, field
 delivery, runoff, and contamination. Drought rationing is public and
@@ -181,13 +201,17 @@ Flynt recognizes public records, exchanges, achievements, resolved
 obligations, and completed functions. Recognition does not manufacture proof
 or convert work into ownership.
 
-## People and Stewardship
+## Minorian Forms, Roles, and Stewardship
 
-Gnomes tend, cultivate, test, repair, and refine within Aura Field. Their
-occupational Name identifies participation, not mastery.
+Minorians are the people of this interior/family side. Their Forms progress
+**Gnome → Faun → Minotaur**; Gnome is not a generic name for all Sandmanor
+inhabitants. Their distinct social roles progress **Husbandman → Householder →
+Hearthkeeper**: cultivation, establishment, and preservation of household
+life. Geomancer is a separate institutional attendant class, and Hecaton is
+the Minorian sovereign Hand rather than a fourth Form.
 
-Minotaurs perform advanced field labor and stewardship after lawful
-Gnome-to-Minotaur Synthesis. Their duties cover tending, load, route
+Minotaurs perform mature field labor and stewardship after lawful progression.
+Their duties cover tending, load, route
 maintenance, harvest protection, worker protection, boundary defense, and
 stabilization of field Current. Stewardship is responsibility, not dominion
 over people or automatic ownership of the land.
@@ -260,13 +284,13 @@ The runtime exposes an interior-surface view with:
 
 Entering from an unrelated route fails without revising state or emitting an
 event. Accepted entry persists in gameplay archive schema V3 and replays
-through the same surface-access rule and Runtime Federation binding. Godot renders this immutable projection
+through the same surface-access rule and Runtime Rampart binding. Godot renders this immutable projection
 and does not own the region, facility catalog, or constitutional decisions.
 
 Inspect all three surface contracts with:
 
 ```bash
-cargo run --quiet --bin aura_surfaces_audit
+cargo run --quiet --features dev-tools --bin hg-dev -- aura_surfaces_audit
 ```
 
 ## Completion Boundary
@@ -282,8 +306,8 @@ recorded custody lot. These states persist and replay through the authoritative
 gameplay event stream.
 
 It does not yet claim parcel-tenure adjudication, individual crop or animal
-simulation, a complete commodity market, or the full Gnome-to-Minotaur
-Synthesis case.
+simulation, a complete commodity market, or the deeper biological or
+metaphysical mechanics of Gnome-to-Faun-to-Minotaur progression.
 
 Those systems may be built inside Aura Field without multiplying the region.
 The living contract is

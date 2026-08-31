@@ -23,7 +23,7 @@ Every layer must answer:
 7. What plausible authority must it never become?
 
 The executable boundary audit is `src/kernel_invariants.rs`. Gameplay archive
-validation invokes it to check Federation identity and version, replayable
+validation invokes it to check Rampart identity and version, replayable
 advisory records, provenance-bearing shared records, lawful refusal boundaries,
 Central Junction's coordination-only status, and the Roi/Roselina Twofold
 Witness projection. The audit reports violations without making a domain
@@ -44,7 +44,7 @@ Universal Kernel
 → House Constitutions
 → Operational Roles and Functions
 → Functional-Lore Records
-→ Federation Continuity
+→ Rampart Continuity
 → Gameplay Consequence
 → Presentation
 ```
@@ -74,7 +74,7 @@ its route grammar or treat a client as a House.
 | House Constitution | What domain-specific act is lawful here? | Name, proof, clearance, recognition, resolve, or bounded refusal | absent jurisdiction, missing evidence, withdrawn consent, unsafe scope, or challenge | another House, universal sovereign, or automatic successor |
 | Operational Role | What bounded work must this bearer or office perform? | role-specific decision, work record, refusal, or handoff | wrong input, vacancy, danger, uncertainty, or jurisdiction breach | the whole institution, a hidden sovereign, or an unbounded helper |
 | Functional-Lore Record | What lived meaning and consequence should remain inspectable? | attributable scene, testimony, relationship, consequence, and archive link | uncommitted dialogue, missing witness, identity drift, or presentation-only change | authority, consent, proof, or retroactive law |
-| Federation | Does the accepted result remain continuous across layers and locations? | continuity, embodiment, provenance, replay, and migration record | identity mismatch, causal gap, invalid destination, or archive conflict | reinterpretation, new House decision, or missing-record repair |
+| Rampart | Does the accepted result remain continuous across layers and locations? | continuity, embodiment, provenance, replay, and migration record | identity mismatch, causal gap, invalid destination, or archive conflict | reinterpretation, new House decision, or missing-record repair |
 | Gameplay | What can the player and affected Being do next? | declared choice, support, challenge, execution request, and consequence event | player outside scope, incapable actor, hidden coercion, or unfulfilled gate | choosing for a capable Being or committing constitutional state directly |
 | Presentation | How is accepted state made perceivable and usable? | text, image, audio, layout, control, accessibility, and feedback projection | stale state, missing provenance, unsafe cue, or mismatch with authority | new state, consent, recognition, or a substitute archive |
 | Current Synthesis boundary | What scoped PLEB/META relation may be witnessed here? | route witness, Bond relation, inverse reflection, and explicit boundary record | unscoped execution, route mutation, client substitution, or cross-layer leakage | a House, universal kernel, or independent sovereign |

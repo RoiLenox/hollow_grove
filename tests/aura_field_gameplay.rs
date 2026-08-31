@@ -10,7 +10,8 @@ use hollow_grove::gameplay::{
 };
 use hollow_grove::institution::InstitutionalBeingId;
 use hollow_grove::world::aura_field::{
-    AURA_FIELD_MAP_ID, AuraFieldFacilityId, AuraFieldFacilityKind, canonical_aura_field,
+    AURA_FIELD_MAP_ID, AuraFarmCultivationHalfId, AuraFieldFacilityId, AuraFieldFacilityKind,
+    canonical_aura_field,
 };
 use hollow_grove::world::geography::ConstitutionalRouteId;
 use hollow_grove::world::house_institutions::canonical_house_institutions;
@@ -47,6 +48,17 @@ fn the_canon_contains_one_aura_field_with_multiple_farms_and_full_field_works() 
     assert_eq!(field.id.display_name(), "Aura Field");
     assert_eq!(field.id.stable_id(), "aura-field");
     assert_eq!(field.map_id, AURA_FIELD_MAP_ID);
+    assert_eq!(field.composite_display_name(), "Aura Farm");
+    assert_eq!(field.cultivation_halves.len(), 2);
+    let field_half = field
+        .cultivation_half(AuraFarmCultivationHalfId::AuraField)
+        .unwrap();
+    let content_half = field
+        .cultivation_half(AuraFarmCultivationHalfId::ContentFarm)
+        .unwrap();
+    assert_eq!(field_half.polygon[2].y_per_mille, 320);
+    assert_eq!(content_half.polygon[0].y_per_mille, 320);
+    assert_eq!(content_half.polygon[2].y_per_mille, 500);
     assert_eq!(field.facilities.len(), AuraFieldFacilityId::ALL.len());
     assert_eq!(
         field
@@ -61,6 +73,11 @@ fn the_canon_contains_one_aura_field_with_multiple_farms_and_full_field_works() 
         .expect("Engagement Farm is a distinct Aura Field constituent");
     assert_eq!(engagement.kind, AuraFieldFacilityKind::EngagementFarm);
     assert!(engagement.function.contains("leave-without-debt"));
+    let content = field
+        .facility(AuraFieldFacilityId::ContentFarm)
+        .expect("Content Farm is the cultural half alongside the physical Aura Fields");
+    assert_eq!(content.kind, AuraFieldFacilityKind::ContentFarm);
+    assert!(content.function.contains("cultural nourishment"));
     let kinds: BTreeSet<_> = field
         .facilities
         .iter()
@@ -132,6 +149,12 @@ fn aura_field_map_exposes_every_working_place() {
         (
             AuraFieldFacilityId::UpperAuraFarm,
             3,
+            8,
+            CardinalDirection::North,
+        ),
+        (
+            AuraFieldFacilityId::ContentFarm,
+            7,
             8,
             CardinalDirection::North,
         ),
@@ -249,10 +272,30 @@ fn aura_field_is_a_surface_view_and_route_connected_working_region() {
     let surface = view.surface.unwrap();
     assert_eq!(surface.surface_id, "aura-field");
     assert_eq!(surface.display_name, "Aura Field");
+    assert_eq!(surface.composite_surface_id.as_deref(), Some("aura-farm"));
+    assert_eq!(surface.composite_display_name.as_deref(), Some("Aura Farm"));
+    assert_eq!(surface.subregions.len(), 2);
+    assert_eq!(
+        surface
+            .subregions
+            .iter()
+            .map(|subregion| subregion.display_name.as_str())
+            .collect::<Vec<_>>(),
+        ["Aura Field", "Content Farm"]
+    );
     assert_eq!(surface.dominant_house, "Sandmanor");
     assert!(surface.regional_attribution.contains("Minorian interior"));
     assert!(surface.singular_region);
     assert_eq!(surface.facilities.len(), AuraFieldFacilityId::ALL.len());
+    let content = surface
+        .facilities
+        .iter()
+        .find(|facility| facility.display_name == "Content Farm")
+        .unwrap();
+    assert_eq!(
+        content.subregion_id.as_deref(),
+        Some("aura-farm.half.content-farm")
+    );
     assert_eq!(surface.boundary.len(), 3);
 
     service

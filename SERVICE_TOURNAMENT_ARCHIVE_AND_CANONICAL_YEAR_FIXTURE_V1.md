@@ -169,9 +169,9 @@ boundary, Title, and what something is constitutionally becoming.
 Glaüshouse Precog concerns diagnosis, trajectory, treatment, viability, and
 what a living system is becoming.
 
-The Minorian path remains Prefog, Gnome source lineage, Minotaur
+The Minorian path remains Prefog, Gnome-to-Faun-to-Minotaur lineage, Minotaur
 manifestation, and Aura Fields jurisdiction. The Minoan path remains Prefig,
-Elf source lineage, Centaur manifestation, and Aura Beach and Current Sea
+Elf-to-Satyr-to-Centaur lineage, Centaur manifestation, and Aura Beach and Current Sea
 jurisdiction. No speculative replacement form is introduced.
 
 **Sympiote is the sole canonical spelling.** It names the existing
@@ -282,7 +282,7 @@ same final state.
 
 Run:
 
-`cargo run --bin service_tournament_constitutional_audit`
+`cargo run --features dev-tools --bin hg-dev -- service_tournament_constitutional_audit`
 
 The command checks Tournament identity, archive version, Central Junction
 placement, representative pairings, color ownership, nonlethality, scenario

@@ -78,7 +78,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         return Err(io::Error::other("exit did not preserve the canonical session").into());
     }
 
-    println!("The Federation — Central Junction Guide Transition V1");
+    println!("The Rampart of Roi and Roselina — Central Junction Guide Transition V1");
     println!("entry: Roï → Roi; Rosaliña → Roselina");
     println!("exit: Roi → Roï; Roselina → Rosaliña");
     println!("session: {}", session.session_id);

@@ -1,0 +1,557 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+readonly COMMAND_NAME="${0##*/}"
+readonly SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+readonly SOURCE_PACKAGE_ROOT="$(cd -- "${SCRIPT_DIR}/../.." && pwd)"
+readonly CONFIG_ROOT="${XDG_CONFIG_HOME:-${HOME}/.config}"
+
+usage() {
+    cat <<EOF
+usage: ${COMMAND_NAME} COMMAND [ARGUMENTS]
+
+Explore and audit the Hollow Grove keyboard constitution.
+
+Commands:
+  show [KEY]       Open the visual map, or describe one key
+  list [--json]    List the complete WHAT vocabulary and HOW grammar
+  search QUERY     Find keys by letter, meaning, or memory hook
+  menu             Browse the registry interactively with Walker
+  doctor [--json]  Audit the registry, map, and active Niri semantics
+  map --json       Print the machine-readable keyboard projection
+  help             Show this help
+
+Environment overrides:
+  HOLLOW_GROVE_KEYBOARD_REGISTRY
+  HOLLOW_GROVE_KEYBOARD_MAP
+  HOLLOW_GROVE_NIRI_CONFIG
+EOF
+}
+
+die() {
+    printf '%s: %s\n' "${COMMAND_NAME}" "$*" >&2
+    exit 2
+}
+
+resolve_file() {
+    local explicit_path=$1
+    local installed_path=$2
+    local source_path=$3
+
+    if [[ -n "${explicit_path}" ]]; then
+        printf '%s\n' "${explicit_path}"
+    elif [[ -f "${installed_path}" ]]; then
+        printf '%s\n' "${installed_path}"
+    else
+        printf '%s\n' "${source_path}"
+    fi
+}
+
+readonly REGISTRY_PATH="$(resolve_file \
+    "${HOLLOW_GROVE_KEYBOARD_REGISTRY:-}" \
+    "/etc/hollow-grove/keyboard-grove.json" \
+    "${SOURCE_PACKAGE_ROOT}/etc/hollow-grove/keyboard-grove.json")"
+readonly MAP_PATH="$(resolve_file \
+    "${HOLLOW_GROVE_KEYBOARD_MAP:-}" \
+    "/usr/share/hollow-grove/general-edition/hollow-grove-keyboard-map.svg" \
+    "${SOURCE_PACKAGE_ROOT}/usr/share/hollow-grove/general-edition/hollow-grove-keyboard-map.svg")"
+readonly NIRI_CONFIG="${HOLLOW_GROVE_NIRI_CONFIG:-${CONFIG_ROOT}/niri/config.kdl}"
+
+require_registry() {
+    command -v jq >/dev/null 2>&1 || die "jq is required"
+    [[ -r "${REGISTRY_PATH}" ]] || die "keyboard registry not found: ${REGISTRY_PATH}"
+    jq empty "${REGISTRY_PATH}" >/dev/null || die "keyboard registry is not valid JSON: ${REGISTRY_PATH}"
+}
+
+display_chord() {
+    local niri_chord=$1
+    local final_key=${niri_chord##*+}
+    local display="Super"
+    [[ "+${niri_chord}+" == *"+Ctrl+"* ]] && display+="+Ctrl"
+    [[ "+${niri_chord}+" == *"+Alt+"* ]] && display+="+Alt"
+    [[ "+${niri_chord}+" == *"+Shift+"* ]] && display+="+Shift"
+    printf '%s+%s\n' "${display}" "${final_key^^}"
+}
+
+configured_title() {
+    local niri_chord=$1
+    [[ -r "${NIRI_CONFIG}" ]] || return 1
+    awk -v chord="${niri_chord}" '
+        $1 == chord && match($0, /hotkey-overlay-title="[^"]+"/) {
+            value = substr($0, RSTART, RLENGTH)
+            sub(/^hotkey-overlay-title="/, "", value)
+            sub(/"$/, "", value)
+            print value
+            exit
+        }
+    ' "${NIRI_CONFIG}"
+}
+
+configured_description() {
+    local niri_chord=$1
+    local title
+    title="$(configured_title "${niri_chord}" || true)"
+    if [[ -n "${title}" ]]; then
+        printf '%s\n' "${title}"
+        return
+    fi
+
+    [[ -r "${NIRI_CONFIG}" ]] || return 1
+    awk -v chord="${niri_chord}" '
+        $1 == chord && index($0, "{") > 0 {
+            value = substr($0, index($0, "{") + 1)
+            sub(/;.*/, "", value)
+            gsub(/^[[:space:]]+|[[:space:]]+$/, "", value)
+            print value
+            exit
+        }
+    ' "${NIRI_CONFIG}"
+}
+
+combined_branches() {
+    local key=$1
+    [[ -r "${NIRI_CONFIG}" ]] || return 0
+    local lower_key=${key,,}
+    while IFS= read -r niri_chord; do
+        case "${niri_chord}" in
+            "Mod+${lower_key}"|"Mod+Shift+${lower_key}"|"Mod+Ctrl+${lower_key}"|"Mod+Alt+${lower_key}")
+                continue
+                ;;
+        esac
+        local description
+        description="$(configured_description "${niri_chord}" || true)"
+        [[ -n "${description}" ]] || description="configured action"
+        printf '%s\t%s\n' "$(display_chord "${niri_chord}")" "${description}"
+    done < <(
+        awk -v base="Mod+${lower_key}" -v suffix="+${lower_key}" '
+            $1 == base || (length($1) > length(suffix) && substr($1, length($1) - length(suffix) + 1) == suffix) {
+                print $1
+            }
+        ' "${NIRI_CONFIG}"
+    )
+}
+
+family_row() {
+    local key=$1
+    jq -r --arg key "${key^^}" '
+        .letter_vocabulary[]
+        | select(.key == $key)
+        | [.key, .meaning, .memory_hook, .form]
+        | @tsv
+    ' "${REGISTRY_PATH}"
+}
+
+print_family() {
+    local key=$1
+    local row
+    row="$(family_row "${key}")"
+    [[ -n "${row}" ]] || die "unknown keyboard key: ${key}"
+
+    local meaning memory_hook form
+    IFS=$'\t' read -r key meaning memory_hook form <<<"${row}"
+    printf '%s · %s\n' "${key}" "${meaning}"
+    printf 'Memory hook: %s\n' "${memory_hook}"
+
+    if [[ "${form}" == "tool" ]]; then
+        printf 'Form: movement tool\n'
+    else
+        printf 'Form: domain plant\n'
+    fi
+
+    printf '\nHOW\n'
+    while IFS=$'\t' read -r niri_modifier display_modifier lane think; do
+        local niri_chord="${niri_modifier}+${key,,}"
+        local title
+        title="$(configured_description "${niri_chord}" || true)"
+        if [[ -n "${title}" ]]; then
+            printf '  %-18s %-10s %-21s %s\n' \
+                "$(display_chord "${niri_chord}")" "${lane}" "${think}" "${title}"
+        else
+            printf '  %-18s %-10s %-21s %s\n' \
+                "$(display_chord "${niri_chord}")" "${lane}" "${think}" "empty/unavailable"
+        fi
+    done < <(
+        jq -r '.modifier_lanes[] | [.niri_modifier, .display_modifier, .meaning, .think] | @tsv' \
+            "${REGISTRY_PATH}"
+    )
+
+    local combined
+    combined="$(combined_branches "${key}")"
+    if [[ -n "${combined}" ]]; then
+        printf '\nCOMBINED BRANCHES\n'
+        while IFS=$'\t' read -r chord description; do
+            printf '  %-34s %s\n' "${chord}" "${description}"
+        done <<<"${combined}"
+    fi
+}
+
+list_human() {
+    printf 'Key = WHAT · Modifier = HOW\n\n'
+    printf 'HOW\n'
+    jq -r '.modifier_lanes[] | "  \(.display_modifier) · \(.meaning) — \(.think)"' \
+        "${REGISTRY_PATH}"
+    printf '\nWHAT\n'
+    while IFS=$'\t' read -r key meaning memory_hook; do
+        printf '  %-3s %-16s %s\n' "${key}" "${meaning}" "${memory_hook}"
+    done < <(
+        jq -r '.letter_vocabulary[] | [.key, .meaning, .memory_hook] | @tsv' \
+            "${REGISTRY_PATH}"
+    )
+}
+
+list_json() {
+    jq '{
+        governing_rule,
+        modifier_grammar: [.modifier_lanes[] | {
+            modifier: .display_modifier,
+            meaning,
+            think
+        }],
+        letter_vocabulary: [.letter_vocabulary[] | {
+            key,
+            meaning,
+            memory_hook,
+            form
+        }]
+    }' "${REGISTRY_PATH}"
+}
+
+search_registry() {
+    local query=$1
+    local -a keys=()
+    mapfile -t keys < <(
+        jq -r --arg query "${query}" '
+            ($query | ascii_downcase) as $needle
+            | .letter_vocabulary[]
+            | select(
+                ([.key, .meaning, .memory_hook] | join(" ") | ascii_downcase)
+                | contains($needle)
+            )
+            | .key
+        ' "${REGISTRY_PATH}"
+    )
+
+    if (( ${#keys[@]} == 0 )); then
+        printf 'No Hollow Grove keyboard family matches %q.\n' "${query}" >&2
+        return 1
+    fi
+
+    local index
+    for index in "${!keys[@]}"; do
+        (( index == 0 )) || printf '\n'
+        print_family "${keys[$index]}"
+    done
+}
+
+open_map() {
+    [[ -r "${MAP_PATH}" ]] || die "keyboard map not found: ${MAP_PATH}"
+
+    if [[ -z "${WAYLAND_DISPLAY:-}${DISPLAY:-}" ]]; then
+        printf 'Keyboard map: %s\n\n' "${MAP_PATH}"
+        list_human
+        return
+    fi
+
+    if command -v xdg-open >/dev/null 2>&1; then
+        xdg-open "${MAP_PATH}" >/dev/null 2>&1 &
+    elif command -v gio >/dev/null 2>&1; then
+        gio open "${MAP_PATH}" >/dev/null 2>&1 &
+    else
+        printf 'Keyboard map: %s\n\n' "${MAP_PATH}"
+        list_human
+    fi
+}
+
+notify_detail() {
+    local title=$1
+    local detail=$2
+    if command -v notify-send >/dev/null 2>&1; then
+        notify-send --app-name="Hollow Grove Keyboard" "${title}" "${detail}"
+    else
+        printf '%s\n%s\n' "${title}" "${detail}"
+    fi
+}
+
+interactive_menu() {
+    if ! command -v walker >/dev/null 2>&1; then
+        printf 'Walker is unavailable; printing the keyboard map instead.\n\n' >&2
+        list_human
+        return
+    fi
+
+    local selection
+    selection="$({
+        printf 'Open visual map\n'
+        jq -r '.letter_vocabulary[] | "\(.key) · \(.meaning) — \(.memory_hook)"' \
+            "${REGISTRY_PATH}"
+    } | walker --dmenu --placeholder 'Keyboard — WHAT')" || return 0
+
+    [[ -n "${selection}" ]] || return 0
+    if [[ "${selection}" == "Open visual map" ]]; then
+        open_map
+        return
+    fi
+
+    local key=${selection%% *}
+    local row meaning memory_hook form
+    row="$(family_row "${key}")"
+    IFS=$'\t' read -r key meaning memory_hook form <<<"${row}"
+
+    local how_selection
+    how_selection="$({
+        while IFS=$'\t' read -r niri_modifier display_modifier lane think; do
+            local niri_chord="${niri_modifier}+${key,,}"
+            local title
+            title="$(configured_description "${niri_chord}" || true)"
+            [[ -n "${title}" ]] || title="empty/unavailable"
+            printf '%s · %s — %s — %s\n' \
+                "$(display_chord "${niri_chord}")" "${lane}" "${think}" "${title}"
+        done < <(
+            jq -r '.modifier_lanes[] | [.niri_modifier, .display_modifier, .meaning, .think] | @tsv' \
+                "${REGISTRY_PATH}"
+        )
+        while IFS=$'\t' read -r chord description; do
+            [[ -n "${chord}" ]] || continue
+            printf '%s · Combined — %s\n' "${chord}" "${description}"
+        done < <(combined_branches "${key}")
+    } | walker --dmenu --placeholder "${key} · ${meaning} — HOW")" || return 0
+
+    [[ -n "${how_selection}" ]] || return 0
+    notify_detail "${key} · ${meaning}" "${how_selection}"
+}
+
+command_available() {
+    local candidate=$1
+    if [[ "${candidate}" == */* ]]; then
+        [[ -x "${candidate}" ]]
+    else
+        command -v "${candidate}" >/dev/null 2>&1
+    fi
+}
+
+doctor_registry() {
+    jq -e '
+        .schema_version == 2
+        and .governing_rule == "Key = WHAT · Modifier = HOW"
+        and (.modifier_lanes | length) == 4
+        and (.letter_vocabulary | length) == 26
+        and ([.letter_vocabulary[].key] | unique | length) == 26
+        and ([.letter_vocabulary[] | select(.form == "tool") | .key] == ["H", "J", "K", "L"])
+    ' "${REGISTRY_PATH}" >/dev/null
+}
+
+doctor_config() {
+    [[ -r "${NIRI_CONFIG}" ]] || return 2
+    local failed=0
+    while IFS=$'\t' read -r key meaning form; do
+        [[ "${form}" == "plant" ]] || continue
+        local lower_key=${key,,}
+        while IFS= read -r binding_line; do
+            [[ -n "${binding_line}" ]] || continue
+            local chord expected_lane
+            chord="$(awk '{ print $1 }' <<<"${binding_line}")"
+            case "${chord}" in
+                "Mod+${lower_key}") expected_lane="Primary" ;;
+                "Mod+Shift+${lower_key}") expected_lane="Adjacent" ;;
+                "Mod+Ctrl+${lower_key}") expected_lane="Focused" ;;
+                "Mod+Alt+${lower_key}") expected_lane="Alternate" ;;
+                *) continue ;;
+            esac
+            if [[ "${binding_line}" != *"hotkey-overlay-title=\"${meaning} · ${expected_lane}:"* ]]; then
+                printf 'FAIL  %s does not preserve %s · %s\n' \
+                    "${chord}" "${meaning}" "${expected_lane}" >&2
+                failed=1
+            fi
+        done < <(
+            awk -v base="Mod+${lower_key}" -v suffix="+${lower_key}" '
+                $1 == base || (length($1) > length(suffix) && substr($1, length($1) - length(suffix) + 1) == suffix) {
+                    print
+                }
+            ' "${NIRI_CONFIG}"
+        )
+    done < <(
+        jq -r '.letter_vocabulary[] | [.key, .meaning, .form] | @tsv' "${REGISTRY_PATH}"
+    )
+    (( failed == 0 ))
+}
+
+doctor_commands() {
+    if [[ ! -r "${NIRI_CONFIG}" ]]; then
+        printf '0\t0\n'
+        return
+    fi
+    local -A seen=()
+    local configured=0
+    local unavailable=0
+
+    while IFS= read -r binding_line; do
+        local rest=${binding_line}
+        local found_requirement=false
+        while [[ "${rest}" == *'"--require" "'* ]]; do
+            found_requirement=true
+            rest=${rest#*'"--require" "'}
+            local requirement=${rest%%\"*}
+            if [[ -z "${seen[${requirement}]+present}" ]]; then
+                seen["${requirement}"]=1
+                (( configured += 1 ))
+                command_available "${requirement}" || (( unavailable += 1 ))
+            fi
+        done
+
+        if [[ "${found_requirement}" == false && "${binding_line}" =~ \{[[:space:]]spawn[[:space:]]\"([^\"]+)\" ]]; then
+            local command=${BASH_REMATCH[1]}
+            if [[ -z "${seen[${command}]+present}" ]]; then
+                seen["${command}"]=1
+                (( configured += 1 ))
+                command_available "${command}" || (( unavailable += 1 ))
+            fi
+        fi
+    done < <(awk '$1 ~ /^Mod\+/ && /hotkey-overlay-title=/ { print }' "${NIRI_CONFIG}")
+
+    printf '%s\t%s\n' "${configured}" "${unavailable}"
+}
+
+doctor_human() {
+    local failed=0
+    if doctor_registry; then
+        printf 'PASS  registry: schema, WHAT vocabulary, and HOW grammar\n'
+    else
+        printf 'FAIL  registry: constitutional projection is invalid\n'
+        failed=1
+    fi
+
+    if [[ -r "${MAP_PATH}" ]]; then
+        printf 'PASS  visual map: %s\n' "${MAP_PATH}"
+    else
+        printf 'FAIL  visual map is missing: %s\n' "${MAP_PATH}"
+        failed=1
+    fi
+
+    if doctor_config; then
+        printf 'PASS  Niri semantics: %s\n' "${NIRI_CONFIG}"
+    else
+        local result=$?
+        if (( result == 2 )); then
+            printf 'WARN  Niri config is unavailable: %s\n' "${NIRI_CONFIG}"
+        else
+            printf 'FAIL  Niri semantic drift: %s\n' "${NIRI_CONFIG}"
+            failed=1
+        fi
+    fi
+
+    local command_counts configured unavailable
+    command_counts="$(doctor_commands)"
+    IFS=$'\t' read -r configured unavailable <<<"${command_counts}"
+    if (( unavailable == 0 )); then
+        printf 'PASS  configured fruit: %s command requirements available\n' "${configured}"
+    else
+        printf 'WARN  configured fruit: %s of %s command requirements unavailable\n' \
+            "${unavailable}" "${configured}"
+    fi
+
+    (( failed == 0 ))
+}
+
+doctor_json() {
+    local registry_ok=false
+    local map_ok=false
+    local config_status="pass"
+    doctor_registry && registry_ok=true
+    [[ -r "${MAP_PATH}" ]] && map_ok=true
+    if ! doctor_config >/dev/null 2>&1; then
+        if [[ -r "${NIRI_CONFIG}" ]]; then
+            config_status="fail"
+        else
+            config_status="unavailable"
+        fi
+    fi
+    local command_counts configured unavailable
+    command_counts="$(doctor_commands)"
+    IFS=$'\t' read -r configured unavailable <<<"${command_counts}"
+
+    jq -n \
+        --arg registry_path "${REGISTRY_PATH}" \
+        --argjson registry_ok "${registry_ok}" \
+        --arg map_path "${MAP_PATH}" \
+        --argjson map_ok "${map_ok}" \
+        --arg niri_config "${NIRI_CONFIG}" \
+        --arg config_status "${config_status}" \
+        --argjson configured_commands "${configured}" \
+        --argjson unavailable_commands "${unavailable}" \
+        '{
+            status: (if $registry_ok and $map_ok and $config_status != "fail" then "pass" else "fail" end),
+            registry: {path: $registry_path, valid: $registry_ok},
+            map: {path: $map_path, available: $map_ok},
+            niri: {path: $niri_config, semantic_status: $config_status},
+            fruit: {
+                configured_command_requirements: $configured_commands,
+                unavailable_command_requirements: $unavailable_commands
+            }
+        }'
+}
+
+main() {
+    require_registry
+    local command=${1:-help}
+    [[ $# -eq 0 ]] || shift
+
+    case "${command}" in
+        show)
+            if (( $# == 0 )); then
+                open_map
+            elif (( $# == 1 )); then
+                print_family "$1"
+            else
+                usage >&2
+                exit 2
+            fi
+            ;;
+        list)
+            if (( $# == 0 )); then
+                list_human
+            elif [[ $# -eq 1 && "$1" == "--json" ]]; then
+                list_json
+            else
+                usage >&2
+                exit 2
+            fi
+            ;;
+        search)
+            (( $# > 0 )) || die "search requires a key, meaning, or memory hook"
+            search_registry "$*"
+            ;;
+        menu)
+            (( $# == 0 )) || die "menu takes no arguments"
+            interactive_menu
+            ;;
+        doctor)
+            if (( $# == 0 )); then
+                doctor_human
+            elif [[ $# -eq 1 && "$1" == "--json" ]]; then
+                doctor_json
+            else
+                usage >&2
+                exit 2
+            fi
+            ;;
+        map)
+            if [[ $# -eq 1 && "$1" == "--json" ]]; then
+                jq . "${REGISTRY_PATH}"
+            elif (( $# == 0 )); then
+                open_map
+            else
+                usage >&2
+                exit 2
+            fi
+            ;;
+        help|--help|-h)
+            usage
+            ;;
+        *)
+            usage >&2
+            exit 2
+            ;;
+    esac
+}
+
+main "$@"

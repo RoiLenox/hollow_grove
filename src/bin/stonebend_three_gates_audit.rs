@@ -4,10 +4,11 @@ use hollow_grove::world::central_junction::JunctionApproach;
 use hollow_grove::world::geography::ConstitutionalRouteId;
 use hollow_grove::world::stonebend::second_pass::{
     ConstitutionalDimension, DiamondState, HypergiantSuccessionStage, StonebendConstitutionalPower,
-    StonebendGateFacing, canonical_stonebend_gates, diamond_title_id, validate_three_gate_topology,
+    StonebendGateFacing, canonical_stonebend_gates, hypergiant_title_id,
+    validate_three_gate_topology,
 };
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+pub(crate) fn tool_main() -> Result<(), Box<dyn std::error::Error>> {
     let gates = canonical_stonebend_gates();
     validate_three_gate_topology(&gates)?;
 
@@ -61,8 +62,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     let diamond = DiamondState::default();
-    if diamond.title != diamond_title_id() || !diamond.is_vacant() {
-        return Err("Diamond no longer supports a stable vacant sovereign Title".into());
+    if diamond.title != hypergiant_title_id() || !diamond.is_vacant() {
+        return Err("Hypergiant no longer supports a stable vacant sovereign Title".into());
     }
     if HypergiantSuccessionStage::LazerhornClimbed.semantic_order()
         >= HypergiantSuccessionStage::AccessionEligible.semantic_order()
@@ -76,8 +77,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("bidirectional: true");
     println!("Central Junction modeled as House: false");
     println!("Mt. Aura modeled as gate: false");
-    println!("sovereign Title: Diamond");
-    println!("active bearer office: Hypergiant");
+    println!("sovereign Title: Hypergiant");
+    println!("Diamond ontology: STATUS OPEN; legacy ID retained");
     println!("vacancy supported: true");
     println!("constitutional dimensions: Claim, Title, Yield");
     println!("Proliteriate permanent office: false");

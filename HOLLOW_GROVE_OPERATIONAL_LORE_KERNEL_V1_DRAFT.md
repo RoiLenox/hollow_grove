@@ -55,7 +55,7 @@ universal meaning
 → House and shared-interface authority
 → operational function and role contracts
 → functional-lore records
-→ Federation continuity
+→ Rampart continuity
 → gameplay consequence
 → presentation
 ```
@@ -135,7 +135,7 @@ The Festival of Mirrors — Confirm
 Great Functions organize civic time. They do not replace House functions,
 productive poles, offices, or runtime reducers.
 
-## 3. Twofold Witness and Federation Functions
+## 3. Twofold Witness and Rampart Functions
 
 The Twofold Witness—Roi and Roselina—frames a consequential action before any House-specific
 decision is treated as complete.
@@ -145,7 +145,7 @@ decision is treated as complete.
 | Roi/Roï | What happened, what remains continuous, and what follows? | stable identities, prior state, causal position, provenance, pending consequence | continuity confirmation or a specific continuity conflict | does not decide embodiment, House evidence, consent, proof, clearance, or recognition |
 | Roselina/Rosaliña | What and where is the subject, and can the consequence exist here? | subject identity, world layer, location, objects, containment, ecology, destination state | embodiment confirmation or a specific world-state conflict | does not rewrite history, sequence, House evidence, consent, proof, clearance, or recognition |
 
-The Federation receives both confirmations and every required accepted domain
+The Rampart of Roi and Roselina receives both confirmations and every required accepted domain
 record. It preserves identity, authority, evidence, causal order, consequence,
 archive, and replay. It does not reinterpret the records or manufacture a
 missing House decision.
@@ -279,12 +279,14 @@ Underway supplies depth; Boardwalk supplies legibility.
 |---|---|---|---|
 | Gerald | What burden, identity conflict, dispossession, maintenance need, or public fact must enter the record? Petition, witness, steward, maintain, or challenge. | attributable testimony, petition, maintenance record, or challenge to a Proliteriate node, registrar, Freemason examiner, or Court | cannot decide Title, forge Claim, issue Seal, perform Hollowing, or turn civic standing into office |
 | Proliteriate node | Who bore the burden, what Yield was promised, and did it return? Hear affected people, preserve dissent, and issue a bounded public mandate. | mandate, Yield finding, dissent record, recall condition, and named temporary witness to the responsible authority or Court | cannot execute seizure, demolition, weapons, Hollowing, Seal, high Title, or technical Claim examination |
-| Temporary Proliteriate witness | What exact verified mandate must be carried now? Speak and observe only within that mandate. | mandate witness and completion/recall record back to the originating nodes and archive | authority ends on completion, recall, or invalidation; never becomes ruler, Diamond, Freemason, or permanent seat |
+| Temporary Proliteriate witness | What exact verified mandate must be carried now? Speak and observe only within that mandate. | mandate witness and completion/recall record back to the originating nodes and archive | authority ends on completion, recall, or invalidation; never becomes ruler, Hypergiant, Freemason, or permanent seat |
 | Freemason examiner or surveyor | Can this Claim, structure, boundary, measure, custody chain, or Hollowing act withstand material examination? | examination, survey, provenance, structural-safety, custody, or refusal record to the High Freemason, Hypergiant, gate, or Court | stops for conflict, missing custody, unsafe work, counterfeit evidence, or unlawful order; cannot grant Title or decide public Yield |
-| High Freemason | Is the examined Claim structurally legitimate and ready for a lawful Seal or execution? Seal, secure, stabilize, preserve evidence, and execute lawful bounded orders. | Claim determination, Seal, custody action, structural intervention, or refusal to the Hypergiant, registry, gate, or responsible institution | cannot exercise Diamond, certify their own sovereign Claim, invent a Name, settle public consequence alone, or convert custody into ownership |
-| Hypergiant, bearer of Diamond | Which high Name, Title, boundary, succession, or continuity disposition is lawful? Decide only from authenticated evidence and separate public witness. | high disposition, reasons, scope, review window, preservation order, succession record, or Tombstone recognition to the responsible institution and archive | cannot create evidence, self-validate, bypass challenge, occupy another principal power, privately own Diamond, or appoint a successor by command |
+| High Freemason | Is the examined Claim structurally legitimate and ready for a lawful Seal or execution? Seal, secure, stabilize, preserve evidence, and execute lawful bounded orders. | Claim determination, Seal, custody action, structural intervention, or refusal to the Hypergiant, registry, gate, or responsible institution | cannot exercise the Hypergiant sovereign title, certify their own sovereign Claim, invent a Name, settle public consequence alone, or convert custody into ownership |
+| Hypergiant | Which high Name, Title, boundary, succession, or continuity disposition is lawful? Decide only from authenticated evidence and separate public witness. | high disposition, reasons, scope, review window, preservation order, succession record, or Tombstone recognition to the responsible institution and archive | cannot create evidence, self-validate, bypass challenge, occupy another principal power, privatize the sovereign title, or appoint a successor by command |
 
-**Diamond** is the continuing sovereign Title, not a separate speaking actor.
+**Hypergiant** is Stonebend's sovereign title. Diamond's current role is
+**STATUS: OPEN**; legacy Diamond identifiers remain non-speaking compatibility
+data and cannot be assigned autonomous decisions.
 The **Mercury Mirror** is an evidence instrument, not a judge or office.
 Neither may be assigned dialogue or autonomous decisions as though it were a
 person.
@@ -296,14 +298,14 @@ person.
 | Minorian practitioner | How is this place, system, field, workshop, or content lived within every day? Design and test interior use, cultivation, maintenance, storage, repairability, and repeated function. | versioned interior design, method, daily-use evidence, maintenance burden, failure, and revision to reviewers or an affected implementation role | cannot claim exterior adequacy, proof beyond tested scope, automatic guardian standing, or ownership of the examined subject |
 | Minoan practitioner | How does this place, route, coast, or system live within the wider world? Design and test access, navigation, approach, ecology, trade, borders, rescue, and outward relation. | versioned exterior design, route/coastal evidence, public-access effect, failure, and revision to reviewers or an affected implementation role | cannot claim interior adequacy, clinical authority, universal police power, or ownership of another House's institution |
 | Evidence steward or independent reviewer | Can another person reproduce the claim and inspect its uncertainty, conflicts, lineage, and failure? | audit, reproduction, excluded evidence, conflict disclosure, and scoped recommendation to the Sandman, Contest body, Court, or next gate | cannot manufacture evidence, conceal a negative result, privately appoint a Contest winner, or turn review into authorship |
-| Gnome practitioner | Has ordinary interior service been practiced responsibly enough to create a real cultivation baseline? | attributed field, workshop, household, maintenance, or Content Farm service record to Minorian guardian review | occupational Name, output volume, heritage, or popularity never proves mastery, Minotaur qualification, or transformation |
-| Elf practitioner | Has ordinary exterior service been practiced responsibly enough to create a real navigation and access baseline? | attributed coast, route, public-approach, exploration, or rescue-support record to Minoan guardian review | occupational Name, travel, heritage, or popularity never proves mastery, Centaur qualification, or transformation |
+| Minorian Forms: Gnome, Faun, Minotaur | Has interior and family cultivation matured without collapsing Form into social role? | attributed field, workshop, household, maintenance, or Content Farm service record to Minorian review | Gnome → Faun → Minotaur; neither Geomancer nor Hecaton is a Form |
+| Minoan Forms: Elf, Satyr, Centaur | Has outward and social participation matured without collapsing Form into social role? | attributed coast, route, public-approach, exploration, rescue-support, or Aura Beach record to Minoan review | Elf → Satyr → Centaur; neither Labyrinthian nor Pegasus is a Form |
 | Minotaur, Guardian of the Fields | What defined field or cultivated system am I answerable for? Maintain it through scarcity, repetition, failure, workers, and future harvest. | field condition, service, failure, maintenance, and restitution record to Minorian review and affected lives | Form and mantle remain separate; loss of mantle does not erase the body and bodily Form does not create jurisdiction |
 | Centaur, coastal guardian | What defined beach, approach, crowd flow, or rescue boundary am I answerable for? | coastal condition, access, rescue, hazard, failure, and restitution record to Minoan review and affected lives | cannot command Manticorp, become general police, or treat freedom as permission to endanger others |
-| Hecaton, Guardian of the Whole Farm | Which cultivated systems are causing one another to fail, and how must they be coordinated? | cross-field dependency, distribution, labor, information, and sustainability record to Sandmanor review and public stakeholders | cannot erase local custodians, monopolize the farm, or infer the Sandman mantle from coordination |
-| Pegasus, Guardian of the Horizon | Which coasts, routes, weather systems, public approaches, or future movements must be coordinated beyond one beach? | horizon, navigation, evacuation, access, and cross-route record to Sandmanor review and public stakeholders | cannot erase Centaur jurisdictions, claim universal mobility authority, or infer the Sandman mantle |
+| Hecaton, Minorian Hand | Which cultivated systems are causing one another to fail, and how must they be coordinated? | cross-field dependency, distribution, labor, information, and sustainability record to Sandmanor review and public stakeholders | sovereign Hand, not Minotaur stage IV; appointment and succession remain open |
+| Pegasus, Minoan Hand | Which coasts, routes, weather systems, public approaches, or future movements must be coordinated beyond one beach? | horizon, navigation, evacuation, access, and cross-route record to Sandmanor review and public stakeholders | sovereign Hand, not Centaur stage IV; appointment and succession remain open |
 | Joint vacancy stewards | What existing proof and ordinary administration must continue while the Sandman office is vacant? | jointly signed bounded decision and vacancy record to the archive and next lawful Contest | no permanent alteration, unilateral high proof, novel succession rule, or assumption of the Sandman office |
-| Sandman | Has this claim earned the right to be relied upon as proven, and are both traditions protected? | scoped proof decision, standard, reproduction order, suspension, preserved failure, or Contest record to the next required gate and archive | cannot manufacture evidence, suppress criticism or failure, subordinate a tradition, grant another House's act, or choose a successor directly |
+| Sandman / Demiurge | Has this claim earned the right to be relied upon as proven, and are both traditions protected? | scoped proof decision, standard, reproduction order, suspension, preserved failure, or Contest record to the next required gate and archive | sovereign identity; cannot manufacture evidence, suppress criticism or failure, subordinate a tradition, grant another House's act, or choose a successor directly |
 
 The crowd has one bounded Contest function: judge baseline-relative reciprocal
 improvement from an audited record. It is not a permanent office, proof body,
@@ -330,19 +332,22 @@ or patient.
 | Role | Question and act | Must emit and hand off | Stop law and hard limit |
 |---|---|---|---|
 | Worker, operator, or crew member | What defined function can I perform repeatedly under real conditions? | performance, failure, maintenance, scope, attribution, and persistence evidence to a Flynt institution or recognition authority | performance does not self-create membership, office, Title, command, or recognition |
-| Tross | What lawful function, command, institution, deployment, or emergency receives Flynt recognition and scope? | recognition, limitation, deployment, suspension, command, or refusal record to the named institution, gate, and archive | cannot duplicate sovereignty, convert recognition into another House's act, erase the lawful/unlawful distinction, or treat the Manticorp Form as ordinary membership |
-| Manticorp Institution | What defense, disciplined force, training, infrastructure, or territorial operation is lawfully commanded? | order, command chain, readiness, deployment, after-action, casualty, and persistence record to Tross and the affected authority | ordinary service never makes a member the Manticorp Form; no deployment escapes evidence, jurisdiction, or care obligations |
-| Mystery Men | What classified threat, contraband path, espionage act, organized-crime relation, or constitutional-security fact must be investigated? | attributed classified finding, confidence, source protection, operational limit, and referral to Tross or lawful review | intelligence is not Stonebend identity, Sandmanor proof, Glaüshouse clearance, Court judgment, or permission for unbounded covert action |
-| Gallows | What regional loyalty, debt, protection, contraband route, favor, or covert obligation is actually operating outside formal public command? | crew obligation, territorial effect, risk, attribution, and accepted or disputed status to its participants and any lawful review | secrecy does not create lawful sovereignty; custom does not erase refusal, law, evidence, or the separate Tross office |
-| Bro White | What density, structure, anchoring, endurance, territory, and Gargoyle custody are required for Manticorp Continuance? | one indispensable but insufficient Recipe-custody contribution and maintenance record | cannot reproduce Manticorp alone, absorb the other custodians, or turn custody into the Tross office |
-| The Beauty | What instinct, pursuit, threat recognition, pack synchronization, and living force are required for Manticorp Continuance? | one indispensable but insufficient Recipe-custody contribution and maintenance record | cannot reproduce Manticorp alone, absorb the other custodians, or turn custody into the Tross office |
-| Cinderellaman | What adaptation, flow, Current redistribution, traversal, recovery, and return are required for Manticorp Continuance? | one indispensable but insufficient Recipe-custody contribution and maintenance record | cannot reproduce Manticorp alone, absorb the other custodians, or turn custody into the Tross office |
+| Tross / Manticore | What lawful function, command, institution, deployment, emergency, or We Fairy Men action receives Flynt recognition, direction, and scope? | recognition, limitation, deployment, suspension, command, underworld-direction, or refusal record to the named institution, body, gate, and archive | cannot duplicate sovereignty, create a separate Manticore person or office, convert recognition into another House's act, erase the lawful/unlawful distinction, or treat the Manticore Form as ordinary membership |
+| Manticorp | What defense, disciplined force, training, infrastructure, or territorial operation is lawfully commanded? | order, command chain, readiness, deployment, after-action, casualty, and persistence record to Tross and the affected authority | ordinary military service never makes a soldier the Manticore Form; no deployment escapes evidence, jurisdiction, or care obligations |
+| Mystery Men | What classified threat, contraband path, espionage act, organized-crime relation, or constitutional-security fact must be investigated? | attributed classified finding, confidence, source protection, operational limit, and referral to Tross or lawful review | intelligence is not We Fairy Men, The Gallows, Stonebend identity, Sandmanor proof, Glaüshouse clearance, Court judgment, or permission for unbounded covert action |
+| We Fairy Men | Which creature-sect capacity, population, crew, or shared Basin obligation requires collective leadership beneath the Tross? | named Bro White, Beauty, or Cinderellaman responsibility; population effect; Recipe-custody implication; and collective response or refusal | the exact name may not be normalized; the body is not Mystery Men, a fused creature, or an independent sovereign |
+| Gallows | What regional loyalty, debt, protection, contraband route, favor, or covert obligation is We Fairy Men collectively operating under the Tross in the underworld? | crew obligation, territorial effect, risk, attribution, and accepted or disputed status to its participants and any lawful review | secrecy does not create lawful sovereignty; the underworld context does not make The Gallows unrelated to We Fairy Men or merge either with Mystery Men |
+| Bro White | What density, structure, anchoring, endurance, territory, and Gargoyle/Medusa population custody are required for Manticore Continuance? | one indispensable but insufficient Recipe-custody contribution and sect-leadership record | cannot reproduce Manticore alone, absorb the other custodians, or turn custody into the Tross office |
+| Beauty | What instinct, pursuit, threat recognition, pack synchronization, and Werewolf/Vampire population force are required for Manticore Continuance? | one indispensable but insufficient Recipe-custody contribution and sect-leadership record | cannot reproduce Manticore alone, absorb the other custodians, or turn custody into the Tross office |
+| Cinderellaman | What Mariner/Mermaid adaptation, flow, Current redistribution, traversal, recovery, return, and Midnight Crew action are required for Manticore Continuance? | one indispensable but insufficient Recipe-custody contribution and maritime sect-leadership record | cannot reproduce Manticore alone, absorb the other custodians, turn custody into the Tross office, or claim an unfinalized guild name |
 
-**Chimera** is the unique First Companion and maintained lower-apex
-Synthesis, not an office. **Manticorp Form** is the Tross's maintained body,
-not the military institution or its members. **We Fairy Men** is the folk
-expression of cooperation among intact traditions, not a fused person or new
-sovereign. **The Gallowry** is a site, not an institution or speaker.
+**Chimera** is the unique feminine First Companion and maintained lower-apex
+Synthesis, not an office. **The Tross = Manticore**: Manticore is his masculine
+mythological identity and maintained body, while Manticorp is the body of
+soldiers he commands. **We Fairy Men** is the exact Tross-led creature-sect body, not a fused
+person or new sovereign. **The Gallows** is that body acting under the Tross in
+the underworld. **Mystery Men** is separate. **The Gallowry** is a site, not an
+institution or speaker.
 
 ## 11. Shared Civic Role Register
 
@@ -427,7 +432,7 @@ A lore unit is operationally complete only when:
 - uncertainty and negative evidence remain visible;
 - a witness recorded lived effect;
 - failure has an owner and a lawful next destination;
-- the Federation can carry the accepted consequence;
+- the Rampart of Roi and Roselina can carry the accepted consequence;
 - replay reproduces the same ordered state;
 - and presentation reads rather than creates the result.
 
@@ -453,14 +458,14 @@ transfers a question and its evidence rather than sovereignty.
 
 This is a responsibility boundary, not a new reducer. It does not change the
 pure recursion kernel, the four Houses, stable lore identities, or the
-Federation's authority to bind only accepted consequence.
+Rampart's authority to bind only accepted consequence.
 
 ## 16. Adoption Test
 
 The adopted integration remains valid only while:
 
 - each listed role agrees with its controlling constitution;
-- Twofold Witness, Houses, Court, Central Junction, Federation, gameplay, and
+- Twofold Witness, Houses, Court, Central Junction, Rampart, gameplay, and
   presentation remain separate;
 - the V1 twelve-field archive remains migratable;
 - the twelve current lived loops have explicit role bindings and handoffs;
@@ -480,7 +485,7 @@ The adopted integration remains valid only while:
 > **No role validates itself. No handoff transfers sovereignty. No refusal
 > disappears.**
 
-> **The Federation carries consequence. Presentation bears witness.**
+> **The Rampart of Roi and Roselina carries consequence. Presentation bears witness.**
 
 > **Hollow Grove functions when every power knows its object, its limit, and
 > who must answer next.**

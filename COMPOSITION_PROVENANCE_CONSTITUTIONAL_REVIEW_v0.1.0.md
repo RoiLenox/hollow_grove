@@ -1,7 +1,10 @@
 # Composition and Provenance Constitutional Review v0.1.0
 
-Status: design review only. No production code, existing module, fixture,
-runtime behavior, or test has been changed.
+Status: historical, superseded design review only. No production code,
+existing module, fixture, runtime behavior, or test is governed by this file.
+Its former Sandmanor transition examples are excluded from current authority;
+current Form law is `Gnome → Faun → Minotaur` and `Elf → Satyr → Centaur`, with
+Hecaton and Pegasus modeled separately as sovereign Hands.
 
 ## Question tested
 

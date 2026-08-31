@@ -269,33 +269,33 @@ It MUST NOT silently coerce a wrong form, region, function, or institution.
 
 ## 12. Regional Synthesis Rendering
 
-The canonical Gnome projection is:
+The canonical mature Minorian projection is:
 
 ```text
-Gnome
+Faun
   ↓ lawful regional Synthesis
 Minotaur
   Region: Aura Field
   Role: Steward, worker, maintainer, defender
 ```
 
-The renderer obtains `Gnome`, `Minotaur`, `Aura Field`, and duties from the
+The renderer obtains `Faun`, `Minotaur`, `Aura Field`, and duties from the
 accepted `RegionalSynthesisRecord` and `AuraFieldsStewardship`. It does not
 choose the result from the source form.
 
-The canonical Elf projection is:
+The canonical mature Minoan projection is:
 
 ```text
-Elf
+Satyr
   ↓ lawful regional Synthesis
 Centaur
   Region: Aura Beach
   Role: Roamer and shoreline patrol
-  Guardianship: Aura Sea
+  Guardianship: Current Sea
 ```
 
 The renderer obtains beach occupation and sea guardianship from the two typed
-Centaur assignments. “Aura Sea” is not cosmetic text: it is
+Centaur assignments. “Current Sea” is not cosmetic text: it is
 `AuraSeaGuardianship.region`.
 
 ## 13. Lineage Rendering
@@ -308,7 +308,7 @@ shows a transformed Being.
 Example:
 
 ```text
-[0] Gnome     being.gnome-minotaur.origin
+[0] Faun      being.gnome-minotaur.origin
 [1] Minotaur  being.gnome-minotaur.result  synthesis.gnome-minotaur
 ```
 
@@ -322,8 +322,8 @@ reference.
 
 The TUI MUST NOT:
 
-- render a Gnome as already possessing Minotaur stewardship;
-- render an Elf as already possessing Centaur guardianship;
+- render a Faun as already possessing Minotaur stewardship;
+- render a Satyr as already possessing Centaur guardianship;
 - render Minotaur sea authority;
 - render Centaur field authority;
 - infer a transformation from occupancy;
@@ -362,8 +362,8 @@ A conforming TUI integration must test:
 - accepted event emitted only after reducer success;
 - rejection has no state-change event;
 - trace/event projection leaves runtime event count unchanged;
-- Gnome→Minotaur renders Aura Field and every stewardship duty;
-- Elf→Centaur renders Aura Beach and Aura Sea guardianship;
+- Faun→Minotaur renders Aura Field and every stewardship duty;
+- Satyr→Centaur renders Aura Beach and Current Sea guardianship;
 - both lineage chains show source and result identities;
 - reversed Syntheses render stable rejection codes;
 - persistence/replay equality is displayed from actual comparisons;

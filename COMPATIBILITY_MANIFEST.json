@@ -30,8 +30,8 @@
       "digest": "fnv1a64:259f80add4b6d1dd"
     },
     {
-      "id": "runtime-federation.archive.v1",
-      "path": "tests/fixtures/compatibility/runtime_federation_v1.hgrf.json",
+      "id": "runtime-rampart.archive.v1",
+      "path": "tests/fixtures/compatibility/runtime_rampart_v1.hgrf.json",
       "format": "HGRF",
       "version": "1",
       "support": "frozen-round-trip",

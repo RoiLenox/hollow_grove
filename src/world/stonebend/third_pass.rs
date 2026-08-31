@@ -14,7 +14,7 @@ use crate::institution::{IdentityId, InstitutionId};
 use crate::world::stonebend::second_pass::{
     ConstitutionalDimension, DiamondState, GateFailureKind, GateScope, OfficeEnding,
     OfficeTombstone, ProliteriateNetwork, StonebendConstitutionalPower, StonebendGateFacing,
-    StonebendTitleCore, TitleScopeDisposition, YieldRecord, diamond_title_id,
+    StonebendTitleCore, TitleScopeDisposition, YieldRecord, diamond_title_id, hypergiant_title_id,
 };
 use crate::world::stonebend::{
     EvidenceRecordId, SealRecordId, TitleRecordId, TombstoneRecordId, high_freemason_office_id,
@@ -1601,7 +1601,8 @@ pub fn canonical_vacancy_dimension_traces(
 
 #[must_use]
 pub fn diamond_vacancy_has_no_bearer(diamond: &DiamondState) -> bool {
-    diamond.title == diamond_title_id() && diamond.is_vacant()
+    (diamond.title == hypergiant_title_id() || diamond.title == diamond_title_id())
+        && diamond.is_vacant()
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]

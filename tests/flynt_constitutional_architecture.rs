@@ -1,11 +1,11 @@
 use flynt_constitution::{
-    EXPRESSION_MYSTERY_MAN, EXPRESSION_WE_FAIRY_MEN, FORM_CHIMERA, FORM_MANTICORP,
+    EXPRESSION_MYSTERY_MAN, EXPRESSION_WE_FAIRY_MEN, FORM_CHIMERA, FORM_MANTICORE,
     INSTITUTION_GALLOWS, OFFICE_TROSS, canonical_constitution,
 };
 use hollow_grove::institution::InstitutionalEntityId;
 use hollow_grove::world::flynt::{
-    constitutional_chimera_id, gallowry_site_id, gallows_id, manticorp_id, mystery_men_id,
-    tross_office_id,
+    constitutional_chimera_id, gallowry_site_id, gallows_id, manticorp_id, marquise_group_id,
+    mystery_men_id, tross_office_id,
 };
 use hollow_grove::world::{canonical_institutional_world_state, flynt};
 
@@ -39,11 +39,16 @@ fn canonical_urban_and_rural_chains_are_complementary() {
 
     assert_eq!(
         chain(EXPRESSION_MYSTERY_MAN),
-        [EXPRESSION_MYSTERY_MAN, INSTITUTION_GALLOWS, OFFICE_TROSS,]
+        [
+            EXPRESSION_MYSTERY_MAN,
+            INSTITUTION_GALLOWS,
+            EXPRESSION_WE_FAIRY_MEN,
+            OFFICE_TROSS,
+        ]
     );
     assert_eq!(
         chain(EXPRESSION_WE_FAIRY_MEN),
-        [EXPRESSION_WE_FAIRY_MEN, INSTITUTION_GALLOWS, OFFICE_TROSS,]
+        [EXPRESSION_WE_FAIRY_MEN, OFFICE_TROSS,]
     );
 }
 
@@ -73,7 +78,7 @@ fn world_projection_preserves_domain_authority_without_duplicate_hierarchy() {
 }
 
 #[test]
-fn tross_publicly_and_underground_commands_are_distinct_faces_of_one_sovereign() {
+fn tross_leads_we_fairy_men_and_their_gallows_manifestation() {
     let flynt = flynt::canonical_flynt_institutions();
     let relationships = &flynt.catalog.relationships;
 
@@ -81,28 +86,47 @@ fn tross_publicly_and_underground_commands_are_distinct_faces_of_one_sovereign()
         relationship.source == InstitutionalEntityId::Office(tross_office_id())
             && relationship.target == InstitutionalEntityId::Being(constitutional_chimera_id())
     }));
-    for branch in [manticorp_id(), gallows_id()] {
-        assert!(relationships.iter().any(|relationship| {
-            relationship.source == InstitutionalEntityId::Office(tross_office_id())
-                && relationship.target == InstitutionalEntityId::Institution(branch.clone())
-        }));
-    }
+    assert!(relationships.iter().any(|relationship| {
+        relationship.source == InstitutionalEntityId::Office(tross_office_id())
+            && relationship.target == InstitutionalEntityId::Institution(manticorp_id())
+    }));
+    assert!(relationships.iter().any(|relationship| {
+        relationship.source == InstitutionalEntityId::Office(tross_office_id())
+            && relationship.target == InstitutionalEntityId::Institution(mystery_men_id())
+    }));
+    assert!(relationships.iter().any(|relationship| {
+        relationship.source == InstitutionalEntityId::Institution(mystery_men_id())
+            && relationship.target == InstitutionalEntityId::Group(marquise_group_id())
+    }));
+    assert!(relationships.iter().any(|relationship| {
+        relationship.source == InstitutionalEntityId::Office(tross_office_id())
+            && relationship.target == InstitutionalEntityId::Group(flynt::we_fairy_men_group_id())
+    }));
+    assert!(relationships.iter().any(|relationship| {
+        relationship.source == InstitutionalEntityId::Group(flynt::we_fairy_men_group_id())
+            && relationship.target == InstitutionalEntityId::Institution(gallows_id())
+    }));
 }
 
 #[test]
-fn manticorp_form_and_institution_are_distinct() {
+fn manticore_form_and_manticorp_soldier_body_are_distinct() {
     let constitution = canonical_constitution().unwrap();
     assert_eq!(constitution.chimera().form.as_str(), FORM_CHIMERA);
     assert!(
         constitution
             .forms()
             .iter()
-            .any(|form| form.id.as_str() == FORM_MANTICORP)
+            .any(|form| form.id.as_str() == FORM_MANTICORE)
     );
     assert_eq!(
-        constitution.manticorp_recipe().recipe.result.as_str(),
-        FORM_MANTICORP
+        constitution.manticore_recipe().recipe.result.as_str(),
+        FORM_MANTICORE
     );
+    assert_ne!(FORM_MANTICORE, manticorp_id().as_str());
+    assert_ne!(FORM_CHIMERA, manticorp_id().as_str());
+    assert_ne!(tross_office_id().as_str(), manticorp_id().as_str());
+    assert_ne!(manticorp_id(), mystery_men_id());
+    assert_ne!(manticorp_id(), gallows_id());
 }
 
 #[test]

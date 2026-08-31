@@ -14,7 +14,7 @@ fn artifact_path() -> PathBuf {
     PathBuf::from(CURRENT_SYNTHESIS_BASE_ARTIFACT_PATH)
 }
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let snapshot = read_artifact(Path::new(SNAPSHOT_ARTIFACT_PATH))?;
     let prompt = read_artifact(Path::new(PROMPT_ARTIFACT_PATH))?;
     let desktop_status = read_artifact(Path::new(DESKTOP_STATUS_ARTIFACT_PATH))?;

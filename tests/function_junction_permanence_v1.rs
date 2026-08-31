@@ -21,7 +21,7 @@ use hollow_grove::world::function_junction_fixture::{
     canonical_function_junction_archive_fixture, canonical_grove_cycles_fixture,
 };
 use hollow_grove::world::permanence::{
-    AttestationStatus, PermanenceLaw, PermanentChangeKind, PermanentSubjectId,
+    AttestationStatus, PermanenceLaw, PermanentChangeKind, PermanentSubjectId, StonebendSealOffice,
 };
 use hollow_grove::world::service_tournament::canonical_war_of_a_thousand_hues;
 use hollow_grove::world::way_back::{WayBackDirection, WayBackExpression};
@@ -570,6 +570,18 @@ fn legacy_recognition_law_name_normalizes_without_changing_frozen_wire_bytes() {
     assert_eq!(
         serde_json::to_string(&legacy).expect("legacy law serializes"),
         "\"Recognition\""
+    );
+}
+
+#[test]
+fn legacy_diamond_hypergiant_wire_value_normalizes_to_active_hypergiant() {
+    let legacy: StonebendSealOffice =
+        serde_json::from_str("\"DiamondHypergiant\"").expect("legacy office decodes");
+    assert_eq!(legacy, StonebendSealOffice::DiamondHypergiant);
+    assert_eq!(legacy.canonical(), StonebendSealOffice::Hypergiant);
+    assert_eq!(
+        serde_json::to_string(&legacy).expect("legacy office serializes"),
+        "\"DiamondHypergiant\""
     );
 }
 

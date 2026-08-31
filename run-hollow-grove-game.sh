@@ -4,7 +4,6 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 GODOT_BIN="${GODOT_BIN:-}"
-CARGO_BIN="${CARGO_BIN:-}"
 SERVICE_PID=""
 
 if [[ -z "$GODOT_BIN" ]]; then
@@ -14,17 +13,6 @@ if [[ -z "$GODOT_BIN" ]]; then
         GODOT_BIN="godot"
     else
         printf 'godot executable not found\n' >&2
-        exit 1
-    fi
-fi
-
-if [[ -z "$CARGO_BIN" ]]; then
-    if command -v cargo >/dev/null 2>&1; then
-        CARGO_BIN="cargo"
-    elif [[ -x "${CARGO_HOME:-$HOME/.cargo}/bin/cargo" ]]; then
-        CARGO_BIN="${CARGO_HOME:-$HOME/.cargo}/bin/cargo"
-    else
-        printf 'cargo executable not found\n' >&2
         exit 1
     fi
 fi
@@ -40,8 +28,21 @@ trap cleanup EXIT INT TERM
 
 export HOLLOW_GROVE_ROOT="$SCRIPT_DIR"
 
-"$CARGO_BIN" run --quiet --manifest-path "$SCRIPT_DIR/Cargo.toml" \
-    --bin hollow_grove_game_service -- \
+BIN_DIR="${HOLLOW_GROVE_BIN_DIR:-$HOME/.local/lib/hollow-grove/bin}"
+SERVICE_BIN="$BIN_DIR/hollow_grove_game_service"
+if [[ "${1:-}" == "--dev" ]]; then
+    shift
+    cargo build --manifest-path "$SCRIPT_DIR/Cargo.toml" --bin hollow_grove_game_service >/dev/null
+    SERVICE_BIN="$SCRIPT_DIR/target/debug/hollow_grove_game_service"
+elif [[ ! -x "$SERVICE_BIN" && -x "$SCRIPT_DIR/target/release/hollow_grove_game_service" ]]; then
+    SERVICE_BIN="$SCRIPT_DIR/target/release/hollow_grove_game_service"
+fi
+if [[ ! -x "$SERVICE_BIN" ]]; then
+    printf 'release game service not installed; run %s/install-local-release.sh\n' "$SCRIPT_DIR" >&2
+    exit 1
+fi
+
+"$SERVICE_BIN" \
     --listen 127.0.0.1:47819 \
     --session session.hollow-grove.local \
     --save-root "$SCRIPT_DIR/artifacts/gameplay-saves" \

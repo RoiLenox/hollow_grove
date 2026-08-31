@@ -14,7 +14,7 @@ cargo test
 cargo build
 cargo build --release
 cargo test -- --list | rg ': test$' | wc -l
-cargo run --quiet --bin client_desktop_status
+cargo run --quiet --features dev-tools --bin hg-dev -- client_desktop_status
 ./target/release/current_synthesis_benchmark --warmup 1 --samples 3 --no-write
 python3 - <<'PY'
 import subprocess, time

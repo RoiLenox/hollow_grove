@@ -4,7 +4,7 @@ use hollow_grove::world::aura_field::canonical_aura_field;
 use hollow_grove::world::geography::canonical_constitutional_geography;
 use hollow_grove::world::route_network::{RouteGeometryClass, RouteNetwork};
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+pub(crate) fn tool_main() -> Result<(), Box<dyn std::error::Error>> {
     let geography = canonical_constitutional_geography()?;
     let network = RouteNetwork::canonical()?;
     println!("Hollow Grove route network: pass");

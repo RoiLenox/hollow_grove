@@ -239,7 +239,7 @@ The titles and attributions below preserve the supplied collection exactly. Date
 
 ## Professional collections
 
-- Warden rescue and breach response
+- rescue and breach response
 - industrial continuance and maintenance
 - signals, computing, transport, and systems operations
 

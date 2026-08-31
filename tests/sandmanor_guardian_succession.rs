@@ -2,7 +2,7 @@ use std::collections::{BTreeMap, BTreeSet};
 
 use hollow_grove::hollow_grove_contract::House;
 use hollow_grove::institution::IdentityId;
-use hollow_grove::lineage_contract::SandmanorForm;
+use hollow_grove::lineage_contract::{SandmanorForm, SandmanorSovereignHand};
 use hollow_grove::world::central_junction::{EconomicPole, canonical_market_indexes};
 use hollow_grove::world::glaushouse::{
     ContinuanceConditions, ContinuanceHorizon, SynthesisContinuance, SynthesisLifecycle,
@@ -130,6 +130,7 @@ fn investiture(
         person: person.clone(),
         synthesis: synthesis.id.clone(),
         mantle,
+        sovereign_hand: mantle.required_sovereign_hand(),
         jurisdiction: jurisdiction.into(),
         authority_state: GuardianAuthorityState::Active,
         renewal_current: true,
@@ -147,11 +148,25 @@ fn complete_guardian_paths() -> (GuardianState, IdentityId, IdentityId) {
     let minorian = identity("being.sandmanor.hecaton-candidate");
     let minoan = identity("being.sandmanor.pegasus-candidate");
 
+    let faun_q = qualification(
+        "qualification.minorian.faun",
+        &minorian,
+        SandmanorPeople::Minorian,
+        SandmanorForm::Gnome,
+        SandmanorForm::Faun,
+    );
+    let faun_a = authorization(
+        "authorization.minorian.faun",
+        &minorian,
+        &faun_q,
+        "recipe.sandmanor.faun",
+    );
+    let faun_s = synthesis("synthesis.minorian.faun", &minorian, &faun_a);
     let minotaur_q = qualification(
         "qualification.minorian.minotaur",
         &minorian,
         SandmanorPeople::Minorian,
-        SandmanorForm::Gnome,
+        SandmanorForm::Faun,
         SandmanorForm::Minotaur,
     );
     let minotaur_a = authorization(
@@ -168,33 +183,33 @@ fn complete_guardian_paths() -> (GuardianState, IdentityId, IdentityId) {
         GuardianMantle::GuardianOfTheFields,
         "a defined Aura Farm domain",
     );
-    let hecaton_q = qualification(
-        "qualification.minorian.hecaton",
-        &minorian,
-        SandmanorPeople::Minorian,
-        SandmanorForm::Minotaur,
-        SandmanorForm::Hecaton,
-    );
-    let hecaton_a = authorization(
-        "authorization.minorian.hecaton",
-        &minorian,
-        &hecaton_q,
-        "recipe.sandmanor.hecaton",
-    );
-    let hecaton_s = synthesis("synthesis.minorian.hecaton", &minorian, &hecaton_a);
     let hecaton_i = investiture(
         "investiture.minorian.whole-farm",
         &minorian,
-        &hecaton_s,
+        &minotaur_s,
         GuardianMantle::GuardianOfTheWholeFarm,
         "the whole Aura Farm",
     );
 
+    let satyr_q = qualification(
+        "qualification.minoan.satyr",
+        &minoan,
+        SandmanorPeople::Minoan,
+        SandmanorForm::Elf,
+        SandmanorForm::Satyr,
+    );
+    let satyr_a = authorization(
+        "authorization.minoan.satyr",
+        &minoan,
+        &satyr_q,
+        "recipe.sandmanor.satyr",
+    );
+    let satyr_s = synthesis("synthesis.minoan.satyr", &minoan, &satyr_a);
     let centaur_q = qualification(
         "qualification.minoan.centaur",
         &minoan,
         SandmanorPeople::Minoan,
-        SandmanorForm::Elf,
+        SandmanorForm::Satyr,
         SandmanorForm::Centaur,
     );
     let centaur_a = authorization(
@@ -211,56 +226,42 @@ fn complete_guardian_paths() -> (GuardianState, IdentityId, IdentityId) {
         GuardianMantle::GuardianOfTheBeach,
         "a defined stretch of Aura Beach",
     );
-    let pegasus_q = qualification(
-        "qualification.minoan.pegasus",
-        &minoan,
-        SandmanorPeople::Minoan,
-        SandmanorForm::Centaur,
-        SandmanorForm::Pegasus,
-    );
-    let pegasus_a = authorization(
-        "authorization.minoan.pegasus",
-        &minoan,
-        &pegasus_q,
-        "recipe.sandmanor.pegasus",
-    );
-    let pegasus_s = synthesis("synthesis.minoan.pegasus", &minoan, &pegasus_a);
     let pegasus_i = investiture(
         "investiture.minoan.horizon",
         &minoan,
-        &pegasus_s,
+        &centaur_s,
         GuardianMantle::GuardianOfTheHorizon,
         "the connected coast and Current Sea approaches",
     );
 
     let events = vec![
         event(
-            "event.01.minotaur-qualification",
-            GuardianEventKind::QualificationRecorded(minotaur_q),
+            "event.01.faun-qualification",
+            GuardianEventKind::QualificationRecorded(faun_q),
         ),
         event(
-            "event.02.minotaur-authorization",
-            GuardianEventKind::RecipeAuthorized(minotaur_a),
+            "event.02.faun-authorization",
+            GuardianEventKind::RecipeAuthorized(faun_a),
         ),
         event(
-            "event.03.minotaur-synthesis",
-            GuardianEventKind::SynthesisRecorded(minotaur_s),
+            "event.03.faun-synthesis",
+            GuardianEventKind::SynthesisRecorded(faun_s),
         ),
         event(
             "event.04.fields-investiture",
             GuardianEventKind::MantleInvested(minotaur_i.clone()),
         ),
         event(
-            "event.05.hecaton-qualification",
-            GuardianEventKind::QualificationRecorded(hecaton_q),
+            "event.05.minotaur-qualification",
+            GuardianEventKind::QualificationRecorded(minotaur_q),
         ),
         event(
-            "event.06.hecaton-authorization",
-            GuardianEventKind::RecipeAuthorized(hecaton_a),
+            "event.06.minotaur-authorization",
+            GuardianEventKind::RecipeAuthorized(minotaur_a),
         ),
         event(
-            "event.07.hecaton-synthesis",
-            GuardianEventKind::SynthesisRecorded(hecaton_s),
+            "event.07.minotaur-synthesis",
+            GuardianEventKind::SynthesisRecorded(minotaur_s),
         ),
         event(
             "event.08.fields-retirement",
@@ -271,32 +272,32 @@ fn complete_guardian_paths() -> (GuardianState, IdentityId, IdentityId) {
             GuardianEventKind::MantleInvested(hecaton_i),
         ),
         event(
-            "event.10.centaur-qualification",
-            GuardianEventKind::QualificationRecorded(centaur_q),
+            "event.10.satyr-qualification",
+            GuardianEventKind::QualificationRecorded(satyr_q),
         ),
         event(
-            "event.11.centaur-authorization",
-            GuardianEventKind::RecipeAuthorized(centaur_a),
+            "event.11.satyr-authorization",
+            GuardianEventKind::RecipeAuthorized(satyr_a),
         ),
         event(
-            "event.12.centaur-synthesis",
-            GuardianEventKind::SynthesisRecorded(centaur_s),
+            "event.12.satyr-synthesis",
+            GuardianEventKind::SynthesisRecorded(satyr_s),
         ),
         event(
             "event.13.beach-investiture",
             GuardianEventKind::MantleInvested(centaur_i.clone()),
         ),
         event(
-            "event.14.pegasus-qualification",
-            GuardianEventKind::QualificationRecorded(pegasus_q),
+            "event.14.centaur-qualification",
+            GuardianEventKind::QualificationRecorded(centaur_q),
         ),
         event(
-            "event.15.pegasus-authorization",
-            GuardianEventKind::RecipeAuthorized(pegasus_a),
+            "event.15.centaur-authorization",
+            GuardianEventKind::RecipeAuthorized(centaur_a),
         ),
         event(
-            "event.16.pegasus-synthesis",
-            GuardianEventKind::SynthesisRecorded(pegasus_s),
+            "event.16.centaur-synthesis",
+            GuardianEventKind::SynthesisRecorded(centaur_s),
         ),
         event(
             "event.17.beach-retirement",
@@ -319,7 +320,8 @@ fn contest_fixture(reverse: bool) -> (GuardianState, ContestOfImprovementProof) 
     let hecaton_candidate = ImprovementCandidate {
         person: hecaton.clone(),
         people: SandmanorPeople::Minorian,
-        form: SandmanorForm::Hecaton,
+        form: SandmanorForm::Minotaur,
+        sovereign_hand: SandmanorSovereignHand::Hecaton,
         mantle: GuardianInvestitureId::new("investiture.minorian.whole-farm").unwrap(),
         baseline: CandidateBaseline {
             candidate: hecaton.clone(),
@@ -340,7 +342,8 @@ fn contest_fixture(reverse: bool) -> (GuardianState, ContestOfImprovementProof) 
     let pegasus_candidate = ImprovementCandidate {
         person: pegasus.clone(),
         people: SandmanorPeople::Minoan,
-        form: SandmanorForm::Pegasus,
+        form: SandmanorForm::Centaur,
+        sovereign_hand: SandmanorSovereignHand::Pegasus,
         mantle: GuardianInvestitureId::new("investiture.minoan.horizon").unwrap(),
         baseline: CandidateBaseline {
             candidate: pegasus.clone(),
@@ -448,16 +451,32 @@ fn contest_fixture(reverse: bool) -> (GuardianState, ContestOfImprovementProof) 
 }
 
 #[test]
-fn two_equal_peoples_have_exact_base_and_guardian_forms() {
+fn two_equal_peoples_have_exact_form_progressions_and_distinct_hands() {
     assert_eq!(SandmanorPeople::Minorian.base_form(), SandmanorForm::Gnome);
     assert_eq!(SandmanorPeople::Minoan.base_form(), SandmanorForm::Elf);
     assert_eq!(
-        SandmanorPeople::Minorian.senior_guardian_form(),
-        SandmanorForm::Hecaton
+        SandmanorPeople::Minorian.intermediate_form(),
+        SandmanorForm::Faun
     );
     assert_eq!(
-        SandmanorPeople::Minoan.senior_guardian_form(),
-        SandmanorForm::Pegasus
+        SandmanorPeople::Minoan.intermediate_form(),
+        SandmanorForm::Satyr
+    );
+    assert_eq!(
+        SandmanorPeople::Minorian.mature_form(),
+        SandmanorForm::Minotaur
+    );
+    assert_eq!(
+        SandmanorPeople::Minoan.mature_form(),
+        SandmanorForm::Centaur
+    );
+    assert_eq!(
+        SandmanorPeople::Minorian.sovereign_hand(),
+        SandmanorSovereignHand::Hecaton
+    );
+    assert_eq!(
+        SandmanorPeople::Minoan.sovereign_hand(),
+        SandmanorSovereignHand::Pegasus
     );
 }
 
@@ -472,6 +491,7 @@ fn aura_farm_has_physical_and_cultural_halves_without_blanket_corruption() {
     );
     let healthy = ContentFarmAssessment {
         practices: BTreeSet::from([
+            ContentFarmPractice::CultivatesFamily,
             ContentFarmPractice::Educates,
             ContentFarmPractice::PreservesMemory,
             ContentFarmPractice::NourishesAttention,
@@ -591,17 +611,17 @@ fn complete_minorian_and_minoan_guardian_recipe_paths_replay_deterministically()
 }
 
 #[test]
-fn guardian_progression_rejects_automatic_or_cross_lineage_upgrade() {
+fn guardian_progression_rejects_stage_skips_and_cross_lineage_upgrade() {
     let person = identity("being.sandmanor.invalid-upgrade");
     let invalid = qualification(
-        "qualification.invalid.auto-hecaton",
+        "qualification.invalid.stage-skip",
         &person,
         SandmanorPeople::Minorian,
         SandmanorForm::Gnome,
-        SandmanorForm::Hecaton,
+        SandmanorForm::Minotaur,
     );
     let result = GuardianState::replay(&[event(
-        "event.invalid.auto-hecaton",
+        "event.invalid.stage-skip",
         GuardianEventKind::QualificationRecorded(invalid),
     )]);
     assert!(matches!(
@@ -621,7 +641,7 @@ fn mantle_removal_ends_authority_without_erasing_the_real_form() {
     assert!(!mantle.may_exercise_authority());
     assert!(state.syntheses.values().any(|record| {
         record.person == minorian
-            && record.to == SandmanorForm::Hecaton
+            && record.to == SandmanorForm::Minotaur
             && record.form_is_physically_present()
     }));
 }
@@ -632,13 +652,13 @@ fn guardian_mantles_are_plural_while_sandman_is_singular() {
     let hecaton_synthesis = state
         .syntheses
         .values()
-        .find(|record| record.person == minorian && record.to == SandmanorForm::Hecaton)
+        .find(|record| record.person == minorian && record.to == SandmanorForm::Minotaur)
         .unwrap()
         .clone();
     let pegasus_synthesis = state
         .syntheses
         .values()
-        .find(|record| record.person == minoan && record.to == SandmanorForm::Pegasus)
+        .find(|record| record.person == minoan && record.to == SandmanorForm::Centaur)
         .unwrap()
         .clone();
     let first = investiture(
@@ -680,12 +700,12 @@ fn improvement_is_relative_to_baseline_not_absolute_mastery() {
     let hecaton = contest
         .candidates
         .iter()
-        .find(|candidate| candidate.form == SandmanorForm::Hecaton)
+        .find(|candidate| candidate.sovereign_hand == SandmanorSovereignHand::Hecaton)
         .unwrap();
     let pegasus = contest
         .candidates
         .iter()
-        .find(|candidate| candidate.form == SandmanorForm::Pegasus)
+        .find(|candidate| candidate.sovereign_hand == SandmanorSovereignHand::Pegasus)
         .unwrap();
     assert_eq!(hecaton.baseline.competencies[&TrialDomain::AuraField], 90);
     assert_eq!(
@@ -780,7 +800,8 @@ fn winner_receives_sandman_convergence_and_loser_keeps_form_and_mantle() {
         recipe_authorized: true,
         convergence: SandmanConvergence {
             person: winner,
-            source_form: SandmanorForm::Hecaton,
+            source_form: SandmanorForm::Minotaur,
+            source_hand: SandmanorSovereignHand::Hecaton,
             recipe: recipe("recipe.sandmanor.sandman"),
             integrates_other_way: true,
             glaushouse_compatibility_cleared: true,

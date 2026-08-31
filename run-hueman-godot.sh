@@ -7,8 +7,8 @@ GODOT_BIN="${GODOT_BIN:-}"
 PAIR_STATE_PATH="$SCRIPT_DIR/artifacts/hueman_pair_state.json"
 APPLICATION_REGISTRY_PATH="$SCRIPT_DIR/artifacts/hollow_grove_application_registry.json"
 PREVIEW_IMAGE_PATH="$SCRIPT_DIR/artifacts/hueman_pair_preview.png"
-PREVIEW_PID=""
-SYNC_PID=""
+BROKER_PID=""
+TOPOLOGY_PID=""
 
 if [[ -z "$GODOT_BIN" ]]; then
     if command -v godot4 >/dev/null 2>&1; then
@@ -126,27 +126,43 @@ printf '%s\n' "$existing_pair_state_json" | jq \
 ' >"$PAIR_STATE_PATH"
 
 cleanup() {
-    if [[ -n "$SYNC_PID" ]]; then
-        kill "$SYNC_PID" 2>/dev/null || true
-        wait "$SYNC_PID" 2>/dev/null || true
+    if [[ -n "$TOPOLOGY_PID" ]]; then
+        kill "$TOPOLOGY_PID" 2>/dev/null || true
+        wait "$TOPOLOGY_PID" 2>/dev/null || true
     fi
-    if [[ -n "$PREVIEW_PID" ]]; then
-        kill "$PREVIEW_PID" 2>/dev/null || true
-        wait "$PREVIEW_PID" 2>/dev/null || true
+    if [[ -n "$BROKER_PID" ]]; then
+        kill "$BROKER_PID" 2>/dev/null || true
+        wait "$BROKER_PID" 2>/dev/null || true
     fi
 }
 
 trap cleanup EXIT INT TERM
 
-if [[ -x "$SCRIPT_DIR/sync-hueman-pair-state.sh" ]]; then
-    "$SCRIPT_DIR/sync-hueman-pair-state.sh" &
-    SYNC_PID="$!"
+BROKER_BIN="${HOLLOW_GROVE_NIRI_BIN:-${HOLLOW_GROVE_BIN_DIR:-$HOME/.local/lib/hollow-grove/bin}/hollow-niri}"
+if [[ ! -x "$BROKER_BIN" && -x "$SCRIPT_DIR/target/release/hollow-niri" ]]; then
+    BROKER_BIN="$SCRIPT_DIR/target/release/hollow-niri"
+fi
+if [[ ! -x "$BROKER_BIN" ]]; then
+    printf 'optimized Hollow Niri broker not found; run ./install-local-release.sh\n' >&2
+    exit 1
 fi
 
-if [[ -x "$SCRIPT_DIR/capture-hueman-pair-preview.sh" ]]; then
-    "$SCRIPT_DIR/capture-hueman-pair-preview.sh" &
-    PREVIEW_PID="$!"
+TOPOLOGY_BIN="${HOLLOW_GROVE_TOPOLOGY_BIN:-${HOLLOW_GROVE_BIN_DIR:-$HOME/.local/lib/hollow-grove/bin}/adaptive_topology_live}"
+if [[ ! -x "$TOPOLOGY_BIN" && -x "$SCRIPT_DIR/target/release/adaptive_topology_live" ]]; then
+    TOPOLOGY_BIN="$SCRIPT_DIR/target/release/adaptive_topology_live"
 fi
+if [[ ! -x "$TOPOLOGY_BIN" ]]; then
+    printf 'optimized adaptive topology live bridge not found; run ./install-local-release.sh\n' >&2
+    exit 1
+fi
+
+"$BROKER_BIN" broker --root "$SCRIPT_DIR" \
+    --preview-fps "${HUEMAN_PAIR_PREVIEW_FPS:-1}" &
+BROKER_PID="$!"
+
+"$TOPOLOGY_BIN" serve --root "$SCRIPT_DIR" \
+    --poll-ms "${HOLLOW_GROVE_TOPOLOGY_POLL_MS:-50}" --quiet &
+TOPOLOGY_PID="$!"
 
 "$GODOT_BIN" --path "$SCRIPT_DIR/hueman_godot" \
     res://scenes/hueman_screen_shell.tscn "$@"

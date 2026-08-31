@@ -12,14 +12,14 @@ use std::time::Duration;
 use std::time::{SystemTime, UNIX_EPOCH};
 
 use hollow_grove::composition::{CompositionCatalog, ExternalRef, ScaleKey};
-use hollow_grove::runtime_federation::{
-    DEFAULT_FEDERATION_HTTP_ADDRESS, DEFAULT_HOLLOW_GROVE_OLLAMA_MODEL, DEFAULT_OLLAMA_URL,
-    DeterministicSemanticInterpreter, FEDERATION_HTTP_API_SCHEMA_VERSION,
-    FederationApiCycleRequest, FederationHttpApi, HOLLOW_GROVE_MODEL_ENV,
-    HOLLOW_GROVE_OLLAMA_URL_ENV, LocalFederationCycleInput, MAX_FEDERATION_HTTP_REQUEST_BODY_BYTES,
-    OllamaConfig, OllamaSemanticInterpreter, SemanticDecision, SemanticInterpreter,
-    parse_model_semantic_proposal, render_hollow_grove_ollama_modelfile,
-    run_local_federation_cycle, validate_ollama_model_reference,
+use hollow_grove::guide_identity::RAMPART_CANONICAL_NAME;
+use hollow_grove::runtime_rampart::{
+    DEFAULT_HOLLOW_GROVE_OLLAMA_MODEL, DEFAULT_OLLAMA_URL, DEFAULT_RAMPART_HTTP_ADDRESS,
+    DeterministicSemanticInterpreter, HOLLOW_GROVE_MODEL_ENV, HOLLOW_GROVE_OLLAMA_URL_ENV,
+    LocalRampartCycleInput, MAX_RAMPART_HTTP_REQUEST_BODY_BYTES, OllamaConfig,
+    OllamaSemanticInterpreter, RAMPART_HTTP_API_SCHEMA_VERSION, RampartApiCycleRequest,
+    RampartHttpApi, SemanticDecision, SemanticInterpreter, parse_model_semantic_proposal,
+    render_hollow_grove_ollama_modelfile, run_local_rampart_cycle, validate_ollama_model_reference,
 };
 use hollow_grove::world::composition_witnesses::canonical_composition_witness_catalog;
 use hollow_grove::{
@@ -29,22 +29,22 @@ use hollow_grove::{
     write_bytes_atomically, write_semantic_dataset_split,
 };
 
-const DEFAULT_SEMANTIC_FEDERATION_STATE_PATH: &str = "artifacts/semantic_federation_state_v1.json";
-const FEDERATION_CLI_RESULT_SCHEMA_VERSION: &str = "hollow-grove-federation-cli-result-v1";
-const MAX_FEDERATION_HTTP_HEADER_BYTES: usize = 16_384;
-const MAX_FEDERATION_HTTP_CLIENTS: usize = 16;
-const FEDERATION_HTTP_CLIENT_TIMEOUT: Duration = Duration::from_secs(70);
-const FEDERATION_HTTP_WRITE_TIMEOUT: Duration = Duration::from_secs(10);
+const DEFAULT_SEMANTIC_RAMPART_STATE_PATH: &str = "artifacts/semantic_rampart_state_v1.json";
+const RAMPART_CLI_RESULT_SCHEMA_VERSION: &str = "hollow-grove-rampart-cli-result-v1";
+const MAX_RAMPART_HTTP_HEADER_BYTES: usize = 16_384;
+const MAX_RAMPART_HTTP_CLIENTS: usize = 16;
+const RAMPART_HTTP_CLIENT_TIMEOUT: Duration = Duration::from_secs(70);
+const RAMPART_HTTP_WRITE_TIMEOUT: Duration = Duration::from_secs(10);
 
 fn usage() -> &'static str {
-    "Usage: hollow_grove_semantic <semantic|federation|model|dataset> <command> [args]\n\
+    "Usage: hollow_grove_semantic <semantic|rampart|model|dataset> <command> [args]\n\
      \n\
      Commands:\n\
        semantic inspect <jsonl> <point-ref> <scale> [--json]\n\
        semantic history <jsonl> <point-ref> <scale> [--json]\n\
        semantic nearby <jsonl> <scale> <x> <y> <z> [limit] [--json]\n\
-       federation run <point-ref> <scale> <intent> [--state <path>] [--proposal-json <path>] [--json]\n\
-       federation serve [--listen 127.0.0.1:PORT] [--state <path>]\n\
+       rampart run <point-ref> <scale> <intent> [--state <path>] [--proposal-json <path>] [--json]\n\
+       rampart serve [--listen 127.0.0.1:PORT] [--state <path>]\n\
        model show-modelfile <base-model>\n\
        model install-ollama <base-model> [model-name]\n\
        model validate-response <json> [--json]\n\
@@ -52,7 +52,7 @@ fn usage() -> &'static str {
        dataset split-semantic <jsonl> <train-jsonl> <validation-jsonl> <seed> [validation-millis]\n\
      \n\
      All semantic dataset commands are read-only. Canonical mutation remains\n\
-     exclusively inside Federation and Festival. Federation uses Ollama unless\n\
+     exclusively inside the Rampart and Festival. The Rampart uses Ollama unless\n\
      --proposal-json supplies an offline deterministic proposal for testing.\n\
      The HTTP service is restricted to loopback interfaces."
 }
@@ -113,7 +113,7 @@ fn block_on<F: Future>(future: F) -> F::Output {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-struct FederationRunOptions {
+struct RampartRunOptions {
     point_ref: String,
     scale: String,
     intent: String,
@@ -123,14 +123,14 @@ struct FederationRunOptions {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-struct FederationServeOptions {
+struct RampartServeOptions {
     listen: SocketAddr,
     state_path: PathBuf,
 }
 
-fn parse_federation_run_options(args: &[String]) -> io::Result<FederationRunOptions> {
+fn parse_rampart_run_options(args: &[String]) -> io::Result<RampartRunOptions> {
     let mut positional = Vec::new();
-    let mut state_path = PathBuf::from(DEFAULT_SEMANTIC_FEDERATION_STATE_PATH);
+    let mut state_path = PathBuf::from(DEFAULT_SEMANTIC_RAMPART_STATE_PATH);
     let mut proposal_path = None;
     let mut json = false;
     let mut index = 0;
@@ -149,7 +149,7 @@ fn parse_federation_run_options(args: &[String]) -> io::Result<FederationRunOpti
                 index += 2;
             }
             value if value.starts_with("--") => {
-                return Err(invalid(format!("unknown federation option: {value}")));
+                return Err(invalid(format!("unknown Rampart option: {value}")));
             }
             value => {
                 positional.push(value.to_owned());
@@ -160,7 +160,7 @@ fn parse_federation_run_options(args: &[String]) -> io::Result<FederationRunOpti
     if positional.len() != 3 {
         return Err(invalid(usage()));
     }
-    Ok(FederationRunOptions {
+    Ok(RampartRunOptions {
         point_ref: positional.remove(0),
         scale: positional.remove(0),
         intent: positional.remove(0),
@@ -170,11 +170,11 @@ fn parse_federation_run_options(args: &[String]) -> io::Result<FederationRunOpti
     })
 }
 
-fn parse_federation_serve_options(args: &[String]) -> io::Result<FederationServeOptions> {
-    let mut listen = DEFAULT_FEDERATION_HTTP_ADDRESS
+fn parse_rampart_serve_options(args: &[String]) -> io::Result<RampartServeOptions> {
+    let mut listen = DEFAULT_RAMPART_HTTP_ADDRESS
         .parse::<SocketAddr>()
-        .expect("the canonical Federation HTTP address is valid");
-    let mut state_path = PathBuf::from(DEFAULT_SEMANTIC_FEDERATION_STATE_PATH);
+        .expect("the canonical Rampart HTTP address is valid");
+    let mut state_path = PathBuf::from(DEFAULT_SEMANTIC_RAMPART_STATE_PATH);
     let mut index = 0;
     while index < args.len() {
         match args[index].as_str() {
@@ -191,13 +191,13 @@ fn parse_federation_serve_options(args: &[String]) -> io::Result<FederationServe
             }
             value => {
                 return Err(invalid(format!(
-                    "unknown or incomplete federation serve option: {value}"
+                    "unknown or incomplete Rampart serve option: {value}"
                 )));
             }
         }
     }
     require_loopback(listen.ip())?;
-    Ok(FederationServeOptions { listen, state_path })
+    Ok(RampartServeOptions { listen, state_path })
 }
 
 fn require_loopback(ip: IpAddr) -> io::Result<()> {
@@ -205,7 +205,7 @@ fn require_loopback(ip: IpAddr) -> io::Result<()> {
         Ok(())
     } else {
         Err(invalid(format!(
-            "Federation HTTP service refuses non-loopback listen address {ip}"
+            "The Rampart of Roi and Roselina HTTP service refuses non-loopback listen address {ip}"
         )))
     }
 }
@@ -219,7 +219,7 @@ fn parse_external_reference(value: &str) -> io::Result<ExternalRef> {
     ExternalRef::new(namespace, key).map_err(|error| invalid(error.to_string()))
 }
 
-fn load_federation_catalog(path: &Path) -> io::Result<CompositionCatalog> {
+fn load_rampart_catalog(path: &Path) -> io::Result<CompositionCatalog> {
     let mut catalog = canonical_composition_witness_catalog()
         .map_err(|error| io::Error::other(error.to_string()))?;
     match fs::read(path) {
@@ -243,7 +243,7 @@ fn ollama_config() -> io::Result<OllamaConfig> {
 }
 
 #[derive(Debug)]
-struct FederationHttpRequest {
+struct RampartHttpRequest {
     method: String,
     path: String,
     content_type: Option<String>,
@@ -251,13 +251,13 @@ struct FederationHttpRequest {
 }
 
 #[derive(Debug)]
-struct FederationHttpProtocolError {
+struct RampartHttpProtocolError {
     status: u16,
     error_type: &'static str,
     message: String,
 }
 
-impl FederationHttpProtocolError {
+impl RampartHttpProtocolError {
     fn new(status: u16, error_type: &'static str, message: impl Into<String>) -> Self {
         Self {
             status,
@@ -267,16 +267,16 @@ impl FederationHttpProtocolError {
     }
 }
 
-fn read_federation_http_request(
+fn read_rampart_http_request(
     reader: &mut impl BufRead,
-) -> Result<FederationHttpRequest, FederationHttpProtocolError> {
-    let headers = read_federation_http_headers(reader)?;
+) -> Result<RampartHttpRequest, RampartHttpProtocolError> {
+    let headers = read_rampart_http_headers(reader)?;
     let headers = std::str::from_utf8(&headers).map_err(|_| {
-        FederationHttpProtocolError::new(400, "malformed_http", "HTTP headers must be UTF-8")
+        RampartHttpProtocolError::new(400, "malformed_http", "HTTP headers must be UTF-8")
     })?;
     let mut lines = headers.split("\r\n");
     let request_line = lines.next().ok_or_else(|| {
-        FederationHttpProtocolError::new(400, "malformed_http", "missing HTTP request line")
+        RampartHttpProtocolError::new(400, "malformed_http", "missing HTTP request line")
     })?;
     let request_parts = request_line.split_whitespace().collect::<Vec<_>>();
     if request_parts.len() != 3
@@ -284,7 +284,7 @@ fn read_federation_http_request(
         || request_parts[0].is_empty()
         || request_parts[1].is_empty()
     {
-        return Err(FederationHttpProtocolError::new(
+        return Err(RampartHttpProtocolError::new(
             400,
             "malformed_http",
             "invalid HTTP request line",
@@ -299,7 +299,7 @@ fn read_federation_http_request(
             continue;
         }
         let Some((name, value)) = line.split_once(':') else {
-            return Err(FederationHttpProtocolError::new(
+            return Err(RampartHttpProtocolError::new(
                 400,
                 "malformed_http",
                 "invalid HTTP header",
@@ -312,7 +312,7 @@ fn read_federation_http_request(
                 .bytes()
                 .all(|byte| byte.is_ascii_alphanumeric() || byte == b'-')
         {
-            return Err(FederationHttpProtocolError::new(
+            return Err(RampartHttpProtocolError::new(
                 400,
                 "malformed_http",
                 "invalid HTTP header name",
@@ -320,18 +320,18 @@ fn read_federation_http_request(
         }
         if name.eq_ignore_ascii_case("content-length") {
             if content_length.is_some() {
-                return Err(FederationHttpProtocolError::new(
+                return Err(RampartHttpProtocolError::new(
                     400,
                     "malformed_http",
                     "duplicate Content-Length",
                 ));
             }
             content_length = Some(value.parse::<usize>().map_err(|_| {
-                FederationHttpProtocolError::new(400, "malformed_http", "invalid Content-Length")
+                RampartHttpProtocolError::new(400, "malformed_http", "invalid Content-Length")
             })?);
         } else if name.eq_ignore_ascii_case("content-type") {
             if content_type.is_some() {
-                return Err(FederationHttpProtocolError::new(
+                return Err(RampartHttpProtocolError::new(
                     400,
                     "malformed_http",
                     "duplicate Content-Type",
@@ -343,25 +343,25 @@ fn read_federation_http_request(
         }
     }
     if transfer_encoding.is_some() {
-        return Err(FederationHttpProtocolError::new(
+        return Err(RampartHttpProtocolError::new(
             400,
             "unsupported_transfer_encoding",
             "Transfer-Encoding is not supported; send Content-Length",
         ));
     }
     let body_length = content_length.unwrap_or(0);
-    if body_length > MAX_FEDERATION_HTTP_REQUEST_BODY_BYTES {
-        return Err(FederationHttpProtocolError::new(
+    if body_length > MAX_RAMPART_HTTP_REQUEST_BODY_BYTES {
+        return Err(RampartHttpProtocolError::new(
             413,
             "request_too_large",
             format!(
                 "request body exceeds {} bytes",
-                MAX_FEDERATION_HTTP_REQUEST_BODY_BYTES
+                MAX_RAMPART_HTTP_REQUEST_BODY_BYTES
             ),
         ));
     }
     if request_parts[0] == "POST" && content_length.is_none() {
-        return Err(FederationHttpProtocolError::new(
+        return Err(RampartHttpProtocolError::new(
             411,
             "content_length_required",
             "POST requests require Content-Length",
@@ -369,13 +369,13 @@ fn read_federation_http_request(
     }
     let mut body = vec![0; body_length];
     reader.read_exact(&mut body).map_err(|error| {
-        FederationHttpProtocolError::new(
+        RampartHttpProtocolError::new(
             400,
             "malformed_http",
             format!("could not read complete request body: {error}"),
         )
     })?;
-    Ok(FederationHttpRequest {
+    Ok(RampartHttpRequest {
         method: request_parts[0].into(),
         path: request_parts[1].into(),
         content_type,
@@ -383,20 +383,20 @@ fn read_federation_http_request(
     })
 }
 
-fn read_federation_http_headers(
+fn read_rampart_http_headers(
     reader: &mut impl BufRead,
-) -> Result<Vec<u8>, FederationHttpProtocolError> {
+) -> Result<Vec<u8>, RampartHttpProtocolError> {
     let mut headers = Vec::with_capacity(1024);
     loop {
         let available = reader.fill_buf().map_err(|error| {
-            FederationHttpProtocolError::new(
+            RampartHttpProtocolError::new(
                 400,
                 "malformed_http",
                 format!("could not read HTTP headers: {error}"),
             )
         })?;
         if available.is_empty() {
-            return Err(FederationHttpProtocolError::new(
+            return Err(RampartHttpProtocolError::new(
                 400,
                 "malformed_http",
                 "connection closed before HTTP headers completed",
@@ -405,13 +405,13 @@ fn read_federation_http_headers(
         let mut consumed = 0;
         let mut completed = false;
         for byte in available {
-            if headers.len() == MAX_FEDERATION_HTTP_HEADER_BYTES {
-                return Err(FederationHttpProtocolError::new(
+            if headers.len() == MAX_RAMPART_HTTP_HEADER_BYTES {
+                return Err(RampartHttpProtocolError::new(
                     431,
                     "headers_too_large",
                     format!(
                         "HTTP headers exceed {} bytes",
-                        MAX_FEDERATION_HTTP_HEADER_BYTES
+                        MAX_RAMPART_HTTP_HEADER_BYTES
                     ),
                 ));
             }
@@ -438,7 +438,7 @@ fn content_type_is_json(content_type: Option<&str>) -> bool {
     })
 }
 
-fn federation_http_error_json(error_type: &str, message: impl Into<String>) -> serde_json::Value {
+fn rampart_http_error_json(error_type: &str, message: impl Into<String>) -> serde_json::Value {
     serde_json::json!({
         "error": {
             "type": error_type,
@@ -447,7 +447,7 @@ fn federation_http_error_json(error_type: &str, message: impl Into<String>) -> s
     })
 }
 
-fn federation_http_response(
+fn rampart_http_response(
     status: u16,
     body: &serde_json::Value,
     allow: Option<&str>,
@@ -490,9 +490,9 @@ fn federation_http_response(
     Ok(wire)
 }
 
-fn handle_federation_http_request<I>(
-    request: FederationHttpRequest,
-    api: &Arc<Mutex<FederationHttpApi<I>>>,
+fn handle_rampart_http_request<I>(
+    request: RampartHttpRequest,
+    api: &Arc<Mutex<RampartHttpApi<I>>>,
     model: &str,
 ) -> io::Result<Vec<u8>>
 where
@@ -503,10 +503,11 @@ where
             let api = api
                 .lock()
                 .unwrap_or_else(std::sync::PoisonError::into_inner);
-            federation_http_response(
+            rampart_http_response(
                 200,
                 &serde_json::json!({
-                    "schema_version": FEDERATION_HTTP_API_SCHEMA_VERSION,
+                    "schema_version": RAMPART_HTTP_API_SCHEMA_VERSION,
+                    "canonical_name": RAMPART_CANONICAL_NAME,
                     "status": "ok",
                     "authority": "rust_festival",
                     "model": model,
@@ -515,7 +516,7 @@ where
                 None,
             )
         }
-        ("GET", "/v1/models") => federation_http_response(
+        ("GET", "/v1/models") => rampart_http_response(
             200,
             &serde_json::json!({
                 "object": "list",
@@ -528,18 +529,18 @@ where
             }),
             None,
         ),
-        ("POST", "/v1/federation/cycles") => {
+        ("POST", "/v1/rampart/cycles" | "/v1/federation/cycles") => {
             if !content_type_is_json(request.content_type.as_deref()) {
-                federation_http_response(
+                rampart_http_response(
                     415,
-                    &federation_http_error_json(
+                    &rampart_http_error_json(
                         "unsupported_media_type",
                         "Content-Type must be application/json",
                     ),
                     None,
                 )
             } else {
-                match serde_json::from_slice::<FederationApiCycleRequest>(&request.body) {
+                match serde_json::from_slice::<RampartApiCycleRequest>(&request.body) {
                     Ok(request) => {
                         let result = {
                             let mut api = api
@@ -548,7 +549,7 @@ where
                             block_on(api.execute(request))
                         };
                         match result {
-                            Ok(result) => federation_http_response(
+                            Ok(result) => rampart_http_response(
                                 200,
                                 &serde_json::to_value(result)
                                     .map_err(|error| io::Error::other(error.to_string()))?,
@@ -558,23 +559,23 @@ where
                                 let status = error.http_status();
                                 let error_type = error.error_type();
                                 let message = if status >= 500 && status != 502 {
-                                    "the local Federation service could not complete the request"
+                                    "The Rampart of Roi and Roselina could not complete the request"
                                         .into()
                                 } else {
                                     error.to_string()
                                 };
-                                eprintln!("Hollow Grove Federation API request failed: {error}");
-                                federation_http_response(
+                                eprintln!("{RAMPART_CANONICAL_NAME} API request failed: {error}");
+                                rampart_http_response(
                                     status,
-                                    &federation_http_error_json(error_type, message),
+                                    &rampart_http_error_json(error_type, message),
                                     None,
                                 )
                             }
                         }
                     }
-                    Err(error) => federation_http_response(
+                    Err(error) => rampart_http_response(
                         400,
-                        &federation_http_error_json(
+                        &rampart_http_error_json(
                             "invalid_request",
                             format!("request JSON does not match the V1 schema: {error}"),
                         ),
@@ -583,48 +584,53 @@ where
                 }
             }
         }
-        ("GET", "/v1/federation/cycles") => federation_http_response(
+        ("GET", "/v1/rampart/cycles" | "/v1/federation/cycles") => rampart_http_response(
             405,
-            &federation_http_error_json("method_not_allowed", "use POST for /v1/federation/cycles"),
+            &rampart_http_error_json("method_not_allowed", "use POST for /v1/rampart/cycles"),
             Some("POST"),
         ),
-        (_, "/health" | "/v1/health" | "/v1/models" | "/v1/federation/cycles") => {
-            federation_http_response(
-                405,
-                &federation_http_error_json(
-                    "method_not_allowed",
-                    "the requested HTTP method is not supported for this route",
-                ),
-                Some("GET, POST"),
-            )
-        }
-        _ => federation_http_response(
+        (
+            _,
+            "/health"
+            | "/v1/health"
+            | "/v1/models"
+            | "/v1/rampart/cycles"
+            | "/v1/federation/cycles",
+        ) => rampart_http_response(
+            405,
+            &rampart_http_error_json(
+                "method_not_allowed",
+                "the requested HTTP method is not supported for this route",
+            ),
+            Some("GET, POST"),
+        ),
+        _ => rampart_http_response(
             404,
-            &federation_http_error_json("not_found", "unknown Hollow Grove API route"),
+            &rampart_http_error_json("not_found", "unknown Hollow Grove API route"),
             None,
         ),
     }?;
     Ok(response)
 }
 
-fn serve_federation_http_stream<I>(
+fn serve_rampart_http_stream<I>(
     stream: TcpStream,
-    api: Arc<Mutex<FederationHttpApi<I>>>,
+    api: Arc<Mutex<RampartHttpApi<I>>>,
     model: Arc<str>,
 ) -> io::Result<()>
 where
     I: SemanticInterpreter + Clone,
 {
     stream.set_nodelay(true)?;
-    stream.set_read_timeout(Some(FEDERATION_HTTP_CLIENT_TIMEOUT))?;
-    stream.set_write_timeout(Some(FEDERATION_HTTP_WRITE_TIMEOUT))?;
+    stream.set_read_timeout(Some(RAMPART_HTTP_CLIENT_TIMEOUT))?;
+    stream.set_write_timeout(Some(RAMPART_HTTP_WRITE_TIMEOUT))?;
     let mut reader = BufReader::new(stream.try_clone()?);
     let mut writer = stream;
-    let response = match read_federation_http_request(&mut reader) {
-        Ok(request) => handle_federation_http_request(request, &api, &model)?,
-        Err(error) => federation_http_response(
+    let response = match read_rampart_http_request(&mut reader) {
+        Ok(request) => handle_rampart_http_request(request, &api, &model)?,
+        Err(error) => rampart_http_response(
             error.status,
-            &federation_http_error_json(error.error_type, error.message),
+            &rampart_http_error_json(error.error_type, error.message),
             None,
         )?,
     };
@@ -632,30 +638,30 @@ where
     writer.flush()
 }
 
-struct FederationHttpConnectionPermit {
+struct RampartHttpConnectionPermit {
     active_clients: Arc<AtomicUsize>,
 }
 
-impl FederationHttpConnectionPermit {
+impl RampartHttpConnectionPermit {
     fn acquire(active_clients: Arc<AtomicUsize>) -> Option<Self> {
         active_clients
             .fetch_update(Ordering::AcqRel, Ordering::Acquire, |count| {
-                (count < MAX_FEDERATION_HTTP_CLIENTS).then_some(count + 1)
+                (count < MAX_RAMPART_HTTP_CLIENTS).then_some(count + 1)
             })
             .ok()
             .map(|_| Self { active_clients })
     }
 }
 
-impl Drop for FederationHttpConnectionPermit {
+impl Drop for RampartHttpConnectionPermit {
     fn drop(&mut self) {
         self.active_clients.fetch_sub(1, Ordering::AcqRel);
     }
 }
 
-fn serve_federation_http_loopback<I>(
+fn serve_rampart_http_loopback<I>(
     address: SocketAddr,
-    api: FederationHttpApi<I>,
+    api: RampartHttpApi<I>,
     model: impl Into<Arc<str>>,
 ) -> io::Result<()>
 where
@@ -668,8 +674,8 @@ where
     let model = model.into();
     let active_clients = Arc::new(AtomicUsize::new(0));
     eprintln!(
-        "Hollow Grove Federation HTTP API listening on http://{local_address}\n\
-         POST /v1/federation/cycles\n\
+        "{RAMPART_CANONICAL_NAME} HTTP API listening on http://{local_address}\n\
+         POST /v1/rampart/cycles\n\
          GET  /v1/models\n\
          GET  /health"
     );
@@ -678,15 +684,11 @@ where
         if !stream.peer_addr()?.ip().is_loopback() {
             continue;
         }
-        let Some(permit) = FederationHttpConnectionPermit::acquire(Arc::clone(&active_clients))
-        else {
+        let Some(permit) = RampartHttpConnectionPermit::acquire(Arc::clone(&active_clients)) else {
             let mut stream = stream;
-            let response = federation_http_response(
+            let response = rampart_http_response(
                 429,
-                &federation_http_error_json(
-                    "too_many_requests",
-                    "too many concurrent local clients",
-                ),
+                &rampart_http_error_json("too_many_requests", "too many concurrent local clients"),
                 None,
             )?;
             let _ = stream.write_all(&response);
@@ -695,10 +697,10 @@ where
         let api = Arc::clone(&api);
         let model = Arc::clone(&model);
         thread::Builder::new()
-            .name("hollow-grove-federation-http".into())
+            .name("hollow-grove-rampart-http".into())
             .spawn(move || {
                 let _permit = permit;
-                if let Err(error) = serve_federation_http_stream(stream, api, model)
+                if let Err(error) = serve_rampart_http_stream(stream, api, model)
                     && !matches!(
                         error.kind(),
                         io::ErrorKind::TimedOut
@@ -708,30 +710,30 @@ where
                             | io::ErrorKind::BrokenPipe
                     )
                 {
-                    eprintln!("Hollow Grove Federation HTTP client disconnected: {error}");
+                    eprintln!("{RAMPART_CANONICAL_NAME} HTTP client disconnected: {error}");
                 }
             })?;
     }
     Ok(())
 }
 
-fn run_federation(args: &[String]) -> io::Result<()> {
+fn run_rampart(args: &[String]) -> io::Result<()> {
     match args.first().map(String::as_str) {
         Some("help" | "--help" | "-h") | None => {
             println!("{}", usage());
             Ok(())
         }
         Some("run") => {
-            let options = parse_federation_run_options(&args[1..])?;
+            let options = parse_rampart_run_options(&args[1..])?;
             let point_ref = parse_external_reference(&options.point_ref)?;
             let scale =
                 ScaleKey::new(options.scale.clone()).map_err(|error| invalid(error.to_string()))?;
-            let input = LocalFederationCycleInput::new(point_ref, scale, options.intent.clone())
+            let input = LocalRampartCycleInput::new(point_ref, scale, options.intent.clone())
                 .map_err(|error| invalid(error.to_string()))?;
-            let mut catalog = load_federation_catalog(&options.state_path)?;
+            let mut catalog = load_rampart_catalog(&options.state_path)?;
             let result = if let Some(proposal_path) = &options.proposal_path {
                 let proposal = fs::read(proposal_path)?;
-                block_on(run_local_federation_cycle(
+                block_on(run_local_rampart_cycle(
                     DeterministicSemanticInterpreter::from_json(&proposal),
                     &input,
                     &mut catalog,
@@ -739,11 +741,7 @@ fn run_federation(args: &[String]) -> io::Result<()> {
             } else {
                 let interpreter = OllamaSemanticInterpreter::new(ollama_config()?)
                     .map_err(|error| invalid(error.to_string()))?;
-                block_on(run_local_federation_cycle(
-                    interpreter,
-                    &input,
-                    &mut catalog,
-                ))
+                block_on(run_local_rampart_cycle(interpreter, &input, &mut catalog))
             }
             .map_err(|error| io::Error::other(error.to_string()))?;
             let snapshot = encode_semantic_provenance_snapshot(&catalog)
@@ -752,23 +750,23 @@ fn run_federation(args: &[String]) -> io::Result<()> {
             if options.json {
                 println!(
                     "{}",
-                    serde_json::to_string(&federation_result_json(&result, &options.state_path))
+                    serde_json::to_string(&rampart_result_json(&result, &options.state_path))
                         .map_err(|error| io::Error::other(error.to_string()))?
                 );
             } else {
-                print_federation_result(&result, &options.state_path);
+                print_rampart_result(&result, &options.state_path);
             }
             Ok(())
         }
         Some("serve") => {
-            let options = parse_federation_serve_options(&args[1..])?;
+            let options = parse_rampart_serve_options(&args[1..])?;
             let config = ollama_config()?;
             let model = config.model.clone();
             let interpreter = OllamaSemanticInterpreter::new(config)
                 .map_err(|error| invalid(error.to_string()))?;
-            let api = FederationHttpApi::from_state_path(interpreter, options.state_path)
+            let api = RampartHttpApi::from_state_path(interpreter, options.state_path)
                 .map_err(|error| io::Error::other(error.to_string()))?;
-            serve_federation_http_loopback(options.listen, api, model)
+            serve_rampart_http_loopback(options.listen, api, model)
         }
         _ => Err(invalid(usage())),
     }
@@ -796,8 +794,8 @@ fn position_json(position: Position3) -> serde_json::Value {
     })
 }
 
-fn federation_result_json(
-    result: &hollow_grove::runtime_federation::FederationResult,
+fn rampart_result_json(
+    result: &hollow_grove::runtime_rampart::RampartResult,
     state_path: &Path,
 ) -> serde_json::Value {
     let decision = match &result.festival.decision {
@@ -831,7 +829,8 @@ fn federation_result_json(
         }),
     };
     serde_json::json!({
-        "schema_version": FEDERATION_CLI_RESULT_SCHEMA_VERSION,
+        "schema_version": RAMPART_CLI_RESULT_SCHEMA_VERSION,
+        "canonical_name": RAMPART_CANONICAL_NAME,
         "cycle_id": result.next_way_back.cycle_id.as_str(),
         "phases": result.phase_trace.iter().copied().map(phase_name).collect::<Vec<_>>(),
         "decision": decision,
@@ -840,10 +839,8 @@ fn federation_result_json(
     })
 }
 
-fn print_federation_result(
-    result: &hollow_grove::runtime_federation::FederationResult,
-    state_path: &Path,
-) {
+fn print_rampart_result(result: &hollow_grove::runtime_rampart::RampartResult, state_path: &Path) {
+    println!("{RAMPART_CANONICAL_NAME}");
     println!("Cycle:\n{}", result.next_way_back.cycle_id.as_str());
     println!("\nPhases:");
     for phase in &result.phase_trace {
@@ -1011,7 +1008,7 @@ fn run_model(args: &[String]) -> io::Result<()> {
             println!(
                 "Installed proposal-only Ollama model {model_name:?} from {base_model:?}.\n\
                  Run: ollama run {model_name} --format json\n\
-                 Canonical confirmation still requires Hollow Grove Federation and Festival."
+                 Canonical confirmation still requires the Hollow Grove Rampart and Festival."
             );
             Ok(())
         }
@@ -1090,7 +1087,7 @@ fn main() -> io::Result<()> {
     let args = std::env::args().skip(1).collect::<Vec<_>>();
     match args.first().map(String::as_str) {
         Some("semantic") => run_semantic(&args[1..]),
-        Some("federation") => run_federation(&args[1..]),
+        Some("rampart" | "federation") => run_rampart(&args[1..]),
         Some("model") => run_model(&args[1..]),
         Some("dataset") => run_dataset(&args[1..]),
         Some("help" | "--help" | "-h") | None => {
@@ -1107,7 +1104,7 @@ mod tests {
 
     use super::*;
     use hollow_grove::Position3;
-    use hollow_grove::runtime_federation::{ModelSemanticProposal, ProposedSemanticOperation};
+    use hollow_grove::runtime_rampart::{ModelSemanticProposal, ProposedSemanticOperation};
 
     fn response_json(response: &[u8]) -> serde_json::Value {
         let delimiter = response
@@ -1133,8 +1130,8 @@ mod tests {
         assert!(usage.contains("semantic inspect"));
         assert!(usage.contains("semantic history"));
         assert!(usage.contains("semantic nearby"));
-        assert!(usage.contains("federation run"));
-        assert!(usage.contains("federation serve"));
+        assert!(usage.contains("rampart run"));
+        assert!(usage.contains("rampart serve"));
         assert!(usage.contains("model show-modelfile"));
         assert!(usage.contains("model install-ollama"));
         assert!(usage.contains("model validate-response"));
@@ -1144,52 +1141,50 @@ mod tests {
     }
 
     #[test]
-    fn federation_http_listener_is_loopback_only() {
-        let options = parse_federation_serve_options(&[]).unwrap();
+    fn rampart_http_listener_is_loopback_only() {
+        let options = parse_rampart_serve_options(&[]).unwrap();
         assert_eq!(
             options.listen,
-            DEFAULT_FEDERATION_HTTP_ADDRESS
-                .parse::<SocketAddr>()
-                .unwrap()
+            DEFAULT_RAMPART_HTTP_ADDRESS.parse::<SocketAddr>().unwrap()
         );
-        let error = parse_federation_serve_options(&["--listen".into(), "0.0.0.0:47820".into()])
-            .unwrap_err();
+        let error =
+            parse_rampart_serve_options(&["--listen".into(), "0.0.0.0:47820".into()]).unwrap_err();
         assert!(error.to_string().contains("non-loopback"));
     }
 
     #[test]
-    fn federation_http_parser_bounds_headers_and_body() {
+    fn rampart_http_parser_bounds_headers_and_body() {
         let mut missing_length = Cursor::new(
-            b"POST /v1/federation/cycles HTTP/1.1\r\nContent-Type: application/json\r\n\r\n{}",
+            b"POST /v1/rampart/cycles HTTP/1.1\r\nContent-Type: application/json\r\n\r\n{}",
         );
-        let error = read_federation_http_request(&mut missing_length).unwrap_err();
+        let error = read_rampart_http_request(&mut missing_length).unwrap_err();
         assert_eq!(error.status, 411);
 
-        let oversized_headers = vec![b'x'; MAX_FEDERATION_HTTP_HEADER_BYTES + 1];
-        let error = read_federation_http_request(&mut Cursor::new(oversized_headers)).unwrap_err();
+        let oversized_headers = vec![b'x'; MAX_RAMPART_HTTP_HEADER_BYTES + 1];
+        let error = read_rampart_http_request(&mut Cursor::new(oversized_headers)).unwrap_err();
         assert_eq!(error.status, 431);
 
         let oversized_body = format!(
-            "POST /v1/federation/cycles HTTP/1.1\r\n\
+            "POST /v1/rampart/cycles HTTP/1.1\r\n\
              Content-Type: application/json\r\n\
              Content-Length: {}\r\n\r\n",
-            MAX_FEDERATION_HTTP_REQUEST_BODY_BYTES + 1
+            MAX_RAMPART_HTTP_REQUEST_BODY_BYTES + 1
         );
-        let error = read_federation_http_request(&mut Cursor::new(oversized_body)).unwrap_err();
+        let error = read_rampart_http_request(&mut Cursor::new(oversized_body)).unwrap_err();
         assert_eq!(error.status, 413);
     }
 
     #[test]
     fn health_and_model_discovery_do_not_contact_the_interpreter() {
         let state = unique_test_state("hollow-grove-http-discovery");
-        let api = FederationHttpApi::from_state_path(
+        let api = RampartHttpApi::from_state_path(
             DeterministicSemanticInterpreter::unavailable(),
             &state,
         )
         .unwrap();
         let api = Arc::new(Mutex::new(api));
-        let health = handle_federation_http_request(
-            FederationHttpRequest {
+        let health = handle_rampart_http_request(
+            RampartHttpRequest {
                 method: "GET".into(),
                 path: "/health".into(),
                 content_type: None,
@@ -1202,8 +1197,8 @@ mod tests {
         assert!(health.starts_with(b"HTTP/1.1 200 OK\r\n"));
         assert_eq!(response_json(&health)["authority"], "rust_festival");
 
-        let models = handle_federation_http_request(
-            FederationHttpRequest {
+        let models = handle_rampart_http_request(
+            RampartHttpRequest {
                 method: "GET".into(),
                 path: "/v1/models".into(),
                 content_type: None,
@@ -1218,15 +1213,15 @@ mod tests {
     }
 
     #[test]
-    fn post_cycle_uses_federation_and_persists_a_witness() {
+    fn post_cycle_uses_rampart_and_persists_a_witness() {
         let state = unique_test_state("hollow-grove-http-cycle");
-        let request = FederationApiCycleRequest {
+        let request = RampartApiCycleRequest {
             point_ref: "point.hueman.origin".into(),
             scale_key: "structural-repair".into(),
             intent: "Restore the frame through the HTTP boundary.".into(),
             context_ref: None,
         };
-        let input = LocalFederationCycleInput::new(
+        let input = LocalRampartCycleInput::new(
             ExternalRef::new("point", "hueman.origin").unwrap(),
             ScaleKey::new(&request.scale_key).unwrap(),
             &request.intent,
@@ -1242,16 +1237,16 @@ mod tests {
             summary: "The request restores embodied support.".into(),
             confidence_millis: 850,
         };
-        let api = FederationHttpApi::from_state_path(
+        let api = RampartHttpApi::from_state_path(
             DeterministicSemanticInterpreter::responding_with(proposal),
             &state,
         )
         .unwrap();
         let api = Arc::new(Mutex::new(api));
-        let response = handle_federation_http_request(
-            FederationHttpRequest {
+        let response = handle_rampart_http_request(
+            RampartHttpRequest {
                 method: "POST".into(),
-                path: "/v1/federation/cycles".into(),
+                path: "/v1/rampart/cycles".into(),
                 content_type: Some("application/json".into()),
                 body: serde_json::to_vec(&request).unwrap(),
             },
@@ -1278,16 +1273,16 @@ mod tests {
     #[test]
     fn post_cycle_rejects_non_json_and_unknown_fields_before_mutation() {
         let state = unique_test_state("hollow-grove-http-invalid");
-        let api = FederationHttpApi::from_state_path(
+        let api = RampartHttpApi::from_state_path(
             DeterministicSemanticInterpreter::unavailable(),
             &state,
         )
         .unwrap();
         let api = Arc::new(Mutex::new(api));
-        let unsupported = handle_federation_http_request(
-            FederationHttpRequest {
+        let unsupported = handle_rampart_http_request(
+            RampartHttpRequest {
                 method: "POST".into(),
-                path: "/v1/federation/cycles".into(),
+                path: "/v1/rampart/cycles".into(),
                 content_type: Some("text/plain".into()),
                 body: b"{}".to_vec(),
             },
@@ -1297,10 +1292,10 @@ mod tests {
         .unwrap();
         assert!(unsupported.starts_with(b"HTTP/1.1 415 Unsupported Media Type\r\n"));
 
-        let unknown = handle_federation_http_request(
-            FederationHttpRequest {
+        let unknown = handle_rampart_http_request(
+            RampartHttpRequest {
                 method: "POST".into(),
-                path: "/v1/federation/cycles".into(),
+                path: "/v1/rampart/cycles".into(),
                 content_type: Some("application/json; charset=utf-8".into()),
                 body: serde_json::to_vec(&serde_json::json!({
                     "point_ref": "point.hueman.origin",
@@ -1321,13 +1316,13 @@ mod tests {
     #[test]
     fn concurrent_cycle_handlers_serialize_through_one_catalog() {
         let state = unique_test_state("hollow-grove-http-concurrent");
-        let request = FederationApiCycleRequest {
+        let request = RampartApiCycleRequest {
             point_ref: "point.hueman.origin".into(),
             scale_key: "structural-repair".into(),
             intent: "Hold one stable semantic position.".into(),
             context_ref: None,
         };
-        let input = LocalFederationCycleInput::new(
+        let input = LocalRampartCycleInput::new(
             ExternalRef::new("point", "hueman.origin").unwrap(),
             ScaleKey::new(&request.scale_key).unwrap(),
             &request.intent,
@@ -1343,7 +1338,7 @@ mod tests {
             summary: "The request holds embodied support.".into(),
             confidence_millis: 850,
         };
-        let api = FederationHttpApi::from_state_path(
+        let api = RampartHttpApi::from_state_path(
             DeterministicSemanticInterpreter::responding_with(proposal),
             &state,
         )
@@ -1357,10 +1352,10 @@ mod tests {
             let request = request.clone();
             threads.push(thread::spawn(move || {
                 barrier.wait();
-                handle_federation_http_request(
-                    FederationHttpRequest {
+                handle_rampart_http_request(
+                    RampartHttpRequest {
                         method: "POST".into(),
-                        path: "/v1/federation/cycles".into(),
+                        path: "/v1/rampart/cycles".into(),
                         content_type: Some("application/json".into()),
                         body: serde_json::to_vec(&request).unwrap(),
                     },

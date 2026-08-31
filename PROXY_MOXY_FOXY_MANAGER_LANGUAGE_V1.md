@@ -8,7 +8,10 @@ The Being/Object action ontology that consumes these addressing modes now lives 
 
 - `BEING_OBJECT_ROOT_ONTOLOGY_V1.md`
 
-The civic-body layer that applies these addressing modes to Gerald, Nightingale, Warden, Minorian, and Minoan response roles now lives in:
+The civic-body layer applies these addressing modes to Gerald, Nightingale,
+Minorian, and Minoan response roles. Flynt's replacement civic designation is
+STATUS: OPEN; the old Warden assignment is legacy compatibility. The layer now
+lives in:
 
 - `CIVIC_BODY_CORRESPONDENCE_V1.md`
 

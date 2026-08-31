@@ -48,7 +48,7 @@
 ## Artifact Inputs
 
 Hueman Fourway bytes: 1457.
-Hueman AuraTriad bytes: 2106.
+Hueman AuraTriad bytes: 2114.
 
 ## Boundary Reminder
 

@@ -93,13 +93,13 @@ pub const SCENARIO_CATALOG: &[ScenarioDescriptor] = &[
         name: "gnome-minotaur",
         category: ScenarioCategory::RegionalSynthesis,
         expectation: ScenarioExpectation::Accepted,
-        summary: "Gnome to Minotaur in the Aura Field with typed stewardship",
+        summary: "legacy scenario slug for Faun to Minotaur in the Aura Field",
     },
     ScenarioDescriptor {
         name: "elf-centaur",
         category: ScenarioCategory::RegionalSynthesis,
         expectation: ScenarioExpectation::Accepted,
-        summary: "Elf to Centaur on the Aura Beach with Aura Sea guardianship",
+        summary: "legacy scenario slug for Satyr to Centaur on Aura Beach",
     },
     ScenarioDescriptor {
         name: "gnome-centaur",
@@ -117,13 +117,13 @@ pub const SCENARIO_CATALOG: &[ScenarioDescriptor] = &[
         name: "gnome-minotaur-wrong-region",
         category: ScenarioCategory::Failure,
         expectation: ScenarioExpectation::Rejected,
-        summary: "Gnome without Aura Field standing attempts Minotaur Synthesis",
+        summary: "Faun without Aura Field standing attempts Minotaur Synthesis under a legacy slug",
     },
     ScenarioDescriptor {
         name: "elf-centaur-wrong-region",
         category: ScenarioCategory::Failure,
         expectation: ScenarioExpectation::Rejected,
-        summary: "Elf without Aura Beach standing attempts Centaur Synthesis",
+        summary: "Satyr without Aura Beach standing attempts Centaur Synthesis under a legacy slug",
     },
     ScenarioDescriptor {
         name: "synthesis-without-authority",
@@ -147,7 +147,7 @@ pub const SCENARIO_CATALOG: &[ScenarioDescriptor] = &[
         name: "minotaur-sea-claim",
         category: ScenarioCategory::Failure,
         expectation: ScenarioExpectation::Rejected,
-        summary: "Minotaur claims Centaur-only Aura Sea guardianship",
+        summary: "Minotaur claims Centaur-only Current Sea guardianship",
     },
     ScenarioDescriptor {
         name: "centaur-fields-claim",
@@ -995,9 +995,11 @@ fn run_accepted_regional(
 }
 
 pub fn run_gnome_minotaur_scenario() -> Result<RegionalScenario, ScenarioError> {
+    // Compatibility function/slug retained for callers of the V1 scenario;
+    // active canon and the emitted records use Faun -> Minotaur.
     run_accepted_regional(
         "gnome-minotaur",
-        SandmanorForm::Gnome,
+        SandmanorForm::Faun,
         SandmanorForm::Minotaur,
         ConstitutionalRegion::AuraFields,
         RegionalFunction::AuraFieldsStewardshipAndDefense,
@@ -1005,9 +1007,11 @@ pub fn run_gnome_minotaur_scenario() -> Result<RegionalScenario, ScenarioError> 
 }
 
 pub fn run_elf_centaur_scenario() -> Result<RegionalScenario, ScenarioError> {
+    // Compatibility function/slug retained for callers of the V1 scenario;
+    // active canon and the emitted records use Satyr -> Centaur.
     run_accepted_regional(
         "elf-centaur",
-        SandmanorForm::Elf,
+        SandmanorForm::Satyr,
         SandmanorForm::Centaur,
         ConstitutionalRegion::AuraBeach,
         RegionalFunction::AuraBeachPatrolAndAuraSeaGuardianship,
@@ -1093,7 +1097,7 @@ pub fn run_rejected_regional_scenario(
         ),
         "gnome-minotaur-wrong-region" => rejected_regional(
             "gnome-minotaur-wrong-region",
-            SandmanorForm::Gnome,
+            SandmanorForm::Faun,
             SandmanorForm::Minotaur,
             ConstitutionalRegion::AuraBeach,
             ConstitutionalRegion::AuraFields,
@@ -1102,7 +1106,7 @@ pub fn run_rejected_regional_scenario(
         ),
         "elf-centaur-wrong-region" => rejected_regional(
             "elf-centaur-wrong-region",
-            SandmanorForm::Elf,
+            SandmanorForm::Satyr,
             SandmanorForm::Centaur,
             ConstitutionalRegion::AuraFields,
             ConstitutionalRegion::AuraBeach,
@@ -1111,7 +1115,7 @@ pub fn run_rejected_regional_scenario(
         ),
         "synthesis-without-authority" => rejected_regional(
             "synthesis-without-authority",
-            SandmanorForm::Gnome,
+            SandmanorForm::Faun,
             SandmanorForm::Minotaur,
             ConstitutionalRegion::AuraFields,
             ConstitutionalRegion::AuraFields,
@@ -1122,7 +1126,7 @@ pub fn run_rejected_regional_scenario(
         ),
         "synthesis-without-evidence" => rejected_regional(
             "synthesis-without-evidence",
-            SandmanorForm::Gnome,
+            SandmanorForm::Faun,
             SandmanorForm::Minotaur,
             ConstitutionalRegion::AuraFields,
             ConstitutionalRegion::AuraFields,
@@ -1131,7 +1135,7 @@ pub fn run_rejected_regional_scenario(
         ),
         "synthesis-mismatched-evidence" => rejected_regional(
             "synthesis-mismatched-evidence",
-            SandmanorForm::Gnome,
+            SandmanorForm::Faun,
             SandmanorForm::Minotaur,
             ConstitutionalRegion::AuraFields,
             ConstitutionalRegion::AuraFields,
@@ -1157,7 +1161,7 @@ pub fn run_rejected_assignment_scenario(
         scenario
             .runtime
             .require_guardianship(&scenario.result)
-            .expect_err("Minotaur must not hold Aura Sea guardianship")
+            .expect_err("Minotaur must not hold Current Sea guardianship")
     } else {
         scenario
             .runtime

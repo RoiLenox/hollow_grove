@@ -162,7 +162,20 @@ pub struct PermanencePetition {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum StonebendSealOffice {
+    /// Stable V1 wire value retained for archive and replay compatibility.
     DiamondHypergiant,
+    /// Active ontology: Hypergiant is the Stonebend sovereign title.
+    Hypergiant,
+}
+
+impl StonebendSealOffice {
+    #[must_use]
+    pub const fn canonical(self) -> Self {
+        match self {
+            Self::DiamondHypergiant => Self::Hypergiant,
+            Self::Hypergiant => Self::Hypergiant,
+        }
+    }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]

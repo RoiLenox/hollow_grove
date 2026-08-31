@@ -13,7 +13,7 @@ use hollow_grove::hueman_support::{
 };
 use hollow_grove::{read_text_artifact, write_text_artifact};
 
-fn main() -> io::Result<()> {
+pub(crate) fn tool_main() -> io::Result<()> {
     let current_synthesis_execution_spec =
         read_text_artifact(Path::new(CURRENT_SYNTHESIS_EXECUTION_SPEC_ARTIFACT_PATH))?;
     let current_synthesis_behavior_rules =
@@ -87,10 +87,10 @@ mod tests {
             "Flynt knowledge gates open through puzzle trails, treasure-hunt clues, and route memory"
         ));
         assert!(output.contains(
-            "Flynt's unique constitutional synthesis combines Gargoyle, Merman, and Werewolf into the one Chimera"
+            "Flynt's four creature pairs are Gargoyle/Medusa, Werewolf/Vampire, Mariner/Mermaid, and Manticore/Chimera"
         ));
         assert!(output.contains(
-            "Manticorp is both the formal military institution and a distinct maintained Synthesis Form beyond Chimera"
+            "Manticore is the Tross's masculine maintained Synthesis Form beyond Chimera"
         ));
         assert!(output.contains("Current Synthesis collision relay bytes: 5."));
     }

@@ -3,14 +3,21 @@
 set -euo pipefail
 
 direction="${1:-}"
+target_height="${2:-50%}"
 
 usage() {
-    printf 'usage: %s {left|right|up|down}\n' "${0##*/}" >&2
+    printf 'usage: %s {left|right|top|bottom} [height] | {up|down}\n' "${0##*/}" >&2
     exit 2
 }
 
 case "$direction" in
-    left|right|up|down) ;;
+    left|right|top|bottom)
+        (( $# <= 2 )) || usage
+        [[ "$target_height" =~ ^([0-9]+([.][0-9]+)?%|[0-9]+)$ ]] || usage
+        ;;
+    up|down)
+        (( $# == 1 )) || usage
+        ;;
     *) usage ;;
 esac
 
@@ -64,21 +71,6 @@ if [[ -z "${workspace_id:-}" || -z "${source_col:-}" ]]; then
     exit 0
 fi
 
-workspace_window_count="$(
-    jq -r --argjson ws "$workspace_id" '
-        [.[] | select(
-            .workspace_id == $ws
-            and ((.is_floating // false) | not)
-            and ((.layout.pos_in_scrolling_layout | type) == "array")
-        )]
-        | length
-    ' <<<"$windows_json"
-)"
-
-if (( workspace_window_count < 2 )); then
-    exit 0
-fi
-
 index_in_array() {
     local needle="$1"
     shift
@@ -107,12 +99,15 @@ move_window_into_adjacent_column() {
     )
 
     local count="${#cols[@]}"
-    (( count > 1 )) || exit 0
+    if (( count <= 1 )); then
+        niri msg action set-window-height --id "$focused_id" "$target_height"
+        return
+    fi
 
     local current_idx
     current_idx="$(index_in_array "$source_col" "${cols[@]}")"
 
-    local target_idx target_col target_count desired_index
+    local target_idx target_col target_count
     if [[ "$horizontal_direction" == "left" ]]; then
         target_idx=$(( (current_idx - 1 + count) % count ))
     else
@@ -120,12 +115,7 @@ move_window_into_adjacent_column() {
     fi
     target_col="${cols[$target_idx]}"
 
-    local source_height source_count source_index
-    source_height="$(
-        jq -r --argjson id "$focused_id" '
-            .[] | select(.id == $id) | .layout.window_size[1]
-        ' <<<"$windows_json"
-    )"
+    local source_count source_index workspace_window_count
     source_count="$(
         jq -r --argjson ws "$workspace_id" --argjson col "$source_col" '
             [.[] | select(
@@ -162,22 +152,19 @@ move_window_into_adjacent_column() {
             | length
         ' <<<"$windows_json"
     )"
-
-    desired_index="$(
-        jq -nr \
-            --argjson src_index "$source_index" \
-            --argjson src_count "$source_count" \
-            --argjson dst_count "$target_count" '
-                if $src_count <= 1 then
-                    $dst_count
-                else
-                    (($src_index * $dst_count) / ($src_count - 1) | round)
-                end
-            '
+    workspace_window_count="$(
+        jq -r --argjson ws "$workspace_id" '
+            [.[] | select(
+                .workspace_id == $ws
+                and ((.is_floating // false) | not)
+                and ((.layout.pos_in_scrolling_layout | type) == "array")
+            )]
+            | length
+        ' <<<"$windows_json"
     )"
 
-    # With exactly two separate windows, a column move is the only operation
-    # that is a true swap in both directions, including at either edge.
+    # Two solo columns swap cleanly; larger layouts launch the focused window
+    # into the adjacent column, wrapping across the horizontal edges.
     if (( workspace_window_count == 2 && source_count == 1 && target_count == 1 )); then
         if [[ "$horizontal_direction" == "left" ]]; then
             if (( current_idx == 0 )); then
@@ -192,13 +179,10 @@ move_window_into_adjacent_column() {
                 niri msg action move-column-right
             fi
         fi
+        niri msg action set-window-height --id "$focused_id" "$target_height"
         return
     fi
 
-    # Niri consumes a solo window into its adjacent column, while a window in
-    # a stack must first be expelled into a temporary column and then consumed.
-    # At an edge, move that temporary/solo column to the opposite edge before
-    # the final consume, making the horizontal layout a real ring.
     local at_edge=false
     if [[ "$horizontal_direction" == "left" ]] && (( current_idx == 0 )); then
         at_edge=true
@@ -225,14 +209,66 @@ move_window_into_adjacent_column() {
         niri msg action "consume-or-expel-window-$horizontal_direction"
     fi
 
+    # Map the source row onto the destination stack. This keeps top windows
+    # moving straight across, bottom windows on the bottom, and intermediate
+    # rows proportionally aligned even when the two columns have different
+    # stack depths.
     if (( target_count > 0 )); then
-        local moves_up=$(( target_count - desired_index ))
+        local desired_index moves_up
+        desired_index="$(
+            jq -nr \
+                --argjson src_index "$source_index" \
+                --argjson src_count "$source_count" \
+                --argjson dst_count "$target_count" '
+                    if $src_count <= 1 then
+                        0
+                    else
+                        (($src_index * $dst_count) / ($src_count - 1) | round)
+                    end
+                '
+        )"
+        moves_up=$((target_count - desired_index))
         for ((i = 0; i < moves_up; i++)); do
             niri msg action move-window-up
         done
     fi
 
-    niri msg action set-window-height --id "$focused_id" "$source_height"
+    niri msg action set-window-height --id "$focused_id" "$target_height"
+}
+
+snap_window_to_stack_edge() {
+    local stack_edge="$1"
+    mapfile -t window_ids < <(
+        jq -r --argjson ws "$workspace_id" --argjson col "$source_col" '
+            [.[] | select(
+                .workspace_id == $ws
+                and ((.is_floating // false) | not)
+                and ((.layout.pos_in_scrolling_layout | type) == "array")
+                and .layout.pos_in_scrolling_layout[0] == $col
+            )
+             | {id, row: .layout.pos_in_scrolling_layout[1]}]
+            | sort_by(.row) | .[].id
+        ' <<<"$windows_json"
+    )
+
+    local count="${#window_ids[@]}"
+    (( count > 0 )) || exit 0
+
+    local current_idx
+    current_idx="$(index_in_array "$focused_id" "${window_ids[@]}")"
+
+    if [[ "$stack_edge" == "top" ]]; then
+        for ((i = 0; i < current_idx; i++)); do
+            niri msg action move-window-up
+        done
+    else
+        local moves_down=$((count - current_idx - 1))
+        for ((i = 0; i < moves_down; i++)); do
+            niri msg action move-window-down
+        done
+    fi
+
+    niri msg action set-window-height --id "$focused_id" "$target_height"
 }
 
 wrap_move_window_vertical() {
@@ -278,7 +314,7 @@ wrap_move_window_vertical() {
 }
 
 case "$direction" in
-    left) move_window_into_adjacent_column left ;;
-    right) move_window_into_adjacent_column right ;;
+    left|right) move_window_into_adjacent_column "$direction" ;;
+    top|bottom) snap_window_to_stack_edge "$direction" ;;
     up|down) wrap_move_window_vertical ;;
 esac

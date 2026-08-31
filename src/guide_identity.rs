@@ -15,7 +15,10 @@ pub const GUIDE_IDENTITY_SCHEMA_VERSION: &str = "hollow-grove-guide-identity-v1"
 pub const GUIDE_CONTEXT_SCHEMA_VERSION: &str = "hollow-grove-guide-context-v1";
 pub const GUIDE_IDENTITY_MIGRATION_SCHEMA_VERSION: &str =
     "hollow-grove-guide-identity-migration-v2";
-pub const FEDERATION_CANONICAL_NAME: &str = "The Federation";
+pub const RAMPART_CANONICAL_NAME: &str = "The Rampart of Roi and Roselina";
+/// Stable source alias for callers compiled before the Rampart naming lock.
+#[deprecated(since = "0.1.0", note = "use RAMPART_CANONICAL_NAME")]
+pub const FEDERATION_CANONICAL_NAME: &str = RAMPART_CANONICAL_NAME;
 pub const CENTRAL_JUNCTION_ORIGIN: Position3 = Position3::ORIGIN;
 pub const GUIDE_MODEL_PROMPT_LAW: &str = "There are two continuous Guide identities.\n\
 \n\
@@ -1343,7 +1346,7 @@ impl DualSeerPresentation {
              Where are we now, what exists here, and what can be made real?\n\n\
              interface: TUI\n\
              authority: {}\n",
-            FEDERATION_CANONICAL_NAME
+            RAMPART_CANONICAL_NAME
         ))
     }
 }

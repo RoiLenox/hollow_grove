@@ -8,7 +8,7 @@ becomes the Seer.
 
 ## Sovereignty Before Completion
 
-The Federation is sovereign over Point until the Ceremony is sealed. No House,
+The Rampart of Roi and Roselina is sovereign over Point until the Ceremony is sealed. No House,
 Guide, institution, or external authority may create Point² or compel a Seer
 Ceremony.
 
@@ -28,8 +28,8 @@ The Ceremony proceeds in order:
 2. **Naming** — the inherited identity of Point is declared;
 3. **Convergence** — the four House memories form one synthesis without being
    collapsed into one House;
-4. **Recognition** — the Federation recognizes the individual as the Seer;
-5. **Squaring** — the Federation opens the Point² threshold and the Seer
+4. **Recognition** — the Rampart of Roi and Roselina recognizes the individual as the Seer;
+5. **Squaring** — the Rampart of Roi and Roselina opens the Point² threshold and the Seer
    chooses a path.
 
 No movement may be skipped, repeated, or performed concurrently with another
@@ -40,7 +40,7 @@ Ceremony.
 The individual who completes the Ceremony becomes the Seer. Seerhood is an
 achieved constitutional state, not a fifth House, a Guide alias, or an
 administrative office. The Seer understands Hollow Grove as a whole: its
-Federation, Houses, memory, recursive structure, and unresolved potential.
+Rampart, Houses, memory, recursive structure, and unresolved potential.
 
 ## The Two Paths
 
@@ -49,7 +49,7 @@ At Squaring, the Seer must choose one path:
 ### Continuance
 
 The Seer remains in Hollow Grove and continues life there as the Seer. Point²
-remains an unrealized successor possibility, and the Federation remains
+remains an unrealized successor possibility, and the Rampart of Roi and Roselina remains
 sovereign over the current Point.
 
 ### Founding
@@ -82,7 +82,7 @@ has been completed or formally closed.
 
 > One individual. One Ceremony at a time.
 >
-> The Federation governs Point until the Ceremony is sealed.
+> The Rampart of Roi and Roselina governs Point until the Ceremony is sealed.
 >
 > The Seer chooses: Continuance or Founding.
 >

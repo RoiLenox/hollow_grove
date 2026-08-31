@@ -2,7 +2,7 @@ use std::path::Path;
 
 use hollow_grove::{SNAPSHOT_ARTIFACT_PATH, SnapshotBoundary, build_snapshot_boundary_output};
 
-fn main() -> std::io::Result<()> {
+pub(crate) fn tool_main() -> std::io::Result<()> {
     let boundary = SnapshotBoundary::read_from_path(Path::new(SNAPSHOT_ARTIFACT_PATH))?;
     println!("{}", build_snapshot_boundary_output(&boundary));
     Ok(())
