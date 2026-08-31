@@ -1,6 +1,6 @@
 pkgname=hollow-grove-general
 pkgver=0.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Hardware-neutral Hollow Grove General Edition Niri profile'
 arch=('x86_64' 'aarch64')
 url='https://github.com/RoiLenox/hollow_grove'
@@ -21,9 +21,17 @@ optdepends=(
 _commit=41fa4b709c1372fd5dad5da1ffe9c9a3c5e109bc
 source=(
     "$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
+    'PACKAGE_MANIFEST.md'
+    'OPTIONAL_APPLICATIONS.md'
+    'SANITIZATION_REPORT.md'
+    'ISO_READINESS.md'
 )
 sha256sums=(
     'f32a7378feb5fa5178a9983104e2726d65cff2bebc37ec3c89f11be8b62ed27c'
+    '1b4c97bb9af9bdcf79b8489a18be7d1b3e9c3e1974f6690b7a4050039f5d0abd'
+    '6f137c739653f130c0d9ed8355b2e8041cae2ebd45d54ad1e71aad2905596b0d'
+    '00025d81f17d4a52e19d598cf2167c22145ed4ed5df0c86d1ae9ba0aac9a4146'
+    'cee77b99617f8e578a3b66d8d3264234db5f27bfd2e441a92c3a4b436ad92527'
 )
 
 build() {
@@ -57,13 +65,13 @@ package() {
     cp -r "$package_root/usr" "$pkgdir/"
     install -Dm755 "$srcdir/target/release/hollow-niri" \
         "$pkgdir/usr/lib/hollow-grove/bin/hollow-niri"
-    install -Dm644 "$package_root/PACKAGE_MANIFEST.md" \
+    install -Dm644 "$srcdir/PACKAGE_MANIFEST.md" \
         "$pkgdir/usr/share/doc/$pkgname/PACKAGE_MANIFEST.md"
-    install -Dm644 "$package_root/OPTIONAL_APPLICATIONS.md" \
+    install -Dm644 "$srcdir/OPTIONAL_APPLICATIONS.md" \
         "$pkgdir/usr/share/doc/$pkgname/OPTIONAL_APPLICATIONS.md"
-    install -Dm644 "$package_root/SANITIZATION_REPORT.md" \
+    install -Dm644 "$srcdir/SANITIZATION_REPORT.md" \
         "$pkgdir/usr/share/doc/$pkgname/SANITIZATION_REPORT.md"
-    install -Dm644 "$package_root/ISO_READINESS.md" \
+    install -Dm644 "$srcdir/ISO_READINESS.md" \
         "$pkgdir/usr/share/doc/$pkgname/ISO_READINESS.md"
     install -Dm644 "$repository_root/LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

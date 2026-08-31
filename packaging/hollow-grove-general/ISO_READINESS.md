@@ -35,6 +35,43 @@ This desktop integration consumes the constitutional palette but changes no
 game or House canon, runtime architecture, gameplay system, institution,
 lineage, or metaphysics.
 
+## Local package validation — 2026-08-31
+
+The pinned `hollow-grove-general` recipe completed a rootless package build
+from its verified GitHub archive. Its Rust checks, keyboard/Niri/Waybar
+verifier, package assembly, and extracted-file audit passed. The resulting
+x86_64 package was approximately 480 KiB compressed and 1 MiB installed, and
+the shipped `hollow-niri` binary contained no personal checkout or Cargo
+registry paths.
+
+An extracted, non-installed package root passed these live checks against Niri
+26.04:
+
+- the Niri configuration and Waybar JSON/CSS contract validated;
+- every public command and private helper retained its intended executable
+  mode;
+- a temporary `hollow-niri` daemon answered its health probe and queried the
+  compositor without changing window state;
+- 5,000 native planner/IPC benchmark iterations measured 23 microseconds p50,
+  28 microseconds p95, and 262 microseconds maximum on this workstation;
+- signed, temporarily extracted Waybar packages rendered the shipped
+  `hollow-grove-top` namespace as a 34-pixel top layer, then exited cleanly.
+
+The workstation still lacks installed Waybar, swaylock, Arch `devtools`, and
+`namcap`. Root authentication was deliberately not passed through automation.
+The next operator-owned gate is:
+
+```bash
+sudo pacman -S --needed devtools namcap
+cd packaging/hollow-grove-general
+extra-x86_64-build
+namcap PKGBUILD hollow-grove-general-*.pkg.tar.zst
+```
+
+After that succeeds, install the package only in a disposable VM or test user
+and perform the complete login, portal, lock, suspend, audio, network, and
+upgrade-preservation checklist before changing a daily-use profile.
+
 ## Work remaining before ArchISO inclusion
 
 1. Build the pinned `hollow-grove-general` recipe in an Arch clean chroot,
