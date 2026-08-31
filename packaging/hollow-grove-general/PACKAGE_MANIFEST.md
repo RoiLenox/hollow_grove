@@ -2,8 +2,8 @@
 
 ## Package boundary
 
-This tree is the payload proposal for a future `hollow-grove-general` Arch
-package. It contains the portable Niri profile, distribution defaults, a
+This tree is the source payload for the `hollow-grove-general` Arch package.
+It contains the portable Niri profile, distribution defaults, a
 launcher contract, and the private helpers needed to preserve the keyboard
 model. It does not contain an ISO, a personal home directory, constitutional
 documents, the Hueman Godot project, or machine-specific configuration.
@@ -35,8 +35,19 @@ is not treated as proof that it is in an official Arch repository.
 | `/usr/share/applications/hollow-grove-keyboard.desktop` | 0644 | Desktop entry for the visual keyboard map |
 
 The four Markdown reports at the package-tree root are review and packaging
-records. A PKGBUILD may install them under
-`/usr/share/doc/hollow-grove-general/`.
+records installed under `/usr/share/doc/hollow-grove-general/`.
+
+## Reproducible source boundary
+
+The PKGBUILD pins one pushed Hollow Grove commit and the SHA-256 digest of its
+GitHub source archive. Build and package functions consume that extracted
+archive rather than the mutable source checkout. `Cargo.lock` fixes the Rust
+dependency graph, while `check()` runs both the native `hollow-niri` tests and
+the complete keyboard/Niri/Waybar package verifier before packaging.
+
+The remaining reproducibility gate is a successful Arch clean-chroot build
+against a recorded repository snapshot, followed by package linting and an
+independent rebuild comparison.
 
 `generate-keyboard-grove-map.py` and `verify-keyboard-grove.sh` are source-tree
 release tools rather than installed commands. The generator renders the

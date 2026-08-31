@@ -1,12 +1,13 @@
 pkgname=hollow-grove-general
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Hardware-neutral Hollow Grove General Edition Niri profile'
 arch=('x86_64' 'aarch64')
 url='https://github.com/RoiLenox/hollow_grove'
 license=('custom')
 depends=('bash' 'coreutils' 'jq' 'niri' 'systemd' 'waybar' 'xdg-utils')
 makedepends=('cargo')
+checkdepends=('python')
 options=('!debug')
 optdepends=(
     'hollow-grove-hueman: Hueman gameplay client'
@@ -17,11 +18,18 @@ optdepends=(
     'swaylock: screen locking'
     'walker: interactive keyboard discovery menu'
 )
-source=()
-sha256sums=()
+_commit=41fa4b709c1372fd5dad5da1ffe9c9a3c5e109bc
+source=(
+    "$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
+)
+sha256sums=(
+    'f32a7378feb5fa5178a9983104e2726d65cff2bebc37ec3c89f11be8b62ed27c'
+)
 
 build() {
-    local repository_root="$startdir/../.."
+    local repository_root="$srcdir/hollow_grove-$_commit"
+    export CARGO_HOME="$srcdir/cargo-home"
+    export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=/usr/src/debug/$pkgbase-$pkgver"
     cargo build \
         --manifest-path "$repository_root/hollow-niri/Cargo.toml" \
         --package hollow-niri \
@@ -30,19 +38,32 @@ build() {
         --target-dir "$srcdir/target"
 }
 
+check() {
+    local repository_root="$srcdir/hollow_grove-$_commit"
+    export CARGO_HOME="$srcdir/cargo-home"
+    export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=/usr/src/debug/$pkgbase-$pkgver"
+    cargo test \
+        --manifest-path "$repository_root/hollow-niri/Cargo.toml" \
+        --package hollow-niri \
+        --locked \
+        --target-dir "$srcdir/target"
+    "$repository_root/packaging/hollow-grove-general/verify-keyboard-grove.sh"
+}
+
 package() {
-    local repository_root="$startdir/../.."
-    cp -r "$startdir/etc" "$pkgdir/"
-    cp -r "$startdir/usr" "$pkgdir/"
+    local repository_root="$srcdir/hollow_grove-$_commit"
+    local package_root="$repository_root/packaging/hollow-grove-general"
+    cp -r "$package_root/etc" "$pkgdir/"
+    cp -r "$package_root/usr" "$pkgdir/"
     install -Dm755 "$srcdir/target/release/hollow-niri" \
         "$pkgdir/usr/lib/hollow-grove/bin/hollow-niri"
-    install -Dm644 "$startdir/PACKAGE_MANIFEST.md" \
+    install -Dm644 "$package_root/PACKAGE_MANIFEST.md" \
         "$pkgdir/usr/share/doc/$pkgname/PACKAGE_MANIFEST.md"
-    install -Dm644 "$startdir/OPTIONAL_APPLICATIONS.md" \
+    install -Dm644 "$package_root/OPTIONAL_APPLICATIONS.md" \
         "$pkgdir/usr/share/doc/$pkgname/OPTIONAL_APPLICATIONS.md"
-    install -Dm644 "$startdir/SANITIZATION_REPORT.md" \
+    install -Dm644 "$package_root/SANITIZATION_REPORT.md" \
         "$pkgdir/usr/share/doc/$pkgname/SANITIZATION_REPORT.md"
-    install -Dm644 "$startdir/ISO_READINESS.md" \
+    install -Dm644 "$package_root/ISO_READINESS.md" \
         "$pkgdir/usr/share/doc/$pkgname/ISO_READINESS.md"
     install -Dm644 "$repository_root/LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

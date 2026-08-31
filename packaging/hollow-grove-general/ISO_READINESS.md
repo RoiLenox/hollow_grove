@@ -27,6 +27,9 @@
 - The native `hollow-niri` broker removes shell, `jq`, fixed sleeps, and
   unbounded repeat backlog from the compositor movement path. Its service,
   planner tests, doctor, benchmark, and renderer report are package-owned.
+- The Arch package recipe now pins one pushed source commit and its archive
+  checksum, builds from that immutable extraction instead of the checkout,
+  and runs the native and package-level validation suites in `check()`.
 
 This desktop integration consumes the constitutional palette but changes no
 game or House canon, runtime architecture, gameplay system, institution,
@@ -34,9 +37,9 @@ lineage, or metaphysics.
 
 ## Work remaining before ArchISO inclusion
 
-1. Freeze reproducible source inputs and checksums for the existing
-   `hollow-grove-general` PKGBUILD, then review its Rust build and architecture
-   matrix in a clean chroot.
+1. Build the pinned `hollow-grove-general` recipe in an Arch clean chroot,
+   run package linting, compare an independent rebuild, and record the Rust
+   architecture matrix.
 2. Decide which reasonable desktop applications belong in the base ISO and
    which remain discoverable optional bindings. Resolve each selected package
    against the exact official Arch snapshot or a signed project repository.
