@@ -35,5 +35,6 @@ while IFS= read -r tool; do
     ln -sfn hg-dev "$BIN_DIR/$tool"
 done < <("$BIN_DIR/hg-dev" --list)
 install -m 0755 "$SCRIPT_DIR/target/release/hollow-niri" "$HOME/.local/bin/hollow-niri"
+ln -sfn "$SCRIPT_DIR/hollow-grove-update.sh" "$HOME/.local/bin/hollow-grove-update"
 
 printf 'installed optimized Hollow Grove binaries in %s\n' "$BIN_DIR"

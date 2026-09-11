@@ -76,8 +76,11 @@ copy_filtered_state() {
 }
 
 copy_filtered_state \
-    "$HOME/.local/share/hollow-grove" \
-    "$STATE_ROOT/payload/home/.local/share/hollow-grove"
+    "$HOME/.local/share/hollow-grove/gameplay-saves" \
+    "$STATE_ROOT/payload/home/.local/share/hollow-grove/gameplay-saves"
+copy_filtered_state \
+    "$HOME/.local/share/hollow-grove/world" \
+    "$STATE_ROOT/payload/home/.local/share/hollow-grove/world"
 copy_filtered_state \
     "$HOME/.local/state/hollow-grove" \
     "$STATE_ROOT/payload/home/.local/state/hollow-grove"

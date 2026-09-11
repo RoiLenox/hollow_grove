@@ -71,12 +71,15 @@ cargo clippy --workspace --all-targets --all-features --offline -- -D warnings
 cargo dev-tool visual_color_constitution
 ./verify-art-assets.sh
 ./build-portable-release.sh
+hollow-grove-update prepare
 ```
 
 Generated output belongs under `artifacts/` or `dist/`; see
 [Artifact Ownership](docs/ARTIFACT_OWNERSHIP.md) before adding a new output.
 For a recoverable source and Hueman migration to an older laptop checkout, use
 the [Laptop Migration Plan](docs/LAPTOP_MIGRATION.md) after the RC tag exists.
+The same `hollow-grove-update` command then provides guarded, explicitly
+directed updates from either device to the other.
 
 ## Hollow Deck
 

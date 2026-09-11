@@ -64,7 +64,7 @@ After reviewing the printed migration record, activate:
 
 The activation output names the preserved checkout and recovery-record
 directory. To roll source back, stop any Hollow Grove process, rename the new
-checkout aside, and rename the timestamped `pre-foundation-v1` directory back
+checkout aside, and rename the timestamped `pre-update` directory back
 to the original path. To roll Hueman back, point `current-hueman` at the prior
 release directory. No backup is removed automatically.
 
@@ -78,3 +78,45 @@ On an Arch-family laptop, transfer the validated `.pkg.tar.zst` files and review
 `pacman -U` before installing them; on another distribution, retain the
 portable user-local Hueman install and adapt the General Edition profile through
 that distribution's package tooling.
+
+## Ongoing two-device updates
+
+Both devices use the same `hollow-grove-update` command. Configure each device
+with the other as its peer; configuration contains only an SSH destination and
+repository path, never credentials:
+
+```bash
+hollow-grove-update configure \
+  --host user@other-device \
+  --remote-repo /absolute/path/to/hollow_grove
+```
+
+The safe update sequence is:
+
+```bash
+hollow-grove-update status
+hollow-grove-update prepare
+hollow-grove-update stage
+hollow-grove-update activate
+```
+
+Run it on the device whose clean checkpoint and durable state are intended to
+be authoritative for that update. `stage` never switches the peer checkout or
+active Hueman symlink. `activate` switches the verified source, Hueman release,
+and durable gameplay saves, preserving timestamped source and save backups. It
+refuses a dirty or divergent peer by default; `--replace-diverged` is an
+explicit recovery operation after reviewing the preserved peer bundle,
+patches, untracked archive, and checkout.
+
+`prepare` runs the complete tests and strict lint on the sending device. The
+peer accepts the already-built portable release without needing Rust or network
+access, while still checking the exact source commit, art assets, archive and
+payload checksums, and build manifest before it can activate.
+
+For save/configuration-only changes on an otherwise unchanged commit, use
+`hollow-grove-update prepare-state` before staging. Mutable saves are not
+automatically merged in both directions: choosing the sending device avoids a
+silent last-writer-wins loss. Desktop state is staged for hardware adaptation,
+so one machine's display EDID or GPU settings never blindly replace the
+other's. Built release directories and the per-device peer configuration are
+also excluded; each peer rebuilds/releases locally and is configured once.
