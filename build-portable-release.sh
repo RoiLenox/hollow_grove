@@ -96,6 +96,34 @@ if [[ ! -x "$CORE_ROOT/lib/hollow-grove/core/hollow_grove_game_service" \
     exit 1
 fi
 
+# The two-device installer exposes release commands through two levels of
+# symlinks (`~/.local/bin` -> `current` -> versioned release). Probe that exact
+# shape so launchers cannot accidentally resolve payloads relative to
+# `~/.local` instead of their independent release roots.
+LAUNCHER_PROBE_ROOT="$STAGING_ROOT/launcher-probe"
+TRUE_BIN="$(type -P true)"
+mkdir -p "$LAUNCHER_PROBE_ROOT"
+ln -s "$CORE_ROOT/bin/hollow-grove-service" \
+    "$LAUNCHER_PROBE_ROOT/hollow-grove-service"
+ln -s "$CORE_ROOT/bin/hollow-grove-with-hueman" \
+    "$LAUNCHER_PROBE_ROOT/hollow-grove-with-hueman"
+ln -s "$HUEMAN_ROOT/bin/hueman" "$LAUNCHER_PROBE_ROOT/hueman"
+"$LAUNCHER_PROBE_ROOT/hollow-grove-service" --help >/dev/null
+GODOT_BIN="$TRUE_BIN" "$LAUNCHER_PROBE_ROOT/hueman"
+if HOLLOW_GROVE_PORT=0 HUEMAN_BIN="$TRUE_BIN" \
+    "$LAUNCHER_PROBE_ROOT/hollow-grove-with-hueman" \
+    >/dev/null 2>"$LAUNCHER_PROBE_ROOT/integration-probe.log"; then
+    printf 'integration launcher unexpectedly accepted port zero\n' >&2
+    exit 1
+fi
+if ! grep -Fq 'invalid Hollow Grove port: 0' \
+    "$LAUNCHER_PROBE_ROOT/integration-probe.log"; then
+    printf 'release launcher symlink probe failed\n' >&2
+    sed -n '1,20p' "$LAUNCHER_PROBE_ROOT/integration-probe.log" >&2
+    exit 1
+fi
+rm -rf -- "$LAUNCHER_PROBE_ROOT"
+
 commit_id="$(git rev-parse HEAD)"
 for release_root in "$CORE_ROOT" "$HUEMAN_ROOT" "$GENERAL_ROOT"; do
     release_name="$(basename -- "$release_root")"
