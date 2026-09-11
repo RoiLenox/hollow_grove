@@ -65,6 +65,7 @@ fn main_binary_reports_integrated_help() {
     assert!(stdout.contains("desktop [args]"));
     assert!(stdout.contains("benchmark [args]"));
     assert!(stdout.contains("hueman-slice"));
+    assert!(stdout.contains("deck [args]"));
     assert!(stdout.contains("semantic ..."));
     assert!(stdout.contains("model ..."));
     assert!(stdout.contains("dataset ..."));
@@ -117,6 +118,87 @@ fn main_binary_reports_integrated_help() {
     assert!(stdout.contains("player decide"));
     assert!(stdout.contains("cleopatra tick"));
     assert!(stdout.contains("cleopatra run"));
+}
+
+#[test]
+fn main_binary_opens_the_hollow_deck_and_direct_binary_filters_natures() {
+    let integrated = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["deck", "nature", "gargoyle"])
+        .output()
+        .expect("integrated Hollow Deck should run");
+    assert!(integrated.status.success());
+    let stdout = String::from_utf8_lossy(&integrated.stdout);
+    assert!(stdout.contains("HOLLOW DECK  /  NATURE CARD"));
+    assert!(stdout.contains("PRIMARY TRAIT  FORTIFICATION"));
+
+    let direct = Command::new(env!("CARGO_BIN_EXE_hollow_deck"))
+        .args(["natures", "--house", "Glaüshouse", "--aura", "Jade"])
+        .output()
+        .expect("direct Hollow Deck should run");
+    assert!(direct.status.success());
+    let stdout = String::from_utf8_lossy(&direct.stdout);
+    assert!(stdout.contains("Pixie"));
+    assert!(stdout.contains("Muse"));
+    assert!(!stdout.contains("Gargoyle"));
+
+    let institutions = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["deck", "institutions", "flynt"])
+        .output()
+        .expect("integrated institutional board should run");
+    assert!(institutions.status.success());
+    let stdout = String::from_utf8_lossy(&institutions.stdout);
+    assert!(stdout.contains("Warden"));
+    assert!(stdout.contains("Hunter + Chief + Mariner → Chimera"));
+    assert!(stdout.contains("CONTEXTUAL IDENTITIES — NOT CAREER STEPS"));
+
+    let sandmanor = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["deck", "institutions", "sandmanor"])
+        .output()
+        .expect("integrated Sandmanor institutional board should run");
+    assert!(sandmanor.status.success());
+    let stdout = String::from_utf8_lossy(&sandmanor.stdout);
+    assert!(stdout.contains("Hearthkeeper → Householder → Husbandman"));
+    assert!(stdout.contains("Acolyte → Navigator → Ascendant"));
+    assert!(stdout.contains("Demiurge + Ascendant → The Transcendent"));
+
+    let sandmanor_alias = Command::new(env!("CARGO_BIN_EXE_hollow_deck"))
+        .arg("sandmanor")
+        .output()
+        .expect("direct Sandmanor board alias should run");
+    assert!(sandmanor_alias.status.success());
+    let stdout = String::from_utf8_lossy(&sandmanor_alias.stdout);
+    assert!(stdout.contains("Hearthkeeper → Householder → Husbandman"));
+    assert!(stdout.contains("The Transcendent → The Sandman"));
+}
+
+#[test]
+fn hollow_deck_persists_cultivation_across_direct_and_integrated_entrypoints() {
+    let root = unique_temp_dir("hollow-deck-state-cli");
+    let state_path = root.join("deck-state.json");
+
+    let cultivate = Command::new(env!("CARGO_BIN_EXE_hollow_deck"))
+        .env("HOLLOW_DECK_STATE_PATH", &state_path)
+        .args(["cultivate", "gargoyle", "5000"])
+        .output()
+        .expect("direct cultivation command should run");
+    assert!(cultivate.status.success());
+    let stdout = String::from_utf8_lossy(&cultivate.stdout);
+    assert!(stdout.contains("ACTIVE CULTIVATION"));
+    assert!(stdout.contains("50.00%"));
+    assert!(state_path.is_file());
+
+    let integrated = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .env("HOLLOW_DECK_STATE_PATH", &state_path)
+        .args(["deck", "state"])
+        .output()
+        .expect("integrated state command should run");
+    assert!(integrated.status.success());
+    let stdout = String::from_utf8_lossy(&integrated.stdout);
+    assert!(stdout.contains("HOLLOW DECK  /  CULTIVATION STATE"));
+    assert!(stdout.contains("Gargoyle"));
+    assert!(stdout.contains("50.00%"));
+
+    fs::remove_dir_all(root).expect("temp state cleanup should succeed");
 }
 
 #[test]

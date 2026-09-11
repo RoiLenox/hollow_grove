@@ -307,6 +307,13 @@ pub const FLYNT_BASE_SYNTHESES: [FlyntBaseSynthesis; 3] = [
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum HigherSynthesisNode {
     Form(SynthesisForm),
+    FlyntState(FlyntSynthesisState),
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum FlyntSynthesisState {
+    Manticorp,
+    Chimera,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -318,28 +325,29 @@ pub struct HigherSynthesisRule {
     pub mechanics_status: SemanticStatus,
 }
 
-const FLYNT_CHIMERA_SOURCES: &[HigherSynthesisNode] = &[
+const FLYNT_MANTICORP_SOURCES: &[HigherSynthesisNode] = &[
     HigherSynthesisNode::Form(SynthesisForm::Gargoyle),
     HigherSynthesisNode::Form(SynthesisForm::Werewolf),
     HigherSynthesisNode::Form(SynthesisForm::Merman),
 ];
-const FLYNT_MANTICORE_SOURCES: &[HigherSynthesisNode] =
-    &[HigherSynthesisNode::Form(SynthesisForm::Chimera)];
+const FLYNT_CHIMERA_SOURCES: &[HigherSynthesisNode] = &[HigherSynthesisNode::FlyntState(
+    FlyntSynthesisState::Manticorp,
+)];
 const SEER_SOURCES: &[HigherSynthesisNode] = &[
     HigherSynthesisNode::Form(SynthesisForm::Troglodyte),
     HigherSynthesisNode::Form(SynthesisForm::Muse),
 ];
 pub const HIGHER_SYNTHESIS_RULES: [HigherSynthesisRule; 3] = [
     HigherSynthesisRule {
-        sources: FLYNT_CHIMERA_SOURCES,
-        result: HigherSynthesisNode::Form(SynthesisForm::Chimera),
+        sources: FLYNT_MANTICORP_SOURCES,
+        result: HigherSynthesisNode::FlyntState(FlyntSynthesisState::Manticorp),
         level: SynthesisLevel::HigherComposite,
         relationship_status: SemanticStatus::Locked,
         mechanics_status: SemanticStatus::Open,
     },
     HigherSynthesisRule {
-        sources: FLYNT_MANTICORE_SOURCES,
-        result: HigherSynthesisNode::Form(SynthesisForm::Manticore),
+        sources: FLYNT_CHIMERA_SOURCES,
+        result: HigherSynthesisNode::FlyntState(FlyntSynthesisState::Chimera),
         level: SynthesisLevel::HigherComposite,
         relationship_status: SemanticStatus::Locked,
         mechanics_status: SemanticStatus::Open,

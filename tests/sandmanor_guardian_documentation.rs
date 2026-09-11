@@ -77,8 +77,8 @@ fn forms_hands_and_mantles_are_public_and_distinct() {
     for term in [
         "Gnome → Faun → Minotaur",
         "Elf → Satyr → Centaur",
-        "Hecaton is the Minorian sovereign Hand",
-        "Pegasus is the Minoan sovereign Hand",
+        "Hecaton is perfected force and the **Right Hand of The Sandman**",
+        "Pegasus is perfected motion and the **Left Hand of The Sandman**",
         "GUARDIAN OF THE FIELDS",
         "GUARDIAN OF THE WHOLE FARM",
         "GUARDIAN OF THE BEACH",

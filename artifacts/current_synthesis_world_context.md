@@ -56,7 +56,7 @@ distinct categories:
 ```text
 Minorian Forms: Gnome → Faun → Minotaur
 Minoan Forms: Elf → Satyr → Centaur
-Minorian social roles: Husbandman → Householder → Hearthkeeper
+Minorian social roles: Hearthkeeper → Householder → Husbandman
 Minoan social roles: Beach Bum → Party Boy → Socialite
 Institutional attendants: Geomancer ↔ Labyrinthian
 Sovereign Hands: Hecaton ↔ Pegasus
@@ -1401,7 +1401,7 @@ distinct:
 
 ```text
 Minorian Forms: Gnome → Faun → Minotaur
-Minorian roles: Husbandman → Householder → Hearthkeeper
+Minorian roles: Hearthkeeper → Householder → Husbandman
 Minorian attendant: Geomancer
 Minorian Hand: Hecaton
 

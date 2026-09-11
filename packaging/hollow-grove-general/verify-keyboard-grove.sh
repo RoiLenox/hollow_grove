@@ -256,6 +256,28 @@ for config_path in "${config_paths[@]}"; do
         exit 1
     fi
 
+    # Space cycles the same quarter-height ladder that H/J/K/L expose as
+    # direct selections. Keep both access routes identical across profiles.
+    for binding_contract in \
+        'Mod+Ctrl+j|"height-flow" "down"' \
+        'Mod+Ctrl+k|"height-flow" "up"' \
+        'Mod+Ctrl+Shift+Space|"height-flow" "up"' \
+        'Mod+Alt+Shift+Space|"height-flow" "down"' \
+        'Mod+Alt+Shift+h|"move" "bottom" "25%"' \
+        'Mod+Alt+Shift+j|"move" "bottom" "50%"' \
+        'Mod+Alt+Shift+k|"move" "bottom" "75%"' \
+        'Mod+Alt+Shift+l|"move" "bottom" "100%"'
+    do
+        chord="${binding_contract%%|*}"
+        action="${binding_contract#*|}"
+        binding_line="$(awk -v chord="${chord}" '$1 == chord { print; exit }' "${config_path}")"
+        if [[ -z "${binding_line}" || "${binding_line}" != *"${action}"* ]]; then
+            printf '%s: %s must preserve the shared quarter-height contract (%s)\n' \
+                "${config_path}" "${chord}" "${action}" >&2
+            exit 1
+        fi
+    done
+
     while IFS=$'\t' read -r key meaning; do
         lower_key="${key,,}"
         comment_needle="// ${key} — ${meaning}"

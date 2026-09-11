@@ -141,6 +141,48 @@ Their universal loop is:
 > Clear it.
 > Recognize it.
 
+### Spiral progression and technological exchange
+
+Hollow Grove's central progression image is a revolving staircase with
+circular landings:
+
+> **From above, it looks circular. From the side, it’s actually ascending.**
+
+Repetition can return a practitioner, institution, or design to a known
+principle at a higher level without erasing history. This agrees with the
+existing Point² separation of angular position from radial ring; it does not
+replace the Rule of Twelve, the constitutional handoff above, or any House
+route.
+
+The canonical cosmological phrase is:
+
+> **Hollow holds. Current flows. Abyss feels. Aura reveals.**
+
+The approximate development circuit `Stonebend → Sandmanor → Flynt →
+Glaüshouse → Stonebend at a higher level` and its `Solidify → Flow → Reflect →
+Reveal` gloss are **STATUS: WORKING**. They describe one possible exchange of
+material realization, motion, responsive systems, and composition. They do
+not reorder the locked `Stonebend → Sandmanor → Glaüshouse → Flynt` position
+grammar or the `Name → Prove → Clear → Recognize` constitutional sequence.
+
+The four technological design languages are:
+
+- **Stonebend / PrimePunk** — primal physical principles, functional visible
+  mechanisms, precision engineering, and constant redesign;
+- **Sandmanor / MachPunk** — motion, force transfer, traction, leverage,
+  balance, momentum, aerodynamics, and flight;
+- **Flynt / PetPunk** — clean, controlled, near-closed-loop
+  petroleum-derived fuels, fluids, polymers, pressure systems, capture, and
+  recirculation;
+- **Glaüshouse / CordPunk** — Chromacord/CC, relationship, resonance, optics,
+  acoustics, medicine, couture engineering, and composed systems.
+
+These are functional languages rather than four visual skins. They do not
+normalize House institutions into one rank tree, and they remain subordinate
+to the Art Bible's tiny-scale silhouette, asset-role, palette, and animation
+rules. Their complete status, dependencies, and unresolved terms are recorded
+in `HOLLOW_GROVE_LORE_TECHNOLOGY_CONSOLIDATION_V1.md`.
+
 ## Hueman Faculties
 
 The additive faculty mapping is:
@@ -257,11 +299,15 @@ Its proof must itself survive inspection.
 Failure should expose which assumption broke and what must be redesigned.
 
 Its two equal, distinct peoples and traditions are Minorian / Prefog / Hearth
-and Minoan / Prefig / Current Sea. Their locked Form progressions are **Gnome →
-Faun → Minotaur** and **Elf → Satyr → Centaur**. Their social-role progressions
-are **Husbandman → Householder → Hearthkeeper** and **Beach Bum → Party Boy →
+and Minoan / Prefig / Current Sea. Their locked complete branch progressions
+are **Gnome → Faun → Minotaur → Hecaton** and **Elf → Satyr → Centaur →
+Pegasus**. The first three identities are biological Forms; Hecaton and Pegasus
+are separately invested perfected Hands. Their social-role progressions
+are **Hearthkeeper → Householder → Husbandman** and **Beach Bum → Party Boy →
 Socialite**. Geomancer and Labyrinthian are separate institutional attendant
-classes; Hecaton and Pegasus are the two sovereign Hands.
+classes. Hecaton is perfected force and the Right Hand; Pegasus is perfected
+motion and the Left Hand. The Sandman is command of both and the final
+sovereign culmination above them.
 
 The Current Sea is not necessarily literal water and may manifest across land.
 
@@ -355,8 +401,13 @@ Flynt can recognize hidden, denied, premature, or overlooked value through Contr
 Its constitutional stance is:
 
 - Tross is the sovereign executive.
-- the unique feminine Chimera is First Companion and counterpart to the Tross.
-- the Tross is the masculine Manticore identity and maintained Form; Manticorp is the distinct body of soldiers he commands, and ordinary soldiers are not the Form.
+- the unique feminine constitutional Chimera is First Companion, counterpart
+  to the Tross, and the foremost embodiment of perfected synthesis.
+- the Tross is the masculine Manticore identity with a maintained compatibility
+  Form record; Manticore is not a third general synthesis tier.
+- Manticorp is combined synthesis and also the military institution that
+  embodies and governs it; ordinary soldiers do not automatically possess the
+  synthesis state.
 - Mystery Men is the separate classified tradition commanded by The Tross; The Marquise is its maritime extension, while the Mystery Man and Mr. X are the Tross's underground identities, not separate people.
 - We Fairy Men is the proper creature-sect leadership body led by the Tross, with Bro White over Gargoyle/Medusa, Beauty over Werewolf/Vampire, and Cinderellaman with his Midnight Crew over Mariner/Mermaid.
 - the Gallows is We Fairy Men acting collectively under the same Tross in Flynt's organized-crime underworld; the contexts remain addressable without becoming unrelated organizations.
@@ -366,10 +417,11 @@ Telekinesis is Flynt's Current-side expression and Nookinesis is its Aura-side
 expression. Warlock → Gargoyle and Lycan → Werewolf remain inherited
 practitioner/Synthesis correspondences; Mariner = Merman is the masculine
 Flynt mer-creature/form, not merely a human sailor or practitioner label. Their
-exact Current/Aura equations remain **STATUS: OPEN**. Gargoyle + Werewolf + Mariner/Merman →
-Chimera → Manticore is locked higher Synthesis. HOLD, DRIVE, ADAPT, Chimera as
-selection, and Manticore as integration remain **STATUS: WORKING**, with exact
-mechanics **STATUS: OPEN**. The older “three founding regional peoples” model
+exact Current/Aura equations remain **STATUS: OPEN**. Gargoyle + Werewolf +
+Mariner/Merman → Manticorp → Chimera is locked higher Synthesis across
+independently refinable Current, Aura, and Weapon tracks. Manticorp combines;
+Chimera perfects. Exact mechanisms and mixed-state rules remain **STATUS:
+OPEN**. The older “three founding regional peoples” model
 and Manticore's former unisex treatment are SUPERSEDED, though stable
 identifiers remain available for archives. The additional sex/species pairs
 are Gargoyle/Medusa, Werewolf/Vampire, Mariner/Mermaid, and Manticore/Chimera;

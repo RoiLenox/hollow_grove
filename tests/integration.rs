@@ -58,6 +58,10 @@ mod glaushouse_documentation_conformance;
 mod guide_identity_v1;
 #[path = "guide_state_machine_v2.rs"]
 mod guide_state_machine_v2;
+#[path = "hollow_deck.rs"]
+mod hollow_deck;
+#[path = "hollow_deck_state.rs"]
+mod hollow_deck_state;
 #[path = "hollow_grove_alignment.rs"]
 mod hollow_grove_alignment;
 #[path = "hueman_faculties.rs"]

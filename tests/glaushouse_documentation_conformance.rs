@@ -211,7 +211,11 @@ fn continuity_ladder_succession_and_gremlin_way_are_projected_across_canon() {
     assert!(MANTICORP.contains("Gremlincoin = the Gremlin Way."));
     assert!(MANTICORP.contains("Gargoyle maintenance and renewal"));
     assert!(FLYNT.contains("presently maintained living"));
-    assert!(FLYNT.contains("Manticore Form distinct from the Manticorp soldier body"));
+    assert!(FLYNT.contains("**Manticore** continues to name the"));
+    assert!(
+        FLYNT.contains("Tross's personal mythological identity and the stable compatibility Form")
+    );
+    assert!(FLYNT.contains("Manticorp** names combined synthesis and also the institution"));
     assert!(POWER_RECIPE.contains("host rejection / Sympiote rejection"));
     assert!(
         POWER_RECIPE

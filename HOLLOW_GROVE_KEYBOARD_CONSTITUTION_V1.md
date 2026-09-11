@@ -187,7 +187,8 @@ The related implementation surfaces are:
 
 - discovery and audit command: `hollow-keyboard`;
 - personal Niri profile: `~/.config/niri/config.kdl`;
-- personal readable standard: `~/.config/niri/HOLLOW_GROVE_KEYBOARD_STANDARD_V1.md`;
+- active personal readable standard: `~/.config/niri/HOLLOW_GROVE_KEYBOARD_STANDARD_V2.md`
+  (the V1 file remains the frozen migration record);
 - General Edition profile:
   `packaging/hollow-grove-general/etc/skel/.config/niri/config.kdl`;
 - machine-readable semantic projection:

@@ -58,6 +58,10 @@ fn build_audit() -> Result<String, Box<dyn Error>> {
         audit.manticore_recipe_count
     ));
     output.push_str(&format!(
+        "amended_synthesis_order_is_valid: {}\n",
+        yes_no(audit.amended_synthesis_order_is_valid)
+    ));
+    output.push_str(&format!(
         "duplicate_authority_count: {}\n",
         audit.duplicate_authority_count
     ));
@@ -123,6 +127,7 @@ mod tests {
         assert!(first.contains("status: valid"));
         assert!(first.contains("constitutional_chimera_count: 1"));
         assert!(first.contains("manticore_recipe_count: 1"));
+        assert!(first.contains("amended_synthesis_order_is_valid: yes"));
         assert!(first.contains("duplicate_authority_count: 0"));
         assert!(first.contains("documentation_matches_implementation: yes"));
         assert!(first.contains("world_projection_valid: yes"));

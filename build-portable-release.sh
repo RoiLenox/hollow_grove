@@ -24,6 +24,11 @@ for command_name in cargo git godot install python3 sha256sum tar gzip; do
 done
 
 cd "$SCRIPT_DIR"
+if [[ -n "$(git status --porcelain=v1 --untracked-files=normal)" ]]; then
+    printf '%s\n' \
+        'portable release requires a clean worktree so BUILD-MANIFEST.txt identifies the complete source' >&2
+    exit 2
+fi
 ./verify-art-assets.sh
 cargo build --release --locked --offline \
     --bin hollow-grove \

@@ -1,9 +1,9 @@
-use std::collections::BTreeSet;
+use std::collections::{BTreeMap, BTreeSet};
 use std::fmt;
 use std::io::{self, BufRead, BufReader, Write};
 use std::os::unix::net::UnixStream;
 use std::path::{Path, PathBuf};
-use std::time::Duration;
+use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
@@ -54,6 +54,60 @@ impl Direction {
                 | Self::Top
                 | Self::Bottom
         )
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum HeightStep {
+    Grow,
+    Shrink,
+}
+
+impl HeightStep {
+    pub fn parse(value: &str) -> Result<Self, String> {
+        match value {
+            "grow" => Ok(Self::Grow),
+            "shrink" => Ok(Self::Shrink),
+            _ => Err(format!("invalid height step: {value}")),
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum HeightFlow {
+    Down,
+    Up,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+pub struct HeightIntentState {
+    pub window_id: u64,
+    pub target_percentage: f64,
+    pub updated_at_millis: u64,
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub struct HeightIntentOutcome {
+    pub actions: usize,
+    pub state: Option<HeightIntentState>,
+}
+
+impl HeightFlow {
+    pub fn parse(value: &str) -> Result<Self, String> {
+        match value {
+            "down" => Ok(Self::Down),
+            "up" => Ok(Self::Up),
+            _ => Err(format!("invalid height flow: {value}")),
+        }
+    }
+
+    fn anchor(self) -> Direction {
+        match self {
+            Self::Down => Direction::Top,
+            Self::Up => Direction::Bottom,
+        }
     }
 }
 
@@ -165,6 +219,23 @@ pub struct WindowLayout {
     pub tile_pos_in_workspace_view: Option<(f64, f64)>,
     #[serde(default)]
     pub window_offset_in_tile: Option<(f64, f64)>,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct WorkspaceOutputInfo {
+    id: u64,
+    #[serde(default)]
+    output: Option<String>,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct HeightOutputInfo {
+    logical: HeightLogicalOutput,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct HeightLogicalOutput {
+    height: i32,
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -460,6 +531,156 @@ fn plan_vertical(
     }
 }
 
+const QUARTER_HEIGHTS: [f64; 4] = [25.0, 50.0, 75.0, 100.0];
+const HEIGHT_STEP_TOLERANCE: f64 = 0.5;
+const HEIGHT_INTENT_GRACE_MILLIS: u64 = 1_500;
+
+pub fn next_quarter_height(current_percentage: f64, step: HeightStep) -> Option<f64> {
+    if !current_percentage.is_finite() {
+        return None;
+    }
+    match step {
+        HeightStep::Grow => QUARTER_HEIGHTS
+            .into_iter()
+            .find(|height| *height > current_percentage + HEIGHT_STEP_TOLERANCE),
+        HeightStep::Shrink => QUARTER_HEIGHTS
+            .into_iter()
+            .rev()
+            .find(|height| *height < current_percentage - HEIGHT_STEP_TOLERANCE),
+    }
+}
+
+fn focused_height_percentage(
+    windows: &[WindowInfo],
+    output_height: f64,
+) -> Option<(&WindowInfo, f64)> {
+    if !output_height.is_finite() || output_height <= 0.0 {
+        return None;
+    }
+    let focused = windows
+        .iter()
+        .find(|window| window.is_focused && !window.is_floating)?;
+    let current_height = focused
+        .layout
+        .tile_size
+        .map(|(_, height)| height)
+        .or_else(|| {
+            focused
+                .layout
+                .window_size
+                .map(|(_, height)| f64::from(height))
+        })
+        .filter(|height| height.is_finite())?;
+    Some((focused, current_height * 100.0 / output_height))
+}
+
+pub fn plan_height_step(
+    windows: &[WindowInfo],
+    output_height: f64,
+    step: HeightStep,
+) -> Vec<PlannedAction> {
+    let Some((_, current_percentage)) = focused_height_percentage(windows, output_height) else {
+        return Vec::new();
+    };
+    let Some(target) = next_quarter_height(current_percentage, step) else {
+        return Vec::new();
+    };
+    plan_move(
+        windows,
+        Direction::Top,
+        Some(TargetHeight::Proportion(target)),
+    )
+}
+
+fn effective_height_percentage(
+    window_id: u64,
+    current_percentage: f64,
+    previous: Option<HeightIntentState>,
+    now_millis: u64,
+) -> f64 {
+    previous
+        .filter(|state| {
+            let target_is_valid = QUARTER_HEIGHTS.contains(&state.target_percentage);
+            let geometry_reached_target =
+                (state.target_percentage - current_percentage).abs() <= HEIGHT_STEP_TOLERANCE;
+            let command_is_recent = now_millis
+                .checked_sub(state.updated_at_millis)
+                .is_some_and(|age| age <= HEIGHT_INTENT_GRACE_MILLIS);
+            state.window_id == window_id
+                && target_is_valid
+                && (geometry_reached_target || command_is_recent)
+        })
+        .map_or(current_percentage, |state| state.target_percentage)
+}
+
+pub fn plan_height_cycle(
+    windows: &[WindowInfo],
+    output_height: f64,
+    previous: Option<HeightIntentState>,
+    now_millis: u64,
+) -> (Vec<PlannedAction>, Option<HeightIntentState>) {
+    let Some((focused, current_percentage)) = focused_height_percentage(windows, output_height)
+    else {
+        return (Vec::new(), None);
+    };
+    let effective_percentage =
+        effective_height_percentage(focused.id, current_percentage, previous, now_millis);
+    let target = if (effective_percentage - 75.0).abs() <= HEIGHT_STEP_TOLERANCE {
+        25.0
+    } else {
+        75.0
+    };
+    (
+        plan_move(
+            windows,
+            Direction::Top,
+            Some(TargetHeight::Proportion(target)),
+        ),
+        Some(HeightIntentState {
+            window_id: focused.id,
+            target_percentage: target,
+            updated_at_millis: now_millis,
+        }),
+    )
+}
+
+pub fn next_height_flow_target(current_percentage: f64) -> Option<f64> {
+    if !current_percentage.is_finite() {
+        return None;
+    }
+    Some(next_quarter_height(current_percentage, HeightStep::Grow).unwrap_or(25.0))
+}
+
+pub fn plan_height_flow(
+    windows: &[WindowInfo],
+    output_height: f64,
+    flow: HeightFlow,
+    previous: Option<HeightIntentState>,
+    now_millis: u64,
+) -> (Vec<PlannedAction>, Option<HeightIntentState>) {
+    let Some((focused, current_percentage)) = focused_height_percentage(windows, output_height)
+    else {
+        return (Vec::new(), None);
+    };
+    let effective_percentage =
+        effective_height_percentage(focused.id, current_percentage, previous, now_millis);
+    let Some(target) = next_height_flow_target(effective_percentage) else {
+        return (Vec::new(), None);
+    };
+    (
+        plan_move(
+            windows,
+            flow.anchor(),
+            Some(TargetHeight::Proportion(target)),
+        ),
+        Some(HeightIntentState {
+            window_id: focused.id,
+            target_percentage: target,
+            updated_at_millis: now_millis,
+        }),
+    )
+}
+
 pub struct NiriConnection {
     path: PathBuf,
     reader: BufReader<UnixStream>,
@@ -553,6 +774,35 @@ impl NiriConnection {
             .map_err(|error| format!("could not decode Niri windows: {error}"))
     }
 
+    fn output_height_for_workspace(&mut self, workspace_id: u64) -> Result<f64, String> {
+        let response = self.request(&json!("Workspaces"))?;
+        let workspaces = response
+            .get("Workspaces")
+            .cloned()
+            .ok_or_else(|| format!("unexpected Niri workspaces response: {response}"))?;
+        let workspaces: Vec<WorkspaceOutputInfo> = serde_json::from_value(workspaces)
+            .map_err(|error| format!("could not decode Niri workspaces: {error}"))?;
+        let output = workspaces
+            .into_iter()
+            .find(|workspace| workspace.id == workspace_id)
+            .and_then(|workspace| workspace.output)
+            .ok_or_else(|| format!("workspace {workspace_id} has no output"))?;
+
+        let response = self.request(&json!("Outputs"))?;
+        let outputs = response
+            .get("Outputs")
+            .cloned()
+            .ok_or_else(|| format!("unexpected Niri outputs response: {response}"))?;
+        let outputs: BTreeMap<String, HeightOutputInfo> = serde_json::from_value(outputs)
+            .map_err(|error| format!("could not decode Niri outputs: {error}"))?;
+        let height = outputs
+            .get(&output)
+            .map(|info| info.logical.height)
+            .filter(|height| *height > 0)
+            .ok_or_else(|| format!("output {output} has no usable logical height"))?;
+        Ok(f64::from(height))
+    }
+
     pub fn action(&mut self, action: &PlannedAction) -> Result<(), String> {
         let response = self.request(&action.request())?;
         if response == json!("Handled") {
@@ -622,6 +872,102 @@ pub fn execute_move_with_connection(
     Ok(actions.len())
 }
 
+pub fn execute_height_step(niri_socket: &str, step: HeightStep) -> Result<usize, String> {
+    let mut niri = NiriConnection::connect(niri_socket)
+        .map_err(|error| format!("could not connect to Niri: {error}"))?;
+    let windows = niri.windows()?;
+    let Some(workspace_id) = windows
+        .iter()
+        .find(|window| window.is_focused && !window.is_floating)
+        .and_then(|window| window.workspace_id)
+    else {
+        return Ok(0);
+    };
+    let output_height = niri.output_height_for_workspace(workspace_id)?;
+    let actions = plan_height_step(&windows, output_height, step);
+    for action in &actions {
+        niri.action(action)?;
+    }
+    Ok(actions.len())
+}
+
+fn height_intent_now_millis() -> u64 {
+    SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap_or_default()
+        .as_millis()
+        .try_into()
+        .unwrap_or(u64::MAX)
+}
+
+pub fn execute_height_cycle(
+    niri_socket: &str,
+    previous: Option<HeightIntentState>,
+) -> Result<HeightIntentOutcome, String> {
+    let mut niri = NiriConnection::connect(niri_socket)
+        .map_err(|error| format!("could not connect to Niri: {error}"))?;
+    let windows = niri.windows()?;
+    let Some(workspace_id) = windows
+        .iter()
+        .find(|window| window.is_focused && !window.is_floating)
+        .and_then(|window| window.workspace_id)
+    else {
+        return Ok(HeightIntentOutcome {
+            actions: 0,
+            state: None,
+        });
+    };
+    let output_height = niri.output_height_for_workspace(workspace_id)?;
+    let (actions, state) = plan_height_cycle(
+        &windows,
+        output_height,
+        previous,
+        height_intent_now_millis(),
+    );
+    for action in &actions {
+        niri.action(action)?;
+    }
+    Ok(HeightIntentOutcome {
+        actions: actions.len(),
+        state,
+    })
+}
+
+pub fn execute_height_flow(
+    niri_socket: &str,
+    flow: HeightFlow,
+    previous: Option<HeightIntentState>,
+) -> Result<HeightIntentOutcome, String> {
+    let mut niri = NiriConnection::connect(niri_socket)
+        .map_err(|error| format!("could not connect to Niri: {error}"))?;
+    let windows = niri.windows()?;
+    let Some(workspace_id) = windows
+        .iter()
+        .find(|window| window.is_focused && !window.is_floating)
+        .and_then(|window| window.workspace_id)
+    else {
+        return Ok(HeightIntentOutcome {
+            actions: 0,
+            state: None,
+        });
+    };
+    let output_height = niri.output_height_for_workspace(workspace_id)?;
+    let (actions, state) = plan_height_flow(
+        &windows,
+        output_height,
+        flow,
+        previous,
+        height_intent_now_millis(),
+    );
+    for action in &actions {
+        niri.action(action)?;
+    }
+    Ok(HeightIntentOutcome {
+        actions: actions.len(),
+        state,
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -643,6 +989,18 @@ mod tests {
                 window_offset_in_tile: None,
             },
         }
+    }
+
+    fn window_at_height(
+        id: u64,
+        column: usize,
+        row: usize,
+        focused: bool,
+        height: f64,
+    ) -> WindowInfo {
+        let mut value = window(id, column, row, focused);
+        value.layout.tile_size = Some((800.0, height));
+        value
     }
 
     #[test]
@@ -811,6 +1169,269 @@ mod tests {
                     }
                 }
             })
+        );
+    }
+
+    #[test]
+    fn quarter_height_steps_clamp_and_snap() {
+        assert_eq!(next_quarter_height(25.0, HeightStep::Grow), Some(50.0));
+        assert_eq!(next_quarter_height(50.0, HeightStep::Grow), Some(75.0));
+        assert_eq!(next_quarter_height(75.0, HeightStep::Grow), Some(100.0));
+        assert_eq!(next_quarter_height(100.0, HeightStep::Grow), None);
+
+        assert_eq!(next_quarter_height(100.0, HeightStep::Shrink), Some(75.0));
+        assert_eq!(next_quarter_height(75.0, HeightStep::Shrink), Some(50.0));
+        assert_eq!(next_quarter_height(50.0, HeightStep::Shrink), Some(25.0));
+        assert_eq!(next_quarter_height(25.0, HeightStep::Shrink), None);
+
+        assert_eq!(next_quarter_height(63.0, HeightStep::Grow), Some(75.0));
+        assert_eq!(next_quarter_height(63.0, HeightStep::Shrink), Some(50.0));
+    }
+
+    #[test]
+    fn height_step_keeps_the_window_at_the_top() {
+        let windows = vec![
+            window_at_height(1, 1, 1, false, 864.0),
+            window_at_height(2, 1, 2, true, 864.0),
+        ];
+        assert_eq!(
+            plan_height_step(&windows, 1728.0, HeightStep::Grow),
+            vec![
+                PlannedAction::MoveWindowUp,
+                PlannedAction::SetWindowHeight {
+                    id: 2,
+                    height: TargetHeight::Proportion(75.0),
+                },
+            ]
+        );
+    }
+
+    #[test]
+    fn height_step_does_nothing_beyond_an_endpoint() {
+        let at_top = vec![window_at_height(1, 1, 1, true, 1728.0)];
+        let at_bottom = vec![window_at_height(1, 1, 1, true, 432.0)];
+        assert!(plan_height_step(&at_top, 1728.0, HeightStep::Grow).is_empty());
+        assert!(plan_height_step(&at_bottom, 1728.0, HeightStep::Shrink).is_empty());
+    }
+
+    #[test]
+    fn height_cycle_toggles_between_25_and_75() {
+        let output_height = 1728.0;
+        let expected = [75.0, 25.0, 75.0, 25.0];
+        let mut current = 25.0;
+        let mut state = None;
+        let mut now_millis = 1_000;
+        for target in expected {
+            let windows = vec![window_at_height(
+                1,
+                1,
+                1,
+                true,
+                output_height * current / 100.0,
+            )];
+            let (actions, next_state) =
+                plan_height_cycle(&windows, output_height, state, now_millis);
+            assert_eq!(
+                actions,
+                vec![PlannedAction::SetWindowHeight {
+                    id: 1,
+                    height: TargetHeight::Proportion(target),
+                }]
+            );
+            state = next_state;
+            current = target;
+            now_millis += 100;
+        }
+    }
+
+    #[test]
+    fn height_cycle_defaults_to_focus_and_bookmarks_only_from_focus() {
+        let unrelated_height = vec![window_at_height(1, 1, 1, true, 1728.0)];
+        let focused_height = vec![window_at_height(1, 1, 1, true, 1296.0)];
+
+        let (focus_actions, _) = plan_height_cycle(&unrelated_height, 1728.0, None, 1_000);
+        let (bookmark_actions, _) = plan_height_cycle(&focused_height, 1728.0, None, 1_000);
+
+        assert_eq!(
+            focus_actions,
+            vec![PlannedAction::SetWindowHeight {
+                id: 1,
+                height: TargetHeight::Proportion(75.0),
+            }]
+        );
+        assert_eq!(
+            bookmark_actions,
+            vec![PlannedAction::SetWindowHeight {
+                id: 1,
+                height: TargetHeight::Proportion(25.0),
+            }]
+        );
+    }
+
+    #[test]
+    fn height_flows_advance_relative_to_the_actual_height() {
+        assert_eq!(next_height_flow_target(10.0), Some(25.0));
+        assert_eq!(next_height_flow_target(25.0), Some(50.0));
+        assert_eq!(next_height_flow_target(50.0), Some(75.0));
+        assert_eq!(next_height_flow_target(63.0), Some(75.0));
+        assert_eq!(next_height_flow_target(75.0), Some(100.0));
+        assert_eq!(next_height_flow_target(100.0), Some(25.0));
+        assert_eq!(next_height_flow_target(f64::NAN), None);
+    }
+
+    #[test]
+    fn downward_height_flow_anchors_at_the_top() {
+        let windows = vec![
+            window_at_height(1, 1, 1, false, 864.0),
+            window_at_height(2, 1, 2, true, 864.0),
+        ];
+        let (actions, _) = plan_height_flow(&windows, 1728.0, HeightFlow::Down, None, 1_000);
+        assert_eq!(
+            actions,
+            vec![
+                PlannedAction::MoveWindowUp,
+                PlannedAction::SetWindowHeight {
+                    id: 2,
+                    height: TargetHeight::Proportion(75.0),
+                },
+            ]
+        );
+    }
+
+    #[test]
+    fn upward_height_flow_anchors_at_the_bottom() {
+        let windows = vec![
+            window_at_height(1, 1, 1, true, 864.0),
+            window_at_height(2, 1, 2, false, 864.0),
+        ];
+        let (actions, _) = plan_height_flow(&windows, 1728.0, HeightFlow::Up, None, 1_000);
+        assert_eq!(
+            actions,
+            vec![
+                PlannedAction::MoveWindowDown,
+                PlannedAction::SetWindowHeight {
+                    id: 1,
+                    height: TargetHeight::Proportion(75.0),
+                },
+            ]
+        );
+    }
+
+    #[test]
+    fn height_flow_wraps_from_100_back_to_the_first_25_frame() {
+        let windows = vec![window_at_height(1, 1, 1, true, 1728.0)];
+        let (actions, _) = plan_height_flow(&windows, 1728.0, HeightFlow::Down, None, 1_000);
+        assert_eq!(
+            actions,
+            vec![PlannedAction::SetWindowHeight {
+                id: 1,
+                height: TargetHeight::Proportion(25.0),
+            }]
+        );
+    }
+
+    #[test]
+    fn rapid_flow_press_advances_past_an_in_flight_height() {
+        let windows = vec![window_at_height(1, 1, 1, true, 604.8)];
+        let in_flight = HeightIntentState {
+            window_id: 1,
+            target_percentage: 50.0,
+            updated_at_millis: 1_000,
+        };
+
+        let (actions, state) =
+            plan_height_flow(&windows, 1728.0, HeightFlow::Up, Some(in_flight), 1_200);
+
+        assert_eq!(
+            actions,
+            vec![PlannedAction::SetWindowHeight {
+                id: 1,
+                height: TargetHeight::Proportion(75.0),
+            }]
+        );
+        assert_eq!(state.unwrap().target_percentage, 75.0);
+    }
+
+    #[test]
+    fn rapid_focus_press_uses_the_shared_in_flight_target() {
+        let windows = vec![window_at_height(1, 1, 1, true, 864.0)];
+        let in_flight = HeightIntentState {
+            window_id: 1,
+            target_percentage: 75.0,
+            updated_at_millis: 1_000,
+        };
+
+        let (actions, state) = plan_height_cycle(&windows, 1728.0, Some(in_flight), 1_200);
+
+        assert_eq!(
+            actions,
+            vec![PlannedAction::SetWindowHeight {
+                id: 1,
+                height: TargetHeight::Proportion(25.0),
+            }]
+        );
+        assert_eq!(state.unwrap().target_percentage, 25.0);
+    }
+
+    #[test]
+    fn stale_height_intent_yields_to_external_geometry() {
+        let windows = vec![window_at_height(1, 1, 1, true, 1088.64)];
+        let stale = HeightIntentState {
+            window_id: 1,
+            target_percentage: 25.0,
+            updated_at_millis: 1_000,
+        };
+
+        let (actions, _) = plan_height_flow(&windows, 1728.0, HeightFlow::Down, Some(stale), 3_000);
+
+        assert_eq!(
+            actions,
+            vec![PlannedAction::SetWindowHeight {
+                id: 1,
+                height: TargetHeight::Proportion(75.0),
+            }]
+        );
+    }
+
+    #[test]
+    fn height_intent_never_crosses_to_another_window() {
+        let windows = vec![window_at_height(2, 1, 1, true, 864.0)];
+        let other_window = HeightIntentState {
+            window_id: 1,
+            target_percentage: 25.0,
+            updated_at_millis: 1_000,
+        };
+
+        let (actions, _) =
+            plan_height_flow(&windows, 1728.0, HeightFlow::Up, Some(other_window), 1_100);
+
+        assert_eq!(
+            actions,
+            vec![PlannedAction::SetWindowHeight {
+                id: 2,
+                height: TargetHeight::Proportion(75.0),
+            }]
+        );
+    }
+
+    #[test]
+    fn future_height_intent_yields_to_current_geometry() {
+        let windows = vec![window_at_height(1, 1, 1, true, 1088.64)];
+        let future = HeightIntentState {
+            window_id: 1,
+            target_percentage: 25.0,
+            updated_at_millis: 2_000,
+        };
+
+        let (actions, _) =
+            plan_height_flow(&windows, 1728.0, HeightFlow::Down, Some(future), 1_000);
+
+        assert_eq!(
+            actions,
+            vec![PlannedAction::SetWindowHeight {
+                id: 1,
+                height: TargetHeight::Proportion(75.0),
+            }]
         );
     }
 }

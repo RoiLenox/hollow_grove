@@ -1,8 +1,9 @@
 use std::collections::VecDeque;
 use std::env;
-use std::fs;
+use std::fs::{self, File, OpenOptions};
 use std::io;
-use std::os::unix::fs::{FileTypeExt, PermissionsExt};
+use std::os::fd::AsRawFd;
+use std::os::unix::fs::{FileTypeExt, OpenOptionsExt, PermissionsExt};
 use std::os::unix::net::UnixDatagram;
 use std::path::{Path, PathBuf};
 use std::process::{Command, ExitCode};
@@ -11,8 +12,9 @@ use std::thread;
 use std::time::{Instant, UNIX_EPOCH};
 
 use hollow_niri::{
-    Direction, MoveMessage, NiriConnection, TargetHeight, execute_move,
-    execute_move_with_connection,
+    Direction, HeightFlow, HeightIntentOutcome, HeightIntentState, HeightStep, MoveMessage,
+    NiriConnection, TargetHeight, execute_height_cycle, execute_height_flow, execute_height_step,
+    execute_move, execute_move_with_connection,
 };
 use serde::Serialize;
 
@@ -20,9 +22,10 @@ mod asset_watch;
 mod broker;
 
 const MAX_PENDING_COMMANDS: usize = 8;
+const LOCK_EXCLUSIVE: i32 = 2;
 
 fn usage() -> &'static str {
-    "Usage:\n  hollow-niri move {left|right|left-top|left-bottom|right-top|right-bottom|up|down|top|bottom} [height]\n  hollow-niri daemon\n  hollow-niri broker [--root PATH] [--preview-fps N]\n  hollow-niri asset-watch [--root PATH]\n  hollow-niri ping\n  hollow-niri doctor [--json]\n  hollow-niri benchmark [iterations] [--json]\n  hollow-niri renderer-report [--json]"
+    "Usage:\n  hollow-niri move {left|right|left-top|left-bottom|right-top|right-bottom|up|down|top|bottom} [height]\n  hollow-niri height-step {grow|shrink}\n  hollow-niri height-cycle\n  hollow-niri height-flow {down|up}\n  hollow-niri daemon\n  hollow-niri broker [--root PATH] [--preview-fps N]\n  hollow-niri asset-watch [--root PATH]\n  hollow-niri ping\n  hollow-niri doctor [--json]\n  hollow-niri benchmark [iterations] [--json]\n  hollow-niri renderer-report [--json]"
 }
 
 fn runtime_root() -> Result<PathBuf, String> {
@@ -48,6 +51,129 @@ unsafe fn libc_getuid() -> u32 {
 
 fn daemon_socket_path() -> Result<PathBuf, String> {
     Ok(runtime_root()?.join("hollow-niri.sock"))
+}
+
+struct HeightIntentLock {
+    _file: File,
+}
+
+fn acquire_height_intent_lock(path: &Path) -> Result<HeightIntentLock, String> {
+    match fs::symlink_metadata(path) {
+        Ok(metadata) if metadata.file_type().is_symlink() || !metadata.is_file() => {
+            return Err(format!(
+                "refusing unsafe height-intent lock: {}",
+                path.display()
+            ));
+        }
+        Ok(_) => {}
+        Err(error) if error.kind() == io::ErrorKind::NotFound => {}
+        Err(error) => {
+            return Err(format!(
+                "could not inspect height-intent lock {}: {error}",
+                path.display()
+            ));
+        }
+    }
+    let file = OpenOptions::new()
+        .read(true)
+        .write(true)
+        .create(true)
+        .truncate(false)
+        .mode(0o600)
+        .open(path)
+        .map_err(|error| {
+            format!(
+                "could not open height-intent lock {}: {error}",
+                path.display()
+            )
+        })?;
+    fs::set_permissions(path, fs::Permissions::from_mode(0o600)).map_err(|error| {
+        format!(
+            "could not secure height-intent lock {}: {error}",
+            path.display()
+        )
+    })?;
+    if unsafe { libc_flock(file.as_raw_fd(), LOCK_EXCLUSIVE) } != 0 {
+        return Err(format!(
+            "could not lock height intent {}: {}",
+            path.display(),
+            io::Error::last_os_error()
+        ));
+    }
+    Ok(HeightIntentLock { _file: file })
+}
+
+fn load_height_intent(path: &Path) -> Result<Option<HeightIntentState>, String> {
+    match fs::symlink_metadata(path) {
+        Ok(metadata) if metadata.file_type().is_symlink() || !metadata.is_file() => {
+            return Err(format!(
+                "refusing unsafe height-intent state: {}",
+                path.display()
+            ));
+        }
+        Ok(_) => {}
+        Err(error) if error.kind() == io::ErrorKind::NotFound => return Ok(None),
+        Err(error) => {
+            return Err(format!(
+                "could not inspect height-intent state {}: {error}",
+                path.display()
+            ));
+        }
+    }
+    let bytes = fs::read(path).map_err(|error| {
+        format!(
+            "could not read height-intent state {}: {error}",
+            path.display()
+        )
+    })?;
+    Ok(serde_json::from_slice(&bytes).ok())
+}
+
+fn store_height_intent(path: &Path, state: &HeightIntentState) -> Result<(), String> {
+    let bytes = serde_json::to_vec(state)
+        .map_err(|error| format!("could not encode height-intent state: {error}"))?;
+    let temporary = path.with_extension(format!("tmp-{}", std::process::id()));
+    fs::write(&temporary, bytes).map_err(|error| {
+        format!(
+            "could not write height-intent state {}: {error}",
+            temporary.display()
+        )
+    })?;
+    fs::set_permissions(&temporary, fs::Permissions::from_mode(0o600)).map_err(|error| {
+        format!(
+            "could not secure height-intent state {}: {error}",
+            temporary.display()
+        )
+    })?;
+    fs::rename(&temporary, path).map_err(|error| {
+        format!(
+            "could not commit height-intent state {}: {error}",
+            path.display()
+        )
+    })
+}
+
+fn run_height_intent(
+    operation: impl FnOnce(Option<HeightIntentState>) -> Result<HeightIntentOutcome, String>,
+) -> Result<(), String> {
+    let root = runtime_root()?;
+    ensure_runtime_root(&root)?;
+    let _lock = acquire_height_intent_lock(&root.join("height-intent.lock"))?;
+    let state_path = root.join("height-intent.json");
+    let previous = load_height_intent(&state_path)?;
+    let outcome = operation(previous)?;
+    if let Some(state) = outcome.state {
+        store_height_intent(&state_path, &state)?;
+    }
+    Ok(())
+}
+
+// SAFETY: flock only reads the supplied file descriptor and operation.
+unsafe fn libc_flock(file_descriptor: i32, operation: i32) -> i32 {
+    unsafe extern "C" {
+        fn flock(file_descriptor: i32, operation: i32) -> i32;
+    }
+    unsafe { flock(file_descriptor, operation) }
 }
 
 fn parse_move(args: &[String]) -> Result<MoveMessage, String> {
@@ -531,6 +657,26 @@ fn run() -> Result<(), String> {
             } else {
                 execute_move(&message).map(|_| ())
             }
+        }
+        [command, direction] if command == "height-step" => {
+            let step = HeightStep::parse(direction)?;
+            let niri_socket = env::var("NIRI_SOCKET").map_err(|_| {
+                String::from("NIRI_SOCKET is not set; run this command inside Niri")
+            })?;
+            execute_height_step(&niri_socket, step).map(|_| ())
+        }
+        [command] if command == "height-cycle" => {
+            let niri_socket = env::var("NIRI_SOCKET").map_err(|_| {
+                String::from("NIRI_SOCKET is not set; run this command inside Niri")
+            })?;
+            run_height_intent(|previous| execute_height_cycle(&niri_socket, previous))
+        }
+        [command, direction] if command == "height-flow" => {
+            let flow = HeightFlow::parse(direction)?;
+            let niri_socket = env::var("NIRI_SOCKET").map_err(|_| {
+                String::from("NIRI_SOCKET is not set; run this command inside Niri")
+            })?;
+            run_height_intent(|previous| execute_height_flow(&niri_socket, flow, previous))
         }
         [command] if command == "doctor" => doctor(false),
         [command, flag] if command == "doctor" && flag == "--json" => doctor(true),

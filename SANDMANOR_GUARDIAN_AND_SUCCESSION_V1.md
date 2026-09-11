@@ -194,7 +194,7 @@ punishment.
 ## 7. Minorian Form and Hand
 
 ```text
-Gnome → Faun → Minotaur
+Gnome → Faun → Minotaur → Hecaton
 ```
 
 A Gnome is the base Minorian Form, Faun is the intermediate Form, and Minotaur
@@ -211,8 +211,9 @@ failure.
 
 > **The Gnome tends the field. The Minotaur answers for it.**
 
-Hecaton is the Minorian sovereign Hand associated with the reigning Sandman,
-not a higher maintained Synthesis or Minotaur stage IV. Its related mantle is
+Hecaton is perfected force and the **Right Hand of The Sandman**. It completes
+the Minorian branch through separate sovereign-Hand investiture after Minotaur,
+not through an ordinary biological Form transition. Its related mantle is
 **GUARDIAN OF THE WHOLE FARM**. Its many hands signify coordination across fields,
 workers, tools, irrigation, medicine, livestock, storage, distribution,
 education, Content Farms, public information, and cultural nourishment.
@@ -224,13 +225,13 @@ cascading failure.
 
 > **The Minotaur guards a field. Hecaton keeps the fields from failing one another.**
 
-Hecaton is sovereign-level responsibility, not a stronger Minotaur and not an
-ordinary Form.
+Hecaton is sovereign-level perfected force, not merely a stronger Minotaur and
+not an ordinary biological Form.
 
 ## 8. Minoan Form and Hand
 
 ```text
-Elf → Satyr → Centaur
+Elf → Satyr → Centaur → Pegasus
 ```
 
 A base Elf may grow through the intermediate Satyr Form to the mature Centaur
@@ -247,8 +248,9 @@ It grants neither unlimited police nor military power.
 
 > **The Elf watches the shore. The Centaur answers when the shore breaks.**
 
-Pegasus is the Minoan sovereign Hand associated with the reigning Sandman, not
-a higher maintained Synthesis or Centaur stage IV. Its related mantle is
+Pegasus is perfected motion and the **Left Hand of The Sandman**. It completes
+the Minoan branch through separate sovereign-Hand investiture after Centaur,
+not through an ordinary biological Form transition. Its related mantle is
 **GUARDIAN OF THE HORIZON**. It governs regional awareness across coastwide weather, storms,
 distant danger, settlement evacuation, Current Sea approaches, public
 movement, land-sea-sky relationships, navigation, and multiple coastal
@@ -256,8 +258,8 @@ communities.
 
 > **The Centaur guards the beach. Pegasus guards the horizon.**
 
-Pegasus is sovereign regional overview and early recognition, not a flying
-Centaur or ordinary Form.
+Pegasus is sovereign regional overview, early recognition, and perfected
+motion, not merely a flying Centaur or ordinary biological Form.
 
 ## 9. Suspension, Removal, and Renewal
 
@@ -383,8 +385,9 @@ The Contest measures the capacity both to learn and to share mastery:
 ## 16. Sandman / Demiurge Convergence and Mantle
 
 **The Sandman = Demiurge.** Demiurge is the Sandman's sovereign Synthesizer
-and apex identity, not a third attendant class. Hecaton and Pegasus are the
-parallel sovereign Hands of the Minorian and Minoan sides.
+and apex identity, not a third attendant class. Hecaton is the perfected-force
+Right Hand; Pegasus is the perfected-motion Left Hand. The Sandman is command
+of both and the final sovereign culmination above them.
 
 The most-improved candidate becomes eligible through:
 
@@ -444,11 +447,13 @@ candidate, ballot, insertion, random, or catalog order.
 
 > **Gnome becomes Faun; Faun becomes Minotaur.**
 
-> **Hecaton is the Minorian Hand, not Minotaur stage IV.**
+> **Hecaton is perfected force and the Right Hand of The Sandman.**
 
 > **Elf becomes Satyr; Satyr becomes Centaur.**
 
-> **Pegasus is the Minoan Hand, not Centaur stage IV.**
+> **Pegasus is perfected motion and the Left Hand of The Sandman.**
+
+> **The Sandman is command of both and the final sovereign culmination above both Hands.**
 
 > **The Form remains a body. The mantle remains a trust.**
 

@@ -25,7 +25,7 @@ Sandmanor proves through equal Minorian interior and Minoan exterior traditions,
 ## Regional Design
 
 - Minorian Forms: Gnome -> Faun -> Minotaur; Minoan Forms: Elf -> Satyr -> Centaur.
-- Minorian social roles: Husbandman -> Householder -> Hearthkeeper; Minoan social roles: Beach Bum -> Party Boy -> Socialite.
+- Minorian social roles: Hearthkeeper -> Householder -> Husbandman; Minoan social roles: Beach Bum -> Party Boy -> Socialite.
 - Geomancer and Labyrinthian are institutional attendant classes; Hecaton and Pegasus are sovereign Hands, never fourth-stage Forms.
 - Content Farm cultivates what family life has and makes; Aura Field preserves and projects household life; Aura Beach expresses, celebrates, and enjoys it.
 - Sandmanor proves regional role and recipe logic; Glaushouse clears Synthesis; Stonebend preserves identity; Flynt recognizes lawful role or institution.
@@ -103,7 +103,7 @@ Sandmanor roles belong to Hueman's kingdom layer. They do not replace Fourway pl
 - Current Break is Sandmanor territory that hosts Flynt-authorized Manticorp training; Flynt retains Manticorp command and Minoan guardians teach coastal survival.
 - the Minoan County Courthouse remains a Sandmanor institution when it transfers a patient or detainee into Glaushouse clinical care.
 - Gnome -> Faun -> Minotaur and Elf -> Satyr -> Centaur are the Form progressions; their deeper mechanics remain open.
-- Husbandman -> Householder -> Hearthkeeper and Beach Bum -> Party Boy -> Socialite are separate social-role progressions.
+- Hearthkeeper -> Householder -> Husbandman and Beach Bum -> Party Boy -> Socialite are separate social-role progressions.
 - Geomancer and Labyrinthian are attendant classes; Hecaton and Pegasus are sovereign Hands rather than maintained Forms.
 - the Form remains a body and the mantle remains a trust; the Hand remains a sovereign office.
 - the Contest final pair is one lawful Minotaur holding Hecaton and one lawful Centaur holding Pegasus who sincerely teach each other and complete five reciprocal trials.

@@ -1,15 +1,15 @@
 use hollow_grove::FrameId;
 use hollow_grove::lineage_contract::{
     MINOAN_SIDE, MINORIAN_SIDE, SANDMANOR_SOVEREIGN, SandmanorAttendantClass,
-    SandmanorCulturalDomain, SandmanorForm, SandmanorLineage, SandmanorSocialRole,
-    SandmanorSovereignHand, SandmanorSovereignIdentity,
+    SandmanorCulturalDomain, SandmanorForm, SandmanorHandPrinciple, SandmanorHandSide,
+    SandmanorLineage, SandmanorSocialRole, SandmanorSovereignHand, SandmanorSovereignIdentity,
 };
 use hollow_grove::world::glaushouse::{
     CLINICAL_SYNTHESIS_CORRESPONDENCES, ClinicalSynthesisForm, GLAUSHOUSE_AURA_EXPRESSION,
 };
 use hollow_grove::world::practitioner_ontology::{
-    FLYNT_BASE_SYNTHESES, GLAUSHOUSE_ACTIVE_SYNTHESIS_LADDER, GlaushouseBranch,
-    HIGHER_SYNTHESIS_RULES, HOLLOW_GROVE_LEVEL_PAIRING_STATUS,
+    FLYNT_BASE_SYNTHESES, FlyntSynthesisState, GLAUSHOUSE_ACTIVE_SYNTHESIS_LADDER,
+    GlaushouseBranch, HIGHER_SYNTHESIS_RULES, HOLLOW_GROVE_LEVEL_PAIRING_STATUS,
     HOLLOW_GROVE_SYNTHESIS_LEVEL_PAIRINGS, HigherSynthesisNode, PRACTITIONER_INPUT_AXES,
     PRACTITIONER_LEVEL_ONE_EQUATION, PRACTITIONER_SYNTHESIS_OUTPUT, PractitionerAxis,
     SANDMANOR_FORM_TRANSITION_MECHANICS_STATUS, STONEBEND_ACTIVE_SYNTHESIS_LADDER,
@@ -59,9 +59,9 @@ fn sandmanor_keeps_forms_roles_attendants_and_hands_on_distinct_axes() {
     assert_eq!(
         MINORIAN_SIDE.social_roles,
         [
-            SandmanorSocialRole::Husbandman,
-            SandmanorSocialRole::Householder,
             SandmanorSocialRole::Hearthkeeper,
+            SandmanorSocialRole::Householder,
+            SandmanorSocialRole::Husbandman,
         ]
     );
     assert_eq!(
@@ -96,6 +96,19 @@ fn sandmanor_keeps_forms_roles_attendants_and_hands_on_distinct_axes() {
         SandmanorSovereignHand::Hecaton
     );
     assert_eq!(MINOAN_SIDE.sovereign_hand, SandmanorSovereignHand::Pegasus);
+    assert_eq!(
+        MINORIAN_SIDE.sovereign_hand.side(),
+        SandmanorHandSide::Right
+    );
+    assert_eq!(MINOAN_SIDE.sovereign_hand.side(), SandmanorHandSide::Left);
+    assert_eq!(
+        MINORIAN_SIDE.sovereign_hand.perfected_principle(),
+        SandmanorHandPrinciple::Force
+    );
+    assert_eq!(
+        MINOAN_SIDE.sovereign_hand.perfected_principle(),
+        SandmanorHandPrinciple::Motion
+    );
     assert_eq!(
         SANDMANOR_SOVEREIGN,
         SandmanorSovereignIdentity::SandmanDemiurge
@@ -157,6 +170,32 @@ fn flynt_open_equations_are_not_fabricated_and_base_forms_remain() {
     assert!(FLYNT_BASE_SYNTHESES.iter().all(|entry| {
         entry.exact_level_one_equation.is_none() && entry.equation_status == SemanticStatus::Open
     }));
+}
+
+#[test]
+fn flynt_combines_as_manticorp_then_perfects_as_chimera() {
+    let manticorp = HIGHER_SYNTHESIS_RULES
+        .iter()
+        .find(|rule| rule.result == HigherSynthesisNode::FlyntState(FlyntSynthesisState::Manticorp))
+        .unwrap();
+    assert_eq!(
+        manticorp.sources,
+        &[
+            HigherSynthesisNode::Form(SynthesisForm::Gargoyle),
+            HigherSynthesisNode::Form(SynthesisForm::Werewolf),
+            HigherSynthesisNode::Form(SynthesisForm::Merman),
+        ]
+    );
+    let chimera = HIGHER_SYNTHESIS_RULES
+        .iter()
+        .find(|rule| rule.result == HigherSynthesisNode::FlyntState(FlyntSynthesisState::Chimera))
+        .unwrap();
+    assert_eq!(
+        chimera.sources,
+        &[HigherSynthesisNode::FlyntState(
+            FlyntSynthesisState::Manticorp,
+        )]
+    );
 }
 
 #[test]

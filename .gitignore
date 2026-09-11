@@ -58,3 +58,4 @@ pokewilds-linux64.zip
 /packaging/**/pkg/
 /packaging/**/src/
 /packaging/**/*.tar.gz
+/packaging/**/*.log

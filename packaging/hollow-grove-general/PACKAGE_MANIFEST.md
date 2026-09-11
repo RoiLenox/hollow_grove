@@ -88,6 +88,13 @@ The base image must also include a complete Wayland graphics stack selected by
 Arch and Mesa for the detected hardware. This profile requests no vendor
 driver.
 
+`namcap` cannot infer command and configuration dependencies from the package
+ELF alone. `bash`, `coreutils`, and `jq` execute the installed helpers;
+`niri`, `systemd`, and `waybar` provide the compositor, resident user service,
+and single top bar consumed by the installed profile; `xdg-utils` opens the
+installed keyboard map. These are intentional runtime dependencies even when
+package lint reports them as potentially unused.
+
 ## Hollow Grove packages
 
 | Package | Status | Contents |

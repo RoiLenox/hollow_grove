@@ -9,6 +9,7 @@ BIN_DIR="$INSTALL_ROOT/bin"
 cargo build --manifest-path "$SCRIPT_DIR/Cargo.toml" --release \
     --features dev-tools \
     --bin hollow-grove \
+    --bin hollow_deck \
     --bin adaptive_topology_live \
     --bin hollow_grove_runtime \
     --bin hollow_grove_niri_bridge \
@@ -20,6 +21,7 @@ cargo build --manifest-path "$SCRIPT_DIR/Cargo.toml" --release \
 install -d -m 0755 "$BIN_DIR" "$HOME/.local/bin"
 for binary in \
     hollow-grove \
+    hollow_deck \
     adaptive_topology_live \
     hollow_grove_runtime \
     hollow_grove_niri_bridge \

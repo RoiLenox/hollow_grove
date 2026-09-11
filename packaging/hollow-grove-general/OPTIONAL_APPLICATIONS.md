@@ -61,6 +61,8 @@ Navigate, Backspace is History, Escape is Exit, and Space shapes usable room.
 | Keys | Role | Availability behavior |
 | --- | --- | --- |
 | `Mod+Space`, `Mod+Shift+Space` | Glaüshouse usable room forward/backward | Native Niri preset-width actions; official keyboard Step 2 |
+| `Mod+Ctrl+J/K`, `Mod+Ctrl+Shift+Space`, `Mod+Alt+Shift+Space` | Quarter-height flow down/up | All cycle the same 25/50/75/100 ladder through `hollow-niri` |
+| `Mod+Alt+Shift+H/J/K/L` | Direct quarter-height selection | Select 25/50/75/100 respectively on the same bottom-anchored ladder |
 | `Mod+Alt+Escape`, `Mod+Alt+Shift+Return`, `Mod+Alt+Slash` | Nested River development | Retained for muscle memory; reports that the optional addon commands are missing |
 | `Mod+Shift+Comma`, `Mod+Shift+Period` | Media previous/next | Base `playerctl`; missing command is reported |
 | `Mod+Shift+Equal` | OBS Studio | Missing OBS is reported |

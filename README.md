@@ -33,14 +33,20 @@ Read the setting in this order:
 4. [Repository Authority Map](REPOSITORY_AUTHORITY_MAP.md) — what is
    constitutional law, executable enforcement, a draft, a witness, or a
    generated projection.
-5. [V2 Constitutional Specification](HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md)
+5. [Flynt Synthesis and Sandmanor Hands Amendment](HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md)
+   — the ratified resolution of the two former schema/constitution holds, then
+   [Lore, Technology, and Project-State Consolidation](HOLLOW_GROVE_LORE_TECHNOLOGY_CONSOLIDATION_V1.md)
+   — the status-controlled spiral model, PrimePunk/MachPunk/PetPunk/CordPunk
+   languages, inter-House dependencies, Flynt weapons, synthesis tracks,
+   and Stonebend development board.
+6. [V2 Constitutional Specification](HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md)
    — the shared Bond and Constitutional Runtime contract.
-6. The relevant House shelf below.
-7. [Constitutional Geography](HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md) and
+7. The relevant House shelf below.
+8. [Constitutional Geography](HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md) and
    [Route Network](HOLLOW_GROVE_ROUTE_NETWORK_V1.md) for place and travel,
    followed by [Spatial Inheritance](SPATIAL_INHERITANCE_V1.md) for recursive
    placement, viewpoint, archive, and replay law.
-8. [Functional Lore Integration](HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md)
+9. [Functional Lore Integration](HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md)
    for lived, playable lore, followed by the
    [Operational Lore Kernel proposal](HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md)
    and [Gimp-to-Pimp Sympiote Integrity Trial](BOARDWALK_GIMP_TO_PIMP_SYMPIOTE_TRIAL_V1_DRAFT.md)
@@ -72,12 +78,65 @@ Generated output belongs under `artifacts/` or `dist/`; see
 For a recoverable source and Hueman migration to an older laptop checkout, use
 the [Laptop Migration Plan](docs/LAPTOP_MIGRATION.md) after the RC tag exists.
 
+## Hollow Deck
+
+The canonical gameplay compendium for Houses, Dominions, Natures, Current
+Forms, Aura Sets, Primary Traits, progression, alchemy, Recipes, Synthesis
+Recipes, Syntheses, and Banes is the [Hollow Deck](HOLLOW_DECK_V1.md). Launch
+its interactive terminal surface with `cargo run --bin hollow_deck --offline`
+or query it through `hollow-grove deck ...`. Canon remains read-only while a
+separate checksummed state file persists cultivated Current Forms, learned and
+equipped Aura moves, discoveries, and known Syntheses.
+
+The current Deck catalog schema is `1.5.0`; its persisted state envelope and
+default `artifacts/gameplay-saves/hollow-deck-state-v1.json` filename remain V1.
+Glaüshouse has coequal Presensor/Matron/Jade and
+Preceptor/Marshall/Emerald branches sharing one alchemical slot. Gargoyle uses
+one cumulative biological growth path through White Opal Statue Mastery;
+`Winged Gargoyle` remains a Wings-dependent safe-flight Synthesis, while White
+Opal Statue itself is inherent Fortification rather than a Synthesis.
+Flynt's renderer-facing identity matrix separately projects Mystery Men,
+We Fairy Men, and Gallows names and visual language over an unchanged
+Gargoyle, Werewolf, or Mariner Nature; aliases such as Johnny Apple and Jimmy
+Pumps never become biological Nature IDs.
+
+The immutable Deck also exposes distinct institutional grammars rather than a
+shared rank tree: Glaüshouse selects one of two coequal seat branches; Flynt
+advances from Warden through Corpman and Mystery Man into parallel specialist
+sects whose Current/Aura/Weapon convergence tier names remain on a
+constitutional reconciliation hold; Stonebend combines paired
+Current/Aura competencies as Freemason/Superstar or
+Proliteriate/Rockstar before Hypergiant integration; Sandmanor keeps Minorian
+and Minoan as two complete ways of life, with independent social, Aura, and
+Nature ladders whose peer Aura apexes resolve as
+`Demiurge + Ascendant → The Transcendent → The Sandman`. The full rendering and
+asset-layer invariants live in [Hollow Art Bible V1](HOLLOW_ART_BIBLE_V1.md).
+Flynt also carries a separate paired sorcery ladder—Wizard/Witch,
+Warlock/Enchantress, Sorcerer/Sorceress—for established manufacture, pattern
+modification, and new Synthesis-pattern authorship under the wider Tross-led
+ecosystem; it is not part of the Mystery Men rank tree.
+That bible locks a modern implementation to Pokémon Yellow's visual discipline:
+16×16-minded overworld readability, separate larger asset roles, bounded
+palette and animation complexity, and Hueman then Gargoyle as the first visual
+proofs.
+
+The ratified [Flynt Synthesis and Sandmanor Hands Amendment](HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md)
+resolves the former Deck/constitution holds: Manticorp is combined synthesis,
+Chimera is perfected synthesis, Hecaton is the Right Hand, Pegasus is the Left
+Hand, and The Sandman is the final sovereign culmination above both. Stable
+legacy `manticore` identifiers remain compatibility projections where required.
+
 ## The Four House Shelves
 
 ### Stonebend
 
 Stonebend owns Body/Presynce, Craft, Continuance of Form, lawful Hollowing,
 Name, Claim, Title, material identity, and provenance.
+
+Its technological design language is **PrimePunk**: primal physical laws,
+functional visible mechanisms, precision engineering, and constant redesign.
+Its immediate open design task is the bottom-up signature object/weapon pass,
+not a premature final metaphysics of Hollowing.
 
 - Primary authority:
   [Stonebend Constitution V2](STONEBEND_CONSTITUTION_V2.md)
@@ -106,11 +165,17 @@ Name, Claim, Title, material identity, and provenance.
 Sandmanor owns Soul, Prefog/Prefig, Design, reciprocity, formation,
 Minorian/Minoan traditions, Aura Farm/Beach/coast, and guardian Synthesis.
 
+Its technological design language is **MachPunk**: motion, force transfer,
+traction, leverage, balance, momentum, lift, and flight. Motion is a strongly
+established specialty whose exact institutional monopoly remains open.
+
 - Primary authority:
   [Sandmanor Constitution V2](SANDMANOR_CONSTITUTION_V2.md)
 - Incorporated law:
   [Lineage Lock](SANDMANOR_LINEAGE_LOCK_v1.md) and
-  [Guardian and Succession](SANDMANOR_GUARDIAN_AND_SUCCESSION_V1.md)
+  [Guardian and Succession](SANDMANOR_GUARDIAN_AND_SUCCESSION_V1.md), under the
+  controlling
+  [Flynt Synthesis and Sandmanor Hands Amendment](HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md)
 - Conformance record:
   [Constitutional Audit V2](SANDMANOR_CONSTITUTIONAL_AUDIT_V2.md)
 - Executable authority:
@@ -128,6 +193,11 @@ Minorian/Minoan traditions, Aura Farm/Beach/coast, and guardian Synthesis.
 
 Glaüshouse owns Mind/Precog, Repair, Continuance of Function, compatibility,
 consent, care, maintained Synthesis, and clinical records.
+
+Its technological design language is **CordPunk**: Chromacord/CC,
+relationship, resonance, optics, acoustics, medicine, fashion, and composed
+systems. The broader Chromacord principle remains open beyond the existing
+clinical institution and `chroma_cord` application.
 
 - Primary authority:
   [Glaüshouse Constitution V2](GLAUSHOUSE_CONSTITUTION_V2.md)
@@ -150,10 +220,17 @@ consent, care, maintained Synthesis, and clinical records.
 Flynt owns Spirit/Resynce, Engineering, Function, persistence, deployment,
 infrastructure, Manticorp, recognition, and its institutional hierarchy.
 
+Its technological design language is **PetPunk**: highly refined,
+near-closed-loop petroleum-derived fuels, fluids, polymers, pressure systems,
+capture, and recirculation. Reflection is a strongly established philosophical
+direction beneath the locked Law of Capacity.
+
 - Primary authority:
   [Flynt Constitution V2](FLYNT_CONSTITUTION_V2.md)
 - Incorporated law:
   [Dual Leadership and Manticorp Recipe](FLYNT_DUAL_LEADERSHIP_AND_MANTICORP_RECIPE_V1.md)
+  under the controlling
+  [Flynt Synthesis and Sandmanor Hands Amendment](HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md)
 - Active synthesis drafts:
   [Boardwalk Social Constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md)
   and [Goon Bond Vertical Slice](BOARDWALK_GOON_BOND_VERTICAL_SLICE_V1_DRAFT.md)
@@ -173,6 +250,7 @@ infrastructure, Manticorp, recognition, and its institutional hierarchy.
 
 | Shelf | Start with | Scope |
 |---|---|---|
+| Spiral, technology, weapons, and current design state | [Lore, Technology, and Project-State Consolidation](HOLLOW_GROVE_LORE_TECHNOLOGY_CONSOLIDATION_V1.md) | status-controlled central spiral, four Punk languages, civilizational interdependence, Flynt weapon tracks, reconciliation holds, and Stonebend development priorities |
 | Universal meaning | [Semantic Foundation](HOLLOW_GROVE_SEMANTIC_FOUNDATION_V1.md), [Metaphysical Balance](HOLLOW_GROVE_METAPHYSICAL_BALANCE_V1_DRAFT.md), [Classification Reconciliation](HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md) | Current, Aura, Relativity, Hollow, Synthesis, Being/Object roots, material pressures, excess, return, and V1 lineage interpretation |
 | Pure recursion kernel | [Kernel v0.1.2](KERNEL_v0.1.2.md), [hollow-grove-recursion-kernel](hollow-grove-recursion-kernel/) | dependency-free, bounded routing grammar; no House, route, character, evidence, or lore authority |
 | Semantic geometry and composition provenance | [hollow-grove-semantic-kernel](hollow-grove-semantic-kernel/), [Constitutional Review](COMPOSITION_PROVENANCE_CONSTITUTIONAL_REVIEW_v0.1.0.md), [Contract Proposal v0.2.0](COMPOSITION_PROVENANCE_CONTRACT_PROPOSAL_v0.2.0.md) | neutral geometry plus identity-preserving composition; separate from recursion and world law |
@@ -188,6 +266,18 @@ infrastructure, Manticorp, recognition, and its institutional hierarchy.
 | Lived and playable lore | [Functional Lore Integration](HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md), [Party and Recruitment](HOLLOW_GROVE_PARTY_AND_RECRUITMENT_V1.md) | actors, triggers, choices, consequences, persistence |
 | Operational role refinement | [Operational Lore Kernel V1 Draft](HOLLOW_GROVE_OPERATIONAL_LORE_KERNEL_V1_DRAFT.md) | proposed top-down functions, exact role boundaries, handoffs, stops, completion, and a compatible executable refinement sequence |
 | Capability status | [Capability Report](HOLLOW_GROVE_V2_CAPABILITY_REPORT.md), [Matrix](V2_CAPABILITY_MATRIX.md), [Inventory](V2_CAPABILITY_INVENTORY.md) | what currently exists versus what is deferred |
+
+## Spiral at a Glance
+
+> **From above, it looks circular. From the side, it’s actually ascending.**
+
+The exact cosmological phrase is **“Hollow holds. Current flows. Abyss feels.
+Aura reveals.”** Recurring principles can return at a higher order without
+resetting history or erasing consequence. The new working technology circuit
+`Stonebend → Sandmanor → Flynt → Glaüshouse → Stonebend at a higher level`
+does not reorder the locked Rule of Twelve or the constitutional
+Name/Prove/Clear/Recognize handoff. See the consolidation for the status and
+boundary of each sequence.
 
 ## Route Shape at a Glance
 

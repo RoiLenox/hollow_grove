@@ -214,10 +214,11 @@ binds {
   Mod+Shift+j { move-window-down-or-to-workspace-down; }
   Mod+Shift+k { move-window-up-or-to-workspace-up; }
 
-  // Right hand: reshape.
+  // Right hand: reshape. J/K cycle the shared quarter-height ladder while
+  // preserving their down/up anchoring.
   Mod+Ctrl+h { consume-or-expel-window-left; }
-  Mod+Ctrl+j { switch-preset-window-height; }
-  Mod+Ctrl+k { switch-preset-window-height-back; }
+  Mod+Ctrl+j repeat=false hotkey-overlay-title="Layout · Grow Down · 25/50/75/100%" { spawn "/usr/lib/hollow-grove/bin/hollow-niri" "height-flow" "down"; }
+  Mod+Ctrl+k repeat=false hotkey-overlay-title="Layout · Grow Up · 25/50/75/100%" { spawn "/usr/lib/hollow-grove/bin/hollow-niri" "height-flow" "up"; }
   Mod+Ctrl+l { consume-or-expel-window-right; }
 
   // Join the adjacent column at an explicit corner; never leave a solo column behind.
@@ -226,11 +227,12 @@ binds {
   Mod+Ctrl+Shift+k { spawn "/usr/lib/hollow-grove/bin/hollow-niri" "move" "right-top"; }
   Mod+Ctrl+Shift+l { spawn "/usr/lib/hollow-grove/bin/hollow-niri" "move" "right-bottom"; }
 
-  // Downward-anchored stretch points use the same non-blocking broker.
-  Mod+Alt+Shift+h { spawn "/usr/lib/hollow-grove/bin/hollow-niri" "move" "bottom" "33.33%"; }
-  Mod+Alt+Shift+j { spawn "/usr/lib/hollow-grove/bin/hollow-niri" "move" "bottom" "96%"; }
-  Mod+Alt+Shift+k { spawn "/usr/lib/hollow-grove/bin/hollow-niri" "move" "bottom" "3%"; }
-  Mod+Alt+Shift+l { spawn "/usr/lib/hollow-grove/bin/hollow-niri" "move" "bottom" "66.67%"; }
+  // Direct access to the same downward-anchored 25/50/75/100 ladder that
+  // Space cycles through below: H/J/K/L select the four stages in order.
+  Mod+Alt+Shift+h repeat=false hotkey-overlay-title="Layout · Direct Height: 25%" { spawn "/usr/lib/hollow-grove/bin/hollow-niri" "move" "bottom" "25%"; }
+  Mod+Alt+Shift+j repeat=false hotkey-overlay-title="Layout · Direct Height: 50%" { spawn "/usr/lib/hollow-grove/bin/hollow-niri" "move" "bottom" "50%"; }
+  Mod+Alt+Shift+k repeat=false hotkey-overlay-title="Layout · Direct Height: 75%" { spawn "/usr/lib/hollow-grove/bin/hollow-niri" "move" "bottom" "75%"; }
+  Mod+Alt+Shift+l repeat=false hotkey-overlay-title="Layout · Direct Height: 100%" { spawn "/usr/lib/hollow-grove/bin/hollow-niri" "move" "bottom" "100%"; }
 
   // Hueman column transport.
   Mod+Alt+Ctrl+h { move-column-left; }
@@ -411,18 +413,19 @@ binds {
   Mod+Ctrl+Tab  { focus-workspace-previous; }
   Mod+Alt+Tab   { focus-monitor-previous; }
 
-  // Glaüshouse / Space: clearance and usable window room.
+  // Glaüshouse / Space: clearance and usable window room. Height flow uses
+  // the same four stages exposed directly on Alt+Shift+H/J/K/L.
   Mod+Space hotkey-overlay-title="Glaüshouse: Cycle Usable Room Forward" { switch-preset-column-width; }
   Mod+Shift+Space hotkey-overlay-title="Glaüshouse: Cycle Usable Room Backward" { switch-preset-column-width-back; }
   Mod+Ctrl+Space               { set-column-width "25%"; }
-  Mod+Ctrl+Shift+Space         { set-window-height "100%"; }
+  Mod+Ctrl+Shift+Space repeat=false hotkey-overlay-title="Glaüshouse: Flow Height Up · Next 25/50/75/100% Stage" { spawn "/usr/lib/hollow-grove/bin/hollow-niri" "height-flow" "up"; }
   Mod+Alt+Space                { expand-column-to-available-width; }
   Mod+Alt+Ctrl+Space           { toggle-windowed-fullscreen; }
   // Sandmanor / Backspace: returning threshold and revision.
   Mod+Alt+BackSpace            { spawn "/usr/bin/hollow-hueman" "clear"; }
-  Mod+Alt+Shift+Space          { spawn "/usr/bin/hollow-hueman" "step-spread"; }
+  Mod+Alt+Shift+Space repeat=false hotkey-overlay-title="Glaüshouse: Flow Height Down · Next 25/50/75/100% Stage" { spawn "/usr/lib/hollow-grove/bin/hollow-niri" "height-flow" "down"; }
   Mod+Ctrl+Alt+BackSpace       { reset-window-height; }
-  Mod+Ctrl+Alt+Shift+Space     { set-column-width "25%"; }
+  Mod+Ctrl+Alt+Shift+Space repeat=false hotkey-overlay-title="Glaüshouse: Focus 75% / Bookmark 25%" { spawn "/usr/lib/hollow-grove/bin/hollow-niri" "height-cycle"; }
 
   Mod+Minus       { set-dynamic-cast-window; }
   Mod+Equal       { set-dynamic-cast-monitor; }

@@ -329,7 +329,7 @@ fn publish_pair_state(config: &BrokerConfig, state: &DesktopState) -> Result<Opt
     let path = config.root.join("artifacts/hueman_pair_state.json");
     let mut pair = match read_json(&path) {
         Ok(value) => value,
-        Err(error) if !path.exists() => return Ok(None),
+        Err(_) if !path.exists() => return Ok(None),
         Err(error) => return Err(error),
     };
     let pair_id = pair

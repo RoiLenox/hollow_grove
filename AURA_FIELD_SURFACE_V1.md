@@ -205,8 +205,8 @@ or convert work into ownership.
 
 Minorians are the people of this interior/family side. Their Forms progress
 **Gnome → Faun → Minotaur**; Gnome is not a generic name for all Sandmanor
-inhabitants. Their distinct social roles progress **Husbandman → Householder →
-Hearthkeeper**: cultivation, establishment, and preservation of household
+inhabitants. Their distinct social roles progress **Hearthkeeper → Householder →
+Husbandman**: maintenance, organization, and mature stewardship of household
 life. Geomancer is a separate institutional attendant class, and Hecaton is
 the Minorian sovereign Hand rather than a fourth Form.
 

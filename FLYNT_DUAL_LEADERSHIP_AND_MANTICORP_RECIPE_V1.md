@@ -2,6 +2,13 @@
 
 Status: normative Flynt canon extension, 2026-07-25
 
+Amended: 2026-09-03 by
+`HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md`.
+The controlling general synthesis order is Manticorp combined synthesis →
+Chimera perfected synthesis. References below to Manticore describe the
+Tross's personal mythological identity or stable compatibility records, not a
+third general tier after Chimera.
+
 This document extends `FLYNT_CONSTITUTION_V2.md` without changing runtime
 combat behavior. It fixes the Manticore identity, the Manticorp soldier body,
 maintained Synthesis, the divided Recipe, Basin custody, and Glaüshouse's Ledger.
@@ -17,8 +24,9 @@ The Tross is the masculine Manticore creature identity and maintained Form;
 Manticore is not a second person, office, or authority above or below him. The stable
 person is `flynt.person.tross`; the names are public office, underground alias,
 and operational projection. The Tross is Flynt's lawful sovereign and formal
-constitutional leader of **Manticorp**, the body of soldiers under his
-commander-in-chief authority. As Mystery Man/Mr. X, the same man
+constitutional leader of **Manticorp**, the combined-synthesis military body
+under his commander-in-chief authority. Membership alone does not grant the
+Manticorp state. As Mystery Man/Mr. X, the same man
 leads the Gallows, Flynt's underground Yakuza/mafia-like body governing illicit
 trade, contraband, debts, protection, covert enforcement, and deniable action.
 
@@ -99,16 +107,19 @@ merely a sex-swapped version of the other.
 
 The lower grammar is Wolf, Bat, and Snake/Fish. The crowned apex grammar is
 Lion, Eagle, and Hydra: Wolf becomes Lion, Bat becomes Eagle, and Snake/Fish
-becomes Hydra. Earlier text called Chimera their integrated lower apex. That
-mechanical interpretation is **SUPERSEDED**: Chimera = SELECT is the current
-WORKING distinction, while exact mechanics remain **STATUS: OPEN**. Existing
-Refined Chimera and Chimera Mastery records remain compatible. It is
-analogous to the Super Saiyan through Super Saiyan 2 range.
+becomes Hydra. The amended synthesis order is:
 
-Manticore is a distinct maintained Synthesis beyond Chimera. Manticore =
-INTEGRATE is a **WORKING** distinction, with exact mechanics **STATUS: OPEN**.
-It remains analogous to the Super Saiyan 3 threshold. It is the sovereign
-transfiguration into Lion, Eagle, and Hydra, with exceptional legacy physical
+```text
+Gargoyle + Werewolf + Mariner/Merman → Manticorp → Chimera
+```
+
+Manticorp combines the isolated disciplines; Chimera perfects their
+relationship. Existing Refined Chimera and Chimera Mastery records remain
+compatible with perfected synthesis. Exact mechanics remain **STATUS: OPEN**.
+
+Manticore is the Tross's personal mythological identity and a distinct stable
+compatibility record, not a maintained general Synthesis beyond Chimera and not
+a third mastery threshold. The Tross carries exceptional legacy physical
 Current/Aura output, Resynce, coordination,
 telepathy and telekinesis, but also metabolic demand, instability, conflicting
 instincts, identity risk, environmental vulnerability, political fear, and
@@ -117,31 +128,41 @@ identity and maintained living Form and may continue it throughout life through 
 Recipe renewal, divided Basin knowledge, institutional recognition, and
 specialized Glaüshouse care.
 
-## Manticore as leader and Manticorp as soldier body
+## Manticore identity and Manticorp state/institution
 
 The two names designate different constitutional subjects:
 
-- `flynt.form.manticore`: the Tross's masculine mythological identity and maintained apex body;
-- `flynt.institution.manticorp`: Manticorp, Flynt's body of soldiers and lawful military order.
+- `flynt.form.manticore`: the Tross's masculine mythological identity and
+  maintained compatibility body record;
+- `flynt.institution.manticorp`: Manticorp, Flynt's combined-synthesis body of
+  soldiers and lawful military order.
 
-Manticorp trains military personnel and may develop Chimera mastery, but its
-ordinary soldiers do not become Manticore. The Tross leads Manticorp because he
-is sovereign, commander-in-chief, and the Manticore. The Form and soldier body
-are separate schema concepts, not two uses of one word.
+Manticorp trains military personnel in combined discipline and may develop
+Chimera perfection, but ordinary membership grants neither synthesis state.
+The Tross leads Manticorp because he is sovereign, commander-in-chief, and the
+Manticore. His personal Manticore identity, the Manticorp synthesis state, and
+the Manticorp institution remain separate schema concepts.
 
 ## Divided Manticore Recipe and Basin custody
 
-The locked higher relationship is:
+The superseded pre-amendment relationship was:
 
 ```text
 Gargoyle + Werewolf + Mariner/Merman → Chimera → Manticore
 ```
 
+It is retained only as historical provenance. The active relationship is:
+
+```text
+Gargoyle + Werewolf + Mariner/Merman → Manticorp → Chimera
+```
+
 The complete compatibility Recipe retains the legacy provenance key
 `flynt.recipe.divided-manticorp` so existing records remain addressable. That
 machine identifier does not establish lore semantics: its typed result and
-canonical display name are **Manticore**, while Manticorp remains the distinct
-soldier body. The Recipe is divided among three distinct Basin creature
+compatibility display name remain **Manticore**, while Manticorp names both the
+combined state and its distinct institutional soldier body. The Recipe is
+divided among three distinct Basin creature
 traditions. Bro White guards the
 Warlock/Gargoyle component (body,
 density, structure, anchoring, endurance, territory); Beauty guards the
@@ -216,10 +237,12 @@ Gargoyle Ways and continued maintenance and renewal.
 ## Canonical formulation
 
 The Tross is Flynt's lawful sovereign and president, the leader of Manticorp,
-Flynt's body of soldiers, and the masculine Manticore identity/Form itself. The same man is
+Flynt's combined-synthesis body of soldiers, and the masculine Manticore
+identity/compatibility Form itself. The same man is
 known underground as the Mystery Man, or Mr. X, and commands the Gallows. His
-body is the sovereign transfiguration beyond Chimera: Wolf becomes Lion, Bat
-becomes Eagle, and Snake/Fish becomes Hydra. The complete Recipe remains
+body retains the legacy sovereign transfiguration record: Wolf becomes Lion,
+Bat becomes Eagle, and Snake/Fish becomes Hydra. This personal record does not
+create a third tier beyond perfected Chimera. The complete Recipe remains
 divided among the Gargoyle, Werewolf, and Mariner/Merman traditions guarded by
 Bro White, Beauty, and Cinderellaman. He leads their We Fairy Men body; when it
 acts under his direction in the underworld it manifests as The Gallows. Through

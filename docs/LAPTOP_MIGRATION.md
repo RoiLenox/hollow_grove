@@ -1,7 +1,8 @@
 # Laptop Migration and Installation Plan
 
-The laptop upgrade is intentionally side-by-side and recoverable. It never
-copies build caches, workstation state, SSH material, or ignored artifacts.
+The laptop upgrade is intentionally side-by-side and recoverable. It transfers
+the complete authoritative source and selected live Hollow Grove state, while
+never copying build caches, credentials, SSH material, or stale runtime locks.
 
 ## Required facts
 
@@ -15,20 +16,27 @@ Before connecting, identify:
 
 ## Migration sequence
 
-1. Finish and tag the local `foundation-v1-rc1` commit.
+1. Finish, verify, commit, and tag the exact local transfer checkpoint.
 2. Build the portable release with `./build-portable-release.sh`.
-3. Run a stage-only migration first. The script transfers a Git bundle and the
-   two checksummed release archives rather than `target/`, `.godot/`, saves, or
-   machine-local artifacts.
-4. The laptop writes a complete recovery record: old HEAD/status, binary working
+3. Build the live-state payload with `./build-authoritative-state.sh`. It
+   includes the live Niri profile and keyboard standard, Hollow Grove HUD,
+   user services and helpers, and durable gameplay saves. It excludes
+   credentials, `target/`, package build caches, and runtime lock/claim files.
+4. Run a stage-only migration first. The script transfers a Git bundle, the
+   two checksummed release archives, and the checksummed state payload.
+5. The laptop writes a complete recovery record: old HEAD/status, binary working
    and index patches, all Git refs, and an archive of every untracked file.
-5. It clones the current source beside the old checkout, checks out the exact
+6. It clones the current source beside the old checkout, checks out the exact
    transferred commit, validates art, formatting, and the complete workspace
    test suite, then verifies both release archives.
-6. Hueman is installed without root beneath
+7. Hueman is installed without root beneath
    `$XDG_DATA_HOME/hollow-grove/releases`, with an atomic `current-hueman`
    symlink and a command in `~/.local/bin`.
-7. Only a second run with `--activate` renames the old checkout to a timestamped
+8. The workstation state is extracted inside the migration record. Review and
+   adapt the Niri output, GPU, absolute-path, and package differences before
+   installing those files on the laptop; stage-only never overwrites laptop
+   configuration.
+9. Only a second run with `--activate` renames the old checkout to a timestamped
    backup and puts the verified checkout at the original path. If the second
    rename fails, the old checkout is restored immediately.
 
@@ -38,6 +46,7 @@ Stage first:
 ./sync-hollow-grove-laptop.sh \
   --host user@laptop \
   --remote-repo /absolute/path/to/hollow_grove \
+  --ref exact-transfer-tag \
   --stage-only
 ```
 
@@ -47,6 +56,7 @@ After reviewing the printed migration record, activate:
 ./sync-hollow-grove-laptop.sh \
   --host user@laptop \
   --remote-repo /absolute/path/to/hollow_grove \
+  --ref exact-transfer-tag \
   --activate
 ```
 
@@ -57,6 +67,10 @@ directory. To roll source back, stop any Hollow Grove process, rename the new
 checkout aside, and rename the timestamped `pre-foundation-v1` directory back
 to the original path. To roll Hueman back, point `current-hueman` at the prior
 release directory. No backup is removed automatically.
+
+The state payload is evidence and migration input, not a blind dotfile
+installer. In particular, the workstation monitor EDID and Radeon environment
+must not replace laptop-specific output and graphics settings.
 
 System-wide General Edition installation is deliberately separate because it
 modifies `/etc` and `/usr` and therefore needs explicit administrator approval.

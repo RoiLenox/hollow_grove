@@ -6,6 +6,23 @@ Authority: canonical Sandmanor architecture
 
 Signature offense: **Fraudulent Design**
 
+## Ratified Hands amendment — 2026-09-03
+
+`HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md`
+explicitly completes the two branch lines while preserving their distinct
+ontological records:
+
+```text
+Gnome → Faun → Minotaur → Hecaton, Right Hand of The Sandman
+Elf → Satyr → Centaur → Pegasus, Left Hand of The Sandman
+```
+
+Hecaton is perfected force through Multiplication. Pegasus is perfected motion
+through Flight. The Sandman is command of both and the final sovereign
+culmination above both Hands. Each first three identities remain biological
+Forms; the fourth is a separately invested perfected Hand, and The Sandman is
+the sovereign whole rather than a fifth biological Form.
+
 ## Preamble
 
 Sandmanor exists so that possibility may earn its place in civilization
@@ -62,8 +79,10 @@ population. Neither people nor its base Form progresses into the other.
 |---|---|---|
 | People | Minorian | Minoan |
 | Forms | Gnome → Faun → Minotaur | Elf → Satyr → Centaur |
+| Complete branch | Gnome → Faun → Minotaur → Hecaton | Elf → Satyr → Centaur → Pegasus |
+| MachPunk principles | Grip → Traction → Leverage → Multiplication | Balance → Agility → Momentum → Flight |
 | Cultural space | Content Farm / Aura Field | Aura Beach |
-| Social roles | Husbandman → Householder → Hearthkeeper | Beach Bum → Party Boy → Socialite |
+| Social roles | Hearthkeeper → Householder → Husbandman | Beach Bum → Party Boy → Socialite |
 | Institutional attendant | Geomancer | Labyrinthian |
 | Sovereign Hand | Hecaton | Pegasus |
 | Sovereign | Sandman / Demiurge | Sandman / Demiurge |
@@ -86,9 +105,9 @@ storage, cultivation, manufacturing, maintenance, local logistics,
 repairability, resource use, and repeated daily function. Occupational Gnome
 Names identify participation, not mastery or exclusive practice.
 
-Their social roles advance **CULTIVATE → ESTABLISH → PRESERVE** through
-Husbandman, Householder, and Hearthkeeper. These are roles, not Forms: a
-Minotaur may also be a Hearthkeeper. Geomancer is the Minorian institutional
+Their social roles advance **MAINTAIN → ORGANIZE → STEWARD** through
+Hearthkeeper, Householder, and Husbandman. These are roles, not Forms: a
+Minotaur may also be a Husbandman. Geomancer is the Minorian institutional
 attendant class, distinct from every Form and social role.
 
 The Content Farm cultivates what a family has and makes: family, descendants,
@@ -99,10 +118,12 @@ Aura Field cultivates and preserves what the family is and projects: identity,
 continuity, presence, heritage, relationship, reputation, and accumulated
 Aura.
 
-**Hecaton is the Minorian Hand of the Sandman.** Hecaton stands above or
-around the Geomancer apparatus at sovereign level; Hecaton is not a Form,
-Minotaur stage IV, Demiurge, or the Sandman. Appointment, removal, and
-succession mechanics for Hecaton remain **STATUS: OPEN**.
+**Hecaton is perfected force and the Right Hand of The Sandman.** Hecaton
+completes the Minorian branch after Minotaur through separate Hand investiture:
+Grip → Traction → Leverage → Multiplication. Hecaton stands above or around the
+Geomancer apparatus at sovereign level; it is not an ordinary fourth biological
+Form, Demiurge, or The Sandman. Appointment, removal, and succession mechanics
+for Hecaton remain **STATUS: OPEN**.
 
 > **Improve what must continue working.**
 
@@ -134,9 +155,11 @@ cultivates and Aura Field preserves.
 
 Labyrinthian is the Minoan institutional attendant class. Its alignment with
 social pathways and networks does not make it a Form or social title.
-**Pegasus is the Minoan Hand of the Sandman**, not Centaur stage IV, Demiurge,
-or the Sandman. Appointment, removal, and succession mechanics for Pegasus
-remain **STATUS: OPEN**.
+**Pegasus is perfected motion and the Left Hand of The Sandman.** Pegasus
+completes the Minoan branch after Centaur through separate Hand investiture:
+Balance → Agility → Momentum → Flight. It is not an ordinary fourth biological
+Form, Demiurge, or The Sandman. Appointment, removal, and succession mechanics
+for Pegasus remain **STATUS: OPEN**.
 
 > **Discover what may become reachable.**
 
@@ -158,8 +181,11 @@ competition, public demonstration, revision, standards, research, and
 Minorian–Minoan balance.
 
 At sovereign level, Hecaton and Pegasus are parallel Hands beneath and around
-the Sandman/Demiurge. They represent Sandmanor's Minorian and Minoan halves
-without becoming the same people and without becoming ordinary Form stages.
+the Sandman/Demiurge. Hecaton is the Right Hand and perfected force; Pegasus is
+the Left Hand and perfected motion. The Sandman is command of both and the
+final sovereign whole above them. They represent Sandmanor's Minorian and
+Minoan halves without becoming the same people or ordinary biological Form
+stages.
 
 The governing question is:
 
@@ -438,15 +464,17 @@ environmental transition, Minoan practice, and mature Centaur mobility. Current 
 design accounts for navigation, weather, pressure, trade, rescue, patrol,
 environment, communication, shoreline impact, and route continuity.
 
-The Form progressions are Gnome-to-Faun-to-Minotaur and
-Elf-to-Satyr-to-Centaur. None is automatic, and their detailed biological or
-metaphysical mechanics remain open. Existing regional runtime slugs containing
+The biological Form progressions are Gnome-to-Faun-to-Minotaur and
+Elf-to-Satyr-to-Centaur; the complete branches continue by separate investiture
+to Hecaton and Pegasus respectively. None is automatic, and their detailed
+biological or metaphysical mechanics remain open. Existing regional runtime slugs containing
 `gnome-minotaur` or `elf-centaur` are legacy compatibility identifiers; active
 regional records apply only the mature Faun-to-Minotaur or Satyr-to-Centaur
 step. Sandmanor proves service, qualification, role, and Recipe viability;
 Glaüshouse clears and maintains Synthesis; Stonebend preserves identity; Flynt
-recognizes lawful roles or institutions. Hecaton and Pegasus are sovereign
-Hands outside these Form progressions.
+recognizes lawful roles or institutions. Hecaton and Pegasus are perfected
+Hand culminations of these complete branches while remaining outside the
+`SandmanorForm` biological-transition enum.
 
 ## Article XXX — Fraudulent Design
 
@@ -605,27 +633,30 @@ Canonical Sandmanor palette:
 - Space Cadet — `#1C2A52`
 
 Principal peoples and traditions are **Minorian / Prefog / Hearth** and
-**Minoan / Prefig / Current Sea**. Canonical Form progressions are **Gnome →
-Faun → Minotaur** and **Elf → Satyr → Centaur**. Hecaton and Pegasus are their
-parallel sovereign Hands. **The Sandman = Demiurge**, historically called
-**Aegon**. The signature crime is **Fraudulent Design**.
+**Minoan / Prefig / Current Sea**. Their complete branch progressions are
+**Gnome → Faun → Minotaur → Hecaton** and **Elf → Satyr → Centaur → Pegasus**.
+The first three identities on each branch are Forms. Hecaton is the perfected
+force culmination and Right Hand; Pegasus is the perfected motion culmination
+and Left Hand. **The Sandman = Demiurge** is the final sovereign whole above
+both Hands, historically called **Aegon**. The signature crime is
+**Fraudulent Design**.
 
 ## Article XLII — Sandmanor Duality
 
 ```text
 Minorian / Prefog / Hearth / Interior /
-Gnome → Faun → Minotaur /
+Gnome → Faun → Minotaur → Hecaton /
 Content Farm + Aura Field /
-Husbandman → Householder → Hearthkeeper /
-Geomancer attendant class / Hecaton sovereign Hand
+Hearthkeeper → Householder → Husbandman /
+Geomancer attendant class / Hecaton perfected force / Right Hand
 ```
 
 ```text
 Minoan / Prefig / Current Sea / Horizon /
-Elf → Satyr → Centaur /
+Elf → Satyr → Centaur → Pegasus /
 Aura Beach /
 Beach Bum → Party Boy → Socialite /
-Labyrinthian attendant class / Pegasus sovereign Hand
+Labyrinthian attendant class / Pegasus perfected motion / Left Hand
 ```
 
 The traditions remain distinct enough to correct one another and united enough
@@ -660,13 +691,16 @@ erasing history. A failed Prefig remains evidence.
 
 ### Regional Soul manifestations
 
-`Gnome → Faun → Minotaur` is the Minorian Form progression. `Elf → Satyr →
-Centaur` is the Minoan Form progression. The Current Sea may manifest across
-land and is not reduced to Aura Beach or literal ocean geography.
+`Gnome → Faun → Minotaur` is the Minorian biological Form progression;
+separate Hand investiture completes the branch as Hecaton. `Elf → Satyr →
+Centaur` is the Minoan biological Form progression; separate Hand investiture
+completes the branch as Pegasus. The Current Sea may manifest across land and
+is not reduced to Aura Beach or literal ocean geography.
 
 These Forms are mythological manifestations, not jobs, social roles,
 attendant classes, sovereign Hands, or new peoples. Hecaton and Pegasus are
-offices associated with the reigning Sandman; they are not additional Forms.
+the perfected Right and Left Hands associated with the reigning Sandman; they
+complete the cultural branches without becoming additional biological Forms.
 
 ### Possibility is not proof
 
@@ -728,17 +762,19 @@ name.
 
 > **The Sandman is not the one who defeats the other, but the one most transformed by learning from the other.**
 
-> **The Minorian Form line is Gnome, Faun, then Minotaur.**
+> **The Minorian branch is Gnome, Faun, Minotaur, then Hecaton.**
 
-> **The Minoan Form line is Elf, Satyr, then Centaur.**
+> **The Minoan branch is Elf, Satyr, Centaur, then Pegasus.**
 
 > **The Minotaur strengthens the work of the fields.**
 
 > **The Centaur roams the Aura Beach and guards the Current Sea.**
 
-> **Hecaton is the Minorian Hand of the Sandman, not Minotaur stage IV.**
+> **Hecaton is perfected force and the Right Hand of The Sandman.**
 
-> **Pegasus is the Minoan Hand of the Sandman, not Centaur stage IV.**
+> **Pegasus is perfected motion and the Left Hand of The Sandman.**
+
+> **The Sandman is command of both and the final sovereign culmination above both Hands.**
 
 > **Content Farm cultivates life. Aura Field preserves and projects household life. Aura Beach celebrates and enjoys it.**
 

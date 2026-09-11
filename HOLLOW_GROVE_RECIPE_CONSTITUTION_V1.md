@@ -67,6 +67,27 @@ recovery, and final constitutional Synthesis. Flynt may test and recognize
 demonstrated function. No Recipe fragment silently creates office, Title,
 consent, Clearance, or permanent authority.
 
+Glaüshouse's civilizational Synthesis specialty is knowledge of compatibility,
+relationship, composition, transformation, Continuance, care, and recovery;
+it does not make Glaüshouse the owner of every Recipe. A Recipe may remain with
+a specialized House, lineage, institution, or individual custodian.
+
+The Tross is a synthesizer, custodian/holder of specialized Flynt Recipes, and
+an authority capable of enabling advanced Mystery Men synthesis. His exact
+named inventory remains **STATUS: OPEN**. The divided record historically
+called the complete Manticore Recipe is a specific exception to any assumption
+of sole Tross custody: its indispensable fragments remain divided among Bro
+White, Beauty, and Cinderellaman under Flynt law. That stable Recipe name
+preserves Tross Continuance and provenance; it does not override the amended
+general order **Manticorp combined synthesis → Chimera perfected synthesis**.
+
+For engineered weapons, a Recipe describes what must be synthesized while
+Stonebend's Freemason can provide extraordinary physical realization,
+provenance, precision, and refusal discipline. Ordinary craftspeople may still
+make ordinary weapons. This division grants the Freemason neither ownership of
+the Recipe nor Glaüshouse Clearance and grants a Recipe holder neither
+automatic fabrication competence nor Stonebend Claim authority.
+
 ## Pilot Recipe family: winged Gargoyle
 
 The pilot target is the Flynt Gargoyle branch, identified as

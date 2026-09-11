@@ -50,9 +50,9 @@ pub enum SandmanorForm {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub enum SandmanorSocialRole {
-    Husbandman,
-    Householder,
     Hearthkeeper,
+    Householder,
+    Husbandman,
     BeachBum,
     PartyBoy,
     Socialite,
@@ -75,6 +75,36 @@ pub enum SandmanorAttendantClass {
 pub enum SandmanorSovereignHand {
     Hecaton,
     Pegasus,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
+pub enum SandmanorHandSide {
+    Left,
+    Right,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
+pub enum SandmanorHandPrinciple {
+    Force,
+    Motion,
+}
+
+impl SandmanorSovereignHand {
+    #[must_use]
+    pub const fn side(self) -> SandmanorHandSide {
+        match self {
+            Self::Hecaton => SandmanorHandSide::Right,
+            Self::Pegasus => SandmanorHandSide::Left,
+        }
+    }
+
+    #[must_use]
+    pub const fn perfected_principle(self) -> SandmanorHandPrinciple {
+        match self {
+            Self::Hecaton => SandmanorHandPrinciple::Force,
+            Self::Pegasus => SandmanorHandPrinciple::Motion,
+        }
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
@@ -113,9 +143,9 @@ pub const MINORIAN_SIDE: SandmanorSideDefinition = SandmanorSideDefinition {
     ],
     cultural_domains: MINORIAN_CULTURAL_DOMAINS,
     social_roles: [
-        SandmanorSocialRole::Husbandman,
-        SandmanorSocialRole::Householder,
         SandmanorSocialRole::Hearthkeeper,
+        SandmanorSocialRole::Householder,
+        SandmanorSocialRole::Husbandman,
     ],
     attendant_class: SandmanorAttendantClass::Geomancer,
     sovereign_hand: SandmanorSovereignHand::Hecaton,

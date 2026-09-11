@@ -48,6 +48,32 @@ practitioner's corresponding Current and Aura.
 
 Current, Aura, and Synthesis are related but non-interchangeable concepts.
 
+### Qualified gameplay axes and Doctrine
+
+The Hollow Deck's qualified gameplay terms remain compatible with this
+universal grammar:
+
+- **Current Form** records what the practitioner's body has become;
+- **Aura Set** records supernatural techniques the practitioner has learned
+  and may equip;
+- **Doctrine** describes how the practitioner understands, selects, restrains,
+  and integrates learned practices into a coherent Way.
+
+`Current Form` must remain qualified: it does not redefine unqualified
+Practitioner **Current**, which remains relational participation in a larger
+whole. Current Form and Aura Set are independent axes. A change to one does not
+automatically advance the other.
+
+Doctrine is **STATUS: STRONGLY ESTABLISHED / MECHANICALLY OPEN**. It is not a
+third stat tree, an Aura synonym, an automatic level bonus, or an excuse to
+collapse the two independent axes. Doctrine should become visible through
+judgment, timing, posture, restraint, conduct, maintenance, and execution.
+
+Synthesis Recipes remain collectible, inventory-mediated bridges among
+otherwise distinct requirements. A Recipe can describe the relationship that
+may produce a Synthesis; possession alone grants no Form, Aura technique,
+Doctrine, proof, consent, Clearance, Title, office, or recognition.
+
 ## Faculties are an orthogonal axis
 
 A faculty is not a Current, Aura, Synthesis, office, or rank. Faculties describe
@@ -87,8 +113,8 @@ Locked Level 2 relationships include:
 Troglodyte + Muse → Seer
 
 Gargoyle + Werewolf + Mariner/Merman
+→ Manticorp
 → Chimera
-→ Manticore
 ```
 
 The detailed general mechanics of Level 2 Synthesis are **STATUS: OPEN**. No
@@ -141,8 +167,10 @@ not be collapsed:
 | Ontology | Minorian | Minoan |
 |---|---|---|
 | Form progression | Gnome → Faun → Minotaur | Elf → Satyr → Centaur |
+| Complete branch | Gnome → Faun → Minotaur → Hecaton | Elf → Satyr → Centaur → Pegasus |
+| MachPunk culmination | Multiplication / perfected force | Flight / perfected motion |
 | Cultural space | Content Farm / Aura Field | Aura Beach |
-| Social roles | Husbandman → Householder → Hearthkeeper | Beach Bum → Party Boy → Socialite |
+| Social roles | Hearthkeeper → Householder → Husbandman | Beach Bum → Party Boy → Socialite |
 | Attendant class | Geomancer | Labyrinthian |
 | Sovereign Hand | Hecaton | Pegasus |
 
@@ -157,8 +185,10 @@ enjoys accumulated life and Aura. This is cultural grammar, not species
 evolution.
 
 **The Sandman = Demiurge.** Demiurge is the sovereign Synthesizer and apex
-identity. Hecaton and Pegasus are the parallel sovereign Hands beneath and
-around the Sandman, not fourth-stage Forms or an ordinary Synthesis ladder.
+identity. Hecaton is perfected force and the Right Hand; Pegasus is perfected
+motion and the Left Hand. They complete their respective branch lines through
+separate investiture rather than ordinary biological Form transition. The
+Sandman is command of both and the final sovereign culmination above them.
 
 ### Glaüshouse — Integrity / Mind / Precog
 
@@ -241,14 +271,39 @@ pairs preserve distinct creature identities and do not themselves create Level
 1 equations, transformation commands, offices, or additional apex beings.
 
 The working functional concepts are Gargoyle = HOLD, Werewolf = DRIVE, and
-Mariner/Merman = ADAPT. Chimera = SELECT and Manticore = INTEGRATE are also WORKING
-distinctions. They must not be promoted to locked constitutional mechanics.
-The higher relationship remains locked while its exact mechanics remain
-**STATUS: OPEN**:
+Mariner/Merman = ADAPT. The higher-state meanings and order are locked while
+their detailed mechanics remain **STATUS: OPEN**:
 
 ```text
-Gargoyle + Werewolf + Mariner/Merman → Chimera → Manticore
+Gargoyle + Werewolf + Mariner/Merman → Manticorp → Chimera
 ```
+
+**Manticorp is combined synthesis. Chimera is perfected synthesis.** The
+Tross's Manticore identity and legacy `flynt.form.manticore` record remain
+Tross-specific compatibility projections, not a third general tier after
+Chimera.
+
+The three lower Flynt traditions supply a **LOCKED** three-track design
+architecture:
+
+1. **Current Synthesis Recipe** — integration of relevant bodily/Current Form
+   principles;
+2. **Aura Synthesis Recipe** — integration of relevant learned Aura
+   principles;
+3. **Weapon Synthesis Recipe** — integration of the Bolo, Crossbow, and Harpoon
+   disciplines.
+
+The tracks may mature independently; advancing one does not automatically
+advance the other two. Each track may reach Manticorp combination and Chimera
+perfection independently. Their exact Recipes, eligibility, mixed-state
+behavior, and upgrade mechanics remain **STATUS: OPEN**.
+
+Neither Manticorp nor Chimera is a fourth isolated specialty parallel to
+Gargoyle, Werewolf, and Mariner. `Manticorp` also remains the stable name of
+Flynt's military institution, now understood as the institutional expression
+and training body of combined synthesis; membership alone grants no synthesis
+state. The former tier-name reconciliation hold is removed by
+`HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md`.
 
 `Wardens` is Flynt's primary civic identity. This does not restore the retired
 `Wardens = platelets = close` body-correspondence mapping. Capitalized

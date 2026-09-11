@@ -17,6 +17,7 @@ const DEV_BINARY_NAME: &str = "hg-dev";
 const BENCHMARK_BINARY_NAME: &str = "current_synthesis_benchmark";
 const HUEMAN_SLICE_BINARY_NAME: &str = "hueman_slice_demo";
 const CURRENT_SYNTHESIS_TUI_BINARY_NAME: &str = "current_synthesis_tui";
+const HOLLOW_DECK_BINARY_NAME: &str = "hollow_deck";
 const SEMANTIC_BINARY_NAME: &str = "hollow_grove_semantic";
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -29,6 +30,7 @@ enum MainCli {
     Benchmark(Vec<String>),
     App(Vec<String>),
     HuemanSlice(Vec<String>),
+    HollowDeck(Vec<String>),
     VerifyFoundation,
     CurrentSynthesisTui(Vec<String>),
     SemanticTools(Vec<String>),
@@ -60,6 +62,7 @@ where
         "benchmark" => Ok(MainCli::Benchmark(args.collect())),
         "app" | "application" => Ok(MainCli::App(args.collect())),
         "hueman-slice" => Ok(MainCli::HuemanSlice(args.collect())),
+        "deck" | "hollow-deck" => Ok(MainCli::HollowDeck(args.collect())),
         "semantic" | "rampart" | "federation" | "model" | "dataset" => {
             let forwarded_command = if command == "federation" {
                 "rampart".to_owned()
@@ -129,6 +132,7 @@ fn usage() -> &'static str {
        benchmark [args]  run the Current-Synthesis-style benchmark suite\n\
        app ...           inspect, launch, or attach a Hollow Grove-managed application\n\
        hueman-slice      run the Hueman vertical-slice demo surface\n\
+       deck [args]      open or query the canonical Hollow Deck\n\
        semantic ...      inspect witnessed semantic positions and history\n\
        rampart ...       run or serve the authoritative transformer-assisted semantic cycle\n\
        model ...         validate an untrusted model response\n\
@@ -180,6 +184,9 @@ fn usage() -> &'static str {
        hollow-grove app launch chroma_cord\n\
        hollow-grove app attach chroma_cord\n\
        hollow-grove hueman-slice walk\n\
+       hollow-grove deck\n\
+       hollow-grove deck nature gargoyle\n\
+       hollow-grove deck compare gargoyle medusa\n\
        hollow-grove semantic inspect semantic-witnesses-v1.jsonl object.support-column.041 structural-repair\n\
        hollow-grove rampart run point.hueman.origin structural-repair \"Restore the supporting frame.\"\n\
        hollow-grove rampart serve --listen 127.0.0.1:47820\n\
@@ -633,6 +640,7 @@ fn main() -> io::Result<()> {
         MainCli::Benchmark(args) => run_dev_tool(BENCHMARK_BINARY_NAME, &args),
         MainCli::App(args) => run_application_cli(&args),
         MainCli::HuemanSlice(args) => run_dev_tool(HUEMAN_SLICE_BINARY_NAME, &args),
+        MainCli::HollowDeck(args) => run_child_binary(HOLLOW_DECK_BINARY_NAME, &args),
         MainCli::SemanticTools(args) => run_child_binary(SEMANTIC_BINARY_NAME, &args),
         MainCli::VerifyFoundation => {
             println!("{}", build_hollow_grove_foundation_verification_report()?);
@@ -706,6 +714,15 @@ mod tests {
             parse_main_cli([String::from("hueman-slice"), String::from("status")])
                 .expect("hueman-slice cli should parse"),
             MainCli::HuemanSlice(vec![String::from("status")])
+        );
+        assert_eq!(
+            parse_main_cli([
+                String::from("deck"),
+                String::from("nature"),
+                String::from("gargoyle")
+            ])
+            .expect("Hollow Deck cli should parse"),
+            MainCli::HollowDeck(vec![String::from("nature"), String::from("gargoyle")])
         );
         assert_eq!(
             parse_main_cli([
@@ -906,6 +923,7 @@ mod tests {
         assert!(usage.contains("app ..."));
         assert!(usage.contains("app launch chroma_cord"));
         assert!(usage.contains("hueman-slice"));
+        assert!(usage.contains("deck [args]"));
         assert!(usage.contains("rampart serve"));
         assert!(usage.contains("verify-foundation"));
         assert!(usage.contains("scenario list"));

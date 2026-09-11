@@ -1,10 +1,11 @@
+# Maintainer: Roy Lenox <159462203+RoyLenox@users.noreply.github.com>
 pkgname=hollow-grove-general
 pkgver=0.1.0
-pkgrel=7
+pkgrel=9
 pkgdesc='Hardware-neutral Hollow Grove General Edition Niri profile'
 arch=('x86_64' 'aarch64')
 url='https://github.com/RoiLenox/hollow_grove'
-license=('custom')
+license=('LicenseRef-Hollow-Grove-Proprietary')
 depends=('bash' 'coreutils' 'jq' 'niri' 'systemd' 'waybar' 'xdg-utils')
 makedepends=('cargo')
 checkdepends=('python')
@@ -25,14 +26,21 @@ source=(
     'OPTIONAL_APPLICATIONS.md'
     'SANITIZATION_REPORT.md'
     'ISO_READINESS.md'
+    'hollow-niri-rust-1.98.patch'
 )
 sha256sums=(
     'f32a7378feb5fa5178a9983104e2726d65cff2bebc37ec3c89f11be8b62ed27c'
-    '1b4c97bb9af9bdcf79b8489a18be7d1b3e9c3e1974f6690b7a4050039f5d0abd'
+    '41d014330820d2aaa9c14ad72709e4e5f5a62f3f1914f50528e0864efccec436'
     '6f137c739653f130c0d9ed8355b2e8041cae2ebd45d54ad1e71aad2905596b0d'
     '00025d81f17d4a52e19d598cf2167c22145ed4ed5df0c86d1ae9ba0aac9a4146'
     'cee77b99617f8e578a3b66d8d3264234db5f27bfd2e441a92c3a4b436ad92527'
+    '72163d305776c4c17a76c947bd6ed36ce1b5b04666b324585e99d4b040f8a2b9'
 )
+
+prepare() {
+    local repository_root="$srcdir/hollow_grove-$_commit"
+    patch -d "$repository_root" -Np1 -i "$srcdir/hollow-niri-rust-1.98.patch"
+}
 
 build() {
     local repository_root="$srcdir/hollow_grove-$_commit"

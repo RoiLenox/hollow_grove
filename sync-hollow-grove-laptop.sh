@@ -5,7 +5,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 SSH_HOST=""
 REMOTE_REPO=""
-RELEASE_REF="foundation-v1-rc1"
+RELEASE_REF="HEAD"
 ACTIVATE="no"
 VERSION="$(sed -n 's/^version = "\([^"]*\)"/\1/p' "$SCRIPT_DIR/Cargo.toml" | head -n1)"
 TRANSFER_ROOT=""
@@ -15,7 +15,7 @@ usage() {
         "usage: $0 --host USER@HOST --remote-repo /absolute/path [options]" \
         "" \
         "Options:" \
-        "  --ref REF       source ref to transfer (default: foundation-v1-rc1)" \
+        "  --ref REF       source ref to transfer (default: clean checked-out HEAD)" \
         "  --activate      atomically replace the old checkout after verification" \
         "  --stage-only    preserve and verify side-by-side without switching (default)"
 }
@@ -66,14 +66,25 @@ if ! git -C "$SCRIPT_DIR" rev-parse --verify --quiet "$RELEASE_REF^{commit}" >/d
     printf 'release ref does not exist locally: %s\n' "$RELEASE_REF" >&2
     exit 2
 fi
+if [[ -n "$(git -C "$SCRIPT_DIR" status --porcelain=v1 --untracked-files=normal)" ]]; then
+    printf 'source worktree is not clean; checkpoint the complete transfer state first\n' >&2
+    exit 2
+fi
 if [[ ! -f "$SCRIPT_DIR/dist/hollow-grove-hueman-$VERSION.tar.gz" \
     || ! -f "$SCRIPT_DIR/dist/hollow-grove-general-$VERSION.tar.gz" \
-    || ! -f "$SCRIPT_DIR/dist/SHA256SUMS" ]]; then
+    || ! -f "$SCRIPT_DIR/dist/SHA256SUMS" \
+    || ! -f "$SCRIPT_DIR/dist/hollow-grove-authoritative-state-$VERSION.tar.gz" \
+    || ! -f "$SCRIPT_DIR/dist/STATE-SHA256SUMS" ]]; then
     printf 'portable release is missing; run ./build-portable-release.sh first\n' >&2
+    printf 'authoritative state is missing; run ./build-authoritative-state.sh next\n' >&2
     exit 2
 fi
 
 release_commit="$(git -C "$SCRIPT_DIR" rev-parse "$RELEASE_REF^{commit}")"
+if [[ "$release_commit" != "$(git -C "$SCRIPT_DIR" rev-parse HEAD)" ]]; then
+    printf 'release ref must identify the clean checked-out transfer state\n' >&2
+    exit 2
+fi
 TRANSFER_ROOT="$(mktemp -d --tmpdir hollow-grove-laptop-transfer.XXXXXX)"
 cleanup() {
     if [[ -n "$TRANSFER_ROOT" && -d "$TRANSFER_ROOT" ]]; then
@@ -86,6 +97,8 @@ git -C "$SCRIPT_DIR" bundle create "$TRANSFER_ROOT/hollow-grove.bundle" --all
 cp "$SCRIPT_DIR/dist/hollow-grove-hueman-$VERSION.tar.gz" \
     "$SCRIPT_DIR/dist/hollow-grove-general-$VERSION.tar.gz" \
     "$SCRIPT_DIR/dist/SHA256SUMS" \
+    "$SCRIPT_DIR/dist/hollow-grove-authoritative-state-$VERSION.tar.gz" \
+    "$SCRIPT_DIR/dist/STATE-SHA256SUMS" \
     "$TRANSFER_ROOT/"
 
 remote_inbox="$(ssh "$SSH_HOST" 'mktemp -d --tmpdir hollow-grove-incoming.XXXXXX')"
@@ -111,6 +124,8 @@ repo_name="$(basename -- "$repo_path")"
 staged_path="$repo_parent/${repo_name}.incoming-$stamp"
 backup_path="$repo_parent/${repo_name}.pre-foundation-v1-$stamp"
 record_root="$repo_parent/hollow-grove-migration-records/$stamp"
+state_stage="$record_root/workstation-state"
+state_name="hollow-grove-authoritative-state-$version"
 install_parent="${XDG_DATA_HOME:-$HOME/.local/share}/hollow-grove/releases"
 install_path="$install_parent/hueman-$version-$release_commit"
 current_link="${XDG_DATA_HOME:-$HOME/.local/share}/hollow-grove/current-hueman"
@@ -159,6 +174,13 @@ fi
 (
     cd "$incoming"
     sha256sum --check SHA256SUMS
+    sha256sum --check STATE-SHA256SUMS
+)
+mkdir -p "$state_stage"
+tar -xzf "$incoming/$state_name.tar.gz" -C "$state_stage"
+(
+    cd "$state_stage/$state_name"
+    sha256sum --check PAYLOAD-SHA256SUMS
 )
 mkdir -p "$install_parent" "$(dirname -- "$current_link")" "$HOME/.local/bin"
 mkdir -p "$install_path"
@@ -186,6 +208,7 @@ ln -sfn "$current_link/bin/hollow-grove-hueman" \
     printf 'old_checkout=%s\n' "$repo_path"
     printf 'backup_record=%s\n' "$record_root"
     printf 'hueman_install=%s\n' "$install_path"
+    printf 'staged_workstation_state=%s\n' "$state_stage/$state_name"
 } >"$record_root/migration-result.txt"
 
 if [[ "$activate" == "yes" ]]; then
@@ -206,5 +229,6 @@ else
         "$release_ref" "$staged_path"
 fi
 printf 'Hueman installed at %s and linked through %s\n' "$install_path" "$current_link"
+printf 'Workstation state staged for laptop adaptation at %s\n' "$state_stage/$state_name"
 printf 'migration record: %s\n' "$record_root"
 REMOTE_SCRIPT

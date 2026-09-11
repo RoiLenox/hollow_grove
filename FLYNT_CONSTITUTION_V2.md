@@ -15,6 +15,23 @@ membership, or sovereignty by itself.
 
 Status: canonical and locked.
 
+### Ratified synthesis-order amendment — 2026-09-03
+
+`HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md`
+explicitly amends the older higher-Synthesis wording in this Constitution.
+The controlling order is now:
+
+```text
+Gargoyle + Werewolf + Mariner/Merman → Manticorp → Chimera
+```
+
+**Manticorp is combined synthesis. Chimera is perfected synthesis.** Manticorp
+and Chimera are states of synthesis across independently refinable Current,
+Aura, and Weapon tracks, not additional Mystery Men schools. Older
+`Chimera → Manticore` language survives only where this document explicitly
+identifies a Tross-specific historical or runtime compatibility record; it no
+longer defines Flynt's general synthesis order.
+
 Flynt's Domain is **Spirit** and its distinct faculty is **Resynce**. Resynce is
 neither Current, Aura, Synthesis, nor rank.
 
@@ -34,8 +51,8 @@ This document is the repository-facing constitutional authority for Flynt's inst
 ```text
 THE TROSS = MANTICORE
 Sovereign executive
-  ├── Chimera (feminine First Companion and counterpart)
-  ├── Manticorp (body of soldiers; lawful military command)
+  ├── Chimera (feminine First Companion; perfected-synthesis embodiment)
+  ├── Manticorp (combined-synthesis institution and soldier body)
   ├── Mystery Men (separate classified tradition)
   │     └── The Marquise (maritime extension)
   └── We Fairy Men (creature-sect leadership body)
@@ -50,24 +67,23 @@ authority from the Tross. He remains the formal constitutional leader and
 commander-in-chief of Manticorp, Flynt's body of soldiers.
 
 There is exactly one constitutional Chimera. Chimera is the First Companion of
-Tross and stands immediately beneath Tross. Chimera participates in Flynt's
-locked higher/composite Synthesis relationship:
+Tross, stands immediately beneath Tross, and is Flynt's foremost constitutional
+embodiment of perfected synthesis. The identity/office record and the perfected
+synthesis state are distinct axes. Flynt's locked higher/composite Synthesis
+relationship is:
 
 ```text
-Gargoyle + Werewolf + Mariner/Merman → Chimera → Manticore
+Gargoyle + Werewolf + Mariner/Merman → Manticorp → Chimera
 ```
 
-Chimera is feminine, a constitutional companion, and a maintained lower-apex
-Synthesis, not an office. She is the counterpart to the masculine Manticore
-embodied by the Tross. Chimera = SELECT and Manticore = INTEGRATE are
-**WORKING** concepts;
-the exact higher mechanics are **STATUS: OPEN**. Historical descriptions of
-Chimera as already-complete integration are SUPERSEDED at the semantic level
-but retained as archival provenance. The names are categorically distinct:
-**Manticore** names the Tross's masculine identity/Form, while **Manticorp**
-names Flynt's body of soldiers. No Manticorp soldier becomes the Manticore
-merely by serving in that body, and no personal creature-progression sequence
-grants the Tross office.
+Chimera is feminine, a constitutional companion, and a maintained perfected
+Synthesis, not an office. She remains the counterpart to the masculine
+Manticore identity embodied by the Tross. **Manticore** continues to name the
+Tross's personal mythological identity and the stable compatibility Form used
+by existing Continuance records; it is not a third general synthesis state
+after Chimera. **Manticorp** names combined synthesis and also the institution
+that trains, embodies, and governs that discipline. Membership alone does not
+grant the state, and no synthesis state grants the Tross office.
 
 The masculine/feminine counterpart grammar and this pre-existing Recipe
 provenance relationship are different constitutional dimensions. The pairing
@@ -100,8 +116,9 @@ the former classification of Mariner as merely a human practitioner or sailor.
 It is additive to maintained Synthesis, Recipe, Current, Aura, and Continuance
 law. The pair registry alone does not determine how a Form is acquired, does
 not collapse paired creatures into one identity, and does not create a second
-Chimera or Manticore. Manticorp is not a creature entry in this grammar; it is
-the soldier body commanded by the Tross/Manticore.
+Chimera or Manticore. Manticorp is not a creature-sex entry in this grammar. It
+is the combined synthesis state and the name of the soldier body that
+institutionally embodies and governs that discipline under the Tross/Manticore.
 
 ## Public and classified institutional expression
 
@@ -116,12 +133,15 @@ The Tross / Manticore (public sovereign)
 ```
 
 Manticorp is Flynt's body of soldiers, modeled institutionally as its formal
-military command. It is responsible for territorial defense, military command,
-constitutional protection, disciplined force, military training, and lawful
-deployment. The Tross is its formal constitutional leader and
+military command and combined-synthesis training body. It is responsible for
+territorial defense, military command, constitutional protection, disciplined
+force, military training, lawful deployment, and custody of combined-discipline
+standards. The Tross is its formal constitutional leader and
 commander-in-chief: he recognizes its command structure and authorizes major
-deployments and emergencies. The Manticore is the leader; Manticorp is the
-soldier body. Ordinary Manticorp personnel are not Manticore Forms.
+deployments and emergencies. The Manticore is the Tross's personal identity;
+Manticorp is both the combined state and its institutional expression. Ordinary
+Manticorp personnel do not automatically possess the state or the Tross's
+Manticore compatibility Form.
 
 Mystery Men is Flynt's one consolidated clandestine, intelligence, and
 federal-investigative apparatus. It combines investigation, intelligence,
@@ -211,8 +231,9 @@ We Fairy Men preserves exactly three enduring historical `Founding Leader`
 office identifiers; The Gallows carries them in its underworld manifestation.
 The identifier is retained for archive and institutional
 compatibility; it no longer classifies Gargoyle, Merman, or Werewolf as
-`FoundingPeople`. In the maintained Manticore Recipe, these leaders are three
-indispensable Basin custodians:
+`FoundingPeople`. In the legacy-named, Tross-specific Manticore Recipe record,
+these leaders are three indispensable Basin custodians. Their disciplines also
+supply the canonical inputs to Manticorp combined synthesis:
 
 | Creature sect and legacy Synthesis correspondence | Stable custodian office | Crew | Associations |
 |---|---|---|---|
@@ -237,6 +258,48 @@ not erase their separate crews, populations, territories, loyalties, or Recipe
 custody. When this body acts under the Tross in the underworld, that collective
 expression is The Gallows.
 
+## Mystery Men isolated weapon doctrine
+
+The three Mystery Men specialist traditions carry exact signature weapon
+disciplines:
+
+| Creature tradition | Mystery Men sect | Weapon | Discipline embodied |
+|---|---|---|---|
+| Gargoyle | Hunter | **Bolo** | Stillness/Fortification expressed as restraint, entanglement, tripping, binding, and arrested motion |
+| Werewolf | Chief | **Crossbow** | Circulation/Siphone expressed as prepared ranged force compatible with stalking, tracking, climbing, movement, and pursuit |
+| Mariner/Merman | Mariner | **Harpoon** | Position/Anchoring expressed as ranged connection, tethering, anchoring, reeling, dragging, and relative-position control |
+
+These are **LOCKED design doctrines**, not arbitrary equipment, biological
+anatomy, office insignia, automatic loadouts, or separate constitutional
+institutions. `Hunter` remains the Gargoyle-aligned formal sect; pursuit may
+describe Werewolf conduct but does not rename the Werewolf-aligned `Chief`
+sect.
+
+The three disciplines contribute to distinct Current, Aura, and Weapon
+Synthesis Recipe tracks. Those tracks are independently refinable. Their two
+locked refinement states are **Manticorp / combined synthesis** and
+**Chimera / perfected synthesis**. Exact Recipes and mixed-state rules remain
+**STATUS: OPEN**. Manticorp and Chimera are not fourth and fifth isolated
+weapon schools.
+
+The Tross is a synthesizer, custodian/holder of specialized Flynt Recipes, and
+the sovereign authority capable of enabling advanced Mystery Men synthesis.
+The exact named inventory remains **STATUS: OPEN**. This custody does not grant
+him unilateral control of the divided combined/perfected lineage evidence
+retained under the legacy Manticore Recipe record; its indispensable fragments
+remain divided among Bro White, Beauty, and Cinderellaman. It also does not
+replace Glaüshouse Synthesis knowledge, consent, or Clearance.
+
+Any Manticorp integrated weapon must preserve binding/restraint, ranged
+projection, and tethering/anchoring as one resolved system rather than bolting
+three complete weapons together. Its mechanism, appearance, operation,
+failure, and maintenance remain **STATUS: OPEN**. Chimera perfects that weapon
+synthesis; its exact perfected form also remains **STATUS: OPEN**.
+
+The former tier-name reconciliation hold is removed by the ratified amendment.
+Persistence-facing `manticore` and `divided-manticorp` keys remain compatibility
+records, not authority to restore the superseded order.
+
 ## Dual expression law
 
 Urban and rural Flynt are complementary expressions of one authority. They are not competing governments.
@@ -250,7 +313,8 @@ Urban and rural Flynt are complementary expressions of one authority. They are n
 | Manticorp and Mystery Men | We Fairy Men; The Gallows when acting under the Tross in the underworld |
 
 Both expressions answer to the same sovereign Tross/Manticore, while Chimera
-remains his feminine lower-apex First Companion. The public and underground
+remains his feminine First Companion and the foremost constitutional embodiment
+of perfected synthesis. The public and underground
 commands are intentionally unresolved political tension: the Tross may direct
 The Gallows to protect Flynt, or use lawful authority to protect and expand it.
 Neither reading is canonically forced.
@@ -290,9 +354,10 @@ Canonical domain identifiers:
 - `flynt.identity.mr-x`
 - `flynt.companion.chimera`
 - `flynt.institution.manticorp`
-- `flynt.form.manticore`
-- `flynt.recipe.divided-manticorp` — legacy provenance key for the Manticore
-  Recipe; the identifier does not make Manticorp a Form or individual
+- `flynt.form.manticore` — retained Tross-specific compatibility Form ID; it
+  does not create a synthesis state beyond perfected Chimera
+- `flynt.recipe.divided-manticorp` — retained Tross/Recipe provenance key; the
+  identifier projects into the amended Manticorp → Chimera semantics
 - `flynt.institution.mystery-men`
 - `flynt.extension.marquise`
 - `flynt.expression.the-mystery-man`
@@ -324,9 +389,12 @@ A conforming repository must prove:
 - the exact Tross → Mystery Men → The Marquise command chain, with The
   Marquise represented as an extension rather than a sibling institution;
 - exactly the four masculine/feminine creature pairs and the three We Fairy Men sect assignments;
-- exactly one higher Chimera relationship with Gargoyle, Mariner/Merman, and Werewolf as its sources;
-- exactly one presently maintained Manticore Form distinct from the Manticorp soldier body;
-- one divided Manticore Recipe with indispensable Gargoyle, Werewolf, and Mariner/Merman custodians;
+- exactly three isolated disciplines feeding Manticorp combined synthesis and
+  Chimera perfected synthesis across independently refinable tracks;
+- exactly one presently maintained Tross-specific Manticore compatibility Form,
+  which is not a third general tier after Chimera;
+- one divided legacy Manticore Recipe record with indispensable Gargoyle,
+  Werewolf, and Mariner/Merman custodians;
 - the Tross identity lock binds the public office, masculine Manticore identity/Form, Mystery Man, Mr. X, and Gallows leadership to one person;
 - We Fairy Men answers to the Tross and The Gallows is its underworld manifestation under his direction;
 - Mystery Men remains separate from We Fairy Men and The Gallows;
@@ -396,25 +464,28 @@ lifecycle events.
 the Hueman, and the conditions that keep it coherent.**
 
 The legacy physical Flynt grammar is Wolf → Lion, Bat → Eagle, and Snake/Fish →
-Hydra. Earlier compatibility material described Chimera as integrating the
-three lower principles; that mechanical reading is **SUPERSEDED**. Chimera =
-SELECT and Manticore = INTEGRATE are **WORKING**, while detailed mechanics are
-**STATUS: OPEN**. Manticore is the masculine sovereign transfiguration beyond
-Chimera and is the Tross's presently maintained body and mythological identity,
-with exceptional output and Resynce as well as
+Hydra. **Manticorp combines; Chimera perfects.** The former Chimera = SELECT,
+Manticore = INTEGRATE order is **SUPERSEDED**. Manticore remains the Tross's
+masculine mythological identity and a stable compatibility Form used by his
+existing Continuance records; it is not a general transfiguration beyond
+Chimera. His maintained body carries exceptional output and Resynce as well as
 metabolic demand, instability, identity risk, environmental vulnerabilities,
 maintenance needs, political fear, and dependence on divided custodians and
 Glaüshouse care. The Tross may maintain Manticore throughout his natural life
 through bodily discipline, Recipe renewal, divided Basin knowledge,
 institutional recognition, and specialized Glaüshouse care.
 
-## Manticore Recipe and Synthesis Ledger
+## Legacy Manticore Recipe record and Synthesis Ledger
 
-The complete Manticore Recipe is divided among Bro White (Gargoyle body,
+The compatibility record historically called the complete Manticore Recipe is
+divided among Bro White (Gargoyle body,
 density, anchoring, endurance), Beauty (Werewolf instinct, pursuit, pack
 synchronization, living force), and Cinderellaman (Mariner/Merman adaptation, flow,
 Current redistribution, traversal, recovery). No ordinary archive, person, or
-institution holds the complete reproducible Recipe.
+institution holds the complete reproducible Recipe. Under the amendment, this
+record preserves custody and Continuance provenance for the combined/perfected
+lineage and the Tross's maintained identity; it does not encode
+`Chimera → Manticore` as the general mastery order.
 
 Glaüshouse's Synthesis Ledger is the authoritative body of knowledge for
 maintained Forms. It records strengths, weaknesses, bodily and environmental

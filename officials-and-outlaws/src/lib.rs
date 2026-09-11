@@ -398,6 +398,30 @@ pub struct SynthesisRecipe {
     pub result: FormId,
 }
 
+/// Canonical Flynt mastery states. These semantic states are deliberately
+/// distinct from both Mystery Men schools and authority-node identifiers.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum FlyntSynthesisState {
+    Manticorp,
+    Chimera,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum FlyntSynthesisTrack {
+    Current,
+    Aura,
+    Weapon,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct FlyntSynthesisDoctrine {
+    pub isolated_sources: [FlyntCreature; 3],
+    pub combined: FlyntSynthesisState,
+    pub perfected: FlyntSynthesisState,
+    pub tracks: [FlyntSynthesisTrack; 3],
+    pub independently_refinable: bool,
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ManticoreRecipeComponent {
     Gargoyle,
@@ -560,6 +584,7 @@ pub struct FlyntConstitutionParts {
     pub forms: Vec<TransformationForm>,
     pub chimera_recipe: SynthesisRecipe,
     pub manticore_recipe: DividedManticoreRecipe,
+    pub synthesis_doctrine: FlyntSynthesisDoctrine,
     pub creature_pairs: Vec<FlyntCreaturePair>,
     pub basin_sects: Vec<BasinCreatureSect>,
     pub chimera: ConstitutionalChimera,
@@ -575,6 +600,7 @@ pub struct FlyntConstitution {
     forms: Vec<TransformationForm>,
     chimera_recipe: SynthesisRecipe,
     manticore_recipe: DividedManticoreRecipe,
+    synthesis_doctrine: FlyntSynthesisDoctrine,
     creature_pairs: Vec<FlyntCreaturePair>,
     basin_sects: Vec<BasinCreatureSect>,
     chimera: ConstitutionalChimera,
@@ -603,6 +629,7 @@ pub struct FlyntConstitutionalAudit {
     pub gallowry_is_distinct_from_gallows: bool,
     pub chimera_recipe_count: usize,
     pub manticore_recipe_count: usize,
+    pub amended_synthesis_order_is_valid: bool,
     pub founding_union_is_complete: bool,
 }
 
@@ -624,6 +651,7 @@ pub enum ConstitutionError {
     ChimeraIsNotFirstCompanion,
     InvalidChimeraRecipe,
     InvalidManticoreRecipe,
+    InvalidSynthesisDoctrine,
     InvalidCreaturePairs,
     InvalidBasinSects,
     InvalidSovereignIdentity,
@@ -661,7 +689,10 @@ impl fmt::Display for ConstitutionError {
                 "Chimera must be the unique synthesis of Gargoyle, Mariner/Merman, and Werewolf",
             ),
             Self::InvalidManticoreRecipe => formatter.write_str(
-                "Manticore must be the divided maintained synthesis beyond Chimera",
+                "the legacy Manticore projection must retain its divided Tross-specific provenance",
+            ),
+            Self::InvalidSynthesisDoctrine => formatter.write_str(
+                "Flynt must combine as Manticorp and perfect as Chimera on independent Current, Aura, and Weapon tracks",
             ),
             Self::InvalidCreaturePairs => formatter.write_str(
                 "Flynt must preserve the four canonical masculine/feminine creature pairs",
@@ -740,6 +771,7 @@ impl FlyntConstitution {
             forms: parts.forms,
             chimera_recipe: parts.chimera_recipe,
             manticore_recipe: parts.manticore_recipe,
+            synthesis_doctrine: parts.synthesis_doctrine,
             creature_pairs: parts.creature_pairs,
             basin_sects: parts.basin_sects,
             chimera: parts.chimera,
@@ -773,6 +805,11 @@ impl FlyntConstitution {
     #[must_use]
     pub fn manticore_recipe(&self) -> &DividedManticoreRecipe {
         &self.manticore_recipe
+    }
+
+    #[must_use]
+    pub fn synthesis_doctrine(&self) -> &FlyntSynthesisDoctrine {
+        &self.synthesis_doctrine
     }
 
     #[must_use]
@@ -910,6 +947,7 @@ impl FlyntConstitution {
         }
         self.validate_chimera_recipe()?;
         self.validate_manticore_recipe()?;
+        self.validate_synthesis_doctrine()?;
         if self.creature_pairs != FLYNT_CREATURE_PAIRS {
             return Err(ConstitutionError::InvalidCreaturePairs);
         }
@@ -983,6 +1021,13 @@ impl FlyntConstitution {
                 != 1
         {
             return Err(ConstitutionError::InvalidManticoreRecipe);
+        }
+        Ok(())
+    }
+
+    fn validate_synthesis_doctrine(&self) -> Result<(), ConstitutionError> {
+        if self.synthesis_doctrine != canonical_synthesis_doctrine() {
+            return Err(ConstitutionError::InvalidSynthesisDoctrine);
         }
         Ok(())
     }
@@ -1080,6 +1125,8 @@ impl FlyntConstitution {
                 .composition
                 .records_producing_result(self.manticore_recipe.recipe.result.as_kernel())
                 .len(),
+            amended_synthesis_order_is_valid: self.synthesis_doctrine
+                == canonical_synthesis_doctrine(),
             founding_union_is_complete: same_founding_union(
                 &self.founding_union,
                 &canonical_founding_union(),
@@ -1419,6 +1466,25 @@ pub fn legacy_founding_lineages() -> Vec<FoundingLineage> {
 }
 
 #[must_use]
+pub const fn canonical_synthesis_doctrine() -> FlyntSynthesisDoctrine {
+    FlyntSynthesisDoctrine {
+        isolated_sources: [
+            FlyntCreature::Gargoyle,
+            FlyntCreature::Werewolf,
+            FlyntCreature::Mariner,
+        ],
+        combined: FlyntSynthesisState::Manticorp,
+        perfected: FlyntSynthesisState::Chimera,
+        tracks: [
+            FlyntSynthesisTrack::Current,
+            FlyntSynthesisTrack::Aura,
+            FlyntSynthesisTrack::Weapon,
+        ],
+        independently_refinable: true,
+    }
+}
+
+#[must_use]
 pub fn canonical_forms() -> Vec<TransformationForm> {
     vec![
         TransformationForm {
@@ -1541,6 +1607,7 @@ pub fn canonical_parts() -> FlyntConstitutionParts {
             result: form_id(FORM_CHIMERA),
         },
         manticore_recipe: canonical_manticore_recipe(),
+        synthesis_doctrine: canonical_synthesis_doctrine(),
         creature_pairs: FLYNT_CREATURE_PAIRS.to_vec(),
         basin_sects: BASIN_CREATURE_SECTS.to_vec(),
         chimera: ConstitutionalChimera {

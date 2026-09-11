@@ -60,7 +60,11 @@ Use this order when reviewing Hollow Grove V2:
    the Practitioner, Current, Aura, faculty, and two-level Synthesis ontology.
 4. House constitutions, including `STONEBEND_CONSTITUTION_V2.md`,
    `SANDMANOR_CONSTITUTION_V2.md`, `GLAUSHOUSE_CONSTITUTION_V2.md`, and
-   `FLYNT_CONSTITUTION_V2.md`, for each House's domain.
+   `FLYNT_CONSTITUTION_V2.md`, for each House's domain, followed by the ratified
+   `HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md`, then
+   `HOLLOW_GROVE_LORE_TECHNOLOGY_CONSOLIDATION_V1.md` for the additive spiral,
+   technological-language, weapon-doctrine, dependency, status, and current
+   design-work integration beneath those constitutions.
 5. `MINOAN_COUNTY_COURT_SYSTEM_AND_RESTITUTION_CYCLE_V1.md` for the shared
    judiciary, amendment-process review, and Restitution.
 6. `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md` for world-facing route law.
@@ -127,6 +131,12 @@ additional authority source.
 The following documents and executable seams guide additive lore and gameplay
 work without superseding locked constitutional authority:
 
+- `HOLLOW_GROVE_LORE_TECHNOLOGY_CONSOLIDATION_V1.md` is the status-controlled
+  integration and audit for the revolving-staircase model, the four House
+  technological languages, inter-House specialties, Flynt weapon doctrine,
+  the amended Manticorp/Chimera order, and Stonebend's next object-design pass;
+  it records status but cannot amend a House constitution or runtime identifier
+  by implication;
 - `FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md` defines the proposed
   Pimp/Hoes and Gimp/Goons Boardwalk polarity above locked Flynt and route law;
 - `BOARDWALK_GOON_BOND_VERTICAL_SLICE_V1_DRAFT.md` specifies the first
@@ -215,6 +225,10 @@ These sources define meaning and legality:
   replacement, and Proliteriate continuity; its former Diamond sovereign
   semantics are SUPERSEDED;
 - `SANDMANOR_CONSTITUTION_V2.md`;
+- `HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md` as the
+  ratified controlling amendment for Manticorp combined synthesis, Chimera
+  perfected synthesis, the independently refinable Flynt tracks, Hecaton as
+  Right Hand, Pegasus as Left Hand, and The Sandman above both;
 - `SANDMANOR_CONSTITUTIONAL_AUDIT_V2.md` (repository conformance evidence for
   the ratified Sandmanor House law);
 - `GLAUSHOUSE_CONSTITUTION_V2.md`;
@@ -223,7 +237,8 @@ These sources define meaning and legality:
 - Flynt's **Law of Capacity** and its existing constitutional conformance surfaces;
 - the locked Flynt institutional hierarchy in `FLYNT_CONSTITUTION_V2.md` and the executable `flynt-constitution` crate;
 - `FLYNT_DUAL_LEADERSHIP_AND_MANTICORP_RECIPE_V1.md` for the normative Flynt
-  identity lock, maintained Continuance law, Manticore Form/Manticorp soldier-body split,
+  identity lock, maintained Continuance law, Tross-specific Manticore
+  compatibility records, Manticorp combined-synthesis/institution distinction,
   masculine/feminine creature pairs, We Fairy Men leadership, Gallows
   underworld manifestation, separate Mystery Men apparatus, divided Recipe
   custody, Basin leadership, and Synthesis Ledger;
@@ -271,8 +286,9 @@ kernel:
 
 `flynt-constitution` is the sole executable authority for Flynt's Tross-rooted
 hierarchy, stable Tross/Manticore/Mystery Man/Mr. X identity, the four creature
-pairs, unique feminine Chimera and masculine maintained Manticore Form,
-Manticorp soldier body, We Fairy Men and Gallows contextual relation, separate
+pairs, Manticorp combined synthesis, Chimera perfected synthesis, the unique
+feminine constitutional Chimera, the Manticorp soldier body, independently
+refinable synthesis tracks, We Fairy Men and Gallows contextual relation, separate
 Mystery Men apparatus, divided Recipe custodians, founding lineages, and
 Gallowry distinction. `src/world/flynt.rs` is its neutral world
 projection and must validate against that authority before its catalog is

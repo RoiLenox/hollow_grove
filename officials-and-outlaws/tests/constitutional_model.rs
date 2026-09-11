@@ -3,12 +3,13 @@ use flynt_constitution::{
     ConstitutionError, CreatureSex, EXPRESSION_MYSTERY_MAN, EXPRESSION_WE_FAIRY_MEN,
     EXTENSION_MARQUISE, FLYNT_CREATURE_PAIRS, FORM_CHIMERA, FORM_GARGOYLE, FORM_MANTICORE,
     FORM_MERMAN, FORM_WEREWOLF, FlyntConstitution, FlyntCreature, FlyntNodeId, FlyntNodeKind,
-    FormKind, GREMLINCOIN_MEANING, GargoyleContinuance, GremlincoinRecord, IDENTITY_MR_X,
-    IDENTITY_MYSTERY_MAN, INSTITUTION_GALLOWS, INSTITUTION_MANTICORP, INSTITUTION_MYSTERY_MEN,
-    ManticoreContinuanceRequirement, OFFICE_BRO_WHITE, OFFICE_CINDERELLAMAN, OFFICE_THE_BEAUTY,
-    OFFICE_TROSS, PERSON_TROSS, RECIPE_GARGOYLE_CONTINUANCE, RECIPE_MANTICORE, SITE_GALLOWRY,
-    TOKEN_GREMLINCOIN, WAY_GREMLIN, canonical_constitution, canonical_gremlin_way_practices,
-    canonical_hierarchy_rows, canonical_lineages, canonical_parts, canonical_superior_map,
+    FlyntSynthesisState, FlyntSynthesisTrack, FormKind, GREMLINCOIN_MEANING, GargoyleContinuance,
+    GremlincoinRecord, IDENTITY_MR_X, IDENTITY_MYSTERY_MAN, INSTITUTION_GALLOWS,
+    INSTITUTION_MANTICORP, INSTITUTION_MYSTERY_MEN, ManticoreContinuanceRequirement,
+    OFFICE_BRO_WHITE, OFFICE_CINDERELLAMAN, OFFICE_THE_BEAUTY, OFFICE_TROSS, PERSON_TROSS,
+    RECIPE_GARGOYLE_CONTINUANCE, RECIPE_MANTICORE, SITE_GALLOWRY, TOKEN_GREMLINCOIN, WAY_GREMLIN,
+    canonical_constitution, canonical_gremlin_way_practices, canonical_hierarchy_rows,
+    canonical_lineages, canonical_parts, canonical_superior_map, canonical_synthesis_doctrine,
     legacy_founding_lineages,
 };
 
@@ -156,6 +157,24 @@ fn chimera_is_the_unique_three_form_higher_synthesis() {
             .len(),
         1
     );
+}
+
+#[test]
+fn amended_synthesis_order_combines_as_manticorp_and_perfects_as_chimera() {
+    let constitution = canonical_constitution().unwrap();
+    let doctrine = constitution.synthesis_doctrine();
+    assert_eq!(doctrine, &canonical_synthesis_doctrine());
+    assert_eq!(doctrine.combined, FlyntSynthesisState::Manticorp);
+    assert_eq!(doctrine.perfected, FlyntSynthesisState::Chimera);
+    assert_eq!(
+        doctrine.tracks,
+        [
+            FlyntSynthesisTrack::Current,
+            FlyntSynthesisTrack::Aura,
+            FlyntSynthesisTrack::Weapon,
+        ]
+    );
+    assert!(doctrine.independently_refinable);
 }
 
 #[test]

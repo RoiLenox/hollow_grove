@@ -26,6 +26,10 @@ hollow-grove-semantic-kernel = { path = "hollow-grove-semantic-kernel" }
 flynt-constitution = { path = "officials-and-outlaws" }
 serde = { version = "1.0.228", features = ["derive"] }
 serde_json = "1.0.149"
+bytemuck = { version = "1.25.2", features = ["derive"] }
+pollster = "1.0.1"
+wgpu = { version = "30.0.1", default-features = false, features = ["std", "wgsl", "vulkan", "gles"] }
+winit = { version = "0.30.13", default-features = false, features = ["rwh_06", "wayland", "wayland-dlopen"] }
 [features]
 default = []
 dev-tools = []
@@ -33,6 +37,10 @@ dev-tools = []
 [[bin]]
 name = "hollow-grove"
 path = "src/main.rs"
+
+[[bin]]
+name = "hollow_deck"
+path = "src/bin/hollow_deck.rs"
 
 [[bin]]
 name = "adaptive_topology_live"
@@ -63,6 +71,10 @@ name = "hollow_grove_semantic"
 path = "src/bin/hollow_grove_semantic.rs"
 
 [[bin]]
+name = "hollow-grove-client"
+path = "src/bin/hollow_grove_client.rs"
+
+[[bin]]
 name = "hg-dev"
 path = "src/bin/hg_dev.rs"
 required-features = ["dev-tools"]
@@ -70,6 +82,14 @@ required-features = ["dev-tools"]
 [[test]]
 name = "integration"
 path = "tests/integration.rs"
+
+[[test]]
+name = "hollow_deck"
+path = "tests/hollow_deck.rs"
+
+[[test]]
+name = "hollow_deck_state"
+path = "tests/hollow_deck_state.rs"
 
 [[test]]
 name = "deep_pressure_campaign"
@@ -98,6 +118,10 @@ path = "tests/runtime_rampart_documentation.rs"
 [[test]]
 name = "runtime_rampart_v1"
 path = "tests/runtime_rampart_v1.rs"
+
+[[test]]
+name = "graphical_client"
+path = "tests/graphical_client.rs"
 
 
 [profile.dev]

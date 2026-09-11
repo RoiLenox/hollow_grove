@@ -3,8 +3,8 @@ use std::collections::BTreeSet;
 use hollow_grove::hollow_grove_contract::House;
 use hollow_grove::lineage_contract::{
     MINOAN_SIDE, MINORIAN_SIDE, SandmanorAttendantClass, SandmanorForm,
-    SandmanorSocialRole, SandmanorSovereignHand, SandmanorSovereignIdentity,
-    validate_sandmanor_transition,
+    SandmanorHandPrinciple, SandmanorHandSide, SandmanorSocialRole,
+    SandmanorSovereignHand, SandmanorSovereignIdentity, validate_sandmanor_transition,
 };
 use hollow_grove::world::hueman_faculties::{
     STONEBEND_PRESYNCE_SYNTHESIS_LADDER, canonical_regional_soul_manifestations,
@@ -134,9 +134,9 @@ pub(crate) fn tool_main() -> Result<(), Box<dyn std::error::Error>> {
     .map_err(|error| format!("Satyr-to-Centaur lineage drifted: {error:?}"))?;
     if MINORIAN_SIDE.social_roles
         != [
-            SandmanorSocialRole::Husbandman,
-            SandmanorSocialRole::Householder,
             SandmanorSocialRole::Hearthkeeper,
+            SandmanorSocialRole::Householder,
+            SandmanorSocialRole::Husbandman,
         ]
         || MINOAN_SIDE.social_roles
             != [
@@ -148,6 +148,12 @@ pub(crate) fn tool_main() -> Result<(), Box<dyn std::error::Error>> {
         || MINOAN_SIDE.attendant_class != SandmanorAttendantClass::Labyrinthian
         || MINORIAN_SIDE.sovereign_hand != SandmanorSovereignHand::Hecaton
         || MINOAN_SIDE.sovereign_hand != SandmanorSovereignHand::Pegasus
+        || MINORIAN_SIDE.sovereign_hand.side() != SandmanorHandSide::Right
+        || MINOAN_SIDE.sovereign_hand.side() != SandmanorHandSide::Left
+        || MINORIAN_SIDE.sovereign_hand.perfected_principle()
+            != SandmanorHandPrinciple::Force
+        || MINOAN_SIDE.sovereign_hand.perfected_principle()
+            != SandmanorHandPrinciple::Motion
         || hollow_grove::lineage_contract::SANDMANOR_SOVEREIGN
             != SandmanorSovereignIdentity::SandmanDemiurge
     {
@@ -237,16 +243,22 @@ pub(crate) fn tool_main() -> Result<(), Box<dyn std::error::Error>> {
     );
     println!("equal practitioner traditions: Minorian / Minoan");
     println!("distinct peoples: Minorian / Minoan");
-    println!("form lines: Gnome -> Faun -> Minotaur / Elf -> Satyr -> Centaur");
-    println!("social lines: Husbandman -> Householder -> Hearthkeeper / Beach Bum -> Party Boy -> Socialite");
+    println!(
+        "complete branches: Gnome -> Faun -> Minotaur -> Hecaton / Elf -> Satyr -> Centaur -> Pegasus"
+    );
+    println!("biological form lines: Gnome -> Faun -> Minotaur / Elf -> Satyr -> Centaur");
+    println!(
+        "social lines: Hearthkeeper -> Householder -> Husbandman / Beach Bum -> Party Boy -> Socialite"
+    );
     println!("attendant classes: Geomancer / Labyrinthian");
-    println!("sovereign Hands: Hecaton / Pegasus");
-    println!("singular sovereign identity: The Sandman = Demiurge");
+    println!("sovereign Hands: Hecaton = Right / Pegasus = Left");
+    println!("perfected principles: Hecaton = force / Pegasus = motion");
+    println!("singular sovereign identity: The Sandman = Demiurge = command of both Hands");
     println!("office authority origin: completed Contest of Improvement only");
     println!("stable proof-body adapter: institution.sandmanor.sandmen");
     println!("regional mature-form design: Faun -> Minotaur / Aura Field");
     println!("regional mature-form design: Satyr -> Centaur / Aura Beach and Current Sea");
-    println!("Hecaton and Pegasus are sovereign Hands, never fourth-stage Forms");
+    println!("Hecaton and Pegasus complete their branches through separate Hand investiture");
     println!(
         "coastal order: Free Aura Beach -> Southern Coast -> Current Break -> Minoan County Courthouse -> Glaushouse"
     );

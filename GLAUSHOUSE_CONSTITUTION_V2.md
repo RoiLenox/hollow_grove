@@ -387,8 +387,11 @@ Synthesis is a medical spectrum:
 - **Reconstruction** — major reorganization of a bodily system, including organ
   replacement, major Current redirection, deep Aura-pathway revision, or
   rebuilding a damaged maintained Form;
-- **Transfiguration** — establishment of a high-order Form, including Gargoyle,
-  Chimera, Manticorp, and other advanced constitutional Forms;
+- **Transfiguration** — establishment of a high-order Form or synthesis state,
+  including Gargoyle, Manticorp combined synthesis, Chimera perfected
+  synthesis, the Tross's Manticore compatibility Form, and other advanced
+  constitutional Forms. Manticorp also names Flynt's combined-synthesis
+  military institution; membership alone does not establish the state;
 - **Overgrowth** — the emergency failure state in which a Sympiote exceeds the
   Recipe, loses meaningful boundaries, or replaces rather than integrates with
   the Hueman. Overgrowth is never an intended Form.

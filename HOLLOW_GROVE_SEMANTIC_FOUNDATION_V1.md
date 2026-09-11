@@ -26,6 +26,22 @@ interpretation and evidence.
 
 ## Root Semantic Laws
 
+The canonical cosmological law phrase is:
+
+> **Hollow holds.**
+>
+> **Current flows.**
+>
+> **Abyss feels.**
+>
+> **Aura reveals.**
+
+This phrase is a shared cosmological grammar, not a type-level equation and
+not four symmetrical House slogans. It does not replace the separately locked
+constitutional acts `Name → Prove → Clear → Recognize`. The older `Hollow
+Current holds` wording remains valid only within the named legacy physical
+Point²/Current-depth compatibility model.
+
 - `Practitioner` names the whole person.
 - `Current` names the practitioner's relational participation in a larger
   social, institutional, environmental, or collective whole.
@@ -165,13 +181,16 @@ topologies, Hollow Grove locks one exact eight-level Current/Aura pairing.
 - Stonebend's active Synthesis ladder is
   `Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre -> Troglodyte`.
 - Sandmanor has distinct Minorian and Minoan peoples, Forms, social roles,
-  cultural domains, attendant classes, and sovereign Hands unified by the
-  Sandman/Demiurge.
+  cultural domains, attendant classes, and sovereign Hands. Hecaton is the
+  perfected-force Right Hand, Pegasus is the perfected-motion Left Hand, and
+  the Sandman/Demiurge is the final sovereign whole above both.
 - Glaüshouse uses a common Pixie foundation, Sprite/Spirit and Fairy/Nymph
   branches, Siren reunification, and Muse apex; Sylph remains the level-6 Aura
   counterpart without creating a clinical office.
-- Flynt has three practitioner traditions and base Synthesis forms leading to
-  the higher `Chimera -> Manticore` relationship.
+- Flynt has three isolated practitioner disciplines leading to Manticorp
+  combined synthesis and then Chimera perfected synthesis. Tross-specific
+  `manticore` runtime keys remain compatibility projections, not a later
+  general tier.
 
 `Troglodyte + Muse -> Seer` remains canonical as a Level 2 cross-House
 Synthesis. It is not superseded by the Level 1 practitioner equation.

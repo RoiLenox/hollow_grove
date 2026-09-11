@@ -112,7 +112,7 @@ Canonical note:
 - Minorians measure.
 - Gnomes retain horizontal occupational specializations. That horizontal civic
   structure does not erase the distinct `Gnome → Faun → Minotaur` Form
-  progression or the Husbandman → Householder → Hearthkeeper social line.
+  progression or the Hearthkeeper → Householder → Husbandman social line.
 
 ## Minoans
 
