@@ -9,7 +9,8 @@ mail state, credentials, hardware output file, or repository checkout.
 - `/usr/bin/hollow-keyboard` explores, searches, displays, and audits the
   constitutional keyboard projection.
 - `/usr/bin/hollow-launch` checks optional commands and reports clear failures.
-- `/usr/bin/hollow-hueman` is the stable public command for the Hueman concept.
+- `/usr/bin/hollow-hueman` is the stable desktop seam into the independently
+  installed Hollow Grove Core and Hueman client.
 - `/usr/bin/hollow-shell` exposes the launcher, Niri overview, common desktop
   roles, The Marquise TUI entrance, and a compact shell doctor.
 - `/usr/lib/hollow-grove/bin/` contains private desktop helpers.
@@ -25,11 +26,11 @@ mail state, credentials, hardware output file, or repository checkout.
   its constitutional palette. User overrides belong under
   `$XDG_CONFIG_HOME/hollow-grove/waybar/`.
 
-The separately packaged Hueman application may install an executable launcher
-at `/usr/lib/hollow-grove/hueman/launch` and a pair-state adapter at
-`/usr/lib/hollow-grove/hueman/pair`. Its immutable assets may instead live
-under `/usr/share/hollow-grove/hueman/`. Runtime state belongs under the
-installed user's XDG state directory.
+The separately packaged Core installs `hollow-grove-with-hueman`; the separately
+packaged Hueman client installs `hueman`. General Edition delegates launching
+to that public seam and embeds neither package. Presentation pair state belongs
+under `$XDG_STATE_HOME/hueman`; authoritative game state remains beneath the
+Hollow Grove XDG namespace.
 
 Machine-specific output configuration is intentionally outside this package.
 

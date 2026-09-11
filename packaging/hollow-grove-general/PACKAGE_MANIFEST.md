@@ -26,7 +26,7 @@ is not treated as proof that it is in an official Arch repository.
 | `/etc/skel/.config/hollow-grove/general-edition.toml` | 0644 | Blank user-owned wallpaper and weather settings |
 | `/usr/bin/hollow-keyboard` | 0755 | Public keyboard discovery, search, map, and semantic-audit command |
 | `/usr/bin/hollow-launch` | 0755 | Public missing-application resolver |
-| `/usr/bin/hollow-hueman` | 0755 | Public stable Hueman command |
+| `/usr/bin/hollow-hueman` | 0755 | Public desktop adapter to the independent Core/Hueman seam |
 | `/usr/bin/hollow-shell` | 0755 | Stable desktop actions and shell diagnostics |
 | `/usr/lib/hollow-grove/bin/*` | 0755 | Private compositor and application helpers listed below |
 | `/usr/lib/systemd/user/hollow-niri.service` | 0644 | Resident bounded command broker for low-latency Niri movement |
@@ -37,17 +37,17 @@ is not treated as proof that it is in an official Arch repository.
 The four Markdown reports at the package-tree root are review and packaging
 records installed under `/usr/share/doc/hollow-grove-general/`.
 
-## Reproducible source boundary
+## Source boundary
 
-The PKGBUILD pins one pushed Hollow Grove commit and the SHA-256 digest of its
-GitHub source archive. Build and package functions consume that extracted
-archive rather than the mutable source checkout. `Cargo.lock` fixes the Rust
-dependency graph, while `check()` runs both the native `hollow-niri` tests and
-the complete keyboard/Niri/Waybar package verifier before packaging.
+The developer PKGBUILD consumes the clean checked-out transfer checkpoint and
+uses its locked dependency graph. This removes the former stale-commit pin and
+ensures a local migration package matches the portable release. The portable
+archive records the exact Git commit, toolchains, and per-file checksums.
 
-The remaining reproducibility gate is a successful Arch clean-chroot build
-against a recorded repository snapshot, followed by package linting and an
-independent rebuild comparison.
+Before repository publication, replace the local source boundary with the
+signed final tag archive and its SHA-256 digest. The remaining distribution
+gate is a successful Arch clean-chroot build against a recorded repository
+snapshot, package linting, and an independent rebuild comparison.
 
 `generate-keyboard-grove-map.py` and `verify-keyboard-grove.sh` are source-tree
 release tools rather than installed commands. The generator renders the
@@ -100,11 +100,12 @@ package lint reports them as potentially unused.
 | Package | Status | Contents |
 | --- | --- | --- |
 | `hollow-grove-general` | This tree | Niri defaults, launchers, helpers, reports |
-| `hollow-grove-hueman` | Required follow-up | Install-ready Hueman launcher/assets using XDG state and no checkout |
+| `hollow-grove-core` | Separate tree | Authoritative service, durable-state owner, integration command |
+| `hueman` | Separate tree | Godot presentation client and immutable visual assets only |
 | `hollow-grove-river-scope-addon` | Optional, not yet defined | Nested River development helpers if that workflow is retained |
 
-`hollow-hueman` is safe to ship before the application package: it explains
-that Hueman is unavailable instead of assuming a source checkout.
+`hollow-hueman` is safe to ship before the two application packages: it explains
+that Core or Hueman is unavailable instead of assuming a source checkout.
 
 ## Reasonable general desktop applications
 

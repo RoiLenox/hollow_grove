@@ -13,6 +13,8 @@ signal protocol_error(message: String)
 const PROTOCOL_VERSION := 1
 const DEFAULT_HOST := "127.0.0.1"
 const DEFAULT_PORT := 47819
+const HOST_ENVIRONMENT_VARIABLE := "HOLLOW_GROVE_HOST"
+const PORT_ENVIRONMENT_VARIABLE := "HOLLOW_GROVE_PORT"
 const MAX_RESPONSE_BYTES := 64 * 1024
 const MAX_PENDING_REQUESTS := 64
 
@@ -30,7 +32,22 @@ func _init(session_id: String) -> void:
 func connect_to_runtime(host := DEFAULT_HOST, port := DEFAULT_PORT) -> Error:
 	if host not in ["127.0.0.1", "::1", "localhost"]:
 		return ERR_INVALID_PARAMETER
+	if port < 1 or port > 65535:
+		return ERR_INVALID_PARAMETER
 	return _peer.connect_to_host(host, port)
+
+
+func connect_to_configured_runtime() -> Error:
+	var host := OS.get_environment(HOST_ENVIRONMENT_VARIABLE).strip_edges()
+	if host == "":
+		host = DEFAULT_HOST
+	var port := DEFAULT_PORT
+	var configured_port := OS.get_environment(PORT_ENVIRONMENT_VARIABLE).strip_edges()
+	if configured_port != "":
+		if not configured_port.is_valid_int():
+			return ERR_INVALID_PARAMETER
+		port = configured_port.to_int()
+	return connect_to_runtime(host, port)
 
 
 func disconnect_from_runtime() -> void:

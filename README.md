@@ -76,7 +76,10 @@ hollow-grove-update prepare
 
 Generated output belongs under `artifacts/` or `dist/`; see
 [Artifact Ownership](docs/ARTIFACT_OWNERSHIP.md) before adding a new output.
-For a recoverable source and Hueman migration to an older laptop checkout, use
+Hollow Grove Core and the Hueman presentation client are independently shipped
+and joined through the versioned
+[Hollow Grove / Hueman Seam](docs/HOLLOW_GROVE_HUEMAN_SEAM_V1.md). For a
+recoverable source, state, Core, Hueman, and desktop-profile migration, use
 the [Laptop Migration Plan](docs/LAPTOP_MIGRATION.md) after the RC tag exists.
 The same `hollow-grove-update` command then provides guarded, explicitly
 directed updates from either device to the other.

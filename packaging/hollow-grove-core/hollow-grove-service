@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+command_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+service_bin="$command_root/lib/hollow-grove/core/hollow_grove_game_service"
+
+if [[ ! -x "$service_bin" ]]; then
+    printf 'missing Hollow Grove authoritative service: %s\n' "$service_bin" >&2
+    exit 1
+fi
+
+if (( $# > 0 )); then
+    exec "$service_bin" "$@"
+fi
+
+data_root="${XDG_DATA_HOME:-$HOME/.local/share}/hollow-grove"
+save_root="$data_root/gameplay-saves"
+world_root="$data_root/world"
+mkdir -p -- "$save_root" "$world_root"
+chmod 700 -- "$save_root"
+
+exec "$service_bin" \
+    --listen "${HOLLOW_GROVE_LISTEN:-127.0.0.1:47819}" \
+    --session "${HOLLOW_GROVE_SESSION:-session.hollow-grove.local}" \
+    --save-root "$save_root" \
+    --world-root "$world_root"

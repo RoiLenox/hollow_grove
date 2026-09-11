@@ -6,10 +6,9 @@ if (( $# > 0 )); then
     shift
 fi
 
-config_root=${XDG_CONFIG_HOME:-"$HOME/.config"}
 data_root=${XDG_DATA_HOME:-"$HOME/.local/share"}
 state_root=${XDG_STATE_HOME:-"$HOME/.local/state"}
-hueman_state="$state_root/hollow-grove"
+hueman_state="$state_root/hueman"
 pair_state="$hueman_state/hueman_pair_state.json"
 preview_state="$hueman_state/hueman_pair_preview_state.json"
 preview_image="$hueman_state/hueman_pair_preview.png"
@@ -21,7 +20,7 @@ chmod 700 -- "$hueman_state"
 notify_missing() {
     /usr/lib/hollow-grove/bin/notify \
         "Hueman unavailable" \
-        "Install the Hollow Grove Hueman application package; no home-directory checkout is used." \
+        "Install Hollow Grove Core and the independent Hueman client; no checkout is used." \
         normal
 }
 
@@ -46,21 +45,8 @@ write_default_pair() {
 
 case "$action" in
     launch)
-        if [[ -x /usr/lib/hollow-grove/hueman/launch ]]; then
-            exec /usr/lib/hollow-grove/hueman/launch "$@"
-        fi
-        if [[ -f /usr/share/hollow-grove/hueman/project.godot ]]; then
-            if ! command -v godot >/dev/null 2>&1; then
-                /usr/lib/hollow-grove/bin/notify \
-                    "Hueman unavailable" \
-                    "The installed Hueman project requires Godot." \
-                    normal
-                exit 127
-            fi
-            export HOLLOW_GROVE_CONFIG_HOME="$config_root/hollow-grove"
-            export HOLLOW_GROVE_DATA_HOME="$data_root/hollow-grove"
-            export HOLLOW_GROVE_STATE_HOME="$hueman_state"
-            exec godot --path /usr/share/hollow-grove/hueman "$@"
+        if command -v hollow-grove-with-hueman >/dev/null 2>&1; then
+            exec hollow-grove-with-hueman "$@"
         fi
         notify_missing
         exit 127
@@ -142,5 +128,5 @@ case "$action" in
 esac
 
 # The registry path is intentionally user-owned. It is reserved here so a
-# separately packaged Hueman implementation can consume the same XDG contract.
+# the separately packaged Hueman implementation can consume the same seam.
 : "$application_registry"

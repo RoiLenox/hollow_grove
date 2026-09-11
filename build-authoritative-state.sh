@@ -85,6 +85,9 @@ copy_filtered_state \
     "$HOME/.local/state/hollow-grove" \
     "$STATE_ROOT/payload/home/.local/state/hollow-grove"
 copy_filtered_state \
+    "$HOME/.local/state/hueman" \
+    "$STATE_ROOT/payload/home/.local/state/hueman"
+copy_filtered_state \
     "$SCRIPT_DIR/artifacts/gameplay-saves" \
     "$STATE_ROOT/payload/project-state/artifacts/gameplay-saves"
 

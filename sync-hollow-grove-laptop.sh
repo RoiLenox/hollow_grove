@@ -76,7 +76,8 @@ if [[ -n "$(git -C "$SCRIPT_DIR" status --porcelain=v1 --untracked-files=normal)
     printf 'source worktree is not clean; checkpoint the complete transfer state first\n' >&2
     exit 2
 fi
-if [[ ! -f "$SCRIPT_DIR/dist/hollow-grove-hueman-$VERSION.tar.gz" \
+if [[ ! -f "$SCRIPT_DIR/dist/hollow-grove-core-$VERSION.tar.gz" \
+    || ! -f "$SCRIPT_DIR/dist/hueman-$VERSION.tar.gz" \
     || ! -f "$SCRIPT_DIR/dist/hollow-grove-general-$VERSION.tar.gz" \
     || ! -f "$SCRIPT_DIR/dist/SHA256SUMS" \
     || ! -f "$SCRIPT_DIR/dist/hollow-grove-authoritative-state-$VERSION.tar.gz" \
@@ -106,7 +107,8 @@ cleanup() {
 trap cleanup EXIT INT TERM
 
 git -C "$SCRIPT_DIR" bundle create "$TRANSFER_ROOT/hollow-grove.bundle" --all
-cp "$SCRIPT_DIR/dist/hollow-grove-hueman-$VERSION.tar.gz" \
+cp "$SCRIPT_DIR/dist/hollow-grove-core-$VERSION.tar.gz" \
+    "$SCRIPT_DIR/dist/hueman-$VERSION.tar.gz" \
     "$SCRIPT_DIR/dist/hollow-grove-general-$VERSION.tar.gz" \
     "$SCRIPT_DIR/dist/SHA256SUMS" \
     "$SCRIPT_DIR/dist/hollow-grove-authoritative-state-$VERSION.tar.gz" \
@@ -141,9 +143,16 @@ backup_path="$repo_parent/${repo_name}.pre-update-$stamp"
 record_root="$repo_parent/hollow-grove-migration-records/$stamp"
 state_stage="$record_root/workstation-state"
 state_name="hollow-grove-authoritative-state-$version"
-install_parent="${XDG_DATA_HOME:-$HOME/.local/share}/hollow-grove/releases"
-install_path="$install_parent/hueman-$version-$release_commit"
-current_link="${XDG_DATA_HOME:-$HOME/.local/share}/hollow-grove/current-hueman"
+data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
+state_home="${XDG_STATE_HOME:-$HOME/.local/state}"
+core_install_parent="$data_home/hollow-grove/releases"
+core_install_path="$core_install_parent/core-$version-$release_commit"
+core_current_link="$data_home/hollow-grove/current-core"
+hueman_install_parent="$data_home/hueman/releases"
+hueman_install_path="$hueman_install_parent/hueman-$version-$release_commit"
+hueman_current_link="$data_home/hueman/current"
+general_stage="$record_root/general-release"
+release_payloads="$record_root/release-payloads"
 
 cleanup_incoming() {
     if [[ -d "$incoming" ]]; then
@@ -151,6 +160,46 @@ cleanup_incoming() {
     fi
 }
 trap cleanup_incoming EXIT INT TERM
+
+runtime_lock_is_active() {
+    local lock_path="$1"
+    local owner=""
+    local pid
+    local expected_start
+    local stat_line
+    local after_command
+    local actual_start
+
+    IFS= read -r owner <"$lock_path" || [[ -n "$owner" ]] || return 0
+    if [[ ! "$owner" =~ \.runtime-lease\.([0-9]+)\.([0-9]+)\.[0-9]+\.claim$ ]]; then
+        return 0
+    fi
+    pid="${BASH_REMATCH[1]}"
+    expected_start="${BASH_REMATCH[2]}"
+    if [[ "$expected_start" == "0" || ! -r "/proc/$pid/stat" ]]; then
+        [[ "$expected_start" == "0" ]]
+        return
+    fi
+    stat_line="$(<"/proc/$pid/stat")"
+    after_command="${stat_line##*) }"
+    actual_start="$(awk '{print $20}' <<<"$after_command")"
+    [[ -n "$actual_start" && "$actual_start" == "$expected_start" ]]
+}
+
+assert_no_active_runtime() {
+    local state_path="$1"
+    local label="$2"
+    local lock_path
+
+    [[ -d "$state_path" ]] || return 0
+    while IFS= read -r -d '' lock_path; do
+        if runtime_lock_is_active "$lock_path"; then
+            printf '%s\n' \
+                "active or unverifiable Hollow Grove runtime lease blocks $label activation: $lock_path" >&2
+            exit 1
+        fi
+    done < <(find "$state_path" -type f -name '*.runtime.lock' -print0)
+}
 
 old_repo_exists="no"
 if [[ -e "$repo_path" ]]; then
@@ -218,23 +267,66 @@ tar -xzf "$incoming/$state_name.tar.gz" -C "$state_stage"
     cd "$state_stage/$state_name"
     sha256sum --check PAYLOAD-SHA256SUMS
 )
-mkdir -p "$install_parent" "$(dirname -- "$current_link")" "$HOME/.local/bin"
-if [[ ! -e "$install_path" ]]; then
-    mkdir -p "$install_path"
-    tar -xzf "$incoming/hollow-grove-hueman-$version.tar.gz" \
-        --strip-components=1 -C "$install_path"
-elif [[ ! -d "$install_path" ]]; then
-    printf 'Hueman release path exists and is not a directory: %s\n' "$install_path" >&2
-    exit 1
-fi
-(
-    cd "$install_path"
-    sha256sum --check SHA256SUMS
-)
-if ! grep -Fqx "git_commit=$release_commit" "$install_path/BUILD-MANIFEST.txt"; then
-    printf 'Hueman release was not built from the transferred source commit\n' >&2
-    exit 1
-fi
+mkdir -p "$release_payloads" "$staged_path/dist"
+cp -a "$incoming/." "$release_payloads/"
+cp "$incoming/hollow-grove-core-$version.tar.gz" \
+    "$incoming/hueman-$version.tar.gz" \
+    "$incoming/hollow-grove-general-$version.tar.gz" \
+    "$incoming/SHA256SUMS" \
+    "$incoming/$state_name.tar.gz" \
+    "$incoming/STATE-SHA256SUMS" \
+    "$staged_path/dist/"
+
+verify_release_dir() {
+    local release_path="$1"
+    local label="$2"
+    (
+        cd "$release_path"
+        sha256sum --check SHA256SUMS
+    )
+    if ! grep -Fqx "git_commit=$release_commit" "$release_path/BUILD-MANIFEST.txt"; then
+        printf '%s release was not built from the transferred source commit\n' "$label" >&2
+        exit 1
+    fi
+}
+
+install_release() {
+    local archive_path="$1"
+    local install_path="$2"
+    local label="$3"
+    local next_path="$install_path.next-$stamp"
+
+    mkdir -p "$(dirname -- "$install_path")"
+    if [[ ! -e "$install_path" ]]; then
+        if [[ -e "$next_path" ]]; then
+            printf 'release staging path already exists: %s\n' "$next_path" >&2
+            exit 1
+        fi
+        mkdir -p "$next_path"
+        tar -xzf "$archive_path" --strip-components=1 -C "$next_path"
+        verify_release_dir "$next_path" "$label"
+        mv "$next_path" "$install_path"
+    elif [[ ! -d "$install_path" ]]; then
+        printf '%s release path exists and is not a directory: %s\n' \
+            "$label" "$install_path" >&2
+        exit 1
+    fi
+    verify_release_dir "$install_path" "$label"
+}
+
+install_release \
+    "$incoming/hollow-grove-core-$version.tar.gz" \
+    "$core_install_path" \
+    "Hollow Grove Core"
+install_release \
+    "$incoming/hueman-$version.tar.gz" \
+    "$hueman_install_path" \
+    "Hueman"
+
+mkdir -p "$general_stage"
+tar -xzf "$incoming/hollow-grove-general-$version.tar.gz" -C "$general_stage"
+verify_release_dir "$general_stage/hollow-grove-general-$version" \
+    "Hollow Grove General"
 
 {
     printf 'release_ref=%s\n' "$release_ref"
@@ -244,11 +336,23 @@ fi
     printf 'staged_checkout=%s\n' "$staged_path"
     printf 'old_checkout=%s\n' "$repo_path"
     printf 'backup_record=%s\n' "$record_root"
-    printf 'hueman_install=%s\n' "$install_path"
+    printf 'core_install=%s\n' "$core_install_path"
+    printf 'hueman_install=%s\n' "$hueman_install_path"
+    printf 'general_release=%s\n' "$general_stage/hollow-grove-general-$version"
+    printf 'retained_release_payloads=%s\n' "$release_payloads"
     printf 'staged_workstation_state=%s\n' "$state_stage/$state_name"
 } >"$record_root/migration-result.txt"
 
 if [[ "$activate" == "yes" ]]; then
+    assert_no_active_runtime \
+        "$data_home/hollow-grove/gameplay-saves" \
+        "durable gameplay state"
+    if [[ "$old_repo_exists" == "yes" ]]; then
+        assert_no_active_runtime \
+            "$repo_path/artifacts/gameplay-saves" \
+            "checkout gameplay state"
+    fi
+
     if [[ "$old_repo_exists" == "yes" ]]; then
         mv "$repo_path" "$backup_path"
         if ! mv "$staged_path" "$repo_path"; then
@@ -303,18 +407,49 @@ if [[ "$activate" == "yes" ]]; then
 
     activate_state_dir \
         "$state_stage/$state_name/payload/home/.local/share/hollow-grove/gameplay-saves" \
-        "${XDG_DATA_HOME:-$HOME/.local/share}/hollow-grove/gameplay-saves" \
+        "$data_home/hollow-grove/gameplay-saves" \
         "user_gameplay_saves"
+    activate_state_dir \
+        "$state_stage/$state_name/payload/home/.local/share/hollow-grove/world" \
+        "$data_home/hollow-grove/world" \
+        "user_world"
+    activate_state_dir \
+        "$state_stage/$state_name/payload/home/.local/state/hollow-grove" \
+        "$state_home/hollow-grove" \
+        "user_runtime_state"
+    activate_state_dir \
+        "$state_stage/$state_name/payload/home/.local/state/hueman" \
+        "$state_home/hueman" \
+        "hueman_presentation_state"
     activate_state_dir \
         "$state_stage/$state_name/payload/project-state/artifacts/gameplay-saves" \
         "$repo_path/artifacts/gameplay-saves" \
         "project_gameplay_saves"
 
-    next_link="$current_link.next-$stamp"
-    ln -s "$install_path" "$next_link"
-    mv -Tf "$next_link" "$current_link"
-    ln -sfn "$current_link/bin/hollow-grove-hueman" \
+    activate_current_link() {
+        local install_path="$1"
+        local current_link="$2"
+        local next_link="$current_link.next-$stamp"
+        mkdir -p "$(dirname -- "$current_link")"
+        if [[ -e "$next_link" || -L "$next_link" ]]; then
+            printf 'release link staging path already exists: %s\n' "$next_link" >&2
+            exit 1
+        fi
+        ln -s "$install_path" "$next_link"
+        mv -Tf "$next_link" "$current_link"
+    }
+
+    mkdir -p "$HOME/.local/bin"
+    activate_current_link "$core_install_path" "$core_current_link"
+    activate_current_link "$hueman_install_path" "$hueman_current_link"
+    ln -sfn "$core_current_link/bin/hollow-grove-service" \
+        "$HOME/.local/bin/hollow-grove-service"
+    ln -sfn "$core_current_link/bin/hollow-grove-with-hueman" \
+        "$HOME/.local/bin/hollow-grove-with-hueman"
+    ln -sfn "$core_current_link/bin/hollow-grove-hueman" \
         "$HOME/.local/bin/hollow-grove-hueman"
+    ln -sfn "$hueman_current_link/bin/hueman" \
+        "$HOME/.local/bin/hueman"
     ln -sfn "$repo_path/hollow-grove-update.sh" \
         "$HOME/.local/bin/hollow-grove-update"
     {
@@ -330,11 +465,17 @@ if [[ "$activate" == "yes" ]]; then
 else
     printf 'staged and verified %s at %s; active checkout is unchanged\n' \
         "$release_ref" "$staged_path"
-    printf 'Hueman release staged at %s; current link is unchanged\n' "$install_path"
+    printf 'Hollow Grove Core staged at %s; current link is unchanged\n' \
+        "$core_install_path"
+    printf 'Hueman staged at %s; current link is unchanged\n' \
+        "$hueman_install_path"
 fi
 if [[ "$activate" == "yes" ]]; then
-    printf 'Hueman installed at %s and linked through %s\n' "$install_path" "$current_link"
-    printf 'Durable gameplay saves were activated with recoverable backups\n'
+    printf 'Hollow Grove Core installed at %s and linked through %s\n' \
+        "$core_install_path" "$core_current_link"
+    printf 'Hueman installed at %s and linked through %s\n' \
+        "$hueman_install_path" "$hueman_current_link"
+    printf 'Durable gameplay saves, world, and runtime state were activated with recoverable backups\n'
 fi
 printf 'Workstation state staged for laptop adaptation at %s\n' "$state_stage/$state_name"
 printf 'migration record: %s\n' "$record_root"

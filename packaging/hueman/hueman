@@ -3,4 +3,4 @@
 set -euo pipefail
 
 command_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
-exec "$command_root/lib/hollow-grove/hueman/launch" "$@"
+exec "$command_root/lib/hueman/launch" "$@"

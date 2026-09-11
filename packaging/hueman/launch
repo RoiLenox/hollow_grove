@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+launcher_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+install_prefix="$(cd -- "$launcher_dir/../.." && pwd)"
+game_pack="$install_prefix/share/hueman/hueman.pck"
+godot_bin="${GODOT_BIN:-}"
+
+if [[ -z "$godot_bin" ]]; then
+    if command -v godot4 >/dev/null 2>&1; then
+        godot_bin="$(command -v godot4)"
+    elif command -v godot >/dev/null 2>&1; then
+        godot_bin="$(command -v godot)"
+    else
+        printf 'Hueman requires Godot 4.7 or newer.\n' >&2
+        exit 127
+    fi
+fi
+if [[ ! -f "$game_pack" ]]; then
+    printf 'missing Hueman game pack: %s\n' "$game_pack" >&2
+    exit 1
+fi
+
+exec "$godot_bin" --main-pack "$game_pack" "$@"

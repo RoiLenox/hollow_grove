@@ -1,8 +1,9 @@
 # Laptop Migration and Installation Plan
 
-The laptop upgrade is intentionally side-by-side and recoverable. It transfers
-the complete authoritative source and selected live Hollow Grove state, while
-never copying build caches, credentials, SSH material, or stale runtime locks.
+The laptop upgrade is side-by-side and recoverable. It transfers the complete
+authoritative source, three independent release payloads, and selected live
+Hollow Grove state. It never copies credentials, SSH material, build caches, or
+stale runtime locks.
 
 ## Required facts
 
@@ -10,35 +11,57 @@ Before connecting, identify:
 
 - the SSH destination in `user@host` form;
 - the laptop's absolute Hollow Grove checkout path;
-- whether the laptop has enough free space for one old checkout, one source-only
-  checkout, and a small Hueman release;
+- whether the laptop has enough free space for the old checkout, a source-only
+  checkout, the migration record, and the three small release archives;
 - whether Godot 4.7+ is installed if Hueman should launch there.
+
+## Product and package boundary
+
+The portable build produces three checksummed archives:
+
+- `hollow-grove-core-VERSION.tar.gz` contains the authoritative service,
+  persistent-state launch policy, and integration command. It contains no PCK.
+- `hueman-VERSION.tar.gz` contains the Godot presentation client and immutable
+  assets. It contains no gameplay service.
+- `hollow-grove-general-VERSION.tar.gz` contains the hardware-neutral Niri
+  profile and the native `hollow-niri` broker. It is retained for explicit
+  system-level adaptation rather than installed into `/usr` automatically.
+
+The boundary is specified by
+[`HOLLOW_GROVE_HUEMAN_SEAM_V1.md`](HOLLOW_GROVE_HUEMAN_SEAM_V1.md).
 
 ## Migration sequence
 
 1. Finish, verify, commit, and tag the exact local transfer checkpoint.
-2. Build the portable release with `./build-portable-release.sh`.
-3. Build the live-state payload with `./build-authoritative-state.sh`. It
-   includes the live Niri profile and keyboard standard, Hollow Grove HUD,
-   user services and helpers, and durable gameplay saves. It excludes
-   credentials, `target/`, package build caches, and runtime lock/claim files.
-4. Run a stage-only migration first. The script transfers a Git bundle, the
-   two checksummed release archives, and the checksummed state payload.
-5. The laptop writes a complete recovery record: old HEAD/status, binary working
-   and index patches, all Git refs, and an archive of every untracked file.
-6. It clones the current source beside the old checkout, checks out the exact
-   transferred commit, validates art, formatting, and the complete workspace
-   test suite, then verifies both release archives.
-7. Hueman is installed without root beneath
-   `$XDG_DATA_HOME/hollow-grove/releases`, with an atomic `current-hueman`
-   symlink and a command in `~/.local/bin`.
-8. The workstation state is extracted inside the migration record. Review and
-   adapt the Niri output, GPU, absolute-path, and package differences before
-   installing those files on the laptop; stage-only never overwrites laptop
-   configuration.
-9. Only a second run with `--activate` renames the old checkout to a timestamped
-   backup and puts the verified checkout at the original path. If the second
-   rename fails, the old checkout is restored immediately.
+2. Run `hollow-grove-update prepare`. It runs strict lint, the complete Rust
+   suite, keyboard-profile verification, Hueman transport/semantic smoke tests,
+   and the save/restart/load playable lifecycle before building releases.
+3. The state builder captures the live Niri profile and keyboard standard,
+   Hollow Grove HUD, user services and helpers, durable gameplay saves, world,
+   filtered Core runtime state, and Hueman presentation state. It excludes
+   credentials, `target/`, package
+   caches, and runtime lock/claim files.
+4. Run a stage-only migration first. The script transfers a Git bundle, all
+   three release archives, and the authoritative-state archive with checksums.
+5. The laptop writes a recovery record containing its old HEAD/status, binary
+   working/index patches, all Git refs, and every untracked file.
+6. It clones the source beside the old checkout, selects the exact commit,
+   validates art, and verifies outer checksums, inner payload checksums, and the
+   source-commit manifests for every release and the state payload. The laptop
+   does not need Rust or network access for this validation.
+7. Hollow Grove Core and Hueman are installed independently without root. Core
+   lives beneath `$XDG_DATA_HOME/hollow-grove/releases`; Hueman lives beneath
+   `$XDG_DATA_HOME/hueman/releases`.
+8. The workstation state is extracted inside the migration record. Stage-only
+   does not overwrite configuration, checkout, active releases, or live state.
+   Review laptop-specific output, GPU, absolute-path, and package differences.
+9. All received archives and the Git bundle remain in the migration record.
+   Release/state archives are also copied to the staged checkout's ignored
+   `dist/`, allowing that device to become the next update source.
+10. Only a second run with `--activate` switches the checkout, Core and Hueman
+    links, saves, world, and filtered runtime state. An active or unverifiable
+    gameplay-runtime lease blocks state activation even if source-divergence
+    replacement was requested.
 
 Stage first:
 
@@ -60,30 +83,41 @@ After reviewing the printed migration record, activate:
   --activate
 ```
 
+## Installed commands
+
+Activation links these user commands:
+
+- `hollow-grove-service` runs Hollow Grove Core alone.
+- `hueman` runs the Hueman client alone and connects through the configured
+  loopback endpoint.
+- `hollow-grove-with-hueman` starts both independent processes as one seamless
+  experience and owns service cleanup.
+- `hollow-grove-hueman` is a compatibility alias for the integration command,
+  not a combined package.
+- `hollow-grove-update` runs the symmetric device updater.
+
 ## Rollback
 
-The activation output names the preserved checkout and recovery-record
-directory. To roll source back, stop any Hollow Grove process, rename the new
-checkout aside, and rename the timestamped `pre-update` directory back
-to the original path. To roll Hueman back, point `current-hueman` at the prior
-release directory. No backup is removed automatically.
+The activation output names every preserved checkout/state path and the
+recovery record. Stop Hollow Grove before rollback. Restore the timestamped
+`pre-update` checkout and state directories, and point `current-core` plus the
+Hueman `current` link at their prior independent releases. Nothing is removed
+automatically.
 
-The state payload is evidence and migration input, not a blind dotfile
-installer. In particular, the workstation monitor EDID and Radeon environment
-must not replace laptop-specific output and graphics settings.
+The configuration payload remains evidence and migration input, not a blind
+dotfile installer. In particular, the workstation monitor EDID and Radeon
+environment must not replace laptop-specific output and graphics settings.
 
-System-wide General Edition installation is deliberately separate because it
-modifies `/etc` and `/usr` and therefore needs explicit administrator approval.
-On an Arch-family laptop, transfer the validated `.pkg.tar.zst` files and review
-`pacman -U` before installing them; on another distribution, retain the
-portable user-local Hueman install and adapt the General Edition profile through
-that distribution's package tooling.
+System-wide General Edition installation remains separate because it modifies
+`/etc` and `/usr` and needs explicit administrator approval. On an Arch-family
+laptop, build/review the package before `pacman -U`; on another distribution,
+retain the portable user-local Core and Hueman installs and adapt the General
+profile through that distribution's package tooling.
 
 ## Ongoing two-device updates
 
-Both devices use the same `hollow-grove-update` command. Configure each device
-with the other as its peer; configuration contains only an SSH destination and
-repository path, never credentials:
+Both devices use the same command. Configuration contains only an SSH
+destination and repository path, never credentials:
 
 ```bash
 hollow-grove-update configure \
@@ -91,7 +125,7 @@ hollow-grove-update configure \
   --remote-repo /absolute/path/to/hollow_grove
 ```
 
-The safe update sequence is:
+The safe sequence is:
 
 ```bash
 hollow-grove-update status
@@ -100,23 +134,15 @@ hollow-grove-update stage
 hollow-grove-update activate
 ```
 
-Run it on the device whose clean checkpoint and durable state are intended to
-be authoritative for that update. `stage` never switches the peer checkout or
-active Hueman symlink. `activate` switches the verified source, Hueman release,
-and durable gameplay saves, preserving timestamped source and save backups. It
-refuses a dirty or divergent peer by default; `--replace-diverged` is an
-explicit recovery operation after reviewing the preserved peer bundle,
-patches, untracked archive, and checkout.
+Run it on the device whose clean checkpoint and durable state should be
+authoritative. `stage` never switches the peer. `activate` refuses a dirty or
+divergent peer by default. `--replace-diverged` is an explicit source-recovery
+operation after reviewing the preserved bundle, patches, untracked archive,
+and checkout; it never overrides the live-runtime guard.
 
-`prepare` runs the complete tests and strict lint on the sending device. The
-peer accepts the already-built portable release without needing Rust or network
-access, while still checking the exact source commit, art assets, archive and
-payload checksums, and build manifest before it can activate.
-
-For save/configuration-only changes on an otherwise unchanged commit, use
-`hollow-grove-update prepare-state` before staging. Mutable saves are not
-automatically merged in both directions: choosing the sending device avoids a
-silent last-writer-wins loss. Desktop state is staged for hardware adaptation,
-so one machine's display EDID or GPU settings never blindly replace the
-other's. Built release directories and the per-device peer configuration are
-also excluded; each peer rebuilds/releases locally and is configured once.
+For state-only changes at the same commit, use
+`hollow-grove-update prepare-state`. Mutable saves are not automatically merged
+in both directions: explicitly choosing the sending device prevents silent
+last-writer-wins loss. Desktop settings remain staged for hardware adaptation,
+while installed releases and per-device peer configuration remain outside the
+state archive.

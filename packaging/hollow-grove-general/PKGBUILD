@@ -1,7 +1,7 @@
 # Maintainer: Roy Lenox <159462203+RoyLenox@users.noreply.github.com>
 pkgname=hollow-grove-general
 pkgver=0.1.0
-pkgrel=9
+pkgrel=10
 pkgdesc='Hardware-neutral Hollow Grove General Edition Niri profile'
 arch=('x86_64' 'aarch64')
 url='https://github.com/RoiLenox/hollow_grove'
@@ -11,7 +11,8 @@ makedepends=('cargo')
 checkdepends=('python')
 options=('!debug')
 optdepends=(
-    'hollow-grove-hueman: Hueman gameplay client'
+    'hollow-grove-core: authoritative gameplay service and integration seam'
+    'hueman: independent Godot presentation client'
     'kitty: default terminal'
     'libnotify: keyboard discovery and fallback notifications'
     'mako: desktop notifications'
@@ -19,31 +20,11 @@ optdepends=(
     'swaylock: screen locking'
     'walker: interactive keyboard discovery menu'
 )
-_commit=41fa4b709c1372fd5dad5da1ffe9c9a3c5e109bc
-source=(
-    "$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
-    'PACKAGE_MANIFEST.md'
-    'OPTIONAL_APPLICATIONS.md'
-    'SANITIZATION_REPORT.md'
-    'ISO_READINESS.md'
-    'hollow-niri-rust-1.98.patch'
-)
-sha256sums=(
-    'f32a7378feb5fa5178a9983104e2726d65cff2bebc37ec3c89f11be8b62ed27c'
-    '41d014330820d2aaa9c14ad72709e4e5f5a62f3f1914f50528e0864efccec436'
-    '6f137c739653f130c0d9ed8355b2e8041cae2ebd45d54ad1e71aad2905596b0d'
-    '00025d81f17d4a52e19d598cf2167c22145ed4ed5df0c86d1ae9ba0aac9a4146'
-    'cee77b99617f8e578a3b66d8d3264234db5f27bfd2e441a92c3a4b436ad92527'
-    '72163d305776c4c17a76c947bd6ed36ce1b5b04666b324585e99d4b040f8a2b9'
-)
-
-prepare() {
-    local repository_root="$srcdir/hollow_grove-$_commit"
-    patch -d "$repository_root" -Np1 -i "$srcdir/hollow-niri-rust-1.98.patch"
-}
+source=()
+sha256sums=()
 
 build() {
-    local repository_root="$srcdir/hollow_grove-$_commit"
+    local repository_root="$startdir/../.."
     export CARGO_HOME="$srcdir/cargo-home"
     export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=/usr/src/debug/$pkgbase-$pkgver"
     cargo build \
@@ -55,7 +36,7 @@ build() {
 }
 
 check() {
-    local repository_root="$srcdir/hollow_grove-$_commit"
+    local repository_root="$startdir/../.."
     export CARGO_HOME="$srcdir/cargo-home"
     export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=/usr/src/debug/$pkgbase-$pkgver"
     cargo test \
@@ -67,19 +48,19 @@ check() {
 }
 
 package() {
-    local repository_root="$srcdir/hollow_grove-$_commit"
+    local repository_root="$startdir/../.."
     local package_root="$repository_root/packaging/hollow-grove-general"
     cp -r "$package_root/etc" "$pkgdir/"
     cp -r "$package_root/usr" "$pkgdir/"
     install -Dm755 "$srcdir/target/release/hollow-niri" \
         "$pkgdir/usr/lib/hollow-grove/bin/hollow-niri"
-    install -Dm644 "$srcdir/PACKAGE_MANIFEST.md" \
+    install -Dm644 "$startdir/PACKAGE_MANIFEST.md" \
         "$pkgdir/usr/share/doc/$pkgname/PACKAGE_MANIFEST.md"
-    install -Dm644 "$srcdir/OPTIONAL_APPLICATIONS.md" \
+    install -Dm644 "$startdir/OPTIONAL_APPLICATIONS.md" \
         "$pkgdir/usr/share/doc/$pkgname/OPTIONAL_APPLICATIONS.md"
-    install -Dm644 "$srcdir/SANITIZATION_REPORT.md" \
+    install -Dm644 "$startdir/SANITIZATION_REPORT.md" \
         "$pkgdir/usr/share/doc/$pkgname/SANITIZATION_REPORT.md"
-    install -Dm644 "$srcdir/ISO_READINESS.md" \
+    install -Dm644 "$startdir/ISO_READINESS.md" \
         "$pkgdir/usr/share/doc/$pkgname/ISO_READINESS.md"
     install -Dm644 "$repository_root/LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

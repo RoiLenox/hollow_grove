@@ -216,7 +216,7 @@ func _process(delta: float) -> void:
 		if retry_elapsed >= RETRY_INTERVAL_SECONDS:
 			retry_elapsed = 0.0
 			runtime_client.disconnect_from_runtime()
-			var connection_error := runtime_client.connect_to_runtime()
+			var connection_error := runtime_client.connect_to_configured_runtime()
 			if connection_error != OK:
 				status_message = "RUNTIME OFFLINE"
 

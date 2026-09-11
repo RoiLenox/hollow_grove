@@ -108,10 +108,24 @@ show_local_status() {
     fi
     version="$(sed -n 's/^version = "\([^"]*\)"/\1/p' "$REPO_ROOT/Cargo.toml" | head -n1)"
     head_commit="$(git -C "$REPO_ROOT" rev-parse HEAD)"
+    core_commit="$(
+        {
+            tar -xOf "$REPO_ROOT/dist/hollow-grove-core-$version.tar.gz" \
+                "hollow-grove-core-$version/BUILD-MANIFEST.txt" 2>/dev/null \
+                | sed -n 's/^git_commit=//p'
+        } || true
+    )"
     hueman_commit="$(
         {
-            tar -xOf "$REPO_ROOT/dist/hollow-grove-hueman-$version.tar.gz" \
-                "hollow-grove-hueman-$version/BUILD-MANIFEST.txt" 2>/dev/null \
+            tar -xOf "$REPO_ROOT/dist/hueman-$version.tar.gz" \
+                "hueman-$version/BUILD-MANIFEST.txt" 2>/dev/null \
+                | sed -n 's/^git_commit=//p'
+        } || true
+    )"
+    general_commit="$(
+        {
+            tar -xOf "$REPO_ROOT/dist/hollow-grove-general-$version.tar.gz" \
+                "hollow-grove-general-$version/BUILD-MANIFEST.txt" 2>/dev/null \
                 | sed -n 's/^git_commit=//p'
         } || true
     )"
@@ -122,7 +136,9 @@ show_local_status() {
                 | sed -n 's/^git_commit=//p'
         } || true
     )"
-    if [[ "$worktree_clean" == "yes" && "$hueman_commit" == "$head_commit" \
+    if [[ "$worktree_clean" == "yes" && "$core_commit" == "$head_commit" \
+        && "$hueman_commit" == "$head_commit" \
+        && "$general_commit" == "$head_commit" \
         && "$state_commit" == "$head_commit" ]] \
         && (cd "$REPO_ROOT/dist" 2>/dev/null \
             && sha256sum --check --status SHA256SUMS \
@@ -174,6 +190,11 @@ prepare_all() {
     cargo clippy --workspace --all-targets --all-features --locked --offline -- -D warnings
     cargo test --workspace --locked --offline
     packaging/hollow-grove-general/verify-keyboard-grove.sh
+    godot --headless --path hueman_godot \
+        --script res://tests/runtime_client_smoke.gd
+    godot --headless --path hueman_godot \
+        --script res://tests/retro_overworld_semantics_smoke.gd
+    ./verify-playable-lifecycle.sh
     ./build-portable-release.sh
     ./build-authoritative-state.sh
     printf 'update payloads prepared for %s\n' "$(git rev-parse HEAD)"

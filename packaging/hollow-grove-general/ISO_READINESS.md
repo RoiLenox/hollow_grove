@@ -80,10 +80,9 @@ upgrade-preservation checklist before changing a daily-use profile.
 2. Decide which reasonable desktop applications belong in the base ISO and
    which remain discoverable optional bindings. Resolve each selected package
    against the exact official Arch snapshot or a signed project repository.
-3. Create an install-ready `hollow-grove-hueman` package. Its Godot assets must
-   be immutable under `/usr/share`, mutable artifacts must use XDG state/data,
-   and its viewport must follow the active output rather than a fixed
-   workstation resolution.
+3. Build and lint the independent `hollow-grove-core` and `hueman` recipes in
+   the clean chroot. Confirm their versioned loopback seam, immutable assets,
+   XDG-owned state, and active-output viewport behavior.
 4. Decide whether the nested River workflow merits a separately maintained
    `hollow-grove-river-scope-addon`; do not place the personal development
    stack in the base image.

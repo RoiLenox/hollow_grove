@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+command_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+service_bin="$command_root/lib/hollow-grove/core/hollow_grove_game_service"
+hueman_bin="${HUEMAN_BIN:-}"
+service_pid=""
+runtime_stage=""
+
+if [[ ! -x "$service_bin" ]]; then
+    printf 'missing Hollow Grove authoritative service: %s\n' "$service_bin" >&2
+    exit 1
+fi
+if [[ -z "$hueman_bin" ]] && command -v hueman >/dev/null 2>&1; then
+    hueman_bin="$(command -v hueman)"
+fi
+if [[ -z "$hueman_bin" ]]; then
+    installed_hueman="${XDG_DATA_HOME:-$HOME/.local/share}/hueman/current/bin/hueman"
+    if [[ -x "$installed_hueman" ]]; then
+        hueman_bin="$installed_hueman"
+    fi
+fi
+if [[ -z "$hueman_bin" || ! -x "$hueman_bin" ]]; then
+    printf '%s\n' \
+        'Hueman is not installed. Install the independent Hueman client or set HUEMAN_BIN.' >&2
+    exit 127
+fi
+
+host="${HOLLOW_GROVE_HOST:-127.0.0.1}"
+port="${HOLLOW_GROVE_PORT:-47819}"
+if [[ ! "$port" =~ ^[0-9]+$ ]] || (( port < 1 || port > 65535 )); then
+    printf 'invalid Hollow Grove port: %s\n' "$port" >&2
+    exit 2
+fi
+case "$host" in
+    127.0.0.1)
+        listen_address="127.0.0.1:$port"
+        ;;
+    localhost)
+        listen_address="127.0.0.1:$port"
+        ;;
+    ::1)
+        listen_address="[::1]:$port"
+        ;;
+    *)
+        printf 'Hollow Grove only permits a loopback Hueman connection: %s\n' "$host" >&2
+        exit 2
+        ;;
+esac
+
+state_root="${XDG_STATE_HOME:-$HOME/.local/state}/hollow-grove"
+data_root="${XDG_DATA_HOME:-$HOME/.local/share}/hollow-grove"
+save_root="$data_root/gameplay-saves"
+world_root="$data_root/world"
+runtime_root="${XDG_RUNTIME_DIR:-${TMPDIR:-/tmp}}"
+mkdir -p -- "$state_root" "$save_root" "$world_root"
+chmod 700 -- "$state_root" "$save_root"
+runtime_stage="$(mktemp -d "$runtime_root/hollow-grove-hueman.XXXXXX")"
+service_log="$runtime_stage/service.log"
+
+cleanup() {
+    if [[ -n "$service_pid" ]]; then
+        kill "$service_pid" 2>/dev/null || true
+        wait "$service_pid" 2>/dev/null || true
+    fi
+    if [[ -n "$runtime_stage" && -d "$runtime_stage" ]]; then
+        rm -rf -- "$runtime_stage"
+    fi
+}
+trap cleanup EXIT INT TERM
+
+"$service_bin" \
+    --listen "$listen_address" \
+    --session "${HOLLOW_GROVE_SESSION:-session.hollow-grove.local}" \
+    --save-root "$save_root" \
+    --world-root "$world_root" \
+    >"$runtime_stage/service.stdout" 2>"$service_log" &
+service_pid="$!"
+
+ready="no"
+for ((attempt = 0; attempt < 100; attempt++)); do
+    if grep -Fq "listening on $listen_address" "$service_log"; then
+        ready="yes"
+        break
+    fi
+    if ! kill -0 "$service_pid" 2>/dev/null; then
+        break
+    fi
+    sleep 0.05
+done
+if [[ "$ready" != "yes" ]]; then
+    printf 'Hollow Grove service did not become ready.\n' >&2
+    sed -n '1,80p' "$service_log" >&2
+    exit 1
+fi
+
+export HOLLOW_GROVE_HOST="$host"
+export HOLLOW_GROVE_PORT="$port"
+export HOLLOW_GROVE_STATE_HOME="$state_root"
+export HOLLOW_GROVE_DATA_HOME="$data_root"
+"$hueman_bin" "$@"
