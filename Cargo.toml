@@ -28,11 +28,12 @@ serde = { version = "1.0.228", features = ["derive"] }
 serde_json = "1.0.149"
 bytemuck = { version = "1.25.2", features = ["derive"] }
 pollster = "1.0.1"
-wgpu = { version = "30.0.1", default-features = false, features = ["std", "wgsl", "vulkan", "gles"] }
-winit = { version = "0.30.13", default-features = false, features = ["rwh_06", "wayland", "wayland-dlopen"] }
+wgpu = { version = "30.0.1", default-features = false, features = ["std", "wgsl", "vulkan", "gles"], optional = true }
+winit = { version = "0.30.13", default-features = false, features = ["rwh_06", "wayland", "wayland-dlopen"], optional = true }
 [features]
 default = []
 dev-tools = []
+graphical-client = ["dep:wgpu", "dep:winit"]
 
 [[bin]]
 name = "hollow-grove"
@@ -73,6 +74,7 @@ path = "src/bin/hollow_grove_semantic.rs"
 [[bin]]
 name = "hollow-grove-client"
 path = "src/bin/hollow_grove_client.rs"
+required-features = ["graphical-client"]
 
 [[bin]]
 name = "hg-dev"
@@ -122,6 +124,7 @@ path = "tests/runtime_rampart_v1.rs"
 [[test]]
 name = "graphical_client"
 path = "tests/graphical_client.rs"
+required-features = ["graphical-client"]
 
 
 [profile.dev]

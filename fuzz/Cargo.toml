@@ -16,6 +16,7 @@ libfuzzer-sys = "0.4"
 
 [dependencies.hollow-grove]
 path = ".."
+default-features = false
 
 [[bin]]
 name = "decision_input"

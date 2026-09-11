@@ -188,7 +188,7 @@ prepare_all() {
     ./verify-art-assets.sh
     cargo fmt --all -- --check
     cargo clippy --workspace --all-targets --all-features --locked --offline -- -D warnings
-    cargo test --workspace --locked --offline
+    cargo test --workspace --all-features --locked --offline
     packaging/hollow-grove-general/verify-keyboard-grove.sh
     godot --headless --path hueman_godot \
         --script res://tests/runtime_client_smoke.gd

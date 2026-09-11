@@ -66,7 +66,7 @@ builds compile only the seven runtime/test-facing binaries; the 71 historical
 audits and generators remain available without inflating every edit cycle.
 
 ```text
-cargo test --workspace --offline
+cargo test --workspace --all-features --offline
 cargo clippy --workspace --all-targets --all-features --offline -- -D warnings
 cargo dev-tool visual_color_constitution
 ./verify-art-assets.sh

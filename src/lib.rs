@@ -16,6 +16,7 @@ pub mod aura_polarity;
 pub mod being_object_ontology;
 pub mod capability_taxonomy;
 pub mod civic_body;
+#[cfg(feature = "graphical-client")]
 pub mod client;
 pub mod composition;
 pub mod constitutional;

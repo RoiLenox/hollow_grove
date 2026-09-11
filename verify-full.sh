@@ -106,8 +106,8 @@ echo "differential cases: $DIFFERENTIAL_CASES"
 echo "hash cases: $HASH_CASES"
 
 cargo fmt --check
-cargo clippy --all-targets --all-features
-cargo test
+cargo clippy --workspace --all-targets --all-features --locked --offline
+cargo test --workspace --all-features --locked --offline
 cargo build
 cargo build --release
 SKIP_FMT=1 SKIP_TESTS=1 SKIP_BUILD=1 ./bench-local.sh | tee "$FULL_DIR/bench-full.log"

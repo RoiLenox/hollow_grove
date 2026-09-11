@@ -19,9 +19,9 @@ WORKTREE_STATUS="$(git status --short 2>/dev/null || true)"
 WORKTREE_FINGERPRINT="$(git diff --no-ext-diff --binary | sha256sum | awk '{print $1}')"
 
 cargo fmt --check
-cargo clippy --workspace --lib --bins --tests
-cargo test
-TEST_COUNT="$(cargo test -- --list | rg ': test$' | wc -l | tr -d ' ')"
+cargo clippy --workspace --lib --bins --tests --all-features --locked --offline
+cargo test --workspace --all-features --locked --offline
+TEST_COUNT="$(cargo test --workspace --all-features --locked --offline -- --list | rg ': test$' | wc -l | tr -d ' ')"
 cargo build
 cargo build --release
 SKIP_BUILD=1 ./verify-playable-lifecycle.sh | tee "$ARTIFACT_DIR/playable-lifecycle.log"
