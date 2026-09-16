@@ -24,6 +24,7 @@ cargo test --workspace --all-features --locked --offline
 TEST_COUNT="$(cargo test --workspace --all-features --locked --offline -- --list | rg ': test$' | wc -l | tr -d ' ')"
 cargo build
 cargo build --release
+./verify-godot.sh
 SKIP_BUILD=1 ./verify-playable-lifecycle.sh | tee "$ARTIFACT_DIR/playable-lifecycle.log"
 SKIP_FMT=1 SKIP_TESTS=1 SKIP_BUILD=1 ./bench-local.sh | tee "$ARTIFACT_DIR/bench-fast.log"
 SKIP_BUILD=1 ./stress-local.sh | tee "$ARTIFACT_DIR/stress-fast.log"

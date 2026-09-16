@@ -105,11 +105,14 @@ echo "property cases: $PROPERTY_CASES"
 echo "differential cases: $DIFFERENTIAL_CASES"
 echo "hash cases: $HASH_CASES"
 
+./verify-art-assets.sh
 cargo fmt --check
 cargo clippy --workspace --all-targets --all-features --locked --offline
 cargo test --workspace --all-features --locked --offline
 cargo build
 cargo build --release
+./verify-godot.sh
+SKIP_BUILD=1 ./verify-playable-lifecycle.sh | tee "$FULL_DIR/playable-lifecycle.log"
 SKIP_FMT=1 SKIP_TESTS=1 SKIP_BUILD=1 ./bench-local.sh | tee "$FULL_DIR/bench-full.log"
 ./stress-local.sh | tee "$FULL_DIR/stress-full.log"
 cargo run --quiet --features dev-tools --bin hg-dev -- client_desktop_status >/dev/null

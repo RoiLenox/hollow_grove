@@ -1,8 +1,10 @@
 extends SceneTree
 
+const RUNTIME_CLIENT := preload("res://scripts/runtime_client.gd")
+
 
 func _init() -> void:
-	var client := HollowGroveRuntimeClient.new("session.smoke")
+	var client = RUNTIME_CLIENT.new("session.smoke")
 	assert(client.revision == 0)
 	assert(not client.is_runtime_connected())
 	assert(client.connect_to_runtime("0.0.0.0", 47819) == ERR_INVALID_PARAMETER)

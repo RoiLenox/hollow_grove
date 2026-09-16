@@ -190,10 +190,7 @@ prepare_all() {
     cargo clippy --workspace --all-targets --all-features --locked --offline -- -D warnings
     cargo test --workspace --all-features --locked --offline
     packaging/hollow-grove-general/verify-keyboard-grove.sh
-    godot --headless --path hueman_godot \
-        --script res://tests/runtime_client_smoke.gd
-    godot --headless --path hueman_godot \
-        --script res://tests/retro_overworld_semantics_smoke.gd
+    ./verify-godot.sh
     ./verify-playable-lifecycle.sh
     ./build-portable-release.sh
     ./build-authoritative-state.sh

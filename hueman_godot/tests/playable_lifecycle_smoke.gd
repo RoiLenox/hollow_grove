@@ -1,9 +1,10 @@
 extends SceneTree
 
+const RUNTIME_CLIENT := preload("res://scripts/runtime_client.gd")
 const SESSION_ID := "session.lifecycle"
 const RESPONSE_TIMEOUT_MILLISECONDS := 5000
 
-var client: HollowGroveRuntimeClient
+var client
 var responses: Array[Dictionary] = []
 var protocol_errors: Array[String] = []
 
@@ -20,10 +21,10 @@ func _run() -> void:
 		_fail("playable lifecycle environment is incomplete")
 		return
 
-	client = HollowGroveRuntimeClient.new(SESSION_ID)
+	client = RUNTIME_CLIENT.new(SESSION_ID)
 	client.response_received.connect(_on_response_received)
 	client.protocol_error.connect(_on_protocol_error)
-	var connection_error := client.connect_to_runtime("127.0.0.1", port)
+	var connection_error: Error = client.connect_to_runtime("127.0.0.1", port)
 	if connection_error != OK:
 		_fail("runtime connection could not start: %s" % error_string(connection_error))
 		return
@@ -272,7 +273,7 @@ func _wait_until_connected() -> bool:
 
 
 func _send(request_id: String, intent_type: String, payload := {}) -> Dictionary:
-	var send_error := client.send_intent(request_id, intent_type, payload)
+	var send_error: Error = client.send_intent(request_id, intent_type, payload)
 	if send_error != OK:
 		_fail("%s could not be sent: %s" % [intent_type, error_string(send_error)])
 		return {}

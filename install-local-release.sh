@@ -34,7 +34,17 @@ done
 while IFS= read -r tool; do
     ln -sfn hg-dev "$BIN_DIR/$tool"
 done < <("$BIN_DIR/hg-dev" --list)
-install -m 0755 "$SCRIPT_DIR/target/release/hollow-niri" "$HOME/.local/bin/hollow-niri"
+system_broker="/usr/lib/hollow-grove/bin/hollow-niri"
+if [[ -x "$system_broker" ]]; then
+    # Keep interactive commands on the same broker revision as the systemd
+    # service installed by hollow-grove-general. The local build remains
+    # directly available from $BIN_DIR for development and comparison.
+    ln -sfn "$system_broker" "$HOME/.local/bin/hollow-niri"
+else
+    # Avoid storing a second physical copy when the General Edition package is
+    # absent; expose the optimized local build through one stable PATH entry.
+    ln -sfn "$BIN_DIR/hollow-niri" "$HOME/.local/bin/hollow-niri"
+fi
 ln -sfn "$SCRIPT_DIR/hollow-grove-update.sh" "$HOME/.local/bin/hollow-grove-update"
 
 printf 'installed optimized Hollow Grove binaries in %s\n' "$BIN_DIR"
