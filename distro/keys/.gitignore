@@ -1,0 +1,8 @@
+# Never admit private signing material into source history.
+private/
+openpgp-revocs.d/
+*.key
+*.private
+*.sec
+*.secret
+*.passphrase

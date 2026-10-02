@@ -1,0 +1,13 @@
+schema_version = 1
+machine_id = "noahsarch"
+role = "forge-and-stable"
+architecture = "x86_64"
+update_channel = "stable"
+build_authority = true
+promotion_authority = true
+signing_authority = false
+graphics_profile = "amd-desktop"
+root_filesystem = "btrfs"
+rollback_strategy = "snapper"
+personal_configuration = "machine-owned"
+network_addresses_recorded = false

@@ -5,6 +5,12 @@ versioned, bundled companion, intended for multiplayer collaboration through
 shared spaces and cooperative work. The current client supports the local
 Hollow Grove Core seam; remote collaboration remains a planned capability.
 
+The distribution trust, machine-role and promotion model is defined by
+[Distribution Architecture](ARCHITECTURE.md). Repository channels live in
+`channels.toml`; hardware-neutral product policy remains in
+`profiles/desktop.toml`; machine declarations under `machines/` contain no
+addresses, credentials or personal configuration.
+
 ## Ownership
 
 | Component | Owner |
@@ -64,6 +70,8 @@ The profile's release gates remain false until actual evidence exists.
 
 ```sh
 python3 tools/test_prepare_arch_packages.py
+python3 tools/test_hg_distribution.py
+python3 tools/hg-distribution.py audit
 cargo test --workspace --locked --offline
 cargo test --workspace --features dev-tools --locked --offline
 ./verify-godot.sh

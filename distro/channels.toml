@@ -1,0 +1,28 @@
+schema_version = 1
+repository_name = "hollow-grove"
+target_architecture = "x86_64"
+package_signatures_required = true
+database_signatures_required = true
+build_once_promote_unchanged = true
+
+[packages]
+required = [
+  "hollow-grove-core",
+  "hollow-grove-desktop",
+  "hollow-grove-general",
+  "hueman",
+]
+
+[channels.testing]
+repository_section = "hollow-grove-testing"
+consumer = "occamsrazer"
+purpose = "Hardware-diverse canary validation before promotion"
+allow_unsigned_development = true
+publication = false
+
+[channels.stable]
+repository_section = "hollow-grove"
+consumer = "noahsarch"
+purpose = "Signed packages promoted unchanged after canary validation"
+allow_unsigned_development = false
+publication = false

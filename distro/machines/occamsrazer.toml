@@ -1,0 +1,14 @@
+schema_version = 1
+machine_id = "occamsrazer"
+role = "canary-and-mobile"
+architecture = "x86_64"
+update_channel = "testing"
+build_authority = false
+promotion_authority = false
+signing_authority = false
+graphics_profile = "intel-panel-nvidia-render"
+root_filesystem = "ext4"
+rollback_strategy = "verified-backup-until-reinstall"
+target_root_filesystem = "btrfs"
+personal_configuration = "machine-owned"
+network_addresses_recorded = false
