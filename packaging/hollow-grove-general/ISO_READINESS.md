@@ -1,5 +1,11 @@
 # Hollow Grove General Edition ISO Readiness
 
+Current status (2026-10-02): distribution foundation in development. The
+historical reports below describe earlier passes and are not current release
+evidence. Source recipes are now rendered from `PKGBUILD.in` through
+`tools/prepare-arch-packages.py`; the desktop dependency profile and remaining
+release gates are maintained in `distro/`. No installable OS image is claimed.
+
 ## Ready in this pass
 
 - The new-user Niri profile is separate from the active personal

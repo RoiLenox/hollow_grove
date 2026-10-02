@@ -75,11 +75,11 @@ fn local_scripts_derive_the_checkout_root_instead_of_naming_one() {
 }
 
 #[test]
-fn runtime_launchers_use_their_staged_checkout_in_explicit_dev_mode() {
+fn runtime_launchers_use_their_staged_checkout_and_custom_target_in_dev_mode() {
     let repo_root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let temp_root = unique_temp_dir("hollow-grove-portable-launchers");
     let temp_bin = temp_root.join("bin");
-    let temp_target_debug = temp_root.join("target/debug");
+    let temp_target_debug = temp_root.join("build-output/debug");
     fs::create_dir_all(&temp_bin).expect("temp bin should create");
     fs::create_dir_all(&temp_target_debug).expect("temp target should create");
 
@@ -126,6 +126,7 @@ fn runtime_launchers_use_their_staged_checkout_in_explicit_dev_mode() {
         let status = Command::new("bash")
             .current_dir(std::env::temp_dir())
             .env_remove("HOLLOW_GROVE_ROOT")
+            .env("CARGO_TARGET_DIR", temp_root.join("build-output"))
             .env("PATH", &path)
             .arg(temp_root.join(script))
             .arg("--dev")
@@ -176,15 +177,15 @@ fn launcher_runs_runtime_and_bridge_in_a_staged_workspace() {
     );
 
     symlink_file(
-        &repo_root.join("target/debug/hollow-grove"),
+        Path::new(env!("CARGO_BIN_EXE_hollow-grove")),
         &temp_target_debug.join("hollow-grove"),
     );
     symlink_file(
-        &repo_root.join("target/debug/hollow_grove_runtime"),
+        Path::new(env!("CARGO_BIN_EXE_hollow_grove_runtime")),
         &temp_target_debug.join("hollow_grove_runtime"),
     );
     symlink_file(
-        &repo_root.join("target/debug/hollow_grove_niri_bridge"),
+        Path::new(env!("CARGO_BIN_EXE_hollow_grove_niri_bridge")),
         &temp_target_debug.join("hollow_grove_niri_bridge"),
     );
 
@@ -230,6 +231,7 @@ fn launcher_runs_runtime_and_bridge_in_a_staged_workspace() {
     let status = Command::new("bash")
         .current_dir(&temp_root)
         .env("HOLLOW_GROVE_ROOT", &temp_root)
+        .env("CARGO_TARGET_DIR", temp_root.join("target"))
         .env(
             "PATH",
             format!(

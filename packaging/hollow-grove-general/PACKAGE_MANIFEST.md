@@ -39,15 +39,16 @@ records installed under `/usr/share/doc/hollow-grove-general/`.
 
 ## Source boundary
 
-The developer PKGBUILD consumes the clean checked-out transfer checkpoint and
-uses its locked dependency graph. This removes the former stale-commit pin and
-ensures a local migration package matches the portable release. The portable
-archive records the exact Git commit, toolchains, and per-file checksums.
+`PKGBUILD.in` is rendered by `tools/prepare-arch-packages.py` into an independent
+build directory. The generated recipe consumes a checksummed source archive,
+uses the locked dependency graph, and accesses no neighboring checkout.
+The archive records the source commit, worktree status and per-file digests.
+Local dirty snapshots are explicitly marked development candidates.
 
-Before repository publication, replace the local source boundary with the
-signed final tag archive and its SHA-256 digest. The remaining distribution
-gate is a successful Arch clean-chroot build against a recorded repository
-snapshot, package linting, and an independent rebuild comparison.
+Before publication, prepare from a verified signed tag, build in an Arch clean
+chroot against a recorded repository snapshot, lint the packages, compare an
+independent rebuild, and pass installation/upgrade/recovery tests. See
+`distro/README.md`. A source checksum alone is not package signing.
 
 `generate-keyboard-grove-map.py` and `verify-keyboard-grove.sh` are source-tree
 release tools rather than installed commands. The generator renders the

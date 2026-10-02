@@ -1,0 +1,18 @@
+pkgname=hollow-grove-desktop
+pkgver=@VERSION@
+pkgrel=1
+pkgdesc='Complete Hollow Grove OS desktop with the Hueman companion'
+arch=('any')
+url='https://github.com/RoiLenox/hollow_grove'
+license=('LicenseRef-Hollow-Grove-Proprietary')
+depends=(@DESKTOP_DEPENDENCIES@)
+source=('@SOURCE_ARCHIVE@')
+sha256sums=('@SOURCE_SHA256@')
+
+package() {
+    local repository_root="$srcdir/hollow-grove-$pkgver"
+    install -Dm644 "$repository_root/distro/profiles/desktop.toml" "$pkgdir/usr/share/hollow-grove/os/desktop.toml"
+    install -Dm644 "$repository_root/distro/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 "$repository_root/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$repository_root/SOURCE-MANIFEST.json" "$pkgdir/usr/share/doc/$pkgname/SOURCE-MANIFEST.json"
+}

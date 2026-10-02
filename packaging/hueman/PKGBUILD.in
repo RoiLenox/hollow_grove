@@ -1,0 +1,38 @@
+pkgname=hueman
+pkgver=@VERSION@
+pkgrel=2
+pkgdesc='Hueman companion application for Hollow Grove OS'
+arch=('any')
+url='https://github.com/RoiLenox/hollow_grove'
+license=('LicenseRef-Hollow-Grove-Proprietary')
+options=('!debug')
+depends=('bash' 'coreutils' 'godot>=4.7')
+checkdepends=('python')
+optdepends=('hollow-grove-core: authoritative local application service')
+source=('@SOURCE_ARCHIVE@')
+sha256sums=('@SOURCE_SHA256@')
+_source_root="hollow-grove-$pkgver"
+
+build() {
+    cd "$srcdir/$_source_root"
+    godot --headless --path hueman_godot --editor --import
+    godot --headless --path hueman_godot --export-pack Linux "$srcdir/hueman.pck"
+}
+
+check() {
+    cd "$srcdir/$_source_root"
+    ./verify-art-assets.sh
+    ./verify-godot.sh
+}
+
+package() {
+    local repository_root="$srcdir/$_source_root"
+    local package_root="$repository_root/packaging/hueman"
+    install -Dm755 "$package_root/launch" "$pkgdir/usr/lib/hueman/launch"
+    install -Dm755 "$package_root/hueman" "$pkgdir/usr/bin/hueman"
+    install -Dm644 "$srcdir/hueman.pck" "$pkgdir/usr/share/hueman/hueman.pck"
+    install -Dm644 "$package_root/hueman.desktop" "$pkgdir/usr/share/applications/hueman.desktop"
+    install -Dm644 "$package_root/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 "$repository_root/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$repository_root/SOURCE-MANIFEST.json" "$pkgdir/usr/share/doc/$pkgname/SOURCE-MANIFEST.json"
+}

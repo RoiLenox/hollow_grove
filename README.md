@@ -2,6 +2,12 @@
 
 Status: repository navigation index
 
+For the operating-system product and packaging work, start with the
+[Hollow Grove OS distribution foundation](distro/README.md). Hollow Grove OS
+includes Hueman as its distinct companion; authenticated multiplayer
+collaboration is the next application milestone. The existing local
+Core/Hueman runtime remains the current implemented capability.
+
 This file is the front door to Hollow Grove. It organizes existing authority;
 it does not create lore or outrank any source below.
 

@@ -367,7 +367,17 @@ fn ensure_bins_available(bin_names: &[&str]) -> io::Result<Vec<PathBuf>> {
     let repo_root = repo_root.ok_or_else(|| {
         io::Error::other("could not locate the Hollow Grove repo root to build missing binaries")
     })?;
-    let target_dir = repo_root.join("target").join(profile);
+    let target_root = env::var_os("CARGO_TARGET_DIR")
+        .map(PathBuf::from)
+        .unwrap_or_else(|| repo_root.join("target"));
+    // Cargo resolves an environment-provided relative target path against
+    // its working directory, which is the repository root below.
+    let target_root = if target_root.is_absolute() {
+        target_root
+    } else {
+        repo_root.join(target_root)
+    };
+    let target_dir = target_root.join(profile);
     let built_paths = bin_names
         .iter()
         .map(|bin_name| target_dir.join(bin_name))

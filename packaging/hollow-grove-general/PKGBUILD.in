@@ -1,0 +1,55 @@
+# Render with tools/prepare-arch-packages.py; build the generated PKGBUILD.
+pkgname=hollow-grove-general
+pkgver=@VERSION@
+pkgrel=11
+pkgdesc='Hardware-neutral Hollow Grove OS desktop profile and native Niri integration'
+arch=('x86_64')
+url='https://github.com/RoiLenox/hollow_grove'
+license=('LicenseRef-Hollow-Grove-Proprietary')
+depends=('bash' 'coreutils' 'glibc' 'gcc-libs' 'jq' 'niri' 'systemd' 'waybar' 'xdg-utils')
+makedepends=('cargo')
+checkdepends=('python')
+options=('!debug')
+optdepends=('hollow-grove-desktop: complete OS desktop dependency set'
+            'hollow-grove-core: authoritative Hueman service'
+            'hueman: companion application')
+source=('@SOURCE_ARCHIVE@')
+sha256sums=('@SOURCE_SHA256@')
+_source_root="hollow-grove-$pkgver"
+
+_cargo() {
+    RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=/usr/src/hollow-grove --remap-path-prefix=${CARGO_HOME:-$HOME/.cargo}=/usr/share/cargo" cargo "$@"
+}
+
+prepare() {
+    cd "$srcdir/$_source_root"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+    cd "$srcdir/$_source_root"
+    _cargo build --frozen --release --package hollow-niri --bin hollow-niri --target-dir "$srcdir/target"
+}
+
+check() {
+    cd "$srcdir/$_source_root"
+    _cargo test --frozen --package hollow-niri --target-dir "$srcdir/target"
+    packaging/hollow-grove-general/verify-keyboard-grove.sh
+}
+
+package() {
+    local repository_root="$srcdir/$_source_root"
+    local package_root="$repository_root/packaging/hollow-grove-general"
+    if LC_ALL=C grep -aFq -e "$srcdir" -e "${CARGO_HOME:-$HOME/.cargo}" "$srcdir/target/release/hollow-niri"; then
+        printf 'native helper contains a private build path\n' >&2
+        return 1
+    fi
+    cp -r "$package_root/etc" "$pkgdir/"
+    cp -r "$package_root/usr" "$pkgdir/"
+    install -Dm755 "$srcdir/target/release/hollow-niri" "$pkgdir/usr/lib/hollow-grove/bin/hollow-niri"
+    for document in PACKAGE_MANIFEST OPTIONAL_APPLICATIONS SANITIZATION_REPORT ISO_READINESS; do
+        install -Dm644 "$package_root/$document.md" "$pkgdir/usr/share/doc/$pkgname/$document.md"
+    done
+    install -Dm644 "$repository_root/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$repository_root/SOURCE-MANIFEST.json" "$pkgdir/usr/share/doc/$pkgname/SOURCE-MANIFEST.json"
+}

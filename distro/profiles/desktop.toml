@@ -1,0 +1,39 @@
+schema_version = 1
+name = "Hollow Grove OS"
+status = "development"
+architecture = "x86_64"
+base = "Arch Linux"
+# These packages supplement applications.toml's required_base list. The
+# preparation tool merges both lists into the desktop package dependencies.
+packages = [
+  "hollow-grove-general", "hollow-grove-core", "hueman",
+  "pipewire", "pipewire-alsa", "pipewire-pulse", "swayidle",
+  "firefox", "yazi", "helix", "network-manager-applet",
+  "xdg-desktop-portal", "power-profiles-daemon",
+]
+
+[external_packages]
+# Preserve the existing launcher identity. These need signed project builds
+# before a stock-Arch release can resolve the complete desktop dependency set.
+required = ["walker", "elephant"]
+status = "release-blocker: upstream package provenance and signed builds required"
+
+[products]
+operating_system = "Hollow Grove OS"
+bundled_application = "Hueman"
+hueman_direction = "Multiplayer collaboration through shared spaces and cooperative work"
+hueman_current_capability = "Local authoritative service and presentation client; remote collaboration is not implemented"
+
+[ownership]
+defaults = "Package-owned /usr and /etc/xdg defaults"
+user_overrides = "XDG_CONFIG_HOME"
+user_data = "XDG_DATA_HOME"
+runtime = "XDG_RUNTIME_DIR"
+hardware = "Machine-owned overrides; never copy monitor/GPU policy between devices"
+
+[release_gates]
+clean_chroot = false
+signed_repository = false
+installer = false
+upgrade_and_recovery = false
+two_device_collaboration = false

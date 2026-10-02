@@ -100,7 +100,7 @@ fn scan_text_tree(root: &Path, path: &Path, prohibited: &[&str]) {
             let should_skip = path.components().any(|component| {
                 matches!(
                     component.as_os_str().to_str(),
-                    Some(".git" | "target" | ".godot")
+                    Some(".git" | "target" | ".godot" | "dist" | "release")
                 )
             });
             if should_skip {

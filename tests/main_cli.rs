@@ -252,6 +252,27 @@ fn main_binary_delegates_runtime_help() {
 }
 
 #[test]
+fn runtime_install_reports_missing_developer_tools_without_building() {
+    let temp_root = unique_temp_dir("hollow-grove-runtime-only");
+    fs::create_dir_all(&temp_root).expect("runtime-only directory should create");
+    let executable = temp_root.join("hollow-grove");
+    fs::copy(env!("CARGO_BIN_EXE_hollow-grove"), &executable).expect("runtime binary should copy");
+    let output = Command::new(&executable)
+        .current_dir(&temp_root)
+        .env_remove("HOLLOW_GROVE_DEV_BUILD")
+        .args(["benchmark", "--help"])
+        .output()
+        .expect("runtime-only launcher should run");
+    assert!(!output.status.success());
+    assert!(
+        String::from_utf8_lossy(&output.stderr).contains("required release binaries are missing")
+    );
+    assert!(!temp_root.join("target").exists());
+    fs::remove_dir_all(temp_root).expect("runtime-only fixture should clean up");
+}
+
+#[cfg(feature = "dev-tools")]
+#[test]
 fn main_binary_delegates_benchmark_help() {
     let output = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
         .args(["benchmark", "--help"])
@@ -265,6 +286,7 @@ fn main_binary_delegates_benchmark_help() {
     );
 }
 
+#[cfg(feature = "dev-tools")]
 #[test]
 fn main_binary_delegates_hueman_slice_help() {
     let output = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
@@ -734,6 +756,7 @@ fn main_binary_delegates_scenario_listing() {
     assert!(stdout.contains("flooded_quarry_night_watch"));
 }
 
+#[cfg(feature = "dev-tools")]
 #[test]
 fn main_binary_runs_benchmark_and_writes_report() {
     let temp_root = unique_temp_dir("hollow-grove-main-benchmark");

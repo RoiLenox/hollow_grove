@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Hueman
+Comment=Enter your Hollow Grove space
+Exec=hollow-grove-with-hueman
+TryExec=hollow-grove-with-hueman
+Icon=applications-games
+Terminal=false
+Categories=Game;Office;
+Keywords=Hollow Grove;Hueman;Companion;

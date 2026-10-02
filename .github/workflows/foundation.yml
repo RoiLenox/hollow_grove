@@ -27,7 +27,27 @@ jobs:
         run: ./verify-art-assets.sh
       - name: Strict Clippy
         run: cargo clippy --workspace --all-targets --all-features --locked -- -D warnings
-      - name: Test workspace
-        run: cargo test --workspace --locked
+      - name: Test runtime without optional developer tools
+        run: CARGO_TARGET_DIR=target/runtime-check cargo test --workspace --locked
+      - name: Test workspace including developer tools and graphical client
+        run: cargo test --workspace --all-features --locked
       - name: Repository whitespace
         run: git diff --check
+
+  arch-source:
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    steps:
+      - uses: actions/checkout@v7
+      - name: Prepare unprivileged source validation
+        run: |
+          pacman -Syu --noconfirm --needed git python
+          useradd --create-home builder
+          chown -R builder:builder "$GITHUB_WORKSPACE"
+      - name: Test isolated source bundles and generate recipes
+        run: |
+          runuser -u builder -- python3 tools/test_prepare_arch_packages.py
+          runuser -u builder -- python3 tools/prepare-arch-packages.py
+          for recipe in dist/arch-packages/*/PKGBUILD; do
+            bash -n "$recipe"
+          done

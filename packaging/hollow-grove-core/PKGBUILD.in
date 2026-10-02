@@ -1,0 +1,51 @@
+pkgname=hollow-grove-core
+pkgver=@VERSION@
+pkgrel=2
+pkgdesc='Authoritative Hollow Grove application service and Hueman integration'
+arch=('x86_64')
+url='https://github.com/RoiLenox/hollow_grove'
+license=('LicenseRef-Hollow-Grove-Proprietary')
+options=('!debug')
+depends=('bash' 'coreutils' 'grep' 'sed' 'glibc' 'gcc-libs')
+makedepends=('cargo')
+optdepends=('hueman: companion application')
+source=('@SOURCE_ARCHIVE@')
+sha256sums=('@SOURCE_SHA256@')
+_source_root="hollow-grove-$pkgver"
+
+_cargo() {
+    RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=/usr/src/hollow-grove --remap-path-prefix=${CARGO_HOME:-$HOME/.cargo}=/usr/share/cargo" cargo "$@"
+}
+
+prepare() {
+    cd "$srcdir/$_source_root"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+    cd "$srcdir/$_source_root"
+    _cargo build --frozen --release --bin hollow_grove_game_service --target-dir "$srcdir/target"
+}
+
+check() {
+    cd "$srcdir/$_source_root"
+    _cargo test --frozen --bin hollow_grove_game_service --target-dir "$srcdir/target"
+    _cargo test --frozen --test integration gameplay_protocol:: --target-dir "$srcdir/target"
+    _cargo test --frozen --test guide_operational_seam --target-dir "$srcdir/target"
+}
+
+package() {
+    local repository_root="$srcdir/$_source_root"
+    local package_root="$repository_root/packaging/hollow-grove-core"
+    if LC_ALL=C grep -aFq -e "$srcdir" -e "${CARGO_HOME:-$HOME/.cargo}" "$srcdir/target/release/hollow_grove_game_service"; then
+        printf 'Core service contains a private build path\n' >&2
+        return 1
+    fi
+    install -Dm755 "$srcdir/target/release/hollow_grove_game_service" "$pkgdir/usr/lib/hollow-grove/core/hollow_grove_game_service"
+    install -Dm755 "$package_root/hollow-grove-service" "$pkgdir/usr/bin/hollow-grove-service"
+    install -Dm755 "$package_root/hollow-grove-with-hueman" "$pkgdir/usr/bin/hollow-grove-with-hueman"
+    ln -s hollow-grove-with-hueman "$pkgdir/usr/bin/hollow-grove-hueman"
+    install -Dm644 "$package_root/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 "$repository_root/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$repository_root/SOURCE-MANIFEST.json" "$pkgdir/usr/share/doc/$pkgname/SOURCE-MANIFEST.json"
+}
