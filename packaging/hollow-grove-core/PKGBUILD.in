@@ -1,6 +1,6 @@
 pkgname=hollow-grove-core
 pkgver=@VERSION@
-pkgrel=2
+pkgrel=3
 pkgdesc='Authoritative Hollow Grove application service and Hueman integration'
 arch=('x86_64')
 url='https://github.com/RoiLenox/hollow_grove'

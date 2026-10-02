@@ -43,8 +43,11 @@ class SourceBundleTests(unittest.TestCase):
         second = prepare_arch.prepare(self.root, self.root / "dist/two")
         self.assertEqual(first.read_bytes(), second.read_bytes())
         recipe = (first.parent / "fixture/PKGBUILD").read_text()
+        build_script = first.parent / "fixture/build.sh"
         self.assertNotIn(str(self.root), recipe)
         self.assertNotIn("@SOURCE", recipe)
+        self.assertIn("export SOURCE_DATE_EPOCH=", build_script.read_text())
+        self.assertTrue(build_script.stat().st_mode & 0o100)
         self.assertEqual(prepare_arch.desktop_dependencies(self.root), ["hueman", "niri", "walker"])
         with tarfile.open(first) as archive:
             self.assertFalse(any(name.endswith("secret.env") for name in archive.getnames()))

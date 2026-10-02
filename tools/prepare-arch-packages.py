@@ -104,6 +104,14 @@ def prepare(root, output, allow_dirty=False, signed_tag=None):
         destination = output / template.parent.name
         destination.mkdir()
         (destination / "PKGBUILD").write_text(recipe)
+        build_script = destination / "build.sh"
+        build_script.write_text(
+            "#!/usr/bin/env bash\n"
+            "set -euo pipefail\n"
+            f"export SOURCE_DATE_EPOCH={epoch}\n"
+            'exec makepkg --cleanbuild --check "$@"\n'
+        )
+        build_script.chmod(0o755)
         os.link(archive_path, destination / archive_name)
         srcinfo = subprocess.check_output(["makepkg", "--printsrcinfo"], cwd=destination)
         (destination / ".SRCINFO").write_bytes(srcinfo)
@@ -113,7 +121,8 @@ def prepare(root, output, allow_dirty=False, signed_tag=None):
     (output / "BUILD.json").write_text(json.dumps({
         "source": archive_name, "sha256": digest, "packages": packages,
         "desktop_dependencies": dependencies, "source_status": manifest["release_status"],
-        "build_command": "makepkg --cleanbuild --check",
+        "source_date_epoch": epoch,
+        "build_command": "./build.sh",
         "publication_ready": False,
     }, indent=2) + "\n")
     return archive_path
@@ -132,7 +141,7 @@ def main():
     except (ValueError, OSError, subprocess.CalledProcessError) as error:
         parser.exit(1, f"package preparation failed: {error}\n")
     print(f"Prepared {archive}")
-    print("Build each generated directory with makepkg --cleanbuild --check.")
+    print("Build each generated directory with ./build.sh.")
     print("Publication still requires clean-chroot, signing, installation and upgrade gates.")
 
 

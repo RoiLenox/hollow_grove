@@ -49,16 +49,18 @@ Godot through declared dependencies. Record these versions with validation
 results; a fixed source archive alone is not proof of reproducible binaries.
 For an offline rebuild, retain the fetched Cargo registry along with the source.
 
-Run `makepkg --cleanbuild --check` inside a generated directory. `--check` is
-mandatory even when the host's `makepkg.conf` disables checks. For release,
+Run `./build.sh` inside a generated directory. The wrapper pins makepkg's
+`SOURCE_DATE_EPOCH` to the source commit and always requests a clean build with
+checks. Additional makepkg arguments may follow it; for example,
+`./build.sh --config /absolute/path/to/distro/makepkg-x86_64.conf`. For release,
 use Arch devtools in a clean chroot with the selected repository snapshot,
 build the four packages, lint the result, and exercise install/upgrade/remove
 in disposable machines. A signed source candidate can be prepared with
 `--signed-tag TAG`; public release additionally needs package/repository/image
 signatures, resolved dependency provenance and installation/recovery evidence.
 
-For local package validation, pass `--config /absolute/path/to/distro/makepkg-x86_64.conf`
-to use a portable x86-64 CPU baseline with checks enabled. It deliberately does
+For local package validation, pass the portable makepkg configuration shown
+above to use an x86-64 CPU baseline with checks enabled. It deliberately does
 not inherit the reference laptop's x86-64-v3 or disabled-check settings. This
 does not replace the clean-chroot release gate.
 
