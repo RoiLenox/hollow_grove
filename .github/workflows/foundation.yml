@@ -29,6 +29,7 @@ jobs:
         run: |
           python3 tools/test_prepare_arch_packages.py
           python3 tools/test_hg_distribution.py
+          python3 tools/test_hg_machine_audit.py
           python3 tools/hg-distribution.py audit
       - name: Strict Clippy
         run: cargo clippy --workspace --all-targets --all-features --locked -- -D warnings

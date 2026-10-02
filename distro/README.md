@@ -71,12 +71,22 @@ The profile's release gates remain false until actual evidence exists.
 ```sh
 python3 tools/test_prepare_arch_packages.py
 python3 tools/test_hg_distribution.py
+python3 tools/test_hg_machine_audit.py
 python3 tools/hg-distribution.py audit
 cargo test --workspace --locked --offline
 cargo test --workspace --features dev-tools --locked --offline
 ./verify-godot.sh
 ./verify-playable-lifecycle.sh
 ```
+
+Run a read-only, address-free enrollment audit on a declared machine with:
+
+```sh
+python3 tools/hg-machine-audit.py --machine "$(hostnamectl --static)"
+```
+
+Pass `--output /path/to/new-report.json` to preserve immutable enrollment
+evidence. The command refuses to overwrite an existing report.
 
 Use distinct empty target directories for the feature configurations when
 validating a clean build. This catches undeclared sibling-binary dependencies.

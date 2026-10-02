@@ -35,3 +35,7 @@ the target machine.
 Administrative scripts must default to audit/dry-run, print their exact target,
 and refuse to operate when the detected hostname or source state differs from
 the declared machine profile.
+
+`tools/hg-machine-audit.py` implements that read-only first step. Its JSON
+output deliberately classifies gates as `pass`, `attention`, or `blocker` and
+does not record IP addresses, user configuration or secrets.
