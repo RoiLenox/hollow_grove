@@ -16,6 +16,12 @@ if [[ -z "$GODOT_BIN" ]]; then
     fi
 fi
 
+if ! grep -Fqx 'export/convert_text_resources_to_binary=false' \
+    "$SCRIPT_DIR/hueman_godot/project.godot"; then
+    printf 'Hueman export must retain text resources for reproducible scene bytes\n' >&2
+    exit 1
+fi
+
 "$GODOT_BIN" --headless --path "$SCRIPT_DIR/hueman_godot" \
     --script res://tests/runtime_client_smoke.gd
 "$GODOT_BIN" --headless --path "$SCRIPT_DIR/hueman_godot" \

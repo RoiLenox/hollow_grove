@@ -48,6 +48,9 @@ build and check then use `--frozen`. The build host provides Cargo/Rust and
 Godot through declared dependencies. Record these versions with validation
 results; a fixed source archive alone is not proof of reproducible binaries.
 For an offline rebuild, retain the fetched Cargo registry along with the source.
+Hueman keeps Godot text resources unconverted during export because Godot's
+generated binary scene node IDs are nondeterministic; this setting is enforced
+by the Godot smoke verifier.
 
 Run `./build.sh` inside a generated directory. The wrapper pins makepkg's
 `SOURCE_DATE_EPOCH` to the source commit and always requests a clean build with

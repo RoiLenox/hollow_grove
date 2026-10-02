@@ -15,6 +15,10 @@ window/size/viewport_height=864
 window/stretch/mode="disabled"
 window/stretch/aspect="keep"
 
+[editor]
+
+export/convert_text_resources_to_binary=false
+
 [rendering]
 
 renderer/rendering_method="mobile"
