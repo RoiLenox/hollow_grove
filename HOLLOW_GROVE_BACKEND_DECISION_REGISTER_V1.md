@@ -59,8 +59,8 @@ is now in [Boardwalk Social Constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1
 
 **Still open:** exact joining/departure customs, reputation practices and their
 records. The tone choice selects no particular product, venue, worker or price.
-The register has seventeen wholly open entries and three partially adopted
-entries, including the crew and Sympiote-grade clarifications. Twenty families still contain
+The register has seventeen wholly open entries and four partially adopted
+entries, including the crew, Sympiote-grade and common Synthesis-origin clarifications. Twenty-one families still contain
 some unresolved detail.
 
 ### decision.boardwalk.crew-identities
@@ -94,6 +94,21 @@ This clarification selects no named worker, service package or price and
 rewrites no historical patronage, gender identity or sexual conduct.
 
 ## Synthesis
+
+### decision.synthesis.process-scale
+
+Owner: [Glaüshouse Constitution](GLAUSHOUSE_CONSTITUTION_V2.md).
+
+**Partially adopted, 2026-10-08:** Glaüshouse is the source House of all
+Synthesis, from an external item to a whole living Form. The
+[Synthesis continuum](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md) describes the
+common origin, separate Being/Object targets and contributing House functions.
+
+**Still open:** nonliving versus required living inputs, small-item methods,
+interfaces, scope-specific compatibility and upkeep, physical execution and
+teaching/delegation policy, and an executable common record/dispatch model.
+The scope descriptions are WORKING, not four new ranks. Ordinary repairs keep
+their histories; item Synthesis grants its maker no Form or Sympiote grade.
 
 ### decision.synthesis.foundation-outcomes
 

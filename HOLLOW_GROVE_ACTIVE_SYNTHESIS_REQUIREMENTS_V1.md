@@ -23,6 +23,22 @@ Gargoyle, Werewolf and Mariner/Merman, with further branches open. Gargoyle and
 Werewolf never combine. Start by defining grade meanings and promotion evidence,
 then the requirements for each branch. No Gargoyle-first prerequisite is imposed.
 
+The user's further direction makes Glaüshouse the source of all Synthesis from
+an item to a whole Form. Define this common root and its distinct Object/Being
+targets before deciding the remaining mechanisms. The
+[continuum contract](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md) separates the
+adopted origin from proposed scale descriptions and unimplemented dispatch.
+
+## Common Synthesis origin, separate targets
+
+External item Synthesis, living grafts, partial changes and whole Forms share
+the Glaüshouse root. The affected Object or Being keeps its own identity,
+method, evidence, result and maintenance history. Ordinary repair does not
+become Synthesis retroactively, and item work does not promote its maker's
+Sympiote grade. The living three-grade foundation is one path inside the wider
+practice, not a numbering of item-to-body scales. Material rules, item methods
+and a unified executable model remain open.
+
 ## Independent records
 
 Practitioner is the whole person. Unqualified Current is relational participation;

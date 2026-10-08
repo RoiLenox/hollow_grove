@@ -30,6 +30,10 @@ PARTIAL_ADOPTIONS = {
         "HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md",
         "three ordered Sympiote foundation grades before distinct supported branches, including Gargoyle, Werewolf and Mariner/Merman; Gargoyle and Werewolf never combine",
         "Adopted Sympiote grade structure, 2026-10-08: Grade I → Grade II → Grade III → distinct supported Synthesis branches."),
+    "decision.synthesis.process-scale": (
+        "GLAUSHOUSE_CONSTITUTION_V2.md",
+        "Glaüshouse origin of all Synthesis across external-item and whole-Form scopes",
+        "Adopted Synthesis origin, 2026-10-08: Glaüshouse is the source House of all Synthesis, from an item to a whole Form."),
 }
 
 
@@ -146,6 +150,28 @@ def validate(root, data, architecture=None):
 
     synthesis = data["synthesis"]
     canon = owned(synthesis["source"], active=True)
+    origin = synthesis.get("process_origin")
+    require(isinstance(origin, dict) and set(origin) == {
+        "owner", "definition_source", "source_house", "target_domains", "scope",
+        "material_policy", "execution_location_policy", "unified_runtime_implemented",
+        "historical_repairs_reclassified", "item_synthesis_grants_maker_grade_or_form"},
+        "invalid common Synthesis origin index")
+    require(origin["owner"] == "GLAUSHOUSE_CONSTITUTION_V2.md"
+            and origin["definition_source"] == "GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md"
+            and PARTIAL_ADOPTIONS["decision.synthesis.process-scale"][2] in owned(origin["owner"], active=True)
+            and "Glaüshouse is the source House of all Synthesis, from an item to a whole Form."
+            in owned(origin["definition_source"], active=True), "common Synthesis origin lacks its owning adoption")
+    require(origin["source_house"] == "Glaushouse"
+            and origin["target_domains"] == ["Object", "Being"]
+            and origin["scope"] == "item-to-whole-form", "common Synthesis origin or subject scope changed")
+    require(origin["material_policy"] == "open" and origin["execution_location_policy"] == "open",
+            "unadopted Synthesis material or worksite policy claimed")
+    require(origin["unified_runtime_implemented"] is False
+            and origin["historical_repairs_reclassified"] is False
+            and origin["item_synthesis_grants_maker_grade_or_form"] is False,
+            "common Synthesis invents runtime execution, repair history or maker progression")
+    require(any(d["id"] == "decision.synthesis.process-scale" and d["status"] == "partially-adopted"
+                for d in decisions), "common Synthesis remaining decisions not indexed")
     grades = synthesis.get("sympiote_grades")
     require(isinstance(grades, dict) and set(grades) == {
         "owner", "grades", "position", "branch_examples", "additional_branches",
@@ -285,6 +311,9 @@ def validate(root, data, architecture=None):
             "open_decisions": sum(d["status"] == "open" for d in decisions),
             "partially_adopted_decisions": sum(d["status"] == "partially-adopted" for d in decisions),
             "unresolved_decision_families": len(decisions),
+            "synthesis_source_house": origin["source_house"], "synthesis_target_domains": origin["target_domains"],
+            "synthesis_scope": origin["scope"], "synthesis_material_policy": origin["material_policy"],
+            "unified_synthesis_runtime_implemented": False,
             "sympiote_grades": grades["grades"], "grade_runtime_advancement_implemented": False,
             "historical_foundation_cases_graded": False,
             "higher_state_body_requirements": "needs-revision; not reconciled with the old executable constitution",

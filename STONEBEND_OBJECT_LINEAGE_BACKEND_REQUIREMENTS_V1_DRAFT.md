@@ -13,6 +13,14 @@ Owners: [object-lineage proposal](STONEBEND_PRIMEPUNK_OBJECT_LINEAGE_V1_DRAFT.md
 
 ## Continuing object, separate practitioner
 
+The user's adopted Synthesis origin is Glaüshouse across item-to-whole-Form
+scales. A future actual item Synthesis should therefore retain its Glaüshouse
+method origin alongside Stonebend's identity/material history and applicable
+Sandmanor proof. Exact item methods and materials remain open in the
+[continuum contract](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md). This does not
+reclassify the existing ordinary survey-frame repair as Synthesis or grant its
+maker a living grade or Form.
+
 One external object retains its identity, material origin, parts, condition,
 functions, connections, modification history, custody and actual recipients.
 The practitioner's Being, Nature/Form, skills, authority and clinical status

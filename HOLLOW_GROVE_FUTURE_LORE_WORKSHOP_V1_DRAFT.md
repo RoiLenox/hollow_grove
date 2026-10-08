@@ -8,7 +8,11 @@ and prices, and confirmed a return to Sympiote development and supported
 Synthesis requirements. The user adopted Sympiote Grades I, II and III before
 distinct Gargoyle, Werewolf and Mariner/Merman branches, with further branches
 open. Gargoyle and Werewolf never combine. Start with [grade definitions and
-branch requirements](HOLLOW_GROVE_ACTIVE_SYNTHESIS_REQUIREMENTS_V1.md). The later workshop
+branch requirements](HOLLOW_GROVE_ACTIVE_SYNTHESIS_REQUIREMENTS_V1.md). The user
+has further adopted Glaüshouse as the source of all Synthesis, from item to
+whole Form. Begin with the [common Synthesis continuum](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md)
+and its separate targets, then define the living grade criteria within it.
+Material and worksite policy remain open. The later workshop
 table is a broader backlog, not a requirement to finish club operations first.
 
 Adopted bounded update, 2026-10-08: [Mercy Deep's survey-frame case](STONEBEND_SURVEY_FRAME_FIRST_CASE_V1.md)
@@ -494,8 +498,9 @@ results rather than invent victories or prize Forms.
 
 The backend register in `contracts/backend/lore_registry.v1.json` now indexes
 six candidate offers, sixteen Synthesis requirement families, ten headless-bound
-route contracts and twenty decision families, seventeen wholly open and three
-partially adopted for the Boardwalk atmosphere, crew identities and Sympiote grades. Its source/status checker is
+route contracts and twenty-one decision families, seventeen wholly open and four
+partially adopted for the Boardwalk atmosphere, crew identities, Sympiote grades
+and Glaüshouse's item-to-whole-Form Synthesis origin. Its source/status checker is
 `tools/verify-backend-contracts.py`. This review material preserves the open
 status below; it supplies no new art or game production.
 
@@ -506,7 +511,7 @@ a particular subpart. A proposal in this workshop is not an adopted answer.
 
 | Order | Decision to finish | Required result |
 |---|---|---|
-| 1 | Sympiote starter Form, Boardwalk products, rivalry tone, and ordinary customs | Glaüshouse establishment; agreed anatomy, method, products, and developmental milestones; joining/departure, rival work, independent life, consequence examples |
+| 1 | Common Glaüshouse Synthesis practice and living Sympiote grades | distinguish item, interface, partial-body and whole-Form targets; decide material/method/upkeep rules and Grade I/II/III criteria; keep club operations deferred |
 | 2 | Pimp/Gimp title selection and the later integrity trial | incumbent, challenge, ending/succession, followers' choice, five trial outcomes |
 | 3 | Gimp's rubber persona, Gooner worker roles and formal Hoe affiliation | attire/speech/business details, specific duties within the adopted customer/fan and smaller-inner-crew structure, and separately scoped affiliations |
 | 4 | Stonebend's continuing object | eight coherent revisions, civic use, input/residue, failure, repair, useful opening |

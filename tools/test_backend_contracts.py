@@ -69,8 +69,8 @@ class BackendContractTests(unittest.TestCase):
     def test_partial_tone_adoption_cannot_erase_customs_or_select_products(self):
         report = audit.validate(ROOT, self.data)
         self.assertEqual(report["open_decisions"], 17)
-        self.assertEqual(report["partially_adopted_decisions"], 3)
-        self.assertEqual(report["unresolved_decision_families"], 20)
+        self.assertEqual(report["partially_adopted_decisions"], 4)
+        self.assertEqual(report["unresolved_decision_families"], 21)
         def tone(data):
             return next(d for d in data["open_decisions"] if d["id"] == "decision.boardwalk.rivalry-tone")
         self.rejected(lambda d: tone(d).update(remaining_question=""), "erases remaining decision")
@@ -110,6 +110,34 @@ class BackendContractTests(unittest.TestCase):
         self.assertFalse(report["grade_runtime_advancement_implemented"])
         self.assertFalse(report["historical_foundation_cases_graded"])
         self.assertIn("not reconciled", report["higher_state_body_requirements"])
+
+    def test_synthesis_origin_preserves_target_and_maker_boundaries(self):
+        def origin(data):
+            return data["synthesis"]["process_origin"]
+        self.rejected(lambda d: origin(d).update(source_house="Stonebend"), "origin or subject scope")
+        self.rejected(lambda d: origin(d).update(target_domains=["Being"]), "origin or subject scope")
+        self.rejected(lambda d: origin(d).update(item_synthesis_grants_maker_grade_or_form=True), "maker progression")
+        self.rejected(lambda d: origin(d).update(owner="HOLLOW_GROVE_SYNTHESIS_CANON_V1.md"), "owning adoption")
+        report = audit.validate(ROOT, self.data)
+        self.assertEqual(report["synthesis_source_house"], "Glaushouse")
+        self.assertEqual(report["synthesis_target_domains"], ["Object", "Being"])
+
+    def test_synthesis_origin_cannot_invent_mechanisms_or_rewrite_repairs(self):
+        def origin(data):
+            return data["synthesis"]["process_origin"]
+        for field in ("material_policy", "execution_location_policy"):
+            with self.subTest(field=field):
+                self.rejected(lambda d: origin(d).update({field: "adopted"}), "unadopted Synthesis")
+        for field in ("unified_runtime_implemented", "historical_repairs_reclassified"):
+            with self.subTest(field=field):
+                self.rejected(lambda d: origin(d).update({field: True}), "invents runtime execution")
+        def decision(data):
+            return next(r for r in data["open_decisions"] if r["id"] == "decision.synthesis.process-scale")
+        self.rejected(lambda d: decision(d).update(remaining_question=""), "erases remaining decision")
+        self.rejected(lambda d: decision(d).update(status="open"), "remaining decisions not indexed")
+        report = audit.validate(ROOT, self.data)
+        self.assertEqual(report["synthesis_material_policy"], "open")
+        self.assertFalse(report["unified_synthesis_runtime_implemented"])
 
     def test_relative_escape_absolute_path_and_symlink_escape_fail(self):
         for name in ("../secret", "/etc/passwd", "a/../../b", "a\\b"):

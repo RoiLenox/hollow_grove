@@ -28,6 +28,12 @@ ladder and does not replace the Nature catalog.
 
 ## 2. Glaüshouse is the beginning
 
+Glaüshouse is now the adopted source House of all Synthesis, from an item to a
+whole Form. This foundation is its living-development path within the wider
+[Synthesis continuum](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md). Grades I,
+II and III concern the Sympiote foundation; they do not grade external items
+or replace target-specific Synthesis requirements.
+
 A learner goes to Glaüshouse to receive a personal Sympiote foundation. The
 clinic helps explain its present function and needs, establishes compatibility
 and scope, obtains specific consent, crafts for the host, records the actual

@@ -344,6 +344,27 @@ of Current or Aura.
 
 ## Article XIII — Synthesis
 
+### Adopted common origin and scale
+
+Adopted Synthesis origin, 2026-10-08: Glaüshouse is the source House of all Synthesis, from an item to a whole Form.
+
+The user clarified:
+
+> Well I would like synthesizing all things to come from Galushouse synthesis in a way from small to big like an item to your whole form
+
+Synthesis has one Glaüshouse origin across external Object and living Being
+targets. An item, integrated component, partial bodily change and whole Form
+can belong to the same wider practice while preserving their actual subject,
+method and outcome. Its [continuum contract](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md)
+defines the adopted root and working scope model. Exact object methods,
+material rules, delegation and a unified runtime remain open.
+
+Other Houses retain their own material/identity, proof, method and capacity
+functions. Object Synthesis does not transform its maker or establish a living
+grade; bodily Synthesis retains the clinical requirements below. Existing
+ordinary repair histories remain ordinary repair. The Being/Object ontology
+and practitioner Current/Aura grammar remain controlling within their domains.
+
 Synthesis is medicine first and transformation second. Major Synthesis
 therefore requires multidisciplinary evidence, care, and responsibility rather
 than one authority performing every function alone.

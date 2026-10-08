@@ -17,7 +17,8 @@
         "LOCKED universal ontology",
         "CURRENT + AURA → SYNTHESIS",
         "Gargoyle + Werewolf + Mariner/Merman → Manticorp → Chimera",
-        "Current Form boundary, 2026-10-08: Gargoyle and Werewolf never combine."
+        "Current Form boundary, 2026-10-08: Gargoyle and Werewolf never combine.",
+        "Glaüshouse is the source House of all Synthesis, from an item to a whole Form."
       ]
     },
     {
@@ -66,7 +67,8 @@
       "role": "active-constitution",
       "required_markers": [
         "technical viability",
-        "lived viability"
+        "lived viability",
+        "Adopted Synthesis origin, 2026-10-08: Glaüshouse is the source House of all Synthesis, from an item to a whole Form."
       ]
     },
     {
@@ -273,6 +275,16 @@
         "Adopted vertical relationship, 2026-10-08: Pimp of the Boardwalk above, Gimp of the Underway below.",
         "Adopted Underway venue, 2026-10-08: closed-off private nightclub section beneath the Boardwalk."
       ]
+    },
+    {
+      "path": "GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md",
+      "role": "source-backed-index",
+      "required_markers": [
+        "Glaüshouse is the source House of all Synthesis, from an item to a whole Form.",
+        "WORKING mechanisms",
+        "not an executed universal Synthesis procedure",
+        "material remains open"
+      ]
     }
   ],
   "synthesis": {
@@ -383,6 +395,21 @@
       "runtime_advancement_implemented": false,
       "historical_cases_graded": false,
       "higher_state_body_requirements": "needs-revision"
+    },
+    "process_origin": {
+      "owner": "GLAUSHOUSE_CONSTITUTION_V2.md",
+      "definition_source": "GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md",
+      "source_house": "Glaushouse",
+      "target_domains": [
+        "Object",
+        "Being"
+      ],
+      "scope": "item-to-whole-form",
+      "material_policy": "open",
+      "execution_location_policy": "open",
+      "unified_runtime_implemented": false,
+      "historical_repairs_reclassified": false,
+      "item_synthesis_grants_maker_grade_or_form": false
     }
   },
   "candidate_offers": [
@@ -1826,6 +1853,16 @@
       "status": "open",
       "question": "What useful space, remaining support and removed-material custody define the later opening?",
       "owner": "STONEBEND_PRIMEPUNK_OBJECT_LINEAGE_V1_DRAFT.md"
+    },
+    {
+      "id": "decision.synthesis.process-scale",
+      "status": "partially-adopted",
+      "question": "How does the common Glaüshouse Synthesis practice work across item, interface, partial-body and whole-Form targets?",
+      "owner": "GLAUSHOUSE_CONSTITUTION_V2.md",
+      "adopted_scope": "Glaüshouse origin of all Synthesis across external-item and whole-Form scopes",
+      "adoption_marker": "Adopted Synthesis origin, 2026-10-08: Glaüshouse is the source House of all Synthesis, from an item to a whole Form.",
+      "user_statement": "Well I would like synthesizing all things to come from Galushouse synthesis in a way from small to big like an item to your whole form",
+      "remaining_question": "What material policy, item methods, supported interfaces, scope-specific compatibility/upkeep, worksite and teaching/delegation rules, and executable common record/dispatch model are adopted?"
     }
   ],
   "scope_notes": [

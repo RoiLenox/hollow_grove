@@ -85,6 +85,13 @@ execute it, establish legality, or alter persistent Frame state.
 
 ## Recipe Institutions
 
+The current Synthesis origin is Glaüshouse at every scope, from an item to a
+whole Form, under the [continuum contract](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md).
+House teaching, material inputs, proof and capability expression retain their
+own roles. Using an existing power is not automatically a new Synthesis act;
+the legacy executable power catalog below does not implement a common item/
+living-Form transformation engine or settle the open material policy.
+
 The draft projects one recipe function through each House:
 
 - Stonebend Universal Proving Arena tests stable Form under resistance.

@@ -1,5 +1,13 @@
 # CURRENT SYNTHESIS / HOLLOW GROVE
 
+Adopted Synthesis origin, 2026-10-08: Glaüshouse is the source House of all
+Synthesis, from an item to a whole Form. The owning Glaüshouse Constitution and
+Synthesis continuum distinguish Object and Being results. Stonebend retains
+material identity/Name, Sandmanor method/Prove, and Flynt Capacity/Recognize.
+Sympiote grades belong to living development within this wider practice.
+Item methods, material and worksite policy, and a unified executable process
+remain open; ordinary repairs retain their actual histories.
+
 Current Form boundary, 2026-10-08: Gargoyle and Werewolf never combine.
 
 The user's current clarification adopts Sympiote Grades I, II and III before

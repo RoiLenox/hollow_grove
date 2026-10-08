@@ -11,6 +11,18 @@ ontology are governed by the compatibility boundary below.
 
 ## Universal practitioner grammar
 
+### Glaüshouse origin across scales
+
+Glaüshouse is the source House of all Synthesis, from an item to a whole Form.
+
+This user-adopted origin includes Synthesis of an external Object and Synthesis
+of a living Being under their distinct subject records. The
+[Glaüshouse continuum](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md) owns the
+cross-scale discussion beneath Glaüshouse law. Material rules, exact object
+methods and common runtime unification remain open. The Level 1 practitioner
+equation below describes practitioner integration; it does not turn an Object
+result into its maker's Form or supply a new universal object equation.
+
 ```text
                     PRACTITIONER
                          │
