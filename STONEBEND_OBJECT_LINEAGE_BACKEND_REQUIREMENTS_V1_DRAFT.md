@@ -21,6 +21,11 @@ Sandmanor proof. Exact item methods and materials remain open in the
 reclassify the existing ordinary survey-frame repair as Synthesis or grant its
 maker a living grade or Form.
 
+Glaüshouse's adopted small living inputs are named Synbiote blocks; the larger
+bodily expression is Sympiote Form. An item made with blocks retains its Object
+identity and material history. Exact block fabrication, joining and upkeep are
+open; the existing doorway case acquires no retroactive block input or history.
+
 One external object retains its identity, material origin, parts, condition,
 functions, connections, modification history, custody and actual recipients.
 The practitioner's Being, Nature/Form, skills, authority and clinical status

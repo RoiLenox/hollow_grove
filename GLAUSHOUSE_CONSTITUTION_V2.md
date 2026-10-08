@@ -359,6 +359,19 @@ method and outcome. Its [continuum contract](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_D
 defines the adopted root and working scope model. Exact object methods,
 material rules, delegation and a unified runtime remain open.
 
+Adopted Synthesis scales, 2026-10-08: Synbiote blocks are the small living building units; Sympiote Form is the larger bodily expression.
+
+The user's naming decision is:
+
+> Let's call the smaller version synbiote blocks and the larger for sympiote form
+
+The continuum owns this scale distinction. Small things can be made with
+Synbiote blocks; lawful host integration establishes the larger Sympiote Form.
+Its foundation Grades I, II and III concern living development. An item's
+fabrication creates no bodily Form or grade for its maker. Block fabrication,
+composition, conversion and upkeep mechanisms remain open. Existing graft
+records retain their Sympiote identity and acquire no invented block history.
+
 Other Houses retain their own material/identity, proof, method and capacity
 functions. Object Synthesis does not transform its maker or establish a living
 grade; bodily Synthesis retains the clinical requirements below. Existing

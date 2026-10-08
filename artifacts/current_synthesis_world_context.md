@@ -8,6 +8,14 @@ Sympiote grades belong to living development within this wider practice.
 Item methods, material and worksite policy, and a unified executable process
 remain open; ordinary repairs retain their actual histories.
 
+Adopted Synthesis scales, 2026-10-08: Synbiote blocks are the small living building units; Sympiote Form is the larger bodily expression.
+The Synthesis continuum owns these distinct scale names. Small things can be
+made with blocks; lawful host integration establishes the bodily Form. Grades
+I–III describe its living development. Block production/assembly mechanisms
+remain open and unimplemented. Existing grafts and item histories receive no
+invented block inventory. Lightening/inverse-Hollowing is superseded as the
+interpretation of this small-unit request.
+
 Current Form boundary, 2026-10-08: Gargoyle and Werewolf never combine.
 
 The user's current clarification adopts Sympiote Grades I, II and III before

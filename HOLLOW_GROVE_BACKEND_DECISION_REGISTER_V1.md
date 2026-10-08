@@ -104,9 +104,15 @@ Synthesis, from an external item to a whole living Form. The
 [Synthesis continuum](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md) describes the
 common origin, separate Being/Object targets and contributing House functions.
 
+**Further adopted:** Synbiote blocks name the small living building units used
+to make small things; Sympiote Form names the larger bodily expression. The
+spellings distinguish scale. Grades I–III belong to development of the bodily
+Form. The earlier Lightening/inverse-Hollowing interpretation is superseded.
+
 **Still open:** nonliving versus required living inputs, small-item methods,
 interfaces, scope-specific compatibility and upkeep, physical execution and
 teaching/delegation policy, and an executable common record/dispatch model.
+Block composition, cultivation, joining and upkeep also remain open.
 The scope descriptions are WORKING, not four new ranks. Ordinary repairs keep
 their histories; item Synthesis grants its maker no Form or Sympiote grade.
 

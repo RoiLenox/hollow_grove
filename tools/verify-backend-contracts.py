@@ -32,7 +32,7 @@ PARTIAL_ADOPTIONS = {
         "Adopted Sympiote grade structure, 2026-10-08: Grade I → Grade II → Grade III → distinct supported Synthesis branches."),
     "decision.synthesis.process-scale": (
         "GLAUSHOUSE_CONSTITUTION_V2.md",
-        "Glaüshouse origin of all Synthesis across external-item and whole-Form scopes",
+        "Glaüshouse origin of all Synthesis across external-item and whole-Form scopes; Synbiote blocks as small living units and Sympiote Form as bodily expression",
         "Adopted Synthesis origin, 2026-10-08: Glaüshouse is the source House of all Synthesis, from an item to a whole Form."),
 }
 
@@ -172,6 +172,24 @@ def validate(root, data, architecture=None):
             "common Synthesis invents runtime execution, repair history or maker progression")
     require(any(d["id"] == "decision.synthesis.process-scale" and d["status"] == "partially-adopted"
                 for d in decisions), "common Synthesis remaining decisions not indexed")
+    units = synthesis.get("living_scale_units")
+    require(isinstance(units, dict) and set(units) == {
+        "owner", "definition_source", "small_unit_name", "small_unit_kind", "body_expression_name",
+        "grades_apply_to", "item_use_grants_body_form", "block_crafting_implemented",
+        "historical_grafts_decomposed_into_blocks", "exact_material_conversion_status"},
+        "invalid Synthesis scale-unit index")
+    scale_marker = "Adopted Synthesis scales, 2026-10-08: Synbiote blocks are the small living building units; Sympiote Form is the larger bodily expression."
+    require(units["owner"] == origin["owner"] and units["definition_source"] == origin["definition_source"]
+            and scale_marker in owned(units["owner"], active=True)
+            and scale_marker in owned(units["definition_source"], active=True), "Synthesis scale units lack their owning adoption")
+    require(units["small_unit_name"] == "Synbiote block"
+            and units["small_unit_kind"] == "living-synthesis-building-unit"
+            and units["body_expression_name"] == "Sympiote Form", "Synbiote blocks and Sympiote Form names or kinds conflated")
+    require(units["grades_apply_to"] == "Sympiote Form"
+            and units["item_use_grants_body_form"] is False, "block or item scope grants body Form or grade")
+    require(units["block_crafting_implemented"] is False
+            and units["historical_grafts_decomposed_into_blocks"] is False
+            and units["exact_material_conversion_status"] == "open", "block mechanisms or historical inventory invented")
     grades = synthesis.get("sympiote_grades")
     require(isinstance(grades, dict) and set(grades) == {
         "owner", "grades", "position", "branch_examples", "additional_branches",
@@ -314,6 +332,8 @@ def validate(root, data, architecture=None):
             "synthesis_source_house": origin["source_house"], "synthesis_target_domains": origin["target_domains"],
             "synthesis_scope": origin["scope"], "synthesis_material_policy": origin["material_policy"],
             "unified_synthesis_runtime_implemented": False,
+            "small_synthesis_unit": units["small_unit_name"], "bodily_synthesis_expression": units["body_expression_name"],
+            "synbiote_block_crafting_implemented": False,
             "sympiote_grades": grades["grades"], "grade_runtime_advancement_implemented": False,
             "historical_foundation_cases_graded": False,
             "higher_state_body_requirements": "needs-revision; not reconciled with the old executable constitution",

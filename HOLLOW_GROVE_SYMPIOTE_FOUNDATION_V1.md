@@ -26,6 +26,18 @@ Form, a continuity category, a profession, and a cultural affiliation remain
 separate records. The new foundation creates no fifth House or new species
 ladder and does not replace the Nature catalog.
 
+### Small building units and bodily Form
+
+The user's adopted scale names distinguish **Synbiote blocks**, the small
+living Glaüshouse units worked into small things, from **Sympiote Form**, the
+larger bodily expression. The [Synthesis continuum](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md)
+owns the block definition. Synbiote is intentional for the small units;
+Sympiote remains the established bodily and host-specific graft spelling.
+Existing Sympiote grafts retain their records and are not renamed or decomposed
+into an invented block inventory. Grades I, II and III describe development
+of the host's Sympiote Form. Making an item with blocks grants its maker no
+Form or grade. Block production and assembly methods remain future work.
+
 ## 2. Glaüshouse is the beginning
 
 Glaüshouse is now the adopted source House of all Synthesis, from an item to a

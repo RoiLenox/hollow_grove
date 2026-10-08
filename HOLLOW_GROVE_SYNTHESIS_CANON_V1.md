@@ -88,6 +88,13 @@ Doctrine, proof, consent, Clearance, Title, office, or recognition.
 
 ### Sympiote entry-stage direction
 
+The adopted scale names are **Synbiote blocks** for small living Glaüshouse
+building units and **Sympiote Form** for the larger bodily expression. The
+[Synthesis continuum](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md) owns the scale
+definition. Blocks can be made into small things; a synthesized item's maker
+receives no bodily Form by implication. The existing host-bound Sympiote graft
+meaning and its compatible archives remain intact. Exact block mechanics are open.
+
 The user's 2026-10-08 additive lore direction introduces a shared early
 **Sympiote** stage for pursuing supported Synthesis forms across the setting,
 with the initial Sympiote form established at Glaüshouse. The user's further

@@ -48,6 +48,22 @@ not ranks or substitutes for Current, Aura, or Synthesis.
 
 ## House-specific Synthesis classification
 
+### Glaüshouse material scale and bodily expression
+
+The [Synthesis continuum](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md) owns the
+adopted scale names beneath Glaüshouse's common Synthesis origin:
+
+| Term | Scope | Record to preserve |
+|---|---|---|
+| Synbiote block | small living building unit used to make things | actual unit/material identity and method; block mechanics remain open |
+| item made with Synbiote blocks | external synthesized thing or component | its Object identity, construction, functions and upkeep |
+| Sympiote Form | larger bodily expression established with a host | host/Being continuity, lawful integration, care and foundation development |
+
+These names create no new Sympian continuity category or clinical office.
+Grades I, II and III concern Sympiote Form development. An item's construction
+does not grade its maker. Existing host-specific Sympiote graft records keep
+their compatible meaning and receive no fabricated block inventory.
+
 House institutions retain distinct progression geometries. The shared
 Current/Aura pairing crosswalk is nevertheless locked at eight levels.
 

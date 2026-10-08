@@ -68,7 +68,8 @@
       "required_markers": [
         "technical viability",
         "lived viability",
-        "Adopted Synthesis origin, 2026-10-08: Glaüshouse is the source House of all Synthesis, from an item to a whole Form."
+        "Adopted Synthesis origin, 2026-10-08: Glaüshouse is the source House of all Synthesis, from an item to a whole Form.",
+        "Adopted Synthesis scales, 2026-10-08: Synbiote blocks are the small living building units; Sympiote Form is the larger bodily expression."
       ]
     },
     {
@@ -283,7 +284,8 @@
         "Glaüshouse is the source House of all Synthesis, from an item to a whole Form.",
         "WORKING mechanisms",
         "not an executed universal Synthesis procedure",
-        "material remains open"
+        "material remains open",
+        "Adopted Synthesis scales, 2026-10-08: Synbiote blocks are the small living building units; Sympiote Form is the larger bodily expression."
       ]
     }
   ],
@@ -410,6 +412,18 @@
       "unified_runtime_implemented": false,
       "historical_repairs_reclassified": false,
       "item_synthesis_grants_maker_grade_or_form": false
+    },
+    "living_scale_units": {
+      "owner": "GLAUSHOUSE_CONSTITUTION_V2.md",
+      "definition_source": "GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md",
+      "small_unit_name": "Synbiote block",
+      "small_unit_kind": "living-synthesis-building-unit",
+      "body_expression_name": "Sympiote Form",
+      "grades_apply_to": "Sympiote Form",
+      "item_use_grants_body_form": false,
+      "block_crafting_implemented": false,
+      "historical_grafts_decomposed_into_blocks": false,
+      "exact_material_conversion_status": "open"
     }
   },
   "candidate_offers": [
@@ -1859,10 +1873,10 @@
       "status": "partially-adopted",
       "question": "How does the common Glaüshouse Synthesis practice work across item, interface, partial-body and whole-Form targets?",
       "owner": "GLAUSHOUSE_CONSTITUTION_V2.md",
-      "adopted_scope": "Glaüshouse origin of all Synthesis across external-item and whole-Form scopes",
+      "adopted_scope": "Glaüshouse origin of all Synthesis across external-item and whole-Form scopes; Synbiote blocks as small living units and Sympiote Form as bodily expression",
       "adoption_marker": "Adopted Synthesis origin, 2026-10-08: Glaüshouse is the source House of all Synthesis, from an item to a whole Form.",
-      "user_statement": "Well I would like synthesizing all things to come from Galushouse synthesis in a way from small to big like an item to your whole form",
-      "remaining_question": "What material policy, item methods, supported interfaces, scope-specific compatibility/upkeep, worksite and teaching/delegation rules, and executable common record/dispatch model are adopted?"
+      "user_statement": "Let's call the smaller version synbiote blocks and the larger for sympiote form",
+      "remaining_question": "What block composition/cultivation/joining/upkeep, material policy, small-item methods, supported interfaces, worksite and teaching/delegation rules, and executable common record/dispatch model are adopted?"
     }
   ],
   "scope_notes": [
