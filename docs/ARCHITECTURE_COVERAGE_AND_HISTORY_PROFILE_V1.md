@@ -1,5 +1,10 @@
 # Architecture Coverage and History Profile V1
 
+This records the V6 optimization and its original coverage. The subsequent
+[Stonebend continuity binding](STONEBEND_CONTINUITY_LORE_BINDING_V1.md) raises
+current verified coverage to three bindings, with ten unbound historical
+routes; the performance evidence below still belongs to V6.
+
 This pass makes the lore-to-runtime relationship inspectable and reduces the
 cost of gameplay transactions as their event journal grows. It adds no new
 Forms, shop products, House authority or constitutional law. The proposed

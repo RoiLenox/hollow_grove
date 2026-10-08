@@ -57,6 +57,10 @@ and an institution's interest cannot supply a user's consent.
 
 ## First playable-sized case to author
 
+The [Survey Frame First Case](STONEBEND_SURVEY_FRAME_FIRST_CASE_V1_DRAFT.md)
+develops this proposal's scene, three possible endings, responsibilities,
+typed-state/event boundaries and validation plan. It remains a WORKING draft.
+
 Use only the Gremlin and Goblin revisions for the initial proposal. A resident
 needs a damaged doorway measured before agreeing to a temporary rig. The player
 can help inspect recovered parts, disclose the missing rating, offer a bounded

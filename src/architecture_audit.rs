@@ -422,6 +422,11 @@ impl ArchitectureCoverageReport {
                 && definition.gameplay_binding == Some(crate::gameplay::BOARDWALK_RETURN_CASE_ID)
             {
                 Some("src/gameplay/boardwalk.rs")
+            } else if definition.lore_id == crate::gameplay::CURRENT_SEA_CONTINUITY_LORE_ID
+                && definition.gameplay_binding
+                    == Some(crate::gameplay::CURRENT_SEA_CONTINUITY_CASE_ID)
+            {
+                Some("src/gameplay/stonebend.rs")
             } else {
                 None
             };
@@ -436,7 +441,8 @@ impl ArchitectureCoverageReport {
                 definition_owner: "src/world/lived_lore.rs", gameplay_case: definition.gameplay_binding,
                 reducer_owner: reducer, persistence_owner: reducer.map(|_| "src/gameplay/archive.rs"),
                 projection_owner: reducer.map(|_| "src/gameplay/lore_binding.rs"),
-                execution_complete_in_supplied_save: definition.execution.as_ref().map(|execution| execution.complete),
+                execution_complete_in_supplied_save: definition.execution.as_ref().map(|execution| execution.complete)
+                    .or_else(|| definition.stonebend_execution.as_ref().map(|execution| execution.complete)),
                 gap: reducer.is_none().then_some("no verified lore-to-gameplay execution binding; related runtime code may exist"),
             });
         }

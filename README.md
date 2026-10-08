@@ -92,6 +92,12 @@ coverage when `--save` is supplied. See
 [Architecture Coverage and History Profile](docs/ARCHITECTURE_COVERAGE_AND_HISTORY_PROFILE_V1.md)
 for the measured transaction optimization on both machines and the remaining
 verified-binding work.
+The [Stonebend continuity binding](docs/STONEBEND_CONTINUITY_LORE_BINDING_V1.md)
+adds replay-backed inspection of Mercy Deep's existing Name/Seal case under
+lore report V3. There are now three verified bindings and ten unbound historical
+routes. The [survey-frame first case](STONEBEND_SURVEY_FRAME_FIRST_CASE_V1_DRAFT.md)
+develops the doorway, failed trial, protected refusal and repair as a working
+proposal for the next object episode.
 Hollow Grove Core and the Hueman presentation client are independently shipped
 and joined through the versioned
 [Hollow Grove / Hueman Seam](docs/HOLLOW_GROVE_HUEMAN_SEAM_V1.md). For a

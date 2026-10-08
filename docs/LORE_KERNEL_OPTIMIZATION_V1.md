@@ -4,6 +4,13 @@ Date: 2026-10-07
 
 Status: implemented first milestone; additive validation and read-only inspection
 
+This document records the original milestone. The later
+[Stonebend continuity binding](STONEBEND_CONTINUITY_LORE_BINDING_V1.md) adds
+read-only inspection V3 for the existing Current Sea case; current coverage
+has three verified bindings including the additional Sympiote foundation,
+with ten unbound historical routes. Measurements and original verification
+counts below remain historical.
+
 Authority: implements existing canon beneath the Compromise and Foundation Freeze
 
 ## Result

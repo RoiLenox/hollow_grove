@@ -152,7 +152,7 @@ fn lore_binding_requires_actor_commitment_and_preserves_all_four_outcomes_throug
             .iter()
             .filter(|definition| definition.gameplay_binding.is_some())
             .count(),
-        1
+        2
     );
 
     for choice in [

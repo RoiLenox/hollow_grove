@@ -263,6 +263,13 @@ its recovery, rigging, conversion, clearance, repair, separation, compression,
 and bounded opening through the eight Nature/trait stages. Revision does not
 advance the maker's body, Aura, Title, or office.
 
+The [Survey Frame First Case](STONEBEND_SURVEY_FRAME_FIRST_CASE_V1_DRAFT.md)
+now develops the doorway proposal through recovery, measuring-only use,
+failed support, protected refusal and a repair requiring fresh proof. Its
+three endings and actor bindings remain WORKING choices. The separately
+implemented Mercy Deep continuity case now has a verified inspection binding;
+that closes existing coverage without implementing this new object episode.
+
 Proposed dramatic sequence: the frame measures correctly but fails a support
 claim; the resident refuses its use; a repair preserves the damaged joint and
 requires fresh proof; the eventual opening is judged by the person who uses

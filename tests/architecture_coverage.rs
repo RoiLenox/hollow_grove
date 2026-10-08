@@ -35,8 +35,8 @@ fn coverage_separates_source_links_bindings_and_execution() {
     assert!(report.source_links_passed, "{:?}", report.violations);
     assert_eq!(report.components.len(), 21);
     assert_eq!(report.canonical_route_contracts.len(), 12);
-    assert_eq!(report.verified_binding_count, 2);
-    assert_eq!(report.unbound_canonical_route_count, 11);
+    assert_eq!(report.verified_binding_count, 3);
+    assert_eq!(report.unbound_canonical_route_count, 10);
     assert!(report.replayed_save_revision.is_none());
     assert!(
         report

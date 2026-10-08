@@ -180,8 +180,11 @@ fn face_north_and_interact(service: &mut GameApplicationService, next: &mut u64)
     execute(service, next, GameplayCommand::InteractHueman);
 }
 
-fn completed_stonebend_application() -> GameApplicationService {
-    let mut service = GameApplicationService::with_world_session(rules(), live_world());
+fn supported_stonebend_application(
+    choice: StonebendContinuityChoice,
+    world: WorldSession,
+) -> GameApplicationService {
+    let mut service = GameApplicationService::with_world_session(rules(), world);
     let mut next = 1;
     execute(
         &mut service,
@@ -235,16 +238,270 @@ fn completed_stonebend_application() -> GameApplicationService {
     execute(
         &mut service,
         &mut next,
-        GameplayCommand::SupportStonebendContinuityOption {
-            choice: StonebendContinuityChoice::ProvisionalTransformedFormName,
-        },
+        GameplayCommand::SupportStonebendContinuityOption { choice },
     );
+    service
+}
+
+fn completed_stonebend_application() -> GameApplicationService {
+    let mut service = supported_stonebend_application(
+        StonebendContinuityChoice::ProvisionalTransformedFormName,
+        live_world(),
+    );
+    let mut next = service.events().len() as u64 + 1;
     execute(
         &mut service,
         &mut next,
         GameplayCommand::AskStonebendToDetermineContinuity,
     );
     service
+}
+
+#[test]
+fn stonebend_lore_binding_distinguishes_authored_unstarted_and_pending_execution() {
+    use hollow_grove::gameplay::{
+        CURRENT_SEA_CONTINUITY_LORE_ID, LoreInspection, StonebendLoreStopReason,
+    };
+    let unplayed = LoreInspection::from_runtime(None).unwrap();
+    assert_eq!(unplayed.schema_version, 3);
+    assert_eq!(unplayed.definitions.len(), 12);
+    let definition = unplayed
+        .definitions
+        .iter()
+        .find(|d| d.lore_id == CURRENT_SEA_CONTINUITY_LORE_ID)
+        .unwrap();
+    assert_eq!(
+        definition.gameplay_binding,
+        Some(CURRENT_SEA_CONTINUITY_CASE_ID)
+    );
+    assert!(definition.execution.is_none() && definition.stonebend_execution.is_none());
+    let service = supported_stonebend_application(
+        StonebendContinuityChoice::AffirmExistingName,
+        live_world(),
+    );
+    let archive = service.encode_archive().unwrap();
+    let pending = LoreInspection::from_runtime(Some(service.runtime())).unwrap();
+    let execution = pending
+        .definitions
+        .iter()
+        .find(|d| d.lore_id == CURRENT_SEA_CONTINUITY_LORE_ID)
+        .unwrap()
+        .stonebend_execution
+        .as_ref()
+        .unwrap();
+    assert!(!execution.complete && execution.outcome.is_none());
+    assert_eq!(execution.evidence.len(), 5);
+    assert_eq!(
+        execution.stops,
+        vec![StonebendLoreStopReason::HouseDeterminationRequired]
+    );
+    assert!(execution.decisions.is_empty());
+    assert_eq!(service.encode_archive().unwrap(), archive);
+}
+
+#[test]
+fn all_stonebend_dispositions_bind_exact_name_seal_and_replay_without_title() {
+    use hollow_grove::architecture_audit::ArchitectureCoverageReport;
+    use hollow_grove::gameplay::{CURRENT_SEA_CONTINUITY_LORE_ID, LoreInspection};
+    for choice in [
+        StonebendContinuityChoice::AffirmExistingName,
+        StonebendContinuityChoice::ProvisionalTransformedFormName,
+        StonebendContinuityChoice::ReferIdentityConflict,
+    ] {
+        let mut service = supported_stonebend_application(choice, live_world());
+        let mut next = service.events().len() as u64 + 1;
+        execute(
+            &mut service,
+            &mut next,
+            GameplayCommand::AskStonebendToDetermineContinuity,
+        );
+        let archive = service.encode_archive().unwrap();
+        let report = LoreInspection::from_runtime(Some(service.runtime())).unwrap();
+        let execution = report
+            .definitions
+            .iter()
+            .find(|d| d.lore_id == CURRENT_SEA_CONTINUITY_LORE_ID)
+            .unwrap()
+            .stonebend_execution
+            .as_ref()
+            .unwrap();
+        assert!(execution.complete && execution.stops.is_empty());
+        assert_eq!(execution.affected_being_id, MERCY_DEEP_BEING_ID);
+        assert_eq!(execution.decisions.len(), 1);
+        assert_eq!(execution.decisions[0].function, "Name");
+        assert_eq!(
+            execution.decisions[0].office_id,
+            "office.stonebend.hypergiant"
+        );
+        assert!(!execution.decisions[0].actor_id.contains("fixture"));
+        let outcome = execution.outcome.as_ref().unwrap();
+        assert_eq!(
+            outcome,
+            &GameView::from_runtime(service.runtime(), vec![])
+                .stonebend_case
+                .unwrap()
+                .outcome
+                .unwrap()
+        );
+        assert!(!outcome.title_granted && outcome.player_support_is_nonbinding);
+        assert_eq!(
+            execution.events.last().unwrap().causal_position,
+            execution.decisions[0].causal_position
+        );
+        assert_eq!(
+            execution.high_review_pending,
+            choice == StonebendContinuityChoice::ReferIdentityConflict
+        );
+        if execution.high_review_pending {
+            assert!(outcome.active_names.is_empty() && outcome.provisional_names.is_empty());
+            assert!(execution.next_step.contains("high review remains pending"));
+        } else {
+            assert_eq!(outcome.active_names, vec![MERCY_DEEP_EXISTING_NAME]);
+        }
+        let coverage = ArchitectureCoverageReport::inspect(
+            std::path::Path::new(env!("CARGO_MANIFEST_DIR")),
+            Some(service.runtime()),
+        )
+        .unwrap();
+        assert!(coverage.source_links_passed);
+        assert_eq!(coverage.verified_binding_count, 3);
+        assert_eq!(coverage.unbound_canonical_route_count, 10);
+        assert_eq!(
+            coverage
+                .canonical_route_contracts
+                .iter()
+                .find(|d| d.lore_id == CURRENT_SEA_CONTINUITY_LORE_ID)
+                .unwrap()
+                .execution_complete_in_supplied_save,
+            Some(true)
+        );
+        let replayed = GameApplicationService::from_archive(&archive).unwrap();
+        assert_eq!(
+            LoreInspection::from_runtime(Some(replayed.runtime())).unwrap(),
+            report
+        );
+        assert_eq!(replayed.encode_archive().unwrap(), archive);
+        assert_eq!(service.encode_archive().unwrap(), archive);
+    }
+}
+
+#[test]
+fn stonebend_inspection_reports_missing_evidence_faculties_and_live_authority_without_mutation() {
+    use hollow_grove::gameplay::{
+        CURRENT_SEA_CONTINUITY_LORE_ID, LoreInspection, StonebendLoreStopReason,
+    };
+    let mut service = GameApplicationService::new(rules());
+    let mut next = 1;
+    execute(
+        &mut service,
+        &mut next,
+        GameplayCommand::EstablishHuemanIdentity {
+            continuity: hollow_grove::gameplay::BeingContinuityId::new("continuity.lore-vacancy")
+                .unwrap(),
+            participant: ParticipantId::new("participant.lore-vacancy").unwrap(),
+            institutional: InstitutionalBeingId::new("being.lore-vacancy").unwrap(),
+        },
+    );
+    execute(
+        &mut service,
+        &mut next,
+        GameplayCommand::EnterMap {
+            map: WorldMapId::CurrentSeaDeepCertificationLanding,
+        },
+    );
+    let before = service.encode_archive().unwrap();
+    let report = LoreInspection::from_runtime(Some(service.runtime())).unwrap();
+    let execution = report
+        .definitions
+        .iter()
+        .find(|d| d.lore_id == CURRENT_SEA_CONTINUITY_LORE_ID)
+        .unwrap()
+        .stonebend_execution
+        .as_ref()
+        .unwrap();
+    assert!(!execution.complete && execution.decisions.is_empty());
+    assert_eq!(
+        execution
+            .stops
+            .iter()
+            .filter(|s| matches!(s, StonebendLoreStopReason::MissingEvidence(_)))
+            .count(),
+        5
+    );
+    assert_eq!(
+        execution
+            .stops
+            .iter()
+            .filter(|s| matches!(s, StonebendLoreStopReason::MissingFaculty(_)))
+            .count(),
+        5
+    );
+    assert!(
+        execution
+            .stops
+            .contains(&StonebendLoreStopReason::MissingAuthority(
+                "office.stonebend.hypergiant"
+            ))
+    );
+    assert_eq!(service.encode_archive().unwrap(), before);
+    let mut service = supported_stonebend_application(
+        StonebendContinuityChoice::ReferIdentityConflict,
+        WorldSession::canonical(),
+    );
+    let before = service.encode_archive().unwrap();
+    assert!(
+        service
+            .execute(
+                GameplayEventMetadata {
+                    id: GameplayEventId::new("event.no-name-authority").unwrap(),
+                    causal_position: CausalPosition::new(service.events().len() as u64 + 1)
+                },
+                GameplayCommand::AskStonebendToDetermineContinuity
+            )
+            .is_err()
+    );
+    let execution = LoreInspection::from_runtime(Some(service.runtime()))
+        .unwrap()
+        .definitions
+        .into_iter()
+        .find(|d| d.lore_id == CURRENT_SEA_CONTINUITY_LORE_ID)
+        .unwrap()
+        .stonebend_execution
+        .unwrap();
+    assert!(!execution.complete && execution.outcome.is_none());
+    assert!(
+        execution
+            .stops
+            .contains(&StonebendLoreStopReason::MissingAuthority(
+                "office.stonebend.hypergiant"
+            ))
+    );
+    assert_eq!(service.encode_archive().unwrap(), before);
+}
+
+#[test]
+fn stonebend_lore_binding_rejects_checksummed_authority_forgery_on_replay() {
+    use hollow_grove::gameplay::encode_gameplay_archive;
+    let service = completed_stonebend_application();
+    let mut events = service.events().to_vec();
+    let GameplayEvent::StonebendContinuityDeterminationCommitted {
+        authority_actor, ..
+    } = &mut events.last_mut().unwrap().payload
+    else {
+        panic!("determination")
+    };
+    *authority_actor =
+        hollow_grove::constitutional::AuthorityActorId::new("being.forged.hypergiant").unwrap();
+    let forged = encode_gameplay_archive(
+        service.runtime().rule_set(),
+        &events,
+        service.runtime().world_session(),
+    )
+    .unwrap();
+    assert!(
+        GameApplicationService::from_archive(&forged).is_err(),
+        "a valid checksum cannot supply Name authority"
+    );
 }
 
 #[test]
