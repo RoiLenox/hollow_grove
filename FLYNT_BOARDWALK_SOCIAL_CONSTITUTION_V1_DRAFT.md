@@ -138,6 +138,43 @@ burden, loyalty, protection, labor, force, route knowledge, and continuity
 through his embodied private persona. The Gimp may operate from the Boardwalk, but
 the Underway is the jurisdictional layer that gives the title its depth.
 
+### Adopted vertical relationship: Boardwalk above, Underway below
+
+Adopted vertical relationship, 2026-10-08: Pimp of the Boardwalk above, Gimp of the Underway below.
+
+The user described:
+
+> I like the idea of there being the Pimp of the Boardwalk and he's about above the boardwalk and the Gimp is below the underground
+
+The district has an upper public face and a lower underground face. The Pimp's
+domain is on and above the public Boardwalk; the Gimp's base is the Underway
+beneath it. Above and below describe their spatial relationship and social
+presentation. They remain rival cultural bosses within the existing House law.
+
+| District level | Cultural boss and following | Established expression |
+|---|---|---|
+| Above: public Boardwalk | Pimp of the Boardwalk and the Troons | visible red-light trade, public invitation, glamour and Aura |
+| Below: underground Underway | Gimp of the Underway and the Gooners | the rubber persona, fetish fandom, devoted customers, a smaller working inner circle and Current |
+
+The same visitor economy reaches both levels. Their competition can concern
+where visitors spend their time, whose business receives repeat patronage and
+whose reputation travels between the public waterfront and the underground
+scene. Precise businesses, entrances, stairs, passages and access terms remain
+open. Balconies or upper rooms for the Pimp and subterranean venues for the Gimp
+are possible designs, not a settled floor plan.
+
+The Gimp and his representatives can appear on the public Boardwalk; the
+underground base does not confine them below. Existing Pimp Court and Gimp
+Retinue contact anchors remain the first case's public projection. This lore
+choice does not move saved actors or add a traversable map.
+
+The Boardwalk remains the public Return corridor from recovery to civic life.
+An optional descent into the Gimp's scene is a separate visit, not a discharge
+requirement. The underground district use of Underway is spatial lore; the
+Current Sea's `force.underway` remains its distinct dangerous inverse force.
+Being in an underground venue alone records no force event, successful
+emergence, consent, crew membership or House decision.
+
 Neither pole is automatically lawful or unlawful. Each may shelter people,
 create belonging, and distribute opportunity. Each may also become coercive:
 the Pimp through control of visibility and desire; the Gimp through demanded
@@ -147,12 +184,12 @@ fealty, debt, and force.
 
 The Boardwalk's two principal resident camps are **the Pimp and his Troons**
 and **the Gimp and his Gooners**. The Gimp keeps his Underway title and route
-depth while maintaining a visible Boardwalk retinue.
+depth, with his primary base below the Boardwalk and a visible presence above.
 
-| Camp | Boardwalk gathering place | Shared expression | What they compete to provide |
+| Camp | Base and public contact | Shared expression | What they compete to provide |
 |---|---|---|---|
-| Pimp and Troons (historically Trooners) | Pimp Court | Aura, adult sex work, public presence, patronage and invitation | red-light trade, visibility and reputation |
-| Gimp and Gooners | Gimp Retinue | Current, rubber persona, fetish culture, loyalty and private presence | adult leisure and a recurring subculture; exact businesses remain open |
+| Pimp and Troons (historically Trooners) | upper public Boardwalk; Pimp Court contact | Aura, adult sex work, public presence, patronage and invitation | red-light trade, visibility and reputation |
+| Gimp and Gooners | underground Underway; Gimp Retinue public contact | Current, rubber persona, fetish culture, loyalty and private presence | adult leisure and a recurring subculture; exact businesses remain open |
 
 They are rivals for influence, public credit, willing followers, and the trust
 of people returning to the Boardwalk. A disputed welcome, escort, job, or
@@ -591,3 +628,5 @@ The following remain deliberately open:
 7. the exact product lines and commercial relationship of the two bosses,
    including how their offerings support Sympiote development toward different
    Synthesis forms, and what each offering actually provides.
+8. exact upper/lower venues, entrances, connecting passages and access terms
+   within the adopted Boardwalk-above / Underway-below relationship.

@@ -82,6 +82,7 @@ class BackendContractTests(unittest.TestCase):
             return next(d for d in data["open_decisions"] if d["id"] == "decision.boardwalk.crew-identities")
         self.rejected(lambda d: crew(d).update(adopted_scope="all Gooners are staff; prior Bonds create sexual conduct"), "overbroad partial")
         self.rejected(lambda d: crew(d).update(adoption_marker="Adopted all Gooner venues, worker duties and prices."), "exact source marker")
+        self.rejected(lambda d: crew(d).update(adopted_scope="underground venue entry is successful Underway emergence and House clearance"), "overbroad partial")
         self.rejected(lambda d: crew(d).update(remaining_question=""), "erases remaining decision")
         self.rejected(lambda d: crew(d).update(user_statement="invented undisclosed adoption"), "source/user statement")
 

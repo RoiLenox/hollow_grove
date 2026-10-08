@@ -83,6 +83,15 @@ adult-service catalog remain open. The earlier goods, escort and clothing
 examples below remain possible supporting work, rather than the crews' defining
 identity. Gender, occupation, affiliation and particular agreements are distinct.
 
+### Adopted upper and lower domains
+
+The Pimp of the Boardwalk presides over the public upper face; the Gimp of the
+Underway has his primary base underground beneath it. This makes the existing
+Aura/Current rivalry spatial as well as social. The Gimp's public contacts can
+still meet visitors above. Specific venues, entrances, stairs and access terms
+remain to be chosen, while the public recovery-to-Return corridor remains intact.
+District location and `force.underway` remain separate meanings and records.
+
 ### User decision: two bosses with different products
 
 On 2026-10-08 the user clarified that both the Pimp and the Gimp are Boardwalk
@@ -278,9 +287,9 @@ camps. Those premises need an explicit future relationship.
 
 Proposed starting direction: develop the first path, retaining the trial as a
 possible later story. No transformation automatically transfers followers,
-erases the Underway history, or decides a title contest. The exact condition
-behind the Gimp's burden remains undesigned; establish his ordinary maintenance,
-boundaries, and adaptations before choosing a Name or medical behavior for it.
+erases the Underway history, or decides a title contest. The Gimp's adopted
+rubber persona establishes no medical condition. His attire, speech, business
+and individual practices remain open within the adopted underground base.
 
 Visual distinction can start with staging: open invitations at the Court,
 readable terms at work offers, sheltered rest at the Retinue, clear exits on

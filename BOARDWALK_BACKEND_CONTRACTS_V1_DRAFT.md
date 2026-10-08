@@ -16,6 +16,12 @@ is adopted: devoted customers and fetish fans, with a smaller working inner
 circle. A purchase, fandom, employment, crew affiliation and a Bond are distinct
 relationships; particular worker duties and commercial terms remain undecided.
 
+The vertical relationship is also adopted: the Pimp's public Boardwalk domain
+is above, and the Gimp's underground Underway base is below it. Venue location,
+entry/access terms and commercial delivery should be separately attributable
+when an actual business is chosen. Exact venues and connecting passages remain
+open; an underground address alone creates no Current Sea force event or House act.
+
 Owners: [Boardwalk social constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md),
 [Sympiote foundation](HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md),
 [four-pole economy](CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md), and the

@@ -125,6 +125,26 @@ Recognition
 
 The Boardwalk is the constitutional discharge corridor. It is calm, accessible, stable, public, and documented. A being leaves by choice. Recovery becomes ordinary civic presence, and Flynt recognition closes reintegration without granting new authority.
 
+#### Adopted Boardwalk district layers
+
+Boardwalk district layering: public Boardwalk above; underground Underway below.
+
+The [Boardwalk social constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md)
+owns the adopted 2026-10-08 spatial relationship: the Pimp of the Boardwalk and
+the Troons occupy the upper public face; the Gimp of the Underway and the
+Gooners have their primary base beneath it. These are connected social layers
+of the district; exact venues, entrances and access contracts remain open.
+
+The public Return corridor keeps its existing process and authority. An
+underground visit is optional and grants no discharge, recognition or other
+House act. This district layering defines no new executable constitutional
+route, coordinates or runtime actor relocation.
+
+The underground district meaning of Underway and the Current Sea force
+`force.underway` are distinct. Entering a venue beneath the Boardwalk is not
+itself a force event or successful emergence. Underway as Riptide's dangerous
+inverse retains the force meaning specified below.
+
 ### Riptide — Retrieve
 
 ```text

@@ -12,6 +12,11 @@ fetish fans, with a smaller inner circle working for the Gimp. This existing
 case retains its finite terms and does not establish which of those
 relationships applies to the Returning Goon beyond its actual recorded choice.
 
+The adopted district geography places the Pimp's public domain above and the
+Gimp's Underway base below the Boardwalk. This case's existing public contact
+anchors remain its projection; the lore choice adds no stairs, subterranean
+map, actor movement or new historical event to an existing save.
+
 Status: first playable implementation complete; all four outcomes are authoritative
 Backbone: `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md`
 World law: `FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md`

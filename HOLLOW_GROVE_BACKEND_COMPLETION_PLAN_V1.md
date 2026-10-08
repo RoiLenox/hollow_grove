@@ -79,6 +79,10 @@ crew, the Gimp has the classic rubber persona and Gooners retain internet-cultur
 roots. Their broad structure is also adopted: devoted customers and fetish fans,
 with a smaller working inner circle. Exact customs, worker duties and commercial
 terms remain pending.
+The Pimp's public domain is above, and the Gimp's underground Underway base is
+below the Boardwalk. That relationship is adopted; precise venues, connecting
+passages and access terms remain open. District location does not substitute
+for a Current Sea force event, a House decision or an executed traversal.
 The [decision register](HOLLOW_GROVE_BACKEND_DECISION_REGISTER_V1.md) lists
 those questions with their owning sources.
 `tools/verify-backend-contracts.py` checks status/ownership and optional existing

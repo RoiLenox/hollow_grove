@@ -67,9 +67,15 @@ historical aliases. The earlier medical interpretation of the Gimp is superseded
 fans, with a smaller working inner circle. The user accepted this proposed
 customer-and-crew structure. Fans, customers and workers can overlap.
 
+**Spatial relationship adopted, 2026-10-08:** Pimp of the Boardwalk above,
+Gimp of the Underway below. The Pimp has the public upper domain; the Gimp's
+primary base is in the underground beneath it. Their existing cultural titles,
+crew identities and House boundaries remain in force.
+
 **Still open:** specific businesses, named workers, duties, compensation,
-performer roles and the Gimp's speech/attire details. The broad organization
-is settled; its exact roster and commercial practices need further decisions.
+performer roles, the Gimp's speech/attire details, upper/lower venues, entrances
+and access terms. The broad organization and vertical relationship are settled;
+the exact roster, floor plan and commercial practices need further decisions.
 This clarification selects no named worker, service package or price and
 rewrites no historical patronage, gender identity or sexual conduct.
 
