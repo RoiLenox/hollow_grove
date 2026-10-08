@@ -27,6 +27,12 @@ records responsibility, quote/acceptance, delivery, remedy, existing unnamed
 standard-currency and headless-validation requirements for these candidates.
 It retains their proposed status and creates no purchases or inventory.
 
+The user has now chosen a tourist-facing red-light business atmosphere, citing
+Amsterdam and *Boardwalk Empire*. The [social constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md)
+records that adopted tone. These six entries remain proposed supporting offers;
+the next catalog discussion can include hosted entertainment and leisure venues.
+No first product pair or price has been chosen by the tone decision.
+
 ## Proposed first catalog
 
 Each crew starts with three small, distinct offers. These are proposed display
@@ -150,8 +156,8 @@ prove payment, an item, delivery, teaching qualifications, route access,
 contract performance, membership, or this new story's completion.
 
 Before implementation, decide which first offers the user adopts, the task and
-object, the applicable commercial terms, and whether the first public rivalry
-is mostly playful competition or a sharper dispute. The Gimp-to-Pimp title
+object, the applicable commercial terms and the particular dispute. The
+tourist red-light business atmosphere is now adopted. The Gimp-to-Pimp title
 trial's relationship to the existing Pimp remains separately open.
 
 ## Development and optimization order

@@ -2,7 +2,7 @@
 
 Status: active additive draft; Boardwalk occupant organization adopted 2026-10-07;
 rival bosses, differentiated offerings, and shared Sympiote entry-stage direction
-adopted 2026-10-08
+adopted 2026-10-08; tourist red-light waterfront atmosphere adopted 2026-10-08
 Backbone: `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md`
 Parent authorities: `FLYNT_CONSTITUTION_V2.md`,
 `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md`, and the common Bond
@@ -356,6 +356,46 @@ Every lawful Goon Bond requires:
 - a lawful resolution and preserved history.
 
 ## Pimp / Gimp Conflict
+
+### Tourist district and business atmosphere
+
+Adopted atmosphere, 2026-10-08: tourist red-light waterfront.
+
+The user's direction is:
+
+> I want it to be like red light district in amsterdam like buisness but fun for tourist kinda like boardwalk empire
+
+The Boardwalk is a tourist-facing red-light waterfront district: pleasure,
+entertainment and everyday commerce share the promenade with rival business
+interests. Visitors come for a good time; residents and workers know the labor,
+relationships and commercial stakes behind that welcome. The Amsterdam and
+*Boardwalk Empire* references establish atmosphere, rather than importing a real
+city's laws, a television plot or its characters into Hollow Grove.
+
+The Pimp/Trooners and Gimp/Gooners compete over customers, venues, suppliers,
+reputation, public credit and local influence. Their rivalry can be charming,
+theatrical or cooperative in public while an unmet promise, disputed account or
+behind-the-scenes bargain carries serious consequences. Fun tourism and hard
+business coexist. The district is not defined by constant street warfare.
+
+The adopted poles remain: the Pimp makes opportunity and public presence
+visible; the Gimp gives the district Underway depth, continuity and dependable
+support. Neither crew is assigned every glamorous business, every practical
+job, a fixed moral alignment or exclusive ownership of returning people.
+The Neutral Promenade remains shared civic passage alongside the visitor trade.
+
+Specific cabarets, clubs, adult entertainment or companionship businesses,
+lounges, games, shops, hospitality and Underway visitor services are **WORKING
+venue/product directions**, not an adopted catalog. Individual workers retain
+their existing identities and boundaries. This choice assigns no particular
+person a profession, supplier role or customer relationship.
+
+Exact establishments, first offers, suppliers, prices, publicity terms,
+joining/departure customs and dispute examples still need their own decisions.
+The existing commercial candidates remain proposals. This atmosphere creates
+no purchases, debts, membership flags, new offices or permission for coercion.
+
+### Recurring rivalry
 
 The Pimp and his Trooners and the Gimp and his Gooners are the Boardwalk's
 recurring rival camps. Their rivalry organizes who gathers where, whose offer

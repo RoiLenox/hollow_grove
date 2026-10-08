@@ -243,6 +243,14 @@
         "backend_handoff_binding_count",
         "unbound_gameplay_route_count"
       ]
+    },
+    {
+      "path": "FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md",
+      "role": "active-canon",
+      "required_markers": [
+        "rival bosses, differentiated offerings",
+        "Adopted atmosphere, 2026-10-08: tourist red-light waterfront."
+      ]
     }
   ],
   "synthesis": {
@@ -1672,9 +1680,13 @@
     },
     {
       "id": "decision.boardwalk.rivalry-tone",
-      "status": "open",
+      "status": "partially-adopted",
       "question": "What tone, ordinary customs and voluntary affiliation boundaries apply?",
-      "owner": "BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md"
+      "owner": "FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md",
+      "adopted_scope": "district atmosphere and business rivalry",
+      "adoption_marker": "Adopted atmosphere, 2026-10-08: tourist red-light waterfront.",
+      "user_statement": "I want it to be like red light district in amsterdam like buisness but fun for tourist kinda like boardwalk empire",
+      "remaining_question": "What exact joining/departure customs and reputation practices or records are adopted?"
     },
     {
       "id": "decision.synthesis.foundation-outcomes",

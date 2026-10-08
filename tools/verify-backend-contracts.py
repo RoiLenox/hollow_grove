@@ -103,11 +103,26 @@ def validate(root, data, architecture=None):
     unique_rows(decisions, "id", "open decision")
     decision_ids = {d["id"] for d in decisions}
     for decision in decisions:
-        require(decision["status"] == "open" and bool(decision["question"].strip()), "open decision silently resolved")
+        require(decision["status"] in {"open", "partially-adopted"} and bool(decision["question"].strip()), "open decision silently resolved")
         require(re.fullmatch(r"decision\.[a-z0-9.-]+", decision["id"]) is not None, "invalid decision identity")
         owned(decision["owner"])
         require(sources[decision["owner"]][0] not in {"legacy-only", "compatibility-catalog"},
                 "open decision assigned to legacy authority")
+        if decision["status"] == "partially-adopted":
+            require(decision["id"] == "decision.boardwalk.rivalry-tone"
+                    and decision["owner"] == "FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md"
+                    and decision.get("adopted_scope") == "district atmosphere and business rivalry",
+                    "unrecorded or overbroad partial adoption")
+            require(decision.get("adoption_marker") == "Adopted atmosphere, 2026-10-08: tourist red-light waterfront.",
+                    "partial adoption has no exact source marker")
+            owner_text = owned(decision["owner"], active=True)
+            require(decision["adoption_marker"] in owner_text
+                    and isinstance(decision.get("user_statement"), str)
+                    and bool(decision["user_statement"].strip())
+                    and decision["user_statement"] in owner_text,
+                    "partial adoption lacks its source/user statement")
+            require(isinstance(decision.get("remaining_question"), str)
+                    and bool(decision["remaining_question"].strip()), "partial adoption erases remaining decision")
 
     def unresolved(row):
         nonempty_strings(row["open_decisions"], "open decisions")
@@ -228,7 +243,10 @@ def validate(root, data, architecture=None):
     return {"schema_version": 1, "passed": True, "scope": data["scope"], "source_files_checked": len(digests),
             "candidate_offers": len(offers), "requirement_families": len(requirements), "unverified_route_contracts": 0,
             "headless_backend_route_bindings": len(gaps), "deferred_gameplay_route_bindings": len(gaps),
-            "open_decisions": len(decisions), "architecture_crosscheck": "passed" if architecture else "not supplied",
+            "open_decisions": sum(d["status"] == "open" for d in decisions),
+            "partially_adopted_decisions": sum(d["status"] == "partially-adopted" for d in decisions),
+            "unresolved_decision_families": len(decisions),
+            "architecture_crosscheck": "passed" if architecture else "not supplied",
             "source_sha256": digests, "world_state_mutated": False,
             "attestation": "authored source/status consistency; no new domain execution or proposal adoption"}
 

@@ -216,10 +216,11 @@ Neither leader needs to become the setting's permanent villain or savior.
   decision.
 
 These customs need adoption before they become universal Boardwalk lore.
-The earlier question to the user concerns the rivalry's usual tone: playful
-hustle with serious trust underneath, a tense struggle for public power, or
-escalating street conflict. The current discussion prioritizes products and
-Sympiote development toward Synthesis; no tone was adopted by the boss clarification.
+The user has now selected a tourist-facing red-light waterfront atmosphere,
+citing Amsterdam and *Boardwalk Empire*: fun visitor commerce alongside serious
+rival business interests. The [Boardwalk social constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md)
+owns that adopted direction. These ordinary customs remain proposals; exact
+venues, product lines, prices and the first commercial dispute remain open.
 The constitutional Return corridor remains a
 stable, voluntary public passage under every tonal choice.
 
@@ -459,7 +460,8 @@ results rather than invent victories or prize Forms.
 
 The backend register in `contracts/backend/lore_registry.v1.json` now indexes
 six candidate offers, sixteen Synthesis requirement families, ten unverified
-route contracts and nineteen open decisions. Its source/status checker is
+route contracts and nineteen decision families, eighteen wholly open and one
+partially adopted for the Boardwalk atmosphere. Its source/status checker is
 `tools/verify-backend-contracts.py`. This review material preserves the open
 status below; it supplies no new art or game production.
 

@@ -72,7 +72,9 @@ The [Boardwalk backend draft](BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md),
 and [object-lineage requirements](STONEBEND_OBJECT_LINEAGE_BACKEND_REQUIREMENTS_V1_DRAFT.md)
 now provide source-backed review material. The authored
 [backend register](contracts/backend/lore_registry.v1.json) includes six candidate
-offers, sixteen requirement families, ten historical handoff contracts and nineteen open decisions.
+offers, sixteen requirement families, ten historical handoff contracts and nineteen decision families.
+Eighteen are wholly open; the Boardwalk tone/customs entry now records the
+user's adopted tourist red-light business atmosphere with exact customs pending.
 The [decision register](HOLLOW_GROVE_BACKEND_DECISION_REGISTER_V1.md) lists
 those questions with their owning sources.
 `tools/verify-backend-contracts.py` checks status/ownership and optional existing

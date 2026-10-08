@@ -1,6 +1,6 @@
 # Backend Decision Register V1
 
-Status: OPEN decisions indexed from the authored backend register. No answer
+Status: OPEN decisions and a scoped partial adoption indexed from the authored backend register. No answer
 is adopted by appearing here. Source ownership is retained per question.
 Scope: the current Boardwalk, Synthesis and object-lineage pass; the broader
 future lore workshop can contain additional open topics.
@@ -42,6 +42,16 @@ What cancellation, correction, publicity and non-delivery terms apply?
 Owner: [BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md](BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md).
 
 What tone, ordinary customs and voluntary affiliation boundaries apply?
+
+**Partially adopted, 2026-10-08:** a tourist-facing red-light waterfront,
+with fun visitor commerce and serious rival business interests. The user cited
+Amsterdam's red-light district and *Boardwalk Empire*. The owning atmosphere
+is now in [Boardwalk Social Constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md).
+
+**Still open:** exact joining/departure customs, reputation practices and their
+records. The tone choice selects no particular product, venue, worker or price.
+The register has eighteen wholly open entries and this one partially adopted
+entry; all nineteen families still contain some unresolved detail.
 
 ## Synthesis
 

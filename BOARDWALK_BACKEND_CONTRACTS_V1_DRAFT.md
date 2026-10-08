@@ -12,6 +12,22 @@ Owners: [Boardwalk social constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_D
 The [earlier offers draft](BOARDWALK_SYMPIOTE_OFFERS_AND_FIRST_RETURN_V1_DRAFT.md)
 remains the source of the six candidate display names below.
 
+## Adopted district atmosphere; proposed commercial direction
+
+The user selected a tourist-facing red-light waterfront atmosphere on
+2026-10-08, citing Amsterdam and *Boardwalk Empire*. The
+[Boardwalk social constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md)
+owns that adopted tone: a fun destination for visitors and serious business
+for residents, workers and the rival crews.
+
+For the next offer discussion, consider a public cabaret/salon or hosted evening
+on the Pimp/Trooners side, and a private leisure venue or guided Underway visit
+on the Gimp/Gooners side. These are WORKING suggestions. Either crew may run
+adult entertainment, hospitality or other business under its actual disclosed
+terms; no exclusive trade or chosen profession follows from a camp label.
+The existing six candidates may supply supporting goods/services. None has
+been selected as the first catalog by this atmosphere decision.
+
 ## Established boundary
 
 The Pimp leads his Trooners; the Gimp leads his Gooners. They are rival
@@ -160,6 +176,8 @@ contracts or attest that commerce is implemented.
 
 Choose the first offer pair and task, responsible ordinary actors, qualification
 criteria, quantities/duration, exact price/exchange and due conditions, correction
-and cancellation terms, publicity agreement, rivalry tone and dispute examples.
+and cancellation terms, publicity agreement, ordinary customs and dispute examples.
+The district's tourist red-light business atmosphere is adopted; exact customs
+and commercial entries remain open.
 The shared currency's public name is a wider canon question; this catalog need
 not name it to define a quoted amount later.

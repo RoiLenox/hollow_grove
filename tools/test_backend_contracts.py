@@ -66,6 +66,17 @@ class BackendContractTests(unittest.TestCase):
     def test_open_decision_cannot_be_assigned_to_legacy_authority(self):
         self.rejected(lambda d: d["open_decisions"][0].update(owner="HUEMAN_CURRENT_BODY_AURA_MIND_PROGRESSION_MATRIX_V1.md"), "legacy authority")
 
+    def test_partial_tone_adoption_cannot_erase_customs_or_select_products(self):
+        report = audit.validate(ROOT, self.data)
+        self.assertEqual(report["open_decisions"], 18)
+        self.assertEqual(report["partially_adopted_decisions"], 1)
+        self.assertEqual(report["unresolved_decision_families"], 19)
+        def tone(data):
+            return next(d for d in data["open_decisions"] if d["id"] == "decision.boardwalk.rivalry-tone")
+        self.rejected(lambda d: tone(d).update(remaining_question=""), "erases remaining decision")
+        self.rejected(lambda d: tone(d).update(adopted_scope="all venues, products and customs"), "overbroad partial")
+        self.rejected(lambda d: d["open_decisions"][0].update(status="partially-adopted"), "unrecorded or overbroad partial")
+
     def test_relative_escape_absolute_path_and_symlink_escape_fail(self):
         for name in ("../secret", "/etc/passwd", "a/../../b", "a\\b"):
             with self.subTest(name=name), self.assertRaises(audit.AuditError):
