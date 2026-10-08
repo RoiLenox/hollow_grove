@@ -893,11 +893,17 @@ fn push_flynt_institution_sections(catalog: &HollowDeckCatalog, sections: &mut V
         "    ↓  select one parallel specialist sect".into(),
         "  Hunter  |  Chief  |  Mariner".into(),
         "       ╲       │       ╱".into(),
-        "             Chimera".into(),
+        format!(
+            "             {}",
+            hierarchy.convergence.convergence_identity
+        ),
         "                ↓".into(),
-        "             Manticorp".into(),
+        format!("             {}", hierarchy.convergence.perfected_identity),
         "  Every Mystery Man was a Corpman; not every Corpman becomes a Mystery Man.".into(),
-        "  Corpman is general service. Manticorp is the perfected apex.".into(),
+        format!(
+            "  Corpman is general service. {} combines; {} perfects.",
+            hierarchy.convergence.convergence_identity, hierarchy.convergence.perfected_identity
+        ),
     ]);
     for tradition in &hierarchy.sects {
         let nature = catalog

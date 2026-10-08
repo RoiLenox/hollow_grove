@@ -90,7 +90,7 @@ mod tests {
             "Flynt's four creature pairs are Gargoyle/Medusa, Werewolf/Vampire, Mariner/Mermaid, and Manticore/Chimera"
         ));
         assert!(output.contains(
-            "Manticore is the Tross's masculine maintained Synthesis Form beyond Chimera"
+            "Manticore is the Tross's masculine maintained Synthesis identity, not a general tier after Chimera"
         ));
         assert!(output.contains("Current Synthesis collision relay bytes: 5."));
     }

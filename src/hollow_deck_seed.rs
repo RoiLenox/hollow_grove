@@ -2,6 +2,7 @@
 
 use crate::hollow_deck::*;
 use crate::hollow_grove_contract::House;
+use crate::world::practitioner_ontology::FlyntSynthesisState;
 
 pub(crate) fn seed_catalog() -> HollowDeckCatalog {
     let houses = vec![
@@ -1618,22 +1619,22 @@ fn flynt_institutional_hierarchy() -> FlyntInstitutionalHierarchy {
         ],
         convergence: FlyntConvergenceMastery {
             required_sects: FlyntSect::ALL.to_vec(),
-            convergence_identity: "Chimera".into(),
-            convergence_nature_id: "chimera".into(),
+            convergence_identity: FlyntSynthesisState::COMBINED.display_name().into(),
+            convergence_nature_id: FlyntSynthesisState::COMBINED.nature_id().into(),
             convergence_meaning:
-                "Convergent synthesis and mastery of Hunter, Chief, and Mariner; not a fourth ordinary Mystery Men sect."
+                "Manticorp is combined synthesis of Hunter, Chief, and Mariner on independently refinable Current, Aura, and Weapon tracks; not a fourth ordinary Mystery Men sect."
                     .into(),
             convergence_visual_direction:
                 "A disciplined composite of Hunter structure, Chief force, and Mariner positional control; never random monster clutter."
                     .into(),
-            perfected_from_identity: "Chimera".into(),
-            perfected_identity: "Manticorp".into(),
-            perfected_nature_id: "manticorp".into(),
+            perfected_from_identity: FlyntSynthesisState::COMBINED.display_name().into(),
+            perfected_identity: FlyntSynthesisState::PERFECTED.display_name().into(),
+            perfected_nature_id: FlyntSynthesisState::PERFECTED.nature_id().into(),
             perfection_meaning:
-                "The perfected and stabilized apex of Chimera: integrated, stable, sovereign, resolved, and singular."
+                "Chimera is perfected synthesis of an already combined Manticorp on the relevant track. Synthesis attainment does not confer the unique First Companion identity or any office."
                     .into(),
             perfection_visual_direction:
-                "Perfected integration rather than visible accumulation: controlled, sovereign, resolved, and singular."
+                "Perfected integration rather than visible accumulation: controlled, coherent, and disciplined."
                     .into(),
             apex_association: "The Tross".into(),
             legacy_pair_compatibility:

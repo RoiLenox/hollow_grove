@@ -108,6 +108,14 @@ becomes Stonebend Title, Sandmanor proof, Glaüshouse Clearance, automatic
 membership, or duplicate Tross sovereignty. Urban and rural expressions stay
 distinct and equally Flynt.
 
+The Boardwalk's rival resident camps are the Pimp with his **Trooners** and the
+Gimp with his **Gooners**. Their offers and competing testimony provide social
+context for return, patronage, finite cooperation, and protected independence.
+Camp affiliation is distinct from a Hoe or Goon role and is not inferred from
+a catalog entry, an offer, or a Bond beyond its recorded terms. The adopted
+organization lives in `FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md`; current
+catalog IDs, role envelopes, and archived payload text remain stable.
+
 ### Stonebend
 
 Stonebend gives stable reference to citizens, restored forms, claims, material,
@@ -143,18 +151,24 @@ manufactures consent.
 
 Schema V2 additionally persists the operational role envelope and ordered
 handoffs. Replay requires one affected actor, decision owner, executor, witness,
-recipient, completion condition, Restitution owner, and at least two explicit
-handoffs. The decision owner must be the live House office, and the handoff
-chain must address the decision owner, executor, witness, and recipient. Schema
+recipient, completion condition, Restitution owner, and the current catalog's
+three exact decision-owner → executor → witness → recipient handoffs.
+The decision owner must be the live House office. Schema
 V1 remains readable through an explicit, stable-identity role migration after
 its original payload checksum succeeds.
+
+`hollow-grove lore` resolves all twelve definitions to typed capacity references.
+With `--save`, the read-only adapter links the Boardwalk definition to actual
+replayed choices, decisions, and event witnesses. Catalog authority snapshots
+and authored handoff declarations never attest case execution by themselves.
+See `docs/LORE_KERNEL_OPTIMIZATION_V1.md` for the binding and coverage limit.
 
 `FunctionalLoreCatalog::replay` verifies format, schema, checksum, the complete
 canonical definition set, and the live authority snapshot. Altered prose,
 choices, transitions, jurisdiction, authority, or ordering causes replay
 divergence rather than silent acceptance.
 
-Gameplay archives use Rampart-aware schema V3. They embed the exact
+Gameplay archives use Rampart-aware schema V4. They embed the exact
 schema-V2 institutional state needed to replay their House decisions and an
 explicit binding to The Rampart of Roi and Roselina. Schema V1 and V2 gameplay archives
 migrate through recorded decisions without inventing events; new gameplay

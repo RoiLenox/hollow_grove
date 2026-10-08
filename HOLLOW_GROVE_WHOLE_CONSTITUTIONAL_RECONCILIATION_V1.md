@@ -67,6 +67,12 @@ legibility. Clouseau may witness the PLEB-PLEB relation between the systems.
 None of these associations transfers title-bearer identity or authority to an
 AI/client.
 
+The Boardwalk's occupant organization is the Pimp with his **Trooners** and
+the Gimp with his **Gooners**, two rival retinues competing for willing support
+and public credit. This cultural grouping preserves the title/layer lock above
+and creates no additional House or office. Hoe and Goon remain separate roles;
+unaffiliated residents retain the shared promenade and independent return.
+
 ## 5. Rampart acceptance contract
 
 The Rampart of Roi and Roselina may bind a record only when all of the following are present:

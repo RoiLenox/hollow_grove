@@ -56,6 +56,10 @@ fn face_north_and_interact(service: &mut GameApplicationService, next: &mut u64)
 }
 
 fn completed_goon_bond_application() -> GameApplicationService {
+    boardwalk_application(BoardwalkChoice::GoonBond, true)
+}
+
+fn boardwalk_application(choice: BoardwalkChoice, commit: bool) -> GameApplicationService {
     let world =
         WorldSession::load_or_canonical_at(std::path::Path::new(env!("CARGO_MANIFEST_DIR")))
             .unwrap();
@@ -116,16 +120,196 @@ fn completed_goon_bond_application() -> GameApplicationService {
     execute(
         &mut service,
         &mut next,
-        GameplayCommand::SupportBoardwalkOption {
-            choice: BoardwalkChoice::GoonBond,
+        GameplayCommand::SupportBoardwalkOption { choice },
+    );
+    if commit {
+        execute(
+            &mut service,
+            &mut next,
+            GameplayCommand::AskReturningGoonToDecide,
+        );
+    }
+    service
+}
+
+#[test]
+fn lore_binding_requires_actor_commitment_and_preserves_all_four_outcomes_through_replay() {
+    use hollow_grove::gameplay::{
+        BOARDWALK_RETURN_LORE_ID, BoardwalkLoreChoice, LoreInspection, LoreStopReason,
+    };
+
+    let unplayed = LoreInspection::from_runtime(None).unwrap();
+    assert_eq!(unplayed.definitions.len(), 12);
+    assert!(
+        unplayed
+            .definitions
+            .iter()
+            .all(|definition| definition.execution.is_none())
+    );
+    assert_eq!(
+        unplayed
+            .definitions
+            .iter()
+            .filter(|definition| definition.gameplay_binding.is_some())
+            .count(),
+        1
+    );
+
+    for choice in [
+        BoardwalkChoice::PimpPatronage,
+        BoardwalkChoice::GoonBond,
+        BoardwalkChoice::LimitedCooperation,
+        BoardwalkChoice::IndependentReturn,
+    ] {
+        let supported = boardwalk_application(choice, false);
+        let pending = LoreInspection::from_runtime(Some(supported.runtime())).unwrap();
+        let pending = pending
+            .definitions
+            .iter()
+            .find(|definition| definition.lore_id == BOARDWALK_RETURN_LORE_ID)
+            .unwrap()
+            .execution
+            .as_ref()
+            .unwrap();
+        assert!(!pending.complete);
+        assert!(pending.decisions.is_empty());
+        assert_eq!(pending.stops, [LoreStopReason::ActorCommitmentRequired]);
+
+        let service = boardwalk_application(choice, true);
+        let archive = service.encode_archive().unwrap();
+        let inspection = LoreInspection::from_runtime(Some(service.runtime())).unwrap();
+        let execution = inspection
+            .definitions
+            .iter()
+            .find(|definition| definition.lore_id == BOARDWALK_RETURN_LORE_ID)
+            .unwrap()
+            .execution
+            .as_ref()
+            .unwrap();
+        assert!(execution.complete);
+        assert!(execution.stops.is_empty());
+        assert_eq!(
+            execution.catalog_choice,
+            Some(BoardwalkLoreChoice::for_choice(choice))
+        );
+        assert_eq!(
+            execution.protected_independent_return,
+            choice == BoardwalkChoice::IndependentReturn
+        );
+        assert_eq!(
+            execution.decisions.len(),
+            if choice == BoardwalkChoice::IndependentReturn {
+                2
+            } else {
+                4
+            }
+        );
+        assert_eq!(
+            execution.events.last().unwrap().event_id,
+            service.events().last().unwrap().id.as_str()
+        );
+
+        let replayed = GameApplicationService::from_archive(&archive).unwrap();
+        assert_eq!(
+            LoreInspection::from_runtime(Some(replayed.runtime())).unwrap(),
+            inspection
+        );
+        assert_eq!(
+            service.encode_archive().unwrap(),
+            archive,
+            "inspection must not write or mutate source records"
+        );
+        assert_eq!(replayed.encode_archive().unwrap(), archive);
+    }
+}
+
+#[test]
+fn lore_inspection_reports_missing_evidence_and_never_creates_authority() {
+    use hollow_grove::gameplay::{BOARDWALK_RETURN_LORE_ID, LoreInspection, LoreStopReason};
+    let mut service = GameApplicationService::new(rules());
+    let mut next = 1;
+    execute(
+        &mut service,
+        &mut next,
+        GameplayCommand::EstablishHuemanIdentity {
+            continuity: hollow_grove::gameplay::BeingContinuityId::new("being-continuity.hueman")
+                .unwrap(),
+            participant: ParticipantId::new("participant.hueman").unwrap(),
+            institutional: InstitutionalBeingId::new("being.hueman").unwrap(),
         },
     );
     execute(
         &mut service,
         &mut next,
-        GameplayCommand::AskReturningGoonToDecide,
+        GameplayCommand::EnterMap {
+            map: WorldMapId::BoardwalkReturnVestibule,
+        },
     );
-    service
+    let before = service.events().to_vec();
+    let inspection = LoreInspection::from_runtime(Some(service.runtime())).unwrap();
+    let execution = inspection
+        .definitions
+        .iter()
+        .find(|definition| definition.lore_id == BOARDWALK_RETURN_LORE_ID)
+        .unwrap()
+        .execution
+        .as_ref()
+        .unwrap();
+    assert!(!execution.complete);
+    assert!(execution.stops.contains(&LoreStopReason::MissingAuthority(
+        "office.glaushouse.prima-donna"
+    )));
+    assert!(
+        execution
+            .stops
+            .iter()
+            .any(|stop| matches!(stop, LoreStopReason::MissingEvidence(_)))
+    );
+    assert!(execution.decisions.is_empty());
+    assert_eq!(service.events(), before);
+}
+
+#[test]
+fn lore_cli_replays_a_save_without_writing_and_rejects_tampering() {
+    use std::process::Command;
+    let path = std::env::temp_dir().join(format!(
+        "hollow-grove-lore-save-{}.json",
+        std::process::id()
+    ));
+    let archive = completed_goon_bond_application().encode_archive().unwrap();
+    std::fs::write(&path, &archive).unwrap();
+    let output = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["lore", "--save"])
+        .arg(&path)
+        .arg("--json")
+        .output()
+        .unwrap();
+    assert!(
+        output.status.success(),
+        "{}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    let projection: serde_json::Value = serde_json::from_slice(&output.stdout).unwrap();
+    let boardwalk = projection["definitions"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|definition| {
+            definition["lore_id"] == hollow_grove::gameplay::BOARDWALK_RETURN_LORE_ID
+        })
+        .unwrap();
+    assert_eq!(boardwalk["execution"]["complete"], true);
+    assert_eq!(std::fs::read_to_string(&path).unwrap(), archive);
+    let damaged = archive.replacen("returning-goon", "other-subject", 1);
+    std::fs::write(&path, damaged).unwrap();
+    let output = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
+        .args(["lore", "--save"])
+        .arg(&path)
+        .output()
+        .unwrap();
+    assert!(!output.status.success());
+    assert!(output.stdout.is_empty());
+    std::fs::remove_file(&path).unwrap();
 }
 
 #[test]

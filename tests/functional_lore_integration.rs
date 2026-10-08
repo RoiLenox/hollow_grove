@@ -5,8 +5,8 @@ use hollow_grove::constitutional::{CausalPosition, HouseFunction};
 use hollow_grove::hollow_grove_contract::House;
 use hollow_grove::world::geography::ConstitutionalRouteId;
 use hollow_grove::world::lived_lore::{
-    FunctionalLoreCatalog, FunctionalLoreError, canonical_functional_lore_definitions,
-    validate_definitions,
+    FunctionalLoreCatalog, FunctionalLoreError, LoreRoleCapacity,
+    canonical_functional_lore_definitions, validate_definitions,
 };
 use hollow_grove::world::session::WorldSession;
 
@@ -57,6 +57,44 @@ fn all_four_houses_have_three_complete_lived_loops_and_every_route_is_used() {
         .map(|definition| definition.route)
         .collect::<BTreeSet<_>>();
     assert_eq!(routes, ConstitutionalRouteId::ALL.into_iter().collect());
+}
+
+#[test]
+fn handoffs_reject_role_mentions_wrong_recipients_and_broken_order() {
+    let mut definitions = canonical_functional_lore_definitions();
+    let original = definitions[0].clone();
+    let handoffs = original.operational_handoffs().unwrap();
+    assert_eq!(handoffs[0].from.capacity, LoreRoleCapacity::DecisionOwner);
+    assert_eq!(handoffs[2].to.capacity, LoreRoleCapacity::Recipient);
+
+    for malformed in [
+        &[
+            "office.flynt.tross→unrelated receiver: mention Boardwalk return steward and Boardwalk witnesses and Returning resident",
+            "unrelated receiver→Returning resident: unrelated receipt",
+        ][..],
+        &[
+            "office.flynt.tross→Boardwalk return steward: scoped recognition decision",
+            "Boardwalk witnesses→Returning resident: voluntary return receipt",
+            "Boardwalk return steward→Boardwalk witnesses: public recognition record",
+        ][..],
+        &[
+            "office.flynt.tross→Boardwalk return steward: scoped recognition decision",
+            "Boardwalk return steward→Boardwalk witnesses: public recognition record",
+            "Boardwalk witnesses→Returning resident impostor: mention Returning resident",
+        ][..],
+    ] {
+        definitions[0].ordered_handoffs = malformed;
+        assert_eq!(
+            validate_definitions(&definitions),
+            Err(FunctionalLoreError::IncompleteContract(original.id))
+        );
+        assert!(
+            !hollow_grove::kernel_invariants::audit_functional_lore_definitions(&definitions)
+                .passed()
+        );
+    }
+    definitions[0] = original;
+    validate_definitions(&definitions).unwrap();
 }
 
 #[test]

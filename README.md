@@ -82,6 +82,10 @@ hollow-grove-update prepare
 
 Generated output belongs under `artifacts/` or `dist/`; see
 [Artifact Ownership](docs/ARTIFACT_OWNERSHIP.md) before adding a new output.
+Read-only [Lore Kernel Inspection](docs/LORE_KERNEL_OPTIMIZATION_V1.md) is
+available through `hollow-grove lore`. Use `--save path/to/save.json` to verify
+and replay a gameplay archive before inspecting its Boardwalk consequence.
+The report distinguishes authored contracts from recorded execution.
 Hollow Grove Core and the Hueman presentation client are independently shipped
 and joined through the versioned
 [Hollow Grove / Hueman Seam](docs/HOLLOW_GROVE_HUEMAN_SEAM_V1.md). For a
@@ -89,6 +93,8 @@ recoverable source, state, Core, Hueman, and desktop-profile migration, use
 the [Laptop Migration Plan](docs/LAPTOP_MIGRATION.md) after the RC tag exists.
 The same `hollow-grove-update` command then provides guarded, explicitly
 directed updates from either device to the other.
+The [Lore Sync Checkpoint](docs/LORE_SYNC_CHECKPOINT_V1.md) records the local
+handoff artifacts and the checks to finish when the main PC is available.
 
 ## Hollow Deck
 
@@ -100,7 +106,7 @@ or query it through `hollow-grove deck ...`. Canon remains read-only while a
 separate checksummed state file persists cultivated Current Forms, learned and
 equipped Aura moves, discoveries, and known Syntheses.
 
-The current Deck catalog schema is `1.5.0`; its persisted state envelope and
+The current Deck catalog schema is `1.6.0`; its persisted state envelope and
 default `artifacts/gameplay-saves/hollow-deck-state-v1.json` filename remain V1.
 Glaüshouse has coequal Presensor/Matron/Jade and
 Preceptor/Marshall/Emerald branches sharing one alchemical slot. Gargoyle uses
@@ -115,8 +121,8 @@ Pumps never become biological Nature IDs.
 The immutable Deck also exposes distinct institutional grammars rather than a
 shared rank tree: Glaüshouse selects one of two coequal seat branches; Flynt
 advances from Warden through Corpman and Mystery Man into parallel specialist
-sects whose Current/Aura/Weapon convergence tier names remain on a
-constitutional reconciliation hold; Stonebend combines paired
+sects whose independently refinable Current/Aura/Weapon tracks combine as
+Manticorp and perfect as Chimera under the ratified amendment; Stonebend combines paired
 Current/Aura competencies as Freemason/Superstar or
 Proliteriate/Rockstar before Hypergiant integration; Sandmanor keeps Minorian
 and Minoan as two complete ways of life, with independent social, Aura, and
@@ -149,6 +155,8 @@ Its technological design language is **PrimePunk**: primal physical laws,
 functional visible mechanisms, precision engineering, and constant redesign.
 Its immediate open design task is the bottom-up signature object/weapon pass,
 not a premature final metaphysics of Hollowing.
+The [PrimePunk Object Lineage draft](STONEBEND_PRIMEPUNK_OBJECT_LINEAGE_V1_DRAFT.md)
+develops one repairable survey frame as a WORKING design case.
 
 - Primary authority:
   [Stonebend Constitution V2](STONEBEND_CONSTITUTION_V2.md)
@@ -236,6 +244,13 @@ Its technological design language is **PetPunk**: highly refined,
 near-closed-loop petroleum-derived fuels, fluids, polymers, pressure systems,
 capture, and recirculation. Reflection is a strongly established philosophical
 direction beneath the locked Law of Capacity.
+
+The Boardwalk's principal occupants are **the Pimp and his Trooners** and
+**the Gimp and his Gooners**: rival retinues centered on public Aura and
+enduring Current. They compete for trust, willing followers, opportunity, and
+public credit while sharing the promenade with independent residents. Their
+organization is defined in the
+[Boardwalk Social Constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md).
 
 - Primary authority:
   [Flynt Constitution V2](FLYNT_CONSTITUTION_V2.md)

@@ -10,8 +10,9 @@ use std::collections::BTreeSet;
 use serde::{Deserialize, Serialize};
 
 use crate::hollow_grove_contract::House;
+use crate::world::practitioner_ontology::FlyntSynthesisState;
 
-pub const HOLLOW_DECK_SCHEMA_VERSION: &str = "1.5.0";
+pub const HOLLOW_DECK_SCHEMA_VERSION: &str = "1.6.0";
 pub const HUEMAN_STATS: StatBlock = StatBlock::new(50, 50, 50, 50);
 pub const FULL_EXPRESSION_STAT_CEILING: u16 = 320;
 pub const FAVORABLE_AURA_MODIFIER: f32 = 1.10;
@@ -2781,11 +2782,11 @@ fn validate_flynt_institution(catalog: &HollowDeckCatalog, errors: &mut Vec<Deck
 
     let convergence = &hierarchy.convergence;
     if convergence.required_sects != FlyntSect::ALL
-        || convergence.convergence_identity != "Chimera"
-        || convergence.convergence_nature_id != "chimera"
-        || convergence.perfected_from_identity != "Chimera"
-        || convergence.perfected_identity != "Manticorp"
-        || convergence.perfected_nature_id != "manticorp"
+        || convergence.convergence_identity != FlyntSynthesisState::COMBINED.display_name()
+        || convergence.convergence_nature_id != FlyntSynthesisState::COMBINED.nature_id()
+        || convergence.perfected_from_identity != FlyntSynthesisState::COMBINED.display_name()
+        || convergence.perfected_identity != FlyntSynthesisState::PERFECTED.display_name()
+        || convergence.perfected_nature_id != FlyntSynthesisState::PERFECTED.nature_id()
         || convergence.convergence_meaning.is_empty()
         || convergence.convergence_visual_direction.is_empty()
         || convergence.perfection_meaning.is_empty()
@@ -2799,7 +2800,7 @@ fn validate_flynt_institution(catalog: &HollowDeckCatalog, errors: &mut Vec<Deck
     {
         errors.push(DeckValidationError::new(
             "flynt_institution.convergence",
-            "Hunter + Chief + Mariner must converge as Chimera, then perfect as Manticorp; Corpman is distinct",
+            "Hunter + Chief + Mariner must combine as Manticorp, then perfect as Chimera; Corpman is distinct",
         ));
     }
 

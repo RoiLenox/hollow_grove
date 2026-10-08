@@ -19,7 +19,7 @@ use crate::hollow_deck::{
 use crate::runtime_rampart::component_digest;
 
 /// Persisted state format/version. This is deliberately independent from the
-/// canonical catalog's semantic `HOLLOW_DECK_SCHEMA_VERSION` (currently 1.4.0).
+/// canonical catalog's semantic `HOLLOW_DECK_SCHEMA_VERSION`.
 pub const HOLLOW_DECK_STATE_FORMAT: &str = "hollow-grove.hollow-deck-state";
 pub const HOLLOW_DECK_STATE_VERSION: u16 = 1;
 pub const HOLLOW_DECK_STATE_ENV: &str = "HOLLOW_DECK_STATE_PATH";

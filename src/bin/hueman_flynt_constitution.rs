@@ -36,7 +36,7 @@ mod tests {
         assert!(output.contains("The Tross = Manticore"));
         assert!(output.contains("There is exactly one constitutional Chimera"));
         assert!(
-            output.contains("Manticore is the Tross's specifically masculine maintained Synthesis Form beyond Chimera")
+            output.contains("Manticore is the Tross's specifically masculine maintained Synthesis identity, not a general tier after Chimera")
         );
         assert!(output.contains("The Mystery Man and Mr. X are aliases or operational identities"));
         assert!(output.contains("The Gallows is the organized-crime underworld manifestation of We Fairy Men"));

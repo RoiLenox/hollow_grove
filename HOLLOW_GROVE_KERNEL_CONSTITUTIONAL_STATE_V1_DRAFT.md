@@ -170,6 +170,15 @@ Gimp of the Underway  = hidden Current, route depth, sanctuary, endurance
 Pimp of the Boardwalk = public Aura, patronage, access, visibility, return
 ```
 
+The Boardwalk's two principal occupant camps are **the Pimp and his Trooners**
+and **the Gimp and his Gooners**. Their rivalry organizes public welcome,
+opportunity, protection, trust, and credit. The Gimp retains his Underway
+title while his retinue has a Boardwalk presence. Trooner and Gooner name
+voluntary cultural affiliations; Hoe, Goon, Bond, and office remain distinct.
+The Neutral Promenade remains shared with unaffiliated occupants, and the two
+camps may cooperate on a bounded task. Their controlling social source is
+`FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md`.
+
 The Underway may protect necessary privacy but must preserve accountable
 disclosure to lawful review. The Boardwalk may create visibility but must
 preserve terms, refusal, private review, and exit. Neither pole owns a Being.

@@ -37,7 +37,7 @@ fn names(catalog: &hollow_grove::hollow_deck::HollowDeckCatalog, path_id: &str) 
 fn canonical_catalog_validates_and_keeps_hueman_neutral() {
     let catalog = canonical_hollow_deck();
     validate_hollow_deck(&catalog).expect("canonical Hollow Deck should validate");
-    assert_eq!(HOLLOW_DECK_SCHEMA_VERSION, "1.5.0");
+    assert_eq!(HOLLOW_DECK_SCHEMA_VERSION, "1.6.0");
     assert_eq!(catalog.schema_version, HOLLOW_DECK_SCHEMA_VERSION);
     assert_eq!(catalog.hueman_stats, StatBlock::new(50, 50, 50, 50));
     assert_eq!(catalog.hueman_stats, HUEMAN_STATS);
@@ -426,14 +426,14 @@ fn flynt_service_sects_convergence_and_principal_stacks_are_exact() {
             .sects
             .iter()
             .all(|tradition| tradition.nature_id != "chimera"),
-        "Chimera is convergence, not a fourth ordinary sect"
+        "Synthesis attainment is not a fourth ordinary sect"
     );
     assert_eq!(hierarchy.convergence.required_sects, FlyntSect::ALL);
-    assert_eq!(hierarchy.convergence.convergence_identity, "Chimera");
-    assert_eq!(hierarchy.convergence.convergence_nature_id, "chimera");
-    assert_eq!(hierarchy.convergence.perfected_from_identity, "Chimera");
-    assert_eq!(hierarchy.convergence.perfected_identity, "Manticorp");
-    assert_eq!(hierarchy.convergence.perfected_nature_id, "manticorp");
+    assert_eq!(hierarchy.convergence.convergence_identity, "Manticorp");
+    assert_eq!(hierarchy.convergence.convergence_nature_id, "manticorp");
+    assert_eq!(hierarchy.convergence.perfected_from_identity, "Manticorp");
+    assert_eq!(hierarchy.convergence.perfected_identity, "Chimera");
+    assert_eq!(hierarchy.convergence.perfected_nature_id, "chimera");
     assert_eq!(hierarchy.convergence.apex_association, "The Tross");
 
     let pair = get_pair_relationship(&catalog, "manticorp").unwrap();
@@ -482,8 +482,51 @@ fn flynt_service_sects_convergence_and_principal_stacks_are_exact() {
     let rendered = render_institutions(&catalog, Some("flynt")).unwrap();
     assert!(rendered.contains("Warden"));
     assert!(rendered.contains("Corpman"));
-    assert!(rendered.contains("Hunter + Chief + Mariner → Chimera"));
+    assert!(rendered.contains("Hunter + Chief + Mariner → Manticorp"));
+    assert!(rendered.contains("Manticorp → Chimera"));
     assert!(rendered.contains("CONTEXTUAL IDENTITIES — NOT CAREER STEPS"));
+}
+
+#[test]
+fn flynt_deck_rejects_superseded_mastery_without_changing_peer_mechanics() {
+    use hollow_grove::world::practitioner_ontology::{
+        FlyntSynthesisState, HIGHER_SYNTHESIS_RULES, HigherSynthesisNode,
+    };
+
+    let mut catalog = canonical_hollow_deck();
+    let perfected = HIGHER_SYNTHESIS_RULES
+        .iter()
+        .find(|rule| rule.result == HigherSynthesisNode::FlyntState(FlyntSynthesisState::Chimera))
+        .unwrap();
+    assert_eq!(
+        perfected.sources,
+        &[HigherSynthesisNode::FlyntState(
+            FlyntSynthesisState::Manticorp
+        )]
+    );
+    assert_eq!(
+        catalog.flynt_institution.convergence.convergence_identity,
+        "Manticorp"
+    );
+    assert_eq!(
+        catalog.flynt_institution.convergence.perfected_identity,
+        "Chimera"
+    );
+    let peer_pair = get_pair_relationship(&catalog, "manticorp")
+        .unwrap()
+        .clone();
+
+    let convergence = &mut catalog.flynt_institution.convergence;
+    convergence.convergence_identity = "Chimera".into();
+    convergence.convergence_nature_id = "chimera".into();
+    convergence.perfected_from_identity = "Chimera".into();
+    convergence.perfected_identity = "Manticorp".into();
+    convergence.perfected_nature_id = "manticorp".into();
+    assert!(validate_hollow_deck(&catalog).is_err());
+    assert_eq!(
+        get_pair_relationship(&catalog, "manticorp").unwrap(),
+        &peer_pair
+    );
 }
 
 #[test]

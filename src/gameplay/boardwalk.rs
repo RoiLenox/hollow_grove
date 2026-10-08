@@ -66,6 +66,17 @@ pub enum BoardwalkEvidence {
     ReturningGoonBoundary,
 }
 
+impl BoardwalkEvidence {
+    pub const ALL: [Self; 6] = [
+        Self::VoluntaryDischarge,
+        Self::PimpOffer,
+        Self::HoeTestimony,
+        Self::GimpOffer,
+        Self::GoonTestimony,
+        Self::ReturningGoonBoundary,
+    ];
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum HuemanFaculty {
     Reason,

@@ -337,6 +337,8 @@ impl InteractionView {
                 speaker: "PIMP".into(),
                 pages: vec![
                     "MY AURA OPENS DOORS, NOT CAGES.".into(),
+                    "MY TROONERS MAKE THIS COURT SHINE.".into(),
+                    "LET THE GIMP'S GOONERS MATCH THIS WELCOME.".into(),
                     "PATRONAGE ENDS WHEN CONSENT ENDS.".into(),
                     "DELIBERATE DECEPTION / DEEP PRESSURE:".into(),
                     "A CERTIFICATE DOES NOT ERASE RESTITUTION.".into(),
@@ -347,6 +349,7 @@ impl InteractionView {
                 speaker: "HOE WITNESS".into(),
                 pages: vec![
                     "I CARRY THE PIMP'S AURA BY CHOICE.".into(),
+                    "THE TROONERS GATHER AT HIS COURT.".into(),
                     "MY WORK, TESTIMONY, AND EXIT ARE MINE.".into(),
                 ],
             },
@@ -355,6 +358,8 @@ impl InteractionView {
                 speaker: "GIMP".into(),
                 pages: vec![
                     "MY BODY IS AFFLICTED. MY TITLE IS NOT.".into(),
+                    "MY GOONERS KEEP THE WAY BACK OPEN.".into(),
+                    "THE PIMP'S TROONERS OFFER A STAGE.".into(),
                     "A FINITE BOND CAN HOLD CURRENT SAFELY.".into(),
                     "LOCAL TRADITION / DEEP PRESSURE:".into(),
                     "EVERY GOON MUST KNOW THE EDGE AND EXIT.".into(),
@@ -365,6 +370,8 @@ impl InteractionView {
                 speaker: "GOON WITNESS".into(),
                 pages: vec![
                     "GOON IS COMMON BOARDWALK SPEECH.".into(),
+                    "GOONERS FOLLOW THE GIMP BY CHOICE.".into(),
+                    "WE CAN WORK WITH TROONERS OR WALK ALONE.".into(),
                     "A GOON BOND MAKES A RETINUE LAWFUL.".into(),
                     "IT HAS A TERM, DUTIES, AND AN EXIT.".into(),
                 ],

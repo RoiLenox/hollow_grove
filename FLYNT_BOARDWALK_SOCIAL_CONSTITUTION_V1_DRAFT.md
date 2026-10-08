@@ -1,6 +1,6 @@
 # Flynt Boardwalk Social Constitution V1
 
-Status: active additive draft
+Status: active additive draft; Boardwalk occupant organization adopted 2026-10-07
 Backbone: `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md`
 Parent authorities: `FLYNT_CONSTITUTION_V2.md`,
 `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md`, and the common Bond
@@ -32,8 +32,9 @@ and conflict. It may not:
 - make bodily condition proof of virtue, vice, competence, or authority.
 
 `flynt-constitution` remains the sole executable Flynt authority. The Pimp,
-Gimp, Hoes, Goons, Gooner, and Goon Bond are proposed Boardwalk cultural and
-social identities above that locked authority.
+Gimp, Trooners, Gooners, Hoes, Goons, and Goon Bond are Boardwalk cultural and
+social identities above that locked authority. The two retinue names and their
+rival organization are adopted here; detailed membership mechanics remain open.
 
 ## Root Polarity
 
@@ -53,9 +54,9 @@ selection, challenge, and ending procedures remain open for the playable trial;
 the names and their jurisdictions do not.
 
 ```text
-The Pimp and his Hoes project Aura.
-The Gimp and his Goons carry Current.
-The Boardwalk makes both visible.
+The Pimp and his Trooners project Aura.
+The Gimp and his Gooners carry Current.
+The Boardwalk makes their rivalry visible.
 ```
 
 The **Pimp of the Boardwalk** is the public Aura pole: attraction, glamour,
@@ -70,6 +71,30 @@ Neither pole is automatically lawful or unlawful. Each may shelter people,
 create belonging, and distribute opportunity. Each may also become coercive:
 the Pimp through control of visibility and desire; the Gimp through demanded
 fealty, debt, and force.
+
+### Boardwalk Occupants and Rival Retinues
+
+The Boardwalk's two principal resident camps are **the Pimp and his Trooners**
+and **the Gimp and his Gooners**. The Gimp keeps his Underway title and route
+depth while maintaining a visible Boardwalk retinue.
+
+| Camp | Boardwalk gathering place | Shared expression | What they compete to provide |
+|---|---|---|---|
+| Pimp and Trooners | Pimp Court | Aura, public presence, patronage, performance, invitation | the welcome, opportunity, and reputation that make a return visible |
+| Gimp and Gooners | Gimp Retinue | Current, loyalty, escort, sanctuary, route knowledge | the protection, dependable work, and continuity that make a return endure |
+
+They are rivals for influence, public credit, willing followers, and the trust
+of people returning to the Boardwalk. A disputed welcome, escort, job, or
+performance can bring that rivalry into a scene. Neither camp's claim settles
+what an individual actually needs or chooses.
+
+The Neutral Promenade is common ground: unaffiliated occupants, returning
+residents, and witnesses can hear both camps without choosing a side. The
+Recognition Stage makes their contributions and competing accounts public.
+The camps can cooperate on a bounded task, challenge each other's account,
+or lose a person's support to lawful independence. Their rivalry is a recurring
+social relationship shaped by competition, occasional cooperation, and changing
+support.
 
 ## The Pimp
 
@@ -103,6 +128,23 @@ The Pimp may not:
 
 The title survives only through continuing social recognition. It does not
 become constitutional authority through fame.
+
+## Trooners
+
+**Trooners** are the Pimp's voluntarily aligned Boardwalk retinue. A **Trooner**
+participates in the camp's public presence through welcome, presentation,
+performance, introductions, patronage, reputation, or other disclosed work.
+Their collective activity projects the Pimp's Aura, while each retains an
+individual reputation, purpose, and ability to question him.
+
+Trooner names a cultural affiliation. It does not assign a Nature, gender,
+office, private service, or compulsory profession. A Trooner can refuse a
+particular offer, leave the camp, or work with the Gooners on an agreed task.
+The Pimp's effective influence depends on their continuing participation.
+
+Hoes remain a distinct, self-chosen role. A Hoe may take part in the Trooners,
+but neither term automatically establishes the other. Patronage alone also
+does not establish Trooner affiliation.
 
 ## Hoes
 
@@ -192,15 +234,24 @@ A Goon may:
 - refuse coercive Current or Aura;
 - retain identity when affiliation changes.
 
-## Gooner
+## Gooners
 
-**Gooner** is the active expression of a Goon engaged deeply in Boardwalk
-relational pressure. It may describe someone circulating between offers,
-debts, spectacle, loyalty, risk, and recognition.
+**Gooners** are the Gimp's voluntarily aligned Boardwalk retinue. A **Gooner**
+participates in the camp's protection, escort, work, sanctuary, route knowledge,
+and witnessed loyalty. Together they carry the Gimp's Current and make his
+Underway depth present on the Boardwalk.
 
-Gooner is not presently a Frame, Skill, office, credential, criminal
-classification, or automatic Bond phase. Its exact mechanical expression
-remains a gameplay reconciliation task.
+Goon remains the broad social term; an unaffiliated Goon or one working with
+the Pimp is not automatically a Gooner. This specific retinue meaning
+supersedes the earlier loose use of Gooner for any deeply engaged Boardwalk
+participant.
+
+Gooner is a cultural affiliation, not a Frame, Skill, office, credential,
+criminal classification, or automatic Bond phase. A Gooner may challenge the
+Gimp, refuse an obligation outside its lawful scope, cooperate with Trooners,
+or leave through the applicable terms. A Goon Bond records only its disclosed
+participants and obligations; the name does not create additional membership
+or service beyond that record.
 
 ## Goon Bond
 
@@ -251,6 +302,11 @@ Every lawful Goon Bond requires:
 
 ## Pimp / Gimp Conflict
 
+The Pimp and his Trooners and the Gimp and his Gooners are the Boardwalk's
+recurring rival camps. Their rivalry organizes who gathers where, whose offer
+is being heard, whose account earns trust, and which group receives public
+credit. It gives a scene social stakes without deciding its outcome in advance.
+
 The Boardwalk's central question is:
 
 > Does power come from controlling how people see, or from enduring what
@@ -263,9 +319,14 @@ visibility conditional on performance. The Gimp may give someone protection
 the Pimp will not provide, while making that protection heavy with loyalty and
 burden.
 
+Trooners may question whether a public welcome has become a performance for
+the Pimp's credit. Gooners may question whether protection has become a demand
+for loyalty to the Gimp. Either camp can witness a genuine contribution from
+its rival or criticize a failed promise from its own leader.
+
 Hoes may challenge the Pimp, recognize the Gimp, assist unaffiliated Goons, or
-form Bonds outside either retinue. Goons may admire the Pimp, work with Hoes,
-refuse the Gimp, or preserve loyalty while challenging a specific obligation.
+form Bonds outside either retinue. Goons may work with either camp, refuse
+both, or preserve loyalty while challenging a specific obligation.
 
 Crossing the polarity does not erase prior evidence or identity.
 
@@ -323,6 +384,9 @@ future cases.
 A conforming implementation must prove:
 
 - Pimp and Gimp remain cultural titles, not Flynt sovereign offices;
+- Trooners align with the Pimp and Gooners align with the Gimp; their rivalry
+  is visible without making every Boardwalk occupant a member;
+- Hoe, Goon, retinue affiliation, patronage, and Bond remain distinct;
 - Tross and the unique Chimera remain untouched;
 - all Hoes are adult, autonomous Beings with explicit boundaries and exit;
 - no Being is property;
@@ -348,7 +412,7 @@ The following remain deliberately open:
    affiliation record;
 4. whether the first-case Goon Bond obligations should ever become a
    Boardwalk default rather than remain case-specific;
-5. whether Gooner becomes a Skill expression, reputation state, or purely
-   cultural term;
+5. the exact joining, departure, and reputation records for Trooners and
+   Gooners beyond their adopted cultural affiliation;
 6. how Boardwalk districts visually distinguish invitation, neutrality,
    coercion risk, sanctuary, and public recognition.

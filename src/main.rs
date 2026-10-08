@@ -31,6 +31,7 @@ enum MainCli {
     App(Vec<String>),
     HuemanSlice(Vec<String>),
     HollowDeck(Vec<String>),
+    Lore(Vec<String>),
     VerifyFoundation,
     CurrentSynthesisTui(Vec<String>),
     SemanticTools(Vec<String>),
@@ -63,6 +64,7 @@ where
         "app" | "application" => Ok(MainCli::App(args.collect())),
         "hueman-slice" => Ok(MainCli::HuemanSlice(args.collect())),
         "deck" | "hollow-deck" => Ok(MainCli::HollowDeck(args.collect())),
+        "lore" => Ok(MainCli::Lore(args.collect())),
         "semantic" | "rampart" | "federation" | "model" | "dataset" => {
             let forwarded_command = if command == "federation" {
                 "rampart".to_owned()
@@ -133,6 +135,7 @@ fn usage() -> &'static str {
        app ...           inspect, launch, or attach a Hollow Grove-managed application\n\
        hueman-slice      run the Hueman vertical-slice demo surface\n\
        deck [args]      open or query the canonical Hollow Deck\n\
+       lore [args]       inspect lore contracts and replay-backed gameplay consequence\n\
        semantic ...      inspect witnessed semantic positions and history\n\
        rampart ...       run or serve the authoritative transformer-assisted semantic cycle\n\
        model ...         validate an untrusted model response\n\
@@ -631,6 +634,55 @@ fn run_application_cli(args: &[String]) -> io::Result<()> {
     }
 }
 
+fn run_lore_cli(args: &[String]) -> io::Result<()> {
+    use hollow_grove::gameplay::{GameApplicationService, LoreInspection};
+
+    let mut save = None;
+    let mut json = false;
+    let mut args = args.iter();
+    while let Some(arg) = args.next() {
+        match arg.as_str() {
+            "--help" | "-h" => {
+                println!(
+                    "Usage: hollow-grove lore [--save GAMEPLAY_ARCHIVE] [--json]\nReads and replays an existing save without writing it. Without --save, reports authored definitions only."
+                );
+                return Ok(());
+            }
+            "--save" if save.is_none() => {
+                save = Some(args.next().ok_or_else(|| {
+                    io::Error::new(
+                        io::ErrorKind::InvalidInput,
+                        "--save requires a gameplay archive path",
+                    )
+                })?);
+            }
+            "--json" if !json => json = true,
+            _ => {
+                return Err(io::Error::new(
+                    io::ErrorKind::InvalidInput,
+                    format!("unknown or repeated lore argument: {arg}"),
+                ));
+            }
+        }
+    }
+    let application = save
+        .map(|path| {
+            let encoded = fs::read_to_string(path)?;
+            GameApplicationService::from_archive(&encoded)
+                .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error.to_string()))
+        })
+        .transpose()?;
+    let inspection =
+        LoreInspection::from_runtime(application.as_ref().map(GameApplicationService::runtime))
+            .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error.to_string()))?;
+    if json {
+        println!("{}", serde_json::to_string_pretty(&inspection)?);
+    } else {
+        print!("{}", inspection.witness_markdown());
+    }
+    Ok(())
+}
+
 fn main() -> io::Result<()> {
     let cli = parse_main_cli(env::args().skip(1))
         .map_err(|error| io::Error::new(io::ErrorKind::InvalidInput, error))?;
@@ -651,6 +703,7 @@ fn main() -> io::Result<()> {
         MainCli::App(args) => run_application_cli(&args),
         MainCli::HuemanSlice(args) => run_dev_tool(HUEMAN_SLICE_BINARY_NAME, &args),
         MainCli::HollowDeck(args) => run_child_binary(HOLLOW_DECK_BINARY_NAME, &args),
+        MainCli::Lore(args) => run_lore_cli(&args),
         MainCli::SemanticTools(args) => run_child_binary(SEMANTIC_BINARY_NAME, &args),
         MainCli::VerifyFoundation => {
             println!("{}", build_hollow_grove_foundation_verification_report()?);

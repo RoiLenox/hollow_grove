@@ -42,7 +42,7 @@ than one finished game loop.
   case, Deep Pressure, party recruitment, refusal/recovery, save/load, and
   replay. These are bounded vertical slices, not yet a general combat or
   equipment system.
-- The Hollow Deck schema is `1.5.0`. It indexes Houses, Dominions, Natures,
+- The Hollow Deck schema is `1.6.0`. It indexes Houses, Dominions, Natures,
   Primary Traits, Current Forms, Aura Sets, ordinary Recipes, Synthesis
   Recipes, Syntheses, Banes, and House-specific institutional projections. Its
   checksummed player-state overlay persists cultivation, growth, Aura moves,
@@ -82,12 +82,15 @@ than one finished game loop.
   ratified 2026-09-03 amendment. Stable identifiers are preserved, while their
   semantic projections and validators follow the amended order and Hand sides.
 
-After this integration, `cargo test --workspace --offline` passes and
+The historical integration record states that `cargo test --workspace --offline` passed and
 `cargo test --workspace --offline -- --list` reports 1,514 tests. `hollow_deck
 validate` also passes its internal schema checks and reports 4 Houses,
 5 Dominions, 32 Natures, 32 Primary Traits, 5 paths, 4 Flynt pairs, and 8
-cross-House counterparts. The validator now checks the amended Flynt order and
-Sandmanor Hand culminations in addition to internal Deck consistency.
+cross-House counterparts. The 2026-10-07 implementation in
+`docs/LORE_KERNEL_OPTIMIZATION_V1.md` corrects the still-reversed Deck seed and
+validator to the amended Flynt order. The historical passing test count did
+not prove that conformance: those tests also asserted the superseded order.
+Sandmanor Hand culminations retain their separate investiture and Form axes.
 
 ## 2. Central Spiral Model
 

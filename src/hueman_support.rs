@@ -280,7 +280,7 @@ const FLYNT_PRESENCE_LINES: &[&str] = &[
     "engineering: Flynt is the recognition and field-engineering function that moves capability into lived operation",
     "style: Flynt presents as a boardwalk-casino hunting capital with neon vice, opal glamour, North African desert grounds, and hard modern swagger",
     "Tross: the sovereign executive from whom all Flynt constitutional authority derives",
-    "Chimera: the unique feminine First Companion and higher Synthesis of Gargoyle, Werewolf, and Mariner/Merman; selection among capacities is STATUS: WORKING",
+    "Chimera: the unique feminine First Companion and foremost constitutional embodiment of perfected synthesis; the general synthesis state follows combined Manticorp and does not confer her identity or office",
     "Manticore: the Tross's masculine mythological identity and maintained sovereign Synthesis Form; Manticorp is the body of soldiers he leads",
     "public: The Tross commands the Manticorp soldier body and Mystery Men, with The Marquise extending Mystery Men into maritime operations",
     "Basin: the Tross/Manticore leads We Fairy Men; when that body acts under him in the organized underworld, it manifests as The Gallows",
@@ -538,9 +538,9 @@ const FLYNT_CONSTITUTION_SECTIONS: [HuemanSectionDefinition; 9] = [
             "Medusa is a Flynt creature/species designation; Gargoyle embodies stone while Medusa petrifies.",
             "Mariner = Merman in Flynt terminology and names the masculine mer-creature, not merely a human sailor.",
             "There is exactly one constitutional Chimera, the feminine First Companion and counterpart to the Tross/Manticore.",
-            "Gargoyle + Werewolf + Mariner/Merman -> Chimera -> Manticore is the locked higher-Synthesis relationship.",
-            "Chimera as selection among capacities and Manticore as their integration are STATUS: WORKING; exact higher-Synthesis mechanics remain STATUS: OPEN.",
-            "Manticore is the Tross's specifically masculine maintained Synthesis Form beyond Chimera; Manticorp is the separate body of soldiers he commands.",
+            "Gargoyle + Werewolf + Mariner/Merman -> Manticorp (combined synthesis) -> Chimera (perfected synthesis) is the ratified higher-Synthesis order.",
+            "Current, Aura, and Weapon synthesis tracks refine independently; exact mixed-track eligibility, maintenance, failure, and recovery mechanics remain STATUS: OPEN.",
+            "Manticore is the Tross's specifically masculine maintained Synthesis identity, not a general tier after Chimera; his Manticorp soldier body is the institutional expression of combined-synthesis discipline.",
             "Stable identity invariant: The Tross = Manticore = Mystery Man = Mr. X.",
             "Manticore Form stable ID: flynt.form.manticore.",
             "Manticore Recipe legacy provenance ID: flynt.recipe.divided-manticorp; this machine key does not make Manticorp a Form.",
@@ -864,8 +864,8 @@ const FLYNT_PROCEDURE_LINES: &[&str] = &[
     "the Gallowry is the hidden headquarters of the Gallows, not an institution or alternate government.",
     "Flynt routes ascent through boardwalk risk, casino pressure, outer hunting expeditions, and public recognition instead of quiet technical certification.",
     "Flynt knowledge gates open through puzzle trails, treasure-hunt clues, and route memory rather than library inheritance or bloodline permission.",
-    "Flynt's four creature pairs are Gargoyle/Medusa, Werewolf/Vampire, Mariner/Mermaid, and Manticore/Chimera; the unique higher synthesis combines Gargoyle, Mariner/Merman, and Werewolf into Chimera.",
-    "Manticore is the Tross's masculine maintained Synthesis Form beyond Chimera; Manticorp remains the distinct soldier body and its personnel do not hold the Form.",
+    "Flynt's four creature pairs are Gargoyle/Medusa, Werewolf/Vampire, Mariner/Mermaid, and Manticore/Chimera; Gargoyle, Werewolf, and Mariner/Merman combine as Manticorp, then perfect as Chimera on the relevant synthesis track.",
+    "Manticore is the Tross's masculine maintained Synthesis identity, not a general tier after Chimera; Manticorp membership alone grants no combined or perfected synthesis state.",
     "Bro White, Beauty, and Cinderellaman lead the three We Fairy Men creature sects and remain divided Recipe custodians whose union is cooperation, not fusion.",
     "opal extraction follows the guarded line body rather than an unbounded field claim.",
     "legacy physical regular current and holographic aura compatibility mechanics carry opal yield outward as Opal Oil without breaking the guarded line body.",
@@ -2995,7 +2995,7 @@ mod tests {
         assert!(output.contains("## Bottom-Up Procedure Spine"));
         assert!(output.contains("## Relay Procedure"));
         assert!(output.contains(
-            "Manticore is the Tross's masculine maintained Synthesis Form beyond Chimera"
+            "Manticore is the Tross's masculine maintained Synthesis identity, not a general tier after Chimera"
         ));
         assert!(output.contains("Current Synthesis collision relay bytes: 5."));
     }

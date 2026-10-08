@@ -157,3 +157,23 @@ pub fn central_junction_is_coordination_only() -> bool {
     CENTRAL_JUNCTION_COORDINATION_IDENTITY == "region.central-junction"
         && GAMEPLAY_ARCHIVE_FORMAT == "hollow-grove-gameplay"
 }
+
+/// Audits authored lore contracts without treating them as executed cases.
+#[must_use]
+pub fn audit_functional_lore_definitions(
+    definitions: &[crate::world::lived_lore::FunctionalLoreDefinition],
+) -> KernelInvariantReport {
+    KernelInvariantReport {
+        schema_version: KERNEL_INVARIANT_SCHEMA_VERSION,
+        checked_invariants: vec![
+            "lore-identity-and-jurisdiction-preserved",
+            "lore-role-handoffs-have-exact-endpoints",
+            "lore-house-and-route-coverage-preserved",
+        ],
+        violations: crate::world::lived_lore::validate_definitions(definitions)
+            .err()
+            .map(|error| error.to_string())
+            .into_iter()
+            .collect(),
+    }
+}

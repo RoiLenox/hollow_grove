@@ -164,7 +164,8 @@ independently refinable Current, Aura, and Weapon Synthesis tracks. Each track
 may reach Manticorp combination and Chimera perfection independently; neither
 state is a fourth ordinary sect. The canonical isolated weapons are
 Gargoyle/Hunter **Bolo**, Werewolf/Chief **Crossbow**, and Mariner/Mariner
-**Harpoon**. Schema 1.6.0 indexes those weapon doctrines; combat behavior and
+**Harpoon**. These weapon doctrines are authored canon; catalog schema 1.6.0
+projects the amended synthesis order. Weapon inventory, combat behavior, and
 the combined/perfected weapon mechanisms remain unimplemented.
 
 Flynt sorcery is a separate paired synthesis-manufacturing and formulation
@@ -342,7 +343,7 @@ unmet Synthesis requirements are rejected before commit. `export-json` is a
 canonical projection for inspection and tooling, while `export-state` projects
 the active overlay. Neither becomes a second canonical source of truth.
 
-Catalog schema `1.5.0` and persisted state V1 are deliberately separate version
+Catalog schema `1.6.0` and persisted state V1 are deliberately separate version
 domains. The state envelope version, sparse state's `schema_version`, default
 `hollow-deck-state-v1.json` filename, and checksum contract remain V1. On load,
 the checksum is verified against the serialized legacy payload before any

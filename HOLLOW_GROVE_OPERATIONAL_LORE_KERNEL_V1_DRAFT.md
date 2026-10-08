@@ -351,6 +351,17 @@ institution or speaker.
 
 ## 11. Shared Civic Role Register
 
+On the Boardwalk, **the Pimp and his Trooners** and **the Gimp and his Gooners**
+form the two rival resident camps. Trooners organize public Aura, welcome,
+patronage, and opportunity around the Pimp. Gooners organize Current,
+protection, escort, sanctuary, and continuity around the Gimp. Their competition
+and bounded cooperation are governed by
+`FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md`.
+
+These affiliations organize social work and scene relationships. They do not
+replace a Hoe or Goon's individual role, a recorded Bond, or the responsible
+House's decision. Rival camp testimony retains its source and uncertainty.
+
 | Role or institution | Exact function | Required output | Hard boundary |
 |---|---|---|---|
 | Minoan County Court | hear one stable case through Conciliation, First Hearing, Appeal, Constitutional Review, and Restitution | stage-specific finding, targeted judgment, remedy, return stage, and equilibrium record | declares what law requires but does not perform another House's remedy, create evidence, ratify amendments, or command a universal enforcement arm |
@@ -449,10 +460,13 @@ records remain readable through an explicit migration that verifies the exact
 V1 payload checksum first, then selects the canonical scenario-specific role
 envelope by stable lore identity. No role derives from entity-list position.
 
-The runtime validates one non-empty value for every role, at least two explicit
-ordered handoffs, the live House office as decision owner, the presence of the
-decision owner, executor, witness, and recipient in the handoff chain, and the
-existing House authority, route, uncertainty, refusal, and replay requirements.
+The runtime validates one non-empty value for every role, the live House
+office as decision owner, and the existing House authority, route, uncertainty,
+refusal, and replay requirements. The current twelve definitions resolve their
+three declared handoffs by exact endpoints in decision-owner → executor →
+witness → recipient order. Role mentions elsewhere in prose are insufficient.
+The additive validation and read-only execution binding are documented in
+`docs/LORE_KERNEL_OPTIMIZATION_V1.md`; the existing V2 payload stays unchanged.
 One entity may lawfully occupy multiple capacities, but a handoff still
 transfers a question and its evidence rather than sovereignty.
 

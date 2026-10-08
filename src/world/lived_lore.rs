@@ -64,6 +64,76 @@ pub struct FunctionalLoreDefinition {
     pub recipient: &'static str,
 }
 
+/// A stable capacity in an authored definition, not an invented actor identity.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "snake_case")]
+pub enum LoreRoleCapacity {
+    DecisionOwner,
+    Executor,
+    Witness,
+    Recipient,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct LoreRoleReference {
+    pub definition_id: &'static str,
+    pub capacity: LoreRoleCapacity,
+    pub label: &'static str,
+}
+
+/// An authored handoff. This is a declaration, never evidence of execution.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct OperationalLoreHandoff {
+    pub from: LoreRoleReference,
+    pub to: LoreRoleReference,
+    pub question: &'static str,
+}
+
+impl FunctionalLoreDefinition {
+    /// Resolve the adopted catalog's decision → execution → witness → receipt
+    /// chain by exact endpoints. Historical V2 text remains the wire payload.
+    pub fn operational_handoffs(&self) -> Result<Vec<OperationalLoreHandoff>, FunctionalLoreError> {
+        use LoreRoleCapacity::{DecisionOwner, Executor, Recipient, Witness};
+        let capacities = [
+            (DecisionOwner, self.decision_owner),
+            (Executor, self.executor),
+            (Witness, self.witness),
+            (Recipient, self.recipient),
+        ];
+        if self.ordered_handoffs.len() != capacities.len() - 1 {
+            return Err(FunctionalLoreError::IncompleteContract(self.id));
+        }
+        self.ordered_handoffs
+            .iter()
+            .zip(capacities.windows(2))
+            .map(|(handoff, pair)| {
+                let (from, rest) = handoff
+                    .split_once('→')
+                    .ok_or(FunctionalLoreError::IncompleteContract(self.id))?;
+                let (to, question) = rest
+                    .split_once(": ")
+                    .ok_or(FunctionalLoreError::IncompleteContract(self.id))?;
+                if from != pair[0].1 || to != pair[1].1 || question.trim().is_empty() {
+                    return Err(FunctionalLoreError::IncompleteContract(self.id));
+                }
+                Ok(OperationalLoreHandoff {
+                    from: LoreRoleReference {
+                        definition_id: self.id,
+                        capacity: pair[0].0,
+                        label: pair[0].1,
+                    },
+                    to: LoreRoleReference {
+                        definition_id: self.id,
+                        capacity: pair[1].0,
+                        label: pair[1].1,
+                    },
+                    question,
+                })
+            })
+            .collect()
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 struct OperationalRoleEnvelope {
     affected_actor: &'static str,
@@ -322,31 +392,18 @@ pub fn validate_definitions(
             definition.restitution_owner,
             definition.recipient,
         ];
-        let handoff_chain = definition.ordered_handoffs.join(" | ");
         if required_text.iter().any(|value| value.trim().is_empty())
             || definition.entities.is_empty()
             || definition.evidence.is_empty()
             || definition.uncertainty.is_empty()
             || definition.player_choices.len() < 2
             || definition.player_choices.len() != definition.lawful_state_changes.len()
-            || definition.ordered_handoffs.len() < 2
-            || definition
-                .ordered_handoffs
-                .iter()
-                .any(|handoff| handoff.trim().is_empty() || !handoff.contains('→'))
-            || [
-                definition.decision_owner,
-                definition.executor,
-                definition.witness,
-                definition.recipient,
-            ]
-            .iter()
-            .any(|role| !handoff_chain.contains(role))
             || definition.decision_owner != house_decision_office(definition.house)
             || definition.failure_and_refusal.is_empty()
         {
             return Err(FunctionalLoreError::IncompleteContract(definition.id));
         }
+        definition.operational_handoffs()?;
     }
     if house_counts.iter().any(|count| *count < 3) {
         return Err(FunctionalLoreError::IncompleteHouseCoverage);

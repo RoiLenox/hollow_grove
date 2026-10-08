@@ -10,6 +10,8 @@ use crate::world::hueman_faculties::HuemanFaculty;
 use crate::world::permanence::PermanenceLaw;
 
 pub const PRACTITIONER_ONTOLOGY_SOURCE: &str = "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md";
+pub const FLYNT_SYNTHESIS_AMENDMENT_SOURCE: &str =
+    "HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md";
 pub const PRACTITIONER_LEVEL_ONE_EQUATION: &str = "CURRENT + AURA → SYNTHESIS";
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -316,6 +318,27 @@ pub enum FlyntSynthesisState {
     Chimera,
 }
 
+impl FlyntSynthesisState {
+    pub const COMBINED: Self = Self::Manticorp;
+    pub const PERFECTED: Self = Self::Chimera;
+
+    #[must_use]
+    pub const fn display_name(self) -> &'static str {
+        match self {
+            Self::Manticorp => "Manticorp",
+            Self::Chimera => "Chimera",
+        }
+    }
+
+    #[must_use]
+    pub const fn nature_id(self) -> &'static str {
+        match self {
+            Self::Manticorp => "manticorp",
+            Self::Chimera => "chimera",
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct HigherSynthesisRule {
     pub sources: &'static [HigherSynthesisNode],
@@ -323,6 +346,7 @@ pub struct HigherSynthesisRule {
     pub level: SynthesisLevel,
     pub relationship_status: SemanticStatus,
     pub mechanics_status: SemanticStatus,
+    pub source: &'static str,
 }
 
 const FLYNT_MANTICORP_SOURCES: &[HigherSynthesisNode] = &[
@@ -344,6 +368,7 @@ pub const HIGHER_SYNTHESIS_RULES: [HigherSynthesisRule; 3] = [
         level: SynthesisLevel::HigherComposite,
         relationship_status: SemanticStatus::Locked,
         mechanics_status: SemanticStatus::Open,
+        source: FLYNT_SYNTHESIS_AMENDMENT_SOURCE,
     },
     HigherSynthesisRule {
         sources: FLYNT_CHIMERA_SOURCES,
@@ -351,6 +376,7 @@ pub const HIGHER_SYNTHESIS_RULES: [HigherSynthesisRule; 3] = [
         level: SynthesisLevel::HigherComposite,
         relationship_status: SemanticStatus::Locked,
         mechanics_status: SemanticStatus::Open,
+        source: FLYNT_SYNTHESIS_AMENDMENT_SOURCE,
     },
     HigherSynthesisRule {
         sources: SEER_SOURCES,
@@ -358,6 +384,7 @@ pub const HIGHER_SYNTHESIS_RULES: [HigherSynthesisRule; 3] = [
         level: SynthesisLevel::HigherComposite,
         relationship_status: SemanticStatus::Locked,
         mechanics_status: SemanticStatus::Open,
+        source: PRACTITIONER_ONTOLOGY_SOURCE,
     },
 ];
 

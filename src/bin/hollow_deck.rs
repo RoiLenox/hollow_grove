@@ -966,7 +966,7 @@ mod tests {
                 DeckCli::Institutions(Some("flynt".into())),
             )
             .unwrap()
-            .contains("Hunter + Chief + Mariner → Chimera")
+            .contains("Hunter + Chief + Mariner → Manticorp")
         );
         assert!(
             run_cli(

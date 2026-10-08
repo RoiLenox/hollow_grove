@@ -32,6 +32,22 @@ fn legacy_envelope(state: &HollowDeckState) -> Vec<u8> {
 }
 
 #[test]
+fn catalog_amendment_preserves_exact_v1_flynt_cultivation_payload() {
+    let catalog = canonical_hollow_deck();
+    let mut state = HollowDeckState::default();
+    state.cultivate(&catalog, "manticorp", 4_000).unwrap();
+    state.cultivate(&catalog, "chimera", 7_000).unwrap();
+    let legacy = legacy_envelope(&state);
+    let restored = decode_hollow_deck_state(&catalog, &legacy).unwrap();
+    assert_eq!(restored, state);
+    let reencoded = encode_hollow_deck_state(&catalog, &restored).unwrap();
+    let original: serde_json::Value = serde_json::from_slice(&legacy).unwrap();
+    let current: serde_json::Value = serde_json::from_str(&reencoded).unwrap();
+    assert_eq!(original, current);
+    assert_eq!(current["version"], 1);
+}
+
+#[test]
 fn current_and_aura_progress_independently_and_overlay_canon() {
     let catalog = canonical_hollow_deck();
     let mut state = HollowDeckState::default();

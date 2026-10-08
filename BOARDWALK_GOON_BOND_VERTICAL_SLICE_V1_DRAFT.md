@@ -16,6 +16,25 @@ authoritative, replayable character case:
 The player may investigate, disclose faculty observations, present evidence,
 and support an option. The returning Goon makes the final capable choice.
 
+## Occupant Organization
+
+The Boardwalk's principal occupants gather into two rival camps:
+
+| Leader | Retinue | Gathering place | Offer emphasized |
+|---|---|---|---|
+| Pimp of the Boardwalk | Trooners | Pimp Court | visibility, patronage, performance, opportunity |
+| Gimp of the Underway | Gooners | Gimp Retinue | protection, escort, sanctuary, continuity |
+
+Their competition for trust, willing followers, and public credit frames the
+returning-Goon case. The Neutral Promenade lets the resident hear both offers;
+the Recognition Stage shows what actually follows. Limited cooperation may
+bring the two camps together, while independent return remains a complete
+choice outside their rivalry.
+
+Hoe and Goon remain distinct individual roles. The existing witness and case
+IDs retain those names. Dialogue introduces the retinues without assigning
+unrecorded membership, changing Bond terms, or replacing a resident's choice.
+
 ## Constitutional Boundaries
 
 The slice must preserve:
@@ -65,8 +84,8 @@ Display names can be authored later without changing replay identity.
 | `being.glaushouse.discharge-advocate.v1` | discharge advocate | confirms capacity, voluntary discharge, and available support |
 | `site.boardwalk.return-gate.v1` | Return Gate | entry from recovery |
 | `site.boardwalk.neutral-promenade.v1` | Neutral Promenade | evidence gathering without required affiliation |
-| `site.boardwalk.pimp-court.v1` | Pimp Court | glamour offer and Hoe testimony |
-| `site.boardwalk.gimp-retinue.v1` | Gimp Retinue | protection offer and Goon testimony |
+| `site.boardwalk.pimp-court.v1` | Pimp Court | Trooner gathering, glamour offer, and Hoe testimony |
+| `site.boardwalk.gimp-retinue.v1` | Gimp Retinue | Gooner gathering, protection offer, and Goon testimony |
 | `site.boardwalk.recognition-stage.v1` | Recognition Stage | public consequence presentation |
 
 These IDs establish content identity only. They grant no office, membership,
@@ -95,6 +114,8 @@ and accepted movement. Godot selects tiles, animation, sound, lighting, and
 camera from committed views.
 
 No location alone creates affiliation or recognition.
+Pimp Court gathers the Trooners; Gimp Retinue gathers the Gooners. The map's
+two sides express a rivalry while keeping the shared promenade and exits open.
 
 ## Case State
 

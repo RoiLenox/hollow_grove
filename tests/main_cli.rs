@@ -148,7 +148,8 @@ fn main_binary_opens_the_hollow_deck_and_direct_binary_filters_natures() {
     assert!(institutions.status.success());
     let stdout = String::from_utf8_lossy(&institutions.stdout);
     assert!(stdout.contains("Warden"));
-    assert!(stdout.contains("Hunter + Chief + Mariner → Chimera"));
+    assert!(stdout.contains("Hunter + Chief + Mariner → Manticorp"));
+    assert!(stdout.contains("Manticorp → Chimera"));
     assert!(stdout.contains("CONTEXTUAL IDENTITIES — NOT CAREER STEPS"));
 
     let sandmanor = Command::new(env!("CARGO_BIN_EXE_hollow-grove"))
