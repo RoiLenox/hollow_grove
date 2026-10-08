@@ -83,6 +83,11 @@ returning-Goon case's finite Bonds remain case-specific.
 
 ### Working product lines and the Sympiotes connection
 
+The next detailed discussion pass is
+[Boardwalk Sympiote Offers and First Return](BOARDWALK_SYMPIOTE_OFFERS_AND_FIRST_RETURN_V1_DRAFT.md).
+It proposes three offers per crew, delivery/repair criteria, and one new
+customer story. Its exact catalog and commercial events remain unratified.
+
 Give each boss an operation people actually return to, with goods, workers,
 customers, suppliers, taste, reliability, and competition. Their different
 offerings can express Aura and Current through ordinary commerce.

@@ -102,6 +102,12 @@ For the next lore milestone, use the
 open canon decisions, concrete story proposals, and the discussion order;
 its open proposals remain unratified. Adopted sections link to their owning
 contracts and implementation status.
+The [Boardwalk offers and first-return proposal](BOARDWALK_SYMPIOTE_OFFERS_AND_FIRST_RETURN_V1_DRAFT.md)
+develops six candidate crew offerings and an accountable Sympiote customer
+story. Its exact catalog and new commercial mechanics remain for user adoption.
+The [growth and performance pass](docs/BOARDWALK_GROWTH_AND_PERFORMANCE_V1.md)
+records measured first-return service workloads on the laptop and AMD PC and
+the implementation boundary for those proposals.
 The user-selected [Sympiote Foundation](HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md)
 develops an early Form established at Glaüshouse for pursuing supported
 Synthesis paths across Hueman and Hollow Grove. Its clinical/practice lifecycle

@@ -141,6 +141,9 @@ work without superseding locked constitutional authority:
   Pimp/Hoes and Gimp/Goons Boardwalk polarity above locked Flynt and route law;
 - `BOARDWALK_GOON_BOND_VERTICAL_SLICE_V1_DRAFT.md` specifies the first
   returning-Goon implementation case and its acceptance boundary;
+- `BOARDWALK_SYMPIOTE_OFFERS_AND_FIRST_RETURN_V1_DRAFT.md` is a working
+  catalog and new customer-case proposal, separate from the adopted foundation
+  and the old returning-Goon case; its offers and transactions remain unratified;
 - `HOLLOW_GROVE_FUNCTIONAL_LORE_INTEGRATION_V1.md` records the now-executable
   integration contract and the twelve additive lived loops without changing
   locked House law;
