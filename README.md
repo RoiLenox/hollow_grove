@@ -95,6 +95,8 @@ The same `hollow-grove-update` command then provides guarded, explicitly
 directed updates from either device to the other.
 The [Lore Sync Checkpoint](docs/LORE_SYNC_CHECKPOINT_V1.md) records the local
 handoff artifacts and the checks to finish when the main PC is available.
+The [AMD Pre-transfer Review](docs/AMD_PRETRANSFER_OPTIMIZATION_V1.md) records
+measured transport improvements and the target-machine profiling steps.
 
 ## Hollow Deck
 

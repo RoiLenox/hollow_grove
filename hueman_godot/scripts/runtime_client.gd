@@ -21,7 +21,7 @@ const MAX_PENDING_REQUESTS := 64
 var revision: int = 0
 var _session_id: String
 var _peer := StreamPeerTCP.new()
-var _receive_buffer := ""
+var _receive_buffer := PackedByteArray()
 var _pending_requests := {}
 
 
@@ -52,7 +52,7 @@ func connect_to_configured_runtime() -> Error:
 
 func disconnect_from_runtime() -> void:
 	_peer.disconnect_from_host()
-	_receive_buffer = ""
+	_receive_buffer.clear()
 	_pending_requests.clear()
 
 
@@ -96,28 +96,36 @@ func poll() -> void:
 	var available := _peer.get_available_bytes()
 	if available <= 0:
 		return
-	var read_result := _peer.get_data(available)
+	var read_result := _peer.get_data(mini(available, MAX_RESPONSE_BYTES + 1))
 	if read_result[0] != OK:
 		protocol_error.emit("runtime transport read failed: %s" % error_string(read_result[0]))
 		return
-	_receive_buffer += read_result[1].get_string_from_utf8()
-	_consume_complete_lines()
-	if _receive_buffer.to_utf8_buffer().size() > MAX_RESPONSE_BYTES:
+	_append_response_bytes(read_result[1])
+
+
+func _append_response_bytes(bytes: PackedByteArray) -> void:
+	# The existing tail contains no newline. Search only the newly arrived bytes,
+	# and decode UTF-8 only after a whole response has arrived.
+	var search_from := _receive_buffer.size()
+	_receive_buffer.append_array(bytes)
+	_consume_complete_lines(search_from)
+	if _receive_buffer.size() > MAX_RESPONSE_BYTES:
 		_fail_oversized_response()
 
 
-func _consume_complete_lines() -> void:
+func _consume_complete_lines(search_from := 0) -> void:
 	while true:
-		var newline := _receive_buffer.find("\n")
+		var newline := _receive_buffer.find(10, search_from)
 		if newline < 0:
 			return
-		var line := _receive_buffer.substr(0, newline).strip_edges()
-		_receive_buffer = _receive_buffer.substr(newline + 1)
-		if line == "":
-			continue
-		if line.to_utf8_buffer().size() > MAX_RESPONSE_BYTES:
+		if newline > MAX_RESPONSE_BYTES:
 			_fail_oversized_response()
 			return
+		var line := _receive_buffer.slice(0, newline).get_string_from_utf8().strip_edges()
+		_receive_buffer = _receive_buffer.slice(newline + 1)
+		search_from = 0
+		if line == "":
+			continue
 		var parsed = JSON.parse_string(line)
 		if typeof(parsed) != TYPE_DICTIONARY:
 			protocol_error.emit("runtime response was not a JSON object")
@@ -127,7 +135,7 @@ func _consume_complete_lines() -> void:
 
 func _fail_oversized_response() -> void:
 	_peer.disconnect_from_host()
-	_receive_buffer = ""
+	_receive_buffer.clear()
 	_pending_requests.clear()
 	protocol_error.emit("runtime response exceeded the %d byte transport limit" % MAX_RESPONSE_BYTES)
 
