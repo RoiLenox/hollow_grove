@@ -32,6 +32,7 @@ enum MainCli {
     HuemanSlice(Vec<String>),
     HollowDeck(Vec<String>),
     Lore(Vec<String>),
+    Architecture(Vec<String>),
     VerifyFoundation,
     CurrentSynthesisTui(Vec<String>),
     SemanticTools(Vec<String>),
@@ -65,6 +66,7 @@ where
         "hueman-slice" => Ok(MainCli::HuemanSlice(args.collect())),
         "deck" | "hollow-deck" => Ok(MainCli::HollowDeck(args.collect())),
         "lore" => Ok(MainCli::Lore(args.collect())),
+        "architecture" => Ok(MainCli::Architecture(args.collect())),
         "semantic" | "rampart" | "federation" | "model" | "dataset" => {
             let forwarded_command = if command == "federation" {
                 "rampart".to_owned()
@@ -136,6 +138,7 @@ fn usage() -> &'static str {
        hueman-slice      run the Hueman vertical-slice demo surface\n\
        deck [args]      open or query the canonical Hollow Deck\n\
        lore [args]       inspect lore contracts and replay-backed gameplay consequence\n\
+       architecture [args] audit architecture source links and lore execution coverage\n\
        semantic ...      inspect witnessed semantic positions and history\n\
        rampart ...       run or serve the authoritative transformer-assisted semantic cycle\n\
        model ...         validate an untrusted model response\n\
@@ -683,6 +686,73 @@ fn run_lore_cli(args: &[String]) -> io::Result<()> {
     Ok(())
 }
 
+fn run_architecture_cli(args: &[String]) -> io::Result<()> {
+    use hollow_grove::architecture_audit::ArchitectureCoverageReport;
+    use hollow_grove::gameplay::GameApplicationService;
+    let mut root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    let mut save = None;
+    let mut json = false;
+    let mut root_seen = false;
+    let mut args = args.iter();
+    while let Some(arg) = args.next() {
+        match arg.as_str() {
+            "--help" | "-h" => {
+                println!(
+                    "Usage: hollow-grove architecture [--source-root CHECKOUT] [--save GAMEPLAY_ARCHIVE] [--json]\nRead-only source crosswalk and replay-backed coverage. Declared proof files are not test execution."
+                );
+                return Ok(());
+            }
+            "--source-root" if !root_seen => {
+                root = args
+                    .next()
+                    .ok_or_else(|| {
+                        io::Error::new(
+                            io::ErrorKind::InvalidInput,
+                            "--source-root needs a checkout",
+                        )
+                    })?
+                    .into();
+                root_seen = true;
+            }
+            "--save" if save.is_none() => {
+                save = Some(args.next().ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::InvalidInput, "--save needs an archive")
+                })?);
+            }
+            "--json" if !json => json = true,
+            _ => {
+                return Err(io::Error::new(
+                    io::ErrorKind::InvalidInput,
+                    format!("unknown or repeated architecture argument: {arg}"),
+                ));
+            }
+        }
+    }
+    let application = save
+        .map(|path| {
+            GameApplicationService::from_archive(&fs::read_to_string(path)?)
+                .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error.to_string()))
+        })
+        .transpose()?;
+    let report = ArchitectureCoverageReport::inspect(
+        &root,
+        application.as_ref().map(GameApplicationService::runtime),
+    )
+    .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error.to_string()))?;
+    if json {
+        println!("{}", serde_json::to_string_pretty(&report)?);
+    } else {
+        print!("{}", report.witness_markdown());
+    }
+    if !report.source_links_passed {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "architecture source-link audit failed; see violations",
+        ));
+    }
+    Ok(())
+}
+
 fn main() -> io::Result<()> {
     let cli = parse_main_cli(env::args().skip(1))
         .map_err(|error| io::Error::new(io::ErrorKind::InvalidInput, error))?;
@@ -704,6 +774,7 @@ fn main() -> io::Result<()> {
         MainCli::HuemanSlice(args) => run_dev_tool(HUEMAN_SLICE_BINARY_NAME, &args),
         MainCli::HollowDeck(args) => run_child_binary(HOLLOW_DECK_BINARY_NAME, &args),
         MainCli::Lore(args) => run_lore_cli(&args),
+        MainCli::Architecture(args) => run_architecture_cli(&args),
         MainCli::SemanticTools(args) => run_child_binary(SEMANTIC_BINARY_NAME, &args),
         MainCli::VerifyFoundation => {
             println!("{}", build_hollow_grove_foundation_verification_report()?);

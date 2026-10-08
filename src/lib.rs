@@ -11,6 +11,7 @@
 pub mod ai_personas;
 pub mod aim;
 pub mod application_protocol;
+pub mod architecture_audit;
 pub mod artifact_io;
 pub mod aura_polarity;
 pub mod being_object_ontology;

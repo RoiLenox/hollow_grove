@@ -4,6 +4,8 @@
 mod adaptive_topology_state;
 #[path = "ai_personas_constitution.rs"]
 mod ai_personas_constitution;
+#[path = "architecture_coverage.rs"]
+mod architecture_coverage;
 #[path = "aura_coast_basin_gameplay.rs"]
 mod aura_coast_basin_gameplay;
 #[path = "aura_field_gameplay.rs"]

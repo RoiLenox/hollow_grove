@@ -241,9 +241,9 @@ pub struct GameplayEventEnvelope {
 /// Single authoritative aggregate for gameplay-facing identity and subruntime
 /// coordination.
 ///
-/// Mutation is private to `execute`: commands are applied to a cloned whole
-/// candidate and the candidate replaces live state only after every involved
-/// reducer and identity index accepts the operation.
+/// Mutation is private to `execute`: commands are applied to cloned domain
+/// state. The accepted candidate takes ownership of the original journal only
+/// after all fallible work succeeds; failed commands leave live state intact.
 #[derive(Debug, Clone)]
 pub struct HollowGroveGameRuntime {
     rule_set: RuleSetId,
@@ -307,10 +307,10 @@ impl HollowGroveGameRuntime {
         }
         self.validate_metadata(&metadata)?;
 
-        let mut candidate = self.clone();
+        let mut candidate = self.transaction_candidate();
         let payload = candidate.reduce_command(&metadata, command)?;
-        let sequence = u64::try_from(candidate.events.len())
-            .map_err(|_| GameplayRuntimeError::SequenceOverflow)?;
+        let sequence =
+            u64::try_from(self.events.len()).map_err(|_| GameplayRuntimeError::SequenceOverflow)?;
         let revision = candidate.revision.next()?;
         let envelope = GameplayEventEnvelope {
             id: metadata.id,
@@ -320,6 +320,10 @@ impl HollowGroveGameRuntime {
             rule_set: candidate.rule_set.clone(),
             payload,
         };
+        // Metadata/retry validation used the live journal. Reducers stage domain
+        // state only. Journal ownership moves after every Result-returning step.
+        candidate.events = std::mem::take(&mut self.events);
+        candidate.event_ids = std::mem::take(&mut self.event_ids);
         candidate.event_ids.insert(envelope.id.clone());
         candidate.revision = revision;
         candidate.events.push(envelope);
@@ -331,11 +335,37 @@ impl HollowGroveGameRuntime {
             .expect("gameplay event was just appended"))
     }
 
+    fn transaction_candidate(&self) -> Self {
+        Self {
+            rule_set: self.rule_set.clone(),
+            revision: self.revision,
+            events: Vec::new(),
+            event_ids: BTreeSet::new(),
+            identities: self.identities.clone(),
+            hueman_map: self.hueman_map,
+            hueman_position: self.hueman_position,
+            active_interaction: self.active_interaction,
+            boardwalk_case: self.boardwalk_case.clone(),
+            stonebend_case: self.stonebend_case.clone(),
+            living_world: self.living_world.clone(),
+            deep_pressure: self.deep_pressure.clone(),
+            party: self.party.clone(),
+            winged_gargoyle_pilot: self.winged_gargoyle_pilot.clone(),
+            sympiote_foundation: self.sympiote_foundation.clone(),
+            constitutional: self.constitutional.clone(),
+            regional: self.regional.clone(),
+            world: self.world.clone(),
+        }
+    }
+
     fn retry_position(
         &self,
         metadata: &GameplayEventMetadata,
         command: &GameplayCommand,
     ) -> Result<Option<usize>, GameplayRuntimeError> {
+        if !self.event_ids.contains(&metadata.id) {
+            return Ok(None);
+        }
         let Some(position) = self.events.iter().position(|event| event.id == metadata.id) else {
             return Ok(None);
         };

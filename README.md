@@ -86,6 +86,12 @@ Read-only [Lore Kernel Inspection](docs/LORE_KERNEL_OPTIMIZATION_V1.md) is
 available through `hollow-grove lore`. Use `--save path/to/save.json` to verify
 and replay a gameplay archive before inspecting its Boardwalk consequence.
 The report distinguishes authored contracts from recorded execution.
+The read-only `hollow-grove architecture` command adds a bounded contract,
+implementation, persistence and projection crosswalk, with replay-backed lore
+coverage when `--save` is supplied. See
+[Architecture Coverage and History Profile](docs/ARCHITECTURE_COVERAGE_AND_HISTORY_PROFILE_V1.md)
+for the measured transaction optimization on both machines and the remaining
+verified-binding work.
 Hollow Grove Core and the Hueman presentation client are independently shipped
 and joined through the versioned
 [Hollow Grove / Hueman Seam](docs/HOLLOW_GROVE_HUEMAN_SEAM_V1.md). For a

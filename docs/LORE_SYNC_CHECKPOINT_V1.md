@@ -1,6 +1,6 @@
 # Lore Sync Checkpoint V1
 
-Checkpoint tag: `lore-sync-2026-10-08-v5`
+Checkpoint tag: `lore-sync-2026-10-08-v6`
 
 The first verified checkpoint, `lore-sync-2026-10-07-v1`, remains preserved.
 The V3 checkpoint remains preserved in its complete handoff kit. This checkpoint
@@ -14,6 +14,15 @@ acceptance then found an older Cargo-installed `hueman` ahead of the packaged
 client on `PATH`. V5 prefers the user-installed presentation client after any
 explicit `HUEMAN_BIN` override, with a release-build regression probe. This is a
 launcher correction; gameplay archive V5, lore, and authority remain unchanged.
+
+V6 adds the read-only architecture coverage audit and a measured transaction
+optimization that carries the accepted gameplay journal forward without
+cloning it for every command. The candidate still stages every domain field;
+refusal, retry, full replay and archive bytes retain their prior semantics.
+The workspace now has 1,671 passing tests. Gameplay archive V5 and protocol
+V1 are unchanged. Both machines are target checkouts for this release; exact
+activation and recovery paths are recorded in the generated V6 handoff.
+See [Architecture Coverage and History Profile](ARCHITECTURE_COVERAGE_AND_HISTORY_PROFILE_V1.md).
 
 This is the local handoff for the implemented lore/kernel milestone and the
 Boardwalk's Pimp/Trooners and Gimp/Gooners occupant organization. The main PC
@@ -43,7 +52,7 @@ The generated handoff lives in ignored `dist/`:
 - `hueman-0.1.0.tar.gz`
 - `hollow-grove-general-0.1.0.tar.gz`
 - `hollow-grove-authoritative-state-0.1.0.tar.gz`
-- `hollow-grove-lore-sync-2026-10-08-v5.bundle`, containing the source history
+- `hollow-grove-lore-sync-2026-10-08-v6.bundle`, containing the source history
   and checkpoint tag
 - `LOCAL-TRANSFER-READINESS.json`, recording the exact source commit, artifact
   checksums, and completed local acceptance checks
@@ -54,8 +63,8 @@ Check the receipt and verify the handoff locally before sending:
 ```bash
 git status --short
 git rev-parse HEAD
-git rev-parse lore-sync-2026-10-08-v5^{commit}
-git bundle verify dist/hollow-grove-lore-sync-2026-10-08-v5.bundle
+git rev-parse lore-sync-2026-10-08-v6^{commit}
+git bundle verify dist/hollow-grove-lore-sync-2026-10-08-v6.bundle
 (cd dist && sha256sum --check TRANSFER-SHA256SUMS)
 ```
 
