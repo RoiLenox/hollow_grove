@@ -1,9 +1,10 @@
 # Lore Sync Checkpoint V1
 
-Checkpoint tag: `lore-sync-2026-10-08-v2`
+Checkpoint tag: `lore-sync-2026-10-08-v3`
 
 The first verified checkpoint, `lore-sync-2026-10-07-v1`, remains preserved.
-The second includes the measured client transport optimization and AMD
+The final checkpoint includes stable Godot resource IDs for the new test
+scripts, the measured client transport optimization, and the AMD
 pre-transfer review in [AMD Pre-transfer Optimization](AMD_PRETRANSFER_OPTIMIZATION_V1.md).
 
 This is the local handoff for the implemented lore/kernel milestone and the
@@ -24,7 +25,7 @@ The generated handoff lives in ignored `dist/`:
 - `hueman-0.1.0.tar.gz`
 - `hollow-grove-general-0.1.0.tar.gz`
 - `hollow-grove-authoritative-state-0.1.0.tar.gz`
-- `hollow-grove-lore-sync-2026-10-08-v2.bundle`, containing the source history
+- `hollow-grove-lore-sync-2026-10-08-v3.bundle`, containing the source history
   and checkpoint tag
 - `LOCAL-TRANSFER-READINESS.json`, recording the exact source commit, artifact
   checksums, and completed local acceptance checks
@@ -35,8 +36,8 @@ Check the receipt and verify the handoff locally before sending:
 ```bash
 git status --short
 git rev-parse HEAD
-git rev-parse lore-sync-2026-10-08-v2^{commit}
-git bundle verify dist/hollow-grove-lore-sync-2026-10-08-v2.bundle
+git rev-parse lore-sync-2026-10-08-v3^{commit}
+git bundle verify dist/hollow-grove-lore-sync-2026-10-08-v3.bundle
 (cd dist && sha256sum --check TRANSFER-SHA256SUMS)
 ```
 

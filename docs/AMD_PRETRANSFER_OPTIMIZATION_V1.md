@@ -8,8 +8,11 @@ Local measurement host: Intel Core i7-10875H, x86_64, CachyOS BORE
 `7.2.9-1-cachyos-bore`. The AMD PC is offline. These are local measurements,
 not AMD frame-rate claims.
 
-Checkpoint: `lore-sync-2026-10-08-v2`, following the preserved
+Checkpoint: `lore-sync-2026-10-08-v3`, following the preserved
 `lore-sync-2026-10-07-v1` baseline.
+
+The final checkpoint tracks the new Godot scripts' resource-ID files so
+exporting the client leaves a clean source tree for durable-state packaging.
 
 ## Review from the kernel through presentation
 
