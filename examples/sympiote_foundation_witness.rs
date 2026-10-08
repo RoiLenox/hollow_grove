@@ -87,8 +87,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     if let Some(output) = output {
         std::fs::create_dir_all(&output)?;
         std::fs::write(output.join("before-v4.json"), before)?;
-        std::fs::write(output.join("migrated-v5.json"), migrated)?;
-        std::fs::write(output.join("comfortable-use-v5.json"), after)?;
+        std::fs::write(output.join("migrated-v6.json"), migrated)?;
+        std::fs::write(output.join("comfortable-use-v6.json"), after)?;
         std::fs::write(
             output.join("lore-inspection.json"),
             serde_json::to_string_pretty(&LoreInspection::from_runtime(Some(replayed.runtime()))?)?,

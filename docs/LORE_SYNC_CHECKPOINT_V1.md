@@ -1,6 +1,20 @@
 # Lore Sync Checkpoint V1
 
-Checkpoint tag: `lore-sync-2026-10-08-v6`
+Checkpoint tag: `lore-sync-2026-10-08-v7`
+
+V7 adds the adopted [survey-frame case](../STONEBEND_SURVEY_FRAME_FIRST_CASE_V1.md),
+its backend state machine and read-only workshop controls. Gameplay archive V6,
+lore report V4 and architecture report V2 preserve existing records while adding
+this separate bounded episode. Four verified bindings and ten unbound historical
+routes are now reported. The live Name and Prove authorities, Mercy's scoped
+choice, negative trial history, repair and withdrawal recovery have separate
+receipts. The broader eight-stage object lineage remains a working proposal.
+`prepare` also exercises all three dispositions through the actual service,
+save/restart/load and recovery with a long clinical history in private saves.
+
+The following V6 account records the prior checkpoint; its immutable kit is
+preserved. Current exact versions and acceptance are in `dist/SESSION-HANDOFF.md`
+and `dist/SURVEY-FRAME-HANDOFF.md`.
 
 The first verified checkpoint, `lore-sync-2026-10-07-v1`, remains preserved.
 The V3 checkpoint remains preserved in its complete handoff kit. This checkpoint
@@ -111,8 +125,8 @@ operation. Recovery behavior and full commands are in
 
 ## Development still open
 
-Stonebend's object lineage is a WORKING, unratified design draft. Eleven other
-lore definitions still await verified gameplay bindings. The Boardwalk camp
+Stonebend's wider object lineage remains a working design draft. Ten historical
+route contracts still await verified gameplay bindings. The Boardwalk camp
 organization is adopted lore and presentation; new camp membership mechanics
 have not been invented. These remain explicit development work after this
 transfer checkpoint.

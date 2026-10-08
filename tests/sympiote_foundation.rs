@@ -31,7 +31,7 @@ fn long_assessment_history_has_bounded_read_only_projection_and_valid_handoffs()
     assert!(serde_json::to_vec(&view).unwrap().len() < 32 * 1024);
     let inspection =
         hollow_grove::gameplay::LoreInspection::from_runtime(Some(service.runtime())).unwrap();
-    assert_eq!(inspection.schema_version, 3);
+    assert_eq!(inspection.schema_version, 4);
     assert_eq!(
         inspection
             .sympiote_foundation_contract

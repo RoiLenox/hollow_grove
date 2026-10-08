@@ -53,7 +53,7 @@ esac
 state_root="${XDG_STATE_HOME:-$HOME/.local/state}/hollow-grove"
 data_root="${XDG_DATA_HOME:-$HOME/.local/share}/hollow-grove"
 save_root="$data_root/gameplay-saves"
-world_root="$data_root/world"
+world_root="${HOLLOW_GROVE_WORLD_ROOT:-$data_root/world}"
 runtime_root="${XDG_RUNTIME_DIR:-${TMPDIR:-/tmp}}"
 mkdir -p -- "$state_root" "$save_root" "$world_root"
 chmod 700 -- "$state_root" "$save_root"

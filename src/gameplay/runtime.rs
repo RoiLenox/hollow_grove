@@ -17,6 +17,9 @@ use crate::world::geography::ConstitutionalRouteId;
 use crate::world::interior_surface::InteriorSurfaceId;
 use crate::world::route_network::{RouteNetwork, RouteNetworkError};
 use crate::world::session::WorldSession;
+use crate::world::survey_frame::{
+    SurveyFrameAction, SurveyFrameError, SurveyFrameEvent, SurveyFrameState,
+};
 
 use super::{
     ActiveIncarnationRef, BeingContinuityId, BeingContinuityRecord, BoardwalkCase,
@@ -156,6 +159,9 @@ pub enum GameplayCommand {
     AdvanceSympioteFoundation {
         action: SympioteFoundationAction,
     },
+    AdvanceSurveyFrame {
+        action: SurveyFrameAction,
+    },
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -226,6 +232,9 @@ pub enum GameplayEvent {
     SympioteFoundationChanged {
         event: SympioteFoundationEvent,
     },
+    SurveyFrameChanged {
+        event: SurveyFrameEvent,
+    },
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -261,6 +270,7 @@ pub struct HollowGroveGameRuntime {
     party: PartyState,
     winged_gargoyle_pilot: WingedGargoylePilotState,
     sympiote_foundation: SympioteFoundationState,
+    survey_frame: SurveyFrameState,
     constitutional: ConstitutionalRuntime,
     regional: RegionalSynthesisRuntime,
     world: WorldSession,
@@ -291,6 +301,7 @@ impl HollowGroveGameRuntime {
             party: PartyState::new(),
             winged_gargoyle_pilot: WingedGargoylePilotState::default(),
             sympiote_foundation: SympioteFoundationState::default(),
+            survey_frame: SurveyFrameState::default(),
             constitutional: ConstitutionalRuntime::new(),
             regional: RegionalSynthesisRuntime::new(),
             world,
@@ -352,6 +363,7 @@ impl HollowGroveGameRuntime {
             party: self.party.clone(),
             winged_gargoyle_pilot: self.winged_gargoyle_pilot.clone(),
             sympiote_foundation: self.sympiote_foundation.clone(),
+            survey_frame: self.survey_frame.clone(),
             constitutional: self.constitutional.clone(),
             regional: self.regional.clone(),
             world: self.world.clone(),
@@ -540,6 +552,10 @@ impl HollowGroveGameRuntime {
             (
                 GameplayEvent::SympioteFoundationChanged { event },
                 GameplayCommand::AdvanceSympioteFoundation { action },
+            ) => event.action == *action,
+            (
+                GameplayEvent::SurveyFrameChanged { event },
+                GameplayCommand::AdvanceSurveyFrame { action },
             ) => event.action == *action,
             _ => false,
         }
@@ -884,6 +900,22 @@ impl HollowGroveGameRuntime {
                     metadata.causal_position.get(),
                 )?;
                 Ok(GameplayEvent::SympioteFoundationChanged { event })
+            }
+            GameplayCommand::AdvanceSurveyFrame { action } => {
+                let subject = self
+                    .hueman()
+                    .ok_or(GameplayRuntimeError::SynthesisRequiresHueman)?
+                    .domain_refs()
+                    .institutional()
+                    .as_str()
+                    .to_owned();
+                let event = self.survey_frame.advance(
+                    &subject,
+                    action,
+                    &self.world,
+                    metadata.causal_position.get(),
+                )?;
+                Ok(GameplayEvent::SurveyFrameChanged { event })
             }
         }
     }
@@ -1508,6 +1540,24 @@ impl HollowGroveGameRuntime {
                     return Err(SympioteFoundationError::ReplayDivergence.into());
                 }
             }
+            GameplayEvent::SurveyFrameChanged { event } => {
+                let subject = self
+                    .hueman()
+                    .ok_or(GameplayRuntimeError::SynthesisRequiresHueman)?
+                    .domain_refs()
+                    .institutional()
+                    .as_str()
+                    .to_owned();
+                let actual = self.survey_frame.advance(
+                    &subject,
+                    event.action,
+                    &self.world,
+                    causal_position.get(),
+                )?;
+                if actual != *event {
+                    return Err(SurveyFrameError::ReplayDivergence.into());
+                }
+            }
         }
         Ok(())
     }
@@ -1595,6 +1645,10 @@ impl HollowGroveGameRuntime {
     #[must_use]
     pub const fn sympiote_foundation(&self) -> &SympioteFoundationState {
         &self.sympiote_foundation
+    }
+    #[must_use]
+    pub const fn survey_frame(&self) -> &SurveyFrameState {
+        &self.survey_frame
     }
 
     #[must_use]
@@ -1836,6 +1890,7 @@ pub enum GameplayRuntimeError {
     PartyReplayDivergence,
     SynthesisRequiresHueman,
     SympioteFoundation(SympioteFoundationError),
+    SurveyFrame(SurveyFrameError),
     DeepPressureSettlementLocationRequired,
     DeepPressureOutcomeRequiredForRecruitment,
     RecruitmentConversationRequired(RecruitmentCandidateId),
@@ -1939,6 +1994,11 @@ impl From<WingedGargoylePilotError> for GameplayRuntimeError {
 impl From<SympioteFoundationError> for GameplayRuntimeError {
     fn from(value: SympioteFoundationError) -> Self {
         Self::SympioteFoundation(value)
+    }
+}
+impl From<SurveyFrameError> for GameplayRuntimeError {
+    fn from(value: SurveyFrameError) -> Self {
+        Self::SurveyFrame(value)
     }
 }
 

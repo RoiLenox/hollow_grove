@@ -4,6 +4,10 @@ Date: 2026-10-07
 
 Status: WORKING design case; unratified and unimplemented
 
+The eight-stage design remains WORKING. Its first Gremlin/Goblin doorway
+episode has a separate adopted bounded contract:
+[Survey Frame First Case V1](STONEBEND_SURVEY_FRAME_FIRST_CASE_V1.md).
+
 Authority: beneath Stonebend's Constitution, the Synthesis Canon, and the
 ratified amendment's Gremlin/Scavenging design priority
 

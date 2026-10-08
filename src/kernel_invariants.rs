@@ -186,6 +186,34 @@ pub fn audit_sympiote_foundation(
     }
 }
 
+/// Audits the bounded object state and its separate operational handoffs.
+#[must_use]
+pub fn audit_survey_frame(
+    state: &crate::world::survey_frame::SurveyFrameState,
+) -> KernelInvariantReport {
+    let mut violations: Vec<String> = state
+        .validate()
+        .err()
+        .map(|e| e.to_string())
+        .into_iter()
+        .collect();
+    if let Err(error) = crate::world::survey_frame::survey_frame_lore().operational_handoffs() {
+        violations.push(error.to_string());
+    }
+    KernelInvariantReport {
+        schema_version: KERNEL_INVARIANT_SCHEMA_VERSION,
+        checked_invariants: vec![
+            "survey-frame-object-identity-and-revision-continuity",
+            "survey-frame-measurement-is-not-support",
+            "survey-frame-authority-resident-choice-and-delivery-separated",
+            "survey-frame-negative-trial-and-repair-history-retained",
+            "survey-frame-withdrawal-requires-recovery",
+            "survey-frame-bounded-domain-records",
+        ],
+        violations,
+    }
+}
+
 /// Audits authored lore contracts without treating them as executed cases.
 #[must_use]
 pub fn audit_functional_lore_definitions(

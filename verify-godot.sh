@@ -29,4 +29,7 @@ fi
 "$GODOT_BIN" --headless --path "$SCRIPT_DIR/hueman_godot" \
     --script res://tests/retro_overworld_semantics_smoke.gd
 
+"$GODOT_BIN" --headless --path "$SCRIPT_DIR/hueman_godot" \
+    --script res://tests/survey_frame_smoke.gd
+
 printf 'Hollow Grove Godot smoke verification passed\n'

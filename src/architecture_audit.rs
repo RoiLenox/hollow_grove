@@ -251,6 +251,15 @@ pub fn canonical_architecture_links() -> Vec<ArchitectureLink> {
             Some("src/gameplay/view.rs"),
         ),
         link(
+            "architecture.survey-frame",
+            Gameplay,
+            crate::world::survey_frame::SURVEY_FRAME_SOURCE,
+            "src/world/survey_frame.rs",
+            "tests/survey_frame.rs",
+            Some("src/gameplay/archive.rs"),
+            Some("src/gameplay/view.rs"),
+        ),
+        link(
             "architecture.sympiote-graft",
             HouseLayer,
             "HOLLOW_GROVE_POWER_RECIPE_CONSTITUTION_V1.md",
@@ -403,6 +412,7 @@ pub struct ArchitectureCoverageReport {
     pub components: Vec<ArchitectureLink>,
     pub canonical_route_contracts: Vec<LoreArchitectureCoverage>,
     pub additional_foundation_contract: LoreArchitectureCoverage,
+    pub additional_survey_frame_contract: LoreArchitectureCoverage,
     pub verified_binding_count: usize,
     pub unbound_canonical_route_count: usize,
     pub replayed_save_revision: Option<u64>,
@@ -476,9 +486,28 @@ impl ArchitectureCoverageReport {
             .iter()
             .filter(|item| item.reducer_owner.is_none())
             .count();
-        let bound = contracts.len() - unbound + usize::from(additional.reducer_owner.is_some());
+        let frame_contract = inspection.survey_frame_contract;
+        if frame_contract.gameplay_binding != Some(crate::world::survey_frame::SURVEY_FRAME_CASE_ID)
+        {
+            audit
+                .violations
+                .push("survey-frame binding does not match its reducer-owned case".into());
+        }
+        let object_case = LoreArchitectureCoverage {
+            lore_id: frame_contract.lore_id,
+            house: frame_contract.house,
+            authority_source: frame_contract.authority_source,
+            definition_owner: "src/world/survey_frame.rs",
+            gameplay_case: frame_contract.gameplay_binding,
+            reducer_owner: Some("src/world/survey_frame.rs"),
+            persistence_owner: Some("src/gameplay/archive.rs"),
+            projection_owner: Some("src/gameplay/view.rs"),
+            execution_complete_in_supplied_save: runtime.map(|r| r.survey_frame().complete()),
+            gap: None,
+        };
+        let bound = contracts.len() - unbound + usize::from(additional.reducer_owner.is_some()) + 1;
         Ok(Self {
-            schema_version: 1,
+            schema_version: 2,
             scope: "read-only bounded core crosswalk and lore-binding coverage; source presence and declared test links do not attest execution or complete whole-world implementation",
             source_links_passed: audit.passed(),
             checked_invariants: audit.checked_invariants,
@@ -486,6 +515,7 @@ impl ArchitectureCoverageReport {
             components,
             canonical_route_contracts: contracts,
             additional_foundation_contract: additional,
+            additional_survey_frame_contract: object_case,
             verified_binding_count: bound,
             unbound_canonical_route_count: unbound,
             replayed_save_revision: runtime.map(|runtime| runtime.revision().get()),
@@ -525,6 +555,7 @@ impl ArchitectureCoverageReport {
             .canonical_route_contracts
             .iter()
             .chain(std::iter::once(&self.additional_foundation_contract))
+            .chain(std::iter::once(&self.additional_survey_frame_contract))
         {
             let _ = writeln!(
                 output,

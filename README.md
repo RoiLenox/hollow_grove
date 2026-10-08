@@ -93,11 +93,18 @@ coverage when `--save` is supplied. See
 for the measured transaction optimization on both machines and the remaining
 verified-binding work.
 The [Stonebend continuity binding](docs/STONEBEND_CONTINUITY_LORE_BINDING_V1.md)
-adds replay-backed inspection of Mercy Deep's existing Name/Seal case under
-lore report V3. There are now three verified bindings and ten unbound historical
-routes. The [survey-frame first case](STONEBEND_SURVEY_FRAME_FIRST_CASE_V1_DRAFT.md)
-develops the doorway, failed trial, protected refusal and repair as a working
-proposal for the next object episode.
+adds replay-backed inspection of Mercy Deep's existing Name/Seal case.
+Lore report V4 and architecture report V2 now expose four verified bindings
+and ten unbound historical routes. The adopted
+[survey-frame first case](STONEBEND_SURVEY_FRAME_FIRST_CASE_V1.md) implements
+Mercy Deep's doorway, Tess Splice's custody and recovery, Ivo Mark's recording,
+live House decisions, failed trial, protected refusal and exact-revision repair.
+Open its workshop with **O**, choose with arrows and ask with Enter. Use
+`HOLLOW_GROVE_WORLD_ROOT=/home/warren/Projects/active/hollow_grove`
+when launching with the checkout's existing institutional catalog; a vacant
+catalog continues to refuse authority-dependent work. Gameplay archives write
+V6 and preserve older histories through the
+[survey-frame migration](docs/SURVEY_FRAME_MIGRATION_V1.md).
 Hollow Grove Core and the Hueman presentation client are independently shipped
 and joined through the versioned
 [Hollow Grove / Hueman Seam](docs/HOLLOW_GROVE_HUEMAN_SEAM_V1.md). For a

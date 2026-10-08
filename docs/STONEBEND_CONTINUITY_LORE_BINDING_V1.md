@@ -1,9 +1,15 @@
+Current extension: [the adopted survey-frame case](../STONEBEND_SURVEY_FRAME_FIRST_CASE_V1.md)
+now has its own fourth verified binding. Lore inspection V4 and architecture
+inspection V2 supersede the original report versions below. The Current Sea
+case's domain outcomes remain unchanged. Current witness exports use gameplay
+V6, lore V4 and architecture V2; the prior V5 evidence remains preserved.
+
 # Stonebend Continuity Lore Binding V1
 
 This pass connects the already implemented Current Sea continuity case to
 read-only lore inspection and architecture coverage. It also develops a
 separate [survey-frame first-case proposal](../STONEBEND_SURVEY_FRAME_FIRST_CASE_V1_DRAFT.md).
-The frame remains unratified and unimplemented; this binding attests Mercy
+At this original checkpoint the frame was still a proposal; this binding attests Mercy
 Deep's existing case.
 
 ## Existing canon and execution

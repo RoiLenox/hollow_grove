@@ -20,6 +20,12 @@ mod synthesis_pilot;
 mod view;
 mod world;
 
+pub use crate::world::survey_frame::{
+    SurveyFrameAction, SurveyFrameAuthorityReceipt, SurveyFrameClaim, SurveyFrameDelivery,
+    SurveyFrameDisposition, SurveyFrameError, SurveyFrameEvent, SurveyFrameOffer, SurveyFramePhase,
+    SurveyFrameResidentChoice, SurveyFrameResidentDecision, SurveyFrameRevision, SurveyFrameState,
+    SurveyFrameUse,
+};
 pub use crate::world::sympiote_foundation::{
     SympioteAdaptation, SympioteBoardwalkCamp, SympioteFoundationAction, SympioteFoundationError,
     SympioteFoundationEvent, SympioteFoundationPhase, SympioteFoundationState,

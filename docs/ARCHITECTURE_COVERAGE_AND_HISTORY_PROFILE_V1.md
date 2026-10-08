@@ -1,8 +1,13 @@
+Current extension: the adopted [survey-frame case](../STONEBEND_SURVEY_FRAME_FIRST_CASE_V1.md)
+raises coverage to four verified bindings and 22 bounded architecture components,
+with ten historical route contracts still unbound. Current reports use architecture
+V2 and lore V4. The performance measurements below remain the recorded V6 comparison.
+
 # Architecture Coverage and History Profile V1
 
 This records the V6 optimization and its original coverage. The subsequent
 [Stonebend continuity binding](STONEBEND_CONTINUITY_LORE_BINDING_V1.md) raises
-current verified coverage to three bindings, with ten unbound historical
+the earlier verified coverage to three bindings, with ten unbound historical
 routes; the performance evidence below still belongs to V6.
 
 This pass makes the lore-to-runtime relationship inspectable and reduces the

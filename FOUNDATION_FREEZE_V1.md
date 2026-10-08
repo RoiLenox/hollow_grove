@@ -65,6 +65,13 @@ House authority or neutral-kernel meaning.
 
 ## Required validation
 
+The later approved object-case migration is documented in
+`docs/SURVEY_FRAME_MIGRATION_V1.md`. The user authorized the doorway direction,
+case responsibilities and continued implementation. Gameplay V5→V6 preserves
+old progress and adds typed object trials, resident decisions and recovery.
+The read-only workshop panel uses existing renderer constraints and acquires
+no authority.
+
 ```text
 cargo fmt --all -- --check
 cargo clippy --workspace --all-targets --all-features --offline -- -D warnings

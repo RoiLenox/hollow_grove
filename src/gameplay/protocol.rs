@@ -120,6 +120,9 @@ pub enum GameplayIntent {
     AdvanceSympioteFoundationIntent {
         action: SympioteFoundationAction,
     },
+    AdvanceSurveyFrameIntent {
+        action: super::SurveyFrameAction,
+    },
     SaveIntent {
         slot_id: String,
     },
@@ -164,6 +167,7 @@ impl GameplayIntent {
             Self::BeginSynthesisIntent { .. } => "BeginSynthesisIntent",
             Self::AdvanceWingedGargoylePilotIntent { .. } => "AdvanceWingedGargoylePilotIntent",
             Self::AdvanceSympioteFoundationIntent { .. } => "AdvanceSympioteFoundationIntent",
+            Self::AdvanceSurveyFrameIntent { .. } => "AdvanceSurveyFrameIntent",
             Self::SaveIntent { .. } => "SaveIntent",
             Self::LoadIntent { .. } => "LoadIntent",
         }
@@ -1020,6 +1024,9 @@ impl GameProtocolService {
                 request,
                 GameplayCommand::AdvanceSympioteFoundation { action: *action },
             ),
+            GameplayIntent::AdvanceSurveyFrameIntent { action } => self.execute_command(
+                request, GameplayCommand::AdvanceSurveyFrame { action: *action },
+            ),
             GameplayIntent::SaveIntent { slot_id } => self.save(request, slot_id),
             GameplayIntent::LoadIntent { slot_id } => self.load(request, slot_id),
             unavailable => self.rejection(
@@ -1670,6 +1677,12 @@ impl GameProtocolService {
             .checked_invariants
             .extend(foundation_audit.checked_invariants);
         rampart_audit.violations.extend(foundation_audit.violations);
+        let frame_audit =
+            crate::kernel_invariants::audit_survey_frame(self.application.runtime().survey_frame());
+        rampart_audit
+            .checked_invariants
+            .extend(frame_audit.checked_invariants);
+        rampart_audit.violations.extend(frame_audit.violations);
         let guide_audit = audit_guide_context(&view.guide_context);
         view.kernel_audit = KernelAuditView::from_reports(&rampart_audit, &guide_audit);
         view.guide_transition_events = guide_events;
@@ -1972,6 +1985,12 @@ fn capability_views(
     capabilities.push(IntentCapabilityView {
         intent_type: "AdvanceSympioteFoundationIntent".into(),
         available: hueman_exists && !runtime.sympiote_foundation().available_actions().is_empty(),
+        unavailable_reason: (!hueman_exists)
+            .then(|| "the permanent Hueman identity is not established".into()),
+    });
+    capabilities.push(IntentCapabilityView {
+        intent_type: "AdvanceSurveyFrameIntent".into(),
+        available: hueman_exists && !runtime.survey_frame().available_actions().is_empty(),
         unavailable_reason: (!hueman_exists)
             .then(|| "the permanent Hueman identity is not established".into()),
     });

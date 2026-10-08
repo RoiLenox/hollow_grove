@@ -42,6 +42,7 @@ pub mod session;
 pub mod spatial_inheritance;
 pub mod spatial_topology_v2;
 pub mod stonebend;
+pub mod survey_frame;
 pub mod sympiote;
 pub mod sympiote_foundation;
 pub mod way_back;

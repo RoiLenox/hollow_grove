@@ -4,6 +4,12 @@ Date: 2026-10-08
 
 Status: WORKING first-case proposal; unratified and unimplemented
 
+Historical proposal. The user's 2026-10-08 “Yes do that” approved continuing
+the doorway direction and settling its responsibilities. The bounded adopted
+case is now [Survey Frame First Case V1](STONEBEND_SURVEY_FRAME_FIRST_CASE_V1.md).
+Its exact actors, actions, limits and implementation govern that episode;
+the broader parent lineage remains open.
+
 Owner: the [PrimePunk Object Lineage](STONEBEND_PRIMEPUNK_OBJECT_LINEAGE_V1_DRAFT.md)
 under [Stonebend Constitution V2](STONEBEND_CONSTITUTION_V2.md)
 

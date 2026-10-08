@@ -24,7 +24,7 @@ use super::{
 
 pub const BOARDWALK_RETURN_LORE_ID: &str = "lore.flynt.boardwalk-return-recognition";
 pub const CURRENT_SEA_CONTINUITY_LORE_ID: &str = "lore.stonebend.current-sea-continuity";
-pub const LORE_INSPECTION_SCHEMA_VERSION: u16 = 3;
+pub const LORE_INSPECTION_SCHEMA_VERSION: u16 = 4;
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize)]
 pub struct LoreRuleSource {
@@ -189,6 +189,8 @@ pub struct LoreInspection {
     pub definitions: Vec<LoreDefinitionInspection>,
     pub sympiote_foundation: Option<super::SympioteFoundationView>,
     pub sympiote_foundation_contract: LoreDefinitionInspection,
+    pub survey_frame: Option<super::SurveyFrameView>,
+    pub survey_frame_contract: LoreDefinitionInspection,
 }
 
 impl LoreInspection {
@@ -200,8 +202,26 @@ impl LoreInspection {
             .ensure_passed()
             .map_err(LoreInspectionError::Invariant)?;
         let foundation = crate::world::sympiote_foundation::sympiote_foundation_lore();
+        let frame = crate::world::survey_frame::survey_frame_lore();
         Ok(Self {
             schema_version: LORE_INSPECTION_SCHEMA_VERSION,
+            survey_frame: runtime.map(super::SurveyFrameView::from_runtime),
+            survey_frame_contract: LoreDefinitionInspection {
+                lore_id: frame.id,
+                house: frame.house,
+                trigger: frame.trigger,
+                player_choices: frame.player_choices,
+                uncertainty: frame.uncertainty,
+                failure_and_refusal: frame.failure_and_refusal,
+                completion_condition: frame.completion_condition,
+                authority_source: crate::world::survey_frame::SURVEY_FRAME_SOURCE,
+                declared_handoffs: frame
+                    .operational_handoffs()
+                    .map_err(LoreInspectionError::Definition)?,
+                gameplay_binding: Some(crate::world::survey_frame::SURVEY_FRAME_CASE_ID),
+                execution: None,
+                stonebend_execution: None,
+            },
             sympiote_foundation: runtime.map(super::SympioteFoundationView::from_runtime),
             sympiote_foundation_contract: LoreDefinitionInspection {
                 lore_id: foundation.id,
@@ -247,6 +267,11 @@ impl LoreInspection {
                     path: crate::world::sympiote_foundation::SYMPIOTE_FOUNDATION_SOURCE,
                     status: "adopted Sympiote foundation; bounded clinical and practice runtime",
                     consumer: "src/world/sympiote_foundation.rs",
+                },
+                LoreRuleSource {
+                    path: crate::world::survey_frame::SURVEY_FRAME_SOURCE,
+                    status: "adopted bounded object case; resident choice, exact proof and recovery",
+                    consumer: "src/world/survey_frame.rs",
                 },
             ],
             definitions: definitions
@@ -449,6 +474,57 @@ impl LoreInspection {
             );
         } else {
             output.push_str("## Sympiote foundation\n\nAuthored clinical/practice contract; no gameplay archive was supplied.\n");
+        }
+        if let Some(frame) = &self.survey_frame {
+            let _ = writeln!(
+                output,
+                "\n## Survey frame\n\nCase: `{}`\nPhase: {:?}; object revision: {}; disposition complete: {}\nMeasuring proof: {}; support proof: {}; recovery required: {}\nResident: `{}`; keeper: `{}`; recorder: `{}`\n",
+                frame.case_id,
+                frame.phase,
+                frame.object_revision,
+                frame.complete,
+                frame.measurement_proven,
+                frame.support_proven,
+                frame.recovery_required,
+                frame.resident,
+                frame.keeper,
+                frame.recorder
+            );
+            for revision in &frame.revisions {
+                let _ = writeln!(
+                    output,
+                    "- Revision {}: {}; retained parts: {}",
+                    revision.number,
+                    revision.change,
+                    revision.retained_parts.join("; ")
+                );
+                if let Some(proof) = &revision.support_receipt {
+                    let _ = writeln!(
+                        output,
+                        "- Support record: {:?}, `{}` by `{}`",
+                        proof.claim, proof.decision_id, proof.authority_actor
+                    );
+                }
+            }
+            for decision in &frame.resident_decisions {
+                let _ = writeln!(
+                    output,
+                    "- Resident decision: {:?}, `{}`, revision {}; withdrawal: {}",
+                    decision.choice, decision.id, decision.revision, decision.withdrawal
+                );
+            }
+            for delivery in &frame.deliveries {
+                let _ = writeln!(
+                    output,
+                    "- Delivered: {:?}, `{}` to `{}`; remaining: {}",
+                    delivery.disposition,
+                    delivery.id,
+                    delivery.recipient,
+                    delivery.outstanding_work.join("; ")
+                );
+            }
+        } else {
+            output.push_str("\n## Survey frame\n\nAdopted object-case contract; no gameplay archive supplied.\n");
         }
         output
     }

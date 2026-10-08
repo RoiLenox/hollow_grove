@@ -198,6 +198,9 @@ impl GameplayEventView {
                 None,
                 None,
             ),
+            GameplayEvent::SurveyFrameChanged { .. } => {
+                (GameplayEventKind::ActionResolved, None, None)
+            }
         };
         Self {
             kind,
@@ -1199,6 +1202,8 @@ pub struct GameView {
     pub winged_gargoyle_pilot: WingedGargoylePilotView,
     #[serde(default)]
     pub sympiote_foundation: SympioteFoundationView,
+    #[serde(default)]
+    pub survey_frame: SurveyFrameView,
     pub physical_exits: Vec<PhysicalExitView>,
     pub capabilities: Vec<IntentCapabilityView>,
     #[serde(default)]
@@ -1231,6 +1236,93 @@ impl Default for SympioteFoundationView {
             &crate::world::sympiote_foundation::SympioteFoundationState::default(),
             false,
         )
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct SurveyFrameView {
+    pub case_id: String,
+    pub source: String,
+    pub phase: super::SurveyFramePhase,
+    pub object_id: Option<String>,
+    pub object_revision: u64,
+    pub artifact_name_record_id: Option<String>,
+    pub resident: String,
+    pub keeper: String,
+    pub recorder: String,
+    pub safe_route: String,
+    pub measurement_proven: bool,
+    pub support_proven: bool,
+    pub deployed: bool,
+    pub recovery_required: bool,
+    pub complete: bool,
+    pub revisions: Vec<super::SurveyFrameRevision>,
+    pub registration: Option<super::SurveyFrameAuthorityReceipt>,
+    pub offers: Vec<super::SurveyFrameOffer>,
+    pub supported_choice: Option<super::SurveyFrameResidentChoice>,
+    pub resident_decisions: Vec<super::SurveyFrameResidentDecision>,
+    pub deliveries: Vec<super::SurveyFrameDelivery>,
+    pub available_actions: Vec<super::SurveyFrameAction>,
+    pub missing_authorities: Vec<String>,
+}
+
+impl Default for SurveyFrameView {
+    fn default() -> Self {
+        Self::from_runtime(&super::HollowGroveGameRuntime::new(
+            crate::constitutional::RuleSetId::new(crate::constitutional::V2_RULE_SET)
+                .expect("canonical rule set"),
+        ))
+    }
+}
+
+impl SurveyFrameView {
+    #[must_use]
+    pub fn from_runtime(runtime: &super::HollowGroveGameRuntime) -> Self {
+        use crate::world::survey_frame as frame;
+        let state = runtime.survey_frame();
+        let missing = ["office.stonebend.hypergiant", "office.sandmanor.sandman"]
+            .into_iter()
+            .filter(|office| {
+                !runtime
+                    .world_session()
+                    .institutional()
+                    .catalog
+                    .office_holders
+                    .iter()
+                    .any(|holder| holder.active && holder.office.as_str() == *office)
+            })
+            .map(str::to_owned)
+            .collect();
+        Self {
+            case_id: frame::SURVEY_FRAME_CASE_ID.into(),
+            source: frame::SURVEY_FRAME_SOURCE.into(),
+            phase: state.phase(),
+            object_id: (state.object_revision() > 0).then(|| frame::SURVEY_FRAME_OBJECT_ID.into()),
+            object_revision: state.object_revision(),
+            artifact_name_record_id: state.artifact_name().map(|name| name.id.as_str().into()),
+            resident: frame::SURVEY_FRAME_RESIDENT.into(),
+            keeper: frame::SURVEY_FRAME_KEEPER.into(),
+            recorder: frame::SURVEY_FRAME_RECORDER.into(),
+            safe_route: frame::SURVEY_FRAME_SAFE_ROUTE.into(),
+            measurement_proven: state.measurement_proven(),
+            support_proven: state.support_proven(),
+            deployed: state.deployed(),
+            recovery_required: state.recovery_required(),
+            complete: state.complete(),
+            revisions: state.revisions().to_vec(),
+            registration: state.registration().cloned(),
+            offers: state.offers().to_vec(),
+            supported_choice: state.supported_choice(),
+            resident_decisions: state.resident_decisions().to_vec(),
+            deliveries: state.deliveries().to_vec(),
+            available_actions: if runtime.hueman().is_some() {
+                state.available_actions()
+            } else {
+                Vec::new()
+            },
+            missing_authorities: missing,
+        }
     }
 }
 
@@ -1704,6 +1796,7 @@ impl GameView {
                 runtime.sympiote_foundation(),
                 runtime.hueman().is_some(),
             ),
+            survey_frame: SurveyFrameView::from_runtime(runtime),
             physical_exits: runtime
                 .hueman_position()
                 .map(|_| {

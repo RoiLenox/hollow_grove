@@ -192,6 +192,7 @@ prepare_all() {
     packaging/hollow-grove-general/verify-keyboard-grove.sh
     ./verify-godot.sh
     ./verify-playable-lifecycle.sh
+    python3 tools/verify-survey-frame.py --service target/debug/hollow_grove_game_service --world-root "$REPO_ROOT" --output dist/survey-frame-source-witness
     ./build-portable-release.sh
     ./build-authoritative-state.sh
     printf 'update payloads prepared for %s\n' "$(git rev-parse HEAD)"

@@ -13,12 +13,13 @@ use super::{
     ActiveIncarnationRef, BeingContinuityId, BeingContinuityRecord, BoardwalkChoice,
     BoardwalkEvidence, BoardwalkOutcomeId, DeepPressureEvent, GameRevision, GameplayEvent,
     GameplayEventEnvelope, GameplayEventId, HuemanFaculty, InteractionId, LivingWorldEvent,
-    PartyEvent, StonebendContinuityChoice, StonebendEvidence, StonebendOutcomeId,
+    PartyEvent, StonebendContinuityChoice, StonebendEvidence, StonebendOutcomeId, SurveyFrameEvent,
     SympioteFoundationEvent, TilePosition, WingedGargoylePilotEvent, WorldMapId,
 };
 
 pub const GAMEPLAY_ARCHIVE_FORMAT: &str = "hollow-grove-gameplay";
-pub const GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 5;
+pub const GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 6;
+const PRE_SURVEY_FRAME_GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 5;
 const PRE_SYMPIOTE_GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 4;
 pub const GAMEPLAY_RAMPART_COMPONENT_ID: &str = "component.gameplay.authoritative";
 #[deprecated(since = "0.1.0", note = "use GAMEPLAY_RAMPART_COMPONENT_ID")]
@@ -36,6 +37,7 @@ pub const fn is_supported_gameplay_archive_schema_version(schema_version: u16) -
     matches!(
         schema_version,
         GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+            | PRE_SURVEY_FRAME_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
             | PRE_SYMPIOTE_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
             | PRE_SYNTHESIS_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
             | PRE_RAMPART_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
@@ -178,6 +180,9 @@ struct GameplayArchivePayloadV4 {
 // V5 adds an event variant; envelope fields and checksum input remain unchanged.
 type GameplayArchiveEnvelopeV5 = GameplayArchiveEnvelopeV4;
 type GameplayArchivePayloadV5 = GameplayArchivePayloadV4;
+// V6 adds a typed object-case event; the envelope/checksum payload stays exact.
+type GameplayArchiveEnvelopeV6 = GameplayArchiveEnvelopeV5;
+type GameplayArchivePayloadV6 = GameplayArchivePayloadV5;
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -315,6 +320,9 @@ enum WireGameplayEvent {
     SympioteFoundationChanged {
         event: SympioteFoundationEvent,
     },
+    SurveyFrameChanged {
+        event: SurveyFrameEvent,
+    },
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -399,7 +407,7 @@ pub fn encode_gameplay_archive_with_federation_binding(
     encode_gameplay_archive_with_rampart_binding(rule_set, events, world, binding)
 }
 
-fn encode_gameplay_archive_with_history(
+pub(super) fn encode_gameplay_archive_with_history(
     rule_set: &RuleSetId,
     events: &[GameplayEventEnvelope],
     world: &WorldSession,
@@ -408,7 +416,7 @@ fn encode_gameplay_archive_with_history(
 ) -> Result<String, GameplayArchiveError> {
     rampart_binding.validate()?;
     migration_history.sort_by(|left, right| left.migration_id.cmp(&right.migration_id));
-    let payload = GameplayArchivePayloadV5 {
+    let payload = GameplayArchivePayloadV6 {
         rule_set: rule_set.as_str().into(),
         events: events
             .iter()
@@ -419,7 +427,7 @@ fn encode_gameplay_archive_with_history(
         migration_history,
     };
     let checksum = checksum_for(&payload)?;
-    serde_json::to_string_pretty(&GameplayArchiveEnvelopeV5 {
+    serde_json::to_string_pretty(&GameplayArchiveEnvelopeV6 {
         format: GAMEPLAY_ARCHIVE_FORMAT.into(),
         schema_version: GAMEPLAY_ARCHIVE_SCHEMA_VERSION,
         checksum,
@@ -499,7 +507,7 @@ pub fn decode_gameplay_archive_with_metadata(
     let (rule_set, wire_events, institutional_state, rampart_binding, migration_history) =
         match schema_version {
             GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
-                let envelope: GameplayArchiveEnvelopeV5 = serde_json::from_value(value)
+                let envelope: GameplayArchiveEnvelopeV6 = serde_json::from_value(value)
                     .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
                 validate_envelope(
                     &envelope.format,
@@ -516,6 +524,27 @@ pub fn decode_gameplay_archive_with_metadata(
                     envelope.payload.migration_history,
                 )
             }
+            PRE_SURVEY_FRAME_GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
+                let envelope: GameplayArchiveEnvelopeV5 = serde_json::from_value(value)
+                    .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
+                validate_envelope(
+                    &envelope.format,
+                    envelope.schema_version,
+                    &envelope.checksum,
+                    &envelope.payload,
+                )?;
+                envelope.payload.rampart_binding.validate()?;
+                reject_pre_survey_frame_events(&envelope.payload.events)?;
+                let mut migration_history = envelope.payload.migration_history;
+                migration_history.push(survey_frame_migration_record());
+                (
+                    envelope.payload.rule_set,
+                    envelope.payload.events,
+                    Some(envelope.payload.institutional_state),
+                    envelope.payload.rampart_binding,
+                    migration_history,
+                )
+            }
             PRE_SYMPIOTE_GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
                 let envelope: GameplayArchiveEnvelopeV4 = serde_json::from_value(value)
                     .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
@@ -529,6 +558,7 @@ pub fn decode_gameplay_archive_with_metadata(
                 reject_pre_sympiote_events(&envelope.payload.events)?;
                 let mut migration_history = envelope.payload.migration_history;
                 migration_history.push(sympiote_foundation_migration_record());
+                migration_history.push(survey_frame_migration_record());
                 (
                     envelope.payload.rule_set,
                     envelope.payload.events,
@@ -551,6 +581,7 @@ pub fn decode_gameplay_archive_with_metadata(
                 let mut migration_history = envelope.payload.migration_history;
                 migration_history.push(synthesis_pilot_migration_record());
                 migration_history.push(sympiote_foundation_migration_record());
+                migration_history.push(survey_frame_migration_record());
                 (
                     envelope.payload.rule_set,
                     envelope.payload.events,
@@ -578,6 +609,7 @@ pub fn decode_gameplay_archive_with_metadata(
                         rampart_migration_record(),
                         synthesis_pilot_migration_record(),
                         sympiote_foundation_migration_record(),
+                        survey_frame_migration_record(),
                     ],
                 )
             }
@@ -605,6 +637,7 @@ pub fn decode_gameplay_archive_with_metadata(
                         rampart_migration_record(),
                         synthesis_pilot_migration_record(),
                         sympiote_foundation_migration_record(),
+                        survey_frame_migration_record(),
                     ],
                 )
             }
@@ -716,6 +749,7 @@ fn sympiote_foundation_migration_record() -> GameplayArchiveMigrationRecord {
 fn reject_pre_sympiote_events(
     events: &[WireGameplayEventEnvelope],
 ) -> Result<(), GameplayArchiveError> {
+    reject_pre_survey_frame_events(events)?;
     if events.iter().any(|event| {
         matches!(
             event.payload,
@@ -724,6 +758,27 @@ fn reject_pre_sympiote_events(
     }) {
         return Err(GameplayArchiveError::InvalidDomainValue(
             "gameplay archives before V5 cannot contain Sympiote foundation events".into(),
+        ));
+    }
+    Ok(())
+}
+
+fn survey_frame_migration_record() -> GameplayArchiveMigrationRecord {
+    GameplayArchiveMigrationRecord {
+        migration_id: "migration.gameplay.v5-to-v6.survey-frame".into(), from_schema_version: 5, to_schema_version: 6,
+        decision: "preserve prior identity, Forms, consent and history without inventing an object, proof, trial, custody or resident decision".into(),
+        provenance_id: "provenance.gameplay.migration.v5-to-v6".into(),
+    }
+}
+fn reject_pre_survey_frame_events(
+    events: &[WireGameplayEventEnvelope],
+) -> Result<(), GameplayArchiveError> {
+    if events
+        .iter()
+        .any(|e| matches!(e.payload, WireGameplayEvent::SurveyFrameChanged { .. }))
+    {
+        return Err(GameplayArchiveError::InvalidDomainValue(
+            "gameplay archives before V6 cannot contain survey-frame events".into(),
         ));
     }
     Ok(())
@@ -919,6 +974,9 @@ impl TryFrom<&GameplayEventEnvelope> for WireGameplayEventEnvelope {
                     event: event.clone(),
                 }
             }
+            GameplayEvent::SurveyFrameChanged { event } => WireGameplayEvent::SurveyFrameChanged {
+                event: event.clone(),
+            },
         };
         Ok(Self {
             id: event.id.as_str().into(),
@@ -1025,6 +1083,9 @@ impl WireGameplayEventEnvelope {
             WireGameplayEvent::SympioteFoundationChanged { event } => {
                 GameplayEvent::SympioteFoundationChanged { event }
             }
+            WireGameplayEvent::SurveyFrameChanged { event } => {
+                GameplayEvent::SurveyFrameChanged { event }
+            }
         };
         Ok(GameplayEventEnvelope {
             id: parse(self.id, GameplayEventId::new)?,
@@ -1129,10 +1190,13 @@ mod tests {
         let before = serde_json::to_string_pretty(&before).unwrap();
         let after = migrate_gameplay_archive(&before).unwrap();
         let decoded = decode_gameplay_archive_with_metadata(&after).unwrap();
-        assert_eq!(decoded.source_schema_version, 5);
+        assert_eq!(decoded.source_schema_version, 6);
         assert_eq!(
             decoded.migration_history,
-            vec![sympiote_foundation_migration_record()]
+            vec![
+                sympiote_foundation_migration_record(),
+                survey_frame_migration_record()
+            ]
         );
         let replayed = GameApplicationService::from_archive(&after).unwrap();
         assert_eq!(replayed.runtime().hueman(), application.runtime().hueman());
@@ -1205,7 +1269,8 @@ mod tests {
             decoded.migration_history,
             vec![
                 synthesis_pilot_migration_record(),
-                sympiote_foundation_migration_record()
+                sympiote_foundation_migration_record(),
+                survey_frame_migration_record()
             ]
         );
 
@@ -1220,7 +1285,8 @@ mod tests {
             migrated.migration_history,
             vec![
                 synthesis_pilot_migration_record(),
-                sympiote_foundation_migration_record()
+                sympiote_foundation_migration_record(),
+                survey_frame_migration_record()
             ]
         );
 
@@ -1311,7 +1377,7 @@ mod tests {
             GAMEPLAY_ARCHIVE_SCHEMA_VERSION
         );
         assert_eq!(migrated.events.len(), 1);
-        assert_eq!(migrated.migration_history.len(), 4);
+        assert_eq!(migrated.migration_history.len(), 5);
         assert!(migrated.migration_history.iter().any(
             |record| record.migration_id == "migration.gameplay.v1-to-v2.authority-dependency"
         ));

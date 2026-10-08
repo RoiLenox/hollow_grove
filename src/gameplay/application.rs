@@ -2,10 +2,10 @@ use crate::constitutional::{RegionalBeingId, RuleSetId};
 use crate::world::session::WorldSession;
 
 use super::{
-    BeingContinuityId, BeingContinuityRecord, GameRevision, GameplayArchiveError, GameplayCommand,
-    GameplayEventEnvelope, GameplayEventMetadata, GameplayRampartBinding, GameplayRuntimeError,
-    HollowGroveGameRuntime, decode_gameplay_archive_with_metadata,
-    encode_gameplay_archive_with_rampart_binding,
+    BeingContinuityId, BeingContinuityRecord, GameRevision, GameplayArchiveError,
+    GameplayArchiveMigrationRecord, GameplayCommand, GameplayEventEnvelope, GameplayEventMetadata,
+    GameplayRampartBinding, GameplayRuntimeError, HollowGroveGameRuntime,
+    decode_gameplay_archive_with_metadata,
 };
 
 /// Presentation-neutral owner of the authoritative gameplay runtime.
@@ -16,6 +16,7 @@ use super::{
 pub struct GameApplicationService {
     runtime: HollowGroveGameRuntime,
     rampart_binding: GameplayRampartBinding,
+    migration_history: Vec<GameplayArchiveMigrationRecord>,
 }
 
 impl GameApplicationService {
@@ -26,6 +27,7 @@ impl GameApplicationService {
             rampart_binding: GameplayRampartBinding::canonical(
                 super::GAMEPLAY_RAMPART_COMPONENT_ID,
             ),
+            migration_history: Vec::new(),
         }
     }
 
@@ -36,6 +38,7 @@ impl GameApplicationService {
             rampart_binding: GameplayRampartBinding::canonical(
                 super::GAMEPLAY_RAMPART_COMPONENT_ID,
             ),
+            migration_history: Vec::new(),
         }
     }
 
@@ -56,6 +59,7 @@ impl GameApplicationService {
             rampart_binding: GameplayRampartBinding::canonical(
                 super::GAMEPLAY_RAMPART_COMPONENT_ID,
             ),
+            migration_history: Vec::new(),
         })
     }
 
@@ -69,6 +73,7 @@ impl GameApplicationService {
             rampart_binding: GameplayRampartBinding::canonical(
                 super::GAMEPLAY_RAMPART_COMPONENT_ID,
             ),
+            migration_history: Vec::new(),
         })
     }
 
@@ -77,11 +82,12 @@ impl GameApplicationService {
         if let Some(case) = self.runtime.boardwalk_case() {
             binding.advisory_records = case.constitutional_advisories();
         }
-        encode_gameplay_archive_with_rampart_binding(
+        super::archive::encode_gameplay_archive_with_history(
             self.runtime.rule_set(),
             self.runtime.events(),
             self.runtime.world_session(),
             binding,
+            self.migration_history.clone(),
         )
     }
 
@@ -98,6 +104,7 @@ impl GameApplicationService {
         let mut service = Self::replay_with_world_session(rule_set, events, world)
             .map_err(GameApplicationArchiveError::Runtime)?;
         service.rampart_binding = decoded.rampart_binding;
+        service.migration_history = decoded.migration_history;
         Ok(service)
     }
 
@@ -117,6 +124,7 @@ impl GameApplicationService {
         let mut service = Self::replay_with_world_session(rule_set, events, replay_world)
             .map_err(GameApplicationArchiveError::Runtime)?;
         service.rampart_binding = decoded.rampart_binding;
+        service.migration_history = decoded.migration_history;
         Ok(service)
     }
 

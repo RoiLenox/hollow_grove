@@ -1,3 +1,10 @@
+Adopted bounded update, 2026-10-08: [Mercy Deep's survey-frame case](STONEBEND_SURVEY_FRAME_FIRST_CASE_V1.md)
+is now implemented with Tess Splice as workshop keeper/executor/recovery owner
+and Ivo Mark as independent recorder. Stonebend registration and Sandmanor proof
+still require their live principal offices. The three scoped dispositions and
+withdrawal recovery are playable through the backend-authoritative workshop.
+The wider eight-stage lineage and other proposals below retain their stated status.
+
 # Hollow Grove Future Lore Workshop V1
 
 Date: 2026-10-08

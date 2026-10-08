@@ -263,7 +263,7 @@ fn stonebend_lore_binding_distinguishes_authored_unstarted_and_pending_execution
         CURRENT_SEA_CONTINUITY_LORE_ID, LoreInspection, StonebendLoreStopReason,
     };
     let unplayed = LoreInspection::from_runtime(None).unwrap();
-    assert_eq!(unplayed.schema_version, 3);
+    assert_eq!(unplayed.schema_version, 4);
     assert_eq!(unplayed.definitions.len(), 12);
     let definition = unplayed
         .definitions
@@ -364,7 +364,7 @@ fn all_stonebend_dispositions_bind_exact_name_seal_and_replay_without_title() {
         )
         .unwrap();
         assert!(coverage.source_links_passed);
-        assert_eq!(coverage.verified_binding_count, 3);
+        assert_eq!(coverage.verified_binding_count, 4);
         assert_eq!(coverage.unbound_canonical_route_count, 10);
         assert_eq!(
             coverage
@@ -535,7 +535,7 @@ fn stonebend_map_case_and_authority_replay_from_checksummed_archive() {
     assert!(!case_view.outcome.unwrap().title_granted);
 
     let archive = service.encode_archive().unwrap();
-    assert!(archive.contains("\"schema_version\": 5"));
+    assert!(archive.contains("\"schema_version\": 6"));
     assert!(archive.contains("\"federation_binding\""));
     assert!(archive.contains("StonebendContinuityDeterminationCommitted"));
     assert!(archive.contains("being.stonebend.current-hypergiant"));

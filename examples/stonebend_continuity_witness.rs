@@ -137,14 +137,14 @@ fn main() -> Result<(), Error> {
         if !coverage.source_links_passed {
             return Err("architecture source links failed".into());
         }
-        let filename = format!("{key}-gameplay-v5.json");
+        let filename = format!("{key}-gameplay-v6.json");
         std::fs::write(output.join(&filename), &archive)?;
         std::fs::write(
-            output.join(format!("{key}-lore-v3.json")),
+            output.join(format!("{key}-lore-v4.json")),
             serde_json::to_string_pretty(&inspection)?,
         )?;
         std::fs::write(
-            output.join(format!("{key}-architecture-v1.json")),
+            output.join(format!("{key}-architecture-v2.json")),
             serde_json::to_string_pretty(&coverage)?,
         )?;
         cases.push(serde_json::json!({"choice": choice, "archive": filename,

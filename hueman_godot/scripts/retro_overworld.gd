@@ -144,6 +144,9 @@ var synthesis_pilot := {}
 var physical_exits: Array = []
 var selected_exit_index := 0
 var party_menu_open := false
+var workshop_menu_open := false
+var workshop_action_index := 0
+var survey_frame := {}
 var recruitment_menu_open := false
 var party_roster_index := 0
 var semantic_context_label: Label
@@ -245,6 +248,29 @@ func _input(event: InputEvent) -> void:
 			or case_pending \
 			or synthesis_pending \
 			or animation_elapsed < STEP_DURATION_SECONDS:
+		return
+	if workshop_menu_open:
+		var actions: Array = survey_frame.get("available_actions", [])
+		match event.keycode:
+			KEY_O, KEY_ESCAPE:
+				workshop_menu_open = false
+			KEY_UP, KEY_W, KEY_K:
+				workshop_action_index = maxi(0, workshop_action_index - 1)
+			KEY_DOWN, KEY_S, KEY_J:
+				workshop_action_index = mini(maxi(actions.size() - 1, 0), workshop_action_index + 1)
+			KEY_ENTER, KEY_SPACE, KEY_Z, KEY_X:
+				if not actions.is_empty():
+					var error := runtime_client.send_intent(_next_request_id("workshop"), "AdvanceSurveyFrameIntent", {"action": actions[workshop_action_index]})
+					case_pending = error == OK
+					status_message = "ASKING WORKSHOP" if error == OK else "WORKSHOP REQUEST FAILED"
+		queue_redraw()
+		return
+	if event.keycode == KEY_O and not survey_frame.is_empty():
+		workshop_menu_open = true
+		party_menu_open = false
+		recruitment_menu_open = false
+		workshop_action_index = 0
+		queue_redraw()
 		return
 	if recruitment_menu_open:
 		match event.keycode:
@@ -400,7 +426,9 @@ func _draw() -> void:
 			and not party_menu_open \
 			and not recruitment_menu_open:
 		_draw_boardwalk_advisory_strip(viewport_size)
-	if party_menu_open:
+	if workshop_menu_open:
+		_draw_workshop_menu(viewport_size)
+	elif party_menu_open:
 		_draw_party_menu(viewport_size)
 	elif recruitment_menu_open:
 		_draw_recruitment_menu(viewport_size)
@@ -940,6 +968,8 @@ func _apply_view(view: Dictionary) -> void:
 		living_world = {}
 		deep_pressure = {}
 		party = {}
+		survey_frame = {}
+		workshop_menu_open = false
 		synthesis_pilot = {}
 		physical_exits = []
 		dialogue_pages = []
@@ -955,6 +985,8 @@ func _apply_view(view: Dictionary) -> void:
 	living_world = _dict_or_empty(view.get("living_world"))
 	deep_pressure = _dict_or_empty(view.get("deep_pressure"))
 	party = _dict_or_empty(view.get("party"))
+	survey_frame = _dict_or_empty(view.get("survey_frame"))
+	workshop_action_index = 0
 	synthesis_pilot = _dict_or_empty(view.get("winged_gargoyle_pilot"))
 	physical_exits = view.get("physical_exits", [])
 	selected_exit_index = 0
@@ -1550,6 +1582,63 @@ func _draw_party_menu(viewport_size: Vector2) -> void:
 		)
 
 
+func _workshop_action_label(action: Variant) -> String:
+	var names := {
+		"ReceiveNeed": "HEAR MERCY'S ACCESS NEED",
+		"RecoverParts": "RECOVER AND TRACE PARTS",
+		"AskStonebendToRegister": "ASK FOR OBJECT REGISTRATION",
+		"AskReviewerToMeasure": "ASK FOR MEASURING PROOF",
+		"PrepareRig": "PREPARE THE BENCH RIG",
+		"AskReviewerToTrialSupport": "ASK FOR A SUPPORT TRIAL",
+		"AskResidentToDecide": "ASK MERCY TO DECIDE",
+		"RepairJoint": "REPAIR AND RETAIN THE JOINT",
+		"AskResidentToWithdraw": "ASK MERCY ABOUT WITHDRAWAL",
+		"RecoverDeployedRig": "RECOVER THE STOPPED RIG",
+	}
+	if action is String:
+		return str(names.get(action, action)).to_upper().left(34)
+	var data: Dictionary = _dict_or_empty(action)
+	if data.has("OfferUse"):
+		return "OFFER MEASURING USE" if str(_dict_or_empty(data["OfferUse"]).get("use_scope")) == "MeasuringOnly" else "OFFER TEMPORARY RIG"
+	if data.has("SupportResidentChoice"):
+		var choice := str(_dict_or_empty(data["SupportResidentChoice"]).get("choice"))
+		return {"AcceptMeasurements": "SUGGEST MEASURING ONLY", "AcceptTemporaryRig": "SUGGEST THE PROVED RIG", "WaitSafely": "SUPPORT A SAFE WAIT"}.get(choice, "SUGGEST A CHOICE")
+	if data.has("DeliverDisposition"):
+		var outcome := str(_dict_or_empty(data["DeliverDisposition"]).get("disposition"))
+		return {"MeasurementsDelivered": "DELIVER MEASURING SERVICE", "TemporaryRigDelivered": "DELIVER THE SCOPED RIG", "ProtectedDelayDelivered": "DELIVER A PROTECTED WAIT"}.get(outcome, "DELIVER DISPOSITION")
+	return "WORKSHOP ACTION"
+
+
+func _draw_workshop_menu(viewport_size: Vector2) -> void:
+	var outline := _color("hollow_grove.universal.outline")
+	var paper := _color("hollow_grove.house.stonebend.highlight")
+	var accent := _color("hollow_grove.house.stonebend.authority")
+	_draw_logical_rect(Rect2(4, 11, 152, 119), outline, viewport_size)
+	_draw_logical_rect(Rect2(6, 13, 148, 115), paper, viewport_size)
+	_draw_pixel_text("REPAIR BENCH / MERCY'S DOORWAY", Vector2(10, 17), accent, viewport_size)
+	_draw_pixel_text("TESS KEEPS / IVO RECORDS", Vector2(10, 26), outline, viewport_size)
+	_draw_pixel_text("REV %s / %s" % [survey_frame.get("object_revision", 0), str(survey_frame.get("phase", "AwaitingNeed")).to_upper()], Vector2(10, 35), outline, viewport_size)
+	_draw_pixel_text("MEASURE %s / SUPPORT %s" % ["YES" if bool(survey_frame.get("measurement_proven", false)) else "NO", "YES" if bool(survey_frame.get("support_proven", false)) else "NO"], Vector2(10, 44), outline, viewport_size)
+	var actions: Array = survey_frame.get("available_actions", [])
+	var start := maxi(0, mini(workshop_action_index - 2, actions.size() - 5))
+	for offset in range(mini(5, actions.size())):
+		var index := start + offset
+		var y := 57 + offset * 9
+		if index == workshop_action_index:
+			_draw_logical_rect(Rect2(9, y - 2, 141, 8), _color("hollow_grove.house.sandmanor.highlight"), viewport_size)
+		_draw_pixel_text(_workshop_action_label(actions[index]), Vector2(11, y), outline, viewport_size)
+	var notice := "SAFE ROUTE REMAINS OPEN"
+	if not survey_frame.get("missing_authorities", []).is_empty():
+		notice = "REGISTRY OR REVIEW VACANT"
+	elif bool(survey_frame.get("recovery_required", false)):
+		notice = "WITHDRAWN / RECOVERY REQUIRED"
+	elif bool(survey_frame.get("complete", false)):
+		notice = "SCOPED DISPOSITION DELIVERED"
+	_draw_pixel_text(notice, Vector2(10, 104), accent, viewport_size)
+	_draw_pixel_text("ADVICE IS NOT MERCY'S DECISION", Vector2(10, 113), outline, viewport_size)
+	_draw_pixel_text("ARROWS / ENTER ASK / O CLOSE", Vector2(10, 122), outline, viewport_size)
+
+
 func _draw_recruitment_menu(viewport_size: Vector2) -> void:
 	var candidate := _current_recruitment_candidate()
 	var outline := _color("hollow_grove.universal.outline")
@@ -1971,6 +2060,8 @@ func _screen_semantics() -> Dictionary:
 func _screen_mode() -> String:
 	if overworld.is_empty():
 		return "waiting"
+	if workshop_menu_open:
+		return "workshop_menu"
 	if party_menu_open:
 		return "party_menu"
 	if recruitment_menu_open:
@@ -2136,6 +2227,12 @@ func _dialogue_semantics() -> String:
 
 
 func _menu_semantics() -> String:
+	if workshop_menu_open:
+		var actions: Array = survey_frame.get("available_actions", [])
+		var selected := "No action available"
+		if not actions.is_empty():
+			selected = _workshop_action_label(actions[clampi(workshop_action_index, 0, actions.size() - 1)])
+		return "Repair bench at Mercy Deep's doorway. Tess Splice keeps custody and performs recovery. Ivo Mark independently records. Revision %s, measuring proof %s, support proof %s. %s. Selected: %s. Player advice is not Mercy's decision." % [survey_frame.get("object_revision", 0), survey_frame.get("measurement_proven", false), survey_frame.get("support_proven", false), "Withdrawal requires recovery" if bool(survey_frame.get("recovery_required", false)) else "Safe alternate route remains open", selected]
 	if party_menu_open:
 		var roster := _party_roster()
 		if roster.is_empty():
@@ -2175,6 +2272,8 @@ func _control_semantics() -> String:
 				"Enter, Space, Z, or X advances dialogue. "
 				+ "R opens recruitment when the speaker is a candidate."
 			)
+		"workshop_menu":
+			return "Up or Down selects an available workshop request. Enter asks the backend. O or Escape closes. F5 saves and F9 loads after closing."
 		"party_menu":
 			return (
 				"Up, W, or K selects the previous member. Down, S, or J selects "
@@ -2196,7 +2295,7 @@ func _control_semantics() -> String:
 				+ "shift. F discloses a faculty observation. Number keys support "
 				+ "available choices. C asks the responsible authority to decide. "
 				+ "Y advances the next bounded winged Gargoyle treasure-hunt step. "
-				+ "F5 saves and F9 loads."
+				+ "O opens the repair bench. F5 saves and F9 loads."
 			)
 
 

@@ -1,0 +1,335 @@
+{
+  "format": "hollow-grove-gameplay",
+  "schema_version": 5,
+  "checksum": "fnv1a64:858624ed055601ba",
+  "payload": {
+    "rule_set": "rules.hollow-grove-v2",
+    "events": [
+      {
+        "id": "event.sympiote-witness.1",
+        "sequence": 0,
+        "revision": 1,
+        "causal_position": 1,
+        "payload": {
+          "type": "HuemanIdentityEstablished",
+          "continuity_id": "continuity.sympiote-witness.hueman",
+          "participant_id": "participant.sympiote-witness.hueman",
+          "institutional_being_id": "being.sympiote-witness.hueman"
+        }
+      },
+      {
+        "id": "event.sympiote-witness.2",
+        "sequence": 1,
+        "revision": 2,
+        "causal_position": 2,
+        "payload": {
+          "type": "SympioteFoundationChanged",
+          "event": {
+            "action": "RequestAssessment",
+            "subject_id": "being.sympiote-witness.hueman",
+            "from": "AwaitingAssessment",
+            "to": "AwaitingConsent",
+            "form_established": false,
+            "needs_rest": false,
+            "comfortable_use": false,
+            "practice_count": 0,
+            "clinical_receipt": {
+              "decision_id": "decision.sympiote-foundation.being.sympiote-witness.hueman.2.assessment-and-disclosed-foundation-scope",
+              "authority_actor": "being.glaushouse.current-prima-donna",
+              "office": "office.glaushouse.prima-donna",
+              "function": "Clear",
+              "subject_id": "being.sympiote-witness.hueman",
+              "scope": "assessment-and-disclosed-foundation-scope",
+              "causal_position": 2,
+              "evidence": [
+                "evidence.sympiote-foundation.being.sympiote-witness.hueman.2.assessment-and-disclosed-foundation-scope"
+              ]
+            },
+            "evidence_id": "evidence.sympiote-foundation.being.sympiote-witness.hueman.2"
+          }
+        }
+      },
+      {
+        "id": "event.sympiote-witness.3",
+        "sequence": 2,
+        "revision": 3,
+        "causal_position": 3,
+        "payload": {
+          "type": "SympioteFoundationChanged",
+          "event": {
+            "action": "ConsentToFoundation",
+            "subject_id": "being.sympiote-witness.hueman",
+            "from": "AwaitingConsent",
+            "to": "Consented",
+            "form_established": false,
+            "needs_rest": false,
+            "comfortable_use": false,
+            "practice_count": 0,
+            "clinical_receipt": null,
+            "evidence_id": "evidence.sympiote-foundation.being.sympiote-witness.hueman.3"
+          }
+        }
+      },
+      {
+        "id": "event.sympiote-witness.4",
+        "sequence": 3,
+        "revision": 4,
+        "causal_position": 4,
+        "payload": {
+          "type": "SympioteFoundationChanged",
+          "event": {
+            "action": "AskClinicianToEstablish",
+            "subject_id": "being.sympiote-witness.hueman",
+            "from": "Consented",
+            "to": "Recovering",
+            "form_established": true,
+            "needs_rest": true,
+            "comfortable_use": false,
+            "practice_count": 0,
+            "clinical_receipt": {
+              "decision_id": "decision.sympiote-foundation.being.sympiote-witness.hueman.4.host-specific-foundation-establishment",
+              "authority_actor": "being.glaushouse.current-prima-donna",
+              "office": "office.glaushouse.prima-donna",
+              "function": "Clear",
+              "subject_id": "being.sympiote-witness.hueman",
+              "scope": "host-specific-foundation-establishment",
+              "causal_position": 4,
+              "evidence": [
+                "evidence.sympiote-foundation.being.sympiote-witness.hueman.4.host-specific-foundation-establishment"
+              ]
+            },
+            "evidence_id": "evidence.sympiote-foundation.being.sympiote-witness.hueman.4"
+          }
+        }
+      },
+      {
+        "id": "event.sympiote-witness.5",
+        "sequence": 4,
+        "revision": 5,
+        "causal_position": 5,
+        "payload": {
+          "type": "SympioteFoundationChanged",
+          "event": {
+            "action": "Rest",
+            "subject_id": "being.sympiote-witness.hueman",
+            "from": "Recovering",
+            "to": "Recovering",
+            "form_established": true,
+            "needs_rest": false,
+            "comfortable_use": false,
+            "practice_count": 0,
+            "clinical_receipt": null,
+            "evidence_id": "evidence.sympiote-foundation.being.sympiote-witness.hueman.5"
+          }
+        }
+      },
+      {
+        "id": "event.sympiote-witness.6",
+        "sequence": 5,
+        "revision": 6,
+        "causal_position": 6,
+        "payload": {
+          "type": "SympioteFoundationChanged",
+          "event": {
+            "action": "AskClinicianToDischarge",
+            "subject_id": "being.sympiote-witness.hueman",
+            "from": "Recovering",
+            "to": "Discharged",
+            "form_established": true,
+            "needs_rest": false,
+            "comfortable_use": false,
+            "practice_count": 0,
+            "clinical_receipt": {
+              "decision_id": "decision.sympiote-foundation.being.sympiote-witness.hueman.6.recovery-teaching-and-voluntary-discharge",
+              "authority_actor": "being.glaushouse.current-prima-donna",
+              "office": "office.glaushouse.prima-donna",
+              "function": "Clear",
+              "subject_id": "being.sympiote-witness.hueman",
+              "scope": "recovery-teaching-and-voluntary-discharge",
+              "causal_position": 6,
+              "evidence": [
+                "evidence.sympiote-foundation.being.sympiote-witness.hueman.6.recovery-teaching-and-voluntary-discharge"
+              ]
+            },
+            "evidence_id": "evidence.sympiote-foundation.being.sympiote-witness.hueman.6"
+          }
+        }
+      },
+      {
+        "id": "event.sympiote-witness.7",
+        "sequence": 6,
+        "revision": 7,
+        "causal_position": 7,
+        "payload": {
+          "type": "SympioteFoundationChanged",
+          "event": {
+            "action": {
+              "ExploreDirection": {
+                "direction": "Flynt"
+              }
+            },
+            "subject_id": "being.sympiote-witness.hueman",
+            "from": "Discharged",
+            "to": "Discharged",
+            "form_established": true,
+            "needs_rest": false,
+            "comfortable_use": false,
+            "practice_count": 0,
+            "clinical_receipt": null,
+            "evidence_id": "evidence.sympiote-foundation.being.sympiote-witness.hueman.7"
+          }
+        }
+      },
+      {
+        "id": "event.sympiote-witness.8",
+        "sequence": 7,
+        "revision": 8,
+        "causal_position": 8,
+        "payload": {
+          "type": "SympioteFoundationChanged",
+          "event": {
+            "action": {
+              "ConsiderBoardwalkOffer": {
+                "camp": "PimpAndTrooners"
+              }
+            },
+            "subject_id": "being.sympiote-witness.hueman",
+            "from": "Discharged",
+            "to": "Discharged",
+            "form_established": true,
+            "needs_rest": false,
+            "comfortable_use": false,
+            "practice_count": 0,
+            "clinical_receipt": null,
+            "evidence_id": "evidence.sympiote-foundation.being.sympiote-witness.hueman.8"
+          }
+        }
+      },
+      {
+        "id": "event.sympiote-witness.9",
+        "sequence": 8,
+        "revision": 9,
+        "causal_position": 9,
+        "payload": {
+          "type": "SympioteFoundationChanged",
+          "event": {
+            "action": {
+              "ConsiderBoardwalkOffer": {
+                "camp": "GimpAndGooners"
+              }
+            },
+            "subject_id": "being.sympiote-witness.hueman",
+            "from": "Discharged",
+            "to": "Discharged",
+            "form_established": true,
+            "needs_rest": false,
+            "comfortable_use": false,
+            "practice_count": 0,
+            "clinical_receipt": null,
+            "evidence_id": "evidence.sympiote-foundation.being.sympiote-witness.hueman.9"
+          }
+        }
+      },
+      {
+        "id": "event.sympiote-witness.10",
+        "sequence": 9,
+        "revision": 10,
+        "causal_position": 10,
+        "payload": {
+          "type": "SympioteFoundationChanged",
+          "event": {
+            "action": {
+              "Practice": {
+                "adaptation": "Coordination"
+              }
+            },
+            "subject_id": "being.sympiote-witness.hueman",
+            "from": "Discharged",
+            "to": "Discharged",
+            "form_established": true,
+            "needs_rest": true,
+            "comfortable_use": false,
+            "practice_count": 1,
+            "clinical_receipt": null,
+            "evidence_id": "evidence.sympiote-foundation.being.sympiote-witness.hueman.10"
+          }
+        }
+      },
+      {
+        "id": "event.sympiote-witness.11",
+        "sequence": 10,
+        "revision": 11,
+        "causal_position": 11,
+        "payload": {
+          "type": "SympioteFoundationChanged",
+          "event": {
+            "action": "Rest",
+            "subject_id": "being.sympiote-witness.hueman",
+            "from": "Discharged",
+            "to": "Discharged",
+            "form_established": true,
+            "needs_rest": false,
+            "comfortable_use": false,
+            "practice_count": 1,
+            "clinical_receipt": null,
+            "evidence_id": "evidence.sympiote-foundation.being.sympiote-witness.hueman.11"
+          }
+        }
+      },
+      {
+        "id": "event.sympiote-witness.12",
+        "sequence": 11,
+        "revision": 12,
+        "causal_position": 12,
+        "payload": {
+          "type": "SympioteFoundationChanged",
+          "event": {
+            "action": {
+              "Practice": {
+                "adaptation": "Coordination"
+              }
+            },
+            "subject_id": "being.sympiote-witness.hueman",
+            "from": "Discharged",
+            "to": "Discharged",
+            "form_established": true,
+            "needs_rest": true,
+            "comfortable_use": false,
+            "practice_count": 2,
+            "clinical_receipt": null,
+            "evidence_id": "evidence.sympiote-foundation.being.sympiote-witness.hueman.12"
+          }
+        }
+      },
+      {
+        "id": "event.sympiote-witness.13",
+        "sequence": 12,
+        "revision": 13,
+        "causal_position": 13,
+        "payload": {
+          "type": "SympioteFoundationChanged",
+          "event": {
+            "action": "Rest",
+            "subject_id": "being.sympiote-witness.hueman",
+            "from": "Discharged",
+            "to": "Discharged",
+            "form_established": true,
+            "needs_rest": false,
+            "comfortable_use": true,
+            "practice_count": 2,
+            "clinical_receipt": null,
+            "evidence_id": "evidence.sympiote-foundation.being.sympiote-witness.hueman.13"
+          }
+        }
+      }
+    ],
+    "institutional_state": "schema_version:2\nmembership\tmembership.stonebend.current-hypergiant\tbeing.stonebend.current-hypergiant\tinstitution.stonebend.constitution\trole.stonebend.gerald\tAssociate\tAssociate\tNone\t-\t-\t0\t-\t-\tKnown\tInternal\nmembership\tmembership.sandmanor.current-sandman\tbeing.sandmanor.current-sandman\tinstitution.sandmanor.sandmen\trole.sandmanor.minorian\tAssociate\tAssociate\tNone\t-\t-\t0\t-\t-\tKnown\tInternal\nmembership\tmembership.glaushouse.current-prima-donna\tbeing.glaushouse.current-prima-donna\tinstitution.glaushouse.glauspitals\trole.glaushouse.recovery-staff\tAssociate\tAssociate\tNone\t-\t-\t0\t-\t-\tKnown\tInternal\noffice-holder\toffice.stonebend.hypergiant\tbeing.stonebend.current-hypergiant\ttrue\noffice-holder\toffice.sandmanor.sandman\tbeing.sandmanor.current-sandman\ttrue\noffice-holder\toffice.glaushouse.prima-donna\tbeing.glaushouse.current-prima-donna\ttrue\n",
+    "federation_binding": {
+      "federation_identity": "runtime-rampart.hollow-grove.v1",
+      "federation_archive_format": "HGRF",
+      "federation_archive_version": 1,
+      "component_id": "component.gameplay.authoritative"
+    },
+    "migration_history": []
+  }
+}
