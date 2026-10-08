@@ -63,9 +63,13 @@ crew; the Gimp has the classic rubber-clad fetish persona; Gooners retain their
 internet-cultural roots in gooning and sexual fixation. Trooners/Trooner remain
 historical aliases. The earlier medical interpretation of the Gimp is superseded.
 
-**Still open:** the Gooners' actual combination of customers, fans, staff and
-performers, their specific businesses and the Gimp's speech/attire details.
-Regulars and fans, with some also working in the business, is a proposed profile.
+**Further adopted, 2026-10-08:** the Gooners are devoted customers and fetish
+fans, with a smaller working inner circle. The user accepted this proposed
+customer-and-crew structure. Fans, customers and workers can overlap.
+
+**Still open:** specific businesses, named workers, duties, compensation,
+performer roles and the Gimp's speech/attire details. The broad organization
+is settled; its exact roster and commercial practices need further decisions.
 This clarification selects no named worker, service package or price and
 rewrites no historical patronage, gender identity or sexual conduct.
 

@@ -13,6 +13,10 @@ identity. Older Trooners labels and the six supporting-service candidates below
 retain their historical/proposed meanings. This draft creates no new bookings
 or sexual history for the existing customer case.
 
+The user also adopted Gooners as devoted customers and fetish fans, with a
+smaller inner circle working for the Gimp. This settles their broad structure;
+it does not select the six proposed offers or assign a Sympiote to the crew.
+
 Parents: [Boardwalk Social Constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md),
 [Sympiote Foundation](HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md), and the existing
 House, Recipe, Bond, and route authorities.

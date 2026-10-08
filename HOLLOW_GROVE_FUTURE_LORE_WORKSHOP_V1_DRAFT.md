@@ -77,9 +77,9 @@ keeps Gooners close to internet gooning/sexual-fixation culture. The
 adopted identity. Trooners/Trooner remain historical aliases in earlier text
 and existing identifiers. The Gimp's earlier medical interpretation is superseded.
 
-The Gooners' customer/staff/performer organization and exact adult-service
-catalog remain open. A scene of devoted regulars and fans, some also working
-in the business, is a WORKING proposal. The earlier goods, escort and clothing
+The user adopted Gooners as devoted customers and fetish fans, with a smaller
+inner circle working for the Gimp. Their specific worker roster, duties and
+adult-service catalog remain open. The earlier goods, escort and clothing
 examples below remain possible supporting work, rather than the crews' defining
 identity. Gender, occupation, affiliation and particular agreements are distinct.
 
@@ -489,7 +489,7 @@ a particular subpart. A proposal in this workshop is not an adopted answer.
 |---|---|---|
 | 1 | Sympiote starter Form, Boardwalk products, rivalry tone, and ordinary customs | Glaüshouse establishment; agreed anatomy, method, products, and developmental milestones; joining/departure, rival work, independent life, consequence examples |
 | 2 | Pimp/Gimp title selection and the later integrity trial | incumbent, challenge, ending/succession, followers' choice, five trial outcomes |
-| 3 | Gimp's rubber persona, Gooner organization and formal Hoe affiliation | attire/speech/business details, customer/staff/performer responsibilities and separately scoped affiliations |
+| 3 | Gimp's rubber persona, Gooner worker roles and formal Hoe affiliation | attire/speech/business details, specific duties within the adopted customer/fan and smaller-inner-crew structure, and separately scoped affiliations |
 | 4 | Stonebend's continuing object | eight coherent revisions, civic use, input/residue, failure, repair, useful opening |
 | 5 | Hollowing's deeper boundary, Diamond, and signature objects | distinct decisions grounded in the material law and demonstrated uses |
 | 6 | Sandmanor Motion in ordinary institutions | interior/exterior examples, methods, public trial, failure, revision, maintenance |

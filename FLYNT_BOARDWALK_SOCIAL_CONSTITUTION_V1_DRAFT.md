@@ -66,11 +66,38 @@ bodily deterioration. The cultural Underway title and Current pole remain.
 His speech, particular attire, venue and business practices need further detail.
 
 **Gooners** retain their internet-cultural roots in gooning, sexual fixation
-and adult fetish culture. Their exact organization remains WORKING. A proposed
-profile is a circle of devoted regulars and fans around the Gimp's business,
-with some also working in it: niche tastes, meme language, favorite attractions
-and intense repeat patronage. This profile needs user selection before it
-becomes a settled roster or employment model.
+and adult fetish culture. Their adopted structure is a following of devoted
+customers and fetish fans around the Gimp's business, with a smaller inner
+circle working for him. Specific members, jobs, venues and commercial terms
+still need their own decisions.
+
+### Adopted Gooner customer and crew structure
+
+Adopted Gooner structure, 2026-10-08: devoted customers and fetish fans, with a smaller working inner circle.
+
+The proposal submitted for selection was:
+
+> My proposal is that Gooners are the Gimp's devoted customers and fetish fans, with a smaller inner circle working for him.
+
+The user accepted:
+
+> Yes I like that that works for me
+
+This establishes the Gimp's following as both a customer base and a crew. Its
+larger circle supplies repeat patronage, fandom and the scene's social identity;
+its smaller working inner circle supports the business. These are overlapping
+relationships: a fan may also be a customer, and a worker may also be a fan.
+No fixed headcount, job list or membership ceremony is established by this choice.
+
+| Relationship | Adopted place in the Gooner structure | Detail still to decide |
+|---|---|---|
+| Devoted customers | regular patronage of the Gimp's business | specific services, packages, prices and transaction terms |
+| Fetish fans | the adult scene's following and cultural affiliation | customs, shared language and reputation practices |
+| Smaller working inner circle | members who work for the Gimp | named workers, duties, compensation and responsibilities |
+
+Fandom, a purchase, employment, a specific agreement and a Goon Bond remain
+separate records. This structure assigns no new role or history to an existing
+character merely because an earlier case involved the Gimp.
 
 The ordinary term **Goon**, the **Gooner** subculture, and a particular **Goon
 Bond** retain separate meanings. Prior patronage or escort Bonds establish
@@ -157,7 +184,7 @@ directions**, grounded in each camp's established expression:
 | Boss and crew | Product direction to discuss | Possible goods and services |
 |---|---|---|
 | Pimp and Troons | adopted adult trans sex-worker crew; exact offerings remain open | sex-work bookings and hosted adult services, with clothing, presentation and introductions as potential supporting trade |
-| Gimp and Gooners | adopted rubber persona and internet-rooted adult subculture; exact organization remains open | fetish-oriented leisure, private hosted experiences and repeat patronage, with other services still proposed |
+| Gimp and Gooners | adopted rubber persona, adult subculture and customer/fan following with a smaller working inner circle | fetish-oriented leisure, private hosted experiences and repeat patronage, with specific services still proposed |
 
 A product may be a physical good or a disclosed service. Buying it, supporting
 the boss, joining the crew, and entering a particular Bond remain separate
@@ -335,11 +362,11 @@ A Goon may:
 
 **Gooners** are the Gimp's voluntarily aligned, internet-inspired adult
 pleasure subculture. The name retains gooning and sexual-fixation roots.
-Their particular combination of customers, fans, staff and performers remains
-open; the regulars-and-fans profile above is a proposal. The former default
-description as a protection/escort crew does not define their adopted identity.
-They may undertake other disclosed work without that work replacing the
-subculture's meaning.
+They are devoted customers and fetish fans, with a smaller inner circle working
+for him. The customer-and-crew structure is adopted above; specific people,
+worker duties and any performer roles remain open. Supporting work such as
+protection or escort can be separately agreed without replacing the subculture's
+meaning.
 
 Goon remains the broad social term; an unaffiliated Goon or one working with
 the Pimp is not automatically a Gooner. This specific retinue meaning
@@ -550,7 +577,7 @@ uses Troons and the adopted rubber persona without rewriting historical saves.
 
 The following remain deliberately open:
 
-1. the exact rubber attire, speech, venue and business of the Gimp, and the Gooners' customer/staff organization;
+1. the exact rubber attire, speech, venue and business of the Gimp, and the Gooners' specific worker duties and roster within their adopted customer/fan and smaller-inner-crew structure;
 2. how the locked Pimp of the Boardwalk and Gimp of the Underway titles are
    selected, inherited, challenged, or ended;
 3. whether a formal Hoe affiliation is itself a Bond or another lawful

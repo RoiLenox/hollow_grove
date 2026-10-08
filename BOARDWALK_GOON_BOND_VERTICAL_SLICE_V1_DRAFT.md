@@ -7,6 +7,11 @@ and serialized identifiers remain compatibility history. This existing case's
 finite patronage/escort outcomes establish their own terms; they assign no new
 gender, sex-work role or fetish practice to the Returning Goon.
 
+Gooners now have an adopted customer-and-crew structure: devoted customers and
+fetish fans, with a smaller inner circle working for the Gimp. This existing
+case retains its finite terms and does not establish which of those
+relationships applies to the Returning Goon beyond its actual recorded choice.
+
 Status: first playable implementation complete; all four outcomes are authoritative
 Backbone: `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md`
 World law: `FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md`

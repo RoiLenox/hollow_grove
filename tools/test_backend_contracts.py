@@ -77,10 +77,11 @@ class BackendContractTests(unittest.TestCase):
         self.rejected(lambda d: tone(d).update(adopted_scope="all venues, products and customs"), "overbroad partial")
         self.rejected(lambda d: d["open_decisions"][0].update(status="partially-adopted"), "unrecorded or overbroad partial")
 
-    def test_crew_identity_adoption_does_not_choose_gooner_jobs_or_create_history(self):
+    def test_crew_structure_adoption_preserves_open_jobs_and_prior_history(self):
         def crew(data):
             return next(d for d in data["open_decisions"] if d["id"] == "decision.boardwalk.crew-identities")
         self.rejected(lambda d: crew(d).update(adopted_scope="all Gooners are staff; prior Bonds create sexual conduct"), "overbroad partial")
+        self.rejected(lambda d: crew(d).update(adoption_marker="Adopted all Gooner venues, worker duties and prices."), "exact source marker")
         self.rejected(lambda d: crew(d).update(remaining_question=""), "erases remaining decision")
         self.rejected(lambda d: crew(d).update(user_statement="invented undisclosed adoption"), "source/user statement")
 

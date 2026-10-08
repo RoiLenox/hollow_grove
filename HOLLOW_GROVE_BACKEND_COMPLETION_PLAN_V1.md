@@ -76,7 +76,9 @@ offers, sixteen requirement families, ten historical handoff contracts and twent
 Eighteen are wholly open; two entries record partial adoption of the Boardwalk
 atmosphere and crew identities. Troons are the Pimp's adult trans sex-worker
 crew, the Gimp has the classic rubber persona and Gooners retain internet-cultural
-roots. Exact customs, Gooner organization and commercial terms remain pending.
+roots. Their broad structure is also adopted: devoted customers and fetish fans,
+with a smaller working inner circle. Exact customs, worker duties and commercial
+terms remain pending.
 The [decision register](HOLLOW_GROVE_BACKEND_DECISION_REGISTER_V1.md) lists
 those questions with their owning sources.
 `tools/verify-backend-contracts.py` checks status/ownership and optional existing

@@ -11,7 +11,10 @@ persona; Gooners retain internet gooning/sexual-fixation roots. The
 [social constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md) owns these
 identities. Earlier Trooners labels remain compatibility aliases. The six
 ordinary-service candidates below are supporting proposals; exact adult-service
-offers, venues, prices, worker bindings and Gooner organization remain open.
+offers, venues, prices and worker bindings remain open. The Gooner structure
+is adopted: devoted customers and fetish fans, with a smaller working inner
+circle. A purchase, fandom, employment, crew affiliation and a Bond are distinct
+relationships; particular worker duties and commercial terms remain undecided.
 
 Owners: [Boardwalk social constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md),
 [Sympiote foundation](HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md),
