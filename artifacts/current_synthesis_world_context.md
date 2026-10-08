@@ -2232,11 +2232,13 @@ equations or apex beings.
 The locked higher relationship is:
 
 ```text
-Gargoyle + Werewolf + Mariner/Merman → Chimera → Manticore
+Gargoyle + Werewolf + Mariner/Merman → Manticorp → Chimera
 ```
 
-Chimera = SELECT and Manticore = INTEGRATE are **WORKING**; detailed mechanics
-remain **STATUS: OPEN**. Earlier “three founding regional peoples” language is
+Manticorp is combined synthesis and Chimera is perfected synthesis, as ratified
+by `HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md`.
+The Tross's Manticore identity and legacy Recipe records do not create another
+general tier. Detailed combination/perfection mechanics remain **STATUS: OPEN**. Earlier “three founding regional peoples” language is
 SUPERSEDED by this creature-pair and practitioner/Synthesis classification.
 
 The Tross/Manticore leads **We Fairy Men**, the exact proper collective name.

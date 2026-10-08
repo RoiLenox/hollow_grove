@@ -63,6 +63,27 @@ records and validators, then verify replay and migration through private
 fixtures. No presentation work is needed to establish that evidence. A source
 link, a passing static audit, and a verified reducer are distinct attestations.
 
+## Completed source-and-validation expansion
+
+The [Boardwalk backend draft](BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md),
+[active Synthesis requirements](HOLLOW_GROVE_ACTIVE_SYNTHESIS_REQUIREMENTS_V1.md),
+[House handoff contracts](HOLLOW_GROVE_BACKEND_HANDOFF_CONTRACTS_V1.md), and
+[persistence/audit inventory](HOLLOW_GROVE_BACKEND_PERSISTENCE_AND_AUDIT_V1.md),
+and [object-lineage requirements](STONEBEND_OBJECT_LINEAGE_BACKEND_REQUIREMENTS_V1_DRAFT.md)
+now provide source-backed review material. The authored
+[backend register](contracts/backend/lore_registry.v1.json) includes six candidate
+offers, sixteen requirement families, ten route gaps and nineteen open decisions.
+The [decision register](HOLLOW_GROVE_BACKEND_DECISION_REGISTER_V1.md) lists
+those questions with their owning sources.
+`tools/verify-backend-contracts.py` checks status/ownership and optional existing
+architecture-report agreement. It is a read-only administrative validator.
+
+This closes the source inventory/validation pass. Exact open commercial terms,
+Synthesis mechanisms and actor bindings retain their pending status. Verified
+runtime binding counts stay four/ten; the checker does not execute a new domain
+consequence. The old classification/world-context refinement order and legacy
+power-catalog equation claim have been reconciled to their controlling sources.
+
 ## First lore family: Boardwalk offers and responsibilities
 
 Start with the Pimp/Trooners and Gimp/Gooners because their rival operations and

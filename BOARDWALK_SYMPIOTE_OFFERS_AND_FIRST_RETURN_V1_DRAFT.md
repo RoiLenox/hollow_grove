@@ -22,6 +22,11 @@ The first commercial conflict concerns a promise that fits the customer's
 present body and life. A good purchase supports a practice; it cannot establish
 a graft, produce a later Form, grant House authority, or assign a crew.
 
+The [backend contract expansion](BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md) now
+records responsibility, quote/acceptance, delivery, remedy, existing unnamed
+standard-currency and headless-validation requirements for these candidates.
+It retains their proposed status and creates no purchases or inventory.
+
 ## Proposed first catalog
 
 Each crew starts with three small, distinct offers. These are proposed display

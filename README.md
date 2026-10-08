@@ -70,8 +70,19 @@ The short rule is: authored constitutional documents define meaning;
 The current work is backend-only: lore contracts, architecture, source consistency,
 validation and persistence/audit requirements. Follow the
 [Backend Completion Plan](HOLLOW_GROVE_BACKEND_COMPLETION_PLAN_V1.md).
-Begin with the Boardwalk's product and responsibility contracts, then cover
-Sympiote development and the remaining House/route gaps. The user has excluded
+The expanded [Boardwalk backend contracts](BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md)
+cover six candidate offers, disclosure, exchange, delivery and remedy boundaries.
+The [active Synthesis requirements](HOLLOW_GROVE_ACTIVE_SYNTHESIS_REQUIREMENTS_V1.md)
+keep source-backed relationships and open mechanisms distinct. The
+[House handoff crosswalk](HOLLOW_GROVE_BACKEND_HANDOFF_CONTRACTS_V1.md) and
+[persistence/audit inventory](HOLLOW_GROVE_BACKEND_PERSISTENCE_AND_AUDIT_V1.md)
+track the remaining work. The
+[object-lineage backend draft](STONEBEND_OBJECT_LINEAGE_BACKEND_REQUIREMENTS_V1_DRAFT.md)
+adds input/residue, passage, force and continuity requirements. Run `python3 tools/verify-backend-contracts.py` to
+check the authored [backend register](contracts/backend/lore_registry.v1.json);
+its consistency result does not claim new commerce or Form realization. The
+[decision register](HOLLOW_GROVE_BACKEND_DECISION_REGISTER_V1.md) keeps the
+remaining choices visible. The user has excluded
 art and game production from these passes.
 
 ## Developer commands

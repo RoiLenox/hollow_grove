@@ -114,11 +114,14 @@ Synthesis equations.
 The higher relationship remains:
 
 ```text
-Gargoyle + Werewolf + Mariner/Merman → Chimera → Manticore
+Gargoyle + Werewolf + Mariner/Merman → Manticorp → Chimera
 ```
 
-HOLD, DRIVE, ADAPT, SELECT, and INTEGRATE are **WORKING** concepts. Detailed
-higher mechanics are **STATUS: OPEN**.
+Manticorp is combined synthesis; Chimera is perfected synthesis. The ratified
+[2026-09-03 amendment](HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md)
+controls this order. The Tross's Manticore identity and legacy identifiers remain
+separate compatibility records, not another general tier. HOLD, DRIVE and ADAPT
+remain **WORKING** functional concepts; detailed higher mechanics are **STATUS: OPEN**.
 
 ## Two Synthesis levels
 

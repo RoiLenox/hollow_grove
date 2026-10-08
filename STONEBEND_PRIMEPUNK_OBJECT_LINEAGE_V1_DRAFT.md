@@ -27,6 +27,11 @@ The recurring question is: **What can this same object now do, and what remains
 unproven?** A revision changes the object's demonstrated function. It never
 automatically changes its maker's Nature, Aura, Title, office, or Clearance.
 
+The [backend requirements expansion](STONEBEND_OBJECT_LINEAGE_BACKEND_REQUIREMENTS_V1_DRAFT.md)
+now separates input/output/residue, passage, force, continuity and proof fields
+for all eight design questions. It retains their working status, preserves the
+adopted three-revision first case and uses active canonical Ork spelling.
+
 ## Proposed revisions
 
 | Existing Nature / practical verb | Revision of the same object | Principle made visible | Cost, failure, and return |

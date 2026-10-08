@@ -1,0 +1,1689 @@
+{
+  "registry_schema_version": 1,
+  "registry_kind": "authored-backend-contract-index",
+  "scope": "backend-lore-architecture-validation",
+  "sources": [
+    {
+      "path": "HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md",
+      "role": "active-constitution",
+      "required_markers": [
+        "Status: authoritative Hollow Grove Constitution"
+      ]
+    },
+    {
+      "path": "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md",
+      "role": "active-canon",
+      "required_markers": [
+        "LOCKED universal ontology",
+        "CURRENT + AURA → SYNTHESIS",
+        "Gargoyle + Werewolf + Mariner/Merman → Manticorp → Chimera"
+      ]
+    },
+    {
+      "path": "HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md",
+      "role": "ratified-amendment",
+      "required_markers": [
+        "RATIFIED / LOCKED",
+        "Manticorp / combined synthesis",
+        "Chimera / perfected synthesis"
+      ]
+    },
+    {
+      "path": "HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md",
+      "role": "active-crosswalk",
+      "required_markers": [
+        "Gargoyle + Werewolf + Mariner/Merman → Manticorp → Chimera"
+      ]
+    },
+    {
+      "path": "CURRENT_SYNTHESIS_HOLLOW_GROVE_WORLD_CONTEXT_v0.1.0.md",
+      "role": "active-crosswalk",
+      "required_markers": [
+        "Gargoyle + Werewolf + Mariner/Merman → Manticorp → Chimera"
+      ]
+    },
+    {
+      "path": "STONEBEND_CONSTITUTION_V2.md",
+      "role": "active-constitution",
+      "required_markers": [
+        "Hypergiant is Stonebend"
+      ]
+    },
+    {
+      "path": "SANDMANOR_CONSTITUTION_V2.md",
+      "role": "active-constitution",
+      "required_markers": [
+        "three-Form progression",
+        "separate Hand investiture"
+      ]
+    },
+    {
+      "path": "GLAUSHOUSE_CONSTITUTION_V2.md",
+      "role": "active-constitution",
+      "required_markers": [
+        "technical viability",
+        "lived viability"
+      ]
+    },
+    {
+      "path": "FLYNT_CONSTITUTION_V2.md",
+      "role": "active-constitution",
+      "required_markers": [
+        "Manticorp / combined synthesis"
+      ]
+    },
+    {
+      "path": "HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md",
+      "role": "adopted-bounded-contract",
+      "required_markers": [
+        "Status: adopted additive lore",
+        "Sympiote"
+      ]
+    },
+    {
+      "path": "STONEBEND_SURVEY_FRAME_FIRST_CASE_V1.md",
+      "role": "adopted-bounded-contract",
+      "required_markers": [
+        "adopted bounded doorway case",
+        "Mercy Deep",
+        "Tess Splice",
+        "Ivo Mark"
+      ]
+    },
+    {
+      "path": "CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md",
+      "role": "active-constitution",
+      "required_markers": [
+        "one standard ordinary currency",
+        "public name of the standard currency is not yet locked",
+        "StandardCurrencyAmount"
+      ]
+    },
+    {
+      "path": "MINOAN_COUNTY_COURT_SYSTEM_AND_RESTITUTION_CYCLE_V1.md",
+      "role": "active-constitution",
+      "required_markers": [
+        "canonical shared judicial foundation",
+        "The Minoans host the Court"
+      ]
+    },
+    {
+      "path": "HOLLOW_GROVE_POWER_RECIPE_CONSTITUTION_V1.md",
+      "role": "compatibility-catalog",
+      "required_markers": [
+        "LEGACY PHYSICAL / RUNTIME COMPATIBILITY",
+        "No unratified exact equation"
+      ]
+    },
+    {
+      "path": "HUEMAN_CURRENT_BODY_AURA_MIND_PROGRESSION_MATRIX_V1.md",
+      "role": "legacy-only",
+      "required_markers": [
+        "LEGACY / DEPRECATED"
+      ]
+    },
+    {
+      "path": "BOARDWALK_SYMPIOTE_OFFERS_AND_FIRST_RETURN_V1_DRAFT.md",
+      "role": "working-proposal",
+      "required_markers": [
+        "WORKING proposal",
+        "not yet ratified"
+      ]
+    },
+    {
+      "path": "BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md",
+      "role": "working-proposal",
+      "required_markers": [
+        "WORKING commercial model"
+      ]
+    },
+    {
+      "path": "HOLLOW_GROVE_ACTIVE_SYNTHESIS_REQUIREMENTS_V1.md",
+      "role": "source-backed-index",
+      "required_markers": [
+        "source-backed backend crosswalk"
+      ]
+    },
+    {
+      "path": "HOLLOW_GROVE_BACKEND_HANDOFF_CONTRACTS_V1.md",
+      "role": "source-backed-index",
+      "required_markers": [
+        "ten historical route contracts"
+      ]
+    },
+    {
+      "path": "HOLLOW_GROVE_BACKEND_PERSISTENCE_AND_AUDIT_V1.md",
+      "role": "source-backed-index",
+      "required_markers": [
+        "current-source inventory"
+      ]
+    },
+    {
+      "path": "RAMPART_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md",
+      "role": "active-constitution",
+      "required_markers": [
+        "corrected canonical constitutional lock",
+        "creates one Seer"
+      ]
+    },
+    {
+      "path": "SEER_CEREMONY_PROTOCOL_V1.md",
+      "role": "active-constitution",
+      "required_markers": [
+        "Seer"
+      ]
+    },
+    {
+      "path": "HUEMAN_WINGED_GARGOYLE_TREASURE_HUNT_V1.md",
+      "role": "adopted-bounded-contract",
+      "required_markers": [
+        "first playable vertical slice is implemented"
+      ]
+    },
+    {
+      "path": "STONEBEND_PRIMEPUNK_OBJECT_LINEAGE_V1_DRAFT.md",
+      "role": "working-proposal",
+      "required_markers": [
+        "eight-stage design remains WORKING"
+      ]
+    },
+    {
+      "path": "HOLLOW_GROVE_FUTURE_LORE_WORKSHOP_V1_DRAFT.md",
+      "role": "working-proposal",
+      "required_markers": [
+        "WORKING / OPEN"
+      ]
+    },
+    {
+      "path": "STONEBEND_OBJECT_LINEAGE_BACKEND_REQUIREMENTS_V1_DRAFT.md",
+      "role": "working-proposal",
+      "required_markers": [
+        "WORKING record/validation model",
+        "adopts\nno drive input"
+      ]
+    },
+    {
+      "path": "HOLLOW_GROVE_BACKEND_DECISION_REGISTER_V1.md",
+      "role": "source-backed-index",
+      "required_markers": [
+        "Status: OPEN decisions",
+        "No answer\nis adopted"
+      ]
+    }
+  ],
+  "synthesis": {
+    "source": "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md",
+    "stonebend_pairs": [
+      {
+        "level": 1,
+        "current": "Gremlin",
+        "aura": "Pixie"
+      },
+      {
+        "level": 2,
+        "current": "Goblin",
+        "aura": "Sprite"
+      },
+      {
+        "level": 3,
+        "current": "Ghoul",
+        "aura": "Fairy"
+      },
+      {
+        "level": 4,
+        "current": "Spectre",
+        "aura": "Spirit"
+      },
+      {
+        "level": 5,
+        "current": "Troll",
+        "aura": "Siren"
+      },
+      {
+        "level": 6,
+        "current": "Ork",
+        "aura": "Sylph"
+      },
+      {
+        "level": 7,
+        "current": "Ogre",
+        "aura": "Nymph"
+      },
+      {
+        "level": 8,
+        "current": "Troglodyte",
+        "aura": "Muse"
+      }
+    ],
+    "sandmanor_complete_branches": {
+      "Minorian": [
+        "Gnome",
+        "Faun",
+        "Minotaur",
+        "Hecaton"
+      ],
+      "Minoan": [
+        "Elf",
+        "Satyr",
+        "Centaur",
+        "Pegasus"
+      ]
+    },
+    "flynt_refinement": [
+      "Manticorp",
+      "Chimera"
+    ],
+    "flynt_tracks": [
+      "Current",
+      "Aura",
+      "Weapon"
+    ],
+    "clinical_geometry": {
+      "common": "Nightingale/Pixie",
+      "physical": [
+        "Marshal/Sprite",
+        "Spirit"
+      ],
+      "aura": [
+        "Matron/Fairy",
+        "Nymph"
+      ],
+      "reunification": "Persephone/Siren",
+      "apex": "Prima Donna/Muse"
+    },
+    "compatible_aliases": {
+      "Pixy": "Pixie",
+      "Faerie": "Fairy"
+    }
+  },
+  "candidate_offers": [
+    {
+      "key": "draft.offer.return-mantle",
+      "status": "proposed",
+      "source": "BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md",
+      "camp": "PimpAndTrooners",
+      "name": "Return Mantle",
+      "supplier_binding": null,
+      "customer_need": "fit and removable expression",
+      "promised_scope": "one removable garment or adornment for disclosed movement/comfort",
+      "delivery_evidence": [
+        "material, fit, don/doff and bounded movement inspection"
+      ],
+      "refusal_and_remedy": [
+        "agreed fitting correction; no living-body treatment",
+        "customer can decline without inferred affiliation or later Form"
+      ],
+      "exchange": {
+        "instrument": "StandardCurrency",
+        "amount_minor_units": null,
+        "terms_status": "open",
+        "source": "CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md"
+      },
+      "open_decisions": [
+        "decision.boardwalk.offer-selection",
+        "decision.boardwalk.suppliers",
+        "decision.boardwalk.qualifications",
+        "decision.boardwalk.exchange",
+        "decision.boardwalk.exit-terms"
+      ],
+      "grants": [],
+      "runtime_implemented": false
+    },
+    {
+      "key": "draft.offer.practice-salon",
+      "status": "proposed",
+      "source": "BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md",
+      "camp": "PimpAndTrooners",
+      "name": "Practice Salon",
+      "supplier_binding": null,
+      "customer_need": "bounded practice and optional presentation",
+      "promised_scope": "one qualified exercise session with agreed audience",
+      "delivery_evidence": [
+        "qualification, exercise, stop/rest plan and observed attempt"
+      ],
+      "refusal_and_remedy": [
+        "record non-delivery or unsuitable scope and seek agreed correction/cancellation",
+        "customer can decline without inferred affiliation or later Form"
+      ],
+      "exchange": {
+        "instrument": "StandardCurrency",
+        "amount_minor_units": null,
+        "terms_status": "open",
+        "source": "CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md"
+      },
+      "open_decisions": [
+        "decision.boardwalk.offer-selection",
+        "decision.boardwalk.suppliers",
+        "decision.boardwalk.qualifications",
+        "decision.boardwalk.exchange",
+        "decision.boardwalk.exit-terms"
+      ],
+      "grants": [],
+      "runtime_implemented": false
+    },
+    {
+      "key": "draft.offer.introduction-booking",
+      "status": "proposed",
+      "source": "BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md",
+      "camp": "PimpAndTrooners",
+      "name": "Introduction Booking",
+      "supplier_binding": null,
+      "customer_need": "a willing meeting",
+      "promised_scope": "a disclosed introduction attempt with independent counterpart",
+      "delivery_evidence": [
+        "counterpart agreement, terms and actual meeting/non-delivery"
+      ],
+      "refusal_and_remedy": [
+        "counterpart refusal preserves independent choice and supplier duty",
+        "customer can decline without inferred affiliation or later Form"
+      ],
+      "exchange": {
+        "instrument": "StandardCurrency",
+        "amount_minor_units": null,
+        "terms_status": "open",
+        "source": "CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md"
+      },
+      "open_decisions": [
+        "decision.boardwalk.offer-selection",
+        "decision.boardwalk.suppliers",
+        "decision.boardwalk.qualifications",
+        "decision.boardwalk.exchange",
+        "decision.boardwalk.exit-terms"
+      ],
+      "grants": [],
+      "runtime_implemented": false
+    },
+    {
+      "key": "draft.offer.carry-kit",
+      "status": "proposed",
+      "source": "BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md",
+      "camp": "GimpAndGooners",
+      "name": "Carry Kit",
+      "supplier_binding": null,
+      "customer_need": "carrying within current capacity",
+      "promised_scope": "removable fitted carrying equipment for one disclosed task",
+      "delivery_evidence": [
+        "material, fit, release and bounded task-use inspection"
+      ],
+      "refusal_and_remedy": [
+        "agreed fit/part correction, without inventing body capacity",
+        "customer can decline without inferred affiliation or later Form"
+      ],
+      "exchange": {
+        "instrument": "StandardCurrency",
+        "amount_minor_units": null,
+        "terms_status": "open",
+        "source": "CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md"
+      },
+      "open_decisions": [
+        "decision.boardwalk.offer-selection",
+        "decision.boardwalk.suppliers",
+        "decision.boardwalk.qualifications",
+        "decision.boardwalk.exchange",
+        "decision.boardwalk.exit-terms"
+      ],
+      "grants": [],
+      "runtime_implemented": false
+    },
+    {
+      "key": "draft.offer.fit-and-repair",
+      "status": "proposed",
+      "source": "BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md",
+      "camp": "GimpAndGooners",
+      "name": "Fit and Repair",
+      "supplier_binding": null,
+      "customer_need": "restore an ordinary object within scope",
+      "promised_scope": "a specified defect or adjustment on the same existing object",
+      "delivery_evidence": [
+        "intake/custody, change, retained parts and inspection"
+      ],
+      "refusal_and_remedy": [
+        "document failed or partial repair and remaining scope; no silent restored rating",
+        "customer can decline without inferred affiliation or later Form"
+      ],
+      "exchange": {
+        "instrument": "StandardCurrency",
+        "amount_minor_units": null,
+        "terms_status": "open",
+        "source": "CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md"
+      },
+      "open_decisions": [
+        "decision.boardwalk.offer-selection",
+        "decision.boardwalk.suppliers",
+        "decision.boardwalk.qualifications",
+        "decision.boardwalk.exchange",
+        "decision.boardwalk.exit-terms"
+      ],
+      "grants": [],
+      "runtime_implemented": false
+    },
+    {
+      "key": "draft.offer.quiet-route-escort",
+      "status": "proposed",
+      "source": "BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md",
+      "camp": "GimpAndGooners",
+      "name": "Quiet Route Escort",
+      "supplier_binding": null,
+      "customer_need": "a bounded journey with rest/access limits",
+      "promised_scope": "one disclosed escort route with stops and conditions",
+      "delivery_evidence": [
+        "route, responsibilities, access evidence and travel/stop record"
+      ],
+      "refusal_and_remedy": [
+        "changed route requires fresh scope; no forced continuation",
+        "customer can decline without inferred affiliation or later Form"
+      ],
+      "exchange": {
+        "instrument": "StandardCurrency",
+        "amount_minor_units": null,
+        "terms_status": "open",
+        "source": "CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md"
+      },
+      "open_decisions": [
+        "decision.boardwalk.offer-selection",
+        "decision.boardwalk.suppliers",
+        "decision.boardwalk.qualifications",
+        "decision.boardwalk.exchange",
+        "decision.boardwalk.exit-terms"
+      ],
+      "grants": [],
+      "runtime_implemented": false
+    }
+  ],
+  "requirements": [
+    {
+      "key": "requirements.sympiote-foundation",
+      "relation": "five directions / bounded host foundation",
+      "status": "bounded-case-verified",
+      "sources": [
+        "HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md",
+        "GLAUSHOUSE_CONSTITUTION_V2.md"
+      ],
+      "prerequisites": [
+        "subject-specific clinical assessment and consent",
+        "live Clear authority",
+        "actual integration, recovery, rest and care"
+      ],
+      "boundaries": [
+        "later Form eligibility is separate"
+      ],
+      "open_decisions": [
+        "decision.synthesis.foundation-outcomes"
+      ]
+    },
+    {
+      "key": "requirements.stonebend-pairings",
+      "relation": "eight exact Current/Aura correspondences",
+      "status": "source-defined-mechanics-open",
+      "sources": [
+        "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md",
+        "STONEBEND_CONSTITUTION_V2.md"
+      ],
+      "prerequisites": [
+        "continuing identity and actual corresponding practices",
+        "applicable proof/clearance and continuity"
+      ],
+      "boundaries": [
+        "pairing alone creates no transformation or Title"
+      ],
+      "open_decisions": [
+        "decision.synthesis.stonebend-equations"
+      ]
+    },
+    {
+      "key": "requirements.seer",
+      "relation": "Troglodyte + Muse → Seer",
+      "status": "general-mechanics-open",
+      "sources": [
+        "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md",
+        "RAMPART_SOVEREIGNTY_AND_SEER_CEREMONY_V1.md",
+        "SEER_CEREMONY_PROTOCOL_V1.md"
+      ],
+      "prerequisites": [
+        "locked Level 2 relationship",
+        "independent lawful Seer Ceremony"
+      ],
+      "boundaries": [
+        "one Seer does not create a third continuous Guide"
+      ],
+      "open_decisions": [
+        "decision.synthesis.general-level-two"
+      ]
+    },
+    {
+      "key": "requirements.minorian",
+      "relation": "Gnome → Faun → Minotaur",
+      "status": "source-defined-mechanics-open",
+      "sources": [
+        "SANDMANOR_CONSTITUTION_V2.md",
+        "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md"
+      ],
+      "prerequisites": [
+        "Minorian lineage and scoped conditions",
+        "applicable design/role proof and clinical clearance"
+      ],
+      "boundaries": [
+        "social roles/Geomancer are separate",
+        "no Minoan crossover inferred"
+      ],
+      "open_decisions": [
+        "decision.synthesis.sandmanor-mechanisms"
+      ]
+    },
+    {
+      "key": "requirements.minoan",
+      "relation": "Elf → Satyr → Centaur",
+      "status": "source-defined-mechanics-open",
+      "sources": [
+        "SANDMANOR_CONSTITUTION_V2.md",
+        "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md"
+      ],
+      "prerequisites": [
+        "Minoan lineage and scoped conditions",
+        "applicable design/role proof and clinical clearance"
+      ],
+      "boundaries": [
+        "social roles/Labyrinthian are separate",
+        "no Minorian crossover inferred"
+      ],
+      "open_decisions": [
+        "decision.synthesis.sandmanor-mechanisms"
+      ]
+    },
+    {
+      "key": "requirements.sandmanor-hands",
+      "relation": "Hecaton Right Hand / Pegasus Left Hand",
+      "status": "investiture-open",
+      "sources": [
+        "HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md",
+        "SANDMANOR_CONSTITUTION_V2.md"
+      ],
+      "prerequisites": [
+        "separate lawful investiture",
+        "appointment, removal and succession procedure required"
+      ],
+      "boundaries": [
+        "not ordinary fourth biological transitions",
+        "Sandman/Demiurge remains singular sovereign culmination"
+      ],
+      "open_decisions": [
+        "decision.synthesis.hand-procedure"
+      ]
+    },
+    {
+      "key": "requirements.glaushouse-common",
+      "relation": "Nightingale / Pixie",
+      "status": "source-defined-mechanics-open",
+      "sources": [
+        "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md",
+        "GLAUSHOUSE_CONSTITUTION_V2.md"
+      ],
+      "prerequisites": [
+        "meaningful consent and applicable technical/lived viability",
+        "independent clinical competence"
+      ],
+      "boundaries": [
+        "Form correspondence grants no office"
+      ],
+      "open_decisions": [
+        "decision.synthesis.clinical-realization"
+      ]
+    },
+    {
+      "key": "requirements.glaushouse-physical",
+      "relation": "Marshal / Sprite → Spirit",
+      "status": "source-defined-mechanics-open",
+      "sources": [
+        "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md",
+        "GLAUSHOUSE_CONSTITUTION_V2.md"
+      ],
+      "prerequisites": [
+        "Biokinesis-dominant specialization",
+        "applicable lawful clinical scope"
+      ],
+      "boundaries": [
+        "Spirit is not a new public office"
+      ],
+      "open_decisions": [
+        "decision.synthesis.clinical-realization"
+      ]
+    },
+    {
+      "key": "requirements.glaushouse-aura",
+      "relation": "Matron / Fairy → Nymph",
+      "status": "source-defined-mechanics-open",
+      "sources": [
+        "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md",
+        "GLAUSHOUSE_CONSTITUTION_V2.md"
+      ],
+      "prerequisites": [
+        "Noomancy-dominant specialization",
+        "applicable lawful clinical scope"
+      ],
+      "boundaries": [
+        "Nymph is not a new public office"
+      ],
+      "open_decisions": [
+        "decision.synthesis.clinical-realization"
+      ]
+    },
+    {
+      "key": "requirements.glaushouse-reunification",
+      "relation": "Persephone / Siren → Prima Donna / Muse",
+      "status": "source-defined-mechanics-open",
+      "sources": [
+        "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md",
+        "GLAUSHOUSE_CONSTITUTION_V2.md"
+      ],
+      "prerequisites": [
+        "source-defined branch reunification and apex correspondence",
+        "separate actual privilege and office eligibility"
+      ],
+      "boundaries": [
+        "Sylph pairing creates no new branch or office"
+      ],
+      "open_decisions": [
+        "decision.synthesis.clinical-realization"
+      ]
+    },
+    {
+      "key": "requirements.flynt-gargoyle",
+      "relation": "Warlock → Gargoyle",
+      "status": "source-defined-mechanics-open",
+      "sources": [
+        "FLYNT_CONSTITUTION_V2.md",
+        "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md"
+      ],
+      "prerequisites": [
+        "tradition, applicable compatibility, consent and Recipe evidence"
+      ],
+      "boundaries": [
+        "exact Current/Aura equation stays open",
+        "Medusa pair is not a conversion method"
+      ],
+      "open_decisions": [
+        "decision.synthesis.flynt-equations"
+      ]
+    },
+    {
+      "key": "requirements.flynt-werewolf",
+      "relation": "Lycan → Werewolf",
+      "status": "source-defined-mechanics-open",
+      "sources": [
+        "FLYNT_CONSTITUTION_V2.md",
+        "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md"
+      ],
+      "prerequisites": [
+        "tradition, applicable compatibility, consent and Recipe evidence"
+      ],
+      "boundaries": [
+        "exact Current/Aura equation stays open",
+        "Vampire pair is not a conversion method"
+      ],
+      "open_decisions": [
+        "decision.synthesis.flynt-equations"
+      ]
+    },
+    {
+      "key": "requirements.flynt-mariner",
+      "relation": "Mariner = Merman",
+      "status": "source-defined-mechanics-open",
+      "sources": [
+        "FLYNT_CONSTITUTION_V2.md",
+        "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md"
+      ],
+      "prerequisites": [
+        "actual creature identity and applicable lawful development conditions"
+      ],
+      "boundaries": [
+        "not an inferred human sailor tradition",
+        "Mermaid pair is not a conversion method"
+      ],
+      "open_decisions": [
+        "decision.synthesis.flynt-equations",
+        "decision.synthesis.mariner-tradition"
+      ]
+    },
+    {
+      "key": "requirements.flynt-refinement",
+      "relation": "Manticorp → Chimera across Current/Aura/Weapon",
+      "status": "general-mechanics-open",
+      "sources": [
+        "HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md",
+        "FLYNT_CONSTITUTION_V2.md"
+      ],
+      "prerequisites": [
+        "corresponding combined then perfected scope",
+        "source custody and applicable technical/lived viability"
+      ],
+      "boundaries": [
+        "tracks refine independently",
+        "membership is not realization",
+        "Tross Manticore compatibility is not a later general tier"
+      ],
+      "open_decisions": [
+        "decision.synthesis.flynt-mixed-tracks"
+      ]
+    },
+    {
+      "key": "requirements.flynt-creature-pairs",
+      "relation": "Gargoyle/Medusa, Werewolf/Vampire, Mariner/Mermaid, Manticore/Chimera",
+      "status": "identity-pair-only",
+      "sources": [
+        "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md",
+        "FLYNT_CONSTITUTION_V2.md"
+      ],
+      "prerequisites": [
+        "distinct creature identities and source context"
+      ],
+      "boundaries": [
+        "no automatic conversion command, office or extra apex Being"
+      ],
+      "open_decisions": [
+        "decision.synthesis.flynt-equations"
+      ]
+    },
+    {
+      "key": "requirements.winged-gargoyle",
+      "relation": "scoped hunt / capability / safe return",
+      "status": "bounded-case-verified",
+      "sources": [
+        "HUEMAN_WINGED_GARGOYLE_TREASURE_HUNT_V1.md",
+        "HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md"
+      ],
+      "prerequisites": [
+        "ordered multi-House, material and method evidence",
+        "actual clinical clearance and scoped stable trial"
+      ],
+      "boundaries": [
+        "one pilot does not implement all Flynt creature transitions"
+      ],
+      "open_decisions": [
+        "decision.synthesis.flynt-equations"
+      ]
+    }
+  ],
+  "route_gaps": [
+    {
+      "lore_id": "lore.flynt.stairway-functional-recognition",
+      "house": "Flynt",
+      "function": "Recognize",
+      "authority_source": "FLYNT_CONSTITUTION_V2.md",
+      "definition_owner": "src/world/lived_lore.rs",
+      "related_module": "src/world/flynt.rs",
+      "binding_status": "unverified",
+      "actor_bindings_complete": false,
+      "trigger": "a worker demonstrates a stable public function without claiming office",
+      "choices": [
+        "request recognition",
+        "remain an unrecognized contractor",
+        "challenge crew attribution"
+      ],
+      "completion_condition": "the worker receives an attributable scope without office or coerced affiliation",
+      "failure_and_refusal": [
+        "crew cannot manufacture office",
+        "refusal cannot erase completed work"
+      ],
+      "handoffs": [
+        {
+          "from": {
+            "definition_id": "lore.flynt.stairway-functional-recognition",
+            "capacity": "decision_owner",
+            "label": "office.flynt.tross"
+          },
+          "to": {
+            "definition_id": "lore.flynt.stairway-functional-recognition",
+            "capacity": "executor",
+            "label": "Gallows crew"
+          },
+          "question": "bounded function decision"
+        },
+        {
+          "from": {
+            "definition_id": "lore.flynt.stairway-functional-recognition",
+            "capacity": "executor",
+            "label": "Gallows crew"
+          },
+          "to": {
+            "definition_id": "lore.flynt.stairway-functional-recognition",
+            "capacity": "witness",
+            "label": "Stonebend registry observer"
+          },
+          "question": "attributed performance record"
+        },
+        {
+          "from": {
+            "definition_id": "lore.flynt.stairway-functional-recognition",
+            "capacity": "witness",
+            "label": "Stonebend registry observer"
+          },
+          "to": {
+            "definition_id": "lore.flynt.stairway-functional-recognition",
+            "capacity": "recipient",
+            "label": "independent worker"
+          },
+          "question": "scoped standing receipt"
+        }
+      ],
+      "required_receipts": [
+        "scoped live authority decision",
+        "attributed execution/negative result",
+        "independent observation",
+        "recipient decision where applicable",
+        "delivery/stop with recovery duties"
+      ],
+      "open_fields": [
+        "actual ordinary actor bindings",
+        "case-specific evidence and receipt shape",
+        "review of applicable existing domain records",
+        "versioned persistence mapping",
+        "headless replay and invalid-history witnesses"
+      ]
+    },
+    {
+      "lore_id": "lore.flynt.basin-dual-expression",
+      "house": "Flynt",
+      "function": "Recognize",
+      "authority_source": "FLYNT_CONSTITUTION_V2.md",
+      "definition_owner": "src/world/lived_lore.rs",
+      "related_module": "src/world/flynt.rs",
+      "binding_status": "unverified",
+      "actor_bindings_complete": false,
+      "trigger": "urban and rural institutions claim different lawful uses for one delivery",
+      "choices": [
+        "recognize urban function",
+        "recognize rural function",
+        "recognize neither pending review"
+      ],
+      "completion_condition": "cargo custody and each institutional scope are recorded without duplicate sovereignty",
+      "failure_and_refusal": [
+        "one expression cannot erase the other",
+        "Tross sovereignty cannot be duplicated"
+      ],
+      "handoffs": [
+        {
+          "from": {
+            "definition_id": "lore.flynt.basin-dual-expression",
+            "capacity": "decision_owner",
+            "label": "office.flynt.tross"
+          },
+          "to": {
+            "definition_id": "lore.flynt.basin-dual-expression",
+            "capacity": "executor",
+            "label": "independent carrier"
+          },
+          "question": "bounded delivery disposition"
+        },
+        {
+          "from": {
+            "definition_id": "lore.flynt.basin-dual-expression",
+            "capacity": "executor",
+            "label": "independent carrier"
+          },
+          "to": {
+            "definition_id": "lore.flynt.basin-dual-expression",
+            "capacity": "witness",
+            "label": "Manticorp and Gallows delegates"
+          },
+          "question": "performed delivery evidence"
+        },
+        {
+          "from": {
+            "definition_id": "lore.flynt.basin-dual-expression",
+            "capacity": "witness",
+            "label": "Manticorp and Gallows delegates"
+          },
+          "to": {
+            "definition_id": "lore.flynt.basin-dual-expression",
+            "capacity": "recipient",
+            "label": "independent carrier"
+          },
+          "question": "witnessed custody receipt"
+        }
+      ],
+      "required_receipts": [
+        "scoped live authority decision",
+        "attributed execution/negative result",
+        "independent observation",
+        "recipient decision where applicable",
+        "delivery/stop with recovery duties"
+      ],
+      "open_fields": [
+        "actual ordinary actor bindings",
+        "case-specific evidence and receipt shape",
+        "review of applicable existing domain records",
+        "versioned persistence mapping",
+        "headless replay and invalid-history witnesses"
+      ]
+    },
+    {
+      "lore_id": "lore.stonebend.aura-ridge-public-name",
+      "house": "Stonebend",
+      "function": "Name",
+      "authority_source": "STONEBEND_CONSTITUTION_V2.md",
+      "definition_owner": "src/world/lived_lore.rs",
+      "related_module": "src/world/stonebend.rs",
+      "binding_status": "unverified",
+      "actor_bindings_complete": false,
+      "trigger": "a citizen asks the exchange to use a changed civic Name",
+      "choices": [
+        "open provisional Name",
+        "retain current Name",
+        "challenge a conflicting claim"
+      ],
+      "completion_condition": "the citizen receives a reversible public reference with former history intact",
+      "failure_and_refusal": [
+        "renaming cannot erase debt or history",
+        "witness does not create ownership"
+      ],
+      "handoffs": [
+        {
+          "from": {
+            "definition_id": "lore.stonebend.aura-ridge-public-name",
+            "capacity": "decision_owner",
+            "label": "office.stonebend.hypergiant"
+          },
+          "to": {
+            "definition_id": "lore.stonebend.aura-ridge-public-name",
+            "capacity": "executor",
+            "label": "Proliteriate hearing clerk"
+          },
+          "question": "provisional Name disposition"
+        },
+        {
+          "from": {
+            "definition_id": "lore.stonebend.aura-ridge-public-name",
+            "capacity": "executor",
+            "label": "Proliteriate hearing clerk"
+          },
+          "to": {
+            "definition_id": "lore.stonebend.aura-ridge-public-name",
+            "capacity": "witness",
+            "label": "public witnesses"
+          },
+          "question": "notice and challenge record"
+        },
+        {
+          "from": {
+            "definition_id": "lore.stonebend.aura-ridge-public-name",
+            "capacity": "witness",
+            "label": "public witnesses"
+          },
+          "to": {
+            "definition_id": "lore.stonebend.aura-ridge-public-name",
+            "capacity": "recipient",
+            "label": "returning citizen"
+          },
+          "question": "provisional public reference receipt"
+        }
+      ],
+      "required_receipts": [
+        "scoped live authority decision",
+        "attributed execution/negative result",
+        "independent observation",
+        "recipient decision where applicable",
+        "delivery/stop with recovery duties"
+      ],
+      "open_fields": [
+        "actual ordinary actor bindings",
+        "case-specific evidence and receipt shape",
+        "review of applicable existing domain records",
+        "versioned persistence mapping",
+        "headless replay and invalid-history witnesses"
+      ]
+    },
+    {
+      "lore_id": "lore.stonebend.mnt-aura-illegal-hollowing",
+      "house": "Stonebend",
+      "function": "Name",
+      "authority_source": "STONEBEND_CONSTITUTION_V2.md",
+      "definition_owner": "src/world/lived_lore.rs",
+      "related_module": "src/world/stonebend.rs",
+      "binding_status": "unverified",
+      "actor_bindings_complete": false,
+      "trigger": "an interior breach reveals extracted Hollow with missing custody",
+      "choices": [
+        "seal emergency custody",
+        "halt and investigate",
+        "refuse destructive inspection"
+      ],
+      "completion_condition": "the subject and sample receive distinct custody records without destructive inspection",
+      "failure_and_refusal": [
+        "emergency cannot excuse research",
+        "refusal cannot be relabeled incapacity"
+      ],
+      "handoffs": [
+        {
+          "from": {
+            "definition_id": "lore.stonebend.mnt-aura-illegal-hollowing",
+            "capacity": "decision_owner",
+            "label": "office.stonebend.hypergiant"
+          },
+          "to": {
+            "definition_id": "lore.stonebend.mnt-aura-illegal-hollowing",
+            "capacity": "executor",
+            "label": "Freemason examiner"
+          },
+          "question": "emergency custody scope"
+        },
+        {
+          "from": {
+            "definition_id": "lore.stonebend.mnt-aura-illegal-hollowing",
+            "capacity": "executor",
+            "label": "Freemason examiner"
+          },
+          "to": {
+            "definition_id": "lore.stonebend.mnt-aura-illegal-hollowing",
+            "capacity": "witness",
+            "label": "Mt. Aura custody witness"
+          },
+          "question": "non-destructive survey record"
+        },
+        {
+          "from": {
+            "definition_id": "lore.stonebend.mnt-aura-illegal-hollowing",
+            "capacity": "witness",
+            "label": "Mt. Aura custody witness"
+          },
+          "to": {
+            "definition_id": "lore.stonebend.mnt-aura-illegal-hollowing",
+            "capacity": "recipient",
+            "label": "injured structure-being"
+          },
+          "question": "protected-subject receipt"
+        }
+      ],
+      "required_receipts": [
+        "scoped live authority decision",
+        "attributed execution/negative result",
+        "independent observation",
+        "recipient decision where applicable",
+        "delivery/stop with recovery duties"
+      ],
+      "open_fields": [
+        "actual ordinary actor bindings",
+        "case-specific evidence and receipt shape",
+        "review of applicable existing domain records",
+        "versioned persistence mapping",
+        "headless replay and invalid-history witnesses"
+      ]
+    },
+    {
+      "lore_id": "lore.sandmanor.aura-way-public-design",
+      "house": "Sandmanor",
+      "function": "Prove",
+      "authority_source": "SANDMANOR_CONSTITUTION_V2.md",
+      "definition_owner": "src/world/lived_lore.rs",
+      "related_module": "src/world/sandmanor.rs",
+      "binding_status": "unverified",
+      "actor_bindings_complete": false,
+      "trigger": "a public shelter prototype claims to improve both interior use and exterior access",
+      "choices": [
+        "approve proof within scope",
+        "require revision",
+        "reject the claim while preserving failure"
+      ],
+      "completion_condition": "route users receive a versioned shelter result limited to tested conditions",
+      "failure_and_refusal": [
+        "critics may refuse endorsement",
+        "negative results cannot be deleted"
+      ],
+      "handoffs": [
+        {
+          "from": {
+            "definition_id": "lore.sandmanor.aura-way-public-design",
+            "capacity": "decision_owner",
+            "label": "office.sandmanor.sandman"
+          },
+          "to": {
+            "definition_id": "lore.sandmanor.aura-way-public-design",
+            "capacity": "executor",
+            "label": "Minoan exterior team"
+          },
+          "question": "bounded proof disposition"
+        },
+        {
+          "from": {
+            "definition_id": "lore.sandmanor.aura-way-public-design",
+            "capacity": "executor",
+            "label": "Minoan exterior team"
+          },
+          "to": {
+            "definition_id": "lore.sandmanor.aura-way-public-design",
+            "capacity": "witness",
+            "label": "Minorian interior team"
+          },
+          "question": "measured field result"
+        },
+        {
+          "from": {
+            "definition_id": "lore.sandmanor.aura-way-public-design",
+            "capacity": "witness",
+            "label": "Minorian interior team"
+          },
+          "to": {
+            "definition_id": "lore.sandmanor.aura-way-public-design",
+            "capacity": "recipient",
+            "label": "ordinary route users"
+          },
+          "question": "tested-scope receipt"
+        }
+      ],
+      "required_receipts": [
+        "scoped live authority decision",
+        "attributed execution/negative result",
+        "independent observation",
+        "recipient decision where applicable",
+        "delivery/stop with recovery duties"
+      ],
+      "open_fields": [
+        "actual ordinary actor bindings",
+        "case-specific evidence and receipt shape",
+        "review of applicable existing domain records",
+        "versioned persistence mapping",
+        "headless replay and invalid-history witnesses"
+      ]
+    },
+    {
+      "lore_id": "lore.sandmanor.glausbahn-recovery-design",
+      "house": "Sandmanor",
+      "function": "Prove",
+      "authority_source": "SANDMANOR_CONSTITUTION_V2.md",
+      "definition_owner": "src/world/lived_lore.rs",
+      "related_module": "src/world/sandmanor.rs",
+      "binding_status": "unverified",
+      "actor_bindings_complete": false,
+      "trigger": "a mobility design works in the laboratory but fails during moving-route recovery",
+      "choices": [
+        "revise the design",
+        "narrow the claim",
+        "stop testing"
+      ],
+      "completion_condition": "the patient receives a stopped, narrowed, or revised method with recovery intact",
+      "failure_and_refusal": [
+        "patient refusal immediately stops participation",
+        "Sandmanor proof cannot override clinical clearance"
+      ],
+      "handoffs": [
+        {
+          "from": {
+            "definition_id": "lore.sandmanor.glausbahn-recovery-design",
+            "capacity": "decision_owner",
+            "label": "office.sandmanor.sandman"
+          },
+          "to": {
+            "definition_id": "lore.sandmanor.glausbahn-recovery-design",
+            "capacity": "executor",
+            "label": "Glaüshouse therapist"
+          },
+          "question": "bounded revision question"
+        },
+        {
+          "from": {
+            "definition_id": "lore.sandmanor.glausbahn-recovery-design",
+            "capacity": "executor",
+            "label": "Glaüshouse therapist"
+          },
+          "to": {
+            "definition_id": "lore.sandmanor.glausbahn-recovery-design",
+            "capacity": "witness",
+            "label": "Gnome method keeper"
+          },
+          "question": "patient-tolerance evidence"
+        },
+        {
+          "from": {
+            "definition_id": "lore.sandmanor.glausbahn-recovery-design",
+            "capacity": "witness",
+            "label": "Gnome method keeper"
+          },
+          "to": {
+            "definition_id": "lore.sandmanor.glausbahn-recovery-design",
+            "capacity": "recipient",
+            "label": "recovery patient"
+          },
+          "question": "revised-method receipt"
+        }
+      ],
+      "required_receipts": [
+        "scoped live authority decision",
+        "attributed execution/negative result",
+        "independent observation",
+        "recipient decision where applicable",
+        "delivery/stop with recovery duties"
+      ],
+      "open_fields": [
+        "actual ordinary actor bindings",
+        "case-specific evidence and receipt shape",
+        "review of applicable existing domain records",
+        "versioned persistence mapping",
+        "headless replay and invalid-history witnesses"
+      ]
+    },
+    {
+      "lore_id": "lore.sandmanor.aura-beach-current-sea-role-proof",
+      "house": "Sandmanor",
+      "function": "Prove",
+      "authority_source": "SANDMANOR_CONSTITUTION_V2.md",
+      "definition_owner": "src/world/lived_lore.rs",
+      "related_module": "src/world/sandmanor.rs",
+      "binding_status": "unverified",
+      "actor_bindings_complete": false,
+      "trigger": "a Satyr-to-Centaur regional role claims safer coastal rescue performance",
+      "choices": [
+        "prove regional role",
+        "require wider reproduction",
+        "preserve Satyr practice without transition"
+      ],
+      "completion_condition": "coastal users receive a reproducible safety result without automatic transition",
+      "failure_and_refusal": [
+        "transition is never automatic",
+        "proof grants neither consent nor office"
+      ],
+      "handoffs": [
+        {
+          "from": {
+            "definition_id": "lore.sandmanor.aura-beach-current-sea-role-proof",
+            "capacity": "decision_owner",
+            "label": "office.sandmanor.sandman"
+          },
+          "to": {
+            "definition_id": "lore.sandmanor.aura-beach-current-sea-role-proof",
+            "capacity": "executor",
+            "label": "Satyr candidate"
+          },
+          "question": "bounded regional proof question"
+        },
+        {
+          "from": {
+            "definition_id": "lore.sandmanor.aura-beach-current-sea-role-proof",
+            "capacity": "executor",
+            "label": "Satyr candidate"
+          },
+          "to": {
+            "definition_id": "lore.sandmanor.aura-beach-current-sea-role-proof",
+            "capacity": "witness",
+            "label": "Centaur mentor"
+          },
+          "question": "coastal demonstration evidence"
+        },
+        {
+          "from": {
+            "definition_id": "lore.sandmanor.aura-beach-current-sea-role-proof",
+            "capacity": "witness",
+            "label": "Centaur mentor"
+          },
+          "to": {
+            "definition_id": "lore.sandmanor.aura-beach-current-sea-role-proof",
+            "capacity": "recipient",
+            "label": "coastal access users"
+          },
+          "question": "witnessed safety receipt"
+        }
+      ],
+      "required_receipts": [
+        "scoped live authority decision",
+        "attributed execution/negative result",
+        "independent observation",
+        "recipient decision where applicable",
+        "delivery/stop with recovery duties"
+      ],
+      "open_fields": [
+        "actual ordinary actor bindings",
+        "case-specific evidence and receipt shape",
+        "review of applicable existing domain records",
+        "versioned persistence mapping",
+        "headless replay and invalid-history witnesses"
+      ]
+    },
+    {
+      "lore_id": "lore.glaushouse.riptide-emergency-intake",
+      "house": "Glaushouse",
+      "function": "Clear",
+      "authority_source": "GLAUSHOUSE_CONSTITUTION_V2.md",
+      "definition_owner": "src/world/lived_lore.rs",
+      "related_module": "src/world/glaushouse.rs",
+      "binding_status": "unverified",
+      "actor_bindings_complete": false,
+      "trigger": "Riptide delivers a damaged being whose wishes and exact injury are not yet known",
+      "choices": [
+        "accept stabilization",
+        "refuse non-emergency intervention",
+        "invoke Nightingale stop"
+      ],
+      "completion_condition": "the patient is stabilized or lawfully stopped without elective consent being inferred",
+      "failure_and_refusal": [
+        "silence never becomes consent",
+        "retrieval custody never becomes ownership"
+      ],
+      "handoffs": [
+        {
+          "from": {
+            "definition_id": "lore.glaushouse.riptide-emergency-intake",
+            "capacity": "decision_owner",
+            "label": "office.glaushouse.prima-donna"
+          },
+          "to": {
+            "definition_id": "lore.glaushouse.riptide-emergency-intake",
+            "capacity": "executor",
+            "label": "emergency operator"
+          },
+          "question": "narrow stabilization scope"
+        },
+        {
+          "from": {
+            "definition_id": "lore.glaushouse.riptide-emergency-intake",
+            "capacity": "executor",
+            "label": "emergency operator"
+          },
+          "to": {
+            "definition_id": "lore.glaushouse.riptide-emergency-intake",
+            "capacity": "witness",
+            "label": "Nightingale"
+          },
+          "question": "intervention and stop evidence"
+        },
+        {
+          "from": {
+            "definition_id": "lore.glaushouse.riptide-emergency-intake",
+            "capacity": "witness",
+            "label": "Nightingale"
+          },
+          "to": {
+            "definition_id": "lore.glaushouse.riptide-emergency-intake",
+            "capacity": "recipient",
+            "label": "retrieved patient"
+          },
+          "question": "care and refusal receipt"
+        }
+      ],
+      "required_receipts": [
+        "scoped live authority decision",
+        "attributed execution/negative result",
+        "independent observation",
+        "recipient decision where applicable",
+        "delivery/stop with recovery duties"
+      ],
+      "open_fields": [
+        "actual ordinary actor bindings",
+        "case-specific evidence and receipt shape",
+        "review of applicable existing domain records",
+        "versioned persistence mapping",
+        "headless replay and invalid-history witnesses"
+      ]
+    },
+    {
+      "lore_id": "lore.glaushouse.current-seanad-high-risk-clearance",
+      "house": "Glaushouse",
+      "function": "Clear",
+      "authority_source": "GLAUSHOUSE_CONSTITUTION_V2.md",
+      "definition_owner": "src/world/lived_lore.rs",
+      "related_module": "src/world/glaushouse.rs",
+      "binding_status": "unverified",
+      "actor_bindings_complete": false,
+      "trigger": "a proven design is proposed for irreversible living-subject Synthesis",
+      "choices": [
+        "grant conditional clearance",
+        "seek a reversible alternative",
+        "refuse Synthesis"
+      ],
+      "completion_condition": "the subject receives a separate proof, consent, and clearance disposition",
+      "failure_and_refusal": [
+        "proof cannot compel participation",
+        "refusal is not incapacity"
+      ],
+      "handoffs": [
+        {
+          "from": {
+            "definition_id": "lore.glaushouse.current-seanad-high-risk-clearance",
+            "capacity": "decision_owner",
+            "label": "office.glaushouse.prima-donna"
+          },
+          "to": {
+            "definition_id": "lore.glaushouse.current-seanad-high-risk-clearance",
+            "capacity": "executor",
+            "label": "Prima Donna authority"
+          },
+          "question": "consent-bounded clearance question"
+        },
+        {
+          "from": {
+            "definition_id": "lore.glaushouse.current-seanad-high-risk-clearance",
+            "capacity": "executor",
+            "label": "Prima Donna authority"
+          },
+          "to": {
+            "definition_id": "lore.glaushouse.current-seanad-high-risk-clearance",
+            "capacity": "witness",
+            "label": "Sandmanor proof body"
+          },
+          "question": "separated proof and clinical record"
+        },
+        {
+          "from": {
+            "definition_id": "lore.glaushouse.current-seanad-high-risk-clearance",
+            "capacity": "witness",
+            "label": "Sandmanor proof body"
+          },
+          "to": {
+            "definition_id": "lore.glaushouse.current-seanad-high-risk-clearance",
+            "capacity": "recipient",
+            "label": "procedure subject"
+          },
+          "question": "conditional or refused procedure receipt"
+        }
+      ],
+      "required_receipts": [
+        "scoped live authority decision",
+        "attributed execution/negative result",
+        "independent observation",
+        "recipient decision where applicable",
+        "delivery/stop with recovery duties"
+      ],
+      "open_fields": [
+        "actual ordinary actor bindings",
+        "case-specific evidence and receipt shape",
+        "review of applicable existing domain records",
+        "versioned persistence mapping",
+        "headless replay and invalid-history witnesses"
+      ]
+    },
+    {
+      "lore_id": "lore.glaushouse.aura-ridge-recovery-discharge",
+      "house": "Glaushouse",
+      "function": "Clear",
+      "authority_source": "GLAUSHOUSE_CONSTITUTION_V2.md",
+      "definition_owner": "src/world/lived_lore.rs",
+      "related_module": "src/world/glaushouse.rs",
+      "binding_status": "unverified",
+      "actor_bindings_complete": false,
+      "trigger": "a recovering worker can travel but the receiving worksite requests premature full duty",
+      "choices": [
+        "clear limited transfer",
+        "continue recovery",
+        "refuse the receiving conditions"
+      ],
+      "completion_condition": "the worker receives a restricted transfer or continued recovery without loss of standing",
+      "failure_and_refusal": [
+        "premature discharge may be stopped",
+        "livelihood dependence cannot manufacture consent"
+      ],
+      "handoffs": [
+        {
+          "from": {
+            "definition_id": "lore.glaushouse.aura-ridge-recovery-discharge",
+            "capacity": "decision_owner",
+            "label": "office.glaushouse.prima-donna"
+          },
+          "to": {
+            "definition_id": "lore.glaushouse.aura-ridge-recovery-discharge",
+            "capacity": "executor",
+            "label": "Persephone service"
+          },
+          "question": "bounded transfer clearance"
+        },
+        {
+          "from": {
+            "definition_id": "lore.glaushouse.aura-ridge-recovery-discharge",
+            "capacity": "executor",
+            "label": "Persephone service"
+          },
+          "to": {
+            "definition_id": "lore.glaushouse.aura-ridge-recovery-discharge",
+            "capacity": "witness",
+            "label": "worksite receiver"
+          },
+          "question": "explicit restriction record"
+        },
+        {
+          "from": {
+            "definition_id": "lore.glaushouse.aura-ridge-recovery-discharge",
+            "capacity": "witness",
+            "label": "worksite receiver"
+          },
+          "to": {
+            "definition_id": "lore.glaushouse.aura-ridge-recovery-discharge",
+            "capacity": "recipient",
+            "label": "recovering worker"
+          },
+          "question": "accepted or refused transfer receipt"
+        }
+      ],
+      "required_receipts": [
+        "scoped live authority decision",
+        "attributed execution/negative result",
+        "independent observation",
+        "recipient decision where applicable",
+        "delivery/stop with recovery duties"
+      ],
+      "open_fields": [
+        "actual ordinary actor bindings",
+        "case-specific evidence and receipt shape",
+        "review of applicable existing domain records",
+        "versioned persistence mapping",
+        "headless replay and invalid-history witnesses"
+      ]
+    }
+  ],
+  "open_decisions": [
+    {
+      "id": "decision.boardwalk.offer-selection",
+      "status": "open",
+      "question": "Which first offer pair and ordinary task/object are adopted?",
+      "owner": "BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md"
+    },
+    {
+      "id": "decision.boardwalk.suppliers",
+      "status": "open",
+      "question": "Who actually supplies, performs, records, holds custody and owns remedy?",
+      "owner": "BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md"
+    },
+    {
+      "id": "decision.boardwalk.qualifications",
+      "status": "open",
+      "question": "What evidence supports instructor, fitting, repair or escort competence?",
+      "owner": "BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md"
+    },
+    {
+      "id": "decision.boardwalk.exchange",
+      "status": "open",
+      "question": "What amount/exchange, quantity/duration and due conditions are agreed?",
+      "owner": "BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md"
+    },
+    {
+      "id": "decision.boardwalk.exit-terms",
+      "status": "open",
+      "question": "What cancellation, correction, publicity and non-delivery terms apply?",
+      "owner": "BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md"
+    },
+    {
+      "id": "decision.boardwalk.rivalry-tone",
+      "status": "open",
+      "question": "What tone, ordinary customs and voluntary affiliation boundaries apply?",
+      "owner": "BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md"
+    },
+    {
+      "id": "decision.synthesis.foundation-outcomes",
+      "status": "open",
+      "question": "Which additional host-specific rejection, partial integration and care cases should be modeled?",
+      "owner": "HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md"
+    },
+    {
+      "id": "decision.synthesis.stonebend-equations",
+      "status": "open",
+      "question": "What exact active practitioner equations and transition conditions are independently supported?",
+      "owner": "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md"
+    },
+    {
+      "id": "decision.synthesis.general-level-two",
+      "status": "open",
+      "question": "What context-specific higher mechanics apply beyond the locked relationships and separate ceremony?",
+      "owner": "HOLLOW_GROVE_SYNTHESIS_CANON_V1.md"
+    },
+    {
+      "id": "decision.synthesis.sandmanor-mechanisms",
+      "status": "open",
+      "question": "What biological/metaphysical transition mechanics and maintenance conditions are adopted?",
+      "owner": "SANDMANOR_CONSTITUTION_V2.md"
+    },
+    {
+      "id": "decision.synthesis.hand-procedure",
+      "status": "open",
+      "question": "What lawful Hand appointment, removal and succession procedure is adopted?",
+      "owner": "HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md"
+    },
+    {
+      "id": "decision.synthesis.clinical-realization",
+      "status": "open",
+      "question": "What exact branch realization, renewal, regression and privilege records are required?",
+      "owner": "GLAUSHOUSE_CONSTITUTION_V2.md"
+    },
+    {
+      "id": "decision.synthesis.flynt-equations",
+      "status": "open",
+      "question": "What exact base creature equations and realization methods are independently supported?",
+      "owner": "FLYNT_CONSTITUTION_V2.md"
+    },
+    {
+      "id": "decision.synthesis.mariner-tradition",
+      "status": "open",
+      "question": "Is there a distinct source practitioner tradition for Mariner, and what is its name?",
+      "owner": "FLYNT_CONSTITUTION_V2.md"
+    },
+    {
+      "id": "decision.synthesis.flynt-mixed-tracks",
+      "status": "open",
+      "question": "What exact independent-track eligibility, maintenance, failure and recovery rules apply?",
+      "owner": "HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md"
+    },
+    {
+      "id": "decision.object.ghoul-input-residue",
+      "status": "open",
+      "question": "What expendable input, work, heat, residue and containment does the proposed drive use?",
+      "owner": "STONEBEND_PRIMEPUNK_OBJECT_LINEAGE_V1_DRAFT.md"
+    },
+    {
+      "id": "decision.object.spectre-passage",
+      "status": "open",
+      "question": "What bounded clearance/passage mechanism and retraction rule are adopted?",
+      "owner": "STONEBEND_PRIMEPUNK_OBJECT_LINEAGE_V1_DRAFT.md"
+    },
+    {
+      "id": "decision.object.force-modules",
+      "status": "open",
+      "question": "What separation/compression scopes, unload conditions and independent evidence apply?",
+      "owner": "STONEBEND_PRIMEPUNK_OBJECT_LINEAGE_V1_DRAFT.md"
+    },
+    {
+      "id": "decision.object.hollowing",
+      "status": "open",
+      "question": "What useful space, remaining support and removed-material custody define the later opening?",
+      "owner": "STONEBEND_PRIMEPUNK_OBJECT_LINEAGE_V1_DRAFT.md"
+    }
+  ],
+  "scope_notes": [
+    "authored keys are not runtime inventory, Recipe, actor, office or case IDs",
+    "source links attest ownership/status, not executed consequences",
+    "current runtime coverage remains four verified lore bindings and ten canonical route gaps"
+  ]
+}

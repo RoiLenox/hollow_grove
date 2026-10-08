@@ -1,0 +1,114 @@
+#!/usr/bin/env python3
+"""Adversarial checks for the authored backend register and its read-only audit."""
+import copy
+import importlib.util
+import json
+from pathlib import Path
+import subprocess
+import tempfile
+import unittest
+
+spec = importlib.util.spec_from_file_location("backend_contracts", Path(__file__).with_name("verify-backend-contracts.py"))
+audit = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(audit)
+ROOT = Path(__file__).resolve().parents[1]
+
+
+class BackendContractTests(unittest.TestCase):
+    def setUp(self):
+        self.data = audit.read_json(ROOT / "contracts/backend/lore_registry.v1.json")
+
+    def rejected(self, mutate, message):
+        data = copy.deepcopy(self.data)
+        mutate(data)
+        with self.assertRaisesRegex(audit.AuditError, message):
+            audit.validate(ROOT, data)
+
+    def test_source_audit_is_read_only_and_does_not_claim_execution(self):
+        names = [s["path"] for s in self.data["sources"]] + ["contracts/backend/lore_registry.v1.json", "artifacts/current_synthesis_world_context.md"]
+        before = {name: (ROOT / name).read_bytes() for name in names}
+        report = audit.validate(ROOT, self.data)
+        self.assertTrue(report["passed"])
+        self.assertFalse(report["world_state_mutated"])
+        self.assertIn("no new domain execution", report["attestation"])
+        self.assertEqual(before, {name: (ROOT / name).read_bytes() for name in names})
+
+    def test_deprecated_matrix_cannot_be_promoted_to_active_authority(self):
+        def mutate(data):
+            next(s for s in data["sources"] if s["role"] == "legacy-only")["role"] = "active-canon"
+        self.rejected(mutate, "legacy source promoted")
+
+    def test_requirement_cannot_use_legacy_matrix_even_when_role_is_honest(self):
+        self.rejected(lambda d: d["requirements"][1]["sources"].append("HUEMAN_CURRENT_BODY_AURA_MIND_PROGRESSION_MATRIX_V1.md"), "non-active source")
+
+    def test_unknown_price_cannot_be_treated_as_free(self):
+        self.rejected(lambda d: d["candidate_offers"][0]["exchange"].update(amount_minor_units=0), "unknown exchange")
+
+    def test_catalog_does_not_create_form_or_membership(self):
+        self.rejected(lambda d: d["candidate_offers"][0]["grants"].append("Trooner membership"), "commercial promise grants")
+
+    def test_proposal_cannot_claim_ratification_or_implementation(self):
+        for change in ({"status": "adopted"}, {"runtime_implemented": True}, {"supplier_binding": "being.invented.supplier"}):
+            with self.subTest(change=change):
+                self.rejected(lambda d: d["candidate_offers"][0].update(change), "falsely|silently")
+
+    def test_superseded_refinement_order_and_shifted_pairing_fail(self):
+        self.rejected(lambda d: d["synthesis"].update(flynt_refinement=["Chimera", "Manticore"]), "superseded")
+        self.rejected(lambda d: d["synthesis"]["stonebend_pairs"][2].update(aura="Sylph"), "pairing differs")
+
+    def test_biological_branch_cannot_erase_hand_investiture(self):
+        self.rejected(lambda d: d["synthesis"]["sandmanor_complete_branches"].update(Minorian=["Gnome", "Faun", "Minotaur", "Demiurge"]), "branch disagrees")
+
+    def test_duplicate_identity_and_unowned_decision_fail(self):
+        self.rejected(lambda d: d["candidate_offers"].append(copy.deepcopy(d["candidate_offers"][0])), "duplicate offer")
+        self.rejected(lambda d: d["requirements"][0]["open_decisions"].append("decision.unowned"), "unknown decision")
+
+    def test_open_decision_cannot_be_assigned_to_legacy_authority(self):
+        self.rejected(lambda d: d["open_decisions"][0].update(owner="HUEMAN_CURRENT_BODY_AURA_MIND_PROGRESSION_MATRIX_V1.md"), "legacy authority")
+
+    def test_relative_escape_absolute_path_and_symlink_escape_fail(self):
+        for name in ("../secret", "/etc/passwd", "a/../../b", "a\\b"):
+            with self.subTest(name=name), self.assertRaises(audit.AuditError):
+                audit.safe_source(ROOT, name)
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary) / "root"
+            root.mkdir()
+            outside = Path(temporary) / "outside.md"
+            outside.write_text("outside")
+            (root / "link.md").symlink_to(outside)
+            with self.assertRaisesRegex(audit.AuditError, "escapes root"):
+                audit.safe_source(root, "link.md")
+
+    def test_json_duplicate_keys_are_rejected(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "bad.json"
+            path.write_text('{"status":"proposed","status":"adopted"}')
+            with self.assertRaisesRegex(audit.AuditError, "duplicate JSON key"):
+                audit.read_json(path)
+
+    def test_gap_cannot_be_verified_by_changing_a_label(self):
+        self.rejected(lambda d: d["route_gaps"][0].update(binding_status="verified"), "falsely treated")
+        self.rejected(lambda d: d["route_gaps"][0].update(function="Name"), "authority function conflated")
+
+    def test_optional_architecture_report_must_match_gap_set_and_owners(self):
+        gaps = self.data["route_gaps"]
+        report = {"schema_version": 2, "source_links_passed": True, "verified_binding_count": 4,
+                  "unbound_canonical_route_count": 10,
+                  "canonical_route_contracts": [{"lore_id": g["lore_id"], "house": g["house"],
+                                                "authority_source": g["authority_source"], "definition_owner": g["definition_owner"],
+                                                "reducer_owner": None} for g in gaps]}
+        self.assertEqual(audit.validate(ROOT, self.data, report)["architecture_crosscheck"], "passed")
+        report["canonical_route_contracts"].pop()
+        with self.assertRaisesRegex(audit.AuditError, "gaps differ"):
+            audit.validate(ROOT, self.data, report)
+
+    def test_cli_invalid_input_has_failure_exit_and_json_diagnostic(self):
+        process = subprocess.run(["python3", str(ROOT / "tools/verify-backend-contracts.py"), "--registry", "../outside.json"],
+                                 text=True, capture_output=True)
+        self.assertEqual(process.returncode, 1)
+        self.assertFalse(json.loads(process.stdout)["passed"])
+        self.assertEqual(process.stderr, "")
+
+
+if __name__ == "__main__":
+    unittest.main()

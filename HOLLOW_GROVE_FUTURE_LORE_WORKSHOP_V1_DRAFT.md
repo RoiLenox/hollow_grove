@@ -454,6 +454,12 @@ make festivals compulsory progression locks. The Service Tournament already
 has its own canon and archive; additional stories must consume its actual
 results rather than invent victories or prize Forms.
 
+The backend register in `contracts/backend/lore_registry.v1.json` now indexes
+six candidate offers, sixteen Synthesis requirement families, ten unverified
+route contracts and nineteen open decisions. Its source/status checker is
+`tools/verify-backend-contracts.py`. This review material preserves the open
+status below; it supplies no new art or game production.
+
 ## 8. Completion decisions and order
 
 Every row below is still **WORKING / OPEN** unless a cited source already locks

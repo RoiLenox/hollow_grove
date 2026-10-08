@@ -18,8 +18,11 @@ existing `SynthesisRecipe` compiler.
 
 The locked active House expressions are Glaüshouse Biokinesis / Noomancy and
 Flynt Telekinesis / Nookinesis. Stonebend's exact Current/Aura mappings remain
-STATUS: OPEN. Sandmanor's Current, Aura, and Synthesis axes are governed by its
-six locked equations rather than by this V1 root table.
+STATUS: OPEN. Sandmanor's Forms,
+social roles, attendant classes and sovereign Hands remain distinct under
+`SANDMANOR_CONSTITUTION_V2.md` and `HOLLOW_GROVE_SYNTHESIS_CANON_V1.md`.
+No unratified exact equation may collapse those categories. This V1 root table
+does not supply active Level 1 equations.
 
 A power is a visible or experienced outcome. A Recipe is an addressable
 Current–Aura method for producing that outcome. Outcome labels grant no House
