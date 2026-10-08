@@ -68,6 +68,21 @@ not a requirement that every small repair visit all four Houses.
 
 ## 1. Boardwalk: belonging that remains chosen
 
+### Current crew clarification
+
+The user's further clarification makes **Troons** the Pimp's adult trans
+sex-worker crew, establishes the Gimp's classic rubber-clad fetish persona and
+keeps Gooners close to internet gooning/sexual-fixation culture. The
+[social constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md) owns that
+adopted identity. Trooners/Trooner remain historical aliases in earlier text
+and existing identifiers. The Gimp's earlier medical interpretation is superseded.
+
+The Gooners' customer/staff/performer organization and exact adult-service
+catalog remain open. A scene of devoted regulars and fans, some also working
+in the business, is a WORKING proposal. The earlier goods, escort and clothing
+examples below remain possible supporting work, rather than the crews' defining
+identity. Gender, occupation, affiliation and particular agreements are distinct.
+
 ### User decision: two bosses with different products
 
 On 2026-10-08 the user clarified that both the Pimp and the Gimp are Boardwalk
@@ -459,9 +474,9 @@ has its own canon and archive; additional stories must consume its actual
 results rather than invent victories or prize Forms.
 
 The backend register in `contracts/backend/lore_registry.v1.json` now indexes
-six candidate offers, sixteen Synthesis requirement families, ten unverified
-route contracts and nineteen decision families, eighteen wholly open and one
-partially adopted for the Boardwalk atmosphere. Its source/status checker is
+six candidate offers, sixteen Synthesis requirement families, ten headless-bound
+route contracts and twenty decision families, eighteen wholly open and two
+partially adopted for the Boardwalk atmosphere and crew identities. Its source/status checker is
 `tools/verify-backend-contracts.py`. This review material preserves the open
 status below; it supplies no new art or game production.
 
@@ -474,7 +489,7 @@ a particular subpart. A proposal in this workshop is not an adopted answer.
 |---|---|---|
 | 1 | Sympiote starter Form, Boardwalk products, rivalry tone, and ordinary customs | Glaüshouse establishment; agreed anatomy, method, products, and developmental milestones; joining/departure, rival work, independent life, consequence examples |
 | 2 | Pimp/Gimp title selection and the later integrity trial | incumbent, challenge, ending/succession, followers' choice, five trial outcomes |
-| 3 | Gimp's condition and presentation; formal Hoe affiliation | self-chosen identity, concrete daily limits and adaptations, separately scoped affiliations |
+| 3 | Gimp's rubber persona, Gooner organization and formal Hoe affiliation | attire/speech/business details, customer/staff/performer responsibilities and separately scoped affiliations |
 | 4 | Stonebend's continuing object | eight coherent revisions, civic use, input/residue, failure, repair, useful opening |
 | 5 | Hollowing's deeper boundary, Diamond, and signature objects | distinct decisions grounded in the material law and demonstrated uses |
 | 6 | Sandmanor Motion in ordinary institutions | interior/exterior examples, methods, public trial, failure, revision, maintenance |

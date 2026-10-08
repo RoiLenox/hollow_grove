@@ -5,6 +5,12 @@ Status: naming lock ratified; transformation mechanics remain an additive lore d
 Parent authority: `FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md`,
 `HOLLOW_GROVE_POWER_RECIPE_CONSTITUTION_V1.md`, and the common Bond lifecycle
 
+Current character clarification, 2026-10-08: the owning Boardwalk constitution
+defines the Gimp as the classic rubber-clad fetish persona. Earlier medical or
+afflicted-sovereign assumptions are superseded. This proposed later integrity
+trial remains separate from that adopted identity; its relationship to the
+existing Pimp and exact title/succession mechanics remain open.
+
 ## Canonical decision
 
 The Gimp does not become a Pimp by being cured, purified, made attractive, or

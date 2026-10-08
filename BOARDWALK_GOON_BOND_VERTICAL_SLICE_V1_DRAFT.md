@@ -1,5 +1,12 @@
 # Boardwalk Goon Bond Vertical Slice V1
 
+Current crew clarification, 2026-10-08: the owning Boardwalk constitution uses
+Troons for the Pimp's adult trans sex-worker crew, gives the Gimp his rubber-clad
+persona and retains the Gooners' internet-cultural roots. Older Trooners labels
+and serialized identifiers remain compatibility history. This existing case's
+finite patronage/escort outcomes establish their own terms; they assign no new
+gender, sex-work role or fetish practice to the Returning Goon.
+
 Status: first playable implementation complete; all four outcomes are authoritative
 Backbone: `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md`
 World law: `FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md`

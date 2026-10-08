@@ -69,13 +69,20 @@ class BackendContractTests(unittest.TestCase):
     def test_partial_tone_adoption_cannot_erase_customs_or_select_products(self):
         report = audit.validate(ROOT, self.data)
         self.assertEqual(report["open_decisions"], 18)
-        self.assertEqual(report["partially_adopted_decisions"], 1)
-        self.assertEqual(report["unresolved_decision_families"], 19)
+        self.assertEqual(report["partially_adopted_decisions"], 2)
+        self.assertEqual(report["unresolved_decision_families"], 20)
         def tone(data):
             return next(d for d in data["open_decisions"] if d["id"] == "decision.boardwalk.rivalry-tone")
         self.rejected(lambda d: tone(d).update(remaining_question=""), "erases remaining decision")
         self.rejected(lambda d: tone(d).update(adopted_scope="all venues, products and customs"), "overbroad partial")
         self.rejected(lambda d: d["open_decisions"][0].update(status="partially-adopted"), "unrecorded or overbroad partial")
+
+    def test_crew_identity_adoption_does_not_choose_gooner_jobs_or_create_history(self):
+        def crew(data):
+            return next(d for d in data["open_decisions"] if d["id"] == "decision.boardwalk.crew-identities")
+        self.rejected(lambda d: crew(d).update(adopted_scope="all Gooners are staff; prior Bonds create sexual conduct"), "overbroad partial")
+        self.rejected(lambda d: crew(d).update(remaining_question=""), "erases remaining decision")
+        self.rejected(lambda d: crew(d).update(user_statement="invented undisclosed adoption"), "source/user statement")
 
     def test_relative_escape_absolute_path_and_symlink_escape_fail(self):
         for name in ("../secret", "/etc/passwd", "a/../../b", "a\\b"):

@@ -2,7 +2,8 @@
 
 Status: active additive draft; Boardwalk occupant organization adopted 2026-10-07;
 rival bosses, differentiated offerings, and shared Sympiote entry-stage direction
-adopted 2026-10-08; tourist red-light waterfront atmosphere adopted 2026-10-08
+adopted 2026-10-08; tourist red-light waterfront atmosphere and crew identity
+clarification adopted 2026-10-08
 Backbone: `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md`
 Parent authorities: `FLYNT_CONSTITUTION_V2.md`,
 `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md`, and the common Bond
@@ -34,13 +35,52 @@ and conflict. It may not:
 - make bodily condition proof of virtue, vice, competence, or authority.
 
 `flynt-constitution` remains the sole executable Flynt authority. The Pimp,
-Gimp, Trooners, Gooners, Sympiotes, Hoes, Goons, and Goon Bond are Boardwalk cultural and
+Gimp, Troons (historically Trooners), Gooners, Sympiotes, Hoes, Goons, and Goon Bond are Boardwalk cultural and
 social identities above that locked authority. The two retinue names and their
 rival organization are adopted here, as are the two bosses' differentiated
 commercial offerings; detailed membership mechanics and product catalogs
 remain open.
 
 ## Root Polarity
+
+### Adopted crew identity clarification
+
+Adopted crew identity, 2026-10-08: Troons, rubber Gimp and internet-rooted Gooners.
+
+The user clarified:
+
+> So just to make it clear The Pimp and The Troons are like his trans prostitutes and then the Gimp is like your classic rubber gimp and his gooners however we want to define that but I want to keep the gooner close to internet culture along with the others
+
+**Troons** is the current display name for the Pimp's crew of adult transgender
+sex workers. **Troon** is the singular. Earlier **Trooners/Trooner** wording
+remains a historical alias, including existing serialized camp identifiers.
+Their business identity includes sex work and the district's red-light trade;
+each character has their own work, relationships and reputation. Gender
+identity, occupation and crew affiliation remain independently recorded.
+The local crew name applies to this particular group.
+
+**The Gimp** has the classic rubber-clad adult fetish persona: rubber/latex
+attire and a hood or mask form his established character presentation. This
+supersedes the earlier assumption that the character is defined by illness or
+bodily deterioration. The cultural Underway title and Current pole remain.
+His speech, particular attire, venue and business practices need further detail.
+
+**Gooners** retain their internet-cultural roots in gooning, sexual fixation
+and adult fetish culture. Their exact organization remains WORKING. A proposed
+profile is a circle of devoted regulars and fans around the Gimp's business,
+with some also working in it: niche tastes, meme language, favorite attractions
+and intense repeat patronage. This profile needs user selection before it
+becomes a settled roster or employment model.
+
+The ordinary term **Goon**, the **Gooner** subculture, and a particular **Goon
+Bond** retain separate meanings. Prior patronage or escort Bonds establish
+their actual finite terms; they create no new gender identity, sex-work role,
+fetish practice or sexual history. Workers and customers remain adult,
+self-directing Beings under the existing common boundaries.
+
+The slang reference for the Gooner discussion is the internet sense documented
+in [Wiktionary](https://en.wiktionary.org/wiki/gooner). It supplies language
+context, while the user's choice and this document own Hollow Grove's lore.
 
 ### Canonical Naming Lock
 
@@ -58,7 +98,7 @@ selection, challenge, and ending procedures remain open for the playable trial;
 the names and their jurisdictions do not.
 
 ```text
-The Pimp and his Trooners project Aura.
+The Pimp and his Troons project Aura.
 The Gimp and his Gooners carry Current.
 The Boardwalk makes their rivalry visible.
 ```
@@ -68,7 +108,7 @@ patronage, access, leverage, rumor, and recognition.
 
 The **Gimp of the Underway** is the hidden Current pole: endurance, embodied
 burden, loyalty, protection, labor, force, route knowledge, and continuity
-through visible deterioration. The Gimp may operate from the Boardwalk, but
+through his embodied private persona. The Gimp may operate from the Boardwalk, but
 the Underway is the jurisdictional layer that gives the title its depth.
 
 Neither pole is automatically lawful or unlawful. Each may shelter people,
@@ -78,14 +118,14 @@ fealty, debt, and force.
 
 ### Boardwalk Occupants and Rival Retinues
 
-The Boardwalk's two principal resident camps are **the Pimp and his Trooners**
+The Boardwalk's two principal resident camps are **the Pimp and his Troons**
 and **the Gimp and his Gooners**. The Gimp keeps his Underway title and route
 depth while maintaining a visible Boardwalk retinue.
 
 | Camp | Boardwalk gathering place | Shared expression | What they compete to provide |
 |---|---|---|---|
-| Pimp and Trooners | Pimp Court | Aura, public presence, patronage, performance, invitation | the welcome, opportunity, and reputation that make a return visible |
-| Gimp and Gooners | Gimp Retinue | Current, loyalty, escort, sanctuary, route knowledge | the protection, dependable work, and continuity that make a return endure |
+| Pimp and Troons (historically Trooners) | Pimp Court | Aura, adult sex work, public presence, patronage and invitation | red-light trade, visibility and reputation |
+| Gimp and Gooners | Gimp Retinue | Current, rubber persona, fetish culture, loyalty and private presence | adult leisure and a recurring subculture; exact businesses remain open |
 
 They are rivals for influence, public credit, willing followers, and the trust
 of people returning to the Boardwalk. A disputed welcome, escort, job, or
@@ -103,7 +143,7 @@ support.
 ### Rival Bosses and Different Products
 
 Adopted from the user's 2026-10-08 clarification: **the Pimp and the Gimp are
-both Boardwalk bosses with different products**. The Pimp leads the Trooners;
+both Boardwalk bosses with different products**. The Pimp leads the Troons;
 the Gimp leads the Gooners. Their rivalry includes business, distribution,
 customers, repeat demand, and reputation as well as social allegiance.
 
@@ -116,8 +156,8 @@ directions**, grounded in each camp's established expression:
 
 | Boss and crew | Product direction to discuss | Possible goods and services |
 |---|---|---|
-| Pimp and Trooners | public presence, desirability, presentation, and access | clothing and adornment, performances, event bookings, introductions, sponsored presentation |
-| Gimp and Gooners | dependable operation, endurance, protection, and access through difficult places | work and carrying equipment, repairs, deliveries, escorts, route services, shelter arrangements |
+| Pimp and Troons | adopted adult trans sex-worker crew; exact offerings remain open | sex-work bookings and hosted adult services, with clothing, presentation and introductions as potential supporting trade |
+| Gimp and Gooners | adopted rubber persona and internet-rooted adult subculture; exact organization remains open | fetish-oriented leisure, private hosted experiences and repeat patronage, with other services still proposed |
 
 A product may be a physical good or a disclosed service. Buying it, supporting
 the boss, joining the crew, and entering a particular Bond remain separate
@@ -184,22 +224,23 @@ The Pimp may not:
 The title survives only through continuing social recognition. It does not
 become constitutional authority through fame.
 
-## Trooners
+## Troons / historical Trooners
 
-**Trooners** are the Pimp's voluntarily aligned Boardwalk retinue. A **Trooner**
-participates in the camp's public presence through welcome, presentation,
-performance, introductions, patronage, reputation, or other disclosed work.
-Their collective activity projects the Pimp's Aura, while each retains an
-individual reputation, purpose, and ability to question him.
+**Troons** are the Pimp's voluntarily aligned crew of adult transgender sex
+workers. Their paid work, presentation, relationships and reputation contribute
+to his public Aura and the district's visitor trade. Each has an individual
+identity, purpose, boundaries and ability to question him.
 
-Trooner names a cultural affiliation. It does not assign a Nature, gender,
-office, private service, or compulsory profession. A Trooner can refuse a
-particular offer, leave the camp, or work with the Gooners on an agreed task.
-The Pimp's effective influence depends on their continuing participation.
+The former generic-entertainer description is superseded by this more specific
+user-defined crew identity. Troon/Troons are current display terms;
+Trooner/Trooners remain historical aliases. Affiliation records participation;
+each particular service still needs its own agreement. A member can refuse a
+booking, leave the camp or undertake other work. The Pimp's effective influence
+depends on their continuing participation.
 
-Hoes remain a distinct, self-chosen role. A Hoe may take part in the Trooners,
+Hoes remain a distinct, self-chosen role. A Hoe may take part in the Troons,
 but neither term automatically establishes the other. Patronage alone also
-does not establish Trooner affiliation.
+does not establish Troon affiliation.
 
 ## Hoes
 
@@ -232,23 +273,24 @@ participation may reduce or end the Pimp's effective social reach.
 ## The Gimp
 
 **The Gimp of the Underway** is the singular kingly cultural center of the
-Underway's endurance pole. The figure is inspired
-by the afflicted-sovereign archetype: bodily deterioration is visible, but it
-does not erase identity, continuity, dignity, or an otherwise lawful Title.
+Underway's embodied Current pole, with the adopted classic rubber-clad fetish
+persona. Rubber/latex attire and a hood or mask establish his presentation.
+His cultural influence comes through the scene around him and its continuing
+participation, while his individual capacity and lawful scope remain reviewable.
 
-Gimp is a reclaimed in-world Boardwalk title. It is not a general descriptor
-for disabled or ill people and must not be applied to an unwilling Being.
+Gimp is this character's self-chosen rubber persona and in-world Boardwalk
+title. His individual identity and capacity remain independently recorded.
 
-The Gimp's exact condition remains a future Hollow Grove medical content
-decision. The draft does not equate it automatically with real-world Hansen's
-disease, make affliction contagious, or use disease as proof of moral
-corruption.
+The earlier medical-condition interpretation is superseded. No disease or
+affliction is established by this persona. Exact attire, speech and business
+details remain open. The existing integrity-trial draft retains its proposal
+status and does not make a change into Pimp the default future for this character.
 
 The Gimp may:
 
 - maintain a voluntarily bonded retinue;
 - accept service, protection, escort, and witness;
-- preserve continuity through visible bodily change;
+- preserve continuity through changes of attire, presentation or other actual circumstances;
 - offer shelter, mutual defense, work, and belonging;
 - challenge the Pimp's control of public value;
 - remain present when others would hide or discard an altered body.
@@ -256,8 +298,8 @@ The Gimp may:
 The Gimp may not:
 
 - become Tross or bypass Chimera;
-- derive authority solely from suffering;
-- claim that illness makes every command legitimate;
+- derive authority from a costume or fetish role;
+- treat scene participation as agreement to every command;
 - own a Goon;
 - demand violence outside a lawful Bond;
 - convert protection into permanent unreviewable debt;
@@ -291,10 +333,13 @@ A Goon may:
 
 ## Gooners
 
-**Gooners** are the Gimp's voluntarily aligned Boardwalk retinue. A **Gooner**
-participates in the camp's protection, escort, work, sanctuary, route knowledge,
-and witnessed loyalty. Together they carry the Gimp's Current and make his
-Underway depth present on the Boardwalk.
+**Gooners** are the Gimp's voluntarily aligned, internet-inspired adult
+pleasure subculture. The name retains gooning and sexual-fixation roots.
+Their particular combination of customers, fans, staff and performers remains
+open; the regulars-and-fans profile above is a proposal. The former default
+description as a protection/escort crew does not define their adopted identity.
+They may undertake other disclosed work without that work replacing the
+subculture's meaning.
 
 Goon remains the broad social term; an unaffiliated Goon or one working with
 the Pimp is not automatically a Gooner. This specific retinue meaning
@@ -303,7 +348,7 @@ participant.
 
 Gooner is a cultural affiliation, not a Frame, Skill, office, credential,
 criminal classification, or automatic Bond phase. A Gooner may challenge the
-Gimp, refuse an obligation outside its lawful scope, cooperate with Trooners,
+Gimp, refuse an obligation outside its lawful scope, cooperate with Troons,
 or leave through the applicable terms. A Goon Bond records only its disclosed
 participants and obligations; the name does not create additional membership
 or service beyond that record.
@@ -372,7 +417,7 @@ relationships and commercial stakes behind that welcome. The Amsterdam and
 *Boardwalk Empire* references establish atmosphere, rather than importing a real
 city's laws, a television plot or its characters into Hollow Grove.
 
-The Pimp/Trooners and Gimp/Gooners compete over customers, venues, suppliers,
+The Pimp/Troons and Gimp/Gooners compete over customers, venues, suppliers,
 reputation, public credit and local influence. Their rivalry can be charming,
 theatrical or cooperative in public while an unmet promise, disputed account or
 behind-the-scenes bargain carries serious consequences. Fun tourism and hard
@@ -397,7 +442,7 @@ no purchases, debts, membership flags, new offices or permission for coercion.
 
 ### Recurring rivalry
 
-The Pimp and his Trooners and the Gimp and his Gooners are the Boardwalk's
+The Pimp and his Troons and the Gimp and his Gooners are the Boardwalk's
 recurring rival camps. Their rivalry organizes who gathers where, whose offer
 is being heard, whose account earns trust, and which group receives public
 credit. It gives a scene social stakes without deciding its outcome in advance.
@@ -414,7 +459,7 @@ visibility conditional on performance. The Gimp may give someone protection
 the Pimp will not provide, while making that protection heavy with loyalty and
 burden.
 
-Trooners may question whether a public welcome has become a performance for
+Troons may question whether a public welcome has become a performance for
 the Pimp's credit. Gooners may question whether protection has become a demand
 for loyalty to the Gimp. Either camp can witness a genuine contribution from
 its rival or criticize a failed promise from its own leader.
@@ -496,18 +541,23 @@ A conforming implementation must prove:
 - dialogue labels never commit unrecorded state;
 - replay reconstructs every authoritative consequence exactly.
 
+Existing serialized camp keys and replay result wording remain compatibility
+records. References to the Gimp's "condition" in an earlier result describe
+capacity remaining reviewable; they establish no medical diagnosis. New lore
+uses Troons and the adopted rubber persona without rewriting historical saves.
+
 ## Open Ratification Questions
 
 The following remain deliberately open:
 
-1. the exact Name and material behavior of the Gimp's condition;
+1. the exact rubber attire, speech, venue and business of the Gimp, and the Gooners' customer/staff organization;
 2. how the locked Pimp of the Boardwalk and Gimp of the Underway titles are
    selected, inherited, challenged, or ended;
 3. whether a formal Hoe affiliation is itself a Bond or another lawful
    affiliation record;
 4. whether the first-case Goon Bond obligations should ever become a
    Boardwalk default rather than remain case-specific;
-5. the exact joining, departure, and reputation records for Trooners and
+5. the exact joining, departure, and reputation records for Troons and
    Gooners beyond their adopted cultural affiliation;
 6. how Boardwalk districts visually distinguish invitation, neutrality,
    coercion risk, sanctuary, and public recognition.

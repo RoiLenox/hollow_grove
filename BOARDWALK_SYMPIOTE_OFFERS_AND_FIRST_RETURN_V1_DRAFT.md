@@ -6,6 +6,13 @@ Status: WORKING proposal for user review. The rival bosses and the Sympiote
 foundation are adopted; the six offers, commercial terms, and new story below
 are not yet ratified or implemented as purchases or a quest.
 
+Current crew clarification, 2026-10-08: the Pimp's **Troons** are adult trans
+sex workers; the Gimp has the classic rubber-clad fetish persona; the Gooners
+retain their internet gooning roots. The social constitution owns this adopted
+identity. Older Trooners labels and the six supporting-service candidates below
+retain their historical/proposed meanings. This draft creates no new bookings
+or sexual history for the existing customer case.
+
 Parents: [Boardwalk Social Constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md),
 [Sympiote Foundation](HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md), and the existing
 House, Recipe, Bond, and route authorities.

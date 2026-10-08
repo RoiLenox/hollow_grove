@@ -249,7 +249,8 @@
       "role": "active-canon",
       "required_markers": [
         "rival bosses, differentiated offerings",
-        "Adopted atmosphere, 2026-10-08: tourist red-light waterfront."
+        "Adopted atmosphere, 2026-10-08: tourist red-light waterfront.",
+        "Adopted crew identity, 2026-10-08: Troons, rubber Gimp and internet-rooted Gooners."
       ]
     }
   ],
@@ -1689,6 +1690,16 @@
       "remaining_question": "What exact joining/departure customs and reputation practices or records are adopted?"
     },
     {
+      "id": "decision.boardwalk.crew-identities",
+      "status": "partially-adopted",
+      "question": "How are the Troons, Gimp and Gooners defined, and what remains open about their businesses and membership?",
+      "owner": "FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md",
+      "adopted_scope": "Troons crew identity, rubber Gimp persona and Gooner internet-cultural roots",
+      "adoption_marker": "Adopted crew identity, 2026-10-08: Troons, rubber Gimp and internet-rooted Gooners.",
+      "user_statement": "So just to make it clear The Pimp and The Troons are like his trans prostitutes and then the Gimp is like your classic rubber gimp and his gooners however we want to define that but I want to keep the gooner close to internet culture along with the others",
+      "remaining_question": "Are Gooners primarily customers, fans, staff or performers, and what specific venues, services and Gimp attire/speech details are adopted?"
+    },
+    {
       "id": "decision.synthesis.foundation-outcomes",
       "status": "open",
       "question": "Which additional host-specific rejection, partial integration and care cases should be modeled?",
@@ -1770,6 +1781,7 @@
   "scope_notes": [
     "authored keys are not runtime inventory, Recipe, actor, office or case IDs",
     "source links attest ownership/status, not executed consequences",
-    "current source architecture V3 has fourteen combined bindings and zero unbound canonical backend routes; ten gameplay integrations remain deferred"
+    "current source architecture V3 has fourteen combined bindings and zero unbound canonical backend routes; ten gameplay integrations remain deferred",
+    "Troons/Troon are current display names; historical Trooners/Trooner and PimpAndTrooners identifiers remain compatible. Adult trans sex-worker crew identity, rubber Gimp persona and Gooner internet-cultural roots are adopted; exact Gooner organization and commercial offerings remain open. No historical gender or sexual conduct is invented."
   ]
 }

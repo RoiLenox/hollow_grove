@@ -16,6 +16,14 @@ REQUIREMENT_STATUSES = {"bounded-case-verified", "source-defined-mechanics-open"
                         "investiture-open", "general-mechanics-open", "identity-pair-only"}
 REFINEMENT = "Gargoyle + Werewolf + Mariner/Merman → Manticorp → Chimera"
 OLD_REFINEMENT = "Gargoyle + Werewolf + Mariner/Merman → Chimera → Manticore"
+PARTIAL_ADOPTIONS = {
+    "decision.boardwalk.rivalry-tone": (
+        "district atmosphere and business rivalry",
+        "Adopted atmosphere, 2026-10-08: tourist red-light waterfront."),
+    "decision.boardwalk.crew-identities": (
+        "Troons crew identity, rubber Gimp persona and Gooner internet-cultural roots",
+        "Adopted crew identity, 2026-10-08: Troons, rubber Gimp and internet-rooted Gooners."),
+}
 
 
 class AuditError(ValueError):
@@ -109,11 +117,12 @@ def validate(root, data, architecture=None):
         require(sources[decision["owner"]][0] not in {"legacy-only", "compatibility-catalog"},
                 "open decision assigned to legacy authority")
         if decision["status"] == "partially-adopted":
-            require(decision["id"] == "decision.boardwalk.rivalry-tone"
+            adoption = PARTIAL_ADOPTIONS.get(decision["id"])
+            require(adoption is not None
                     and decision["owner"] == "FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md"
-                    and decision.get("adopted_scope") == "district atmosphere and business rivalry",
+                    and decision.get("adopted_scope") == adoption[0],
                     "unrecorded or overbroad partial adoption")
-            require(decision.get("adoption_marker") == "Adopted atmosphere, 2026-10-08: tourist red-light waterfront.",
+            require(decision.get("adoption_marker") == adoption[1],
                     "partial adoption has no exact source marker")
             owner_text = owned(decision["owner"], active=True)
             require(decision["adoption_marker"] in owner_text

@@ -1,6 +1,6 @@
 # Backend Decision Register V1
 
-Status: OPEN decisions and a scoped partial adoption indexed from the authored backend register. No answer
+Status: OPEN decisions and scoped partial adoptions indexed from the authored backend register. No answer
 is adopted by appearing here. Source ownership is retained per question.
 Scope: the current Boardwalk, Synthesis and object-lineage pass; the broader
 future lore workshop can contain additional open topics.
@@ -50,8 +50,24 @@ is now in [Boardwalk Social Constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1
 
 **Still open:** exact joining/departure customs, reputation practices and their
 records. The tone choice selects no particular product, venue, worker or price.
-The register has eighteen wholly open entries and this one partially adopted
-entry; all nineteen families still contain some unresolved detail.
+The register has eighteen wholly open entries and two partially adopted
+entries, including the crew clarification below. Twenty families still contain
+some unresolved detail.
+
+### decision.boardwalk.crew-identities
+
+Owner: [Boardwalk Social Constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md).
+
+**Partially adopted, 2026-10-08:** Troons names the Pimp's adult trans sex-worker
+crew; the Gimp has the classic rubber-clad fetish persona; Gooners retain their
+internet-cultural roots in gooning and sexual fixation. Trooners/Trooner remain
+historical aliases. The earlier medical interpretation of the Gimp is superseded.
+
+**Still open:** the Gooners' actual combination of customers, fans, staff and
+performers, their specific businesses and the Gimp's speech/attire details.
+Regulars and fans, with some also working in the business, is a proposed profile.
+This clarification selects no named worker, service package or price and
+rewrites no historical patronage, gender identity or sexual conduct.
 
 ## Synthesis
 

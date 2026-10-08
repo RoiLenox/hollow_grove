@@ -5,6 +5,14 @@ ratified, runtime inventory, purchases or completed services. The two rival
 operations and Sympiote foundation are adopted in their existing owning sources.
 Scope: backend lore and contract validation. No art or game-production work.
 
+Adopted crew clarification, 2026-10-08: **Troons** is the current name for the
+Pimp's adult trans sex-worker crew. The Gimp has the classic rubber-clad fetish
+persona; Gooners retain internet gooning/sexual-fixation roots. The
+[social constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md) owns these
+identities. Earlier Trooners labels remain compatibility aliases. The six
+ordinary-service candidates below are supporting proposals; exact adult-service
+offers, venues, prices, worker bindings and Gooner organization remain open.
+
 Owners: [Boardwalk social constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md),
 [Sympiote foundation](HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md),
 [four-pole economy](CENTRAL_JUNCTION_FOUR_POLE_ECONOMY_V1.md), and the
