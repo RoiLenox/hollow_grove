@@ -27,8 +27,8 @@ use super::{
     GameplayEventId, GameplayEventMetadata, GameplayEventView, HollowGroveGameRuntime,
     HuemanFaculty, IntentCapabilityView, KernelAuditView, LivingCaseChoice, LivingCaseId,
     MAX_PARTY_MEMBERS, PartyActionId, PartyActorId, PartyMemberAvailability,
-    RecruitmentCandidateId, RecruitmentPath, StonebendContinuityChoice, WingedGargoylePilotAction,
-    WorldMapId,
+    RecruitmentCandidateId, RecruitmentPath, StonebendContinuityChoice, SympioteFoundationAction,
+    WingedGargoylePilotAction, WorldMapId,
 };
 
 pub const HOLLOW_GROVE_GAMEPLAY_PROTOCOL_VERSION: u16 = 1;
@@ -117,6 +117,9 @@ pub enum GameplayIntent {
     AdvanceWingedGargoylePilotIntent {
         action: WingedGargoylePilotAction,
     },
+    AdvanceSympioteFoundationIntent {
+        action: SympioteFoundationAction,
+    },
     SaveIntent {
         slot_id: String,
     },
@@ -160,6 +163,7 @@ impl GameplayIntent {
             }
             Self::BeginSynthesisIntent { .. } => "BeginSynthesisIntent",
             Self::AdvanceWingedGargoylePilotIntent { .. } => "AdvanceWingedGargoylePilotIntent",
+            Self::AdvanceSympioteFoundationIntent { .. } => "AdvanceSympioteFoundationIntent",
             Self::SaveIntent { .. } => "SaveIntent",
             Self::LoadIntent { .. } => "LoadIntent",
         }
@@ -1012,6 +1016,10 @@ impl GameProtocolService {
                 request,
                 GameplayCommand::AdvanceWingedGargoylePilot { action: *action },
             ),
+            GameplayIntent::AdvanceSympioteFoundationIntent { action } => self.execute_command(
+                request,
+                GameplayCommand::AdvanceSympioteFoundation { action: *action },
+            ),
             GameplayIntent::SaveIntent { slot_id } => self.save(request, slot_id),
             GameplayIntent::LoadIntent { slot_id } => self.load(request, slot_id),
             unavailable => self.rejection(
@@ -1654,7 +1662,14 @@ impl GameProtocolService {
             .guide_session
             .guide_context_v1()
             .expect("the service stores only canonical Guide sessions");
-        let rampart_audit = audit_gameplay_rampart_binding(self.application.rampart_binding());
+        let mut rampart_audit = audit_gameplay_rampart_binding(self.application.rampart_binding());
+        let foundation_audit = crate::kernel_invariants::audit_sympiote_foundation(
+            self.application.runtime().sympiote_foundation(),
+        );
+        rampart_audit
+            .checked_invariants
+            .extend(foundation_audit.checked_invariants);
+        rampart_audit.violations.extend(foundation_audit.violations);
         let guide_audit = audit_guide_context(&view.guide_context);
         view.kernel_audit = KernelAuditView::from_reports(&rampart_audit, &guide_audit);
         view.guide_transition_events = guide_events;
@@ -1954,6 +1969,12 @@ fn capability_views(
         });
     }
     let pilot = runtime.winged_gargoyle_pilot();
+    capabilities.push(IntentCapabilityView {
+        intent_type: "AdvanceSympioteFoundationIntent".into(),
+        available: hueman_exists && !runtime.sympiote_foundation().available_actions().is_empty(),
+        unavailable_reason: (!hueman_exists)
+            .then(|| "the permanent Hueman identity is not established".into()),
+    });
     let pilot_available = hueman_exists && pilot.next_action().is_some();
     capabilities.push(IntentCapabilityView {
         intent_type: "AdvanceWingedGargoylePilotIntent".into(),

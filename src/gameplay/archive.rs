@@ -13,12 +13,13 @@ use super::{
     ActiveIncarnationRef, BeingContinuityId, BeingContinuityRecord, BoardwalkChoice,
     BoardwalkEvidence, BoardwalkOutcomeId, DeepPressureEvent, GameRevision, GameplayEvent,
     GameplayEventEnvelope, GameplayEventId, HuemanFaculty, InteractionId, LivingWorldEvent,
-    PartyEvent, StonebendContinuityChoice, StonebendEvidence, StonebendOutcomeId, TilePosition,
-    WingedGargoylePilotEvent, WorldMapId,
+    PartyEvent, StonebendContinuityChoice, StonebendEvidence, StonebendOutcomeId,
+    SympioteFoundationEvent, TilePosition, WingedGargoylePilotEvent, WorldMapId,
 };
 
 pub const GAMEPLAY_ARCHIVE_FORMAT: &str = "hollow-grove-gameplay";
-pub const GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 4;
+pub const GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 5;
+const PRE_SYMPIOTE_GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 4;
 pub const GAMEPLAY_RAMPART_COMPONENT_ID: &str = "component.gameplay.authoritative";
 #[deprecated(since = "0.1.0", note = "use GAMEPLAY_RAMPART_COMPONENT_ID")]
 pub const GAMEPLAY_FEDERATION_COMPONENT_ID: &str = GAMEPLAY_RAMPART_COMPONENT_ID;
@@ -35,6 +36,7 @@ pub const fn is_supported_gameplay_archive_schema_version(schema_version: u16) -
     matches!(
         schema_version,
         GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+            | PRE_SYMPIOTE_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
             | PRE_SYNTHESIS_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
             | PRE_RAMPART_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
             | LEGACY_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
@@ -173,6 +175,10 @@ struct GameplayArchivePayloadV4 {
     migration_history: Vec<GameplayArchiveMigrationRecord>,
 }
 
+// V5 adds an event variant; envelope fields and checksum input remain unchanged.
+type GameplayArchiveEnvelopeV5 = GameplayArchiveEnvelopeV4;
+type GameplayArchivePayloadV5 = GameplayArchivePayloadV4;
+
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 struct GameplayArchivePayloadV3 {
@@ -306,6 +312,9 @@ enum WireGameplayEvent {
     WingedGargoylePilotAdvanced {
         event: WingedGargoylePilotEvent,
     },
+    SympioteFoundationChanged {
+        event: SympioteFoundationEvent,
+    },
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -399,7 +408,7 @@ fn encode_gameplay_archive_with_history(
 ) -> Result<String, GameplayArchiveError> {
     rampart_binding.validate()?;
     migration_history.sort_by(|left, right| left.migration_id.cmp(&right.migration_id));
-    let payload = GameplayArchivePayloadV4 {
+    let payload = GameplayArchivePayloadV5 {
         rule_set: rule_set.as_str().into(),
         events: events
             .iter()
@@ -410,7 +419,7 @@ fn encode_gameplay_archive_with_history(
         migration_history,
     };
     let checksum = checksum_for(&payload)?;
-    serde_json::to_string_pretty(&GameplayArchiveEnvelopeV4 {
+    serde_json::to_string_pretty(&GameplayArchiveEnvelopeV5 {
         format: GAMEPLAY_ARCHIVE_FORMAT.into(),
         schema_version: GAMEPLAY_ARCHIVE_SCHEMA_VERSION,
         checksum,
@@ -490,7 +499,7 @@ pub fn decode_gameplay_archive_with_metadata(
     let (rule_set, wire_events, institutional_state, rampart_binding, migration_history) =
         match schema_version {
             GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
-                let envelope: GameplayArchiveEnvelopeV4 = serde_json::from_value(value)
+                let envelope: GameplayArchiveEnvelopeV5 = serde_json::from_value(value)
                     .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
                 validate_envelope(
                     &envelope.format,
@@ -507,6 +516,27 @@ pub fn decode_gameplay_archive_with_metadata(
                     envelope.payload.migration_history,
                 )
             }
+            PRE_SYMPIOTE_GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
+                let envelope: GameplayArchiveEnvelopeV4 = serde_json::from_value(value)
+                    .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
+                validate_envelope(
+                    &envelope.format,
+                    envelope.schema_version,
+                    &envelope.checksum,
+                    &envelope.payload,
+                )?;
+                envelope.payload.rampart_binding.validate()?;
+                reject_pre_sympiote_events(&envelope.payload.events)?;
+                let mut migration_history = envelope.payload.migration_history;
+                migration_history.push(sympiote_foundation_migration_record());
+                (
+                    envelope.payload.rule_set,
+                    envelope.payload.events,
+                    Some(envelope.payload.institutional_state),
+                    envelope.payload.rampart_binding,
+                    migration_history,
+                )
+            }
             PRE_SYNTHESIS_GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
                 let envelope: GameplayArchiveEnvelopeV3 = serde_json::from_value(value)
                     .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
@@ -520,6 +550,7 @@ pub fn decode_gameplay_archive_with_metadata(
                 reject_pre_synthesis_events(&envelope.payload.events)?;
                 let mut migration_history = envelope.payload.migration_history;
                 migration_history.push(synthesis_pilot_migration_record());
+                migration_history.push(sympiote_foundation_migration_record());
                 (
                     envelope.payload.rule_set,
                     envelope.payload.events,
@@ -546,6 +577,7 @@ pub fn decode_gameplay_archive_with_metadata(
                     vec![
                         rampart_migration_record(),
                         synthesis_pilot_migration_record(),
+                        sympiote_foundation_migration_record(),
                     ],
                 )
             }
@@ -572,6 +604,7 @@ pub fn decode_gameplay_archive_with_metadata(
                         legacy_authority_migration_record(),
                         rampart_migration_record(),
                         synthesis_pilot_migration_record(),
+                        sympiote_foundation_migration_record(),
                     ],
                 )
             }
@@ -657,6 +690,7 @@ fn synthesis_pilot_migration_record() -> GameplayArchiveMigrationRecord {
 fn reject_pre_synthesis_events(
     events: &[WireGameplayEventEnvelope],
 ) -> Result<(), GameplayArchiveError> {
+    reject_pre_sympiote_events(events)?;
     if events.iter().any(|event| {
         matches!(
             event.payload,
@@ -665,6 +699,31 @@ fn reject_pre_synthesis_events(
     }) {
         return Err(GameplayArchiveError::InvalidDomainValue(
             "gameplay archive schemas before V4 cannot contain winged Gargoyle pilot events".into(),
+        ));
+    }
+    Ok(())
+}
+
+fn sympiote_foundation_migration_record() -> GameplayArchiveMigrationRecord {
+    GameplayArchiveMigrationRecord {
+        migration_id: "migration.gameplay.v4-to-v5.sympiote-foundation".into(),
+        from_schema_version: 4, to_schema_version: 5,
+        decision: "preserve prior identity, Forms, and history without inventing a Sympiote graft, consent, or cultivation".into(),
+        provenance_id: "provenance.gameplay.migration.v4-to-v5".into(),
+    }
+}
+
+fn reject_pre_sympiote_events(
+    events: &[WireGameplayEventEnvelope],
+) -> Result<(), GameplayArchiveError> {
+    if events.iter().any(|event| {
+        matches!(
+            event.payload,
+            WireGameplayEvent::SympioteFoundationChanged { .. }
+        )
+    }) {
+        return Err(GameplayArchiveError::InvalidDomainValue(
+            "gameplay archives before V5 cannot contain Sympiote foundation events".into(),
         ));
     }
     Ok(())
@@ -855,6 +914,11 @@ impl TryFrom<&GameplayEventEnvelope> for WireGameplayEventEnvelope {
                     event: event.clone(),
                 }
             }
+            GameplayEvent::SympioteFoundationChanged { event } => {
+                WireGameplayEvent::SympioteFoundationChanged {
+                    event: event.clone(),
+                }
+            }
         };
         Ok(Self {
             id: event.id.as_str().into(),
@@ -958,6 +1022,9 @@ impl WireGameplayEventEnvelope {
             WireGameplayEvent::WingedGargoylePilotAdvanced { event } => {
                 GameplayEvent::WingedGargoylePilotAdvanced { event }
             }
+            WireGameplayEvent::SympioteFoundationChanged { event } => {
+                GameplayEvent::SympioteFoundationChanged { event }
+            }
         };
         Ok(GameplayEventEnvelope {
             id: parse(self.id, GameplayEventId::new)?,
@@ -1014,6 +1081,104 @@ mod tests {
     use crate::constitutional::V2_RULE_SET;
 
     #[test]
+    fn v4_migration_preserves_existing_form_and_adds_no_sympiote_history() {
+        use crate::gameplay::{
+            GameApplicationService, GameplayCommand, GameplayEventMetadata,
+            WingedGargoylePilotAction as A,
+        };
+        let mut application = GameApplicationService::new(RuleSetId::new(V2_RULE_SET).unwrap());
+        application
+            .execute(
+                GameplayEventMetadata {
+                    id: GameplayEventId::new("event.fixture.identity").unwrap(),
+                    causal_position: CausalPosition::new(1),
+                },
+                GameplayCommand::EstablishHuemanIdentity {
+                    continuity: BeingContinuityId::new("continuity.fixture.hueman").unwrap(),
+                    participant: ParticipantId::new("participant.fixture.hueman").unwrap(),
+                    institutional: InstitutionalBeingId::new("being.fixture.hueman").unwrap(),
+                },
+            )
+            .unwrap();
+        for (index, action) in [
+            A::RecoverStonebendStructure,
+            A::RecoverSandmanorMeasurement,
+            A::ObtainGlaushouseCompatibility,
+            A::EarnFlyntWitness,
+            A::RecoverStonebendMaterial,
+            A::PreserveSandmanorMethod,
+            A::RecordStableTrial,
+        ]
+        .into_iter()
+        .enumerate()
+        {
+            let at = u64::try_from(index).unwrap() + 2;
+            application
+                .execute(
+                    GameplayEventMetadata {
+                        id: GameplayEventId::new(format!("event.fixture.pilot.{at}")).unwrap(),
+                        causal_position: CausalPosition::new(at),
+                    },
+                    GameplayCommand::AdvanceWingedGargoylePilot { action },
+                )
+                .unwrap();
+        }
+        let mut before: GameplayArchiveEnvelopeV4 =
+            serde_json::from_str(&application.encode_archive().unwrap()).unwrap();
+        before.schema_version = PRE_SYMPIOTE_GAMEPLAY_ARCHIVE_SCHEMA_VERSION;
+        let before = serde_json::to_string_pretty(&before).unwrap();
+        let after = migrate_gameplay_archive(&before).unwrap();
+        let decoded = decode_gameplay_archive_with_metadata(&after).unwrap();
+        assert_eq!(decoded.source_schema_version, 5);
+        assert_eq!(
+            decoded.migration_history,
+            vec![sympiote_foundation_migration_record()]
+        );
+        let replayed = GameApplicationService::from_archive(&after).unwrap();
+        assert_eq!(replayed.runtime().hueman(), application.runtime().hueman());
+        assert_eq!(
+            replayed.runtime().winged_gargoyle_pilot(),
+            application.runtime().winged_gargoyle_pilot()
+        );
+        assert_eq!(
+            replayed.runtime().sympiote_foundation(),
+            &crate::world::sympiote_foundation::SympioteFoundationState::default()
+        );
+        assert_eq!(replayed.events(), application.events());
+        assert_eq!(migrate_gameplay_archive(&after).unwrap(), after);
+    }
+
+    #[test]
+    fn old_envelopes_cannot_smuggle_sympiote_events() {
+        let payload = GameplayArchivePayloadV4 {
+            rule_set: V2_RULE_SET.into(), institutional_state: WorldSession::canonical().persisted_state_output(),
+            rampart_binding: GameplayRampartBinding::canonical(GAMEPLAY_RAMPART_COMPONENT_ID), migration_history: Vec::new(),
+            events: vec![WireGameplayEventEnvelope { id: "event.fixture.false-foundation".into(), sequence: 0, revision: 1, causal_position: 1,
+                payload: WireGameplayEvent::SympioteFoundationChanged { event: SympioteFoundationEvent {
+                    action: crate::world::sympiote_foundation::SympioteFoundationAction::RequestAssessment,
+                    subject_id: "being.fixture.hueman".into(), from: crate::world::sympiote_foundation::SympioteFoundationPhase::AwaitingAssessment,
+                    to: crate::world::sympiote_foundation::SympioteFoundationPhase::AwaitingConsent,
+                    form_established: false, needs_rest: false, comfortable_use: false, practice_count: 0, clinical_receipt: None,
+                    evidence_id: "evidence.fixture.false-foundation".into(),
+                } }
+            }],
+        };
+        for version in [3, 4] {
+            let envelope = GameplayArchiveEnvelopeV4 {
+                format: GAMEPLAY_ARCHIVE_FORMAT.into(),
+                schema_version: version,
+                checksum: checksum_for(&payload).unwrap(),
+                payload: payload.clone(),
+            };
+            let encoded = serde_json::to_string(&envelope).unwrap();
+            assert!(matches!(
+                decode_gameplay_archive_with_metadata(&encoded),
+                Err(GameplayArchiveError::InvalidDomainValue(_))
+            ));
+        }
+    }
+
+    #[test]
     fn schema_three_archive_migrates_without_inventing_synthesis_progress() {
         let world = WorldSession::canonical();
         let payload = GameplayArchivePayloadV3 {
@@ -1038,7 +1203,10 @@ mod tests {
         assert!(decoded.events.is_empty());
         assert_eq!(
             decoded.migration_history,
-            vec![synthesis_pilot_migration_record()]
+            vec![
+                synthesis_pilot_migration_record(),
+                sympiote_foundation_migration_record()
+            ]
         );
 
         let migrated = migrate_gameplay_archive(&encoded).unwrap();
@@ -1050,7 +1218,10 @@ mod tests {
         assert!(migrated.events.is_empty());
         assert_eq!(
             migrated.migration_history,
-            vec![synthesis_pilot_migration_record()]
+            vec![
+                synthesis_pilot_migration_record(),
+                sympiote_foundation_migration_record()
+            ]
         );
 
         let payload = GameplayArchivePayloadV3 {
@@ -1140,7 +1311,7 @@ mod tests {
             GAMEPLAY_ARCHIVE_SCHEMA_VERSION
         );
         assert_eq!(migrated.events.len(), 1);
-        assert_eq!(migrated.migration_history.len(), 3);
+        assert_eq!(migrated.migration_history.len(), 4);
         assert!(migrated.migration_history.iter().any(
             |record| record.migration_id == "migration.gameplay.v1-to-v2.authority-dependency"
         ));

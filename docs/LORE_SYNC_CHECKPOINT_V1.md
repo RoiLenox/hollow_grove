@@ -1,9 +1,11 @@
 # Lore Sync Checkpoint V1
 
-Checkpoint tag: `lore-sync-2026-10-08-v3`
+Checkpoint tag: `lore-sync-2026-10-08-v4`
 
 The first verified checkpoint, `lore-sync-2026-10-07-v1`, remains preserved.
-The final checkpoint includes stable Godot resource IDs for the new test
+The V3 checkpoint remains preserved in its complete handoff kit. This checkpoint
+adds the adopted Sympiote foundation contract and its first clinical/practice
+runtime case. It also retains stable Godot resource IDs for the new test
 scripts, the measured client transport optimization, and the AMD
 pre-transfer review in [AMD Pre-transfer Optimization](AMD_PRETRANSFER_OPTIMIZATION_V1.md).
 
@@ -11,6 +13,14 @@ This is the local handoff for the implemented lore/kernel milestone and the
 Boardwalk's Pimp/Trooners and Gimp/Gooners occupant organization. The main PC
 is offline. Remote comparison, staging, activation, and peer acceptance remain
 for when it is available.
+
+Sympiote is the canonical singular and Sympiotes the plural. The foundation
+uses Glaüshouse assessment, consent, host-specific graft establishment,
+recovery, discharge, bounded practice, rest, and care review. Five practice
+directions remain open; considering either Boardwalk camp's offer creates no
+purchase, membership, Bond, or later Form. Gameplay archives migrate to V5
+without inventing foundation history for existing saves. See
+[Sympiote Foundation Migration](SYMPIOTE_FOUNDATION_MIGRATION_V1.md).
 
 ## Local preparation
 
@@ -25,7 +35,7 @@ The generated handoff lives in ignored `dist/`:
 - `hueman-0.1.0.tar.gz`
 - `hollow-grove-general-0.1.0.tar.gz`
 - `hollow-grove-authoritative-state-0.1.0.tar.gz`
-- `hollow-grove-lore-sync-2026-10-08-v3.bundle`, containing the source history
+- `hollow-grove-lore-sync-2026-10-08-v4.bundle`, containing the source history
   and checkpoint tag
 - `LOCAL-TRANSFER-READINESS.json`, recording the exact source commit, artifact
   checksums, and completed local acceptance checks
@@ -36,8 +46,8 @@ Check the receipt and verify the handoff locally before sending:
 ```bash
 git status --short
 git rev-parse HEAD
-git rev-parse lore-sync-2026-10-08-v3^{commit}
-git bundle verify dist/hollow-grove-lore-sync-2026-10-08-v3.bundle
+git rev-parse lore-sync-2026-10-08-v4^{commit}
+git bundle verify dist/hollow-grove-lore-sync-2026-10-08-v4.bundle
 (cd dist && sha256sum --check TRANSFER-SHA256SUMS)
 ```
 
@@ -46,6 +56,17 @@ Runtime locks and claims are excluded. If saves change after preparation,
 refresh with `./hollow-grove-update.sh prepare-state`; rebuild the recorded
 handoff checksums after refreshing. Source changes require a new checkpoint
 and full preparation.
+
+The disposable foundation witness can be reproduced without editing real saves:
+
+```bash
+cargo run --locked --offline --example sympiote_foundation_witness -- dist/sympiote-foundation-witness
+```
+
+It writes a V4 identity-only archive, its V5 migration, a completed foundation
+episode, and a replay-backed lore inspection. The integration tests also
+preserve an existing Gargoyle pilot Form across the migration and reject
+forged clinical receipts, duplicate actions, and client-supplied Form overrides.
 
 ## When the main PC is on
 
@@ -78,3 +99,8 @@ lore definitions still await verified gameplay bindings. The Boardwalk camp
 organization is adopted lore and presentation; new camp membership mechanics
 have not been invented. These remain explicit development work after this
 transfer checkpoint.
+
+The foundation's clinic map and art, broader clinical cases, exact rival product
+inventories, and additional later Form realization mechanisms remain open. The
+future lore workshop records proposals separately from adopted canon; this
+checkpoint does not ratify every proposal or claim the whole setting is finished.

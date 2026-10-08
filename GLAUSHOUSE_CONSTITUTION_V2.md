@@ -435,6 +435,19 @@ and coercion is not disguised as consent.
 
 > **Technical viability plus lived viability equals lawful Synthesis.**
 
+### Additive Sympiote starter-form direction
+
+The user's 2026-10-08 lore direction places initial establishment of the
+developmental **Sympiote form** at Glaüshouse, before cultivation toward later
+supported Synthesis forms. The
+[Sympiote Foundation proposal](HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md) owns its
+host-specific graft integration, bounded adaptation, maintenance, and clinical
+beginning. Its first backend lifecycle is implemented beneath the clinical law
+above; additional patient models and anatomical assets remain future work. It creates
+no clinical rank or privilege and makes no exact Recipe or intervention
+category authoritative. Assessment, compatibility, consent, scoped Clearance,
+actual result, recovery, and continuing care remain required as applicable.
+
 ## Article XIV — Illegal Synthesis
 
 **Illegal Synthesis** is unauthorized, coercive, fraudulent, unsafe,

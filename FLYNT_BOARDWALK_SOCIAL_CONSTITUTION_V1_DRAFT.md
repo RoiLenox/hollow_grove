@@ -1,6 +1,8 @@
 # Flynt Boardwalk Social Constitution V1
 
-Status: active additive draft; Boardwalk occupant organization adopted 2026-10-07
+Status: active additive draft; Boardwalk occupant organization adopted 2026-10-07;
+rival bosses, differentiated offerings, and shared Sympiote entry-stage direction
+adopted 2026-10-08
 Backbone: `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md`
 Parent authorities: `FLYNT_CONSTITUTION_V2.md`,
 `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md`, and the common Bond
@@ -32,9 +34,11 @@ and conflict. It may not:
 - make bodily condition proof of virtue, vice, competence, or authority.
 
 `flynt-constitution` remains the sole executable Flynt authority. The Pimp,
-Gimp, Trooners, Gooners, Hoes, Goons, and Goon Bond are Boardwalk cultural and
+Gimp, Trooners, Gooners, Sympiotes, Hoes, Goons, and Goon Bond are Boardwalk cultural and
 social identities above that locked authority. The two retinue names and their
-rival organization are adopted here; detailed membership mechanics remain open.
+rival organization are adopted here, as are the two bosses' differentiated
+commercial offerings; detailed membership mechanics and product catalogs
+remain open.
 
 ## Root Polarity
 
@@ -95,6 +99,57 @@ The camps can cooperate on a bounded task, challenge each other's account,
 or lose a person's support to lawful independence. Their rivalry is a recurring
 social relationship shaped by competition, occasional cooperation, and changing
 support.
+
+### Rival Bosses and Different Products
+
+Adopted from the user's 2026-10-08 clarification: **the Pimp and the Gimp are
+both Boardwalk bosses with different products**. The Pimp leads the Trooners;
+the Gimp leads the Gooners. Their rivalry includes business, distribution,
+customers, repeat demand, and reputation as well as social allegiance.
+
+Here, boss describes leadership of a crew and its commercial operation on the
+Boardwalk. The existing cultural titles and House boundaries continue to
+govern their reach. Crew members retain their own identities and choices.
+
+The exact products have not yet been chosen. The following are **WORKING
+directions**, grounded in each camp's established expression:
+
+| Boss and crew | Product direction to discuss | Possible goods and services |
+|---|---|---|
+| Pimp and Trooners | public presence, desirability, presentation, and access | clothing and adornment, performances, event bookings, introductions, sponsored presentation |
+| Gimp and Gooners | dependable operation, endurance, protection, and access through difficult places | work and carrying equipment, repairs, deliveries, escorts, route services, shelter arrangements |
+
+A product may be a physical good or a disclosed service. Buying it, supporting
+the boss, joining the crew, and entering a particular Bond remain separate
+choices. Neither camp owns its customers or workforce.
+
+### Sympiotes — Entry into Synthesis Practice
+
+The user's subsequent 2026-10-08 clarification expands **Sympiote** into a shared
+early stage leading toward the supported Synthesis forms throughout Hueman
+and Hollow Grove. Gargoyle is one example among those destinations. The
+[Sympiote Foundation](HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md) owns this additive
+direction; the first clinical/practice lifecycle is implemented, while later
+Form mechanisms and product inventories remain open.
+The user's further clarification places establishment of the initial Sympiote
+form at Glaüshouse, followed by recovery and voluntary return.
+
+On the Boardwalk, a Sympiote may be a customer of the Pimp's or Gimp's offerings
+after discharge while exploring and developing a practice. Products may help
+provide knowledge,
+materials, equipment, introductions, or qualified teaching; the actual product
+lines still need to be chosen. Sympiotes can also enter through other communities
+and House traditions.
+
+A Sympiote may deal with either camp or both. A purchase does not assign a crew
+or produce a Form. Trooner and Gooner continue to name voluntary affiliations.
+Customer experience and crew work may support development but do not replace
+its Current/Aura cultivation, Recipe, compatibility, consent, proof, clinical
+realization, or other applicable requirements.
+
+Sympiote names the crafted living graft; Sympiote foundation form names the
+host's integrated developmental embodiment. Sympian continuity categories,
+existing Form paths, and House authority remain distinct and intact.
 
 ## The Pimp
 
@@ -416,3 +471,6 @@ The following remain deliberately open:
    Gooners beyond their adopted cultural affiliation;
 6. how Boardwalk districts visually distinguish invitation, neutrality,
    coercion risk, sanctuary, and public recognition.
+7. the exact product lines and commercial relationship of the two bosses,
+   including how their offerings support Sympiote development toward different
+   Synthesis forms, and what each offering actually provides.

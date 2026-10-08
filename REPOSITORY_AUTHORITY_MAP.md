@@ -164,6 +164,11 @@ work without superseding locked constitutional authority:
   geometry, OPEN fields, and the legacy physical compatibility boundary;
 - `HOLLOW_GROVE_RECIPE_CONSTITUTION_V1.md` defines evidence-backed Recipe
   discovery, materials, trials, authority, and maintenance;
+- `HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md` defines the adopted host-specific
+  foundation, Glaüshouse beginning, limited adaptation, rest, care, and later
+  path exploration; `src/world/sympiote_foundation.rs` owns its first bounded
+  clinical/practice case, and `docs/SYMPIOTE_FOUNDATION_MIGRATION_V1.md` records
+  its V4→V5 gameplay compatibility and replay boundary;
 - `HUEMAN_WINGED_GARGOYLE_TREASURE_HUNT_V1.md` specifies the first cross-House
   Recipe treasure hunt and pilot progression;
 - `HUEMAN_CAPABILITY_TAXONOMY_V1.md` defines scoped kinesis aliases, canonical

@@ -20,6 +20,11 @@ mod synthesis_pilot;
 mod view;
 mod world;
 
+pub use crate::world::sympiote_foundation::{
+    SympioteAdaptation, SympioteBoardwalkCamp, SympioteFoundationAction, SympioteFoundationError,
+    SympioteFoundationEvent, SympioteFoundationPhase, SympioteFoundationState,
+    SympiotePracticeDirection,
+};
 pub use application::*;
 pub use archive::*;
 pub use boardwalk::*;

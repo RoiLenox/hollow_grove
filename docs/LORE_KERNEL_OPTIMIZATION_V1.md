@@ -134,9 +134,16 @@ Functional-lore V1/V2 wire payloads remain unchanged. Their existing checksum
 and exact replay paths still apply; the authentic schema-V1 fixture verifies
 its checksum before role normalization. The three-edge declarations were
 already present in every adopted definition, so no historical payload rewrite
-is needed. Gameplay archive V4 and protocol V1 also retain their exact shapes.
-The new inspection JSON is a separate, read-only schema V1 and cannot be loaded
+is needed. That milestone retained gameplay archive V4 and protocol V1 shapes.
+Its original inspection JSON was a separate, read-only schema V1 and cannot be loaded
 as a gameplay archive or used as constitutional evidence by itself.
+
+The later [Sympiote Foundation](../HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md)
+adds a distinct clinical/practice contract and replay-backed inspection under
+read-only lore schema V2. Gameplay now writes V5 through the
+[explicit V4→V5 migration](SYMPIOTE_FOUNDATION_MIGRATION_V1.md); V1–V4 remain
+readable without inferred foundation progress. The historical twelve-route
+catalog and functional-lore V1/V2 payloads remain unchanged.
 
 ## Lore development
 

@@ -158,6 +158,34 @@ pub fn central_junction_is_coordination_only() -> bool {
         && GAMEPLAY_ARCHIVE_FORMAT == "hollow-grove-gameplay"
 }
 
+/// Audits the live host-specific Form without granting any later Synthesis.
+#[must_use]
+pub fn audit_sympiote_foundation(
+    state: &crate::world::sympiote_foundation::SympioteFoundationState,
+) -> KernelInvariantReport {
+    let mut violations: Vec<String> = state
+        .validate()
+        .err()
+        .map(|error| error.to_string())
+        .into_iter()
+        .collect();
+    if let Err(error) =
+        crate::world::sympiote_foundation::sympiote_foundation_lore().operational_handoffs()
+    {
+        violations.push(error.to_string());
+    }
+    KernelInvariantReport {
+        schema_version: KERNEL_INVARIANT_SCHEMA_VERSION,
+        checked_invariants: vec![
+            "sympiote-host-and-form-continuity-preserved",
+            "sympiote-clinical-consent-and-authority-preserved",
+            "sympiote-rest-and-repeatable-use-preserved",
+            "sympiote-practice-and-offers-never-grant-later-forms",
+        ],
+        violations,
+    }
+}
+
 /// Audits authored lore contracts without treating them as executed cases.
 #[must_use]
 pub fn audit_functional_lore_definitions(

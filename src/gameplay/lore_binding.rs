@@ -152,6 +152,8 @@ pub struct LoreInspection {
     pub authority: &'static str,
     pub sources: Vec<LoreRuleSource>,
     pub definitions: Vec<LoreDefinitionInspection>,
+    pub sympiote_foundation: Option<super::SympioteFoundationView>,
+    pub sympiote_foundation_contract: LoreDefinitionInspection,
 }
 
 impl LoreInspection {
@@ -162,8 +164,27 @@ impl LoreInspection {
         audit_functional_lore_definitions(&definitions)
             .ensure_passed()
             .map_err(LoreInspectionError::Invariant)?;
+        let foundation = crate::world::sympiote_foundation::sympiote_foundation_lore();
         Ok(Self {
-            schema_version: 1,
+            schema_version: 2,
+            sympiote_foundation: runtime.map(super::SympioteFoundationView::from_runtime),
+            sympiote_foundation_contract: LoreDefinitionInspection {
+                lore_id: foundation.id,
+                house: foundation.house,
+                trigger: foundation.trigger,
+                player_choices: foundation.player_choices,
+                uncertainty: foundation.uncertainty,
+                failure_and_refusal: foundation.failure_and_refusal,
+                completion_condition: foundation.completion_condition,
+                authority_source: crate::world::sympiote_foundation::SYMPIOTE_FOUNDATION_SOURCE,
+                declared_handoffs: foundation
+                    .operational_handoffs()
+                    .map_err(LoreInspectionError::Definition)?,
+                gameplay_binding: Some(
+                    crate::world::sympiote_foundation::SYMPIOTE_FOUNDATION_CASE_ID,
+                ),
+                execution: None,
+            },
             authority: "read-only projection; declared handoffs do not attest execution",
             sources: vec![
                 LoreRuleSource {
@@ -180,6 +201,11 @@ impl LoreInspection {
                     path: "BOARDWALK_GOON_BOND_VERTICAL_SLICE_V1_DRAFT.md",
                     status: "bounded playable case",
                     consumer: "src/gameplay/boardwalk.rs",
+                },
+                LoreRuleSource {
+                    path: crate::world::sympiote_foundation::SYMPIOTE_FOUNDATION_SOURCE,
+                    status: "adopted Sympiote foundation; bounded clinical and practice runtime",
+                    consumer: "src/world/sympiote_foundation.rs",
                 },
             ],
             definitions: definitions
@@ -309,6 +335,21 @@ impl LoreInspection {
                 output.push_str("\nNo case execution was supplied or started.\n");
             }
             output.push('\n');
+        }
+        if let Some(foundation) = &self.sympiote_foundation {
+            let _ = writeln!(
+                output,
+                "## Sympiote foundation\n\nCase: `{}`\n\n- Phase: {:?}\n- Form established: {}\n- Needs rest: {}\n- Comfortable use: {}\n- Clinical decisions: {}\n- Practice direction: {:?}\n",
+                foundation.case_id,
+                foundation.phase,
+                foundation.form_established,
+                foundation.needs_rest,
+                foundation.comfortable_use,
+                foundation.clinical_receipt_count,
+                foundation.direction
+            );
+        } else {
+            output.push_str("## Sympiote foundation\n\nAuthored clinical/practice contract; no gameplay archive was supplied.\n");
         }
         output
     }

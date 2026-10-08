@@ -22,7 +22,8 @@ use super::{
     MAP_TILE_SIZE, MAP_WIDTH, MAX_PARTY_MEMBERS, PartyActorId, PartyEvent, PartyMemberAvailability,
     RecruitmentCandidateId, RecruitmentDecision, RecruitmentDecisionReason, RecruitmentPath,
     RelationshipMemory, StonebendAuthorityClass, StonebendCasePhase, StonebendContinuityCase,
-    StonebendContinuityChoice, StonebendEvidence, StonebendOutcomeRecord, TilePosition,
+    StonebendContinuityChoice, StonebendEvidence, StonebendOutcomeRecord, SympioteBoardwalkCamp,
+    SympioteFoundationAction, SympioteFoundationPhase, SympiotePracticeDirection, TilePosition,
     WingedGargoylePilotAction, WingedGargoylePilotForm, WorldMapId, map_definition,
 };
 
@@ -184,6 +185,15 @@ impl GameplayEventView {
                         GameplayEventKind::FrameChanged
                     }
                     _ => GameplayEventKind::SynthesisAvailable,
+                },
+                None,
+                None,
+            ),
+            GameplayEvent::SympioteFoundationChanged { event } => (
+                if event.action == SympioteFoundationAction::AskClinicianToEstablish {
+                    GameplayEventKind::FrameChanged
+                } else {
+                    GameplayEventKind::ActionResolved
                 },
                 None,
                 None,
@@ -1187,12 +1197,74 @@ pub struct GameView {
     pub party: PartyView,
     #[serde(default)]
     pub winged_gargoyle_pilot: WingedGargoylePilotView,
+    #[serde(default)]
+    pub sympiote_foundation: SympioteFoundationView,
     pub physical_exits: Vec<PhysicalExitView>,
     pub capabilities: Vec<IntentCapabilityView>,
     #[serde(default)]
     pub kernel_audit: KernelAuditView,
     #[serde(default)]
     pub central_junction_function: CentralJunctionFunctionView,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct SympioteFoundationView {
+    pub case_id: String,
+    pub source: String,
+    pub phase: SympioteFoundationPhase,
+    pub profile: Option<crate::world::sympiote_foundation::SympioteFoundationProfile>,
+    pub form_established: bool,
+    pub needs_rest: bool,
+    pub comfortable_use: bool,
+    pub practice_count: u32,
+    pub direction: Option<SympiotePracticeDirection>,
+    pub considered_offers: Vec<SympioteBoardwalkCamp>,
+    pub available_actions: Vec<SympioteFoundationAction>,
+    pub clinical_receipts: Vec<crate::world::sympiote_foundation::SympioteClinicalReceipt>,
+    pub clinical_receipt_count: usize,
+}
+
+impl Default for SympioteFoundationView {
+    fn default() -> Self {
+        Self::from_state(
+            &crate::world::sympiote_foundation::SympioteFoundationState::default(),
+            false,
+        )
+    }
+}
+
+impl SympioteFoundationView {
+    #[must_use]
+    pub fn from_runtime(runtime: &HollowGroveGameRuntime) -> Self {
+        Self::from_state(runtime.sympiote_foundation(), runtime.hueman().is_some())
+    }
+    fn from_state(
+        state: &crate::world::sympiote_foundation::SympioteFoundationState,
+        hueman_exists: bool,
+    ) -> Self {
+        Self {
+            case_id: crate::world::sympiote_foundation::SYMPIOTE_FOUNDATION_CASE_ID.into(),
+            source: crate::world::sympiote_foundation::SYMPIOTE_FOUNDATION_SOURCE.into(),
+            phase: state.phase(),
+            profile: state.profile().cloned(),
+            form_established: state.form_established(),
+            needs_rest: state.needs_rest(),
+            comfortable_use: state.comfortable_use(),
+            practice_count: state.practice_count(),
+            direction: state.direction(),
+            considered_offers: state.considered_offers().iter().copied().collect(),
+            available_actions: if hueman_exists {
+                state.available_actions()
+            } else {
+                Vec::new()
+            },
+            clinical_receipts: state.clinical_receipts()
+                [state.clinical_receipts().len().saturating_sub(32)..]
+                .to_vec(),
+            clinical_receipt_count: state.clinical_receipts().len(),
+        }
+    }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -1628,6 +1700,10 @@ impl GameView {
             },
             party: PartyView::from_runtime(runtime),
             winged_gargoyle_pilot: WingedGargoylePilotView::from_runtime(runtime),
+            sympiote_foundation: SympioteFoundationView::from_state(
+                runtime.sympiote_foundation(),
+                runtime.hueman().is_some(),
+            ),
             physical_exits: runtime
                 .hueman_position()
                 .map(|_| {

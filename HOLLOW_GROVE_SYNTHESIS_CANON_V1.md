@@ -74,6 +74,18 @@ otherwise distinct requirements. A Recipe can describe the relationship that
 may produce a Synthesis; possession alone grants no Form, Aura technique,
 Doctrine, proof, consent, Clearance, Title, office, or recognition.
 
+### Sympiote entry-stage direction
+
+The user's 2026-10-08 additive lore direction introduces a shared early
+**Sympiote** stage for pursuing supported Synthesis forms across the setting,
+with the initial Sympiote form established at Glaüshouse.
+The [Sympiote Foundation proposal](HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md)
+defines its clinical beginning, bounded practice, and implemented first case.
+The person living in this Form remains a practitioner; the direction adds no
+new Level 1 equation, numerical level,
+executable Nature, or automatic realization. Existing House paths and
+higher/composite rules continue to govern.
+
 ## Faculties are an orthogonal axis
 
 A faculty is not a Current, Aura, Synthesis, office, or rank. Faculties describe

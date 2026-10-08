@@ -617,7 +617,7 @@ fn boardwalk_history_and_active_bond_replay_from_checksummed_archive() {
     let service = completed_goon_bond_application();
     let archive = service.encode_archive().unwrap();
     assert!(archive.contains("\"checksum\": \"fnv1a64:"));
-    assert!(archive.contains("\"schema_version\": 4"));
+    assert!(archive.contains("\"schema_version\": 5"));
     assert!(archive.contains("\"federation_binding\""));
     assert!(archive.contains("\"institutional_state\""));
     assert!(archive.contains("being.stonebend.current-hypergiant"));

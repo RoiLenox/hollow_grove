@@ -311,7 +311,7 @@ fn gameplay_schema_v4_is_rampart_aware_and_v2_migration_is_idempotent() {
         GAMEPLAY_ARCHIVE_SCHEMA_VERSION
     );
     assert_eq!(migrated_decoded.events, decoded.events);
-    assert_eq!(migrated_decoded.migration_history.len(), 2);
+    assert_eq!(migrated_decoded.migration_history.len(), 3);
     assert_eq!(
         migrated_decoded.migration_history[0].migration_id,
         "migration.gameplay.v2-to-v3.runtime-federation"

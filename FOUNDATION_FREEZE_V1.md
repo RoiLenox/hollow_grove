@@ -57,6 +57,12 @@ this rule. Its V1→V2 record is documented in
 `FUNCTIONAL_LORE_ARCHIVE_V2_MIGRATION.md`; it changes responsibility metadata,
 not constitutional authority or the neutral recursion kernel.
 
+The later Sympiote foundation uses an applied additive gameplay V4→V5 migration
+documented in `docs/SYMPIOTE_FOUNDATION_MIGRATION_V1.md`. The user explicitly
+authorized integration of the accepted foundation Form into the core/runtime.
+It reuses host-specific grafting, preserves legacy state, and creates no new
+House authority or neutral-kernel meaning.
+
 ## Required validation
 
 ```text

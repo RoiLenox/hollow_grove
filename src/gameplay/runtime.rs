@@ -27,9 +27,10 @@ use super::{
     MERCY_DEEP_PARTICIPANT_ID, PartyActionId, PartyActorId, PartyError, PartyEvent, PartyState,
     RETURNING_GOON_PARTICIPANT_ID, RecruitmentCandidateId, RecruitmentPath, StonebendCaseError,
     StonebendContinuityCase, StonebendContinuityChoice, StonebendEvidence, StonebendOutcomeId,
-    TilePosition, WingedGargoylePilotAction, WingedGargoylePilotError, WingedGargoylePilotEvent,
-    WingedGargoylePilotState, WorldMapError, WorldMapId, map_definition, scheduled_people_on_map,
-    statement_for_interaction,
+    SympioteFoundationAction, SympioteFoundationError, SympioteFoundationEvent,
+    SympioteFoundationState, TilePosition, WingedGargoylePilotAction, WingedGargoylePilotError,
+    WingedGargoylePilotEvent, WingedGargoylePilotState, WorldMapError, WorldMapId, map_definition,
+    scheduled_people_on_map, statement_for_interaction,
 };
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
@@ -152,6 +153,9 @@ pub enum GameplayCommand {
     AdvanceWingedGargoylePilot {
         action: WingedGargoylePilotAction,
     },
+    AdvanceSympioteFoundation {
+        action: SympioteFoundationAction,
+    },
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -219,6 +223,9 @@ pub enum GameplayEvent {
     WingedGargoylePilotAdvanced {
         event: WingedGargoylePilotEvent,
     },
+    SympioteFoundationChanged {
+        event: SympioteFoundationEvent,
+    },
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -253,6 +260,7 @@ pub struct HollowGroveGameRuntime {
     deep_pressure: DeepPressureState,
     party: PartyState,
     winged_gargoyle_pilot: WingedGargoylePilotState,
+    sympiote_foundation: SympioteFoundationState,
     constitutional: ConstitutionalRuntime,
     regional: RegionalSynthesisRuntime,
     world: WorldSession,
@@ -282,6 +290,7 @@ impl HollowGroveGameRuntime {
             deep_pressure: DeepPressureState::new(),
             party: PartyState::new(),
             winged_gargoyle_pilot: WingedGargoylePilotState::default(),
+            sympiote_foundation: SympioteFoundationState::default(),
             constitutional: ConstitutionalRuntime::new(),
             regional: RegionalSynthesisRuntime::new(),
             world,
@@ -497,6 +506,10 @@ impl HollowGroveGameRuntime {
             (
                 GameplayEvent::WingedGargoylePilotAdvanced { event },
                 GameplayCommand::AdvanceWingedGargoylePilot { action },
+            ) => event.action == *action,
+            (
+                GameplayEvent::SympioteFoundationChanged { event },
+                GameplayCommand::AdvanceSympioteFoundation { action },
             ) => event.action == *action,
             _ => false,
         }
@@ -825,6 +838,22 @@ impl HollowGroveGameRuntime {
                 }
                 let event = self.winged_gargoyle_pilot.advance(action)?;
                 Ok(GameplayEvent::WingedGargoylePilotAdvanced { event })
+            }
+            GameplayCommand::AdvanceSympioteFoundation { action } => {
+                let subject = self
+                    .hueman()
+                    .ok_or(GameplayRuntimeError::SynthesisRequiresHueman)?
+                    .domain_refs()
+                    .institutional()
+                    .as_str()
+                    .to_owned();
+                let event = self.sympiote_foundation.advance(
+                    &subject,
+                    action,
+                    &self.world,
+                    metadata.causal_position.get(),
+                )?;
+                Ok(GameplayEvent::SympioteFoundationChanged { event })
             }
         }
     }
@@ -1431,6 +1460,24 @@ impl HollowGroveGameRuntime {
                 }
                 self.winged_gargoyle_pilot.replay(event)?;
             }
+            GameplayEvent::SympioteFoundationChanged { event } => {
+                let subject = self
+                    .hueman()
+                    .ok_or(GameplayRuntimeError::SynthesisRequiresHueman)?
+                    .domain_refs()
+                    .institutional()
+                    .as_str()
+                    .to_owned();
+                let actual = self.sympiote_foundation.advance(
+                    &subject,
+                    event.action,
+                    &self.world,
+                    causal_position.get(),
+                )?;
+                if actual != *event {
+                    return Err(SympioteFoundationError::ReplayDivergence.into());
+                }
+            }
         }
         Ok(())
     }
@@ -1513,6 +1560,11 @@ impl HollowGroveGameRuntime {
     #[must_use]
     pub const fn winged_gargoyle_pilot(&self) -> &WingedGargoylePilotState {
         &self.winged_gargoyle_pilot
+    }
+
+    #[must_use]
+    pub const fn sympiote_foundation(&self) -> &SympioteFoundationState {
+        &self.sympiote_foundation
     }
 
     #[must_use]
@@ -1753,6 +1805,7 @@ pub enum GameplayRuntimeError {
     DeepPressureReplayDivergence,
     PartyReplayDivergence,
     SynthesisRequiresHueman,
+    SympioteFoundation(SympioteFoundationError),
     DeepPressureSettlementLocationRequired,
     DeepPressureOutcomeRequiredForRecruitment,
     RecruitmentConversationRequired(RecruitmentCandidateId),
@@ -1850,6 +1903,12 @@ impl From<PartyError> for GameplayRuntimeError {
 impl From<WingedGargoylePilotError> for GameplayRuntimeError {
     fn from(value: WingedGargoylePilotError) -> Self {
         Self::WingedGargoylePilot(value)
+    }
+}
+
+impl From<SympioteFoundationError> for GameplayRuntimeError {
+    fn from(value: SympioteFoundationError) -> Self {
+        Self::SympioteFoundation(value)
     }
 }
 

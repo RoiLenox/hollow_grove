@@ -680,6 +680,14 @@ Glaüshouse's clinical practicum, and Flynt's Manticorp Academy—cover all five
 Faculties without claiming the outcome. The detailed boundary and verification
 map live in `HOLLOW_GROVE_POWER_RECIPE_CONSTITUTION_V1.md`.
 
+The adopted `HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md` adds a host-specific early
+Form established at Glaüshouse through the existing crafted-graft lifecycle.
+`src/world/sympiote_foundation.rs` and its gameplay binding record consent,
+actual integration, recovery/discharge, bounded adaptation, rest, strain,
+clinical review, and exploration of all existing House directions. Exploration
+does not grant later Forms or authority. The gameplay V4→V5 migration preserves
+old identity and Synthesis history without inferring a foundation or consent.
+
 ### Flynt dual-leadership, maintained Manticore, and Manticorp milestone status
 
 Constitutionally recorded on 2026-07-25 as an additive canon extension.

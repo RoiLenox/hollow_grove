@@ -158,5 +158,7 @@ mod stonebend_third_pass_documentation;
 mod stonebend_three_gates_offices;
 #[path = "stonebend_title_lifecycle_continuity.rs"]
 mod stonebend_title_lifecycle_continuity;
+#[path = "sympiote_foundation.rs"]
+mod sympiote_foundation;
 #[path = "visual_color_constitution.rs"]
 mod visual_color_constitution;

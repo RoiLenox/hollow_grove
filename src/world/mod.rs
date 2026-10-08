@@ -43,6 +43,7 @@ pub mod spatial_inheritance;
 pub mod spatial_topology_v2;
 pub mod stonebend;
 pub mod sympiote;
+pub mod sympiote_foundation;
 pub mod way_back;
 pub mod world_point;
 pub mod world_point_archive;

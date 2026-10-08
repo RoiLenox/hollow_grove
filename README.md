@@ -97,6 +97,17 @@ The [Lore Sync Checkpoint](docs/LORE_SYNC_CHECKPOINT_V1.md) records the local
 handoff artifacts and the checks to finish when the main PC is available.
 The [AMD Pre-transfer Review](docs/AMD_PRETRANSFER_OPTIMIZATION_V1.md) records
 measured transport improvements and the target-machine profiling steps.
+For the next lore milestone, use the
+[Future Lore Workshop](HOLLOW_GROVE_FUTURE_LORE_WORKSHOP_V1_DRAFT.md). It gathers
+open canon decisions, concrete story proposals, and the discussion order;
+its open proposals remain unratified. Adopted sections link to their owning
+contracts and implementation status.
+The user-selected [Sympiote Foundation](HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md)
+develops an early Form established at Glaüshouse for pursuing supported
+Synthesis paths across Hueman and Hollow Grove. Its clinical/practice lifecycle
+is implemented; anatomical assets, shop inventories, and later Form mechanisms
+remain open. The [V4→V5 migration](docs/SYMPIOTE_FOUNDATION_MIGRATION_V1.md)
+preserves old saves without inventing foundation progress.
 
 ## Hollow Deck
 

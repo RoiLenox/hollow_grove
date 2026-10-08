@@ -659,6 +659,12 @@ separation, removal, and useful void. It is a prompt set, not an arsenal.
 
 ## 12. Recommended Next Design Work
 
+The 2026-10-08
+[Future Lore Workshop](HOLLOW_GROVE_FUTURE_LORE_WORKSHOP_V1_DRAFT.md) now gathers
+these open decisions with the Boardwalk customs, ordinary scenes, and broader
+completion discussion. Its proposals are WORKING; this registry's canon status
+continues to control until the owning sources explicitly adopt a decision.
+
 1. **Design Stonebend's PrimePunk signature objects from the bottom up.** Start
    with Gremlin/Scavenging and Goblin/Rigging. For each, document input,
    mechanism, load path, control, failure, repair, ordinary civic use, weapon
