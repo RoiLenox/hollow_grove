@@ -65,6 +65,15 @@ The short rule is: authored constitutional documents define meaning;
 `src/constitutional/` and `src/world/` enforce it; `tests/` prove it; and
 `artifacts/` only project it.
 
+## Backend development scope
+
+The current work is backend-only: lore contracts, architecture, source consistency,
+validation and persistence/audit requirements. Follow the
+[Backend Completion Plan](HOLLOW_GROVE_BACKEND_COMPLETION_PLAN_V1.md).
+Begin with the Boardwalk's product and responsibility contracts, then cover
+Sympiote development and the remaining House/route gaps. The user has excluded
+art and game production from these passes.
+
 ## Developer commands
 
 The checked `rust-toolchain.toml` pins Rust, formatting, and Clippy. Ordinary

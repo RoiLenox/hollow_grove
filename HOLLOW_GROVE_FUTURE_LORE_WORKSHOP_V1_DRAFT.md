@@ -1,3 +1,8 @@
+Current scope, 2026-10-08: backend lore, architecture, validation and audit work.
+The user has excluded art and game production from the next passes. Use the
+[Backend Completion Plan](HOLLOW_GROVE_BACKEND_COMPLETION_PLAN_V1.md) for the
+current order; presentation proposals below are deferred.
+
 Adopted bounded update, 2026-10-08: [Mercy Deep's survey-frame case](STONEBEND_SURVEY_FRAME_FIRST_CASE_V1.md)
 is now implemented with Tess Splice as workshop keeper/executor/recovery owner
 and Ivo Mark as independent recorder. Stonebend registration and Sandmanor proof

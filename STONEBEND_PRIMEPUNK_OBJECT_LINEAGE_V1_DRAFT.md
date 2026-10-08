@@ -59,11 +59,13 @@ four sovereign decisions. Record the required House question for each actual
 use. A new demonstration cannot silently inherit an earlier version's proof,
 and an institution's interest cannot supply a user's consent.
 
-## First playable-sized case to author
+## Historical first-case proposal
 
-The [Survey Frame First Case](STONEBEND_SURVEY_FRAME_FIRST_CASE_V1_DRAFT.md)
-develops this proposal's scene, three possible endings, responsibilities,
-typed-state/event boundaries and validation plan. It remains a WORKING draft.
+The [adopted Survey Frame First Case](STONEBEND_SURVEY_FRAME_FIRST_CASE_V1.md)
+now owns the bounded doorway episode, actual actor bindings, outcomes and
+verified backend. The [prior first-case draft](STONEBEND_SURVEY_FRAME_FIRST_CASE_V1_DRAFT.md)
+remains proposal history. The text below records the original design stage;
+its unbound roles do not describe the completed adopted case.
 
 Use only the Gremlin and Goblin revisions for the initial proposal. A resident
 needs a damaged doorway measured before agreeing to a temporary rig. The player
