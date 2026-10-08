@@ -26,9 +26,11 @@ beginning with the [common Glaüshouse Synthesis continuum](GLAUSHOUSE_SYNTHESIS
 from item to whole Form, then the adopted Sympiote Grade I → II → III foundation
 and separate later branches within that practice. Item methods, material and
 worksite policy and a unified executable process remain open.
-The small living building units are now named Synbiote blocks; Sympiote Form
+Synbalm is the adopted squishy magical healing substance/product. The small
+living building units made from it are now named Synblocks; Sympiote Form
 names the larger bodily expression. Define block cultivation, small-item
 fabrication and upkeep alongside host integration, keeping their records separate.
+Exact healing effects and Synbalm preparation/product terms remain open.
 The immediate-young-Gargoyle proposal is superseded. Grade
 meanings and promotion criteria remain open. Gargoyle and Werewolf never combine;
 the earlier higher-state body-combination requirements need revision.

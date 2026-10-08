@@ -107,8 +107,11 @@ claim ownership of the observable outcome.
 
 `Sympiote` names a crafted living graft. It does not name or infer the Sympian
 lineage. The adopted [Synthesis continuum](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md)
-separately names small living building units **Synbiote blocks** and the larger
-bodily expression **Sympiote Form**. Existing typed graft records remain
+separately names small living building units **Synblocks** and the larger
+bodily expression **Sympiote Form**. **Synbalm** is the squishy magical healing
+substance/product worked into Synblocks. Exact healing effects and fabrication
+Recipes remain open. The earlier Synbiote blocks name is a historical alias.
+Existing typed graft records remain
 host-specific Sympiote records. They are not block inventory or evidence of an
 implemented small-unit fabrication system. The typed lifecycle is:
 

@@ -139,16 +139,18 @@ class BackendContractTests(unittest.TestCase):
         self.assertEqual(report["synthesis_material_policy"], "open")
         self.assertFalse(report["unified_synthesis_runtime_implemented"])
 
-    def test_synbiote_units_and_sympiote_body_names_stay_distinct(self):
+    def test_synblock_units_and_sympiote_body_names_stay_distinct(self):
         def units(data):
             return data["synthesis"]["living_scale_units"]
         self.rejected(lambda d: units(d).update(small_unit_name="Sympiote block"), "names or kinds conflated")
+        self.rejected(lambda d: units(d).update(small_unit_name="Synbiote block"), "names or kinds conflated")
+        self.rejected(lambda d: units(d).update(small_unit_name="Synbalm"), "names or kinds conflated")
         self.rejected(lambda d: units(d).update(body_expression_name="Synbiote Form"), "names or kinds conflated")
         self.rejected(lambda d: units(d).update(small_unit_kind="whole-body-form"), "names or kinds conflated")
-        self.rejected(lambda d: units(d).update(grades_apply_to="Synbiote block"), "body Form or grade")
+        self.rejected(lambda d: units(d).update(grades_apply_to="Synblock"), "body Form or grade")
         self.rejected(lambda d: units(d).update(item_use_grants_body_form=True), "body Form or grade")
         report = audit.validate(ROOT, self.data)
-        self.assertEqual(report["small_synthesis_unit"], "Synbiote block")
+        self.assertEqual(report["small_synthesis_unit"], "Synblock")
         self.assertEqual(report["bodily_synthesis_expression"], "Sympiote Form")
 
     def test_scale_naming_does_not_invent_block_execution_or_archive_history(self):
@@ -159,7 +161,28 @@ class BackendContractTests(unittest.TestCase):
                 self.rejected(lambda d: units(d).update({field: True}), "historical inventory invented")
         self.rejected(lambda d: units(d).update(exact_material_conversion_status="lightening-implemented"), "mechanisms or historical inventory")
         self.rejected(lambda d: units(d).update(definition_source="BEING_OBJECT_ROOT_ONTOLOGY_V1.md"), "owning adoption")
-        self.assertFalse(audit.validate(ROOT, self.data)["synbiote_block_crafting_implemented"])
+        self.assertFalse(audit.validate(ROOT, self.data)["synblock_crafting_implemented"])
+
+    def test_synbalm_substance_healing_use_and_block_input_are_distinct(self):
+        def material(data):
+            return data["synthesis"]["material_product"]
+        self.rejected(lambda d: material(d).update(name="Hollow"), "substance, healing use")
+        self.rejected(lambda d: material(d).update(prepared_unit="Sympiote Form"), "block relationship conflated")
+        self.rejected(lambda d: material(d).update(uses=["synblock-making"]), "healing use")
+        self.rejected(lambda d: d["synthesis"]["living_scale_units"].update(source_substance="Current"), "names or kinds conflated")
+        report = audit.validate(ROOT, self.data)
+        self.assertEqual(report["synthesis_material_product"], "Synbalm")
+        self.assertIn("healing", report["synbalm_uses"])
+
+    def test_synbalm_definition_does_not_invent_healing_or_material_history(self):
+        def material(data):
+            return data["synthesis"]["material_product"]
+        for field in ("healing_runtime_implemented", "inventory_product_implemented", "historical_materials_reclassified"):
+            with self.subTest(field=field):
+                self.rejected(lambda d: material(d).update({field: True}), "invents healing execution")
+        self.rejected(lambda d: material(d).update(exact_healing_effects_status="universal-cure"), "invents healing execution")
+        self.rejected(lambda d: material(d).update(material_conversion_status="implemented"), "invents healing execution")
+        self.assertFalse(audit.validate(ROOT, self.data)["synbalm_healing_runtime_implemented"])
 
     def test_relative_escape_absolute_path_and_symlink_escape_fail(self):
         for name in ("../secret", "/etc/passwd", "a/../../b", "a\\b"):

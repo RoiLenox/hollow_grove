@@ -359,14 +359,27 @@ method and outcome. Its [continuum contract](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_D
 defines the adopted root and working scope model. Exact object methods,
 material rules, delegation and a unified runtime remain open.
 
-Adopted Synthesis scales, 2026-10-08: Synbiote blocks are the small living building units; Sympiote Form is the larger bodily expression.
+Adopted Synthesis material and scales, 2026-10-08: Synbalm is the squishy magical healing substance; Synblocks are the small living building units; Sympiote Form is the larger bodily expression.
 
-The user's naming decision is:
+The earlier small-unit naming decision was:
 
 > Let's call the smaller version synbiote blocks and the larger for sympiote form
 
+The user then defined the material product and shortened the unit name:
+
+> So like Stonebend has hollow current can we call it synbalm so it's like a product but like a squishy magical substance and a healing substance too
+
+> Oh and can you call them synblocks and that should do it
+
+Synbalm is Glaüshouse's squishy magical healing substance and named product.
+It supplies material for the small living Synblocks; Sympiote Form is the
+larger bodily expression. The continuum owns these definitions. Healing
+treatment and a change of Form retain their actual scope and records. Exact
+healing effects, preparation, block-making methods and product terms remain
+open. The product definition alone creates no clinical success or inventory.
+
 The continuum owns this scale distinction. Small things can be made with
-Synbiote blocks; lawful host integration establishes the larger Sympiote Form.
+Synblocks; lawful host integration establishes the larger Sympiote Form.
 Its foundation Grades I, II and III concern living development. An item's
 fabrication creates no bodily Form or grade for its maker. Block fabrication,
 composition, conversion and upkeep mechanisms remain open. Existing graft

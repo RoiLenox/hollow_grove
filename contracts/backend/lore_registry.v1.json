@@ -69,7 +69,7 @@
         "technical viability",
         "lived viability",
         "Adopted Synthesis origin, 2026-10-08: Glaüshouse is the source House of all Synthesis, from an item to a whole Form.",
-        "Adopted Synthesis scales, 2026-10-08: Synbiote blocks are the small living building units; Sympiote Form is the larger bodily expression."
+        "Adopted Synthesis material and scales, 2026-10-08: Synbalm is the squishy magical healing substance; Synblocks are the small living building units; Sympiote Form is the larger bodily expression."
       ]
     },
     {
@@ -284,8 +284,8 @@
         "Glaüshouse is the source House of all Synthesis, from an item to a whole Form.",
         "WORKING mechanisms",
         "not an executed universal Synthesis procedure",
-        "material remains open",
-        "Adopted Synthesis scales, 2026-10-08: Synbiote blocks are the small living building units; Sympiote Form is the larger bodily expression."
+        "Exact healing effects",
+        "Adopted Synthesis material and scales, 2026-10-08: Synbalm is the squishy magical healing substance; Synblocks are the small living building units; Sympiote Form is the larger bodily expression."
       ]
     }
   ],
@@ -416,14 +416,32 @@
     "living_scale_units": {
       "owner": "GLAUSHOUSE_CONSTITUTION_V2.md",
       "definition_source": "GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md",
-      "small_unit_name": "Synbiote block",
+      "small_unit_name": "Synblock",
       "small_unit_kind": "living-synthesis-building-unit",
       "body_expression_name": "Sympiote Form",
       "grades_apply_to": "Sympiote Form",
       "item_use_grants_body_form": false,
       "block_crafting_implemented": false,
       "historical_grafts_decomposed_into_blocks": false,
-      "exact_material_conversion_status": "open"
+      "exact_material_conversion_status": "open",
+      "source_substance": "Synbalm"
+    },
+    "material_product": {
+      "owner": "GLAUSHOUSE_CONSTITUTION_V2.md",
+      "definition_source": "GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md",
+      "name": "Synbalm",
+      "kind": "magical-healing-substance",
+      "texture": "squishy",
+      "uses": [
+        "healing",
+        "synblock-making"
+      ],
+      "prepared_unit": "Synblock",
+      "exact_healing_effects_status": "open",
+      "material_conversion_status": "open",
+      "healing_runtime_implemented": false,
+      "inventory_product_implemented": false,
+      "historical_materials_reclassified": false
     }
   },
   "candidate_offers": [
@@ -1873,10 +1891,10 @@
       "status": "partially-adopted",
       "question": "How does the common Glaüshouse Synthesis practice work across item, interface, partial-body and whole-Form targets?",
       "owner": "GLAUSHOUSE_CONSTITUTION_V2.md",
-      "adopted_scope": "Glaüshouse origin of all Synthesis across external-item and whole-Form scopes; Synbiote blocks as small living units and Sympiote Form as bodily expression",
+      "adopted_scope": "Glaüshouse origin of all Synthesis across external-item and whole-Form scopes; Synbalm as magical healing substance, Synblocks as small living units and Sympiote Form as bodily expression",
       "adoption_marker": "Adopted Synthesis origin, 2026-10-08: Glaüshouse is the source House of all Synthesis, from an item to a whole Form.",
-      "user_statement": "Let's call the smaller version synbiote blocks and the larger for sympiote form",
-      "remaining_question": "What block composition/cultivation/joining/upkeep, material policy, small-item methods, supported interfaces, worksite and teaching/delegation rules, and executable common record/dispatch model are adopted?"
+      "user_statement": "Oh and can you call them synblocks and that should do it",
+      "remaining_question": "What Synbalm preparation/healing effects/product terms, Synblock cultivation/joining/upkeep, material policy, small-item methods, supported interfaces, worksite and teaching/delegation rules, and executable common record/dispatch model are adopted?"
     }
   ],
   "scope_notes": [

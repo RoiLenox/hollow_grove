@@ -88,12 +88,16 @@ Doctrine, proof, consent, Clearance, Title, office, or recognition.
 
 ### Sympiote entry-stage direction
 
-The adopted scale names are **Synbiote blocks** for small living Glaüshouse
+The adopted material is **Synbalm**, Glaüshouse's squishy magical healing
+substance and named product. The scale names are **Synblocks** for small living Glaüshouse
 building units and **Sympiote Form** for the larger bodily expression. The
 [Synthesis continuum](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md) owns the scale
 definition. Blocks can be made into small things; a synthesized item's maker
 receives no bodily Form by implication. The existing host-bound Sympiote graft
 meaning and its compatible archives remain intact. Exact block mechanics are open.
+Synblocks are organized from Synbalm. Synbiote blocks is a historical naming
+alias. Healing effects and material-to-unit Recipes remain open; healing use
+does not itself grant the user's bodily Form or grade.
 
 The user's 2026-10-08 additive lore direction introduces a shared early
 **Sympiote** stage for pursuing supported Synthesis forms across the setting,

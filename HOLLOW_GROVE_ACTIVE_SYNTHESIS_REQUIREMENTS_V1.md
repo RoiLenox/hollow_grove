@@ -29,11 +29,15 @@ targets before deciding the remaining mechanisms. The
 [continuum contract](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md) separates the
 adopted origin from proposed scale descriptions and unimplemented dispatch.
 
-The user has now named the small living building units **Synbiote blocks** and
+The user has named Glaüshouse's squishy magical healing substance **Synbalm**,
+the small living units made from it **Synblocks**, and
 the larger bodily expression **Sympiote Form**. Small things can be made with
 the blocks. Define their cultivation, joining and upkeep beneath the common
 root while preserving the separate body establishment and grade requirements.
 The earlier Lightening/inverse-Hollowing interpretation is superseded.
+Synbiote blocks is the historical earlier name. Exact healing effects, Synbalm
+preparation and block-making methods remain open; healing is separate from
+establishing a new bodily Form.
 
 ## Common Synthesis origin, separate targets
 
@@ -45,7 +49,7 @@ Sympiote grade. The living three-grade foundation is one path inside the wider
 practice, not a numbering of item-to-body scales. Material rules, item methods
 and a unified executable model remain open.
 
-Synbiote blocks provide an adopted small living unit within this scale. A block
+Synblocks provide an adopted small living unit within this scale. A block
 or item made with blocks has no implied host, body Form or Sympiote grade.
 Exact production, block inventories and assembly/conversion mechanisms are not
 yet implemented; existing cases gain no retroactive block-production history.

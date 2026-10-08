@@ -55,10 +55,12 @@ adopted scale names beneath Glaüshouse's common Synthesis origin:
 
 | Term | Scope | Record to preserve |
 |---|---|---|
-| Synbiote block | small living building unit used to make things | actual unit/material identity and method; block mechanics remain open |
-| item made with Synbiote blocks | external synthesized thing or component | its Object identity, construction, functions and upkeep |
+| Synbalm | squishy magical healing substance/product used in Synblock making | material identity, preparation, actual healing/fabrication result; exact methods remain open |
+| Synblock | small living building unit used to make things | actual unit/material identity and method; block mechanics remain open |
+| item made with Synblocks | external synthesized thing or component | its Object identity, construction, functions and upkeep |
 | Sympiote Form | larger bodily expression established with a host | host/Being continuity, lawful integration, care and foundation development |
 
+Synbiote blocks remains a historical alias for the adopted Synblocks name.
 These names create no new Sympian continuity category or clinical office.
 Grades I, II and III concern Sympiote Form development. An item's construction
 does not grade its maker. Existing host-specific Sympiote graft records keep

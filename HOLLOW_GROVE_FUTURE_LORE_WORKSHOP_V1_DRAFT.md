@@ -13,7 +13,7 @@ has further adopted Glaüshouse as the source of all Synthesis, from item to
 whole Form. Begin with the [common Synthesis continuum](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md)
 and its separate targets, then define the living grade criteria within it.
 Material and worksite policy remain open. The later workshop
-uses the adopted Synbiote blocks / Sympiote Form scale names; block cultivation,
+uses the adopted Synbalm / Synblocks / Sympiote Form names; healing preparation, block cultivation,
 small-item fabrication and bodily integration need separate actual evidence. Its
 table is a broader backlog, not a requirement to finish club operations first.
 
@@ -513,7 +513,7 @@ a particular subpart. A proposal in this workshop is not an adopted answer.
 
 | Order | Decision to finish | Required result |
 |---|---|---|
-| 1 | Common Glaüshouse Synthesis practice, Synbiote blocks and living Sympiote Form grades | define small-unit cultivation, small-item fabrication and bodily integration; decide material/method/upkeep rules and Grade I/II/III criteria; keep club operations deferred |
+| 1 | Common Glaüshouse Synthesis practice, Synbalm, Synblocks and living Sympiote Form grades | define healing preparation, small-unit cultivation, small-item fabrication and bodily integration; decide material/method/upkeep rules and Grade I/II/III criteria; keep club operations deferred |
 | 2 | Pimp/Gimp title selection and the later integrity trial | incumbent, challenge, ending/succession, followers' choice, five trial outcomes |
 | 3 | Gimp's rubber persona, Gooner worker roles and formal Hoe affiliation | attire/speech/business details, specific duties within the adopted customer/fan and smaller-inner-crew structure, and separately scoped affiliations |
 | 4 | Stonebend's continuing object | eight coherent revisions, civic use, input/residue, failure, repair, useful opening |

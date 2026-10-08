@@ -32,7 +32,7 @@ PARTIAL_ADOPTIONS = {
         "Adopted Sympiote grade structure, 2026-10-08: Grade I → Grade II → Grade III → distinct supported Synthesis branches."),
     "decision.synthesis.process-scale": (
         "GLAUSHOUSE_CONSTITUTION_V2.md",
-        "Glaüshouse origin of all Synthesis across external-item and whole-Form scopes; Synbiote blocks as small living units and Sympiote Form as bodily expression",
+        "Glaüshouse origin of all Synthesis across external-item and whole-Form scopes; Synbalm as magical healing substance, Synblocks as small living units and Sympiote Form as bodily expression",
         "Adopted Synthesis origin, 2026-10-08: Glaüshouse is the source House of all Synthesis, from an item to a whole Form."),
 }
 
@@ -174,22 +174,41 @@ def validate(root, data, architecture=None):
                 for d in decisions), "common Synthesis remaining decisions not indexed")
     units = synthesis.get("living_scale_units")
     require(isinstance(units, dict) and set(units) == {
-        "owner", "definition_source", "small_unit_name", "small_unit_kind", "body_expression_name",
+        "owner", "definition_source", "small_unit_name", "small_unit_kind", "source_substance", "body_expression_name",
         "grades_apply_to", "item_use_grants_body_form", "block_crafting_implemented",
         "historical_grafts_decomposed_into_blocks", "exact_material_conversion_status"},
         "invalid Synthesis scale-unit index")
-    scale_marker = "Adopted Synthesis scales, 2026-10-08: Synbiote blocks are the small living building units; Sympiote Form is the larger bodily expression."
+    scale_marker = "Adopted Synthesis material and scales, 2026-10-08: Synbalm is the squishy magical healing substance; Synblocks are the small living building units; Sympiote Form is the larger bodily expression."
     require(units["owner"] == origin["owner"] and units["definition_source"] == origin["definition_source"]
             and scale_marker in owned(units["owner"], active=True)
             and scale_marker in owned(units["definition_source"], active=True), "Synthesis scale units lack their owning adoption")
-    require(units["small_unit_name"] == "Synbiote block"
+    require(units["small_unit_name"] == "Synblock"
             and units["small_unit_kind"] == "living-synthesis-building-unit"
-            and units["body_expression_name"] == "Sympiote Form", "Synbiote blocks and Sympiote Form names or kinds conflated")
+            and units["source_substance"] == "Synbalm"
+            and units["body_expression_name"] == "Sympiote Form", "Synbalm, Synblocks and Sympiote Form names or kinds conflated")
     require(units["grades_apply_to"] == "Sympiote Form"
             and units["item_use_grants_body_form"] is False, "block or item scope grants body Form or grade")
     require(units["block_crafting_implemented"] is False
             and units["historical_grafts_decomposed_into_blocks"] is False
             and units["exact_material_conversion_status"] == "open", "block mechanisms or historical inventory invented")
+    material = synthesis.get("material_product")
+    require(isinstance(material, dict) and set(material) == {
+        "owner", "definition_source", "name", "kind", "texture", "uses", "prepared_unit",
+        "exact_healing_effects_status", "material_conversion_status", "healing_runtime_implemented",
+        "inventory_product_implemented", "historical_materials_reclassified"}, "invalid Synbalm material index")
+    require(material["owner"] == origin["owner"] and material["definition_source"] == origin["definition_source"],
+            "Synbalm lacks its owning adoption")
+    require(material["name"] == units["source_substance"] == "Synbalm"
+            and material["kind"] == "magical-healing-substance"
+            and material["texture"] == "squishy"
+            and material["uses"] == ["healing", "synblock-making"]
+            and material["prepared_unit"] == units["small_unit_name"], "Synbalm substance, healing use or block relationship conflated")
+    require(material["exact_healing_effects_status"] == "open"
+            and material["material_conversion_status"] == "open"
+            and material["healing_runtime_implemented"] is False
+            and material["inventory_product_implemented"] is False
+            and material["historical_materials_reclassified"] is False,
+            "Synbalm invents healing execution, conversion, inventory or material history")
     grades = synthesis.get("sympiote_grades")
     require(isinstance(grades, dict) and set(grades) == {
         "owner", "grades", "position", "branch_examples", "additional_branches",
@@ -333,7 +352,9 @@ def validate(root, data, architecture=None):
             "synthesis_scope": origin["scope"], "synthesis_material_policy": origin["material_policy"],
             "unified_synthesis_runtime_implemented": False,
             "small_synthesis_unit": units["small_unit_name"], "bodily_synthesis_expression": units["body_expression_name"],
-            "synbiote_block_crafting_implemented": False,
+            "synblock_crafting_implemented": False,
+            "synthesis_material_product": material["name"], "synbalm_uses": material["uses"],
+            "synbalm_healing_runtime_implemented": False,
             "sympiote_grades": grades["grades"], "grade_runtime_advancement_implemented": False,
             "historical_foundation_cases_graded": False,
             "higher_state_body_requirements": "needs-revision; not reconciled with the old executable constitution",

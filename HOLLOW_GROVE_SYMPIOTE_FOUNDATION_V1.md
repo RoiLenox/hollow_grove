@@ -28,15 +28,18 @@ ladder and does not replace the Nature catalog.
 
 ### Small building units and bodily Form
 
-The user's adopted scale names distinguish **Synbiote blocks**, the small
+The user's adopted scale names distinguish **Synblocks**, the small
 living Glaüshouse units worked into small things, from **Sympiote Form**, the
 larger bodily expression. The [Synthesis continuum](GLAUSHOUSE_SYNTHESIS_CONTINUUM_V1_DRAFT.md)
-owns the block definition. Synbiote is intentional for the small units;
+owns the block definition. Synbalm is the squishy magical healing substance
+worked into Synblocks. The earlier Synbiote blocks name is a historical alias;
 Sympiote remains the established bodily and host-specific graft spelling.
 Existing Sympiote grafts retain their records and are not renamed or decomposed
 into an invented block inventory. Grades I, II and III describe development
 of the host's Sympiote Form. Making an item with blocks grants its maker no
 Form or grade. Block production and assembly methods remain future work.
+Applying Synbalm for healing does not by itself establish Sympiote Form or a
+grade. Healing effects and block-making Recipes remain open in the continuum.
 
 ## 2. Glaüshouse is the beginning
 

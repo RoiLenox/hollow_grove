@@ -21,10 +21,13 @@ Sandmanor proof. Exact item methods and materials remain open in the
 reclassify the existing ordinary survey-frame repair as Synthesis or grant its
 maker a living grade or Form.
 
-Glaüshouse's adopted small living inputs are named Synbiote blocks; the larger
+Glaüshouse's adopted small living inputs are named Synblocks; the larger
 bodily expression is Sympiote Form. An item made with blocks retains its Object
 identity and material history. Exact block fabrication, joining and upkeep are
 open; the existing doorway case acquires no retroactive block input or history.
+Synbalm names the squishy magical healing material worked into Synblocks.
+Its named product identity supplies no executed healing result, supplier or
+commercial terms. Stonebend's Hollow, material Current and provenance are preserved.
 
 One external object retains its identity, material origin, parts, condition,
 functions, connections, modification history, custody and actual recipients.
