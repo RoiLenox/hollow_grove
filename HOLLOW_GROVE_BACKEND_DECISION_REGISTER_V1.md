@@ -72,10 +72,15 @@ Gimp of the Underway below. The Pimp has the public upper domain; the Gimp's
 primary base is in the underground beneath it. Their existing cultural titles,
 crew identities and House boundaries remain in force.
 
-**Still open:** specific businesses, named workers, duties, compensation,
-performer roles, the Gimp's speech/attire details, upper/lower venues, entrances
-and access terms. The broad organization and vertical relationship are settled;
-the exact roster, floor plan and commercial practices need further decisions.
+**Venue identity adopted, 2026-10-08:** the Underway is the closed-off private
+nightclub section beneath the Boardwalk, with the Gimp and his Gooners based
+there. Controlled admission and the principal venue type are settled.
+
+**Still open:** the Pimp's establishments, specific club services, named workers,
+duties, compensation, performer roles, the Gimp's speech/attire details, interior
+rooms, entrances and admission rules. The broad organization, vertical
+relationship and private-nightclub identity are settled; the exact roster,
+floor plan and commercial practices need further decisions.
 This clarification selects no named worker, service package or price and
 rewrites no historical patronage, gender identity or sexual conduct.
 

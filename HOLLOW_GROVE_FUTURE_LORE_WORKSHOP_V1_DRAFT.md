@@ -88,8 +88,10 @@ identity. Gender, occupation, affiliation and particular agreements are distinct
 The Pimp of the Boardwalk presides over the public upper face; the Gimp of the
 Underway has his primary base underground beneath it. This makes the existing
 Aura/Current rivalry spatial as well as social. The Gimp's public contacts can
-still meet visitors above. Specific venues, entrances, stairs and access terms
-remain to be chosen, while the public recovery-to-Return corridor remains intact.
+still meet visitors above. The Underway is the adopted closed-off private
+nightclub section beneath the Boardwalk. The Pimp's establishments, private club
+rooms, entrances, stairs and admission rules remain to be chosen, while the
+public recovery-to-Return corridor remains intact.
 District location and `force.underway` remain separate meanings and records.
 
 ### User decision: two bosses with different products

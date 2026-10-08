@@ -17,6 +17,10 @@ Gimp's Underway base below the Boardwalk. This case's existing public contact
 anchors remain its projection; the lore choice adds no stairs, subterranean
 map, actor movement or new historical event to an existing save.
 
+The lower Underway section is now a closed-off private nightclub in the lore.
+This venue identity establishes no automatic admission, club membership or
+visit for the Returning Goon; the historical case retains its actual terms.
+
 Status: first playable implementation complete; all four outcomes are authoritative
 Backbone: `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md`
 World law: `FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md`

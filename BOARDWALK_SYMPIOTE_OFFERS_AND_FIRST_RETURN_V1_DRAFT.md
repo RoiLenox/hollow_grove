@@ -17,6 +17,10 @@ The user also adopted Gooners as devoted customers and fetish fans, with a
 smaller inner circle working for the Gimp. This settles their broad structure;
 it does not select the six proposed offers or assign a Sympiote to the crew.
 
+The Underway is now adopted as the closed-off private nightclub section beneath
+the Boardwalk, based around the Gimp and his Gooners. Its service packages and
+admission rules remain open. The supporting offers below remain proposals.
+
 Parents: [Boardwalk Social Constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md),
 [Sympiote Foundation](HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md), and the existing
 House, Recipe, Bond, and route authorities.

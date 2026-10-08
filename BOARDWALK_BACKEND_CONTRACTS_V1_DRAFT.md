@@ -11,16 +11,18 @@ persona; Gooners retain internet gooning/sexual-fixation roots. The
 [social constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md) owns these
 identities. Earlier Trooners labels remain compatibility aliases. The six
 ordinary-service candidates below are supporting proposals; exact adult-service
-offers, venues, prices and worker bindings remain open. The Gooner structure
+offers, precise rooms, prices and worker bindings remain open. The Gooner structure
 is adopted: devoted customers and fetish fans, with a smaller working inner
 circle. A purchase, fandom, employment, crew affiliation and a Bond are distinct
 relationships; particular worker duties and commercial terms remain undecided.
 
 The vertical relationship is also adopted: the Pimp's public Boardwalk domain
-is above, and the Gimp's underground Underway base is below it. Venue location,
-entry/access terms and commercial delivery should be separately attributable
-when an actual business is chosen. Exact venues and connecting passages remain
-open; an underground address alone creates no Current Sea force event or House act.
+is above, and the Gimp's underground Underway base is below it. The Underway is
+now adopted as a closed-off private nightclub section. Its precise rooms,
+admission mechanism, guest rules, prices, worker duties and connecting passages
+remain open. Admission, club membership, fandom, employment and an actual service
+or Bond must retain their separate scopes. An underground address alone creates
+no Current Sea force event or House act.
 
 Owners: [Boardwalk social constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md),
 [Sympiote foundation](HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md),
@@ -37,13 +39,12 @@ The user selected a tourist-facing red-light waterfront atmosphere on
 owns that adopted tone: a fun destination for visitors and serious business
 for residents, workers and the rival crews.
 
-For the next offer discussion, consider a public cabaret/salon or hosted evening
-on the Pimp/Trooners side, and a private leisure venue or guided Underway visit
-on the Gimp/Gooners side. These are WORKING suggestions. Either crew may run
-adult entertainment, hospitality or other business under its actual disclosed
-terms; no exclusive trade or chosen profession follows from a camp label.
+The Gimp's principal venue direction is adopted: the private Underway nightclub
+section beneath the Boardwalk. Its actual commercial service packages remain
+open. For the Pimp/Troons, a public cabaret/salon or hosted evening remains a
+WORKING suggestion. Other businesses need their own disclosed terms and adoption.
 The existing six candidates may supply supporting goods/services. None has
-been selected as the first catalog by this atmosphere decision.
+been selected as the first catalog by the atmosphere or nightclub decision.
 
 ## Established boundary
 

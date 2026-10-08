@@ -132,8 +132,15 @@ Boardwalk district layering: public Boardwalk above; underground Underway below.
 The [Boardwalk social constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md)
 owns the adopted 2026-10-08 spatial relationship: the Pimp of the Boardwalk and
 the Troons occupy the upper public face; the Gimp of the Underway and the
-Gooners have their primary base beneath it. These are connected social layers
-of the district; exact venues, entrances and access contracts remain open.
+Gooners have their primary base beneath it. The lower district is the adopted
+closed-off private nightclub section. These are connected social layers of the
+district; exact interior rooms, entrances and access contracts remain open.
+
+Underway district venue: closed-off private nightclub section beneath the Boardwalk.
+
+Its admission is controlled; the exact membership, invitation or door-approval
+procedure remains open. This private section is separate from the accessible
+public Boardwalk passage and does not obstruct the Return corridor.
 
 The public Return corridor keeps its existing process and authority. An
 underground visit is optional and grants no discharge, recognition or other

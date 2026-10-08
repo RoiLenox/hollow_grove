@@ -3,7 +3,7 @@
 Status: active additive draft; Boardwalk occupant organization adopted 2026-10-07;
 rival bosses, differentiated offerings, and shared Sympiote entry-stage direction
 adopted 2026-10-08; tourist red-light waterfront atmosphere and crew identity
-clarification adopted 2026-10-08
+clarification, vertical relationship and private Underway nightclub adopted 2026-10-08
 Backbone: `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md`
 Parent authorities: `FLYNT_CONSTITUTION_V2.md`,
 `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md`, and the common Bond
@@ -159,9 +159,9 @@ presentation. They remain rival cultural bosses within the existing House law.
 The same visitor economy reaches both levels. Their competition can concern
 where visitors spend their time, whose business receives repeat patronage and
 whose reputation travels between the public waterfront and the underground
-scene. Precise businesses, entrances, stairs, passages and access terms remain
-open. Balconies or upper rooms for the Pimp and subterranean venues for the Gimp
-are possible designs, not a settled floor plan.
+scene. The Underway's private nightclub-section identity is adopted below;
+precise rooms, entrances, stairs, passages and access terms remain open.
+Balconies or upper rooms for the Pimp are possible designs, not a settled floor plan.
 
 The Gimp and his representatives can appear on the public Boardwalk; the
 underground base does not confine them below. Existing Pimp Court and Gimp
@@ -174,6 +174,37 @@ requirement. The underground district use of Underway is spatial lore; the
 Current Sea's `force.underway` remains its distinct dangerous inverse force.
 Being in an underground venue alone records no force event, successful
 emergence, consent, crew membership or House decision.
+
+### Adopted Underway venue: closed-off private nightclub
+
+Adopted Underway venue, 2026-10-08: closed-off private nightclub section beneath the Boardwalk.
+
+The user defined it:
+
+> I want to say the underway is like the closed off like private nightclub section under the boardwalk
+
+**The Underway** is the district's closed-off private nightclub section beneath
+the public Boardwalk. This settles the lower area's principal business identity.
+It has controlled access and its own private nightlife scene. The Pimp's public
+waterfront trade remains above; the Gimp's club and Gooner following are below.
+
+The Gimp is the cultural boss of this section. Devoted customers and fetish fans
+form its following, with a smaller inner circle working for him. Their particular
+jobs, staffing and service responsibilities still need to be chosen. The private
+club creates a shared setting for their fandom, repeat patronage and rivalry with
+the Pimp's public trade without assigning every visitor to either crew.
+
+Closed-off means that admission is controlled rather than common public passage.
+It leaves the people already inside free to decline participation and leave.
+Whether access uses membership, invitations or approval by door staff remains
+open, along with entry charges, guest rules, publicity, hours and interior rooms.
+The public Neutral Promenade and recovery-to-Return corridor remain accessible.
+
+Admission, any club membership, Gooner affiliation, employment, a specific service
+agreement and a Goon Bond are separate relationships. Naming the venue records
+no completed visit, purchase, membership or booking in an existing case. The
+nightclub's Underway name retains the district meaning distinct from the Current
+Sea's inverse force.
 
 Neither pole is automatically lawful or unlawful. Each may shelter people,
 create belonging, and distribute opportunity. Each may also become coercive:
@@ -189,7 +220,7 @@ depth, with his primary base below the Boardwalk and a visible presence above.
 | Camp | Base and public contact | Shared expression | What they compete to provide |
 |---|---|---|---|
 | Pimp and Troons (historically Trooners) | upper public Boardwalk; Pimp Court contact | Aura, adult sex work, public presence, patronage and invitation | red-light trade, visibility and reputation |
-| Gimp and Gooners | underground Underway; Gimp Retinue public contact | Current, rubber persona, fetish culture, loyalty and private presence | adult leisure and a recurring subculture; exact businesses remain open |
+| Gimp and Gooners | private Underway nightclub section beneath the Boardwalk; Gimp Retinue public contact | Current, rubber persona, fetish culture, loyalty and private presence | adopted private nightclub; specific services and terms remain open |
 
 They are rivals for influence, public credit, willing followers, and the trust
 of people returning to the Boardwalk. A disputed welcome, escort, job, or
@@ -221,7 +252,7 @@ directions**, grounded in each camp's established expression:
 | Boss and crew | Product direction to discuss | Possible goods and services |
 |---|---|---|
 | Pimp and Troons | adopted adult trans sex-worker crew; exact offerings remain open | sex-work bookings and hosted adult services, with clothing, presentation and introductions as potential supporting trade |
-| Gimp and Gooners | adopted rubber persona, adult subculture and customer/fan following with a smaller working inner circle | fetish-oriented leisure, private hosted experiences and repeat patronage, with specific services still proposed |
+| Gimp and Gooners | adopted private Underway nightclub, rubber persona and customer/fan following with a smaller working inner circle | nightclub services and private hosted experiences; specific packages, workers and prices remain open |
 
 A product may be a physical good or a disclosed service. Buying it, supporting
 the boss, joining the crew, and entering a particular Bond remain separate
@@ -493,13 +524,14 @@ support. Neither crew is assigned every glamorous business, every practical
 job, a fixed moral alignment or exclusive ownership of returning people.
 The Neutral Promenade remains shared civic passage alongside the visitor trade.
 
-Specific cabarets, clubs, adult entertainment or companionship businesses,
-lounges, games, shops, hospitality and Underway visitor services are **WORKING
-venue/product directions**, not an adopted catalog. Individual workers retain
+The Underway's private nightclub-section identity is adopted. Specific Pimp
+venues, additional establishments, club rooms, adult-service packages, games,
+shops and hospitality offers remain **WORKING venue/product directions**, not
+an adopted catalog. Individual workers retain
 their existing identities and boundaries. This choice assigns no particular
 person a profession, supplier role or customer relationship.
 
-Exact establishments, first offers, suppliers, prices, publicity terms,
+Exact room layouts, additional establishments, first offers, suppliers, prices, publicity terms,
 joining/departure customs and dispute examples still need their own decisions.
 The existing commercial candidates remain proposals. This atmosphere creates
 no purchases, debts, membership flags, new offices or permission for coercion.
@@ -628,5 +660,6 @@ The following remain deliberately open:
 7. the exact product lines and commercial relationship of the two bosses,
    including how their offerings support Sympiote development toward different
    Synthesis forms, and what each offering actually provides.
-8. exact upper/lower venues, entrances, connecting passages and access terms
-   within the adopted Boardwalk-above / Underway-below relationship.
+8. the upper establishments, private nightclub rooms, entrances, connecting
+   passages and admission/access terms within the adopted Boardwalk-above /
+   private-Underway-nightclub-below relationship.

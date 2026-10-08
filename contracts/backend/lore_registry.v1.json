@@ -78,6 +78,7 @@
       "required_markers": [
         "Status: canonical and locked.",
         "Boardwalk district layering: public Boardwalk above; underground Underway below.",
+        "Underway district venue: closed-off private nightclub section beneath the Boardwalk.",
         "The Boardwalk and Riptide are type-distinct",
         "Underway is Riptide's dangerous inverse and never\ncounts as successful emergence."
       ]
@@ -262,7 +263,8 @@
         "Adopted atmosphere, 2026-10-08: tourist red-light waterfront.",
         "Adopted crew identity, 2026-10-08: Troons, rubber Gimp and internet-rooted Gooners.",
         "Adopted Gooner structure, 2026-10-08: devoted customers and fetish fans, with a smaller working inner circle.",
-        "Adopted vertical relationship, 2026-10-08: Pimp of the Boardwalk above, Gimp of the Underway below."
+        "Adopted vertical relationship, 2026-10-08: Pimp of the Boardwalk above, Gimp of the Underway below.",
+        "Adopted Underway venue, 2026-10-08: closed-off private nightclub section beneath the Boardwalk."
       ]
     }
   ],
@@ -1706,10 +1708,10 @@
       "status": "partially-adopted",
       "question": "How are the Troons, Gimp and Gooners defined, and what remains open about their businesses and membership?",
       "owner": "FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md",
-      "adopted_scope": "Troons crew identity, rubber Gimp persona, Gooner internet-cultural roots and customer-and-crew structure, and upper/lower district relationship",
-      "adoption_marker": "Adopted vertical relationship, 2026-10-08: Pimp of the Boardwalk above, Gimp of the Underway below.",
-      "user_statement": "I like the idea of there being the Pimp of the Boardwalk and he's about above the boardwalk and the Gimp is below the underground",
-      "remaining_question": "Which specific upper/lower venues, entrances, passages, access terms, services, named workers, duties, compensation and performer roles are adopted, and what exact Gimp attire/speech details apply?"
+      "adopted_scope": "Troons crew identity, rubber Gimp persona, Gooner internet-cultural roots and customer-and-crew structure, upper/lower district relationship and private Underway nightclub identity",
+      "adoption_marker": "Adopted Underway venue, 2026-10-08: closed-off private nightclub section beneath the Boardwalk.",
+      "user_statement": "I want to say the underway is like the closed off like private nightclub section under the boardwalk",
+      "remaining_question": "Which Pimp establishments, club services, rooms, entrances, passages, admission mechanism, guest rules, prices, named workers, duties, compensation and performer roles are adopted, and what exact Gimp attire/speech details apply?"
     },
     {
       "id": "decision.synthesis.foundation-outcomes",
@@ -1795,6 +1797,6 @@
     "source links attest ownership/status, not executed consequences",
     "current source architecture V3 has fourteen combined bindings and zero unbound canonical backend routes; ten gameplay integrations remain deferred",
     "Troons/Troon are current display names; historical Trooners/Trooner and PimpAndTrooners identifiers remain compatible. Adult trans sex-worker crew identity, rubber Gimp persona and Gooner internet-cultural roots are adopted. Gooners are devoted customers and fetish fans with a smaller working inner circle; exact worker duties, roster and commercial offerings remain open. No historical gender or sexual conduct is invented.",
-    "The Pimp's public Boardwalk domain is above and the Gimp's underground Underway base is below. Exact venues, entrances and access contracts remain open. This spatial lore does not create a new runtime route, relocate saved actors, establish force.underway, grant House decisions or report successful emergence."
+    "The Pimp's public Boardwalk domain is above and the Gimp's underground Underway base is below. The Underway is adopted as the closed-off private nightclub section beneath the Boardwalk. Exact club rooms, services, entrances, admission mechanism and access contracts remain open. This spatial lore does not create a new runtime route, relocate saved actors, establish force.underway, grant House decisions or report successful emergence."
   ]
 }

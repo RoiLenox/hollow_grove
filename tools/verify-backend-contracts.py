@@ -21,8 +21,8 @@ PARTIAL_ADOPTIONS = {
         "district atmosphere and business rivalry",
         "Adopted atmosphere, 2026-10-08: tourist red-light waterfront."),
     "decision.boardwalk.crew-identities": (
-        "Troons crew identity, rubber Gimp persona, Gooner internet-cultural roots and customer-and-crew structure, and upper/lower district relationship",
-        "Adopted vertical relationship, 2026-10-08: Pimp of the Boardwalk above, Gimp of the Underway below."),
+        "Troons crew identity, rubber Gimp persona, Gooner internet-cultural roots and customer-and-crew structure, upper/lower district relationship and private Underway nightclub identity",
+        "Adopted Underway venue, 2026-10-08: closed-off private nightclub section beneath the Boardwalk."),
 }
 
 

@@ -80,8 +80,9 @@ roots. Their broad structure is also adopted: devoted customers and fetish fans,
 with a smaller working inner circle. Exact customs, worker duties and commercial
 terms remain pending.
 The Pimp's public domain is above, and the Gimp's underground Underway base is
-below the Boardwalk. That relationship is adopted; precise venues, connecting
-passages and access terms remain open. District location does not substitute
+below the Boardwalk. The Underway's closed-off private nightclub identity is
+also adopted; the Pimp's precise establishments, club rooms, connecting passages
+and admission/access terms remain open. District location does not substitute
 for a Current Sea force event, a House decision or an executed traversal.
 The [decision register](HOLLOW_GROVE_BACKEND_DECISION_REGISTER_V1.md) lists
 those questions with their owning sources.
@@ -89,9 +90,10 @@ those questions with their owning sources.
 architecture-report agreement. It is a read-only administrative validator.
 
 This closes the source inventory/validation pass. Exact open commercial terms,
-Synthesis mechanisms and actor bindings retain their pending status. Verified
-gameplay binding counts stay four/ten; the checker does not execute a new domain
-consequence. The old classification/world-context refinement order and legacy
+Synthesis mechanisms and actor bindings retain their pending status. The
+four earlier gameplay bindings and ten headless backend bindings remain verified, with
+ten further gameplay integrations deferred; the checker does not execute a new
+domain consequence. The old classification/world-context refinement order and legacy
 power-catalog equation claim have been reconciled to their controlling sources.
 
 ## Completed headless handoff implementation
