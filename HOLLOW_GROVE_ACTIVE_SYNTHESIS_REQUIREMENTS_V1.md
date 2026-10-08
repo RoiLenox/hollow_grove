@@ -11,6 +11,17 @@ constitutions and [classification reconciliation](HOLLOW_GROVE_CLASSIFICATION_RE
 The old `HUEMAN_CURRENT_BODY_AURA_MIND_PROGRESSION_MATRIX_V1.md` is
 **LEGACY / DEPRECATED** and cannot define active progression requirements.
 
+## Current discussion priority
+
+The user deferred nightclub admission, staffing and prices, and confirmed a
+return to Sympiote development and the requirements for supported Synthesis
+Forms. Those commercial questions remain open for a later pass.
+
+Start with the boundary between a Sympiote foundation and a young Gargoyle.
+Use its development, Continuance and failure questions to organize the other
+House paths without imposing Gargoyle as everyone's prerequisite. The proposal
+below is review material, not an adopted transformation or implemented case.
+
 ## Independent records
 
 Practitioner is the whole person. Unqualified Current is relational participation;
@@ -140,6 +151,57 @@ capability candidate and safe return. It is not a generalized Flynt progression
 engine or an exact equation for every creature pairing. Its historical archive
 introduction at V4 remains history; the current aggregate writes gameplay V6.
 
+### Gargoyle's existing biological development
+
+The [Hollow Deck](HOLLOW_DECK_V1.md) and `src/hollow_deck_seed.rs` already define
+one cumulative, ordered biological growth path:
+
+```text
+Fangs → Claws → Horns → Wing Buds → Winglets → Wings
+      → Mature Fortification → White Opal Statue Mastery
+```
+
+An established later milestone retains the earlier milestones. The continuous
+development measure supplies no invented percentage thresholds for these
+discrete stages. Fortification is voluntary stillness for protection, rest and
+restoration; White Opal Statue Mastery is its mature expression. Safe flight is
+a separate Wings-or-later Recipe result. Neither a foundation graft nor a
+beginner's Form automatically grants the mature anatomy, mastery or flight.
+
+### WORKING discussion: Sympiote foundation to young Gargoyle
+
+The first question is **when the Gargoyle Form is established relative to its
+biological growth**. The recommended proposal is to establish a young Gargoyle
+Form first and let its specialized anatomy mature through the existing ordered
+path. The alternative for discussion is to use the first developing Gargoyle
+features as the boundary at which the foundation becomes that Form. No option
+is adopted here, and the exact clinical method and Current/Aura equation remain
+open under their owning sources.
+
+| Requirement to define | Existing boundary | Working question for the Gargoyle path |
+|---|---|---|
+| Continuing person | the same host, Name and actual Form history persist | what host-specific foundation result is ready for this change? |
+| Lived practice | Current is relational participation; Aura is inward cultivation | what actual responsibilities and inward disciplines prepare this Warlock tradition? |
+| Readiness | practice observations record their real scope, strain and recovery | what evidence supports controlled holding, release and repeated use for this host? |
+| Recipe and compatibility | access to a Recipe alone establishes no new Form | what method, tissue/material evidence and compatibility establish a viable young Gargoyle? |
+| Clinical establishment | major Transfiguration requires technical and lived viability | what intervention, consent, scope, monitoring and actual result establish the new Form? |
+| Biological maturity | the existing eight milestones remain ordered and cumulative | does establishment precede the first milestone, and what establishes each later milestone? |
+| Continuance | maintenance, renewal, environment and the Form's Ways sustain the living body | what ongoing practice and care keep this particular young Form coherent? |
+| Stopping and failure | refusal, host rejection, Sympiote rejection, partial/failed integration and Overgrowth are distinct | what can stop safely, what needs revision, and who retains follow-up responsibility? |
+| Additional capabilities | flight, learned Aura, Weapon refinement and recognition are separate | what later evidence and methods establish each requested capacity? |
+
+Candidate lived practice for discussion is taking responsibility for holding
+or protecting something under an agreed load, paired with deliberate control
+of one's own effort, stillness and release. This is a proposed functional
+preparation, not a named Current/Aura equation, automatic eligibility test or
+grant of mature Fortification. It must be adapted to the actual person and task.
+
+Keep **Form establishment**, **biological maturity** and **additional
+learned/Recipe capabilities** attributable to their actual results. Do not infer
+a new body from interest, shopping, fandom, membership or the first foundation
+case's comfortable-use condition. The existing Deck can describe growth, but
+this generalized Sympiote-to-Gargoyle transition is not yet implemented or verified.
+
 ## Failure and continuity requirements
 
 Preserve host rejection, Sympiote rejection, partial integration, failed
@@ -160,5 +222,7 @@ identity and recognition retain separate authority owners.
 The register lists exact unresolved mechanisms and qualifications per family.
 Next work should resolve those fields from their owners, then model applicable
 records and validators. A complete source crosswalk does not claim every Form
-has an implemented or verified transition. The current four lore execution
-bindings and ten route gaps remain unchanged by this documentation pass.
+has an implemented or verified transition. Current architecture V3 retains four
+earlier gameplay bindings and ten headless handoff bindings, with zero unbound
+canonical backend routes and ten deferred gameplay integrations. Those verified
+services do not make this proposed Form transition an executed case.

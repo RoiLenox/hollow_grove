@@ -19,6 +19,13 @@ Reusable domain-rule and persistence implementation can be a separate backend
 pass when requested. Authored contracts can be completed and audited before
 any such implementation. A proposed model is not an executed consequence.
 
+Current priority, 2026-10-08: defer nightclub admission, staffing and prices.
+The user confirmed returning to Sympiote development and supported Synthesis
+requirements. Use the [active requirements workshop](HOLLOW_GROVE_ACTIVE_SYNTHESIS_REQUIREMENTS_V1.md),
+beginning with when a young Gargoyle is established and how it later matures.
+Existing growth milestones and House authority remain controlling; proposed
+readiness, methods and failure cases need discussion before adoption or execution.
+
 ## Verified starting point
 
 The V7 code checkpoint is `8c13a270ad3c4a24f7960d20827962a2fdc09042`.

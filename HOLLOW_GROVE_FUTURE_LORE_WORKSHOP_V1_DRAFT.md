@@ -3,6 +3,12 @@ The user has excluded art and game production from the next passes. Use the
 [Backend Completion Plan](HOLLOW_GROVE_BACKEND_COMPLETION_PLAN_V1.md) for the
 current order; presentation proposals below are deferred.
 
+Current priority, 2026-10-08: the user deferred nightclub admission, staffing
+and prices, and confirmed a return to Sympiote development and supported
+Synthesis requirements. Start with [young-Gargoyle establishment and biological
+maturity](HOLLOW_GROVE_ACTIVE_SYNTHESIS_REQUIREMENTS_V1.md). The later workshop
+table is a broader backlog, not a requirement to finish club operations first.
+
 Adopted bounded update, 2026-10-08: [Mercy Deep's survey-frame case](STONEBEND_SURVEY_FRAME_FIRST_CASE_V1.md)
 is now implemented with Tess Splice as workshop keeper/executor/recovery owner
 and Ivo Mark as independent recorder. Stonebend registration and Sandmanor proof

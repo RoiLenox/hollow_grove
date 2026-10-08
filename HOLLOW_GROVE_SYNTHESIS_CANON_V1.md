@@ -79,7 +79,7 @@ Doctrine, proof, consent, Clearance, Title, office, or recognition.
 The user's 2026-10-08 additive lore direction introduces a shared early
 **Sympiote** stage for pursuing supported Synthesis forms across the setting,
 with the initial Sympiote form established at Glaüshouse.
-The [Sympiote Foundation proposal](HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md)
+The [Sympiote Foundation contract](HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md)
 defines its clinical beginning, bounded practice, and implemented first case.
 The person living in this Form remains a practitioner; the direction adds no
 new Level 1 equation, numerical level,

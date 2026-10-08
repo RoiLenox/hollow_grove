@@ -172,14 +172,21 @@ Winged Gargoyle discovery/flight contract remain unchanged.
 
 ## 9. Boardwalk bosses, crews, and offerings
 
-The Pimp and his Trooners and the Gimp and his Gooners are rival Boardwalk
-operations with different products. People in the Sympiote stage may become
-customers while pursuing development.
+The [Boardwalk social constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md)
+owns the current rival identities: the Pimp and his adult trans sex-worker
+Troons on the public Boardwalk above, and the rubber-clad Gimp with his Gooners
+in the private Underway nightclub section below. Gooners are devoted customers
+and fetish fans with a smaller working inner circle. Historical Trooners names
+and camp identifiers remain compatible. People in the Sympiote stage may become
+customers while pursuing development; that records no automatic crew identity.
 
 Proposed product emphases are qualified teaching, presentation, demonstrations,
 and introductions around the Pimp; equipment, provenanced materials, practical
 work, and dependable support around the Gimp. Actual stock, prices, suppliers,
 teacher qualifications, contracts, and after-sale promises remain to design.
+These are supporting proposals, not the crews' adopted defining occupations.
+The user has deferred club admission, staffing and prices while discussing
+later Synthesis development.
 
 The implemented `ConsiderBoardwalkOffer` records that the person considered
 one camp's offering. Both can be considered. It does not perform a purchase,

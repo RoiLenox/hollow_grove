@@ -5,6 +5,12 @@ is adopted by appearing here. Source ownership is retained per question.
 Scope: the current Boardwalk, Synthesis and object-lineage pass; the broader
 future lore workshop can contain additional open topics.
 
+Current priority, 2026-10-08: the user deferred nightclub admission, staffing
+and prices and confirmed discussion of Sympiote development and Synthesis
+requirements. Start with the young-Gargoyle establishment/maturity boundary in
+[the active requirements workshop](HOLLOW_GROVE_ACTIVE_SYNTHESIS_REQUIREMENTS_V1.md).
+The proposed choice does not resolve an exact equation or implement a transition.
+
 ## Boardwalk
 
 ### decision.boardwalk.offer-selection
@@ -127,6 +133,12 @@ What exact branch realization, renewal, regression and privilege records are req
 Owner: [FLYNT_CONSTITUTION_V2.md](FLYNT_CONSTITUTION_V2.md).
 
 What exact base creature equations and realization methods are independently supported?
+
+First discussion: is a young Gargoyle Form established before its first growth
+milestone, or do the first developing Gargoyle features mark the change from
+foundation to Gargoyle? The proposed Form-first model is WORKING. In either
+discussion option, retain the eight existing milestones, host continuity,
+actual clinical results, Continuance and separate safe-flight requirements.
 
 ### decision.synthesis.mariner-tradition
 
