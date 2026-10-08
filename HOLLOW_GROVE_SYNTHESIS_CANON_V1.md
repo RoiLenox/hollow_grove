@@ -78,13 +78,28 @@ Doctrine, proof, consent, Clearance, Title, office, or recognition.
 
 The user's 2026-10-08 additive lore direction introduces a shared early
 **Sympiote** stage for pursuing supported Synthesis forms across the setting,
-with the initial Sympiote form established at Glaüshouse.
+with the initial Sympiote form established at Glaüshouse. The user's further
+clarification adopts Sympiote Grade I → Grade II → Grade III before later
+supported specialization, including distinct Gargoyle, Werewolf and
+Mariner/Merman branches, with additional branches open. Grade meanings and
+promotion mechanics remain open in the owning foundation contract. These grades
+do not renumber Synthesis Levels 1/2 or any House's existing biological path.
 The [Sympiote Foundation contract](HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md)
 defines its clinical beginning, bounded practice, and implemented first case.
 The person living in this Form remains a practitioner; the direction adds no
 new Level 1 equation, numerical level,
 executable Nature, or automatic realization. Existing House paths and
 higher/composite rules continue to govern.
+
+Current Form boundary, 2026-10-08: Gargoyle and Werewolf never combine.
+
+The earlier Flynt three-Form combination expression below is historical context
+for the unresolved higher-state model, not permission to combine these bodies.
+Its body requirements require revision against the user's current boundary;
+no replacement method is adopted. Manticorp/Chimera names, offices, existing
+identities and historical provenance are not rewritten by choosing a replacement
+body method that remains open. Keep Current Form, Aura and Weapon questions
+separate, and do not claim this unresolved model is a verified grade transition.
 
 ## Faculties are an orthogonal axis
 

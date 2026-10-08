@@ -5,8 +5,10 @@ current order; presentation proposals below are deferred.
 
 Current priority, 2026-10-08: the user deferred nightclub admission, staffing
 and prices, and confirmed a return to Sympiote development and supported
-Synthesis requirements. Start with [young-Gargoyle establishment and biological
-maturity](HOLLOW_GROVE_ACTIVE_SYNTHESIS_REQUIREMENTS_V1.md). The later workshop
+Synthesis requirements. The user adopted Sympiote Grades I, II and III before
+distinct Gargoyle, Werewolf and Mariner/Merman branches, with further branches
+open. Gargoyle and Werewolf never combine. Start with [grade definitions and
+branch requirements](HOLLOW_GROVE_ACTIVE_SYNTHESIS_REQUIREMENTS_V1.md). The later workshop
 table is a broader backlog, not a requirement to finish club operations first.
 
 Adopted bounded update, 2026-10-08: [Mercy Deep's survey-frame case](STONEBEND_SURVEY_FRAME_FIRST_CASE_V1.md)
@@ -492,8 +494,8 @@ results rather than invent victories or prize Forms.
 
 The backend register in `contracts/backend/lore_registry.v1.json` now indexes
 six candidate offers, sixteen Synthesis requirement families, ten headless-bound
-route contracts and twenty decision families, eighteen wholly open and two
-partially adopted for the Boardwalk atmosphere and crew identities. Its source/status checker is
+route contracts and twenty decision families, seventeen wholly open and three
+partially adopted for the Boardwalk atmosphere, crew identities and Sympiote grades. Its source/status checker is
 `tools/verify-backend-contracts.py`. This review material preserves the open
 status below; it supplies no new art or game production.
 

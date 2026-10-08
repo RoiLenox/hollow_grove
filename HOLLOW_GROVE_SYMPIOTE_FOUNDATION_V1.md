@@ -50,6 +50,62 @@ People can explore practices before entering the clinic. Receiving this Form
 is not a rewrite of every Being's birth or existing body, and starting another
 pursuit does not silently erase a prior maintained Form.
 
+### Adopted Sympiote Grades I, II and III
+
+Adopted Sympiote grade structure, 2026-10-08: Grade I → Grade II → Grade III → distinct supported Synthesis branches.
+
+The user corrected the earlier immediate-young-Gargoyle proposal:
+
+> No so I want like three grades of synpiote like synpiote grade I II III and then you can either be a werewolf and gargoyle or a merman/mariner and maybe more
+
+The foundation has three ordered grades: **Sympiote Grade I**, **Sympiote
+Grade II**, and **Sympiote Grade III**. The learner remains in the Sympiote
+stage through these grades, then may pursue a supported later Synthesis Form.
+The named branches are **Gargoyle**, **Werewolf**, and **Mariner/Merman**.
+Merman and Mariner name the same maritime Form. Additional supported branches
+remain possible; this list does not close the earlier House exploration paths.
+
+```text
+Sympiote Grade I → Sympiote Grade II → Sympiote Grade III
+                                      ├─ Gargoyle
+                                      ├─ Werewolf
+                                      ├─ Mariner / Merman
+                                      └─ further supported branches: open
+```
+
+The user also clarified:
+
+> No gargoyle and werewolf never combine
+
+Adopted Form separation, 2026-10-08: Gargoyle and Werewolf never combine.
+
+Gargoyle and Werewolf are distinct branches and never combine into a shared
+Form. Grade III does not produce a Gargoyle–Werewolf hybrid. Any earlier
+body-combination requirement that uses both must be reconciled with this rule;
+no replacement Manticorp body requirement is chosen by this clarification.
+
+Grades are foundation-development designations, separate from Synthesis Levels
+1 and 2, Stonebend's eight pairings, House office/rank and a later Form's own
+biological milestones. A grade records neither automatic transformation nor
+universal compatibility with all branches. Each later Form still needs its
+own applicable Recipe, compatibility, consent, actual establishment and care.
+
+#### WORKING grade meanings for discussion
+
+| Grade | Proposed meaning | Detail still open |
+|---|---|---|
+| I | initial host-specific living foundation | what assessment and actual integration evidence establish the grade? |
+| II | stable control of foundation adaptations | what repeatable use, release, rest and strain evidence establish the grade? |
+| III | prepared to attempt a supported Synthesis branch | what branch-specific compatibility, method and care evidence establish readiness? |
+
+Only the three-grade structure and separate named branches are adopted. These
+grade meanings, promotion conditions and exact later-Form methods remain
+WORKING. No XP amount, timer, automatic promotion or universal grade test is
+defined here. The initial successful foundation/practice case predates grading;
+its archive establishes no recorded grade or promotion. Keep that history
+ungraded rather than retroactively assigning I, II or III. Runtime grade
+advancement and generalized branch transitions are not yet implemented.
+
 ## 3. First appearance and capacity
 
 The adopted design keeps the person recognizable, with functional changes in

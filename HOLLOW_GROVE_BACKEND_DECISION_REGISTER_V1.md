@@ -7,9 +7,12 @@ future lore workshop can contain additional open topics.
 
 Current priority, 2026-10-08: the user deferred nightclub admission, staffing
 and prices and confirmed discussion of Sympiote development and Synthesis
-requirements. Start with the young-Gargoyle establishment/maturity boundary in
+requirements. The user rejected the immediate-young-Gargoyle proposal in favor
+of Sympiote Grades I, II and III before distinct supported branches. Start with
+grade definitions and promotion criteria in
 [the active requirements workshop](HOLLOW_GROVE_ACTIVE_SYNTHESIS_REQUIREMENTS_V1.md).
-The proposed choice does not resolve an exact equation or implement a transition.
+Gargoyle and Werewolf never combine. Their higher-state body requirements need
+revision; no replacement Manticorp method is chosen.
 
 ## Boardwalk
 
@@ -56,8 +59,8 @@ is now in [Boardwalk Social Constitution](FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1
 
 **Still open:** exact joining/departure customs, reputation practices and their
 records. The tone choice selects no particular product, venue, worker or price.
-The register has eighteen wholly open entries and two partially adopted
-entries, including the crew clarification below. Twenty families still contain
+The register has seventeen wholly open entries and three partially adopted
+entries, including the crew and Sympiote-grade clarifications. Twenty families still contain
 some unresolved detail.
 
 ### decision.boardwalk.crew-identities
@@ -96,7 +99,16 @@ rewrites no historical patronage, gender identity or sexual conduct.
 
 Owner: [HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md](HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md).
 
-Which additional host-specific rejection, partial integration and care cases should be modeled?
+**Partially adopted, 2026-10-08:** the ordered Sympiote Grade I, II and III
+foundation precedes supported specialization, including separate Gargoyle,
+Werewolf and Mariner/Merman branches, with further branches open. Gargoyle and
+Werewolf never combine. The earlier immediate-young-Gargoyle proposal is superseded.
+
+**Still open:** grade meanings, promotion evidence, branch-specific readiness
+and methods, additional host rejection/partial integration/care cases, and any
+further branches. I = initial foundation, II = stable control and III = prepared
+to attempt a branch are WORKING meanings. The existing foundation episode is
+ungraded; its recorded practice does not retroactively establish a promotion.
 
 ### decision.synthesis.stonebend-equations
 
@@ -134,11 +146,9 @@ Owner: [FLYNT_CONSTITUTION_V2.md](FLYNT_CONSTITUTION_V2.md).
 
 What exact base creature equations and realization methods are independently supported?
 
-First discussion: is a young Gargoyle Form established before its first growth
-milestone, or do the first developing Gargoyle features mark the change from
-foundation to Gargoyle? The proposed Form-first model is WORKING. In either
-discussion option, retain the eight existing milestones, host continuity,
-actual clinical results, Continuance and separate safe-flight requirements.
+The graded foundation now comes before each requested specialization. Exact
+Gargoyle, Werewolf and Mariner/Merman methods remain open. Keep distinct branches,
+actual establishment, host continuity, Continuance and each Form's own growth.
 
 ### decision.synthesis.mariner-tradition
 
@@ -151,6 +161,11 @@ Is there a distinct source practitioner tradition for Mariner, and what is its n
 Owner: [HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md](HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md).
 
 What exact independent-track eligibility, maintenance, failure and recovery rules apply?
+
+The earlier body model using Gargoyle and Werewolf together conflicts with the
+current no-combination boundary and needs revision before a new transition can
+use it. Manticorp body requirements remain unresolved. A single-branch mastery
+replacement has been offered for discussion, not adopted.
 
 ## Object
 

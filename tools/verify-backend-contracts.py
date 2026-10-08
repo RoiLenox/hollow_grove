@@ -14,15 +14,22 @@ ROLES = {"active-constitution", "active-canon", "ratified-amendment", "active-cr
          "working-proposal", "source-backed-index"}
 REQUIREMENT_STATUSES = {"bounded-case-verified", "source-defined-mechanics-open",
                         "investiture-open", "general-mechanics-open", "identity-pair-only"}
-REFINEMENT = "Gargoyle + Werewolf + Mariner/Merman → Manticorp → Chimera"
-OLD_REFINEMENT = "Gargoyle + Werewolf + Mariner/Merman → Chimera → Manticore"
+# Historical tier/provenance text; its body-composition model needs revision.
+HISTORICAL_REFINEMENT = "Gargoyle + Werewolf + Mariner/Merman → Manticorp → Chimera"
+SUPERSEDED_REFINEMENT_ORDER = "Gargoyle + Werewolf + Mariner/Merman → Chimera → Manticore"
 PARTIAL_ADOPTIONS = {
     "decision.boardwalk.rivalry-tone": (
+        "FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md",
         "district atmosphere and business rivalry",
         "Adopted atmosphere, 2026-10-08: tourist red-light waterfront."),
     "decision.boardwalk.crew-identities": (
+        "FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md",
         "Troons crew identity, rubber Gimp persona, Gooner internet-cultural roots and customer-and-crew structure, upper/lower district relationship and private Underway nightclub identity",
         "Adopted Underway venue, 2026-10-08: closed-off private nightclub section beneath the Boardwalk."),
+    "decision.synthesis.foundation-outcomes": (
+        "HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md",
+        "three ordered Sympiote foundation grades before distinct supported branches, including Gargoyle, Werewolf and Mariner/Merman; Gargoyle and Werewolf never combine",
+        "Adopted Sympiote grade structure, 2026-10-08: Grade I → Grade II → Grade III → distinct supported Synthesis branches."),
 }
 
 
@@ -119,10 +126,10 @@ def validate(root, data, architecture=None):
         if decision["status"] == "partially-adopted":
             adoption = PARTIAL_ADOPTIONS.get(decision["id"])
             require(adoption is not None
-                    and decision["owner"] == "FLYNT_BOARDWALK_SOCIAL_CONSTITUTION_V1_DRAFT.md"
-                    and decision.get("adopted_scope") == adoption[0],
+                    and decision["owner"] == adoption[0]
+                    and decision.get("adopted_scope") == adoption[1],
                     "unrecorded or overbroad partial adoption")
-            require(decision.get("adoption_marker") == adoption[1],
+            require(decision.get("adoption_marker") == adoption[2],
                     "partial adoption has no exact source marker")
             owner_text = owned(decision["owner"], active=True)
             require(decision["adoption_marker"] in owner_text
@@ -139,6 +146,26 @@ def validate(root, data, architecture=None):
 
     synthesis = data["synthesis"]
     canon = owned(synthesis["source"], active=True)
+    grades = synthesis.get("sympiote_grades")
+    require(isinstance(grades, dict) and set(grades) == {
+        "owner", "grades", "position", "branch_examples", "additional_branches",
+        "forbidden_combined_forms", "criteria_status", "runtime_advancement_implemented",
+        "historical_cases_graded", "higher_state_body_requirements"}, "invalid Sympiote grade index")
+    require(grades["owner"] == "HOLLOW_GROVE_SYMPIOTE_FOUNDATION_V1.md"
+            and PARTIAL_ADOPTIONS["decision.synthesis.foundation-outcomes"][2] in owned(grades["owner"], active=True),
+            "Sympiote grade structure lacks its owning adoption")
+    require(grades["grades"] == ["I", "II", "III"]
+            and grades["position"] == "before-supported-form-specialization", "Sympiote grade order/position changed")
+    require(grades["branch_examples"] == ["Gargoyle", "Werewolf", "Mariner/Merman"]
+            and grades["additional_branches"] == "open"
+            and grades["forbidden_combined_forms"] == [["Gargoyle", "Werewolf"]], "distinct Sympiote branches conflated")
+    require("Adopted Form separation, 2026-10-08: Gargoyle and Werewolf never combine." in owned(grades["owner"]),
+            "missing adopted Form separation")
+    require(grades["criteria_status"] == "open"
+            and grades["runtime_advancement_implemented"] is False
+            and grades["historical_cases_graded"] is False, "unadopted grade criteria, runtime promotion or historical grading claimed")
+    require(grades["higher_state_body_requirements"] == "needs-revision",
+            "unresolved higher-state body requirements falsely reconciled")
     section = canon.split("### Locked Current/Aura level pairing", 1)[1].split("### Sandmanor", 1)[0]
     actual_pairs = [{"level": int(level), "current": current, "aura": aura}
                     for level, current, aura in re.findall(r"^\| ([1-8]) \| (\w+) \| (\w+) \|$", section, re.M)]
@@ -158,7 +185,10 @@ def validate(root, data, architecture=None):
     for name in ("HOLLOW_GROVE_SYNTHESIS_CANON_V1.md", "HOLLOW_GROVE_CLASSIFICATION_RECONCILIATION_V1.md",
                  "CURRENT_SYNTHESIS_HOLLOW_GROVE_WORLD_CONTEXT_v0.1.0.md"):
         text = owned(name, active=True)
-        require(REFINEMENT in text and OLD_REFINEMENT not in text, f"contradictory active Flynt order in {name}")
+        require(HISTORICAL_REFINEMENT in text and SUPERSEDED_REFINEMENT_ORDER not in text,
+                f"historical Flynt tier-order record differs in {name}")
+        require("Current Form boundary, 2026-10-08: Gargoyle and Werewolf never combine." in text,
+                f"missing current Form boundary in {name}")
     require("six locked equations" not in owned("HOLLOW_GROVE_POWER_RECIPE_CONSTITUTION_V1.md"),
             "legacy power catalog manufactures active Sandmanor equations")
     mirror = safe_source(root, "artifacts/current_synthesis_world_context.md")
@@ -255,6 +285,9 @@ def validate(root, data, architecture=None):
             "open_decisions": sum(d["status"] == "open" for d in decisions),
             "partially_adopted_decisions": sum(d["status"] == "partially-adopted" for d in decisions),
             "unresolved_decision_families": len(decisions),
+            "sympiote_grades": grades["grades"], "grade_runtime_advancement_implemented": False,
+            "historical_foundation_cases_graded": False,
+            "higher_state_body_requirements": "needs-revision; not reconciled with the old executable constitution",
             "architecture_crosscheck": "passed" if architecture else "not supplied",
             "source_sha256": digests, "world_state_mutated": False,
             "attestation": "authored source/status consistency; no new domain execution or proposal adoption"}

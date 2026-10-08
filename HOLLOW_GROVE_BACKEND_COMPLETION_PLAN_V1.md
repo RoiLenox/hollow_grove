@@ -22,7 +22,10 @@ any such implementation. A proposed model is not an executed consequence.
 Current priority, 2026-10-08: defer nightclub admission, staffing and prices.
 The user confirmed returning to Sympiote development and supported Synthesis
 requirements. Use the [active requirements workshop](HOLLOW_GROVE_ACTIVE_SYNTHESIS_REQUIREMENTS_V1.md),
-beginning with when a young Gargoyle is established and how it later matures.
+beginning with the adopted Sympiote Grade I → II → III foundation and separate
+later branches. The immediate-young-Gargoyle proposal is superseded. Grade
+meanings and promotion criteria remain open. Gargoyle and Werewolf never combine;
+the earlier higher-state body-combination requirements need revision.
 Existing growth milestones and House authority remain controlling; proposed
 readiness, methods and failure cases need discussion before adoption or execution.
 
@@ -80,8 +83,8 @@ and [object-lineage requirements](STONEBEND_OBJECT_LINEAGE_BACKEND_REQUIREMENTS_
 now provide source-backed review material. The authored
 [backend register](contracts/backend/lore_registry.v1.json) includes six candidate
 offers, sixteen requirement families, ten historical handoff contracts and twenty decision families.
-Eighteen are wholly open; two entries record partial adoption of the Boardwalk
-atmosphere and crew identities. Troons are the Pimp's adult trans sex-worker
+Seventeen are wholly open; three entries record partial adoption of the Boardwalk
+atmosphere, crew identities and Sympiote grade/branch structure. Troons are the Pimp's adult trans sex-worker
 crew, the Gimp has the classic rubber persona and Gooners retain internet-cultural
 roots. Their broad structure is also adopted: devoted customers and fetish fans,
 with a smaller working inner circle. Exact customs, worker duties and commercial

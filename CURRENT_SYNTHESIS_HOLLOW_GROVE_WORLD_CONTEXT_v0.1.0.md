@@ -1,5 +1,17 @@
 # CURRENT SYNTHESIS / HOLLOW GROVE
 
+Current Form boundary, 2026-10-08: Gargoyle and Werewolf never combine.
+
+The user's current clarification adopts Sympiote Grades I, II and III before
+distinct supported branches. The earlier three-Form body-combination model
+below requires revision and is not a usable requirement for a new graded
+transition. No replacement Manticorp body method is adopted. Existing tier
+names, institutional law, identities, historical provenance and independent
+Aura/Weapon questions retain their own records. Old executable definitions and
+archives remain compatibility snapshots; they do not already enforce this
+new body boundary. The Sympiote foundation owns the current grade structure.
+
+
 # Rock-Bottom World, Material, Biological, Social, Medical, and Gameplay Context
 
 Use this as authoritative design context for the TUI, subordinate to

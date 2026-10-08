@@ -68,8 +68,8 @@ class BackendContractTests(unittest.TestCase):
 
     def test_partial_tone_adoption_cannot_erase_customs_or_select_products(self):
         report = audit.validate(ROOT, self.data)
-        self.assertEqual(report["open_decisions"], 18)
-        self.assertEqual(report["partially_adopted_decisions"], 2)
+        self.assertEqual(report["open_decisions"], 17)
+        self.assertEqual(report["partially_adopted_decisions"], 3)
         self.assertEqual(report["unresolved_decision_families"], 20)
         def tone(data):
             return next(d for d in data["open_decisions"] if d["id"] == "decision.boardwalk.rivalry-tone")
@@ -86,6 +86,30 @@ class BackendContractTests(unittest.TestCase):
         self.rejected(lambda d: crew(d).update(adopted_scope="all guests automatically become Gooners and have agreed to all club services"), "overbroad partial")
         self.rejected(lambda d: crew(d).update(remaining_question=""), "erases remaining decision")
         self.rejected(lambda d: crew(d).update(user_statement="invented undisclosed adoption"), "source/user statement")
+
+    def test_grade_index_rejects_extra_grades_hybrids_and_invented_progress(self):
+        def grades(data):
+            return data["synthesis"]["sympiote_grades"]
+        self.rejected(lambda d: grades(d).update(grades=["I", "III", "II"]), "grade order/position")
+        self.rejected(lambda d: grades(d)["grades"].append("IV"), "grade order/position")
+        self.rejected(lambda d: grades(d).update(branch_examples=["Gargoyle/Werewolf", "Mariner/Merman"]), "branches conflated")
+        self.rejected(lambda d: grades(d).update(forbidden_combined_forms=[]), "branches conflated")
+        for field in ("runtime_advancement_implemented", "historical_cases_graded"):
+            with self.subTest(field=field):
+                self.rejected(lambda d: grades(d).update({field: True}), "runtime promotion or historical grading")
+        self.rejected(lambda d: grades(d).update(criteria_status="adopted"), "unadopted grade criteria")
+
+    def test_grade_adoption_keeps_owner_and_body_review_explicit(self):
+        def decision(data):
+            return next(r for r in data["open_decisions"] if r["id"] == "decision.synthesis.foundation-outcomes")
+        self.rejected(lambda d: decision(d).update(owner="FLYNT_CONSTITUTION_V2.md"), "overbroad partial")
+        self.rejected(lambda d: decision(d).update(remaining_question=""), "erases remaining decision")
+        self.rejected(lambda d: d["synthesis"]["sympiote_grades"].update(higher_state_body_requirements="reconciled"), "falsely reconciled")
+        report = audit.validate(ROOT, self.data)
+        self.assertEqual(report["sympiote_grades"], ["I", "II", "III"])
+        self.assertFalse(report["grade_runtime_advancement_implemented"])
+        self.assertFalse(report["historical_foundation_cases_graded"])
+        self.assertIn("not reconciled", report["higher_state_body_requirements"])
 
     def test_relative_escape_absolute_path_and_symlink_escape_fail(self):
         for name in ("../secret", "/etc/passwd", "a/../../b", "a\\b"):

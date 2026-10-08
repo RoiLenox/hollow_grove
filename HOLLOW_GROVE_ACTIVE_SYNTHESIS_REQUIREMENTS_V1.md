@@ -17,10 +17,11 @@ The user deferred nightclub admission, staffing and prices, and confirmed a
 return to Sympiote development and the requirements for supported Synthesis
 Forms. Those commercial questions remain open for a later pass.
 
-Start with the boundary between a Sympiote foundation and a young Gargoyle.
-Use its development, Continuance and failure questions to organize the other
-House paths without imposing Gargoyle as everyone's prerequisite. The proposal
-below is review material, not an adopted transformation or implemented case.
+The user rejected the immediate-young-Gargoyle proposal and adopted **Sympiote
+Grade I → Grade II → Grade III**, followed by distinct supported branches:
+Gargoyle, Werewolf and Mariner/Merman, with further branches open. Gargoyle and
+Werewolf never combine. Start by defining grade meanings and promotion evidence,
+then the requirements for each branch. No Gargoyle-first prerequisite is imposed.
 
 ## Independent records
 
@@ -51,6 +52,11 @@ adaptation with intervening and subsequent rest. It is not a universal Synthesis
 level. Existing history and prior maintained Forms are preserved. General
 revision, rejection outcomes, discontinuation and collapse need their own
 lawful requirements and verified cases.
+
+The three Sympiote grades precede later Form specialization. Their structure is
+adopted in the foundation contract; exact meanings and promotion conditions are
+open. The existing successful foundation episode remains ungraded. Comfortable
+repeatable use alone is not a recorded Grade II or Grade III promotion.
 
 ## Stonebend's exact correspondence
 
@@ -168,15 +174,18 @@ restoration; White Opal Statue Mastery is its mature expression. Safe flight is
 a separate Wings-or-later Recipe result. Neither a foundation graft nor a
 beginner's Form automatically grants the mature anatomy, mastery or flight.
 
-### WORKING discussion: Sympiote foundation to young Gargoyle
+### Current discussion: graded foundation, then separate Forms
 
-The first question is **when the Gargoyle Form is established relative to its
-biological growth**. The recommended proposal is to establish a young Gargoyle
-Form first and let its specialized anatomy mature through the existing ordered
-path. The alternative for discussion is to use the first developing Gargoyle
-features as the boundary at which the foundation becomes that Form. No option
-is adopted here, and the exact clinical method and Current/Aura equation remain
-open under their owning sources.
+The immediate-young-Gargoyle proposal is superseded by the user's three-grade
+foundation. The person remains a Sympiote through Grades I, II and III before
+pursuing a later Form. Choosing Gargoyle, Werewolf or Mariner/Merman identifies
+a requested branch, not an already established body. Gargoyle and Werewolf
+never combine; no two-Form hybrid or combined first branch is available.
+
+The foundation contract proposes I as initial integration, II as stable
+adaptation control and III as readiness to attempt a supported branch. These
+meanings remain WORKING pending user choice. Grade criteria, exact Current/Aura
+equations and clinical methods remain open under their owning sources.
 
 | Requirement to define | Existing boundary | Working question for the Gargoyle path |
 |---|---|---|
@@ -185,7 +194,7 @@ open under their owning sources.
 | Readiness | practice observations record their real scope, strain and recovery | what evidence supports controlled holding, release and repeated use for this host? |
 | Recipe and compatibility | access to a Recipe alone establishes no new Form | what method, tissue/material evidence and compatibility establish a viable young Gargoyle? |
 | Clinical establishment | major Transfiguration requires technical and lived viability | what intervention, consent, scope, monitoring and actual result establish the new Form? |
-| Biological maturity | the existing eight milestones remain ordered and cumulative | does establishment precede the first milestone, and what establishes each later milestone? |
+| Biological maturity | the existing eight Gargoyle milestones remain ordered and cumulative | after the graded foundation and actual Gargoyle establishment, what establishes each milestone? |
 | Continuance | maintenance, renewal, environment and the Form's Ways sustain the living body | what ongoing practice and care keep this particular young Form coherent? |
 | Stopping and failure | refusal, host rejection, Sympiote rejection, partial/failed integration and Overgrowth are distinct | what can stop safely, what needs revision, and who retains follow-up responsibility? |
 | Additional capabilities | flight, learned Aura, Weapon refinement and recognition are separate | what later evidence and methods establish each requested capacity? |
@@ -200,7 +209,18 @@ Keep **Form establishment**, **biological maturity** and **additional
 learned/Recipe capabilities** attributable to their actual results. Do not infer
 a new body from interest, shopping, fandom, membership or the first foundation
 case's comfortable-use condition. The existing Deck can describe growth, but
-this generalized Sympiote-to-Gargoyle transition is not yet implemented or verified.
+grade advancement and generalized branch transitions are not yet implemented or verified.
+
+### Higher-state body-combination review
+
+The user's no-combination boundary supersedes the bodily interpretation of the
+earlier Gargoyle + Werewolf + Mariner/Merman expression. The existing tier names
+Manticorp → Chimera and institutional identities remain recorded, but their
+future body requirements are unresolved and need revision before use in a new
+transition. Do not infer a new single-branch mastery model, delete a historical
+identity or permit the forbidden combination. The old executable constitution
+and archive definitions remain compatibility records; a source/status audit
+does not attest that their body-composition model already implements this rule.
 
 ## Failure and continuity requirements
 
