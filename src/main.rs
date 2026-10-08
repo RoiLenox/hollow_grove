@@ -691,6 +691,7 @@ fn run_architecture_cli(args: &[String]) -> io::Result<()> {
     use hollow_grove::gameplay::GameApplicationService;
     let mut root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let mut save = None;
+    let mut handoff = None;
     let mut json = false;
     let mut root_seen = false;
     let mut args = args.iter();
@@ -698,7 +699,7 @@ fn run_architecture_cli(args: &[String]) -> io::Result<()> {
         match arg.as_str() {
             "--help" | "-h" => {
                 println!(
-                    "Usage: hollow-grove architecture [--source-root CHECKOUT] [--save GAMEPLAY_ARCHIVE] [--json]\nRead-only source crosswalk and replay-backed coverage. Declared proof files are not test execution."
+                    "Usage: hollow-grove architecture [--source-root CHECKOUT] [--save GAMEPLAY_ARCHIVE] [--handoff BACKEND_ARCHIVE] [--json]\nRead-only source crosswalk and replay-backed coverage. Declared proof files are not test execution."
                 );
                 return Ok(());
             }
@@ -717,6 +718,11 @@ fn run_architecture_cli(args: &[String]) -> io::Result<()> {
             "--save" if save.is_none() => {
                 save = Some(args.next().ok_or_else(|| {
                     io::Error::new(io::ErrorKind::InvalidInput, "--save needs an archive")
+                })?);
+            }
+            "--handoff" if handoff.is_none() => {
+                handoff = Some(args.next().ok_or_else(|| {
+                    io::Error::new(io::ErrorKind::InvalidInput, "--handoff needs an archive")
                 })?);
             }
             "--json" if !json => json = true,
@@ -739,6 +745,14 @@ fn run_architecture_cli(args: &[String]) -> io::Result<()> {
         application.as_ref().map(GameApplicationService::runtime),
     )
     .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error.to_string()))?;
+    let report = if let Some(path) = handoff {
+        let service =
+            hollow_grove::world::lore_handoffs::HandoffService::decode(&fs::read_to_string(path)?)
+                .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error.to_string()))?;
+        report.with_handoff(&service)
+    } else {
+        report
+    };
     if json {
         println!("{}", serde_json::to_string_pretty(&report)?);
     } else {

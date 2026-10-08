@@ -296,9 +296,17 @@ fn player_advice_is_not_resident_acceptance_and_all_three_endings_replay() {
         )
         .unwrap();
         assert!(coverage.source_links_passed);
-        assert_eq!(coverage.schema_version, 2);
-        assert_eq!(coverage.verified_binding_count, 4);
-        assert_eq!(coverage.unbound_canonical_route_count, 10);
+        assert_eq!(coverage.schema_version, 3);
+        assert_eq!(coverage.verified_binding_count, 14);
+        assert_eq!(coverage.unbound_canonical_route_count, 0);
+        assert_eq!(coverage.backend_handoff_binding_count, 10);
+        assert_eq!(coverage.unbound_gameplay_route_count, 10);
+        assert!(
+            coverage
+                .canonical_route_contracts
+                .iter()
+                .all(|c| c.execution_complete_in_supplied_handoff.is_none())
+        );
         assert_eq!(
             coverage
                 .additional_survey_frame_contract

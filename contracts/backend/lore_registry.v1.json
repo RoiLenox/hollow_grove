@@ -209,6 +209,40 @@
         "Status: OPEN decisions",
         "No answer\nis adopted"
       ]
+    },
+    {
+      "path": "docs/BACKEND_HOUSE_HANDOFFS_V1.md",
+      "role": "source-backed-index",
+      "required_markers": [
+        "ten existing historical route contracts",
+        "zero unbound",
+        "no game presentation integration"
+      ]
+    },
+    {
+      "path": "src/world/lore_handoffs.rs",
+      "role": "source-backed-index",
+      "required_markers": [
+        "pub struct HandoffService",
+        "pub enum Consequence",
+        "pub fn decode"
+      ]
+    },
+    {
+      "path": "tests/backend_house_handoffs.rs",
+      "role": "source-backed-index",
+      "required_markers": [
+        "stairway_all_three_scoped_dispositions",
+        "cli_replays_only_the_supplied_handoff_without_writing_it"
+      ]
+    },
+    {
+      "path": "src/architecture_audit.rs",
+      "role": "source-backed-index",
+      "required_markers": [
+        "backend_handoff_binding_count",
+        "unbound_gameplay_route_count"
+      ]
     }
   ],
   "synthesis": {
@@ -811,7 +845,7 @@
       "authority_source": "FLYNT_CONSTITUTION_V2.md",
       "definition_owner": "src/world/lived_lore.rs",
       "related_module": "src/world/flynt.rs",
-      "binding_status": "unverified",
+      "binding_status": "headless-backend-bound",
       "actor_bindings_complete": false,
       "trigger": "a worker demonstrates a stable public function without claiming office",
       "choices": [
@@ -878,7 +912,11 @@
         "review of applicable existing domain records",
         "versioned persistence mapping",
         "headless replay and invalid-history witnesses"
-      ]
+      ],
+      "backend_owner": "src/world/lore_handoffs.rs",
+      "backend_proof_source": "tests/backend_house_handoffs.rs",
+      "backend_contract_source": "docs/BACKEND_HOUSE_HANDOFFS_V1.md",
+      "gameplay_binding": null
     },
     {
       "lore_id": "lore.flynt.basin-dual-expression",
@@ -887,7 +925,7 @@
       "authority_source": "FLYNT_CONSTITUTION_V2.md",
       "definition_owner": "src/world/lived_lore.rs",
       "related_module": "src/world/flynt.rs",
-      "binding_status": "unverified",
+      "binding_status": "headless-backend-bound",
       "actor_bindings_complete": false,
       "trigger": "urban and rural institutions claim different lawful uses for one delivery",
       "choices": [
@@ -954,7 +992,11 @@
         "review of applicable existing domain records",
         "versioned persistence mapping",
         "headless replay and invalid-history witnesses"
-      ]
+      ],
+      "backend_owner": "src/world/lore_handoffs.rs",
+      "backend_proof_source": "tests/backend_house_handoffs.rs",
+      "backend_contract_source": "docs/BACKEND_HOUSE_HANDOFFS_V1.md",
+      "gameplay_binding": null
     },
     {
       "lore_id": "lore.stonebend.aura-ridge-public-name",
@@ -963,7 +1005,7 @@
       "authority_source": "STONEBEND_CONSTITUTION_V2.md",
       "definition_owner": "src/world/lived_lore.rs",
       "related_module": "src/world/stonebend.rs",
-      "binding_status": "unverified",
+      "binding_status": "headless-backend-bound",
       "actor_bindings_complete": false,
       "trigger": "a citizen asks the exchange to use a changed civic Name",
       "choices": [
@@ -1030,7 +1072,11 @@
         "review of applicable existing domain records",
         "versioned persistence mapping",
         "headless replay and invalid-history witnesses"
-      ]
+      ],
+      "backend_owner": "src/world/lore_handoffs.rs",
+      "backend_proof_source": "tests/backend_house_handoffs.rs",
+      "backend_contract_source": "docs/BACKEND_HOUSE_HANDOFFS_V1.md",
+      "gameplay_binding": null
     },
     {
       "lore_id": "lore.stonebend.mnt-aura-illegal-hollowing",
@@ -1039,7 +1085,7 @@
       "authority_source": "STONEBEND_CONSTITUTION_V2.md",
       "definition_owner": "src/world/lived_lore.rs",
       "related_module": "src/world/stonebend.rs",
-      "binding_status": "unverified",
+      "binding_status": "headless-backend-bound",
       "actor_bindings_complete": false,
       "trigger": "an interior breach reveals extracted Hollow with missing custody",
       "choices": [
@@ -1106,7 +1152,11 @@
         "review of applicable existing domain records",
         "versioned persistence mapping",
         "headless replay and invalid-history witnesses"
-      ]
+      ],
+      "backend_owner": "src/world/lore_handoffs.rs",
+      "backend_proof_source": "tests/backend_house_handoffs.rs",
+      "backend_contract_source": "docs/BACKEND_HOUSE_HANDOFFS_V1.md",
+      "gameplay_binding": null
     },
     {
       "lore_id": "lore.sandmanor.aura-way-public-design",
@@ -1115,7 +1165,7 @@
       "authority_source": "SANDMANOR_CONSTITUTION_V2.md",
       "definition_owner": "src/world/lived_lore.rs",
       "related_module": "src/world/sandmanor.rs",
-      "binding_status": "unverified",
+      "binding_status": "headless-backend-bound",
       "actor_bindings_complete": false,
       "trigger": "a public shelter prototype claims to improve both interior use and exterior access",
       "choices": [
@@ -1182,7 +1232,11 @@
         "review of applicable existing domain records",
         "versioned persistence mapping",
         "headless replay and invalid-history witnesses"
-      ]
+      ],
+      "backend_owner": "src/world/lore_handoffs.rs",
+      "backend_proof_source": "tests/backend_house_handoffs.rs",
+      "backend_contract_source": "docs/BACKEND_HOUSE_HANDOFFS_V1.md",
+      "gameplay_binding": null
     },
     {
       "lore_id": "lore.sandmanor.glausbahn-recovery-design",
@@ -1191,7 +1245,7 @@
       "authority_source": "SANDMANOR_CONSTITUTION_V2.md",
       "definition_owner": "src/world/lived_lore.rs",
       "related_module": "src/world/sandmanor.rs",
-      "binding_status": "unverified",
+      "binding_status": "headless-backend-bound",
       "actor_bindings_complete": false,
       "trigger": "a mobility design works in the laboratory but fails during moving-route recovery",
       "choices": [
@@ -1258,7 +1312,11 @@
         "review of applicable existing domain records",
         "versioned persistence mapping",
         "headless replay and invalid-history witnesses"
-      ]
+      ],
+      "backend_owner": "src/world/lore_handoffs.rs",
+      "backend_proof_source": "tests/backend_house_handoffs.rs",
+      "backend_contract_source": "docs/BACKEND_HOUSE_HANDOFFS_V1.md",
+      "gameplay_binding": null
     },
     {
       "lore_id": "lore.sandmanor.aura-beach-current-sea-role-proof",
@@ -1267,7 +1325,7 @@
       "authority_source": "SANDMANOR_CONSTITUTION_V2.md",
       "definition_owner": "src/world/lived_lore.rs",
       "related_module": "src/world/sandmanor.rs",
-      "binding_status": "unverified",
+      "binding_status": "headless-backend-bound",
       "actor_bindings_complete": false,
       "trigger": "a Satyr-to-Centaur regional role claims safer coastal rescue performance",
       "choices": [
@@ -1334,7 +1392,11 @@
         "review of applicable existing domain records",
         "versioned persistence mapping",
         "headless replay and invalid-history witnesses"
-      ]
+      ],
+      "backend_owner": "src/world/lore_handoffs.rs",
+      "backend_proof_source": "tests/backend_house_handoffs.rs",
+      "backend_contract_source": "docs/BACKEND_HOUSE_HANDOFFS_V1.md",
+      "gameplay_binding": null
     },
     {
       "lore_id": "lore.glaushouse.riptide-emergency-intake",
@@ -1343,7 +1405,7 @@
       "authority_source": "GLAUSHOUSE_CONSTITUTION_V2.md",
       "definition_owner": "src/world/lived_lore.rs",
       "related_module": "src/world/glaushouse.rs",
-      "binding_status": "unverified",
+      "binding_status": "headless-backend-bound",
       "actor_bindings_complete": false,
       "trigger": "Riptide delivers a damaged being whose wishes and exact injury are not yet known",
       "choices": [
@@ -1410,7 +1472,11 @@
         "review of applicable existing domain records",
         "versioned persistence mapping",
         "headless replay and invalid-history witnesses"
-      ]
+      ],
+      "backend_owner": "src/world/lore_handoffs.rs",
+      "backend_proof_source": "tests/backend_house_handoffs.rs",
+      "backend_contract_source": "docs/BACKEND_HOUSE_HANDOFFS_V1.md",
+      "gameplay_binding": null
     },
     {
       "lore_id": "lore.glaushouse.current-seanad-high-risk-clearance",
@@ -1419,7 +1485,7 @@
       "authority_source": "GLAUSHOUSE_CONSTITUTION_V2.md",
       "definition_owner": "src/world/lived_lore.rs",
       "related_module": "src/world/glaushouse.rs",
-      "binding_status": "unverified",
+      "binding_status": "headless-backend-bound",
       "actor_bindings_complete": false,
       "trigger": "a proven design is proposed for irreversible living-subject Synthesis",
       "choices": [
@@ -1486,7 +1552,11 @@
         "review of applicable existing domain records",
         "versioned persistence mapping",
         "headless replay and invalid-history witnesses"
-      ]
+      ],
+      "backend_owner": "src/world/lore_handoffs.rs",
+      "backend_proof_source": "tests/backend_house_handoffs.rs",
+      "backend_contract_source": "docs/BACKEND_HOUSE_HANDOFFS_V1.md",
+      "gameplay_binding": null
     },
     {
       "lore_id": "lore.glaushouse.aura-ridge-recovery-discharge",
@@ -1495,7 +1565,7 @@
       "authority_source": "GLAUSHOUSE_CONSTITUTION_V2.md",
       "definition_owner": "src/world/lived_lore.rs",
       "related_module": "src/world/glaushouse.rs",
-      "binding_status": "unverified",
+      "binding_status": "headless-backend-bound",
       "actor_bindings_complete": false,
       "trigger": "a recovering worker can travel but the receiving worksite requests premature full duty",
       "choices": [
@@ -1562,7 +1632,11 @@
         "review of applicable existing domain records",
         "versioned persistence mapping",
         "headless replay and invalid-history witnesses"
-      ]
+      ],
+      "backend_owner": "src/world/lore_handoffs.rs",
+      "backend_proof_source": "tests/backend_house_handoffs.rs",
+      "backend_contract_source": "docs/BACKEND_HOUSE_HANDOFFS_V1.md",
+      "gameplay_binding": null
     }
   ],
   "open_decisions": [
@@ -1684,6 +1758,6 @@
   "scope_notes": [
     "authored keys are not runtime inventory, Recipe, actor, office or case IDs",
     "source links attest ownership/status, not executed consequences",
-    "current runtime coverage remains four verified lore bindings and ten canonical route gaps"
+    "current source architecture V3 has fourteen combined bindings and zero unbound canonical backend routes; ten gameplay integrations remain deferred"
   ]
 }

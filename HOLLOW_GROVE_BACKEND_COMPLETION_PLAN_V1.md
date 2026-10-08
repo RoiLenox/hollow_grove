@@ -24,7 +24,7 @@ any such implementation. A proposed model is not an executed consequence.
 The V7 code checkpoint is `8c13a270ad3c4a24f7960d20827962a2fdc09042`.
 Its source, installed-package acceptance and 1,687 passing workspace tests are
 recorded in `dist/SURVEY-FRAME-HANDOFF.md`. The read-only architecture audit
-reports 22 bounded components, four verified bindings and ten historical route
+historically reports 22 bounded components, four verified bindings and ten historical route
 contracts without verified execution bindings. Related code may exist for a
 route without satisfying that complete binding.
 
@@ -72,7 +72,7 @@ The [Boardwalk backend draft](BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md),
 and [object-lineage requirements](STONEBEND_OBJECT_LINEAGE_BACKEND_REQUIREMENTS_V1_DRAFT.md)
 now provide source-backed review material. The authored
 [backend register](contracts/backend/lore_registry.v1.json) includes six candidate
-offers, sixteen requirement families, ten route gaps and nineteen open decisions.
+offers, sixteen requirement families, ten historical handoff contracts and nineteen open decisions.
 The [decision register](HOLLOW_GROVE_BACKEND_DECISION_REGISTER_V1.md) lists
 those questions with their owning sources.
 `tools/verify-backend-contracts.py` checks status/ownership and optional existing
@@ -80,9 +80,22 @@ architecture-report agreement. It is a read-only administrative validator.
 
 This closes the source inventory/validation pass. Exact open commercial terms,
 Synthesis mechanisms and actor bindings retain their pending status. Verified
-runtime binding counts stay four/ten; the checker does not execute a new domain
+gameplay binding counts stay four/ten; the checker does not execute a new domain
 consequence. The old classification/world-context refinement order and legacy
 power-catalog equation claim have been reconciled to their controlling sources.
+
+## Completed headless handoff implementation
+
+The user prioritized clearing the ten remaining gaps. The
+[headless backend handoff service](docs/BACKEND_HOUSE_HANDOFFS_V1.md) now implements
+all ten existing route contracts, with three canonical dispositions each,
+typed consequences, separate live authority, actual actor inputs, protected
+refusal/recovery, independent observation, delivery and archive replay.
+Architecture V3 reports 23 components, fourteen combined bindings and zero
+unbound canonical backend routes. The ten gameplay/presentation integrations
+remain separately deferred, and installed V7 game archives are unchanged.
+The source checker validates declared ownership; private headless tests establish
+bounded behavior. Neither establishes completion of an unsupplied world case.
 
 ## First lore family: Boardwalk offers and responsibilities
 
@@ -123,7 +136,7 @@ contract structure without selecting those answers for the user.
 |---|---|---|
 | 2 | Sympiote and supported Synthesis | complete source-backed progression matrix for all supported directions: prerequisites, maintenance, costs, failure, reversal and independent authority |
 | 3 | Stonebend continuing object | resolve the wider lineage's input/residue, passage, repair, force and Hollowing boundaries while preserving the adopted first case |
-| 4 | House handoffs and regional contracts | close the ten audit gaps one authored contract at a time; identify existing domain evidence before proposing implementation |
+| 4 | House handoffs and regional contracts | ten bounded headless bindings complete; use actual-case evidence and retain game presentation integration as deferred |
 | 5 | Current/Aura/Recipe and economic dependencies | clarify custody, supply, knowledge, contribution, renewal, exit and dispute across domains |
 | 6 | Higher/composite development and singular boundaries | resolve open proposals against existing source law; retain separate clinical, sovereign and identity decisions |
 | 7 | Persistence and performance coverage | inventory owners and record bounds, historical compatibility, indexes and audit cost; measure actual backend workloads before tuning |
@@ -137,9 +150,9 @@ terminal Hollowing remain proposals. Repair in the adopted frame case grants
 no Troll Nature or Regenerate power. Object revisions and person development
 must not be conflated.
 
-## Historical route contracts awaiting verified bindings
+## Historical routes now bound to headless backend services
 
-The architecture report's current gap list is:
+The historical gap list, now covered by `src/world/lore_handoffs.rs`, is:
 
 - `lore.flynt.stairway-functional-recognition`
 - `lore.flynt.basin-dual-expression`

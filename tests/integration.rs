@@ -10,6 +10,8 @@ mod architecture_coverage;
 mod aura_coast_basin_gameplay;
 #[path = "aura_field_gameplay.rs"]
 mod aura_field_gameplay;
+#[path = "backend_house_handoffs.rs"]
+mod backend_house_handoffs;
 #[path = "central_junction_constitutional_architecture.rs"]
 mod central_junction_constitutional_architecture;
 #[path = "central_junction_documentation_conformance.rs"]

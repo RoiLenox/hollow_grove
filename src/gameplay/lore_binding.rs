@@ -342,9 +342,16 @@ impl LoreInspection {
             let _ = writeln!(
                 output,
                 "- Gameplay binding: {}",
-                definition
-                    .gameplay_binding
-                    .unwrap_or("definition only; no verified execution binding")
+                definition.gameplay_binding.unwrap_or_else(|| {
+                    if crate::world::lore_handoffs::ROUTES
+                        .iter()
+                        .any(|r| r.lore_id() == definition.lore_id)
+                    {
+                        "headless backend handoff; gameplay integration deferred"
+                    } else {
+                        "definition only; no verified execution binding"
+                    }
+                })
             );
             let _ = writeln!(
                 output,

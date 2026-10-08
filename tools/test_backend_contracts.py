@@ -92,15 +92,21 @@ class BackendContractTests(unittest.TestCase):
 
     def test_optional_architecture_report_must_match_gap_set_and_owners(self):
         gaps = self.data["route_gaps"]
-        report = {"schema_version": 2, "source_links_passed": True, "verified_binding_count": 4,
-                  "unbound_canonical_route_count": 10,
+        report = {"schema_version": 3, "source_links_passed": True, "verified_binding_count": 14,
+                  "unbound_canonical_route_count": 0, "backend_handoff_binding_count": 10, "unbound_gameplay_route_count": 10,
                   "canonical_route_contracts": [{"lore_id": g["lore_id"], "house": g["house"],
                                                 "authority_source": g["authority_source"], "definition_owner": g["definition_owner"],
-                                                "reducer_owner": None} for g in gaps]}
+                                                "reducer_owner": g["backend_owner"], "persistence_owner": g["backend_owner"],
+                                                "gameplay_case": None, "backend_handoff": g["lore_id"]} for g in gaps]}
         self.assertEqual(audit.validate(ROOT, self.data, report)["architecture_crosscheck"], "passed")
         report["canonical_route_contracts"].pop()
         with self.assertRaisesRegex(audit.AuditError, "gaps differ"):
             audit.validate(ROOT, self.data, report)
+
+    def test_headless_binding_requires_its_exact_owner_and_cannot_claim_gameplay(self):
+        self.rejected(lambda d: d["route_gaps"][0].update(backend_owner="src/gameplay/boardwalk.rs"), "conflated headless")
+        self.rejected(lambda d: d["route_gaps"][0].update(gameplay_binding="invented.game.case"), "conflated headless")
+        self.rejected(lambda d: d["route_gaps"][0].update(lore_id="lore.invented.route"), "executable backend identity")
 
     def test_cli_invalid_input_has_failure_exit_and_json_diagnostic(self):
         process = subprocess.run(["python3", str(ROOT / "tools/verify-backend-contracts.py"), "--registry", "../outside.json"],

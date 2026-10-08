@@ -33,10 +33,12 @@ fn identity(suffix: &str) -> GameplayCommand {
 fn coverage_separates_source_links_bindings_and_execution() {
     let report = ArchitectureCoverageReport::inspect(root(), None).unwrap();
     assert!(report.source_links_passed, "{:?}", report.violations);
-    assert_eq!(report.components.len(), 22);
+    assert_eq!(report.components.len(), 23);
     assert_eq!(report.canonical_route_contracts.len(), 12);
-    assert_eq!(report.verified_binding_count, 4);
-    assert_eq!(report.unbound_canonical_route_count, 10);
+    assert_eq!(report.verified_binding_count, 14);
+    assert_eq!(report.unbound_canonical_route_count, 0);
+    assert_eq!(report.backend_handoff_binding_count, 10);
+    assert_eq!(report.unbound_gameplay_route_count, 10);
     assert!(report.replayed_save_revision.is_none());
     assert!(
         report
@@ -51,7 +53,7 @@ fn coverage_separates_source_links_bindings_and_execution() {
             .is_none()
     );
     let json = serde_json::to_value(report).unwrap();
-    assert_eq!(json["schema_version"], 2);
+    assert_eq!(json["schema_version"], 3);
     assert!(
         json["scope"]
             .as_str()

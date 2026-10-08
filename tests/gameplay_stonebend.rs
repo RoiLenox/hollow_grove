@@ -364,8 +364,16 @@ fn all_stonebend_dispositions_bind_exact_name_seal_and_replay_without_title() {
         )
         .unwrap();
         assert!(coverage.source_links_passed);
-        assert_eq!(coverage.verified_binding_count, 4);
-        assert_eq!(coverage.unbound_canonical_route_count, 10);
+        assert_eq!(coverage.verified_binding_count, 14);
+        assert_eq!(coverage.unbound_canonical_route_count, 0);
+        assert_eq!(coverage.backend_handoff_binding_count, 10);
+        assert_eq!(coverage.unbound_gameplay_route_count, 10);
+        assert!(
+            coverage
+                .canonical_route_contracts
+                .iter()
+                .all(|c| c.execution_complete_in_supplied_handoff.is_none())
+        );
         assert_eq!(
             coverage
                 .canonical_route_contracts

@@ -25,6 +25,7 @@ pub mod house_scene_context;
 pub mod hueman_faculties;
 pub mod interior_surface;
 pub mod lived_lore;
+pub mod lore_handoffs;
 pub mod marquise;
 pub mod minoan_court;
 pub mod permanence;

@@ -77,6 +77,11 @@ keep source-backed relationships and open mechanisms distinct. The
 [House handoff crosswalk](HOLLOW_GROVE_BACKEND_HANDOFF_CONTRACTS_V1.md) and
 [persistence/audit inventory](HOLLOW_GROVE_BACKEND_PERSISTENCE_AND_AUDIT_V1.md)
 track the remaining work. The
+ten historical House handoff gaps now have
+[headless backend services](docs/BACKEND_HOUSE_HANDOFFS_V1.md), with typed results,
+live authority, independent observation, protected recovery and replay.
+Architecture V3 reports fourteen combined bindings and zero unbound canonical
+backend routes; ten game presentation integrations remain deferred. The
 [object-lineage backend draft](STONEBEND_OBJECT_LINEAGE_BACKEND_REQUIREMENTS_V1_DRAFT.md)
 adds input/residue, passage, force and continuity requirements. Run `python3 tools/verify-backend-contracts.py` to
 check the authored [backend register](contracts/backend/lore_registry.v1.json);
@@ -114,8 +119,9 @@ for the measured transaction optimization on both machines and the remaining
 verified-binding work.
 The [Stonebend continuity binding](docs/STONEBEND_CONTINUITY_LORE_BINDING_V1.md)
 adds replay-backed inspection of Mercy Deep's existing Name/Seal case.
-Lore report V4 and architecture report V2 now expose four verified bindings
-and ten unbound historical routes. The adopted
+Lore report V4 covers the four earlier gameplay bindings. Installed V7's
+architecture report V2 historically reports four bindings and ten gaps;
+current source architecture V3 adds the ten headless backend bindings. The adopted
 [survey-frame first case](STONEBEND_SURVEY_FRAME_FIRST_CASE_V1.md) implements
 Mercy Deep's doorway, Tess Splice's custody and recovery, Ivo Mark's recording,
 live House decisions, failed trial, protected refusal and exact-revision repair.

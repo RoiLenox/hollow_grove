@@ -10,6 +10,7 @@ not newly supported runtime events. Scope is backend administration and validati
 |---|---|---|
 | Authored lore meaning/status | Compromise, Synthesis canon, amendments and House sources | normative meaning, including fields explicitly open |
 | Ten historical handoff definitions | `src/world/lived_lore.rs` | declared source roles, alternatives and scoped completion |
+| Ten headless handoff services | `src/world/lore_handoffs.rs`, `docs/BACKEND_HOUSE_HANDOFFS_V1.md` | separate schema-1 case archives, actor inputs, scoped decisions/consequences, observation, delivery, recovery and replay; game archives unchanged |
 | Gameplay transactions | `src/gameplay/runtime.rs` | staged domain changes and accepted parent journal; exact retry/conflict semantics |
 | Aggregate archives | `src/gameplay/archive.rs` | gameplay V6, verified checksums, V1–V5 migration and domain replay |
 | Application migration receipt retention | `src/gameplay/application.rs` | loaded migration provenance retained when saved again |
@@ -89,8 +90,8 @@ statements are authentic. Treat the report's provenance as a separate question.
 The checker must reject unsafe references, duplicate identities/JSON keys,
 missing owners, legacy material promoted to active authority, inconsistent
 pairings/branch geometry, superseded active refinement order, proposals marked
-as ratified/implemented, unknown price interpreted as zero, and unverified gaps
-marked as complete. Open decisions are not audit failures when their status
+as ratified/implemented, unknown price interpreted as zero, and registered backend
+bindings falsely promoted to gameplay or actual-case completion. Open decisions are not audit failures when their status
 and blockers are accurately recorded.
 
 ## Backend verification and optimization order

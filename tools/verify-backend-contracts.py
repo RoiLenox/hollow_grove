@@ -188,32 +188,46 @@ def validate(root, data, architecture=None):
 
     gaps = data["route_gaps"]
     unique_rows(gaps, "lore_id", "route")
-    require(len(gaps) == 10, "current ten route gaps changed without architecture proof")
+    require(len(gaps) == 10, "historical ten route contracts changed without architecture proof")
     for gap in gaps:
         require(gap["house"] in FUNCTIONS and gap["function"] == FUNCTIONS[gap["house"]], "House authority function conflated")
         owned(gap["authority_source"], active=True)
         for name in ("definition_owner", "related_module"):
             safe_source(root, gap[name])
-        require(gap["binding_status"] == "unverified" and gap["actor_bindings_complete"] is False,
+        require(gap["binding_status"] == "headless-backend-bound" and gap["actor_bindings_complete"] is False,
                 "source role labels falsely treated as verified actor/execution bindings")
+        require(gap.get("backend_owner") == "src/world/lore_handoffs.rs"
+                and gap.get("backend_proof_source") == "tests/backend_house_handoffs.rs"
+                and gap.get("backend_contract_source") == "docs/BACKEND_HOUSE_HANDOFFS_V1.md"
+                and gap.get("gameplay_binding") is None, "missing or conflated headless backend owner/proof")
+        for name in ("backend_owner", "backend_proof_source", "backend_contract_source"):
+            safe_source(root, gap[name])
+        require(f'"{gap["lore_id"]}"' in owned(gap["backend_owner"]), "route has no registered executable backend identity")
         for name in ("choices", "failure_and_refusal", "required_receipts", "open_fields"):
             nonempty_strings(gap[name], name)
         require(bool(gap["completion_condition"].strip()), "missing bounded completion condition")
 
     if architecture is not None:
-        require(architecture["schema_version"] == 2 and architecture["source_links_passed"] is True,
+        require(architecture["schema_version"] == 3 and architecture["source_links_passed"] is True,
                 "incompatible or failed architecture report")
-        expected = {r["lore_id"]: r for r in architecture["canonical_route_contracts"] if r["reducer_owner"] is None}
+        expected = {r["lore_id"]: r for r in architecture["canonical_route_contracts"] if r.get("backend_handoff") is not None}
         require(set(expected) == {r["lore_id"] for r in gaps}, "declared gaps differ from architecture audit")
         for gap in gaps:
             source = expected[gap["lore_id"]]
             require(source["house"] == gap["house"] and source["authority_source"] == gap["authority_source"]
-                    and source["definition_owner"] == gap["definition_owner"], "route source owner differs from architecture audit")
-        require(architecture["verified_binding_count"] == 4 and architecture["unbound_canonical_route_count"] == 10,
+                    and source["definition_owner"] == gap["definition_owner"]
+                    and source["backend_handoff"] == gap["lore_id"]
+                    and source["reducer_owner"] == gap["backend_owner"]
+                    and source["persistence_owner"] == gap["backend_owner"]
+                    and source["gameplay_case"] is None, "route source owner differs from architecture audit")
+        require(architecture["verified_binding_count"] == 14 and architecture["unbound_canonical_route_count"] == 0
+                and architecture["backend_handoff_binding_count"] == 10
+                and architecture["unbound_gameplay_route_count"] == 10,
                 "architecture counts differ from recorded baseline")
 
     return {"schema_version": 1, "passed": True, "scope": data["scope"], "source_files_checked": len(digests),
-            "candidate_offers": len(offers), "requirement_families": len(requirements), "unverified_route_contracts": len(gaps),
+            "candidate_offers": len(offers), "requirement_families": len(requirements), "unverified_route_contracts": 0,
+            "headless_backend_route_bindings": len(gaps), "deferred_gameplay_route_bindings": len(gaps),
             "open_decisions": len(decisions), "architecture_crosscheck": "passed" if architecture else "not supplied",
             "source_sha256": digests, "world_state_mutated": False,
             "attestation": "authored source/status consistency; no new domain execution or proposal adoption"}

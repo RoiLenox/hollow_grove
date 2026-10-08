@@ -38,9 +38,12 @@ the current draft or the whole game is finished.
 
 Authoring, user adoption, gameplay implementation, and verified inspection are
 different states. The twelve functional-lore cases are already authored.
-Boardwalk and Current Sea have playable slices; the current inspection report
-verifies a Boardwalk binding and leaves eleven other bindings unverified.
-That coverage gap does not mean eleven stories or playable systems are absent.
+Boardwalk and Current Sea have playable slices; the foundation and survey frame
+provide two additional bounded gameplay bindings. Architecture V3 also covers
+the ten historical routes through headless backend services, with zero unbound
+canonical backend routes. Their ten game presentation integrations remain deferred.
+See [Backend House Handoffs V1](docs/BACKEND_HOUSE_HANDOFFS_V1.md) for scoped
+consequences, persistence and private execution witnesses.
 
 ## A proposed thread for the next stories
 

@@ -1,15 +1,18 @@
 # Backend House Handoff Contracts V1
 
-Status: source-backed documentation for the ten historical route contracts
-without verified lore-execution bindings. Existing contracts are indexed here;
-related implementation is a review candidate, not proof of full execution.
+Status: source-backed documentation for the ten historical route contracts.
+Their headless backend bindings are implemented in `src/world/lore_handoffs.rs`;
+[Backend House Handoffs V1](docs/BACKEND_HOUSE_HANDOFFS_V1.md) defines their exact
+results, authority, recovery, archive and witness coverage. Related House modules
+remain separate owners, rather than proof of unlimited regional execution.
 Scope: authority, evidence, receipt and continuity requirements, without game production.
 
 Owners: `src/world/lived_lore.rs`, the four House constitutions, the Compromise
 and `src/architecture_audit.rs`. No new actors, cases, offices or runtime IDs
 are created. Labels for ordinary roles below still need actual bindings before
-any consequence can be claimed. The audit remains four verified bindings and
-ten route gaps.
+any actual world-case consequence can be claimed. Architecture V3 reports
+four earlier gameplay bindings plus ten headless handoff bindings, with zero
+unbound canonical backend routes. Ten game presentation integrations are deferred.
 
 ## Common backend handoff
 
@@ -219,7 +222,9 @@ A private headless witness must cover lawful success, protected refusal,
 unavailable/mismatched authority, changed evidence/scope, failure retained as
 history, retry/conflict, archive migration, replay and altered-history rejection.
 Passing source-link checks alone cannot change `binding_status` to verified.
-A new authored handoff diagram cannot close a route gap.
+A new authored handoff diagram cannot close a route gap. The implemented headless
+service and private witness suite now establish the ten bounded backend bindings;
+each actual case still needs its own bound actors, evidence and replayed receipts.
 
 The high-risk living cases need meaningful capacity/consent and separate proof
 and clinical clearance; uncertainty or silence grants no elective consent.
