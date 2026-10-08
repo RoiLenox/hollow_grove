@@ -1,6 +1,6 @@
 # Lore Sync Checkpoint V1
 
-Checkpoint tag: `lore-sync-2026-10-08-v4`
+Checkpoint tag: `lore-sync-2026-10-08-v5`
 
 The first verified checkpoint, `lore-sync-2026-10-07-v1`, remains preserved.
 The V3 checkpoint remains preserved in its complete handoff kit. This checkpoint
@@ -9,10 +9,18 @@ runtime case. It also retains stable Godot resource IDs for the new test
 scripts, the measured client transport optimization, and the AMD
 pre-transfer review in [AMD Pre-transfer Optimization](AMD_PRETRANSFER_OPTIMIZATION_V1.md).
 
+V4 added the Sympiote foundation and was transferred successfully. Target-machine
+acceptance then found an older Cargo-installed `hueman` ahead of the packaged
+client on `PATH`. V5 prefers the user-installed presentation client after any
+explicit `HUEMAN_BIN` override, with a release-build regression probe. This is a
+launcher correction; gameplay archive V5, lore, and authority remain unchanged.
+
 This is the local handoff for the implemented lore/kernel milestone and the
 Boardwalk's Pimp/Trooners and Gimp/Gooners occupant organization. The main PC
-is offline. Remote comparison, staging, activation, and peer acceptance remain
-for when it is available.
+is now online. V4 source/state comparison, staging, activation, and headless
+package/lifecycle acceptance passed there. V5 completes the launcher correction
+found during that acceptance. Graphical display/frame pacing remains a separate
+target-machine check.
 
 Sympiote is the canonical singular and Sympiotes the plural. The foundation
 uses Glaüshouse assessment, consent, host-specific graft establishment,
@@ -35,7 +43,7 @@ The generated handoff lives in ignored `dist/`:
 - `hueman-0.1.0.tar.gz`
 - `hollow-grove-general-0.1.0.tar.gz`
 - `hollow-grove-authoritative-state-0.1.0.tar.gz`
-- `hollow-grove-lore-sync-2026-10-08-v4.bundle`, containing the source history
+- `hollow-grove-lore-sync-2026-10-08-v5.bundle`, containing the source history
   and checkpoint tag
 - `LOCAL-TRANSFER-READINESS.json`, recording the exact source commit, artifact
   checksums, and completed local acceptance checks
@@ -46,8 +54,8 @@ Check the receipt and verify the handoff locally before sending:
 ```bash
 git status --short
 git rev-parse HEAD
-git rev-parse lore-sync-2026-10-08-v4^{commit}
-git bundle verify dist/hollow-grove-lore-sync-2026-10-08-v4.bundle
+git rev-parse lore-sync-2026-10-08-v5^{commit}
+git bundle verify dist/hollow-grove-lore-sync-2026-10-08-v5.bundle
 (cd dist && sha256sum --check TRANSFER-SHA256SUMS)
 ```
 

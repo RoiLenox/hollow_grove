@@ -122,6 +122,42 @@ if ! grep -Fq 'invalid Hollow Grove port: 0' \
     sed -n '1,20p' "$LAUNCHER_PROBE_ROOT/integration-probe.log" >&2
     exit 1
 fi
+# Prefer the installed presentation client even when an older command with the
+# same name precedes it on PATH. Exercise the actual service and symlink layout
+# with disposable state; Godot itself is replaced by a successful no-op here.
+mkdir -p "$LAUNCHER_PROBE_ROOT/.local/share/hueman" \
+    "$LAUNCHER_PROBE_ROOT/.local/share/hollow-grove" \
+    "$LAUNCHER_PROBE_ROOT/.local/bin" \
+    "$LAUNCHER_PROBE_ROOT/shadow-bin"
+ln -s "$HUEMAN_ROOT" "$LAUNCHER_PROBE_ROOT/.local/share/hueman/current"
+ln -s "$CORE_ROOT" "$LAUNCHER_PROBE_ROOT/.local/share/hollow-grove/current-core"
+ln -s "$LAUNCHER_PROBE_ROOT/.local/share/hollow-grove/current-core/bin/hollow-grove-with-hueman" \
+    "$LAUNCHER_PROBE_ROOT/.local/bin/hollow-grove-with-hueman"
+cat >"$LAUNCHER_PROBE_ROOT/shadow-bin/hueman" <<'SHADOW_HUEMAN'
+#!/usr/bin/env bash
+printf 'unexpected PATH Hueman selected\n' >&2
+exit 73
+SHADOW_HUEMAN
+chmod 755 "$LAUNCHER_PROBE_ROOT/shadow-bin/hueman"
+probe_port="$(python3 - <<'PROBE_PORT'
+import socket
+with socket.socket() as probe:
+    probe.bind(('127.0.0.1', 0))
+    print(probe.getsockname()[1])
+PROBE_PORT
+)"
+if ! env -u HUEMAN_BIN \
+    PATH="$LAUNCHER_PROBE_ROOT/shadow-bin:$PATH" \
+    XDG_DATA_HOME="$LAUNCHER_PROBE_ROOT/.local/share" \
+    XDG_STATE_HOME="$LAUNCHER_PROBE_ROOT/.local/state" \
+    GODOT_BIN="$TRUE_BIN" HOLLOW_GROVE_PORT="$probe_port" \
+    "$LAUNCHER_PROBE_ROOT/.local/bin/hollow-grove-with-hueman" \
+    >"$LAUNCHER_PROBE_ROOT/client-selection-probe.log" 2>&1; then
+    printf 'installed Hueman client selection probe failed\n' >&2
+    sed -n '1,40p' "$LAUNCHER_PROBE_ROOT/client-selection-probe.log" >&2
+    exit 1
+fi
+printf 'installed Hueman client selection probe passed\n'
 rm -rf -- "$LAUNCHER_PROBE_ROOT"
 
 commit_id="$(git rev-parse HEAD)"

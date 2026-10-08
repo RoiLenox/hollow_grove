@@ -10,5 +10,10 @@ launches the separately installed `hueman` client, and stops the service when
 the client exits. The compatibility command `hollow-grove-hueman` may point to
 that integration launcher, but it is not a combined package.
 
+The integration launcher uses an explicit `HUEMAN_BIN` first, then the
+user-installed Hueman client beneath `$XDG_DATA_HOME/hueman/current`, and then
+`hueman` from `PATH`. This keeps an older command with the same name from
+shadowing the installed presentation client.
+
 Durable data lives beneath `$XDG_DATA_HOME/hollow-grove`; machine-local state
 lives beneath `$XDG_STATE_HOME/hollow-grove`.
