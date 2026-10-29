@@ -1,0 +1,176 @@
+#!/usr/bin/env python3
+"""Local-library, collection-folder, and file-playback routes for Videos."""
+
+import argparse
+import json
+import os
+from pathlib import Path
+import shutil
+import sqlite3
+import subprocess
+import sys
+import xml.etree.ElementTree as ET
+
+
+def require(name):
+    if not shutil.which(name):
+        raise RuntimeError(f"Install {name} to use this Videos route.")
+
+
+def user_dir(kind, fallback):
+    if shutil.which("xdg-user-dir"):
+        result = subprocess.run(["xdg-user-dir", kind], capture_output=True, text=True)
+        if result.returncode == 0 and result.stdout.strip():
+            return Path(result.stdout.strip())
+    return Path.home() / fallback
+
+
+def paths():
+    videos = user_dir("VIDEOS", "Videos")
+    downloads = user_dir("DOWNLOAD", "Downloads")
+    return videos, [("Movies", videos / "Movies"), ("TV Shows", videos / "TV Shows"),
+                    ("Downloads", downloads)]
+
+
+def focus_library():
+    if not os.environ.get("NIRI_SOCKET") or not shutil.which("niri"):
+        return False
+    result = subprocess.run(["niri", "msg", "--json", "windows"], capture_output=True, text=True)
+    if result.returncode:
+        return False
+    for window in json.loads(result.stdout):
+        if "kodi" in (window.get("app_id") or "").lower():
+            subprocess.run(["niri", "msg", "action", "focus-window", "--id", str(window["id"])], check=True)
+            return True
+    return False
+
+
+def setup_sources():
+    videos, sources = paths()
+    for _, directory in sources:
+        directory.mkdir(parents=True, exist_ok=True)
+    userdata = Path(os.environ.get("KODI_DATA", Path.home() / ".kodi")) / "userdata"
+    userdata.mkdir(parents=True, exist_ok=True)
+    destination = userdata / "sources.xml"
+    # Seed a new profile only. Existing Kodi sources remain managed by Kodi.
+    if not destination.exists():
+        root = ET.Element("sources")
+        video = ET.SubElement(root, "video")
+        ET.SubElement(video, "default", pathversion="1")
+        for name, directory in sources:
+            source = ET.SubElement(video, "source")
+            ET.SubElement(source, "name").text = name
+            ET.SubElement(source, "path", pathversion="1").text = str(directory) + "/"
+            ET.SubElement(source, "allowsharing").text = "false"
+        ET.indent(root)
+        ET.ElementTree(root).write(destination, encoding="utf-8", xml_declaration=True)
+        (userdata / ".hollow-grove-library").write_text("1\n")
+    settings = userdata / "advancedsettings.xml"
+    if not settings.exists():
+        root = ET.Element("advancedsettings")
+        ET.SubElement(root, "fullscreen").text = "false"
+        ET.ElementTree(root).write(settings, encoding="utf-8", xml_declaration=True)
+
+
+def configure_catalog():
+    """Configure the new, project-managed profile after Kodi initializes it."""
+    userdata = Path(os.environ.get("KODI_DATA", Path.home() / ".kodi")) / "userdata"
+    if not (userdata / ".hollow-grove-library").exists():
+        return
+    # Kodi must be closed while its SQLite catalog and settings are written.
+    if shutil.which("pgrep") and subprocess.run(
+        ["pgrep", "-u", str(os.getuid()), "-x", "kodi.bin"],
+        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+    ).returncode == 0:
+        return
+    databases = list((userdata / "Database").glob("MyVideos*.db"))
+    if not databases:
+        return
+    database = max(databases, key=lambda p: int(p.stem.removeprefix("MyVideos")))
+    videos, _ = paths()
+    with sqlite3.connect(database, timeout=2) as connection:
+        columns = {row[1] for row in connection.execute("PRAGMA table_info(path)")}
+        required = {"strPath", "strContent", "strScraper", "scanRecursive", "useFolderNames", "noUpdate", "exclude"}
+        if not required <= columns:
+            return
+        backup = database.with_suffix(".hollow-grove-backup")
+        if not backup.exists():
+            with sqlite3.connect(backup) as saved:
+                connection.backup(saved)
+        for directory, content, scraper in [
+            (videos / "Movies", "movies", "metadata.themoviedb.org.python"),
+            (videos / "TV Shows", "tvshows", "metadata.tvshows.themoviedb.org.python")
+        ]:
+            path = str(directory) + "/"
+            if not connection.execute("SELECT 1 FROM path WHERE strPath = ?", (path,)).fetchone():
+                connection.execute(
+                    "INSERT INTO path (strPath, strContent, strScraper, scanRecursive, useFolderNames, noUpdate, exclude) "
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)",
+                    (path, content, scraper, 2147483647, 1, 0, 0)
+                )
+    gui = userdata / "guisettings.xml"
+    if gui.exists() and not (userdata / ".hollow-grove-catalog-configured").exists():
+        shutil.copy2(gui, gui.with_suffix(".hollow-grove-backup"))
+        tree = ET.parse(gui)
+        root = tree.getroot()
+        for key, value in [("lookandfeel.startupwindow", "10025"),
+                           ("videolibrary.updateonstartup", "true")]:
+            item = root.find(f"setting[@id='{key}']")
+            if item is None:
+                item = ET.SubElement(root, "setting", id=key)
+            item.attrib.pop("default", None)
+            item.text = value
+        tree.write(gui, encoding="utf-8", xml_declaration=True)
+        (userdata / ".hollow-grove-catalog-configured").write_text("1\n")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("mode", choices=("library", "folders", "play", "setup"))
+    args = parser.parse_args()
+    if args.mode == "setup":
+        setup_sources()
+        configure_catalog()
+        return
+    if args.mode == "library":
+        require("kodi")
+        if focus_library():
+            return
+        setup_sources()
+        configure_catalog()
+        command = ["kodi"]
+        if os.environ.get("WAYLAND_DISPLAY"):
+            command.append("--windowing=wayland")
+        os.execvp(command[0], command)
+    videos, sources = paths()
+    if args.mode == "folders":
+        require("xdg-open")
+        for _, directory in sources:
+            directory.mkdir(parents=True, exist_ok=True)
+        subprocess.run(["xdg-open", str(videos)], check=True)
+        return
+    require("zenity")
+    require("mpv")
+    result = subprocess.run([
+        "zenity", "--file-selection", "--title=Videos · Play a Local Video",
+        "--filename=" + str(videos) + "/",
+        "--file-filter=Videos | *.mkv *.mp4 *.avi *.mov *.m4v *.webm *.mpg *.mpeg *.ts *.m2ts *.wmv *.MKV *.MP4",
+        "--file-filter=All files | *"], capture_output=True, text=True)
+    if result.returncode:
+        return
+    filename = result.stdout.removesuffix("\n")
+    if not filename or not Path(filename).is_file():
+        return
+    os.execvp("mpv", ["mpv", "--", filename])
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (RuntimeError, OSError, ValueError, ET.ParseError, subprocess.CalledProcessError) as error:
+        print(f"hollow-video: {error}", file=sys.stderr)
+        if shutil.which("notify-send"):
+            subprocess.run(["notify-send", "Videos", str(error)])
+        sys.exit(1)
+    except KeyboardInterrupt:
+        sys.exit(0)

@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+"""Create, extract, or inspect an archive using explicit file/folder selections."""
+
+import argparse
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+
+
+def require(name):
+    if not shutil.which(name):
+        raise RuntimeError(f"Install {name} to use this Zip route.")
+
+
+def choose(mode):
+    require("zenity")
+    if mode == "create":
+        args = ["--file-selection", "--directory", "--title=Zip · Choose a Folder to Archive"]
+    else:
+        args = ["--file-selection", "--title=Zip · Choose an Archive",
+                "--file-filter=Archives | *.zip *.7z *.tar *.gz *.bz2 *.xz *.zst *.rar *.tgz *.tbz *.tbz2 *.txz *.ZIP *.7Z",
+                "--file-filter=All files | *"]
+    result = subprocess.run(["zenity", *args], capture_output=True, text=True)
+    if result.returncode == 1:
+        return None
+    if result.returncode:
+        raise RuntimeError("The archive picker could not open.")
+    value = result.stdout.removesuffix("\n")
+    if not value:
+        return None
+    path = Path(value).absolute()
+    if (mode == "create" and not path.is_dir()) or (mode != "create" and not path.is_file()):
+        raise RuntimeError("Choose an existing folder or archive.")
+    return path
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("mode", choices=("create", "extract", "inspect"))
+    args = parser.parse_args()
+    require("bsdtar" if args.mode == "inspect" else "file-roller")
+    path = choose(args.mode)
+    if path is None:
+        return 0
+    if args.mode != "inspect":
+        flag = "--add" if args.mode == "create" else "--extract"
+        # File Roller asks for the output archive or extraction destination before writing.
+        os.execvp("file-roller", ["file-roller", flag, str(path)])
+    label = "".join(c if c.isprintable() else " " for c in str(path))
+    print(f"Archive: {label}\n", flush=True)
+    with subprocess.Popen(["bsdtar", "-tvf", str(path)], stdout=subprocess.PIPE,
+                          stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace") as proc:
+        for line in proc.stdout:
+            # Keep archive names visible without allowing embedded terminal escape commands.
+            print("".join(c for c in line if c.isprintable() or c in "\n\t"), end="", flush=True)
+        return proc.wait()
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except (RuntimeError, OSError, ValueError) as error:
+        print(f"hollow-zip: {error}", file=sys.stderr)
+        if shutil.which("notify-send"):
+            subprocess.run(["notify-send", "Zip", str(error)])
+        sys.exit(1)
+    except KeyboardInterrupt:
+        sys.exit(0)
