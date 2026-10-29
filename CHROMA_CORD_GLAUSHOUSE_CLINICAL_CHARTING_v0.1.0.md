@@ -71,8 +71,10 @@ The integrated control path now consists of:
   lifecycle, projection, or world anchor drifts from the registry; and
 - `src/world/chroma_cord.rs`, which supplies a complete four-phase chart entry
   with a clinical hue;
-- a Glaüshouse chart-view policy based on Nightingale, recovery-staff, and
-  Persephone roles, the singular Prima Donna office, and explicit grants;
+- a Glaüshouse chart-view policy based on independently held clinical
+  Nightingale, recovery-staff and Persephone roles, or explicit scoped grants;
+  under `GLAUSHOUSE_REV100_GOVERNANCE_AMENDMENT.md`, civic Nightingale admission
+  and elected Prima Donna/Persephone offices alone grant no private chart access;
 - projection into the existing `ClinicalFinding` presentation object only after
   the existing institutional gate allows access; and
 - a deterministic Nightingale/outsider witness proving that chart evidence does

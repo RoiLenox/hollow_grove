@@ -471,6 +471,17 @@ fn build_synthesis_fixture_section(
                  \x20\x20\x20\x20UnknownRecipe\n\n",
             );
         }
+        Err(SynthesisFixtureBuildError::Execute(SynthesisExecutionError::NonCanonicalRecipe)) => {
+            let _ = write!(
+                output,
+                "{recipe_heading}\n\n\
+                 RECIPE IDENTITY\n\n\
+                 \x20\x20status:\n\
+                 \x20\x20\x20\x20error\n\n\
+                 \x20\x20error:\n\
+                 \x20\x20\x20\x20NonCanonicalRecipe\n\n",
+            );
+        }
         Err(SynthesisFixtureBuildError::Execute(SynthesisExecutionError::Landing(error)))
         | Err(SynthesisFixtureBuildError::Landing(error)) => {
             let _ = write!(
@@ -931,13 +942,13 @@ pub fn build_inverse_path_prompt(witness: &str) -> String {
 #[cfg(test)]
 mod tests {
     use crate::{
-        CANONICAL_WITNESS, ExteriorShape, KernelInput, Mode, Symptom, run_kernel_cycle,
-        run_kernel_cycle_with_input,
+        CANONICAL_WITNESS, ExteriorShape, FrameId, KernelInput, Mode, Point, RecipeIntent, Symptom,
+        SynthesisRecipe, run_kernel_cycle, run_kernel_cycle_with_input,
     };
 
     use super::{
         build_desktop_status_output, build_inverse_path_prompt, build_prompt_artifact_output,
-        build_snapshot_output, build_tree_output,
+        build_snapshot_output, build_synthesis_fixture_section, build_tree_output,
     };
 
     #[test]
@@ -1197,6 +1208,22 @@ mod tests {
         assert!(output.contains("Version 1.1 Execution:\n    Hueman → Kiss → Pixy Point²"));
         assert!(output.contains("Route Geometry: straight"));
         assert!(output.contains("Tie-break:\n  observed straight geometry"));
+    }
+
+    #[test]
+    fn desktop_recipe_section_reports_noncanonical_known_id_as_rejected() {
+        let altered = SynthesisRecipe::new(
+            "pixy_confusion",
+            "Pixy Confusion Recipe",
+            vec![RecipeIntent::ChangeFrame(FrameId::Gremlin)],
+        );
+        let output =
+            build_synthesis_fixture_section(&Point::origin(), "ALTERED PIXY RECIPE", altered);
+
+        assert!(output.contains("ALTERED PIXY RECIPE"));
+        assert!(output.contains("RECIPE IDENTITY\n\n  status:\n    error"));
+        assert!(output.contains("NonCanonicalRecipe"));
+        assert!(!output.contains("KISS LANDING"));
     }
 
     #[test]

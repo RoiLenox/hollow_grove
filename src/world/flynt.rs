@@ -6,6 +6,8 @@
 //! relationships without creating a second hierarchy.
 
 pub mod gallowry;
+pub mod governance;
+pub mod synthesis;
 
 use std::collections::HashSet;
 

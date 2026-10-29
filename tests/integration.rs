@@ -38,6 +38,8 @@ mod constitutional_v2_demonstration;
 mod flynt_constitutional_architecture;
 #[path = "flynt_documentation_conformance.rs"]
 mod flynt_documentation_conformance;
+#[path = "flynt_rev_c_governance.rs"]
+mod flynt_rev_c_governance;
 #[path = "flynt_succession.rs"]
 mod flynt_succession;
 #[path = "foundation_freeze_conformance.rs"]
@@ -58,6 +60,8 @@ mod gameplay_synthesis_pilot;
 mod glaushouse_constitutional_architecture;
 #[path = "glaushouse_documentation_conformance.rs"]
 mod glaushouse_documentation_conformance;
+#[path = "glaushouse_rev100_governance.rs"]
+mod glaushouse_rev100_governance;
 #[path = "guide_identity_v1.rs"]
 mod guide_identity_v1;
 #[path = "guide_state_machine_v2.rs"]
@@ -118,6 +122,8 @@ mod sandmanor_documentation_conformance;
 mod sandmanor_guardian_documentation;
 #[path = "sandmanor_guardian_succession.rs"]
 mod sandmanor_guardian_succession;
+#[path = "sandmanor_rev100_governance.rs"]
+mod sandmanor_rev100_governance;
 #[path = "seer_ceremony.rs"]
 mod seer_ceremony;
 #[path = "semantic_dataset.rs"]
@@ -154,6 +160,8 @@ mod stonebend_constitutional_architecture;
 mod stonebend_documentation_conformance;
 #[path = "stonebend_foundation_documentation.rs"]
 mod stonebend_foundation_documentation;
+#[path = "stonebend_rev100_governance.rs"]
+mod stonebend_rev100_governance;
 #[path = "stonebend_second_pass_documentation.rs"]
 mod stonebend_second_pass_documentation;
 #[path = "stonebend_third_pass_documentation.rs"]
@@ -166,5 +174,7 @@ mod stonebend_title_lifecycle_continuity;
 mod survey_frame;
 #[path = "sympiote_foundation.rs"]
 mod sympiote_foundation;
+#[path = "syndicate_catalog.rs"]
+mod syndicate_catalog;
 #[path = "visual_color_constitution.rs"]
 mod visual_color_constitution;

@@ -733,7 +733,7 @@ func _resolve_current_zone() -> Dictionary:
 		if _distance_to_polyline(probe, _adaptive_route_points(route, 32)) <= float(route.get("band_width", 0.045)):
 			return _with_spatial_scope({
 				"id": str(route.get("id", "")),
-				"name": str(route.get("name", "")),
+				"name": _public_route_name(route),
 				"kind": "straight_route"
 			}, spatial_viewpoint)
 
@@ -741,7 +741,7 @@ func _resolve_current_zone() -> Dictionary:
 		if _distance_to_polyline(probe, _adaptive_route_points(route, 32)) <= float(route.get("band_width", 0.045)):
 			return _with_spatial_scope({
 				"id": str(route.get("id", "")),
-				"name": str(route.get("name", "")),
+				"name": _public_route_name(route),
 				"kind": "curved_route"
 			}, spatial_viewpoint)
 
@@ -787,6 +787,16 @@ func _with_spatial_scope(resolution: Dictionary, viewpoint: Dictionary) -> Dicti
 	return scoped_resolution
 
 
+# Current signage over stable map IDs; the source contract remains replayable.
+func _public_route_name(route: Dictionary) -> String:
+	match str(route.get("constitutional_route_id", "")):
+		"geography.route.stairway-to-heaven":
+			return "H.T.T. — Highway to Hell / S.T.H. — Stairway to Heaven"
+		"geography.route.basin-motorspeedway":
+			return "Basin Motor Speedway (B.M.S.)"
+	return str(route.get("name", ""))
+
+
 func _nearest_route_name(probe: Vector2) -> String:
 	var best_name := "Aura Ridge"
 	var best_distance := INF
@@ -795,13 +805,13 @@ func _nearest_route_name(probe: Vector2) -> String:
 		var distance := _distance_to_polyline(probe, _adaptive_route_points(route, 32))
 		if distance < best_distance:
 			best_distance = distance
-			best_name = str(route.get("name", best_name))
+			best_name = _public_route_name(route)
 
 	for route in map_contract.get("curved_routes", []):
 		var distance := _distance_to_polyline(probe, _adaptive_route_points(route, 32))
 		if distance < best_distance:
 			best_distance = distance
-			best_name = str(route.get("name", best_name))
+			best_name = _public_route_name(route)
 
 	return best_name
 

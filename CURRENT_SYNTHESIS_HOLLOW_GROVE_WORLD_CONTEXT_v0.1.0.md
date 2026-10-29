@@ -1,5 +1,15 @@
 # CURRENT SYNTHESIS / HOLLOW GROVE
 
+Revision 100 Glaüshouse governance, 2026-10-25:
+`GLAUSHOUSE_REV100_GOVERNANCE_AMENDMENT.md` controls nine equal peer-elected
+Persephone seats and The Call (The Pitch → Audition → Testimony → Ovation →
+Corination), six of nine votes and a nine-year Prima Donna term. Nightingale
+citizenship grants no clinical license. The unified ordinary lineage is
+Pixie → Sprite → Fairie → Spirit → Siren → Nymph → Sylph → Muse; advanced
+Persephone and Prima Donna manifestation require their current offices.
+Conflicting older branch/Form, clinical-civic and succession descriptions below
+are historical. Saved affiliations and XP await explicit reconciliation.
+
 Adopted Synthesis origin, 2026-10-08: Glaüshouse is the source House of all
 Synthesis, from an item to a whole Form. The owning Glaüshouse Constitution and
 Synthesis continuum distinguish Object and Being results. Stonebend retains
@@ -1282,8 +1292,8 @@ Its constitutional people are the Geralds. Membership among the Geralds provides
 Stonebend has three distinct constitutional powers:
 
 * Hypergiant — the singular highest office and custodian of constitutional integrity;
-* Proliteriate — the permanent distributed public network that witnesses public Yield through bounded temporary mandates;
-* Freemason — the structural, defensive, sealing, surveying, custody, and execution institution led by the singular High Freemason.
+* Proliteriate — the elected professional office protecting Yield alongside its permanent distributed witness network;
+* Freemason — the elected professional office with the High Freemason seal function and a permanent craft institution.
 
 They do not form three equal sovereigns. The Freemason forges the Claim, the
 Hypergiant bears the Title, and the Proliteriate shields the Yield.
@@ -1298,18 +1308,19 @@ The Hypergiant preserves the coherence of Names, Titles, succession, boundaries,
 
 ## 12.2 Proliteriate
 
-The Proliteriate is a permanent network of district, guild or workshop, labor
+The elected Proliteriate protects public works and Yield. Its permanent
+witness network consists of district, guild or workshop, labor
 crew or worksite, and inherited or commonwealth nodes. It receives petitions,
 preserves dissent, reviews burdens and Yield, and raises temporary recallable
 witnesses through bounded mandates. The network is permanent; its voice is
 temporary. It cannot physically execute seizure, issue Seals, perform
-Hollowing, exercise Diamond, or replace Freemason Claim examination.
+Hollowing, exercise the Hypergiant Title, or replace Freemason Claim examination.
 
 ---
 
 ## 12.3 Freemason
 
-The Freemason institution governs architecture, construction, structural verification, surveys, boundary marking, Seals, custody chains, defense, controlled weapons, demolition, lawful breach, lawful Hollowing equipment, evidence preservation, restoration, and structural safety. The High Freemason leads the institution.
+The Freemason institution governs architecture, construction, structural verification, surveys, boundary marking, Seals, custody chains, defense, controlled weapons, demolition, lawful breach, lawful Hollowing equipment, evidence preservation, restoration, and structural safety. The elected Freemason leads the institution and bears the High Freemason seal.
 
 ---
 
@@ -2409,7 +2420,8 @@ Do not make any of the following mistakes:
 ## Stonebend Second Pass — Three Gates, Offices, and Title Scope
 
 Stonebend has three bidirectional constitutional gates: one facing Flynt
-through Stairway to Heaven and Basin Motor Speedway, one facing Central
+through the single curved H.T.T. — Highway to Hell / S.T.H. — Stairway to Heaven
+mountain highway and the separate straight Basin Motor Speedway (B.M.S.), one facing Central
 Junction through the Craft Corridor, and one facing Sandmanor through Aura Way
 and Mt. Aura. Central Junction remains a district rather than a House. Mt. Aura
 remains Aether and an ideal, not a gate. Riptide remains Bathos on its existing
@@ -2432,19 +2444,24 @@ Diamond remains a material/visual association; its additional present role is
 >
 > The Proliteriate shields the Yield.
 
-The Proliteriate network raises bounded temporary witnesses rather than a
-fourth ruler. Spartacus is the public archetype of that witness, not a permanent
-office. One constitutional power may challenge another; the other two distinct
-powers must concur to remove. Duplicate endorsements never count twice. A
-corrupted representation may be invalidated, but the network and the people
-cannot be abolished.
+The Proliteriate network raises bounded temporary witnesses and preserves
+independent findings. Its elected professional officer does not absorb witness
+mandates. Current governance follows `STONEBEND_REV100_GOVERNANCE_AMENDMENT.md`:
+six-year professional terms staggered three years, majority/runoff elections,
+20% petition / 40% turnout / more-than-50% recall and independent seal transfer.
 
-Every ended office tenure or representation links to durable Tombstone
-history. No claimant bears the Hypergiant title without the stable Claim, independent
-Freemason examination, Proliteriate Yield hearing, relinquishment of protected
-elevation, consequence descent, Proof of Persistence, and climb of The
-Lazerhorn. Recommendation and lineage are evidence only. A former bearer has no
-shortened return.
+The Trial of Duty is Challenge → Defense → Proof → Judgment → Reckoning.
+Either current professional officer may challenge; both current offices must
+support removal with independent Court findings. Removal preserves ended-tenure
+history and does not install a successor. The Acclamation fills a lawful
+vacancy through Justice standing, Claim/Yield verification and citizen majority
+or top-two runoff. The sovereign tenure is indefinite. No geographic route
+grants the Title or serves as an Acclamation prerequisite.
+
+H.T.T. descends from Stonebend to Flynt; S.T.H. ascends from Flynt to Stonebend
+on the same physical road. B.M.S. remains straight and bidirectional. The Hippo
+Dome occupies the flat intervening land; Hippodrones are its concession workforce.
+These public names add no corridor, shortcut or sovereign selection requirement.
 
 Routine gate work may be delegated, but every crossing remains traceable to
 Claim evidence, Title or boundary authority, and Yield accountability.
@@ -2488,16 +2505,16 @@ through use.
 > Necessity may preserve the boundary. It may not inherit the crown.
 
 The High Freemason seal remains singular. Replacement requires stable candidate
-evidence, independent Forge review, Proliteriate Yield accountability, and
-Hypergiant-boundary recognition when a sovereign is active. No candidate may
+evidence, a certified branch election, independent seal transfer and
+Proliteriate Yield accountability. A sovereign cannot veto the lawful result. No candidate may
 self-certify and no outgoing bearer may unilaterally appoint a successor.
 
 > The Forge may fall silent. Its records must not disappear.
 
-The Proliteriate has no total office vacancy. Node change, witness recall,
+The Proliteriate office may be vacant while its network persists. Node change, witness recall,
 mandate completion, and invalidated representation do not abolish the network
-or erase member identities. No permanent speaker or numerical selection
-threshold is created.
+or erase member identities. Branch election thresholds do not become
+witness quorums or give an officer power to rewrite findings.
 
 ---
 

@@ -131,8 +131,9 @@ pub fn chroma_cord_zone_id() -> ZoneId {
 }
 
 /// Access to a clinical chart is stricter than entry to a public diagnostic
-/// hall. Role, office, or an existing scoped grant may authorize the view; the
+/// hall. A clinical role or an existing scoped grant may authorize the view; the
 /// application itself never creates any of those facts.
+/// Civic Nightingale admission and elected office grant no chart access.
 #[must_use]
 pub fn chroma_cord_access_policy() -> AccessPolicy {
     AccessPolicy {
@@ -141,7 +142,6 @@ pub fn chroma_cord_access_policy() -> AccessPolicy {
             AccessRequirement::Role(role_id("role.glaushouse.nightingale")),
             AccessRequirement::Role(role_id("role.glaushouse.recovery-staff")),
             AccessRequirement::Role(glaushouse::persephone_rank_id()),
-            AccessRequirement::Office(glaushouse::prima_donna_office_id()),
             AccessRequirement::ExplicitGrant,
         ],
     }

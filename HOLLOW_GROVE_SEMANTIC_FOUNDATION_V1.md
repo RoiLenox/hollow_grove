@@ -332,10 +332,12 @@ fourth office.
 
 Challenge identity, office identity, node identity, mandate identity, witness
 identity, succession identity, and Tombstone identity are stable caller-supplied
-records. One power opens review; the other two distinct powers authorize
-removal. Hypergiant succession is ordered by semantic stage, requires The
-Lazerhorn, and cannot be replaced by insertion order, recommendation, lineage,
-or self-certification.
+records. The second-pass interpreter retains historical removal and succession
+evidence in semantic stage order, independent of insertion order. It does not
+select current sovereigns. Current intended selection is The Acclamation, with
+no geographic prerequisite; recommendation, lineage and self-certification
+cannot grant the Title. This summary does not reconcile or amend the conflicting
+Compromise accession clause; independent source-law review remains required.
 
 Executable ownership is `src/world/stonebend/second_pass.rs`; normative
 ownership is

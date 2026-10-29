@@ -280,6 +280,41 @@ impl InteractionView {
         deep_pressure: Option<&DeepPressureState>,
     ) -> Self {
         match target {
+            InteractionId::BoardwalkPassageNotice(level) => Self {
+                target_id: format!("interaction.{}.public-notice", level.territory_id()),
+                speaker: "PUBLIC PASSAGE".into(),
+                pages: [
+                    "NOBODY OWNS THE BOARDWALK, BUT EVERYBODY WANTS TO CONTROL IT.",
+                    "NEUTRAL BY LAW. DIVIDED BY INFLUENCE. CONTESTED BY NATURE.",
+                    "THE PIMP AND TROONERS COMMAND ABOVE. THE GIMP AND GOONERS COMMAND BELOW. NEITHER COMMANDS THE WHOLE.",
+                    "EXISTING HOLLOW GROVE INSTITUTIONS RETAIN AUTHORITY. FACTION PRESENCE IS NOT SOVEREIGNTY.",
+                    "NORTH STAIRS LINK BOTH LEVELS. SOUTH RAMPS RETURN TO THE PUBLIC VESTIBULE: FLYNT, GLAUSHOUSE AND FLYNT BASIN ACCESS.",
+                    "THE RIPTIDE BELOW IS A SEPARATE CURVED ROUTE. THIS BRIDGE REMAINS THE STRAIGHT SOUTHWEST PASSAGE.",
+                    "NO FACTION ALLEGIANCE, OFFER OR CASE DECISION IS REQUIRED TO PASS.",
+                ].iter().flat_map(|text| wrap_dialogue(text, 36)).collect(),
+            },
+            InteractionId::BoardwalkTerritoryPerson { level, role } => {
+                use super::BoardwalkPresenceRole;
+                let faction = if role == BoardwalkPresenceRole::RivalCourier {
+                    level.home_faction().rival()
+                } else { level.home_faction() };
+                let speaker = match role {
+                    BoardwalkPresenceRole::Leader => faction.leader().to_owned(),
+                    BoardwalkPresenceRole::Host => format!("{} HOST", faction.name()),
+                    BoardwalkPresenceRole::RivalCourier => format!("{} COURIER", faction.name()),
+                };
+                let activity = match (level, role) {
+                    (_, BoardwalkPresenceRole::RivalCourier) => "I WATCH OUR RIVALS AND CARRY THEIR TERMS BACK. THE STAIRS STAY OPEN.",
+                    (super::BoardwalkLevel::Upper, _) => "OUR STAGES, SHOPS AND REPUTATION GIVE THE TROONERS INFLUENCE UP HERE. THE GOONERS BELOW ARE OUR RIVALS.",
+                    (super::BoardwalkLevel::Lower, _) => "OUR WORKSHOPS, QUIET DEALS AND NETWORKS GIVE THE GOONERS INFLUENCE DOWN HERE. THE TROONERS ABOVE ARE OUR RIVALS.",
+                };
+                Self {
+                    target_id: format!("interaction.{}.{role:?}", level.territory_id()).to_lowercase(),
+                    speaker: speaker.to_uppercase(),
+                    pages: [activity, "INFLUENCE IS NOT LEGAL OWNERSHIP. THIS IS PUBLIC INFRASTRUCTURE. YOU MAY PASS WITHOUT JOINING US."]
+                        .iter().flat_map(|text| wrap_dialogue(text, 36)).collect(),
+                }
+            },
             InteractionId::DeepPressurePerson(person) => {
                 let record = super::deep_pressure_statement_record(
                     super::DeepPressureStatementId::Person(person),
@@ -581,14 +616,17 @@ impl InteractionView {
                     .expect("canonical constitutional route definition");
                 Self {
                     target_id: format!("interaction.route.{}.witness", route.stable_id()),
-                    speaker: route.display_name().to_uppercase(),
+                    speaker: route.public_name().to_uppercase(),
                     pages: vec![
                         format!(
                             "{} / {}",
-                            route.display_name().to_uppercase(),
+                            route.public_name().to_uppercase(),
                             definition.verb.as_str().to_uppercase()
                         ),
-                        definition.purpose.to_uppercase(),
+                        route
+                            .public_corridor_description()
+                            .unwrap_or(definition.purpose)
+                            .to_uppercase(),
                         format!(
                             "{} SHAPE. GEOMETRY IS NOT AUTHORITY.",
                             canonical_route_geometry(route).as_str().to_uppercase()
@@ -935,7 +973,7 @@ impl RouteView {
         let segment = network.segment(route).expect("canonical route segment");
         Some(Self {
             route_id: route.stable_id().into(),
-            display_name: route.display_name().into(),
+            display_name: route.public_name().into(),
             geometry: segment.geometry.as_str().into(),
             presentation_geometry: segment.geometry.presentation_term().into(),
             endpoints: segment
@@ -944,12 +982,24 @@ impl RouteView {
                 .map(|house| format!("{house:?}"))
                 .collect(),
             dominant_verb: definition.verb.as_str().into(),
-            purpose: definition.purpose.into(),
-            process: definition
-                .process
-                .iter()
-                .map(|stage| (*stage).into())
-                .collect(),
+            purpose: route
+                .public_corridor_description()
+                .unwrap_or(definition.purpose)
+                .into(),
+            // Source-era Ascend/Title evidence remains in the constitutional
+            // registry. Current highway signage describes travel, not accession.
+            process: if route == crate::world::geography::ConstitutionalRouteId::StairwayToHeaven {
+                &[
+                    "H.T.T.: Stonebend → Flynt (descending)",
+                    "S.T.H.: Flynt → Stonebend (ascending)",
+                    "One physical curved mountain highway; no accession test",
+                ][..]
+            } else {
+                definition.process
+            }
+            .iter()
+            .map(|stage| (*stage).into())
+            .collect(),
         })
     }
 }
@@ -1187,6 +1237,10 @@ pub struct GameView {
     pub interaction: Option<InteractionView>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub boardwalk_case: Option<BoardwalkCaseView>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub boardwalk_territory: Option<super::BoardwalkTerritoryView>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub boardwalk_factions: Vec<super::BoardwalkFactionView>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub stonebend_case: Option<StonebendCaseView>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -1752,6 +1806,11 @@ impl GameView {
                 )
             }),
             boardwalk_case: runtime.boardwalk_case().map(BoardwalkCaseView::from_case),
+            boardwalk_territory: super::BoardwalkTerritoryView::from_map(
+                runtime.hueman_map(),
+                runtime.living_world().clock,
+            ),
+            boardwalk_factions: super::boardwalk_factions(),
             stonebend_case: runtime.stonebend_case().map(StonebendCaseView::from_case),
             route: runtime
                 .hueman_position()
@@ -1800,21 +1859,30 @@ impl GameView {
             physical_exits: runtime
                 .hueman_position()
                 .map(|_| {
-                    let exit = map_definition(runtime.hueman_map()).spawn;
                     runtime
                         .physical_exit_destinations()
                         .into_iter()
                         .map(|destination| PhysicalExitView {
-                            exit_x: exit.x,
-                            exit_y: exit.y,
+                            exit_x: super::physical_exit_position(
+                                runtime.hueman_map(),
+                                destination,
+                            )
+                            .x,
+                            exit_y: super::physical_exit_position(
+                                runtime.hueman_map(),
+                                destination,
+                            )
+                            .y,
                             destination_map_id: destination.as_str().into(),
                             destination_label: destination
-                                .extraction()
-                                .map(|site| site.display_name())
+                                .local_display_name()
+                                .or_else(|| {
+                                    destination.extraction().map(|site| site.display_name())
+                                })
                                 .or_else(|| {
                                     destination.surface().map(|surface| surface.display_name())
                                 })
-                                .or_else(|| destination.route().map(|route| route.display_name()))
+                                .or_else(|| destination.route().map(|route| route.public_name()))
                                 .unwrap_or("Hollow Grove")
                                 .into(),
                         })

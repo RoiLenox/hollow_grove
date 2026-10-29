@@ -413,7 +413,7 @@ impl StonebendConstitutionalPower {
         match self {
             Self::Hypergiant => Some(hypergiant_office_id()),
             Self::Freemason => Some(high_freemason_office_id()),
-            Self::Proliteriate => None,
+            Self::Proliteriate => Some(super::proliteriate_office_id()),
         }
     }
 
@@ -1270,6 +1270,8 @@ pub struct SuccessionStageEvidence {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
+/// LEGACY Lazerhorn record interpreter. Rev100 office grants are made only by
+/// `super::governance::Governance`, with certified Acclamation evidence.
 pub struct HypergiantSuccession {
     pub identity: SuccessionRecordId,
     pub candidate: IdentityId,

@@ -7,6 +7,7 @@
 //! not alter the recursion kernel, grant Stonebend Title, grant Glaushouse
 //! clearance, grant Flynt recognition, or execute Synthesis.
 
+pub mod governance;
 pub mod milestone;
 
 use std::collections::{BTreeMap, BTreeSet};
@@ -36,6 +37,16 @@ pub fn proof_civilization_id() -> InstitutionId {
 #[must_use]
 pub fn sandman_office_id() -> OfficeId {
     office("office.sandmanor.sandman")
+}
+
+#[must_use]
+pub fn mino_office_id() -> OfficeId {
+    office("office.sandmanor.the-mino")
+}
+
+#[must_use]
+pub fn cent_office_id() -> OfficeId {
+    office("office.sandmanor.the-cent")
 }
 
 macro_rules! sandmanor_id {

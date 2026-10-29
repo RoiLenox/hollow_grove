@@ -37,7 +37,7 @@ make generated output constitutional authority.
 - `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md`: legacy-compatible second
   Stonebend pass for the three gates, bounded Title scopes, active Hypergiant and legacy Diamond records,
   Claim/Title/Yield offices, Proliteriate mandates, two-power removal,
-  Tombstones, and Lazerhorn succession
+  Tombstones, and historical accession record interpretation; current intended sovereign selection is The Acclamation
 - `STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md`: legacy-compatible
   third Stonebend pass for recognition/activation, maintenance/renewal,
   targeted interventions, restoration, terminal Tombstones, Hypergiant vacancy

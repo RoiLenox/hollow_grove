@@ -122,17 +122,17 @@ binds {
   // Super+Ctrl  = Focused   = Specialized/control
   // Super+Alt   = Alternate = Other way
   //
-  // A/B/C/D/E/F/G = Assets/Browse/Chat/Develop/Edit/Files/Games
+  // A/B/C/D/E/F/G = AI/Browse/Code/Downloads/Email/Files/Games
   // H/J/K/L = left/down/up/right Movement
-  // I/M/N/O/P/Q/R = Images/Music/News/Office/Photos/Query/Record
-  // S/T/U/V/W/X/Y/Z = Settings/Tasks/Utilities/Video/Write/eXchange/sYnc/Zip
+  // I/M/N/O/P/Q/R = Inspect/Music/Network/Office/Photos/Query/Record
+  // S/T/U/V/W/X/Y/Z = Settings/Time/Utilities/Videos/Wrappers/eXecute/sYnc/Zip
   //
-  // Memory hooks: A MAKE; B Web; C Communicate; D Code/build; E Modify;
-  // F Filesystem; G PLAY; H Flynt; I View images; J Glaüshouse;
-  // K Stonebend; L Sandmanor; M HEAR; N Feeds; O Productivity;
-  // P Photography; Q Ask AI/search; R Capture; S Configure; T To-do/work;
-  // U System tools; V WATCH; W Compose; X Finance/markets;
-  // Y Transfer/sync; Z Archives.
+  // Memory hooks: A Artificial intelligence; B Web; C Source code; D Acquire files; E Mail;
+  // F Filesystem; G PLAY; H Flynt; I Look inside; J Glaüshouse;
+  // K Stonebend; L Sandmanor; M HEAR; N Connections; O Productivity;
+  // P Photography; Q Find information; R Capture; S Configure; T Clock and timing;
+  // U System tools; V WATCH; W Windows compatibility; X Run commands and workflows;
+  // Y Folder/device sync; Z Archives.
 
   // Stonebend / Escape: exit and session boundary.
   Mod+Escape                 { close-window; }
@@ -155,11 +155,12 @@ binds {
   // Flynt / Grave: Walker's exclusive operating-system entrance.
   Mod+Grave repeat=false hotkey-overlay-title="Flynt: Open Launcher (Walker)" { spawn "/usr/lib/hollow-grove/bin/walker-toggle-niri"; }
 
-  // A — Assets
-  Mod+a hotkey-overlay-title="Assets · Primary: Aseprite" { spawn "/usr/bin/hollow-launch" "--label" "Aseprite" "--require" "aseprite" "--" "aseprite"; }
-  Mod+Shift+a hotkey-overlay-title="Assets · Adjacent: Blender" { spawn "/usr/bin/hollow-launch" "--label" "Blender" "--require" "blender" "--" "blender"; }
-  Mod+Ctrl+a hotkey-overlay-title="Assets · Focused: LMMS" { spawn "/usr/lib/hollow-grove/bin/lmms-niri"; }
-  // Mod+Alt+a — Alternate: DaVinci Resolve is not part of the portable base.
+  // A — AI / Artificial Intelligence
+  // Primary: Codex; Adjacent: OpenCode; Focused: local model control; Alternate: Hollow Grove work in progress.
+  Mod+a repeat=false hotkey-overlay-title="AI · Primary: Codex" { spawn "/usr/bin/hollow-launch" "--label" "Codex" "--require" "kitty" "--require" "codex" "--" "kitty" "codex"; }
+  Mod+Shift+a repeat=false hotkey-overlay-title="AI · Adjacent: OpenCode" { spawn "/usr/bin/hollow-launch" "--label" "OpenCode" "--require" "kitty" "--require" "opencode" "--" "kitty" "opencode"; }
+  Mod+Ctrl+a repeat=false hotkey-overlay-title="AI · Focused: AI Tools and Local Models" { spawn "/usr/bin/hollow-launch" "--label" "AI Tools and Local Models" "--require" "kitty" "--require" "python3" "--" "kitty" "--hold" "/usr/bin/hollow-ai" "chooser"; }
+  Mod+Alt+a repeat=false hotkey-overlay-title="AI · Alternate: Alternate Local Chat" { spawn "/usr/bin/hollow-launch" "--label" "Alternate Local Chat" "--require" "kitty" "--require" "python3" "--require" "ollama" "--" "kitty" "--hold" "/usr/bin/hollow-ai" "alternate"; }
 
   // B — Browse
   Mod+b hotkey-overlay-title="Browse · Primary: Firefox" { spawn "/usr/bin/hollow-launch" "--label" "Firefox" "--require" "firefox" "--" "firefox"; }
@@ -167,27 +168,30 @@ binds {
   Mod+Ctrl+b hotkey-overlay-title="Browse · Focused: Vivaldi" { spawn "/usr/bin/hollow-launch" "--label" "Vivaldi" "--require" "vivaldi-stable" "--" "vivaldi-stable"; }
   Mod+Alt+b hotkey-overlay-title="Browse · Alternate: Brave" { spawn "/usr/bin/hollow-launch" "--label" "Brave" "--require" "brave" "--" "brave"; }
 
-  // C — Chat
-  Mod+c hotkey-overlay-title="Chat · Primary: Himalaya" { spawn "/usr/bin/hollow-launch" "--label" "Himalaya" "--require" "kitty" "--require" "himalaya" "--" "kitty" "himalaya"; }
-  Mod+Shift+c hotkey-overlay-title="Chat · Adjacent: Outlook" { spawn "/usr/bin/hollow-launch" "--label" "Outlook integration" "--require" "hollow-outlook" "--" "hollow-outlook"; }
-  Mod+Ctrl+c hotkey-overlay-title="Chat · Focused: Element" { spawn "/usr/bin/hollow-launch" "--label" "Element" "--require" "element-desktop" "--" "element-desktop"; }
-  Mod+Alt+c hotkey-overlay-title="Chat · Alternate: Discord" { spawn "/usr/bin/hollow-launch" "--label" "Discord" "--require" "discord" "--" "discord"; }
+  // C — Code / Manual Coding
+  // Primary: Helix; Adjacent: Lapce; Focused: Zed. Coding agents belong to A.
+  Mod+c repeat=false hotkey-overlay-title="Code · Primary: Helix" { spawn "/usr/bin/hollow-launch" "--label" "Helix" "--require" "kitty" "--require" "helix" "--" "kitty" "helix"; }
+  Mod+Shift+c repeat=false hotkey-overlay-title="Code · Adjacent: Lapce" { spawn "/usr/bin/hollow-launch" "--label" "Lapce" "--require" "lapce" "--" "lapce"; }
+  Mod+Ctrl+c repeat=false hotkey-overlay-title="Code · Focused: Zed" { spawn "/usr/bin/hollow-launch" "--label" "Zed" "--require" "zeditor" "--" "zeditor"; }
+  // Mod+Alt+c — Alternate: reserved for another manual coding workflow.
 
-  // D — Develop
-  Mod+d hotkey-overlay-title="Develop · Primary: Codex" { spawn "/usr/bin/hollow-launch" "--label" "Codex CLI" "--require" "kitty" "--require" "codex" "--" "kitty" "codex"; }
-  Mod+Shift+d hotkey-overlay-title="Develop · Adjacent: OpenCode" { spawn "/usr/bin/hollow-launch" "--label" "OpenCode" "--require" "kitty" "--require" "opencode" "--" "kitty" "opencode"; }
-  Mod+Ctrl+d hotkey-overlay-title="Develop · Focused: Code-OSS" { spawn "/usr/bin/hollow-launch" "--label" "Code-OSS" "--require" "code" "--" "code"; }
-  Mod+Alt+d hotkey-overlay-title="Develop · Alternate: Zed" { spawn "/usr/bin/hollow-launch" "--label" "Zed" "--require" "zeditor" "--" "zeditor"; }
+  // D — Downloads
+  // Primary: graphical torrents; Adjacent: terminal torrents.
+  Mod+d repeat=false hotkey-overlay-title="Downloads · Primary: qBittorrent" { spawn "/usr/bin/hollow-launch" "--label" "qBittorrent" "--require" "qbittorrent" "--" "qbittorrent"; }
+  Mod+Shift+d repeat=false hotkey-overlay-title="Downloads · Adjacent: rTorrent" { spawn "/usr/bin/hollow-launch" "--label" "rTorrent" "--require" "kitty" "--require" "rtorrent" "--" "kitty" "rtorrent"; }
+  // Mod+Ctrl+d — Focused: reserved for distinct download queue/transfer control.
+  // Mod+Alt+d — Alternate: reserved for another download method.
 
-  // E — Edit
-  Mod+e hotkey-overlay-title="Edit · Primary: Helix" { spawn "/usr/bin/hollow-launch" "--label" "Helix" "--require" "kitty" "--require" "helix" "--" "kitty" "helix"; }
-  Mod+Shift+e hotkey-overlay-title="Edit · Adjacent: Lapce" { spawn "/usr/bin/hollow-launch" "--label" "Lapce" "--require" "lapce" "--" "lapce"; }
-  Mod+Ctrl+e hotkey-overlay-title="Edit · Focused: Neovim" { spawn "/usr/bin/hollow-launch" "--label" "Neovim" "--require" "kitty" "--require" "nvim" "--" "kitty" "nvim"; }
-  Mod+Alt+e hotkey-overlay-title="Edit · Alternate: Micro" { spawn "/usr/bin/hollow-launch" "--label" "Micro" "--require" "kitty" "--require" "micro" "--" "kitty" "micro"; }
+  // E — Email
+  // Primary: graphical email; Adjacent: terminal email; Focused: account inspection.
+  Mod+e repeat=false hotkey-overlay-title="Email · Primary: Thunderbird" { spawn "/usr/bin/hollow-launch" "--label" "Thunderbird" "--require" "thunderbird" "--" "thunderbird"; }
+  Mod+Shift+e repeat=false hotkey-overlay-title="Email · Adjacent: Himalaya" { spawn "/usr/bin/hollow-launch" "--label" "Himalaya" "--require" "kitty" "--require" "himalaya" "--" "kitty" "--hold" "himalaya"; }
+  Mod+Ctrl+e repeat=false hotkey-overlay-title="Email · Focused: Email Accounts" { spawn "/usr/bin/hollow-launch" "--label" "Email Accounts" "--require" "kitty" "--require" "himalaya" "--" "kitty" "--hold" "himalaya" "account" "list"; }
+  // Mod+Alt+e — Alternate: reserved for another email client/service.
 
   // F — Files
   Mod+f hotkey-overlay-title="Files · Primary: Yazi" { spawn "/usr/bin/hollow-launch" "--label" "Yazi" "--require" "kitty" "--require" "yazi" "--" "kitty" "yazi"; }
-  Mod+Shift+f hotkey-overlay-title="Files · Adjacent: Thunar" { spawn "/usr/bin/hollow-launch" "--label" "Thunar" "--require" "thunar" "--" "thunar"; }
+  Mod+Shift+f repeat=false hotkey-overlay-title="Files · Adjacent: Nautilus" { spawn "/usr/bin/hollow-launch" "--label" "Nautilus" "--require" "nautilus" "--" "nautilus"; }
   Mod+Ctrl+f hotkey-overlay-title="Files · Focused: Dolphin" { spawn "/usr/bin/hollow-launch" "--label" "Dolphin file manager" "--require" "dolphin" "--" "dolphin"; }
   Mod+Alt+f hotkey-overlay-title="Files · Alternate: PCManFM-Qt" { spawn "/usr/bin/hollow-launch" "--label" "PCManFM-Qt" "--require" "pcmanfm-qt" "--" "pcmanfm-qt"; }
 
@@ -249,8 +253,8 @@ binds {
 
   Mod+Comma        { consume-window-into-column; }
   Mod+Period       { expel-window-from-column; }
-  Mod+Shift+Comma  { spawn "/usr/bin/hollow-launch" "--label" "Previous media track" "--require" "playerctl" "--" "playerctl" "previous"; }
-  Mod+Shift+Period { spawn "/usr/bin/hollow-launch" "--label" "Next media track" "--require" "playerctl" "--" "playerctl" "next"; }
+  Mod+Shift+Comma { spawn "/usr/bin/hollow-launch" "--label" "Media previous" "--require" "playerctl" "--" "/usr/bin/hollow-media" "previous"; }
+  Mod+Shift+Period { spawn "/usr/bin/hollow-launch" "--label" "Media next" "--require" "playerctl" "--" "/usr/bin/hollow-media" "next"; }
   Mod+Alt+Comma    { center-column; }
   Mod+Alt+Period   { center-visible-columns; }
 
@@ -317,23 +321,24 @@ binds {
   Mod+Ctrl+Shift+9 { move-column-to-workspace 9; }
   Mod+Ctrl+Shift+0 { move-column-to-workspace 10; }
 
-  // I — Images
-  Mod+i hotkey-overlay-title="Images · Primary: imv" { spawn "/usr/bin/hollow-launch" "--label" "imv" "--require" "imv" "--" "imv"; }
-  Mod+Shift+i hotkey-overlay-title="Images · Adjacent: Loupe" { spawn "/usr/bin/hollow-launch" "--label" "Loupe" "--require" "loupe" "--" "loupe"; }
-  Mod+Ctrl+i hotkey-overlay-title="Images · Focused: Gwenview" { spawn "/usr/bin/hollow-launch" "--label" "Gwenview" "--require" "gwenview" "--" "gwenview"; }
-  Mod+Alt+i hotkey-overlay-title="Images · Alternate: qView" { spawn "/usr/bin/hollow-launch" "--label" "qView" "--require" "qview" "--" "qview"; }
+  // I — Inspect
+  // Primary: live activity; Adjacent: system snapshot; Focused: hardware health; Alternate: session evidence.
+  Mod+i repeat=false hotkey-overlay-title="Inspect · Primary: Live Processes" { spawn "/usr/bin/hollow-launch" "--label" "Live Processes" "--require" "kitty" "--require" "htop" "--" "kitty" "htop"; }
+  Mod+Shift+i repeat=false hotkey-overlay-title="Inspect · Adjacent: System Snapshot" { spawn "/usr/bin/hollow-launch" "--label" "System Snapshot" "--require" "kitty" "--require" "fastfetch" "--" "kitty" "--hold" "fastfetch"; }
+  Mod+Ctrl+i repeat=false hotkey-overlay-title="Inspect · Focused: Hardware Sensors" { spawn "/usr/bin/hollow-launch" "--label" "Hardware Sensors" "--require" "kitty" "--require" "sensors" "--" "kitty" "--hold" "sensors"; }
+  Mod+Alt+i repeat=false hotkey-overlay-title="Inspect · Alternate: Session Logs" { spawn "/usr/bin/hollow-launch" "--label" "Session Logs" "--require" "kitty" "--require" "journalctl" "--" "kitty" "journalctl" "--user" "-b" "-n" "200"; }
 
   // M — Music
   Mod+m hotkey-overlay-title="Music · Primary: AudioTube" { spawn "/usr/lib/hollow-grove/bin/audiotube-niri"; }
   Mod+Shift+m hotkey-overlay-title="Music · Adjacent: youtui" { spawn "/usr/bin/hollow-launch" "--label" "youtui" "--require" "kitty" "--require" "youtui" "--" "kitty" "youtui"; }
-  Mod+Ctrl+m hotkey-overlay-title="Music · Focused: cmus" { spawn "/usr/bin/hollow-launch" "--label" "cmus" "--require" "kitty" "--require" "cmus" "--" "kitty" "cmus"; }
-  Mod+Alt+m hotkey-overlay-title="Music · Alternate: Tauon Music Box" { spawn "/usr/bin/hollow-launch" "--label" "Tauon Music Box" "--require" "tauon" "--" "tauon"; }
+  Mod+Ctrl+m repeat=false hotkey-overlay-title="Music · Focused: Spotify + Spicetify" { spawn "/usr/bin/hollow-launch" "--label" "Spotify + Spicetify" "--require" "spotify-launcher" "--require" "spicetify" "--" "hollow-spotify"; }
+  Mod+Alt+m repeat=false hotkey-overlay-title="Music · Alternate: spotify-tui" { spawn "/usr/bin/hollow-launch" "--label" "spotify-tui" "--require" "kitty" "--require" "spt" "--" "kitty" "--hold" "spt"; }
 
-  // N — News
-  Mod+n hotkey-overlay-title="News · Primary: Newsboat" { spawn "/usr/bin/hollow-launch" "--label" "Newsboat" "--require" "kitty" "--require" "newsboat" "--" "kitty" "newsboat"; }
-  Mod+Shift+n hotkey-overlay-title="News · Adjacent: Liferea" { spawn "/usr/bin/hollow-launch" "--label" "Liferea" "--require" "liferea" "--" "liferea"; }
-  Mod+Ctrl+n hotkey-overlay-title="News · Focused: RSS Guard" { spawn "/usr/bin/hollow-launch" "--label" "RSS Guard" "--require" "rssguard" "--" "rssguard"; }
-  Mod+Alt+n hotkey-overlay-title="News · Alternate: Fluent Reader" { spawn "/usr/bin/hollow-launch" "--label" "Fluent Reader" "--require" "fluent-reader" "--" "fluent-reader"; }
+  // N — Network / Connections
+  Mod+n repeat=false hotkey-overlay-title="Network · Primary: Connections" { spawn "/usr/bin/hollow-launch" "--label" "Connections" "--require" "kitty" "--require" "nmtui" "--" "kitty" "nmtui"; }
+  Mod+Shift+n repeat=false hotkey-overlay-title="Network · Adjacent: Profiles and VPN" { spawn "/usr/bin/hollow-launch" "--label" "Profiles and VPN" "--require" "nm-connection-editor" "--" "nm-connection-editor"; }
+  Mod+Ctrl+n repeat=false hotkey-overlay-title="Network · Focused: Connection Diagnostics" { spawn "/usr/bin/hollow-launch" "--label" "Connection Diagnostics" "--require" "kitty" "--require" "nmcli" "--" "kitty" "--hold" "nmcli" "--pretty" "device" "show"; }
+  Mod+Alt+n repeat=false hotkey-overlay-title="Network · Alternate: SSH Remote Access" { spawn "/usr/bin/hollow-launch" "--label" "SSH Remote Access" "--require" "kitty" "--require" "ssh" "--" "kitty" "/usr/bin/hollow-network-ssh"; }
 
   // O — Office
   Mod+o hotkey-overlay-title="Office · Primary: LibreOffice Writer" { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Writer" "--require" "libreoffice" "--" "libreoffice" "--writer"; }
@@ -341,17 +346,19 @@ binds {
   Mod+Ctrl+o hotkey-overlay-title="Office · Focused: LibreOffice Impress" { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Impress" "--require" "libreoffice" "--" "libreoffice" "--impress"; }
   Mod+Alt+o hotkey-overlay-title="Office · Alternate: LibreOffice Draw" { spawn "/usr/bin/hollow-launch" "--label" "LibreOffice Draw" "--require" "libreoffice" "--" "libreoffice" "--draw"; }
 
-  // P — Photos
-  Mod+p hotkey-overlay-title="Photos · Primary: darktable" { spawn "/usr/bin/hollow-launch" "--label" "darktable" "--require" "darktable" "--" "darktable"; }
-  Mod+Shift+p hotkey-overlay-title="Photos · Adjacent: RawTherapee" { spawn "/usr/bin/hollow-launch" "--label" "RawTherapee" "--require" "rawtherapee" "--" "rawtherapee"; }
-  Mod+Ctrl+p hotkey-overlay-title="Photos · Focused: digiKam" { spawn "/usr/bin/hollow-launch" "--label" "digiKam" "--require" "digikam" "--" "digikam"; }
-  Mod+Alt+p hotkey-overlay-title="Photos · Alternate: Shotwell" { spawn "/usr/bin/hollow-launch" "--label" "Shotwell" "--require" "shotwell" "--" "shotwell"; }
+  // P — Photos / Photography
+  // Primary: view; Adjacent: organize; Focused: develop and edit.
+  Mod+p repeat=false hotkey-overlay-title="Photos · Primary: imv" { spawn "/usr/bin/hollow-launch" "--label" "imv" "--require" "imv" "--" "imv"; }
+  Mod+Shift+p repeat=false hotkey-overlay-title="Photos · Adjacent: digiKam" { spawn "/usr/bin/hollow-launch" "--label" "digiKam" "--require" "digikam" "--" "digikam"; }
+  Mod+Ctrl+p repeat=false hotkey-overlay-title="Photos · Focused: darktable" { spawn "/usr/bin/hollow-launch" "--label" "darktable" "--require" "darktable" "--" "darktable"; }
+  // Mod+Alt+p — Alternate: reserved for another distinct photo workflow.
 
-  // Q — Query
-  Mod+q hotkey-overlay-title="Query · Primary: Gemini" { spawn "/usr/bin/hollow-launch" "--label" "Gemini CLI" "--require" "kitty" "--require" "gemini" "--" "kitty" "gemini"; }
-  Mod+Shift+q hotkey-overlay-title="Query · Adjacent: Ollama" { spawn "/usr/bin/hollow-launch" "--label" "Ollama" "--require" "kitty" "--require" "ollama" "--" "kitty" "ollama" "launch"; }
-  Mod+Ctrl+q hotkey-overlay-title="Query · Focused: AIChat" { spawn "/usr/bin/hollow-launch" "--label" "AIChat" "--require" "kitty" "--require" "aichat" "--" "kitty" "aichat"; }
-  // Mod+Alt+q — Alternate: no additional general query environment is selected.
+  // Q — Query / Find information
+  // Names / contents / manuals; Grave remains application and window navigation.
+  Mod+q repeat=false hotkey-overlay-title="Query · Primary: Find Files" { spawn "/usr/bin/hollow-launch" "--label" "Find Files" "--require" "kitty" "--require" "python3" "--require" "fzf" "--require" "rg" "--require" "bat" "--require" "xdg-open" "--" "kitty" "--hold" "/usr/bin/hollow-query" "files"; }
+  Mod+Shift+q repeat=false hotkey-overlay-title="Query · Adjacent: Search Contents" { spawn "/usr/bin/hollow-launch" "--label" "Search Contents" "--require" "kitty" "--require" "python3" "--require" "fzf" "--require" "rg" "--require" "bat" "--require" "less" "--" "kitty" "--hold" "/usr/bin/hollow-query" "text"; }
+  Mod+Ctrl+q repeat=false hotkey-overlay-title="Query · Focused: System Manuals" { spawn "/usr/bin/hollow-launch" "--label" "System Manuals" "--require" "kitty" "--require" "python3" "--require" "fzf" "--require" "rg" "--require" "bat" "--require" "man" "--require" "apropos" "--" "kitty" "--hold" "/usr/bin/hollow-query" "manuals"; }
+  // Mod+Alt+q — Alternate: reserved for another distinct search workflow.
 
   // R — Record
   Mod+r hotkey-overlay-title="Record · Primary: Waveform" { spawn "/usr/bin/hollow-launch" "--label" "Tracktion Waveform" "--require" "Waveform13" "--" "Waveform13"; }
@@ -360,16 +367,16 @@ binds {
   Mod+Alt+r hotkey-overlay-title="Record · Alternate: REAPER" { spawn "/usr/bin/hollow-launch" "--label" "REAPER" "--require" "reaper" "--" "reaper"; }
 
   // S — Settings
-  Mod+s hotkey-overlay-title="Settings · Primary: Network TUI" { spawn "/usr/bin/hollow-launch" "--label" "NetworkManager TUI" "--require" "kitty" "--require" "nmtui" "--" "kitty" "nmtui"; }
+  Mod+s repeat=false hotkey-overlay-title="Settings · Primary: niri Configuration" { spawn "/usr/bin/hollow-launch" "--label" "niri Configuration" "--require" "kitty" "--require" "helix" "--" "kitty" "sh" "-c" "exec helix \"${XDG_CONFIG_HOME:-$HOME/.config}/niri/config.kdl\""; }
   Mod+Shift+s hotkey-overlay-title="Settings · Adjacent: Blueman Manager" { spawn "/usr/bin/hollow-launch" "--label" "Blueman Manager" "--require" "blueman-manager" "--" "blueman-manager"; }
-  Mod+Ctrl+s hotkey-overlay-title="Settings · Focused: Network Connections" { spawn "/usr/bin/hollow-launch" "--label" "Network Connections" "--require" "nm-connection-editor" "--" "nm-connection-editor"; }
+  // Mod+Ctrl+s — Focused: network controls moved to N; reserved until Settings review.
   Mod+Alt+s hotkey-overlay-title="Settings · Alternate: PipeWire Volume" { spawn "/usr/bin/hollow-launch" "--label" "PipeWire Volume" "--require" "pwvucontrol" "--" "pwvucontrol"; }
 
-  // T — Tasks
-  Mod+t hotkey-overlay-title="Tasks · Primary: Taskwarrior TUI" { spawn "/usr/bin/hollow-launch" "--label" "Taskwarrior TUI" "--require" "kitty" "--require" "taskwarrior-tui" "--" "kitty" "taskwarrior-tui"; }
-  Mod+Shift+t hotkey-overlay-title="Tasks · Adjacent: task next" { spawn "/usr/bin/hollow-launch" "--label" "Taskwarrior next" "--require" "kitty" "--require" "task" "--" "kitty" "--hold" "task" "next"; }
-  Mod+Ctrl+t hotkey-overlay-title="Tasks · Focused: Planify" { spawn "/usr/bin/hollow-launch" "--label" "Planify" "--require" "planify" "--" "planify"; }
-  Mod+Alt+t hotkey-overlay-title="Tasks · Alternate: task projects" { spawn "/usr/bin/hollow-launch" "--label" "Taskwarrior projects" "--require" "kitty" "--require" "task" "--" "kitty" "--hold" "task" "projects"; }
+  // T — Time / Clock and timing
+  Mod+t repeat=false hotkey-overlay-title="Time · Primary: Large Clock" { spawn "/usr/bin/hollow-launch" "--label" "Time Clock" "--require" "kitty" "--require" "peaclock" "--" "kitty" "--title" "Time · Clock" "sh" "-c" "exec peaclock --config \"${XDG_CONFIG_HOME:-$HOME/.config}/hollow-grove/time/clock.conf\""; }
+  Mod+Shift+t repeat=false hotkey-overlay-title="Time · Adjacent: GNOME Clocks" { spawn "/usr/bin/hollow-launch" "--label" "GNOME Clocks" "--require" "gnome-clocks" "--" "gnome-clocks"; }
+  Mod+Ctrl+t repeat=false hotkey-overlay-title="Time · Focused: Timers and Stopwatch" { spawn "/usr/bin/hollow-launch" "--label" "Timers and Stopwatch" "--require" "kitty" "--require" "python3" "--" "kitty" "--hold" "/usr/bin/hollow-time"; }
+  Mod+Alt+t repeat=false hotkey-overlay-title="Time · Alternate: Retro Clock" { spawn "/usr/bin/hollow-launch" "--label" "Retro Clock" "--require" "kitty" "--require" "tty-clock" "--" "kitty" "--title" "Time · Retro Clock" "tty-clock" "-r" "-s" "-b" "-B"; }
 
   // U — Utilities
   Mod+u hotkey-overlay-title="Utilities · Primary: btop" { spawn "/usr/bin/hollow-launch" "--label" "btop" "--require" "kitty" "--require" "btop" "--" "kitty" "btop"; }
@@ -377,36 +384,38 @@ binds {
   Mod+Ctrl+u hotkey-overlay-title="Utilities · Focused: nvtop" { spawn "/usr/bin/hollow-launch" "--label" "nvtop" "--require" "kitty" "--require" "nvtop" "--" "kitty" "nvtop"; }
   Mod+Alt+u hotkey-overlay-title="Utilities · Alternate: battop" { spawn "/usr/bin/hollow-launch" "--label" "battop" "--require" "kitty" "--require" "battop" "--" "kitty" "battop"; }
 
-  // V — Video
-  Mod+v hotkey-overlay-title="Video · Primary: FreeTube" { spawn "/usr/bin/hollow-launch" "--label" "FreeTube" "--require" "freetube" "--" "freetube"; }
-  Mod+Shift+v hotkey-overlay-title="Video · Adjacent: VLC" { spawn "/usr/bin/hollow-launch" "--label" "VLC" "--require" "vlc" "--" "vlc"; }
-  Mod+Ctrl+v hotkey-overlay-title="Video · Focused: mpv" { spawn "/usr/bin/hollow-launch" "--label" "mpv" "--require" "mpv" "--" "mpv"; }
-  Mod+Alt+v hotkey-overlay-title="Video · Alternate: Haruna" { spawn "/usr/bin/hollow-launch" "--label" "Haruna" "--require" "haruna" "--" "haruna"; }
+  // V — Videos / WATCH
+  // Library / collection folders / local-file playback / online alternative.
+  Mod+v repeat=false hotkey-overlay-title="Videos · Primary: Local Movie Library" { spawn "/usr/bin/hollow-launch" "--label" "Local Movie Library" "--require" "python3" "--require" "kodi" "--" "/usr/bin/hollow-video" "library"; }
+  Mod+Shift+v repeat=false hotkey-overlay-title="Videos · Adjacent: Collection Folders" { spawn "/usr/bin/hollow-launch" "--label" "Collection Folders" "--require" "python3" "--require" "xdg-open" "--" "/usr/bin/hollow-video" "folders"; }
+  Mod+Ctrl+v repeat=false hotkey-overlay-title="Videos · Focused: Play Local Video" { spawn "/usr/bin/hollow-launch" "--label" "Play Local Video" "--require" "python3" "--require" "zenity" "--require" "mpv" "--" "/usr/bin/hollow-video" "play"; }
+  Mod+Alt+v repeat=false hotkey-overlay-title="Videos · Alternate: FreeTube" { spawn "/usr/bin/hollow-launch" "--label" "FreeTube" "--require" "freetube" "--" "freetube"; }
 
-  // W — Write
-  Mod+w hotkey-overlay-title="Write · Primary: Obsidian" { spawn "/usr/bin/hollow-launch" "--label" "Obsidian" "--require" "obsidian" "--" "obsidian"; }
-  Mod+Shift+w hotkey-overlay-title="Write · Adjacent: Apostrophe" { spawn "/usr/bin/hollow-launch" "--label" "Apostrophe" "--require" "apostrophe" "--" "apostrophe"; }
-  Mod+Ctrl+w hotkey-overlay-title="Write · Focused: Ghostwriter" { spawn "/usr/bin/hollow-launch" "--label" "Ghostwriter" "--require" "ghostwriter" "--" "ghostwriter"; }
-  Mod+Alt+w hotkey-overlay-title="Write · Alternate: MarkText" { spawn "/usr/bin/hollow-launch" "--label" "MarkText" "--require" "marktext" "--" "marktext"; }
+  // W — Wrappers / Windows compatibility
+  // Hub / run a Windows executable / configure a bottle / Proton repair.
+  Mod+w repeat=false hotkey-overlay-title="Wrappers · Primary: Bottles" { spawn "/usr/bin/hollow-launch" "--label" "Bottles" "--require" "python3" "--" "/usr/bin/hollow-wrappers" "hub"; }
+  Mod+Shift+w repeat=false hotkey-overlay-title="Wrappers · Adjacent: Run Windows Software" { spawn "/usr/bin/hollow-launch" "--label" "Run Windows Software" "--require" "python3" "--require" "zenity" "--" "/usr/bin/hollow-wrappers" "run"; }
+  Mod+Ctrl+w repeat=false hotkey-overlay-title="Wrappers · Focused: Bottle Windows Settings" { spawn "/usr/bin/hollow-launch" "--label" "Bottle Windows Settings" "--require" "python3" "--require" "zenity" "--" "/usr/bin/hollow-wrappers" "configure"; }
+  Mod+Alt+w repeat=false hotkey-overlay-title="Wrappers · Alternate: Protontricks" { spawn "/usr/bin/hollow-launch" "--label" "Protontricks" "--require" "python3" "--require" "protontricks" "--" "/usr/bin/hollow-wrappers" "proton"; }
 
-  // X — eXchange
-  // Finance/markets has no selected portable fruit; all four branches stay empty.
-  // Mod+x — Primary: unavailable.
-  // Mod+Shift+x — Adjacent: unavailable.
-  // Mod+Ctrl+x — Focused: unavailable.
-  // Mod+Alt+x — Alternate: unavailable.
+  // X — eXecute / Run commands and workflows
+  // Command / executable script / project task; Alt remains reserved.
+  Mod+x repeat=false hotkey-overlay-title="eXecute · Primary: Run a Command" { spawn "/usr/bin/hollow-launch" "--label" "Run a Command" "--require" "kitty" "--require" "python3" "--" "kitty" "--hold" "--title" "eXecute · Run a Command" "/usr/bin/hollow-execute" "command"; }
+  Mod+Shift+x repeat=false hotkey-overlay-title="eXecute · Adjacent: Run a Script" { spawn "/usr/bin/hollow-launch" "--label" "Run a Script" "--require" "kitty" "--require" "python3" "--require" "fzf" "--" "kitty" "--hold" "--title" "eXecute · Run a Script" "/usr/bin/hollow-execute" "scripts"; }
+  Mod+Ctrl+x repeat=false hotkey-overlay-title="eXecute · Focused: Run a Project Task" { spawn "/usr/bin/hollow-launch" "--label" "Run a Project Task" "--require" "kitty" "--require" "python3" "--require" "fzf" "--" "kitty" "--hold" "--title" "eXecute · Run a Project Task" "/usr/bin/hollow-execute" "tasks"; }
+  // Mod+Alt+x — Alternate: reserved for a distinct execution method.
 
-  // Y — sYnc
-  Mod+y hotkey-overlay-title="sYnc · Primary: LocalSend" { spawn "/usr/bin/hollow-launch" "--label" "LocalSend" "--require" "localsend" "--" "localsend"; }
-  Mod+Shift+y hotkey-overlay-title="sYnc · Adjacent: croc" { spawn "/usr/bin/hollow-launch" "--label" "croc" "--require" "kitty" "--require" "croc" "--" "kitty" "croc"; }
-  Mod+Ctrl+y hotkey-overlay-title="sYnc · Focused: Magic Wormhole Receive" { spawn "/usr/bin/hollow-launch" "--label" "Magic Wormhole receive" "--require" "kitty" "--require" "wormhole-rs" "--" "kitty" "wormhole-rs" "receive"; }
-  Mod+Alt+y hotkey-overlay-title="sYnc · Alternate: Magic Wormhole Send" { spawn "/usr/bin/hollow-launch" "--label" "Magic Wormhole send" "--require" "kitty" "--require" "wormhole-rs" "--" "kitty" "wormhole-rs" "send"; }
+  // Y — sYnc / Folder and device synchronization
+  Mod+y repeat=false hotkey-overlay-title="sYnc · Primary: Syncthing" { spawn "/usr/bin/hollow-launch" "--label" "Syncthing" "--require" "python3" "--require" "syncthing" "--require" "systemctl" "--require" "xdg-open" "--" "/usr/bin/hollow-sync" "dashboard"; }
+  Mod+Shift+y repeat=false hotkey-overlay-title="sYnc · Adjacent: Grsync Folder Sync" { spawn "/usr/bin/hollow-launch" "--label" "Grsync Folder Sync" "--require" "grsync" "--" "grsync"; }
+  Mod+Ctrl+y repeat=false hotkey-overlay-title="sYnc · Focused: Sync Status and Controls" { spawn "/usr/bin/hollow-launch" "--label" "Sync Status and Controls" "--require" "kitty" "--require" "python3" "--require" "syncthing" "--require" "systemctl" "--" "kitty" "--hold" "/usr/bin/hollow-sync" "controls"; }
+  // Mod+Alt+y — Alternate: reserved for a future cloud-sync workflow.
 
-  // Z — Zip
-  Mod+z hotkey-overlay-title="Zip · Primary: File Roller" { spawn "/usr/bin/hollow-launch" "--label" "File Roller" "--require" "file-roller" "--" "file-roller"; }
-  Mod+Shift+z hotkey-overlay-title="Zip · Adjacent: Ark" { spawn "/usr/bin/hollow-launch" "--label" "Ark" "--require" "ark" "--" "ark"; }
-  Mod+Ctrl+z hotkey-overlay-title="Zip · Focused: Xarchiver" { spawn "/usr/bin/hollow-launch" "--label" "Xarchiver" "--require" "xarchiver" "--" "xarchiver"; }
-  Mod+Alt+z hotkey-overlay-title="Zip · Alternate: PeaZip" { spawn "/usr/bin/hollow-launch" "--label" "PeaZip" "--require" "peazip" "--" "peazip"; }
+  // Z — Zip / Archives
+  Mod+z repeat=false hotkey-overlay-title="Zip · Primary: Archive Manager" { spawn "/usr/bin/hollow-launch" "--label" "Archive Manager" "--require" "file-roller" "--" "file-roller"; }
+  Mod+Shift+z repeat=false hotkey-overlay-title="Zip · Adjacent: Create Archive from Folder" { spawn "/usr/bin/hollow-launch" "--label" "Create Archive from Folder" "--require" "python3" "--require" "zenity" "--require" "file-roller" "--" "/usr/bin/hollow-zip" "create"; }
+  Mod+Ctrl+z repeat=false hotkey-overlay-title="Zip · Focused: Extract Archive" { spawn "/usr/bin/hollow-launch" "--label" "Extract Archive" "--require" "python3" "--require" "zenity" "--require" "file-roller" "--" "/usr/bin/hollow-zip" "extract"; }
+  Mod+Alt+z repeat=false hotkey-overlay-title="Zip · Alternate: Inspect Archive Contents" { spawn "/usr/bin/hollow-launch" "--label" "Inspect Archive Contents" "--require" "kitty" "--require" "python3" "--require" "zenity" "--require" "bsdtar" "--" "kitty" "--hold" "/usr/bin/hollow-zip" "inspect"; }
 
   Mod+Tab       { toggle-overview; }
   Mod+Shift+Tab { focus-window-previous; }

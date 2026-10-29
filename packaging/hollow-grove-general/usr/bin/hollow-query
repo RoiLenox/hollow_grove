@@ -1,0 +1,214 @@
+#!/usr/bin/env python3
+"""Hollow Grove Query: fuzzy file names, live text search, and local manuals."""
+
+import argparse
+import base64
+import json
+import os
+from pathlib import Path
+import re
+import shlex
+import shutil
+import subprocess
+import sys
+
+
+SCRIPT = str(Path(__file__).resolve())
+MAX_RESULTS = 2000
+
+
+def command(mode, *args):
+    return shlex.join([sys.executable, SCRIPT, mode, *args])
+
+
+def require(*names):
+    missing = [name for name in names if not shutil.which(name)]
+    if missing:
+        raise RuntimeError("Install the missing Query tools: " + ", ".join(missing))
+
+
+def encode(value):
+    return base64.urlsafe_b64encode(json.dumps(value, ensure_ascii=True).encode()).decode()
+
+
+def decode(value):
+    return json.loads(base64.urlsafe_b64decode(value))
+
+
+def visible(value):
+    return "".join(char if char.isprintable() else " " for char in value)
+
+
+def emit(value, label):
+    sys.stdout.buffer.write((encode(value) + "\t" + visible(label)).encode("utf-8", "replace") + b"\0")
+    sys.stdout.buffer.flush()
+
+
+def json_text(value):
+    if "text" in value:
+        return value["text"]
+    return os.fsdecode(base64.b64decode(value["bytes"]))
+
+
+def files(root):
+    proc = subprocess.Popen(["rg", "--no-config", "--files", "--null", "--", root],
+                            stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+    try:
+        pending = b""
+        while chunk := proc.stdout.read1(65536):
+            pending += chunk
+            parts = pending.split(b"\0")
+            pending = parts.pop()
+            for item in parts:
+                path = os.fsdecode(item)
+                emit({"path": path}, os.path.relpath(path, root))
+    finally:
+        if proc.poll() is None:
+            proc.terminate()
+        proc.wait()
+
+
+def text(root, query):
+    if not query.strip():
+        return
+    proc = subprocess.Popen(["rg", "--no-config", "--json", "--smart-case",
+                             "--fixed-strings", "--", query, root],
+                            stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+    try:
+        count = 0
+        for raw in proc.stdout:
+            result = json.loads(raw)
+            if result["type"] != "match":
+                continue
+            data = result["data"]
+            path = json_text(data["path"])
+            line = data["line_number"]
+            label = f"{os.path.relpath(path, root)}:{line}  {json_text(data['lines']).strip()}"
+            emit({"path": path, "line": line}, label)
+            count += 1
+            if count >= MAX_RESULTS:
+                break
+    finally:
+        if proc.poll() is None:
+            proc.terminate()
+        proc.wait()
+
+
+def manuals():
+    proc = subprocess.run(["apropos", "--long", "."], capture_output=True, text=True,
+                          env={**os.environ, "LC_ALL": "C"})
+    if proc.returncode:
+        raise RuntimeError("The manual index is empty. Run mandb to build it.")
+    seen = set()
+    for line in proc.stdout.splitlines():
+        match = re.match(r"^(\S+)\s+\(([^)]+)\)\s+-\s+(.*)$", line)
+        if not match:
+            continue
+        name, section, description = match.groups()
+        if (name, section) in seen:
+            continue
+        seen.add((name, section))
+        emit({"manual": name, "section": section}, f"{name} ({section}) — {description}")
+
+
+def preview(value):
+    if "manual" in value:
+        subprocess.run(["man", "--", value["section"], value["manual"]],
+                       env={**os.environ, "MANPAGER": "cat", "PAGER": "cat",
+                            "MANWIDTH": "90"})
+        return
+    path = value["path"]
+    line = value.get("line", 1)
+    subprocess.run(["bat", "--color=always", "--paging=never", "--style=numbers",
+                    "--line-range", f"{max(1, line - 8)}:{line + 150}",
+                    "--highlight-line", str(line), "--", path])
+
+
+def select(mode, root):
+    require("fzf", "bat", "rg")
+    if mode == "manuals":
+        require("man", "apropos")
+        # Validate the index before opening the picker, so errors stay visible.
+        check = subprocess.run(["apropos", "."], stdout=subprocess.DEVNULL,
+                               stderr=subprocess.DEVNULL)
+        if check.returncode:
+            raise RuntimeError("The manual index is empty. Run mandb to build it.")
+    opts = ["fzf", "--read0", "--print0", "--delimiter", "\t", "--with-nth", "2..",
+            "--layout=reverse", "--border", "--preview-window", "right,55%,wrap",
+            "--preview", command("_preview") + " {1}"]
+    titles = {"files": "Query · Files", "text": "Query · Contents", "manuals": "Query · Manuals"}
+    opts += ["--border-label", titles[mode], "--prompt", "Find › "]
+    env = os.environ.copy()
+    # Keep external fzf defaults and shell aliases from changing this interface.
+    for key in ("FZF_DEFAULT_OPTS", "FZF_DEFAULT_COMMAND", "FZF_DEFAULT_OPTS_FILE"):
+        env.pop(key, None)
+    env["SHELL"] = "/bin/sh"
+    producer = None
+    if mode == "text":
+        opts += ["--disabled", "--header", "Type to search text · Enter views the match · Esc cancels",
+                 "--bind", "change:reload:sleep 0.15; " + command("_text", root) + " {q}"]
+        source = subprocess.DEVNULL
+    else:
+        opts += ["--header", "Enter opens the result · Esc cancels"]
+        if mode == "files":
+            opts += ["--scheme=path"]
+        args = [sys.executable, SCRIPT, "_files", root] if mode == "files" else [sys.executable, SCRIPT, "_manuals"]
+        producer = subprocess.Popen(args, stdout=subprocess.PIPE)
+        source = producer.stdout
+    try:
+        selected = subprocess.run(opts, stdin=source, stdout=subprocess.PIPE, env=env)
+    finally:
+        if producer:
+            producer.stdout.close()
+            if producer.poll() is None:
+                producer.terminate()
+            producer.wait()
+    if selected.returncode in (1, 130):
+        return
+    if selected.returncode:
+        raise RuntimeError("The Query picker failed.")
+    value = decode(selected.stdout.rstrip(b"\0").split(b"\t", 1)[0])
+    if mode == "files":
+        require("xdg-open")
+        subprocess.run(["xdg-open", value["path"]], check=True)
+    elif mode == "manuals":
+        os.execvp("man", ["man", "--", value["section"], value["manual"]])
+    else:
+        require("less")
+        os.execvp("bat", ["bat", "--paging=always", "--pager", f"less -R +{value['line']}",
+                          "--highlight-line", str(value["line"]),
+                          "--", value["path"]])
+
+
+def main():
+    if len(sys.argv) > 1 and sys.argv[1].startswith("_"):
+        mode, *args = sys.argv[1:]
+        if mode == "_files":
+            files(args[0])
+        elif mode == "_text":
+            text(args[0], args[1])
+        elif mode == "_manuals":
+            manuals()
+        elif mode == "_preview":
+            preview(decode(args[0]))
+        else:
+            raise RuntimeError("Unknown Query operation")
+        return
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("mode", choices=("files", "text", "manuals"))
+    parser.add_argument("--root", type=Path, default=Path.home(), help="Folder to search (default: home)")
+    args = parser.parse_args()
+    root = args.root.expanduser().resolve()
+    if not root.is_dir():
+        raise RuntimeError("The search folder does not exist.")
+    select(args.mode, str(root))
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (KeyboardInterrupt, BrokenPipeError):
+        sys.exit(0)
+    except (RuntimeError, OSError, ValueError, subprocess.CalledProcessError) as error:
+        print(f"hollow-query: {error}", file=sys.stderr)
+        sys.exit(1)

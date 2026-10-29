@@ -178,11 +178,268 @@ pub fn render_home(catalog: &HollowDeckCatalog) -> String {
         "They cultivate independently. Evolution Path is a separate Nature-to-Nature relationship."
             .into(),
         "".into(),
-        "Houses • Institutions • Natures • Progression • Current Forms • Aura Sets • Traits • Compare"
+        "Houses • Institutions • Warden Registrar • Natures • Progression • Current Forms • Aura Sets • Traits • Compare"
             .into(),
         "Alchemy • Recipes • Synthesis Recipes • Syntheses • Banes".into(),
     ]);
     boxed("HOLLOW DECK  /  HOME", &lines)
+}
+
+fn registrar_manifest() -> serde_json::Value {
+    serde_json::from_str(include_str!("../data/warden_registrar_v0_2.json"))
+        .expect("bundled Warden Registrar manifest must be valid JSON")
+}
+
+#[must_use]
+pub fn registrar_record_count() -> usize {
+    registrar_manifest()
+        .get("records")
+        .and_then(serde_json::Value::as_array)
+        .map_or(0, Vec::len)
+}
+
+#[must_use]
+pub fn render_registrar(selected: Option<usize>) -> String {
+    let manifest = registrar_manifest();
+    let records = manifest
+        .get("records")
+        .and_then(serde_json::Value::as_array);
+    let mut lines = vec![
+        "Read-only founding register · seven records · ownership unspecified".into(),
+        "".into(),
+    ];
+    if let Some(records) = records {
+        for record in records {
+            let accession = record
+                .get("accession")
+                .and_then(serde_json::Value::as_str)
+                .unwrap_or("??");
+            let name = record
+                .get("name")
+                .and_then(serde_json::Value::as_str)
+                .unwrap_or("Unnamed");
+            let house = record
+                .get("origin_house")
+                .and_then(serde_json::Value::as_str)
+                .unwrap_or("Unassigned");
+            let register = record
+                .get("registers")
+                .and_then(serde_json::Value::as_array)
+                .and_then(|values| values.first())
+                .and_then(serde_json::Value::as_str)
+                .unwrap_or("unclassified");
+            let location = record.get("location").unwrap_or(&serde_json::Value::Null);
+            let site = if location.get("kind").and_then(serde_json::Value::as_str)
+                == Some("nonphysical_standard")
+            {
+                format!("nonphysical · origin {house}")
+            } else {
+                let district = location.get("district").and_then(serde_json::Value::as_str);
+                let area = location.get("area").and_then(serde_json::Value::as_str);
+                [Some(house), district, area]
+                    .into_iter()
+                    .flatten()
+                    .collect::<Vec<_>>()
+                    .join(" / ")
+            };
+            let index = lines.len().saturating_sub(2);
+            let pointer = if selected == Some(index) {
+                "▸ "
+            } else {
+                "  "
+            };
+            lines.push(format!(
+                "{pointer}{accession}  {name}  ·  {register}  ·  {site}"
+            ));
+        }
+    }
+    lines.push(String::new());
+    lines.push(if selected.is_some() {
+        "↑/↓ select · Enter opens record · h returns to the home menu".into()
+    } else {
+        "Details: hollow_deck registrar show <accession|name|key>".into()
+    });
+    lines.push("The register does not alter House jurisdiction or imply ownership.".into());
+    boxed("HOLLOW DECK  /  WARDEN REGISTRAR", &lines)
+}
+
+#[must_use]
+pub fn render_registrar_record(index: usize, interactive: bool) -> Option<String> {
+    let manifest = registrar_manifest();
+    let records = manifest.get("records")?.as_array()?;
+    let record = records.get(index)?;
+    let string = |key: &str| {
+        record
+            .get(key)
+            .and_then(serde_json::Value::as_str)
+            .unwrap_or("unspecified")
+    };
+    let mut lines = vec![
+        format!("{}  ·  {}", string("accession"), string("name")),
+        format!(
+            "Kind             {}",
+            string("entity_kind").replace('_', " ")
+        ),
+        format!(
+            "Register         {}",
+            record
+                .get("registers")
+                .and_then(serde_json::Value::as_array)
+                .map(|values| values
+                    .iter()
+                    .filter_map(serde_json::Value::as_str)
+                    .collect::<Vec<_>>()
+                    .join(", "))
+                .unwrap_or_else(|| "unspecified".into())
+        ),
+        format!("Origin House     {}", string("origin_house")),
+    ];
+    if let Some(alias) = record
+        .get("also_known_as")
+        .and_then(serde_json::Value::as_array)
+        .filter(|values| !values.is_empty())
+    {
+        lines.push(format!(
+            "Also known as    {}",
+            alias
+                .iter()
+                .filter_map(serde_json::Value::as_str)
+                .collect::<Vec<_>>()
+                .join(", ")
+        ));
+    }
+    let location = record.get("location");
+    let location_kind = location
+        .and_then(|value| value.get("kind"))
+        .and_then(serde_json::Value::as_str)
+        .unwrap_or("physical");
+    let district = location
+        .and_then(|value| value.get("district"))
+        .and_then(serde_json::Value::as_str);
+    let area = location
+        .and_then(|value| value.get("area"))
+        .and_then(serde_json::Value::as_str);
+    let point = location
+        .and_then(|value| value.get("point_ref"))
+        .and_then(serde_json::Value::as_str);
+    let site = if location_kind == "nonphysical_standard" {
+        format!("nonphysical · origin {}", string("origin_house"))
+    } else {
+        [Some(string("origin_house")), district, area]
+            .into_iter()
+            .flatten()
+            .collect::<Vec<_>>()
+            .join(" / ")
+    };
+    lines.push(format!("Location         {site}"));
+    lines.push(format!(
+        "Point            {}",
+        point.unwrap_or(if location_kind == "nonphysical_standard" {
+            "not applicable"
+        } else {
+            "unassigned"
+        })
+    ));
+    lines.push(format!(
+        "Ownership        {}",
+        record
+            .get("ownership")
+            .and_then(|value| value.get("status"))
+            .and_then(serde_json::Value::as_str)
+            .unwrap_or("unspecified")
+            .replace('_', " ")
+    ));
+    if let Some(functions) = record
+        .get("functions")
+        .and_then(serde_json::Value::as_array)
+    {
+        lines.push(format!(
+            "Functions        {}",
+            functions
+                .iter()
+                .filter_map(serde_json::Value::as_str)
+                .map(|value| value.replace('_', " "))
+                .collect::<Vec<_>>()
+                .join(", ")
+        ));
+    }
+    if let Some(links) = record
+        .get("affiliations")
+        .and_then(serde_json::Value::as_array)
+        .filter(|values| !values.is_empty())
+    {
+        lines.push("Relationships:".into());
+        for link in links {
+            let relation = link
+                .get("relation")
+                .and_then(serde_json::Value::as_str)
+                .unwrap_or("relationship")
+                .replace('_', " ");
+            let target = link
+                .get("target")
+                .and_then(serde_json::Value::as_str)
+                .map(str::to_owned)
+                .or_else(|| {
+                    link.get("target_houses")
+                        .and_then(serde_json::Value::as_array)
+                        .map(|values| {
+                            values
+                                .iter()
+                                .filter_map(serde_json::Value::as_str)
+                                .collect::<Vec<_>>()
+                                .join(" ↔ ")
+                        })
+                })
+                .unwrap_or_else(|| "unspecified".into());
+            let role = link
+                .get("role")
+                .and_then(serde_json::Value::as_str)
+                .map(|value| format!(" · {value}"))
+                .unwrap_or_default();
+            let status = link
+                .get("status")
+                .and_then(serde_json::Value::as_str)
+                .map(|value| format!(" [{}]", value.replace('_', " ")))
+                .unwrap_or_default();
+            lines.push(format!("  {relation} → {target}{role}{status}"));
+        }
+    }
+    if let Some(rules) = record
+        .get("special_rules")
+        .and_then(serde_json::Value::as_array)
+        .filter(|values| !values.is_empty())
+    {
+        lines.push("Special provisions:".into());
+        lines.extend(
+            rules
+                .iter()
+                .filter_map(serde_json::Value::as_str)
+                .map(|rule| format!("  • {rule}")),
+        );
+    }
+    lines.push(String::new());
+    lines.push(if interactive {
+        "↑/↓ previous or next record · h returns to the index".into()
+    } else {
+        "Use hollow_deck registrar show <accession|name|key> to open another record.".into()
+    });
+    Some(boxed("HOLLOW DECK  /  REGISTRAR RECORD", &lines))
+}
+
+#[must_use]
+pub fn render_registrar_record_by_name(query: &str) -> Option<String> {
+    let manifest = registrar_manifest();
+    let records = manifest.get("records")?.as_array()?;
+    let query = query.trim();
+    let index = records.iter().position(|record| {
+        ["accession", "name", "key"].iter().any(|field| {
+            record
+                .get(*field)
+                .and_then(serde_json::Value::as_str)
+                .is_some_and(|value| value.eq_ignore_ascii_case(query))
+        })
+    })?;
+    render_registrar_record(index, false)
 }
 
 #[must_use]
@@ -1013,58 +1270,39 @@ fn push_stonebend_institution_sections(
 ) {
     let hierarchy = &catalog.stonebend_institution;
     sections.push(vec![
-        "STONEBEND  /  ENTRY AND PAIRED COMPETENCY".into(),
+        "STONEBEND  /  THREE PATHS".into(),
         format!(
-            "  {}  citizen baseline",
+            "  {}  citizen standing; citizenship does not grant office",
             hierarchy.citizen_baseline.as_str()
         ),
-        "    ↓".into(),
-        format!("  {}  formal training", hierarchy.training_entry.as_str()),
-        "    ↓".into(),
-        "  Mason Current + Mage Diamond Aura → Freemason / Superstar".into(),
-        "  Pugilist Current + Foreman Diamond Aura → Proliteriate / Rockstar".into(),
-        "  Mason and Mage are parallel. Pugilist and Foreman are parallel.".into(),
-        "  Applicant is retired from active canon.".into(),
+        "  Leadership is earned through duty to your fellow man.".into(),
     ]);
-    for order in &hierarchy.orders {
-        let current = catalog
-            .stonebend_competency(order.current_competency)
-            .expect("validated Stonebend Current competency");
-        let aura = catalog
-            .stonebend_competency(order.aura_competency)
-            .expect("validated Stonebend Aura competency");
+    for (path, stages) in hierarchy.current_paths() {
         sections.push(vec![
-            format!(
-                "{} / {}  /  COMPLETED SYNTHESIS MASTERY",
-                order.mastery.as_str(),
-                order.cultural_identity
-            ),
-            format!(
-                "  {} / {}  {}",
-                current.competency.as_str(),
-                current.channel.as_str(),
-                current.concepts.join(" • ")
-            ),
-            format!(
-                "  {} / {}  {}",
-                aura.competency.as_str(),
-                aura.channel.as_str(),
-                aura.concepts.join(" • ")
-            ),
-            format!("  Synthesis     {}", order.synthesis_meaning),
-            format!("  Visual        {}", order.visual_direction),
+            format!("{}", path.to_uppercase()),
+            format!("  {}", stages.join(" → ")),
         ]);
     }
     sections.push(vec![
-        "STONEBEND  /  APEX".into(),
-        "  Freemason / Superstar  +  Proliteriate / Rockstar  →  Hypergiant".into(),
-        format!("  {}", hierarchy.apex.meaning),
-        format!(
-            "  Visual        {}",
-            hierarchy.apex.visual_direction.join(" • ")
-        ),
-        format!("  Avoid         {}", hierarchy.apex.avoid.join(" • ")),
-        "  Hypergiant is institutional apex/sovereign identity, not a ninth Nature rung.".into(),
+        "STONEBEND  /  FORM, OFFICE, AND INSTITUTION".into(),
+        "  Multiple Huemans may master the Proliteriate and Freemason Forms.".into(),
+        "  One elected Proliteriate shields the Yield; the witness network persists.".into(),
+        "  One elected Freemason forges the Claim and bears the High Freemason seal.".into(),
+        "  Professional offices: six-year terms, elections staggered by three years.".into(),
+        "  Majority election, runoff when needed; special elections fill the remainder.".into(),
+        "  Recall: 20% petition, 40% turnout, more than 50% removal votes.".into(),
+        "  Mastery, elected authority, and permanent headquarters remain distinct.".into(),
+    ]);
+    sections.push(vec![
+        "STONEBEND  /  THE TITLE".into(),
+        "  The Acclamation: Justice qualification, independent Claim and Yield, citizen vote."
+            .into(),
+        "  Majority or top-two runoff; lawful vacancy and independent certification.".into(),
+        "  Hypergiant reign is indefinite; only the incumbent may manifest its Form.".into(),
+        "  The Trial of Duty: Challenge → Defense → Proof → Judgment → Reckoning.".into(),
+        "  One current professional officer may challenge; both must support removal.".into(),
+        "  Independent Court findings are required. Removal does not choose a successor.".into(),
+        "  Hypergiant is not a ninth Nature rung. No route or climb confers the Title.".into(),
     ]);
     sections.push(vec![
         "STONEBEND  /  PRESYNCE AND THE CUT".into(),
@@ -1085,13 +1323,12 @@ fn push_stonebend_institution_sections(
             "  Boundary      {}",
             hierarchy.philosophy.hollowing_boundary
         ),
-        format!("  Compatibility {}", hierarchy.constitutional_compatibility),
+        "  Current governance: Stonebend Revision 100 amendment.".into(),
     ]);
     sections.push(vec![
         "STONEBEND  /  BIOLOGY REMAINS SEPARATE".into(),
         "  Gremlin → Goblin → Ghoul → Spectre → Troll → Orc → Ogre → Troglodyte".into(),
-        "  A Troll may separately train as Mason, Mage, Freemason, Pugilist, Foreman, or Proliteriate."
-            .into(),
+        "  Ordinary Forms coexist with Construction, Craftsmanship, and Duty training.".into(),
     ]);
 }
 
@@ -1799,6 +2036,7 @@ pub fn render_help() -> String {
             "Integrated:  hollow-grove deck".into(),
             "".into(),
             "home | houses | institutions [glaushouse|flynt|stonebend|sandmanor]".into(),
+            "registrar [show <accession|name|key>] | warden-registrar".into(),
             "glaushouse | flynt-identities [nature] | natures [filters]".into(),
             "nature <name> | progression".into(),
             "counterparts | sandmanor | current-forms [nature] | aura-sets [nature]".into(),

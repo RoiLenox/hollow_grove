@@ -58,6 +58,18 @@ starts the loopback-only authoritative gameplay service before opening that
 scene. The original Hueman screen shell remains available through
 `./run-hueman-godot.sh`, which selects its scene explicitly.
 
+The Boardwalk now has two stacked suspension-bridge spans off its existing
+public return vestibule. At the vestibule exit (tile 9,15), use Tab to select
+Upper Boardwalk or Lower Boardwalk and B to enter. The far stair (9,2) crosses
+between levels; the south ramp (9,15) returns to the vestibule and its existing
+Flynt–Glaüshouse/Flynt Basin connections. The Pimp and Trooners occupy the
+upper commercial deck; The Gimp and Gooners occupy the lower service deck.
+Signs and conversations distinguish their contested influence from the
+bridge's neutral legal status. T advances the existing shift clock, changing
+ambient influence and host positions. Passage requires no allegiance or case
+resolution. See [the implementation report](../docs/BOARDWALK_GOVERNING_DOCTRINE_V0_1_IMPLEMENTATION.md)
+for the authority boundary, validation, and deferred expansion.
+
 Visual development references live in the non-shipping reference tree:
 
 - `assets/reference/characters/hueman_multiscale_character_concept.png`

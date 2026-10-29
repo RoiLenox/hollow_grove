@@ -4,6 +4,16 @@ Status: ratified constitutional supplement to `SANDMANOR_CONSTITUTION_V2.md`
 
 Executable model: `src/world/sandmanor/milestone.rs`
 
+Revision 100 scope: `SANDMANOR_REV100_GOVERNANCE_AMENDMENT.md` supersedes the
+old Form-pairing and guardian-mantle eligibility rules in this supplement.
+Those rules and their readers remain LEGACY compatibility history. Current
+Contest entrants are the two sitting elected governors, The Mino and The Cent,
+with independently evidenced Hecaton/Pegasus mastery. Reciprocal teaching,
+baseline-relative improvement, the five trial domains and audited crowd
+judgment remain compatible and are reused by `sandmanor/governance.rs`.
+The original supplement is preserved at
+`docs/reference/SANDMANOR_GUARDIAN_AND_SUCCESSION_V1_PRE_REV100.md`.
+
 This supplement completes Sandmanor's peoples, geography, guardian Syntheses,
 mantles, reciprocal Contest, and sovereign succession. It does not alter
 combat, movement, party, rendering, the PokéWilds reference workspace, Central

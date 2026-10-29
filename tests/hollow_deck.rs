@@ -728,9 +728,12 @@ fn stonebend_paired_competencies_masteries_and_apex_remain_non_biological() {
 
     let rendered = render_institutions(&catalog, Some("stonebend")).unwrap();
     assert!(rendered.contains("Gerald"));
-    assert!(rendered.contains("Applicant is retired from active canon"));
-    assert!(rendered.contains("Mason Current + Mage Diamond Aura"));
-    assert!(rendered.contains("Proliteriate / Rockstar"));
+    assert!(!hierarchy.contains_active_identity("Mage"));
+    assert!(hierarchy.contains_active_identity("Justice"));
+    assert!(rendered.contains("Journeyman → Brickmason → Proliteriate"));
+    assert!(rendered.contains("Craftsman → Artisan → Freemason"));
+    assert!(!rendered.contains("Mage"));
+    assert!(rendered.contains("Squire → Justice → Hypergiant"));
     assert!(rendered.contains("not a ninth Nature rung"));
 }
 
@@ -1033,7 +1036,7 @@ fn house_institutional_grammars_remain_structurally_asymmetric() {
     let all = render_institutions(&catalog, None).unwrap();
     assert!(all.contains("GLAÜSHOUSE  /  SEAT THEN COEQUAL BRANCH"));
     assert!(all.contains("FLYNT  /  FORMAL SERVICE"));
-    assert!(all.contains("STONEBEND  /  ENTRY AND PAIRED COMPETENCY"));
+    assert!(all.contains("STONEBEND  /  THREE PATHS"));
     assert!(all.contains("SANDMANOR  /  TWO COMPLETE WAYS OF LIFE"));
     assert_eq!(
         catalog.glaushouse_structure.entry_title,

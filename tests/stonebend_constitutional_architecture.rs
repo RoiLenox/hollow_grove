@@ -52,7 +52,12 @@ fn neutral_catalog_preserves_people_network_institution_and_offices() {
         .iter()
         .filter(|entry| entry.house == Some(House::Stonebend))
         .collect::<Vec<_>>();
-    assert_eq!(offices.len(), 2);
+    assert_eq!(offices.len(), 3);
+    assert!(
+        offices
+            .iter()
+            .any(|entry| entry.id == stonebend::proliteriate_office_id() && entry.singular)
+    );
     assert!(
         offices
             .iter()

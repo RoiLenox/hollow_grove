@@ -129,6 +129,7 @@ var dialogue_speaker := ""
 var dialogue_pages: Array = []
 var dialogue_page_index := 0
 var boardwalk_case := {}
+var boardwalk_territory := {}
 var kernel_audit := {}
 var central_junction_function := {}
 var stonebend_case := {}
@@ -416,6 +417,7 @@ func _draw() -> void:
 			_draw_tile(row.substr(x, 1), x, y, viewport_size)
 
 	_draw_environment(viewport_size)
+	_draw_boardwalk_details(viewport_size)
 	_draw_scheduled_people(viewport_size)
 	_draw_embodied_guides(viewport_size)
 	_draw_player(viewport_size)
@@ -959,6 +961,7 @@ func _apply_view(view: Dictionary) -> void:
 	if next_overworld.is_empty():
 		overworld = {}
 		boardwalk_case = {}
+		boardwalk_territory = {}
 		kernel_audit = {}
 		central_junction_function = {}
 		stonebend_case = {}
@@ -976,6 +979,7 @@ func _apply_view(view: Dictionary) -> void:
 		return
 	overworld = next_overworld
 	boardwalk_case = _dict_or_empty(view.get("boardwalk_case"))
+	boardwalk_territory = _dict_or_empty(view.get("boardwalk_territory"))
 	kernel_audit = _dict_or_empty(view.get("kernel_audit"))
 	central_junction_function = _dict_or_empty(view.get("central_junction_function"))
 	stonebend_case = _dict_or_empty(view.get("stonebend_case"))
@@ -991,6 +995,13 @@ func _apply_view(view: Dictionary) -> void:
 	physical_exits = view.get("physical_exits", [])
 	selected_exit_index = 0
 	var player: Dictionary = _dict_or_empty(overworld.get("player"))
+	# Local span stairs are at the far end; select the exit beneath the player.
+	if not boardwalk_territory.is_empty():
+		for index in range(physical_exits.size()):
+			var local_exit: Dictionary = _dict_or_empty(physical_exits[index])
+			if int(player.get("x", -1)) == int(local_exit.get("exit_x", -2)) and int(player.get("y", -1)) == int(local_exit.get("exit_y", -2)):
+				selected_exit_index = index
+				break
 	var next_position := Vector2(float(player.get("x", 0)), float(player.get("y", 0)))
 	player_facing = str(player.get("facing", "North"))
 	if not has_player_position:
@@ -1064,6 +1075,9 @@ func _draw_waiting_screen(viewport_size: Vector2) -> void:
 
 
 func _draw_tile(tile: String, x: int, y: int, viewport_size: Vector2) -> void:
+	if not boardwalk_territory.is_empty():
+		_draw_boardwalk_tile(tile, x, y, viewport_size)
+		return
 	var map_id := str(overworld.get("map_id", ""))
 	if map_id == "aura-field.working-land":
 		_draw_aura_field_tile(tile, x, y, viewport_size)
@@ -1337,6 +1351,96 @@ func _draw_extraction_tile(tile: String, x: int, y: int, viewport_size: Vector2)
 			_draw_logical_rect(Rect2(origin + Vector2(1, 1), Vector2(6, 6)), outline, viewport_size)
 			_draw_logical_rect(Rect2(origin + Vector2(2, 2), Vector2(4, 4)), marker, viewport_size)
 			_draw_pixel_text(tile, origin + Vector2(3, 2), outline, viewport_size)
+
+
+func _draw_boardwalk_tile(tile: String, x: int, y: int, viewport_size: Vector2) -> void:
+	var upper := str(boardwalk_territory.get("level")) == "Upper"
+	var origin := Vector2(x * 8, y * 8)
+	var outline := _color("hollow_grove.universal.outline")
+	var steel := _color("hollow_grove.house.stonebend.primary")
+	var light := _color("hollow_grove.house.flynt.highlight")
+	var red := _color("hollow_grove.house.flynt.primary")
+	var floor_color := _color("hollow_grove.house.sandmanor.primary") if upper else _color("hollow_grove.house.stonebend.dark")
+	_draw_logical_rect(Rect2(origin, Vector2(8, 8)), floor_color, viewport_size)
+	match tile:
+		"~":
+			_draw_logical_rect(Rect2(origin, Vector2(8, 8)), _color("hollow_grove.house.glaushouse.dark"), viewport_size)
+			_draw_logical_rect(Rect2(origin + Vector2((y % 2) * 2, 3), Vector2(5, 1)), steel, viewport_size)
+		"r", "t":
+			_draw_logical_rect(Rect2(origin, Vector2(8, 8)), outline, viewport_size)
+			_draw_logical_rect(Rect2(origin + Vector2(2, 0), Vector2(4, 8)), red if upper else steel, viewport_size)
+			_draw_logical_rect(Rect2(origin + Vector2(3, 0), Vector2(1, 8)), light, viewport_size)
+			if tile == "t":
+				_draw_logical_rect(Rect2(origin + Vector2(0, 2), Vector2(8, 4)), red, viewport_size)
+		"a":
+			_draw_logical_rect(Rect2(origin + Vector2(0, 1), Vector2(8, 4)), red, viewport_size)
+			for stripe in [1, 5]:
+				_draw_logical_rect(Rect2(origin + Vector2(stripe, 1), Vector2(2, 4)), light, viewport_size)
+			_draw_logical_rect(Rect2(origin + Vector2(1, 6), Vector2(6, 2)), outline, viewport_size)
+		"s":
+			_draw_logical_rect(Rect2(origin, Vector2(8, 8)), red, viewport_size)
+			_draw_logical_rect(Rect2(origin + Vector2(1, 1), Vector2(6, 1)), light, viewport_size)
+			_draw_logical_rect(Rect2(origin + Vector2(1, 6), Vector2(6, 2)), outline, viewport_size)
+		"p":
+			_draw_logical_rect(Rect2(origin + Vector2(0, 2), Vector2(8, 4)), outline, viewport_size)
+			_draw_logical_rect(Rect2(origin + Vector2(0, 3), Vector2(8, 2)), steel, viewport_size)
+			_draw_logical_rect(Rect2(origin + Vector2(3, 1), Vector2(2, 6)), light, viewport_size)
+		"c":
+			_draw_logical_rect(Rect2(origin + Vector2(1, 1), Vector2(6, 6)), outline, viewport_size)
+			_draw_logical_rect(Rect2(origin + Vector2(2, 2), Vector2(4, 4)), steel, viewport_size)
+		"i":
+			_draw_logical_rect(Rect2(origin + Vector2(1, 0), Vector2(6, 6)), light, viewport_size)
+			_draw_pixel_text("I", origin + Vector2(2, 1), outline, viewport_size)
+			_draw_logical_rect(Rect2(origin + Vector2(3, 6), Vector2(1, 2)), outline, viewport_size)
+		"b":
+			# Reserved conversation bay, also visibly blocked when unoccupied.
+			_draw_logical_rect(Rect2(origin + Vector2(0, 6), Vector2(8, 2)), steel, viewport_size)
+		_:
+			_draw_logical_rect(Rect2(origin + Vector2(0, 7), Vector2(8, 1)), steel, viewport_size)
+			if tile == "=":
+				_draw_logical_rect(Rect2(origin + Vector2(3, 2), Vector2(2, 3)), light, viewport_size)
+
+
+func _draw_boardwalk_details(viewport_size: Vector2) -> void:
+	if boardwalk_territory.is_empty():
+		return
+	var upper := str(boardwalk_territory.get("level")) == "Upper"
+	var outline := _color("hollow_grove.universal.outline")
+	var light := _color("hollow_grove.house.flynt.highlight")
+	var steel := _color("hollow_grove.house.stonebend.primary")
+	# Tall paired towers and sagging cables read as one suspension bridge;
+	# the lower deck shows the same supports beneath overhead cross-bracing.
+	for edge_x in [25, 129]:
+		for y in range(24, 101):
+			var cable_offset := int(5.0 * sin(PI * float(y - 24) / 76.0))
+			_draw_logical_rect(Rect2(edge_x + cable_offset, y, 1, 1), light if upper else steel, viewport_size)
+			if y % 8 == 0:
+				_draw_logical_rect(Rect2(edge_x, y, cable_offset + 1, 1), steel, viewport_size)
+		for tower_y in [20, 92]:
+			_draw_logical_rect(Rect2(edge_x - 2, tower_y, 7, 14), outline, viewport_size)
+			_draw_logical_rect(Rect2(edge_x, tower_y, 3, 14), _color("hollow_grove.house.flynt.primary"), viewport_size)
+	if not upper:
+		for y in [28, 100]:
+			_draw_logical_rect(Rect2(32, y, 96, 2), outline, viewport_size)
+	for record_value in boardwalk_territory.get("local_presence", []):
+		var record := _dict_or_empty(record_value)
+		var position := _dict_or_empty(record.get("position"))
+		var origin := Vector2(int(position.get("x", 0)) * 8, int(position.get("y", 0)) * 8 - 3)
+		var trooner := str(record.get("faction_id")) == "Trooners"
+		var body := light if trooner else steel
+		_draw_logical_rect(Rect2(origin + Vector2(1, 0), Vector2(6, 4)), outline, viewport_size)
+		_draw_logical_rect(Rect2(origin + Vector2(2, 1), Vector2(4, 2)), body, viewport_size)
+		_draw_logical_rect(Rect2(origin + Vector2(1, 4), Vector2(6, 6)), body, viewport_size)
+		_draw_pixel_text("T" if trooner else "G", origin + Vector2(3, 4), outline, viewport_size)
+	for exit_value in physical_exits:
+		var local_exit := _dict_or_empty(exit_value)
+		var origin := Vector2(int(local_exit.get("exit_x", 0)) * 8, int(local_exit.get("exit_y", 0)) * 8)
+		_draw_logical_rect(Rect2(origin, Vector2(8, 8)), outline, viewport_size)
+		for step in range(3):
+			_draw_logical_rect(Rect2(origin + Vector2(1 + step, 1 + step * 2), Vector2(6 - step, 1)), light, viewport_size)
+		_draw_pixel_text("B", origin + Vector2(9, 1), light, viewport_size)
+	_draw_logical_rect(Rect2(31, 128, 98, 8), outline, viewport_size)
+	_draw_pixel_text("PUBLIC / TROONERS" if upper else "PUBLIC / GOONERS", Vector2(37, 130), light, viewport_size)
 
 
 func _draw_environment(viewport_size: Vector2) -> void:
@@ -1665,6 +1769,8 @@ func _current_recruitment_candidate() -> Dictionary:
 
 
 func _map_label() -> String:
+	if not boardwalk_territory.is_empty():
+		return "UPPER WALK" if str(boardwalk_territory.get("level")) == "Upper" else "LOWER WALK"
 	if not extraction_view.is_empty():
 		return str(extraction_view.get("display_name", "MINE")).to_upper().left(11)
 	if not surface_view.is_empty():
@@ -2094,6 +2200,16 @@ func _world_context_semantics() -> String:
 				guide_names[1],
 			]
 		)
+	if not boardwalk_territory.is_empty():
+		parts.append("Neutral public infrastructure. Contested influence; neither faction is sovereign. Public passage remains open.")
+		parts.append("Dominant influence: %s. Rival: %s. The Pimp leads the Trooners above; The Gimp leads the Gooners below." % [str(boardwalk_territory.get("dominant_faction")), str(boardwalk_territory.get("rival_faction"))])
+		for resident_value in boardwalk_territory.get("local_presence", []):
+			var resident := _dict_or_empty(resident_value)
+			var location := _dict_or_empty(resident.get("position"))
+			parts.append("%s (%s), at x %d, y %d: %s." % [str(resident.get("display_name")), str(resident.get("faction_id")), int(location.get("x", 0)), int(location.get("y", 0)), str(resident.get("activity"))])
+		for exit_value in physical_exits:
+			var local_exit := _dict_or_empty(exit_value)
+			parts.append("Passage to %s at x %d, y %d. Press B on the marker; Tab selects a destination." % [str(local_exit.get("destination_label")), int(local_exit.get("exit_x", 0)), int(local_exit.get("exit_y", 0))])
 	var weather := str(living_world.get("weather", ""))
 	if weather != "":
 		parts.append("Weather: %s." % weather)
@@ -2300,6 +2416,8 @@ func _control_semantics() -> String:
 
 
 func _map_display_name() -> String:
+	if not boardwalk_territory.is_empty():
+		return str(boardwalk_territory.get("display_name", "Boardwalk"))
 	if not extraction_view.is_empty():
 		return str(extraction_view.get("display_name", "Mine"))
 	if not surface_view.is_empty():

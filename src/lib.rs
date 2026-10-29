@@ -67,6 +67,7 @@ pub mod seer_ceremony;
 pub mod semantic;
 pub mod snapshot_boundary;
 pub mod symptom;
+pub mod syndicate_catalog;
 pub mod synthesis_execution;
 pub mod synthesis_recipe;
 pub mod triway;

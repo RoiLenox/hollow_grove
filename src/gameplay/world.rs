@@ -13,6 +13,8 @@ use crate::world::interior_surface::InteriorSurfaceId;
 use super::CardinalDirection;
 
 pub const STARTER_MAP_ID: &str = "aura-ridge.grove-approach";
+pub const BOARDWALK_UPPER_MAP_ID: &str = "boardwalk.upper-span";
+pub const BOARDWALK_LOWER_MAP_ID: &str = "boardwalk.lower-span";
 pub const BOARDWALK_MAP_ID: &str = "boardwalk.return-vestibule";
 /// Stable archive identifier. The current presentation is the civic
 /// Many-Witness Concourse; the historical wire name must remain replayable.
@@ -64,6 +66,48 @@ pub const BOARDWALK_MAP_ROWS: [&str; MAP_HEIGHT as usize] = [
     "T........=.........T",
     "T..................T",
     "TTTTTTTTTTTTTTTTTTTT",
+];
+
+pub const BOARDWALK_UPPER_ROWS: [&str; MAP_HEIGHT as usize] = [
+    "~~~~~~~~~~~~~~~~~~~~",
+    "~~~r.....=......r~~~",
+    "~~~r.....=......r~~~",
+    "~~~t.....=......t~~~",
+    "~~~r.....=...aa.r~~~",
+    "~~~r..b..=......r~~~",
+    "~~~r.....=...b..r~~~",
+    "~~~r.aa..=......r~~~",
+    "~~~r.....=......r~~~",
+    "~~~r.ss..=......r~~~",
+    "~~~r.....=...b..r~~~",
+    "~~~r..b..=......r~~~",
+    "~~~t.....=......t~~~",
+    "~~~r.....=...aa.r~~~",
+    "~~~r.....=.i....r~~~",
+    "~~~r.....=......r~~~",
+    "~~~r.....=......r~~~",
+    "~~~~~~~~~~~~~~~~~~~~",
+];
+
+pub const BOARDWALK_LOWER_ROWS: [&str; MAP_HEIGHT as usize] = [
+    "~~~~~~~~~~~~~~~~~~~~",
+    "~~~r.....=......r~~~",
+    "~~~r.....=......r~~~",
+    "~~~t.....=......t~~~",
+    "~~~r.....=...pp.r~~~",
+    "~~~r..b..=......r~~~",
+    "~~~r.....=...b..r~~~",
+    "~~~r.pp..=......r~~~",
+    "~~~r.....=......r~~~",
+    "~~~r.cc..=......r~~~",
+    "~~~r.....=...b..r~~~",
+    "~~~r..b..=......r~~~",
+    "~~~t.....=......t~~~",
+    "~~~r.....=...pp.r~~~",
+    "~~~r.....=.i....r~~~",
+    "~~~r.....=......r~~~",
+    "~~~r.....=......r~~~",
+    "~~~~~~~~~~~~~~~~~~~~",
 ];
 
 pub const CURRENT_SEA_MAP_ROWS: [&str; MAP_HEIGHT as usize] = [
@@ -284,6 +328,7 @@ pub const CURRENT_SEANAD_MAP_ROWS: [&str; MAP_HEIGHT as usize] = [
 pub enum WorldMapId {
     AuraRidgeGroveApproach,
     BoardwalkReturnVestibule,
+    BoardwalkSpan(super::BoardwalkLevel),
     CurrentSeaDeepCertificationLanding,
     AuraFieldWorkingLand,
     AuraBeachCoastalCommons,
@@ -298,6 +343,8 @@ impl WorldMapId {
         match self {
             Self::AuraRidgeGroveApproach => STARTER_MAP_ID,
             Self::BoardwalkReturnVestibule => BOARDWALK_MAP_ID,
+            Self::BoardwalkSpan(super::BoardwalkLevel::Upper) => BOARDWALK_UPPER_MAP_ID,
+            Self::BoardwalkSpan(super::BoardwalkLevel::Lower) => BOARDWALK_LOWER_MAP_ID,
             Self::CurrentSeaDeepCertificationLanding => CURRENT_SEA_MAP_ID,
             Self::AuraFieldWorkingLand => AURA_FIELD_MAP_ID,
             Self::AuraBeachCoastalCommons => AURA_BEACH_MAP_ID,
@@ -311,6 +358,8 @@ impl WorldMapId {
         match value {
             STARTER_MAP_ID => Ok(Self::AuraRidgeGroveApproach),
             BOARDWALK_MAP_ID => Ok(Self::BoardwalkReturnVestibule),
+            BOARDWALK_UPPER_MAP_ID => Ok(Self::BoardwalkSpan(super::BoardwalkLevel::Upper)),
+            BOARDWALK_LOWER_MAP_ID => Ok(Self::BoardwalkSpan(super::BoardwalkLevel::Lower)),
             CURRENT_SEA_MAP_ID => Ok(Self::CurrentSeaDeepCertificationLanding),
             AURA_FIELD_MAP_ID | "aura-field" => Ok(Self::AuraFieldWorkingLand),
             AURA_BEACH_MAP_ID | "aura-beach" => Ok(Self::AuraBeachCoastalCommons),
@@ -355,7 +404,9 @@ impl WorldMapId {
     pub const fn route(self) -> Option<ConstitutionalRouteId> {
         match self {
             Self::AuraRidgeGroveApproach => Some(ConstitutionalRouteId::AuraRidge),
-            Self::BoardwalkReturnVestibule => Some(ConstitutionalRouteId::Boardwalk),
+            Self::BoardwalkReturnVestibule | Self::BoardwalkSpan(_) => {
+                Some(ConstitutionalRouteId::Boardwalk)
+            }
             Self::CurrentSeaDeepCertificationLanding => Some(ConstitutionalRouteId::CurrentSea),
             Self::AuraFieldWorkingLand
             | Self::AuraBeachCoastalCommons
@@ -384,7 +435,27 @@ impl WorldMapId {
     }
 
     #[must_use]
+    pub const fn boardwalk_level(self) -> Option<super::BoardwalkLevel> {
+        match self {
+            Self::BoardwalkSpan(level) => Some(level),
+            _ => None,
+        }
+    }
+
+    #[must_use]
+    pub const fn local_display_name(self) -> Option<&'static str> {
+        match self {
+            Self::BoardwalkSpan(level) => Some(level.display_name()),
+            Self::BoardwalkReturnVestibule => Some("Boardwalk Public Vestibule"),
+            _ => None,
+        }
+    }
+
+    #[must_use]
     pub const fn is_canonical(self) -> bool {
+        if matches!(self, Self::BoardwalkSpan(_)) {
+            return true;
+        }
         match self.route() {
             Some(route) => map_id_eq(self, Self::for_route(route)),
             None => matches!(
@@ -403,6 +474,11 @@ pub enum InteractionId {
     DeepPressurePerson(super::DeepPressurePersonId),
     AuraRidgeWitnessMarker,
     RidgefolkGuide,
+    BoardwalkTerritoryPerson {
+        level: super::BoardwalkLevel,
+        role: super::BoardwalkPresenceRole,
+    },
+    BoardwalkPassageNotice(super::BoardwalkLevel),
     BoardwalkDischargeAdvocate,
     BoardwalkPimp,
     BoardwalkHoeWitness,
@@ -502,6 +578,11 @@ impl WorldMapDefinition {
     ) -> Option<InteractionId> {
         let (offset_x, offset_y) = from.facing.offset();
         let target = (i32::from(from.x) + offset_x, i32::from(from.y) + offset_y);
+        if let Some(level) = self.id.boardwalk_level()
+            && target == (11, 14)
+        {
+            return Some(InteractionId::BoardwalkPassageNotice(level));
+        }
         let returning_goon_position = match resolved_boardwalk_choice {
             None => (9, 11),
             Some(super::BoardwalkChoice::PimpPatronage) => (8, 5),
@@ -831,6 +912,18 @@ pub const fn map_definition(id: WorldMapId) -> WorldMapDefinition {
                 facing: CardinalDirection::North,
             },
         },
+        WorldMapId::BoardwalkSpan(level) => WorldMapDefinition {
+            id,
+            rows: match level {
+                super::BoardwalkLevel::Upper => &BOARDWALK_UPPER_ROWS,
+                super::BoardwalkLevel::Lower => &BOARDWALK_LOWER_ROWS,
+            },
+            spawn: TilePosition {
+                x: 9,
+                y: 15,
+                facing: CardinalDirection::North,
+            },
+        },
         WorldMapId::BoardwalkReturnVestibule => WorldMapDefinition {
             id,
             rows: &BOARDWALK_MAP_ROWS,
@@ -1036,3 +1129,28 @@ impl std::fmt::Display for WorldMapError {
 }
 
 impl std::error::Error for WorldMapError {}
+
+/// Far-end stair between stacked spans; all older maps keep their exit tiles.
+pub fn physical_exit_position(from: WorldMapId, to: WorldMapId) -> TilePosition {
+    if from.boardwalk_level().is_some() && to.boardwalk_level().is_some() && from != to {
+        TilePosition {
+            x: 9,
+            y: 2,
+            facing: CardinalDirection::North,
+        }
+    } else {
+        map_definition(from).spawn
+    }
+}
+
+pub fn map_entry_position(from: WorldMapId, to: WorldMapId) -> TilePosition {
+    if from.boardwalk_level().is_some() && to.boardwalk_level().is_some() && from != to {
+        TilePosition {
+            x: 9,
+            y: 2,
+            facing: CardinalDirection::South,
+        }
+    } else {
+        map_definition(to).spawn
+    }
+}

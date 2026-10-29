@@ -1225,6 +1225,8 @@ pub struct FreemasonInvestiture {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Default)]
+/// LEGACY Forge succession model retained for historical records. The current
+/// elected office and independent seal transfer are owned by `governance`.
 pub struct FreemasonOfficeState {
     pub active_tenure: Option<FreemasonTenure>,
     pub ended_tenures: Vec<OfficeTombstone>,

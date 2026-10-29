@@ -6,6 +6,22 @@ Authority: canonical Sandmanor architecture
 
 Signature offense: **Fraudulent Design**
 
+## Revision 100 governance reconciliation — 2026-10-25
+
+`SANDMANOR_REV100_GOVERNANCE_AMENDMENT.md` controls current regional elections,
+Contest eligibility and the intended Form curriculum. North: Gnome → Satyr →
+Minotaur → Hecaton, with elected **The Mino**. South: Elf → Faun → Centaur →
+Pegasus, with elected **The Cent**. Both regional offices have four-year terms;
+only the two sitting qualified elected governors compete for the singular
+Sandman. Mastery qualifies. The people elect. Improvement crowns.
+
+Conflicting earlier pairing, Hand-only fourth-stage and guardian-mantle
+succession passages below are LEGACY / SUPERSEDED. Compatible evidence,
+teaching, proof, consent and domain boundaries remain active. Old saved Forms,
+guardian records and XP are preserved rather than automatically reinterpreted.
+The complete pre-reconciliation source is
+`docs/reference/SANDMANOR_CONSTITUTION_V2_PRE_REV100.md`.
+
 ## Ratified Hands amendment — 2026-09-03
 
 `HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md`

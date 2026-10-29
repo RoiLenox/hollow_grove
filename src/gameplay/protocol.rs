@@ -1683,6 +1683,12 @@ impl GameProtocolService {
             .checked_invariants
             .extend(frame_audit.checked_invariants);
         rampart_audit.violations.extend(frame_audit.violations);
+        let boardwalk_audit =
+            crate::kernel_invariants::audit_boardwalk_territory(view.boardwalk_territory.as_ref());
+        rampart_audit
+            .checked_invariants
+            .extend(boardwalk_audit.checked_invariants);
+        rampart_audit.violations.extend(boardwalk_audit.violations);
         let guide_audit = audit_guide_context(&view.guide_context);
         view.kernel_audit = KernelAuditView::from_reports(&rampart_audit, &guide_audit);
         view.guide_transition_events = guide_events;

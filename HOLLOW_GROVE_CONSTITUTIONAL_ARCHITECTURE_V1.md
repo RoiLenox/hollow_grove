@@ -95,9 +95,9 @@ playable proof are established in `THE_RAMPART_V1.md`.
 
 | House | Constitutional domain | Principal authorities | Evidence retained by House | Shared boundaries |
 |---|---|---|---|---|
-| Stonebend | Body/Presynce, Craft, Continuance of Form, legacy physical Current, lawful Hollowing, Name, Claim, Title, provenance, boundary, material identity | Hypergiant, High Freemason, distributed Proliteriate; Diamond STATUS OPEN | Names, Claims, Titles, seals, measures, provenance, Hollowing and Yield | three gates, Court, Central Junction, amendments |
-| Sandmanor | Soul, Prefog/Prefig, Design, reciprocity, formation, Minorians/Minoans, Farm/Beach/coast, guardian Synthesis | Sandman, guardian mantles, bounded joint stewards | Design, formation, reciprocity, teaching, Contest, coastal evidence | Aura Way, Court hosting, Central Junction, clinical compatibility |
-| Glaüshouse | Mind/Precog, Repair, Continuance of Function, compatibility, consent, care, maintained Synthesis | Prima Donna and clinical ladder | consent, compatibility, clinical, Living Ledger, Recipe Ledger, recovery | Court, emergency transfer, Central Junction, House Synthesis |
+| Stonebend | Body/Presynce, Craft, Continuance of Form, legacy physical Current, lawful Hollowing, Name, Claim, Title, provenance, boundary, material identity | Hypergiant, elected Freemason (High Freemason seal), elected Proliteriate with distributed witnesses; Diamond STATUS OPEN | Names, Claims, Titles, seals, measures, provenance, Hollowing and Yield | three gates, Court, Central Junction, amendments |
+| Sandmanor | Soul, Prefog/Prefig, Design, reciprocity, formation, Minorians/Minoans, Farm/Beach/coast, guardian Synthesis | Sandman, elected Mino and Cent, guardian mantles, bounded joint stewards | Design, formation, reciprocity, teaching, Contest, coastal evidence | Aura Way, Court hosting, Central Junction, clinical compatibility |
+| Glaüshouse | Mind/Precog, Repair, Continuance of Function, compatibility, consent, care, maintained Synthesis | Prima Donna, nine elected Persephone seats; independently licensed clinical roles | consent, compatibility, clinical, Living Ledger, Recipe Ledger, recovery, elections and The Call | Court, emergency transfer, Central Junction, House Synthesis |
 | Flynt | Spirit/Resynce, Engineering, Function, persistence, deployment, infrastructure, Manticorp | Tross and bounded continuity authorities | operational, deployment, persistence, infrastructure and Manticorp records | Court, Stonebend gate, Central Junction, regional routes |
 
 No House owns Current, Aura, Relativity, Synthesis, the shared Court, or the
@@ -124,8 +124,8 @@ Compromise.
 | Universal Laws | Compromise plus semantic foundation | root law and constitutional runtime | root constitutional tests | world context | no House-local ownership |
 | Constitutional Runtime and Bond | `HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md` beneath Compromise | `src/constitutional/` | runtime/application/replay tests | trace and TUI | former claim to be top-level Constitution |
 | Stonebend | `STONEBEND_CONSTITUTION_V2.md` and incorporated pass documents | `src/world/stonebend.rs` and children | Stonebend tests/audits | Stonebend roles | V1 redirect |
-| Sandmanor | `SANDMANOR_CONSTITUTION_V2.md` and guardian/succession document | `src/world/sandmanor.rs` and milestone | Sandmanor tests/audit | Sandmanor roles | V1 redirect |
-| Glaüshouse | `GLAUSHOUSE_CONSTITUTION_V2.md` | `src/world/glaushouse.rs` | Glaüshouse tests/audit | Glaüshouse roles | V1 redirect |
+| Sandmanor | `SANDMANOR_CONSTITUTION_V2.md`, `SANDMANOR_REV100_GOVERNANCE_AMENDMENT.md` and compatible guardian/succession rules | `src/world/sandmanor.rs`, governance and milestone | Sandmanor tests/audit | Sandmanor roles | V1 redirect; legacy mantle-based Contest eligibility |
+| Glaüshouse | `GLAUSHOUSE_CONSTITUTION_V2.md` and `GLAUSHOUSE_REV100_GOVERNANCE_AMENDMENT.md` | `src/world/glaushouse.rs` and governance | Glaüshouse tests/audit | Glaüshouse roles and read-only governance CLI | V1 redirect; historical five-seat Deck and twelve-stage succession readers |
 | Flynt | `FLYNT_CONSTITUTION_V2.md` and dual-leadership document | `officials-and-outlaws`, projected by `src/world/flynt.rs` | Flynt crate tests/audit | Flynt roles and stable aliases | Boardwalk draft where unratified |
 | Hueman | `HUEMAN_v0.1.0.md` as entry point and its specialized authorities | Frame, progression, faculty, Recipe, Sympiote and Synthesis modules | Hueman/faculty/Recipe/Synthesis tests | Hueman artifacts | no House office |
 | geography | `HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md` | geography and route network | geography/route audits | maps and scenes | frozen token aliases |
@@ -210,3 +210,5 @@ four Houses. Central Junction is not a fifth House.
 “Complete” here means constitutionally operable and integrated, not that every
 future civic, legal, economic, or gameplay system is implemented. Final freeze
 requires the separately authorized Constitutional Freeze and Phase 2 Closeout.
+
+Revision 100 Stonebend governance is amended by `STONEBEND_REV100_GOVERNANCE_AMENDMENT.md`; `src/world/stonebend/governance.rs` uses the existing shared interface archive and neutral institutional catalog. Historical succession validators do not authorize current accessions.

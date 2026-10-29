@@ -26,6 +26,11 @@ is not treated as proof that it is in an official Arch repository.
 | `/etc/skel/.config/hollow-grove/general-edition.toml` | 0644 | Blank user-owned wallpaper and weather settings |
 | `/usr/bin/hollow-keyboard` | 0755 | Public keyboard discovery, search, map, and semantic-audit command |
 | `/usr/bin/hollow-launch` | 0755 | Public missing-application resolver |
+| `/usr/bin/hollow-sync` | 0755 | Syncthing dashboard initialization and explicit user-service controls |
+| `/usr/bin/hollow-zip` | 0755 | Archive creation, extraction, and read-only terminal inspection pickers |
+| `/usr/bin/hollow-media` | 0755 | Shared media transport through the active MPRIS player |
+| `/usr/bin/hollow-execute` | 0755 | Shell command, executable script, and Cargo/npm project task routes |
+| `/usr/bin/hollow-wrappers` | 0755 | Bottles hub, executable picker, bottle configuration, and Protontricks routes |
 | `/usr/bin/hollow-hueman` | 0755 | Public desktop adapter to the independent Core/Hueman seam |
 | `/usr/bin/hollow-shell` | 0755 | Stable desktop actions and shell diagnostics |
 | `/usr/lib/hollow-grove/bin/*` | 0755 | Private compositor and application helpers listed below |
@@ -114,7 +119,7 @@ These are suitable image-profile choices, but need not all be in a minimal
 installation:
 
 - Firefox or Chromium; Helix, Lapce, Neovim, or Micro.
-- Obsidian, Apostrophe, Ghostwriter, or MarkText.
+- Bottles (official Flatpak), Protontricks, Zenity, and YAD.
 - LibreOffice; Yazi, Thunar, Dolphin, or PCManFM-Qt.
 - Btop, `ncdu`, NVTOP, and Battop.
 - Audacity, LMMS, Cmus, AudioTube, Tauon, and OBS Studio.

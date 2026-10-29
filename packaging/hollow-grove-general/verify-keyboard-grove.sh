@@ -42,31 +42,31 @@ jq -e '
         ["Super+Alt", "Alternate", "Other way"]
     ])
     and ([.letter_vocabulary[] | [.key, .meaning, .memory_hook]] == [
-        ["A", "Assets", "MAKE"],
+        ["A", "AI", "Artificial intelligence"],
         ["B", "Browse", "Web"],
-        ["C", "Chat", "Communicate"],
-        ["D", "Develop", "Code/build"],
-        ["E", "Edit", "Modify"],
+        ["C", "Code", "Source code"],
+        ["D", "Downloads", "Acquire files"],
+        ["E", "Email", "Mail"],
         ["F", "Files", "Filesystem"],
         ["G", "Games", "PLAY"],
         ["H", "← Movement", "Flynt"],
-        ["I", "Images", "View images"],
+        ["I", "Inspect", "Look inside"],
         ["J", "↓ Movement", "Glaüshouse"],
         ["K", "↑ Movement", "Stonebend"],
         ["L", "→ Movement", "Sandmanor"],
         ["M", "Music", "HEAR"],
-        ["N", "News", "Feeds"],
+        ["N", "Network", "Connections"],
         ["O", "Office", "Productivity"],
         ["P", "Photos", "Photography"],
-        ["Q", "Query", "Ask AI/search"],
+        ["Q", "Query", "Find information"],
         ["R", "Record", "Capture"],
         ["S", "Settings", "Configure"],
-        ["T", "Tasks", "To-do/work"],
+        ["T", "Time", "Clock and timing"],
         ["U", "Utilities", "System tools"],
-        ["V", "Video", "WATCH"],
-        ["W", "Write", "Compose"],
-        ["X", "eXchange", "Finance/markets"],
-        ["Y", "sYnc", "Transfer/sync"],
+        ["V", "Videos", "WATCH"],
+        ["W", "Wrappers", "Windows compatibility"],
+        ["X", "eXecute", "Run commands and workflows"],
+        ["Y", "sYnc", "Folder/device sync"],
         ["Z", "Zip", "Archives"]
     ])
     and ([.letter_vocabulary[] | select(.form == "tool") | .key] == ["H", "J", "K", "L"])
@@ -203,9 +203,9 @@ env "${keyboard_environment[@]}" "${keyboard_command}" list --json \
     ' >/dev/null
 
 keyboard_search_output="$(
-    env "${keyboard_environment[@]}" "${keyboard_command}" search finance
+    env "${keyboard_environment[@]}" "${keyboard_command}" search execute
 )"
-grep -F -q 'X · eXchange' <<<"${keyboard_search_output}"
+grep -F -q 'X · eXecute' <<<"${keyboard_search_output}"
 
 env "${keyboard_environment[@]}" "${keyboard_command}" map --json \
     | jq -e '.id == "hollow-grove-keyboard-grove-v1"' >/dev/null

@@ -2,10 +2,10 @@ use std::collections::BTreeSet;
 
 use hollow_grove::world::central_junction::JunctionApproach;
 use hollow_grove::world::geography::ConstitutionalRouteId;
+use hollow_grove::world::stonebend::proliteriate_office_id;
 use hollow_grove::world::stonebend::second_pass::{
-    ConstitutionalDimension, DiamondState, HypergiantSuccessionStage, StonebendConstitutionalPower,
-    StonebendGateFacing, canonical_stonebend_gates, hypergiant_title_id,
-    validate_three_gate_topology,
+    ConstitutionalDimension, DiamondState, StonebendConstitutionalPower, StonebendGateFacing,
+    canonical_stonebend_gates, hypergiant_title_id, validate_three_gate_topology,
 };
 
 pub(crate) fn tool_main() -> Result<(), Box<dyn std::error::Error>> {
@@ -54,21 +54,13 @@ pub(crate) fn tool_main() -> Result<(), Box<dyn std::error::Error>> {
     {
         return Err("Claim, Title, and Yield separation drifted".into());
     }
-    if StonebendConstitutionalPower::Proliteriate
-        .office()
-        .is_some()
-    {
-        return Err("Proliteriate was flattened into one permanent office".into());
+    if StonebendConstitutionalPower::Proliteriate.office() != Some(proliteriate_office_id()) {
+        return Err("Proliteriate elected office projection drifted".into());
     }
 
     let diamond = DiamondState::default();
     if diamond.title != hypergiant_title_id() || !diamond.is_vacant() {
         return Err("Hypergiant no longer supports a stable vacant sovereign Title".into());
-    }
-    if HypergiantSuccessionStage::LazerhornClimbed.semantic_order()
-        >= HypergiantSuccessionStage::AccessionEligible.semantic_order()
-    {
-        return Err("The Lazerhorn no longer precedes accession eligibility".into());
     }
 
     println!("Stonebend Three Gates and Offices Audit: pass");
@@ -81,10 +73,12 @@ pub(crate) fn tool_main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Diamond ontology: STATUS OPEN; legacy ID retained");
     println!("vacancy supported: true");
     println!("constitutional dimensions: Claim, Title, Yield");
-    println!("Proliteriate permanent office: false");
+    println!("Proliteriate elected office: true; enduring network: true");
     println!("Spartacus permanent office: false");
     println!("two distinct powers required for removal: true");
-    println!("Lazerhorn precedes accession: true");
+    println!("intended sovereign selection: The Acclamation");
+    println!("geographic accession prerequisite: none");
+    println!("source-law reconciliation and independent Court review: still required");
     println!("recursion kernel dependency: none");
     Ok(())
 }

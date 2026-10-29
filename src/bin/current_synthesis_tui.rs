@@ -700,7 +700,7 @@ fn parse_player_action(
 }
 
 fn usage() -> &'static str {
-    "Usage: current_synthesis_tui <guides|scenario|world|visual-colors|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|civic-body|civic-crisis|flow-glow|embodied-action|current-inheritance|grip|aura-polarity|light-aura|dark-aura|aura-route|foundation-checkpoint|stanislavski|falloutman|marquise|engine|bond|resource|player|npc|cleopatra> [args]\n\
+    "Usage: current_synthesis_tui <guides|scenario|world|visual-colors|progression|point-squared|map|rule-of-twelve|manager-language|player-location|being-object|move|civic-body|civic-crisis|flow-glow|embodied-action|current-inheritance|grip|aura-polarity|light-aura|dark-aura|aura-route|foundation-checkpoint|stanislavski|falloutman|marquise|engine|bond|resource|player|npc|cleopatra|registrar> [args]\n\
      \n\
      Commands:\n\
        guides status\n\
@@ -749,6 +749,7 @@ fn usage() -> &'static str {
        falloutman menu witness\n\
        falloutman beat witness\n\
        falloutman hidden-wound witness\n\
+       registrar [list|show|explore|verify|help]\n\
        marquise [overview]\n\
        marquise hierarchy\n\
        marquise warden|privateer|corsair|the-marquise\n\
@@ -1114,6 +1115,8 @@ fn run_cli(root: &Path, cli: CurrentSynthesisTuiCli) -> io::Result<String> {
 }
 
 fn main() -> io::Result<()> {
+    warden_registrar_v03::maybe_dispatch();
+
     let cli = parse_cli(std::env::args().skip(1))
         .map_err(|error| io::Error::new(io::ErrorKind::InvalidInput, error))?;
     println!("{}", run_cli(Path::new("."), cli)?);
@@ -1839,3 +1842,6 @@ mod tests {
         fs::remove_dir_all(root).expect("cleanup should succeed");
     }
 }
+
+#[path = "warden_registrar_v03.rs"]
+mod warden_registrar_v03;

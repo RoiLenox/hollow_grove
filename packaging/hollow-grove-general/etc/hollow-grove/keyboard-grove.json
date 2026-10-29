@@ -71,8 +71,8 @@
   "letter_vocabulary": [
     {
       "key": "A",
-      "meaning": "Assets",
-      "memory_hook": "MAKE",
+      "meaning": "AI",
+      "memory_hook": "Artificial intelligence",
       "form": "plant"
     },
     {
@@ -83,20 +83,20 @@
     },
     {
       "key": "C",
-      "meaning": "Chat",
-      "memory_hook": "Communicate",
+      "meaning": "Code",
+      "memory_hook": "Source code",
       "form": "plant"
     },
     {
       "key": "D",
-      "meaning": "Develop",
-      "memory_hook": "Code/build",
+      "meaning": "Downloads",
+      "memory_hook": "Acquire files",
       "form": "plant"
     },
     {
       "key": "E",
-      "meaning": "Edit",
-      "memory_hook": "Modify",
+      "meaning": "Email",
+      "memory_hook": "Mail",
       "form": "plant"
     },
     {
@@ -120,8 +120,8 @@
     },
     {
       "key": "I",
-      "meaning": "Images",
-      "memory_hook": "View images",
+      "meaning": "Inspect",
+      "memory_hook": "Look inside",
       "form": "plant"
     },
     {
@@ -153,8 +153,8 @@
     },
     {
       "key": "N",
-      "meaning": "News",
-      "memory_hook": "Feeds",
+      "meaning": "Network",
+      "memory_hook": "Connections",
       "form": "plant"
     },
     {
@@ -172,7 +172,7 @@
     {
       "key": "Q",
       "meaning": "Query",
-      "memory_hook": "Ask AI/search",
+      "memory_hook": "Find information",
       "form": "plant"
     },
     {
@@ -189,8 +189,8 @@
     },
     {
       "key": "T",
-      "meaning": "Tasks",
-      "memory_hook": "To-do/work",
+      "meaning": "Time",
+      "memory_hook": "Clock and timing",
       "form": "plant"
     },
     {
@@ -201,26 +201,26 @@
     },
     {
       "key": "V",
-      "meaning": "Video",
+      "meaning": "Videos",
       "memory_hook": "WATCH",
       "form": "plant"
     },
     {
       "key": "W",
-      "meaning": "Write",
-      "memory_hook": "Compose",
+      "meaning": "Wrappers",
+      "memory_hook": "Windows compatibility",
       "form": "plant"
     },
     {
       "key": "X",
-      "meaning": "eXchange",
-      "memory_hook": "Finance/markets",
+      "meaning": "eXecute",
+      "memory_hook": "Run commands and workflows",
       "form": "plant"
     },
     {
       "key": "Y",
       "meaning": "sYnc",
-      "memory_hook": "Transfer/sync",
+      "memory_hook": "Folder/device sync",
       "form": "plant"
     },
     {

@@ -193,15 +193,11 @@ fn one_challenge_two_remove_and_tombstones_are_canonical() {
 }
 
 #[test]
-fn lazerhorn_path_replaces_obsolete_summit_vigil_selection() {
-    for document in [
-        SECOND_PASS,
-        CONSTITUTION,
-        CORE,
-        WORLD_CONTEXT,
-        HUEMAN_PROJECTION,
-    ] {
-        assert!(document.contains("Lazerhorn"));
+fn current_acclamation_is_separate_from_historical_selection_records() {
+    assert!(SECOND_PASS.contains("Lazerhorn")); // Preserved historical source.
+    for document in [CONSTITUTION, CORE, WORLD_CONTEXT, HUEMAN_PROJECTION] {
+        assert!(document.contains("The Acclamation"));
+        assert!(!document.to_lowercase().contains("lazerhorn"));
     }
     for obsolete in [
         "supermajority finalist",

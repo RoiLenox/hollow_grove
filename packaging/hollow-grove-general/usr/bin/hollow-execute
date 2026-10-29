@@ -1,0 +1,229 @@
+#!/usr/bin/env python3
+"""Run a shell command, an executable script, or a selected project task."""
+
+import argparse
+import base64
+import json
+import os
+from pathlib import Path
+import pwd
+import shlex
+import shutil
+import subprocess
+import sys
+import tomllib
+
+SCRIPT = str(Path(__file__).resolve())
+SKIP = {"node_modules", "target", "build", "dist", "vendor", "third-party", "releases", "__pycache__"}
+
+
+def visible(text):
+    return "".join(c if c.isprintable() else " " for c in str(text))
+
+
+def encode(item):
+    return base64.urlsafe_b64encode(json.dumps(item, ensure_ascii=True).encode()).decode()
+
+
+def decode(value):
+    return json.loads(base64.urlsafe_b64decode(value))
+
+
+def require(name):
+    if not shutil.which(name):
+        raise RuntimeError(f"Install {name} to use this eXecute route.")
+
+
+def roots(mode, explicit):
+    if explicit:
+        return [Path(p).expanduser().resolve() for p in explicit]
+    home = Path.home()
+    projects = [home / "Projects/active", home / "Projects/systems/src", home / "Projects/learning"]
+    return [home / ".local/bin", home / "bin", *projects] if mode == "scripts" else projects
+
+
+def walk(directories):
+    seen = set()
+    for root in directories:
+        if not root.is_dir():
+            continue
+        for directory, children, files in os.walk(root, followlinks=False):
+            path = Path(directory)
+            depth = len(path.relative_to(root).parts)
+            children[:] = sorted(name for name in children if depth < 8 and not name.startswith(".")
+                                 and name not in SKIP and ".pre-" not in name and ".backup" not in name)
+            for name in sorted(files):
+                file = path / name
+                if file in seen:
+                    continue
+                seen.add(file)
+                yield file
+
+
+def scripts(directories):
+    result = []
+    for path in walk(directories):
+        try:
+            if not path.is_file() or not os.access(path, os.X_OK):
+                continue
+            with path.open("rb") as stream:
+                if stream.read(2) != b"#!":
+                    continue
+        except OSError:
+            continue
+        result.append({"label": str(path), "path": str(path), "cwd": str(path.parent), "argv": [str(path)]})
+    return result
+
+
+def cargo_tasks(manifest):
+    data = tomllib.loads(manifest.read_text())
+    cwd = manifest.parent
+    result = []
+    for action in ("check", "build", "test"):
+        result.append({"label": "cargo " + action, "argv": ["cargo", action], "cwd": str(cwd)})
+    if "package" not in data:
+        return result
+    bins = {item["name"]: item for item in data.get("bin", []) if isinstance(item.get("name"), str)}
+    package = data["package"]
+    if package.get("autobins", True):
+        if (cwd / "src/main.rs").is_file():
+            bins.setdefault(package["name"], {"name": package["name"]})
+        for path in sorted((cwd / "src/bin").glob("*")):
+            if path.suffix == ".rs" or (path.is_dir() and (path / "main.rs").is_file()):
+                name = path.stem if path.is_file() else path.name
+                bins.setdefault(name, {"name": name})
+    for name, item in sorted(bins.items()):
+        argv = ["cargo", "run", "--bin", name]
+        features = item.get("required-features", [])
+        if features:
+            argv.extend(["--features", ",".join(features)])
+        result.append({"label": "run · " + name, "argv": argv, "cwd": str(cwd)})
+    return result
+
+
+def projects(directories):
+    result = {}
+    for manifest in walk(directories):
+        if manifest.name not in ("Cargo.toml", "package.json"):
+            continue
+        try:
+            if manifest.name == "Cargo.toml":
+                if not shutil.which("cargo"):
+                    continue
+                tasks = cargo_tasks(manifest)
+            else:
+                if not shutil.which("npm"):
+                    continue
+                data = json.loads(manifest.read_text())
+                defined = data.get("scripts", {})
+                if not isinstance(defined, dict):
+                    continue
+                tasks = [{"label": "npm · " + name, "argv": ["npm", "run", "--", name],
+                          "cwd": str(manifest.parent), "description": text}
+                         for name, text in sorted(defined.items()) if isinstance(text, str)]
+        except (OSError, ValueError, KeyError, TypeError):
+            continue
+        if tasks:
+            key = str(manifest.parent)
+            result.setdefault(key, {"label": key, "cwd": key, "tasks": []})["tasks"].extend(tasks)
+    return [result[key] for key in sorted(result)]
+
+
+def preview(item):
+    print("Directory: " + visible(item["cwd"]))
+    if "argv" in item:
+        print("Command: " + visible(shlex.join(item["argv"])))
+    if "tasks" in item:
+        print("\n" + "\n".join(visible(task["label"]) for task in item["tasks"]))
+    if "description" in item:
+        print("\n" + visible(item["description"]))
+    if "path" in item:
+        with Path(item["path"]).open("rb") as stream:
+            text = stream.read(16000).decode("utf-8", "replace")
+        print("\n" + "\n".join(f"{i:3}  {visible(line)}" for i, line in enumerate(text.splitlines()[:150], 1)))
+
+
+def pick(items, prompt):
+    require("fzf")
+    if not items:
+        raise RuntimeError("No matching scripts or supported project tasks were found.")
+    # Encoded metadata keeps paths and names literal through fzf's shell preview.
+    rows = [(encode(item) + "\t" + visible(item["label"])).encode() + b"\0" for item in items]
+    preview_command = shlex.join([sys.executable, SCRIPT, "_preview"]) + " {1}"
+    env = dict(os.environ, FZF_DEFAULT_OPTS="", FZF_DEFAULT_OPTS_FILE="", FZF_DEFAULT_COMMAND="")
+    result = subprocess.run(["fzf", "--read0", "--print0", "--delimiter=\t", "--with-nth=2..",
+                             "--prompt=" + prompt, "--header=Enter runs/selects · Esc cancels",
+                             "--preview=" + preview_command, "--preview-window=right:60%:wrap"],
+                            input=b"".join(rows), stdout=subprocess.PIPE, env=env)
+    if result.returncode in (1, 130):
+        return None
+    if result.returncode:
+        raise RuntimeError("The execution picker could not open.")
+    row = result.stdout.removesuffix(b"\0")
+    if row not in [line.removesuffix(b"\0") for line in rows]:
+        raise RuntimeError("Invalid execution selection.")
+    return decode(row.split(b"\t", 1)[0])
+
+
+def execute(item):
+    argv = item["argv"]
+    require(argv[0])
+    print("\nDirectory: " + visible(item["cwd"]), flush=True)
+    print("$ " + visible(shlex.join(argv)) + "\n", flush=True)
+    status = subprocess.call(argv, cwd=item["cwd"])
+    print(f"\nExit status: {status}", flush=True)
+    return status
+
+
+def shell_command(cwd):
+    shell = pwd.getpwuid(os.getuid()).pw_shell or os.environ.get("SHELL") or "/bin/sh"
+    require(shell)
+    print(f"eXecute · Command\nShell: {Path(shell).name}\nDirectory: {cwd}\n")
+    # Readline adds normal terminal editing without reading/writing persistent command history.
+    try:
+        import readline  # noqa: F401
+    except ImportError:
+        pass
+    command = input("Command (Enter cancels): ")
+    if not command.strip():
+        return 0
+    print(flush=True)
+    status = subprocess.call([shell, "-c", command], cwd=cwd)
+    print(f"\nExit status: {status}", flush=True)
+    return status
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("mode", choices=("command", "scripts", "tasks", "_preview"))
+    parser.add_argument("item", nargs="?")
+    parser.add_argument("--root", action="append", help="Search this root instead of the standard script/project folders")
+    parser.add_argument("--cwd", default=str(Path.home()), help="Directory for the command route")
+    args = parser.parse_args()
+    if args.mode == "_preview":
+        preview(decode(args.item))
+        return 0
+    if args.mode == "command":
+        cwd = Path(args.cwd).expanduser().resolve()
+        if not cwd.is_dir():
+            raise RuntimeError("The command directory does not exist.")
+        return shell_command(str(cwd))
+    directories = roots(args.mode, args.root)
+    if args.mode == "scripts":
+        selected = pick(scripts(directories), "Script › ")
+    else:
+        project = pick(projects(directories), "Project › ")
+        if project is None:
+            return 0
+        selected = pick(project["tasks"], "Task › ")
+    return 0 if selected is None else execute(selected)
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except (EOFError, KeyboardInterrupt):
+        sys.exit(0)
+    except (RuntimeError, OSError, ValueError, TypeError) as error:
+        print(f"hollow-execute: {error}", file=sys.stderr)
+        sys.exit(1)

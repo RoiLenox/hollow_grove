@@ -33,6 +33,9 @@ enum MainCli {
     HollowDeck(Vec<String>),
     Lore(Vec<String>),
     Architecture(Vec<String>),
+    Stonebend(Vec<String>),
+    Sandmanor(Vec<String>),
+    Glaushouse(Vec<String>),
     VerifyFoundation,
     CurrentSynthesisTui(Vec<String>),
     SemanticTools(Vec<String>),
@@ -67,6 +70,9 @@ where
         "deck" | "hollow-deck" => Ok(MainCli::HollowDeck(args.collect())),
         "lore" => Ok(MainCli::Lore(args.collect())),
         "architecture" => Ok(MainCli::Architecture(args.collect())),
+        "stonebend" => Ok(MainCli::Stonebend(args.collect())),
+        "sandmanor" => Ok(MainCli::Sandmanor(args.collect())),
+        "glaushouse" => Ok(MainCli::Glaushouse(args.collect())),
         "semantic" | "rampart" | "federation" | "model" | "dataset" => {
             let forwarded_command = if command == "federation" {
                 "rampart".to_owned()
@@ -139,6 +145,9 @@ fn usage() -> &'static str {
        deck [args]      open or query the canonical Hollow Deck\n\
        lore [args]       inspect lore contracts and replay-backed gameplay consequence\n\
        architecture [args] audit architecture source links and lore execution coverage\n\
+       stonebend [args]   inspect current paths or replay a Stonebend governance archive\n\
+       sandmanor [args]   inspect current paths or replay a Sandmanor governance archive\n\
+       glaushouse [args]  inspect current seats, Forms or a Glaushouse governance archive\n\
        semantic ...      inspect witnessed semantic positions and history\n\
        rampart ...       run or serve the authoritative transformer-assisted semantic cycle\n\
        model ...         validate an untrusted model response\n\
@@ -191,6 +200,8 @@ fn usage() -> &'static str {
        hollow-grove app attach chroma_cord\n\
        hollow-grove hueman-slice walk\n\
        hollow-grove deck\n\
+       hollow-grove deck registrar\n\
+       hollow-grove deck registrar show WR-006\n\
        hollow-grove deck nature gargoyle\n\
        hollow-grove deck compare gargoyle medusa\n\
        hollow-grove semantic inspect semantic-witnesses-v1.jsonl object.support-column.041 structural-repair\n\
@@ -767,6 +778,231 @@ fn run_architecture_cli(args: &[String]) -> io::Result<()> {
     Ok(())
 }
 
+fn run_stonebend_cli(args: &[String]) -> io::Result<()> {
+    use hollow_grove::world::stonebend::governance::{Governance, Office, PATHS, RULE_SET};
+    match args
+        .iter()
+        .map(String::as_str)
+        .collect::<Vec<_>>()
+        .as_slice()
+    {
+        [] | ["--help" | "-h"] => {
+            println!(
+                "Usage: hollow-grove stonebend paths\nhollow-grove stonebend inspect ARCHIVE [--json]\nRead-only inspection; archives are replayed and validated before reporting authority."
+            );
+        }
+        ["paths"] => {
+            for (name, stages) in PATHS {
+                println!("{name}: {}", stages.join(" → "));
+            }
+            println!(
+                "Form mastery is separate from office. High Freemason is the elected Freemason's seal function."
+            );
+        }
+        ["inspect", path] | ["inspect", path, "--json"] => {
+            let bytes = fs::read(path)?;
+            let governance = Governance::decode(&bytes)
+                .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?;
+            // Validate the authority projection as well as the archive itself.
+            governance
+                .world_session()
+                .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?;
+            if args.len() == 3 {
+                println!("{}", serde_json::to_string_pretty(&serde_json::json!({
+                    "rule_set": RULE_SET, "revision": governance.revision(), "year": governance.year(),
+                    "current_offices": Office::ALL.map(|office| serde_json::json!({"office": office, "tenure": governance.incumbent(office)})),
+                    "active_seal": governance.active_seal(), "tenure_history": governance.tenures(),
+                })).map_err(io::Error::other)?);
+            } else {
+                println!(
+                    "Stonebend Revision 100 — year {}, {} accepted events",
+                    governance.year(),
+                    governance.revision()
+                );
+                for office in Office::ALL {
+                    println!(
+                        "{}: {}",
+                        office.id(),
+                        governance
+                            .incumbent(office)
+                            .map_or("vacant", |t| t.holder.as_str())
+                    );
+                }
+                println!(
+                    "Active High Freemason seal: {}",
+                    governance.active_seal().unwrap_or("none")
+                );
+            }
+        }
+        _ => {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                "expected stonebend paths or stonebend inspect ARCHIVE [--json]",
+            ));
+        }
+    }
+    Ok(())
+}
+
+fn run_sandmanor_cli(args: &[String]) -> io::Result<()> {
+    use hollow_grove::world::sandmanor::governance::{FORM_PATHS, Governance, Office, RULE_SET};
+    match args
+        .iter()
+        .map(String::as_str)
+        .collect::<Vec<_>>()
+        .as_slice()
+    {
+        [] | ["--help" | "-h"] => println!(
+            "Usage: hollow-grove sandmanor paths\nhollow-grove sandmanor inspect ARCHIVE [--json]\nRead-only inspection; archives are replayed and validated before reporting authority."
+        ),
+        ["paths"] => {
+            for (region, forms) in FORM_PATHS {
+                println!("{region}: {}", forms.join(" → "));
+            }
+            println!(
+                "The Mino and The Cent are elected for four years. Only the two sitting qualified governors enter the Contest of Improvement. Form mastery and Agency rank do not grant office."
+            );
+        }
+        ["inspect", path] | ["inspect", path, "--json"] => {
+            let governance = Governance::decode(&fs::read(path)?)
+                .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?;
+            governance
+                .world_session()
+                .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?;
+            if args.len() == 3 {
+                println!("{}", serde_json::to_string_pretty(&serde_json::json!({
+                    "rule_set": RULE_SET, "revision": governance.revision(), "year": governance.year(),
+                    "current_offices": Office::ALL.map(|office| serde_json::json!({"office":office,"tenure":governance.incumbent(office)})),
+                    "tenure_history": governance.tenures(), "contests": governance.contests(),
+                })).map_err(io::Error::other)?);
+            } else {
+                println!(
+                    "Sandmanor Revision 100 — year {}, {} accepted events",
+                    governance.year(),
+                    governance.revision()
+                );
+                for office in Office::ALL {
+                    println!(
+                        "{}: {}",
+                        office.id(),
+                        governance
+                            .incumbent(office)
+                            .map_or("vacant", |t| t.holder.as_str())
+                    );
+                }
+                for contest in governance.contests().values() {
+                    println!(
+                        "{}: {:?} (attempt {})",
+                        contest.id, contest.status, contest.attempt
+                    );
+                }
+            }
+        }
+        _ => {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                "expected sandmanor paths or sandmanor inspect ARCHIVE [--json]",
+            ));
+        }
+    }
+    Ok(())
+}
+
+fn run_glaushouse_cli(args: &[String]) -> io::Result<()> {
+    use hollow_grove::world::glaushouse::governance::{
+        CARE_ROLES, CallStage, Governance, MuseHouse, ORDINARY_FORMS, Office, RULE_SET,
+    };
+    match args
+        .iter()
+        .map(String::as_str)
+        .collect::<Vec<_>>()
+        .as_slice()
+    {
+        [] | ["--help" | "-h"] => println!(
+            "Usage: hollow-grove glaushouse paths\nhollow-grove glaushouse seats\nhollow-grove glaushouse inspect ARCHIVE [--json]\nRead-only inspection; archives are replayed and validated before reporting authority."
+        ),
+        ["paths"] => {
+            println!(
+                "Ordinary Forms: {}",
+                ORDINARY_FORMS
+                    .map(|form| {
+                        let mut chars = form.chars();
+                        format!(
+                            "{}{}",
+                            chars.next().expect("Form name").to_uppercase(),
+                            chars.as_str()
+                        )
+                    })
+                    .join(" → ")
+            );
+            println!(
+                "Advanced Persephone: post-Muse mastery and a current elected seat. Prima Donna: current sovereign only."
+            );
+            for (role, path, material) in CARE_ROLES {
+                println!("{role}: {path} / {material}; independently licensed care role.");
+            }
+            println!(
+                "The Call: {}",
+                CallStage::ALL.map(CallStage::name).join(" → ")
+            );
+            println!(
+                "Six of nine seat votes; nine-year sovereign term. Nightingale citizenship, mastery and office grant no clinical license."
+            );
+        }
+        ["seats"] => {
+            println!("House of Persephone — nine equal Muse-House seats:");
+            for house in MuseHouse::ALL {
+                println!("Persephone de {}: {}", house.name(), house.office_id());
+            }
+            println!(
+                "Six-year peer-elected terms, three cohorts two years apart. Historical Deck affiliations require explicit reconciliation."
+            );
+        }
+        ["inspect", path] | ["inspect", path, "--json"] => {
+            let g = Governance::decode(&fs::read(path)?)
+                .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?;
+            g.world_session()
+                .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?;
+            if args.len() == 3 {
+                let current = Office::all()
+                    .map(|office| serde_json::json!({"office":office,"tenure":g.incumbent(office)}))
+                    .collect::<Vec<_>>();
+                println!("{}",serde_json::to_string_pretty(&serde_json::json!({"rule_set":RULE_SET,"revision":g.revision(),"date":g.date(),
+                    "current_offices":current,"tenure_history":g.tenures(),"elections":g.elections(),"calls":g.calls()})).map_err(io::Error::other)?);
+            } else {
+                println!(
+                    "Glaüshouse Revision 100 — year {}, day {}, {} accepted events",
+                    g.date().year,
+                    g.date().day,
+                    g.revision()
+                );
+                for office in Office::all() {
+                    println!(
+                        "{}: {}",
+                        office.id(),
+                        g.incumbent(office).map_or("vacant", |t| t.holder.as_str())
+                    );
+                }
+                for call in g.calls().values() {
+                    println!(
+                        "{}: {} ({} ballots)",
+                        call.id,
+                        call.stage.name(),
+                        call.rounds
+                    );
+                }
+            }
+        }
+        _ => {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                "expected glaushouse paths, seats, or inspect ARCHIVE [--json]",
+            ));
+        }
+    }
+    Ok(())
+}
+
 fn main() -> io::Result<()> {
     let cli = parse_main_cli(env::args().skip(1))
         .map_err(|error| io::Error::new(io::ErrorKind::InvalidInput, error))?;
@@ -789,6 +1025,9 @@ fn main() -> io::Result<()> {
         MainCli::HollowDeck(args) => run_child_binary(HOLLOW_DECK_BINARY_NAME, &args),
         MainCli::Lore(args) => run_lore_cli(&args),
         MainCli::Architecture(args) => run_architecture_cli(&args),
+        MainCli::Stonebend(args) => run_stonebend_cli(&args),
+        MainCli::Sandmanor(args) => run_sandmanor_cli(&args),
+        MainCli::Glaushouse(args) => run_glaushouse_cli(&args),
         MainCli::SemanticTools(args) => run_child_binary(SEMANTIC_BINARY_NAME, &args),
         MainCli::VerifyFoundation => {
             println!("{}", build_hollow_grove_foundation_verification_report()?);

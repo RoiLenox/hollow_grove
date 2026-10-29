@@ -119,7 +119,7 @@ fn generic_route_maps_expose_their_exact_constitutional_witness() {
         let dialogue = hollow_grove::gameplay::InteractionView::from_target(
             InteractionId::ConstitutionalRouteWitness(route),
         );
-        assert_eq!(dialogue.speaker, route.display_name().to_uppercase());
+        assert_eq!(dialogue.speaker, route.public_name().to_uppercase());
         assert!(
             dialogue
                 .pages
@@ -175,7 +175,7 @@ fn route_transfers_follow_shared_house_endpoints_and_replay() {
         let view = GameView::from_runtime(service.runtime(), vec![]);
         let route_view = view.route.unwrap();
         assert_eq!(route_view.route_id, route.stable_id());
-        assert_eq!(route_view.display_name, route.display_name());
+        assert_eq!(route_view.display_name, route.public_name());
         sequence += 1;
     }
 
@@ -259,4 +259,93 @@ fn route_skeleton_claims_all_three_implemented_interior_surfaces() {
     ] {
         assert!(client.contains(map), "client route cycle missing {map}");
     }
+}
+
+#[test]
+fn directional_highway_signage_shares_one_curve_and_preserves_saved_map_identity() {
+    use ConstitutionalRouteId::{BasinMotorspeedway, StairwayToHeaven};
+    use hollow_grove::gameplay::{InteractionView, RouteView};
+    use hollow_grove::hollow_grove_contract::House;
+
+    let network = RouteNetwork::canonical().unwrap();
+    let corridors: Vec<_> = network
+        .segments()
+        .iter()
+        .filter(|s| s.contains_house(House::Flynt) && s.contains_house(House::Stonebend))
+        .collect();
+    assert_eq!(corridors.len(), 2);
+    let highway = network.segment(StairwayToHeaven).unwrap();
+    assert_eq!(highway.geometry, RouteGeometryClass::Round);
+    assert_eq!(
+        highway
+            .route
+            .directional_name(House::Stonebend, House::Flynt),
+        Some("H.T.T. — Highway to Hell")
+    );
+    assert_eq!(
+        highway
+            .route
+            .directional_name(House::Flynt, House::Stonebend),
+        Some("S.T.H. — Stairway to Heaven")
+    );
+    assert_eq!(
+        highway
+            .route
+            .directional_name(House::Flynt, House::Sandmanor),
+        None
+    );
+    let bms = network.segment(BasinMotorspeedway).unwrap();
+    assert_eq!(bms.geometry, RouteGeometryClass::Straight);
+    for (from, to) in [
+        (House::Stonebend, House::Flynt),
+        (House::Flynt, House::Stonebend),
+    ] {
+        assert_eq!(
+            bms.route.directional_name(from, to),
+            Some("Basin Motor Speedway (B.M.S.)")
+        );
+    }
+    assert_ne!(highway.route.stable_id(), bms.route.stable_id());
+    assert_eq!(
+        highway.route.stable_id(),
+        "geography.route.stairway-to-heaven"
+    );
+    let old_map = WorldMapId::from_wire("stairway-to-heaven.ascent-path").unwrap();
+    assert_eq!(old_map, WorldMapId::for_route(highway.route));
+    assert_eq!(map_definition(old_map).rows, &ROUND_ROUTE_MAP_ROWS);
+    let mine = WorldMapId::from_wire("highway-to-hell.deepworks").unwrap();
+    assert_ne!(mine, old_map);
+    assert!(mine.extraction().is_some());
+    assert!(mine.route().is_none());
+    let view = RouteView::from_map(old_map).unwrap();
+    assert_eq!(
+        view.display_name,
+        "H.T.T. — Highway to Hell / S.T.H. — Stairway to Heaven"
+    );
+    assert_eq!(view.route_id, "geography.route.stairway-to-heaven");
+    assert!(view.process.iter().all(|stage| stage != "Title"));
+    assert!(view.purpose.contains("The Hippo Dome"));
+    assert!(view.purpose.contains("flat land"));
+    assert!(
+        view.purpose
+            .contains("Hippodrones are its concession workforce")
+    );
+    assert!(
+        view.purpose
+            .contains("No road is an Acclamation prerequisite")
+    );
+    let dialogue =
+        InteractionView::from_target(InteractionId::ConstitutionalRouteWitness(highway.route));
+    assert!(
+        dialogue
+            .pages
+            .iter()
+            .any(|p| p.contains("ONE CURVED MOUNTAIN HIGHWAY"))
+    );
+    assert!(
+        !serde_json::to_string(&view)
+            .unwrap()
+            .to_lowercase()
+            .contains("lazerhorn")
+    );
 }

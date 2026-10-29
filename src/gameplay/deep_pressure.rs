@@ -1755,6 +1755,7 @@ pub fn scheduled_people_on_map(
     map: WorldMapId,
 ) -> Vec<DeepPressurePersonPresence> {
     let location = match map {
+        WorldMapId::BoardwalkSpan(_) => None,
         WorldMapId::AuraFieldWorkingLand => Some(ScheduledLocation::Surface(
             crate::world::interior_surface::InteriorSurfaceId::AuraField,
         )),

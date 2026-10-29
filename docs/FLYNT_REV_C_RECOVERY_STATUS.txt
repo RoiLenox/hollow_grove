@@ -1,0 +1,90 @@
+ M CHROMA_CORD_GLAUSHOUSE_CLINICAL_CHARTING_v0.1.0.md
+ M CURRENT_SYNTHESIS_HOLLOW_GROVE_WORLD_CONTEXT_v0.1.0.md
+ M GLAUSHOUSE_CONSTITUTION_V2.md
+ M HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md
+ M HOLLOW_GROVE_CONSTITUTIONAL_ARCHITECTURE_V1.md
+ M HOLLOW_GROVE_CORE_v1.0.0.md
+ M HOLLOW_GROVE_KEYBOARD_CONSTITUTION_V1.md
+ M HOLLOW_GROVE_KEYBOARD_STANDARD_V2.md
+ M REPOSITORY_AUTHORITY_MAP.md
+ M SANDMANOR_CONSTITUTION_V2.md
+ M SANDMANOR_GUARDIAN_AND_SUCCESSION_V1.md
+ M STONEBEND_CONSTITUTION_V2.md
+ M STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md
+ M STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md
+ M artifacts/current_synthesis_world_context.md
+ M artifacts/hollow_grove_keyboard_grove_map.md
+ M artifacts/hollow_grove_keyboard_grove_map.svg
+ M artifacts/hueman_stonebend_roles.md
+ M packaging/hollow-grove-general/OPTIONAL_APPLICATIONS.md
+ M packaging/hollow-grove-general/PACKAGE_MANIFEST.md
+ M packaging/hollow-grove-general/etc/hollow-grove/applications.toml
+ M packaging/hollow-grove-general/etc/hollow-grove/keyboard-grove.json
+ M packaging/hollow-grove-general/etc/skel/.config/niri/config.kdl
+ M packaging/hollow-grove-general/usr/share/hollow-grove/general-edition/hollow-grove-keyboard-map.svg
+ M packaging/hollow-grove-general/verify-keyboard-grove.sh
+ M src/bin/hueman_stonebend_roles.rs
+ M src/hollow_deck.rs
+ M src/hollow_deck_tui.rs
+ M src/hueman_support.rs
+ M src/main.rs
+ M src/world/chroma_cord.rs
+ M src/world/flynt.rs
+ M src/world/glaushouse.rs
+ M src/world/house_institutions.rs
+ M src/world/house_scene_context.rs
+ M src/world/sandmanor.rs
+ M src/world/sandmanor/milestone.rs
+ M src/world/stonebend.rs
+ M src/world/stonebend/second_pass.rs
+ M src/world/stonebend/third_pass.rs
+ M tests/glaushouse_constitutional_architecture.rs
+ M tests/hollow_deck.rs
+ M tests/integration.rs
+ M tests/stonebend_constitutional_architecture.rs
+ M tests/stonebend_documentation_conformance.rs
+ M tests/stonebend_third_pass_documentation.rs
+ M tests/stonebend_three_gates_offices.rs
+?? GLAUSHOUSE_REV100_GOVERNANCE_AMENDMENT.md
+?? SANDMANOR_REV100_GOVERNANCE_AMENDMENT.md
+?? STONEBEND_REV100_GOVERNANCE_AMENDMENT.md
+?? distro/DISTRIBUTION_ROADMAP_V1_DRAFT.md
+?? docs/CLINICAL_AUTHORIZATION_POLICY_V2.md
+?? docs/FLYNT_REV_C_CONTINUATION.md
+?? docs/FLYNT_REV_C_GOVERNANCE.md
+?? docs/FLYNT_REV_C_RECOVERY_REPORT.md
+?? docs/FLYNT_REV_C_RECOVERY_STATUS.txt
+?? docs/REV100_INTEGRATION_STATUS.md
+?? docs/SANDMANOR_REV_C_PAIRED_PATHS_DESIGN.md
+?? docs/reference/GLAUSHOUSE_CONSTITUTION_V2_PRE_REV100.md
+?? docs/reference/SANDMANOR_CONSTITUTION_V2_PRE_REV100.md
+?? docs/reference/SANDMANOR_GUARDIAN_AND_SUCCESSION_V1_PRE_REV100.md
+?? docs/reference/STONEBEND_CONSTITUTION_V2_PRE_REV100.md
+?? packaging/hollow-grove-general/etc/skel/.config/hollow-grove/time/
+?? packaging/hollow-grove-general/etc/skel/.config/spotify-launcher.conf
+?? packaging/hollow-grove-general/usr/bin/hollow-ai
+?? packaging/hollow-grove-general/usr/bin/hollow-execute
+?? packaging/hollow-grove-general/usr/bin/hollow-media
+?? packaging/hollow-grove-general/usr/bin/hollow-network-ssh
+?? packaging/hollow-grove-general/usr/bin/hollow-query
+?? packaging/hollow-grove-general/usr/bin/hollow-spotify
+?? packaging/hollow-grove-general/usr/bin/hollow-sync
+?? packaging/hollow-grove-general/usr/bin/hollow-time
+?? packaging/hollow-grove-general/usr/bin/hollow-video
+?? packaging/hollow-grove-general/usr/bin/hollow-wrappers
+?? packaging/hollow-grove-general/usr/bin/hollow-zip
+?? src/world/flynt/equipment.rs
+?? src/world/flynt/governance.rs
+?? src/world/flynt/q.rs
+?? src/world/flynt/synthesis.rs
+?? src/world/glaushouse/
+?? src/world/sandmanor/governance.rs
+?? src/world/stonebend/governance.rs
+?? tests/fixtures/clinical_authorization/
+?? tests/fixtures/flynt-governance-a-v1.json
+?? tests/flynt_rev_c_equipment.rs
+?? tests/flynt_rev_c_governance.rs
+?? tests/flynt_rev_c_q.rs
+?? tests/glaushouse_rev100_governance.rs
+?? tests/sandmanor_rev100_governance.rs
+?? tests/stonebend_rev100_governance.rs

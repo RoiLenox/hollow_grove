@@ -1,0 +1,6601 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-27",
+  "scope": "Entire working-tree readable file bytes, hidden/ignored/binaries included, .git internals excluded; zero-based byte offsets.",
+  "initial_source_scan": {
+    "paths": 33,
+    "matching_lines": 83,
+    "occurrences": 88
+  },
+  "final_scan": {
+    "paths": 117,
+    "matching_lines": 658,
+    "occurrences": 736,
+    "binary_build_paths": 87
+  },
+  "source_law_exception": "HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md:873",
+  "baseline": {
+    "head": "d51f506d3a4d9f00381d5e4d44471b316f7a5c1c",
+    "branch": "os/package-foundation",
+    "files": 1258,
+    "unchanged_files": 1235,
+    "changed_files": [
+      "CURRENT_SYNTHESIS_HOLLOW_GROVE_WORLD_CONTEXT_v0.1.0.md",
+      "HOLLOW_GROVE_CORE_v1.0.0.md",
+      "HOLLOW_GROVE_SEMANTIC_FOUNDATION_V1.md",
+      "REPOSITORY_AUTHORITY_MAP.md",
+      "STONEBEND_CONSTITUTION_V2.md",
+      "STONEBEND_REV100_GOVERNANCE_AMENDMENT.md",
+      "V2_CAPABILITY_INVENTORY.md",
+      "V2_CAPABILITY_MATRIX.md",
+      "artifacts/current_synthesis_world_context.md",
+      "artifacts/hueman_stonebend_roles.md",
+      "artifacts/index.md",
+      "docs/FLYNT_REV_C_CONTINUATION.md",
+      "docs/STONEBEND_FLYNT_CORRIDOR_HIPPO_DOME_HIPPODRONES_GEOGRAPHY_SUPPLEMENT_V2_2026-10-26.md",
+      "hueman_godot/scripts/hueman_screen_shell.gd",
+      "src/bin/hueman_stonebend_roles.rs",
+      "src/bin/stonebend_constitutional_audit.rs",
+      "src/bin/stonebend_three_gates_audit.rs",
+      "src/gameplay/view.rs",
+      "src/hueman_support.rs",
+      "src/world/geography.rs",
+      "tests/route_network_gameplay.rs",
+      "tests/stonebend_documentation_conformance.rs",
+      "tests/stonebend_second_pass_documentation.rs"
+    ],
+    "index_sha256": "f928a77a8ced083450ead847c1c5b76e54f694faa5351f21ce7ad1a47f12c6d0"
+  },
+  "files": [
+    {
+      "path": "CURRENT_SYNTHESIS_HOLLOW_GROVE_WORLD_CONTEXT_v0.1.0.md",
+      "before_category": "1-active",
+      "after_category": "none",
+      "reason": "Current active presentation/design reference removed and replaced with canonical geography or Acclamation wording.",
+      "before": [
+        {
+          "line": 2457,
+          "count": 1,
+          "byte_offsets": [
+            60599
+          ]
+        }
+      ],
+      "after": []
+    },
+    {
+      "path": "HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md",
+      "before_category": "1-protected-source-conflict",
+      "after_category": "1-protected-source-conflict",
+      "reason": "Operative shared accession clause conflicts with intended Acclamation; preserved for independent source-law review, not erased or activated.",
+      "before": [
+        {
+          "line": 873,
+          "count": 1,
+          "byte_offsets": [
+            40818
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 873,
+          "count": 1,
+          "byte_offsets": [
+            40818
+          ]
+        }
+      ]
+    },
+    {
+      "path": "HOLLOW_GROVE_CORE_v1.0.0.md",
+      "before_category": "1-active",
+      "after_category": "none",
+      "reason": "Current active presentation/design reference removed and replaced with canonical geography or Acclamation wording.",
+      "before": [
+        {
+          "line": 274,
+          "count": 1,
+          "byte_offsets": [
+            10717
+          ]
+        }
+      ],
+      "after": []
+    },
+    {
+      "path": "HOLLOW_GROVE_SEMANTIC_FOUNDATION_V1.md",
+      "before_category": "1-active",
+      "after_category": "none",
+      "reason": "Current active presentation/design reference removed and replaced with canonical geography or Acclamation wording.",
+      "before": [
+        {
+          "line": 337,
+          "count": 1,
+          "byte_offsets": [
+            11573
+          ]
+        }
+      ],
+      "after": []
+    },
+    {
+      "path": "HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md",
+      "before_category": "2-historical-evidence",
+      "after_category": "2-historical-evidence",
+      "reason": "Historical supplement citation in repository mapping; no active feature definition.",
+      "before": [
+        {
+          "line": 3064,
+          "count": 1,
+          "byte_offsets": [
+            105252
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 3064,
+          "count": 1,
+          "byte_offsets": [
+            105252
+          ]
+        }
+      ]
+    },
+    {
+      "path": "HOLLOW_GROVE_WHOLE_CONSTITUTIONAL_INTEGRATION_AUDIT_V1.md",
+      "before_category": "2-historical-evidence",
+      "after_category": "2-historical-evidence",
+      "reason": "Historical/superseded constitutional or dated audit evidence, preserved; continuation only appended.",
+      "before": [
+        {
+          "line": 234,
+          "count": 1,
+          "byte_offsets": [
+            12539
+          ]
+        },
+        {
+          "line": 239,
+          "count": 1,
+          "byte_offsets": [
+            13715
+          ]
+        },
+        {
+          "line": 289,
+          "count": 1,
+          "byte_offsets": [
+            21037
+          ]
+        },
+        {
+          "line": 324,
+          "count": 1,
+          "byte_offsets": [
+            23975
+          ]
+        },
+        {
+          "line": 527,
+          "count": 1,
+          "byte_offsets": [
+            41005
+          ]
+        },
+        {
+          "line": 559,
+          "count": 1,
+          "byte_offsets": [
+            42426
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 234,
+          "count": 1,
+          "byte_offsets": [
+            12539
+          ]
+        },
+        {
+          "line": 239,
+          "count": 1,
+          "byte_offsets": [
+            13715
+          ]
+        },
+        {
+          "line": 289,
+          "count": 1,
+          "byte_offsets": [
+            21037
+          ]
+        },
+        {
+          "line": 324,
+          "count": 1,
+          "byte_offsets": [
+            23975
+          ]
+        },
+        {
+          "line": 527,
+          "count": 1,
+          "byte_offsets": [
+            41005
+          ]
+        },
+        {
+          "line": 559,
+          "count": 1,
+          "byte_offsets": [
+            42426
+          ]
+        }
+      ]
+    },
+    {
+      "path": "REPOSITORY_AUTHORITY_MAP.md",
+      "before_category": "1-active",
+      "after_category": "none",
+      "reason": "Current active presentation/design reference removed and replaced with canonical geography or Acclamation wording.",
+      "before": [
+        {
+          "line": 226,
+          "count": 1,
+          "byte_offsets": [
+            12725
+          ]
+        },
+        {
+          "line": 341,
+          "count": 1,
+          "byte_offsets": [
+            19960
+          ]
+        },
+        {
+          "line": 521,
+          "count": 1,
+          "byte_offsets": [
+            30858
+          ]
+        }
+      ],
+      "after": []
+    },
+    {
+      "path": "STONEBEND_CONSTITUTION_V2.md",
+      "before_category": "1-active",
+      "after_category": "none",
+      "reason": "Current active presentation/design reference removed and replaced with canonical geography or Acclamation wording.",
+      "before": [
+        {
+          "line": 107,
+          "count": 1,
+          "byte_offsets": [
+            6647
+          ]
+        }
+      ],
+      "after": []
+    },
+    {
+      "path": "STONEBEND_REV100_GOVERNANCE_AMENDMENT.md",
+      "before_category": "1-active",
+      "after_category": "none",
+      "reason": "Current active presentation/design reference removed and replaced with canonical geography or Acclamation wording.",
+      "before": [
+        {
+          "line": 182,
+          "count": 1,
+          "byte_offsets": [
+            10804
+          ]
+        }
+      ],
+      "after": []
+    },
+    {
+      "path": "STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md",
+      "before_category": "2-historical-evidence",
+      "after_category": "2-historical-evidence",
+      "reason": "Historical/superseded constitutional or dated audit evidence, preserved; continuation only appended.",
+      "before": [
+        {
+          "line": 1,
+          "count": 1,
+          "byte_offsets": [
+            63
+          ]
+        },
+        {
+          "line": 23,
+          "count": 1,
+          "byte_offsets": [
+            1131
+          ]
+        },
+        {
+          "line": 399,
+          "count": 1,
+          "byte_offsets": [
+            15711
+          ]
+        },
+        {
+          "line": 403,
+          "count": 1,
+          "byte_offsets": [
+            15814
+          ]
+        },
+        {
+          "line": 415,
+          "count": 1,
+          "byte_offsets": [
+            16100
+          ]
+        },
+        {
+          "line": 478,
+          "count": 1,
+          "byte_offsets": [
+            18625
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 1,
+          "count": 1,
+          "byte_offsets": [
+            63
+          ]
+        },
+        {
+          "line": 23,
+          "count": 1,
+          "byte_offsets": [
+            1131
+          ]
+        },
+        {
+          "line": 399,
+          "count": 1,
+          "byte_offsets": [
+            15711
+          ]
+        },
+        {
+          "line": 403,
+          "count": 1,
+          "byte_offsets": [
+            15814
+          ]
+        },
+        {
+          "line": 415,
+          "count": 1,
+          "byte_offsets": [
+            16100
+          ]
+        },
+        {
+          "line": 478,
+          "count": 1,
+          "byte_offsets": [
+            18625
+          ]
+        }
+      ]
+    },
+    {
+      "path": "STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md",
+      "before_category": "2-historical-evidence",
+      "after_category": "2-historical-evidence",
+      "reason": "Historical/superseded constitutional or dated audit evidence, preserved; continuation only appended.",
+      "before": [
+        {
+          "line": 1,
+          "count": 1,
+          "byte_offsets": [
+            63
+          ]
+        },
+        {
+          "line": 21,
+          "count": 1,
+          "byte_offsets": [
+            1133
+          ]
+        },
+        {
+          "line": 231,
+          "count": 1,
+          "byte_offsets": [
+            8541
+          ]
+        },
+        {
+          "line": 356,
+          "count": 1,
+          "byte_offsets": [
+            13722
+          ]
+        },
+        {
+          "line": 375,
+          "count": 1,
+          "byte_offsets": [
+            14618
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 1,
+          "count": 1,
+          "byte_offsets": [
+            63
+          ]
+        },
+        {
+          "line": 21,
+          "count": 1,
+          "byte_offsets": [
+            1133
+          ]
+        },
+        {
+          "line": 231,
+          "count": 1,
+          "byte_offsets": [
+            8541
+          ]
+        },
+        {
+          "line": 356,
+          "count": 1,
+          "byte_offsets": [
+            13722
+          ]
+        },
+        {
+          "line": 375,
+          "count": 1,
+          "byte_offsets": [
+            14618
+          ]
+        }
+      ]
+    },
+    {
+      "path": "V2_CAPABILITY_INVENTORY.md",
+      "before_category": "1-active",
+      "after_category": "none",
+      "reason": "Current active presentation/design reference removed and replaced with canonical geography or Acclamation wording.",
+      "before": [
+        {
+          "line": 133,
+          "count": 1,
+          "byte_offsets": [
+            25076
+          ]
+        },
+        {
+          "line": 155,
+          "count": 2,
+          "byte_offsets": [
+            27945,
+            28068
+          ]
+        }
+      ],
+      "after": []
+    },
+    {
+      "path": "V2_CAPABILITY_MATRIX.md",
+      "before_category": "1-active",
+      "after_category": "none",
+      "reason": "Current active presentation/design reference removed and replaced with canonical geography or Acclamation wording.",
+      "before": [
+        {
+          "line": 42,
+          "count": 2,
+          "byte_offsets": [
+            3323,
+            3419
+          ]
+        }
+      ],
+      "after": []
+    },
+    {
+      "path": "artifacts/current_synthesis_world_context.md",
+      "before_category": "1-active",
+      "after_category": "none",
+      "reason": "Current active presentation/design reference removed and replaced with canonical geography or Acclamation wording.",
+      "before": [
+        {
+          "line": 2457,
+          "count": 1,
+          "byte_offsets": [
+            60599
+          ]
+        }
+      ],
+      "after": []
+    },
+    {
+      "path": "artifacts/hueman_stonebend_roles.md",
+      "before_category": "1-active",
+      "after_category": "none",
+      "reason": "Current active presentation/design reference removed and replaced with canonical geography or Acclamation wording.",
+      "before": [
+        {
+          "line": 73,
+          "count": 1,
+          "byte_offsets": [
+            7670
+          ]
+        }
+      ],
+      "after": []
+    },
+    {
+      "path": "artifacts/index.md",
+      "before_category": "1-active",
+      "after_category": "none",
+      "reason": "Current active presentation/design reference removed and replaced with canonical geography or Acclamation wording.",
+      "before": [
+        {
+          "line": 40,
+          "count": 1,
+          "byte_offsets": [
+            1901
+          ]
+        }
+      ],
+      "after": []
+    },
+    {
+      "path": "dist/backend-contracts-documentation-tests.log",
+      "before_category": null,
+      "after_category": "2-historical-evidence",
+      "reason": "Prior verification log, preserved.",
+      "before": null,
+      "after": [
+        {
+          "line": 99,
+          "count": 1,
+          "byte_offsets": [
+            9962
+          ]
+        }
+      ]
+    },
+    {
+      "path": "dist/backend-handoffs-laptop-tests.log",
+      "before_category": null,
+      "after_category": "2-historical-evidence",
+      "reason": "Prior verification log, preserved.",
+      "before": null,
+      "after": [
+        {
+          "line": 1630,
+          "count": 1,
+          "byte_offsets": [
+            143919
+          ]
+        },
+        {
+          "line": 1652,
+          "count": 1,
+          "byte_offsets": [
+            146155
+          ]
+        },
+        {
+          "line": 1710,
+          "count": 1,
+          "byte_offsets": [
+            151994
+          ]
+        }
+      ]
+    },
+    {
+      "path": "dist/backend-handoffs-pc-tests.log",
+      "before_category": null,
+      "after_category": "2-historical-evidence",
+      "reason": "Prior verification log, preserved.",
+      "before": null,
+      "after": [
+        {
+          "line": 1744,
+          "count": 1,
+          "byte_offsets": [
+            147868
+          ]
+        },
+        {
+          "line": 1770,
+          "count": 1,
+          "byte_offsets": [
+            150493
+          ]
+        },
+        {
+          "line": 1825,
+          "count": 1,
+          "byte_offsets": [
+            156044
+          ]
+        }
+      ]
+    },
+    {
+      "path": "dist/kernel-architecture-tests-full.log",
+      "before_category": null,
+      "after_category": "2-historical-evidence",
+      "reason": "Prior verification log, preserved.",
+      "before": null,
+      "after": [
+        {
+          "line": 1604,
+          "count": 1,
+          "byte_offsets": [
+            141397
+          ]
+        },
+        {
+          "line": 1625,
+          "count": 1,
+          "byte_offsets": [
+            143535
+          ]
+        },
+        {
+          "line": 1684,
+          "count": 1,
+          "byte_offsets": [
+            149472
+          ]
+        }
+      ]
+    },
+    {
+      "path": "dist/kernel-sync-prepare.log",
+      "before_category": null,
+      "after_category": "2-historical-evidence",
+      "reason": "Prior verification log, preserved.",
+      "before": null,
+      "after": [
+        {
+          "line": 1605,
+          "count": 1,
+          "byte_offsets": [
+            141444
+          ]
+        },
+        {
+          "line": 1626,
+          "count": 1,
+          "byte_offsets": [
+            143582
+          ]
+        },
+        {
+          "line": 1672,
+          "count": 1,
+          "byte_offsets": [
+            148181
+          ]
+        }
+      ]
+    },
+    {
+      "path": "dist/main-pc-v5-prepare.log",
+      "before_category": null,
+      "after_category": "2-historical-evidence",
+      "reason": "Prior verification log, preserved.",
+      "before": null,
+      "after": [
+        {
+          "line": 1600,
+          "count": 1,
+          "byte_offsets": [
+            140956
+          ]
+        },
+        {
+          "line": 1621,
+          "count": 1,
+          "byte_offsets": [
+            143094
+          ]
+        },
+        {
+          "line": 1680,
+          "count": 1,
+          "byte_offsets": [
+            149031
+          ]
+        }
+      ]
+    },
+    {
+      "path": "dist/stonebend-binding-tests-full.log",
+      "before_category": null,
+      "after_category": "2-historical-evidence",
+      "reason": "Prior verification log, preserved.",
+      "before": null,
+      "after": [
+        {
+          "line": 1612,
+          "count": 1,
+          "byte_offsets": [
+            142052
+          ]
+        },
+        {
+          "line": 1634,
+          "count": 1,
+          "byte_offsets": [
+            144288
+          ]
+        },
+        {
+          "line": 1692,
+          "count": 1,
+          "byte_offsets": [
+            150127
+          ]
+        }
+      ]
+    },
+    {
+      "path": "dist/stonebend-binding-tests.log",
+      "before_category": null,
+      "after_category": "2-historical-evidence",
+      "reason": "Prior verification log, preserved.",
+      "before": null,
+      "after": [
+        {
+          "line": 91,
+          "count": 1,
+          "byte_offsets": [
+            8893
+          ]
+        },
+        {
+          "line": 115,
+          "count": 1,
+          "byte_offsets": [
+            11328
+          ]
+        },
+        {
+          "line": 172,
+          "count": 1,
+          "byte_offsets": [
+            17077
+          ]
+        }
+      ]
+    },
+    {
+      "path": "dist/survey-frame-prepare.log",
+      "before_category": null,
+      "after_category": "2-historical-evidence",
+      "reason": "Prior verification log, preserved.",
+      "before": null,
+      "after": [
+        {
+          "line": 1611,
+          "count": 1,
+          "byte_offsets": [
+            142075
+          ]
+        },
+        {
+          "line": 1632,
+          "count": 1,
+          "byte_offsets": [
+            144200
+          ]
+        },
+        {
+          "line": 1690,
+          "count": 1,
+          "byte_offsets": [
+            150039
+          ]
+        }
+      ]
+    },
+    {
+      "path": "dist/survey-frame-workspace-tests.log",
+      "before_category": null,
+      "after_category": "2-historical-evidence",
+      "reason": "Prior verification log, preserved.",
+      "before": null,
+      "after": [
+        {
+          "line": 1608,
+          "count": 1,
+          "byte_offsets": [
+            141839
+          ]
+        },
+        {
+          "line": 1629,
+          "count": 1,
+          "byte_offsets": [
+            143977
+          ]
+        },
+        {
+          "line": 1688,
+          "count": 1,
+          "byte_offsets": [
+            149914
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/FLYNT_REV_C_CONTINUATION.md",
+      "before_category": "2-historical-evidence",
+      "after_category": "2-historical-evidence",
+      "reason": "Historical/superseded constitutional or dated audit evidence, preserved; continuation only appended.",
+      "before": [
+        {
+          "line": 880,
+          "count": 1,
+          "byte_offsets": [
+            56344
+          ]
+        },
+        {
+          "line": 1075,
+          "count": 1,
+          "byte_offsets": [
+            70718
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 880,
+          "count": 1,
+          "byte_offsets": [
+            56344
+          ]
+        },
+        {
+          "line": 1075,
+          "count": 1,
+          "byte_offsets": [
+            70718
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/HOLLOW_GROVE_ACTIVE_GEOGRAPHY_CORRECTION_2026-10-27.md",
+      "before_category": null,
+      "after_category": "2-historical-evidence",
+      "reason": "Historical/superseded constitutional or dated audit evidence, preserved; continuation only appended.",
+      "before": null,
+      "after": [
+        {
+          "line": 35,
+          "count": 1,
+          "byte_offsets": [
+            1840
+          ]
+        },
+        {
+          "line": 63,
+          "count": 1,
+          "byte_offsets": [
+            3586
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/HOLLOW_GROVE_GENESIS_ADOPTION_DOCKET_2026-10-27.md",
+      "before_category": "2-historical-evidence",
+      "after_category": "2-historical-evidence",
+      "reason": "Historical/superseded constitutional or dated audit evidence, preserved; continuation only appended.",
+      "before": [
+        {
+          "line": 62,
+          "count": 1,
+          "byte_offsets": [
+            3774
+          ]
+        },
+        {
+          "line": 151,
+          "count": 1,
+          "byte_offsets": [
+            16396
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 62,
+          "count": 1,
+          "byte_offsets": [
+            3774
+          ]
+        },
+        {
+          "line": 151,
+          "count": 1,
+          "byte_offsets": [
+            16396
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/HOLLOW_GROVE_STONEBEND_FLYNT_PARITY_CLOSURE_2026-10-26.md",
+      "before_category": "2-historical-evidence",
+      "after_category": "2-historical-evidence",
+      "reason": "Historical/superseded constitutional or dated audit evidence, preserved; continuation only appended.",
+      "before": [
+        {
+          "line": 46,
+          "count": 1,
+          "byte_offsets": [
+            3233
+          ]
+        },
+        {
+          "line": 78,
+          "count": 3,
+          "byte_offsets": [
+            10717,
+            10988,
+            11094
+          ]
+        },
+        {
+          "line": 200,
+          "count": 1,
+          "byte_offsets": [
+            28466
+          ]
+        },
+        {
+          "line": 258,
+          "count": 1,
+          "byte_offsets": [
+            34485
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 46,
+          "count": 1,
+          "byte_offsets": [
+            3233
+          ]
+        },
+        {
+          "line": 78,
+          "count": 3,
+          "byte_offsets": [
+            10717,
+            10988,
+            11094
+          ]
+        },
+        {
+          "line": 200,
+          "count": 1,
+          "byte_offsets": [
+            28466
+          ]
+        },
+        {
+          "line": 258,
+          "count": 1,
+          "byte_offsets": [
+            34485
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/STONEBEND_FLYNT_CORRIDOR_HIPPO_DOME_HIPPODRONES_GEOGRAPHY_SUPPLEMENT_V2_2026-10-26.md",
+      "before_category": "1-active",
+      "after_category": "none",
+      "reason": "Current active presentation/design reference removed and replaced with canonical geography or Acclamation wording.",
+      "before": [
+        {
+          "line": 86,
+          "count": 1,
+          "byte_offsets": [
+            5286
+          ]
+        },
+        {
+          "line": 101,
+          "count": 1,
+          "byte_offsets": [
+            7847
+          ]
+        },
+        {
+          "line": 136,
+          "count": 2,
+          "byte_offsets": [
+            11475,
+            11606
+          ]
+        }
+      ],
+      "after": []
+    },
+    {
+      "path": "docs/reference/STONEBEND_CONSTITUTION_V2_PRE_REV100.md",
+      "before_category": "2-historical-evidence",
+      "after_category": "2-historical-evidence",
+      "reason": "Historical/superseded constitutional or dated audit evidence, preserved; continuation only appended.",
+      "before": [
+        {
+          "line": 101,
+          "count": 1,
+          "byte_offsets": [
+            6119
+          ]
+        },
+        {
+          "line": 105,
+          "count": 1,
+          "byte_offsets": [
+            6384
+          ]
+        },
+        {
+          "line": 264,
+          "count": 1,
+          "byte_offsets": [
+            16741
+          ]
+        },
+        {
+          "line": 385,
+          "count": 1,
+          "byte_offsets": [
+            25372
+          ]
+        },
+        {
+          "line": 432,
+          "count": 1,
+          "byte_offsets": [
+            28279
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 101,
+          "count": 1,
+          "byte_offsets": [
+            6119
+          ]
+        },
+        {
+          "line": 105,
+          "count": 1,
+          "byte_offsets": [
+            6384
+          ]
+        },
+        {
+          "line": 264,
+          "count": 1,
+          "byte_offsets": [
+            16741
+          ]
+        },
+        {
+          "line": 385,
+          "count": 1,
+          "byte_offsets": [
+            25372
+          ]
+        },
+        {
+          "line": 432,
+          "count": 1,
+          "byte_offsets": [
+            28279
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/bin/hueman_stonebend_roles.rs",
+      "before_category": "1-active",
+      "after_category": "none",
+      "reason": "Current active presentation/design reference removed and replaced with canonical geography or Acclamation wording.",
+      "before": [
+        {
+          "line": 56,
+          "count": 1,
+          "byte_offsets": [
+            2725
+          ]
+        }
+      ],
+      "after": []
+    },
+    {
+      "path": "src/bin/stonebend_constitutional_audit.rs",
+      "before_category": "1-active",
+      "after_category": "none",
+      "reason": "Current active presentation/design reference removed and replaced with canonical geography or Acclamation wording.",
+      "before": [
+        {
+          "line": 100,
+          "count": 1,
+          "byte_offsets": [
+            4263
+          ]
+        }
+      ],
+      "after": []
+    },
+    {
+      "path": "src/bin/stonebend_three_gates_audit.rs",
+      "before_category": "1-active",
+      "after_category": "none",
+      "reason": "Current active presentation/design reference removed and replaced with canonical geography or Acclamation wording.",
+      "before": [
+        {
+          "line": 68,
+          "count": 1,
+          "byte_offsets": [
+            2407
+          ]
+        },
+        {
+          "line": 71,
+          "count": 1,
+          "byte_offsets": [
+            2544
+          ]
+        },
+        {
+          "line": 87,
+          "count": 1,
+          "byte_offsets": [
+            3316
+          ]
+        }
+      ],
+      "after": []
+    },
+    {
+      "path": "src/hueman_support.rs",
+      "before_category": "1-active",
+      "after_category": "none",
+      "reason": "Current active presentation/design reference removed and replaced with canonical geography or Acclamation wording.",
+      "before": [
+        {
+          "line": 488,
+          "count": 1,
+          "byte_offsets": [
+            32556
+          ]
+        }
+      ],
+      "after": []
+    },
+    {
+      "path": "src/world/stonebend.rs",
+      "before_category": "3-compatibility",
+      "after_category": "3-compatibility",
+      "reason": "Existing identifiers, source-era interpreters or compatibility/absence tests; bytes preserved and no gameplay/governance caller added.",
+      "before": [
+        {
+          "line": 217,
+          "count": 1,
+          "byte_offsets": [
+            6417
+          ]
+        },
+        {
+          "line": 233,
+          "count": 1,
+          "byte_offsets": [
+            7173
+          ]
+        },
+        {
+          "line": 234,
+          "count": 1,
+          "byte_offsets": [
+            7210
+          ]
+        },
+        {
+          "line": 460,
+          "count": 1,
+          "byte_offsets": [
+            12500
+          ]
+        },
+        {
+          "line": 852,
+          "count": 1,
+          "byte_offsets": [
+            26988
+          ]
+        },
+        {
+          "line": 1486,
+          "count": 1,
+          "byte_offsets": [
+            51465
+          ]
+        },
+        {
+          "line": 1634,
+          "count": 1,
+          "byte_offsets": [
+            58329
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 217,
+          "count": 1,
+          "byte_offsets": [
+            6417
+          ]
+        },
+        {
+          "line": 233,
+          "count": 1,
+          "byte_offsets": [
+            7173
+          ]
+        },
+        {
+          "line": 234,
+          "count": 1,
+          "byte_offsets": [
+            7210
+          ]
+        },
+        {
+          "line": 460,
+          "count": 1,
+          "byte_offsets": [
+            12500
+          ]
+        },
+        {
+          "line": 852,
+          "count": 1,
+          "byte_offsets": [
+            26988
+          ]
+        },
+        {
+          "line": 1486,
+          "count": 1,
+          "byte_offsets": [
+            51465
+          ]
+        },
+        {
+          "line": 1634,
+          "count": 1,
+          "byte_offsets": [
+            58329
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/world/stonebend/second_pass.rs",
+      "before_category": "3-compatibility",
+      "after_category": "3-compatibility",
+      "reason": "Existing identifiers, source-era interpreters or compatibility/absence tests; bytes preserved and no gameplay/governance caller added.",
+      "before": [
+        {
+          "line": 1231,
+          "count": 1,
+          "byte_offsets": [
+            38518
+          ]
+        },
+        {
+          "line": 1244,
+          "count": 1,
+          "byte_offsets": [
+            38897
+          ]
+        },
+        {
+          "line": 1258,
+          "count": 1,
+          "byte_offsets": [
+            39376
+          ]
+        },
+        {
+          "line": 1273,
+          "count": 1,
+          "byte_offsets": [
+            39750
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 1231,
+          "count": 1,
+          "byte_offsets": [
+            38518
+          ]
+        },
+        {
+          "line": 1244,
+          "count": 1,
+          "byte_offsets": [
+            38897
+          ]
+        },
+        {
+          "line": 1258,
+          "count": 1,
+          "byte_offsets": [
+            39376
+          ]
+        },
+        {
+          "line": 1273,
+          "count": 1,
+          "byte_offsets": [
+            39750
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/world/stonebend/third_pass.rs",
+      "before_category": "3-compatibility",
+      "after_category": "3-compatibility",
+      "reason": "Existing identifiers, source-era interpreters or compatibility/absence tests; bytes preserved and no gameplay/governance caller added.",
+      "before": [
+        {
+          "line": 903,
+          "count": 1,
+          "byte_offsets": [
+            30348
+          ]
+        },
+        {
+          "line": 912,
+          "count": 1,
+          "byte_offsets": [
+            30662
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 903,
+          "count": 1,
+          "byte_offsets": [
+            30348
+          ]
+        },
+        {
+          "line": 912,
+          "count": 1,
+          "byte_offsets": [
+            30662
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/current_synthesis_tui-b9ddaaa82b31ebce",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 15182,
+          "count": 1,
+          "byte_offsets": [
+            2063729
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/current_synthesis_tui-c9ae54385896eb06",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 19237,
+          "count": 1,
+          "byte_offsets": [
+            2870299
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/current_synthesis_tui-f597d34b665b6586",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 19044,
+          "count": 1,
+          "byte_offsets": [
+            2749467
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/hg_dev-9a4f4fedbddbeb91",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 16732,
+          "count": 2,
+          "byte_offsets": [
+            2630856,
+            2630939
+          ]
+        },
+        {
+          "line": 19522,
+          "count": 1,
+          "byte_offsets": [
+            2840736
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/hg_dev-b6acf623d4bd3841",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 14212,
+          "count": 1,
+          "byte_offsets": [
+            3380400
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/hg_dev-c701007cfdb65fe5",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 18350,
+          "count": 1,
+          "byte_offsets": [
+            4096432
+          ]
+        },
+        {
+          "line": 19910,
+          "count": 1,
+          "byte_offsets": [
+            4164617
+          ]
+        },
+        {
+          "line": 19941,
+          "count": 1,
+          "byte_offsets": [
+            4171231
+          ]
+        },
+        {
+          "line": 19943,
+          "count": 1,
+          "byte_offsets": [
+            4171304
+          ]
+        },
+        {
+          "line": 22125,
+          "count": 1,
+          "byte_offsets": [
+            4402312
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/hollow_grove-15eff6f3b695cfdb",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 19100,
+          "count": 1,
+          "byte_offsets": [
+            1453904
+          ]
+        },
+        {
+          "line": 22617,
+          "count": 1,
+          "byte_offsets": [
+            1962789
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/hollow_grove-68307562e1b4564b",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 22295,
+          "count": 1,
+          "byte_offsets": [
+            2184512
+          ]
+        },
+        {
+          "line": 24610,
+          "count": 1,
+          "byte_offsets": [
+            2468416
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/hollow_grove-d653b07b9608c5b4",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 19119,
+          "count": 1,
+          "byte_offsets": [
+            1453904
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/hollow_grove_runtime-3ac808d106249982",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 16449,
+          "count": 1,
+          "byte_offsets": [
+            2777016
+          ]
+        },
+        {
+          "line": 19957,
+          "count": 1,
+          "byte_offsets": [
+            2950894
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/hollow_grove_runtime-d84883e6ca78ed00",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 16028,
+          "count": 1,
+          "byte_offsets": [
+            2667476
+          ]
+        },
+        {
+          "line": 19543,
+          "count": 1,
+          "byte_offsets": [
+            2841354
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/hollow_grove_runtime-e4d42e85e08af581",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 13018,
+          "count": 1,
+          "byte_offsets": [
+            2036306
+          ]
+        },
+        {
+          "line": 16401,
+          "count": 1,
+          "byte_offsets": [
+            2171691
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/integration-4b9ad8a34dba6921",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 25126,
+          "count": 1,
+          "byte_offsets": [
+            6496112
+          ]
+        },
+        {
+          "line": 30081,
+          "count": 1,
+          "byte_offsets": [
+            6847449
+          ]
+        },
+        {
+          "line": 30094,
+          "count": 1,
+          "byte_offsets": [
+            6847828
+          ]
+        },
+        {
+          "line": 30108,
+          "count": 1,
+          "byte_offsets": [
+            6848307
+          ]
+        },
+        {
+          "line": 30123,
+          "count": 1,
+          "byte_offsets": [
+            6848681
+          ]
+        },
+        {
+          "line": 30354,
+          "count": 1,
+          "byte_offsets": [
+            6856298
+          ]
+        },
+        {
+          "line": 30376,
+          "count": 1,
+          "byte_offsets": [
+            6857366
+          ]
+        },
+        {
+          "line": 30752,
+          "count": 1,
+          "byte_offsets": [
+            6871946
+          ]
+        },
+        {
+          "line": 30756,
+          "count": 1,
+          "byte_offsets": [
+            6872049
+          ]
+        },
+        {
+          "line": 30768,
+          "count": 1,
+          "byte_offsets": [
+            6872335
+          ]
+        },
+        {
+          "line": 30831,
+          "count": 1,
+          "byte_offsets": [
+            6874860
+          ]
+        },
+        {
+          "line": 30841,
+          "count": 1,
+          "byte_offsets": [
+            6875272
+          ]
+        },
+        {
+          "line": 33971,
+          "count": 1,
+          "byte_offsets": [
+            6960383
+          ]
+        },
+        {
+          "line": 34192,
+          "count": 1,
+          "byte_offsets": [
+            6988705
+          ]
+        },
+        {
+          "line": 34214,
+          "count": 2,
+          "byte_offsets": [
+            6991574,
+            6991697
+          ]
+        },
+        {
+          "line": 34462,
+          "count": 1,
+          "byte_offsets": [
+            7025874
+          ]
+        },
+        {
+          "line": 37678,
+          "count": 1,
+          "byte_offsets": [
+            7139990
+          ]
+        },
+        {
+          "line": 41958,
+          "count": 1,
+          "byte_offsets": [
+            7288629
+          ]
+        },
+        {
+          "line": 42223,
+          "count": 1,
+          "byte_offsets": [
+            7303144
+          ]
+        },
+        {
+          "line": 42338,
+          "count": 1,
+          "byte_offsets": [
+            7310379
+          ]
+        },
+        {
+          "line": 42518,
+          "count": 1,
+          "byte_offsets": [
+            7321277
+          ]
+        },
+        {
+          "line": 42830,
+          "count": 1,
+          "byte_offsets": [
+            7340835
+          ]
+        },
+        {
+          "line": 44196,
+          "count": 1,
+          "byte_offsets": [
+            7414038
+          ]
+        },
+        {
+          "line": 45473,
+          "count": 1,
+          "byte_offsets": [
+            7473040
+          ]
+        },
+        {
+          "line": 45648,
+          "count": 1,
+          "byte_offsets": [
+            7487166
+          ]
+        },
+        {
+          "line": 45687,
+          "count": 2,
+          "byte_offsets": [
+            7490894,
+            7492159
+          ]
+        },
+        {
+          "line": 53932,
+          "count": 3,
+          "byte_offsets": [
+            7945927,
+            7947909,
+            7949774
+          ]
+        },
+        {
+          "line": 55652,
+          "count": 1,
+          "byte_offsets": [
+            8052617
+          ]
+        },
+        {
+          "line": 55882,
+          "count": 1,
+          "byte_offsets": [
+            8095730
+          ]
+        },
+        {
+          "line": 55886,
+          "count": 4,
+          "byte_offsets": [
+            8099384,
+            8099430,
+            8099471,
+            8099685
+          ]
+        },
+        {
+          "line": 57407,
+          "count": 1,
+          "byte_offsets": [
+            8211453
+          ]
+        },
+        {
+          "line": 60222,
+          "count": 1,
+          "byte_offsets": [
+            8289223
+          ]
+        },
+        {
+          "line": 64102,
+          "count": 1,
+          "byte_offsets": [
+            8470911
+          ]
+        },
+        {
+          "line": 64124,
+          "count": 2,
+          "byte_offsets": [
+            8473780,
+            8473903
+          ]
+        },
+        {
+          "line": 64560,
+          "count": 1,
+          "byte_offsets": [
+            8520022
+          ]
+        },
+        {
+          "line": 64675,
+          "count": 1,
+          "byte_offsets": [
+            8527257
+          ]
+        },
+        {
+          "line": 64855,
+          "count": 1,
+          "byte_offsets": [
+            8538155
+          ]
+        },
+        {
+          "line": 69460,
+          "count": 1,
+          "byte_offsets": [
+            8739715
+          ]
+        },
+        {
+          "line": 71127,
+          "count": 1,
+          "byte_offsets": [
+            8837601
+          ]
+        },
+        {
+          "line": 71242,
+          "count": 1,
+          "byte_offsets": [
+            8844836
+          ]
+        },
+        {
+          "line": 71422,
+          "count": 1,
+          "byte_offsets": [
+            8855734
+          ]
+        },
+        {
+          "line": 74084,
+          "count": 1,
+          "byte_offsets": [
+            8928463
+          ]
+        },
+        {
+          "line": 74446,
+          "count": 1,
+          "byte_offsets": [
+            8942566
+          ]
+        },
+        {
+          "line": 75067,
+          "count": 1,
+          "byte_offsets": [
+            8967440
+          ]
+        },
+        {
+          "line": 75083,
+          "count": 1,
+          "byte_offsets": [
+            8968196
+          ]
+        },
+        {
+          "line": 75084,
+          "count": 1,
+          "byte_offsets": [
+            8968233
+          ]
+        },
+        {
+          "line": 75310,
+          "count": 1,
+          "byte_offsets": [
+            8973523
+          ]
+        },
+        {
+          "line": 75702,
+          "count": 1,
+          "byte_offsets": [
+            8988011
+          ]
+        },
+        {
+          "line": 76336,
+          "count": 1,
+          "byte_offsets": [
+            9012488
+          ]
+        },
+        {
+          "line": 76484,
+          "count": 1,
+          "byte_offsets": [
+            9019352
+          ]
+        },
+        {
+          "line": 77352,
+          "count": 1,
+          "byte_offsets": [
+            9057865
+          ]
+        },
+        {
+          "line": 78554,
+          "count": 1,
+          "byte_offsets": [
+            9120521
+          ]
+        },
+        {
+          "line": 78593,
+          "count": 1,
+          "byte_offsets": [
+            9124554
+          ]
+        },
+        {
+          "line": 85551,
+          "count": 2,
+          "byte_offsets": [
+            9434499,
+            9434585
+          ]
+        },
+        {
+          "line": 88122,
+          "count": 1,
+          "byte_offsets": [
+            9566349
+          ]
+        },
+        {
+          "line": 88237,
+          "count": 1,
+          "byte_offsets": [
+            9573584
+          ]
+        },
+        {
+          "line": 88417,
+          "count": 1,
+          "byte_offsets": [
+            9584482
+          ]
+        },
+        {
+          "line": 88896,
+          "count": 1,
+          "byte_offsets": [
+            9607449
+          ]
+        },
+        {
+          "line": 91758,
+          "count": 1,
+          "byte_offsets": [
+            9686342
+          ]
+        },
+        {
+          "line": 98080,
+          "count": 1,
+          "byte_offsets": [
+            9964992
+          ]
+        },
+        {
+          "line": 109930,
+          "count": 1,
+          "byte_offsets": [
+            10400067
+          ]
+        },
+        {
+          "line": 110152,
+          "count": 1,
+          "byte_offsets": [
+            10430346
+          ]
+        },
+        {
+          "line": 110174,
+          "count": 2,
+          "byte_offsets": [
+            10433215,
+            10433338
+          ]
+        },
+        {
+          "line": 111255,
+          "count": 1,
+          "byte_offsets": [
+            10506432
+          ]
+        },
+        {
+          "line": 111631,
+          "count": 1,
+          "byte_offsets": [
+            10523011
+          ]
+        },
+        {
+          "line": 112261,
+          "count": 1,
+          "byte_offsets": [
+            10553920
+          ]
+        },
+        {
+          "line": 112376,
+          "count": 1,
+          "byte_offsets": [
+            10561155
+          ]
+        },
+        {
+          "line": 112556,
+          "count": 1,
+          "byte_offsets": [
+            10572053
+          ]
+        },
+        {
+          "line": 112834,
+          "count": 1,
+          "byte_offsets": [
+            10591657
+          ]
+        },
+        {
+          "line": 121327,
+          "count": 1,
+          "byte_offsets": [
+            11266241
+          ]
+        },
+        {
+          "line": 121886,
+          "count": 1,
+          "byte_offsets": [
+            11316343
+          ]
+        },
+        {
+          "line": 129105,
+          "count": 1,
+          "byte_offsets": [
+            11579971
+          ]
+        },
+        {
+          "line": 129326,
+          "count": 1,
+          "byte_offsets": [
+            11609380
+          ]
+        },
+        {
+          "line": 129348,
+          "count": 2,
+          "byte_offsets": [
+            11612249,
+            11612372
+          ]
+        },
+        {
+          "line": 129782,
+          "count": 1,
+          "byte_offsets": [
+            11657373
+          ]
+        },
+        {
+          "line": 129897,
+          "count": 1,
+          "byte_offsets": [
+            11664608
+          ]
+        },
+        {
+          "line": 130077,
+          "count": 1,
+          "byte_offsets": [
+            11675506
+          ]
+        },
+        {
+          "line": 135966,
+          "count": 1,
+          "byte_offsets": [
+            12305970
+          ]
+        },
+        {
+          "line": 392659,
+          "count": 12,
+          "byte_offsets": [
+            101246021,
+            108472280,
+            115899272,
+            119533699,
+            126863105,
+            141438452,
+            159637402,
+            174129248,
+            174257052,
+            185015172,
+            185072092,
+            214222335
+          ]
+        },
+        {
+          "line": 779723,
+          "count": 6,
+          "byte_offsets": [
+            252534978,
+            253167504,
+            253170468,
+            256798195,
+            257686651,
+            257726763
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/integration-7ad31425f10d6dba",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 22001,
+          "count": 1,
+          "byte_offsets": [
+            5769936
+          ]
+        },
+        {
+          "line": 24838,
+          "count": 2,
+          "byte_offsets": [
+            5966330,
+            5966421
+          ]
+        },
+        {
+          "line": 24861,
+          "count": 2,
+          "byte_offsets": [
+            5971795,
+            5971881
+          ]
+        },
+        {
+          "line": 27298,
+          "count": 1,
+          "byte_offsets": [
+            6084711
+          ]
+        },
+        {
+          "line": 27311,
+          "count": 1,
+          "byte_offsets": [
+            6085090
+          ]
+        },
+        {
+          "line": 27325,
+          "count": 1,
+          "byte_offsets": [
+            6085569
+          ]
+        },
+        {
+          "line": 27340,
+          "count": 1,
+          "byte_offsets": [
+            6085943
+          ]
+        },
+        {
+          "line": 27571,
+          "count": 1,
+          "byte_offsets": [
+            6093560
+          ]
+        },
+        {
+          "line": 27593,
+          "count": 1,
+          "byte_offsets": [
+            6094628
+          ]
+        },
+        {
+          "line": 27969,
+          "count": 1,
+          "byte_offsets": [
+            6109208
+          ]
+        },
+        {
+          "line": 27973,
+          "count": 1,
+          "byte_offsets": [
+            6109311
+          ]
+        },
+        {
+          "line": 27985,
+          "count": 1,
+          "byte_offsets": [
+            6109597
+          ]
+        },
+        {
+          "line": 28048,
+          "count": 1,
+          "byte_offsets": [
+            6112122
+          ]
+        },
+        {
+          "line": 34901,
+          "count": 1,
+          "byte_offsets": [
+            6377772
+          ]
+        },
+        {
+          "line": 42019,
+          "count": 1,
+          "byte_offsets": [
+            6682059
+          ]
+        },
+        {
+          "line": 42233,
+          "count": 3,
+          "byte_offsets": [
+            6701157,
+            6701481,
+            6701701
+          ]
+        },
+        {
+          "line": 61435,
+          "count": 1,
+          "byte_offsets": [
+            7567607
+          ]
+        },
+        {
+          "line": 63116,
+          "count": 1,
+          "byte_offsets": [
+            7676902
+          ]
+        },
+        {
+          "line": 67149,
+          "count": 1,
+          "byte_offsets": [
+            7882380
+          ]
+        },
+        {
+          "line": 67153,
+          "count": 4,
+          "byte_offsets": [
+            7886034,
+            7886080,
+            7886121,
+            7886335
+          ]
+        },
+        {
+          "line": 68612,
+          "count": 1,
+          "byte_offsets": [
+            7960218
+          ]
+        },
+        {
+          "line": 80590,
+          "count": 1,
+          "byte_offsets": [
+            8476734
+          ]
+        },
+        {
+          "line": 80606,
+          "count": 1,
+          "byte_offsets": [
+            8477490
+          ]
+        },
+        {
+          "line": 80607,
+          "count": 1,
+          "byte_offsets": [
+            8477527
+          ]
+        },
+        {
+          "line": 80833,
+          "count": 1,
+          "byte_offsets": [
+            8482817
+          ]
+        },
+        {
+          "line": 81225,
+          "count": 1,
+          "byte_offsets": [
+            8497305
+          ]
+        },
+        {
+          "line": 81859,
+          "count": 1,
+          "byte_offsets": [
+            8521782
+          ]
+        },
+        {
+          "line": 82007,
+          "count": 1,
+          "byte_offsets": [
+            8528646
+          ]
+        },
+        {
+          "line": 85536,
+          "count": 2,
+          "byte_offsets": [
+            8767082,
+            8767392
+          ]
+        },
+        {
+          "line": 96194,
+          "count": 1,
+          "byte_offsets": [
+            9204080
+          ]
+        },
+        {
+          "line": 103217,
+          "count": 1,
+          "byte_offsets": [
+            9529991
+          ]
+        },
+        {
+          "line": 109337,
+          "count": 2,
+          "byte_offsets": [
+            9877025,
+            9878890
+          ]
+        },
+        {
+          "line": 117866,
+          "count": 1,
+          "byte_offsets": [
+            10555914
+          ]
+        },
+        {
+          "line": 122729,
+          "count": 1,
+          "byte_offsets": [
+            10830551
+          ]
+        },
+        {
+          "line": 342205,
+          "count": 8,
+          "byte_offsets": [
+            98213404,
+            98320993,
+            106855140,
+            124007669,
+            138252182,
+            149698451,
+            152570732,
+            161085855
+          ]
+        },
+        {
+          "line": 600795,
+          "count": 4,
+          "byte_offsets": [
+            211046614,
+            211049578,
+            215348591,
+            215391113
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/libhollow_grove-271e6d5d07a9d769.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 37798,
+          "count": 1,
+          "byte_offsets": [
+            1008431
+          ]
+        },
+        {
+          "line": 37928,
+          "count": 1,
+          "byte_offsets": [
+            1018374
+          ]
+        },
+        {
+          "line": 38134,
+          "count": 1,
+          "byte_offsets": [
+            1033045
+          ]
+        },
+        {
+          "line": 56100,
+          "count": 1,
+          "byte_offsets": [
+            2535514
+          ]
+        },
+        {
+          "line": 90350,
+          "count": 1,
+          "byte_offsets": [
+            9913082
+          ]
+        },
+        {
+          "line": 100242,
+          "count": 1,
+          "byte_offsets": [
+            10851647
+          ]
+        },
+        {
+          "line": 100341,
+          "count": 1,
+          "byte_offsets": [
+            10887918
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/libhollow_grove-363224583434784e.rlib",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 44507,
+          "count": 1,
+          "byte_offsets": [
+            19445092
+          ]
+        },
+        {
+          "line": 44637,
+          "count": 1,
+          "byte_offsets": [
+            19455035
+          ]
+        },
+        {
+          "line": 44843,
+          "count": 1,
+          "byte_offsets": [
+            19469706
+          ]
+        },
+        {
+          "line": 275437,
+          "count": 1,
+          "byte_offsets": [
+            50533248
+          ]
+        },
+        {
+          "line": 286310,
+          "count": 1,
+          "byte_offsets": [
+            51809759
+          ]
+        },
+        {
+          "line": 286320,
+          "count": 1,
+          "byte_offsets": [
+            51814409
+          ]
+        },
+        {
+          "line": 286336,
+          "count": 1,
+          "byte_offsets": [
+            51820112
+          ]
+        },
+        {
+          "line": 570299,
+          "count": 1,
+          "byte_offsets": [
+            125179908
+          ]
+        },
+        {
+          "line": 1676792,
+          "count": 1,
+          "byte_offsets": [
+            374093902
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/libhollow_grove-363224583434784e.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 37799,
+          "count": 1,
+          "byte_offsets": [
+            1008534
+          ]
+        },
+        {
+          "line": 37929,
+          "count": 1,
+          "byte_offsets": [
+            1018477
+          ]
+        },
+        {
+          "line": 38135,
+          "count": 1,
+          "byte_offsets": [
+            1033148
+          ]
+        },
+        {
+          "line": 268729,
+          "count": 1,
+          "byte_offsets": [
+            32096690
+          ]
+        },
+        {
+          "line": 279602,
+          "count": 1,
+          "byte_offsets": [
+            33373201
+          ]
+        },
+        {
+          "line": 279612,
+          "count": 1,
+          "byte_offsets": [
+            33377851
+          ]
+        },
+        {
+          "line": 279628,
+          "count": 1,
+          "byte_offsets": [
+            33383554
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/libhollow_grove-47d541a6ed84e3fc.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 12432,
+          "count": 1,
+          "byte_offsets": [
+            1020045
+          ]
+        },
+        {
+          "line": 12568,
+          "count": 1,
+          "byte_offsets": [
+            1029997
+          ]
+        },
+        {
+          "line": 12777,
+          "count": 1,
+          "byte_offsets": [
+            1044685
+          ]
+        },
+        {
+          "line": 18760,
+          "count": 1,
+          "byte_offsets": [
+            2623797
+          ]
+        },
+        {
+          "line": 34304,
+          "count": 1,
+          "byte_offsets": [
+            10051117
+          ]
+        },
+        {
+          "line": 42238,
+          "count": 1,
+          "byte_offsets": [
+            10994760
+          ]
+        },
+        {
+          "line": 42339,
+          "count": 1,
+          "byte_offsets": [
+            11031193
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/libhollow_grove-4f7c80333470bc2b.rlib",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 21028,
+          "count": 1,
+          "byte_offsets": [
+            19356437
+          ]
+        },
+        {
+          "line": 21164,
+          "count": 1,
+          "byte_offsets": [
+            19366389
+          ]
+        },
+        {
+          "line": 21373,
+          "count": 1,
+          "byte_offsets": [
+            19381077
+          ]
+        },
+        {
+          "line": 84389,
+          "count": 1,
+          "byte_offsets": [
+            30080834
+          ]
+        },
+        {
+          "line": 196040,
+          "count": 1,
+          "byte_offsets": [
+            50747194
+          ]
+        },
+        {
+          "line": 200274,
+          "count": 1,
+          "byte_offsets": [
+            51736969
+          ]
+        },
+        {
+          "line": 200391,
+          "count": 1,
+          "byte_offsets": [
+            51778317
+          ]
+        },
+        {
+          "line": 201045,
+          "count": 1,
+          "byte_offsets": [
+            51964294
+          ]
+        },
+        {
+          "line": 201055,
+          "count": 1,
+          "byte_offsets": [
+            51968861
+          ]
+        },
+        {
+          "line": 201069,
+          "count": 1,
+          "byte_offsets": [
+            51974212
+          ]
+        },
+        {
+          "line": 1068245,
+          "count": 1,
+          "byte_offsets": [
+            239270396
+          ]
+        },
+        {
+          "line": 1253766,
+          "count": 1,
+          "byte_offsets": [
+            268363756
+          ]
+        },
+        {
+          "line": 1558714,
+          "count": 1,
+          "byte_offsets": [
+            348489624
+          ]
+        },
+        {
+          "line": 1561436,
+          "count": 1,
+          "byte_offsets": [
+            348865675
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/libhollow_grove-4f7c80333470bc2b.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 12435,
+          "count": 1,
+          "byte_offsets": [
+            1020045
+          ]
+        },
+        {
+          "line": 12571,
+          "count": 1,
+          "byte_offsets": [
+            1029997
+          ]
+        },
+        {
+          "line": 12780,
+          "count": 1,
+          "byte_offsets": [
+            1044685
+          ]
+        },
+        {
+          "line": 75796,
+          "count": 1,
+          "byte_offsets": [
+            11744442
+          ]
+        },
+        {
+          "line": 187447,
+          "count": 1,
+          "byte_offsets": [
+            32410802
+          ]
+        },
+        {
+          "line": 191681,
+          "count": 1,
+          "byte_offsets": [
+            33400577
+          ]
+        },
+        {
+          "line": 191798,
+          "count": 1,
+          "byte_offsets": [
+            33441925
+          ]
+        },
+        {
+          "line": 192452,
+          "count": 1,
+          "byte_offsets": [
+            33627902
+          ]
+        },
+        {
+          "line": 192462,
+          "count": 1,
+          "byte_offsets": [
+            33632469
+          ]
+        },
+        {
+          "line": 192476,
+          "count": 1,
+          "byte_offsets": [
+            33637820
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/libhollow_grove-5d70d6381a65a23a.rlib",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 45508,
+          "count": 1,
+          "byte_offsets": [
+            19226738
+          ]
+        },
+        {
+          "line": 45638,
+          "count": 1,
+          "byte_offsets": [
+            19236681
+          ]
+        },
+        {
+          "line": 45844,
+          "count": 1,
+          "byte_offsets": [
+            19251352
+          ]
+        },
+        {
+          "line": 263151,
+          "count": 1,
+          "byte_offsets": [
+            50464611
+          ]
+        },
+        {
+          "line": 269629,
+          "count": 1,
+          "byte_offsets": [
+            51678671
+          ]
+        },
+        {
+          "line": 269639,
+          "count": 1,
+          "byte_offsets": [
+            51683238
+          ]
+        },
+        {
+          "line": 269653,
+          "count": 1,
+          "byte_offsets": [
+            51688589
+          ]
+        },
+        {
+          "line": 834434,
+          "count": 1,
+          "byte_offsets": [
+            164735004
+          ]
+        },
+        {
+          "line": 1334483,
+          "count": 1,
+          "byte_offsets": [
+            286464516
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/libhollow_grove-5d70d6381a65a23a.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 37799,
+          "count": 1,
+          "byte_offsets": [
+            1008534
+          ]
+        },
+        {
+          "line": 37929,
+          "count": 1,
+          "byte_offsets": [
+            1018477
+          ]
+        },
+        {
+          "line": 38135,
+          "count": 1,
+          "byte_offsets": [
+            1033148
+          ]
+        },
+        {
+          "line": 255442,
+          "count": 1,
+          "byte_offsets": [
+            32246407
+          ]
+        },
+        {
+          "line": 261920,
+          "count": 1,
+          "byte_offsets": [
+            33460467
+          ]
+        },
+        {
+          "line": 261930,
+          "count": 1,
+          "byte_offsets": [
+            33465034
+          ]
+        },
+        {
+          "line": 261944,
+          "count": 1,
+          "byte_offsets": [
+            33470385
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/libhollow_grove-9655d8c011fc71e0.rlib",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 32451,
+          "count": 1,
+          "byte_offsets": [
+            17179435
+          ]
+        },
+        {
+          "line": 32580,
+          "count": 1,
+          "byte_offsets": [
+            17189384
+          ]
+        },
+        {
+          "line": 32786,
+          "count": 1,
+          "byte_offsets": [
+            17204055
+          ]
+        },
+        {
+          "line": 117144,
+          "count": 1,
+          "byte_offsets": [
+            27507782
+          ]
+        },
+        {
+          "line": 243155,
+          "count": 1,
+          "byte_offsets": [
+            45243514
+          ]
+        },
+        {
+          "line": 243272,
+          "count": 2,
+          "byte_offsets": [
+            45284931,
+            45289528
+          ]
+        },
+        {
+          "line": 243866,
+          "count": 1,
+          "byte_offsets": [
+            45455393
+          ]
+        },
+        {
+          "line": 243876,
+          "count": 1,
+          "byte_offsets": [
+            45459974
+          ]
+        },
+        {
+          "line": 243890,
+          "count": 1,
+          "byte_offsets": [
+            45465325
+          ]
+        },
+        {
+          "line": 466354,
+          "count": 1,
+          "byte_offsets": [
+            116682754
+          ]
+        },
+        {
+          "line": 531851,
+          "count": 2,
+          "byte_offsets": [
+            134685309,
+            134690149
+          ]
+        },
+        {
+          "line": 1102411,
+          "count": 1,
+          "byte_offsets": [
+            252541028
+          ]
+        },
+        {
+          "line": 1163779,
+          "count": 2,
+          "byte_offsets": [
+            268222633,
+            268227473
+          ]
+        },
+        {
+          "line": 1340621,
+          "count": 1,
+          "byte_offsets": [
+            301685546
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/libhollow_grove-9655d8c011fc71e0.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 32112,
+          "count": 1,
+          "byte_offsets": [
+            920223
+          ]
+        },
+        {
+          "line": 32241,
+          "count": 1,
+          "byte_offsets": [
+            930172
+          ]
+        },
+        {
+          "line": 32447,
+          "count": 1,
+          "byte_offsets": [
+            944843
+          ]
+        },
+        {
+          "line": 116805,
+          "count": 1,
+          "byte_offsets": [
+            11248570
+          ]
+        },
+        {
+          "line": 242816,
+          "count": 1,
+          "byte_offsets": [
+            28984302
+          ]
+        },
+        {
+          "line": 242933,
+          "count": 2,
+          "byte_offsets": [
+            29025719,
+            29030316
+          ]
+        },
+        {
+          "line": 243527,
+          "count": 1,
+          "byte_offsets": [
+            29196181
+          ]
+        },
+        {
+          "line": 243537,
+          "count": 1,
+          "byte_offsets": [
+            29200762
+          ]
+        },
+        {
+          "line": 243551,
+          "count": 1,
+          "byte_offsets": [
+            29206113
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/libhollow_grove-d66683cda383da59.rlib",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 35364,
+          "count": 1,
+          "byte_offsets": [
+            17317406
+          ]
+        },
+        {
+          "line": 35494,
+          "count": 1,
+          "byte_offsets": [
+            17327364
+          ]
+        },
+        {
+          "line": 35701,
+          "count": 1,
+          "byte_offsets": [
+            17342052
+          ]
+        },
+        {
+          "line": 119931,
+          "count": 1,
+          "byte_offsets": [
+            27749462
+          ]
+        },
+        {
+          "line": 243074,
+          "count": 1,
+          "byte_offsets": [
+            45553359
+          ]
+        },
+        {
+          "line": 243191,
+          "count": 2,
+          "byte_offsets": [
+            45594776,
+            45599373
+          ]
+        },
+        {
+          "line": 243783,
+          "count": 1,
+          "byte_offsets": [
+            45765207
+          ]
+        },
+        {
+          "line": 243793,
+          "count": 1,
+          "byte_offsets": [
+            45769788
+          ]
+        },
+        {
+          "line": 243807,
+          "count": 1,
+          "byte_offsets": [
+            45775139
+          ]
+        },
+        {
+          "line": 457623,
+          "count": 1,
+          "byte_offsets": [
+            113410392
+          ]
+        },
+        {
+          "line": 509817,
+          "count": 2,
+          "byte_offsets": [
+            127620973,
+            127625813
+          ]
+        },
+        {
+          "line": 821129,
+          "count": 1,
+          "byte_offsets": [
+            192080780
+          ]
+        },
+        {
+          "line": 838713,
+          "count": 2,
+          "byte_offsets": [
+            196909917,
+            196914757
+          ]
+        },
+        {
+          "line": 1439472,
+          "count": 1,
+          "byte_offsets": [
+            315599638
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/libhollow_grove-d66683cda383da59.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 32279,
+          "count": 1,
+          "byte_offsets": [
+            931766
+          ]
+        },
+        {
+          "line": 32409,
+          "count": 1,
+          "byte_offsets": [
+            941724
+          ]
+        },
+        {
+          "line": 32616,
+          "count": 1,
+          "byte_offsets": [
+            956412
+          ]
+        },
+        {
+          "line": 116846,
+          "count": 1,
+          "byte_offsets": [
+            11363822
+          ]
+        },
+        {
+          "line": 239989,
+          "count": 1,
+          "byte_offsets": [
+            29167719
+          ]
+        },
+        {
+          "line": 240106,
+          "count": 2,
+          "byte_offsets": [
+            29209136,
+            29213733
+          ]
+        },
+        {
+          "line": 240698,
+          "count": 1,
+          "byte_offsets": [
+            29379567
+          ]
+        },
+        {
+          "line": 240708,
+          "count": 1,
+          "byte_offsets": [
+            29384148
+          ]
+        },
+        {
+          "line": 240722,
+          "count": 1,
+          "byte_offsets": [
+            29389499
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/libhollow_grove-d841c0110e6dfd45.rlib",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 45517,
+          "count": 1,
+          "byte_offsets": [
+            19227112
+          ]
+        },
+        {
+          "line": 45647,
+          "count": 1,
+          "byte_offsets": [
+            19237055
+          ]
+        },
+        {
+          "line": 45853,
+          "count": 1,
+          "byte_offsets": [
+            19251726
+          ]
+        },
+        {
+          "line": 263161,
+          "count": 1,
+          "byte_offsets": [
+            50464985
+          ]
+        },
+        {
+          "line": 269629,
+          "count": 1,
+          "byte_offsets": [
+            51679045
+          ]
+        },
+        {
+          "line": 269639,
+          "count": 1,
+          "byte_offsets": [
+            51683612
+          ]
+        },
+        {
+          "line": 269653,
+          "count": 1,
+          "byte_offsets": [
+            51688963
+          ]
+        },
+        {
+          "line": 833190,
+          "count": 1,
+          "byte_offsets": [
+            165780634
+          ]
+        },
+        {
+          "line": 1310747,
+          "count": 1,
+          "byte_offsets": [
+            286483730
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/libhollow_grove-d841c0110e6dfd45.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 37799,
+          "count": 1,
+          "byte_offsets": [
+            1008534
+          ]
+        },
+        {
+          "line": 37929,
+          "count": 1,
+          "byte_offsets": [
+            1018477
+          ]
+        },
+        {
+          "line": 38135,
+          "count": 1,
+          "byte_offsets": [
+            1033148
+          ]
+        },
+        {
+          "line": 255443,
+          "count": 1,
+          "byte_offsets": [
+            32246407
+          ]
+        },
+        {
+          "line": 261911,
+          "count": 1,
+          "byte_offsets": [
+            33460467
+          ]
+        },
+        {
+          "line": 261921,
+          "count": 1,
+          "byte_offsets": [
+            33465034
+          ]
+        },
+        {
+          "line": 261935,
+          "count": 1,
+          "byte_offsets": [
+            33470385
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/deps/libhollow_grove-de8573da706682c5.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 35519,
+          "count": 1,
+          "byte_offsets": [
+            972821
+          ]
+        },
+        {
+          "line": 35648,
+          "count": 1,
+          "byte_offsets": [
+            982764
+          ]
+        },
+        {
+          "line": 35854,
+          "count": 1,
+          "byte_offsets": [
+            997435
+          ]
+        },
+        {
+          "line": 53057,
+          "count": 1,
+          "byte_offsets": [
+            2457321
+          ]
+        },
+        {
+          "line": 85172,
+          "count": 1,
+          "byte_offsets": [
+            9486750
+          ]
+        },
+        {
+          "line": 95247,
+          "count": 1,
+          "byte_offsets": [
+            10416463
+          ]
+        },
+        {
+          "line": 95348,
+          "count": 1,
+          "byte_offsets": [
+            10452896
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/hg-dev",
+      "before_category": null,
+      "after_category": "3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 14212,
+          "count": 1,
+          "byte_offsets": [
+            3380400
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hg_dev-1wh562r6rzry6/s-hnkn0j3d5v-0imyej8-5y7kho6x5sena7hmomx4oj5qf/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 7176,
+          "count": 1,
+          "byte_offsets": [
+            1678552
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hg_dev-1wh562r6rzry6/s-hnkn3j9d41-1wpf4be-1kigx6m6615a8swhiegmqlopz/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 7177,
+          "count": 1,
+          "byte_offsets": [
+            1678552
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hg_dev-3380qaionady4/s-hnjbjpfkqd-0hxsyhn-09s7d2ffejevx8tdwuopw5wvd/0pjoluiw6jijc5bkosq8gn9qd.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 2,
+          "count": 1,
+          "byte_offsets": [
+            3090
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hg_dev-3380qaionady4/s-hnjbjpfkqd-0hxsyhn-09s7d2ffejevx8tdwuopw5wvd/6lbgc4ag8ffpn50hpbzmyzbp1.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 24,
+          "count": 1,
+          "byte_offsets": [
+            4252
+          ]
+        },
+        {
+          "line": 26,
+          "count": 1,
+          "byte_offsets": [
+            4325
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hg_dev-3380qaionady4/s-hnjbjpfkqd-0hxsyhn-09s7d2ffejevx8tdwuopw5wvd/bwbvnmf1q4cs1itf9b0wfiw50.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 41,
+          "count": 1,
+          "byte_offsets": [
+            7696
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hg_dev-3380qaionady4/s-hnjbjpfkqd-0hxsyhn-09s7d2ffejevx8tdwuopw5wvd/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 8833,
+          "count": 1,
+          "byte_offsets": [
+            3364077
+          ]
+        },
+        {
+          "line": 24391,
+          "count": 1,
+          "byte_offsets": [
+            9218731
+          ]
+        },
+        {
+          "line": 24397,
+          "count": 1,
+          "byte_offsets": [
+            9219368
+          ]
+        },
+        {
+          "line": 24407,
+          "count": 1,
+          "byte_offsets": [
+            9219845
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hg_dev-3380qaionady4/s-hnlgz3jbas-1h03fhv-13uzdaep9uvie8zab63dqmcv0/0pjoluiw6jijc5bkosq8gn9qd.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 2,
+          "count": 1,
+          "byte_offsets": [
+            3090
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hg_dev-3380qaionady4/s-hnlgz3jbas-1h03fhv-13uzdaep9uvie8zab63dqmcv0/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 15204,
+          "count": 1,
+          "byte_offsets": [
+            6785537
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hg_dev-33kbk3asertdr/s-hnkn0j772e-0u82jo4-3xejuprzgp32joy3mx8fwrag0/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 39758,
+          "count": 1,
+          "byte_offsets": [
+            2199216
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hg_dev-33kbk3asertdr/s-hnkn3jdn0b-1hu1mmi-d2r21hxei36csvwioxzm50ibm/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 39758,
+          "count": 1,
+          "byte_offsets": [
+            2199216
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-0vmlipr7g9qku/s-hnkn0d7o7g-1h6ciqp-26qxwr2dcckkfx7poc7hllb84/metadata.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 12432,
+          "count": 1,
+          "byte_offsets": [
+            1020045
+          ]
+        },
+        {
+          "line": 12568,
+          "count": 1,
+          "byte_offsets": [
+            1029997
+          ]
+        },
+        {
+          "line": 12777,
+          "count": 1,
+          "byte_offsets": [
+            1044685
+          ]
+        },
+        {
+          "line": 18760,
+          "count": 1,
+          "byte_offsets": [
+            2623797
+          ]
+        },
+        {
+          "line": 34304,
+          "count": 1,
+          "byte_offsets": [
+            10051117
+          ]
+        },
+        {
+          "line": 42238,
+          "count": 1,
+          "byte_offsets": [
+            10994760
+          ]
+        },
+        {
+          "line": 42339,
+          "count": 1,
+          "byte_offsets": [
+            11031193
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-0vmlipr7g9qku/s-hnkn0d7o7g-1h6ciqp-26qxwr2dcckkfx7poc7hllb84/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 6949,
+          "count": 1,
+          "byte_offsets": [
+            3396125
+          ]
+        },
+        {
+          "line": 6988,
+          "count": 1,
+          "byte_offsets": [
+            3419146
+          ]
+        },
+        {
+          "line": 7036,
+          "count": 1,
+          "byte_offsets": [
+            3450365
+          ]
+        },
+        {
+          "line": 400818,
+          "count": 1,
+          "byte_offsets": [
+            55049301
+          ]
+        },
+        {
+          "line": 403832,
+          "count": 1,
+          "byte_offsets": [
+            55254192
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-0vmlipr7g9qku/s-hnkn3dbz17-1adm9t9-3447jio9t9bp4qm3i94xf1akf/metadata.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 12432,
+          "count": 1,
+          "byte_offsets": [
+            1020045
+          ]
+        },
+        {
+          "line": 12568,
+          "count": 1,
+          "byte_offsets": [
+            1029997
+          ]
+        },
+        {
+          "line": 12777,
+          "count": 1,
+          "byte_offsets": [
+            1044685
+          ]
+        },
+        {
+          "line": 18760,
+          "count": 1,
+          "byte_offsets": [
+            2623797
+          ]
+        },
+        {
+          "line": 34304,
+          "count": 1,
+          "byte_offsets": [
+            10051117
+          ]
+        },
+        {
+          "line": 42238,
+          "count": 1,
+          "byte_offsets": [
+            10994760
+          ]
+        },
+        {
+          "line": 42339,
+          "count": 1,
+          "byte_offsets": [
+            11031193
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-0vmlipr7g9qku/s-hnkn3dbz17-1adm9t9-3447jio9t9bp4qm3i94xf1akf/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 6949,
+          "count": 1,
+          "byte_offsets": [
+            3396125
+          ]
+        },
+        {
+          "line": 6988,
+          "count": 1,
+          "byte_offsets": [
+            3419146
+          ]
+        },
+        {
+          "line": 7036,
+          "count": 1,
+          "byte_offsets": [
+            3450365
+          ]
+        },
+        {
+          "line": 400818,
+          "count": 1,
+          "byte_offsets": [
+            55049360
+          ]
+        },
+        {
+          "line": 403832,
+          "count": 1,
+          "byte_offsets": [
+            55254251
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-0ynboudfggps6/s-hnjjowi1tn-0w9uont-d5282bl9x6tmv3dsfmjhigylz/metadata.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 34294,
+          "count": 1,
+          "byte_offsets": [
+            953829
+          ]
+        },
+        {
+          "line": 34423,
+          "count": 1,
+          "byte_offsets": [
+            963778
+          ]
+        },
+        {
+          "line": 34629,
+          "count": 1,
+          "byte_offsets": [
+            978449
+          ]
+        },
+        {
+          "line": 51476,
+          "count": 1,
+          "byte_offsets": [
+            2416984
+          ]
+        },
+        {
+          "line": 82461,
+          "count": 1,
+          "byte_offsets": [
+            9278785
+          ]
+        },
+        {
+          "line": 92534,
+          "count": 1,
+          "byte_offsets": [
+            10203545
+          ]
+        },
+        {
+          "line": 92635,
+          "count": 1,
+          "byte_offsets": [
+            10239978
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-0ynboudfggps6/s-hnjjowi1tn-0w9uont-d5282bl9x6tmv3dsfmjhigylz/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 4313,
+          "count": 1,
+          "byte_offsets": [
+            2176415
+          ]
+        },
+        {
+          "line": 4374,
+          "count": 1,
+          "byte_offsets": [
+            2206975
+          ]
+        },
+        {
+          "line": 4637,
+          "count": 1,
+          "byte_offsets": [
+            2375719
+          ]
+        },
+        {
+          "line": 169091,
+          "count": 1,
+          "byte_offsets": [
+            49377206
+          ]
+        },
+        {
+          "line": 171887,
+          "count": 1,
+          "byte_offsets": [
+            49613683
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-0ynboudfggps6/s-hnjzq7bpjd-1xzny7h-dnah4u35w5kp23pq27tpr84a4/metadata.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 35519,
+          "count": 1,
+          "byte_offsets": [
+            972821
+          ]
+        },
+        {
+          "line": 35648,
+          "count": 1,
+          "byte_offsets": [
+            982764
+          ]
+        },
+        {
+          "line": 35854,
+          "count": 1,
+          "byte_offsets": [
+            997435
+          ]
+        },
+        {
+          "line": 53057,
+          "count": 1,
+          "byte_offsets": [
+            2457321
+          ]
+        },
+        {
+          "line": 85172,
+          "count": 1,
+          "byte_offsets": [
+            9486750
+          ]
+        },
+        {
+          "line": 95247,
+          "count": 1,
+          "byte_offsets": [
+            10416463
+          ]
+        },
+        {
+          "line": 95348,
+          "count": 1,
+          "byte_offsets": [
+            10452896
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-0ynboudfggps6/s-hnjzq7bpjd-1xzny7h-dnah4u35w5kp23pq27tpr84a4/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 4378,
+          "count": 1,
+          "byte_offsets": [
+            2215059
+          ]
+        },
+        {
+          "line": 4439,
+          "count": 1,
+          "byte_offsets": [
+            2245617
+          ]
+        },
+        {
+          "line": 4703,
+          "count": 1,
+          "byte_offsets": [
+            2415542
+          ]
+        },
+        {
+          "line": 183436,
+          "count": 1,
+          "byte_offsets": [
+            50542751
+          ]
+        },
+        {
+          "line": 186381,
+          "count": 1,
+          "byte_offsets": [
+            50741008
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-1miplxx4167i7/s-hn0ubd9ocy-1i7jau8-9xroazkav4bjfs7egoi3ew03h/5rihbl2qcbhfibzhu3a2lwyee.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 2475,
+          "count": 1,
+          "byte_offsets": [
+            90570
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-1miplxx4167i7/s-hn0ubd9ocy-1i7jau8-9xroazkav4bjfs7egoi3ew03h/6ul5sfhpgf2ov6t60jd01yolq.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 482,
+          "count": 2,
+          "byte_offsets": [
+            57997,
+            62837
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-1miplxx4167i7/s-hn0ubd9ocy-1i7jau8-9xroazkav4bjfs7egoi3ew03h/9mjwueqv7x8tl4d7qm9vbewjq.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 56,
+          "count": 1,
+          "byte_offsets": [
+            46696
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-1miplxx4167i7/s-hn0ubd9ocy-1i7jau8-9xroazkav4bjfs7egoi3ew03h/bnerlbw9zqwhiru74zc16h3oe.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 33,
+          "count": 2,
+          "byte_offsets": [
+            42965,
+            47805
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-1miplxx4167i7/s-hn0ubd9ocy-1i7jau8-9xroazkav4bjfs7egoi3ew03h/e39vnhlt3a57ppabv8uq27wfw.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 33,
+          "count": 1,
+          "byte_offsets": [
+            37550
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-1miplxx4167i7/s-hn0ubd9ocy-1i7jau8-9xroazkav4bjfs7egoi3ew03h/metadata.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 32112,
+          "count": 1,
+          "byte_offsets": [
+            920223
+          ]
+        },
+        {
+          "line": 32241,
+          "count": 1,
+          "byte_offsets": [
+            930172
+          ]
+        },
+        {
+          "line": 32447,
+          "count": 1,
+          "byte_offsets": [
+            944843
+          ]
+        },
+        {
+          "line": 116805,
+          "count": 1,
+          "byte_offsets": [
+            11248570
+          ]
+        },
+        {
+          "line": 242816,
+          "count": 1,
+          "byte_offsets": [
+            28984302
+          ]
+        },
+        {
+          "line": 242933,
+          "count": 2,
+          "byte_offsets": [
+            29025719,
+            29030316
+          ]
+        },
+        {
+          "line": 243527,
+          "count": 1,
+          "byte_offsets": [
+            29196181
+          ]
+        },
+        {
+          "line": 243537,
+          "count": 1,
+          "byte_offsets": [
+            29200762
+          ]
+        },
+        {
+          "line": 243551,
+          "count": 1,
+          "byte_offsets": [
+            29206113
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-1miplxx4167i7/s-hn0ubd9ocy-1i7jau8-9xroazkav4bjfs7egoi3ew03h/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 4157,
+          "count": 1,
+          "byte_offsets": [
+            2118912
+          ]
+        },
+        {
+          "line": 4231,
+          "count": 1,
+          "byte_offsets": [
+            2149973
+          ]
+        },
+        {
+          "line": 4504,
+          "count": 1,
+          "byte_offsets": [
+            2319920
+          ]
+        },
+        {
+          "line": 641076,
+          "count": 1,
+          "byte_offsets": [
+            180072965
+          ]
+        },
+        {
+          "line": 641084,
+          "count": 1,
+          "byte_offsets": [
+            180076494
+          ]
+        },
+        {
+          "line": 645395,
+          "count": 2,
+          "byte_offsets": [
+            180497686,
+            180502283
+          ]
+        },
+        {
+          "line": 645574,
+          "count": 1,
+          "byte_offsets": [
+            180586083
+          ]
+        },
+        {
+          "line": 648978,
+          "count": 1,
+          "byte_offsets": [
+            181412602
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-2slxngv6oc82h/s-hnjbjbpzw2-0sbw2b0-dzov7c0xdscxlkum2g0y6af3z/15gawkhnzuyl1enuqaalwa6na.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 33,
+          "count": 1,
+          "byte_offsets": [
+            37582
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-2slxngv6oc82h/s-hnjbjbpzw2-0sbw2b0-dzov7c0xdscxlkum2g0y6af3z/3e6h5jib0e27op64fcztfre8o.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 482,
+          "count": 1,
+          "byte_offsets": [
+            70168
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-2slxngv6oc82h/s-hnjbjbpzw2-0sbw2b0-dzov7c0xdscxlkum2g0y6af3z/3m3zorrl8i4z1jcbb64dkkm7s.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 2506,
+          "count": 1,
+          "byte_offsets": [
+            92786
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-2slxngv6oc82h/s-hnjbjbpzw2-0sbw2b0-dzov7c0xdscxlkum2g0y6af3z/a5wgxcvpenh1kmoklf5nhyfrb.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 23,
+          "count": 1,
+          "byte_offsets": [
+            47288
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-2slxngv6oc82h/s-hnjbjbpzw2-0sbw2b0-dzov7c0xdscxlkum2g0y6af3z/elyx0kivg34rxp3k8u52t3u8r.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 56,
+          "count": 1,
+          "byte_offsets": [
+            46728
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-2slxngv6oc82h/s-hnjbjbpzw2-0sbw2b0-dzov7c0xdscxlkum2g0y6af3z/metadata.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 32952,
+          "count": 1,
+          "byte_offsets": [
+            933577
+          ]
+        },
+        {
+          "line": 33081,
+          "count": 1,
+          "byte_offsets": [
+            943526
+          ]
+        },
+        {
+          "line": 33287,
+          "count": 1,
+          "byte_offsets": [
+            958197
+          ]
+        },
+        {
+          "line": 117959,
+          "count": 1,
+          "byte_offsets": [
+            11278605
+          ]
+        },
+        {
+          "line": 238507,
+          "count": 1,
+          "byte_offsets": [
+            28570611
+          ]
+        },
+        {
+          "line": 248694,
+          "count": 1,
+          "byte_offsets": [
+            29553477
+          ]
+        },
+        {
+          "line": 248811,
+          "count": 1,
+          "byte_offsets": [
+            29594825
+          ]
+        },
+        {
+          "line": 249423,
+          "count": 1,
+          "byte_offsets": [
+            29768544
+          ]
+        },
+        {
+          "line": 249433,
+          "count": 1,
+          "byte_offsets": [
+            29773125
+          ]
+        },
+        {
+          "line": 249447,
+          "count": 1,
+          "byte_offsets": [
+            29778476
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-2slxngv6oc82h/s-hnjbjbpzw2-0sbw2b0-dzov7c0xdscxlkum2g0y6af3z/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 4103,
+          "count": 1,
+          "byte_offsets": [
+            2145848
+          ]
+        },
+        {
+          "line": 4163,
+          "count": 1,
+          "byte_offsets": [
+            2176909
+          ]
+        },
+        {
+          "line": 4451,
+          "count": 1,
+          "byte_offsets": [
+            2347807
+          ]
+        },
+        {
+          "line": 642843,
+          "count": 1,
+          "byte_offsets": [
+            183510434
+          ]
+        },
+        {
+          "line": 642851,
+          "count": 1,
+          "byte_offsets": [
+            183513950
+          ]
+        },
+        {
+          "line": 647161,
+          "count": 1,
+          "byte_offsets": [
+            183939653
+          ]
+        },
+        {
+          "line": 647342,
+          "count": 1,
+          "byte_offsets": [
+            184028648
+          ]
+        },
+        {
+          "line": 650975,
+          "count": 1,
+          "byte_offsets": [
+            184937077
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-2slxngv6oc82h/s-hnlgyrl42u-1bo6fa6-9vp9la1m7nt4uqell30w0h36w/36ly5czcqvb0zadhlrgcv1lve.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 33,
+          "count": 1,
+          "byte_offsets": [
+            37646
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-2slxngv6oc82h/s-hnlgyrl42u-1bo6fa6-9vp9la1m7nt4uqell30w0h36w/elyx0kivg34rxp3k8u52t3u8r.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 56,
+          "count": 1,
+          "byte_offsets": [
+            46728
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-2slxngv6oc82h/s-hnlgyrl42u-1bo6fa6-9vp9la1m7nt4uqell30w0h36w/metadata.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 37799,
+          "count": 1,
+          "byte_offsets": [
+            1008534
+          ]
+        },
+        {
+          "line": 37929,
+          "count": 1,
+          "byte_offsets": [
+            1018477
+          ]
+        },
+        {
+          "line": 38135,
+          "count": 1,
+          "byte_offsets": [
+            1033148
+          ]
+        },
+        {
+          "line": 268729,
+          "count": 1,
+          "byte_offsets": [
+            32096690
+          ]
+        },
+        {
+          "line": 279602,
+          "count": 1,
+          "byte_offsets": [
+            33373201
+          ]
+        },
+        {
+          "line": 279612,
+          "count": 1,
+          "byte_offsets": [
+            33377851
+          ]
+        },
+        {
+          "line": 279628,
+          "count": 1,
+          "byte_offsets": [
+            33383554
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-2slxngv6oc82h/s-hnlgyrl42u-1bo6fa6-9vp9la1m7nt4uqell30w0h36w/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 4389,
+          "count": 1,
+          "byte_offsets": [
+            2289771
+          ]
+        },
+        {
+          "line": 4449,
+          "count": 1,
+          "byte_offsets": [
+            2320377
+          ]
+        },
+        {
+          "line": 4739,
+          "count": 1,
+          "byte_offsets": [
+            2492695
+          ]
+        },
+        {
+          "line": 700417,
+          "count": 1,
+          "byte_offsets": [
+            200848580
+          ]
+        },
+        {
+          "line": 700425,
+          "count": 1,
+          "byte_offsets": [
+            200852165
+          ]
+        },
+        {
+          "line": 705045,
+          "count": 1,
+          "byte_offsets": [
+            201425145
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-36li0rrmxdphz/s-hnkn0d7o7f-11m8j70-0yd3lsljqzx7uxxnnfwz18m9d/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 4855,
+          "count": 1,
+          "byte_offsets": [
+            2382814
+          ]
+        },
+        {
+          "line": 4917,
+          "count": 1,
+          "byte_offsets": [
+            2413434
+          ]
+        },
+        {
+          "line": 6472,
+          "count": 1,
+          "byte_offsets": [
+            2941797
+          ]
+        },
+        {
+          "line": 189474,
+          "count": 1,
+          "byte_offsets": [
+            50570254
+          ]
+        },
+        {
+          "line": 192430,
+          "count": 1,
+          "byte_offsets": [
+            50727662
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-36li0rrmxdphz/s-hnkn3dbz1h-19fm1km-6vlyr1w47ajpvsmwuuf0z2jgy/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 3761,
+          "count": 1,
+          "byte_offsets": [
+            1796092
+          ]
+        },
+        {
+          "line": 3773,
+          "count": 1,
+          "byte_offsets": [
+            1799742
+          ]
+        },
+        {
+          "line": 4728,
+          "count": 1,
+          "byte_offsets": [
+            2295821
+          ]
+        },
+        {
+          "line": 191748,
+          "count": 1,
+          "byte_offsets": [
+            50616498
+          ]
+        },
+        {
+          "line": 194703,
+          "count": 1,
+          "byte_offsets": [
+            50771120
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-36zd80gzhcm25/s-hnkldxfrwr-0p0w0h6-228f3n56i26g117indpqpavfk/metadata.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 37798,
+          "count": 1,
+          "byte_offsets": [
+            1008431
+          ]
+        },
+        {
+          "line": 37928,
+          "count": 1,
+          "byte_offsets": [
+            1018374
+          ]
+        },
+        {
+          "line": 38134,
+          "count": 1,
+          "byte_offsets": [
+            1033045
+          ]
+        },
+        {
+          "line": 56100,
+          "count": 1,
+          "byte_offsets": [
+            2535514
+          ]
+        },
+        {
+          "line": 90350,
+          "count": 1,
+          "byte_offsets": [
+            9913082
+          ]
+        },
+        {
+          "line": 100242,
+          "count": 1,
+          "byte_offsets": [
+            10851647
+          ]
+        },
+        {
+          "line": 100341,
+          "count": 1,
+          "byte_offsets": [
+            10887918
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-36zd80gzhcm25/s-hnkldxfrwr-0p0w0h6-228f3n56i26g117indpqpavfk/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 4518,
+          "count": 1,
+          "byte_offsets": [
+            2301083
+          ]
+        },
+        {
+          "line": 4584,
+          "count": 1,
+          "byte_offsets": [
+            2332189
+          ]
+        },
+        {
+          "line": 4916,
+          "count": 1,
+          "byte_offsets": [
+            2507058
+          ]
+        },
+        {
+          "line": 532530,
+          "count": 1,
+          "byte_offsets": [
+            52639497
+          ]
+        },
+        {
+          "line": 535595,
+          "count": 1,
+          "byte_offsets": [
+            52882267
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-3pbgvr63scoq2/s-hn0x61bjcu-0lmvli8-0qmppvna2h19sjbc8uqvm3bfx/2sc7hes022x6qtg11crfjecg7.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 56,
+          "count": 1,
+          "byte_offsets": [
+            46696
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-3pbgvr63scoq2/s-hn0x61bjcu-0lmvli8-0qmppvna2h19sjbc8uqvm3bfx/45z6jk5rvhxuf5zeutvijk2ea.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 480,
+          "count": 2,
+          "byte_offsets": [
+            60437,
+            65277
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-3pbgvr63scoq2/s-hn0x61bjcu-0lmvli8-0qmppvna2h19sjbc8uqvm3bfx/6zin7a3toy2qvp4om2r0zkj98.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 2503,
+          "count": 1,
+          "byte_offsets": [
+            92343
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-3pbgvr63scoq2/s-hn0x61bjcu-0lmvli8-0qmppvna2h19sjbc8uqvm3bfx/76pnkex3u1ddgst3x9qzj739y.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 20,
+          "count": 2,
+          "byte_offsets": [
+            44813,
+            49653
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-3pbgvr63scoq2/s-hn0x61bjcu-0lmvli8-0qmppvna2h19sjbc8uqvm3bfx/df1r7bwawymkdtiq4vzjlijde.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 33,
+          "count": 1,
+          "byte_offsets": [
+            37550
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-3pbgvr63scoq2/s-hn0x61bjcu-0lmvli8-0qmppvna2h19sjbc8uqvm3bfx/metadata.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 32279,
+          "count": 1,
+          "byte_offsets": [
+            931766
+          ]
+        },
+        {
+          "line": 32409,
+          "count": 1,
+          "byte_offsets": [
+            941724
+          ]
+        },
+        {
+          "line": 32616,
+          "count": 1,
+          "byte_offsets": [
+            956412
+          ]
+        },
+        {
+          "line": 116846,
+          "count": 1,
+          "byte_offsets": [
+            11363599
+          ]
+        },
+        {
+          "line": 240033,
+          "count": 1,
+          "byte_offsets": [
+            29167275
+          ]
+        },
+        {
+          "line": 240150,
+          "count": 2,
+          "byte_offsets": [
+            29208692,
+            29213289
+          ]
+        },
+        {
+          "line": 240742,
+          "count": 1,
+          "byte_offsets": [
+            29379123
+          ]
+        },
+        {
+          "line": 240752,
+          "count": 1,
+          "byte_offsets": [
+            29383704
+          ]
+        },
+        {
+          "line": 240766,
+          "count": 1,
+          "byte_offsets": [
+            29389055
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-3pbgvr63scoq2/s-hn0x61bjcu-0lmvli8-0qmppvna2h19sjbc8uqvm3bfx/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 3354,
+          "count": 1,
+          "byte_offsets": [
+            1631464
+          ]
+        },
+        {
+          "line": 3368,
+          "count": 1,
+          "byte_offsets": [
+            1635114
+          ]
+        },
+        {
+          "line": 6288,
+          "count": 1,
+          "byte_offsets": [
+            3149010
+          ]
+        },
+        {
+          "line": 623857,
+          "count": 1,
+          "byte_offsets": [
+            163565512
+          ]
+        },
+        {
+          "line": 623865,
+          "count": 1,
+          "byte_offsets": [
+            163569041
+          ]
+        },
+        {
+          "line": 628224,
+          "count": 2,
+          "byte_offsets": [
+            164018177,
+            164022774
+          ]
+        },
+        {
+          "line": 628306,
+          "count": 1,
+          "byte_offsets": [
+            164081947
+          ]
+        },
+        {
+          "line": 630809,
+          "count": 1,
+          "byte_offsets": [
+            164171794
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-3pbgvr63scoq2/s-hn0xjbbxxj-0g9w72p-17tzs21cm40csbhr5x6pbjs5c/2sc7hes022x6qtg11crfjecg7.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 56,
+          "count": 1,
+          "byte_offsets": [
+            46696
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-3pbgvr63scoq2/s-hn0xjbbxxj-0g9w72p-17tzs21cm40csbhr5x6pbjs5c/45z6jk5rvhxuf5zeutvijk2ea.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 480,
+          "count": 2,
+          "byte_offsets": [
+            60437,
+            65277
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-3pbgvr63scoq2/s-hn0xjbbxxj-0g9w72p-17tzs21cm40csbhr5x6pbjs5c/6zin7a3toy2qvp4om2r0zkj98.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 2505,
+          "count": 1,
+          "byte_offsets": [
+            92564
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-3pbgvr63scoq2/s-hn0xjbbxxj-0g9w72p-17tzs21cm40csbhr5x6pbjs5c/76pnkex3u1ddgst3x9qzj739y.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 20,
+          "count": 2,
+          "byte_offsets": [
+            44813,
+            49653
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-3pbgvr63scoq2/s-hn0xjbbxxj-0g9w72p-17tzs21cm40csbhr5x6pbjs5c/df1r7bwawymkdtiq4vzjlijde.o",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 33,
+          "count": 1,
+          "byte_offsets": [
+            37550
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-3pbgvr63scoq2/s-hn0xjbbxxj-0g9w72p-17tzs21cm40csbhr5x6pbjs5c/metadata.rmeta",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 32279,
+          "count": 1,
+          "byte_offsets": [
+            931766
+          ]
+        },
+        {
+          "line": 32409,
+          "count": 1,
+          "byte_offsets": [
+            941724
+          ]
+        },
+        {
+          "line": 32616,
+          "count": 1,
+          "byte_offsets": [
+            956412
+          ]
+        },
+        {
+          "line": 116846,
+          "count": 1,
+          "byte_offsets": [
+            11363822
+          ]
+        },
+        {
+          "line": 239989,
+          "count": 1,
+          "byte_offsets": [
+            29167719
+          ]
+        },
+        {
+          "line": 240106,
+          "count": 2,
+          "byte_offsets": [
+            29209136,
+            29213733
+          ]
+        },
+        {
+          "line": 240698,
+          "count": 1,
+          "byte_offsets": [
+            29379567
+          ]
+        },
+        {
+          "line": 240708,
+          "count": 1,
+          "byte_offsets": [
+            29384148
+          ]
+        },
+        {
+          "line": 240722,
+          "count": 1,
+          "byte_offsets": [
+            29389499
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/hollow_grove-3pbgvr63scoq2/s-hn0xjbbxxj-0g9w72p-17tzs21cm40csbhr5x6pbjs5c/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 3354,
+          "count": 1,
+          "byte_offsets": [
+            1631464
+          ]
+        },
+        {
+          "line": 3368,
+          "count": 1,
+          "byte_offsets": [
+            1635114
+          ]
+        },
+        {
+          "line": 6288,
+          "count": 1,
+          "byte_offsets": [
+            3149010
+          ]
+        },
+        {
+          "line": 623857,
+          "count": 1,
+          "byte_offsets": [
+            163565460
+          ]
+        },
+        {
+          "line": 623865,
+          "count": 1,
+          "byte_offsets": [
+            163568989
+          ]
+        },
+        {
+          "line": 628224,
+          "count": 2,
+          "byte_offsets": [
+            164018125,
+            164022722
+          ]
+        },
+        {
+          "line": 628306,
+          "count": 1,
+          "byte_offsets": [
+            164081895
+          ]
+        },
+        {
+          "line": 630810,
+          "count": 1,
+          "byte_offsets": [
+            164171934
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/integration-1hjhupoptsadn/s-hnklgrzf1q-1mnwb18-dozgxv4ifzyv8ue30299tcewc/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 1876,
+          "count": 1,
+          "byte_offsets": [
+            341690
+          ]
+        },
+        {
+          "line": 31821,
+          "count": 1,
+          "byte_offsets": [
+            5532122
+          ]
+        },
+        {
+          "line": 41263,
+          "count": 3,
+          "byte_offsets": [
+            8075533,
+            8080127,
+            8080330
+          ]
+        },
+        {
+          "line": 43251,
+          "count": 1,
+          "byte_offsets": [
+            8372909
+          ]
+        },
+        {
+          "line": 43273,
+          "count": 2,
+          "byte_offsets": [
+            8375778,
+            8375901
+          ]
+        },
+        {
+          "line": 43717,
+          "count": 1,
+          "byte_offsets": [
+            8420946
+          ]
+        },
+        {
+          "line": 45047,
+          "count": 1,
+          "byte_offsets": [
+            8491977
+          ]
+        },
+        {
+          "line": 45384,
+          "count": 1,
+          "byte_offsets": [
+            8504863
+          ]
+        },
+        {
+          "line": 45400,
+          "count": 1,
+          "byte_offsets": [
+            8505619
+          ]
+        },
+        {
+          "line": 45401,
+          "count": 1,
+          "byte_offsets": [
+            8505656
+          ]
+        },
+        {
+          "line": 45627,
+          "count": 1,
+          "byte_offsets": [
+            8510946
+          ]
+        },
+        {
+          "line": 46019,
+          "count": 1,
+          "byte_offsets": [
+            8525434
+          ]
+        },
+        {
+          "line": 46653,
+          "count": 1,
+          "byte_offsets": [
+            8549911
+          ]
+        },
+        {
+          "line": 46801,
+          "count": 1,
+          "byte_offsets": [
+            8556775
+          ]
+        },
+        {
+          "line": 49914,
+          "count": 1,
+          "byte_offsets": [
+            8649929
+          ]
+        },
+        {
+          "line": 51202,
+          "count": 1,
+          "byte_offsets": [
+            8700706
+          ]
+        },
+        {
+          "line": 53053,
+          "count": 1,
+          "byte_offsets": [
+            8768958
+          ]
+        },
+        {
+          "line": 53066,
+          "count": 1,
+          "byte_offsets": [
+            8769337
+          ]
+        },
+        {
+          "line": 53080,
+          "count": 1,
+          "byte_offsets": [
+            8769816
+          ]
+        },
+        {
+          "line": 53095,
+          "count": 1,
+          "byte_offsets": [
+            8770190
+          ]
+        },
+        {
+          "line": 53916,
+          "count": 1,
+          "byte_offsets": [
+            8801526
+          ]
+        },
+        {
+          "line": 54031,
+          "count": 1,
+          "byte_offsets": [
+            8808761
+          ]
+        },
+        {
+          "line": 54211,
+          "count": 1,
+          "byte_offsets": [
+            8819659
+          ]
+        },
+        {
+          "line": 65638,
+          "count": 1,
+          "byte_offsets": [
+            9295337
+          ]
+        },
+        {
+          "line": 84483,
+          "count": 1,
+          "byte_offsets": [
+            10007321
+          ]
+        },
+        {
+          "line": 84809,
+          "count": 1,
+          "byte_offsets": [
+            10021379
+          ]
+        },
+        {
+          "line": 86202,
+          "count": 1,
+          "byte_offsets": [
+            10084823
+          ]
+        },
+        {
+          "line": 86224,
+          "count": 1,
+          "byte_offsets": [
+            10085891
+          ]
+        },
+        {
+          "line": 86600,
+          "count": 1,
+          "byte_offsets": [
+            10100471
+          ]
+        },
+        {
+          "line": 86604,
+          "count": 1,
+          "byte_offsets": [
+            10100574
+          ]
+        },
+        {
+          "line": 86616,
+          "count": 1,
+          "byte_offsets": [
+            10100860
+          ]
+        },
+        {
+          "line": 86679,
+          "count": 1,
+          "byte_offsets": [
+            10103385
+          ]
+        },
+        {
+          "line": 89858,
+          "count": 1,
+          "byte_offsets": [
+            10217483
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/integration-3fl2q2fa6teqb/s-hnkn0j5434-076bpvy-4ql99lf4dfyrh9ukzs3zr08sw/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 1218,
+          "count": 1,
+          "byte_offsets": [
+            342209
+          ]
+        },
+        {
+          "line": 30602,
+          "count": 1,
+          "byte_offsets": [
+            5544941
+          ]
+        },
+        {
+          "line": 43283,
+          "count": 3,
+          "byte_offsets": [
+            9680259,
+            9684853,
+            9685056
+          ]
+        },
+        {
+          "line": 45739,
+          "count": 1,
+          "byte_offsets": [
+            9754546
+          ]
+        },
+        {
+          "line": 52821,
+          "count": 1,
+          "byte_offsets": [
+            10036951
+          ]
+        },
+        {
+          "line": 54429,
+          "count": 1,
+          "byte_offsets": [
+            10107385
+          ]
+        },
+        {
+          "line": 54757,
+          "count": 1,
+          "byte_offsets": [
+            10125983
+          ]
+        },
+        {
+          "line": 54872,
+          "count": 1,
+          "byte_offsets": [
+            10133218
+          ]
+        },
+        {
+          "line": 55052,
+          "count": 1,
+          "byte_offsets": [
+            10144116
+          ]
+        },
+        {
+          "line": 55390,
+          "count": 1,
+          "byte_offsets": [
+            10181137
+          ]
+        },
+        {
+          "line": 55412,
+          "count": 2,
+          "byte_offsets": [
+            10184006,
+            10184129
+          ]
+        },
+        {
+          "line": 76911,
+          "count": 1,
+          "byte_offsets": [
+            11068588
+          ]
+        },
+        {
+          "line": 77590,
+          "count": 1,
+          "byte_offsets": [
+            11105844
+          ]
+        },
+        {
+          "line": 77606,
+          "count": 1,
+          "byte_offsets": [
+            11106600
+          ]
+        },
+        {
+          "line": 77607,
+          "count": 1,
+          "byte_offsets": [
+            11106637
+          ]
+        },
+        {
+          "line": 77833,
+          "count": 1,
+          "byte_offsets": [
+            11111927
+          ]
+        },
+        {
+          "line": 78225,
+          "count": 1,
+          "byte_offsets": [
+            11126415
+          ]
+        },
+        {
+          "line": 78859,
+          "count": 1,
+          "byte_offsets": [
+            11150892
+          ]
+        },
+        {
+          "line": 79007,
+          "count": 1,
+          "byte_offsets": [
+            11157756
+          ]
+        },
+        {
+          "line": 79099,
+          "count": 1,
+          "byte_offsets": [
+            11166220
+          ]
+        },
+        {
+          "line": 88361,
+          "count": 1,
+          "byte_offsets": [
+            11505869
+          ]
+        },
+        {
+          "line": 88383,
+          "count": 1,
+          "byte_offsets": [
+            11506937
+          ]
+        },
+        {
+          "line": 88759,
+          "count": 1,
+          "byte_offsets": [
+            11521517
+          ]
+        },
+        {
+          "line": 88763,
+          "count": 1,
+          "byte_offsets": [
+            11521620
+          ]
+        },
+        {
+          "line": 88775,
+          "count": 1,
+          "byte_offsets": [
+            11521906
+          ]
+        },
+        {
+          "line": 88838,
+          "count": 1,
+          "byte_offsets": [
+            11524431
+          ]
+        },
+        {
+          "line": 89184,
+          "count": 1,
+          "byte_offsets": [
+            11536394
+          ]
+        },
+        {
+          "line": 92287,
+          "count": 1,
+          "byte_offsets": [
+            11643446
+          ]
+        },
+        {
+          "line": 96270,
+          "count": 1,
+          "byte_offsets": [
+            11782423
+          ]
+        },
+        {
+          "line": 97653,
+          "count": 1,
+          "byte_offsets": [
+            11829815
+          ]
+        },
+        {
+          "line": 97666,
+          "count": 1,
+          "byte_offsets": [
+            11830194
+          ]
+        },
+        {
+          "line": 97680,
+          "count": 1,
+          "byte_offsets": [
+            11830673
+          ]
+        },
+        {
+          "line": 97695,
+          "count": 1,
+          "byte_offsets": [
+            11831047
+          ]
+        }
+      ]
+    },
+    {
+      "path": "target/debug/incremental/integration-3fl2q2fa6teqb/s-hnkn3japb5-0wy14ak-7vn7ibuk67gbe2zl6dpx331hf/query-cache.bin",
+      "before_category": null,
+      "after_category": "2-superseded-build+3-compiled-compatibility",
+      "reason": "Ignored generated build material: preserved prior embedded source text and/or retained compatibility symbols/test evidence; no current source feature.",
+      "before": null,
+      "after": [
+        {
+          "line": 1218,
+          "count": 1,
+          "byte_offsets": [
+            342209
+          ]
+        },
+        {
+          "line": 30602,
+          "count": 1,
+          "byte_offsets": [
+            5544941
+          ]
+        },
+        {
+          "line": 43283,
+          "count": 3,
+          "byte_offsets": [
+            9680259,
+            9684853,
+            9685056
+          ]
+        },
+        {
+          "line": 45739,
+          "count": 1,
+          "byte_offsets": [
+            9754497
+          ]
+        },
+        {
+          "line": 52821,
+          "count": 1,
+          "byte_offsets": [
+            10036951
+          ]
+        },
+        {
+          "line": 54429,
+          "count": 1,
+          "byte_offsets": [
+            10107385
+          ]
+        },
+        {
+          "line": 54757,
+          "count": 1,
+          "byte_offsets": [
+            10125983
+          ]
+        },
+        {
+          "line": 54872,
+          "count": 1,
+          "byte_offsets": [
+            10133218
+          ]
+        },
+        {
+          "line": 55052,
+          "count": 1,
+          "byte_offsets": [
+            10144116
+          ]
+        },
+        {
+          "line": 55390,
+          "count": 1,
+          "byte_offsets": [
+            10181137
+          ]
+        },
+        {
+          "line": 55412,
+          "count": 2,
+          "byte_offsets": [
+            10184006,
+            10184129
+          ]
+        },
+        {
+          "line": 76911,
+          "count": 1,
+          "byte_offsets": [
+            11068588
+          ]
+        },
+        {
+          "line": 77590,
+          "count": 1,
+          "byte_offsets": [
+            11105844
+          ]
+        },
+        {
+          "line": 77606,
+          "count": 1,
+          "byte_offsets": [
+            11106600
+          ]
+        },
+        {
+          "line": 77607,
+          "count": 1,
+          "byte_offsets": [
+            11106637
+          ]
+        },
+        {
+          "line": 77833,
+          "count": 1,
+          "byte_offsets": [
+            11111927
+          ]
+        },
+        {
+          "line": 78225,
+          "count": 1,
+          "byte_offsets": [
+            11126415
+          ]
+        },
+        {
+          "line": 78859,
+          "count": 1,
+          "byte_offsets": [
+            11150892
+          ]
+        },
+        {
+          "line": 79007,
+          "count": 1,
+          "byte_offsets": [
+            11157756
+          ]
+        },
+        {
+          "line": 79099,
+          "count": 1,
+          "byte_offsets": [
+            11166220
+          ]
+        },
+        {
+          "line": 88361,
+          "count": 1,
+          "byte_offsets": [
+            11505869
+          ]
+        },
+        {
+          "line": 88383,
+          "count": 1,
+          "byte_offsets": [
+            11506937
+          ]
+        },
+        {
+          "line": 88759,
+          "count": 1,
+          "byte_offsets": [
+            11521517
+          ]
+        },
+        {
+          "line": 88763,
+          "count": 1,
+          "byte_offsets": [
+            11521620
+          ]
+        },
+        {
+          "line": 88775,
+          "count": 1,
+          "byte_offsets": [
+            11521906
+          ]
+        },
+        {
+          "line": 88838,
+          "count": 1,
+          "byte_offsets": [
+            11524431
+          ]
+        },
+        {
+          "line": 89184,
+          "count": 1,
+          "byte_offsets": [
+            11536394
+          ]
+        },
+        {
+          "line": 92287,
+          "count": 1,
+          "byte_offsets": [
+            11643446
+          ]
+        },
+        {
+          "line": 96270,
+          "count": 1,
+          "byte_offsets": [
+            11782423
+          ]
+        },
+        {
+          "line": 97653,
+          "count": 1,
+          "byte_offsets": [
+            11829815
+          ]
+        },
+        {
+          "line": 97666,
+          "count": 1,
+          "byte_offsets": [
+            11830194
+          ]
+        },
+        {
+          "line": 97680,
+          "count": 1,
+          "byte_offsets": [
+            11830673
+          ]
+        },
+        {
+          "line": 97695,
+          "count": 1,
+          "byte_offsets": [
+            11831047
+          ]
+        }
+      ]
+    },
+    {
+      "path": "tests/route_network_gameplay.rs",
+      "before_category": null,
+      "after_category": "3-verification",
+      "reason": "Current-output assertions corrected; remaining matches assert historical preservation or active absence, or scan for regression.",
+      "before": null,
+      "after": [
+        {
+          "line": 349,
+          "count": 1,
+          "byte_offsets": [
+            12304
+          ]
+        }
+      ]
+    },
+    {
+      "path": "tests/stonebend_documentation_conformance.rs",
+      "before_category": "1-active",
+      "after_category": "3-verification",
+      "reason": "Current-output assertions corrected; remaining matches assert historical preservation or active absence, or scan for regression.",
+      "before": [
+        {
+          "line": 117,
+          "count": 1,
+          "byte_offsets": [
+            4084
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 182,
+          "count": 1,
+          "byte_offsets": [
+            6064
+          ]
+        },
+        {
+          "line": 187,
+          "count": 1,
+          "byte_offsets": [
+            6272
+          ]
+        }
+      ]
+    },
+    {
+      "path": "tests/stonebend_rev100_governance.rs",
+      "before_category": "3-compatibility",
+      "after_category": "3-compatibility",
+      "reason": "Existing identifiers, source-era interpreters or compatibility/absence tests; bytes preserved and no gameplay/governance caller added.",
+      "before": [
+        {
+          "line": 490,
+          "count": 1,
+          "byte_offsets": [
+            14255
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 490,
+          "count": 1,
+          "byte_offsets": [
+            14255
+          ]
+        }
+      ]
+    },
+    {
+      "path": "tests/stonebend_second_pass_documentation.rs",
+      "before_category": "1-active+3-compatibility",
+      "after_category": "3-verification",
+      "reason": "Current-output assertions corrected; remaining matches assert historical preservation or active absence, or scan for regression.",
+      "before": [
+        {
+          "line": 36,
+          "count": 1,
+          "byte_offsets": [
+            2509
+          ]
+        },
+        {
+          "line": 196,
+          "count": 1,
+          "byte_offsets": [
+            7636
+          ]
+        },
+        {
+          "line": 204,
+          "count": 1,
+          "byte_offsets": [
+            7868
+          ]
+        },
+        {
+          "line": 272,
+          "count": 1,
+          "byte_offsets": [
+            9921
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 36,
+          "count": 1,
+          "byte_offsets": [
+            2509
+          ]
+        },
+        {
+          "line": 197,
+          "count": 1,
+          "byte_offsets": [
+            7740
+          ]
+        },
+        {
+          "line": 200,
+          "count": 1,
+          "byte_offsets": [
+            7969
+          ]
+        },
+        {
+          "line": 268,
+          "count": 1,
+          "byte_offsets": [
+            10022
+          ]
+        }
+      ]
+    },
+    {
+      "path": "tests/stonebend_three_gates_offices.rs",
+      "before_category": "3-compatibility",
+      "after_category": "3-compatibility",
+      "reason": "Existing identifiers, source-era interpreters or compatibility/absence tests; bytes preserved and no gameplay/governance caller added.",
+      "before": [
+        {
+          "line": 1040,
+          "count": 1,
+          "byte_offsets": [
+            36243
+          ]
+        },
+        {
+          "line": 1041,
+          "count": 1,
+          "byte_offsets": [
+            36378
+          ]
+        },
+        {
+          "line": 1043,
+          "count": 1,
+          "byte_offsets": [
+            36500
+          ]
+        },
+        {
+          "line": 1045,
+          "count": 1,
+          "byte_offsets": [
+            36590
+          ]
+        },
+        {
+          "line": 1052,
+          "count": 1,
+          "byte_offsets": [
+            36923
+          ]
+        },
+        {
+          "line": 1061,
+          "count": 1,
+          "byte_offsets": [
+            37233
+          ]
+        },
+        {
+          "line": 1085,
+          "count": 1,
+          "byte_offsets": [
+            38046
+          ]
+        },
+        {
+          "line": 1101,
+          "count": 1,
+          "byte_offsets": [
+            38683
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 1040,
+          "count": 1,
+          "byte_offsets": [
+            36243
+          ]
+        },
+        {
+          "line": 1041,
+          "count": 1,
+          "byte_offsets": [
+            36378
+          ]
+        },
+        {
+          "line": 1043,
+          "count": 1,
+          "byte_offsets": [
+            36500
+          ]
+        },
+        {
+          "line": 1045,
+          "count": 1,
+          "byte_offsets": [
+            36590
+          ]
+        },
+        {
+          "line": 1052,
+          "count": 1,
+          "byte_offsets": [
+            36923
+          ]
+        },
+        {
+          "line": 1061,
+          "count": 1,
+          "byte_offsets": [
+            37233
+          ]
+        },
+        {
+          "line": 1085,
+          "count": 1,
+          "byte_offsets": [
+            38046
+          ]
+        },
+        {
+          "line": 1101,
+          "count": 1,
+          "byte_offsets": [
+            38683
+          ]
+        }
+      ]
+    },
+    {
+      "path": "tests/stonebend_title_lifecycle_continuity.rs",
+      "before_category": "3-compatibility",
+      "after_category": "3-compatibility",
+      "reason": "Existing identifiers, source-era interpreters or compatibility/absence tests; bytes preserved and no gameplay/governance caller added.",
+      "before": [
+        {
+          "line": 828,
+          "count": 1,
+          "byte_offsets": [
+            31288
+          ]
+        }
+      ],
+      "after": [
+        {
+          "line": 828,
+          "count": 1,
+          "byte_offsets": [
+            31288
+          ]
+        }
+      ]
+    },
+    {
+      "path": "tools/verify-active-geography.py",
+      "before_category": null,
+      "after_category": "3-verification",
+      "reason": "Current-output assertions corrected; remaining matches assert historical preservation or active absence, or scan for regression.",
+      "before": null,
+      "after": [
+        {
+          "line": 18,
+          "count": 1,
+          "byte_offsets": [
+            503
+          ]
+        }
+      ]
+    }
+  ],
+  "protected_sha256": {
+    "HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md": "c9baa57456de99117354e935f165aec79f3264df0dfa5cf3bb70310c71d90ee9",
+    "HOLLOW_GROVE_CONSTITUTIONAL_GEOGRAPHY_V2.md": "69295b139fd3e5c02a0725d665e60198aaed669865013cb42ecce650b963930c",
+    "HOLLOW_GROVE_ROUTE_NETWORK_V1.md": "af5cbd3d954c88e3e8504e8070b4858277db678df638ee5b98b77838b10888be",
+    "HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md": "e390cd39598bc96502a6b74acaceefaf1eae2f9eaa6c6747f3cc10cb00c82d18",
+    "HOLLOW_GROVE_WHOLE_CONSTITUTIONAL_INTEGRATION_AUDIT_V1.md": "3fed5ed39fa3191bd0e116a9399e192979f98abba7c9e91f56faf8a57a4601b1",
+    "MINOAN_COUNTY_COURT_SYSTEM_AND_RESTITUTION_CYCLE_V1.md": "d4c049eb61900fd3483cf94b2696d8ef2ee45a1d1ffc163d8b61b36d6f9e4b36",
+    "STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md": "58b8983fb5d2fdd2da188ad3230f3c275b39d93f81d360ff1129202e41664d9c",
+    "STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md": "24df99f556c78ee2de769ee8c053d9bd242f932b57c45da125a901c1b403434b",
+    "artifacts/hueman_screen_map.json": "5f79f579e8694daffb5d737fd5981571690b32c1eb74c756466afc72d6795410",
+    "docs/HOLLOW_GROVE_GENESIS_ADOPTION_DOCKET_2026-10-27.md": "d72ff17af5cb8c6552a14d0f6b09f67d6ceb5d59340eaa30c4c4011c2bfe4abc",
+    "docs/HOLLOW_GROVE_STONEBEND_FLYNT_PARITY_CLOSURE_2026-10-26.md": "87104549d362d80ba85dc1d7226442bbba449e7603ac472e7e1e8244370bc5d9",
+    "docs/reference/STONEBEND_CONSTITUTION_V2_PRE_REV100.md": "ac78dd7957401909de5facac44c3c06fec67268f610587a203069fcd250bd491",
+    "hollow-grove-recursion-kernel/Cargo.toml": "0c727af9520da953712b98b4ba0582b492c8e7e160fcaaaab8ea26d2425b6ecf",
+    "hollow-grove-recursion-kernel/src/lib.rs": "113fb71d9b4cbb9cfd12f6f3ebaf0139b16d3b15abb11d990e2d743d84c2086e",
+    "hollow-grove-recursion-kernel/src/pleb_meta/bond.rs": "8e9d928195f131373fe02590fb618b596310fbc810849d2728c4017b1fc632c5",
+    "hollow-grove-recursion-kernel/src/pleb_meta/grammar.rs": "92c28ee2a90a409bd1c68e647b17c2f5c1988156473f881d7453e97f02035f60",
+    "hollow-grove-recursion-kernel/src/pleb_meta/mod.rs": "5da9796e3d1ea9123b1adb54ccdc6e9bd8354d7f574574d08591ea6de838d004",
+    "hollow-grove-recursion-kernel/src/pleb_meta/mode.rs": "f1149abb066dcc9f333f1e626510acb43b4b2cacd13bae973a7b6b65d4337b03",
+    "hollow-grove-recursion-kernel/src/pleb_meta/operator.rs": "2005b98952967a91a000bb7ec526a33ab0ce11e97beb8d7f60e6703854feaab7",
+    "hollow-grove-recursion-kernel/src/pleb_meta/route.rs": "d7ae7219f817dc3ca433993689cf17f44f84ec64e7289c0bb5dc720268b57cff",
+    "hollow-grove-recursion-kernel/src/pleb_meta/routing_pass.rs": "a7dd57197ac68d57c47a2b226d1c17e5f5c24a5e09988da1439850f05b92c10c",
+    "hollow-grove-recursion-kernel/src/pleb_meta/sequence.rs": "166abb823fcdcca41b10987588fd78c5cf17cddc52224d05deb5cfc063203735",
+    "hollow-grove-semantic-kernel/Cargo.toml": "0c15fb3cd48d6a41f671c395365e322d1f1ccf01314d87922bb65240277e996a",
+    "hollow-grove-semantic-kernel/src/lib.rs": "e883c53baa2741a3a4b2aeeb6a57f0bd785f36ac27c2b19b061af112b10d285d",
+    "hollow-grove-semantic-kernel/src/oriented_point.rs": "d8a968a5c068c6fb2bc79b2dd9b3db4ee4722d6f11784642c1fc392c64608c95",
+    "hollow-grove-semantic-kernel/src/semantic_geometry.rs": "48ea9a7df571defff8ce499a3af2df0d0f4e4503d39588d20a5ad08c09ac982e",
+    "hollow-grove-semantic-kernel/src/semantic_records.rs": "e7300e799d49959e0539b5ef59c429523358f5bb0c1b46c715308e3bc1b9c446",
+    "hollow-grove-semantic-kernel/src/spatial_inheritance.rs": "810c23b43615e7c36dda2bae4d31a8388504d3ceaebca208b903c9796251ad2c",
+    "src/gameplay/archive.rs": "4c203cf192a2f6568a5c0f11cad8c1b28b392445d5f23f2496a195c9bd3383ab",
+    "src/gameplay/runtime.rs": "197546c794c18fa7ca8983304915d45448c6a9f4c88c1144453f1b1842e3f467",
+    "src/gameplay/world.rs": "8da9af052362e4dd754811aaeb3f49f5fa13e962bc72765363b55c9b5fe0e37d",
+    "src/world/extraction.rs": "f1a9913f600dd9de3597bc4641597fec448dfc2ff9fbd7ecba61c88e52d4b500",
+    "src/world/flynt/equipment.rs": "9f64b55208acff3c0bbfdba19dd2a94f141362ce4322679cfe5c6de2d878dd5d",
+    "src/world/flynt/gallowry.rs": "7193abe05286962fc659a9839e11de21b4355203d990becb4a8e115c400e9343",
+    "src/world/flynt/governance.rs": "cc9d2e969b4830abe86712c043adee253e91b0feadb75354742d5ab920844d86",
+    "src/world/flynt/q.rs": "9f397bc5527621a30374e4595cf6f3c383b24089c3bf63d8490e1bbf05093248",
+    "src/world/flynt/synthesis.rs": "35760b27f776b3b83c9bc454c80d472beca35b95cade2ab1f6b2786ca002be8a",
+    "src/world/glaushouse/governance.rs": "69607b0b5cf7e0e3f9469f16e4332c515e7d21e1e7b3205b29dca96b66a7604e",
+    "src/world/route_network.rs": "30d30814e5ad50b5f5782cc499cd5ecd5867f05ac16ce53f5d95cf7b8127f023",
+    "src/world/sandmanor/governance.rs": "8b75ccb56be6a1933182ccd021ce4896f194bcbbca0a476918852aa3a679127d",
+    "src/world/spatial_inheritance.rs": "cd6b73a1296ab8f1f1d8bd6afe6eeed927f3e71d1e5c77ddb339a888fac87631",
+    "src/world/spatial_topology_v2.rs": "da26b8f50f0b725f46c94aaf662a4d26cd5d0066164974f5f546507d8bcbb0af",
+    "src/world/stonebend.rs": "21efbde87cb13469187dbe44b26d0ed98b6010516e728b2586acbf78c16675a3",
+    "src/world/stonebend/governance.rs": "6c5cb993fbb7ceed60c0647e8e286347b29b96790f4f6f7f426ea983fe6aa76b",
+    "src/world/stonebend/second_pass.rs": "c55f5b38e1812f1afb0df3bf1fb566e12c2938ca6825688839ed3953dead33a2",
+    "src/world/stonebend/third_pass.rs": "b8331efda82cbdafdf26368128ff366e255f83e9fefef56e3b0794607135bf24",
+    "tests/fixtures/clinical_authorization/sandmanor-v1.json": "d33f178837e3e93ec809bf5c5e2126dfbd06c4d00bd7466c2598a5fe4b0a06de",
+    "tests/fixtures/clinical_authorization/stonebend-v1.json": "5f8e843cf83a2a8f950cd037cb5da51b462708c7179cb4bcd13661fe8cc9f393",
+    "tests/fixtures/compatibility/gameplay_v1.json": "55093b370a73a1e8ab34e36bdb43bc373023c3954d5311688b7f75f619185f55",
+    "tests/fixtures/compatibility/gameplay_v2.json": "d8b5dad23f867a0b337c44528df3e9b80880472544b09107084a39f88b3a792e",
+    "tests/fixtures/compatibility/gameplay_v3.json": "66da69a15d7a6a47658894794249bedf17d80dc3a76ff58d7b839c196cbf53f2",
+    "tests/fixtures/compatibility/gameplay_v5_sympiote.json": "31a98636862e04d54e4f84a546d4f151c72b1e3fb1010691b2b7d663584fe856",
+    "tests/fixtures/compatibility/runtime_rampart_v1.hgrf.json": "5932e5f1bc88b4fdbb334a6670c700f3684b28e1db1587e75affb59e168b2da3",
+    "tests/fixtures/compatibility/screen_intent_receipt_v0_3.json": "cb003bd5eee6f9d57f9cc980e491bbc7eb811fcb9adf9ca245779ac70ab5fae2",
+    "tests/fixtures/compatibility/screen_intent_v0_1.json": "4ba11ccf1460c4a0d6524788175888b9e1a77a6411c3d3115b5d7e2772bab815",
+    "tests/fixtures/compatibility/screen_intent_v0_2.json": "8037a12767abd3b98fe872fe0b16039eb958e0fc7b8624b255f9989aacbb2234",
+    "tests/fixtures/compatibility/screen_live_state_v0_3.json": "3de20017e59331d836a017c0639d1aafa19f120e0be2e2be712607e199a8400f",
+    "tests/fixtures/compatibility/spatial_inheritance_v1.json": "1279de9a69427a6ba7feb9858ffca7edc39076645d0033a01bf22837cfd6e7d5",
+    "tests/fixtures/flynt-governance-a-v1.json": "26b66ae35099bab6b719083308f17e438fa8e5fb95bb3177af4cc2c64094fa48",
+    "tests/fixtures/guide-context-v1-inside.json": "e8165699bab1c61774dcfc31fae127f7862e503bda0edfa8dcc12b116c7928ed",
+    "tests/fixtures/guide-context-v1-outside.json": "3da660058db0b9ccbe7840f6f02ccafdc61edfa2f8c4d325b810d026240e3f1b",
+    "tests/stonebend_rev100_governance.rs": "1b721694688d0cf952c7a84f3365cae1c9855f676f627965a0af322c2a3e90d7",
+    "tests/stonebend_three_gates_offices.rs": "d317fc6e223d1f551f6c3ad0eb6ca25b7b28c41671088a0043fcf0974a40f2e8",
+    "tests/stonebend_title_lifecycle_continuity.rs": "703478717638c4fcf40986b7a240ded89be7d1a2be927652d389cf73f510a48d"
+  }
+}

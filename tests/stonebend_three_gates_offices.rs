@@ -700,7 +700,10 @@ fn proliteriate_is_a_distributed_network_with_four_extensible_node_kinds() {
             ProliteriateNodeKind::InheritedOrCommonwealthCommunity,
         ])
     );
-    assert_eq!(StonebendConstitutionalPower::Proliteriate.office(), None);
+    assert_eq!(
+        StonebendConstitutionalPower::Proliteriate.office(),
+        Some(hollow_grove::world::stonebend::proliteriate_office_id())
+    );
 }
 
 #[test]
@@ -776,7 +779,10 @@ fn bounded_mandate_raises_recallable_temporary_witness() {
 #[test]
 fn no_permanent_spartacus_office_is_created() {
     assert_eq!(StonebendConstitutionalPower::ALL.len(), 3);
-    assert_eq!(StonebendConstitutionalPower::Proliteriate.office(), None);
+    assert_eq!(
+        StonebendConstitutionalPower::Proliteriate.office(),
+        Some(hollow_grove::world::stonebend::proliteriate_office_id())
+    );
     for power in StonebendConstitutionalPower::ALL {
         assert!(!power.institution().as_str().contains("spartacus"));
     }

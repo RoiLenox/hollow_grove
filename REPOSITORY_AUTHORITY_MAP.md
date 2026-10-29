@@ -223,7 +223,7 @@ These sources define meaning and legality:
 - `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md` as a compatibility
   supplement for Stonebend's three gates, independent Title scopes,
   Claim/Title/Yield offices, distributed Proliteriate mandates,
-  challenge/removal, Tombstones, and Lazerhorn succession; its former Diamond
+  challenge/removal, Tombstones, and historical accession record interpretation; its former Diamond
   sovereign semantics are SUPERSEDED by Hypergiant and its Diamond IDs remain
   stable compatibility data;
 - `STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md` as a
@@ -233,13 +233,25 @@ These sources define meaning and legality:
   replacement, and Proliteriate continuity; its former Diamond sovereign
   semantics are SUPERSEDED;
 - `SANDMANOR_CONSTITUTION_V2.md`;
+- `SANDMANOR_REV100_GOVERNANCE_AMENDMENT.md` controls current regional
+  elections and Contest eligibility; `src/world/sandmanor/governance.rs`
+  enforces the versioned headless adapter while legacy guardian/lineage
+  readers preserve their original records;
 - `HOLLOW_GROVE_CANON_AMENDMENT_FLYNT_SYNTHESIS_SANDMANOR_HANDS_V1.md` as the
   ratified controlling amendment for Manticorp combined synthesis, Chimera
   perfected synthesis, the independently refinable Flynt tracks, Hecaton as
-  Right Hand, Pegasus as Left Hand, and The Sandman above both;
+  Right Hand, Pegasus as Left Hand, and The Sandman above both; its conflicting
+  Sandmanor pairing, Hand-only progression and succession rules are superseded
+  by `SANDMANOR_REV100_GOVERNANCE_AMENDMENT.md`, while historical readers retain
+  their original meanings;
 - `SANDMANOR_CONSTITUTIONAL_AUDIT_V2.md` (repository conformance evidence for
   the ratified Sandmanor House law);
 - `GLAUSHOUSE_CONSTITUTION_V2.md`;
+- `GLAUSHOUSE_REV100_GOVERNANCE_AMENDMENT.md` controls current nine-seat
+  elections, The Call, civic Nightingale identity and office-restricted Forms.
+  `src/world/glaushouse/governance.rs` uses the existing shared archive;
+  old clinical ranks, saved Deck affiliations and succession readers retain
+  their historical meanings and never infer new seats or clinical permissions;
 - `GLAUSHOUSE_CONSTITUTIONAL_AUDIT_V2.md` (repository conformance evidence for
   the ratified Glaüshouse House law);
 - Flynt's **Law of Capacity** and its existing constitutional conformance surfaces;
@@ -326,7 +338,7 @@ one core Title with independent scopes; active Hypergiant tenure plus legacy
 Diamond decoding; independent
 Freemason examination; distributed Proliteriate nodes, mandates, and temporary
 witnesses; one-challenge/two-remove concurrence; Tombstone-linked removal;
-Lazerhorn succession; and delegated Claim/Title/Yield gate accountability.
+historical accession record interpretation; and delegated Claim/Title/Yield gate accountability.
 
 `src/world/stonebend/third_pass.rs` is the bounded third-pass lifecycle and
 continuity adapter. It composes `StonebendTitleCore`, gate scopes,
@@ -506,7 +518,7 @@ presence does not make an unavailable intent authoritative or executable.
 - `tests/stonebend_three_gates_offices.rs`,
   `tests/stonebend_second_pass_documentation.rs`, and
   `src/bin/stonebend_three_gates_audit.rs`: second-pass gates, scoped Titles,
-  Diamond, offices, Proliteriate mandates, removal, Tombstones, Lazerhorn, and
+  Diamond, offices, Proliteriate mandates, removal, Tombstones, historical accession records, and
   delegated accountability.
 - `tests/stonebend_title_lifecycle_continuity.rs`,
   `tests/stonebend_third_pass_documentation.rs`, and
@@ -696,3 +708,28 @@ cargo fmt --all -- --check
 cargo test --all --no-fail-fast
 cargo run --example constitutional_v2_service -- audit
 ```
+
+## Revision 100 Stonebend amendment (2026-10-25)
+
+`STONEBEND_REV100_GOVERNANCE_AMENDMENT.md` controls current Stonebend
+training, elections, Acclamation, Trial of Duty and seal continuity.
+`src/world/stonebend/governance.rs` implements those rules over the existing
+shared interface archive and projects holders into `WorldSession`.
+`tests/stonebend_rev100_governance.rs` verifies current transitions and replay.
+Earlier selection and removal structs/tests interpret LEGACY / SUPERSEDED
+records only; successful legacy validation cannot authorize current accession.
+The pre-amendment constitution is preserved in
+`docs/reference/STONEBEND_CONSTITUTION_V2_PRE_REV100.md`.
+The TUI displays current paths while serialized historical Deck fields and
+earned XP await explicit identity reconciliation. Live authentication, Court
+docket dispatch, clinical mechanics and gameplay-command wiring remain outside
+this adapter; its evidence IDs do not prove those integrations have occurred.
+
+
+### 27 October 2026 public geography correction
+
+The creator-authorized presentation correction and complete occurrence inventory
+are in `docs/HOLLOW_GROVE_ACTIVE_GEOGRAPHY_CORRECTION_2026-10-27.md`.
+H.T.T. and S.T.H. name opposite directions of the existing single curved
+mountain highway; B.M.S. stays separate and straight. This evidence entry
+supplies no ratifier, source-law amendment or sovereign succession authority.

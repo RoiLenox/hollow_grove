@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Check official client updates, then reapply configured Spicetify extensions.
+set -euo pipefail
+export PATH="$HOME/.local/bin:$PATH"
+fail() {
+  printf '%s\n' "$1" >&2
+  if command -v notify-send >/dev/null; then notify-send 'Spotify · Spicetify' "$1"; fi
+  exit 1
+}
+for tool in spotify-launcher spicetify; do
+  command -v "$tool" >/dev/null || fail "Install $tool before using this Music route."
+done
+spotify-launcher --no-exec || fail 'Spotify update check failed. Try again with a working connection.'
+spotify_dir="${XDG_DATA_HOME:-$HOME/.local/share}/spotify-launcher/install/usr/share/spotify"
+prefs="${XDG_CONFIG_HOME:-$HOME/.config}/spotify/prefs"
+if [[ ! -f "$prefs" ]]; then
+  fail 'Open spotify-launcher once and close it, then configure Spicetify with adblock.js.'
+fi
+# An official update replaces the patched app directories with .spa archives.
+if [[ -f "$spotify_dir/Apps/xpui.spa" ]]; then
+  spicetify backup apply --no-restart || fail 'Spicetify could not patch this Spotify release. Check its compatibility before launching.'
+fi
+exec spotify-launcher --skip-update "$@"

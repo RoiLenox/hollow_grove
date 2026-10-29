@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+case "${1:-}" in
+  --help|-h) printf '%s\n' 'Prompt for an SSH host alias or user@host. Enter cancels.'; exit 0 ;;
+  '') ;;
+  *) printf '%s\n' 'Usage: hollow-network-ssh [--help]' >&2; exit 2 ;;
+esac
+read -r -p 'Network · SSH — host alias or user@host (Enter cancels): ' destination || exit 0
+[[ -n "$destination" ]] || exit 0
+if [[ "$destination" == -* || "$destination" =~ [[:space:][:cntrl:]] ]]; then
+  printf '%s\n' 'Enter one host alias or user@host, without SSH flags.' >&2
+  exit 2
+fi
+exec ssh -- "$destination"

@@ -158,6 +158,84 @@ pub fn central_junction_is_coordination_only() -> bool {
         && GAMEPLAY_ARCHIVE_FORMAT == "hollow-grove-gameplay"
 }
 
+/// Boardwalk influence is domain state, never a new kernel sovereign or House.
+#[must_use]
+pub fn audit_boardwalk_territory(
+    territory: Option<&crate::gameplay::BoardwalkTerritoryView>,
+) -> KernelInvariantReport {
+    use crate::gameplay::{BoardwalkFactionId, boardwalk_factions};
+    use crate::hollow_grove_contract::House;
+    use crate::world::geography::ConstitutionalRouteId;
+    use crate::world::route_network::{RouteGeometryClass, RouteNetwork};
+
+    let mut violations = Vec::new();
+    let network = RouteNetwork::canonical();
+    let geography_preserved = network.as_ref().is_ok_and(|network| {
+        network.segments().len() == 10
+            && network
+                .segment(ConstitutionalRouteId::Boardwalk)
+                .is_some_and(|route| {
+                    route.geometry == RouteGeometryClass::Straight
+                        && route.endpoints.contains(&House::Flynt)
+                        && route.endpoints.contains(&House::Glaushouse)
+                })
+            && network
+                .segment(ConstitutionalRouteId::Riptide)
+                .is_some_and(|route| route.geometry == RouteGeometryClass::Round)
+    });
+    if !geography_preserved {
+        violations.push("Boardwalk and Riptide route identities changed".into());
+    }
+    for faction in boardwalk_factions() {
+        if faction.rival_faction != faction.faction_id.rival()
+            || faction.sovereign_house_affiliation.is_some()
+            || faction.syndicate_organization.is_some()
+        {
+            violations.push("Boardwalk faction acquired unauthorized affiliation".into());
+        }
+    }
+    if let Some(territory) = territory {
+        if !territory.formal_neutrality
+            || territory.sovereign_faction.is_some()
+            || !territory.public_access
+            || !territory.contested
+        {
+            violations.push("Boardwalk influence displaced neutral public passage".into());
+        }
+        if territory.territory_id != territory.level.territory_id()
+            || territory.route_id != ConstitutionalRouteId::Boardwalk.stable_id()
+            || territory.dominant_faction != territory.influence.dominant()
+            || territory.rival_faction
+                != territory
+                    .dominant_faction
+                    .unwrap_or(territory.level.home_faction())
+                    .rival()
+        {
+            violations.push("Boardwalk territory identity or influence projection diverged".into());
+        }
+        if !territory
+            .local_presence
+            .iter()
+            .any(|p| p.faction_id == BoardwalkFactionId::Trooners)
+            || !territory
+                .local_presence
+                .iter()
+                .any(|p| p.faction_id == BoardwalkFactionId::Gooners)
+        {
+            violations.push("Boardwalk ambient rival presence is missing".into());
+        }
+    }
+    KernelInvariantReport {
+        schema_version: KERNEL_INVARIANT_SCHEMA_VERSION,
+        checked_invariants: vec![
+            "boardwalk-straight-riptide-curved-network-preserved",
+            "boardwalk-factions-separate-from-house-and-syndicate",
+            "boardwalk-influence-never-grants-sovereignty-or-closes-passage",
+        ],
+        violations,
+    }
+}
+
 /// Audits the live host-specific Form without granting any later Synthesis.
 #[must_use]
 pub fn audit_sympiote_foundation(

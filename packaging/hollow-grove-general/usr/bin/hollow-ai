@@ -1,0 +1,134 @@
+#!/usr/bin/env python3
+"""AI tool selection and local-model entry points for the Hollow Grove keyboard."""
+
+import argparse
+import json
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+import time
+import urllib.error
+import urllib.request
+
+
+HOST = "http://127.0.0.1:11434"
+CONFIG = Path(os.environ.get("XDG_CONFIG_HOME", Path.home() / ".config")) / "hollow-grove/local-ai.json"
+DEFAULTS = {"primary": "qwen3:8b", "adjacent": "deepseek-r1:8b", "alternate": "llama3.1:8b"}
+HTTP = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+
+
+def request(path, body=None):
+    data = None if body is None else json.dumps(body).encode()
+    req = urllib.request.Request(HOST + path, data=data, headers={"Content-Type": "application/json"})
+    with HTTP.open(req, timeout=3) as response:
+        return json.load(response)
+
+
+def available(start=True):
+    try:
+        return request("/api/tags")["models"]
+    except (urllib.error.URLError, TimeoutError, ConnectionError):
+        if not start:
+            raise RuntimeError("Ollama is stopped. Open an AI branch to start the local runtime.")
+    state = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local/state")) / "hollow-grove"
+    state.mkdir(parents=True, exist_ok=True)
+    env = os.environ.copy()
+    env["OLLAMA_HOST"] = "127.0.0.1:11434"
+    env.setdefault("OLLAMA_MODELS", str(Path.home() / ".ollama/models"))
+    print("Starting the local Ollama runtime…", flush=True)
+    with (state / "ollama.log").open("ab") as log:
+        proc = subprocess.Popen(["ollama", "serve"], env=env, stdin=subprocess.DEVNULL,
+                                stdout=log, stderr=log, start_new_session=True)
+    for _ in range(100):
+        try:
+            return request("/api/tags")["models"]
+        except (urllib.error.URLError, TimeoutError, ConnectionError):
+            if proc.poll() is not None:
+                break
+            time.sleep(0.1)
+    raise RuntimeError(f"Local Ollama did not start. See {state / 'ollama.log'}")
+
+
+def choose_ai():
+    choices = [
+        ("Gemini", ["gemini"]),
+        ("AIChat", ["aichat"]),
+        ("Ollama launcher", ["ollama", "launch"]),
+        ("Inspect/select a local model", [sys.executable, str(Path(__file__).resolve()), "focused"]),
+    ]
+    print("AI · Focused — choose an assistant or local-model controls")
+    for index, (label, command) in enumerate(choices, 1):
+        required = "ollama" if index == 4 else command[0]
+        suffix = "" if shutil.which(required) else " (not installed)"
+        print(f"{index}. {label}{suffix}")
+    answer = input("Tool number (Enter to cancel): ").strip()
+    if not answer:
+        return 0
+    if not answer.isdigit() or not 1 <= int(answer) <= len(choices):
+        raise RuntimeError("Choose a tool number from the list.")
+    index = int(answer) - 1
+    label, command = choices[index]
+    required = "ollama" if index == 3 else command[0]
+    if not shutil.which(required):
+        raise RuntimeError(f"{label} is not installed.")
+    os.execvpe(command[0], command, os.environ.copy())
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("branch", choices=["primary", "adjacent", "focused", "alternate", "chooser", "check"])
+    parser.add_argument("--no-start", action="store_true", help="Report a stopped runtime instead of starting it")
+    args = parser.parse_args()
+    if args.branch == "chooser":
+        return choose_ai()
+    if not shutil.which("ollama"):
+        raise RuntimeError("Ollama is not installed. This cluster requires a local Ollama runtime.")
+    config = DEFAULTS.copy()
+    if CONFIG.exists():
+        config.update(json.loads(CONFIG.read_text()))
+    models = available(start=not args.no_start)
+    names = sorted(model["name"] for model in models)
+    if args.branch == "check":
+        print("Local endpoint:", HOST)
+        for branch in DEFAULTS:
+            model = config[branch]
+            print(f"{branch}: {model} — {'ready' if model in names else 'not installed'}")
+        return 0 if all(config[branch] in names for branch in DEFAULTS) else 1
+    if not names:
+        raise RuntimeError("No local models are installed. No model was downloaded.")
+    if args.branch == "focused":
+        print("AI · Focused — inspect and select an installed local model")
+        for index, model in enumerate(sorted(models, key=lambda m: m["name"]), 1):
+            print(f"{index:2}. {model['name']} ({model['size'] / 1024**3:.1f} GiB)")
+        answer = input("Model number (Enter to cancel): ").strip()
+        if not answer:
+            return 0
+        if not answer.isdigit() or not 1 <= int(answer) <= len(names):
+            raise RuntimeError("Choose a model number from the list.")
+        model = names[int(answer) - 1]
+        details = request("/api/show", {"model": model}).get("details", {})
+        print(" · ".join(str(details.get(key, "unknown")) for key in
+                         ("family", "parameter_size", "quantization_level")))
+        if input("Start local chat? [y/N]: ").strip().lower() != "y":
+            return 0
+    else:
+        model = config[args.branch]
+    if model not in names:
+        raise RuntimeError(f"{model} is not installed locally. No download was attempted. "
+                           f"Choose an installed model in {CONFIG} or use the Focused branch.")
+    env = os.environ.copy()
+    env["OLLAMA_HOST"] = "127.0.0.1:11434"
+    print(f"AI · {args.branch.title()} — {model} · local", flush=True)
+    os.execvpe("ollama", ["ollama", "run", model], env)
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except (RuntimeError, ValueError, OSError, urllib.error.URLError) as error:
+        print(f"hollow-ai: {error}", file=sys.stderr)
+        sys.exit(1)
+    except (EOFError, KeyboardInterrupt):
+        sys.exit(0)

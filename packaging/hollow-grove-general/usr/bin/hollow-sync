@@ -1,0 +1,125 @@
+#!/usr/bin/env python3
+"""Open Syncthing on demand or show its user-service controls."""
+
+import argparse
+import os
+from pathlib import Path
+import re
+import shutil
+import socket
+import subprocess
+import sys
+import time
+import urllib.parse
+import xml.etree.ElementTree as ET
+
+SERVICE = "syncthing.service"
+
+
+def require(name):
+    if not shutil.which(name):
+        raise RuntimeError(f"Install {name} to use this sYnc route.")
+
+
+def config_path():
+    result = subprocess.run(["syncthing", "paths"], capture_output=True, text=True, check=True)
+    match = re.search(r"^Configuration file:\s*\n[ \t]*(.+)$", result.stdout, re.M)
+    if not match:
+        raise RuntimeError("Syncthing did not report its configuration path.")
+    return Path(match[1])
+
+
+def setup():
+    path = config_path()
+    if not path.exists():
+        result = subprocess.run(["syncthing", "generate"], capture_output=True, text=True)
+        if result.returncode:
+            raise RuntimeError("Syncthing could not initialize its configuration.")
+        # A fresh profile starts without any selected folder. Existing profiles are untouched.
+        tree = ET.parse(path)
+        for folder in tree.getroot().findall("folder"):
+            tree.getroot().remove(folder)
+        tree.write(path, encoding="utf-8", xml_declaration=True)
+    return path
+
+
+def service(*args, capture=False):
+    return subprocess.run(["systemctl", "--user", *args, SERVICE],
+                          capture_output=capture, text=True)
+
+
+def start():
+    path = setup()
+    if service("start", capture=True).returncode:
+        raise RuntimeError("Syncthing's user service could not start. Open Ctrl+Y for status.")
+    return path
+
+
+def dashboard():
+    path = start()
+    address = ET.parse(path).getroot().findtext("gui/address") or "127.0.0.1:8384"
+    parsed = urllib.parse.urlsplit(address if "://" in address else "http://" + address)
+    host = parsed.hostname or "127.0.0.1"
+    if host in ("0.0.0.0", "::"):
+        host = "127.0.0.1" if host == "0.0.0.0" else "::1"
+    port = parsed.port or 8384
+    deadline = time.monotonic() + 12
+    while time.monotonic() < deadline:
+        try:
+            with socket.create_connection((host, port), timeout=0.5):
+                break
+        except OSError:
+            time.sleep(0.2)
+    else:
+        raise RuntimeError("Syncthing is starting, but its dashboard is not ready. Check Ctrl+Y.")
+    subprocess.run(["syncthing", "browser"], check=True)
+
+
+def controls():
+    active = service("is-active", capture=True).stdout.strip() or "unavailable"
+    enabled = service("is-enabled", capture=True).stdout.strip() or "unavailable"
+    print(f"sYnc · Syncthing controls\n\nService: {active}\nStart at login: {enabled}\n")
+    print("1. Open dashboard\n2. Start\n3. Stop\n4. Restart\n5. Enable at login and start\n6. Disable start at login\n7. Show service status")
+    choice = input("Choose an action (Enter cancels): ").strip()
+    if not choice:
+        return
+    if choice == "1":
+        dashboard()
+        return
+    if choice in ("2", "4", "5"):
+        setup()
+    actions = {"2": ("start",), "3": ("stop",), "4": ("restart",),
+               "5": ("enable", "--now"), "6": ("disable",),
+               "7": ("--no-pager", "--full", "status")}
+    if choice not in actions:
+        raise RuntimeError("Choose an action from 1 to 7.")
+    result = service(*actions[choice])
+    if result.returncode and choice != "7":
+        raise RuntimeError("The Syncthing service action failed.")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("mode", choices=("dashboard", "controls", "setup"))
+    args = parser.parse_args()
+    require("syncthing")
+    require("systemctl")
+    if args.mode == "setup":
+        setup()
+    elif args.mode == "dashboard":
+        require("xdg-open")
+        dashboard()
+    else:
+        controls()
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (EOFError, KeyboardInterrupt):
+        sys.exit(0)
+    except (RuntimeError, OSError, ValueError, ET.ParseError, subprocess.CalledProcessError) as error:
+        print(f"hollow-sync: {error}", file=sys.stderr)
+        if shutil.which("notify-send"):
+            subprocess.run(["notify-send", "sYnc", str(error)])
+        sys.exit(1)

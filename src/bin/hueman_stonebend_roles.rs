@@ -32,20 +32,16 @@ mod tests {
     fn hueman_stonebend_roles_reads_existing_artifacts() {
         let output = build_hueman_stonebend_roles_from_artifacts("start", "fourway");
         assert!(output.starts_with("# Hueman Stonebend Roles"));
-        assert!(
-            output.contains(
-                "Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre -> Troglodyte"
-            )
-        );
+        assert!(output.contains(
+            "Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre -> Troglodyte"
+        ));
         assert!(output.contains(
             "exact Aura counterparts are Pixie, Sprite, Fairy, Spirit, Siren, Sylph, Nymph, and Muse"
         ));
         assert!(output.contains("the Geralds are Stonebend's constitutional people"));
         assert!(output.contains("the Hypergiant is the singular highest Stonebend office"));
-        assert!(
-            output.contains("the Proliteriate is Stonebend's permanent distributed public network")
-        );
-        assert!(output.contains("the High Freemason is the singular office"));
+        assert!(output.contains("the Proliteriate is one elected professional office"));
+        assert!(output.contains("the High Freemason seal belongs to the single elected Freemason"));
         assert!(output.contains("transformation may never create office or Title automatically"));
         assert!(
             output.contains("Illegal Hollowing is Stonebend's signature constitutional offense")
@@ -57,9 +53,12 @@ mod tests {
         assert!(output.contains("Stonebend has exactly three bidirectional constitutional gates"));
         assert!(output.contains("Hypergiant is Stonebend's sovereign title"));
         assert!(output.contains("Diamond's current role is STATUS: OPEN"));
-        assert!(output.contains("Hypergiant accession retains The Lazerhorn"));
+        assert!(output.contains("The Acclamation is the intended sovereign selection"));
         assert!(output.contains("a Claim is not automatically a Title"));
-        assert!(output.contains("High Freemason replacement requires independent Forge review"));
+        assert!(output.contains(
+            "Freemason replacement requires a certified election and independent seal transfer"
+        ));
+        assert!(output.contains("neither candidate nor outgoing bearer certifies the transfer"));
         assert!(output.contains("Hueman Fourway bytes: 7."));
     }
 

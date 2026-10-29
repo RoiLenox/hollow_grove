@@ -638,6 +638,7 @@ impl HollowGroveGameRuntime {
                 let target = self
                     .unrecruited_person_in_front(at)
                     .map(InteractionId::DeepPressurePerson)
+                    .or_else(|| self.boardwalk_person_in_front(at))
                     .or_else(|| {
                         map_definition(self.hueman_map).interaction_in_front_with_cases(
                             at,
@@ -684,7 +685,7 @@ impl HollowGroveGameRuntime {
                 let from = self.hueman_map;
                 self.validate_route_transfer(from, map)?;
                 self.hueman_map = map;
-                let at = map_definition(map).spawn;
+                let at = super::map_entry_position(from, map);
                 self.hueman_position = Some(at);
                 self.active_interaction = None;
                 if map == WorldMapId::BoardwalkReturnVestibule && self.boardwalk_case.is_none() {
@@ -702,20 +703,18 @@ impl HollowGroveGameRuntime {
                     .hueman_position
                     .ok_or(GameplayRuntimeError::MapEntryRequiresHueman)?;
                 let from = self.hueman_map;
-                if position.x != map_definition(from).spawn.x
-                    || position.y != map_definition(from).spawn.y
-                {
+                let exit = super::physical_exit_position(from, map);
+                if position.x != exit.x || position.y != exit.y {
                     return Err(GameplayRuntimeError::PhysicalExitRequired {
                         map: from.as_str().into(),
-                        exit_x: map_definition(from).spawn.x,
-                        exit_y: map_definition(from).spawn.y,
+                        exit_x: exit.x,
+                        exit_y: exit.y,
                     });
                 }
                 self.validate_route_transfer(from, map)?;
                 self.enter_map(map);
-                let at = self
-                    .hueman_position
-                    .expect("entering a map establishes the spawn");
+                let at = super::map_entry_position(from, map);
+                self.hueman_position = Some(at);
                 Ok(GameplayEvent::HuemanMapEntered { from, to: map, at })
             }
             GameplayCommand::AdvanceLivingWorldShift => {
@@ -986,6 +985,21 @@ impl HollowGroveGameRuntime {
             .map_err(Into::into)
     }
 
+    fn boardwalk_person_in_front(&self, hueman: TilePosition) -> Option<InteractionId> {
+        let level = self.hueman_map.boardwalk_level()?;
+        let (dx, dy) = hueman.facing.offset();
+        super::boardwalk_presence(level, self.living_world.clock)
+            .into_iter()
+            .find(|person| {
+                i32::from(person.position.x) == i32::from(hueman.x) + dx
+                    && i32::from(person.position.y) == i32::from(hueman.y) + dy
+            })
+            .map(|person| InteractionId::BoardwalkTerritoryPerson {
+                level,
+                role: person.role,
+            })
+    }
+
     fn unrecruited_person_in_front(
         &self,
         hueman: TilePosition,
@@ -1048,6 +1062,18 @@ impl HollowGroveGameRuntime {
     ) -> Result<(), GameplayRuntimeError> {
         if !to.is_canonical() {
             return Err(WorldMapError::NonCanonicalMap(to.as_str().into()).into());
+        }
+        // Stacked spans are local Boardwalk maps, never new route-network edges.
+        if from.boardwalk_level().is_some() || to.boardwalk_level().is_some() {
+            if from.route() == Some(ConstitutionalRouteId::Boardwalk)
+                && to.route() == Some(ConstitutionalRouteId::Boardwalk)
+            {
+                return Ok(());
+            }
+            return Err(GameplayRuntimeError::DisconnectedMapTransfer {
+                from: from.as_str().into(),
+                to: to.as_str().into(),
+            });
         }
         if let Some(site) = from.extraction() {
             let permitted = to.route() == Some(site.route())
@@ -1320,6 +1346,7 @@ impl HollowGroveGameRuntime {
                 let expected_target = self
                     .unrecruited_person_in_front(current)
                     .map(InteractionId::DeepPressurePerson)
+                    .or_else(|| self.boardwalk_person_in_front(current))
                     .or_else(|| {
                         map_definition(self.hueman_map).interaction_in_front_with_cases(
                             current,
@@ -1365,11 +1392,12 @@ impl HollowGroveGameRuntime {
             GameplayEvent::HuemanMapEntered { from, to, at } => {
                 self.hueman_position
                     .ok_or(GameplayRuntimeError::MapEntryRequiresHueman)?;
-                if self.hueman_map != *from || map_definition(*to).spawn != *at {
+                if self.hueman_map != *from || super::map_entry_position(*from, *to) != *at {
                     return Err(GameplayRuntimeError::MapReplayDivergence);
                 }
                 self.validate_route_transfer(*from, *to)?;
                 self.enter_map(*to);
+                self.hueman_position = Some(*at);
             }
             GameplayEvent::BoardwalkFacultyDisclosed { faculty } => {
                 self.require_boardwalk_case()?.disclose_faculty(*faculty)?;
@@ -1666,6 +1694,8 @@ impl HollowGroveGameRuntime {
             .map(WorldMapId::for_route)
             .collect();
         candidates.extend([
+            WorldMapId::BoardwalkSpan(super::BoardwalkLevel::Upper),
+            WorldMapId::BoardwalkSpan(super::BoardwalkLevel::Lower),
             WorldMapId::AuraFieldWorkingLand,
             WorldMapId::AuraBeachCoastalCommons,
             WorldMapId::AuraBasinCollisionGrounds,

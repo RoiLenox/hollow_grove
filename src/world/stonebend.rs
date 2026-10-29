@@ -7,6 +7,7 @@
 //! design, or grant Flynt recognition.
 
 pub mod foundation;
+pub mod governance;
 pub mod second_pass;
 pub mod third_pass;
 
@@ -57,6 +58,12 @@ pub fn hypergiant_office_id() -> OfficeId {
 #[must_use]
 pub fn high_freemason_office_id() -> OfficeId {
     office("office.stonebend.high-freemason")
+}
+
+/// The elected office is distinct from the enduring Proliteriate witness network.
+#[must_use]
+pub fn proliteriate_office_id() -> OfficeId {
+    office("office.stonebend.proliteriate")
 }
 
 macro_rules! stonebend_id {
@@ -177,8 +184,8 @@ pub const PRINCIPAL_AUTHORITIES: [AuthorityDefinition; 4] = [
     },
     AuthorityDefinition {
         authority: PrincipalAuthority::Proliteriate,
-        placement: ConstitutionalPlacement::DistributedPublicNetwork,
-        singular: false,
+        placement: ConstitutionalPlacement::SingularInstitutionalOffice,
+        singular: true,
     },
     AuthorityDefinition {
         authority: PrincipalAuthority::HighFreemason,
@@ -199,6 +206,7 @@ pub enum ConstitutionalOffice {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+/// LEGACY pre-Rev100 evidence sequence. New accession uses `governance`.
 pub enum HypergiantSelectionPhase {
     ClaimPresented,
     FreemasonExamination,
@@ -231,6 +239,7 @@ impl HypergiantSelectionPhase {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
+/// Historical compatibility model, not current election authorization.
 pub struct HypergiantSelectionProcess {
     candidate: IdentityId,
     phase: HypergiantSelectionPhase,

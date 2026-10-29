@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+"""Choose a focused timer, stopwatch, or date countdown for Hollow Grove Time."""
+
+import argparse
+import os
+from pathlib import Path
+import re
+import shutil
+import sys
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.parse_args()
+    executable = shutil.which("tclock")
+    if not executable:
+        candidate = Path(os.environ.get("CARGO_HOME", Path.home() / ".cargo")) / "bin/tclock"
+        if candidate.is_file() and os.access(candidate, os.X_OK):
+            executable = str(candidate)
+    if not executable:
+        raise RuntimeError("Install clock-tui to use this branch (its command is tclock).")
+    print("Time · Focused\n\n1. Timer\n2. Stopwatch\n3. Countdown to a time or date")
+    choice = input("Choose a mode (Enter cancels): ").strip()
+    if not choice:
+        return
+    if choice == "1":
+        duration = input("Duration, e.g. 30s, 5m, or 90m (Enter cancels): ").strip()
+        if not duration:
+            return
+        match = re.fullmatch(r"(\d+)([smhd])", duration, re.IGNORECASE)
+        if not match or int(match[1]) <= 0:
+            raise RuntimeError("Use a positive whole-number duration, such as 30s, 5m, or 90m.")
+        args = ["timer", "--duration", duration, "--no-millis"]
+    elif choice == "2":
+        args = ["stopwatch"]
+    elif choice == "3":
+        target = input("Target, e.g. 20:00 or 2026-12-31 23:59:00 (Enter cancels): ").strip()
+        if not target:
+            return
+        args = ["countdown", "--time", target]
+    else:
+        raise RuntimeError("Choose 1, 2, or 3.")
+    os.execv(executable, [executable, *args])
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (EOFError, KeyboardInterrupt):
+        sys.exit(0)
+    except (RuntimeError, OSError) as error:
+        print(f"hollow-time: {error}", file=sys.stderr)
+        sys.exit(1)

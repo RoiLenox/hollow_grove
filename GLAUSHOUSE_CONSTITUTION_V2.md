@@ -1,5 +1,20 @@
 # The Glaüshouse Constitution V2
 
+## Revision 100 governance reconciliation — 2026-10-25
+
+`GLAUSHOUSE_REV100_GOVERNANCE_AMENDMENT.md` controls current civic identity,
+the nine distinct Muse Houses and elected Persephone seats, the unified eight
+ordinary Forms, incumbent-only advanced Forms and The Call. The Call is
+**The Pitch → Audition → Testimony → Ovation → Corination**, with six of nine
+seat votes and a nine-year Prima Donna term. Nightingale civic membership,
+Form mastery, office and independently licensed clinical authority are distinct.
+
+Conflicting older rank/Form pairings, split ladders, seat assumptions and
+twelve-stage succession passages below are LEGACY / SUPERSEDED. Compatible
+clinical, consent, evidence, continuity and privacy law remains active. The
+complete original is `docs/reference/GLAUSHOUSE_CONSTITUTION_V2_PRE_REV100.md`.
+Historical saved identities and XP are not automatically relabelled.
+
 Status: ratified constitutional law
 
 Authority: canonical Glaüshouse architecture

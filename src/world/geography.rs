@@ -77,6 +77,50 @@ impl ConstitutionalRouteId {
             Self::StairwayToHeaven => "Stairway to Heaven",
         }
     }
+
+    /// Current public signage. Archive names, IDs and constitutional processes
+    /// retain their source-era meaning; signage grants no office or Title.
+    #[must_use]
+    pub const fn public_name(self) -> &'static str {
+        match self {
+            Self::StairwayToHeaven => "H.T.T. — Highway to Hell / S.T.H. — Stairway to Heaven",
+            Self::BasinMotorspeedway => "Basin Motor Speedway (B.M.S.)",
+            _ => self.display_name(),
+        }
+    }
+
+    /// Local directional names of the same physical curved mountain highway.
+    /// This selects a label, never a second corridor or an accession process.
+    #[must_use]
+    pub const fn directional_name(self, from: House, to: House) -> Option<&'static str> {
+        match (self, from, to) {
+            (Self::StairwayToHeaven, House::Stonebend, House::Flynt) => {
+                Some("H.T.T. — Highway to Hell")
+            }
+            (Self::StairwayToHeaven, House::Flynt, House::Stonebend) => {
+                Some("S.T.H. — Stairway to Heaven")
+            }
+            (Self::BasinMotorspeedway, House::Stonebend, House::Flynt)
+            | (Self::BasinMotorspeedway, House::Flynt, House::Stonebend) => {
+                Some("Basin Motor Speedway (B.M.S.)")
+            }
+            _ => None,
+        }
+    }
+
+    /// Current physical description, separate from preserved source-law verbs.
+    #[must_use]
+    pub const fn public_corridor_description(self) -> Option<&'static str> {
+        match self {
+            Self::StairwayToHeaven => Some(
+                "One curved mountain highway: Stonebend's H.T.T. descends to Flynt; Flynt's S.T.H. ascends to Stonebend. The Hippo Dome occupies the flat land between this arc and the separate straight B.M.S.; Hippodrones are its concession workforce. No road is an Acclamation prerequisite.",
+            ),
+            Self::BasinMotorspeedway => Some(
+                "A separate straight bidirectional connection between Stonebend and Flynt. The Hippo Dome occupies the flat land between B.M.S. and the curved H.T.T./S.T.H. highway; Hippodrones are its concession workforce. No road is an Acclamation prerequisite.",
+            ),
+            _ => None,
+        }
+    }
 }
 
 /// One dominant constitutional verb per route.

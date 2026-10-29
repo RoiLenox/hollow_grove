@@ -145,12 +145,12 @@ text{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#A7B6D9}
 </g>
 <g class="key plant"><rect x="210.0" y="294.0" width="82.0" height="78" rx="13" fill="url(#plant-W)" stroke="url(#plant-edge-W)"/>
 <text x="251.0" y="321.0" class="key-name" text-anchor="middle">W</text>
-<text x="251.0" y="343.0" class="semantic-label" text-anchor="middle">Write</text>
+<text x="251.0" y="343.0" class="semantic-label" text-anchor="middle">Wrappers</text>
 <text x="251.0" y="362.0" class="category" text-anchor="middle">PLANT</text>
 </g>
 <g class="key plant"><rect x="302.0" y="294.0" width="82.0" height="78" rx="13" fill="url(#plant-E)" stroke="url(#plant-edge-E)"/>
 <text x="343.0" y="321.0" class="key-name" text-anchor="middle">E</text>
-<text x="343.0" y="343.0" class="semantic-label" text-anchor="middle">Edit</text>
+<text x="343.0" y="343.0" class="semantic-label" text-anchor="middle">Email</text>
 <text x="343.0" y="362.0" class="category" text-anchor="middle">PLANT</text>
 </g>
 <g class="key plant"><rect x="394.0" y="294.0" width="82.0" height="78" rx="13" fill="url(#plant-R)" stroke="url(#plant-edge-R)"/>
@@ -160,7 +160,7 @@ text{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#A7B6D9}
 </g>
 <g class="key plant"><rect x="486.0" y="294.0" width="82.0" height="78" rx="13" fill="url(#plant-T)" stroke="url(#plant-edge-T)"/>
 <text x="527.0" y="321.0" class="key-name" text-anchor="middle">T</text>
-<text x="527.0" y="343.0" class="semantic-label" text-anchor="middle">Tasks</text>
+<text x="527.0" y="343.0" class="semantic-label" text-anchor="middle">Time</text>
 <text x="527.0" y="362.0" class="category" text-anchor="middle">PLANT</text>
 </g>
 <g class="key plant"><rect x="578.0" y="294.0" width="82.0" height="78" rx="13" fill="url(#plant-Y)" stroke="url(#plant-edge-Y)"/>
@@ -175,7 +175,7 @@ text{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#A7B6D9}
 </g>
 <g class="key plant"><rect x="762.0" y="294.0" width="82.0" height="78" rx="13" fill="url(#plant-I)" stroke="url(#plant-edge-I)"/>
 <text x="803.0" y="321.0" class="key-name" text-anchor="middle">I</text>
-<text x="803.0" y="343.0" class="semantic-label" text-anchor="middle">Images</text>
+<text x="803.0" y="343.0" class="semantic-label" text-anchor="middle">Inspect</text>
 <text x="803.0" y="362.0" class="category" text-anchor="middle">PLANT</text>
 </g>
 <g class="key plant"><rect x="854.0" y="294.0" width="82.0" height="78" rx="13" fill="url(#plant-O)" stroke="url(#plant-edge-O)"/>
@@ -200,7 +200,7 @@ text{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#A7B6D9}
 </g>
 <g class="key plant"><rect x="164.0" y="386.0" width="82.0" height="78" rx="13" fill="url(#plant-A)" stroke="url(#plant-edge-A)"/>
 <text x="205.0" y="413.0" class="key-name" text-anchor="middle">A</text>
-<text x="205.0" y="435.0" class="semantic-label" text-anchor="middle">Assets</text>
+<text x="205.0" y="435.0" class="semantic-label" text-anchor="middle">AI</text>
 <text x="205.0" y="454.0" class="category" text-anchor="middle">PLANT</text>
 </g>
 <g class="key plant"><rect x="256.0" y="386.0" width="82.0" height="78" rx="13" fill="url(#plant-S)" stroke="url(#plant-edge-S)"/>
@@ -210,7 +210,7 @@ text{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#A7B6D9}
 </g>
 <g class="key plant"><rect x="348.0" y="386.0" width="82.0" height="78" rx="13" fill="url(#plant-D)" stroke="url(#plant-edge-D)"/>
 <text x="389.0" y="413.0" class="key-name" text-anchor="middle">D</text>
-<text x="389.0" y="435.0" class="semantic-label" text-anchor="middle">Develop</text>
+<text x="389.0" y="435.0" class="semantic-label" text-anchor="middle">Downloads</text>
 <text x="389.0" y="454.0" class="category" text-anchor="middle">PLANT</text>
 </g>
 <g class="key plant"><rect x="440.0" y="386.0" width="82.0" height="78" rx="13" fill="url(#plant-F)" stroke="url(#plant-edge-F)"/>
@@ -255,17 +255,17 @@ text{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#A7B6D9}
 </g>
 <g class="key plant"><rect x="310.0" y="478.0" width="82.0" height="78" rx="13" fill="url(#plant-X)" stroke="url(#plant-edge-X)"/>
 <text x="351.0" y="505.0" class="key-name" text-anchor="middle">X</text>
-<text x="351.0" y="527.0" class="semantic-label" text-anchor="middle">eXchange</text>
+<text x="351.0" y="527.0" class="semantic-label" text-anchor="middle">eXecute</text>
 <text x="351.0" y="546.0" class="category" text-anchor="middle">PLANT</text>
 </g>
 <g class="key plant"><rect x="402.0" y="478.0" width="82.0" height="78" rx="13" fill="url(#plant-C)" stroke="url(#plant-edge-C)"/>
 <text x="443.0" y="505.0" class="key-name" text-anchor="middle">C</text>
-<text x="443.0" y="527.0" class="semantic-label" text-anchor="middle">Chat</text>
+<text x="443.0" y="527.0" class="semantic-label" text-anchor="middle">Code</text>
 <text x="443.0" y="546.0" class="category" text-anchor="middle">PLANT</text>
 </g>
 <g class="key plant"><rect x="494.0" y="478.0" width="82.0" height="78" rx="13" fill="url(#plant-V)" stroke="url(#plant-edge-V)"/>
 <text x="535.0" y="505.0" class="key-name" text-anchor="middle">V</text>
-<text x="535.0" y="527.0" class="semantic-label" text-anchor="middle">Video</text>
+<text x="535.0" y="527.0" class="semantic-label" text-anchor="middle">Videos</text>
 <text x="535.0" y="546.0" class="category" text-anchor="middle">PLANT</text>
 </g>
 <g class="key plant"><rect x="586.0" y="478.0" width="82.0" height="78" rx="13" fill="url(#plant-B)" stroke="url(#plant-edge-B)"/>
@@ -275,7 +275,7 @@ text{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#A7B6D9}
 </g>
 <g class="key plant"><rect x="678.0" y="478.0" width="82.0" height="78" rx="13" fill="url(#plant-N)" stroke="url(#plant-edge-N)"/>
 <text x="719.0" y="505.0" class="key-name" text-anchor="middle">N</text>
-<text x="719.0" y="527.0" class="semantic-label" text-anchor="middle">News</text>
+<text x="719.0" y="527.0" class="semantic-label" text-anchor="middle">Network</text>
 <text x="719.0" y="546.0" class="category" text-anchor="middle">PLANT</text>
 </g>
 <g class="key plant"><rect x="770.0" y="478.0" width="82.0" height="78" rx="13" fill="url(#plant-M)" stroke="url(#plant-edge-M)"/>
@@ -304,8 +304,8 @@ text{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#A7B6D9}
 <text x="78.0" y="830.0" class="section-title" text-anchor="start">A–Z — WHAT</text>
 <g class="plant-card">
 <rect x="78.0" y="852.0" width="348.0" height="92" rx="18" fill="#121B38" stroke="#79B7D8"/>
-<text x="98.0" y="883.0" class="card-title" text-anchor="start">A · Assets</text>
-<text x="98.0" y="909.0" class="card-subtitle" text-anchor="start">MAKE</text>
+<text x="98.0" y="883.0" class="card-title" text-anchor="start">A · AI</text>
+<text x="98.0" y="909.0" class="card-subtitle" text-anchor="start">Artificial intelligence</text>
 <text x="98.0" y="930.0" class="category" text-anchor="start">DOMAIN PLANT</text>
 </g>
 <g class="plant-card">
@@ -316,20 +316,20 @@ text{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#A7B6D9}
 </g>
 <g class="plant-card">
 <rect x="810.0" y="852.0" width="348.0" height="92" rx="18" fill="#121B38" stroke="#79B7D8"/>
-<text x="830.0" y="883.0" class="card-title" text-anchor="start">C · Chat</text>
-<text x="830.0" y="909.0" class="card-subtitle" text-anchor="start">Communicate</text>
+<text x="830.0" y="883.0" class="card-title" text-anchor="start">C · Code</text>
+<text x="830.0" y="909.0" class="card-subtitle" text-anchor="start">Source code</text>
 <text x="830.0" y="930.0" class="category" text-anchor="start">DOMAIN PLANT</text>
 </g>
 <g class="plant-card">
 <rect x="1176.0" y="852.0" width="348.0" height="92" rx="18" fill="#121B38" stroke="#79B7D8"/>
-<text x="1196.0" y="883.0" class="card-title" text-anchor="start">D · Develop</text>
-<text x="1196.0" y="909.0" class="card-subtitle" text-anchor="start">Code/build</text>
+<text x="1196.0" y="883.0" class="card-title" text-anchor="start">D · Downloads</text>
+<text x="1196.0" y="909.0" class="card-subtitle" text-anchor="start">Acquire files</text>
 <text x="1196.0" y="930.0" class="category" text-anchor="start">DOMAIN PLANT</text>
 </g>
 <g class="plant-card">
 <rect x="78.0" y="962.0" width="348.0" height="92" rx="18" fill="#121B38" stroke="#79B7D8"/>
-<text x="98.0" y="993.0" class="card-title" text-anchor="start">E · Edit</text>
-<text x="98.0" y="1019.0" class="card-subtitle" text-anchor="start">Modify</text>
+<text x="98.0" y="993.0" class="card-title" text-anchor="start">E · Email</text>
+<text x="98.0" y="1019.0" class="card-subtitle" text-anchor="start">Mail</text>
 <text x="98.0" y="1040.0" class="category" text-anchor="start">DOMAIN PLANT</text>
 </g>
 <g class="plant-card">
@@ -352,8 +352,8 @@ text{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#A7B6D9}
 </g>
 <g class="plant-card">
 <rect x="78.0" y="1072.0" width="348.0" height="92" rx="18" fill="#121B38" stroke="#79B7D8"/>
-<text x="98.0" y="1103.0" class="card-title" text-anchor="start">I · Images</text>
-<text x="98.0" y="1129.0" class="card-subtitle" text-anchor="start">View images</text>
+<text x="98.0" y="1103.0" class="card-title" text-anchor="start">I · Inspect</text>
+<text x="98.0" y="1129.0" class="card-subtitle" text-anchor="start">Look inside</text>
 <text x="98.0" y="1150.0" class="category" text-anchor="start">DOMAIN PLANT</text>
 </g>
 <g class="plant-card">
@@ -382,8 +382,8 @@ text{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#A7B6D9}
 </g>
 <g class="plant-card">
 <rect x="444.0" y="1182.0" width="348.0" height="92" rx="18" fill="#121B38" stroke="#79B7D8"/>
-<text x="464.0" y="1213.0" class="card-title" text-anchor="start">N · News</text>
-<text x="464.0" y="1239.0" class="card-subtitle" text-anchor="start">Feeds</text>
+<text x="464.0" y="1213.0" class="card-title" text-anchor="start">N · Network</text>
+<text x="464.0" y="1239.0" class="card-subtitle" text-anchor="start">Connections</text>
 <text x="464.0" y="1260.0" class="category" text-anchor="start">DOMAIN PLANT</text>
 </g>
 <g class="plant-card">
@@ -401,7 +401,7 @@ text{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#A7B6D9}
 <g class="plant-card">
 <rect x="78.0" y="1292.0" width="348.0" height="92" rx="18" fill="#121B38" stroke="#79B7D8"/>
 <text x="98.0" y="1323.0" class="card-title" text-anchor="start">Q · Query</text>
-<text x="98.0" y="1349.0" class="card-subtitle" text-anchor="start">Ask AI/search</text>
+<text x="98.0" y="1349.0" class="card-subtitle" text-anchor="start">Find information</text>
 <text x="98.0" y="1370.0" class="category" text-anchor="start">DOMAIN PLANT</text>
 </g>
 <g class="plant-card">
@@ -418,8 +418,8 @@ text{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#A7B6D9}
 </g>
 <g class="plant-card">
 <rect x="1176.0" y="1292.0" width="348.0" height="92" rx="18" fill="#121B38" stroke="#79B7D8"/>
-<text x="1196.0" y="1323.0" class="card-title" text-anchor="start">T · Tasks</text>
-<text x="1196.0" y="1349.0" class="card-subtitle" text-anchor="start">To-do/work</text>
+<text x="1196.0" y="1323.0" class="card-title" text-anchor="start">T · Time</text>
+<text x="1196.0" y="1349.0" class="card-subtitle" text-anchor="start">Clock and timing</text>
 <text x="1196.0" y="1370.0" class="category" text-anchor="start">DOMAIN PLANT</text>
 </g>
 <g class="plant-card">
@@ -430,26 +430,26 @@ text{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#A7B6D9}
 </g>
 <g class="plant-card">
 <rect x="444.0" y="1402.0" width="348.0" height="92" rx="18" fill="#121B38" stroke="#79B7D8"/>
-<text x="464.0" y="1433.0" class="card-title" text-anchor="start">V · Video</text>
+<text x="464.0" y="1433.0" class="card-title" text-anchor="start">V · Videos</text>
 <text x="464.0" y="1459.0" class="card-subtitle" text-anchor="start">WATCH</text>
 <text x="464.0" y="1480.0" class="category" text-anchor="start">DOMAIN PLANT</text>
 </g>
 <g class="plant-card">
 <rect x="810.0" y="1402.0" width="348.0" height="92" rx="18" fill="#121B38" stroke="#79B7D8"/>
-<text x="830.0" y="1433.0" class="card-title" text-anchor="start">W · Write</text>
-<text x="830.0" y="1459.0" class="card-subtitle" text-anchor="start">Compose</text>
+<text x="830.0" y="1433.0" class="card-title" text-anchor="start">W · Wrappers</text>
+<text x="830.0" y="1459.0" class="card-subtitle" text-anchor="start">Windows compatibility</text>
 <text x="830.0" y="1480.0" class="category" text-anchor="start">DOMAIN PLANT</text>
 </g>
 <g class="plant-card">
 <rect x="1176.0" y="1402.0" width="348.0" height="92" rx="18" fill="#121B38" stroke="#79B7D8"/>
-<text x="1196.0" y="1433.0" class="card-title" text-anchor="start">X · eXchange</text>
-<text x="1196.0" y="1459.0" class="card-subtitle" text-anchor="start">Finance/markets</text>
+<text x="1196.0" y="1433.0" class="card-title" text-anchor="start">X · eXecute</text>
+<text x="1196.0" y="1459.0" class="card-subtitle" text-anchor="start">Run commands and workflows</text>
 <text x="1196.0" y="1480.0" class="category" text-anchor="start">DOMAIN PLANT</text>
 </g>
 <g class="plant-card">
 <rect x="78.0" y="1512.0" width="348.0" height="92" rx="18" fill="#121B38" stroke="#79B7D8"/>
 <text x="98.0" y="1543.0" class="card-title" text-anchor="start">Y · sYnc</text>
-<text x="98.0" y="1569.0" class="card-subtitle" text-anchor="start">Transfer/sync</text>
+<text x="98.0" y="1569.0" class="card-subtitle" text-anchor="start">Folder/device sync</text>
 <text x="98.0" y="1590.0" class="category" text-anchor="start">DOMAIN PLANT</text>
 </g>
 <g class="plant-card">

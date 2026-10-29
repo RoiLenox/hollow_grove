@@ -45,6 +45,7 @@ pub(crate) fn tool_main() -> Result<(), Box<dyn std::error::Error>> {
         != BTreeSet::from([
             "office.stonebend.hypergiant",
             "office.stonebend.high-freemason",
+            "office.stonebend.proliteriate",
         ])
     {
         return Err("Stonebend office roster drifted".into());
@@ -97,7 +98,9 @@ pub(crate) fn tool_main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Proliteriate constitutional dimension: Yield");
     println!("permanent Spartacus office: false");
     println!("removal concurrence: two distinct powers");
-    println!("Lazerhorn required for Hypergiant accession: true");
+    println!("intended sovereign selection: The Acclamation");
+    println!("geographic accession prerequisite: none");
+    println!("source-law reconciliation and independent Court review: still required");
     println!("Title recognition distinct from activation: true");
     println!("Title maintenance distinct from renewal: true");
     println!("Hypergiant vacancy creates Regent: false");

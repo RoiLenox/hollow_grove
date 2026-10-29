@@ -880,20 +880,22 @@ pub struct StonebendInstitutionalHierarchy {
 }
 
 impl StonebendInstitutionalHierarchy {
+    /// Current display paths. The serialized competency/order fields below are
+    /// retained as historical data; they must not silently migrate earned XP.
+    #[must_use]
+    pub fn current_paths(&self) -> &'static [(&'static str, [&'static str; 3]); 3] {
+        &crate::world::stonebend::governance::PATHS
+    }
+
     #[must_use]
     pub fn contains_active_identity(&self, identity: &str) -> bool {
         let needle = normalized(identity);
         normalized(self.citizen_baseline.as_str()) == needle
-            || normalized(self.training_entry.as_str()) == needle
             || self
-                .competencies
+                .current_paths()
                 .iter()
-                .any(|entry| normalized(entry.competency.as_str()) == needle)
-            || self.orders.iter().any(|entry| {
-                normalized(entry.mastery.as_str()) == needle
-                    || normalized(&entry.cultural_identity) == needle
-            })
-            || normalized(&self.apex.identity) == needle
+                .flat_map(|(_, stages)| stages)
+                .any(|stage| normalized(stage) == needle)
     }
 }
 

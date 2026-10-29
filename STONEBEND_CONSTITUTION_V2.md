@@ -1,10 +1,17 @@
 # The Stonebend Constitution V2
 
-Status: canonical lock
+Status: canonical lock, amended 2026-10-25 by approved Revision 100 integration
 Authority: normative Stonebend constitutional law
 Executable projection: `src/world/stonebend.rs`
 Second-pass projection: `src/world/stonebend/second_pass.rs`
 Neutral institution projection: `src/world/house_institutions.rs`
+
+Current governance: [Revision 100 amendment](STONEBEND_REV100_GOVERNANCE_AMENDMENT.md).
+This controls office elections, Acclamation, Trial of Duty, seal continuity and
+current training paths. The pre-amendment wording is preserved as
+[LEGACY / SUPERSEDED history](docs/reference/STONEBEND_CONSTITUTION_V2_PRE_REV100.md).
+Creator approval authorizes this implementation; it is not a fabricated in-world
+ratification, election, Court judgment or professional credential.
 
 ## Preamble
 
@@ -57,16 +64,19 @@ Stonebend has three distinct constitutional powers:
 They are necessary powers, not three equal sovereigns. No one power governs
 Claim, Title, and Yield together.
 
-Freemason and Proliteriate are also Stonebend's institutional traditions.
-Their associated practice polarity is **Mage ↔ Pugilist**, expressed as
-**MAGIC ↔ MIGHT**. Exact Current/Aura assignments remain **STATUS: OPEN**; this
-constitution does not fabricate Level 1 equations for Stonebend forms.
+The three active paths are Construction (Journeyman → Brickmason →
+Proliteriate), Craftsmanship (Craftsman → Artisan → Freemason), and Duty
+(Squire → Justice → Hypergiant). Mage is reserved for the Syndicate.
+There is one singular office for each power, while many Huemans may earn
+the Proliteriate and Freemason Forms. High Freemason is the seal function
+of the same elected Freemason, not a fourth office. Form, office, tenure
+and permanent headquarters are distinct.
 
 ## Article IV — The Hypergiant
 
 **Hypergiant is Stonebend's sovereign title.** At most one lawful active
 Hypergiant may exist at a time. It is not a developmental state, an advanced
-Presynce state, a stage above Mage or Pugilist, or a generic Identity
+Presynce state, a generic professional promotion, or a generic Identity
 condition.
 
 Diamond is not the sovereign title. Beyond its preserved material and visual
@@ -89,30 +99,22 @@ additional evidence, substitute preference for criteria, abolish the
 Proliteriate network, appoint a successor by command, privatize the sovereign
 title, or simultaneously occupy Proliteriate witness or Freemason office.
 
-Hypergiant accession requires lawful Stonebend identity, no unresolved identity
-fraud, mastery of Name, Title, boundary, continuity, and Hollowing law,
-qualifying service, a stable Claim, independent Freemason examination,
-Proliteriate Yield hearing, relinquishment of protected elevation, descent
-through consequence, Flynt or Basin Proof of Persistence, ascent of The
-Lazerhorn, a lawful vacancy, sealed accession, and public oath. Form, Frame,
-Synthesis, species, combat rank, wealth, lineage, recommendation, and former
-office do not automatically create eligibility.
+The Acclamation fills a lawful vacancy: independently evidenced Justice
+standing, independent Freemason Claim and Proliteriate Yield verification,
+and a majority of eligible registered citizens' votes, with a top-two runoff
+if needed. A certified victor receives the Title for an indefinite tenure.
+No inheritance, professional office, mastery, outgoing recommendation or
+geographic journey confers accession. No route is an accession test.
 
-> No claimant bears the Hypergiant title without climbing The Lazerhorn.
-
-An outgoing Hypergiant may prepare or recommend a claimant, but cannot appoint
-one.
-
-> A Hypergiant may prepare an heir. The title recognizes no automatic
-> inheritance.
-
-Removal is available for Illegal Hollowing, Title fraud, identity substitution,
-concealed evidence, archive destruction, emergency abuse, succession
-corruption, refusal of lawful Tombstones, unlawful execution orders,
-incapacitation, abandonment, or constitutional betrayal. Any one independent
-power may challenge. Removal requires concurrence of the Freemason and a valid
-Proliteriate mandate, plus a Tombstone-linked record. The same power cannot
-count twice.
+The Trial of Duty is Challenge → Defense → Proof → Judgment → Reckoning.
+Either current elected professional officer may initiate documented allegations;
+the independent Court screens the case, preserves notice and defense, examines
+evidence and supplies substantive findings. Removal requires both current
+professional offices' lawful support and independent certification. Vacancy,
+recusal, a superseded tenure, disagreement alone, or one power counted twice
+cannot authorize removal. Removal closes the tenure without electing a successor.
+The exclusive Hypergiant Form reverts safely to an earned ordinary Form while
+mastery and identity survive. Detailed proof standards remain lawful parameters.
 
 During a Hypergiant vacancy, the Proliteriate network preserves public
 witness and the Freemason preserves records, Seals, defenses, and boundaries
@@ -122,10 +124,14 @@ reviewable failure prevention.
 
 ## Article V — The Proliteriate
 
-The **Proliteriate** is Stonebend's permanent distributed public
-constitutional network. It is not one person, one permanent chamber, an
-ordinary parliament, a single union, a fourth monarch, or a removable
-population category.
+The **Proliteriate** has one elected professional officeholder protecting
+public works and the Yield, a Form earnable by multiple qualified Huemans,
+and a permanent distributed public constitutional network. Six-year terms,
+three-year staggering from the Freemason election, majority/runoff voting and
+20% petition / 40% turnout / more-than-50% recall are defined in the amendment.
+A special election fills an unexpired remainder. A sovereign cannot appoint
+or dismiss this officer at personal pleasure. No officeholder can overwrite
+witness findings or abolish the network.
 
 > No authority may validate itself without public witness.
 
@@ -147,14 +153,14 @@ testimony.
 The Proliteriate may not execute demolition or seizure, create a Seal,
 unilaterally grant high Title, rewrite evidence, determine identity without
 review, command weapons, perform Hollowing, replace Freemason Claim
-examination, or replace Hypergiant Title authority. This pass locks no universal
-numerical threshold, quorum, or permanent seat distribution.
+examination, or replace Hypergiant Title authority. Witness mandates have no invented universal quorum or seat distribution.
+The professional election thresholds are separate from witness authority.
 
 A temporary witness carries one verified mandate and loses authority on recall,
 completion, or lawful invalidation. The witness may not rule Stonebend,
 exercise Hypergiant sovereignty, forge a Claim, or expand the mandate.
 
-> The Proliteriate does not elect a ruler. It raises a witness.
+> The witness network raises bounded witnesses; the branch electorate elects its officer.
 
 > Spartacus is not king of the people. He is the person through whom the people
 > stand.
@@ -164,9 +170,13 @@ Spartacus is an archetype, not a permanent fourth office.
 ## Article VI — The Freemason
 
 The **Freemason** is Stonebend's singular seal-bearing constitutional Claim,
-craft, and legitimacy power. The existing singular **High Freemason** office
-bears that power and leads the wider structural, defensive, sealing, surveying,
-custody, and execution institution.
+craft, and legitimacy power. The elected Freemason bears the **High Freemason** seal function of that
+same office and leads the wider structural, defensive, sealing, surveying,
+custody, and execution institution. Its stable office ID is preserved.
+Professional election and recall follow the amendment. The old seal is revoked
+and archived on closure; an independent certifier binds a fresh seal to the
+incoming tenure. Neither incoming nor outgoing bearer may self-certify the
+transfer. Vacancy grants no active seal or expanded Claim power.
 
 To forge a Claim is to shape, test, examine, measure, refine, record, and prove
 it under pressure. It does not mean falsify.
@@ -255,11 +265,10 @@ Lineage may be familial, institutional, architectural, artifact-based, office-ba
 
 A successor entity proves continuity, records differences, assigns liabilities, reviews Titles, preserves predecessor records, and seals succession. It cannot retain benefits while discarding obligations.
 
-No one inherits the Hypergiant title automatically. A former Hypergiant seeking to return
-must complete the whole Claim, Yield hearing, descent, Proof of Persistence,
-Lazerhorn, eligibility, and investiture path.
-
-> The sovereign title may be lost. The Way back may not be shortened.
+No one inherits the Hypergiant title automatically. A former Hypergiant has
+no automatic restoration: a new tenure requires lawful candidacy, a vacancy,
+and a new certified Acclamation. Any additional return-eligibility law must
+be supplied explicitly; legacy route tests do not become current prerequisites.
 
 ## Article XI — Mercury Mirrors
 
@@ -377,8 +386,10 @@ for Title; no clearance substituted for consent; mandatory review after
 emergency Hollowing; preserved rename history; preserved succession
 obligations; no authority inferred from legacy progression; three stable gate
 facings; independent gate scopes; a distributed Proliteriate network; one
-challenge before review; two distinct powers before removal; Tombstone-linked
-ended tenure; and The Lazerhorn before Hypergiant investiture.
+professional challenge before independent review; both current professional
+offices before removal; event-linked ended tenure; six-year staggered
+professional elections; independent seal transfer; and certified Acclamation
+before Hypergiant investiture.
 
 ## Article XXI — Material, symbolic, and regional canon
 
@@ -386,7 +397,7 @@ Stonebend's palette is Prussian Blue `#163A5F`, Lapis Lazuli `#2F6FA3`, and Air 
 
 Its material associations are Mercury Mirror, Diamond, Mercurite, masonry, survey, Seal, boundary, weapon, architecture, and Hollowing.
 
-Its people are **the Geralds**. Its principal authorities are **Hypergiant**, **Proliteriate**, and **Freemason**, with the **High Freemason** leading the Freemason institution. Its major routes are **Stairway to Heaven**, **Basin Motor Speedway**, **Mt. Aura**, and **Aura Way**. Its signature crime is **Illegal Hollowing**.
+Its people are **the Geralds**. Its principal authorities are **Hypergiant**, **Proliteriate**, and **Freemason**, with **High Freemason** naming the elected Freemason's seal function. Its major routes are **Stairway to Heaven**, **Basin Motor Speedway**, **Mt. Aura**, and **Aura Way**. Its signature crime is **Illegal Hollowing**.
 
 ### First Stonebend foundation
 
@@ -425,7 +436,8 @@ Title with independent scopes. Its historical Diamond/Hypergiant bearer model
 is **SUPERSEDED** by Hypergiant as the sovereign title. Freemason Claim
 authority, the distributed Proliteriate Yield network,
 temporary mandates and witnesses, one-challenge/two-remove review, Tombstone
-continuity, and the Lazerhorn succession path.
+continuity, and LEGACY / SUPERSEDED succession readers. Current elections and
+removal use the Revision 100 amendment exclusively.
 
 ### Third Stonebend constitutional pass
 
@@ -442,11 +454,11 @@ Restoration preserves the interruption rather than rewriting history.
 
 During Hypergiant vacancy, routine and emergency continuity authority remains
 narrow, temporary, recorded, reviewable, and unable to invest the sovereign
-title or appoint a Hypergiant. High Freemason replacement requires independent Forge
-review and cannot arise through self-certification or unilateral appointment.
+title or appoint a Hypergiant. Freemason replacement requires a certified election and independent seal
+review; it cannot arise through self-certification or unilateral appointment.
 The Proliteriate network persists through node change, witness recall, and
-mandate completion without acquiring a permanent speaker or numerical
-threshold.
+mandate completion without converting a witness into the elected professional officer or
+inventing a witness quorum.
 
 ## Final maxims
 
@@ -468,6 +480,13 @@ threshold.
 > One may challenge. Two may remove. None may rule alone.
 
 ## Runtime boundary
+
+`src/world/stonebend/governance.rs` is the current election and Trial adapter.
+It uses the existing shared interface archive and projects current authority
+into `WorldSession`. Legacy selection structs remain historical validators;
+their success does not authorize a Revision 100 accession. No old save is
+automatically granted a new professional term, seal or mastery record.
+
 
 `src/world/stonebend.rs` is the Stonebend-specific executable authority above
 frozen Constitutional Runtime V2. It validates the principal-authority roster

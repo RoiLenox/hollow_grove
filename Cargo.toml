@@ -127,6 +127,10 @@ path = "tests/graphical_client.rs"
 required-features = ["graphical-client"]
 
 
+[[test]]
+name = "boardwalk_territory"
+path = "tests/boardwalk_territory.rs"
+
 [profile.dev]
 debug = 1
 

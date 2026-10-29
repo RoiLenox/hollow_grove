@@ -461,7 +461,7 @@ fn valid_registry() -> glaushouse::GlaushouseRegistry {
 }
 
 #[test]
-fn institutional_projection_has_one_office_and_four_open_ranks() {
+fn institutional_projection_has_one_sovereign_nine_seats_and_four_clinical_ranks() {
     glaushouse::validate_principal_authorities().unwrap();
     let catalog = house_institutions::canonical_house_institutions();
     catalog.validate().unwrap();
@@ -471,9 +471,21 @@ fn institutional_projection_has_one_office_and_four_open_ranks() {
         .iter()
         .filter(|entry| entry.house == Some(House::Glaushouse))
         .collect::<Vec<_>>();
-    assert_eq!(offices.len(), 1);
-    assert_eq!(offices[0].id, glaushouse::prima_donna_office_id());
-    assert!(offices[0].singular);
+    assert_eq!(offices.len(), 10);
+    assert_eq!(
+        offices
+            .iter()
+            .filter(|o| o.id == glaushouse::prima_donna_office_id())
+            .count(),
+        1
+    );
+    for house in glaushouse::governance::MuseHouse::ALL {
+        assert_eq!(
+            offices.iter().filter(|o| o.id == house.office_id()).count(),
+            1
+        );
+    }
+    assert!(offices.iter().all(|o| o.singular));
 
     let ranks = catalog
         .roles

@@ -10,12 +10,13 @@ use hollow_grove::hollow_deck_state::{
     save_hollow_deck_state,
 };
 use hollow_grove::hollow_deck_tui::{
-    NatureQuery, NatureSort, query_natures, render_alchemy, render_aura_sets, render_banes,
-    render_compare, render_counterparts, render_cultivation_state, render_current_forms,
-    render_flynt_identities, render_glaushouse, render_help, render_home, render_houses,
-    render_institutions, render_nature_card_with_state, render_nature_index, render_progression,
-    render_recipes, render_sandmanor, render_syntheses, render_synthesis_recipes, render_traits,
-    render_validation,
+    NatureQuery, NatureSort, query_natures, registrar_record_count, render_alchemy,
+    render_aura_sets, render_banes, render_compare, render_counterparts, render_cultivation_state,
+    render_current_forms, render_flynt_identities, render_glaushouse, render_help, render_home,
+    render_houses, render_institutions, render_nature_card_with_state, render_nature_index,
+    render_progression, render_recipes, render_registrar, render_registrar_record,
+    render_registrar_record_by_name, render_sandmanor, render_syntheses, render_synthesis_recipes,
+    render_traits, render_validation,
 };
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -56,6 +57,8 @@ enum DeckCli {
     ExportJson,
     ExportState,
     Help,
+    Registrar,
+    RegistrarShow(String),
 }
 
 fn parse_cli(args: impl IntoIterator<Item = String>) -> Result<DeckCli, String> {
@@ -67,6 +70,11 @@ fn parse_cli(args: impl IntoIterator<Item = String>) -> Result<DeckCli, String> 
     match command.as_str() {
         "--help" | "-h" | "help" => no_extra(args, DeckCli::Help, "help"),
         "home" => no_extra(args, DeckCli::Home, "home"),
+        "registrar" | "warden-registrar" => match args.as_slice() {
+            [] => Ok(DeckCli::Registrar),
+            [show, query] if show == "show" => Ok(DeckCli::RegistrarShow(query.clone())),
+            _ => Err("usage: hollow_deck registrar [show <accession|name|key>]".into()),
+        },
         "houses" => no_extra(args, DeckCli::Houses, "houses"),
         "institutions" | "institution" => {
             optional_name(args, "institutions", DeckCli::Institutions)
@@ -402,6 +410,9 @@ fn run_cli(
             encode_hollow_deck_state(catalog, state).map_err(|error| error.to_string())
         }
         DeckCli::Help => Ok(render_help()),
+        DeckCli::Registrar => Ok(render_registrar(None)),
+        DeckCli::RegistrarShow(query) => render_registrar_record_by_name(&query)
+            .ok_or_else(|| format!("unknown Warden Registrar record: {query}")),
     }
 }
 
@@ -413,7 +424,7 @@ fn persist_state(
     save_hollow_deck_state(catalog, state, state_path).map_err(|error| error.to_string())
 }
 
-const MENU: [(&str, Page); 17] = [
+const MENU: [(&str, Page); 18] = [
     ("Houses", Page::Houses),
     ("Institutions", Page::Institutions),
     ("Glaüshouse", Page::Glaushouse),
@@ -430,6 +441,7 @@ const MENU: [(&str, Page); 17] = [
     ("Synthesis Recipes", Page::SynthesisRecipes),
     ("Syntheses", Page::Syntheses),
     ("Banes", Page::Banes),
+    ("Warden Registrar", Page::Registrar),
     ("Help", Page::Help),
 ];
 
@@ -453,6 +465,8 @@ enum Page {
     SynthesisRecipes,
     Syntheses,
     Banes,
+    Registrar,
+    RegistrarRecord,
     Help,
 }
 
@@ -460,6 +474,7 @@ struct InteractiveState {
     page: Page,
     menu_index: usize,
     nature_index: usize,
+    registrar_index: usize,
     query: NatureQuery,
     compare: [usize; 2],
     compare_side: usize,
@@ -472,6 +487,7 @@ impl Default for InteractiveState {
             page: Page::Home,
             menu_index: 0,
             nature_index: 0,
+            registrar_index: 0,
             query: NatureQuery::default(),
             compare: [0, 1],
             compare_side: 0,
@@ -734,6 +750,32 @@ fn handle_key(
                 _ => {}
             }
         }
+        Page::Registrar => {
+            let count = registrar_record_count();
+            match key {
+                Key::Up if count > 0 => {
+                    state.registrar_index =
+                        state.registrar_index.checked_sub(1).unwrap_or(count - 1)
+                }
+                Key::Down if count > 0 => {
+                    state.registrar_index = (state.registrar_index + 1) % count
+                }
+                Key::Enter | Key::Right if count > 0 => state.page = Page::RegistrarRecord,
+                Key::Back | Key::Left => state.page = Page::Home,
+                _ => {}
+            }
+        }
+        Page::RegistrarRecord => match key {
+            Key::Up if registrar_record_count() > 0 => {
+                let count = registrar_record_count();
+                state.registrar_index = state.registrar_index.checked_sub(1).unwrap_or(count - 1);
+            }
+            Key::Down if registrar_record_count() > 0 => {
+                state.registrar_index = (state.registrar_index + 1) % registrar_record_count();
+            }
+            Key::Back | Key::Left => state.page = Page::Registrar,
+            _ => {}
+        },
         Page::Compare => match key {
             Key::Tab => state.compare_side = 1 - state.compare_side,
             Key::Up => {
@@ -846,6 +888,9 @@ fn interactive_body(
         Page::SynthesisRecipes => render_synthesis_recipes(catalog),
         Page::Syntheses => render_syntheses(catalog),
         Page::Banes => render_banes(catalog),
+        Page::Registrar => render_registrar(Some(state.registrar_index)),
+        Page::RegistrarRecord => render_registrar_record(state.registrar_index, true)
+            .unwrap_or_else(|| render_registrar(Some(state.registrar_index))),
         Page::Help => render_help(),
     }
 }

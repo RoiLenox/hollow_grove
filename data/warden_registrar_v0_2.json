@@ -1,0 +1,305 @@
+{
+  "manifest_name": "Hollow Grove — Warden Registrar Founding Entries",
+  "version": "0.2.0",
+  "implementation_status": "registry_data_specification_not_installed_in_runtime",
+  "registry_host": "Warden Registrar",
+  "institutional_context": "The Warden Registrar and Parley are the two functions of one civic institution.",
+  "register_categories": [
+    "civic",
+    "enterprise",
+    "institutional"
+  ],
+  "governance_rules": [
+    "The Warden Registrar maintains a shared index; a record is not a grant of governance over another House.",
+    "Each House retains its own jurisdiction over organizations and establishments in its territory.",
+    "The pre-existing civic/electoral remit of the Registrar and Parley is unchanged.",
+    "Ownership, employment, contracts and registration do not change House allegiance.",
+    "No new synthesis, route, House, or kernel subsystem is created by a record."
+  ],
+  "identity_rules": {
+    "accession": "Human-readable founding record identifier; not a kernel entity ID.",
+    "key": "Portable registry key used for references within this data specification.",
+    "point_ref": "Existing world topology Point reference. Null until location is mapped.",
+    "coordinates": "Null until supplied or approved. Do not infer from House or district names."
+  },
+  "civic_register": "existing_civic_records_unmodified",
+  "records": [
+    {
+      "accession": "WR-001",
+      "key": "nojo",
+      "name": "NOJO",
+      "also_known_as": [
+        "Nurse Dojo"
+      ],
+      "entity_kind": "training_institution",
+      "registers": [
+        "institutional"
+      ],
+      "origin_house": "Glaüshouse",
+      "location": {
+        "kind": "physical",
+        "house": "Glaüshouse",
+        "district": null,
+        "area": null,
+        "point_ref": null,
+        "coordinates": null,
+        "site_address": null
+      },
+      "ownership": {
+        "status": "not_specified",
+        "owner_ref": null
+      },
+      "functions": [
+        "nurse_training",
+        "clinical_education"
+      ],
+      "affiliations": [
+        {
+          "relation": "teaches_or_uses",
+          "target": "chromachord",
+          "status": "planned_operational_link"
+        }
+      ],
+      "special_rules": []
+    },
+    {
+      "accession": "WR-002",
+      "key": "chromachord",
+      "name": "ChromaChord",
+      "also_known_as": [],
+      "entity_kind": "communication_standard",
+      "registers": [
+        "institutional"
+      ],
+      "origin_house": "Glaüshouse",
+      "location": {
+        "kind": "nonphysical_standard",
+        "house": null,
+        "district": null,
+        "area": null,
+        "point_ref": null,
+        "coordinates": null,
+        "site_address": null
+      },
+      "ownership": {
+        "status": "not_specified",
+        "owner_ref": null
+      },
+      "functions": [
+        "structured_communication",
+        "clinical_charting"
+      ],
+      "affiliations": [
+        {
+          "relation": "clinical_implementation",
+          "target": "chromamed",
+          "status": "existing_project_relationship"
+        }
+      ],
+      "special_rules": [
+        "No physical Point or storefront is implied by registration.",
+        "May be adopted by institutions across Houses without transfer of jurisdiction."
+      ]
+    },
+    {
+      "accession": "WR-003",
+      "key": "altek_industries",
+      "name": "Altek Industries",
+      "also_known_as": [],
+      "entity_kind": "biomedical_enterprise",
+      "registers": [
+        "enterprise"
+      ],
+      "origin_house": "Glaüshouse",
+      "location": {
+        "kind": "physical",
+        "house": "Glaüshouse",
+        "district": null,
+        "area": null,
+        "point_ref": null,
+        "coordinates": null,
+        "site_address": null
+      },
+      "ownership": {
+        "status": "not_specified",
+        "owner_ref": null
+      },
+      "functions": [
+        "biomedical_engineering",
+        "medical_technology"
+      ],
+      "affiliations": [],
+      "special_rules": []
+    },
+    {
+      "accession": "WR-004",
+      "key": "oakwood_studios",
+      "name": "Oakwood Studios",
+      "also_known_as": [],
+      "entity_kind": "production_studio",
+      "registers": [
+        "enterprise"
+      ],
+      "origin_house": "Sandmanor",
+      "location": {
+        "kind": "physical",
+        "house": "Sandmanor",
+        "district": "North Sandmanor",
+        "area": "Content Farm",
+        "point_ref": null,
+        "coordinates": null,
+        "site_address": null
+      },
+      "ownership": {
+        "status": "not_specified",
+        "owner_ref": null
+      },
+      "functions": [
+        "film_and_media_production"
+      ],
+      "affiliations": [],
+      "special_rules": []
+    },
+    {
+      "accession": "WR-005",
+      "key": "mulbrook_pictures",
+      "name": "Mulbrook Pictures",
+      "also_known_as": [],
+      "entity_kind": "motion_picture_enterprise",
+      "registers": [
+        "enterprise"
+      ],
+      "origin_house": "Sandmanor",
+      "location": {
+        "kind": "physical",
+        "house": "Sandmanor",
+        "district": "North Sandmanor",
+        "area": "Content Farm",
+        "point_ref": null,
+        "coordinates": null,
+        "site_address": null
+      },
+      "ownership": {
+        "status": "not_specified",
+        "owner_ref": null
+      },
+      "functions": [
+        "motion_picture_production"
+      ],
+      "affiliations": [],
+      "special_rules": []
+    },
+    {
+      "accession": "WR-006",
+      "key": "the_chopera",
+      "name": "The Chopera",
+      "also_known_as": [
+        "Chop Opera"
+      ],
+      "entity_kind": "performance_venue",
+      "registers": [
+        "institutional"
+      ],
+      "origin_house": "Flynt",
+      "location": {
+        "kind": "physical",
+        "house": "Flynt",
+        "district": null,
+        "area": null,
+        "point_ref": null,
+        "coordinates": null,
+        "site_address": null
+      },
+      "ownership": {
+        "status": "not_specified",
+        "owner_ref": null
+      },
+      "functions": [
+        "live_performance",
+        "chop_opera"
+      ],
+      "affiliations": [
+        {
+          "relation": "permanent_cultural_role",
+          "target": "the_tross",
+          "role": "Gremlin of the Chopera",
+          "status": "canon"
+        }
+      ],
+      "special_rules": [
+        "The current Tross is always the Gremlin of the Chopera.",
+        "The cultural role does not itself determine venue ownership or management."
+      ]
+    },
+    {
+      "accession": "WR-007",
+      "key": "the_beck",
+      "name": "The Beck",
+      "also_known_as": [],
+      "entity_kind": "film_and_new_media_venue",
+      "registers": [
+        "institutional"
+      ],
+      "origin_house": "Flynt",
+      "location": {
+        "kind": "physical",
+        "house": "Flynt",
+        "district": null,
+        "area": null,
+        "point_ref": null,
+        "coordinates": null,
+        "site_address": null
+      },
+      "ownership": {
+        "status": "not_specified",
+        "owner_ref": null
+      },
+      "functions": [
+        "film_exhibition",
+        "new_media_exhibition",
+        "cultural_exchange"
+      ],
+      "affiliations": [
+        {
+          "relation": "cultural_bridge",
+          "target_houses": [
+            "Flynt",
+            "Sandmanor"
+          ],
+          "status": "canon"
+        }
+      ],
+      "special_rules": [
+        "Named in reference to John Steinbeck.",
+        "Its thematic relationship is Oklahoma–California, expressed in Hollow Grove as Sandmanor–Flynt."
+      ]
+    }
+  ],
+  "interaction_capabilities": {
+    "nojo": [
+      "training"
+    ],
+    "chromachord": [
+      "communication",
+      "charting"
+    ],
+    "altek_industries": [
+      "engineering"
+    ],
+    "oakwood_studios": [
+      "media_production"
+    ],
+    "mulbrook_pictures": [
+      "film_production"
+    ],
+    "the_chopera": [
+      "performance"
+    ],
+    "the_beck": [
+      "screening",
+      "media_exhibition"
+    ]
+  },
+  "interaction_note": "Capabilities are optional gameplay/service hooks, not literal Synthesis recipes or new kernel laws.",
+  "physical_route_edges": "none_declared_until_map_points_and_routes_are_defined"
+}

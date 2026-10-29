@@ -1,3 +1,8 @@
+> Revision 100 supersession, 2026-10-25: old office selection, Lazerhorn
+> succession and removal procedures below are LEGACY / SUPERSEDED. Current
+> governance is `STONEBEND_REV100_GOVERNANCE_AMENDMENT.md`. Stable scopes,
+> title lifecycle, witness history and compatibility decoding remain preserved.
+
 # Stonebend Title Lifecycle and Constitutional Continuity V1
 
 Status: active lifecycle compatibility supplement; its Diamond-as-sovereign-

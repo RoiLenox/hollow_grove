@@ -179,7 +179,6 @@ pub fn glaushouse_clinical_access_policy(zone: &ZoneId) -> AccessPolicy {
             requirements: vec![
                 AccessRequirement::Role(role_id("role.glaushouse.recovery-staff")),
                 AccessRequirement::Role(glaushouse::persephone_rank_id()),
-                AccessRequirement::Office(glaushouse::prima_donna_office_id()),
                 AccessRequirement::ExplicitGrant,
             ],
         },
@@ -242,7 +241,7 @@ mod tests {
             })
             .unwrap();
         assert!(
-            recovery
+            !recovery
                 .policy
                 .requirements
                 .contains(&AccessRequirement::Office(

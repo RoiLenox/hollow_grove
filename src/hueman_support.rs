@@ -411,13 +411,16 @@ const STONEBEND_ROLE_SECTIONS: [HuemanSectionDefinition; 9] = [
         lines: &[
             "the Geralds are Stonebend's constitutional people; citizenship provides standing but never implies office.",
             "the Hypergiant is the singular highest Stonebend office and preserves the integrity of Names, Titles, succession, boundaries, and sealed constitutional records.",
-            "the Proliteriate is Stonebend's permanent distributed public network; its active voices are temporary, bounded, recallable witnesses rather than permanent chamber seats or creature roles.",
-            "the High Freemason is the singular office leading the wider Freemason institution for structure, defense, survey, Seals, custody, lawful execution, and Hollowing equipment.",
+            "the Proliteriate is one elected professional office protecting Yield; the permanent distributed public network retains bounded, recallable witnesses and independent findings.",
+            "the High Freemason seal belongs to the single elected Freemason; it does not create a fourth office. Multiple Huemans may master either professional Form.",
         ],
     },
     HuemanSectionDefinition {
         title: "Form Continuity",
         lines: &[
+            "Construction: Journeyman -> Brickmason -> Proliteriate. Craftsmanship: Craftsman -> Artisan -> Freemason. Duty: Squire -> Justice -> Hypergiant. Mage is Syndicate-exclusive.",
+            "Professional elections have six-year terms staggered three years, majority/runoff voting, unlimited eligible reelection and remainder-only special elections; recall requires 20% petition, 40% turnout and more than 50% removal votes.",
+            "The Trial of Duty is Challenge -> Defense -> Proof -> Judgment -> Reckoning; removal and successor election are separate.",
             "the active Gremlin -> Goblin -> Ghoul -> Spectre -> Troll -> Ork -> Ogre -> Troglodyte sequence is Stonebend's Synthesis ladder and is not a political rank ladder; its exact Aura counterparts are Pixie, Sprite, Fairy, Spirit, Siren, Sylph, Nymph, and Muse.",
             "a changed Frame may receive a transformed-form Name while its former Names, lineage, liabilities, and continuity remain recorded.",
             "no Current Form, Aura Frame, Synthesis, species, combat rank, wealth level, or lineage automatically grants eligibility for Hypergiant or High Freemason.",
@@ -431,8 +434,8 @@ const STONEBEND_ROLE_SECTIONS: [HuemanSectionDefinition; 9] = [
             "the Hypergiant is the highest constitutional office, remains evidence-bound and challengeable, and may not occupy Proliteriate or Freemason office simultaneously.",
             "the Proliteriate preserves public witness and dissent through district, guild or workshop, labor crew or worksite, and inherited or commonwealth nodes; it raises temporary witnesses and cannot execute armed seizure or Hollowing.",
             "the Freemason forges and tests Claims, preserves records and boundaries, may refuse unlawful orders, and cannot create sovereignty or self-certify a sovereign Claim.",
-            "one power may challenge; the other two distinct powers must concur to remove; the same power cannot count twice, and representation removal cannot abolish the network.",
-            "Hypergiant accession requires a stable Claim, independent Freemason examination, Proliteriate Yield hearing, relinquishment of protected elevation, consequence descent, Flynt or Basin Proof of Persistence, The Lazerhorn, lawful vacancy, Seal, and public oath.",
+            "one current professional officer may challenge; both current professional offices must support removal with independent Court findings. Vacancy, recusal and former tenure do not count as consent.",
+            "The Acclamation requires Justice standing, independent Claim and Yield verification for all candidates, lawful vacancy and a certified citizen majority or top-two runoff. The resulting sovereign tenure is indefinite.",
         ],
     },
     HuemanSectionDefinition {
@@ -474,7 +477,7 @@ const STONEBEND_ROLE_SECTIONS: [HuemanSectionDefinition; 9] = [
     HuemanSectionDefinition {
         title: "Three Gates, Sovereignty, and Bounded Title Scope",
         lines: &[
-            "Stonebend has exactly three bidirectional constitutional gates: Flynt-facing through Stairway to Heaven and Basin Motor Speedway, Central Junction-facing through the Craft Corridor, and Sandmanor-facing through Aura Way and Mt. Aura.",
+            "Stonebend has exactly three bidirectional constitutional gates: Flynt-facing through one curved H.T.T. — Highway to Hell / S.T.H. — Stairway to Heaven mountain highway and the separate straight Basin Motor Speedway (B.M.S.), Central Junction-facing through the Craft Corridor, and Sandmanor-facing through Aura Way and Mt. Aura.",
             "Central Junction remains a district, Mt. Aura remains an ideal and route landmark, and Riptide remains outside Stonebend on its established route.",
             "one stable core Title may hold independent Formation Recognition, Public Circulation, and Operational Deployment scopes; rejection or limitation at one gate does not erase another scope.",
             "gate failures return typed evidence and distinguish honest failure, negligence, fraud, illegality, and constitutional hollowness.",
@@ -482,7 +485,7 @@ const STONEBEND_ROLE_SECTIONS: [HuemanSectionDefinition; 9] = [
             "temporary Proliteriate witnesses carry only a stable bounded mandate, may be recalled, and return authority to the permanent network when the matter ends.",
             "Spartacus is an archetype for a raised witness, not a permanent fourth office.",
             "removal and succession preserve durable Tombstones rather than deleting ended authority.",
-            "Hypergiant accession retains The Lazerhorn and the established evidence path; recommendation, lineage, former office, and self-certification cannot shorten the path.",
+            "The Acclamation is the intended sovereign selection. No route is an Acclamation prerequisite; recommendation, lineage, former office and mastery cannot grant the Title.",
             "every gate crossing remains traceable to Claim evidence, Title or boundary disposition, and Yield accountability even when routine work is delegated.",
         ],
     },
@@ -496,22 +499,22 @@ const STONEBEND_ROLE_SECTIONS: [HuemanSectionDefinition; 9] = [
             "restoration repairs the Title without erasing the interruption, remediation evidence, or continuing limitations.",
             "every ended active term links to a Tombstone, and honorable completion remains distinct from punitive removal.",
             "during a Hypergiant vacancy, bounded continuity mandates may preserve existing duties but cannot become Hypergiant, appoint a Hypergiant, create sovereign law, or grow permanent through use.",
-            "High Freemason replacement requires independent Forge review; no candidate self-certifies and no outgoing bearer appoints the replacement unilaterally.",
-            "the Proliteriate network survives node change, witness recall, and mandate completion without a permanent speaker or locked numerical threshold.",
+            "Freemason replacement requires a certified election and independent seal transfer; neither candidate nor outgoing bearer certifies the transfer. Vacancy has no active seal.",
+            "the Proliteriate network survives node change, witness recall and mandate completion; branch election thresholds do not become witness quorums.",
             "Claim, Title, and Yield evidence remain traceable through every temporal review.",
         ],
     },
     HuemanSectionDefinition {
         title: "Status",
         lines: &[
-            "STONEBEND_CONSTITUTION_V2.md is the canonical Stonebend law",
+            "STONEBEND_CONSTITUTION_V2.md with STONEBEND_REV100_GOVERNANCE_AMENDMENT.md is the current Stonebend law",
             "STONEBEND_AURA_WAY_AETHER_HOLLOWING_FOUNDATION_V1.md is the canonical bounded first-pass foundation",
             "STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md is a compatibility supplement whose Diamond-sovereign language is SUPERSEDED",
             "STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md is a compatibility supplement whose Diamond-sovereign language is SUPERSEDED",
             "src/world/stonebend.rs enforces Stonebend-specific authority and registry invariants above the frozen runtime",
             "src/world/stonebend/foundation.rs enforces Aura Way, material provenance, lawful refinement, and stone-refraction invariants without extending Stonebend government",
-            "src/world/stonebend/second_pass.rs enforces the three gates, bounded Title scopes, active Hypergiant tenure, legacy Diamond decoding, distributed Proliteriate, removal, Tombstones, succession, and delegated accountability without changing gameplay",
-            "src/world/stonebend/third_pass.rs enforces recognition, activation, maintenance, renewal, targeted intervention, restoration, vacancy continuity, independent Forge replacement, and temporal Claim/Title/Yield review without replacing the common Bond engine",
+            "src/world/stonebend/second_pass.rs preserves gates, scopes, witnesses and LEGACY / SUPERSEDED succession validation; current accessions use governance.rs",
+            "src/world/stonebend/third_pass.rs preserves title lifecycle and historical continuity; governance.rs supplies current elections, Acclamation, Trial, seals and replay above the shared archive",
             "Body -> Presynce is Stonebend's Hueman faculty: embodied anticipation bounded by Frame, Flow, polarity, evidence, and uncertainty, never an automatic dodge or counter",
             "src/world/house_institutions.rs provides the neutral institution projection",
             "Godot and Hueman artifacts are presentation only",
@@ -2929,9 +2932,7 @@ mod tests {
         assert!(output.starts_with("# Hueman Stonebend Roles"));
         assert!(output.contains("the Geralds are Stonebend's constitutional people"));
         assert!(output.contains("the Hypergiant is the singular highest Stonebend office"));
-        assert!(
-            output.contains("the Proliteriate is Stonebend's permanent distributed public network")
-        );
+        assert!(output.contains("the Proliteriate is one elected professional office"));
         assert!(
             output.contains("Illegal Hollowing is Stonebend's signature constitutional offense")
         );

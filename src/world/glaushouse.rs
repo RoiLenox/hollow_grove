@@ -6,6 +6,9 @@
 //! not alter the recursion kernel, prove a Sandmanor design, grant a Stonebend
 //! Title, grant Flynt recognition, or duplicate the common Current Runtime.
 
+pub mod clinical_authorization;
+pub mod governance;
+
 use std::collections::{BTreeMap, BTreeSet};
 use std::fmt;
 

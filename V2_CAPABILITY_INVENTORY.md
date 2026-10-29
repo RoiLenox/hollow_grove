@@ -123,14 +123,14 @@ Resolution reserves successor identities. A child formation must name every pare
 | Recognize | Flynt | `office.flynt.tross` | `InstitutionalRecognition` | pre-Toke recognition |
 | Resolve | Glaüshouse | `office.glaushouse.prima-donna` | `FinalJudgmentAnswerability` | final Bond resolution |
 
-`HouseDecision::from_catalog` validates an active office holder and copies an immutable historical snapshot. This frozen common runtime does not select House-office succession. Stonebend's now-ratified Hypergiant selection order and Stonebend-specific Name, Title, accession, Seal, Hollowing, custody, succession, and Tombstone invariants live above it in `src/world/stonebend.rs`; they do not change the common reducer. Flynt remains independently authoritative through `flynt-constitution`. `world::institutional_access_fixture` supplies anonymous active holders for demonstrations and tests only.
+`HouseDecision::from_catalog` validates an active office holder and copies an immutable historical snapshot. This frozen common runtime does not select House-office succession. Stonebend's historical Hypergiant selection records and Stonebend-specific Name, Title, accession, Seal, Hollowing, custody, succession, and Tombstone invariants live above it in `src/world/stonebend.rs`; they do not change the common reducer. Flynt remains independently authoritative through `flynt-constitution`. `world::institutional_access_fixture` supplies anonymous active holders for demonstrations and tests only.
 
 ### 4.1 Stonebend-specific constitutional inventory
 
 | Capability | Canonical type / function | Enforced result |
 |---|---|---|
 | Principal authority placement | `PrincipalAuthority`, `PRINCIPAL_AUTHORITIES`, `validate_principal_authorities` | at most one active Hypergiant bearer; distributed Proliteriate network; High Freemason office and wider institution; Claim, Title, and Yield stay distinct |
-| Hypergiant selection order | `HypergiantSelectionProcess`, `second_pass::HypergiantSuccession` | Claim, independent Freemason examination, Yield hearing, relinquishment, consequence descent, Proof of Persistence, Lazerhorn, eligibility, and Hypergiant investiture cannot be skipped or reordered; legacy stage names remain stable |
+| Hypergiant selection | `governance`; legacy `HypergiantSelectionProcess`, `second_pass::HypergiantSuccession` | intended The Acclamation uses Justice standing, independent Claim/Yield verification and citizen majority/runoff without a geographic prerequisite; historical stages retain their original interpretation and confer no new office |
 | Name and Title | `NameRecord`, `TitleRecord`, `StonebendRegistry::validate` | every active Title has one valid active Name and lawful grant; transformation, recognition, clearance, custody, and legacy progression cannot manufacture Title |
 | Office accession | `AccessionRecord`, `AccessionBasis` | every active office has matching holder, office, evidence, Seal, and ratified accession requirements; Hypergiant may be vacant and never has more than one active bearer |
 | Seal | `SealRecord` | Freemason issuance binds the correct subject, scope, and decision |
@@ -152,7 +152,7 @@ Normative source:
 | Freemason Claim review | `ClaimRecord::validate_freemason_examination` | the existing High Freemason office bears Claim authority; sovereign self-certification is rejected |
 | Proliteriate network | `ProliteriateNetwork`, `ProliteriateNode`, `NetworkMembership`, `NetworkMandate`, `RaisedWitness` | stable overlapping nodes and memberships; temporary bounded witness; recall, completion, invalidation, and replacement preserve the network |
 | Challenge and removal | `ConstitutionalChallenge`, `ConstitutionalConcurrence`, `RemovalAuthorization` | one power opens review; exactly the other two distinct powers remove; duplicates fail; representation removal cannot abolish the people |
-| Lazerhorn succession | `HypergiantSuccessionStage`, `HypergiantSuccession` | semantic stage order ignores insertion order; Lazerhorn is mandatory; recommendation, lineage, self-certification, and former tenure never bypass the full path |
+| Historical succession interpretation | `HypergiantSuccessionStage`, `HypergiantSuccession` | source-era records retain semantic stage order independent of insertion order; this compatibility interpreter is not current selection or a gameplay entry point |
 | Gate accountability | `GateCrossingRecord`, `DelegatedPowerTrace` | routine work is delegable while every crossing remains traceable to Claim, Title, and Yield authority |
 
 ### 4.3 Stonebend third-pass lifecycle and continuity inventory

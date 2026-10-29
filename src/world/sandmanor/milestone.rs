@@ -700,7 +700,10 @@ impl ManticorpCurrentBreakTraining {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
+#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, serde::Serialize, serde::Deserialize,
+)]
+#[serde(rename_all = "kebab-case")]
 pub enum TrialDomain {
     AuraField,
     ContentFarm,
@@ -751,40 +754,42 @@ pub struct ImprovementCandidate {
 
 impl ImprovementCandidate {
     pub fn improvement_total(&self) -> Result<u32, SandmanorMilestoneError> {
-        if self.baseline.candidate != self.person
-            || self.improvement.candidate != self.person
-            || self.baseline.evidence.is_empty()
-            || self.improvement.evidence.is_empty()
-            || !self.improvement.integration_demonstrated
-            || self.improvement.imitation_only
-            || self.improvement.degraded_other_candidate
-        {
-            return Err(SandmanorMilestoneError::InvalidImprovementEvidence(
-                self.person.clone(),
-            ));
-        }
-        TrialDomain::ALL
-            .into_iter()
-            .try_fold(0_u32, |total, domain| {
-                let baseline = self
-                    .baseline
-                    .competencies
-                    .get(&domain)
-                    .copied()
-                    .ok_or_else(|| {
-                        SandmanorMilestoneError::MissingTrialCompetency(self.person.clone(), domain)
-                    })?;
-                let final_score = self
-                    .improvement
-                    .final_competencies
-                    .get(&domain)
-                    .copied()
-                    .ok_or_else(|| {
-                        SandmanorMilestoneError::MissingTrialCompetency(self.person.clone(), domain)
-                    })?;
-                Ok(total + u32::from(final_score.saturating_sub(baseline)))
-            })
+        assess_improvement(&self.person, &self.baseline, &self.improvement)
     }
+}
+
+pub(crate) fn assess_improvement(
+    person: &IdentityId,
+    baseline: &CandidateBaseline,
+    improvement: &ImprovementEvidence,
+) -> Result<u32, SandmanorMilestoneError> {
+    if baseline.candidate != *person
+        || improvement.candidate != *person
+        || baseline.evidence.is_empty()
+        || improvement.evidence.is_empty()
+        || !improvement.integration_demonstrated
+        || improvement.imitation_only
+        || improvement.degraded_other_candidate
+    {
+        return Err(SandmanorMilestoneError::InvalidImprovementEvidence(
+            person.clone(),
+        ));
+    }
+    TrialDomain::ALL
+        .into_iter()
+        .try_fold(0_u32, |total, domain| {
+            let baseline = baseline.competencies.get(&domain).copied().ok_or_else(|| {
+                SandmanorMilestoneError::MissingTrialCompetency(person.clone(), domain)
+            })?;
+            let final_score = improvement
+                .final_competencies
+                .get(&domain)
+                .copied()
+                .ok_or_else(|| {
+                    SandmanorMilestoneError::MissingTrialCompetency(person.clone(), domain)
+                })?;
+            Ok(total + u32::from(final_score.saturating_sub(baseline)))
+        })
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -913,95 +918,108 @@ impl ContestOfImprovementProof {
             candidate.improvement_total()?;
         }
 
-        let trial_domains = self
-            .trials
-            .iter()
-            .filter(|trial| {
-                trial.valid && trial.candidate_completed_work && !trial.evidence.is_empty()
-            })
-            .map(|trial| trial.domain)
-            .collect::<BTreeSet<_>>();
-        if trial_domains != TrialDomain::ALL.into_iter().collect() {
-            return Err(SandmanorMilestoneError::IncompleteTrialDomains);
-        }
-        let candidates = BTreeSet::from([first.person.clone(), second.person.clone()]);
-        if self.trials.iter().any(|trial| {
-            !candidates.contains(&trial.candidate)
-                || !candidates.contains(&trial.teacher)
-                || trial.candidate == trial.teacher
-        }) {
-            return Err(SandmanorMilestoneError::InvalidPublicTrial);
-        }
-        for finding in &self.teaching_integrity {
-            if finding.sabotaging() {
-                return Ok((
-                    AuditedCrowdTally {
-                        valid_votes: BTreeMap::new(),
-                        excluded_judgments: self
-                            .judgments
-                            .iter()
-                            .map(|judgment| judgment.id.clone())
-                            .collect(),
-                    },
-                    CrowdVerdict::VoidForTeachingSabotage(finding.teacher.clone()),
-                ));
-            }
-        }
-        if self
-            .teaching_integrity
-            .iter()
-            .map(|finding| &finding.teacher)
-            .collect::<BTreeSet<_>>()
-            != candidates.iter().collect::<BTreeSet<_>>()
-        {
-            return Err(SandmanorMilestoneError::MissingTeachingIntegrity);
-        }
-
-        let duplicate_voters = duplicate_values(self.judgments.iter().map(|entry| &entry.voter));
         let improvement = self
             .candidates
             .iter()
             .map(|candidate| Ok((candidate.person.clone(), candidate.improvement_total()?)))
             .collect::<Result<BTreeMap<_, _>, SandmanorMilestoneError>>()?;
-        let mut tally = AuditedCrowdTally {
-            valid_votes: candidates
-                .iter()
-                .cloned()
-                .map(|candidate| (candidate, 0))
-                .collect(),
-            excluded_judgments: BTreeSet::new(),
-        };
-        let mut judgment_ids = BTreeSet::new();
-        for judgment in &self.judgments {
-            let valid = judgment_ids.insert(judgment.id.clone())
-                && judgment.eligible
-                && !judgment.conflicted
-                && !judgment.coerced
-                && !duplicate_voters.contains(&judgment.voter)
-                && candidates.contains(&judgment.candidate)
-                && improvement.get(&judgment.candidate) == Some(&judgment.assessed_improvement);
-            if valid {
-                *tally
-                    .valid_votes
-                    .get_mut(&judgment.candidate)
-                    .expect("candidate tally was initialized") += 1;
-            } else {
-                tally.excluded_judgments.insert(judgment.id.clone());
-            }
-        }
-        let first_votes = tally.valid_votes[&first.person];
-        let second_votes = tally.valid_votes[&second.person];
-        let verdict = if first_votes == 0 && second_votes == 0 {
-            CrowdVerdict::NoWinner
-        } else if first_votes == second_votes {
-            CrowdVerdict::Tie
-        } else if first_votes > second_votes {
-            CrowdVerdict::Winner(first.person.clone())
-        } else {
-            CrowdVerdict::Winner(second.person.clone())
-        };
-        Ok((tally, verdict))
+        evaluate_reciprocal_improvement(
+            [&first.person, &second.person],
+            &improvement,
+            &self.trials,
+            &self.teaching_integrity,
+            &self.judgments,
+        )
     }
+}
+
+/// Shared evidence evaluator. Callers independently establish eligibility:
+/// historical callers use guardian mantles; Rev100 uses elected governor tenures.
+pub(crate) fn evaluate_reciprocal_improvement(
+    [first, second]: [&IdentityId; 2],
+    improvement: &BTreeMap<IdentityId, u32>,
+    trials: &[PublicTrial],
+    teaching_integrity: &[TeachingIntegrityFinding],
+    judgments: &[CrowdJudgment],
+) -> Result<(AuditedCrowdTally, CrowdVerdict), SandmanorMilestoneError> {
+    let trial_domains = trials
+        .iter()
+        .filter(|trial| trial.valid && trial.candidate_completed_work && !trial.evidence.is_empty())
+        .map(|trial| trial.domain)
+        .collect::<BTreeSet<_>>();
+    if trial_domains != TrialDomain::ALL.into_iter().collect() {
+        return Err(SandmanorMilestoneError::IncompleteTrialDomains);
+    }
+    let candidates = BTreeSet::from([first.clone(), second.clone()]);
+    if trials.iter().any(|trial| {
+        !candidates.contains(&trial.candidate)
+            || !candidates.contains(&trial.teacher)
+            || trial.candidate == trial.teacher
+    }) {
+        return Err(SandmanorMilestoneError::InvalidPublicTrial);
+    }
+    for finding in teaching_integrity {
+        if finding.sabotaging() {
+            return Ok((
+                AuditedCrowdTally {
+                    valid_votes: BTreeMap::new(),
+                    excluded_judgments: judgments
+                        .iter()
+                        .map(|judgment| judgment.id.clone())
+                        .collect(),
+                },
+                CrowdVerdict::VoidForTeachingSabotage(finding.teacher.clone()),
+            ));
+        }
+    }
+    if teaching_integrity
+        .iter()
+        .map(|finding| &finding.teacher)
+        .collect::<BTreeSet<_>>()
+        != candidates.iter().collect::<BTreeSet<_>>()
+    {
+        return Err(SandmanorMilestoneError::MissingTeachingIntegrity);
+    }
+
+    let duplicate_voters = duplicate_values(judgments.iter().map(|entry| &entry.voter));
+    let mut tally = AuditedCrowdTally {
+        valid_votes: candidates
+            .iter()
+            .cloned()
+            .map(|candidate| (candidate, 0))
+            .collect(),
+        excluded_judgments: BTreeSet::new(),
+    };
+    let mut judgment_ids = BTreeSet::new();
+    for judgment in judgments {
+        let valid = judgment_ids.insert(judgment.id.clone())
+            && judgment.eligible
+            && !judgment.conflicted
+            && !judgment.coerced
+            && !duplicate_voters.contains(&judgment.voter)
+            && candidates.contains(&judgment.candidate)
+            && improvement.get(&judgment.candidate) == Some(&judgment.assessed_improvement);
+        if valid {
+            *tally
+                .valid_votes
+                .get_mut(&judgment.candidate)
+                .expect("candidate tally was initialized") += 1;
+        } else {
+            tally.excluded_judgments.insert(judgment.id.clone());
+        }
+    }
+    let first_votes = tally.valid_votes[first];
+    let second_votes = tally.valid_votes[second];
+    let verdict = if first_votes == 0 && second_votes == 0 {
+        CrowdVerdict::NoWinner
+    } else if first_votes == second_votes {
+        CrowdVerdict::Tie
+    } else if first_votes > second_votes {
+        CrowdVerdict::Winner(first.clone())
+    } else {
+        CrowdVerdict::Winner(second.clone())
+    };
+    Ok((tally, verdict))
 }
 
 fn duplicate_values<'a, T: Ord + Clone + 'a>(values: impl Iterator<Item = &'a T>) -> BTreeSet<T> {

@@ -137,8 +137,11 @@ fn public_role_projection_contains_lifecycle_continuity() {
     let roles = read("artifacts/hueman_stonebend_roles.md");
     assert!(roles.contains("## Title Lifecycle and Constitutional Continuity"));
     assert!(roles.contains("a Claim is not automatically a Title"));
-    assert!(roles.contains("High Freemason replacement requires independent Forge review"));
-    assert!(roles.contains("without a permanent speaker or locked numerical threshold"));
+    assert!(roles.contains(
+        "Freemason replacement requires a certified election and independent seal transfer"
+    ));
+    assert!(roles.contains("neither candidate nor outgoing bearer certifies the transfer"));
+    assert!(roles.contains("branch election thresholds do not become witness quorums"));
 }
 
 #[test]

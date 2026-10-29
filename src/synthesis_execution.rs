@@ -50,6 +50,7 @@ impl SynthesisExecution {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum SynthesisExecutionError {
     UnknownRecipe,
+    NonCanonicalRecipe,
     Compile(SynthesisRecipeCompileError),
     Aim(AimBuildError),
     Landing(ScriptApplicationError),
@@ -81,9 +82,15 @@ fn build_canonical_aim(
 ) -> Result<Aim, SynthesisExecutionError> {
     match recipe.recipe_id() {
         "pixy_confusion" => {
+            if recipe != &crate::pixy_confusion_recipe() {
+                return Err(SynthesisExecutionError::NonCanonicalRecipe);
+            }
             pixy_confusion_aim(recipe, scripts).map_err(SynthesisExecutionError::Aim)
         }
         "gremlin_tinker" => {
+            if recipe != &crate::gremlin_tinker_recipe() {
+                return Err(SynthesisExecutionError::NonCanonicalRecipe);
+            }
             gremlin_tinker_aim(recipe, scripts).map_err(SynthesisExecutionError::Aim)
         }
         _ => Err(SynthesisExecutionError::UnknownRecipe),
@@ -145,6 +152,41 @@ mod tests {
         assert_eq!(
             execute_synthesis_recipe(&point, &unknown),
             Err(SynthesisExecutionError::UnknownRecipe)
+        );
+    }
+
+    #[test]
+    fn execution_rejects_altered_content_under_known_recipe_ids() {
+        let point = Point::origin();
+        let altered_pixy = crate::SynthesisRecipe::new(
+            "pixy_confusion",
+            "Pixy Confusion Recipe",
+            vec![crate::RecipeIntent::ChangeFrame(crate::FrameId::Gremlin)],
+        );
+        let altered_gremlin = crate::SynthesisRecipe::new(
+            "gremlin_tinker",
+            "Gremlin Tinker Recipe",
+            vec![crate::RecipeIntent::ChangeFrame(crate::FrameId::Pixy)],
+        );
+        let canonical_pixy = crate::pixy_confusion_recipe();
+        let altered_pixy_title = crate::SynthesisRecipe::new(
+            "pixy_confusion",
+            "Renamed Pixy Recipe",
+            canonical_pixy.intents().to_vec(),
+        )
+        .with_faculty_manifestations(canonical_pixy.faculty_manifestations().to_vec());
+
+        assert_eq!(
+            execute_synthesis_recipe(&point, &altered_pixy),
+            Err(SynthesisExecutionError::NonCanonicalRecipe)
+        );
+        assert_eq!(
+            execute_synthesis_recipe(&point, &altered_gremlin),
+            Err(SynthesisExecutionError::NonCanonicalRecipe)
+        );
+        assert_eq!(
+            execute_synthesis_recipe(&point, &altered_pixy_title),
+            Err(SynthesisExecutionError::NonCanonicalRecipe)
         );
     }
 }

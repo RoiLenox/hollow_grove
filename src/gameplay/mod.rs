@@ -8,6 +8,7 @@
 mod application;
 mod archive;
 mod boardwalk;
+mod boardwalk_territory;
 mod deep_pressure;
 mod identity;
 mod living_world;
@@ -34,6 +35,7 @@ pub use crate::world::sympiote_foundation::{
 pub use application::*;
 pub use archive::*;
 pub use boardwalk::*;
+pub use boardwalk_territory::*;
 pub use deep_pressure::*;
 pub use identity::*;
 pub use living_world::*;

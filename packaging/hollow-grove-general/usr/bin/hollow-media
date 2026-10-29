@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -u
+case "${1:-}" in
+    play-pause|previous|next|stop) action=$1 ;;
+    *) printf 'usage: hollow-media {play-pause|previous|next|stop}\n' >&2; exit 2 ;;
+esac
+if ! command -v playerctl >/dev/null 2>&1; then
+    printf 'Install playerctl to use the media keys.\n' >&2
+    exit 127
+fi
+# Track the last active desktop player; fall back if its proxy is unavailable.
+if command -v playerctld >/dev/null 2>&1; then
+    playerctld daemon >/dev/null 2>&1 || true
+fi
+exec playerctl --no-messages --player=playerctld,%any "$action"

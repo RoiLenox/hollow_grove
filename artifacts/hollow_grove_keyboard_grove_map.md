@@ -24,31 +24,31 @@ Status: deterministic generated projection; not constitutional authority
 
 | Key | Meaning | Memory hook |
 |---|---|---|
-| A | Assets | MAKE |
+| A | AI | Artificial intelligence |
 | B | Browse | Web |
-| C | Chat | Communicate |
-| D | Develop | Code/build |
-| E | Edit | Modify |
+| C | Code | Source code |
+| D | Downloads | Acquire files |
+| E | Email | Mail |
 | F | Files | Filesystem |
 | G | Games | PLAY |
 | H | ← Movement | Flynt |
-| I | Images | View images |
+| I | Inspect | Look inside |
 | J | ↓ Movement | Glaüshouse |
 | K | ↑ Movement | Stonebend |
 | L | → Movement | Sandmanor |
 | M | Music | HEAR |
-| N | News | Feeds |
+| N | Network | Connections |
 | O | Office | Productivity |
 | P | Photos | Photography |
-| Q | Query | Ask AI/search |
+| Q | Query | Find information |
 | R | Record | Capture |
 | S | Settings | Configure |
-| T | Tasks | To-do/work |
+| T | Time | Clock and timing |
 | U | Utilities | System tools |
-| V | Video | WATCH |
-| W | Write | Compose |
-| X | eXchange | Finance/markets |
-| Y | sYnc | Transfer/sync |
+| V | Videos | WATCH |
+| W | Wrappers | Windows compatibility |
+| X | eXecute | Run commands and workflows |
+| Y | sYnc | Folder/device sync |
 | Z | Zip | Archives |
 
 H/J/K/L are the movement tool. Every other letter is a stable domain

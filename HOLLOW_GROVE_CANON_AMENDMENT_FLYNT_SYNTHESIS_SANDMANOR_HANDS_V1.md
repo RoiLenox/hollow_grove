@@ -1,5 +1,11 @@
 # Hollow Grove Canon Amendment: Flynt Synthesis and Sandmanor Hands V1
 
+Sandmanor Revision 100 reconciliation, 2026-10-25:
+`SANDMANOR_REV100_GOVERNANCE_AMENDMENT.md` supersedes this document's earlier
+Sandmanor Form pairing and Hand-only fourth-stage/guardian succession rules.
+The earlier Sandmanor records below retain historical provenance. This notice
+does not reconcile the separately pending Flynt Revision 100 integration.
+
 Current Form boundary, 2026-10-08: Gargoyle and Werewolf never combine.
 
 The user's current clarification adopts Sympiote Grades I, II and III before

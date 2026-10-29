@@ -13,6 +13,12 @@ Runtime specification is `HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md`.
 Where this document uses constitutional language, it projects those authorities
 into product and system context without replacing them.
 
+Current Glaüshouse governance follows `GLAUSHOUSE_REV100_GOVERNANCE_AMENDMENT.md`:
+nine equal elected Persephone seats, The Call with six of nine votes, and a
+nine-year Prima Donna term. Civic Nightingale admission is separate from the
+historical clinical role named Nightingale. Older conflicting rank/Form and
+succession summaries below are historical; clinical licensure remains independent.
+
 Hollow Grove is the primary system.
 Hueman is a standalone playable expression of Hollow Grove, not the foundation beneath it.
 Current Synthesis remains an intermediate artifact and route layer in this repository, but it does not replace Hollow Grove's constitutional role.
@@ -212,8 +218,8 @@ Stonebend establishes lawful Name, Title, structure, boundary, continuity, recor
 Its constitutional people are the Geralds. Its three principal authorities are:
 
 - Hypergiant — the singular highest office and custodian of constitutional integrity;
-- Proliteriate — the permanent distributed public network that witnesses Yield through temporary bounded mandates;
-- Freemason — the structural execution institution led by the singular High Freemason.
+- Proliteriate — the elected professional office protecting Yield alongside its permanent distributed witness network;
+- Freemason — the elected professional office bearing the High Freemason seal within the permanent craft institution.
 
 These authorities separate Claim, Title, and Yield; they are not three equal
 sovereigns. Transformation never grants office, recognition never substitutes
@@ -241,7 +247,15 @@ names completion without declaring metaphysical perfection.
 That institutional sequence survives as the archive-compatible
 `geography.route.aura-way` Design projection. The controlling permanent
 `route.aura-way` instead joins Stonebend and Flynt: The Way Back descends from
-Stonebend and ascends from Flynt, and Stairway to Heaven is ascent-only.
+Stonebend and ascends from Flynt. Current public signage on one curved mountain
+highway is **Stonebend: H.T.T. — Highway to Hell** descending to Flynt and
+**Flynt: S.T.H. — Stairway to Heaven** ascending to Stonebend. The ascent label
+does not make the physical highway one-way. **Basin Motor Speedway (B.M.S.)**
+is the separate straight bidirectional connection. **The Hippo Dome** occupies
+the flat land between the arc and chord; **Hippodrones** are its concession
+workforce. No additional corridor, shortcut or accession test follows from these
+names. The permanent Way Back source-law identity and existing archive IDs
+remain distinct; their unresolved legal binding is not decided by signage.
 
 The second Stonebend pass is canonically defined in
 `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md`. Stonebend has three
@@ -257,12 +271,15 @@ sovereign terminology and stable IDs are LEGACY / SUPERSEDED compatibility
 data. The Freemason forges the Claim, the Hypergiant bears the Title, and the
 Proliteriate shields the Yield.
 
-The Proliteriate is a permanent distributed network whose active voice is a
-temporary, recallable, issue-specific witness. One power may challenge; the
-other two distinct powers must concur to remove. Removal preserves a
-Tombstone. The Hypergiant title may be vacant, never passes by automatic
-inheritance, and cannot be invested without the complete Lazerhorn succession
-path.
+Current governance is defined by `STONEBEND_REV100_GOVERNANCE_AMENDMENT.md`.
+Construction is Journeyman → Brickmason → Proliteriate; Craftsmanship is
+Craftsman → Artisan → Freemason; Duty is Squire → Justice → Hypergiant.
+Professional offices have six-year terms staggered three years, majority/runoff
+voting and reviewed recall. One current professional officer may initiate the
+Trial of Duty; both must support removal with independent Court findings.
+The Acclamation fills a lawful sovereign vacancy through Justice qualification,
+Claim/Yield verification and citizen majority or top-two runoff. Reign is
+indefinite. No route grants Title or serves as an Acclamation prerequisite. Historical selection records remain readable without granting new office.
 
 The third Stonebend pass is canonically defined in
 `STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md`. A Claim is not
@@ -276,9 +293,9 @@ During Hypergiant vacancy, narrow recorded continuity mandates
 may preserve existing duties or immediate boundaries but cannot become
 Hypergiant, appoint a Hypergiant, or grow permanent through use. The Forge may be
 vacant without losing its prior records; replacement requires independent
-review and produces only one active High Freemason. The Proliteriate network
-has no total office vacancy and gains no permanent speaker or numerical
-threshold.
+election certification and seal transfer for the same elected Freemason.
+The Proliteriate office may be vacant while the witness network persists;
+professional election thresholds do not become witness quorums.
 
 Lawful material Hollowing raises Current by authorized removal of removable
 burden while preserving essential fractions, stable batch identity, common

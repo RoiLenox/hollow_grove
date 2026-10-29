@@ -65,7 +65,7 @@ pub fn canonical_house_institutions() -> InstitutionCatalog {
     // Save-compatible legacy ID for the one site displayed as Aura Field.
     let aura_fields = site("site.sandmanor.aura-fields");
     let medical_district = site("site.glaushouse.central-medical-district");
-    InstitutionCatalog {
+    let mut catalog = InstitutionCatalog {
         institutions: vec![
             Institution {
                 id: stonebend.clone(),
@@ -263,7 +263,7 @@ pub fn canonical_house_institutions() -> InstitutionCatalog {
             },
             Office {
                 id: stonebend::high_freemason_office_id(),
-                name: "High Freemason".into(),
+                name: "Freemason (High Freemason seal)".into(),
                 scope: OfficeScope::Institution,
                 institution: Some(freemason.clone()),
                 house: Some(House::Stonebend),
@@ -275,6 +275,15 @@ pub fn canonical_house_institutions() -> InstitutionCatalog {
                     "CustodyCertification".into(),
                     "LawfulExecution".into(),
                 ],
+            },
+            Office {
+                id: stonebend::proliteriate_office_id(),
+                name: "Proliteriate".into(),
+                scope: OfficeScope::House,
+                institution: Some(proliteriate.clone()),
+                house: Some(House::Stonebend),
+                singular: true,
+                authority: vec!["PublicWorks".into(), "YieldProtection".into()],
             },
             Office {
                 id: sandmanor::sandman_office_id(),
@@ -293,6 +302,24 @@ pub fn canonical_house_institutions() -> InstitutionCatalog {
                     "StandardsOfEvidence".into(),
                     "ConfigurationRule".into(),
                 ],
+            },
+            Office {
+                id: sandmanor::mino_office_id(),
+                name: "The Mino".into(),
+                scope: OfficeScope::Institution,
+                institution: Some(sandmen.clone()),
+                house: Some(House::Sandmanor),
+                singular: true,
+                authority: vec!["NorthRegionalPublicService".into()],
+            },
+            Office {
+                id: sandmanor::cent_office_id(),
+                name: "The Cent".into(),
+                scope: OfficeScope::Institution,
+                institution: Some(sandmen.clone()),
+                house: Some(House::Sandmanor),
+                singular: true,
+                authority: vec!["SouthRegionalPublicService".into()],
             },
             Office {
                 id: glaushouse::prima_donna_office_id(),
@@ -601,7 +628,58 @@ pub fn canonical_house_institutions() -> InstitutionCatalog {
                 InstitutionalEntityId::Institution(glaushouse),
             ),
         ],
+    };
+    let coordinator = glaushouse::governance::house_of_persephone_id();
+    catalog.institutions.push(Institution {
+        id: coordinator.clone(),
+        name: "House of Persephone".into(),
+        kinds: vec![InstitutionKind::Government],
+        house: Some(House::Glaushouse),
+        domains: vec!["inter-Muse-House coordination".into()],
+        headquarters: None,
+        public_visibility: Visibility::Public,
+        internal_secrecy: SecrecyLevel::Internal,
+    });
+    for house in glaushouse::governance::MuseHouse::ALL {
+        catalog.institutions.push(Institution {
+            id: house.institution_id(),
+            name: house.name().into(),
+            kinds: vec![InstitutionKind::Medical, InstitutionKind::Cultural],
+            house: Some(House::Glaushouse),
+            domains: vec!["independently qualified professional practice".into()],
+            headquarters: None,
+            public_visibility: Visibility::Public,
+            internal_secrecy: SecrecyLevel::Internal,
+        });
+        catalog.offices.push(Office {
+            id: house.office_id(),
+            name: format!("Persephone de {}", house.name()),
+            scope: OfficeScope::Institution,
+            institution: Some(house.institution_id()),
+            house: Some(House::Glaushouse),
+            singular: true,
+            authority: vec!["MuseHouseCoordination".into(), "CallElector".into()],
+        });
+        catalog.relationships.push(rel(
+            &format!(
+                "relationship.glaushouse.persephone-coordinates-{}",
+                house.slug()
+            ),
+            InstitutionalEntityId::Institution(coordinator.clone()),
+            RelationshipKind::Coordinates,
+            InstitutionalEntityId::Institution(house.institution_id()),
+        ));
+        catalog.relationships.push(rel(
+            &format!(
+                "relationship.glaushouse.persephone-represents-{}",
+                house.slug()
+            ),
+            InstitutionalEntityId::Office(house.office_id()),
+            RelationshipKind::Represents,
+            InstitutionalEntityId::Institution(house.institution_id()),
+        ));
     }
+    catalog
 }
 
 #[cfg(test)]
