@@ -48,10 +48,10 @@ arch_packages = [
 
 [[family]]
 key = "A"
-meaning = "Assets"
-memory_hook = "MAKE"
-bindings = ["Mod+A", "Mod+Shift+A", "Mod+Ctrl+A"]
-commands = ["aseprite", "blender", "lmms"]
+meaning = "AI"
+memory_hook = "Artificial intelligence"
+bindings = ["Mod+A", "Mod+Shift+A", "Mod+Ctrl+A", "Mod+Alt+A"]
+commands = ["opencode", "codex", "hollow-ai", "ollama", "python3", "kitty", "gemini", "aichat"]
 classification = "optional"
 
 [[family]]
@@ -64,26 +64,26 @@ classification = "optional"
 
 [[family]]
 key = "C"
-meaning = "Chat"
-memory_hook = "Communicate"
-bindings = ["Mod+C", "Mod+Shift+C", "Mod+Ctrl+C", "Mod+Alt+C"]
-commands = ["himalaya", "hollow-outlook", "element-desktop", "discord"]
+meaning = "Code"
+memory_hook = "Source code"
+bindings = ["Mod+C", "Mod+Shift+C", "Mod+Ctrl+C"]
+commands = ["lapce", "kitty", "helix", "zeditor"]
 classification = "optional"
 
 [[family]]
 key = "D"
-meaning = "Develop"
-memory_hook = "Code/build"
-bindings = ["Mod+D", "Mod+Shift+D", "Mod+Ctrl+D", "Mod+Alt+D"]
-commands = ["codex", "opencode", "code", "zeditor"]
+meaning = "Downloads"
+memory_hook = "Acquire files"
+bindings = ["Mod+D", "Mod+Shift+D"]
+commands = ["qbittorrent", "kitty", "rtorrent"]
 classification = "optional"
 
 [[family]]
 key = "E"
-meaning = "Edit"
-memory_hook = "Modify"
-bindings = ["Mod+E", "Mod+Shift+E", "Mod+Ctrl+E", "Mod+Alt+E"]
-commands = ["helix", "lapce", "nvim", "micro"]
+meaning = "Email"
+memory_hook = "Mail"
+bindings = ["Mod+E", "Mod+Shift+E", "Mod+Ctrl+E"]
+commands = ["thunderbird", "kitty", "himalaya"]
 classification = "optional"
 
 [[family]]
@@ -91,7 +91,7 @@ key = "F"
 meaning = "Files"
 memory_hook = "Filesystem"
 bindings = ["Mod+F", "Mod+Shift+F", "Mod+Ctrl+F", "Mod+Alt+F"]
-commands = ["yazi", "thunar", "dolphin", "pcmanfm-qt"]
+commands = ["yazi", "nautilus", "dolphin", "pcmanfm-qt"]
 classification = "optional"
 
 [[family]]
@@ -104,10 +104,10 @@ classification = "optional"
 
 [[family]]
 key = "I"
-meaning = "Images"
-memory_hook = "View images"
+meaning = "Inspect"
+memory_hook = "Look inside"
 bindings = ["Mod+I", "Mod+Shift+I", "Mod+Ctrl+I", "Mod+Alt+I"]
-commands = ["imv", "loupe", "gwenview", "qview"]
+commands = ["kitty", "htop", "fastfetch", "sensors", "journalctl"]
 classification = "optional"
 
 [[family]]
@@ -115,15 +115,15 @@ key = "M"
 meaning = "Music"
 memory_hook = "HEAR"
 bindings = ["Mod+M", "Mod+Shift+M", "Mod+Ctrl+M", "Mod+Alt+M"]
-commands = ["audiotube", "youtui", "cmus", "tauon"]
+commands = ["audiotube", "youtui", "spotify-launcher", "spicetify", "hollow-spotify", "spt", "kitty"]
 classification = "optional"
 
 [[family]]
 key = "N"
-meaning = "News"
-memory_hook = "Feeds"
+meaning = "Network"
+memory_hook = "Connections"
 bindings = ["Mod+N", "Mod+Shift+N", "Mod+Ctrl+N", "Mod+Alt+N"]
-commands = ["newsboat", "liferea", "rssguard", "fluent-reader"]
+commands = ["kitty", "nmtui", "nm-connection-editor", "nmcli", "ssh", "hollow-network-ssh"]
 classification = "optional"
 
 [[family]]
@@ -138,16 +138,16 @@ classification = "general"
 key = "P"
 meaning = "Photos"
 memory_hook = "Photography"
-bindings = ["Mod+P", "Mod+Shift+P", "Mod+Ctrl+P", "Mod+Alt+P"]
-commands = ["darktable", "rawtherapee", "digikam", "shotwell"]
+bindings = ["Mod+P", "Mod+Shift+P", "Mod+Ctrl+P"]
+commands = ["imv", "digikam", "darktable"]
 classification = "optional"
 
 [[family]]
 key = "Q"
 meaning = "Query"
-memory_hook = "Ask AI/search"
+memory_hook = "Find information"
 bindings = ["Mod+Q", "Mod+Shift+Q", "Mod+Ctrl+Q"]
-commands = ["gemini", "ollama", "aichat"]
+commands = ["kitty", "python3", "hollow-query", "fzf", "rg", "bat", "xdg-open", "less", "man", "apropos"]
 classification = "optional"
 
 [[family]]
@@ -162,16 +162,16 @@ classification = "optional"
 key = "S"
 meaning = "Settings"
 memory_hook = "Configure"
-bindings = ["Mod+S", "Mod+Shift+S", "Mod+Ctrl+S", "Mod+Alt+S"]
-commands = ["nmtui", "blueman-manager", "nm-connection-editor", "pwvucontrol"]
+bindings = ["Mod+S", "Mod+Shift+S", "Mod+Alt+S"]
+commands = ["kitty", "helix", "blueman-manager", "pwvucontrol"]
 classification = "optional"
 
 [[family]]
 key = "T"
-meaning = "Tasks"
-memory_hook = "To-do/work"
+meaning = "Time"
+memory_hook = "Clock and timing"
 bindings = ["Mod+T", "Mod+Shift+T", "Mod+Ctrl+T", "Mod+Alt+T"]
-commands = ["taskwarrior-tui", "task", "planify"]
+commands = ["kitty", "peaclock", "gnome-clocks", "python3", "hollow-time", "tclock", "tty-clock"]
 classification = "optional"
 
 [[family]]
@@ -184,34 +184,34 @@ classification = "optional"
 
 [[family]]
 key = "V"
-meaning = "Video"
+meaning = "Videos"
 memory_hook = "WATCH"
 bindings = ["Mod+V", "Mod+Shift+V", "Mod+Ctrl+V", "Mod+Alt+V"]
-commands = ["freetube", "vlc", "mpv", "haruna"]
+commands = ["python3", "hollow-video", "kodi", "xdg-open", "zenity", "mpv", "freetube"]
 classification = "optional"
 
 [[family]]
 key = "W"
-meaning = "Write"
-memory_hook = "Compose"
+meaning = "Wrappers"
+memory_hook = "Windows compatibility"
 bindings = ["Mod+W", "Mod+Shift+W", "Mod+Ctrl+W", "Mod+Alt+W"]
-commands = ["obsidian", "apostrophe", "ghostwriter", "marktext"]
+commands = ["python3", "hollow-wrappers", "flatpak", "zenity", "protontricks", "yad"]
 classification = "optional"
 
 [[family]]
 key = "X"
-meaning = "eXchange"
-memory_hook = "Finance/markets"
-bindings = []
-commands = []
-classification = "empty"
+meaning = "eXecute"
+memory_hook = "Run commands and workflows"
+bindings = ["Mod+X", "Mod+Shift+X", "Mod+Ctrl+X"]
+commands = ["kitty", "python3", "hollow-execute", "fzf"]
+classification = "optional"
 
 [[family]]
 key = "Y"
 meaning = "sYnc"
-memory_hook = "Transfer/sync"
-bindings = ["Mod+Y", "Mod+Shift+Y", "Mod+Ctrl+Y", "Mod+Alt+Y"]
-commands = ["localsend", "croc", "wormhole-rs"]
+memory_hook = "Folder/device sync"
+bindings = ["Mod+Y", "Mod+Shift+Y", "Mod+Ctrl+Y"]
+commands = ["syncthing", "grsync", "systemctl", "xdg-open", "kitty", "python3", "hollow-sync"]
 classification = "optional"
 
 [[family]]
@@ -219,7 +219,7 @@ key = "Z"
 meaning = "Zip"
 memory_hook = "Archives"
 bindings = ["Mod+Z", "Mod+Shift+Z", "Mod+Ctrl+Z", "Mod+Alt+Z"]
-commands = ["file-roller", "ark", "xarchiver", "peazip"]
+commands = ["file-roller", "python3", "hollow-zip", "zenity", "kitty", "bsdtar"]
 classification = "optional"
 
 [[special_application]]
@@ -243,7 +243,7 @@ classification = "optional"
 [[special_application]]
 role = "media-and-capture"
 bindings = ["Mod+Shift+Comma", "Mod+Shift+Period", "Print", "Mod+Shift+Equal", "Mod+Ctrl+Minus", "Mod+Ctrl+Equal", "XF86Audio*"]
-commands = ["playerctl", "niri", "obs", "grim", "slurp", "wl-copy", "wpctl"]
+commands = ["playerctl", "hollow-media", "niri", "obs", "grim", "slurp", "wl-copy", "wpctl"]
 classification = "optional"
 
 [[special_application]]
