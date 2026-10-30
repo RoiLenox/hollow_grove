@@ -700,7 +700,7 @@ fn run_lore_cli(args: &[String]) -> io::Result<()> {
 fn run_architecture_cli(args: &[String]) -> io::Result<()> {
     use hollow_grove::architecture_audit::ArchitectureCoverageReport;
     use hollow_grove::gameplay::GameApplicationService;
-    let mut root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    let mut root = hollow_grove::source_inventory::default_source_root();
     let mut save = None;
     let mut handoff = None;
     let mut json = false;

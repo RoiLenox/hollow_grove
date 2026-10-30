@@ -6,6 +6,10 @@ Owns `/usr/bin/hollow-grove`, the command suite under
 the Niri broker. The source inventory contains no developer build caches or
 personal world state. Architecture inspection uses it by default from any
 working directory; `--source-root PATH` explicitly selects another inventory.
+The binaries locate inspection inputs beside a development executable or under
+their installation prefix, so moving an installation does not retain or require
+the original build machine's checkout. Foundation checkpoint validation uses
+the same source lookup.
 
 This recipe incorporates the working October 29, 2026 occamsrazer CLI package.
 Its build and source identity now participate in the same five-package release

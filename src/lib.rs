@@ -66,6 +66,7 @@ pub mod runtime_rampart_fixture;
 pub mod seer_ceremony;
 pub mod semantic;
 pub mod snapshot_boundary;
+pub mod source_inventory;
 pub mod symptom;
 pub mod syndicate_catalog;
 pub mod synthesis_execution;

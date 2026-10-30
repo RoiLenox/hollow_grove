@@ -899,7 +899,7 @@ pub fn build_foundation_checkpoint_validation_report() -> io::Result<String> {
     validate_current_grip_inheritance_foundation()?;
     validate_aura_polarity_foundation()?;
 
-    let repo_root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"));
+    let repo_root = crate::source_inventory::default_source_root();
     let checkpoint_doc =
         fs::read_to_string(repo_root.join("HOLLOW_GROVE_EMBODIED_WORLD_FOUNDATION_V1.md"))?;
     let scenario_doc =
