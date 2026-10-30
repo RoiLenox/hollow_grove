@@ -1,6 +1,6 @@
 pkgname=hueman
 pkgver=@VERSION@
-pkgrel=3
+pkgrel=4
 pkgdesc='Hueman companion application for Hollow Grove OS'
 arch=('any')
 url='https://github.com/RoiLenox/hollow_grove'

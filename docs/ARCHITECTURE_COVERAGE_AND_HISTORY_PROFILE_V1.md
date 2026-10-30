@@ -1,4 +1,8 @@
-Current extension: the adopted [survey-frame case](../STONEBEND_SURVEY_FRAME_FIRST_CASE_V1.md)
+Historical performance record: use the [Operational Entrypoint](../HOLLOW_GROVE_OPERATIONAL_ENTRYPOINT_V1.md)
+and live `architecture --json` for current coverage. The measurements and
+counts below belong to their stated checkpoints.
+
+Recorded extension: the adopted [survey-frame case](../STONEBEND_SURVEY_FRAME_FIRST_CASE_V1.md)
 raises coverage to four verified bindings and 22 bounded architecture components,
 with ten historical route contracts still unbound. Current reports use architecture
 V2 and lore V4. The performance measurements below remain the recorded V6 comparison.

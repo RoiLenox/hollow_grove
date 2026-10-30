@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+binary=/usr/lib/hollow-grove/cli/hollow-grove
+if [[ "${1:-}" == architecture ]]; then
+    explicit_root=false
+    for arg in "$@"; do
+        if [[ "$arg" == --source-root ]]; then explicit_root=true; fi
+    done
+    if [[ "$explicit_root" == false ]]; then
+        exec "$binary" "$@" --source-root /usr/share/hollow-grove/source
+    fi
+fi
+exec "$binary" "$@"

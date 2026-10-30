@@ -1,0 +1,63 @@
+pkgname=hollow-grove-cli
+pkgver=@VERSION@
+pkgrel=2
+pkgdesc='Hollow Grove command line tools and read-only source inspection'
+arch=('x86_64')
+url='https://github.com/RoiLenox/hollow_grove'
+license=('LicenseRef-Hollow-Grove-Proprietary')
+depends=('hollow-grove-core' 'hollow-grove-general' 'glibc' 'gcc-libs' 'bash')
+makedepends=('cargo' 'python' 'rustfmt')
+options=('!debug')
+source=('@SOURCE_ARCHIVE@')
+sha256sums=('@SOURCE_SHA256@')
+_source_root="hollow-grove-$pkgver"
+_bins=(hollow-grove hollow_deck adaptive_topology_live hollow_grove_runtime hollow_grove_niri_bridge hg-dev current_synthesis_tui hollow_grove_semantic guide_transition_audit)
+
+_cargo() {
+    RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir/$_source_root=/usr/share/hollow-grove/source --remap-path-prefix=$srcdir=/usr/src/hollow-grove --remap-path-prefix=${CARGO_HOME:-$HOME/.cargo}=/usr/share/cargo" cargo "$@"
+}
+
+prepare() {
+    cd "$srcdir/$_source_root"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+    cd "$srcdir/$_source_root"
+    local args=() b
+    for b in "${_bins[@]}"; do args+=(--bin "$b"); done
+    _cargo build --frozen --release --features dev-tools "${args[@]}" --target-dir "$srcdir/target"
+}
+
+check() {
+    cd "$srcdir/$_source_root"
+    _cargo test --frozen --features dev-tools --bin hollow-grove --bin current_synthesis_tui --target-dir "$srcdir/target"
+    python3 tools/build_registrar.py --check
+    python3 tools/verify-active-geography.py
+}
+
+package() {
+    local repository_root="$srcdir/$_source_root" b
+    for b in "${_bins[@]}"; do
+        if LC_ALL=C grep -aFq -e "$srcdir" -e "${CARGO_HOME:-$HOME/.cargo}" "$srcdir/target/release/$b"; then
+            printf 'CLI binary contains a private build path: %s\n' "$b" >&2
+            return 1
+        fi
+        install -Dm755 "$srcdir/target/release/$b" "$pkgdir/usr/lib/hollow-grove/cli/$b"
+    done
+    ln -s ../core/hollow_grove_game_service "$pkgdir/usr/lib/hollow-grove/cli/hollow_grove_game_service"
+    ln -s ../bin/hollow-niri "$pkgdir/usr/lib/hollow-grove/cli/hollow-niri"
+    while IFS= read -r b; do
+        if [[ "$b" != hueman && ! -e "$pkgdir/usr/lib/hollow-grove/cli/$b" ]]; then
+            ln -s hg-dev "$pkgdir/usr/lib/hollow-grove/cli/$b"
+        fi
+    done < <("$srcdir/target/release/hg-dev" --list)
+    ln -s /usr/bin/hueman "$pkgdir/usr/lib/hollow-grove/cli/hueman"
+    install -Dm755 "$repository_root/packaging/hollow-grove-cli/hollow-grove" "$pkgdir/usr/bin/hollow-grove"
+    install -Dm644 "$repository_root/packaging/hollow-grove-cli/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 "$repository_root/SOURCE-MANIFEST.json" "$pkgdir/usr/share/doc/$pkgname/SOURCE-MANIFEST.json"
+    install -Dm644 "$repository_root/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # Hash-check authored inputs; omit every check/build byproduct.
+    python3 "$repository_root/tools/install-source-inventory.py" \
+        --destination "$pkgdir/usr/share/hollow-grove/source"
+}

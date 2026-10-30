@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "reviewed_source_commit": "d67c5f0af7662dc18e791ad59258b4937d8c79d5",
+  "scope": "current source conformance; historical inventory and compatibility preserved; no enactment",
+  "historical_inventory_sha256": "adf19a616d4d30ed45f52381318515acc9ff6fa96722388925380bf5401e52ea",
+  "allowed_occurrences": {
+    "HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md": {
+      "category": "protected-source-conflict",
+      "lines": {
+        "descent, Flynt or Basin Proof of Persistence, Lazerhorn climb, eligibility, and": 1
+      }
+    },
+    "HOLLOW_GROVE_V2_CONSTITUTIONAL_SPECIFICATION.md": {
+      "category": "historical",
+      "lines": {
+        "two-power removal, Tombstone, and Lazerhorn succession supplement);": 1
+      }
+    },
+    "HOLLOW_GROVE_WHOLE_CONSTITUTIONAL_INTEGRATION_AUDIT_V1.md": {
+      "category": "historical",
+      "lines": {
+        "- Hypergiant succession cannot bypass Lazerhorn or become automatic": 1,
+        "- detailed Lazerhorn gameplay.": 1,
+        "Lazerhorn succession, and Title lifecycle;": 1,
+        "| Hypergiant succession | yes | yes | Diamond survives tenure; Tombstone | Lazerhorn and no inheritance | locally complete |": 1,
+        "| People/regions | Geralds; Stonebend; three gates; Lazerhorn path | Minorians/Minoans; Farm, Fields, Content Farm, Beach, Current Break | Nightingales and clinical ranks; Glauspitals; Glaüshouse | Basin founding peoples, Manticorp, Gallows/Gallowry |": 1,
+        "| Succession/vacancy | Lazerhorn path, Diamond vacancy, Forge replacement, Proliteriate continuity | Contest succession; joint interim governance is primarily documentary | accession sequence exists; full vacancy/restoration continuity is incomplete | explicitly unspecified and unreachable |": 1
+      }
+    },
+    "STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md": {
+      "category": "historical",
+      "lines": {
+        "## 13. Hypergiant Succession and The Lazerhorn": 1,
+        "- every Lazerhorn gameplay encounter;": 1,
+        "> No Hypergiant claims Diamond without climbing The Lazerhorn.": 1,
+        "> Revision 100 supersession, 2026-10-25: old office selection, Lazerhorn": 1,
+        "basic Lazerhorn succession path.": 1,
+        "→ climb of The Lazerhorn": 1
+      }
+    },
+    "STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md": {
+      "category": "historical",
+      "lines": {
+        "- Lazerhorn gameplay encounters;": 1,
+        "- a removed Hypergiant must complete the full Lazerhorn succession path;": 1,
+        "> Revision 100 supersession, 2026-10-25: old office selection, Lazerhorn": 1,
+        "the Second Pass three-gate topology, or the complete Lazerhorn succession": 1,
+        "| Hypergiant | bearer tenure | Diamond, ordinary administration, records, gates, succession evidence | complete Lazerhorn succession |": 1
+      }
+    },
+    "docs/FLYNT_REV_C_CONTINUATION.md": {
+      "category": "historical",
+      "lines": {
+        "Stonebend appointment/seal, executive appeal and shared Lazerhorn/removal": 1,
+        "high appeals. Compromise lines 866–894 retain older removal/Lazerhorn/Forge": 1
+      }
+    },
+    "docs/HOLLOW_GROVE_ACTIVE_GEOGRAPHY_CORRECTION_2026-10-27.md": {
+      "category": "historical",
+      "lines": {
+        "The active Lazerhorn references were removed, rather than left as deprecation": 1,
+        "including Lazerhorn at line 873. This is a **category 1 protected source-law": 1
+      }
+    },
+    "docs/HOLLOW_GROVE_GENESIS_ADOPTION_DOCKET_2026-10-27.md": {
+      "category": "historical",
+      "lines": {
+        "interior; optional roof; and Hippodrones as concession workers only. Lazerhorn": 1,
+        "| STON-02, SB-07 | `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md:866–875`; S5 lines 102–118; `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md:1–10`; `STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md:1–10` | Retain retirement and explicit legacy readers; reconcile surviving shared removal/ascent text through authorized scope review. Do not revive Lazerhorn or substitute a road test. **SOURCE_CONFLICT**. |": 1
+      }
+    },
+    "docs/HOLLOW_GROVE_STONEBEND_FLYNT_PARITY_CLOSURE_2026-10-26.md": {
+      "category": "historical",
+      "lines": {
+        "Stonebend selection/appeal/Lazerhorn reconciliation packet first; retain the": 1,
+        "| PF-09 — shared hierarchy `ENACTED_SOURCE`; retained clauses `SOURCE_CONFLICT` | Current map already makes the Compromise constitutional root, Bond/runtime subordinate in its domain, and one shared Court (`REPOSITORY_AUTHORITY_MAP.md:21–42,61–70,278–280`). Architecture confirms separate ratification/seal (`HOLLOW_GROVE_CONSTITUTIONAL_ARCHITECTURE_V1.md:175–191`). SB-06/07 identify surviving executive-appeal and Lazerhorn contradictions. | Keep the existing map; reconcile precise contradictory source clauses through authorized review. The July audit is historical; neither its old “Court absent” finding nor October source labels prove full parity. Do not create a second Court or authority map. |": 1,
+        "| SB-07 — `LEGACY_SUPERSEDED` in new design/explicit supplements; `SOURCE_CONFLICT` in shared source | V2 retires Lazerhorn from current accession and geography (`STONEBEND_CONSTITUTION_V2.md:102–108,269–272`); both follow-on supplements mark old procedures legacy at lines 1–4. Yet `HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md:866–875` still requires the old removal/ascent chain and Lazerhorn. | Reconcile the exact shared clauses through reviewed scope/assent. Preserve old `Diamond` and Lazerhorn records/readers; never rename the gate into Stairway or impose any new route as an Acclamation test. Retirement in approved design is not a completed route migration. |": 1,
+        "| `STONEBEND_THREE_GATES_OFFICES_AND_TITLE_SCOPE_V1.md:1–16`; `STONEBEND_TITLE_LIFECYCLE_AND_CONSTITUTIONAL_CONTINUITY_V1.md:1–23` | Follow-on compatibility supplements. Explicit supersession notices preserve scopes, lifecycle and historical readers while retiring former selection/removal/Lazerhorn rules. |": 1
+      }
+    },
+    "docs/STONEBEND_SOURCE_RECONCILIATION_SCHEDULE_2026-10-27.md": {
+      "category": "historical",
+      "lines": {
+        "> descent, Flynt or Basin Proof of Persistence, Lazerhorn climb, eligibility, and": 1
+      }
+    },
+    "docs/reference/STONEBEND_CONSTITUTION_V2_PRE_REV100.md": {
+      "category": "historical",
+      "lines": {
+        "> No claimant bears the Hypergiant title without climbing The Lazerhorn.": 1,
+        "Lazerhorn, a lawful vacancy, sealed accession, and public oath. Form, Frame,": 1,
+        "Lazerhorn, eligibility, and investiture path.": 1,
+        "continuity, and the Lazerhorn succession path.": 1,
+        "ended tenure; and The Lazerhorn before Hypergiant investiture.": 1
+      }
+    },
+    "src/world/stonebend.rs": {
+      "category": "compatibility-verification",
+      "lines": {
+        "HypergiantSelectionPhase::LazerhornClimbed,": 1,
+        "LazerhornClimbed,": 1,
+        "Self::FlyntProofOfPersistence => Some(Self::LazerhornClimbed),": 1,
+        "Self::LazerhornClimbed => Some(Self::AccessionEligible),": 1,
+        "lazerhorn_climbed: bool,": 1,
+        "lazerhorn_climbed: true,": 2
+      }
+    },
+    "src/world/stonebend/second_pass.rs": {
+      "category": "compatibility-verification",
+      "lines": {
+        "/// LEGACY Lazerhorn record interpreter. Rev100 office grants are made only by": 1,
+        "LazerhornClimbed,": 1,
+        "Self::LazerhornClimbed => 6,": 1,
+        "Self::LazerhornClimbed,": 1
+      }
+    },
+    "src/world/stonebend/third_pass.rs": {
+      "category": "compatibility-verification",
+      "lines": {
+        "CompleteLazerhornSuccession,": 1,
+        "RequiredReturnPath::CompleteLazerhornSuccession": 1
+      }
+    },
+    "tests/route_network_gameplay.rs": {
+      "category": "compatibility-verification",
+      "lines": {
+        ".contains(\"lazerhorn\")": 1
+      }
+    },
+    "tests/stonebend_documentation_conformance.rs": {
+      "category": "compatibility-verification",
+      "lines": {
+        "assert!(!document.to_lowercase().contains(\"lazerhorn\"), \"{name}\");": 1,
+        "assert!(!generated.to_lowercase().contains(\"lazerhorn\"));": 1
+      }
+    },
+    "tests/stonebend_rev100_governance.rs": {
+      "category": "compatibility-verification",
+      "lines": {
+        ".contains(\"Lazerhorn\")": 1
+      }
+    },
+    "tests/stonebend_second_pass_documentation.rs": {
+      "category": "compatibility-verification",
+      "lines": {
+        "\"Lazerhorn\",": 1,
+        "\"No Hypergiant claims Diamond without climbing The Lazerhorn.\",": 1,
+        "assert!(!document.to_lowercase().contains(\"lazerhorn\"));": 1,
+        "assert!(SECOND_PASS.contains(\"Lazerhorn\")); // Preserved historical source.": 1
+      }
+    },
+    "tests/stonebend_three_gates_offices.rs": {
+      "category": "compatibility-verification",
+      "lines": {
+        "HypergiantSuccessionStage::LazerhornClimbed": 1,
+        "assert!(!process.has_stage(HypergiantSuccessionStage::LazerhornClimbed));": 1,
+        "assert!(process.has_stage(HypergiantSuccessionStage::LazerhornClimbed));": 1,
+        "fn complete_lazerhorn_path_produces_one_new_diamond_tenure() {": 1,
+        "fn lazerhorn_is_required_and_recommendation_or_lineage_cannot_bypass_it() {": 1,
+        "identity(\"claim.stonebend.fixture-missing-lazerhorn\"),": 1,
+        "let candidate = identity(\"being.stonebend.fixture-missing-lazerhorn\");": 1,
+        "succession_id(\"succession.stonebend.fixture-missing-lazerhorn\"),": 1
+      }
+    },
+    "tests/stonebend_title_lifecycle_continuity.rs": {
+      "category": "compatibility-verification",
+      "lines": {
+        "RequiredReturnPath::CompleteLazerhornSuccession": 1
+      }
+    }
+  },
+  "reviewed_protected_updates": {
+    "docs/HOLLOW_GROVE_GENESIS_ADOPTION_DOCKET_2026-10-27.md": {
+      "previous_sha256": "d72ff17af5cb8c6552a14d0f6b09f67d6ceb5d59340eaa30c4c4011c2bfe4abc",
+      "sha256": "a4d543e99a7e062c4e4eb1fcdc4dc065af144dc7128b5e8c1066733774ef1d2c",
+      "review": "d67c5f0 records the later accepted Route 2 founding model at the top of the docket; preserved source trace remains historical and activation remains blocked. See the founding compact and procedure drafts."
+    },
+    "src/gameplay/runtime.rs": {
+      "previous_sha256": "197546c794c18fa7ca8983304915d45448c6a9f4c88c1144453f1b1842e3f467",
+      "sha256": "9df4764379ee2e254e8715ca0e1f54015209602b132e0a5b915c132f34dd80af",
+      "review": "d67c5f0 adds Boardwalk persons, two local span maps, physical stair entry/exit and replay validation; no sovereign succession or canonical route edge is added. Covered by tests/boardwalk_territory.rs and docs/BOARDWALK_GOVERNING_DOCTRINE_V0_1_IMPLEMENTATION.md."
+    },
+    "src/gameplay/world.rs": {
+      "previous_sha256": "8da9af052362e4dd754811aaeb3f49f5fa13e962bc72765363b55c9b5fe0e37d",
+      "sha256": "d8bd5812e1b9c0e4ba03c4879f36ee0bd833e7b845df1d3880be381e36ddfe99",
+      "review": "d67c5f0 adds the two Boardwalk span layouts, local presence/notice IDs and stair positions; old maps and stable route IDs are preserved. Covered by tests/boardwalk_territory.rs and route_network_gameplay."
+    }
+  }
+}

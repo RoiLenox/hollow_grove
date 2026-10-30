@@ -1,7 +1,7 @@
 # Render with tools/prepare-arch-packages.py; build the generated PKGBUILD.
 pkgname=hollow-grove-general
 pkgver=@VERSION@
-pkgrel=12
+pkgrel=13
 pkgdesc='Hardware-neutral Hollow Grove OS desktop profile and native Niri integration'
 arch=('x86_64')
 url='https://github.com/RoiLenox/hollow_grove'

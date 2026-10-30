@@ -66,6 +66,7 @@ The current product boundary remains:
   integration.
 - `hollow-grove-desktop`: complete desktop dependency profile.
 - `hollow-grove-core`: authoritative local application service.
+- `hollow-grove-cli`: command suite and read-only source/proof inspection.
 - `hueman`: separately versioned presentation companion.
 
 The release system will add `hollow-grove-keyring`,

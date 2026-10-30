@@ -93,8 +93,23 @@ art and game production from these passes.
 ## Developer commands
 
 The checked `rust-toolchain.toml` pins Rust, formatting, and Clippy. Ordinary
-builds compile only the seven runtime/test-facing binaries; the 71 historical
+root-package builds compile nine runtime/test-facing binaries; the historical
 audits and generators remain available without inflating every edit cycle.
+
+Use `./verify-edit.sh` for source conformance and default-runtime compilation;
+append an integration-test filter for a focused behavior check. Use
+`./verify-integration.sh` for both feature configurations, strict lint, source
+contracts, Python tools, Godot and the playable lifecycle. The existing
+`./verify-full.sh` remains the extended release adversarial/fuzz/soak gate;
+`./verify-fast.sh` retains its historical broader integration/benchmark behavior.
+These workflows share Cargo's target directory instead of retaining an extra
+CI build tree for the default feature configuration.
+
+The current implementation and release blockers are summarized in the
+[Operational Entrypoint](HOLLOW_GROVE_OPERATIONAL_ENTRYPOINT_V1.md).
+All five package recipes, including the installed CLI and source inspection
+inventory, are owned under `packaging/`. Regenerate Registrar data with
+`python3 tools/build_registrar.py`; `--check` detects drift without writing.
 
 ```text
 cargo test --workspace --all-features --offline

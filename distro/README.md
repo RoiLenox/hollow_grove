@@ -18,6 +18,7 @@ addresses, credentials or personal configuration.
 | Desktop defaults, keyboard language, native Niri helper | `hollow-grove-general` |
 | Complete desktop dependency set and product profile | `hollow-grove-desktop` |
 | Authoritative application/world service and local integration launcher | `hollow-grove-core` |
+| Command suite and read-only installed source/proof inventory | `hollow-grove-cli` |
 | Presentation, controls and companion application entry | `hueman` |
 | Display/GPU policy, device names, personal accounts and files | Individual machine/user |
 
@@ -57,7 +58,7 @@ Run `./build.sh` inside a generated directory. The wrapper pins makepkg's
 checks. Additional makepkg arguments may follow it; for example,
 `./build.sh --config /absolute/path/to/distro/makepkg-x86_64.conf`. For release,
 use Arch devtools in a clean chroot with the selected repository snapshot,
-build the four packages, lint the result, and exercise install/upgrade/remove
+build the five packages, lint the result, and exercise install/upgrade/remove
 in disposable machines. A signed source candidate can be prepared with
 `--signed-tag TAG`; public release additionally needs package/repository/image
 signatures, resolved dependency provenance and installation/recovery evidence.

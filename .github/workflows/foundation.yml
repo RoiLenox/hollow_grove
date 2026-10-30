@@ -30,11 +30,16 @@ jobs:
           python3 tools/test_prepare_arch_packages.py
           python3 tools/test_hg_distribution.py
           python3 tools/test_hg_machine_audit.py
+          python3 tools/test_source_inventory.py
+          python3 tools/test_active_geography.py
+          python3 tools/test_registrar_generation.py
+          python3 tools/build_registrar.py --check
+          python3 tools/verify-active-geography.py
           python3 tools/hg-distribution.py audit
       - name: Strict Clippy
         run: cargo clippy --workspace --all-targets --all-features --locked -- -D warnings
       - name: Test runtime without optional developer tools
-        run: CARGO_TARGET_DIR=target/runtime-check cargo test --workspace --locked
+        run: cargo test --workspace --locked
       - name: Test workspace including developer tools and graphical client
         run: cargo test --workspace --all-features --locked
       - name: Repository whitespace

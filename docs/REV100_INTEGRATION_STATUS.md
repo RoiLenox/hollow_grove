@@ -1,5 +1,10 @@
 # Revision 100 integration checkpoint
 
+Historical checkpoint: later work includes Glaüshouse and Flynt governance.
+Use the [Operational Entrypoint](../HOLLOW_GROVE_OPERATIONAL_ENTRYPOINT_V1.md)
+for current implementation/deployment scope and remaining release gates. The
+dated results and next-step descriptions below are preserved as recorded.
+
 ## Current checkpoint — Stonebend continuity and Sandmanor governance
 
 Date: 2026-10-25. Resumed through `~/implament.md`. The earlier Stonebend

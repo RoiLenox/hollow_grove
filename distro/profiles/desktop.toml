@@ -6,7 +6,7 @@ base = "Arch Linux"
 # These packages supplement applications.toml's required_base list. The
 # preparation tool merges both lists into the desktop package dependencies.
 packages = [
-  "hollow-grove-general", "hollow-grove-core", "hueman",
+  "hollow-grove-general", "hollow-grove-core", "hollow-grove-cli", "hueman",
   "pipewire", "pipewire-alsa", "pipewire-pulse", "swayidle",
   "firefox", "yazi", "helix", "network-manager-applet",
   "xdg-desktop-portal", "power-profiles-daemon",

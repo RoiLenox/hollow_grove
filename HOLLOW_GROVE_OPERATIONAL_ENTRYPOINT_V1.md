@@ -6,6 +6,47 @@ This is the short path from Hollow Grove's constitutional meaning to the
 currently playable experience. It does not outrank the Compromise, the House
 constitutions, the Guide seam, or the runtime contracts.
 
+## Current source and release status — 29 October 2026
+
+This is the current implementation-status entry point. Older audit and
+continuation documents retain their dated evidence; their historical "next"
+steps do not override this summary. Re-run `hollow-grove architecture --json`
+and `python3 tools/verify-backend-contracts.py` for current declared coverage.
+
+The reviewed source checkpoint `d67c5f0` includes the two Boardwalk levels,
+read-only Registrar, all four bounded House governance adapters, and current
+geography signage with historical IDs preserved. Architecture V3 declares
+23 components and 14 bindings, including ten headless House handoffs whose
+gameplay presentations remain deferred. These counts describe declared
+bindings, not completed actions in a player's save.
+
+The subsequent lean-release work adds reproducible five-package ownership,
+source-only geography validation, deterministic Registrar generation, optional
+graphical dependencies and separate edit/integration verification commands.
+The October 27 occurrence inventory remains an immutable historical record;
+`contracts/geography/active-source.v1.json` records the current classifications
+and three reviewed later checkpoint changes without resolving source law.
+
+Deployment is recorded in per-host installation receipts, not inferred from a
+source commit or test count. The October 29 laptop installation already included
+its local fifth CLI package; the repository now owns that recipe. Release
+manifests must identify all five products and their exact source/payload hashes.
+
+The existing one-mint path remains incomplete: Route 2's four-House founding
+model is approved design, while the [founding procedure](docs/HOLLOW_GROVE_FOUNDING_PROCEDURE_AND_FIRST_ADOPTION_DRAFT_V1.md)
+and [civic administration](docs/HOLLOW_GROVE_FOUNDING_CIVIC_ROLLS_AND_ADMINISTRATION_DRAFT_V1.md)
+retain pending terms/evidence. Q terminal succession remains fail-closed.
+General Synthesis, Synblock crafting, Synbalm healing, grade advancement,
+shared institutional integration and remote Hueman collaboration are separate
+unfinished product work. The backend decision register, existing authority map
+and founding dockets own those choices; optimization does not enact them.
+
+Use `./verify-edit.sh` during narrow edits, `./verify-integration.sh` for source
+qualification, and the existing extended release checks before final issuance.
+Keep authored source, compatibility fixtures, current/rollback packages and
+state evidence. Retire only reviewed derived caches under the
+[retention policy](docs/BUILD_RETENTION.md).
+
 ## The One-Line Model
 
 ```text

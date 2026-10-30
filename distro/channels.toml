@@ -7,6 +7,7 @@ build_once_promote_unchanged = true
 
 [packages]
 required = [
+  "hollow-grove-cli",
   "hollow-grove-core",
   "hollow-grove-desktop",
   "hollow-grove-general",

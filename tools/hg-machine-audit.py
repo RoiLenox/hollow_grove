@@ -181,6 +181,7 @@ def audit(root: Path, profile: dict) -> dict:
     )
 
     required_packages = [
+        "hollow-grove-cli",
         "hollow-grove-core",
         "hollow-grove-desktop",
         "hollow-grove-general",
