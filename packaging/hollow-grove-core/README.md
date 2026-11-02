@@ -17,3 +17,12 @@ shadowing the installed presentation client.
 
 Durable data lives beneath `$XDG_DATA_HOME/hollow-grove`; machine-local state
 lives beneath `$XDG_STATE_HOME/hollow-grove`.
+# Installed world and device handoff
+
+Use `hollow-grove-device status` for read-only readiness, `import-world PATH`
+to migrate an existing catalog into an empty installed world, and
+`configure-peer SSH_ALIAS` followed by `handoff` to move default-world progress
+between matching installed Core/Hueman pairs. Handoff parks the sender, refuses
+divergent state, verifies payloads and retains recovery copies. See
+`docs/TWO_DEVICE_OPERATION_V1.md` in the source inventory for the complete flow.
+The Core launcher requires Python and util-linux; SSH is needed for handoff.

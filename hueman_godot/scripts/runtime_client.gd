@@ -23,6 +23,10 @@ var _session_id: String
 var _peer := StreamPeerTCP.new()
 var _receive_buffer := PackedByteArray()
 var _pending_requests := {}
+var _shared_config := {}
+var _hello_sent := false
+var _authenticated := false
+var _auth_started_ms := 0
 
 
 func _init(session_id: String) -> void:
@@ -38,6 +42,15 @@ func connect_to_runtime(host := DEFAULT_HOST, port := DEFAULT_PORT) -> Error:
 
 
 func connect_to_configured_runtime() -> Error:
+	_shared_config = {}
+	_hello_sent = false
+	_authenticated = false
+	var config_path := OS.get_environment("HOLLOW_GROVE_SHARED_CONFIG")
+	if config_path != "":
+		var parsed = JSON.parse_string(FileAccess.get_file_as_string(config_path))
+		if not _valid_shared_config(parsed):
+			return ERR_INVALID_DATA
+		_shared_config = parsed
 	var host := OS.get_environment(HOST_ENVIRONMENT_VARIABLE).strip_edges()
 	if host == "":
 		host = DEFAULT_HOST
@@ -50,14 +63,32 @@ func connect_to_configured_runtime() -> Error:
 	return connect_to_runtime(host, port)
 
 
+func _valid_shared_config(config: Variant) -> bool:
+	if not config is Dictionary or config.get("version") != 1 \
+			or config.get("session_id", "") != _session_id:
+		return false
+	var identity := RegEx.create_from_string("^[a-z0-9][a-z0-9.-]{0,127}$")
+	for key in ["account_id", "device_id", "session_id"]:
+		if not config.get(key) is String or identity.search(config[key]) == null:
+			return false
+	var token = config.get("token")
+	return token is String and RegEx.create_from_string("^[0-9a-f]{64}$").search(token) != null
+
+
+func is_shared_runtime() -> bool:
+	return not _shared_config.is_empty()
+
+
 func disconnect_from_runtime() -> void:
 	_peer.disconnect_from_host()
 	_receive_buffer.clear()
 	_pending_requests.clear()
+	_hello_sent = false
+	_authenticated = false
 
 
 func is_runtime_connected() -> bool:
-	return _peer.get_status() == StreamPeerTCP.STATUS_CONNECTED
+	return _peer.get_status() == StreamPeerTCP.STATUS_CONNECTED and (_shared_config.is_empty() or _authenticated)
 
 
 func send_intent(request_id: String, intent_type: String, payload := {}) -> Error:
@@ -91,8 +122,22 @@ func poll() -> void:
 	if poll_result != OK:
 		protocol_error.emit("runtime transport poll failed: %s" % error_string(poll_result))
 		return
-	if not is_runtime_connected():
+	if _peer.get_status() != StreamPeerTCP.STATUS_CONNECTED:
 		return
+	if not _shared_config.is_empty() and not _authenticated:
+		if not _hello_sent:
+			var hello := {"type": "SharedSessionHello", "version": 1,
+				"account_id": _shared_config["account_id"], "device_id": _shared_config["device_id"],
+				"session_id": _session_id, "token": _shared_config["token"]}
+			if _peer.put_data((JSON.stringify(hello) + "\n").to_utf8_buffer()) != OK:
+				disconnect_from_runtime()
+				return
+			_hello_sent = true
+			_auth_started_ms = Time.get_ticks_msec()
+		elif Time.get_ticks_msec() - _auth_started_ms > 5000:
+			disconnect_from_runtime()
+			protocol_error.emit("Shared player authentication timed out")
+			return
 	var available := _peer.get_available_bytes()
 	if available <= 0:
 		return
@@ -141,6 +186,16 @@ func _fail_oversized_response() -> void:
 
 
 func _accept_response(response: Dictionary) -> void:
+	if not _shared_config.is_empty() and not _authenticated:
+		if _hello_sent and response.get("type") == "SharedSessionWelcome" \
+				and response.get("version") == 1 and response.get("accepted") == true \
+				and response.get("session_id") == _session_id \
+				and response.get("account_id") == _shared_config["account_id"]:
+			_authenticated = true
+		else:
+			disconnect_from_runtime()
+			protocol_error.emit("Shared player authentication failed")
+		return
 	if int(response.get("protocol_version", -1)) != PROTOCOL_VERSION:
 		protocol_error.emit("runtime response used an unsupported protocol version")
 		return

@@ -6,7 +6,8 @@ update_channel = "testing"
 build_authority = false
 promotion_authority = false
 signing_authority = false
-graphics_profile = "intel-panel-nvidia-render"
+# Observed 2026-10-30: firmware dedicated-GPU mode; NVIDIA owns the panel.
+graphics_profile = "nvidia-panel-nvidia-render"
 root_filesystem = "ext4"
 rollback_strategy = "verified-backup-until-reinstall"
 target_root_filesystem = "btrfs"

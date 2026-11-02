@@ -1,6 +1,6 @@
 pkgname=hollow-grove-cli
 pkgver=@VERSION@
-pkgrel=2
+pkgrel=3
 pkgdesc='Hollow Grove command line tools and read-only source inspection'
 arch=('x86_64')
 url='https://github.com/RoiLenox/hollow_grove'

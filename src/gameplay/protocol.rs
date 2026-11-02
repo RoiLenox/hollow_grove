@@ -52,6 +52,12 @@ static RUNTIME_LEASE_NONCE: AtomicU64 = AtomicU64::new(0);
 #[serde(tag = "type", deny_unknown_fields)]
 pub enum GameplayIntent {
     SyncIntent,
+    /// Fresh, read-only snapshot. Never consumes the mutation replay ledger.
+    ObserveIntent,
+    /// Host checkpoint without a state change or a replay-ledger entry.
+    CheckpointIntent {
+        slot_id: String,
+    },
     EnterHollowGroveIntent,
     LeaveHollowGroveIntent,
     EstablishHuemanIntent {
@@ -136,6 +142,8 @@ impl GameplayIntent {
     pub const fn kind(&self) -> &'static str {
         match self {
             Self::SyncIntent => "SyncIntent",
+            Self::ObserveIntent => "ObserveIntent",
+            Self::CheckpointIntent { .. } => "CheckpointIntent",
             Self::EnterHollowGroveIntent => "EnterHollowGroveIntent",
             Self::LeaveHollowGroveIntent => "LeaveHollowGroveIntent",
             Self::EstablishHuemanIntent { .. } => "EstablishHuemanIntent",
@@ -533,6 +541,20 @@ impl GameProtocolService {
                 )
             };
         }
+        if matches!(request.intent, GameplayIntent::ObserveIntent) {
+            return self.completed(request.request_id, Vec::new());
+        }
+        if let GameplayIntent::CheckpointIntent { slot_id } = &request.intent {
+            if request.expected_revision == self.revision() {
+                return self.save(&request, slot_id);
+            }
+            return self.rejection(
+                request.request_id,
+                ProtocolRejectionCode::StaleRevision,
+                "checkpoint revision does not match the current state".into(),
+                false,
+            );
+        }
         if self.tracked_requests.len() >= MAX_TRACKED_PROTOCOL_REQUESTS {
             return self.rejection(
                 request.request_id,
@@ -595,6 +617,8 @@ impl GameProtocolService {
             );
         }
         match &request.intent {
+            GameplayIntent::ObserveIntent => self.completed(request.request_id.clone(), Vec::new()),
+            GameplayIntent::CheckpointIntent { slot_id } => self.save(request, slot_id),
             GameplayIntent::SyncIntent => {
                 let guide_events = std::mem::take(&mut self.pending_guide_events);
                 self.completed_with_guide_events(
@@ -1873,6 +1897,8 @@ fn intent_requires_hollow_grove(intent: &GameplayIntent) -> bool {
     !matches!(
         intent,
         GameplayIntent::SyncIntent
+            | GameplayIntent::ObserveIntent
+            | GameplayIntent::CheckpointIntent { .. }
             | GameplayIntent::EnterHollowGroveIntent
             | GameplayIntent::LeaveHollowGroveIntent
             | GameplayIntent::SaveIntent { .. }
@@ -2198,11 +2224,17 @@ fn capability_views(
                 }),
         },
     ]);
+    capabilities.push(IntentCapabilityView {
+        intent_type: "ObserveIntent".into(),
+        available: true,
+        unavailable_reason: None,
+    });
     if guide_layer != WorldLayer::HollowGrove {
         for capability in &mut capabilities {
             if !matches!(
                 capability.intent_type.as_str(),
                 "SyncIntent"
+                    | "ObserveIntent"
                     | "EnterHollowGroveIntent"
                     | "LeaveHollowGroveIntent"
                     | "SaveIntent"

@@ -52,6 +52,11 @@ install -m755 packaging/hollow-grove-core/hollow-grove-service \
     "$CORE_ROOT/bin/hollow-grove-service"
 install -m755 packaging/hollow-grove-core/hollow-grove-with-hueman \
     "$CORE_ROOT/bin/hollow-grove-with-hueman"
+install -m755 packaging/hollow-grove-core/hollow-grove-device \
+    "$CORE_ROOT/bin/hollow-grove-device"
+install -m644 packaging/hollow-grove-core/shared_session.py \
+    packaging/hollow-grove-core/device.py \
+    packaging/hollow-grove-core/device-launch.sh "$CORE_ROOT/lib/hollow-grove/"
 ln -s hollow-grove-with-hueman "$CORE_ROOT/bin/hollow-grove-hueman"
 install -m755 target/release/hollow_grove_game_service \
     "$CORE_ROOT/lib/hollow-grove/core/hollow_grove_game_service"

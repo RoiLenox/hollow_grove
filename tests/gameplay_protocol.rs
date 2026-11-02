@@ -519,3 +519,85 @@ fn godot_client_is_transport_only_and_uses_the_shared_protocol_fields() {
         );
     }
 }
+
+#[test]
+fn passive_observation_is_fresh_and_does_not_consume_the_replay_ledger() {
+    let mut service = service();
+    let first = service.handle(establish_hueman("request.desktop.establish", 0));
+    assert_eq!(first.status, ProtocolResponseStatus::Completed);
+    for _ in 0..=hollow_grove::gameplay::MAX_TRACKED_PROTOCOL_REQUESTS {
+        let observed = service.handle(request(
+            "request.laptop.observe",
+            0,
+            GameplayIntent::ObserveIntent,
+        ));
+        assert_eq!(observed.revision, first.revision);
+        assert!(observed.events.is_empty());
+        assert!(observed.view.unwrap().guide_transition_events.is_empty());
+    }
+    assert_eq!(service.tracked_request_count(), 1);
+    let moved = service.handle(request(
+        "request.desktop.move",
+        first.revision,
+        GameplayIntent::MoveIntent {
+            direction: CardinalDirection::East,
+        },
+    ));
+    assert_eq!(moved.status, ProtocolResponseStatus::Completed);
+    let observed = service.handle(request(
+        "request.laptop.observe",
+        0,
+        GameplayIntent::ObserveIntent,
+    ));
+    assert_eq!(observed.revision, moved.revision);
+    assert_eq!(observed.view, moved.view);
+    let conflict = service.handle(request(
+        "request.desktop.move",
+        0,
+        GameplayIntent::ObserveIntent,
+    ));
+    assert_eq!(
+        conflict.rejection.unwrap().code,
+        ProtocolRejectionCode::RequestIdConflict
+    );
+}
+
+#[test]
+fn checkpoint_requires_current_revision_without_consuming_mutation_ledger() {
+    let root = std::env::temp_dir().join(format!("hg-checkpoint-{}", std::process::id()));
+    std::fs::create_dir_all(&root).unwrap();
+    let mut service =
+        GameProtocolService::new_with_save_root("session.fixture", rules(), &root).unwrap();
+    let established = service.handle(establish_hueman("request.establish", 0));
+    let stale = service.handle(request(
+        "request.stale-checkpoint",
+        0,
+        GameplayIntent::CheckpointIntent {
+            slot_id: "shared-autosave".into(),
+        },
+    ));
+    assert_eq!(
+        stale.rejection.unwrap().code,
+        ProtocolRejectionCode::StaleRevision
+    );
+    let saved = service.handle(request(
+        "request.checkpoint",
+        established.revision,
+        GameplayIntent::CheckpointIntent {
+            slot_id: "shared-autosave".into(),
+        },
+    ));
+    assert_eq!(saved.status, ProtocolResponseStatus::Completed);
+    assert_eq!(service.tracked_request_count(), 1);
+    let mut restored =
+        GameProtocolService::new_with_save_root("session.fixture", rules(), &root).unwrap();
+    let loaded = restored.handle(request(
+        "request.load",
+        0,
+        GameplayIntent::LoadIntent {
+            slot_id: "shared-autosave".into(),
+        },
+    ));
+    assert_eq!(loaded.view, saved.view);
+    std::fs::remove_dir_all(root).unwrap();
+}

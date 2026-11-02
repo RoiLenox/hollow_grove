@@ -107,6 +107,10 @@ CI build tree for the default feature configuration.
 
 The current implementation and release blockers are summarized in the
 [Operational Entrypoint](HOLLOW_GROVE_OPERATIONAL_ENTRYPOINT_V1.md).
+Installed world readiness, recoverable progress handoff and local Hueman
+performance settings are described in [Two-device operation](docs/TWO_DEVICE_OPERATION_V1.md).
+The [1 November 2026 software checkpoint](docs/SOFTWARE_CHECKPOINT_2026-11-01.md)
+records the two-machine verification and remaining product and release work.
 All five package recipes, including the installed CLI and source inspection
 inventory, are owned under `packaging/`. Regenerate Registrar data with
 `python3 tools/build_registrar.py`; `--check` detects drift without writing.

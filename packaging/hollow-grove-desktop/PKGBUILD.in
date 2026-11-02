@@ -1,6 +1,6 @@
 pkgname=hollow-grove-desktop
 pkgver=@VERSION@
-pkgrel=3
+pkgrel=4
 pkgdesc='Complete Hollow Grove OS desktop with the Hueman companion'
 arch=('any')
 url='https://github.com/RoiLenox/hollow_grove'

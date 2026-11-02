@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+command_path="$(readlink -f -- "${BASH_SOURCE[0]}")"
+prefix="$(cd -- "$(dirname -- "$command_path")/.." && pwd)"
+exec python3 "$prefix/lib/hollow-grove/device.py" --prefix "$prefix" "$@"
