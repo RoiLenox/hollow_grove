@@ -22,6 +22,16 @@ if ! grep -Fqx 'export/convert_text_resources_to_binary=false' \
     exit 1
 fi
 
+python3 "$SCRIPT_DIR/tools/chromatic_growth.py" project --check
+python3 "$SCRIPT_DIR/tools/verify_hueman_creator.py" --godot "$GODOT_BIN"
+
+"$GODOT_BIN" --headless --path "$SCRIPT_DIR/hueman_godot" \
+    --script res://tools/chromatic_swatch_preview.gd -- --validate-only
+"$GODOT_BIN" --headless --path "$SCRIPT_DIR/hueman_godot" \
+    --script res://tools/chromatic_swatch_preview.gd -- --study --validate-only
+"$GODOT_BIN" --headless --path "$SCRIPT_DIR/hueman_godot" \
+    --script res://tools/chromatic_swatch_preview.gd -- --growth --validate-only
+
 "$GODOT_BIN" --headless --path "$SCRIPT_DIR/hueman_godot" \
     --script res://tests/runtime_client_smoke.gd
 "$GODOT_BIN" --headless --path "$SCRIPT_DIR/hueman_godot" \

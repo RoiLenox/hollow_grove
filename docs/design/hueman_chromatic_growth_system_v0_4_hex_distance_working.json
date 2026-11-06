@@ -1,0 +1,245 @@
+{
+  "schema_version": "1.0.0",
+  "system_id": "hueman.chromatic-growth",
+  "version": "0.4",
+  "status": "working-review-only",
+  "palette": {
+    "manifest": "hollow_grove_chromatic_color_standard_v2_3_0.json",
+    "version": "2.3"
+  },
+  "provenance": {
+    "document": "HUEMAN_CHROMATIC_GROWTH_SYSTEM_V0_4_HEX_DISTANCE_CODEX.md",
+    "document_sha256": "72943c48740e47fcc16e08abe71964fda0775da74442e921e0954716c8bc156d",
+    "transcription": "Reconstructed from the complete supplied Markdown; referenced companion JSON was not present on either host. Formula/endpoints and 29 indices remain working suggestions, not approved dimensions."
+  },
+  "formula": {
+    "metric": "Euclidean distance of 8-bit sRGB channel triples",
+    "path": "normalized cumulative adjacent distances within each branch",
+    "height": "start + normalized_path * (end - start)",
+    "status": "working",
+    "illustrative_standing_pixels": 32,
+    "rounding": "half-up"
+  },
+  "boundaries": {
+    "approved_geometry": false,
+    "gameplay_stat_binding": false,
+    "progression_gates": false,
+    "production_hitboxes": false,
+    "sprite_uniform_scaling": false,
+    "base_hueman_house_swatch": null,
+    "natural_skin_personalized": true,
+    "one_active_current_form": true
+  },
+  "branches": [
+    {
+      "id": "stonebend",
+      "label": "Stonebend",
+      "start_height": 1.0,
+      "end_height": 2.1,
+      "anchors_status": "working",
+      "comparison_only": false,
+      "forms": [
+        {
+          "form_id": "design.form.stonebend.gremlin",
+          "growth_index": 0,
+          "index_status": "creator-directed"
+        },
+        {
+          "form_id": "design.form.stonebend.goblin",
+          "growth_index": 1,
+          "index_status": "creator-directed"
+        },
+        {
+          "form_id": "design.form.stonebend.ghoul",
+          "growth_index": 2,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.stonebend.spectre",
+          "growth_index": 3,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.stonebend.troll",
+          "growth_index": 4,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.stonebend.orc",
+          "growth_index": 5,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.stonebend.ogre",
+          "growth_index": 6,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.stonebend.troglodyte",
+          "growth_index": 7,
+          "index_status": "working"
+        }
+      ]
+    },
+    {
+      "id": "sandmanor_first",
+      "label": "Sandmanor — first branch",
+      "start_height": 1.0,
+      "end_height": 1.4,
+      "anchors_status": "working",
+      "comparison_only": false,
+      "forms": [
+        {
+          "form_id": "design.form.sandmanor.gnome",
+          "growth_index": 0,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.sandmanor.satyr",
+          "growth_index": 1,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.sandmanor.minotaur",
+          "growth_index": 2,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.sandmanor.hecaton",
+          "growth_index": 3,
+          "index_status": "working"
+        }
+      ]
+    },
+    {
+      "id": "sandmanor_second",
+      "label": "Sandmanor — second branch",
+      "start_height": 1.0,
+      "end_height": 1.4,
+      "anchors_status": "working",
+      "comparison_only": false,
+      "forms": [
+        {
+          "form_id": "design.form.sandmanor.elf",
+          "growth_index": 0,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.sandmanor.faun",
+          "growth_index": 1,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.sandmanor.centaur",
+          "growth_index": 2,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.sandmanor.pegasus",
+          "growth_index": 3,
+          "index_status": "working"
+        }
+      ]
+    },
+    {
+      "id": "glaushouse",
+      "label": "Glaüshouse",
+      "start_height": 1.0,
+      "end_height": 2.1,
+      "anchors_status": "working",
+      "comparison_only": false,
+      "forms": [
+        {
+          "form_id": "design.form.glaushouse.pixie",
+          "growth_index": 0,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.glaushouse.sprite",
+          "growth_index": 1,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.glaushouse.fairie",
+          "growth_index": 2,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.glaushouse.spirit",
+          "growth_index": 3,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.glaushouse.siren",
+          "growth_index": 4,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.glaushouse.nymph",
+          "growth_index": 5,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.glaushouse.sylph",
+          "growth_index": 6,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.glaushouse.muse",
+          "growth_index": 7,
+          "index_status": "working"
+        }
+      ]
+    },
+    {
+      "id": "flynt_comparison",
+      "label": "Flynt",
+      "start_height": 1.25,
+      "end_height": 2.5,
+      "anchors_status": "working",
+      "comparison_only": true,
+      "forms": [
+        {
+          "form_id": "design.form.flynt.gargoyle",
+          "growth_index": 2,
+          "index_status": "creator-directed"
+        },
+        {
+          "form_id": "design.form.flynt.medusa",
+          "growth_index": 3,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.flynt.werewolf",
+          "growth_index": 4,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.flynt.vampire",
+          "growth_index": 5,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.flynt.merman",
+          "growth_index": 6,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.flynt.mermaid",
+          "growth_index": 7,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.flynt.chimera",
+          "growth_index": 8,
+          "index_status": "working"
+        },
+        {
+          "form_id": "design.form.flynt.manticorp",
+          "growth_index": 9,
+          "index_status": "working"
+        }
+      ]
+    }
+  ]
+}

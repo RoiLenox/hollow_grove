@@ -1,0 +1,1242 @@
+{
+  "schema_version": "3.0.0",
+  "standard_id": "hollow-grove.chromatic-color-standard",
+  "version": "2.3",
+  "title": "Hollow Grove — Chromatic Color Standard v2.3",
+  "status": "creator-approved-design",
+  "approved_on": "2026-11-03",
+  "provenance": {
+    "document": "HOLLOW_GROVE_CHROMATIC_COLOR_STANDARD_V2_3_CODEX_ALL_IN_ONE.md",
+    "document_sha256": "f1a7a7d9f34f2e39feceaae7c12baf676b5cc815afcc45aed71b9bb5a42c4a54",
+    "previous_manifest": "hollow_grove_chromatic_color_standard_v2_2.json",
+    "previous_manifest_sha256": "fc814525360c4a7949c23bc7325a85ef2f8e6701ccedc4b7fb61e69912752bbc",
+    "transcription": "Reconstructed from complete creator-approved Markdown tables; referenced companion JSON was not present on either host. Schema and separation of Forms from swatches are integration choices."
+  },
+  "levels": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "houses": [
+    {
+      "id": "stonebend",
+      "name": "Stonebend",
+      "family": "Blue",
+      "orientation": {
+        "cardinal": "north",
+        "clock": 12,
+        "faculty": "Body"
+      },
+      "font": "Narkis Block",
+      "shades": [
+        {
+          "slot": "chromatic.v2_2.house.stonebend.level.1",
+          "level": 1,
+          "name": "Void Blue",
+          "name_status": "approved",
+          "hex": "#0B1026",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.stonebend.level.1"
+          },
+          "derived_from": {
+            "method": "preserved_v1",
+            "version": "1.0",
+            "slots": [
+              "house.stonebend.level.1"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.stonebend.level.2",
+          "level": 2,
+          "name": "Prussian Blue",
+          "name_status": "approved",
+          "hex": "#163A5F",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.stonebend.level.2"
+          },
+          "derived_from": {
+            "method": "preserved_v1",
+            "version": "1.0",
+            "slots": [
+              "house.stonebend.level.2"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.stonebend.level.3",
+          "level": 3,
+          "name": null,
+          "name_status": "unassigned",
+          "hex": "#235581",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": null
+          },
+          "derived_from": {
+            "method": "rgb_midpoint_half_up",
+            "slots": [
+              "chromatic.v2_2.house.stonebend.level.2",
+              "chromatic.v2_2.house.stonebend.level.4"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.stonebend.level.4",
+          "level": 4,
+          "name": "Lapis Lazuli",
+          "name_status": "approved",
+          "hex": "#2F6FA3",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.stonebend.level.3"
+          },
+          "derived_from": {
+            "method": "preserved_v1",
+            "version": "1.0",
+            "slots": [
+              "house.stonebend.level.3"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.stonebend.level.5",
+          "level": 5,
+          "name": null,
+          "name_status": "unassigned",
+          "hex": "#4282AF",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": null
+          },
+          "derived_from": {
+            "method": "rgb_midpoint_half_up",
+            "slots": [
+              "chromatic.v2_2.house.stonebend.level.4",
+              "chromatic.v2_2.house.stonebend.level.6"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.stonebend.level.6",
+          "level": 6,
+          "name": "Steel Blue",
+          "name_status": "approved",
+          "hex": "#5594BB",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.stonebend.level.4"
+          },
+          "derived_from": {
+            "method": "preserved_v1",
+            "version": "1.0",
+            "slots": [
+              "house.stonebend.level.4"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.stonebend.level.7",
+          "level": 7,
+          "name": null,
+          "name_status": "unassigned",
+          "hex": "#67A6CA",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": null
+          },
+          "derived_from": {
+            "method": "rgb_midpoint_half_up",
+            "slots": [
+              "chromatic.v2_2.house.stonebend.level.6",
+              "chromatic.v2_2.house.stonebend.level.8"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.stonebend.level.8",
+          "level": 8,
+          "name": "Air Superiority Blue",
+          "name_status": "approved",
+          "hex": "#79B7D8",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.stonebend.level.5"
+          },
+          "derived_from": {
+            "method": "preserved_v1",
+            "version": "1.0",
+            "slots": [
+              "house.stonebend.level.5"
+            ]
+          }
+        }
+      ],
+      "forms": [
+        {
+          "id": "design.form.stonebend.gremlin",
+          "name": "Gremlin",
+          "sequence": 1,
+          "swatch_slot": "chromatic.v2_2.house.stonebend.level.8"
+        },
+        {
+          "id": "design.form.stonebend.goblin",
+          "name": "Goblin",
+          "sequence": 2,
+          "swatch_slot": "chromatic.v2_2.house.stonebend.level.7"
+        },
+        {
+          "id": "design.form.stonebend.ghoul",
+          "name": "Ghoul",
+          "sequence": 3,
+          "swatch_slot": "chromatic.v2_2.house.stonebend.level.6"
+        },
+        {
+          "id": "design.form.stonebend.spectre",
+          "name": "Spectre",
+          "sequence": 4,
+          "swatch_slot": "chromatic.v2_2.house.stonebend.level.5"
+        },
+        {
+          "id": "design.form.stonebend.troll",
+          "name": "Troll",
+          "sequence": 5,
+          "swatch_slot": "chromatic.v2_2.house.stonebend.level.4"
+        },
+        {
+          "id": "design.form.stonebend.orc",
+          "name": "Orc",
+          "sequence": 6,
+          "swatch_slot": "chromatic.v2_2.house.stonebend.level.3"
+        },
+        {
+          "id": "design.form.stonebend.ogre",
+          "name": "Ogre",
+          "sequence": 7,
+          "swatch_slot": "chromatic.v2_2.house.stonebend.level.2"
+        },
+        {
+          "id": "design.form.stonebend.troglodyte",
+          "name": "Troglodyte",
+          "sequence": 8,
+          "swatch_slot": "chromatic.v2_2.house.stonebend.level.1"
+        }
+      ]
+    },
+    {
+      "id": "sandmanor",
+      "name": "Sandmanor",
+      "family": "Red",
+      "orientation": {
+        "cardinal": "east",
+        "clock": 3,
+        "faculty": "Soul"
+      },
+      "font": "Averta",
+      "shades": [
+        {
+          "slot": "chromatic.v2_2.house.sandmanor.level.1",
+          "level": 1,
+          "name": "Wine",
+          "name_status": "approved",
+          "hex": "#5A1F2A",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.sandmanor.level.1"
+          },
+          "derived_from": {
+            "method": "preserved_v1",
+            "version": "1.0",
+            "slots": [
+              "house.sandmanor.level.1"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.sandmanor.level.2",
+          "level": 2,
+          "name": "Burgundy",
+          "name_status": "approved",
+          "hex": "#80303D",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.sandmanor.level.2"
+          },
+          "derived_from": {
+            "method": "preserved_v1",
+            "version": "1.0",
+            "slots": [
+              "house.sandmanor.level.2"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.sandmanor.level.3",
+          "level": 3,
+          "name": null,
+          "name_status": "unassigned",
+          "hex": "#933846",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": null
+          },
+          "derived_from": {
+            "method": "rgb_midpoint_half_up",
+            "slots": [
+              "chromatic.v2_2.house.sandmanor.level.2",
+              "chromatic.v2_2.house.sandmanor.level.4"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.sandmanor.level.4",
+          "level": 4,
+          "name": "Redwood",
+          "name_status": "approved",
+          "hex": "#A6404F",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.sandmanor.level.3"
+          },
+          "derived_from": {
+            "method": "preserved_v1",
+            "version": "1.0",
+            "slots": [
+              "house.sandmanor.level.3"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.sandmanor.level.5",
+          "level": 5,
+          "name": null,
+          "name_status": "unassigned",
+          "hex": "#B54F5D",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": null
+          },
+          "derived_from": {
+            "method": "rgb_midpoint_half_up",
+            "slots": [
+              "chromatic.v2_2.house.sandmanor.level.4",
+              "chromatic.v2_2.house.sandmanor.level.6"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.sandmanor.level.6",
+          "level": 6,
+          "name": "Dusty Rose",
+          "name_status": "approved",
+          "hex": "#C35D6B",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.sandmanor.level.4"
+          },
+          "derived_from": {
+            "method": "preserved_v1",
+            "version": "1.0",
+            "slots": [
+              "house.sandmanor.level.4"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.sandmanor.level.7",
+          "level": 7,
+          "name": null,
+          "name_status": "unassigned",
+          "hex": "#D26C79",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": null
+          },
+          "derived_from": {
+            "method": "rgb_midpoint_half_up",
+            "slots": [
+              "chromatic.v2_2.house.sandmanor.level.6",
+              "chromatic.v2_2.house.sandmanor.level.8"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.sandmanor.level.8",
+          "level": 8,
+          "name": "Blush",
+          "name_status": "approved",
+          "hex": "#E07A86",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.sandmanor.level.5"
+          },
+          "derived_from": {
+            "method": "preserved_v1",
+            "version": "1.0",
+            "slots": [
+              "house.sandmanor.level.5"
+            ]
+          }
+        }
+      ],
+      "forms": [
+        {
+          "id": "design.form.sandmanor.gnome",
+          "name": "Gnome",
+          "sequence": 1,
+          "swatch_slot": "chromatic.v2_2.house.sandmanor.level.4",
+          "branch": "first"
+        },
+        {
+          "id": "design.form.sandmanor.satyr",
+          "name": "Satyr",
+          "sequence": 2,
+          "swatch_slot": "chromatic.v2_2.house.sandmanor.level.3",
+          "branch": "first"
+        },
+        {
+          "id": "design.form.sandmanor.minotaur",
+          "name": "Minotaur",
+          "sequence": 3,
+          "swatch_slot": "chromatic.v2_2.house.sandmanor.level.2",
+          "branch": "first"
+        },
+        {
+          "id": "design.form.sandmanor.hecaton",
+          "name": "Hecaton",
+          "sequence": 4,
+          "swatch_slot": "chromatic.v2_2.house.sandmanor.level.1",
+          "branch": "first"
+        },
+        {
+          "id": "design.form.sandmanor.elf",
+          "name": "Elf",
+          "sequence": 5,
+          "swatch_slot": "chromatic.v2_2.house.sandmanor.level.8",
+          "branch": "second"
+        },
+        {
+          "id": "design.form.sandmanor.faun",
+          "name": "Faun",
+          "sequence": 6,
+          "swatch_slot": "chromatic.v2_2.house.sandmanor.level.7",
+          "branch": "second"
+        },
+        {
+          "id": "design.form.sandmanor.centaur",
+          "name": "Centaur",
+          "sequence": 7,
+          "swatch_slot": "chromatic.v2_2.house.sandmanor.level.6",
+          "branch": "second"
+        },
+        {
+          "id": "design.form.sandmanor.pegasus",
+          "name": "Pegasus",
+          "sequence": 8,
+          "swatch_slot": "chromatic.v2_2.house.sandmanor.level.5",
+          "branch": "second"
+        }
+      ]
+    },
+    {
+      "id": "glaushouse",
+      "name": "Glaüshouse",
+      "family": "Green",
+      "orientation": {
+        "cardinal": "south",
+        "clock": 6,
+        "faculty": "Mind"
+      },
+      "font": "Eurostile",
+      "shades": [
+        {
+          "slot": "chromatic.v2_2.house.glaushouse.level.1",
+          "level": 1,
+          "name": "Brunswick Green",
+          "name_status": "approved",
+          "hex": "#163C35",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.glaushouse.level.1"
+          },
+          "derived_from": {
+            "method": "preserved_v1",
+            "version": "1.0",
+            "slots": [
+              "house.glaushouse.level.1"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.glaushouse.level.2",
+          "level": 2,
+          "name": "Pine Green",
+          "name_status": "approved",
+          "hex": "#235B4C",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.glaushouse.level.2"
+          },
+          "derived_from": {
+            "method": "preserved_v1",
+            "version": "1.0",
+            "slots": [
+              "house.glaushouse.level.2"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.glaushouse.level.3",
+          "level": 3,
+          "name": null,
+          "name_status": "unassigned",
+          "hex": "#296B57",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": null
+          },
+          "derived_from": {
+            "method": "rgb_midpoint_half_up",
+            "slots": [
+              "chromatic.v2_2.house.glaushouse.level.2",
+              "chromatic.v2_2.house.glaushouse.level.4"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.glaushouse.level.4",
+          "level": 4,
+          "name": "Viridian",
+          "name_status": "approved",
+          "hex": "#2F7A62",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.glaushouse.level.3"
+          },
+          "derived_from": {
+            "method": "preserved_v1",
+            "version": "1.0",
+            "slots": [
+              "house.glaushouse.level.3"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.glaushouse.level.5",
+          "level": 5,
+          "name": null,
+          "name_status": "unassigned",
+          "hex": "#428E73",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": null
+          },
+          "derived_from": {
+            "method": "rgb_midpoint_half_up",
+            "slots": [
+              "chromatic.v2_2.house.glaushouse.level.4",
+              "chromatic.v2_2.house.glaushouse.level.6"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.glaushouse.level.6",
+          "level": 6,
+          "name": "Jade Green",
+          "name_status": "approved",
+          "hex": "#54A283",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.glaushouse.level.4"
+          },
+          "derived_from": {
+            "method": "preserved_v1",
+            "version": "1.0",
+            "slots": [
+              "house.glaushouse.level.4"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.glaushouse.level.7",
+          "level": 7,
+          "name": null,
+          "name_status": "unassigned",
+          "hex": "#66B694",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": null
+          },
+          "derived_from": {
+            "method": "rgb_midpoint_half_up",
+            "slots": [
+              "chromatic.v2_2.house.glaushouse.level.6",
+              "chromatic.v2_2.house.glaushouse.level.8"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.glaushouse.level.8",
+          "level": 8,
+          "name": "Eton Blue",
+          "name_status": "approved",
+          "hex": "#78C9A4",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.glaushouse.level.5"
+          },
+          "derived_from": {
+            "method": "preserved_v1",
+            "version": "1.0",
+            "slots": [
+              "house.glaushouse.level.5"
+            ]
+          }
+        }
+      ],
+      "forms": [
+        {
+          "id": "design.form.glaushouse.pixie",
+          "name": "Pixie",
+          "sequence": 1,
+          "swatch_slot": "chromatic.v2_2.house.glaushouse.level.8"
+        },
+        {
+          "id": "design.form.glaushouse.sprite",
+          "name": "Sprite",
+          "sequence": 2,
+          "swatch_slot": "chromatic.v2_2.house.glaushouse.level.7"
+        },
+        {
+          "id": "design.form.glaushouse.fairie",
+          "name": "Fairie",
+          "sequence": 3,
+          "swatch_slot": "chromatic.v2_2.house.glaushouse.level.6"
+        },
+        {
+          "id": "design.form.glaushouse.spirit",
+          "name": "Spirit",
+          "sequence": 4,
+          "swatch_slot": "chromatic.v2_2.house.glaushouse.level.5"
+        },
+        {
+          "id": "design.form.glaushouse.siren",
+          "name": "Siren",
+          "sequence": 5,
+          "swatch_slot": "chromatic.v2_2.house.glaushouse.level.4"
+        },
+        {
+          "id": "design.form.glaushouse.nymph",
+          "name": "Nymph",
+          "sequence": 6,
+          "swatch_slot": "chromatic.v2_2.house.glaushouse.level.3"
+        },
+        {
+          "id": "design.form.glaushouse.sylph",
+          "name": "Sylph",
+          "sequence": 7,
+          "swatch_slot": "chromatic.v2_2.house.glaushouse.level.2"
+        },
+        {
+          "id": "design.form.glaushouse.muse",
+          "name": "Muse",
+          "sequence": 8,
+          "swatch_slot": "chromatic.v2_2.house.glaushouse.level.1"
+        }
+      ]
+    },
+    {
+      "id": "flynt",
+      "name": "Flynt",
+      "family": "Gray",
+      "orientation": {
+        "cardinal": "west",
+        "clock": 9,
+        "faculty": "Spirit"
+      },
+      "font": "Frutiger",
+      "shades": [
+        {
+          "slot": "chromatic.v2_2.house.flynt.level.1",
+          "level": 1,
+          "name": "Eerie Black",
+          "name_status": "approved",
+          "hex": "#161616",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.flynt.level.1"
+          },
+          "derived_from": {
+            "method": "rgb_mean_gray",
+            "slots": [
+              "chromatic.v2_2.house.stonebend.level.1"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.flynt.level.2",
+          "level": 2,
+          "name": "Charcoal Gray",
+          "name_status": "approved",
+          "hex": "#3A3A3A",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.flynt.level.2"
+          },
+          "derived_from": {
+            "method": "rgb_mean_gray",
+            "slots": [
+              "chromatic.v2_2.house.stonebend.level.2"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.flynt.level.3",
+          "level": 3,
+          "name": null,
+          "name_status": "unassigned",
+          "hex": "#535353",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": null
+          },
+          "derived_from": {
+            "method": "rgb_mean_gray",
+            "slots": [
+              "chromatic.v2_2.house.stonebend.level.3"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.flynt.level.4",
+          "level": 4,
+          "name": "Dim Gray",
+          "name_status": "approved",
+          "hex": "#6B6B6B",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.flynt.level.3"
+          },
+          "derived_from": {
+            "method": "rgb_mean_gray",
+            "slots": [
+              "chromatic.v2_2.house.stonebend.level.4"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.flynt.level.5",
+          "level": 5,
+          "name": null,
+          "name_status": "unassigned",
+          "hex": "#7C7C7C",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": null
+          },
+          "derived_from": {
+            "method": "rgb_mean_gray",
+            "slots": [
+              "chromatic.v2_2.house.stonebend.level.5"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.flynt.level.6",
+          "level": 6,
+          "name": "Stone Gray",
+          "name_status": "approved",
+          "hex": "#8C8C8C",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.flynt.level.4"
+          },
+          "derived_from": {
+            "method": "rgb_mean_gray",
+            "slots": [
+              "chromatic.v2_2.house.stonebend.level.6"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.flynt.level.7",
+          "level": 7,
+          "name": null,
+          "name_status": "unassigned",
+          "hex": "#9D9D9D",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": null
+          },
+          "derived_from": {
+            "method": "rgb_mean_gray",
+            "slots": [
+              "chromatic.v2_2.house.stonebend.level.7"
+            ]
+          }
+        },
+        {
+          "slot": "chromatic.v2_2.house.flynt.level.8",
+          "level": 8,
+          "name": "Silver Gray",
+          "name_status": "approved",
+          "hex": "#ADADAD",
+          "provenance": {
+            "section": "A; B",
+            "previous_slot": "house.flynt.level.5"
+          },
+          "derived_from": {
+            "method": "rgb_mean_gray",
+            "slots": [
+              "chromatic.v2_2.house.stonebend.level.8"
+            ]
+          }
+        }
+      ],
+      "place_name": "Flynt, MI",
+      "forms": [
+        {
+          "id": "design.form.flynt.gargoyle",
+          "name": "Gargoyle",
+          "sequence": 1,
+          "swatch_slot": "chromatic.v2_2.house.flynt.level.8"
+        },
+        {
+          "id": "design.form.flynt.medusa",
+          "name": "Medusa",
+          "sequence": 2,
+          "swatch_slot": "chromatic.v2_2.house.flynt.level.7"
+        },
+        {
+          "id": "design.form.flynt.werewolf",
+          "name": "Werewolf",
+          "sequence": 3,
+          "swatch_slot": "chromatic.v2_2.house.flynt.level.6"
+        },
+        {
+          "id": "design.form.flynt.vampire",
+          "name": "Vampire",
+          "sequence": 4,
+          "swatch_slot": "chromatic.v2_2.house.flynt.level.5"
+        },
+        {
+          "id": "design.form.flynt.merman",
+          "name": "Merman",
+          "sequence": 5,
+          "swatch_slot": "chromatic.v2_2.house.flynt.level.4"
+        },
+        {
+          "id": "design.form.flynt.mermaid",
+          "name": "Mermaid",
+          "sequence": 6,
+          "swatch_slot": "chromatic.v2_2.house.flynt.level.3"
+        },
+        {
+          "id": "design.form.flynt.chimera",
+          "name": "Chimera",
+          "sequence": 7,
+          "swatch_slot": "chromatic.v2_2.house.flynt.level.2"
+        },
+        {
+          "id": "design.form.flynt.manticorp",
+          "name": "Manticorp",
+          "sequence": 8,
+          "swatch_slot": "chromatic.v2_2.house.flynt.level.1"
+        }
+      ]
+    }
+  ],
+  "universal": [
+    {
+      "slot": "universal.full_black",
+      "name": "Full Black",
+      "hex": "#000000",
+      "regional_associations": [
+        "South Stonebend",
+        "Glaüshouse",
+        "South Flynt"
+      ],
+      "name_status": "approved",
+      "scope": "universal",
+      "provenance": {
+        "section": "A",
+        "previous_slot": "universal.full_black"
+      },
+      "derived_from": {
+        "method": "preserved_v1",
+        "version": "1.0",
+        "slots": [
+          "universal.full_black"
+        ]
+      }
+    },
+    {
+      "slot": "universal.full_white",
+      "name": "Full White",
+      "hex": "#FFFFFF",
+      "regional_associations": [
+        "North Flynt"
+      ],
+      "name_status": "approved",
+      "scope": "universal",
+      "provenance": {
+        "section": "A",
+        "previous_slot": "universal.full_white"
+      },
+      "derived_from": {
+        "method": "preserved_v1",
+        "version": "1.0",
+        "slots": [
+          "universal.full_white"
+        ]
+      }
+    }
+  ],
+  "relationships": {
+    "scope": "visual-design-only; not serialized runtime IDs or enacted prerequisites",
+    "sandmanor_branches": [
+      [
+        "design.form.sandmanor.gnome",
+        "design.form.sandmanor.satyr",
+        "design.form.sandmanor.minotaur",
+        "design.form.sandmanor.hecaton"
+      ],
+      [
+        "design.form.sandmanor.elf",
+        "design.form.sandmanor.faun",
+        "design.form.sandmanor.centaur",
+        "design.form.sandmanor.pegasus"
+      ]
+    ],
+    "stonebend_glaushouse_cross_pairs": [
+      [
+        "design.form.stonebend.gremlin",
+        "design.form.glaushouse.pixie"
+      ],
+      [
+        "design.form.stonebend.goblin",
+        "design.form.glaushouse.sprite"
+      ],
+      [
+        "design.form.stonebend.ghoul",
+        "design.form.glaushouse.spirit"
+      ],
+      [
+        "design.form.stonebend.spectre",
+        "design.form.glaushouse.fairie"
+      ],
+      [
+        "design.form.stonebend.troll",
+        "design.form.glaushouse.sylph"
+      ],
+      [
+        "design.form.stonebend.orc",
+        "design.form.glaushouse.nymph"
+      ],
+      [
+        "design.form.stonebend.ogre",
+        "design.form.glaushouse.siren"
+      ],
+      [
+        "design.form.stonebend.troglodyte",
+        "design.form.glaushouse.muse"
+      ]
+    ],
+    "flynt": {
+      "palette_order_is_evolution_order": false,
+      "sibling_families": [
+        {
+          "origin": "design.form.stonebend.gremlin",
+          "forms": [
+            "design.form.flynt.gargoyle",
+            "design.form.flynt.medusa"
+          ],
+          "independently_learnable": true,
+          "switching_mastery": "earned-pair-specific-challenge"
+        },
+        {
+          "origin": "design.form.sandmanor.gnome",
+          "forms": [
+            "design.form.flynt.werewolf",
+            "design.form.flynt.vampire"
+          ],
+          "independently_learnable": true,
+          "switching_mastery": "earned-pair-specific-challenge"
+        },
+        {
+          "origin": "design.form.sandmanor.elf",
+          "forms": [
+            "design.form.flynt.merman",
+            "design.form.flynt.mermaid"
+          ],
+          "independently_learnable": true,
+          "switching_mastery": "earned-pair-specific-challenge"
+        }
+      ],
+      "chimera": {
+        "form": "design.form.flynt.chimera",
+        "requires_primary_mastery": [
+          "design.form.flynt.gargoyle",
+          "design.form.flynt.werewolf",
+          "design.form.flynt.merman"
+        ],
+        "alternate_siblings_required": false
+      },
+      "manticorp": {
+        "form": "design.form.flynt.manticorp",
+        "distinct_from": [
+          "Manticorp organization",
+          "Tross sovereign office"
+        ],
+        "grants_office": false
+      },
+      "merman": {
+        "form": "design.form.flynt.merman",
+        "distinct_from": "Mariner occupational specialty"
+      }
+    },
+    "automatic_grants": {
+      "xp": false,
+      "employment": false,
+      "agency": false,
+      "citizenship": false,
+      "office": false
+    }
+  },
+  "compatibility": {
+    "previous_version": "2.2",
+    "color_slot_aliases": {
+      "1.0": {
+        "house.stonebend.level.1": "chromatic.v2_2.house.stonebend.level.1",
+        "house.stonebend.level.2": "chromatic.v2_2.house.stonebend.level.2",
+        "house.stonebend.level.3": "chromatic.v2_2.house.stonebend.level.4",
+        "house.stonebend.level.4": "chromatic.v2_2.house.stonebend.level.6",
+        "house.stonebend.level.5": "chromatic.v2_2.house.stonebend.level.8",
+        "house.sandmanor.level.1": "chromatic.v2_2.house.sandmanor.level.1",
+        "house.sandmanor.level.2": "chromatic.v2_2.house.sandmanor.level.2",
+        "house.sandmanor.level.3": "chromatic.v2_2.house.sandmanor.level.4",
+        "house.sandmanor.level.4": "chromatic.v2_2.house.sandmanor.level.6",
+        "house.sandmanor.level.5": "chromatic.v2_2.house.sandmanor.level.8",
+        "house.glaushouse.level.1": "chromatic.v2_2.house.glaushouse.level.1",
+        "house.glaushouse.level.2": "chromatic.v2_2.house.glaushouse.level.2",
+        "house.glaushouse.level.3": "chromatic.v2_2.house.glaushouse.level.4",
+        "house.glaushouse.level.4": "chromatic.v2_2.house.glaushouse.level.6",
+        "house.glaushouse.level.5": "chromatic.v2_2.house.glaushouse.level.8",
+        "house.flynt.level.1": "chromatic.v2_2.house.flynt.level.1",
+        "house.flynt.level.2": "chromatic.v2_2.house.flynt.level.2",
+        "house.flynt.level.3": "chromatic.v2_2.house.flynt.level.4",
+        "house.flynt.level.4": "chromatic.v2_2.house.flynt.level.6",
+        "house.flynt.level.5": "chromatic.v2_2.house.flynt.level.8",
+        "universal.full_black": "universal.full_black",
+        "universal.full_white": "universal.full_white"
+      },
+      "2.2": {
+        "chromatic.v2_2.house.stonebend.level.1": "chromatic.v2_2.house.stonebend.level.1",
+        "chromatic.v2_2.house.stonebend.level.2": "chromatic.v2_2.house.stonebend.level.2",
+        "chromatic.v2_2.house.stonebend.level.3": "chromatic.v2_2.house.stonebend.level.3",
+        "chromatic.v2_2.house.stonebend.level.4": "chromatic.v2_2.house.stonebend.level.4",
+        "chromatic.v2_2.house.stonebend.level.5": "chromatic.v2_2.house.stonebend.level.5",
+        "chromatic.v2_2.house.stonebend.level.6": "chromatic.v2_2.house.stonebend.level.6",
+        "chromatic.v2_2.house.stonebend.level.7": "chromatic.v2_2.house.stonebend.level.7",
+        "chromatic.v2_2.house.stonebend.level.8": "chromatic.v2_2.house.stonebend.level.8",
+        "chromatic.v2_2.house.sandmanor.level.1": "chromatic.v2_2.house.sandmanor.level.1",
+        "chromatic.v2_2.house.sandmanor.level.2": "chromatic.v2_2.house.sandmanor.level.2",
+        "chromatic.v2_2.house.sandmanor.level.3": "chromatic.v2_2.house.sandmanor.level.3",
+        "chromatic.v2_2.house.sandmanor.level.4": "chromatic.v2_2.house.sandmanor.level.4",
+        "chromatic.v2_2.house.sandmanor.level.5": "chromatic.v2_2.house.sandmanor.level.5",
+        "chromatic.v2_2.house.sandmanor.level.6": "chromatic.v2_2.house.sandmanor.level.6",
+        "chromatic.v2_2.house.sandmanor.level.7": "chromatic.v2_2.house.sandmanor.level.7",
+        "chromatic.v2_2.house.sandmanor.level.8": "chromatic.v2_2.house.sandmanor.level.8",
+        "chromatic.v2_2.house.glaushouse.level.1": "chromatic.v2_2.house.glaushouse.level.1",
+        "chromatic.v2_2.house.glaushouse.level.2": "chromatic.v2_2.house.glaushouse.level.2",
+        "chromatic.v2_2.house.glaushouse.level.3": "chromatic.v2_2.house.glaushouse.level.3",
+        "chromatic.v2_2.house.glaushouse.level.4": "chromatic.v2_2.house.glaushouse.level.4",
+        "chromatic.v2_2.house.glaushouse.level.5": "chromatic.v2_2.house.glaushouse.level.5",
+        "chromatic.v2_2.house.glaushouse.level.6": "chromatic.v2_2.house.glaushouse.level.6",
+        "chromatic.v2_2.house.glaushouse.level.7": "chromatic.v2_2.house.glaushouse.level.7",
+        "chromatic.v2_2.house.glaushouse.level.8": "chromatic.v2_2.house.glaushouse.level.8",
+        "chromatic.v2_2.house.flynt.level.1": "chromatic.v2_2.house.flynt.level.1",
+        "chromatic.v2_2.house.flynt.level.2": "chromatic.v2_2.house.flynt.level.2",
+        "chromatic.v2_2.house.flynt.level.3": "chromatic.v2_2.house.flynt.level.3",
+        "chromatic.v2_2.house.flynt.level.4": "chromatic.v2_2.house.flynt.level.4",
+        "chromatic.v2_2.house.flynt.level.5": "chromatic.v2_2.house.flynt.level.5",
+        "chromatic.v2_2.house.flynt.level.6": "chromatic.v2_2.house.flynt.level.6",
+        "chromatic.v2_2.house.flynt.level.7": "chromatic.v2_2.house.flynt.level.7",
+        "chromatic.v2_2.house.flynt.level.8": "chromatic.v2_2.house.flynt.level.8",
+        "universal.full_black": "universal.full_black",
+        "universal.full_white": "universal.full_white"
+      },
+      "2.3": {
+        "chromatic.v2_2.house.stonebend.level.1": "chromatic.v2_2.house.stonebend.level.1",
+        "chromatic.v2_2.house.stonebend.level.2": "chromatic.v2_2.house.stonebend.level.2",
+        "chromatic.v2_2.house.stonebend.level.3": "chromatic.v2_2.house.stonebend.level.3",
+        "chromatic.v2_2.house.stonebend.level.4": "chromatic.v2_2.house.stonebend.level.4",
+        "chromatic.v2_2.house.stonebend.level.5": "chromatic.v2_2.house.stonebend.level.5",
+        "chromatic.v2_2.house.stonebend.level.6": "chromatic.v2_2.house.stonebend.level.6",
+        "chromatic.v2_2.house.stonebend.level.7": "chromatic.v2_2.house.stonebend.level.7",
+        "chromatic.v2_2.house.stonebend.level.8": "chromatic.v2_2.house.stonebend.level.8",
+        "chromatic.v2_2.house.sandmanor.level.1": "chromatic.v2_2.house.sandmanor.level.1",
+        "chromatic.v2_2.house.sandmanor.level.2": "chromatic.v2_2.house.sandmanor.level.2",
+        "chromatic.v2_2.house.sandmanor.level.3": "chromatic.v2_2.house.sandmanor.level.3",
+        "chromatic.v2_2.house.sandmanor.level.4": "chromatic.v2_2.house.sandmanor.level.4",
+        "chromatic.v2_2.house.sandmanor.level.5": "chromatic.v2_2.house.sandmanor.level.5",
+        "chromatic.v2_2.house.sandmanor.level.6": "chromatic.v2_2.house.sandmanor.level.6",
+        "chromatic.v2_2.house.sandmanor.level.7": "chromatic.v2_2.house.sandmanor.level.7",
+        "chromatic.v2_2.house.sandmanor.level.8": "chromatic.v2_2.house.sandmanor.level.8",
+        "chromatic.v2_2.house.glaushouse.level.1": "chromatic.v2_2.house.glaushouse.level.1",
+        "chromatic.v2_2.house.glaushouse.level.2": "chromatic.v2_2.house.glaushouse.level.2",
+        "chromatic.v2_2.house.glaushouse.level.3": "chromatic.v2_2.house.glaushouse.level.3",
+        "chromatic.v2_2.house.glaushouse.level.4": "chromatic.v2_2.house.glaushouse.level.4",
+        "chromatic.v2_2.house.glaushouse.level.5": "chromatic.v2_2.house.glaushouse.level.5",
+        "chromatic.v2_2.house.glaushouse.level.6": "chromatic.v2_2.house.glaushouse.level.6",
+        "chromatic.v2_2.house.glaushouse.level.7": "chromatic.v2_2.house.glaushouse.level.7",
+        "chromatic.v2_2.house.glaushouse.level.8": "chromatic.v2_2.house.glaushouse.level.8",
+        "chromatic.v2_2.house.flynt.level.1": "chromatic.v2_2.house.flynt.level.1",
+        "chromatic.v2_2.house.flynt.level.2": "chromatic.v2_2.house.flynt.level.2",
+        "chromatic.v2_2.house.flynt.level.3": "chromatic.v2_2.house.flynt.level.3",
+        "chromatic.v2_2.house.flynt.level.4": "chromatic.v2_2.house.flynt.level.4",
+        "chromatic.v2_2.house.flynt.level.5": "chromatic.v2_2.house.flynt.level.5",
+        "chromatic.v2_2.house.flynt.level.6": "chromatic.v2_2.house.flynt.level.6",
+        "chromatic.v2_2.house.flynt.level.7": "chromatic.v2_2.house.flynt.level.7",
+        "chromatic.v2_2.house.flynt.level.8": "chromatic.v2_2.house.flynt.level.8",
+        "universal.full_black": "universal.full_black",
+        "universal.full_white": "universal.full_white"
+      }
+    },
+    "swatch_ids": "v2.2 token IDs retained; swatch colors and dark-to-light indices are unchanged",
+    "form_bindings": "require explicit source_version; historical Form colors are not silently reinterpreted",
+    "runtime_form_mapping": "deferred; design.form IDs are not save/enum IDs",
+    "save_migration": false
+  },
+  "mathematics": {
+    "color_space": "8-bit sRGB channels; not perceptually uniform",
+    "midpoints": {
+      "houses": [
+        "stonebend",
+        "sandmanor",
+        "glaushouse"
+      ],
+      "derived_levels": [
+        3,
+        5,
+        7
+      ],
+      "anchor_pairs": [
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          6,
+          8
+        ]
+      ],
+      "formula": "(a+b+1)//2"
+    },
+    "flynt": {
+      "source_house": "stonebend",
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "formula": "(R+G+B+1)//3",
+      "output": "(Y,Y,Y)",
+      "equal_perceived_brightness": false
+    },
+    "black_white_mix": {
+      "black_formula": "round((1-t)*c)",
+      "white_formula": "round((1-t)*c+255*t)",
+      "t_range": [
+        0,
+        1
+      ],
+      "t_source": "caller-selected",
+      "round_tie_policy": "unspecified; no mixing adapter implemented",
+      "changes_source_tokens": false,
+      "gameplay_stat_binding": false,
+      "temperature_binding": false,
+      "fan_speed_binding": false
+    }
+  },
+  "design_rules": {
+    "master_font": "Microgramma",
+    "font_policy": "Use legitimate existing assets or documented fallbacks; never bundle unlicensed fonts.",
+    "pixel_art": "Classic Pokémon Yellow readability, strong silhouettes, upright humanoid/bipedal Synthesis Forms.",
+    "historical_mold_b_native_pixels": [
+      24,
+      32
+    ],
+    "readability_reference_pixels": [
+      16,
+      16
+    ],
+    "readability_reference_is_blanket_limit": false,
+    "editorial": "Monochrome pen-and-ink/engraving with restrained regional color accents.",
+    "preserve": [
+      "physical and optical materials",
+      "natural skin and hair",
+      "accessibility",
+      "context-dependent lighting"
+    ],
+    "material_examples": [
+      "Diamond",
+      "Crystal",
+      "Jade",
+      "Opal",
+      "Mercury Mirror",
+      "Opal Oil"
+    ],
+    "central_junction_is_house": false,
+    "regional_associations_mandate_recoloring": false,
+    "legacy_outline_policy": "Audit historical Oxford Blue assets before any migration.",
+    "runtime_adoption": "Not implied by design approval; existing law, gameplay and saved state remain separate.",
+    "form_ids_are_runtime_ids": false,
+    "palette_indices_are_prerequisites": false,
+    "commit_form_only_after": "lawful Kiss Landing",
+    "preview_on_miss_commits": false,
+    "current_synthesis": [
+      "Point",
+      "Triway",
+      "Fourway",
+      "HollowGrove",
+      "CurrentSeam",
+      "AuraBeam",
+      "Point²"
+    ],
+    "execution": [
+      "Recipe",
+      "Compiler",
+      "Scripts",
+      "Aim",
+      "Fire",
+      "Miss|Kiss",
+      "Point²"
+    ],
+    "frame_state": [
+      "Frame",
+      "Current Prism",
+      "Flow",
+      "Glow"
+    ],
+    "light_emergence_dark_mastery": true,
+    "base_hueman_house_swatch": null,
+    "color_controls_gameplay": false
+  }
+}

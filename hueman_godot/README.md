@@ -1,5 +1,20 @@
 # Hueman Godot Shell
 
+## Create Your Hueman preview
+
+The isolated [HUEMAN-01 creator](../docs/design/HUEMAN_01_CREATOR_HANDOFF_20261104.md)
+supports Skin, Face and Hair customization, saved appearance, and focused
+WASD/arrow-key movement. From a graphical desktop in the repository root:
+
+```sh
+godot --path hueman_godot res://tools/hueman_01/creator.tscn
+```
+
+Save, close and relaunch to load the same avatar. The Gremlin comparison retains
+the customized Hueman appearance. This development scene uses separate preview
+storage and illustrative art. It is excluded from production exports. Headless
+verification: `python3 tools/verify_hueman_creator.py`.
+
 ## Playable retro overworld
 
 The playable game now spans all ten constitutional routes and all three

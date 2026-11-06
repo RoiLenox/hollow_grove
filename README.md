@@ -17,6 +17,21 @@ For the current implementation path, start with the concise
 [Operational Entrypoint](HOLLOW_GROVE_OPERATIONAL_ENTRYPOINT_V1.md), then use
 the constitutional reading order below for authority and lore depth.
 
+For the next Hueman art/color construction phase, use the creator-approved
+[Chromatic Color Standard v2.3](docs/design/HOLLOW_GROVE_CHROMATIC_COLOR_STANDARD_V2_3_CODEX_ALL_IN_ONE.md)
+and its [integration plan and swatch preview](docs/design/CHROMATIC_INTEGRATION_PLAN_V1.md).
+The active neutral manifest has 34 colors and 32 visual Form assignments, with
+all historical colors preserved. Form identities now progress from light to
+dark; swatch positions stay fixed. The [growth v0.4 study](docs/design/HUEMAN_CHROMATIC_GROWTH_SYSTEM_V0_4_HEX_DISTANCE_CODEX.md)
+uses separate working size proposals. Twelve formal names remain unassigned.
+The current 16-color runtime contract awaits an explicit compatibility migration.
+
+The next playable prototype is [HUEMAN-01: Create Your Hueman](docs/design/HUEMAN_01_CREATOR_HANDOFF_20261104.md):
+Skin, Face and Hair customization, independent appearance persistence, and an
+isolated movement studio. Run it from a desktop session with
+`godot --path hueman_godot res://tools/hueman_01/creator.tscn`.
+The handoff includes the existing-system inventory and proposed Stonebend entry.
+
 Read the setting in this order:
 
 1. [Hollow Grove Compromise](HOLLOW_GROVE_COMPROMISE_V1_DRAFT.md) — the shared
@@ -67,7 +82,7 @@ The short rule is: authored constitutional documents define meaning;
 
 ## Backend development scope
 
-The current work is backend-only: lore contracts, architecture, source consistency,
+The backend work covers lore contracts, architecture, source consistency,
 validation and persistence/audit requirements. Follow the
 [Backend Completion Plan](HOLLOW_GROVE_BACKEND_COMPLETION_PLAN_V1.md).
 The expanded [Boardwalk backend contracts](BOARDWALK_BACKEND_CONTRACTS_V1_DRAFT.md)
@@ -87,8 +102,8 @@ adds input/residue, passage, force and continuity requirements. Run `python3 too
 check the authored [backend register](contracts/backend/lore_registry.v1.json);
 its consistency result does not claim new commerce or Form realization. The
 [decision register](HOLLOW_GROVE_BACKEND_DECISION_REGISTER_V1.md) keeps the
-remaining choices visible. The user has excluded
-art and game production from these passes.
+remaining choices visible. Those backend passes excluded art and game
+production; the separate Chromatic design phase is described above.
 
 ## Developer commands
 
