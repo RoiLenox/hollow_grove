@@ -5,6 +5,7 @@ const VISUAL_COLOR_CONSTITUTION_RELATIVE_PATH := "src/constitutional/hollow_grov
 const PACKAGED_VISUAL_COLOR_CONSTITUTION_PATH := "res://protocol/hollow_grove_visual_color_palette.json"
 const ART_ASSET_CATALOG := preload("res://scripts/art_asset_catalog.gd")
 const RUNTIME_CLIENT := preload("res://scripts/runtime_client.gd")
+const PERFORMANCE_POLICY := preload("res://scripts/performance_policy.gd")
 const FOUNDATION_PIPELINE_ASSET_ID := "hollow-grove.prototype.foundation-pipeline-probe"
 const HUEMAN_GARGOYLE_ASSET_ID := "hollow-grove.player.hueman-gargoyle-pilot"
 const SESSION_ID := "session.hollow-grove.local"
@@ -115,6 +116,11 @@ var movement_pending := false
 var interaction_pending := false
 var case_pending := false
 var synthesis_pending := false
+var request_nonce := Crypto.new().generate_random_bytes(16).hex_encode()
+var observe_elapsed := 0.0
+var observe_request_id := ""
+var last_applied_revision := -1
+
 var request_serial := 0
 var display_position := Vector2.ZERO
 var target_position := Vector2.ZERO
@@ -163,6 +169,7 @@ var hueman_gargoyle_texture: Texture2D
 
 
 func _ready() -> void:
+	add_child(PERFORMANCE_POLICY.new())
 	repo_root_path = _resolve_repo_root()
 	art_asset_catalog = ART_ASSET_CATALOG.new()
 	if not art_asset_catalog.is_valid():
@@ -185,7 +192,7 @@ func _ready() -> void:
 	get_window().min_size = Vector2i(int(LOGICAL_SIZE.x), int(LOGICAL_SIZE.y))
 	_ensure_screen_semantics()
 	_update_logical_transform(get_viewport_rect().size)
-	runtime_client = RUNTIME_CLIENT.new(SESSION_ID)
+	runtime_client = RUNTIME_CLIENT.new(OS.get_environment("HOLLOW_GROVE_SESSION") if OS.has_environment("HOLLOW_GROVE_SESSION") else SESSION_ID)
 	runtime_client.response_received.connect(_on_runtime_response)
 	runtime_client.protocol_error.connect(_on_protocol_error)
 	set_process(true)
@@ -207,6 +214,7 @@ func _process(delta: float) -> void:
 	elif not connected:
 		if was_connected:
 			was_connected = false
+			observe_request_id = ""
 			sync_pending = false
 			seam_pending = false
 			establish_pending = false
@@ -223,6 +231,18 @@ func _process(delta: float) -> void:
 			var connection_error := runtime_client.connect_to_configured_runtime()
 			if connection_error != OK:
 				status_message = "RUNTIME OFFLINE"
+
+	# Only a shared authority can change without an intent from this window.
+	# Keep hidden windows current without polling full world snapshots at 20 Hz.
+	if connected and runtime_client.is_shared_runtime() \
+			and not sync_pending and not seam_pending and not establish_pending:
+		observe_elapsed += delta
+		var observe_interval := 0.05 if get_window().has_focus() else 0.5
+		if observe_elapsed >= observe_interval and observe_request_id == "":
+			observe_elapsed = 0.0
+			observe_request_id = _next_request_id("observe")
+			if runtime_client.send_intent(observe_request_id, "ObserveIntent") != OK:
+				observe_request_id = ""
 
 	if animation_elapsed < STEP_DURATION_SECONDS:
 		animation_elapsed = minf(animation_elapsed + delta, STEP_DURATION_SECONDS)
@@ -903,6 +923,22 @@ func _send_load() -> void:
 
 
 func _on_runtime_response(response: Dictionary) -> void:
+	if str(response.get("request_id", "")) == observe_request_id:
+		observe_request_id = ""
+		var observed_view: Dictionary = _dict_or_empty(response.get("view"))
+		if str(response.get("status", "")) == "Completed" and not observed_view.is_empty() \
+				and int(response.get("revision", -1)) != last_applied_revision:
+			var prior_workshop_index := workshop_action_index
+			var prior_exit_index := selected_exit_index
+			var prior_exits := physical_exits.duplicate(true)
+			var prior_frame := survey_frame.duplicate(true)
+			_apply_view(observed_view)
+			if prior_exits == physical_exits:
+				selected_exit_index = prior_exit_index
+			if prior_frame == survey_frame:
+				workshop_action_index = prior_workshop_index
+			status_message = _case_status()
+		return
 	sync_pending = false
 	seam_pending = false
 	establish_pending = false
@@ -955,6 +991,7 @@ func _on_runtime_response(response: Dictionary) -> void:
 
 
 func _apply_view(view: Dictionary) -> void:
+	last_applied_revision = int(view.get("revision", -1))
 	guide_context = _dict_or_empty(view.get("guide_context"))
 	guide_transition_events = view.get("guide_transition_events", [])
 	var next_overworld: Dictionary = _dict_or_empty(view.get("overworld"))
@@ -1020,7 +1057,7 @@ func _apply_view(view: Dictionary) -> void:
 			animation_from = display_position
 			target_position = next_position
 			animation_elapsed = 0.0
-	else:
+	elif animation_elapsed >= STEP_DURATION_SECONDS:
 		display_position = next_position
 		target_position = next_position
 	_apply_interaction(_dict_or_empty(view.get("interaction")))
@@ -2470,7 +2507,7 @@ func _resolve_repo_root() -> String:
 
 func _next_request_id(prefix: String) -> String:
 	request_serial += 1
-	return "request.%s.%s" % [prefix, request_serial]
+	return "request.%s.%s.%s" % [request_nonce, prefix, request_serial]
 
 
 func _dict_or_empty(value) -> Dictionary:

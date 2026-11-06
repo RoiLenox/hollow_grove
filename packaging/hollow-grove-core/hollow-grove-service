@@ -4,6 +4,8 @@ set -euo pipefail
 
 command_path="$(readlink -f -- "${BASH_SOURCE[0]}")"
 command_root="$(cd -- "$(dirname -- "$command_path")/.." && pwd)"
+source "$command_root/lib/hollow-grove/device-launch.sh"
+hg_device_lock
 service_bin="$command_root/lib/hollow-grove/core/hollow_grove_game_service"
 
 if [[ ! -x "$service_bin" ]]; then
@@ -17,7 +19,7 @@ fi
 
 data_root="${XDG_DATA_HOME:-$HOME/.local/share}/hollow-grove"
 save_root="$data_root/gameplay-saves"
-world_root="$data_root/world"
+world_root="${HOLLOW_GROVE_WORLD_ROOT:-$data_root/world}"
 mkdir -p -- "$save_root" "$world_root"
 chmod 700 -- "$save_root"
 

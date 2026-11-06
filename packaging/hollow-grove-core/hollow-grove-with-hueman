@@ -4,6 +4,12 @@ set -euo pipefail
 
 command_path="$(readlink -f -- "${BASH_SOURCE[0]}")"
 command_root="$(cd -- "$(dirname -- "$command_path")/.." && pwd)"
+shared_config="${XDG_CONFIG_HOME:-$HOME/.config}/hollow-grove/shared-client.json"
+if [[ "${HOLLOW_GROVE_LOCAL:-0}" != 1 && -f "$shared_config" ]]; then
+    exec python3 "$command_root/lib/hollow-grove/shared_session.py" launch --config "$shared_config" "$@"
+fi
+source "$command_root/lib/hollow-grove/device-launch.sh"
+hg_device_lock
 service_bin="$command_root/lib/hollow-grove/core/hollow_grove_game_service"
 hueman_bin="${HUEMAN_BIN:-}"
 service_pid=""

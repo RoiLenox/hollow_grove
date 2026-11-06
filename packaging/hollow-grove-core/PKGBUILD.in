@@ -1,14 +1,14 @@
 pkgname=hollow-grove-core
 pkgver=@VERSION@
-pkgrel=4
+pkgrel=5
 pkgdesc='Authoritative Hollow Grove application service and Hueman integration'
 arch=('x86_64')
 url='https://github.com/RoiLenox/hollow_grove'
 license=('LicenseRef-Hollow-Grove-Proprietary')
 options=('!debug')
-depends=('bash' 'coreutils' 'grep' 'sed' 'glibc' 'gcc-libs')
+depends=('bash' 'coreutils' 'grep' 'sed' 'glibc' 'gcc-libs' 'python' 'util-linux')
 makedepends=('cargo')
-optdepends=('hueman: companion application')
+optdepends=('hueman: companion application' 'openssh: shared player connections and device handoff' 'libnotify: desktop handoff notices')
 source=('@SOURCE_ARCHIVE@')
 sha256sums=('@SOURCE_SHA256@')
 _source_root="hollow-grove-$pkgver"
@@ -29,6 +29,8 @@ build() {
 
 check() {
     cd "$srcdir/$_source_root"
+    python3 -m unittest discover -s tools -p 'test_device.py'
+    HOLLOW_GROVE_TEST_SERVICE="$srcdir/target/release/hollow_grove_game_service" python3 -m unittest discover -s tools -p 'test_shared_session.py'
     _cargo test --frozen --bin hollow_grove_game_service --target-dir "$srcdir/target"
     _cargo test --frozen --test integration gameplay_protocol:: --target-dir "$srcdir/target"
     _cargo test --frozen --test guide_operational_seam --target-dir "$srcdir/target"
@@ -44,6 +46,10 @@ package() {
     install -Dm755 "$srcdir/target/release/hollow_grove_game_service" "$pkgdir/usr/lib/hollow-grove/core/hollow_grove_game_service"
     install -Dm755 "$package_root/hollow-grove-service" "$pkgdir/usr/bin/hollow-grove-service"
     install -Dm755 "$package_root/hollow-grove-with-hueman" "$pkgdir/usr/bin/hollow-grove-with-hueman"
+    install -Dm755 "$package_root/hollow-grove-device" "$pkgdir/usr/bin/hollow-grove-device"
+    install -Dm644 "$package_root/shared_session.py" "$pkgdir/usr/lib/hollow-grove/shared_session.py"
+    install -Dm644 "$package_root/device.py" "$pkgdir/usr/lib/hollow-grove/device.py"
+    install -Dm644 "$package_root/device-launch.sh" "$pkgdir/usr/lib/hollow-grove/device-launch.sh"
     ln -s hollow-grove-with-hueman "$pkgdir/usr/bin/hollow-grove-hueman"
     install -Dm644 "$package_root/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 "$repository_root/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
