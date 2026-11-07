@@ -543,7 +543,10 @@ fn stonebend_map_case_and_authority_replay_from_checksummed_archive() {
     assert!(!case_view.outcome.unwrap().title_granted);
 
     let archive = service.encode_archive().unwrap();
-    assert!(archive.contains("\"schema_version\": 6"));
+    assert_eq!(
+        serde_json::from_str::<serde_json::Value>(&archive).unwrap()["schema_version"],
+        hollow_grove::gameplay::GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+    );
     assert!(archive.contains("\"federation_binding\""));
     assert!(archive.contains("StonebendContinuityDeterminationCommitted"));
     assert!(archive.contains("being.stonebend.current-hypergiant"));

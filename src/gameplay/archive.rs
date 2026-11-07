@@ -18,7 +18,8 @@ use super::{
 };
 
 pub const GAMEPLAY_ARCHIVE_FORMAT: &str = "hollow-grove-gameplay";
-pub const GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 6;
+pub const GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 7;
+const PRE_HUEMAN_PROFILE_GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 6;
 const PRE_SURVEY_FRAME_GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 5;
 const PRE_SYMPIOTE_GAMEPLAY_ARCHIVE_SCHEMA_VERSION: u16 = 4;
 pub const GAMEPLAY_RAMPART_COMPONENT_ID: &str = "component.gameplay.authoritative";
@@ -37,6 +38,7 @@ pub const fn is_supported_gameplay_archive_schema_version(schema_version: u16) -
     matches!(
         schema_version,
         GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+            | PRE_HUEMAN_PROFILE_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
             | PRE_SURVEY_FRAME_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
             | PRE_SYMPIOTE_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
             | PRE_SYNTHESIS_GAMEPLAY_ARCHIVE_SCHEMA_VERSION
@@ -183,6 +185,9 @@ type GameplayArchivePayloadV5 = GameplayArchivePayloadV4;
 // V6 adds a typed object-case event; the envelope/checksum payload stays exact.
 type GameplayArchiveEnvelopeV6 = GameplayArchiveEnvelopeV5;
 type GameplayArchivePayloadV6 = GameplayArchivePayloadV5;
+// V7 adds HuemanCreated; existing envelope fields and checksum input are unchanged.
+type GameplayArchiveEnvelopeV7 = GameplayArchiveEnvelopeV6;
+type GameplayArchivePayloadV7 = GameplayArchivePayloadV6;
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -251,6 +256,9 @@ struct LegacyWireGameplayEventEnvelope {
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(tag = "type", deny_unknown_fields)]
 enum WireGameplayEvent {
+    HuemanCreated {
+        profile: super::HuemanProfile,
+    },
     HuemanIdentityEstablished {
         continuity_id: String,
         participant_id: String,
@@ -416,7 +424,7 @@ pub(super) fn encode_gameplay_archive_with_history(
 ) -> Result<String, GameplayArchiveError> {
     rampart_binding.validate()?;
     migration_history.sort_by(|left, right| left.migration_id.cmp(&right.migration_id));
-    let payload = GameplayArchivePayloadV6 {
+    let payload = GameplayArchivePayloadV7 {
         rule_set: rule_set.as_str().into(),
         events: events
             .iter()
@@ -427,7 +435,7 @@ pub(super) fn encode_gameplay_archive_with_history(
         migration_history,
     };
     let checksum = checksum_for(&payload)?;
-    serde_json::to_string_pretty(&GameplayArchiveEnvelopeV6 {
+    serde_json::to_string_pretty(&GameplayArchiveEnvelopeV7 {
         format: GAMEPLAY_ARCHIVE_FORMAT.into(),
         schema_version: GAMEPLAY_ARCHIVE_SCHEMA_VERSION,
         checksum,
@@ -504,9 +512,10 @@ pub fn decode_gameplay_archive_with_metadata(
         .ok_or_else(|| {
             GameplayArchiveError::Serialization("missing gameplay archive schema version".into())
         })?;
-    let (rule_set, wire_events, institutional_state, rampart_binding, migration_history) =
+    let (rule_set, wire_events, institutional_state, rampart_binding, mut migration_history) =
         match schema_version {
-            GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
+            GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+            | PRE_HUEMAN_PROFILE_GAMEPLAY_ARCHIVE_SCHEMA_VERSION => {
                 let envelope: GameplayArchiveEnvelopeV6 = serde_json::from_value(value)
                     .map_err(|error| GameplayArchiveError::Serialization(error.to_string()))?;
                 validate_envelope(
@@ -645,6 +654,17 @@ pub fn decode_gameplay_archive_with_metadata(
         };
     let rule_set = RuleSetId::new(rule_set)
         .map_err(|error| GameplayArchiveError::InvalidDomainValue(error.to_string()))?;
+    if schema_version < GAMEPLAY_ARCHIVE_SCHEMA_VERSION {
+        if wire_events
+            .iter()
+            .any(|e| matches!(e.payload, WireGameplayEvent::HuemanCreated { .. }))
+        {
+            return Err(GameplayArchiveError::InvalidDomainValue(
+                "archives before V7 cannot contain a Hueman profile".into(),
+            ));
+        }
+        migration_history.push(hueman_profile_migration_record());
+    }
     let events = wire_events
         .into_iter()
         .map(|event| event.into_domain(&rule_set))
@@ -684,6 +704,16 @@ fn encode_replayed_gameplay_archive(
         decoded.rampart_binding,
         decoded.migration_history,
     )
+}
+
+fn hueman_profile_migration_record() -> GameplayArchiveMigrationRecord {
+    GameplayArchiveMigrationRecord {
+        migration_id: "migration.gameplay.v6-to-v7.hueman-profile".into(),
+        from_schema_version: 6,
+        to_schema_version: 7,
+        decision: "preserve existing identity, location and progress without inventing cosmetics or introductory objectives".into(),
+        provenance_id: "provenance.gameplay.migration.v6-to-v7".into(),
+    }
 }
 
 fn legacy_authority_migration_record() -> GameplayArchiveMigrationRecord {
@@ -868,6 +898,9 @@ impl TryFrom<&GameplayEventEnvelope> for WireGameplayEventEnvelope {
 
     fn try_from(event: &GameplayEventEnvelope) -> Result<Self, Self::Error> {
         let payload = match &event.payload {
+            GameplayEvent::HuemanCreated { profile } => WireGameplayEvent::HuemanCreated {
+                profile: profile.clone(),
+            },
             GameplayEvent::HuemanIdentityEstablished { identity } => {
                 if identity.incarnation() != &ActiveIncarnationRef::Hueman {
                     return Err(GameplayArchiveError::IdentityPayloadMismatch);
@@ -994,6 +1027,9 @@ impl WireGameplayEventEnvelope {
         rule_set: &RuleSetId,
     ) -> Result<GameplayEventEnvelope, GameplayArchiveError> {
         let payload = match self.payload {
+            WireGameplayEvent::HuemanCreated { profile } => {
+                GameplayEvent::HuemanCreated { profile }
+            }
             WireGameplayEvent::HuemanIdentityEstablished {
                 continuity_id,
                 participant_id,
@@ -1190,12 +1226,16 @@ mod tests {
         let before = serde_json::to_string_pretty(&before).unwrap();
         let after = migrate_gameplay_archive(&before).unwrap();
         let decoded = decode_gameplay_archive_with_metadata(&after).unwrap();
-        assert_eq!(decoded.source_schema_version, 6);
+        assert_eq!(
+            decoded.source_schema_version,
+            GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+        );
         assert_eq!(
             decoded.migration_history,
             vec![
                 sympiote_foundation_migration_record(),
-                survey_frame_migration_record()
+                survey_frame_migration_record(),
+                hueman_profile_migration_record()
             ]
         );
         let replayed = GameApplicationService::from_archive(&after).unwrap();
@@ -1270,7 +1310,8 @@ mod tests {
             vec![
                 synthesis_pilot_migration_record(),
                 sympiote_foundation_migration_record(),
-                survey_frame_migration_record()
+                survey_frame_migration_record(),
+                hueman_profile_migration_record()
             ]
         );
 
@@ -1286,7 +1327,8 @@ mod tests {
             vec![
                 synthesis_pilot_migration_record(),
                 sympiote_foundation_migration_record(),
-                survey_frame_migration_record()
+                survey_frame_migration_record(),
+                hueman_profile_migration_record()
             ]
         );
 
@@ -1377,7 +1419,12 @@ mod tests {
             GAMEPLAY_ARCHIVE_SCHEMA_VERSION
         );
         assert_eq!(migrated.events.len(), 1);
-        assert_eq!(migrated.migration_history.len(), 5);
+        assert_eq!(migrated.migration_history.len(), 6);
+        assert!(
+            migrated
+                .migration_history
+                .contains(&hueman_profile_migration_record())
+        );
         assert!(migrated.migration_history.iter().any(
             |record| record.migration_id == "migration.gameplay.v1-to-v2.authority-dependency"
         ));

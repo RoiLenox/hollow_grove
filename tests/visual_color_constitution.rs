@@ -185,7 +185,7 @@ fn godot_consumes_semantic_identities_without_defining_local_colors() {
 }
 
 #[test]
-fn tracked_presentation_sources_do_not_contain_a_second_palette() {
+fn shipping_presentation_sources_do_not_contain_a_second_house_palette() {
     let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let mut presentation_files = Vec::new();
     collect_presentation_files(&root.join("hueman_godot"), &mut presentation_files);
@@ -193,9 +193,31 @@ fn tracked_presentation_sources_do_not_contain_a_second_palette() {
     presentation_files.push(root.join("export-aseprite.sh"));
 
     for path in presentation_files {
+        if path.starts_with(root.join("hueman_godot/tools")) {
+            // Development studies/creator checks are explicitly absent from the pack.
+            let exports = include_str!("../hueman_godot/export_presets.cfg");
+            assert!(exports.lines().any(|line| {
+                line.starts_with("exclude_filter=")
+                    && line
+                        .trim_start_matches("exclude_filter=\"")
+                        .trim_end_matches('"')
+                        .split(',')
+                        .any(|pattern| pattern == "tools/**")
+            }));
+            continue;
+        }
         let source = fs::read_to_string(&path)
             .unwrap_or_else(|error| panic!("failed to read {}: {error}", path.display()));
         let literals = quoted_hex_literals(&source);
+        if path.extension().and_then(|ext| ext.to_str()) == Some("gd")
+            && !path.starts_with(root.join("hueman_godot/tests"))
+        {
+            assert!(
+                !source.contains("res://tools/"),
+                "shipping code depends on excluded development tools: {}",
+                path.display()
+            );
+        }
         assert!(
             literals.is_empty(),
             "presentation file {} defines local RGB literal(s): {literals:?}",

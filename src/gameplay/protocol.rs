@@ -51,6 +51,9 @@ static RUNTIME_LEASE_NONCE: AtomicU64 = AtomicU64::new(0);
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(tag = "type", deny_unknown_fields)]
 pub enum GameplayIntent {
+    CreateHuemanIntent {
+        profile: super::HuemanProfile,
+    },
     SyncIntent,
     /// Fresh, read-only snapshot. Never consumes the mutation replay ledger.
     ObserveIntent,
@@ -141,6 +144,7 @@ impl GameplayIntent {
     #[must_use]
     pub const fn kind(&self) -> &'static str {
         match self {
+            Self::CreateHuemanIntent { .. } => "CreateHuemanIntent",
             Self::SyncIntent => "SyncIntent",
             Self::ObserveIntent => "ObserveIntent",
             Self::CheckpointIntent { .. } => "CheckpointIntent",
@@ -635,6 +639,8 @@ impl GameProtocolService {
             GameplayIntent::LeaveHollowGroveIntent => {
                 self.transition_guides(request, GuideTransitionDirection::LeaveHollowGrove)
             }
+            GameplayIntent::CreateHuemanIntent { profile } => self.execute_command(request,
+                GameplayCommand::CreateHueman { profile: profile.clone() }),
             GameplayIntent::EstablishHuemanIntent {
                 continuity_id,
                 participant_id,
@@ -1688,6 +1694,9 @@ impl GameProtocolService {
             ),
             self.guide_session.session_id.clone(),
         );
+        view.character_save_available = self
+            .save_path("slot-a")
+            .is_some_and(|path| path.exists() || gameplay_save_backup_path(&path).exists());
         view.revision = self.operational_revision;
         view.guide_context = self
             .guide_session
@@ -2228,6 +2237,12 @@ fn capability_views(
         intent_type: "ObserveIntent".into(),
         available: true,
         unavailable_reason: None,
+    });
+    capabilities.push(IntentCapabilityView {
+        intent_type: "CreateHuemanIntent".into(),
+        available: can_establish_hueman,
+        unavailable_reason: (!can_establish_hueman)
+            .then(|| "the permanent Hueman identity is already established".into()),
     });
     if guide_layer != WorldLayer::HollowGrove {
         for capability in &mut capabilities {

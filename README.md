@@ -26,11 +26,13 @@ dark; swatch positions stay fixed. The [growth v0.4 study](docs/design/HUEMAN_CH
 uses separate working size proposals. Twelve formal names remain unassigned.
 The current 16-color runtime contract awaits an explicit compatibility migration.
 
-The next playable prototype is [HUEMAN-01: Create Your Hueman](docs/design/HUEMAN_01_CREATOR_HANDOFF_20261104.md):
-Skin, Face and Hair customization, independent appearance persistence, and an
-isolated movement studio. Run it from a desktop session with
-`godot --path hueman_godot res://tools/hueman_01/creator.tscn`.
-The handoff includes the existing-system inventory and proposed Stonebend entry.
+The current source prototype is [HUEMAN-02: persistent character introduction](docs/design/HUEMAN_02_GAMEPLAY_HANDOFF_20261106.md):
+Skin, Face and Hair customization bound to runtime identity, Stonebend recovery,
+and complete save/restart continuity. Run `./run-hollow-grove-game.sh --dev --hueman`
+from a desktop session. The [V6→V7 migration](docs/HUEMAN_PROFILE_MIGRATION_V1.md)
+preserves legacy identities without inventing cosmetics or progress.
+[HUEMAN-01](docs/design/HUEMAN_01_CREATOR_HANDOFF_20261104.md) remains the isolated
+appearance studio; both entry scenes are development tools outside installed packs.
 
 Read the setting in this order:
 
@@ -163,8 +165,9 @@ Open its workshop with **O**, choose with arrows and ask with Enter. Use
 `HOLLOW_GROVE_WORLD_ROOT=/home/warren/Projects/active/hollow_grove`
 when launching with the checkout's existing institutional catalog; a vacant
 catalog continues to refuse authority-dependent work. Gameplay archives write
-V6 and preserve older histories through the
-[survey-frame migration](docs/SURVEY_FRAME_MIGRATION_V1.md).
+V7 and preserve older histories through the
+[survey-frame](docs/SURVEY_FRAME_MIGRATION_V1.md) and
+[Hueman-profile](docs/HUEMAN_PROFILE_MIGRATION_V1.md) migrations.
 Hollow Grove Core and the Hueman presentation client are independently shipped
 and joined through the versioned
 [Hollow Grove / Hueman Seam](docs/HOLLOW_GROVE_HUEMAN_SEAM_V1.md). For a

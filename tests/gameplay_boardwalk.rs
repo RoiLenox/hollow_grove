@@ -617,7 +617,10 @@ fn boardwalk_history_and_active_bond_replay_from_checksummed_archive() {
     let service = completed_goon_bond_application();
     let archive = service.encode_archive().unwrap();
     assert!(archive.contains("\"checksum\": \"fnv1a64:"));
-    assert!(archive.contains("\"schema_version\": 6"));
+    assert_eq!(
+        serde_json::from_str::<serde_json::Value>(&archive).unwrap()["schema_version"],
+        hollow_grove::gameplay::GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+    );
     assert!(archive.contains("\"federation_binding\""));
     assert!(archive.contains("\"institutional_state\""));
     assert!(archive.contains("being.stonebend.current-hypergiant"));

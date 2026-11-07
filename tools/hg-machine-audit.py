@@ -121,10 +121,65 @@ def ssh_listener_scope() -> dict:
                 host = fields[3].rsplit(":", 1)[0].strip("[]")
                 port_22.append("wildcard" if host in {"0.0.0.0", "::", "*"} else "scoped")
     return {
+        "inspection_available": result["exit_code"] == 0,
         "listening": bool(port_22),
         "wildcard": "wildcard" in port_22,
         "socket_count": len(port_22),
     }
+
+
+def failed_units(user: bool = False) -> dict:
+    args = ["systemctl"] + (["--user"] if user else [])
+    result = command(*args, "--failed", "--no-legend", "--plain", "--no-pager")
+    units = [line.split()[0] for line in result["output"].splitlines() if line.strip()]
+    if result["exit_code"] != 0:
+        return check("attention", "failed-service inspection is unavailable",
+                     {"inspection_exit_code": result["exit_code"]})
+    return check("attention" if units else "pass",
+                 "failed services require investigation" if units else "no failed services",
+                 {"units": units})
+
+
+def kernel_modules(release: str | None = None, modules_root: Path = Path("/usr/lib/modules")) -> dict:
+    release = release or platform.release()
+    available = (modules_root / release).is_dir()
+    return check("pass" if available else "attention",
+                 "running kernel has its matching module directory" if available else
+                 "running kernel modules are absent; check pending reboot and kernel installation",
+                 {"running_release": release, "matching_modules_present": available})
+
+
+def device_readiness() -> dict:
+    result = command("/usr/bin/hollow-grove-device", "status")
+    try:
+        data = json.loads(result["output"]) if result["exit_code"] == 0 else None
+        if not isinstance(data, dict) or data.get("schema_version") != 1:
+            raise ValueError("unsupported status")
+        required = ("catalog_present", "recovery_required", "paused", "payload_sha256")
+        if any(key not in data for key in required):
+            raise ValueError("incomplete status")
+        if any(type(data[key]) is not bool for key in ("catalog_present", "recovery_required")):
+            raise ValueError("invalid readiness fields")
+        payloads = data["payload_sha256"]
+        if not isinstance(payloads, dict) or not payloads or not all(
+            isinstance(value, str) and re.fullmatch(r"[0-9a-f]{64}", value)
+            for value in payloads.values()
+        ):
+            raise ValueError("invalid payload identity")
+    except (ValueError, TypeError):
+        return check("attention", "installed device readiness could not be established")
+    # Omit world paths, peer aliases, receipts and pause content from this address-free report.
+    evidence = {"catalog_present": data["catalog_present"],
+                "recovery_required": data["recovery_required"],
+                "parked_for_handoff": data["paused"] is not None,
+                "payload_sha256": payloads}
+    if data["recovery_required"]:
+        return check("blocker", "interrupted device transfer requires recovery before launch", evidence)
+    if data["paused"] is not None:
+        return check("attention", "device is intentionally parked for handoff; preserve ownership", evidence)
+    if not data["catalog_present"]:
+        return check("attention", "installed world catalog is absent", evidence)
+    return check("pass", "installed device has a catalog and no handoff/recovery hold", evidence)
 
 
 def pacman_database_markers() -> list[str]:
@@ -169,6 +224,9 @@ def audit(root: Path, profile: dict) -> dict:
         else "architecture does not match profile",
         architecture,
     )
+    checks["kernel_modules"] = kernel_modules()
+    checks["system_services"] = failed_units()
+    checks["user_services"] = failed_units(user=True)
 
     root_fs_result = command("findmnt", "-n", "-o", "FSTYPE", "/")
     root_fs = root_fs_result["output"].splitlines()[0] if root_fs_result["output"] else "unknown"
@@ -206,6 +264,14 @@ def audit(root: Path, profile: dict) -> dict:
         else "installed package integrity could not be established",
         altered,
     )
+    database = command("pacman", "-Dk")
+    checks["pacman_database_integrity"] = check(
+        "pass" if database["exit_code"] == 0 else "blocker",
+        "pacman database and dependency checks pass" if database["exit_code"] == 0 else
+        "pacman database/dependency check failed; repair before package deployment",
+        {"exit_code": database["exit_code"], "output": database["output"]},
+    )
+    checks["device_readiness"] = device_readiness()
 
     source = repository_state(root)
     checks["source_checkout"] = check(
@@ -240,8 +306,9 @@ def audit(root: Path, profile: dict) -> dict:
 
     listener = ssh_listener_scope()
     checks["ssh_listener"] = check(
-        "attention" if listener["wildcard"] else "pass",
-        "SSH listens on wildcard addresses; constrain it with firewall policy"
+        "attention" if not listener["inspection_available"] or listener["wildcard"] else "pass",
+        "SSH listener inspection is unavailable" if not listener["inspection_available"] else
+        "SSH listens on wildcard addresses; inspect effective firewall policy"
         if listener["wildcard"]
         else "SSH listener is scoped or not active",
         listener,
@@ -262,10 +329,11 @@ def audit(root: Path, profile: dict) -> dict:
         recovery_evidence = {
             "strategy": profile.get("rollback_strategy"),
             "periodic_btrfs_scrub_visible": scrub_enabled,
+            "restore_tested_by_this_audit": False,
         }
         recovery_status = "pass" if scrub_enabled else "attention"
         recovery_summary = (
-            "Btrfs rollback and periodic scrub are visible"
+            "periodic Btrfs scrub is visible; this does not verify snapshot restoration"
             if scrub_enabled
             else "Btrfs rollback is declared but no periodic scrub timer is visible"
         )

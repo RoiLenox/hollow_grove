@@ -49,18 +49,23 @@ func _contracts() -> void:
 	_check(not Appearance.valid({"skin": [], "face": "calm", "hair": {}}), "reject wrong value types")
 	var fixed_lower_body := Art.hueman(base).get_region(Rect2i(0, 24, 24, 8)).get_data()
 	var distinct := {}
+	var all_pixels := HashingContext.new()
+	all_pixels.start(HashingContext.HASH_SHA256)
 	for skin: Dictionary in Appearance.SKINS:
 		for face: Dictionary in Appearance.FACES:
 			for hair: Dictionary in Appearance.HAIR_STYLES:
 				for color: Dictionary in Appearance.HAIR_COLORS:
 					var look := {"skin": skin.id, "face": face.id, "hair": {"style": hair.id, "color": color.id}}
 					var art := Art.hueman(look)
+					all_pixels.update(art.get_data())
 					_check(art.get_size() == Vector2i(24, 32), "fixed canvas for every appearance")
 					_check(art.get_region(Rect2i(0, 24, 24, 8)).get_data() == fixed_lower_body, "cosmetics preserve body/legs")
 					_check(art.get_pixel(12, 6).to_html(false) == skin.hex, "selected natural skin rendered")
 					distinct[_hash(art)] = true
 	# Shaved intentionally ignores the four retained hair colors: 6 * 4 * (1 + 4 * 4).
 	_check(distinct.size() == 408, "every visible preset combination is distinct")
+	# Captured from the original HUEMAN-01 renderer before catalog extraction.
+	_check(all_pixels.finish().hex_encode() == "95775ead8cf40c3159de1812eda6dd24e5b928b8b961a4c922119fe1782647b7", "all 480 appearances preserve their original pixels")
 	var gremlin := Art.gremlin()
 	_check(gremlin != null and gremlin.get_pixel(7, 2).to_html(false) == "79b7d8", "Gremlin uses exact v2.3 binding")
 	_check(base == Appearance.defaults(), "Form rendering cannot mutate appearance")

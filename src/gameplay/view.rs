@@ -104,6 +104,9 @@ impl GameplayEventView {
     #[must_use]
     pub fn from_canonical(event: &GameplayEventEnvelope) -> Self {
         let (kind, subject, interaction) = match &event.payload {
+            GameplayEvent::HuemanCreated { .. } => {
+                (GameplayEventKind::IdentityEstablished, None, None)
+            }
             GameplayEvent::HuemanIdentityEstablished { identity }
             | GameplayEvent::RegionalBeingIdentityEstablished { identity, .. } => (
                 GameplayEventKind::IdentityEstablished,
@@ -1223,6 +1226,15 @@ impl InteriorSurfaceView {
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct GameView {
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub hueman_profile: Option<super::HuemanProfile>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub initiation: Option<super::InitiationView>,
+    #[serde(default)]
+    pub character_save_available: bool,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    /// Read-only base-Hueman Deck statistics, not faculty evidence or earned progression.
+    pub baseline_stats: Option<crate::hollow_deck::StatBlock>,
     pub revision: u64,
     pub identity_count: usize,
     pub regional_event_count: usize,
@@ -1771,6 +1783,12 @@ impl GameView {
         guide_session_id: StableGuideSessionId,
     ) -> Self {
         Self {
+            hueman_profile: runtime.hueman_profile().cloned(),
+            initiation: super::InitiationView::from_runtime(runtime),
+            character_save_available: false,
+            baseline_stats: runtime
+                .hueman_profile()
+                .map(|_| crate::hollow_deck::HUEMAN_STATS),
             revision: runtime.revision().get(),
             identity_count: runtime.identity_count(),
             regional_event_count: runtime.regional().events().len(),

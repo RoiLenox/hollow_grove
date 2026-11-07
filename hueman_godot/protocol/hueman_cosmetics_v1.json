@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "scope": "hueman-cosmetic-presets",
+  "status": "illustrative; no House, Form, progression or authority meaning",
+  "skins": [
+    {"id": "light_neutral", "label": "Light · neutral", "hex": "f1c9ad"},
+    {"id": "light_warm", "label": "Light · warm", "hex": "dfac85"},
+    {"id": "medium_golden", "label": "Medium · golden", "hex": "c28c59"},
+    {"id": "medium_warm", "label": "Medium · warm", "hex": "a76f4d"},
+    {"id": "deep_warm", "label": "Deep · warm", "hex": "805137"},
+    {"id": "deep_neutral", "label": "Deep · neutral", "hex": "54392e"}
+  ],
+  "faces": [
+    {"id": "calm", "label": "Calm"}, {"id": "bright", "label": "Bright"},
+    {"id": "focused", "label": "Focused"}, {"id": "freckled", "label": "Freckled"}
+  ],
+  "hair_styles": [
+    {"id": "shaved", "label": "Shaved"}, {"id": "crop", "label": "Close crop"},
+    {"id": "curls", "label": "Curls"}, {"id": "side_part", "label": "Side part"},
+    {"id": "long", "label": "Long"}
+  ],
+  "hair_colors": [
+    {"id": "black", "label": "Soft black", "hex": "211d20"},
+    {"id": "brown", "label": "Chestnut", "hex": "583528"},
+    {"id": "auburn", "label": "Auburn", "hex": "8b4930"},
+    {"id": "blond", "label": "Honey blond", "hex": "c89c55"}
+  ],
+  "materials": {
+    "ink": "24252a", "shirt": "77796b", "collar": "d9d1bb",
+    "belt": "514b40", "trousers": "454754", "teeth": "fff0dc"
+  }
+}

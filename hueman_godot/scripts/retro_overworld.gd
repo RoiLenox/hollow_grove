@@ -13,6 +13,7 @@ const RETRY_INTERVAL_SECONDS := 1.0
 const STEP_DURATION_SECONDS := 0.12
 const ANIMATION_REDRAW_INTERVAL_SECONDS := 1.0 / 60.0
 const SEMANTICS_REFRESH_INTERVAL_SECONDS := 0.1
+const SAVE_TIMEOUT_SECONDS := 10.0
 const PIXEL_LINE_WIDTH := 36
 const SCREEN_SEMANTICS_SCHEMA_VERSION := "1.0.0"
 const SCREEN_SEMANTICS_CONTRACT_ID := "hollow-grove.retro-screen-semantics"
@@ -166,6 +167,17 @@ var logical_origin := Vector2.ZERO
 var logical_viewport_size := Vector2.ZERO
 var art_asset_catalog: ART_ASSET_CATALOG
 var hueman_gargoyle_texture: Texture2D
+const HUEMAN_APPEARANCE = preload("res://scripts/hueman_appearance.gd")
+const HUEMAN_AVATAR_ART = preload("res://scripts/hueman_avatar_art.gd")
+var hueman_profile := {}
+var initiation := {}
+var baseline_stats := {}
+var custom_hueman_texture: Texture2D
+var exit_requested := false
+var exit_save_sent := false
+var exit_elapsed := 0.0
+var save_request_id := ""
+var save_elapsed := 0.0
 
 
 func _ready() -> void:
@@ -189,6 +201,9 @@ func _ready() -> void:
 		set_process_input(false)
 		return
 	get_window().title = "Hollow Grove"
+	if OS.get_environment("HOLLOW_GROVE_CHARACTER_ENTRY") == "1":
+		get_tree().auto_accept_quit = false
+		get_window().close_requested.connect(_request_save_and_exit)
 	get_window().min_size = Vector2i(int(LOGICAL_SIZE.x), int(LOGICAL_SIZE.y))
 	_ensure_screen_semantics()
 	_update_logical_transform(get_viewport_rect().size)
@@ -205,6 +220,13 @@ func _process(delta: float) -> void:
 		return
 
 	runtime_client.poll()
+	if exit_requested:
+		exit_elapsed += delta
+	if not save_request_id.is_empty():
+		save_elapsed += delta
+	if (exit_requested and exit_elapsed >= SAVE_TIMEOUT_SECONDS) \
+			or (not save_request_id.is_empty() and save_elapsed >= SAVE_TIMEOUT_SECONDS):
+		_fail_save("SAVE NOT CONFIRMED / RECONNECTING; F10 TO RETRY")
 	var connected := runtime_client.is_runtime_connected()
 	if connected and not was_connected:
 		was_connected = true
@@ -213,6 +235,8 @@ func _process(delta: float) -> void:
 		_send_sync()
 	elif not connected:
 		if was_connected:
+			if exit_requested or not save_request_id.is_empty():
+				_fail_save("SAVE NOT CONFIRMED / CONNECTION LOST")
 			was_connected = false
 			observe_request_id = ""
 			sync_pending = false
@@ -231,6 +255,12 @@ func _process(delta: float) -> void:
 			var connection_error := runtime_client.connect_to_configured_runtime()
 			if connection_error != OK:
 				status_message = "RUNTIME OFFLINE"
+
+	# Reconnection must synchronize the revision before retrying a save.
+	if exit_requested and not exit_save_sent and runtime_client.is_runtime_connected() \
+			and not (sync_pending or seam_pending or establish_pending or movement_pending or interaction_pending or case_pending or synthesis_pending):
+		exit_save_sent = true
+		_send_save()
 
 	# Only a shared authority can change without an intent from this window.
 	# Keep hidden windows current without polling full world snapshots at 20 Hz.
@@ -260,7 +290,52 @@ func _process(delta: float) -> void:
 		_refresh_screen_semantics()
 
 
+func _request_save_and_exit() -> void:
+	if hueman_profile.is_empty():
+		get_tree().quit()
+		return
+	if exit_requested:
+		return
+	exit_requested = true
+	exit_save_sent = false
+	exit_elapsed = 0.0
+	status_message = "SAVING BEFORE EXIT"
+
+
+func _cancel_exit() -> void:
+	exit_requested = false
+	exit_save_sent = false
+	exit_elapsed = 0.0
+	status_message = "EXIT CANCELED / ANY PENDING SAVE MAY STILL COMPLETE"
+
+
+func _fail_save(message: String) -> void:
+	_cancel_exit()
+	save_request_id = ""
+	save_elapsed = 0.0
+	case_pending = false
+	# Discard uncertain transport requests; reconnect and sync before a new save.
+	runtime_client.disconnect_from_runtime()
+	was_connected = false
+	sync_pending = false
+	seam_pending = false
+	establish_pending = false
+	movement_pending = false
+	interaction_pending = false
+	synthesis_pending = false
+	status_message = message
+	queue_redraw()
+
+
 func _input(event: InputEvent) -> void:
+	if exit_requested and event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+		_cancel_exit()
+		return
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F10 and not hueman_profile.is_empty():
+		_request_save_and_exit()
+		return
+	if exit_requested:
+		return
 	if not (event is InputEventKey) or not event.pressed:
 		return
 	if seam_pending \
@@ -269,6 +344,9 @@ func _input(event: InputEvent) -> void:
 			or case_pending \
 			or synthesis_pending \
 			or animation_elapsed < STEP_DURATION_SECONDS:
+		return
+	if event.keycode == KEY_F5 and not hueman_profile.is_empty():
+		_send_save()
 		return
 	if workshop_menu_open:
 		var actions: Array = survey_frame.get("available_actions", [])
@@ -899,14 +977,15 @@ func _send_case_decision() -> void:
 func _send_save() -> void:
 	case_pending = true
 	status_message = "SAVING SLOT A"
+	save_request_id = _next_request_id("save")
+	save_elapsed = 0.0
 	var error := runtime_client.send_intent(
-		_next_request_id("save"),
+		save_request_id,
 		"SaveIntent",
 		{"slot_id": "slot-a"}
 	)
 	if error != OK:
-		case_pending = false
-		status_message = "SAVE SEND ERROR"
+		_fail_save("SAVE SEND FAILED / RECONNECTING; F10 TO RETRY")
 
 
 func _send_load() -> void:
@@ -923,6 +1002,10 @@ func _send_load() -> void:
 
 
 func _on_runtime_response(response: Dictionary) -> void:
+	var is_save_response := not save_request_id.is_empty() and str(response.get("request_id", "")) == save_request_id
+	if is_save_response:
+		save_request_id = ""
+		save_elapsed = 0.0
 	if str(response.get("request_id", "")) == observe_request_id:
 		observe_request_id = ""
 		var observed_view: Dictionary = _dict_or_empty(response.get("view"))
@@ -951,12 +1034,23 @@ func _on_runtime_response(response: Dictionary) -> void:
 		_apply_view(view)
 
 	if str(response.get("status", "Rejected")) == "Rejected":
+		exit_requested = false
+		exit_save_sent = false
 		var rejection: Dictionary = _dict_or_empty(response.get("rejection"))
 		status_message = str(rejection.get("message", "PROTOCOL REJECTED")).to_upper()
 		if str(rejection.get("code", "")) == "StaleRevision":
 			_send_sync()
 		queue_redraw()
 		return
+
+	for saved_event in response.get("events", []):
+		if is_save_response and saved_event.get("kind") == "SnapshotSaved":
+			if exit_requested and exit_save_sent:
+				get_tree().quit()
+				return
+			status_message = "GAME SAVED / F10 SAVE AND EXIT"
+			queue_redraw()
+			return
 
 	if str(guide_context.get("layer", "")) == "outside_hollow_grove":
 		if auto_enter_hollow_grove:
@@ -991,6 +1085,15 @@ func _on_runtime_response(response: Dictionary) -> void:
 
 
 func _apply_view(view: Dictionary) -> void:
+	var next_profile := _dict_or_empty(view.get("hueman_profile"))
+	if next_profile != hueman_profile:
+		hueman_profile = next_profile
+		custom_hueman_texture = null
+		var look: Variant = hueman_profile.get("appearance")
+		if HUEMAN_APPEARANCE.valid(look):
+			custom_hueman_texture = ImageTexture.create_from_image(HUEMAN_AVATAR_ART.hueman(look))
+	initiation = _dict_or_empty(view.get("initiation"))
+	baseline_stats = _dict_or_empty(view.get("baseline_stats"))
 	last_applied_revision = int(view.get("revision", -1))
 	guide_context = _dict_or_empty(view.get("guide_context"))
 	guide_transition_events = view.get("guide_transition_events", [])
@@ -1097,6 +1200,10 @@ func _is_action_key(keycode: Key) -> bool:
 
 
 func _on_protocol_error(message: String) -> void:
+	if exit_requested or not save_request_id.is_empty():
+		_fail_save("SAVE NOT CONFIRMED / RECONNECTING; F10 TO RETRY")
+		push_warning(message)
+		return
 	status_message = "PROTOCOL ERROR"
 	push_warning(message)
 	queue_redraw()
@@ -1537,6 +1644,12 @@ func _draw_scheduled_people(viewport_size: Vector2) -> void:
 
 
 func _draw_player(viewport_size: Vector2) -> void:
+	if custom_hueman_texture != null and str(synthesis_pilot.get("form", "Hueman")) == "Hueman":
+		# Shared 24x32 art, native pixel density, feet aligned with the existing actor.
+		# Collision, movement and the production transformation atlas stay unchanged.
+		var origin := Vector2(roundf(display_position.x * 8.0) - 8.0, roundf(display_position.y * 8.0) - 24.0)
+		_draw_logical_texture_region(custom_hueman_texture, Rect2(origin, Vector2(24, 32)), Rect2(0, 0, 24, 32), viewport_size)
+		return
 	if hueman_gargoyle_texture != null and not synthesis_pilot.is_empty():
 		var sprite_origin := Vector2(
 			roundf(display_position.x * 8.0) - 4.0,
@@ -1636,6 +1749,10 @@ func _draw_embodied_guides(viewport_size: Vector2) -> void:
 
 
 func _draw_hud(viewport_size: Vector2) -> void:
+	if not initiation.is_empty():
+		_draw_logical_rect(Rect2(2, 12, 156, 18), _color("hollow_grove.universal.outline"), viewport_size)
+		_draw_pixel_text("01 THE INITIATION", Vector2(5, 14), _color("hollow_grove.house.stonebend.highlight"), viewport_size)
+		_draw_pixel_text("O WORKSHOP / F5 SAVE / F10 EXIT", Vector2(5, 23), _color("hollow_grove.house.flynt.highlight"), viewport_size)
 	_draw_logical_rect(Rect2(2, 2, 48, 9), _color("hollow_grove.universal.outline"), viewport_size)
 	_draw_logical_rect(Rect2(3, 3, 46, 7), _color("hollow_grove.universal.shadow.raised"), viewport_size)
 	_draw_pixel_text(_map_label(), Vector2(5, 4), _color("hollow_grove.house.flynt.highlight"), viewport_size)
@@ -1753,7 +1870,7 @@ func _workshop_action_label(action: Variant) -> String:
 func _draw_workshop_menu(viewport_size: Vector2) -> void:
 	var outline := _color("hollow_grove.universal.outline")
 	var paper := _color("hollow_grove.house.stonebend.highlight")
-	var accent := _color("hollow_grove.house.stonebend.authority")
+	var accent := _color("hollow_grove.house.stonebend.dark")
 	_draw_logical_rect(Rect2(4, 11, 152, 119), outline, viewport_size)
 	_draw_logical_rect(Rect2(6, 13, 148, 115), paper, viewport_size)
 	_draw_pixel_text("REPAIR BENCH / MERCY'S DOORWAY", Vector2(10, 17), accent, viewport_size)
@@ -1818,6 +1935,8 @@ func _map_label() -> String:
 
 
 func _case_status() -> String:
+	if not initiation.is_empty():
+		return str(initiation.get("objective", "The Initiation")).to_upper()
 	var active_living := _active_living_case()
 	if not active_living.is_empty():
 		var resolved = active_living.get("resolved_choice", null)
@@ -2272,6 +2391,13 @@ func _world_context_semantics() -> String:
 				int(party.get("max_members", 6)),
 			]
 		)
+	if not initiation.is_empty():
+		parts.append("Mission 01: The Initiation. " + str(initiation.get("objective", "")))
+		if not baseline_stats.is_empty():
+			parts.append("Base Hueman: Strength %d, Speed %d, Attack %d, Defense %d." % [
+				int(baseline_stats.get("strength", 0)), int(baseline_stats.get("speed", 0)),
+				int(baseline_stats.get("attack", 0)), int(baseline_stats.get("defense", 0))])
+		parts.append("O opens the repair bench. F5 saves; F10 saves and exits. Escape cancels a pending exit.")
 	if not synthesis_pilot.is_empty():
 		parts.append(
 			"Winged Gargoyle treasure hunt: stage %s, form %s, %d of %d fragments. %s" % [

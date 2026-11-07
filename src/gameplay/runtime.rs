@@ -93,6 +93,9 @@ pub struct GameplayEventMetadata {
 /// reducers are ready. Presentation-specific commands do not belong here.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum GameplayCommand {
+    CreateHueman {
+        profile: super::HuemanProfile,
+    },
     EstablishHuemanIdentity {
         continuity: BeingContinuityId,
         participant: ParticipantId,
@@ -166,6 +169,9 @@ pub enum GameplayCommand {
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum GameplayEvent {
+    HuemanCreated {
+        profile: super::HuemanProfile,
+    },
     HuemanIdentityEstablished {
         identity: BeingContinuityRecord,
     },
@@ -260,6 +266,7 @@ pub struct HollowGroveGameRuntime {
     events: Vec<GameplayEventEnvelope>,
     event_ids: BTreeSet<GameplayEventId>,
     identities: IdentityRegistry,
+    hueman_profile: Option<super::HuemanProfile>,
     hueman_map: WorldMapId,
     hueman_position: Option<TilePosition>,
     active_interaction: Option<InteractionId>,
@@ -290,6 +297,7 @@ impl HollowGroveGameRuntime {
             events: Vec::new(),
             event_ids: BTreeSet::new(),
             identities: IdentityRegistry::default(),
+            hueman_profile: None,
             hueman_map: WorldMapId::AuraRidgeGroveApproach,
             hueman_position: None,
             active_interaction: None,
@@ -353,6 +361,7 @@ impl HollowGroveGameRuntime {
             events: Vec::new(),
             event_ids: BTreeSet::new(),
             identities: self.identities.clone(),
+            hueman_profile: self.hueman_profile.clone(),
             hueman_map: self.hueman_map,
             hueman_position: self.hueman_position,
             active_interaction: self.active_interaction,
@@ -393,6 +402,10 @@ impl HollowGroveGameRuntime {
 
     fn event_matches_command(event: &GameplayEventEnvelope, command: &GameplayCommand) -> bool {
         match (&event.payload, command) {
+            (
+                GameplayEvent::HuemanCreated { profile: a },
+                GameplayCommand::CreateHueman { profile: b },
+            ) => a == b,
             (
                 GameplayEvent::HuemanIdentityEstablished { identity },
                 GameplayCommand::EstablishHuemanIdentity {
@@ -567,6 +580,30 @@ impl HollowGroveGameRuntime {
         command: GameplayCommand,
     ) -> Result<GameplayEvent, GameplayRuntimeError> {
         match command {
+            GameplayCommand::CreateHueman { profile } => {
+                profile
+                    .validate()
+                    .map_err(GameplayRuntimeError::InvalidHuemanProfile)?;
+                // Reuse identity and party registration; record one atomic creation event.
+                self.reduce_command(
+                    metadata,
+                    GameplayCommand::EstablishHuemanIdentity {
+                        continuity: BeingContinuityId::new(profile.continuity_id()).map_err(
+                            |e| GameplayRuntimeError::InvalidHuemanProfile(e.to_string()),
+                        )?,
+                        participant: ParticipantId::new(profile.participant_id()).map_err(|e| {
+                            GameplayRuntimeError::InvalidHuemanProfile(e.to_string())
+                        })?,
+                        institutional: InstitutionalBeingId::new(profile.institutional_id())
+                            .map_err(|e| {
+                                GameplayRuntimeError::InvalidHuemanProfile(e.to_string())
+                            })?,
+                    },
+                )?;
+                self.enter_map(WorldMapId::for_route(ConstitutionalRouteId::AuraWay));
+                self.hueman_profile = Some(profile.clone());
+                Ok(GameplayEvent::HuemanCreated { profile })
+            }
             GameplayCommand::EstablishHuemanIdentity {
                 continuity,
                 participant,
@@ -1245,6 +1282,18 @@ impl HollowGroveGameRuntime {
         payload: &GameplayEvent,
     ) -> Result<(), GameplayRuntimeError> {
         match payload {
+            GameplayEvent::HuemanCreated { profile } => {
+                self.reduce_command(
+                    &GameplayEventMetadata {
+                        id: GameplayEventId::new("game-event.profile-replay")
+                            .expect("stable internal replay ID"),
+                        causal_position,
+                    },
+                    GameplayCommand::CreateHueman {
+                        profile: profile.clone(),
+                    },
+                )?;
+            }
             GameplayEvent::HuemanIdentityEstablished { identity } => {
                 if identity.incarnation() != &ActiveIncarnationRef::Hueman {
                     return Err(GameplayRuntimeError::IdentityPayloadMismatch);
@@ -1631,6 +1680,10 @@ impl HollowGroveGameRuntime {
     }
 
     #[must_use]
+    pub fn hueman_profile(&self) -> Option<&super::HuemanProfile> {
+        self.hueman_profile.as_ref()
+    }
+
     pub const fn hueman_map(&self) -> WorldMapId {
         self.hueman_map
     }
@@ -1888,6 +1941,7 @@ pub enum GameplayRuntimeError {
         actual: GameRevision,
     },
     IdentityPayloadMismatch,
+    InvalidHuemanProfile(String),
     UnexpectedRegionalEvent,
     RegionalReplayDivergence(crate::constitutional::RegionalEventId),
     MovementRequiresHueman,

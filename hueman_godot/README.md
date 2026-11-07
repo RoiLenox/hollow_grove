@@ -1,5 +1,13 @@
 # Hueman Godot Shell
 
+The [HUEMAN-02 source introduction](../docs/design/HUEMAN_02_GAMEPLAY_HANDOFF_20261106.md)
+connects the creator below to Rust-owned identity, the existing Stonebend
+recovery case, and complete save/restart continuity. From the repository root,
+run `./run-hollow-grove-game.sh --dev --hueman`. F5 saves, F10 saves and exits,
+and Escape cancels a pending exit. This opt-in development entry is excluded
+from shipping packs. See the handoff for migration, recovery and remaining
+visual/export decisions.
+
 ## Create Your Hueman preview
 
 The isolated [HUEMAN-01 creator](../docs/design/HUEMAN_01_CREATOR_HANDOFF_20261104.md)

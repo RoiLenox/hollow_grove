@@ -178,3 +178,6 @@ mod sympiote_foundation;
 mod syndicate_catalog;
 #[path = "visual_color_constitution.rs"]
 mod visual_color_constitution;
+
+#[path = "hueman_profile.rs"]
+mod hueman_profile;

@@ -14,3 +14,4 @@ cargo test --workspace --locked --offline
 cargo test --workspace --all-features --locked --offline
 ./verify-godot.sh
 ./verify-playable-lifecycle.sh
+python3 tools/verify_hueman_lifecycle.py

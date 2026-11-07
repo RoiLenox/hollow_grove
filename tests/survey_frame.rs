@@ -664,7 +664,10 @@ fn actual_schema_five_foundation_archive_retains_history_and_has_no_frame_progre
     let current = service.encode_archive().unwrap();
     let decoded_current =
         hollow_grove::gameplay::decode_gameplay_archive_with_metadata(&current).unwrap();
-    assert_eq!(decoded_current.source_schema_version, 6);
+    assert_eq!(
+        decoded_current.source_schema_version,
+        hollow_grove::gameplay::GAMEPLAY_ARCHIVE_SCHEMA_VERSION
+    );
     assert!(
         decoded_current
             .migration_history

@@ -177,13 +177,18 @@
     },
     "src/gameplay/runtime.rs": {
       "previous_sha256": "197546c794c18fa7ca8983304915d45448c6a9f4c88c1144453f1b1842e3f467",
-      "sha256": "9df4764379ee2e254e8715ca0e1f54015209602b132e0a5b915c132f34dd80af",
-      "review": "d67c5f0 adds Boardwalk persons, two local span maps, physical stair entry/exit and replay validation; no sovereign succession or canonical route edge is added. Covered by tests/boardwalk_territory.rs and docs/BOARDWALK_GOVERNING_DOCTRINE_V0_1_IMPLEMENTATION.md."
+      "sha256": "710ba6ab9c3aac7cfbc4da916dd30bb92b0dd807dcfdcd2c6dfe24ca1566966f",
+      "review": "d67c5f0 adds Boardwalk persons, two local span maps, physical stair entry/exit and replay validation; no sovereign succession or canonical route edge is added. Covered by tests/boardwalk_territory.rs and docs/BOARDWALK_GOVERNING_DOCTRINE_V0_1_IMPLEMENTATION.md. HUEMAN-02 adds atomic profile creation on the existing Aura Way map and gameplay V7 migration; preserves all old route identifiers, institutional authority and historical fixtures. See docs/HUEMAN_PROFILE_MIGRATION_V1.md and tests/hueman_profile.rs."
     },
     "src/gameplay/world.rs": {
       "previous_sha256": "8da9af052362e4dd754811aaeb3f49f5fa13e962bc72765363b55c9b5fe0e37d",
       "sha256": "d8bd5812e1b9c0e4ba03c4879f36ee0bd833e7b845df1d3880be381e36ddfe99",
       "review": "d67c5f0 adds the two Boardwalk span layouts, local presence/notice IDs and stair positions; old maps and stable route IDs are preserved. Covered by tests/boardwalk_territory.rs and route_network_gameplay."
+    },
+    "src/gameplay/archive.rs": {
+      "previous_sha256": "4c203cf192a2f6568a5c0f11cad8c1b28b392445d5f23f2496a195c9bd3383ab",
+      "sha256": "2f381cf793835c928e18733ee6e2fce02848604aafebc86ece73780f83249d45",
+      "review": "HUEMAN-02 adds atomic profile creation on the existing Aura Way map and gameplay V7 migration; preserves all old route identifiers, institutional authority and historical fixtures. See docs/HUEMAN_PROFILE_MIGRATION_V1.md and tests/hueman_profile.rs."
     }
   }
 }
