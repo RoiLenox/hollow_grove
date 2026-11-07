@@ -3,6 +3,7 @@
 set -euo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
 cargo fmt --all -- --check
+python3 tools/source_boundary.py
 python3 tools/build_registrar.py --check
 python3 tools/verify-active-geography.py
 python3 tools/verify-backend-contracts.py

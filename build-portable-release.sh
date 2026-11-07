@@ -30,6 +30,7 @@ if [[ -n "$(git status --porcelain=v1 --untracked-files=normal)" ]]; then
         'portable release requires a clean worktree so BUILD-MANIFEST.txt identifies the complete source' >&2
     exit 2
 fi
+python3 tools/source_boundary.py
 ./verify-art-assets.sh
 cargo build --release --locked --offline \
     --package hollow-grove \

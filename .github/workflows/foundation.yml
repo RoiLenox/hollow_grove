@@ -27,6 +27,8 @@ jobs:
         run: ./verify-art-assets.sh
       - name: Distribution policy and repository tooling
         run: |
+          python3 tools/source_boundary.py
+          python3 tools/test_source_boundary.py
           python3 tools/test_prepare_arch_packages.py
           python3 tools/test_hg_distribution.py
           python3 tools/test_hg_machine_audit.py

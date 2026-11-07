@@ -1,6 +1,27 @@
 # Rust build output at the workspace root and in every nested crate.
 **/target/
 
+# Private account material never belongs in the portable project source.
+**/.ssh/
+**/.gnupg/
+**/.aws/
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+authorized_keys
+authorized_keys2
+known_hosts
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+*.pem
+*.key
+*.p12
+*.pfx
+
 # Local benchmark reports.
 /artifacts/current_synthesis_benchmark.md
 /artifacts/current_synthesis_benchmark.json

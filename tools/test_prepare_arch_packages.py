@@ -78,6 +78,17 @@ class SourceBundleTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "escapes"):
             prepare_arch.prepare(self.root, self.root / "dist/refused", allow_dirty=True)
 
+    def test_private_material_is_rejected_before_output_even_for_development(self):
+        path = self.root / "notes.txt"
+        path.write_text("ghp_" + "X" * 36)
+        subprocess.run(["git", "-C", str(self.root), "add", "notes.txt"], check=True)
+        # A safe working copy does not erase a credential already in the index.
+        path.write_text("ordinary notes")
+        output = self.root / "dist/refused"
+        with self.assertRaisesRegex(ValueError, "private material"):
+            prepare_arch.prepare(self.root, output, allow_dirty=True)
+        self.assertFalse(output.exists())
+
     def test_existing_output_is_not_overwritten(self):
         output = self.root / "dist/existing"
         prepare_arch.prepare(self.root, output)

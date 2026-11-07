@@ -13,6 +13,8 @@ import subprocess
 import tarfile
 import tomllib
 
+from source_boundary import audit_source
+
 
 def git(root, *args):
     return subprocess.check_output(["git", "-C", str(root), *args])
@@ -33,6 +35,9 @@ def desktop_dependencies(root):
 
 def prepare(root, output, allow_dirty=False, signed_tag=None):
     root, output = root.resolve(), output.resolve()
+    private_material = audit_source(root)
+    if private_material:
+        raise ValueError('private material cannot be packaged: ' + '; '.join(private_material))
     dirty = bool(git(root, "status", "--porcelain=v1", "--untracked-files=normal").strip())
     if dirty and (not allow_dirty or signed_tag):
         raise ValueError("source is dirty; use --allow-dirty only for a local development snapshot")
