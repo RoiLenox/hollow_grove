@@ -14,6 +14,27 @@ import tempfile
 import time
 
 
+def source_provenance(world_root: Path, source_root: Path):
+    """Report Git metadata only when the measured world root is the declared source tree."""
+    root = world_root.resolve()
+    source = source_root.resolve()
+    if root != source:
+        return None, None
+    toplevel = subprocess.run(['git', 'rev-parse', '--show-toplevel'], cwd=source, text=True,
+                              capture_output=True)
+    if toplevel.returncode != 0:
+        return None, None
+    try:
+        source.relative_to(Path(toplevel.stdout.strip()).resolve())
+    except ValueError:
+        return None, None
+    commit = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=source, text=True, capture_output=True)
+    status = subprocess.run(['git', 'status', '--porcelain=v1'], cwd=source, text=True,
+                            capture_output=True)
+    return (commit.stdout.strip() if commit.returncode == 0 else None,
+            bool(status.stdout) if status.returncode == 0 else None)
+
+
 def main():
     repo = Path(__file__).resolve().parents[1]
     parser = argparse.ArgumentParser(description=__doc__)
@@ -134,10 +155,7 @@ def main():
               'disposable_state': True, 'remote_connection': False}
     if args.scenario != 'active-view':
         report['workload'] = 'sympiote_return_sync_stdio'
-    source_commit = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=args.world_root.resolve(), text=True,
-                                   capture_output=True)
-    source_status = subprocess.run(['git', 'status', '--porcelain=v1'], cwd=args.world_root.resolve(), text=True,
-                                   capture_output=True)
+    source_commit, source_dirty = source_provenance(args.world_root, repo)
     service_commit = None
     for parent in list(service.parents)[:4]:
         manifest = parent / 'BUILD-MANIFEST.txt'
@@ -146,8 +164,8 @@ def main():
                                    if line.startswith('git_commit=')), None)
             break
     report.update({'scenario': args.scenario, 'assessment_rounds': args.assessment_rounds if args.scenario == 'sympiote-return' else 0,
-                   'source_commit': source_commit.stdout.strip() if source_commit.returncode == 0 else None,
-                   'source_worktree_dirty': bool(source_status.stdout) if source_status.returncode == 0 else None,
+                   'source_commit': source_commit,
+                   'source_worktree_dirty': source_dirty,
                    'service_source_commit': service_commit,
                    'harness_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                    'executed_via_ssh': bool(os.environ.get('SSH_CONNECTION')),

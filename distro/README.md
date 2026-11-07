@@ -94,6 +94,15 @@ python3 tools/hg-machine-audit.py --machine "$(hostnamectl --static)"
 Pass `--output /path/to/new-report.json` to preserve immutable enrollment
 evidence. The command refuses to overwrite an existing report.
 
+The machine audit checks the running kernel's module directory, failed system
+and user services, pacman database/dependencies and installed-file integrity,
+Niri integration, and the installed world's handoff/recovery readiness. A missing
+inspection is reported as unavailable; a parked device is not treated as ready
+to launch. Scrub scheduling is not proof of snapshot restoration. Disk SMART,
+effective firewall rules, privileged snapshot inspection and an actual restore
+rehearsal still require separate evidence. Run from the host session rather than
+a restricted container to avoid confusing sandbox failures with host faults.
+
 Use distinct empty target directories for the feature configurations when
 validating a clean build. This catches undeclared sibling-binary dependencies.
 Package `check()` covers its actual shipped surface; broad workspace and
